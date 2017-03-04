@@ -1,0 +1,94 @@
+package my.edu.umk.pams.intake.security.integration;
+
+import my.edu.umk.pams.intake.core.InMetaObject;
+import my.edu.umk.pams.intake.identity.model.InPrincipal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.acls.AclPermissionEvaluator;
+import org.springframework.security.acls.domain.ObjectIdentityRetrievalStrategyImpl;
+import org.springframework.security.acls.model.*;
+
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * @author canang technologies
+ * @since 1/15/14
+ */
+public class InAclPermissionEvaluator extends AclPermissionEvaluator {
+
+    private static final Logger LOG = LoggerFactory.getLogger(my.edu.umk.pams.intake.security.integration.InAclPermissionEvaluator.class);
+
+    private AclService aclService;
+    private ObjectIdentityGenerator objectIdentityGenerator = new ObjectIdentityRetrievalStrategyImpl();
+    private InDomainRetrievalStrategy retrievalStrategy = new InDomainRetrievalStrategy();
+    private InPermissionFactory permissionFactory = new InPermissionFactory();
+    private InSidRetrievalStrategy sidRetrievalStrategy = new InSidRetrievalStrategy();
+
+    public InAclPermissionEvaluator(AclService aclService, InSidRetrievalStrategy sidRetrievalStrategy) {
+        super(aclService);
+        this.aclService = aclService;
+        setObjectIdentityRetrievalStrategy(retrievalStrategy);
+        setSidRetrievalStrategy(sidRetrievalStrategy);
+        this.sidRetrievalStrategy = sidRetrievalStrategy;
+    }
+
+    public boolean checkPermissionByProxy(InPrincipal principal, InMetaObject object, Object permission) {
+        String targetType = object.getInterfaceClass().getCanonicalName();
+        Serializable targetId = object.getId();
+        ObjectIdentity oid = objectIdentityGenerator.createObjectIdentity(targetId, targetType);
+        List<Sid> sids = sidRetrievalStrategy.getSids(principal);
+        List<Permission> requiredPermission = resolvePermission(permission);
+        try {
+            // Lookup only ACLs for SIDs we're interested in
+            Acl acl = aclService.readAclById(oid, sids);
+            if (acl.isGranted(requiredPermission, sids, false)) {
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("Access is granted");
+                }
+                return true;
+            }
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Returning false - ACLs returned, but insufficient permissions for this principal");
+            }
+
+        } catch (NotFoundException nfe) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Returning false - no ACLs apply for this principal");
+            }
+        }
+        return false;
+    }
+
+    private List<Permission> resolvePermission(Object permission) {
+        if (permission instanceof Integer) {
+            return Arrays.asList(permissionFactory.buildFromMask(((Integer) permission).intValue()));
+        }
+
+        if (permission instanceof Permission) {
+            return Arrays.asList((Permission) permission);
+        }
+
+        if (permission instanceof Permission[]) {
+            return Arrays.asList((Permission[]) permission);
+        }
+
+        if (permission instanceof String) {
+            String permString = (String) permission;
+            Permission p = null;
+
+            try {
+                p = permissionFactory.buildFromName(permString);
+            } catch (IllegalArgumentException notfound) {
+                p = permissionFactory.buildFromName(permString.toUpperCase());
+            }
+
+            if (p != null) {
+                return Arrays.asList(p);
+            }
+
+        }
+        throw new IllegalArgumentException("Unsupported permission: " + permission);
+    }
+}
