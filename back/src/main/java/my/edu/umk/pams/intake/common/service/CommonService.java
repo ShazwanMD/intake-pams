@@ -7,6 +7,25 @@ import java.util.List;
 public interface CommonService {
 
     //====================================================================================================
+    // COUNTRY CODE
+    //====================================================================================================
+
+    InCountryCode findCountryCodeById(Long id);
+
+    InCountryCode findCountryCodeByCode(String code);
+
+    List<InCountryCode> findCountryCodes(String filter, Integer offset, Integer limit);
+
+    Integer countCountryCode(String filter);
+
+    void saveCountryCode(InCountryCode countryCode);
+
+    void updateCountryCode(InCountryCode countryCode);
+
+    void removeCountryCode(InCountryCode countryCode);
+
+
+    //====================================================================================================
     // STATE CODE
     //====================================================================================================
 
@@ -103,48 +122,26 @@ public interface CommonService {
     void removeFacultyCode(InFacultyCode facultyCode);
 
     //====================================================================================================
-    // CAMPUS CODE
+    // STUDY CENTER CODE
     //====================================================================================================
 
-    InCampusCode findCampusCodeById(Long id);
+    InStudyCenterCode findStudyCenterCodeById(Long id);
 
-    InCampusCode findCampusCodeByCode(String code);
+    InStudyCenterCode findStudyCenterCodeByCode(String code);
 
-    List<InCampusCode> findCampusCodes();
+    List<InStudyCenterCode> findStudyCenterCodes();
 
-    List<InCampusCode> findCampusCodes(String filter, Integer offset, Integer limit);
+    List<InStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit);
 
-    Integer countCampusCode();
+    Integer countStudyCenterCode();
 
-    Integer countCampusCode(String filter);
+    Integer countStudyCenterCode(String filter);
 
-    void saveCampusCode(InCampusCode campusCode);
+    void saveStudyCenterCode(InStudyCenterCode studyCenterCode);
 
-    void updateCampusCode(InCampusCode campusCode);
+    void updateStudyCenterCode(InStudyCenterCode studyCenterCode);
 
-    void removeCampusCode(InCampusCode campusCode);
-
-    //====================================================================================================
-    // COLLEGE CODE
-    //====================================================================================================
-
-    InCollegeCode findCollegeCodeById(Long id);
-
-    InCollegeCode findCollegeCodeByCode(String code);
-
-    List<InCollegeCode> findCollegeCodes();
-
-    List<InCollegeCode> findCollegeCodes(String filter, Integer offset, Integer limit);
-
-    Integer countCollegeCode();
-
-    Integer countCollegeCode(String filter);
-
-    void saveCollegeCode(InCollegeCode collegeCode);
-
-    void updateCollegeCode(InCollegeCode collegeCode);
-
-    void removeCollegeCode(InCollegeCode collegeCode);
+    void removeStudyCenterCode(InStudyCenterCode studyCenterCode);
 
     //====================================================================================================
     // VENUE CODE
@@ -308,24 +305,6 @@ public interface CommonService {
     void updateGradeCode(InGradeCode gradeCode);
 
     void removeGradeCode(InGradeCode gradeCode);
-
-    //====================================================================================================
-    // COUNTRY CODE
-    //====================================================================================================
-
-    InCountryCode findCountryCodeById(Long id);
-
-    InCountryCode findCountryCodeByCode(String code);
-
-    List<InCountryCode> findCountryCodes(String filter, Integer offset, Integer limit);
-
-    Integer countCountryCode(String filter);
-
-    void saveCountryCode(InCountryCode countryCode);
-
-    void updateCountryCode(InCountryCode countryCode);
-
-    void removeCountryCode(InCountryCode countryCode);
 
     //====================================================================================================
     // GENDER CODE
@@ -524,54 +503,6 @@ public interface CommonService {
     void removeSchoolCode(InSchoolCode schoolCode);
 
     //====================================================================================================
-    // COMPETENCY CODE
-    //====================================================================================================
-
-    InCompetencyCode findCompetencyCodeById(Long id);
-
-    InCompetencyCode findCompetencyCodeByCode(String code);
-
-    List<InCompetencyCode> findCompetencyCodes();
-
-    List<InCompetencyCode> findCompetencyCodes(Integer offset, Integer limit);
-
-    List<InCompetencyCode> findCompetencyCodes(String filter, Integer offset, Integer limit);
-
-    Integer countCompetencyCode();
-
-    Integer countCompetencyCode(String filter);
-
-    void saveCompetencyCode(InCompetencyCode competencyCode);
-
-    void updateCompetencyCode(InCompetencyCode competencyCode);
-
-    void removeCompetencyCode(InCompetencyCode competencyCode);
-
-    //====================================================================================================
-    // LOCATION CODE
-    //====================================================================================================
-
-    InLocationCode findLocationCodeById(Long id);
-
-    InLocationCode findLocationCodeByCode(String code);
-
-    List<InLocationCode> findLocationCodes();
-
-    List<InLocationCode> findLocationCodes(Integer offset, Integer limit);
-
-    List<InLocationCode> findLocationCodes(String filter, Integer offset, Integer limit);
-
-    Integer countLocationCode();
-
-    Integer countLocationCode(String filter);
-
-    void saveLocationCode(InLocationCode locationCode);
-
-    void updateLocationCode(InLocationCode locationCode);
-
-    void removeLocationCode(InLocationCode locationCode);
-
-    //====================================================================================================
     // INVOLVEMENT TYPE CODE
     //====================================================================================================
 
@@ -715,5 +646,4 @@ public interface CommonService {
     void updateEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
 
     void removeEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
-
 }

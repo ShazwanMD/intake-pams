@@ -25,5 +25,6 @@
     <modules>
         <module>front</module>
         <module>back</module>
+        <module>data</module>
     </modules>
 </project>

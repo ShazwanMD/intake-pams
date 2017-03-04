@@ -14,7 +14,6 @@
 
 **Module Naming Convention**
 - PLC - POLICY
-- OFR - OFFERING
 - APL - APPLICATION
 - AMS - ADMISSION
 
