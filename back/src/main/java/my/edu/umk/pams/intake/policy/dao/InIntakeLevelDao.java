@@ -1,19 +1,19 @@
 package my.edu.umk.pams.intake.policy.dao;
 
 import my.edu.umk.pams.intake.core.GenericDao;
-import my.edu.umk.pams.intake.policy.model.InIntakeCategory;
+import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
 
 import java.util.List;
 
-public interface InIntakeCategoryDao extends GenericDao<Long, InIntakeCategory> {
+public interface InIntakeLevelDao extends GenericDao<Long, InIntakeLevel> {
 
     // ===================================================================
     // FINDER
     // ===================================================================
 
-    InIntakeCategory findByCode(String code);
+    InIntakeLevel findByCode(String code);
 
-    List<InIntakeCategory> find(String filter, Integer offset, Integer limit);
+    List<InIntakeLevel> find(String filter, Integer offset, Integer limit);
 
     // ===================================================================
     // HELPER

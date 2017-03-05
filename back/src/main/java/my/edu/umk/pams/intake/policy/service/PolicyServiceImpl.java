@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.policy.service;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.identity.model.InUser;
-import my.edu.umk.pams.intake.policy.dao.InIntakeCategoryDao;
+import my.edu.umk.pams.intake.policy.dao.InIntakeLevelDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeSessionDao;
 import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
@@ -31,7 +31,7 @@ public class PolicyServiceImpl implements PolicyService{
     private InIntakeSessionDao intakeSessionDao;
 
     @Autowired
-    private InIntakeCategoryDao intakeCategoryDao;
+    private InIntakeLevelDao intakeLevelDao;
 
     @Autowired
     private InIntakeDao intakeDao;
@@ -66,6 +66,42 @@ public class PolicyServiceImpl implements PolicyService{
     //====================================================================================================
 
     @Override
+    public InIntakeSession findCurrentIntakeSession() {
+        return intakeSessionDao.findCurrent();
+    }
+
+    @Override
+    public InIntakeSession findIntakeSessionById(Long id) {
+        return intakeSessionDao.findById(id);
+    }
+
+    @Override
+    public InIntakeSession findIntakeSessionByCode(String code) {
+        return intakeSessionDao.findByCode(code);
+    }
+
+    @Override
+    public List<InIntakeSession> findIntakeSessions(Integer offset, Integer limit) {
+        return intakeSessionDao.find(offset, limit);
+    }
+
+    @Override
+    public List<InIntakeSession> findIntakeSessions(String filter, Integer offset, Integer limit) {
+        return intakeSessionDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countIntakeSession() {
+        return intakeSessionDao.count();
+    }
+
+    @Override
+    public Integer countIntakeSession(String filter) {
+        return intakeSessionDao.count(filter);
+    }
+
+
+    @Override
     public void saveIntakeSession(InIntakeSession session) {
         intakeSessionDao.save(session, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -84,24 +120,60 @@ public class PolicyServiceImpl implements PolicyService{
     }
 
     //====================================================================================================
-    // INTAKE CATEGORY
+    // INTAKE LEVEL
     //====================================================================================================
 
+
     @Override
-    public void saveIntakeCategory(InIntakeCategory category) {
-        intakeCategoryDao.save(category, Util.getCurrentUser());
+    public InIntakeLevel findIntakeLevelById(Long id) {
+        return intakeLevelDao.findById(id);
+    }
+
+    @Override
+    public InIntakeLevel findIntakeLevelByCode(String code) {
+        return intakeLevelDao.findByCode(code);
+    }
+
+    @Override
+    public List<InIntakeLevel> findIntakeCategories() {
+        return intakeLevelDao.find();
+    }
+
+    @Override
+    public List<InIntakeLevel> findIntakeCategories(Integer offset, Integer limit) {
+        return intakeLevelDao.find(offset, limit);
+    }
+
+    @Override
+    public List<InIntakeLevel> findIntakeCategories(String filter, Integer offset, Integer limit) {
+        return intakeLevelDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countIntakeLevel() {
+        return intakeLevelDao.count();
+    }
+
+    @Override
+    public Integer countIntakeLevel(String filter) {
+        return intakeLevelDao.count(filter);
+    }
+
+    @Override
+    public void saveIntakeLevel(InIntakeLevel Level) {
+        intakeLevelDao.save(Level, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void updateIntakeCategory(InIntakeCategory category) {
-        intakeCategoryDao.update(category, Util.getCurrentUser());
+    public void updateIntakeLevel(InIntakeLevel Level) {
+        intakeLevelDao.update(Level, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void removeIntakeCategory(InIntakeCategory category) {
-        intakeCategoryDao.remove(category, Util.getCurrentUser());
+    public void removeIntakeLevel(InIntakeLevel Level) {
+        intakeLevelDao.remove(Level, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -175,85 +247,8 @@ public class PolicyServiceImpl implements PolicyService{
 //        return groupDao.findByName();
 //    }
 
-    //====================================================================================================
-    // INTAKE SESSION
-    //====================================================================================================
-
-    @Override
-    public InIntakeSession findCurrentIntakeSession() {
-        return intakeSessionDao.findCurrent();
-    }
-
-    @Override
-    public InIntakeSession findIntakeSessionById(Long id) {
-        return intakeSessionDao.findById(id);
-    }
-
-    @Override
-    public InIntakeSession findIntakeSessionByCode(String code) {
-        return intakeSessionDao.findByCode(code);
-    }
-
-    @Override
-    public List<InIntakeSession> findIntakeSessions(Integer offset, Integer limit) {
-        return intakeSessionDao.find(offset, limit);
-    }
-
-    @Override
-    public List<InIntakeSession> findIntakeSessions(String filter, Integer offset, Integer limit) {
-        return intakeSessionDao.find(filter, offset, limit);
-    }
-
-    @Override
-    public Integer countIntakeSession() {
-        return intakeSessionDao.count();
-    }
-
-    @Override
-    public Integer countIntakeSession(String filter) {
-        return intakeSessionDao.count(filter);
-    }
 
     //====================================================================================================
-    // INTAKE CATEGORY
-    //====================================================================================================
-
-    @Override
-    public InIntakeCategory findIntakeCategoryById(Long id) {
-        return intakeCategoryDao.findById(id);
-    }
-
-    @Override
-    public InIntakeCategory findIntakeCategoryByCode(String code) {
-        return intakeCategoryDao.findByCode(code);
-    }
-
-    @Override
-    public List<InIntakeCategory> findIntakeCategories() {
-        return intakeCategoryDao.find();
-    }
-
-    @Override
-    public List<InIntakeCategory> findIntakeCategories(Integer offset, Integer limit) {
-        return intakeCategoryDao.find(offset, limit);
-    }
-
-    @Override
-    public List<InIntakeCategory> findIntakeCategories(String filter, Integer offset, Integer limit) {
-        return intakeCategoryDao.find(filter, offset, limit);
-    }
-
-    @Override
-    public Integer countIntakeCategory() {
-        return intakeCategoryDao.count();
-    }
-
-    @Override
-    public Integer countIntakeCategory(String filter) {
-        return intakeCategoryDao.count(filter);
-    }
-
-//====================================================================================================
     // INTAKE
     //====================================================================================================
 
@@ -268,7 +263,7 @@ public class PolicyServiceImpl implements PolicyService{
     }
 
     @Override
-    public InIntake findIntakeBySessionAndCategory(InIntakeSession session, InIntakeCategory category) {
+    public InIntake findIntakeBySessionAndCategory(InIntakeSession session, InIntakeLevel category) {
         return intakeDao.findBySessionAndCategory(session, category);
     }
 

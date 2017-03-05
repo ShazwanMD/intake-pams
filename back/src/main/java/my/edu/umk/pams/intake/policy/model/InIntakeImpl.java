@@ -19,7 +19,7 @@ public class InIntakeImpl implements InIntake {
     private Long id;
 
     @Column(name = "REFERENCE_NO", unique = true, nullable = false)
-    private String referenceNo; // category + session  DIPLOMA/201420151
+    private String referenceNo; // level + session  DIPLOMA/201420151
 
     @Column(name = "SOURCE_NO", unique = true, nullable = false)
     private String sourceNo;
@@ -52,9 +52,9 @@ public class InIntakeImpl implements InIntake {
     @JoinColumn(name = "SESSION_ID")
     private InIntakeSession session;
 
-    @OneToOne(targetEntity = InIntakeCategoryImpl.class)
-    @JoinColumn(name = "CATEGORY_ID")
-    private InIntakeCategory category;
+    @OneToOne(targetEntity = InIntakeLevelImpl.class)
+    @JoinColumn(name = "LEVEL_ID")
+    private InIntakeLevel level;
 
     @OneToMany(targetEntity = InProgramOfferingImpl.class, mappedBy = "intake")
     private List<InProgramOffering> programOfferings;
@@ -174,13 +174,13 @@ public class InIntakeImpl implements InIntake {
     }
 
     @Override
-    public InIntakeCategory getCategory() {
-        return category;
+    public InIntakeLevel getLevel() {
+        return level;
     }
 
     @Override
-    public void setCategory(InIntakeCategory category) {
-        this.category = category;
+    public void setLevel(InIntakeLevel level) {
+        this.level = level;
     }
 
     @Override

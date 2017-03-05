@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity(name = "InIntakeCategory")
 @Table(name = "IN_INTK_CTGY")
-public class InIntakeCategoryImpl implements InIntakeCategory {
+public class InIntakeLevelImpl implements InIntakeLevel {
 
     @Id
     @Column(name = "ID")
@@ -66,6 +66,6 @@ public class InIntakeCategoryImpl implements InIntakeCategory {
 
     @Override
     public Class<?> getInterfaceClass() {
-        return InIntakeCategory.class;
+        return InIntakeLevel.class;
     }
 }

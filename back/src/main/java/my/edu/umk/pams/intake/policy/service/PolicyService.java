@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.policy.service;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeCategory;
+import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import org.activiti.engine.task.Task;
@@ -45,28 +45,28 @@ public interface PolicyService {
     void removeIntakeSession(InIntakeSession session);
 
     //====================================================================================================
-    // INTAKE CATEGORY
+    // INTAKE LEVEL
     //====================================================================================================
 
-    InIntakeCategory findIntakeCategoryById(Long id);
+    InIntakeLevel findIntakeLevelById(Long id);
 
-    InIntakeCategory findIntakeCategoryByCode(String code);
+    InIntakeLevel findIntakeLevelByCode(String code);
 
-    List<InIntakeCategory> findIntakeCategories();
+    List<InIntakeLevel> findIntakeCategories();
 
-    List<InIntakeCategory> findIntakeCategories(Integer offset, Integer limit);
+    List<InIntakeLevel> findIntakeCategories(Integer offset, Integer limit);
 
-    List<InIntakeCategory> findIntakeCategories(String filter, Integer offset, Integer limit);
+    List<InIntakeLevel> findIntakeCategories(String filter, Integer offset, Integer limit);
 
-    Integer countIntakeCategory();
+    Integer countIntakeLevel();
 
-    Integer countIntakeCategory(String filter);
+    Integer countIntakeLevel(String filter);
 
-    void saveIntakeCategory(InIntakeCategory category);
+    void saveIntakeLevel(InIntakeLevel Level);
 
-    void updateIntakeCategory(InIntakeCategory category);
+    void updateIntakeLevel(InIntakeLevel Level);
 
-    void removeIntakeCategory(InIntakeCategory category);
+    void removeIntakeLevel(InIntakeLevel category);
 
     //====================================================================================================
     // INTAKE
@@ -94,7 +94,7 @@ public interface PolicyService {
 
     InIntake findIntakeByReferenceNo(String referenceNo);
 
-    InIntake findIntakeBySessionAndCategory(InIntakeSession session, InIntakeCategory category);
+    InIntake findIntakeBySessionAndCategory(InIntakeSession session, InIntakeLevel category);
 
     List<InIntake> findIntakes(InIntakeSession session);
 

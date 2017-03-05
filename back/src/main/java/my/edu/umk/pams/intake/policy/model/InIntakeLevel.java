@@ -14,7 +14,7 @@ import my.edu.umk.pams.intake.core.InMetaObject;
  * @author team utamacad
  * @since 3/2/2015.
  */
-public interface InIntakeCategory extends InMetaObject {
+public interface InIntakeLevel extends InMetaObject {
 
     String getCode();
 

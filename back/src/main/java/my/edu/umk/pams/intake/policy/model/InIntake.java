@@ -23,9 +23,9 @@ public interface InIntake extends InDocument {
 
     void setSession(InIntakeSession session);
 
-    InIntakeCategory getCategory();
+    InIntakeLevel getLevel();
 
-    void setCategory(InIntakeCategory category);
+    void setLevel(InIntakeLevel level);
 
     List<InProgramOffering> getProgramOfferings();
 

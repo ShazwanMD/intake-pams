@@ -7,7 +7,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.US_IN_ADM_0001;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeCategory;
+import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -59,16 +59,15 @@ public class US_IN_PLC_0001 extends TestSupport {
     @Rollback(true)
     public void testSomething(){
         Assert.assertNotNull(currentUser);
-
         InIntakeSession session = policyService.findIntakeSessionByCode("201720181");
-        InIntakeCategory category = policyService.findIntakeCategoryByCode("MASTER");
+        InIntakeLevel level = policyService.findIntakeLevelByCode("MASTER");
 
         InIntake newIntake = new InIntakeImpl();
-        referenceNo = session.getCode() + "/" + category.getCode();
+        referenceNo = session.getCode() + "/" + level.getCode();
         newIntake.setReferenceNo(referenceNo);
-        newIntake.setSourceNo(category.getCode() + "/" + session.getCode());
+        newIntake.setSourceNo(level.getCode() + "/" + session.getCode());
         newIntake.setDescription("Intake for Masters 201520161");
-        newIntake.setCategory(category);
+        newIntake.setLevel(level);
         newIntake.setSession(session);
         newIntake.setProjection(100);
         newIntake.setStartDate(new Date());
@@ -101,7 +100,7 @@ public class US_IN_PLC_0001 extends TestSupport {
 
         // ====================================================================================================
         // PUBLISHED
-        // ====================================================================================================
+         // ====================================================================================================
 
         List<Task> publishedTasks = policyService.findAssignedIntakeTasks(0, 100);
         Task publishedTask = publishedTasks.get(0);
