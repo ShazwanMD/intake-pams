@@ -1,4 +1,4 @@
-package my.edu.umk.pams.intake.policy;
+package my.edu.umk.pams.intake.admission;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -9,5 +9,5 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 })
-public class PolicyTestSuite {
+public class AdmissionModuleTestSuite {
 }

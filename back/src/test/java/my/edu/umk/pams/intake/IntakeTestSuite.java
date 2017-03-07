@@ -1,18 +1,18 @@
 package my.edu.umk.pams.intake;
 
-import my.edu.umk.pams.intake.admission.AdmissionTestSuite;
-import my.edu.umk.pams.intake.identity.IdentityTestSuite;
-import my.edu.umk.pams.intake.offering.OfferingTestSuite;
-import my.edu.umk.pams.intake.policy.PolicyTestSuite;
+import my.edu.umk.pams.intake.admission.AdmissionModuleTestSuite;
+import my.edu.umk.pams.intake.identity.IdentityModuleTestSuite;
+import my.edu.umk.pams.intake.offering.OfferingModuleTestSuite;
+import my.edu.umk.pams.intake.policy.PolicyModuleTestSuite;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        OfferingTestSuite.class,
-        AdmissionTestSuite.class,
-        PolicyTestSuite.class,
-        IdentityTestSuite.class,
+        OfferingModuleTestSuite.class,
+        AdmissionModuleTestSuite.class,
+        PolicyModuleTestSuite.class,
+        IdentityModuleTestSuite.class,
 })
 public class IntakeTestSuite {
 }

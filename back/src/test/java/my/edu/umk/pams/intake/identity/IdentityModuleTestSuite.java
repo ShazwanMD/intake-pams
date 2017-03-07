@@ -10,5 +10,5 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         US_IN_ADM_0001.class
 })
-public class IdentityTestSuite {
+public class IdentityModuleTestSuite {
 }
