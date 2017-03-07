@@ -2,6 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>my.edu.umk.pams</groupId>
   <artifactId>intake-front</artifactId>
+  <version>0.1.0</version>
   <name>PAMS Intake</name>
   <build>
     <finalName>front</finalName>
