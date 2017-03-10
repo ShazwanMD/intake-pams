@@ -1,0 +1,2 @@
+insert into IN_GNDR_CODE (ID, CODE, DESCRIPTION, M_ST, C_ID, C_TS) values (1, 'M', 'MALE', 1, 0, TIMESTAMP '2015-09-14 15:33:13');
+insert into IN_GNDR_CODE (ID, CODE, DESCRIPTION, M_ST, C_ID, C_TS) values (2, 'F', 'FEMALE', 1, 0, TIMESTAMP '2015-09-14 15:34:18');

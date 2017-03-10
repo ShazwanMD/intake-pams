@@ -8,4 +8,17 @@
 
 **Command Line**
 
-    mvn sql:execute@demo_intake
+    mvn sql:execute@reset-drop-all
+    mvn sql:execute@create-tables-seed
+    
+**Maven Settings**
+
+
+    <!-- <USERHOME>/.m2/settings.xml -->
+    <servers>
+        <server>
+            <id>postgres-dev</id>
+            <username>postgres</username>
+            <password>abc123</password>
+        </server>
+    </servers>

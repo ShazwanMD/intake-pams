@@ -3,8 +3,8 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +22,19 @@ public class GivenIAmPPSAdministrator extends Stage<GivenIAmPPSAdministrator> {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PolicyService policyService;
 
     @ProvidedScenarioState
-    AdAcademicSession academicSession;
+    InIntakeSession intakeSession;
 
     public void I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode){
         loginAsPPS();
-        academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
+        intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
     }
 
-    public void I_am_a_PPS_administrator_in_current_academic_session(){
+    public void I_am_a_PPS_administrator_in_current_intake_session(){
         loginAsPPS();
-        academicSession = studyplanService.findCurrentAcademicSession();
+        intakeSession = policyService.findCurrentIntakeSession();
     }
 
     private void loginAsPPS() {

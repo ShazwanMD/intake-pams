@@ -1,9 +1,10 @@
 -- ACL Schema SQL for PostgreSQL
 --
--- drop table acl_entry;
--- drop table acl_object_identity;
--- drop table acl_class;
--- drop table acl_sid;
+DROP TABLE IF EXISTS ACL_ENTRY CASCADE ;
+DROP TABLE IF EXISTS ACL_OBJECT_IDENTITY CASCADE ;
+DROP TABLE IF EXISTS ACL_CLASS CASCADE ;
+DROP TABLE IF EXISTS ACL_SID CASCADE ;
+
 CREATE TABLE ACL_SID (
   ID        BIGSERIAL    NOT NULL PRIMARY KEY,
   PRINCIPAL BOOLEAN      NOT NULL,

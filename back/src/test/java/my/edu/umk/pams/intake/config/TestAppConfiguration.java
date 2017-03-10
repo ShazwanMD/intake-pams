@@ -1,7 +1,6 @@
 package my.edu.umk.pams.intake.config;
 
 import com.tngtech.jgiven.integration.spring.EnableJGiven;
-import org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
@@ -37,6 +36,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 })
 @Import({
         TestDatasourceConfig.class,
+        TestSecurityConfig.class,
         TestWorkflowConfig.class,
         TestAccessConfig.class,
         TestCacheConfig.class,
@@ -53,11 +53,4 @@ public class TestAppConfiguration {
         final String value = env.getProperty(key) == null ? "true" : env.getProperty(key);
         return System.setProperty(key, value);
     }
-    @Bean
-    public BeanNameAutoProxyCreator jGivenBeanNameAutoProxyCreator(){
-        BeanNameAutoProxyCreator beanNameAutoProxyCreator = new BeanNameAutoProxyCreator();
-        beanNameAutoProxyCreator.setInterceptorNames(new String[]{"springStepMethodInterceptor"});
-        return beanNameAutoProxyCreator;
-    }
-
 }

@@ -72,7 +72,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     private String paymentSourceNo;
 
     @NotNull
-    @Column(name = "AGE", columnDefinition = "NUMBER(2) default '0'")
+    @Column(name = "AGE")
     private Integer age = 0;
 
     @ManyToOne(targetEntity = InSchoolCodeImpl.class)

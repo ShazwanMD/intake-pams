@@ -5,14 +5,14 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InIntakeCategory")
-@Table(name = "IN_INTK_CTGY")
+@Entity(name = "InIntakeLEVEL")
+@Table(name = "IN_INTK_LEVL")
 public class InIntakeLevelImpl implements InIntakeLevel {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(generator = "SQ_IN_INTK_CTGY")
-    @SequenceGenerator(name = "SQ_IN_INTK_CTGY", sequenceName = "SQ_IN_INTK_CTGY", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_IN_INTK_LEVL")
+    @SequenceGenerator(name = "SQ_IN_INTK_LEVL", sequenceName = "SQ_IN_INTK_LEVL", allocationSize = 1)
     private Long id;
 
     @NotNull
