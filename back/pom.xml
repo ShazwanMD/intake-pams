@@ -353,12 +353,6 @@
             <version>0.14.1</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.tngtech.jgiven</groupId>
-            <artifactId>jgiven-testng</artifactId>
-            <version>0.9.5</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
