@@ -42,18 +42,18 @@ public class InIntakeImpl implements InIntake {
     @Column(name = "PROJECTION")
     private Integer projection = 0;
 
-    @Column(name = "CANCEL_COMMENT", unique = true, nullable = false)
+    @Column(name = "CANCEL_COMMENT", unique = true)
     private String cancelComment;
 
-    @Column(name = "REMOVE_COMMENT", unique = true, nullable = false)
+    @Column(name = "REMOVE_COMMENT", unique = true)
     private String removeComment;
 
     @OneToOne(targetEntity = InIntakeSessionImpl.class)
-    @JoinColumn(name = "SESSION_ID")
+    @JoinColumn(name = "SESSION_ID", nullable = false)
     private InIntakeSession session;
 
     @OneToOne(targetEntity = InIntakeLevelImpl.class)
-    @JoinColumn(name = "LEVEL_ID")
+    @JoinColumn(name = "LEVEL_ID", nullable = false)
     private InIntakeLevel level;
 
     @OneToMany(targetEntity = InProgramOfferingImpl.class, mappedBy = "intake")

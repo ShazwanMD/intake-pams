@@ -5,7 +5,7 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InIntakeLEVEL")
+@Entity(name = "InIntakeLevel")
 @Table(name = "IN_INTK_LEVL")
 public class InIntakeLevelImpl implements InIntakeLevel {
 

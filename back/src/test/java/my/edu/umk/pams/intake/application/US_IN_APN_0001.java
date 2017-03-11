@@ -30,9 +30,9 @@ import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENC
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_AMS_0001 extends TestSupport {
+public class US_IN_APN_0001 extends TestSupport {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_0001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_0001.class);
 
     @Autowired
     private ApplicationService applicationService;

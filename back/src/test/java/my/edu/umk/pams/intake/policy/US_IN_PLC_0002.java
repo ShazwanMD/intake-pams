@@ -22,9 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_OFG_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddOffering, ThenIntakeHasOffering> {
+public class US_IN_PLC_0002 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddOffering, ThenIntakeHasOffering> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_OFG_0001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_0002.class);
 
     @Before
     public void before() {
@@ -41,5 +41,4 @@ public class US_IN_OFG_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
         when().I_add_a_offering_for_intake_$("45");
         then().intake_has_offering();
     }
-
 }
