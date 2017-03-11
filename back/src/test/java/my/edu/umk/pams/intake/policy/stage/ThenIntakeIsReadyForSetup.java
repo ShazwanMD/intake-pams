@@ -24,7 +24,7 @@ public class ThenIntakeIsReadyForSetup extends Stage<ThenIntakeIsReadyForSetup> 
     private PolicyService policyService;
 
     @ExpectedScenarioState
-    InIntakeSession session;
+    private InIntakeSession session;
 
     @ExpectedScenarioState
     private InIntake intake;

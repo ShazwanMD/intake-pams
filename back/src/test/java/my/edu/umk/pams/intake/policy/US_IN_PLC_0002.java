@@ -42,7 +42,7 @@ public class US_IN_PLC_0002 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Rollback(true)
     public void testScenario1() {
         given().I_am_a_PPS_administrator_in_current_intake_session();
-        when().I_add_a_offering_for_intake_$("45");
+        when().I_add_a_offering_for_intake_$("201720181/MASTER");
         then().intake_has_offering();
     }
 }

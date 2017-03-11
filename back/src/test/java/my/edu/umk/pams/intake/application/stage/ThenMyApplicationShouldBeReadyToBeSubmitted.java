@@ -21,10 +21,10 @@ public class ThenMyApplicationShouldBeReadyToBeSubmitted extends Stage<ThenMyApp
     private ApplicationService applicationService;
 
     @ExpectedScenarioState
-    InIntake intake;
+    private InIntake intake;
 
     @ExpectedScenarioState
-    InApplicant applicant;
+    private InApplicant applicant;
 
     public ThenMyApplicationShouldBeReadyToBeSubmitted my_application_is_drafted() {
         InIntakeApplication application = applicationService.findIntakeApplicationByIntakeAndApplicant(intake, applicant);

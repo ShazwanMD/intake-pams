@@ -26,12 +26,11 @@ public class ThenIntakeHasOffering extends Stage<ThenIntakeHasOffering> {
     private PolicyService policyService;
 
     @ExpectedScenarioState
-    InIntakeSession session;
+    private InIntakeSession session;
 
     @ExpectedScenarioState
-    InIntake intake;
+    private InIntake intake;
 
-    // todo(uda): better ways to assert
     public ThenIntakeHasOffering intake_has_offering(){
         List<InProgramOffering> offerings = policyService.findProgramOfferings(intake);
         Assert.assertTrue(!(offerings.isEmpty()));

@@ -42,10 +42,10 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
         // start a new intake
         intake = new InIntakeImpl();
         String referenceNo = session.getCode() + "/" + level.getCode();
-        intake.setReferenceNo(referenceNo);
-        intake.setSourceNo(level.getCode() + "/" + session.getCode());
+        intake.setReferenceNo(referenceNo + "2");
+        intake.setSourceNo(level.getCode() + "/" + session.getCode() + "2");
         intake.setAuditNo(UUID.randomUUID().toString());
-        intake.setDescription("Intake for Masters 201520161");
+        intake.setDescription("Intake for Program Master 201720181");
         intake.setLevel(level);
         intake.setSession(session);
         intake.setProjection(100);
