@@ -276,8 +276,10 @@
                                 <srcFile>src/test/resources/ddl/ACT.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/BAT.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PCPL.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK_LEVL.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK_SESN.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_INTK.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>

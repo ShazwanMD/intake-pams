@@ -8,6 +8,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        US_IN_PLC_0001.class,
         US_IN_PLC_0002.class,
 })
 public class PolicyModuleTestSuite {

@@ -151,8 +151,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @JoinColumn(name = "RESIDENCY_CODE_ID")
     private InResidencyCode residencyCode;
 
+    // note: can draft without choosing
     @OneToOne(targetEntity = InProgramOfferingImpl.class)
-    @JoinColumn(name = "SELECTION_ID")
+    @JoinColumn(name = "SELECTION_ID", nullable = true)
     private InProgramOffering selection;
 
     @ManyToOne(targetEntity = InIntakeImpl.class)

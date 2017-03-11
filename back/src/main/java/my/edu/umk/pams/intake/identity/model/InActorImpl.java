@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Entity(name = "InActor")
 @Table(name = "IN_ACTR")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class InActorImpl implements InActor {
+public class InActorImpl implements InActor {
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -120,5 +120,10 @@ public abstract class InActorImpl implements InActor {
 
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
+    }
+
+    @Override
+    public Class<?> getInterfaceClass() {
+        return InActor.class;
     }
 }

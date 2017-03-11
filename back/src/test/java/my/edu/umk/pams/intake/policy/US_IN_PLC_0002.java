@@ -17,6 +17,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * As a PPS Administrator,
+ *  I want to start an intake,
+ *      so that intake is ready for setup
+ *
  * @author PAMS
  */
 @RunWith(SpringJUnit4ClassRunner.class)

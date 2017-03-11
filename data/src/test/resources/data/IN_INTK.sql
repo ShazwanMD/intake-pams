@@ -1,1 +1,18 @@
--- todo
+INSERT INTO IN_INTK (ID, AUDIT_NO, CANCEL_COMMENT, DESCRIPTION, END_DATE,
+                     AV_TS, AV_ID, CL_ID, CL_TS, CK_TS, CK_ID, DT_TS, DT_ID,
+                     EV_TS, EV_ID, PR_TS, PR_ID, PS_TS, PS_ID, RG_TS, RG_ID,
+                     RM_TS, RM_ID, RQ_TS, RQ_ID, SL_TS, SL_ID, FD_ST, UP_TS,
+                     UP_ID, UV_TS, UV_ID, VF_TS, VF_ID, C_TS, C_ID, D_TS,
+                     D_ID, M_TS, M_ID, M_ST,
+                     PROJECTION, REFERENCE_NO, REMOVE_COMMENT, SOURCE_NO,
+                     START_DATE, LEVEL_ID, SESSION_ID)
+VALUES
+  (nextval('SQ_IN_INTK'), '30085BE1-05D1-45EB-AC33-456CD50B7963', NULL, 'INTAKE FOR MASTERS 201720181', '2017-03-11 21:25:01.262000', NULL,
+      NULL, NULL, NULL, NULL, NULL, '2017-03-11 21:25:01.264000', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+    NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2017-03-11 21:25:01.264000', 5, NULL,
+                                                             NULL, NULL, NULL, 1, 100,
+   '201720181/MASTER',
+    NULL,
+   'MASTER/201720181', '2017-03-11 21:25:01.262000',
+   (select ID from IN_INTK_LEVL where code = 'MASTER'),
+   (select ID from IN_INTK_SESN where code = '201720181'));

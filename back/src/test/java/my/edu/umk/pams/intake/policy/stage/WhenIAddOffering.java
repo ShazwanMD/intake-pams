@@ -1,11 +1,9 @@
 package my.edu.umk.pams.intake.policy.stage;
 
 import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -26,9 +24,6 @@ public class WhenIAddOffering extends Stage<WhenIAddOffering> {
 
     @Autowired
     private CommonService commonService;
-
-    @ProvidedScenarioState
-    private InIntakeSession session;
 
     public WhenIAddOffering I_add_a_offering_for_intake_$(String referenceNo) {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
