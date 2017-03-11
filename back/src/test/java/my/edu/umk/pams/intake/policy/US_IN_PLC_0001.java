@@ -5,7 +5,6 @@ import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.core.InFlowState;
-import my.edu.umk.pams.intake.identity.US_IN_ADM_0001;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
@@ -36,7 +35,7 @@ import java.util.List;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_0001 extends TestSupport {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_ADM_0001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_0001.class);
 
     @Autowired
     private CommonService commonService;

@@ -15,26 +15,26 @@ import java.util.List;
  * @since 1/31/14
  */
 @SuppressWarnings({"unchecked"})
-@Repository("vendorDao")
-public class InVendorDaoImpl extends GenericDaoSupport<Long, InApplicant> implements InVendorDao {
+@Repository("applicantDao")
+public class InApplicantDaoImpl extends GenericDaoSupport<Long, InApplicant> implements InApplicantDao {
 
-    public InVendorDaoImpl() {
+    public InApplicantDaoImpl() {
         super(InApplicantImpl.class);
     }
 
     @Override
-    public InApplicant findByVendorNo(String vendorNo) {
+    public InApplicant findByApplicantNo(String applicantNo) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select a from InVendor a where " +
+        Query query = session.createQuery("select a from InApplicant a where " +
                 "a.identityNo = :identityNo");
-        query.setString("identityNo", vendorNo);
+        query.setString("identityNo", applicantNo);
         return (InApplicant) query.uniqueResult();
     }
 
     @Override
     public List<InApplicant> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from InVendor s where " +
+        Query query = session.createQuery("select s from InApplicant s where " +
                 "(upper(s.identityNo) like upper(:filter) " +
                 "or upper(s.name) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
@@ -46,7 +46,7 @@ public class InVendorDaoImpl extends GenericDaoSupport<Long, InApplicant> implem
     @Override
     public Integer count(String filter) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(s) from InVendor s where " +
+        Query query = session.createQuery("select count(s) from InApplicant s where " +
                 "(upper(s.identityNo) like upper(:filter) " +
                 "or upper(s.name) like upper(:filter)) " +
                 "and s.metadata.state = :state ");

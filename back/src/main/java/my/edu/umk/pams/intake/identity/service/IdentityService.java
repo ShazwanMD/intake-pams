@@ -170,31 +170,24 @@ public interface IdentityService {
     void broadcastUpdated(InStaff Staff);
 
     //====================================================================================================
-    // VENDOR
+    // APPLICANT
     //====================================================================================================
 
-    InApplicant findVendorById(Long id);
+    InApplicant findApplicantById(Long id);
 
-    InApplicant findVendorByVendorNo(String VendorNo);
+    InApplicant findApplicantByApplicantNo(String ApplicantNo);
 
-    List<InApplicant> findVendors(Integer offset, Integer limit);
+    List<InApplicant> findApplicants(Integer offset, Integer limit);
 
-    List<InApplicant> findVendors(String filter, Integer offset, Integer limit);
+    List<InApplicant> findApplicants(String filter, Integer offset, Integer limit);
 
-    Integer countVendor();
+    Integer countApplicant();
 
-    Integer countVendor(String filter);
+    Integer countApplicant(String filter);
 
-    void saveVendor(InApplicant Vendor);
+    void saveApplicant(InApplicant Applicant);
 
-    void updateVendor(InApplicant Vendor);
-
-    void deleteVendor(InApplicant Vendor);
-
-    void broadcastCreated(InApplicant Vendor);
-
-    void broadcastUpdated(InApplicant Vendor);
-
+    void updateApplicant(InApplicant Applicant);
 }
 
 

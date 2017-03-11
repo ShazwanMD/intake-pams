@@ -4,6 +4,7 @@ import junit.framework.Assert;
 import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.identity.dao.InPrincipalDao;
 import my.edu.umk.pams.intake.identity.model.InPrincipal;
+import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.integration.NonSerializableSecurityContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +57,7 @@ public class AccessListener implements ApplicationListener<AccessEvent> {
 
             // temporarily log in as root
             // NOTE: http://issues.hudson-ci.org/browse/HUDSON-7256
-            my.edu.umk.pams.intake.security.integration.InAutoLoginToken authenticationToken = new my.edu.umk.pams.intake.security.integration.InAutoLoginToken("root");
+            InAutoLoginToken authenticationToken = new InAutoLoginToken("root");
             Authentication authed = authenticationManager.authenticate(authenticationToken);
             SecurityContext system = new NonSerializableSecurityContext();
             system.setAuthentication(authed);

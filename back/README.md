@@ -13,6 +13,7 @@
 - FK - Foreign Key
 
 **Module Naming Convention**
+- RGN - REGISTRATION
 - PLC - POLICY
 - APL - APPLICATION
 - AMS - ADMISSION

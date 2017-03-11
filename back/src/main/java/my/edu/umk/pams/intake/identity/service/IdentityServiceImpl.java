@@ -1,7 +1,6 @@
 package my.edu.umk.pams.intake.identity.service;
 
 import my.edu.umk.pams.intake.identity.dao.*;
-import my.edu.umk.pams.intake.identity.event.ApplicantUpdatedEvent;
 import my.edu.umk.pams.intake.identity.event.StaffCreatedEvent;
 import my.edu.umk.pams.intake.identity.event.StaffUpdatedEvent;
 import my.edu.umk.pams.intake.identity.model.*;
@@ -48,7 +47,7 @@ public class IdentityServiceImpl implements IdentityService {
     private InStaffDao staffDao;
 
     @Autowired
-    private InVendorDao vendorDao;
+    private InApplicantDao applicantDao;
 
     //====================================================================================================
     // PRINCIPAL
@@ -462,66 +461,48 @@ public class IdentityServiceImpl implements IdentityService {
 
 
     //====================================================================================================
-    // vendor
+    // VENDOR
     //====================================================================================================
 
     @Override
-    public InApplicant findVendorById(Long id) {
-        return vendorDao.findById(id);
+    public InApplicant findApplicantById(Long id) {
+        return applicantDao.findById(id);
     }
 
     @Override
-    public InApplicant findVendorByVendorNo(String VendorNo) {
-        return vendorDao.findByVendorNo(VendorNo);
+    public InApplicant findApplicantByApplicantNo(String ApplicantNo) {
+        return applicantDao.findByApplicantNo(ApplicantNo);
     }
 
     @Override
-    public List<InApplicant> findVendors(Integer offset, Integer limit) {
-        return vendorDao.find(offset, limit);
+    public List<InApplicant> findApplicants(Integer offset, Integer limit) {
+        return applicantDao.find(offset, limit);
     }
 
     @Override
-    public List<InApplicant> findVendors(String filter, Integer offset, Integer limit) {
-        return vendorDao.find(filter, offset, limit);
+    public List<InApplicant> findApplicants(String filter, Integer offset, Integer limit) {
+        return applicantDao.find(filter, offset, limit);
     }
 
     @Override
-    public Integer countVendor() {
-        return vendorDao.count();
+    public Integer countApplicant() {
+        return applicantDao.count();
     }
 
     @Override
-    public Integer countVendor(String filter) {
-        return vendorDao.count(filter);
+    public Integer countApplicant(String filter) {
+        return applicantDao.count(filter);
     }
 
     @Override
-    public void saveVendor(InApplicant vendor) {
-        vendorDao.save(vendor, Util.getCurrentUser());
+    public void saveApplicant(InApplicant applicant) {
+        applicantDao.save(applicant, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void updateVendor(InApplicant vendor) {
-        vendorDao.update(vendor, Util.getCurrentUser());
+    public void updateApplicant(InApplicant applicant) {
+        applicantDao.update(applicant, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void deleteVendor(InApplicant vendor) {
-        vendorDao.delete(vendor, Util.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void broadcastCreated(InApplicant vendor) {
-        my.edu.umk.pams.intake.identity.event.ApplicantCreatedEvent event = new my.edu.umk.pams.intake.identity.event.ApplicantCreatedEvent(vendor);
-        applicationContext.publishEvent(event);
-    }
-
-    @Override
-    public void broadcastUpdated(InApplicant vendor) {
-        ApplicantUpdatedEvent event = new ApplicantUpdatedEvent(vendor);
-        applicationContext.publishEvent(event);
     }
 }

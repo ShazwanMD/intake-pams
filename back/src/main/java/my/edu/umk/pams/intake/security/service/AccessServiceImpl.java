@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.security.dao.AclObjectIdentityDao;
 import my.edu.umk.pams.intake.security.event.AccessEvent;
+import my.edu.umk.pams.intake.security.integration.InAclPermissionEvaluator;
 import my.edu.umk.pams.intake.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -38,7 +39,7 @@ public class AccessServiceImpl implements AccessService {
     private AclObjectIdentityDao aclObjectIdentityDao;
 
     @Autowired
-    private my.edu.umk.pams.intake.security.integration.InAclPermissionEvaluator aclPermissionEvaluator;
+    private InAclPermissionEvaluator aclPermissionEvaluator;
 
     public Integer countAuthorizedObject(String filter, Class clazz, InUser user) {
         return aclObjectIdentityDao.count(filter, clazz, retrieveSids(user));

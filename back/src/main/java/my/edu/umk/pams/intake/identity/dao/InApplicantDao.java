@@ -10,9 +10,9 @@ import java.util.List;
  * @author canang technologies
  * @since 1/30/14
  */
-public interface InVendorDao extends GenericDao<Long, InApplicant> {
+public interface InApplicantDao extends GenericDao<Long, InApplicant> {
 
-    InApplicant findByVendorNo(String vendorNo);
+    InApplicant findByApplicantNo(String applicantNo);
 
     List<InApplicant> find(String filter, Integer offset, Integer limit);
 

@@ -5,7 +5,6 @@ import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.identity.US_IN_ADM_0001;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -33,7 +32,7 @@ import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENC
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_0001 extends TestSupport {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_ADM_0001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_0001.class);
 
     @Autowired
     private ApplicationService applicationService;

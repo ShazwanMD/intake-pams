@@ -9,8 +9,8 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
  */
 public class ApplicantCreatedEvent extends ApplicantEvent {
 
-    public ApplicantCreatedEvent(InApplicant vendor) {
-        super(vendor);
+    public ApplicantCreatedEvent(InApplicant applicant) {
+        super(applicant);
     }
 
 }
