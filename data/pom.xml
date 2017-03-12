@@ -282,6 +282,8 @@
                                 <srcFile>src/test/resources/data/IN_INTK.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_STDY_CNTR_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_DUN_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_PLMT_CODE.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>

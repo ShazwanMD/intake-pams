@@ -48,14 +48,13 @@ public class InAddressImpl implements InAddress {
     @JoinColumn(name = "DUN_CODE_ID")
     private InDunCode dunCode;
 
-    @OneToOne(targetEntity = InCountryCodeImpl.class)
+    @OneToOne(targetEntity = InParliamentCodeImpl.class)
     @JoinColumn(name = "PARLIAMENT_CODE_ID")
     private InParliamentCode parliamentCode;
 
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
     private InIntakeApplication application;
-
 
     @Embedded
     private InMetadata metadata;
