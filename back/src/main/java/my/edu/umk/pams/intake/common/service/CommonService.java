@@ -646,4 +646,48 @@ public interface CommonService {
     void updateEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
 
     void removeEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
+
+    //====================================================================================================
+    // DUN CODE
+    //====================================================================================================
+
+    InDunCode findDunCodeById(Long id);
+
+    InDunCode findDunCodeByCode(String code);
+
+    List<InDunCode> findDunCodes();
+
+    List<InDunCode> findDunCodes(String filter, Integer offset, Integer limit);
+
+    Integer countDunCode();
+
+    Integer countDunCode(String filter);
+
+    void saveDunCode(InDunCode DunCode);
+
+    void updateDunCode(InDunCode DunCode);
+
+    void removeDunCode(InDunCode DunCode);
+
+    //====================================================================================================
+    // PARLIAMENT CODE
+    //====================================================================================================
+
+    InParliamentCode findParliamentCodeById(Long id);
+
+    InParliamentCode findParliamentCodeByCode(String code);
+
+    List<InParliamentCode> findParliamentCodes();
+
+    List<InParliamentCode> findParliamentCodes(String filter, Integer offset, Integer limit);
+
+    Integer countParliamentCode();
+
+    Integer countParliamentCode(String filter);
+
+    void saveParliamentCode(InParliamentCode ParliamentCode);
+
+    void updateParliamentCode(InParliamentCode ParliamentCode);
+
+    void removeParliamentCode(InParliamentCode ParliamentCode);
 }

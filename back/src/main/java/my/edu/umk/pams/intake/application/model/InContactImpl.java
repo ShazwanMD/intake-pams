@@ -23,6 +23,9 @@ public class InContactImpl implements InContact {
     @Column(name = "IDENTITY_NO", nullable = false)
     private String identityNo;
 
+    @Column(name = "SOMETHING")
+    private String something;
+
     @NotNull
     @Column(name = "CONTACT_TYPE")
     private InContactType type;
@@ -60,6 +63,16 @@ public class InContactImpl implements InContact {
     @Override
     public void setIdentityNo(String identityNo) {
         this.identityNo = identityNo;
+    }
+
+    @Override
+    public String getSomething() {
+        return something;
+    }
+
+    @Override
+    public void setSomething(String something) {
+        this.something = something;
     }
 
     @Override

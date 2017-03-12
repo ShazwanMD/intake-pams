@@ -19,6 +19,10 @@ public interface InContact extends InMetaObject {
 
     void setName(String name);
 
+    String getSomething();
+
+    void setSomething(String something);
+
     InIntakeApplication getApplication();
 
     void setApplication(InIntakeApplication application);

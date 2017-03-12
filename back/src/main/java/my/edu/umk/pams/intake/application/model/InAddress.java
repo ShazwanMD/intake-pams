@@ -2,6 +2,8 @@
 package my.edu.umk.pams.intake.application.model;
 
 import my.edu.umk.pams.intake.common.model.InCountryCode;
+import my.edu.umk.pams.intake.common.model.InDunCode;
+import my.edu.umk.pams.intake.common.model.InParliamentCode;
 import my.edu.umk.pams.intake.common.model.InStateCode;
 import my.edu.umk.pams.intake.core.InMetaObject;
 
@@ -35,17 +37,17 @@ public interface InAddress extends InMetaObject {
 
     void setStateCode(InStateCode stateCode);
 
+    InDunCode getDunCode();
+
+    void setDunCode(InDunCode dunCode);
+
+    InParliamentCode getParliamentCode();
+
+    void setParliamentCode(InParliamentCode parliamentCode);
+
     InIntakeApplication getApplication();
 
     void setApplication(InIntakeApplication application);
-
-	String getDun();
-
-	void setDun(String dun);
-
-	String getParlimen();
-
-	void setParlimen(String parlimen);
 
 }
 

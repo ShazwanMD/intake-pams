@@ -2,8 +2,10 @@ package my.edu.umk.pams.intake.common.model;
 
 import my.edu.umk.pams.intake.core.InMetaObject;
 
-@Deprecated
-public interface InLocationCode extends InMetaObject {
+/**
+ * @author PAMS
+ */
+public interface InParliamentCode extends InMetaObject {
 
     String getCode();
 
@@ -12,5 +14,4 @@ public interface InLocationCode extends InMetaObject {
     String getDescription();
 
     void setDescription(String description);
-
 }
