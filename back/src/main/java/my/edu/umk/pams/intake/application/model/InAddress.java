@@ -38,4 +38,8 @@ public interface InAddress extends InMetaObject {
 
     void setApplication(InIntakeApplication application);
 
+	String getTelefon();
+
+	void setTelefon(String telefon);
+
 }

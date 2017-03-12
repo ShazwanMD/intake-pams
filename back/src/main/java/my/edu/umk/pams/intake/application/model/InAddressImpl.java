@@ -1,13 +1,24 @@
 package my.edu.umk.pams.intake.application.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import my.edu.umk.pams.intake.common.model.InCountryCode;
 import my.edu.umk.pams.intake.common.model.InCountryCodeImpl;
 import my.edu.umk.pams.intake.common.model.InStateCode;
 import my.edu.umk.pams.intake.common.model.InStateCodeImpl;
 import my.edu.umk.pams.intake.core.InMetadata;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity(name = "InAddress")
 @Table(name = "IN_ADDR")
@@ -32,6 +43,10 @@ public class InAddressImpl implements InAddress {
     @NotNull
     @Column(name = "POSTCODE")
     private String postCode;
+    
+    @NotNull
+    @Column(name = "TELEFON")
+    private String telefon;
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
@@ -152,4 +167,14 @@ public class InAddressImpl implements InAddress {
     public Class<?> getInterfaceClass() {
         return InAddress.class;
     }
+    @Override
+	public String getTelefon() {
+		return telefon;
+	}
+    @Override
+	public void setTelefon(String telefon) {
+		this.telefon = telefon;
+	}
+    
+    
 }
