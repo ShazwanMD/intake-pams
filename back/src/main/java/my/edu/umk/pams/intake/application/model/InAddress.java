@@ -1,3 +1,4 @@
+
 package my.edu.umk.pams.intake.application.model;
 
 import my.edu.umk.pams.intake.common.model.InCountryCode;
@@ -38,8 +39,13 @@ public interface InAddress extends InMetaObject {
 
     void setApplication(InIntakeApplication application);
 
-	String getTelefon();
+	String getDun();
 
-	void setTelefon(String telefon);
+	void setDun(String dun);
+
+	String getParlimen();
+
+	void setParlimen(String parlimen);
 
 }
+
