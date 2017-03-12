@@ -38,4 +38,12 @@ public interface InAddress extends InMetaObject {
 
     void setApplication(InIntakeApplication application);
 
+	String getDun();
+
+	void setDun(String dun);
+
+	String getParlimen();
+
+	void setParlimen(String parlimen);
+
 }

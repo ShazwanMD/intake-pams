@@ -32,6 +32,12 @@ public class InAddressImpl implements InAddress {
     @NotNull
     @Column(name = "POSTCODE")
     private String postCode;
+    
+    @Column (name="DUN")
+    private String dun;
+    
+    @Column (name="PARLIMEN")
+    private String parlimen;
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
@@ -152,4 +158,24 @@ public class InAddressImpl implements InAddress {
     public Class<?> getInterfaceClass() {
         return InAddress.class;
     }
+
+    @Override
+	public String getDun() {
+		return dun;
+	}
+
+    @Override
+	public void setDun(String dun) {
+		this.dun = dun;
+	}
+
+    @Override
+	public String getParlimen() {
+		return parlimen;
+	}
+
+    @Override
+	public void setParlimen(String parlimen) {
+		this.parlimen = parlimen;
+	}
 }
