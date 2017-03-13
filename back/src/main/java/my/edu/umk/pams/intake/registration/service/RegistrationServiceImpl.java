@@ -61,6 +61,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public void activate(InUser user) {
         // todo(uda): impl
+    	
     }
 
     @Override
