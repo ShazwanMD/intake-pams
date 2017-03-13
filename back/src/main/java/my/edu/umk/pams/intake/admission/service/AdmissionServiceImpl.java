@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
+import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 import my.edu.umk.pams.intake.system.service.SystemService;
 
 import org.hibernate.SessionFactory;
@@ -59,7 +60,10 @@ public class AdmissionServiceImpl implements AdmissionService {
         // notify candidate
         // todo(Syah n Azah): tambah email
         InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setTo(candidate.getEmailAddress);
+        emailQueue.setCode("123456");
+        emailQueue.setTo(candidate.getEmail());
+        emailQueue.setSubject("Sedang diproses");
+        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(emailQueue);
 
         // link IMS
