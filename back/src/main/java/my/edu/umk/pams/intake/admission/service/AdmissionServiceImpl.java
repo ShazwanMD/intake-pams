@@ -6,6 +6,10 @@ import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.system.model.InEmailQueue;
+import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
+import my.edu.umk.pams.intake.system.service.SystemService;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,6 +30,9 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Autowired
     private InCandidateDao candidateDao;
+    
+    @Autowired
+    private SystemService systemService;
 
     @Override
     public InCandidate findCandidateByIdentityNo(String identityNo) {
@@ -50,7 +57,10 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidateDao.save(candidate, securityService.getCurrentUser());
 
         // notify candidate
-        // todo(syahrul): tambah email
+        // todo(Syah n Azah): tambah email
+        InEmailQueue emailQueue = new InEmailQueueImpl();
+        emailQueue.setTo(candidate.getEmailAddress);
+        systemService.saveEmailQueue(emailQueue);
 
         // link IMS
         // imsService.findStudentByMatricNo(candidate.getMatricNo());

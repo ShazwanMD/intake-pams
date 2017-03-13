@@ -29,6 +29,9 @@ public class InCandidateImpl implements InCandidate {
 
     @Column(name = "MATRIC_NO", nullable = true)
     private String matricNo; // no matric current
+    
+    @Column(name = "EMAIL_ADD", nullable = false)
+    private String emailAddress;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS", nullable = false)
@@ -42,6 +45,8 @@ public class InCandidateImpl implements InCandidate {
     @JoinColumn(name = "APPLICANT_ID")
     private InApplicant applicant;
 
+    
+    
     @Embedded
     private InMetadata metadata;
 
@@ -125,4 +130,17 @@ public class InCandidateImpl implements InCandidate {
     public Class<?> getInterfaceClass() {
         return InCandidate.class;
     }
+    
+    @Override
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+    @Override
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+    
+    
+	
 }

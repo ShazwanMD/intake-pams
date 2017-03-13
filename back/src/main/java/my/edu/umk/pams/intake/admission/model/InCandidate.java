@@ -9,7 +9,11 @@ import my.edu.umk.pams.intake.policy.model.InProgramOffering;
  */
 public interface InCandidate extends InMetaObject {
 
-    String getName();
+    String getEmailAddress = null;
+    
+    void setEmailAddress(String emailAddress);
+
+	String getName();
 
     void setName(String name);
 
@@ -34,5 +38,7 @@ public interface InCandidate extends InMetaObject {
     InProgramOffering getOffering();
 
     void setOffering(InProgramOffering offering);
+
+	String getEmailAddress();
 
 }
