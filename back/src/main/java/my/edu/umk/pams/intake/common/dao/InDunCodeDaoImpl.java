@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.common.dao;
 
-import my.edu.umk.pams.intake.common.model.InCollegeCode;
-import my.edu.umk.pams.intake.common.model.InCollegeCodeImpl;
+import my.edu.umk.pams.intake.common.model.InDunCode;
+import my.edu.umk.pams.intake.common.model.InDunCodeImpl;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import org.hibernate.Query;
@@ -12,32 +12,31 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Deprecated
-@Repository("inCollegeCodeDao")
-public class InCollegeCodeDaoImpl extends GenericDaoSupport<Long, InCollegeCode> implements InCollegeCodeDao {
 
-    private static final Logger LOG = LoggerFactory.getLogger(InCollegeCodeDaoImpl.class);
+@Repository("inDunCodeDao")
+public class InDunCodeDaoImpl extends GenericDaoSupport<Long, InDunCode> implements InDunCodeDao {
 
-    public InCollegeCodeDaoImpl() {
-        super(InCollegeCodeImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(InDunCodeDaoImpl.class);
+
+    public InDunCodeDaoImpl() {
+        super(InDunCodeImpl.class);
     }
 
     @Override
-    public InCollegeCode findByCode(String code) {
+    public InDunCode findByCode(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from InCollegeCode s where " +
-                "s.code = :code " +
-                "and s.metadata.state = :state");
+        Query query = session.createQuery("select s from InDunCode s where s.code = :code and  " +
+                " s.metadata.state = :state");
         query.setString("code", code);
         query.setCacheable(true);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
-        return (InCollegeCode) query.uniqueResult();
+        return (InDunCode) query.uniqueResult();
     }
 
     @Override
-    public List<InCollegeCode> find(String filter, Integer offset, Integer limit) {
+    public List<InDunCode> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from InCollegeCode s where " +
+        Query query = session.createQuery("select s from InDunCode s where " +
                 "(upper(s.code) like upper(:filter) " +
                 "or upper(s.description) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
@@ -46,13 +45,14 @@ public class InCollegeCodeDaoImpl extends GenericDaoSupport<Long, InCollegeCode>
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         query.setCacheable(true);
-        return (List<InCollegeCode>) query.list();
+        return (List<InDunCode>) query.list();
+
     }
 
     @Override
     public Integer count(String filter) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(s) from InCollegeCode s where " +
+        Query query = session.createQuery("select count(s) from InDunCode s where " +
                 "(upper(s.code) like upper(:filter) " +
                 "or upper(s.description) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
@@ -64,7 +64,7 @@ public class InCollegeCodeDaoImpl extends GenericDaoSupport<Long, InCollegeCode>
     @Override
     public boolean isExists(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(*) from InCollegeCode s where " +
+        Query query = session.createQuery("select count(*) from InDunCode s where " +
                 "s.code = :code " +
                 "and s.metadata.state = :state ");
         query.setString("code", code);

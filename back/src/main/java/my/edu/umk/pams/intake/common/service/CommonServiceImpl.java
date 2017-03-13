@@ -105,6 +105,12 @@ public class CommonServiceImpl implements CommonService {
     private InEmploymentSectorCodeDao employmentSectorCodeDao;
 
     @Autowired
+    private InDunCodeDao dunCodeDao;
+
+    @Autowired
+    private InParliamentCodeDao parliamentCodeDao;
+
+    @Autowired
     private SessionFactory sessionFactory;
 
     //====================================================================================================
@@ -1639,8 +1645,106 @@ public class CommonServiceImpl implements CommonService {
 
 
     //====================================================================================================
-    // INVOLVEMENT TYPE
+    // DUN CODE
     //====================================================================================================
 
+    @Override
+    public InDunCode findDunCodeById(Long id) {
+        return dunCodeDao.findById(id);
+    }
 
+    @Override
+    public InDunCode findDunCodeByCode(String code) {
+        return dunCodeDao.findByCode(code);
+    }
+
+    @Override
+    public List<InDunCode> findDunCodes() {
+        return dunCodeDao.find();
+    }
+
+    @Override
+    public List<InDunCode> findDunCodes(String filter, Integer offset, Integer limit) {
+        return dunCodeDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countDunCode() {
+        return dunCodeDao.count();
+    }
+
+    @Override
+    public Integer countDunCode(String filter) {
+        return dunCodeDao.count(filter);
+    }
+
+    @Override
+    public void saveDunCode(InDunCode DunCode) {
+        dunCodeDao.save(DunCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateDunCode(InDunCode DunCode) {
+        dunCodeDao.update(DunCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeDunCode(InDunCode DunCode) {
+        dunCodeDao.remove(DunCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    //====================================================================================================
+    // PARLIAMENT CODE
+    //====================================================================================================
+
+    @Override
+    public InParliamentCode findParliamentCodeById(Long id) {
+        return parliamentCodeDao.findById(id);
+    }
+
+    @Override
+    public InParliamentCode findParliamentCodeByCode(String code) {
+        return parliamentCodeDao.findByCode(code);
+    }
+
+    @Override
+    public List<InParliamentCode> findParliamentCodes() {
+        return parliamentCodeDao.find();
+    }
+
+    @Override
+    public List<InParliamentCode> findParliamentCodes(String filter, Integer offset, Integer limit) {
+        return parliamentCodeDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countParliamentCode() {
+        return parliamentCodeDao.count();
+    }
+
+    @Override
+    public Integer countParliamentCode(String filter) {
+        return parliamentCodeDao.count(filter);
+    }
+
+    @Override
+    public void saveParliamentCode(InParliamentCode ParliamentCode) {
+        parliamentCodeDao.save(ParliamentCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateParliamentCode(InParliamentCode ParliamentCode) {
+        parliamentCodeDao.update(ParliamentCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeParliamentCode(InParliamentCode ParliamentCode) {
+        parliamentCodeDao.remove(ParliamentCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 }

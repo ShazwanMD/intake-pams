@@ -1,9 +1,7 @@
+
 package my.edu.umk.pams.intake.application.model;
 
-import my.edu.umk.pams.intake.common.model.InCountryCode;
-import my.edu.umk.pams.intake.common.model.InCountryCodeImpl;
-import my.edu.umk.pams.intake.common.model.InStateCode;
-import my.edu.umk.pams.intake.common.model.InStateCodeImpl;
+import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.core.InMetadata;
 
 import javax.persistence.*;
@@ -32,12 +30,6 @@ public class InAddressImpl implements InAddress {
     @NotNull
     @Column(name = "POSTCODE")
     private String postCode;
-    
-    @Column (name="DUN")
-    private String dun;
-    
-    @Column (name="PARLIMEN")
-    private String parlimen;
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
@@ -52,10 +44,17 @@ public class InAddressImpl implements InAddress {
     @JoinColumn(name = "COUNTRY_CODE_ID")
     private InCountryCode countryCode;
 
+    @OneToOne(targetEntity = InDunCodeImpl.class)
+    @JoinColumn(name = "DUN_CODE_ID")
+    private InDunCode dunCode;
+
+    @OneToOne(targetEntity = InParliamentCodeImpl.class)
+    @JoinColumn(name = "PARLIAMENT_CODE_ID")
+    private InParliamentCode parliamentCode;
+
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
     private InIntakeApplication application;
-
 
     @Embedded
     private InMetadata metadata;
@@ -138,18 +137,42 @@ public class InAddressImpl implements InAddress {
         this.countryCode = countryCode;
     }
 
+    @Override
+    public InDunCode getDunCode() {
+        return dunCode;
+    }
+
+    @Override
+    public void setDunCode(InDunCode dunCode) {
+        this.dunCode = dunCode;
+    }
+
+    @Override
+    public InParliamentCode getParliamentCode() {
+        return parliamentCode;
+    }
+
+    @Override
+    public void setParliamentCode(InParliamentCode parliamentCode) {
+        this.parliamentCode = parliamentCode;
+    }
+
+    @Override
     public InIntakeApplication getApplication() {
         return application;
     }
 
+    @Override
     public void setApplication(InIntakeApplication application) {
         this.application = application;
     }
 
+    @Override
     public InMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }
@@ -158,24 +181,5 @@ public class InAddressImpl implements InAddress {
     public Class<?> getInterfaceClass() {
         return InAddress.class;
     }
-
-    @Override
-	public String getDun() {
-		return dun;
-	}
-
-    @Override
-	public void setDun(String dun) {
-		this.dun = dun;
-	}
-
-    @Override
-	public String getParlimen() {
-		return parlimen;
-	}
-
-    @Override
-	public void setParlimen(String parlimen) {
-		this.parlimen = parlimen;
-	}
 }
+

@@ -27,9 +27,9 @@ public class GivenIAmPPSAdministrator extends Stage<GivenIAmPPSAdministrator> {
     @ProvidedScenarioState
     InIntakeSession intakeSession;
 
-    public void I_am_a_PPS_administrator_in_$_intake_session(String intakeSessionCode){
+    public void I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode){
         loginAsPPS();
-        intakeSession = policyService.findIntakeSessionByCode(intakeSessionCode);
+        intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
     }
 
     public void I_am_a_PPS_administrator_in_current_intake_session(){
