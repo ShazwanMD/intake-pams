@@ -18,8 +18,6 @@ public class WhenIChooseMySupervisor extends Stage<WhenIChooseMySupervisor> {
 	@Autowired
     private ApplicationService applicationService;
 
-    @ProvidedScenarioState
-    private InUser user;
     
     public WhenIChooseMySupervisor I_choose_my_supervisor() {
     	return self();

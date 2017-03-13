@@ -35,8 +35,8 @@ public class US_IN_APN_0002 extends SpringScenarioTest<GivenIAmApplicant, WhenIV
     
     @Before
     public void before() {
-    }
-
+   	}
+    
     @After
     public void after() {
     }

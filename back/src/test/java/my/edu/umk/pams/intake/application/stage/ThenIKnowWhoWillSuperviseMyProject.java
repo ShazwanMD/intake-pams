@@ -24,6 +24,6 @@ public class ThenIKnowWhoWillSuperviseMyProject extends Stage<ThenIKnowWhoWillSu
 	    public ThenIKnowWhoWillSuperviseMyProject I_know_who_will_supervise_my_project() {
 	      
 	        return self();
-	    } 
+	    }
 }
 

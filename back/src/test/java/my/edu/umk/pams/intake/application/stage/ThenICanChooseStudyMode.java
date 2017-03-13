@@ -29,7 +29,6 @@ public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
 	@Autowired
     private ApplicationService applicationService;
    
-
     @ExpectedScenarioState
     InUser user;
 

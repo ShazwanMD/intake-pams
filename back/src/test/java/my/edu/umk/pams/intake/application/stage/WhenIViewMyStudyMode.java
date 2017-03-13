@@ -26,6 +26,7 @@ public class WhenIViewMyStudyMode extends Stage<WhenIViewMyStudyMode> {
     
     public WhenIViewMyStudyMode I_view_study_mode() {
     	return self();
+    	
     }
 }
 
