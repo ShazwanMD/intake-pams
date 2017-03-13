@@ -30,8 +30,8 @@ public class InCandidateImpl implements InCandidate {
     @Column(name = "MATRIC_NO", nullable = true)
     private String matricNo; // no matric current
     
-    @Column(name = "EMAIL_ADD", nullable = false)
-    private String emailAddress;
+    @Column(name = "EMAIL", nullable = false)
+    private String email;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS", nullable = false)
@@ -132,13 +132,13 @@ public class InCandidateImpl implements InCandidate {
     }
     
     @Override
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getEmail() {
+		return email;
 	}
 
     @Override
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setEmail(String email) {
+		this.email = email;
 	}
     
     
