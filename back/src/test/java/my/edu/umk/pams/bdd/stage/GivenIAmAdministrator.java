@@ -42,4 +42,12 @@ public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
+
+	public void I_am_a_administrator_intake(String username, String password) {
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
+        Authentication authed = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authed);
+	}
+
+
 }
