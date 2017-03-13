@@ -2,6 +2,10 @@
 -- USER, PEGAWAI, KERANI, BENDAHARI
 -- abc123 = 6367c48dd193d56ea7b0baad25b19455e529f5ee
 
+-- todo(uda): pps admin, pps pegawai, pps kerani
+-- todo(uda): mgseb admin, mgseb pegawai, mgseb kerani
+-- todo(uda): bursary admin, bursary pegawai, bursary kerani
+
 INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'root', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 VALUES (currval('SQ_IN_PCPL'), 'Root', 'root@umk.edu.my', 'abc123');
