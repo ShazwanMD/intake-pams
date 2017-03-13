@@ -4,10 +4,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.application.stage.ThenICanChooseStudyMode;
 import my.edu.umk.pams.intake.application.stage.ThenICanPayMyCourseFee;
 import my.edu.umk.pams.intake.application.stage.WhenIViewMyCourseFee;
-import my.edu.umk.pams.intake.application.stage.WhenIViewMyStudyMode;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import org.junit.After;
 import org.junit.Before;

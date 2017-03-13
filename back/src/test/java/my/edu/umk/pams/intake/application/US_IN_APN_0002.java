@@ -47,7 +47,7 @@ public class US_IN_APN_0002 extends SpringScenarioTest<GivenIAmApplicant, WhenIV
         given().I_am_an_applicant_in_current_intake_session();
         when().I_view_study_mode();
         then().I_can_choose_study_mode();
-    }
+}
 }
 
 

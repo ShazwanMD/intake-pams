@@ -7,7 +7,6 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.application.stage.ThenICanChooseStudyMode;
 import my.edu.umk.pams.intake.application.stage.ThenIKnowWhoWillSuperviseMyProject;
 import my.edu.umk.pams.intake.application.stage.WhenIChooseMySupervisor;
-import my.edu.umk.pams.intake.application.stage.WhenIViewMyStudyMode;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import org.junit.After;
 import org.junit.Before;
