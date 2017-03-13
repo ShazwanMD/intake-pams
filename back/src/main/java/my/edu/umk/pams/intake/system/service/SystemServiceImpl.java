@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.system.service;
 
 import my.edu.umk.pams.intake.identity.service.IdentityService;
+import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.dao.*;
 import my.edu.umk.pams.intake.system.model.*;
 import my.edu.umk.pams.intake.util.Util;
@@ -65,6 +66,12 @@ public class SystemServiceImpl implements SystemService {
 
     @Autowired
     private InEmailTemplateDao emailTemplateDao;
+
+    @Autowired
+    private InEmailQueueDao emailQueueDao;
+
+    @Autowired
+    private SecurityService securityService;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -439,5 +446,35 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public void sendWithAttachment(String email, String s, String s1, String s2, String s3, HashMap<String, Object> vars) {
 
+    }
+
+    //====================================================================================================
+    // EMAIL QUEUE
+    //====================================================================================================
+
+    @Override
+    public List<InEmailQueue> findEmailQueues() {
+        return emailQueueDao.find();
+    }
+
+    @Override
+    public List<InEmailQueue> findEmailQueues(InEmailQueueStatus status) {
+        return emailQueueDao.find(status);
+    }
+
+    @Override
+    public List<InEmailQueue> findEmailQueues(InEmailQueueStatus status, Integer offset, Integer limit) {
+        return emailQueueDao.find(status); // todo(uda): limit offset
+    }
+
+    @Override
+    public Integer countEmailQueue() {
+        return emailQueueDao.count();
+    }
+
+    @Override
+    public void saveEmailQueue(InEmailQueue emailQueue) {
+        emailQueueDao.save(emailQueue, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 }

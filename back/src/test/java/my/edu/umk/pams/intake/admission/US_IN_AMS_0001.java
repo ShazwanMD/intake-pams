@@ -15,9 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * GIVEN: As academic administrator,
- * WHEN :      I want to preapprove a candidate,
- * THEN :        so that the candidate can proceed to the next selection stage
+ * As academic administrator,
+ *      I want to preapprove a candidate,
+ *           so that the candidate can proceed to the next selection stage
  *
  * @author PAMS
  */
