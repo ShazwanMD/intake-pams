@@ -1,0 +1,77 @@
+package my.edu.umk.pams.intake.admission.model;
+
+import my.edu.umk.pams.intake.common.model.InStateCodeImpl;
+import my.edu.umk.pams.intake.core.InMetadata;
+import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
+import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+
+import javax.persistence.*;
+
+/**
+ * @author PAMS
+ */
+//@Entity(name = "InCandidate")
+//@Table(name = "IN_CNDT")
+public class InCandidateImpl implements InCandidate {
+
+    @Id
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(generator = "SQ_IN_CNDT")
+    @SequenceGenerator(name = "SQ_IN_CNDT", sequenceName = "SQ_IN_CNDT", allocationSize = 1)
+    private Long id;
+
+    @OneToOne(targetEntity = InStateCodeImpl.class)
+    @JoinColumn(name = "OFFERING_ID", nullable = false)
+    private InProgramOffering offering;
+
+    @OneToOne(targetEntity = InApplicantImpl.class)
+    @JoinColumn(name = "APPLICANT_ID")
+    private InApplicant applicant;
+
+    @Embedded
+    private InMetadata metadata;
+
+    @Override
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public InProgramOffering getOffering() {
+        return offering;
+    }
+
+    @Override
+    public void setOffering(InProgramOffering offering) {
+        this.offering = offering;
+    }
+
+    @Override
+    public InApplicant getApplicant() {
+        return applicant;
+    }
+
+    @Override
+    public void setApplicant(InApplicant applicant) {
+        this.applicant = applicant;
+    }
+
+    @Override
+    public InMetadata getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(InMetadata metadata) {
+        this.metadata = metadata;
+    }
+
+    @Override
+    public Class<?> getInterfaceClass() {
+        return InCandidate.class;
+    }
+}
