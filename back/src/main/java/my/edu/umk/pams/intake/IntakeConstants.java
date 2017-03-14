@@ -5,8 +5,8 @@ package my.edu.umk.pams.intake;
  */
 public interface IntakeConstants {
 
-    // todo(uda): set application ref no
-    public static final String INTAKE_APPLICATION_REFERENCE_NO = "todo";
+    public static final String INTAKE_REFERENCE_NO = "InIntake.referenceNo";
+    public static final String INTAKE_APPLICATION_REFERENCE_NO = "InIntakeApplication.referenceNo";
 
     public static final String INTAKE_ID = "intakeId";
 

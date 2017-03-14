@@ -27,7 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
  *              so that my application is completed.
  * @author PAMS
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)

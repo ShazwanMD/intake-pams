@@ -52,6 +52,4 @@ public class US_IN_RGN_0004 extends SpringScenarioTest<GivenIAmAdministrator, Wh
         when().I_view_sponsorship_status();
         then().I_can_Proceed_Registration();
     }
-
-
 }

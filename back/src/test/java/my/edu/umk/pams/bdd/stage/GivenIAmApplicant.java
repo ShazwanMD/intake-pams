@@ -6,6 +6,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -26,25 +27,35 @@ public class GivenIAmApplicant extends Stage<GivenIAmApplicant> {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private PolicyService policyServce;
+    private PolicyService policyService;
 
     @Autowired
     private SecurityService securityService;
 
     @ProvidedScenarioState
-    InIntakeSession intakeSession;
+    private InIntakeSession intakeSession;
 
     @ProvidedScenarioState
-    InApplicant applicant;
+    private InIntake intake;
 
-    public void I_am_a_applicant_in_$_intake_session(String academicSessionCode) {
+    @ProvidedScenarioState
+    private InApplicant applicant;
+
+    public GivenIAmApplicant I_am_a_applicant_in_$_intake_session(String academicSessionCode) {
         loginAsApplicant();
-        intakeSession = policyServce.findIntakeSessionByCode(academicSessionCode);
+        intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
+        return self();
     }
 
-    public void I_am_an_applicant_in_current_intake_session() {
+    public GivenIAmApplicant I_am_an_applicant_in_current_intake_session() {
         loginAsApplicant();
-        intakeSession = policyServce.findCurrentIntakeSession();
+        intakeSession = policyService.findCurrentIntakeSession();
+        return self();
+    }
+
+    public GivenIAmApplicant I_am_applying_for_intake_$(String intakeReferenceNo){
+        intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+        return self();
     }
 
     private void loginAsApplicant() {
@@ -56,5 +67,4 @@ public class GivenIAmApplicant extends Stage<GivenIAmApplicant> {
         InUser currentUser = securityService.getCurrentUser();
         applicant = (InApplicant) currentUser.getActor();
     }
-
 }
