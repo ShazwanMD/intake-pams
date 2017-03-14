@@ -27,4 +27,8 @@ public interface InUser extends InPrincipal {
     InActor getActor();
 
     void setActor(InActor actor);
+
+	String getTipuName();
+
+	void setTipuName(String tipuName);
 }

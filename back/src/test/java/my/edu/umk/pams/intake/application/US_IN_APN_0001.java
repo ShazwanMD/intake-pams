@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.application;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.application.stage.ThenMyApplicationShouldBeReadyToBeSubmitted;
 import my.edu.umk.pams.intake.application.stage.WhenIDraftMyApplication;

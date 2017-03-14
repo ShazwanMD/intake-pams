@@ -10,5 +10,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     US_IN_RGN_0001.class,
 })
+
 public class RegistrationModuleTestSuite {
 }

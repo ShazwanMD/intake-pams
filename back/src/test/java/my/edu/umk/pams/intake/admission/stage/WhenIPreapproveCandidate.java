@@ -36,6 +36,8 @@ public class WhenIPreapproveCandidate extends Stage<WhenIPreapproveCandidate> {
         candidate.setIdentityNo("980101142222");
         candidate.setMatricNo("A139999");
         candidate.setName("Sahir bin Messi");
+        candidate.setEmail("msyahrul@umk.edu.my");
+      
 
         admissionService.preapproveCandidate(candidate);
 
