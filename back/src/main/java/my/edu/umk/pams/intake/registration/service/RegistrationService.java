@@ -11,6 +11,7 @@ public interface RegistrationService {
     void register(InUser user, InApplicant applicant);
 
     void activate(InUser user);
+   
 
     boolean isExists(String username);
 }

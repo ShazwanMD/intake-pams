@@ -28,7 +28,8 @@ public class CheckForRegistration extends Stage<CheckForRegistration> {
 
     public CheckForRegistration I_check_for_registeration_for_$(String username) {
 		
-		//exists = registrationService.isUserExists(username);		
+		//exists = registrationService.isUserExists(username);	
+		
 		
 		return self();
 	}
