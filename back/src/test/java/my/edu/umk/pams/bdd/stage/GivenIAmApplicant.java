@@ -52,6 +52,7 @@ public class GivenIAmApplicant extends Stage<GivenIAmApplicant> {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
 
+        // retrieve applicant from user
         InUser currentUser = securityService.getCurrentUser();
         applicant = (InApplicant) currentUser.getActor();
     }
