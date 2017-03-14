@@ -42,4 +42,11 @@ public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
+
+	public void I_am_a_administrator_in_current_intake_session() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }
