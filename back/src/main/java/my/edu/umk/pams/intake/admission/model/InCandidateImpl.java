@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.admission.model;
 
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.common.model.InStateCodeImpl;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;

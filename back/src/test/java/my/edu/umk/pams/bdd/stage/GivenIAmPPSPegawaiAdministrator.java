@@ -17,15 +17,15 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @JGivenStage
-public class GivenIAmBursary extends Stage<GivenIAmBursary> {
+public class GivenIAmPPSPegawaiAdministrator extends Stage<GivenIAmPPSPegawaiAdministrator> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(GivenIAmBursary.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GivenIAmPPSPegawaiAdministrator.class);
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private PolicyService policyServce;
+    private PolicyService policyService;
 
     @ProvidedScenarioState
     private InIntakeSession intakeSession;
@@ -33,18 +33,18 @@ public class GivenIAmBursary extends Stage<GivenIAmBursary> {
     @ProvidedScenarioState
     private InStaff staff;
 
-    public void I_am_a_bursary_in_$_academic_session(String academicSessionCode) {
-        loginAsBursary();
-        intakeSession = policyServce.findIntakeSessionByCode(academicSessionCode);
+    public void I_am_a_PPS_administrator_in_$_intake_session(String intakeSessionCode){
+        loginAsPPS();
+        intakeSession = policyService.findIntakeSessionByCode(intakeSessionCode);
     }
 
-    public void I_am_a_bursary_in_current_academic_session() {
-        loginAsBursary();
-        intakeSession = policyServce.findCurrentIntakeSession();
+    public void I_am_a_PPS_administrator_in_current_intake_session(){
+        loginAsPPS();
+        intakeSession = policyService.findCurrentIntakeSession();
     }
 
-    private void loginAsBursary() {
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("bursary", "abc123");
+    private void loginAsPPS() {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("pps-pegawai", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
 
@@ -52,5 +52,4 @@ public class GivenIAmBursary extends Stage<GivenIAmBursary> {
         InUser user = ((InUserDetails) authed.getPrincipal()).getUser();
         staff = (InStaff) user.getActor();
     }
-
 }

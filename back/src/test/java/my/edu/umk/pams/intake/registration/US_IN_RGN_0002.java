@@ -26,7 +26,9 @@ import my.edu.umk.pams.intake.registration.stage.WhenIReceiveNotificationForSign
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
 
-//As an anonymous, I want to receive a notification for my sign up process, so that i will know my login status
+//As an anonymous, 
+//I want to receive a notification for my sign up process, 
+//so that i will know my login status
 
 
 public class US_IN_RGN_0002 extends SpringScenarioTest<GivenIAmAnonymous, WhenIReceiveNotificationForSignUp, ThenIWillKnowMyLoginStatus> {
