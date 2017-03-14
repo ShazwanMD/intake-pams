@@ -10,6 +10,7 @@ public interface IntakeConstants {
 
     public static final String INTAKE_ID = "intakeId";
 
-    // todo(uda): set def intake
-    public static final String PROCESS_DEF_INTAKE = "todo";
+    public static final String INTAKE_PROCESS_KEY = "intake_workflow";
+    public static final String INTAKE_RESOURCE_PATH = "intake.bpmn20.xml";
+    public static final String INTAKE_PROCESS_NAME = "intake";
 }
