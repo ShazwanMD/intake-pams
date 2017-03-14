@@ -12,7 +12,7 @@ import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /***
- * @author PAMS
+ * @author azah
  */
 @JGivenStage
 public class WhenIViewSponsorshipStatus extends Stage<WhenIViewSponsorshipStatus> {
