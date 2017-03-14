@@ -10,6 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @JGivenStage
 public class GivenIAmAnonymous extends Stage<GivenIAmAnonymous> {
@@ -32,8 +35,16 @@ public class GivenIAmAnonymous extends Stage<GivenIAmAnonymous> {
 
     public void I_am_an_anonymous_in_current_intake_session() {
         // do nothing
+    	loginAsAnonymous();
         intakeSession = policyServce.findCurrentIntakeSession();
     }
+
+	private void loginAsAnonymous() {
+		// TODO Auto-generated method stub
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("anon", "abc123");
+        Authentication authed = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authed);
+	}
 
 
 }
