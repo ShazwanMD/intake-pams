@@ -28,9 +28,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_0006 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIWantToViewTopApplicant, ThenICanProceedToProcessTheirApplication> {
+public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIWantToViewTopApplicant, ThenICanProceedToProcessTheirApplication> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_0006.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3002.class);
 
     @Autowired
     private RegistrationService registrationService;

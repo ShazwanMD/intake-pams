@@ -6,7 +6,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanLogIn;
 import my.edu.umk.pams.intake.registration.stage.WhenIRegister;
-import my.edu.umk.pams.intake.policy.US_IN_PLC_0002;
+import my.edu.umk.pams.intake.policy.US_IN_PLC_1001;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,9 +25,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_0001 extends SpringScenarioTest<GivenIAmAnonymous, WhenIRegister, ThenICanLogIn> {
+public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIRegister, ThenICanLogIn> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_0002.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1001.class);
 
     @Autowired
     private RegistrationService registrationService;

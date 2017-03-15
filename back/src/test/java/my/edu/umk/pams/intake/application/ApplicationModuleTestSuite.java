@@ -8,7 +8,10 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        US_IN_APN_0001.class,
+        US_IN_APN_1001.class,
+        US_IN_APN_1002.class,
+        US_IN_APN_1003.class,
+        US_IN_APN_1004.class,
 })
 public class ApplicationModuleTestSuite {
 }
