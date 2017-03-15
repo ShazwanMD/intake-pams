@@ -23,6 +23,7 @@ public class WhenIRegister extends Stage<WhenIRegister> {
     private InUser user;
 
     public WhenIRegister I_register() {
+    	
         user = new InUserImpl();
         user.setUsername("ahmad.razif@gmail.com");
         user.setPassword("abc123");
