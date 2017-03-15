@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_0001 extends SpringScenarioTest<GivenIAmAnonymous, WhenIRegister, ThenICanLogIn> {
+public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIRegister, ThenICanLogIn> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1001.class);
 
