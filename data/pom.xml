@@ -15,7 +15,7 @@
         <spring-test-mvc.version>1.0.0.M1</spring-test-mvc.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <hibernate.version>4.2.0.Final</hibernate.version>
-        <postgresql.version>9.1-901.jdbc4</postgresql.version>
+        <postgresql.version>42.0.0</postgresql.version>
         <slf4j-api.version>1.6.1</slf4j-api.version>
     </properties>
 
@@ -135,7 +135,7 @@
             <version>2.1.1</version>
         </dependency>
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
@@ -233,17 +233,15 @@
 
                 <dependencies>
                     <dependency>
-                        <groupId>postgresql</groupId>
+                        <groupId>org.postgresql</groupId>
                         <artifactId>postgresql</artifactId>
-                        <version>9.1-901.jdbc4</version>
+                        <version>${postgresql.version}</version>
                     </dependency>
                 </dependencies>
 
                 <executions>
                     <execution>
-                        <!-- Warning: This Drops Everything!!! -->
-                        <id>reset-drop-all</id>
-                        <!-- Warning: This Drops Everything!!! -->
+                        <id>db-drop</id>
                         <goals>
                             <goal>execute</goal>
                         </goals>
@@ -258,7 +256,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>create-tables-seed</id>
+                        <id>db-seed</id>
                         <goals>
                             <goal>execute</goal>
                         </goals>
