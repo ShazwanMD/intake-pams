@@ -42,4 +42,5 @@ public class GivenIAmPPSAdministrator extends Stage<GivenIAmPPSAdministrator> {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
+
 }
