@@ -28,7 +28,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Issue("PAMI-6")
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1001 extends
-	SpringScenarioTest<GivenIAmPPSAdministrator, WhenISliceAndDiceTopApplicant, ThenICanFilterTheTopApplicant>{
+	SpringScenarioTest<GivenIAmPPSAdministrator, 
+							WhenISliceAndDiceTopApplicant, 
+								ThenICanFilterTheTopApplicant>{
 
 	@Before
 	public void before() {

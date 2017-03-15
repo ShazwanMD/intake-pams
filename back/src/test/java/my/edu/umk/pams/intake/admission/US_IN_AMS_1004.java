@@ -1,7 +1,5 @@
 package my.edu.umk.pams.intake.admission;
 
-import javax.swing.Spring;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,21 +26,23 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Issue("PAMS-6")
+@Issue("PAMI-6")
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_AMS_1004 extends 
-	SpringScenarioTest<GivenIAmPPSAdministrator, WhenIWantToSelectSuitableAppealedApplicants, ThenICanInformTheSelectedApplicants> {
+public class US_IN_AMS_1004 extends
+	SpringScenarioTest<GivenIAmPPSAdministrator, 
+						WhenIWantToSelectSuitableAppealedApplicants, 
+							ThenICanInformTheSelectedApplicants> {
 	
 	@Before
-	private void before(){}
+	public void before(){}
 	
 	@After
-	private void after(){}
+	public void after(){}
 	
 	@Test
 	@Rollback(true)
-	@Issue("PAMS-6")
-	public void scanario1(){
+	@Issue("PAMI-6")
+	public void scenario1(){
 		given().I_am_a_PPS_administrator_in_current_intake_session();
 		when().I_want_to_select_suitable_appealed_applicants();
 		then().I_can_inform_the_selected_applicants();
