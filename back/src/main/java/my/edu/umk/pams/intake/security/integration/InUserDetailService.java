@@ -45,7 +45,7 @@ public class InUserDetailService implements UserDetailsService {
         InUser user = userDao.findByUsername(username);
         if (user == null)
             throw new UsernameNotFoundException("No such user");
-//        LOG.debug("loading #{} {}", user.getId(), user.getUsername());
+        LOG.debug("loading #{} {}", user.getId(), user.getUsername());
         return new InUserDetails(user, loadGrantedAuthoritiesFor(user));
     }
 
@@ -62,7 +62,7 @@ public class InUserDetailService implements UserDetailsService {
             }
         }
 
-//        LOG.info("load auth for #{}{}", user.getId(), user.getUsername());
+        LOG.info("load auth for #{}{}", user.getId(), user.getUsername());
         return grantedAuthorities;
     }
 }
