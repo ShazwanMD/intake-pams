@@ -37,7 +37,7 @@ public interface ApplicationService {
     void addGuardian(InIntakeApplication application, InGuardian guardian);
 
     void deleteGuardian(InIntakeApplication application, InGuardian guardian);
-
+    
     //====================================================================================================
     // APPLICANT
     //====================================================================================================
@@ -109,5 +109,7 @@ public interface ApplicationService {
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
+
+	
 }
 

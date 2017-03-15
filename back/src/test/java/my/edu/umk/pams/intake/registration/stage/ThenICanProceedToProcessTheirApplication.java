@@ -1,11 +1,17 @@
 package my.edu.umk.pams.intake.registration.stage;
 
+import org.junit.Assert;
 import org.slf4j.Logger;
 
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
+
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.core.InFlowState;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 
 public class ThenICanProceedToProcessTheirApplication extends Stage<ThenICanProceedToProcessTheirApplication>{
@@ -14,10 +20,13 @@ public class ThenICanProceedToProcessTheirApplication extends Stage<ThenICanProc
 
     @Autowired
     private RegistrationService registrationService;
+    
+    @Autowired
+    private ApplicationService applicationService;
   
     public ThenICanProceedToProcessTheirApplication I_can_proceed_to_process_their_application() {
-        
-        return self();
+    	
+    	 return self();
     }
 }
 
