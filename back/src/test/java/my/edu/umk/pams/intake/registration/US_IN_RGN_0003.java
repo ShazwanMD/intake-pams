@@ -8,7 +8,7 @@ import my.edu.umk.pams.intake.registration.stage.CheckForRegistration;
 import my.edu.umk.pams.intake.registration.stage.DontNeedtoRegisterAgain;
 import my.edu.umk.pams.intake.registration.stage.ThenICanLogIn;
 import my.edu.umk.pams.intake.registration.stage.WhenIRegister;
-import my.edu.umk.pams.intake.policy.US_IN_PLC_0002;
+import my.edu.umk.pams.intake.policy.US_IN_PLC_1001;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
