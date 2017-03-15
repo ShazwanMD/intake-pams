@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration;
 
+import com.tngtech.jgiven.annotation.Pending;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +46,10 @@ public class US_IN_RGN_3003 extends SpringScenarioTest <GivenIAmAdministrator, W
 	public void after() {
 		
 	}
-	
+
+//	@ScenarioStage
+//	private GivenAnApplicantHasReferee additionalStage;					<--	add additional given
+
 	@Test
 	@Rollback
 	@Issue("")
@@ -53,6 +57,18 @@ public class US_IN_RGN_3003 extends SpringScenarioTest <GivenIAmAdministrator, W
 		given().I_am_a_administrator_in_current_intake_session_as_$("pps", "abc123");
         when().I_want_to_know_applicant_referee();
         then().I_can_process_their_application();
+	}
+
+	// todo(samiya + ashraf)
+	@Pending
+	public void testScenario1_pending() {
+//		given().I_am_a_administrator_in_current_intake_session_as_$("pps", "abc123");
+		// Add additional given
+//        additionalStage.and().an_applicant_has_a_referee(applicant);	<-- put assertion(s) inside
+        // Perform the behavior
+//        when().I_process_the_student_application(); 					<-- put assertion(s) inside
+        // Verify the behavior
+//        then().the_student_application_is_processed(); 				<-- put assertion(s) inside
 	}
 
 }
