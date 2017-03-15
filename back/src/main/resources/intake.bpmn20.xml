@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions id="definitions"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="Policy">
+
+
+    <!--
+    ====================================================================================================
+    == DRAFTED > VERIFIED > PUBLISHED > PREPARED > SELECTED > APPROVED > COMPLETED
+    == VARIABLE:
+    == intakeId: intake id
+    ======================================================================================================
+    -->
+
+    <process id="intake_workflow" name="Intake Workflow">
+
+        <startEvent id="start"/>
+
+        <sequenceFlow id="flow1.1" sourceRef="start" targetRef="intake_draft_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : DRAFTED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="intake_draft_ST"
+                     activiti:expression="#{intake_draft_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow2.1" sourceRef="intake_draft_ST"
+                      targetRef="intake_draft_UT"/>
+
+        <userTask id="intake_draft_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:DRAFTED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                Draft Intake
+                - Setting Dasar
+                - Setting Projection
+                - Setting Offering
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow2.2" sourceRef="intake_draft_UT" targetRef="intake_verify_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow2.3" sourceRef="intake_draft_UT" targetRef="intake_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+
+        <!--
+        ====================================================================================================
+        == STATE : VERIFIED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="intake_verify_ST"
+                     activiti:expression="#{intake_verify_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow7.1" sourceRef="intake_verify_ST" targetRef="intake_verify_UT"/>
+
+        <userTask id="intake_verify_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:VERIFIED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                Verify
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow7.2" sourceRef="intake_verify_UT" targetRef="intake_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow7.3" sourceRef="intake_verify_UT" targetRef="intake_publish_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+
+        <!--
+        ====================================================================================================
+        == STATE : PUBLISHED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="intake_publish_ST"
+                     activiti:expression="#{intake_publish_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow8.1" sourceRef="intake_publish_ST" targetRef="intake_publish_UT"/>
+
+        <userTask id="intake_publish_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:PUBLISHED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                Publish
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow8.2" sourceRef="intake_publish_UT" targetRef="intake_evaluate_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : EVALUATED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="intake_evaluate_ST"
+                     activiti:expression="#{intake_evaluate_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow9.1" sourceRef="intake_evaluate_ST" targetRef="intake_evaluate_UT"/>
+
+        <userTask id="intake_evaluate_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:EVALUATED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                evaluate
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow9.2" sourceRef="intake_evaluate_UT" targetRef="intake_select_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : SELECTED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="intake_select_ST"
+                     activiti:expression="#{intake_select_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow10.1" sourceRef="intake_select_ST" targetRef="intake_select_UT"/>
+
+        <userTask id="intake_select_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:SELECTED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                select
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow10.2" sourceRef="intake_select_UT" targetRef="intake_approve_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : APPROVED
+        == SERVICE TASK : approved a intake
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="intake_approve_ST"
+                     activiti:expression="#{intake_approve_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow11.1" sourceRef="intake_approve_ST"
+                      targetRef="intake_complete_ST"/>
+
+
+        <!--
+        ====================================================================================================
+        == STATE : REMOVED
+        == SERVICE TASK : removed a intake
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="intake_remove_ST"
+                     activiti:expression="#{intake_remove_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow12.1" sourceRef="intake_remove_ST" targetRef="end"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : COMPLETED
+        == SERVICE TASK : complete a intake
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="intake_complete_ST"
+                     activiti:expression="#{intake_complete_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow13.1" sourceRef="intake_complete_ST" targetRef="end"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : END
+        ====================================================================================================
+        -->
+
+        <endEvent id="end"/>
+    </process>
+</definitions>

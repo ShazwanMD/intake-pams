@@ -10,8 +10,15 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.system.service.SystemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
 
@@ -20,6 +27,8 @@ import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENC
  */
 @JGivenStage
 public class WhenIDraftMyApplication extends Stage<WhenIDraftMyApplication> {
+
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIDraftMyApplication.class);
 
     @Autowired
     private PolicyService policyService;
@@ -30,17 +39,32 @@ public class WhenIDraftMyApplication extends Stage<WhenIDraftMyApplication> {
     @Autowired
     private ApplicationService applicationService;
 
+    @Autowired
+    private SystemService systemService;
+
     @ProvidedScenarioState
     private InIntake intake;
+
+    @ProvidedScenarioState
+    private String intakeApplicationRefNo;
+
+    @ExpectedScenarioState
+    private InIntakeSession intakeSession;
 
     @ExpectedScenarioState
     private InApplicant applicant;
 
-    public WhenIDraftMyApplication I_draft_an_application_for_intake_$(String intakeReferenceNo) {
-        intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+    public WhenIDraftMyApplication I_draft_an_application() {
+        // generate intake application referenceNo
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("intakeSession", intakeSession);
+        map.put("intakeLevel", policyService.findIntakeLevelByCode("MASTER"));
+        intakeApplicationRefNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
 
+        LOG.debug("creating application {}", intakeApplicationRefNo);
+        // populate intake
         InIntakeApplication application = new InIntakeApplicationImpl();
-        application.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); // auto numbered
+        application.setReferenceNo(intakeApplicationRefNo);
         application.setIntake(intake);
         application.setName("Ahmad Kharizmi bin Khaldun");
         application.setCredentialNo("910607145581");

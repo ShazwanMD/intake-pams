@@ -39,9 +39,10 @@ public class US_IN_APN_0001 extends SpringScenarioTest<GivenIAmApplicant, WhenID
 
     @Test
     @Rollback(true)
-    public void testScenario1() {
-        given().I_am_an_applicant_in_current_intake_session();
-        when().I_draft_an_application_for_intake_$(INTAKE_REFERENCE_NO);
+    public void scenario1() {
+        given().I_am_an_applicant_in_current_intake_session()
+                .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
+        when().I_draft_an_application();
         then().my_application_is_drafted();
     }
 }

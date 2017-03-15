@@ -146,8 +146,8 @@ public class InFlowdata implements Serializable {
         return publisherId;
     }
 
-    public void setPublisherId(Long posterId) {
-        this.publisherId = posterId;
+    public void setPublisherId(Long publisherId) {
+        this.publisherId = publisherId;
     }
 
     public Long getRequesterId() {

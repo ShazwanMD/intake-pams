@@ -1,18 +1,13 @@
 package my.edu.umk.pams.intake.registration;
 
 
-import com.tngtech.jgiven.annotation.ScenarioStage;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmAnonymous;
 import my.edu.umk.pams.bdd.stage.GivenIAmRegisteredUser;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.CheckForRegistration;
 import my.edu.umk.pams.intake.registration.stage.DontNeedtoRegisterAgain;
 import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
-import my.edu.umk.pams.intake.registration.stage.ThenICanLogIn;
-import my.edu.umk.pams.intake.registration.stage.WhenIRegister;
-import my.edu.umk.pams.intake.policy.US_IN_PLC_0002;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,13 +21,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * as a registered user
+ * and i have an incomplete application,
+ *      I want to complete my application
+ *              so that my application is completed.
  * @author PAMS
- * as a registered user and 
- * i have an incomplete application, 
- * I want to complete my application 
- * so that my application is completed.
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)

@@ -34,6 +34,4 @@ public class GivenIAmAnonymous extends Stage<GivenIAmAnonymous> {
         // do nothing
         intakeSession = policyServce.findCurrentIntakeSession();
     }
-
-
 }

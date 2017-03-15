@@ -5,11 +5,12 @@ package my.edu.umk.pams.intake;
  */
 public interface IntakeConstants {
 
-    // todo(uda): set application ref no
-    public static final String INTAKE_APPLICATION_REFERENCE_NO = "todo";
+    public static final String INTAKE_REFERENCE_NO = "InIntake.referenceNo";
+    public static final String INTAKE_APPLICATION_REFERENCE_NO = "InIntakeApplication.referenceNo";
 
     public static final String INTAKE_ID = "intakeId";
 
-    // todo(uda): set def intake
-    public static final String PROCESS_DEF_INTAKE = "todo";
+    public static final String INTAKE_PROCESS_KEY = "intake_workflow";
+    public static final String INTAKE_RESOURCE_PATH = "intake.bpmn20.xml";
+    public static final String INTAKE_PROCESS_NAME = "intake";
 }

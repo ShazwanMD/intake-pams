@@ -27,7 +27,7 @@ public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
     @ProvidedScenarioState
     InIntakeSession intakeSession;
 
-    public void I_am_a_administrator_in_$_academic_session(String academicSessionCode, String username, String password) {
+    public void I_am_a_administrator_in_$_intake_session(String academicSessionCode, String username, String password) {
         loginAsAdministrator(username, password);
         intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
     }
