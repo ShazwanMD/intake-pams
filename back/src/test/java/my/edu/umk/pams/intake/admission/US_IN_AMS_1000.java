@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Issue("PAMI-6")
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_AMS_0001 extends
+public class US_IN_AMS_1000 extends
         SpringScenarioTest<GivenIAmPPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase>{
 
     @Before
