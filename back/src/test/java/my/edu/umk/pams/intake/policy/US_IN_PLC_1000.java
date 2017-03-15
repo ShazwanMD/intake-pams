@@ -22,9 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_PLC_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddIntake, ThenIntakeIsReadyForSetup> {
+public class US_IN_PLC_1000 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddIntake, ThenIntakeIsReadyForSetup> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_0001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1000.class);
 
     private String referenceNo;
 
