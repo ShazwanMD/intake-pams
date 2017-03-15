@@ -30,9 +30,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_0007 extends SpringScenarioTest<GivenIAmRegisteredUser, CheckForRegistration, DontNeedtoRegisterAgain > {
+public class US_IN_RGN_2000 extends SpringScenarioTest<GivenIAmRegisteredUser, CheckForRegistration, DontNeedtoRegisterAgain > {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_0003.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_2000.class);
 
     @Autowired
     private RegistrationService registrationService;

@@ -29,9 +29,9 @@ import my.edu.umk.pams.intake.registration.stage.WhenIWantToKnowApplicantReferee
 @Transactional
 @ContextConfiguration(classes= TestAppConfiguration.class)
 
-public class US_IN_RGN_0008 extends SpringScenarioTest <GivenIAmAdministrator, WhenIWantToKnowApplicantReferee, ThenICanProcessTheirApplication>
+public class US_IN_RGN_3003 extends SpringScenarioTest <GivenIAmAdministrator, WhenIWantToKnowApplicantReferee, ThenICanProcessTheirApplication>
 {
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_0008.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3003.class);
 	
 	@Autowired
 	private RegistrationService registerationservice;

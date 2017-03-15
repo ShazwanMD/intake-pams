@@ -31,9 +31,9 @@ import my.edu.umk.pams.intake.registration.stage.WhenIReceiveNotificationForSign
 //so that i will know my login status
 
 
-public class US_IN_RGN_0002 extends SpringScenarioTest<GivenIAmAnonymous, WhenIReceiveNotificationForSignUp, ThenIWillKnowMyLoginStatus> {
+public class US_IN_RGN_1001 extends SpringScenarioTest<GivenIAmAnonymous, WhenIReceiveNotificationForSignUp, ThenIWillKnowMyLoginStatus> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_0002.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_1001.class);
 
     @Autowired
     private RegistrationService registrationService;
