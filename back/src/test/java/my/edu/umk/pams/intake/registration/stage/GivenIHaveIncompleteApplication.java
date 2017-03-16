@@ -42,9 +42,6 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
 	private AuthenticationManager authenticationManager;
 
 	@Autowired
-	private PolicyService policyServce;
-
-	@Autowired
 	private RegistrationService registrationService;
 
 	@Autowired
@@ -55,6 +52,8 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
 
 	@Autowired
 	private PolicyService policyService;
+	
+	
 
 	@ExpectedScenarioState
 	private InUser user;
@@ -90,13 +89,13 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
 		application.setDisabilityCode(commonService.findDisabilityCodeByCode("DISABLE"));
 		application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
 		application.setApplicant(applicant);
-
+		
 		applicationService.draftIntakeApplication(intake, application);
 		return self();
 		
 	}
 	public GivenIHaveIncompleteApplication i_have_an_incomplete_application() {
-		InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+		InIntake intake = policyService.findIntakeByReferenceNo("MASTER/201720181");
 
 		InApplicant applicant = null;
 
@@ -105,13 +104,16 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
 		if (user.getActor() instanceof InApplicant) {
 			applicant = (InApplicant) user.getActor();
 			Assert.notNull(applicant, "applicant is null");
+			LOG.debug("applicant ", applicant);
 		}
 
+		
 		InIntakeApplication application = applicationService.findIntakeApplicationByIntakeAndApplicant(intake,
 				applicant);
 		Assert.notNull(application, "application should not be null");
 		Assert.isTrue(!application.isAccepted(), "already accepted");
+		
+		
 		return self();
-	}
-
+	}	
 }

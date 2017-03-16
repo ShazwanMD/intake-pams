@@ -1,4 +1,4 @@
-package my.edu.umk.pams.intake.application.stage;
+/*package my.edu.umk.pams.intake.application.stage;
 
 import com.tngtech.jgiven.Stage;
 
@@ -20,7 +20,7 @@ import org.springframework.security.core.Authentication;
 
 /**
  * @author PAMS
- */
+ 
 @JGivenStage
 public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
 
@@ -35,3 +35,4 @@ public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
     } 
 }
 
+*/

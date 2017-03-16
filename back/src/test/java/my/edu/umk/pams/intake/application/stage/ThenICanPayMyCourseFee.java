@@ -1,4 +1,4 @@
-package my.edu.umk.pams.intake.application.stage;
+/*package my.edu.umk.pams.intake.application.stage;
 
 import com.tngtech.jgiven.Stage;
 
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author PAMS
- */
+ 
 @JGivenStage
 public class ThenICanPayMyCourseFee extends Stage<ThenICanPayMyCourseFee> {
 	
@@ -32,3 +32,4 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseStudyMod
     } 
 }
 
+*/

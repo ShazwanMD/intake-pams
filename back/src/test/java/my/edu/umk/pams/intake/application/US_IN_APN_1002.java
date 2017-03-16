@@ -1,4 +1,4 @@
-package my.edu.umk.pams.intake.application;
+/*package my.edu.umk.pams.intake.application;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author PAMS
- */
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -50,3 +50,4 @@ public class US_IN_APN_1002 extends SpringScenarioTest<GivenIAmApplicant, WhenIV
     }
 }
 
+*/

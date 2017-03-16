@@ -54,7 +54,7 @@ public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckF
         given().I_am_an_applicant_in_current_intake_session();
 //      additionalState.and().given().i_have_an_incomplete_application();
         addStage(GivenIHaveIncompleteApplication.class).and().i_have_an_incomplete_application();
-        when().I_check_for_registeration_for_$("azlan");
+        when().I_check_for_registeration();
         then().dont_need_to_register_again();
     }
 	

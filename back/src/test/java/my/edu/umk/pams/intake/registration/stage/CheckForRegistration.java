@@ -26,7 +26,7 @@ public class CheckForRegistration extends Stage<CheckForRegistration> {
     @ProvidedScenarioState
     private boolean exists;
 
-    public CheckForRegistration I_check_for_registeration_for_$(String username) {
+    public CheckForRegistration I_check_for_registeration() {
 		
 		//exists = registrationService.isUserExists(username);	
 		
