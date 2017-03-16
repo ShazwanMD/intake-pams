@@ -6,6 +6,8 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
 import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InStudyMode;
+import my.edu.umk.pams.intake.policy.model.InStudyModeType;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.util.Util;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
@@ -196,6 +198,11 @@ public class ApplicationServiceImpl implements ApplicationService{
     }
 
     @Override
+    public InStudyMode findStudyModeType(InStudyModeType studymodeType, InIntakeApplication application) {
+        return intakeApplicationDao.findStudyModeType(studymodeType, application);
+    }
+    
+    @Override
     public List<InIntakeApplication> findIntakeApplications(InIntake intake) {
         return intakeApplicationDao.find(intake);
     }
@@ -259,6 +266,11 @@ public class ApplicationServiceImpl implements ApplicationService{
     public List<InAddress> findAddresses(InIntakeApplication application) {
         return intakeApplicationDao.findAddresses(application);
     }
+    
+    @Override
+	public List<InStudyMode> findStudyModeType(InStudyModeType studymodeType) {
+    	return intakeApplicationDao.findStudyModeTypes(studymodeType);
+	}
 
     @Override
     public boolean hasEmployment(InIntakeApplication application) {
@@ -284,4 +296,6 @@ public class ApplicationServiceImpl implements ApplicationService{
     public Integer countIntakeApplication(String filter, InBidType bidType, InIntake intake) {
         return intakeApplicationDao.count(filter, bidType, intake);
     }
+
+
 }

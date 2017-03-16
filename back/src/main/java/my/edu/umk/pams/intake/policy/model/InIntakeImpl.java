@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.model;
 
 import my.edu.umk.pams.intake.core.InFlowdata;
+
 import my.edu.umk.pams.intake.core.InMetadata;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Entity(name = "InIntake")
 @Table(name = "IN_INTK")
+
 public class InIntakeImpl implements InIntake {
 
     @Id

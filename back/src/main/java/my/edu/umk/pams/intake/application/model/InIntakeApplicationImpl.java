@@ -8,6 +8,8 @@ import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
+import my.edu.umk.pams.intake.policy.model.InStudyMode;
+import my.edu.umk.pams.intake.policy.model.InStudyModeImpl;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -181,10 +183,14 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @OneToMany(targetEntity = InAttachmentImpl.class, mappedBy = "application")
     private List<InAttachment> attachments;
+    
+    @OneToOne(targetEntity = InStudyModeImpl.class, mappedBy = "application")
+    private List<InStudyMode> stdMode;
 
     @Embedded
     private InMetadata metadata;
 
+	
     @Override
     public Long getId() {
         return id;
@@ -627,5 +633,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public Class<?> getInterfaceClass() {
         return InIntakeApplication.class;
     }
+
+	@Override
+	public List<InStudyMode> getStudyMode() {
+		return stdMode;
+	}
+
+	@Override
+	public void setStudyMode(List<InStudyMode> stdMode) {
+		this.stdMode = stdMode;
+		
+	}
 
 }

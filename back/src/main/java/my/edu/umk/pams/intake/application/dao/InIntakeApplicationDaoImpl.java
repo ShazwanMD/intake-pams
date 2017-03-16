@@ -7,6 +7,9 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InStudyMode;
+import my.edu.umk.pams.intake.policy.model.InStudyModeType;
+
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -238,7 +241,19 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (List<InAddress>) query.list();
     }
-
+    
+   /* @Override
+   public List<InStudyMode> findStudyModeTypes(InStudyModeType studymodeType) {
+		
+	} {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InStudyMode p where " +
+                "p.application = :application ");
+        query.setEntity("application", findStudyModeType(null, null));
+        
+        
+    	}
+*/
     // ====================================================================================================
     // HELPER
     // ====================================================================================================
@@ -457,4 +472,18 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(address);
     }
+
+	@Override
+	public InStudyMode findStudyModeType(InStudyModeType studymodeType, InIntakeApplication application) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<InStudyMode> findStudyModeTypes(InStudyModeType studymodeType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
