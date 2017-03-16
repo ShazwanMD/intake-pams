@@ -13,6 +13,6 @@ public class SchemaExporter {
         HibernateExporterUtil exporter = new HibernateExporterUtil(
                 "org.hibernate.dialect.PostgreSQL82Dialect",
                 "my.edu.umk.pams");
-        exporter.setGenerateDropQueries(true);
+        exporter.setGenerateDropQueries(false);
         exporter.export(new File("create.sql"));
     }}

@@ -1,1488 +1,1519 @@
-
-CREATE TABLE IN_ACTR (
-  ID INT8 NOT NULL,
-  ACTOR_TYPE INT4,
-  EMAIL VARCHAR(255),
-  FAX VARCHAR(255),
-  IDENTITY_NO VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  MOBILE VARCHAR(255),
-  NAME VARCHAR(255) NOT NULL,
-  PHONE VARCHAR(255),
-  PRIMARY KEY (ID)
+create table IN_ACTR (
+  ID int8 not null,
+  ACTOR_TYPE int4,
+  EMAIL varchar(255),
+  FAX varchar(255),
+  IDENTITY_NO varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  MOBILE varchar(255),
+  NAME varchar(255) not null,
+  PHONE varchar(255),
+  primary key (ID)
 );
 
-CREATE TABLE IN_ADDR (
-  ID INT8 NOT NULL,
-  ADDRESS1 VARCHAR(255) NOT NULL,
-  ADDRESS2 VARCHAR(255),
-  ADDRESS3 VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  POSTCODE VARCHAR(255),
-  ADDRESS_TYPE INT4,
-  APPLICATION_ID INT8,
-  COUNTRY_CODE_ID INT8,
-  DUN_CODE_ID INT8,
-  PARLIAMENT_CODE_ID INT8,
-  STATE_CODE_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_ADDR (
+  ID int8 not null,
+  ADDRESS1 varchar(255) not null,
+  ADDRESS2 varchar(255),
+  ADDRESS3 varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  POSTCODE varchar(255),
+  ADDRESS_TYPE int4,
+  APPLICATION_ID int8,
+  COUNTRY_CODE_ID int8,
+  DUN_CODE_ID int8,
+  PARLIAMENT_CODE_ID int8,
+  STATE_CODE_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_APCN (
-  ID INT8 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_APCN (
+  ID int8 not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_ATMT (
-  ID INT8 NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  NAME VARCHAR(255) NOT NULL,
-  URL VARCHAR(255) NOT NULL,
-  APPLICATION_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_ATMT (
+  ID int8 not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  URL varchar(255) not null,
+  APPLICATION_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_AUDT (
-  ID INT8 NOT NULL,
-  CLASS_NAME VARCHAR(255) NOT NULL,
-  MESSAGE VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  OBJECT_ID INT8 NOT NULL,
-  USER_ID INT8 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_AUDT (
+  ID int8 not null,
+  CLASS_NAME varchar(255) not null,
+  MESSAGE varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  OBJECT_ID int8 not null,
+  USER_ID int8 not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_BANK_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  IBG_CODE VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  NAME VARCHAR(255) NOT NULL,
-  SWIFT_CODE VARCHAR(255) NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_BANK_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  IBG_CODE varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  SWIFT_CODE varchar(255) not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_CITY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  STATE_CODE_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_CITY_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  STATE_CODE_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_CLGE_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  CAMPUS_ID INT8 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_CLGE_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  CAMPUS_ID int8 not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_CMCY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_CMCY_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_CMPS_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_CMPS_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_CNFG (
-  ID INT8 NOT NULL,
-  DESCRIPTION VARCHAR(255),
-  CONFIG_KEY VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  CONFIG_VALUE VARCHAR(255),
-  CONFIG_VALUE_BYTEA BYTEA,
-  CONFIG_VALUE_DOUBLE FLOAT8,
-  CONFIG_VALUE_LONG INT8,
-  PRIMARY KEY (ID)
+create table IN_CNDT (
+  ID int8 not null,
+  EMAIL varchar(255) not null,
+  IDENTITY_NO varchar(255) not null,
+  MATRIC_NO varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  STATUS int4 not null,
+  APPLICANT_ID int8,
+  OFFERING_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_CNTC (
-  ID INT8 NOT NULL,
-  IDENTITY_NO VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  NAME VARCHAR(255) NOT NULL,
-  SOMETHING VARCHAR(255),
-  CONTACT_TYPE INT4,
-  APPLICATION_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_CNFG (
+  ID int8 not null,
+  DESCRIPTION varchar(255),
+  CONFIG_KEY varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  CONFIG_VALUE varchar(255),
+  CONFIG_VALUE_BYTEA bytea,
+  CONFIG_VALUE_DOUBLE float8,
+  CONFIG_VALUE_LONG int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_CNTY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_CNTC (
+  ID int8 not null,
+  IDENTITY_NO varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  SOMETHING varchar(255),
+  CONTACT_TYPE int4,
+  APPLICATION_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_DBLY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_CNTY_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_DPCY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_DBLY_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_DSCT_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_DPCY_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_DUN_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_DSCT_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_EMAL_QUEU (
-  ID INT8 NOT NULL,
-  EMAIL_BCC VARCHAR(255),
-  BODY TEXT,
-  EMAIL_CC VARCHAR(255),
-  CODE VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  QUEUE_STATUS INT4,
-  RETRY_COUNT INT4,
-  SUBJECT VARCHAR(255),
-  EMAIL_TO VARCHAR(255),
-  PRIMARY KEY (ID)
+create table IN_DUN_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_EMIL_TMPT (
-  ID INT8 NOT NULL,
-  BCC_ADDRESS VARCHAR(255),
-  CC_ADDRESS VARCHAR(255),
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  SUBJECT VARCHAR(255),
+create table IN_EMAL_QUEU (
+  ID int8 not null,
+  EMAIL_BCC varchar(255),
+  BODY text,
+  EMAIL_CC varchar(255),
+  CODE varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  QUEUE_STATUS int4,
+  RETRY_COUNT int4,
+  SUBJECT varchar(255),
+  EMAIL_TO varchar(255),
+  primary key (ID)
+);
+
+create table IN_EMIL_TMPT (
+  ID int8 not null,
+  BCC_ADDRESS varchar(255),
+  CC_ADDRESS varchar(255),
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  SUBJECT varchar(255),
   TEMPLATE TEXT,
-  TO_ADDRESS VARCHAR(255),
-  PRIMARY KEY (ID)
+  TO_ADDRESS varchar(255),
+  primary key (ID)
 );
 
-CREATE TABLE IN_EMPT (
-  ID INT8 NOT NULL,
-  ACTIVE BOOLEAN NOT NULL,
-  EMPLOYER VARCHAR(255) NOT NULL,
-  END_DATE TIMESTAMP NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  START_DATE TIMESTAMP NOT NULL,
-  APPLICATION_ID INT8,
-  FIELD_CODE_ID INT8,
-  LEVEL_CODE_ID INT8,
-  SECTOR_CODE_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_EMPT (
+  ID int8 not null,
+  ACTIVE boolean not null,
+  EMPLOYER varchar(255) not null,
+  END_DATE timestamp not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  START_DATE timestamp not null,
+  APPLICATION_ID int8,
+  FIELD_CODE_ID int8,
+  LEVEL_CODE_ID int8,
+  SECTOR_CODE_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_EMPT_FILD_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_EMPT_FILD_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_EMPT_LEVL_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_EMPT_LEVL_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_EMPT_SCTR_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(2),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_EMPT_SCTR_CODE (
+  ID int8 not null,
+  CODE varchar(2),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_ETNY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_ETNY_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_FCTY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_FCTY_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_FILD_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_FILD_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_GNDR_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(1),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_GNDR_CODE (
+  ID int8 not null,
+  CODE varchar(1),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_GRDE_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  ORDINAL INT4 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_GRDE_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  ORDINAL int4 not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_GRDN (
-  ID INT8 NOT NULL,
-  IDENTITY_NO VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  NAME VARCHAR(255) NOT NULL,
-  SALARY NUMERIC(19, 2) NOT NULL,
-  GUARDIAN_TYPE INT4,
-  APPLICATION_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_GRDN (
+  ID int8 not null,
+  IDENTITY_NO varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  SALARY numeric(19, 2) not null,
+  GUARDIAN_TYPE int4,
+  APPLICATION_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_GROP (
-  ID INT8 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_GROP (
+  ID int8 not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_GROP_MMBR (
-  ID INT8 NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  GROUP_ID INT8,
-  PRINCIPAL_ID INT8,
-  PRIMARY KEY (GROUP_ID, PRINCIPAL_ID)
+create table IN_GROP_MMBR (
+  ID int8 not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  GROUP_ID int8,
+  PRINCIPAL_ID int8,
+  primary key (GROUP_ID, PRINCIPAL_ID)
 );
 
-CREATE TABLE IN_GRTR (
-  ID INT8 NOT NULL,
-  IDENTITY_NO VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  NAME VARCHAR(255) NOT NULL,
-  GUARANTOR_TYPE INT4,
-  APPLICATION_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_GRTR (
+  ID int8 not null,
+  IDENTITY_NO varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  GUARANTOR_TYPE int4,
+  APPLICATION_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_INTK (
-  ID INT8 NOT NULL,
-  AUDIT_NO VARCHAR(255) NOT NULL,
-  CANCEL_COMMENT VARCHAR(255),
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  END_DATE TIMESTAMP NOT NULL,
-  AV_TS TIMESTAMP,
-  AV_ID INT8,
-  CL_ID INT8,
-  CL_TS TIMESTAMP,
-  CK_TS TIMESTAMP,
-  CK_ID INT8,
-  DT_TS TIMESTAMP,
-  DT_ID INT8,
-  EV_TS TIMESTAMP,
-  EV_ID INT8,
-  PR_TS TIMESTAMP,
-  PR_ID INT8,
-  PS_TS TIMESTAMP,
-  PS_ID INT8,
-  RG_TS TIMESTAMP,
-  RG_ID INT8,
-  RM_TS TIMESTAMP,
-  RM_ID INT8,
-  RQ_TS TIMESTAMP,
-  RQ_ID INT8,
-  SL_TS TIMESTAMP,
-  SL_ID INT8,
-  FD_ST INT4,
-  UP_TS TIMESTAMP,
-  UP_ID INT8,
-  UV_TS TIMESTAMP,
-  UV_ID INT8,
-  VF_TS TIMESTAMP,
-  VF_ID INT8,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PROJECTION INT4,
-  REFERENCE_NO VARCHAR(255) NOT NULL,
-  REMOVE_COMMENT VARCHAR(255),
-  SOURCE_NO VARCHAR(255) NOT NULL,
-  START_DATE TIMESTAMP NOT NULL,
-  LEVEL_ID INT8 NOT NULL,
-  SESSION_ID INT8 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_INTK (
+  ID int8 not null,
+  AUDIT_NO varchar(255) not null,
+  CANCEL_COMMENT varchar(255),
+  DESCRIPTION varchar(255) not null,
+  END_DATE timestamp not null,
+  AV_TS timestamp,
+  AV_ID int8,
+  CL_ID int8,
+  CL_TS timestamp,
+  CK_TS timestamp,
+  CK_ID int8,
+  DT_TS timestamp,
+  DT_ID int8,
+  EV_TS timestamp,
+  EV_ID int8,
+  PR_TS timestamp,
+  PR_ID int8,
+  PS_TS timestamp,
+  PS_ID int8,
+  RG_TS timestamp,
+  RG_ID int8,
+  RM_TS timestamp,
+  RM_ID int8,
+  RQ_TS timestamp,
+  RQ_ID int8,
+  SL_TS timestamp,
+  SL_ID int8,
+  FD_ST int4,
+  UP_TS timestamp,
+  UP_ID int8,
+  UV_TS timestamp,
+  UV_ID int8,
+  VF_TS timestamp,
+  VF_ID int8,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  PROJECTION int4,
+  REFERENCE_NO varchar(255) not null,
+  REMOVE_COMMENT varchar(255),
+  SOURCE_NO varchar(255) not null,
+  START_DATE timestamp not null,
+  LEVEL_ID int8 not null,
+  SESSION_ID int8 not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_INTK_APLN (
-  ID INT8 NOT NULL,
-  ACCEPTED BOOLEAN,
-  ACCOUNT_NO VARCHAR(255),
-  AGE INT4,
-  BATCH_NO VARCHAR(255),
-  BID_RESPONSE INT4,
-  BID_STATUS INT4,
-  BID_TYPE INT4 NOT NULL,
-  CREDENTIAL_NO VARCHAR(255),
-  EMAIL VARCHAR(255) NOT NULL,
-  FAX VARCHAR(255),
-  MATRIC_NO VARCHAR(255),
-  MERIT NUMERIC(19, 2) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  NAME VARCHAR(255) NOT NULL,
-  OKU_NO VARCHAR(255),
-  PAID BOOLEAN,
-  PAYMENT_SOURCE_NO VARCHAR(255),
-  PHONE VARCHAR(255),
-  RANK INT4 NOT NULL,
-  REASON VARCHAR(255),
-  REFERENCE_NO VARCHAR(255) NOT NULL,
-  SCHOOL_BATCH INT4,
-  SCHOOL_NAME VARCHAR(255),
-  APPLICANT_ID INT8,
-  BANK_CODE_ID INT8,
-  DEPENDENCY_CODE_ID INT8,
-  DISABILITY_CODE_ID INT8,
-  ETHNICITY_CODE_ID INT8,
-  GENDER_CODE_ID INT8,
-  INTAKE_ID INT8,
-  MARITAL_CODE_ID INT8,
-  NATIONALITY_CODE_ID INT8,
-  RACE_CODE_ID INT8,
-  RELIGION_CODE_ID INT8,
-  RESIDENCY_CODE_ID INT8,
-  SCHOOL_CODE_ID INT8,
-  SELECTION_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_INTK_APLN (
+  ID int8 not null,
+  ACCEPTED boolean,
+  ACCOUNT_NO varchar(255),
+  AGE int4,
+  BATCH_NO varchar(255),
+  BID_RESPONSE int4,
+  BID_STATUS int4,
+  BID_TYPE int4 not null,
+  CREDENTIAL_NO varchar(255),
+  EMAIL varchar(255) not null,
+  FAX varchar(255),
+  MATRIC_NO varchar(255),
+  MERIT numeric(19, 2) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  OKU_NO varchar(255),
+  PAID boolean,
+  PAYMENT_SOURCE_NO varchar(255),
+  PHONE varchar(255),
+  RANK int4 not null,
+  REASON varchar(255),
+  REFERENCE_NO varchar(255) not null,
+  SCHOOL_BATCH int4,
+  SCHOOL_NAME varchar(255),
+  APPLICANT_ID int8,
+  BANK_CODE_ID int8,
+  DEPENDENCY_CODE_ID int8,
+  DISABILITY_CODE_ID int8,
+  ETHNICITY_CODE_ID int8,
+  GENDER_CODE_ID int8,
+  INTAKE_ID int8,
+  MARITAL_CODE_ID int8,
+  NATIONALITY_CODE_ID int8,
+  RACE_CODE_ID int8,
+  RELIGION_CODE_ID int8,
+  RESIDENCY_CODE_ID int8,
+  SCHOOL_CODE_ID int8,
+  SELECTION_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_INTK_LEVL (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_INTK_LEVL (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_INTK_SESN (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  CURRENT_ BOOLEAN NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_INTK_SESN (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  CURRENT_ boolean not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_INVT (
-  ID INT8 NOT NULL,
-  END_DATE TIMESTAMP NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  START_DATE TIMESTAMP NOT NULL,
-  APPLICATION_ID INT8,
-  LEVEL_CODE_ID INT8,
-  TITLE_CODE_ID INT8,
-  TYPE_CODE_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_INVT (
+  ID int8 not null,
+  END_DATE timestamp not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  START_DATE timestamp not null,
+  APPLICATION_ID int8,
+  LEVEL_CODE_ID int8,
+  TITLE_CODE_ID int8,
+  TYPE_CODE_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_INVT_LEVL_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  TYPE_CODE_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_INVT_LEVL_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  TYPE_CODE_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_INVT_TTLE_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_INVT_TTLE_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_INVT_TYPE_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_INVT_TYPE_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_MODL (
-  ID INT8 NOT NULL,
-  CANONICAL_CODE VARCHAR(255) NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255),
-  ENABLED BOOLEAN,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  ORDINAL INT4 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_MODL (
+  ID int8 not null,
+  CANONICAL_CODE varchar(255) not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255),
+  ENABLED boolean,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  ORDINAL int4 not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_MRTL_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_MRTL_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_NTLY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_NTLY_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_PCPL (
-  ID INT8 NOT NULL,
-  ENABLED BOOLEAN NOT NULL,
-  LOCKED BOOLEAN NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  NAME VARCHAR(255) NOT NULL,
-  PRINCIPAL_TYPE INT4,
-  PRIMARY KEY (ID)
+create table IN_PCPL (
+  ID int8 not null,
+  ENABLED boolean not null,
+  LOCKED boolean not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  PRINCIPAL_TYPE int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_PCPL_ROLE (
-  ID INT8 NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  ROLE_TYPE INT4,
-  PRINCIPAL_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_PCPL_ROLE (
+  ID int8 not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  ROLE_TYPE int4,
+  PRINCIPAL_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_PLMT_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_PLMT_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_PRGM_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_PRGM_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_PRGM_OFRG (
-  ID INT8 NOT NULL,
-  GENERAL_CRITERIA VARCHAR(255),
-  INTERVIEW BOOLEAN NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PROJECTION INT4,
-  SPECIFIC_CRITERIA VARCHAR(255),
-  INTAKE_ID INT8,
-  PROGRAM_CODE_ID INT8,
-  STUDY_CENTER_CODE_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_PRGM_OFRG (
+  ID int8 not null,
+  GENERAL_CRITERIA varchar(255),
+  INTERVIEW boolean not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  PROJECTION int4,
+  SPECIFIC_CRITERIA varchar(255),
+  INTAKE_ID int8,
+  PROGRAM_CODE_ID int8,
+  STUDY_CENTER_CODE_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_RACE_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_RACE_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_RFRN_NO (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  CURRENT_VALUE INT4,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  INCREMENT_VALUE INT4,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PREFIX VARCHAR(255),
-  REFERENCE_FORMAT VARCHAR(255),
-  SEQUENCE_FORMAT VARCHAR(255),
-  PRIMARY KEY (ID)
+create table IN_RFRN_NO (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  CURRENT_VALUE int4,
+  DESCRIPTION varchar(255) not null,
+  INCREMENT_VALUE int4,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  PREFIX varchar(255),
+  REFERENCE_FORMAT varchar(255),
+  SEQUENCE_FORMAT varchar(255),
+  primary key (ID)
 );
 
-CREATE TABLE IN_RLGN_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_RLGN_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_RSCY_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_RSCY_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_SBJT_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_SBJT_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_SCHL_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_SCHL_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_SMDL (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255),
-  DESCRIPTION VARCHAR(255),
-  ENABLED BOOLEAN,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  ORDINAL INT4,
-  MODULE_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_SMDL (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  ENABLED boolean,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  ORDINAL int4,
+  MODULE_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_STAF (
-  ID INT8 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_STAF (
+  ID int8 not null,
+  primary key (ID)
 );
 
-CREATE TABLE IN_STDY_CNTR_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_STDY_CNTR_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_STTE_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255),
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  COUNTRY_CODE_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_STTE_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  COUNTRY_CODE_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_USER (
-  EMAIL VARCHAR(255) NOT NULL,
-  PASSWORD VARCHAR(255),
-  REAL_NAME VARCHAR(255) NOT NULL,
-  ID INT8 NOT NULL,
-  ACTOR_ID INT8,
-  PRIMARY KEY (ID)
+create table IN_USER (
+  EMAIL varchar(255) not null,
+  PASSWORD varchar(255),
+  REAL_NAME varchar(255) not null,
+  TIPU_NAME varchar(255),
+  ID int8 not null,
+  ACTOR_ID int8,
+  primary key (ID)
 );
 
-CREATE TABLE IN_VENU_CODE (
-  ID INT8 NOT NULL,
-  CODE VARCHAR(255) NOT NULL,
-  DESCRIPTION VARCHAR(255) NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  PRIMARY KEY (ID)
+create table IN_VENU_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
 );
 
-CREATE TABLE IN_WTCH (
-  ID INT8 NOT NULL,
-  C_TS TIMESTAMP,
-  C_ID INT8,
-  D_TS TIMESTAMP,
-  D_ID INT8,
-  M_TS TIMESTAMP,
-  M_ID INT8,
-  M_ST INT4,
-  OBJECT_CLASS VARCHAR(255) NOT NULL,
-  OBJECT_ID INT8 NOT NULL,
-  USER_ID INT8 NOT NULL,
-  PRIMARY KEY (ID)
+create table IN_WTCH (
+  ID int8 not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  OBJECT_CLASS varchar(255) not null,
+  OBJECT_ID int8 not null,
+  USER_ID int8 not null,
+  primary key (ID)
 );
 
-ALTER TABLE IN_ACTR
-  ADD CONSTRAINT UC_IN_ACTR_1 UNIQUE (IDENTITY_NO);
+alter table IN_ACTR
+  add constraint uc_IN_ACTR_1 unique (IDENTITY_NO);
 
-ALTER TABLE IN_ADDR
-  ADD CONSTRAINT FKA01A32CB37A6AAA6
-FOREIGN KEY (APPLICATION_ID)
-REFERENCES IN_INTK_APLN;
+alter table IN_ADDR
+  add constraint FKA01A32CB37A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
 
-ALTER TABLE IN_ADDR
-  ADD CONSTRAINT FKA01A32CB62D8843A
-FOREIGN KEY (COUNTRY_CODE_ID)
-REFERENCES IN_CNTY_CODE;
+alter table IN_ADDR
+  add constraint FKA01A32CB62D8843A
+foreign key (COUNTRY_CODE_ID)
+references IN_CNTY_CODE;
 
-ALTER TABLE IN_ADDR
-  ADD CONSTRAINT FKA01A32CB6AB11488
-FOREIGN KEY (DUN_CODE_ID)
-REFERENCES IN_DUN_CODE;
-
-ALTER TABLE IN_ADDR
-  ADD CONSTRAINT FKA01A32CB29B0CFC5
-FOREIGN KEY (PARLIAMENT_CODE_ID)
-REFERENCES IN_CNTY_CODE;
+alter table IN_ADDR
+  add constraint FKA01A32CB6AB11488
+foreign key (DUN_CODE_ID)
+references IN_DUN_CODE;
+
+alter table IN_ADDR
+  add constraint FKA01A32CBED786CA
+foreign key (PARLIAMENT_CODE_ID)
+references IN_PLMT_CODE;
+
+alter table IN_ADDR
+  add constraint FKA01A32CBAA50E0F0
+foreign key (STATE_CODE_ID)
+references IN_STTE_CODE;
+
+alter table IN_APCN
+  add constraint FKA01A5FB4AB3274F6
+foreign key (ID)
+references IN_ACTR;
 
-ALTER TABLE IN_ADDR
-  ADD CONSTRAINT FKA01A32CBAA50E0F0
-FOREIGN KEY (STATE_CODE_ID)
-REFERENCES IN_STTE_CODE;
+alter table IN_ATMT
+  add constraint FKA01A6FF437A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
 
-ALTER TABLE IN_APCN
-  ADD CONSTRAINT FKA01A5FB4AB3274F6
-FOREIGN KEY (ID)
-REFERENCES IN_ACTR;
+alter table IN_BANK_CODE
+  add constraint uc_IN_BANK_CODE_1 unique (CODE);
 
-ALTER TABLE IN_ATMT
-  ADD CONSTRAINT FKA01A6FF437A6AAA6
-FOREIGN KEY (APPLICATION_ID)
-REFERENCES IN_INTK_APLN;
+alter table IN_BANK_CODE
+  add constraint uc_IN_BANK_CODE_2 unique (IBG_CODE);
 
-ALTER TABLE IN_BANK_CODE
-  ADD CONSTRAINT UC_IN_BANK_CODE_1 UNIQUE (CODE);
+alter table IN_BANK_CODE
+  add constraint uc_IN_BANK_CODE_3 unique (SWIFT_CODE);
 
-ALTER TABLE IN_BANK_CODE
-  ADD CONSTRAINT UC_IN_BANK_CODE_2 UNIQUE (IBG_CODE);
+alter table IN_CITY_CODE
+  add constraint uc_IN_CITY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_BANK_CODE
-  ADD CONSTRAINT UC_IN_BANK_CODE_3 UNIQUE (SWIFT_CODE);
+alter table IN_CITY_CODE
+  add constraint FK9C7B91A7AA50E0F0
+foreign key (STATE_CODE_ID)
+references IN_STTE_CODE;
 
-ALTER TABLE IN_CITY_CODE
-  ADD CONSTRAINT UC_IN_CITY_CODE_1 UNIQUE (CODE);
+alter table IN_CLGE_CODE
+  add constraint uc_IN_CLGE_CODE_1 unique (CODE);
 
-ALTER TABLE IN_CITY_CODE
-  ADD CONSTRAINT FK9C7B91A7AA50E0F0
-FOREIGN KEY (STATE_CODE_ID)
-REFERENCES IN_STTE_CODE;
+alter table IN_CLGE_CODE
+  add constraint FK24D298B3354D5F4
+foreign key (CAMPUS_ID)
+references IN_CMPS_CODE;
 
-ALTER TABLE IN_CLGE_CODE
-  ADD CONSTRAINT UC_IN_CLGE_CODE_1 UNIQUE (CODE);
+alter table IN_CMCY_CODE
+  add constraint uc_IN_CMCY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_CLGE_CODE
-  ADD CONSTRAINT FK24D298B3354D5F4
-FOREIGN KEY (CAMPUS_ID)
-REFERENCES IN_CMPS_CODE;
+alter table IN_CMPS_CODE
+  add constraint uc_IN_CMPS_CODE_1 unique (CODE);
 
-ALTER TABLE IN_CMCY_CODE
-  ADD CONSTRAINT UC_IN_CMCY_CODE_1 UNIQUE (CODE);
+alter table IN_CNDT
+  add constraint FKA01B4115BDADE6E0
+foreign key (APPLICANT_ID)
+references IN_APCN;
 
-ALTER TABLE IN_CMPS_CODE
-  ADD CONSTRAINT UC_IN_CMPS_CODE_1 UNIQUE (CODE);
+alter table IN_CNDT
+  add constraint FKA01B4115E4CD51E5
+foreign key (OFFERING_ID)
+references IN_STTE_CODE;
 
-ALTER TABLE IN_CNTC
-  ADD CONSTRAINT FKA01B42F437A6AAA6
-FOREIGN KEY (APPLICATION_ID)
-REFERENCES IN_INTK_APLN;
+alter table IN_CNTC
+  add constraint FKA01B42F437A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
 
-ALTER TABLE IN_CNTY_CODE
-  ADD CONSTRAINT UC_IN_CNTY_CODE_1 UNIQUE (CODE);
+alter table IN_CNTY_CODE
+  add constraint uc_IN_CNTY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_DBLY_CODE
-  ADD CONSTRAINT UC_IN_DBLY_CODE_1 UNIQUE (CODE);
+alter table IN_DBLY_CODE
+  add constraint uc_IN_DBLY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_DPCY_CODE
-  ADD CONSTRAINT UC_IN_DPCY_CODE_1 UNIQUE (CODE);
+alter table IN_DPCY_CODE
+  add constraint uc_IN_DPCY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_DSCT_CODE
-  ADD CONSTRAINT UC_IN_DSCT_CODE_1 UNIQUE (CODE);
+alter table IN_DSCT_CODE
+  add constraint uc_IN_DSCT_CODE_1 unique (CODE);
 
-ALTER TABLE IN_DUN_CODE
-  ADD CONSTRAINT UC_IN_DUN_CODE_1 UNIQUE (CODE);
+alter table IN_DUN_CODE
+  add constraint uc_IN_DUN_CODE_1 unique (CODE);
 
-ALTER TABLE IN_EMAL_QUEU
-  ADD CONSTRAINT UC_IN_EMAL_QUEU_1 UNIQUE (CODE);
+alter table IN_EMAL_QUEU
+  add constraint uc_IN_EMAL_QUEU_1 unique (CODE);
 
-ALTER TABLE IN_EMIL_TMPT
-  ADD CONSTRAINT UC_IN_EMIL_TMPT_1 UNIQUE (CODE);
+alter table IN_EMIL_TMPT
+  add constraint uc_IN_EMIL_TMPT_1 unique (CODE);
 
-ALTER TABLE IN_EMPT
-  ADD CONSTRAINT FKA01C278637A6AAA6
-FOREIGN KEY (APPLICATION_ID)
-REFERENCES IN_INTK_APLN;
+alter table IN_EMPT
+  add constraint FKA01C278637A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
 
-ALTER TABLE IN_EMPT
-  ADD CONSTRAINT FKA01C27869429776
-FOREIGN KEY (FIELD_CODE_ID)
-REFERENCES IN_EMPT_FILD_CODE;
+alter table IN_EMPT
+  add constraint FKA01C27869429776
+foreign key (FIELD_CODE_ID)
+references IN_EMPT_FILD_CODE;
 
-ALTER TABLE IN_EMPT
-  ADD CONSTRAINT FKA01C2786A87C388A
-FOREIGN KEY (LEVEL_CODE_ID)
-REFERENCES IN_EMPT_LEVL_CODE;
+alter table IN_EMPT
+  add constraint FKA01C2786A87C388A
+foreign key (LEVEL_CODE_ID)
+references IN_EMPT_LEVL_CODE;
 
-ALTER TABLE IN_EMPT
-  ADD CONSTRAINT FKA01C2786665804A0
-FOREIGN KEY (SECTOR_CODE_ID)
-REFERENCES IN_EMPT_SCTR_CODE;
+alter table IN_EMPT
+  add constraint FKA01C2786665804A0
+foreign key (SECTOR_CODE_ID)
+references IN_EMPT_SCTR_CODE;
 
-ALTER TABLE IN_EMPT_FILD_CODE
-  ADD CONSTRAINT UC_IN_EMPT_FILD_CODE_1 UNIQUE (CODE);
-
-ALTER TABLE IN_EMPT_LEVL_CODE
-  ADD CONSTRAINT UC_IN_EMPT_LEVL_CODE_1 UNIQUE (CODE);
+alter table IN_EMPT_FILD_CODE
+  add constraint uc_IN_EMPT_FILD_CODE_1 unique (CODE);
 
-ALTER TABLE IN_EMPT_SCTR_CODE
-  ADD CONSTRAINT UC_IN_EMPT_SCTR_CODE_1 UNIQUE (CODE);
+alter table IN_EMPT_LEVL_CODE
+  add constraint uc_IN_EMPT_LEVL_CODE_1 unique (CODE);
 
-ALTER TABLE IN_ETNY_CODE
-  ADD CONSTRAINT UC_IN_ETNY_CODE_1 UNIQUE (CODE);
-
-ALTER TABLE IN_FCTY_CODE
-  ADD CONSTRAINT UC_IN_FCTY_CODE_1 UNIQUE (CODE);
-
-ALTER TABLE IN_FILD_CODE
-  ADD CONSTRAINT UC_IN_FILD_CODE_1 UNIQUE (CODE);
-
-ALTER TABLE IN_GNDR_CODE
-  ADD CONSTRAINT UC_IN_GNDR_CODE_1 UNIQUE (CODE);
-
-ALTER TABLE IN_GRDE_CODE
-  ADD CONSTRAINT UC_IN_GRDE_CODE_1 UNIQUE (CODE);
-
-ALTER TABLE IN_GRDE_CODE
-  ADD CONSTRAINT UC_IN_GRDE_CODE_2 UNIQUE (ORDINAL);
-
-ALTER TABLE IN_GRDN
-  ADD CONSTRAINT FKA01D218F37A6AAA6
-FOREIGN KEY (APPLICATION_ID)
-REFERENCES IN_INTK_APLN;
-
-ALTER TABLE IN_GROP
-  ADD CONSTRAINT FKA01D22E65E0DF3AF
-FOREIGN KEY (ID)
-REFERENCES IN_PCPL;
-
-ALTER TABLE IN_GROP_MMBR
-  ADD CONSTRAINT FK7CA19FA95ACED640
-FOREIGN KEY (GROUP_ID)
-REFERENCES IN_GROP;
-
-ALTER TABLE IN_GROP_MMBR
-  ADD CONSTRAINT FK7CA19FA9944FD160
-FOREIGN KEY (PRINCIPAL_ID)
-REFERENCES IN_PCPL;
-
-ALTER TABLE IN_GRTR
-  ADD CONSTRAINT FKA01D238337A6AAA6
-FOREIGN KEY (APPLICATION_ID)
-REFERENCES IN_INTK_APLN;
-
-ALTER TABLE IN_INTK
-  ADD CONSTRAINT UC_IN_INTK_1 UNIQUE (AUDIT_NO);
-
-ALTER TABLE IN_INTK
-  ADD CONSTRAINT UC_IN_INTK_2 UNIQUE (CANCEL_COMMENT);
-
-ALTER TABLE IN_INTK
-  ADD CONSTRAINT UC_IN_INTK_3 UNIQUE (DESCRIPTION);
-
-ALTER TABLE IN_INTK
-  ADD CONSTRAINT UC_IN_INTK_4 UNIQUE (REFERENCE_NO);
-
-ALTER TABLE IN_INTK
-  ADD CONSTRAINT UC_IN_INTK_5 UNIQUE (REMOVE_COMMENT);
-
-ALTER TABLE IN_INTK
-  ADD CONSTRAINT UC_IN_INTK_6 UNIQUE (SOURCE_NO);
-
-ALTER TABLE IN_INTK
-  ADD CONSTRAINT FKA01DFD368FDB7C8
-FOREIGN KEY (LEVEL_ID)
-REFERENCES IN_INTK_LEVL;
-
-ALTER TABLE IN_INTK
-  ADD CONSTRAINT FKA01DFD36BD0FD208
-FOREIGN KEY (SESSION_ID)
-REFERENCES IN_INTK_SESN;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT UC_IN_INTK_APLN_1 UNIQUE (REFERENCE_NO);
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5ABDADE6E0
-FOREIGN KEY (APPLICANT_ID)
-REFERENCES IN_APCN;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5AA35FEC0
-FOREIGN KEY (BANK_CODE_ID)
-REFERENCES IN_BANK_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5AE944DD1E
-FOREIGN KEY (DEPENDENCY_CODE_ID)
-REFERENCES IN_DPCY_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5A1A001E40
-FOREIGN KEY (DISABILITY_CODE_ID)
-REFERENCES IN_DBLY_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5A8BB6434C
-FOREIGN KEY (ETHNICITY_CODE_ID)
-REFERENCES IN_ETNY_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5A481F1E8A
-FOREIGN KEY (GENDER_CODE_ID)
-REFERENCES IN_GNDR_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5A3AD22420
-FOREIGN KEY (INTAKE_ID)
-REFERENCES IN_INTK;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5A4F03DAF6
-FOREIGN KEY (MARITAL_CODE_ID)
-REFERENCES IN_MRTL_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5AACBE2306
-FOREIGN KEY (NATIONALITY_CODE_ID)
-REFERENCES IN_NTLY_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5AEE5BDEA
-FOREIGN KEY (RACE_CODE_ID)
-REFERENCES IN_RACE_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5AD47AB42A
-FOREIGN KEY (RELIGION_CODE_ID)
-REFERENCES IN_RLGN_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5A60E65A82
-FOREIGN KEY (RESIDENCY_CODE_ID)
-REFERENCES IN_RSCY_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5A4CB929F0
-FOREIGN KEY (SCHOOL_CODE_ID)
-REFERENCES IN_SCHL_CODE;
-
-ALTER TABLE IN_INTK_APLN
-  ADD CONSTRAINT FK5974F5A8B4C0DB2
-FOREIGN KEY (SELECTION_ID)
-REFERENCES IN_PRGM_OFRG;
+alter table IN_EMPT_SCTR_CODE
+  add constraint uc_IN_EMPT_SCTR_CODE_1 unique (CODE);
 
-ALTER TABLE IN_INTK_LEVL
-  ADD CONSTRAINT UC_IN_INTK_LEVL_1 UNIQUE (CODE);
-
-ALTER TABLE IN_INTK_SESN
-  ADD CONSTRAINT UC_IN_INTK_SESN_1 UNIQUE (CODE);
-
-ALTER TABLE IN_INVT
-  ADD CONSTRAINT FKA01DFD7D37A6AAA6
-FOREIGN KEY (APPLICATION_ID)
-REFERENCES IN_INTK_APLN;
-
-ALTER TABLE IN_INVT
-  ADD CONSTRAINT FKA01DFD7D703951F5
-FOREIGN KEY (LEVEL_CODE_ID)
-REFERENCES IN_INVT_LEVL_CODE;
+alter table IN_ETNY_CODE
+  add constraint uc_IN_ETNY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_INVT
-  ADD CONSTRAINT FKA01DFD7D82AA379D
-FOREIGN KEY (TITLE_CODE_ID)
-REFERENCES IN_INVT_TTLE_CODE;
+alter table IN_FCTY_CODE
+  add constraint uc_IN_FCTY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_INVT
-  ADD CONSTRAINT FKA01DFD7DACA22BBD
-FOREIGN KEY (TYPE_CODE_ID)
-REFERENCES IN_INVT_TYPE_CODE;
-
-ALTER TABLE IN_INVT_LEVL_CODE
-  ADD CONSTRAINT UC_IN_INVT_LEVL_CODE_1 UNIQUE (CODE);
+alter table IN_FILD_CODE
+  add constraint uc_IN_FILD_CODE_1 unique (CODE);
+
+alter table IN_GNDR_CODE
+  add constraint uc_IN_GNDR_CODE_1 unique (CODE);
+
+alter table IN_GRDE_CODE
+  add constraint uc_IN_GRDE_CODE_1 unique (CODE);
 
-ALTER TABLE IN_INVT_LEVL_CODE
-  ADD CONSTRAINT FK8FD6A1FBACA22BBD
-FOREIGN KEY (TYPE_CODE_ID)
-REFERENCES IN_INVT_TYPE_CODE;
-
-ALTER TABLE IN_INVT_TTLE_CODE
-  ADD CONSTRAINT UC_IN_INVT_TTLE_CODE_1 UNIQUE (CODE);
+alter table IN_GRDE_CODE
+  add constraint uc_IN_GRDE_CODE_2 unique (ORDINAL);
+
+alter table IN_GRDN
+  add constraint FKA01D218F37A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
+
+alter table IN_GROP
+  add constraint FKA01D22E65E0DF3AF
+foreign key (ID)
+references IN_PCPL;
+
+alter table IN_GROP_MMBR
+  add constraint FK7CA19FA95ACED640
+foreign key (GROUP_ID)
+references IN_GROP;
+
+alter table IN_GROP_MMBR
+  add constraint FK7CA19FA9944FD160
+foreign key (PRINCIPAL_ID)
+references IN_PCPL;
+
+alter table IN_GRTR
+  add constraint FKA01D238337A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
+
+alter table IN_INTK
+  add constraint uc_IN_INTK_1 unique (AUDIT_NO);
+
+alter table IN_INTK
+  add constraint uc_IN_INTK_2 unique (CANCEL_COMMENT);
+
+alter table IN_INTK
+  add constraint uc_IN_INTK_3 unique (DESCRIPTION);
+
+alter table IN_INTK
+  add constraint uc_IN_INTK_4 unique (REFERENCE_NO);
+
+alter table IN_INTK
+  add constraint uc_IN_INTK_5 unique (REMOVE_COMMENT);
+
+alter table IN_INTK
+  add constraint uc_IN_INTK_6 unique (SOURCE_NO);
+
+alter table IN_INTK
+  add constraint FKA01DFD368FDB7C8
+foreign key (LEVEL_ID)
+references IN_INTK_LEVL;
+
+alter table IN_INTK
+  add constraint FKA01DFD36BD0FD208
+foreign key (SESSION_ID)
+references IN_INTK_SESN;
+
+alter table IN_INTK_APLN
+  add constraint uc_IN_INTK_APLN_1 unique (REFERENCE_NO);
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5ABDADE6E0
+foreign key (APPLICANT_ID)
+references IN_APCN;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5AA35FEC0
+foreign key (BANK_CODE_ID)
+references IN_BANK_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5AE944DD1E
+foreign key (DEPENDENCY_CODE_ID)
+references IN_DPCY_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5A1A001E40
+foreign key (DISABILITY_CODE_ID)
+references IN_DBLY_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5A8BB6434C
+foreign key (ETHNICITY_CODE_ID)
+references IN_ETNY_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5A481F1E8A
+foreign key (GENDER_CODE_ID)
+references IN_GNDR_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5A3AD22420
+foreign key (INTAKE_ID)
+references IN_INTK;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5A4F03DAF6
+foreign key (MARITAL_CODE_ID)
+references IN_MRTL_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5AACBE2306
+foreign key (NATIONALITY_CODE_ID)
+references IN_NTLY_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5AEE5BDEA
+foreign key (RACE_CODE_ID)
+references IN_RACE_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5AD47AB42A
+foreign key (RELIGION_CODE_ID)
+references IN_RLGN_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5A60E65A82
+foreign key (RESIDENCY_CODE_ID)
+references IN_RSCY_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5A4CB929F0
+foreign key (SCHOOL_CODE_ID)
+references IN_SCHL_CODE;
 
-ALTER TABLE IN_INVT_TYPE_CODE
-  ADD CONSTRAINT UC_IN_INVT_TYPE_CODE_1 UNIQUE (CODE);
+alter table IN_INTK_APLN
+  add constraint FK5974F5A8B4C0DB2
+foreign key (SELECTION_ID)
+references IN_PRGM_OFRG;
 
-ALTER TABLE IN_MODL
-  ADD CONSTRAINT UC_IN_MODL_1 UNIQUE (CANONICAL_CODE);
+alter table IN_INTK_LEVL
+  add constraint uc_IN_INTK_LEVL_1 unique (CODE);
 
-ALTER TABLE IN_MODL
-  ADD CONSTRAINT UC_IN_MODL_2 UNIQUE (CODE);
+alter table IN_INTK_SESN
+  add constraint uc_IN_INTK_SESN_1 unique (CODE);
 
-ALTER TABLE IN_MRTL_CODE
-  ADD CONSTRAINT UC_IN_MRTL_CODE_1 UNIQUE (CODE);
+alter table IN_INVT
+  add constraint FKA01DFD7D37A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
 
-ALTER TABLE IN_NTLY_CODE
-  ADD CONSTRAINT UC_IN_NTLY_CODE_1 UNIQUE (CODE);
+alter table IN_INVT
+  add constraint FKA01DFD7D703951F5
+foreign key (LEVEL_CODE_ID)
+references IN_INVT_LEVL_CODE;
 
-ALTER TABLE IN_PCPL
-  ADD CONSTRAINT UC_IN_PCPL_1 UNIQUE (NAME);
+alter table IN_INVT
+  add constraint FKA01DFD7D82AA379D
+foreign key (TITLE_CODE_ID)
+references IN_INVT_TTLE_CODE;
 
-ALTER TABLE IN_PCPL_ROLE
-  ADD CONSTRAINT FKCAED0CEC944FD160
-FOREIGN KEY (PRINCIPAL_ID)
-REFERENCES IN_PCPL;
+alter table IN_INVT
+  add constraint FKA01DFD7DACA22BBD
+foreign key (TYPE_CODE_ID)
+references IN_INVT_TYPE_CODE;
 
-ALTER TABLE IN_PLMT_CODE
-  ADD CONSTRAINT UC_IN_PLMT_CODE_1 UNIQUE (CODE);
+alter table IN_INVT_LEVL_CODE
+  add constraint uc_IN_INVT_LEVL_CODE_1 unique (CODE);
 
-ALTER TABLE IN_PRGM_CODE
-  ADD CONSTRAINT UC_IN_PRGM_CODE_1 UNIQUE (CODE);
+alter table IN_INVT_LEVL_CODE
+  add constraint FK8FD6A1FBACA22BBD
+foreign key (TYPE_CODE_ID)
+references IN_INVT_TYPE_CODE;
 
-ALTER TABLE IN_PRGM_OFRG
-  ADD CONSTRAINT FK6B9F3293AD22420
-FOREIGN KEY (INTAKE_ID)
-REFERENCES IN_INTK;
+alter table IN_INVT_TTLE_CODE
+  add constraint uc_IN_INVT_TTLE_CODE_1 unique (CODE);
 
-ALTER TABLE IN_PRGM_OFRG
-  ADD CONSTRAINT FK6B9F32988BA7616
-FOREIGN KEY (PROGRAM_CODE_ID)
-REFERENCES IN_PRGM_CODE;
+alter table IN_INVT_TYPE_CODE
+  add constraint uc_IN_INVT_TYPE_CODE_1 unique (CODE);
 
-ALTER TABLE IN_PRGM_OFRG
-  ADD CONSTRAINT FK6B9F3295C8D6997
-FOREIGN KEY (STUDY_CENTER_CODE_ID)
-REFERENCES IN_STDY_CNTR_CODE;
+alter table IN_MODL
+  add constraint uc_IN_MODL_1 unique (CANONICAL_CODE);
 
-ALTER TABLE IN_RACE_CODE
-  ADD CONSTRAINT UC_IN_RACE_CODE_1 UNIQUE (CODE);
+alter table IN_MODL
+  add constraint uc_IN_MODL_2 unique (CODE);
 
-ALTER TABLE IN_RFRN_NO
-  ADD CONSTRAINT UC_IN_RFRN_NO_1 UNIQUE (CODE);
+alter table IN_MRTL_CODE
+  add constraint uc_IN_MRTL_CODE_1 unique (CODE);
 
-ALTER TABLE IN_RLGN_CODE
-  ADD CONSTRAINT UC_IN_RLGN_CODE_1 UNIQUE (CODE);
+alter table IN_NTLY_CODE
+  add constraint uc_IN_NTLY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_RSCY_CODE
-  ADD CONSTRAINT UC_IN_RSCY_CODE_1 UNIQUE (CODE);
+alter table IN_PCPL
+  add constraint uc_IN_PCPL_1 unique (NAME);
 
-ALTER TABLE IN_SBJT_CODE
-  ADD CONSTRAINT UC_IN_SBJT_CODE_1 UNIQUE (CODE);
+alter table IN_PCPL_ROLE
+  add constraint FKCAED0CEC944FD160
+foreign key (PRINCIPAL_ID)
+references IN_PCPL;
 
-ALTER TABLE IN_SCHL_CODE
-  ADD CONSTRAINT UC_IN_SCHL_CODE_1 UNIQUE (CODE);
+alter table IN_PLMT_CODE
+  add constraint uc_IN_PLMT_CODE_1 unique (CODE);
 
-ALTER TABLE IN_SMDL
-  ADD CONSTRAINT FKA022833C43EFCC03
-FOREIGN KEY (MODULE_ID)
-REFERENCES IN_MODL;
+alter table IN_PRGM_CODE
+  add constraint uc_IN_PRGM_CODE_1 unique (CODE);
 
-ALTER TABLE IN_STAF
-  ADD CONSTRAINT FKA0229D20AB3274F6
-FOREIGN KEY (ID)
-REFERENCES IN_ACTR;
+alter table IN_PRGM_OFRG
+  add constraint FK6B9F3293AD22420
+foreign key (INTAKE_ID)
+references IN_INTK;
 
-ALTER TABLE IN_STDY_CNTR_CODE
-  ADD CONSTRAINT UC_IN_STDY_CNTR_CODE_1 UNIQUE (CODE);
+alter table IN_PRGM_OFRG
+  add constraint FK6B9F32988BA7616
+foreign key (PROGRAM_CODE_ID)
+references IN_PRGM_CODE;
 
-ALTER TABLE IN_STTE_CODE
-  ADD CONSTRAINT UC_IN_STTE_CODE_1 UNIQUE (CODE);
+alter table IN_PRGM_OFRG
+  add constraint FK6B9F3295C8D6997
+foreign key (STUDY_CENTER_CODE_ID)
+references IN_STDY_CNTR_CODE;
 
-ALTER TABLE IN_STTE_CODE
-  ADD CONSTRAINT FK354E82E062D8843A
-FOREIGN KEY (COUNTRY_CODE_ID)
-REFERENCES IN_CNTY_CODE;
+alter table IN_RACE_CODE
+  add constraint uc_IN_RACE_CODE_1 unique (CODE);
 
-ALTER TABLE IN_USER
-  ADD CONSTRAINT UC_IN_USER_1 UNIQUE (EMAIL);
+alter table IN_RFRN_NO
+  add constraint uc_IN_RFRN_NO_1 unique (CODE);
 
-ALTER TABLE IN_USER
-  ADD CONSTRAINT FKA02382A548D0EF80
-FOREIGN KEY (ACTOR_ID)
-REFERENCES IN_ACTR;
+alter table IN_RLGN_CODE
+  add constraint uc_IN_RLGN_CODE_1 unique (CODE);
 
-ALTER TABLE IN_USER
-  ADD CONSTRAINT FKA02382A55E0DF3AF
-FOREIGN KEY (ID)
-REFERENCES IN_PCPL;
+alter table IN_RSCY_CODE
+  add constraint uc_IN_RSCY_CODE_1 unique (CODE);
 
-ALTER TABLE IN_VENU_CODE
-  ADD CONSTRAINT UC_IN_VENU_CODE_1 UNIQUE (CODE);
+alter table IN_SBJT_CODE
+  add constraint uc_IN_SBJT_CODE_1 unique (CODE);
 
-CREATE SEQUENCE SQ_IN_ACTR;
+alter table IN_SCHL_CODE
+  add constraint uc_IN_SCHL_CODE_1 unique (CODE);
 
-CREATE SEQUENCE SQ_IN_ADDR;
+alter table IN_SMDL
+  add constraint FKA022833C43EFCC03
+foreign key (MODULE_ID)
+references IN_MODL;
 
-CREATE SEQUENCE SQ_IN_ATMT;
+alter table IN_STAF
+  add constraint FKA0229D20AB3274F6
+foreign key (ID)
+references IN_ACTR;
 
-CREATE SEQUENCE SQ_IN_AUDT;
+alter table IN_STDY_CNTR_CODE
+  add constraint uc_IN_STDY_CNTR_CODE_1 unique (CODE);
 
-CREATE SEQUENCE SQ_IN_BANK_CODE;
+alter table IN_STTE_CODE
+  add constraint uc_IN_STTE_CODE_1 unique (CODE);
 
-CREATE SEQUENCE SQ_IN_CITY_CODE;
+alter table IN_STTE_CODE
+  add constraint FK354E82E062D8843A
+foreign key (COUNTRY_CODE_ID)
+references IN_CNTY_CODE;
 
-CREATE SEQUENCE SQ_IN_CLGE_CODE;
+alter table IN_USER
+  add constraint uc_IN_USER_1 unique (EMAIL);
 
-CREATE SEQUENCE SQ_IN_CMCY_CODE;
+alter table IN_USER
+  add constraint FKA02382A548D0EF80
+foreign key (ACTOR_ID)
+references IN_ACTR;
 
-CREATE SEQUENCE SQ_IN_CMPS_CODE;
+alter table IN_USER
+  add constraint FKA02382A55E0DF3AF
+foreign key (ID)
+references IN_PCPL;
 
-CREATE SEQUENCE SQ_IN_CNFG;
+alter table IN_VENU_CODE
+  add constraint uc_IN_VENU_CODE_1 unique (CODE);
 
-CREATE SEQUENCE SQ_IN_CNTC;
+create sequence SQ_IN_ACTR;
 
-CREATE SEQUENCE SQ_IN_CNTY_CODE;
+create sequence SQ_IN_ADDR;
 
-CREATE SEQUENCE SQ_IN_DBLY_CODE;
+create sequence SQ_IN_ATMT;
 
-CREATE SEQUENCE SQ_IN_DPCY_CODE;
+create sequence SQ_IN_AUDT;
 
-CREATE SEQUENCE SQ_IN_DSCT_CODE;
+create sequence SQ_IN_BANK_CODE;
 
-CREATE SEQUENCE SQ_IN_DUN_CODE;
+create sequence SQ_IN_CITY_CODE;
 
-CREATE SEQUENCE SQ_IN_EMAL_QUEU;
+create sequence SQ_IN_CLGE_CODE;
 
-CREATE SEQUENCE SQ_IN_EMIL_TMPT;
+create sequence SQ_IN_CMCY_CODE;
 
-CREATE SEQUENCE SQ_IN_EMPT;
+create sequence SQ_IN_CMPS_CODE;
 
-CREATE SEQUENCE SQ_IN_EMPT_FILD_CODE;
+create sequence SQ_IN_CNDT;
 
-CREATE SEQUENCE SQ_IN_EMPT_LEVL_CODE;
+create sequence SQ_IN_CNFG;
 
-CREATE SEQUENCE SQ_IN_EMPT_SCTR_CODE;
+create sequence SQ_IN_CNTC;
 
-CREATE SEQUENCE SQ_IN_ETNY_CODE;
+create sequence SQ_IN_CNTY_CODE;
 
-CREATE SEQUENCE SQ_IN_FCTY_CODE;
+create sequence SQ_IN_DBLY_CODE;
 
-CREATE SEQUENCE SQ_IN_FILD_CODE;
+create sequence SQ_IN_DPCY_CODE;
 
-CREATE SEQUENCE SQ_IN_GNDR_CODE;
+create sequence SQ_IN_DSCT_CODE;
 
-CREATE SEQUENCE SQ_IN_GRDE_CODE;
+create sequence SQ_IN_DUN_CODE;
 
-CREATE SEQUENCE SQ_IN_GRDN;
+create sequence SQ_IN_EMAL_QUEU;
 
-CREATE SEQUENCE SQ_IN_GROP_MMBR;
+create sequence SQ_IN_EMIL_TMPT;
 
-CREATE SEQUENCE SQ_IN_GRTR;
+create sequence SQ_IN_EMPT;
 
-CREATE SEQUENCE SQ_IN_INTK;
+create sequence SQ_IN_EMPT_FILD_CODE;
 
-CREATE SEQUENCE SQ_IN_INTK_APLN;
+create sequence SQ_IN_EMPT_LEVL_CODE;
 
-CREATE SEQUENCE SQ_IN_INTK_LEVL;
+create sequence SQ_IN_EMPT_SCTR_CODE;
 
-CREATE SEQUENCE SQ_IN_INTK_SESN;
+create sequence SQ_IN_ETNY_CODE;
 
-CREATE SEQUENCE SQ_IN_INVT;
+create sequence SQ_IN_FCTY_CODE;
 
-CREATE SEQUENCE SQ_IN_INVT_LEVL_CODE;
+create sequence SQ_IN_FILD_CODE;
 
-CREATE SEQUENCE SQ_IN_INVT_TTLE_CODE;
+create sequence SQ_IN_GNDR_CODE;
 
-CREATE SEQUENCE SQ_IN_INVT_TYPE_CODE;
+create sequence SQ_IN_GRDE_CODE;
 
-CREATE SEQUENCE SQ_IN_MODL;
+create sequence SQ_IN_GRDN;
 
-CREATE SEQUENCE SQ_IN_MRTL_CODE;
+create sequence SQ_IN_GROP_MMBR;
 
-CREATE SEQUENCE SQ_IN_NTLY_CODE;
+create sequence SQ_IN_GRTR;
 
-CREATE SEQUENCE SQ_IN_PCPL;
+create sequence SQ_IN_INTK;
 
-CREATE SEQUENCE SQ_IN_PCPL_ROLE;
+create sequence SQ_IN_INTK_APLN;
 
-CREATE SEQUENCE SQ_IN_PLMT_CODE;
+create sequence SQ_IN_INTK_LEVL;
 
-CREATE SEQUENCE SQ_IN_PRGM_CODE;
+create sequence SQ_IN_INTK_SESN;
 
-CREATE SEQUENCE SQ_IN_PRGM_OFRG;
+create sequence SQ_IN_INVT;
 
-CREATE SEQUENCE SQ_IN_RACE_CODE;
+create sequence SQ_IN_INVT_LEVL_CODE;
 
-CREATE SEQUENCE SQ_IN_RFRN_NO;
+create sequence SQ_IN_INVT_TTLE_CODE;
 
-CREATE SEQUENCE SQ_IN_RLGN_CODE;
+create sequence SQ_IN_INVT_TYPE_CODE;
 
-CREATE SEQUENCE SQ_IN_RSCY_CODE;
+create sequence SQ_IN_MODL;
 
-CREATE SEQUENCE SQ_IN_SBJT_CODE;
+create sequence SQ_IN_MRTL_CODE;
 
-CREATE SEQUENCE SQ_IN_SCHL_CODE;
+create sequence SQ_IN_NTLY_CODE;
 
-CREATE SEQUENCE SQ_IN_SMDL;
+create sequence SQ_IN_PCPL;
 
-CREATE SEQUENCE SQ_IN_STDY_CNTR_CODE;
+create sequence SQ_IN_PCPL_ROLE;
 
-CREATE SEQUENCE SQ_IN_STTE_CODE;
+create sequence SQ_IN_PLMT_CODE;
 
-CREATE SEQUENCE SQ_IN_VENU_CODE;
+create sequence SQ_IN_PRGM_CODE;
 
-CREATE SEQUENCE SQ_IN_WTCH;
+create sequence SQ_IN_PRGM_OFRG;
+
+create sequence SQ_IN_RACE_CODE;
+
+create sequence SQ_IN_RFRN_NO;
+
+create sequence SQ_IN_RLGN_CODE;
+
+create sequence SQ_IN_RSCY_CODE;
+
+create sequence SQ_IN_SBJT_CODE;
+
+create sequence SQ_IN_SCHL_CODE;
+
+create sequence SQ_IN_SMDL;
+
+create sequence SQ_IN_STDY_CNTR_CODE;
+
+create sequence SQ_IN_STTE_CODE;
+
+create sequence SQ_IN_VENU_CODE;
+
+create sequence SQ_IN_WTCH;
