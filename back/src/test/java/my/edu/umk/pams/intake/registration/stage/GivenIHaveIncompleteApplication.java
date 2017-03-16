@@ -37,7 +37,7 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
 
 	@Autowired
 	private CommonService commonService;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -52,25 +52,25 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
 
 	@Autowired
 	private PolicyService policyService;
-	
-	
 
 	@ExpectedScenarioState
 	private InUser user;
 
-	public GivenIHaveIncompleteApplication i_drafted_an_application(){
+	@ExpectedScenarioState
+	private InApplicant applicant;
+
+	public GivenIHaveIncompleteApplication i_drafted_an_application() {
 		InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 		Assert.notNull(intake, "intake is null");
 
-		InApplicant applicant = null;
+		InUser currentUser = securityService.getCurrentUser();
 
 		Assert.isTrue((user.getActor() instanceof InApplicant), "actor is not an applicant");
 
-		if (user.getActor() instanceof InApplicant) {
-			applicant = (InApplicant) user.getActor();
+		if ( currentUser.getActor() instanceof InApplicant) {
+			applicant = (InApplicant)  currentUser.getActor();
 			Assert.notNull(applicant, "applicant is null");
 		}
-
 
 		InIntakeApplication application = new InIntakeApplicationImpl();
 		application.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); // auto
@@ -89,31 +89,35 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
 		application.setDisabilityCode(commonService.findDisabilityCodeByCode("DISABLE"));
 		application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
 		application.setApplicant(applicant);
-		
+
 		applicationService.draftIntakeApplication(intake, application);
 		return self();
-		
+
 	}
+
 	public GivenIHaveIncompleteApplication i_have_an_incomplete_application() {
 		InIntake intake = policyService.findIntakeByReferenceNo("MASTER/201720181");
 
-		InApplicant applicant = null;
+		InUser currentUser = securityService.getCurrentUser();
+		
 
-		Assert.isTrue((user.getActor() instanceof InApplicant), "actor is not an applicant");
+		Assert.isTrue((currentUser.getActor() instanceof InApplicant), "actor is not an applicant");
 
-		if (user.getActor() instanceof InApplicant) {
-			applicant = (InApplicant) user.getActor();
+		if (currentUser.getActor() instanceof InApplicant) {
+			applicant = (InApplicant) currentUser.getActor();
 			Assert.notNull(applicant, "applicant is null");
 			LOG.debug("applicant ", applicant);
 		}
 
-		
-		InIntakeApplication application = applicationService.findIntakeApplicationByIntakeAndApplicant(intake,
-				applicant);
-		Assert.notNull(application, "application should not be null");
-		Assert.isTrue(!application.isAccepted(), "already accepted");
-		
-		
+		else {
+			InIntakeApplication application = applicationService.findIntakeApplicationByIntakeAndApplicant(intake,
+					applicant);
+			Assert.notNull(application, "application should not be null");
+			Assert.isTrue(!application.isAccepted(), "already accepted");
+
+		}
 		return self();
-	}	
+
+	}
+
 }
