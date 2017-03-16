@@ -7,6 +7,7 @@ public interface IntakeConstants {
 
     public static final String INTAKE_REFERENCE_NO = "InIntake.referenceNo";
     public static final String INTAKE_APPLICATION_REFERENCE_NO = "InIntakeApplication.referenceNo";
+    public static final String CANDIDATE_MATRIC_NO = "InCandidate.matricNo";
 
     public static final String INTAKE_ID = "intakeId";
 
