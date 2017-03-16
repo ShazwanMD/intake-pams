@@ -11,13 +11,9 @@ import java.util.List;
  */
 public interface AdmissionService {
 
-    InCandidate findCandidateByIdentityNo(String identityNo);
-
-    List<InCandidate> findCandidates(InIntake intake);
-
-    List<InCandidate> findCandidates(InIntake intake, Integer offset, Integer limit);
-
-    void preapproveCandidate(InCandidate candidate);
+    //====================================================================================================
+    // INTAKE, INTAKE APPLICATION
+    //====================================================================================================
 
     void selectionIntake(InIntake inIntake);
 
@@ -26,5 +22,21 @@ public interface AdmissionService {
     void approveIntakeApplication(InIntakeApplication application);
 
     void rejectIntakeApplication(InIntakeApplication application);
+
+
+    //====================================================================================================
+    // CANDIDATE
+    //====================================================================================================
+
+
+    InCandidate findCandidateByIdentityNo(String identityNo);
+
+    List<InCandidate> findCandidates(InIntake intake);
+
+    List<InCandidate> findCandidates(InIntake intake, Integer offset, Integer limit);
+
+    void preapproveCandidate(InCandidate candidate);
+
+    void offerCandidate(InCandidate candidate);
 
 }
