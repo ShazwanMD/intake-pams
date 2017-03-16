@@ -22,6 +22,12 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * @author PAMS
  */
+
+//As an anonymous, 
+//I want to register, 
+//so that I can login as an applicant
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
