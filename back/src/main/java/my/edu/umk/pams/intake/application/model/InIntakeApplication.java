@@ -30,12 +30,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setBatchNo(String batchNo);
 
-    // UG: generated at registration
-    // PG: generated at approval
-    String getMatricNo();
-
-    void setMatricNo(String matricNo);
-
     String getName();
 
     void setName(String name);
@@ -88,10 +82,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setReason(String reason);
 
-    Boolean isAccepted();
-
-    void setAccepted(Boolean accepted);
-
     String getPaymentSourceNo();
 
     void setPaymentSourceNo(String paymentSourceNo);
@@ -99,6 +89,10 @@ public interface InIntakeApplication extends InMetaObject {
     Boolean isPaid();
 
     void setPaid(Boolean paid);
+
+    InStudyMode getStudyMode();
+
+    void setStudyMode(InStudyMode studyMode);
 
     InBidType getBidType();
 
@@ -183,9 +177,5 @@ public interface InIntakeApplication extends InMetaObject {
     List<InEmployment> getEmployments();
 
     void setEmployments(List<InEmployment> employments);
-    
-    List<InStudyMode> getStudyMode();
-
-    void setStudyMode(List<InStudyMode> stdMode);
 }
 

@@ -4,12 +4,7 @@ import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
-import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
-import my.edu.umk.pams.intake.policy.model.InStudyModeImpl;
+import my.edu.umk.pams.intake.policy.model.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -40,9 +35,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "BATCH_NO")
     private String batchNo;
-
-    @Column(name = "MATRIC_NO")
-    private String matricNo;
 
     @Column(name = "ACCOUNT_NO")
     private String accountNo;
@@ -92,17 +84,20 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "REASON")
     private String reason;
 
-    @Column(name = "ACCEPTED")
-    private Boolean accepted = false;
-
     @Column(name = "PAID")
     private Boolean paid = false;
+
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "STUDY_MODE", nullable = false)
+    private InStudyMode studyMode = InStudyMode.UNDECIDED;
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_TYPE", nullable = false)
     private InBidType bidType = InBidType.FIRST;
 
+    // todo(uda): remove because we have candidate domain
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_STATUS")
@@ -184,9 +179,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @OneToMany(targetEntity = InAttachmentImpl.class, mappedBy = "application")
     private List<InAttachment> attachments;
     
-    @OneToOne(targetEntity = InStudyModeImpl.class, mappedBy = "application")
-    private List<InStudyMode> stdMode;
-
     @Embedded
     private InMetadata metadata;
 
@@ -238,16 +230,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setBatchNo(String batchNo) {
         this.batchNo = batchNo;
-    }
-
-    @Override
-    public String getMatricNo() {
-        return matricNo;
-    }
-
-    @Override
-    public void setMatricNo(String matricNo) {
-        this.matricNo = matricNo;
     }
 
     @Override
@@ -341,15 +323,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     }
 
     @Override
-    public Boolean isAccepted() {
-        return accepted;
-    }
-
-    public void setAccepted(Boolean accepted) {
-        this.accepted = accepted;
-    }
-
-    @Override
     public Boolean isPaid() {
         return paid;
     }
@@ -359,6 +332,15 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.paid = paid;
     }
 
+    @Override
+    public InStudyMode getStudyMode() {
+        return studyMode;
+    }
+
+    @Override
+    public void setStudyMode(InStudyMode studyMode) {
+        this.studyMode = studyMode;
+    }
 
     @Override
     public InBidType getBidType() {
@@ -633,16 +615,4 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public Class<?> getInterfaceClass() {
         return InIntakeApplication.class;
     }
-
-	@Override
-	public List<InStudyMode> getStudyMode() {
-		return stdMode;
-	}
-
-	@Override
-	public void setStudyMode(List<InStudyMode> stdMode) {
-		this.stdMode = stdMode;
-		
-	}
-
 }

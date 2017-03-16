@@ -7,8 +7,6 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
-import my.edu.umk.pams.intake.policy.model.InStudyModeType;
 
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
@@ -460,7 +458,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         metadata.setState(InMetaState.ACTIVE);
         address.setMetadata(metadata);
         session.save(address);
-
     }
 
     @Override
@@ -472,18 +469,4 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(address);
     }
-
-	@Override
-	public InStudyMode findStudyModeType(InStudyModeType studymodeType, InIntakeApplication application) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<InStudyMode> findStudyModeTypes(InStudyModeType studymodeType) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }

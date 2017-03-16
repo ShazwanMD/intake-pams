@@ -3,8 +3,6 @@ package my.edu.umk.pams.intake.application.service;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
-import my.edu.umk.pams.intake.policy.model.InStudyModeType;
 
 import java.util.List;
 
@@ -71,8 +69,6 @@ public interface ApplicationService {
 
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
     
-	InStudyMode findStudyModeType(InStudyModeType studymodeType, InIntakeApplication application);
-
     InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application);
 
     InAddress findAddressByType(InAddressType addressType, InIntakeApplication application);
@@ -99,8 +95,6 @@ public interface ApplicationService {
 
     List<InGuardian> findGuardians(InIntakeApplication application);
     
-    List<InStudyMode> findStudyModeType (InStudyModeType studymodeType );
-
     List<InGuarantor> findGuarantors(InIntakeApplication application);
 
     List<InContact> findContacts(InIntakeApplication application);
