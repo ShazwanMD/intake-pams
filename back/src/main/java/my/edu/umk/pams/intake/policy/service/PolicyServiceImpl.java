@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeSessionDao;
 import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
 import my.edu.umk.pams.intake.policy.model.*;
+import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.util.Util;
 import my.edu.umk.pams.intake.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
@@ -25,7 +26,7 @@ import java.util.Map;
 import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
 
 @Service
-public class PolicyServiceImpl implements PolicyService{
+public class PolicyServiceImpl implements PolicyService {
 
     @Autowired
     private InIntakeSessionDao intakeSessionDao;
@@ -41,6 +42,9 @@ public class PolicyServiceImpl implements PolicyService{
 
     @Autowired
     private WorkflowService workflowService;
+
+    @Autowired
+    private SecurityService securityService;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -182,6 +186,23 @@ public class PolicyServiceImpl implements PolicyService{
     //====================================================================================================
 
     @Override
+    public InIntake findIntakeByTaskId(String taskId) {
+        Task task = workflowService.findTask(taskId);
+        Map<String, Object> map = workflowService.getVariables(task.getExecutionId());
+        return intakeDao.findById((Long) map.get(IntakeConstants.INTAKE_ID));
+    }
+
+    @Override
+    public List<Task> findAssignedIntakeTasks(Integer offset, Integer limit) {
+        return workflowService.findAssignedTasks(InIntake.class.getName(), offset, limit);
+    }
+
+    @Override
+    public List<Task> findPooledIntakeTasks(Integer offset, Integer limit) {
+        return workflowService.findPooledTasks(InIntake.class.getName(), offset, limit);
+    }
+
+    @Override
     public void startIntakeTask(InIntake intake) {
         intakeDao.save(intake, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -214,33 +235,6 @@ public class PolicyServiceImpl implements PolicyService{
         Validate.notNull(offering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
         intakeDao.addOffering(intake, offering, Util.getCurrentUser());
-    }
-
-    @Override
-    public InIntake findIntakeByTaskId(String taskId) {
-        Task task = workflowService.findTask(taskId);
-        Map<String, Object> map = workflowService.getVariables(task.getExecutionId());
-        return intakeDao.findById((Long) map.get(IntakeConstants.INTAKE_ID));
-    }
-
-    @Override
-    public List<Task> findAssignedIntakeTasks(Integer offset, Integer limit) {
-        return workflowService.findAssignedTasks(InIntake.class.getName(), offset, limit);
-    }
-
-    @Override
-    public List<Task> findPooledIntakeTasks(Integer offset, Integer limit) {
-        return workflowService.findPooledTasks(InIntake.class.getName(), offset, limit);
-    }
-
-    private static Map<String, Object> prepareVariables(InIntake intake) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put(IntakeConstants.INTAKE_ID, intake.getId());
-        map.put(WorkflowConstants.USER_CREATOR, Util.getCurrentUser().getName());
-        map.put(WorkflowConstants.REFERENCE_NO, intake.getReferenceNo());
-        map.put(WorkflowConstants.REMOVE_DECISION, false);
-        map.put(WorkflowConstants.CANCEL_DECISION, false);
-        return map;
     }
 
     //    public InGroup getAdminGroup() {
@@ -310,4 +304,20 @@ public class PolicyServiceImpl implements PolicyService{
     public List<InProgramOffering> findProgramOfferings(InIntake intake) {
         return programOfferingDao.find(intake);
     }
+
+
+    //====================================================================================================
+    // PRIVATE METHODS
+    //====================================================================================================
+
+    private Map<String, Object> prepareVariables(InIntake intake) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put(IntakeConstants.INTAKE_ID, intake.getId());
+        map.put(WorkflowConstants.USER_CREATOR, securityService.getCurrentUser().getName());
+        map.put(WorkflowConstants.REFERENCE_NO, intake.getReferenceNo());
+        map.put(WorkflowConstants.REMOVE_DECISION, false);
+        map.put(WorkflowConstants.CANCEL_DECISION, false);
+        return map;
+    }
+
 }
