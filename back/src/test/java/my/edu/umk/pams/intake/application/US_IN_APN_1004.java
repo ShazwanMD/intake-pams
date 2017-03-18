@@ -22,6 +22,10 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
 /**
  * @author PAMS
+ * 
+ * As a applicant, 
+ * I want to fill in all the required information, 
+ * so that I can complete my intake application
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -41,11 +45,11 @@ public class US_IN_APN_1004 extends SpringScenarioTest<GivenIAmApplicant, WhenIW
     public void after() {
     }
 
-    @Test
+    /*@Test
     @Rollback(true)
     public void testScenario1() {
         given().I_am_an_applicant_in_current_intake_session();
         when().I_want_to_fill_all_required_information();
-        then().I_can_complete_my_application();
+        then().I_can_complete_my_application();*/
     }
-}
+

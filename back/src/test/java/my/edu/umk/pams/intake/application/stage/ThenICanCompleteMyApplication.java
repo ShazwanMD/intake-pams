@@ -20,8 +20,10 @@ public class ThenICanCompleteMyApplication extends Stage<ThenICanCompleteMyAppli
 	    @ExpectedScenarioState
 	    private InApplicant applicant;
 	    
-	    public ThenICanCompleteMyApplication I_can_complete_my_application() {
+	   /* public ThenICanCompleteMyApplication I_can_complete_my_application() {*/
 	    	
-	    	 return self();
+	    	
+	    	 /*applicationService.submitIntakeApplication(intake, application);
+	    	 return self();*/
 }
-}
+
