@@ -3,18 +3,16 @@ package my.edu.umk.pams.intake.policy.model;
 import my.edu.umk.pams.intake.core.InMetaObject;
 
 /**
- * SPM/STPM/O-LEVEL
- * STPM/A-LEVEL
  * DIPLOMA
  * FOUNDATION
  * DEGREE
- * INTERNATIONAL BACCAULERATE
+ * MASTER
+ * PHD
  * OTHERS
  *
- * @author team utamacad
- * @since 3/2/2015.
+ * @author PAMS
  */
-public interface InIntakeLevel extends InMetaObject {
+public interface InProgramLevel extends InMetaObject {
 
     String getCode();
 

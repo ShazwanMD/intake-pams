@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.policy.service;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.identity.model.InUser;
-import my.edu.umk.pams.intake.policy.dao.InIntakeLevelDao;
+import my.edu.umk.pams.intake.policy.dao.InProgramLevelDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeSessionDao;
 import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
@@ -32,7 +32,7 @@ public class PolicyServiceImpl implements PolicyService {
     private InIntakeSessionDao intakeSessionDao;
 
     @Autowired
-    private InIntakeLevelDao intakeLevelDao;
+    private InProgramLevelDao programLevelDao;
 
     @Autowired
     private InIntakeDao intakeDao;
@@ -107,77 +107,76 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public void saveIntakeSession(InIntakeSession session) {
-        intakeSessionDao.save(session, Util.getCurrentUser());
+        intakeSessionDao.save(session, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateIntakeSession(InIntakeSession session) {
-        intakeSessionDao.update(session, Util.getCurrentUser());
+        intakeSessionDao.update(session, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeIntakeSession(InIntakeSession session) {
-        intakeSessionDao.remove(session, Util.getCurrentUser());
+        intakeSessionDao.remove(session, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     //====================================================================================================
-    // INTAKE LEVEL
+    // PROGRAM LEVEL
     //====================================================================================================
 
-
     @Override
-    public InIntakeLevel findIntakeLevelById(Long id) {
-        return intakeLevelDao.findById(id);
+    public InProgramLevel findProgramLevelById(Long id) {
+        return programLevelDao.findById(id);
     }
 
     @Override
-    public InIntakeLevel findIntakeLevelByCode(String code) {
-        return intakeLevelDao.findByCode(code);
+    public InProgramLevel findProgramLevelByCode(String code) {
+        return programLevelDao.findByCode(code);
     }
 
     @Override
-    public List<InIntakeLevel> findIntakeCategories() {
-        return intakeLevelDao.find();
+    public List<InProgramLevel> findProgramLevels() {
+        return programLevelDao.find();
     }
 
     @Override
-    public List<InIntakeLevel> findIntakeCategories(Integer offset, Integer limit) {
-        return intakeLevelDao.find(offset, limit);
+    public List<InProgramLevel> findProgramLevels(Integer offset, Integer limit) {
+        return programLevelDao.find(offset, limit);
     }
 
     @Override
-    public List<InIntakeLevel> findIntakeCategories(String filter, Integer offset, Integer limit) {
-        return intakeLevelDao.find(filter, offset, limit);
+    public List<InProgramLevel> findProgramLevels(String filter, Integer offset, Integer limit) {
+        return programLevelDao.find(filter, offset, limit);
     }
 
     @Override
-    public Integer countIntakeLevel() {
-        return intakeLevelDao.count();
+    public Integer countProgramLevel() {
+        return programLevelDao.count();
     }
 
     @Override
-    public Integer countIntakeLevel(String filter) {
-        return intakeLevelDao.count(filter);
+    public Integer countProgramLevel(String filter) {
+        return programLevelDao.count(filter);
     }
 
     @Override
-    public void saveIntakeLevel(InIntakeLevel Level) {
-        intakeLevelDao.save(Level, Util.getCurrentUser());
+    public void saveProgramLevel(InProgramLevel level) {
+        programLevelDao.save(level, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void updateIntakeLevel(InIntakeLevel Level) {
-        intakeLevelDao.update(Level, Util.getCurrentUser());
+    public void updateProgramLevel(InProgramLevel level) {
+        programLevelDao.update(level, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void removeIntakeLevel(InIntakeLevel Level) {
-        intakeLevelDao.remove(Level, Util.getCurrentUser());
+    public void removeProgramLevel(InProgramLevel level) {
+        programLevelDao.remove(level, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -204,7 +203,7 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public void startIntakeTask(InIntake intake) {
-        intakeDao.save(intake, Util.getCurrentUser());
+        intakeDao.save(intake, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(intake);
 
@@ -214,7 +213,7 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public void updateIntake(InIntake intake) {
-        intakeDao.update(intake, Util.getCurrentUser());
+        intakeDao.update(intake, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -222,7 +221,7 @@ public class PolicyServiceImpl implements PolicyService {
     public void cancelIntake(InIntake intake) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be cancelled in DRAFTED state");
-        intakeDao.update(intake, Util.getCurrentUser());
+        intakeDao.update(intake, securityService.getCurrentUser());
 
         List<InProgramOffering> offerings = findProgramOfferings(intake);
 //        IntakeCancelledEvent event = new IntakeCancelledEvent(intake, offerings);
@@ -234,7 +233,7 @@ public class PolicyServiceImpl implements PolicyService {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(offering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
-        intakeDao.addOffering(intake, offering, Util.getCurrentUser());
+        intakeDao.addOffering(intake, offering, securityService.getCurrentUser());
     }
 
     //    public InGroup getAdminGroup() {
@@ -257,7 +256,7 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public InIntake findIntakeBySessionAndCategory(InIntakeSession session, InIntakeLevel category) {
+    public InIntake findIntakeBySessionAndCategory(InIntakeSession session, InProgramLevel category) {
         return intakeDao.findBySessionAndCategory(session, category);
     }
 

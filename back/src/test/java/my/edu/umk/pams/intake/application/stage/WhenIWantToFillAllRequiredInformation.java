@@ -1,26 +1,12 @@
 package my.edu.umk.pams.intake.application.stage;
 
-import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
-
-
-import java.util.HashMap;
-import java.util.Map;
-
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
-import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.common.service.CommonService;
-import my.edu.umk.pams.intake.identity.model.InApplicant;
-import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.system.service.SystemService;
 
 @JGivenStage
 public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFillAllRequiredInformation> {
@@ -57,7 +43,7 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
 	    	 Map<String, Object> map = new HashMap<String, Object>();
 	    
 			map.put("intakeSession", intakeSession);
-	         map.put("intakeLevel", policyService.findIntakeLevelByCode("MASTER"));
+	         map.put("programLevel", policyService.findProgramLevelByCode("MASTER"));
 	         intakeApplicationRefNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
 	    	 LOG.debug("creating application {}", intakeApplicationRefNo);
 	    	 

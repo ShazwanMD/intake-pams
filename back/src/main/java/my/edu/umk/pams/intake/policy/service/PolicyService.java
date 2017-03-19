@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.policy.service;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import org.activiti.engine.task.Task;
@@ -48,25 +48,25 @@ public interface PolicyService {
     // INTAKE LEVEL
     //====================================================================================================
 
-    InIntakeLevel findIntakeLevelById(Long id);
+    InProgramLevel findProgramLevelById(Long id);
 
-    InIntakeLevel findIntakeLevelByCode(String code);
+    InProgramLevel findProgramLevelByCode(String code);
 
-    List<InIntakeLevel> findIntakeCategories();
+    List<InProgramLevel> findProgramLevels();
 
-    List<InIntakeLevel> findIntakeCategories(Integer offset, Integer limit);
+    List<InProgramLevel> findProgramLevels(Integer offset, Integer limit);
 
-    List<InIntakeLevel> findIntakeCategories(String filter, Integer offset, Integer limit);
+    List<InProgramLevel> findProgramLevels(String filter, Integer offset, Integer limit);
 
-    Integer countIntakeLevel();
+    Integer countProgramLevel();
 
-    Integer countIntakeLevel(String filter);
+    Integer countProgramLevel(String filter);
 
-    void saveIntakeLevel(InIntakeLevel Level);
+    void saveProgramLevel(InProgramLevel level);
 
-    void updateIntakeLevel(InIntakeLevel Level);
+    void updateProgramLevel(InProgramLevel level);
 
-    void removeIntakeLevel(InIntakeLevel category);
+    void removeProgramLevel(InProgramLevel level);
 
     //====================================================================================================
     // INTAKE
@@ -94,7 +94,7 @@ public interface PolicyService {
 
     InIntake findIntakeByReferenceNo(String referenceNo);
 
-    InIntake findIntakeBySessionAndCategory(InIntakeSession session, InIntakeLevel category);
+    InIntake findIntakeBySessionAndCategory(InIntakeSession session, InProgramLevel category);
 
     List<InIntake> findIntakes(InIntakeSession session);
 

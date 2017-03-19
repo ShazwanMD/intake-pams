@@ -163,6 +163,7 @@ create table IN_CNDT (
   M_ST int4,
   NAME varchar(255) not null,
   STATUS int4 not null,
+  STUDY_MODE int4 not null,
   APPLICANT_ID int8,
   OFFERING_ID int8,
   primary key (ID)
@@ -551,7 +552,6 @@ create table IN_INTK (
 
 create table IN_INTK_APLN (
   ID int8 not null,
-  ACCEPTED boolean,
   ACCOUNT_NO varchar(255),
   AGE int4,
   BATCH_NO varchar(255),
@@ -561,7 +561,6 @@ create table IN_INTK_APLN (
   CREDENTIAL_NO varchar(255),
   EMAIL varchar(255) not null,
   FAX varchar(255),
-  MATRIC_NO varchar(255),
   MERIT numeric(19, 2) not null,
   C_TS timestamp,
   C_ID int8,
@@ -580,6 +579,7 @@ create table IN_INTK_APLN (
   REFERENCE_NO varchar(255) not null,
   SCHOOL_BATCH int4,
   SCHOOL_NAME varchar(255),
+  STUDY_MODE int4 not null,
   APPLICANT_ID int8,
   BANK_CODE_ID int8,
   DEPENDENCY_CODE_ID int8,
@@ -594,20 +594,6 @@ create table IN_INTK_APLN (
   RESIDENCY_CODE_ID int8,
   SCHOOL_CODE_ID int8,
   SELECTION_ID int8,
-  primary key (ID)
-);
-
-create table IN_INTK_LEVL (
-  ID int8 not null,
-  CODE varchar(255) not null,
-  DESCRIPTION varchar(255) not null,
-  C_TS timestamp,
-  C_ID int8,
-  D_TS timestamp,
-  D_ID int8,
-  M_TS timestamp,
-  M_ID int8,
-  M_ST int4,
   primary key (ID)
 );
 
@@ -777,6 +763,20 @@ create table IN_PLMT_CODE (
 );
 
 create table IN_PRGM_CODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
+);
+
+create table IN_PRGM_LEVL (
   ID int8 not null,
   CODE varchar(255) not null,
   DESCRIPTION varchar(255) not null,
@@ -1184,9 +1184,9 @@ alter table IN_INTK
   add constraint uc_IN_INTK_6 unique (SOURCE_NO);
 
 alter table IN_INTK
-  add constraint FKA01DFD368FDB7C8
+  add constraint FKA01DFD3632D87A7C
 foreign key (LEVEL_ID)
-references IN_INTK_LEVL;
+references IN_PRGM_LEVL;
 
 alter table IN_INTK
   add constraint FKA01DFD36BD0FD208
@@ -1266,9 +1266,6 @@ alter table IN_INTK_APLN
 foreign key (SELECTION_ID)
 references IN_PRGM_OFRG;
 
-alter table IN_INTK_LEVL
-  add constraint uc_IN_INTK_LEVL_1 unique (CODE);
-
 alter table IN_INTK_SESN
   add constraint uc_IN_INTK_SESN_1 unique (CODE);
 
@@ -1331,6 +1328,9 @@ alter table IN_PLMT_CODE
 
 alter table IN_PRGM_CODE
   add constraint uc_IN_PRGM_CODE_1 unique (CODE);
+
+alter table IN_PRGM_LEVL
+  add constraint uc_IN_PRGM_LEVL_1 unique (CODE);
 
 alter table IN_PRGM_OFRG
   add constraint FK6B9F3293AD22420
@@ -1468,8 +1468,6 @@ create sequence SQ_IN_INTK;
 
 create sequence SQ_IN_INTK_APLN;
 
-create sequence SQ_IN_INTK_LEVL;
-
 create sequence SQ_IN_INTK_SESN;
 
 create sequence SQ_IN_INVT;
@@ -1493,6 +1491,8 @@ create sequence SQ_IN_PCPL_ROLE;
 create sequence SQ_IN_PLMT_CODE;
 
 create sequence SQ_IN_PRGM_CODE;
+
+create sequence SQ_IN_PRGM_LEVL;
 
 create sequence SQ_IN_PRGM_OFRG;
 

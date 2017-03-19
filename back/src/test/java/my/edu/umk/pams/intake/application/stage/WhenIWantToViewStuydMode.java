@@ -5,7 +5,7 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.system.service.SystemService;
@@ -36,7 +36,7 @@ public class WhenIWantToViewStuydMode extends Stage<WhenIWantToViewStuydMode> {
     private InIntakeSession session;
 
     @ProvidedScenarioState
-    private InIntakeLevel level;
+    private InProgramLevel level;
 
     @ProvidedScenarioState
     private InIntake intake;
@@ -48,7 +48,7 @@ public class WhenIWantToViewStuydMode extends Stage<WhenIWantToViewStuydMode> {
 		/* Map<String, Object> map = new HashMap<String, Object>();
 		    //x faham sebenarnye knapa perlu map
 		map.put("intakeSession", intakeSession);
-	    map.put("intakeLevel", policyService.findIntakeLevelByCode("MASTER"));
+	    map.put("programLevel", policyService.findProgramLevelByCode("MASTER"));
 	    intakeApplicationRefNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
 	    LOG.debug("creating application {}", intakeApplicationRefNo);*/
 	    	 

@@ -59,7 +59,7 @@ public class WhenIDraftMyApplication extends Stage<WhenIDraftMyApplication> {
         // generate intake application referenceNo
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intakeSession);
-        map.put("intakeLevel", policyService.findIntakeLevelByCode("MASTER"));
+        map.put("programLevel", policyService.findProgramLevelByCode("MASTER"));
         intakeApplicationRefNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
 
         LOG.debug("creating application {}", intakeApplicationRefNo);

@@ -6,7 +6,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
-import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
@@ -31,13 +31,13 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
     private InIntakeSession session;
 
     @ProvidedScenarioState
-    private InIntakeLevel level;
+    private InProgramLevel level;
 
     @ProvidedScenarioState
     private InIntake intake;
 
     public WhenIAddIntake I_add_intake() {
-        level = policyService.findIntakeLevelByCode("MASTER");
+        level = policyService.findProgramLevelByCode("MASTER");
 
         // start a new intake
         intake = new InIntakeImpl();
