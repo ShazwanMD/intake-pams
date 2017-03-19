@@ -80,7 +80,7 @@ public class WhenIViewMyStudyMode extends Stage<WhenIViewMyStudyMode> {
         applicant = (InApplicant) currentUser.getActor();
         Assert.notNull(applicant, "applicant is null");
         }
-      //uda and max,en hanif, tolong btolkan.saya rasa ad yg salah atau x lengkap 
+      //uda and max,en hanif, tolong btolkan.saya rasa ad yg salah atau x lengkap. 
          InIntakeApplication application = new InIntakeApplicationImpl();
          application.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
          application.setIntake(intake);
