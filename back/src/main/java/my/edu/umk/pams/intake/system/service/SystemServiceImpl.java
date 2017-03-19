@@ -1,14 +1,10 @@
 package my.edu.umk.pams.intake.system.service;
 
 import my.edu.umk.pams.intake.identity.service.IdentityService;
-import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.dao.*;
 import my.edu.umk.pams.intake.system.model.*;
 import my.edu.umk.pams.intake.util.Util;
-
-import org.apache.commons.lang.Validate;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,8 +18,6 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
 
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -483,13 +477,4 @@ public class SystemServiceImpl implements SystemService {
         emailQueueDao.save(emailQueue, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
-    @Override
-    public void addEmailQueue(InEmailQueue emailQueue) {
-        Validate.notNull(emailQueue, "Email cannot be null");
-     //   Validate.isTrue(DRAFTED.equals(emailQueue.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
-        emailQueueDao.addEmailQueue(emailQueue);
-     //   sessionFactory.getCurrentSession().flush();
-    }
-
 }

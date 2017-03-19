@@ -4,15 +4,12 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
-import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 import my.edu.umk.pams.intake.system.service.SystemService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
@@ -37,7 +34,7 @@ public class WhenIReceiveNotificationForSignUp  extends Stage<WhenIReceiveNotifi
      //   emailQueue.setTo(applicant.getEmail());
         emailQueue.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
      //   emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-        systemService.addEmailQueue(emailQueue);
+        systemService.saveEmailQueue(emailQueue);
     	return self();
     }
 }
