@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
@@ -27,9 +29,14 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
 	    private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToFillAllRequiredInformation.class);
 
 	    @Autowired
+	    private CommonService commonService;
+	    
+	    @Autowired
 	    private PolicyService policyService;
 	    
-    public WhenIWantToFillAllRequiredInformation I_want_to_fill_all_required_information() {
+    
+	    
+    public WhenIWantToFillAllRequiredInformation I_want_to_fill_all_required_information() { /*
         InIntakeApplication application = new InIntakeApplicationImpl();
 
 		@Autowired
@@ -47,7 +54,7 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
 	    	
 	    	 InIntakeApplication application = new InIntakeApplicationImpl();
 	    	 
-	    	/* Map<String, Object> map = new HashMap<String, Object>();
+	    	 Map<String, Object> map = new HashMap<String, Object>();
 	    
 			map.put("intakeSession", intakeSession);
 	         map.put("intakeLevel", policyService.findIntakeLevelByCode("MASTER"));
@@ -69,8 +76,8 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
 	         application.setDisabilityCode(commonService.findDisabilityCodeByCode("DISABLE"));
 	         application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
 	    	 
-	         applicationService.draftIntakeApplication((InIntake) applicant, InIntakeApplication);*/
-	    	
+	         applicationService.draftIntakeApplication((InIntake) applicant, InIntakeApplication);
+	    	*/
 	    	return self();
 	    	
 	    }
