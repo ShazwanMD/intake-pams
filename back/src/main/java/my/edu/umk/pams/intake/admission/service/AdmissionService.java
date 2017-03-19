@@ -15,19 +15,13 @@ public interface AdmissionService {
     // INTAKE, INTAKE APPLICATION
     //====================================================================================================
 
-    void selectionIntake(InIntake inIntake);
-
-    void preapproveIntakeApplication(InIntakeApplication application);
-
-    void approveIntakeApplication(InIntakeApplication application);
+    void preselectIntakeApplication(InIntakeApplication application);
 
     void rejectIntakeApplication(InIntakeApplication application);
-
 
     //====================================================================================================
     // CANDIDATE
     //====================================================================================================
-
 
     InCandidate findCandidateByIdentityNo(String identityNo);
 

@@ -1,4 +1,4 @@
-package my.edu.umk.pams.intake.application.stage;
+/*package my.edu.umk.pams.intake.application.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -56,6 +56,6 @@ public class WhenIViewMyStudyMode extends Stage<WhenIViewMyStudyMode> {
 }
     
 
- 
+ */
 
 

@@ -1,4 +1,4 @@
-package my.edu.umk.pams.intake.application;
+/*package my.edu.umk.pams.intake.application;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
  * As a applicant,
  *  I want to view my study mode , 
  *  so that i can choose the study mode
- */
+ 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -53,5 +53,7 @@ public class US_IN_APN_1001 extends SpringScenarioTest<GivenIAmApplicant, WhenIV
         then().I_can_choose_study_mode();
 }
 }
+
+*/
 
 

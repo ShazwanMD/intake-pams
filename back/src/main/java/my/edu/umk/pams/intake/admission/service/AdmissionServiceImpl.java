@@ -3,9 +3,11 @@ package my.edu.umk.pams.intake.admission.service;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InStudyMode;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
@@ -33,7 +35,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Autowired
     private InCandidateDao candidateDao;
-    
+
     @Autowired
     private SystemService systemService;
 
@@ -42,23 +44,22 @@ public class AdmissionServiceImpl implements AdmissionService {
     //====================================================================================================
 
     @Override
-    public void selectionIntake(InIntake inIntake) {
-
-    }
-
-    @Override
-    public void preapproveIntakeApplication(InIntakeApplication application) {
-
-    }
-
-    @Override
-    public void approveIntakeApplication(InIntakeApplication application) {
-
+    public void preselectIntakeApplication(InIntakeApplication application) {
+        // create candidate
+        InCandidate candidate = new InCandidateImpl();
+        candidate.setName(application.getName());
+        candidate.setIdentityNo(application.getCredentialNo());
+        candidate.setEmail(application.getEmail());
+        candidate.setStudyMode(application.getStudyMode());
+        candidate.setStatus(InCandidateStatus.SELECTED);
+        candidate.setApplicant(application.getApplicant());
+        candidate.setOffering(application.getSelection());
+        candidateDao.save(candidate, securityService.getCurrentUser());
     }
 
     @Override
     public void rejectIntakeApplication(InIntakeApplication application) {
-
+        // don't create candidate
     }
 
     //====================================================================================================
@@ -82,13 +83,12 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Override
     public void preapproveCandidate(InCandidate candidate) {
-
         // save candidate
+        candidate.setStudyMode(InStudyMode.FULLTIME);
         candidate.setStatus(InCandidateStatus.PREAPPROVED);
         candidateDao.save(candidate, securityService.getCurrentUser());
 
         // notify candidate
-        // todo(Syah n Azah): tambah email
         InEmailQueue emailQueue = new InEmailQueueImpl();
         emailQueue.setCode("123456");
         emailQueue.setTo(candidate.getEmail());
@@ -98,7 +98,6 @@ public class AdmissionServiceImpl implements AdmissionService {
 
         // link IMS
         // imsService.findStudentByMatricNo(candidate.getMatricNo());
-
     }
 
     @Override
@@ -107,15 +106,13 @@ public class AdmissionServiceImpl implements AdmissionService {
 
         // generate matric no
         Map<String, Object> map = new HashMap<String, Object>();
-        // facultyCode
-        // map.put("facultyCode", xxx);
-        // studymode
-        // map.put("studyMode", xxx); // mungkin kena tambah studymode kat InCandidate, tunggu farahanie add jugak
+         map.put("studyMode", candidate.getStudyMode());
         // map.put("year", xxxx); //
+        // map.put("facultyCode", xxx);
         String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
         candidate.setMatricNo(generatedMatricNo);
-
-        candidate.setStatus(InCandidateStatus.PREAPPROVED);
+        candidate.setStudyMode(InStudyMode.FULLTIME);
+        candidate.setStatus(InCandidateStatus.SELECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
 }

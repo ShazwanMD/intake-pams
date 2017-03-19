@@ -5,8 +5,6 @@ import my.edu.umk.pams.intake.core.GenericDao;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
-import my.edu.umk.pams.intake.policy.model.InStudyModeType;
 
 import java.util.List;
 
@@ -34,8 +32,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
     
-    InStudyMode findStudyModeType(InStudyModeType studymodeType, InIntakeApplication application);
-
     InContact findContactByType(InContactType type, InIntakeApplication application);
 
     InAddress findAddressByType(InAddressType type, InIntakeApplication application);
@@ -64,8 +60,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InGuardian> findGuardians(InIntakeApplication application);
     
-    List<InStudyMode> findStudyModeTypes(InStudyModeType studymodeType);
-
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);

@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.model.InStudyMode;
 
 import javax.persistence.*;
 
@@ -34,8 +35,12 @@ public class InCandidateImpl implements InCandidate {
     private String email;
 
     @Enumerated(EnumType.ORDINAL)
+    @Column(name = "STUDY_MODE", nullable = false)
+    private InStudyMode studyMode = InStudyMode.FULLTIME;
+
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS", nullable = false)
-    private InCandidateStatus status = InCandidateStatus.PREAPPROVED;
+    private InCandidateStatus status = InCandidateStatus.SELECTED;
 
     @OneToOne(targetEntity = InStateCodeImpl.class)
     @JoinColumn(name = "OFFERING_ID", nullable = true)
@@ -79,12 +84,34 @@ public class InCandidateImpl implements InCandidate {
         this.identityNo = identityNo;
     }
 
+    @Override
     public String getMatricNo() {
         return matricNo;
     }
 
+    @Override
     public void setMatricNo(String matricNo) {
         this.matricNo = matricNo;
+    }
+
+    @Override
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public InStudyMode getStudyMode() {
+        return studyMode;
+    }
+
+    @Override
+    public void setStudyMode(InStudyMode studyMode) {
+        this.studyMode = studyMode;
     }
 
     @Override
@@ -130,17 +157,4 @@ public class InCandidateImpl implements InCandidate {
     public Class<?> getInterfaceClass() {
         return InCandidate.class;
     }
-    
-    @Override
-	public String getEmail() {
-		return email;
-	}
-
-    @Override
-	public void setEmail(String email) {
-		this.email = email;
-	}
-    
-    
-	
 }
