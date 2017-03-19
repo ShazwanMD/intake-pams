@@ -6,9 +6,9 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 @JGivenStage
-public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode>{
+public class WhenIWantToViewStuydMode extends Stage<WhenIWantToViewStuydMode> {
 
-	public void I_can_choose_study_mode() {
+	public void I_want_to_view_study_mode() {
 		// TODO Auto-generated method stub
 		
 	}

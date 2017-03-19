@@ -47,6 +47,6 @@ public class US_IN_APN_1000 extends SpringScenarioTest<GivenIAmApplicant, WhenIW
         given().I_am_an_applicant_in_current_intake_session();
         when().I_want_to_reset_forget_password();
         then().I_can_login_again();
-}
+    }
 }
 
