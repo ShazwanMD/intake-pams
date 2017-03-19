@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.system.dao;
 
 import my.edu.umk.pams.intake.core.GenericDao;
+import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 
@@ -16,4 +17,5 @@ public interface InEmailQueueDao extends GenericDao<Long, InEmailQueue> {
 
     List<InEmailQueue> find(InEmailQueueStatus... statuses);
 
+	void addEmailQueue(InEmailQueue emailQueue);
 }

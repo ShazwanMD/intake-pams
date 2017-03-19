@@ -6,8 +6,6 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
@@ -49,6 +47,8 @@ public class ThenIWillKnowMyLoginStatus extends Stage<ThenIWillKnowMyLoginStatus
 //    	Assert.isTrue(InEmailQueueStatus.SENT.equals(found.getQueueStatus()),
 //    				"Applicant should receive login notification status");
 
+
+ //   	List<InEmailQueue> find(InEmailQueueStatus status);
     	   return self();
     }
 	
