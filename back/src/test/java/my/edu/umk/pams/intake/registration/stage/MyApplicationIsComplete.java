@@ -17,9 +17,9 @@ import org.springframework.security.core.Authentication;
  * @author PAMS
  */
 @JGivenStage
-public class DontNeedtoRegisterAgain extends Stage<DontNeedtoRegisterAgain> {
+public class MyApplicationIsComplete extends Stage<MyApplicationIsComplete> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(DontNeedtoRegisterAgain.class);
+	private static final Logger LOG = LoggerFactory.getLogger(MyApplicationIsComplete.class);
 
 	@Autowired
 	private RegistrationService registrationService;
@@ -30,7 +30,7 @@ public class DontNeedtoRegisterAgain extends Stage<DontNeedtoRegisterAgain> {
 	@ExpectedScenarioState
 	boolean exists;
 
-	public DontNeedtoRegisterAgain dont_need_to_register_again() {
+	public MyApplicationIsComplete my_application_is_complete() {
 
 		Assert.isTrue(exists, "yes i have registered before");
 
