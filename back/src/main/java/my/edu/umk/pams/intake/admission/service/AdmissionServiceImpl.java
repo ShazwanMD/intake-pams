@@ -115,4 +115,5 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setStatus(InCandidateStatus.SELECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
+
 }
