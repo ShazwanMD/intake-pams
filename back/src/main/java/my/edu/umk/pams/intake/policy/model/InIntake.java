@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy.model;
 
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.core.model.InDocument;
 
 import java.util.Date;
@@ -30,4 +31,8 @@ public interface InIntake extends InDocument {
     List<InProgramOffering> getProgramOfferings();
 
     void setProgramOfferings(List<InProgramOffering> offerings);
+
+	List<InIntakeApplication> getIntakeApplication();
+
+	void setIntakeApplication(List<InIntakeApplication> intakeApplication);
 }

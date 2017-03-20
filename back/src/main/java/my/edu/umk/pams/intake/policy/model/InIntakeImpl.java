@@ -1,11 +1,13 @@
 package my.edu.umk.pams.intake.policy.model;
 
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.core.InFlowdata;
-
 import my.edu.umk.pams.intake.core.InMetadata;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import java.util.Date;
 import java.util.List;
 
@@ -60,6 +62,9 @@ public class InIntakeImpl implements InIntake {
 
     @OneToMany(targetEntity = InProgramOfferingImpl.class, mappedBy = "intake")
     private List<InProgramOffering> programOfferings;
+    
+    @OneToMany(targetEntity = InIntakeApplicationImpl.class, mappedBy = "intake")
+    private List<InIntakeApplication> intakeApplication;
 
     @Embedded
     private InMetadata metadata;
@@ -214,4 +219,14 @@ public class InIntakeImpl implements InIntake {
     public void setFlowdata(InFlowdata flowdata) {
         this.flowdata = flowdata;
     }
+    
+    @Override
+	public List<InIntakeApplication> getIntakeApplication() {
+		return intakeApplication;
+	}
+
+    @Override
+	public void setIntakeApplication(List<InIntakeApplication> intakeApplication) {
+		this.intakeApplication = intakeApplication;
+	}
 }

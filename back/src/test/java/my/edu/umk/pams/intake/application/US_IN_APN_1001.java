@@ -46,10 +46,10 @@ public class US_IN_APN_1001 extends SpringScenarioTest<GivenIAmApplicant,WhenIWa
     }
 
     @Test
-    @Rollback(true)
+    @Rollback(false)
     public void testScenario1() {
         given().I_am_an_applicant_in_current_intake_session();
-        when().I_want_to_view_study_mode();
-        then().I_can_choose_study_mode();
+        when().I_want_to_view_study_mode_by_intake_id_$(1L);
+        //then().I_can_choose_study_mode();
     }
 }

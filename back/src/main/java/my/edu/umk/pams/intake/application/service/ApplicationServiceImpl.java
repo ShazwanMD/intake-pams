@@ -47,6 +47,7 @@ public class ApplicationServiceImpl implements ApplicationService{
     @Override
     public void draftIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake:{}", intake.getReferenceNo());
+        LOG.debug("curr "+ Util.getCurrentUser());
         intakeApplicationDao.save(application, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
