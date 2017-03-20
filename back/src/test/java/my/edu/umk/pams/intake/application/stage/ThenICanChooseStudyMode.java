@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import my.edu.umk.pams.intake.policy.model.InStudyMode;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 
@@ -22,7 +23,10 @@ public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode>{
 	private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseStudyMode.class);
 
 	    @Autowired
-	    private ApplicationService applicationService;
+		private ApplicationService applicationSrvc;
+		
+		@ExpectedScenarioState
+		private InIntakeApplication intakeAppl;
 
 	    @Autowired
 		private PolicyService policyService;
@@ -36,13 +40,15 @@ public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode>{
 	    @ExpectedScenarioState
 	    private InIntake intake;
 
-	public void I_can_choose_study_mode() {
-		InIntakeApplication application = new InIntakeApplicationImpl();
-		application.getName();
-		application.getCredentialNo();
-		application.getEmail();
-		application.getStudyMode();
-
+	public ThenICanChooseStudyMode I_can_choose_study_mode_by_intake_$(String intakeReferenceNo) {
+		intakeAppl = applicationSrvc.findIntakeApplicationByReferenceNo(intakeReferenceNo);
+		//intakeAppl.getStudyMode();
+		
+		//intakeAppl = new InIntakeApplicationImpl();
+		intakeAppl.setStudyMode(InStudyMode.FULLTIME);
+		
+		applicationSrvc.updateIntakeApplication(intakeAppl);
+		return self();
 	}
 
 }

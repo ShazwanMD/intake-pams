@@ -32,7 +32,7 @@ public class US_IN_APN_1001 extends SpringScenarioTest <GivenIAmApplicant, WhenI
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1001.class);
 
-    public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+    public static final String INTAKE_REFERENCE_NO = "abc123";
 
     @Autowired
     private ApplicationService applicationService;
@@ -46,12 +46,10 @@ public class US_IN_APN_1001 extends SpringScenarioTest <GivenIAmApplicant, WhenI
     }
 
     @Test
-    @Rollback(true)
+    @Rollback(false)
     public void testScenario1() {
         given().I_am_an_applicant_in_current_intake_session();
-
         when().I_want_to_view_study_mode_by_intake_$(INTAKE_REFERENCE_NO);
-        then().I_can_choose_study_mode();
-
+        then().I_can_choose_study_mode_by_intake_$(INTAKE_REFERENCE_NO);
     }
 }
