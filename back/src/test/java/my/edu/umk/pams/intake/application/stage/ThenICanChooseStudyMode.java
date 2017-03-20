@@ -1,4 +1,4 @@
-/*package my.edu.umk.pams.intake.application.stage;
+package my.edu.umk.pams.intake.application.stage;
 
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
@@ -20,31 +20,29 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseStudyMode.class);
-	
+
 	    @Autowired
 	    private ApplicationService applicationService;
-	    
+
 	    @Autowired
 		private PolicyService policyService;
 
 	    @ExpectedScenarioState
 	    private InIntakeSession session;
-	    
+
 	    @Autowired
 		private SystemService systemService;
 
 	    @ExpectedScenarioState
 	    private InIntake intake;
-	
+
 	public void I_can_choose_study_mode() {
-		// TODO Auto-generated method stub
 		InIntakeApplication application = new InIntakeApplicationImpl();
 		application.getName();
 		application.getCredentialNo();
 		application.getEmail();
 		application.getStudyMode();
-	
+
 	}
-	
+
 }
-*/
