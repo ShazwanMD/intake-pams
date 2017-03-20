@@ -1,15 +1,24 @@
 package my.edu.umk.pams.intake.application.stage;
 
+import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
+import my.edu.umk.pams.intake.policy.model.InStudyMode;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.policy.stage.WhenIAddIntake;
 import my.edu.umk.pams.intake.system.service.SystemService;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
@@ -17,8 +26,12 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import io.jsonwebtoken.lang.Assert;
+
 @JGivenStage
 public class WhenIWantToViewStuydMode extends Stage<WhenIWantToViewStuydMode> {
+
+	final Logger LOG = LoggerFactory.getLogger(GivenIAmApplicant.class);
 
 	@Autowired
     private PolicyService policyService;
@@ -28,35 +41,23 @@ public class WhenIWantToViewStuydMode extends Stage<WhenIWantToViewStuydMode> {
 	
 	@Autowired
     private ApplicationService applicationService;
-	
-	@Autowired
-	private SystemService systemService;
-
-    @ExpectedScenarioState
-    private InIntakeSession session;
-
-    @ProvidedScenarioState
-    private InProgramLevel level;
 
     @ProvidedScenarioState
     private InIntake intake;
     
-	public WhenIWantToViewStuydMode I_want_to_view_study_mode() {
+    @ProvidedScenarioState
+    private InIntakeApplication intakeapplication;
+   
+	public WhenIWantToViewStuydMode I_want_to_view_study_mode_by_intake_id_$(Long id) {
 		// TODO Auto-generated method stub
-		 InIntakeApplication application = new InIntakeApplicationImpl();
-		 
-		/* Map<String, Object> map = new HashMap<String, Object>();
-		    //x faham sebenarnye knapa perlu map
-		map.put("intakeSession", intakeSession);
-	    map.put("programLevel", policyService.findProgramLevelByCode("MASTER"));
-	    intakeApplicationRefNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
-	    LOG.debug("creating application {}", intakeApplicationRefNo);*/
-	    	 
-		 application.setIntake(intake);
-		 application.setReferenceNo("000001");
-		 application.setAccountNo("465486451564");
 		
-         application.setName("Ahmad Kharizmi bin Khaldun");
+		intake = policyService.findIntakeById(1L);
+		LOG.debug("intake: {}", intake.getReferenceNo());
+		Assert.notNull(intake);
+		
+		InIntakeApplication application = new InIntakeApplicationImpl();
+		
+		 application.setName("Ahmad Kharizmi bin Khaldun");
          application.setCredentialNo("910607145581");
          application.setEmail("ibnu_khaldun@gmail.com");
          application.setAge(21);
@@ -69,9 +70,12 @@ public class WhenIWantToViewStuydMode extends Stage<WhenIWantToViewStuydMode> {
          application.setMaritalCode(commonService.findMaritalCodeByCode("MARRIED"));
          application.setDisabilityCode(commonService.findDisabilityCodeByCode("DISABLE"));
          application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
-         applicationService.submitIntakeApplication(intake, application);
-         
-         return self();
+         application.setStudyMode(InStudyMode.FULLTIME);
+         applicationService.draftIntakeApplication(intake, intakeapplication);
+		return self();
+		
 	}
 	
 }
+	
+
