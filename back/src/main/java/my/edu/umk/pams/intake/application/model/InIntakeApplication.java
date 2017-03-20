@@ -5,7 +5,7 @@ import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
 
 import java.math.BigDecimal;
 import java.util.List;

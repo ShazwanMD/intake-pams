@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.dao;
 
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.core.InMetadata;
@@ -43,13 +44,20 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public InProgramOffering findOfferingById(Long id) {
+    public InProgramOffering findProgramOfferingById(Long id) {
         Session session = sessionFactory.getCurrentSession();
         return (InProgramOffering) session.get(InProgramOfferingImpl.class, id);
     }
 
+
     @Override
-    public InProgramOffering findOfferingByIntakeAndProgramCode(InIntake intake, InProgramCode programCode) {
+    public InStudyModeOffering findModeOfferingById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        return (InStudyModeOffering) session.get(InStudyModeOfferingImpl.class, id);
+    }
+
+    @Override
+    public InProgramOffering findProgramOfferingByIntakeAndProgramCode(InIntake intake, InProgramCode programCode) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InProgramOffering p where " +
                 "p.intake = :intake " +
@@ -57,6 +65,17 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         query.setEntity("intake", intake);
         query.setEntity("programCode", programCode);
         return (InProgramOffering) query.uniqueResult();
+    }
+
+    @Override
+    public InStudyModeOffering findModeOfferingByIntakeAndMode(InIntake intake, InStudyMode studyMode) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InStudyModeOffering p where " +
+                "p.intake = :intake " +
+                "and p.studyMode = :studyMode ");
+        query.setEntity("intake", intake);
+        query.setEntity("studyMode", studyMode);
+        return (InStudyModeOffering) query.uniqueResult();
     }
 
     @Override
@@ -94,12 +113,21 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public List<InProgramOffering> findOfferings(InIntake intake) {
+    public List<InProgramOffering> findProgramOfferings(InIntake intake) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InProgramOffering p where " +
                 "p.intake = :intake ");
         query.setEntity("intake", intake);
         return (List<InProgramOffering>) query.list();
+    }
+
+    @Override
+    public List<InStudyModeOffering> findModeOfferings(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InStudyModeOffering p where " +
+                "p.intake = :intake ");
+        query.setEntity("intake", intake);
+        return (List<InStudyModeOffering>) query.list();
     }
 
     @Override
@@ -135,7 +163,25 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public void addOffering(InIntake intake, InProgramOffering offering, InUser user) {
+    public Integer countProgramOffering(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InProgramOffering p where " +
+                "p.intake = :intake");
+        query.setEntity("intake", intake);
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public Integer countModeOffering(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InStudyModeOffering p where " +
+                "p.intake = :intake");
+        query.setEntity("intake", intake);
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public void addProgramOffering(InIntake intake, InProgramOffering offering, InUser user) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(offering, "Offering cannot be null");
         Validate.notNull(user, "User cannot be null");
@@ -152,7 +198,34 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public void deleteOffering(InIntake intake, InProgramOffering offering, InUser user) {
+    public void deleteProgramOffering(InIntake intake, InProgramOffering offering, InUser user) {
+        Validate.notNull(intake, "Intake cannot be null");
+        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(offering);
+    }
+
+    @Override
+    public void addModeOffering(InIntake intake, InStudyModeOffering offering, InUser user) {
+        Validate.notNull(intake, "Intake cannot be null");
+        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        offering.setIntake(intake);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        offering.setMetadata(metadata);
+        session.save(offering);
+    }
+
+    @Override
+    public void deleteModeOffering(InIntake intake, InStudyModeOffering offering, InUser user) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(offering, "Offering cannot be null");
         Validate.notNull(user, "User cannot be null");

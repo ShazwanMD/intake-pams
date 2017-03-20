@@ -16,3 +16,16 @@ VALUES
    'MASTER/201720181', '2017-03-11 21:25:01.262000',
    (select ID from IN_PRGM_LEVL where code = 'MASTER'),
    (select ID from IN_INTK_SESN where code = '201720181'));
+
+
+-- add study mode offering FULLTIME and PARTIME
+
+INSERT INTO IN_STDY_MODE_OFRG (ID, INTAKE_ID, STUDY_MODE_ID, C_ID, C_TS, M_ST)
+    VALUES (nextval('SQ_IN_STDY_MODE_OFRG'), currval('SQ_IN_INTK'),
+            (select ID from IN_STDY_MODE where code = 'P'),
+            1, CURRENT_TIMESTAMP, 1 );
+
+INSERT INTO IN_STDY_MODE_OFRG (ID, INTAKE_ID, STUDY_MODE_ID, C_ID, C_TS, M_ST)
+    VALUES (nextval('SQ_IN_STDY_MODE_OFRG'), currval('SQ_IN_INTK'),
+            (select ID from IN_STDY_MODE where code = 'F'),
+            1, CURRENT_TIMESTAMP, 1 );

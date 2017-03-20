@@ -5,7 +5,7 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
 
 import javax.persistence.*;
 
@@ -34,9 +34,8 @@ public class InCandidateImpl implements InCandidate {
     @Column(name = "EMAIL", nullable = false)
     private String email;
 
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "STUDY_MODE", nullable = false)
-    private InStudyMode studyMode = InStudyMode.FULLTIME;
+    @Column(name = "STUDY_MODE_ID", nullable = false)
+    private InStudyMode studyMode ;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS", nullable = false)

@@ -6,8 +6,8 @@ import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
@@ -28,13 +28,16 @@ import java.util.Map;
 public class AdmissionServiceImpl implements AdmissionService {
 
     @Autowired
+    private InCandidateDao candidateDao;
+
+    @Autowired
+    private CommonService commonService;
+
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Autowired
     private SecurityService securityService;
-
-    @Autowired
-    private InCandidateDao candidateDao;
 
     @Autowired
     private SystemService systemService;
@@ -84,7 +87,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public void preapproveCandidate(InCandidate candidate) {
         // save candidate
-        candidate.setStudyMode(InStudyMode.FULLTIME);
+        candidate.setStudyMode(commonService.findStudyModeByCode("F")); // FULL TIME
         candidate.setStatus(InCandidateStatus.PREAPPROVED);
         candidateDao.save(candidate, securityService.getCurrentUser());
 
@@ -111,7 +114,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         // map.put("facultyCode", xxx);
         String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
         candidate.setMatricNo(generatedMatricNo);
-        candidate.setStudyMode(InStudyMode.FULLTIME);
+        candidate.setStudyMode(candidate.getStudyMode());
         candidate.setStatus(InCandidateStatus.SELECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }

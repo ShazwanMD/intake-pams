@@ -6,7 +6,6 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
 import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.util.Util;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;

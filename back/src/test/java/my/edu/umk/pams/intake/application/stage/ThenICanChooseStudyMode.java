@@ -1,54 +1,52 @@
 package my.edu.umk.pams.intake.application.stage;
 
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
+import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.system.service.SystemService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.integration.spring.JGivenStage;
+import java.util.List;
 
 @JGivenStage
-public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode>{
+public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseStudyMode.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseStudyMode.class);
 
-	    @Autowired
-		private ApplicationService applicationSrvc;
-		
-		@ExpectedScenarioState
-		private InIntakeApplication intakeAppl;
+    @Autowired
+    private ApplicationService applicationService;
 
-	    @Autowired
-		private PolicyService policyService;
+    @Autowired
+    private CommonService commonService;
 
-	    @ExpectedScenarioState
-	    private InIntakeSession session;
+    @Autowired
+    private PolicyService policyService;
 
-	    @Autowired
-		private SystemService systemService;
+    @ExpectedScenarioState
+    private InIntakeSession session;
 
-	    @ExpectedScenarioState
-	    private InIntake intake;
+    @ExpectedScenarioState
+    private InIntake intake;
 
-	public ThenICanChooseStudyMode I_can_choose_study_mode_by_intake_$(String intakeReferenceNo) {
-		intakeAppl = applicationSrvc.findIntakeApplicationByReferenceNo(intakeReferenceNo);
-		//intakeAppl.getStudyMode();
-		
-		//intakeAppl = new InIntakeApplicationImpl();
-		intakeAppl.setStudyMode(InStudyMode.FULLTIME);
-		
-		applicationSrvc.updateIntakeApplication(intakeAppl);
-		return self();
-	}
+    @ExpectedScenarioState
+    private List<InStudyModeOffering> modeOfferings;
 
+    public ThenICanChooseStudyMode I_can_choose_offered_study_mode() {
+        for (InStudyModeOffering modeOffering : modeOfferings) {
+            InStudyMode studyMode = modeOffering.getStudyMode();
+            LOG.debug("studyMode available: {} {}", studyMode.getCode(), studyMode.getDescription());
+        }
+
+        Assert.notEmpty(modeOfferings, "mode offering cannot be empty");
+        return self();
+    }
 }

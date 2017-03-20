@@ -10,7 +10,6 @@ import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -70,7 +69,7 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
         application.setCredentialNo("910607145581");
         application.setEmail("ibnu_khaldun@gmail.com");
         application.setAge(21);
-        application.setStudyMode(InStudyMode.FULLTIME);
+        application.setStudyMode(commonService.findStudyModeByCode("P")); // parttime
         application.setGenderCode(commonService.findGenderCodeByCode("M"));
         application.setReligionCode(commonService.findReligionCodeByCode("ISLAM"));
         application.setNationalityCode(commonService.findNationalityCodeByCode("MALAYSIA"));

@@ -277,6 +277,7 @@
                                 <srcFile>src/test/resources/data/IN_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_LEVL.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_STDY_MODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_CODE.sql</srcFile>

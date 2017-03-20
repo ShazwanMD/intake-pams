@@ -163,7 +163,7 @@ create table IN_CNDT (
   M_ST int4,
   NAME varchar(255) not null,
   STATUS int4 not null,
-  STUDY_MODE int4 not null,
+  STUDY_MODE_ID bytea not null,
   APPLICANT_ID int8,
   OFFERING_ID int8,
   primary key (ID)
@@ -579,7 +579,6 @@ create table IN_INTK_APLN (
   REFERENCE_NO varchar(255) not null,
   SCHOOL_BATCH int4,
   SCHOOL_NAME varchar(255),
-  STUDY_MODE int4 not null,
   APPLICANT_ID int8,
   BANK_CODE_ID int8,
   DEPENDENCY_CODE_ID int8,
@@ -594,6 +593,7 @@ create table IN_INTK_APLN (
   RESIDENCY_CODE_ID int8,
   SCHOOL_CODE_ID int8,
   SELECTION_ID int8,
+  STUDY_MODE_ID int8,
   primary key (ID)
 );
 
@@ -934,6 +934,34 @@ create table IN_STDY_CNTR_CODE (
   primary key (ID)
 );
 
+create table IN_STDY_MODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
+);
+
+create table IN_STDY_MODE_OFRG (
+  ID int8 not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  INTAKE_ID int8,
+  STUDY_MODE_ID int8,
+  primary key (ID)
+);
+
 create table IN_STTE_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
@@ -1266,6 +1294,11 @@ alter table IN_INTK_APLN
 foreign key (SELECTION_ID)
 references IN_PRGM_OFRG;
 
+alter table IN_INTK_APLN
+  add constraint FK5974F5AAF5A14A0
+foreign key (STUDY_MODE_ID)
+references IN_STDY_MODE;
+
 alter table IN_INTK_SESN
   add constraint uc_IN_INTK_SESN_1 unique (CODE);
 
@@ -1377,6 +1410,19 @@ references IN_ACTR;
 
 alter table IN_STDY_CNTR_CODE
   add constraint uc_IN_STDY_CNTR_CODE_1 unique (CODE);
+
+alter table IN_STDY_MODE
+  add constraint uc_IN_STDY_MODE_1 unique (CODE);
+
+alter table IN_STDY_MODE_OFRG
+  add constraint FK367FF3793AD22420
+foreign key (INTAKE_ID)
+references IN_INTK;
+
+alter table IN_STDY_MODE_OFRG
+  add constraint FK367FF379AF5A14A0
+foreign key (STUDY_MODE_ID)
+references IN_STDY_MODE;
 
 alter table IN_STTE_CODE
   add constraint uc_IN_STTE_CODE_1 unique (CODE);
@@ -1511,6 +1557,10 @@ create sequence SQ_IN_SCHL_CODE;
 create sequence SQ_IN_SMDL;
 
 create sequence SQ_IN_STDY_CNTR_CODE;
+
+create sequence SQ_IN_STDY_MODE;
+
+create sequence SQ_IN_STDY_MODE_OFRG;
 
 create sequence SQ_IN_STTE_CODE;
 

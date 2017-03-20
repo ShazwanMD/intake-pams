@@ -690,4 +690,28 @@ public interface CommonService {
     void updateParliamentCode(InParliamentCode ParliamentCode);
 
     void removeParliamentCode(InParliamentCode ParliamentCode);
+
+
+    //====================================================================================================
+    // STUDY MODE
+    //====================================================================================================
+
+    InStudyMode findStudyModeById(Long id);
+
+    InStudyMode findStudyModeByCode(String code);
+
+    List<InStudyMode> findStudyModes();
+
+    List<InStudyMode> findStudyModes(String filter, Integer offset, Integer limit);
+
+    Integer countStudyMode();
+
+    Integer countStudyMode(String filter);
+
+    void saveStudyMode(InStudyMode studyMode);
+
+    void updateStudyMode(InStudyMode studyMode);
+
+    void removeStudyMode(InStudyMode studyMode);
+
 }

@@ -4,7 +4,7 @@ import my.edu.umk.pams.intake.core.InMetaObject;
 
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
 
 /**
  * @author PAMS

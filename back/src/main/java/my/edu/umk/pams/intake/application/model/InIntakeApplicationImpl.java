@@ -89,11 +89,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "STUDY_MODE", nullable = false)
-    private InStudyMode studyMode = InStudyMode.UNDECIDED;
-
-    @NotNull
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_TYPE", nullable = false)
     private InBidType bidType = InBidType.FIRST;
 
@@ -108,48 +103,52 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "BID_RESPONSE")
     private InBidResponse bidResponse = InBidResponse.NEW;
 
-    @OneToOne(targetEntity = InDisabilityCodeImpl.class)
+    @ManyToOne(targetEntity = InStudyModeImpl.class)
+    @JoinColumn(name = "STUDY_MODE_ID")
+    private InStudyMode studyMode;
+
+    @ManyToOne(targetEntity = InDisabilityCodeImpl.class)
     @JoinColumn(name = "DISABILITY_CODE_ID")
     private InDisabilityCode disabilityCode;
 
-    @OneToOne(targetEntity = InRaceCodeImpl.class)
+    @ManyToOne(targetEntity = InRaceCodeImpl.class)
     @JoinColumn(name = "RACE_CODE_ID")
     private InRaceCode raceCode;
 
-    @OneToOne(targetEntity = InEthnicityCodeImpl.class)
+    @ManyToOne(targetEntity = InEthnicityCodeImpl.class)
     @JoinColumn(name = "ETHNICITY_CODE_ID")
     private InEthnicityCode ethnicityCode;
 
-    @OneToOne(targetEntity = InGenderCodeImpl.class)
+    @ManyToOne(targetEntity = InGenderCodeImpl.class)
     @JoinColumn(name = "GENDER_CODE_ID")
     private InGenderCode genderCode;
 
-    @OneToOne(targetEntity = InReligionCodeImpl.class)
+    @ManyToOne(targetEntity = InReligionCodeImpl.class)
     @JoinColumn(name = "RELIGION_CODE_ID")
     private InReligionCode religionCode;
 
-    @OneToOne(targetEntity = InBankCodeImpl.class)
+    @ManyToOne(targetEntity = InBankCodeImpl.class)
     @JoinColumn(name = "BANK_CODE_ID")
     private InBankCode bankCode;
 
-    @OneToOne(targetEntity = InNationalityCodeImpl.class)
+    @ManyToOne(targetEntity = InNationalityCodeImpl.class)
     @JoinColumn(name = "NATIONALITY_CODE_ID")
     private InNationalityCode nationalityCode;
 
-    @OneToOne(targetEntity = InMaritalCodeImpl.class)
+    @ManyToOne(targetEntity = InMaritalCodeImpl.class)
     @JoinColumn(name = "MARITAL_CODE_ID")
     private InMaritalCode maritalCode;
 
-    @OneToOne(targetEntity = InDependencyCodeImpl.class)
+    @ManyToOne(targetEntity = InDependencyCodeImpl.class)
     @JoinColumn(name = "DEPENDENCY_CODE_ID")
     private InDependencyCode dependencyCode;
 
-    @OneToOne(targetEntity = InResidencyCodeImpl.class)
+    @ManyToOne(targetEntity = InResidencyCodeImpl.class)
     @JoinColumn(name = "RESIDENCY_CODE_ID")
     private InResidencyCode residencyCode;
 
     // note: can draft without choosing
-    @OneToOne(targetEntity = InProgramOfferingImpl.class)
+    @ManyToOne(targetEntity = InProgramOfferingImpl.class)
     @JoinColumn(name = "SELECTION_ID", nullable = true)
     private InProgramOffering selection;
 

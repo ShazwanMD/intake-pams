@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.policy.service;
 
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.dao.InProgramLevelDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
@@ -9,7 +10,6 @@ import my.edu.umk.pams.intake.policy.dao.InIntakeSessionDao;
 import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.security.service.SecurityService;
-import my.edu.umk.pams.intake.util.Util;
 import my.edu.umk.pams.intake.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -224,22 +224,28 @@ public class PolicyServiceImpl implements PolicyService {
         intakeDao.update(intake, securityService.getCurrentUser());
 
         List<InProgramOffering> offerings = findProgramOfferings(intake);
-//        IntakeCancelledEvent event = new IntakeCancelledEvent(intake, offerings);
-//        applicationContext.publishEvent(event);
+        // todo(uda) intake cancel event
     }
 
     @Override
-    public void addProgramOffering(InIntake intake, InProgramOffering offering) {
+    public void addProgramOffering(InIntake intake, InProgramOffering programOffering) {
         Validate.notNull(intake, "Intake cannot be null");
-        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(programOffering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
-        intakeDao.addOffering(intake, offering, securityService.getCurrentUser());
+        intakeDao.addProgramOffering(intake, programOffering, securityService.getCurrentUser());
+    }
+
+    @Override
+    public void addStudyModeOffering(InIntake intake, InStudyModeOffering modeOffering) {
+        Validate.notNull(intake, "Intake cannot be null");
+        Validate.notNull(modeOffering, "Offering cannot be null");
+        Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        intakeDao.addModeOffering(intake, modeOffering, securityService.getCurrentUser());
     }
 
     //    public InGroup getAdminGroup() {
 //        return groupDao.findByName();
 //    }
-
 
     //====================================================================================================
     // INTAKE
@@ -291,12 +297,12 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public InProgramOffering findProgramOfferingById(Long id) {
-        return intakeDao.findOfferingById(id);
+        return intakeDao.findProgramOfferingById(id);
     }
 
     @Override
     public InProgramOffering findProgramOfferingByIntakeAndProgramCode(InIntake intake, InProgramCode programCode) {
-        return intakeDao.findOfferingByIntakeAndProgramCode(intake, programCode);
+        return intakeDao.findProgramOfferingByIntakeAndProgramCode(intake, programCode);
     }
 
     @Override
@@ -304,6 +310,25 @@ public class PolicyServiceImpl implements PolicyService {
         return programOfferingDao.find(intake);
     }
 
+
+    //====================================================================================================
+    // STUDY MODE OFFERING
+    //====================================================================================================
+
+    @Override
+    public InStudyModeOffering findStudyModeOfferingById(Long id) {
+        return intakeDao.findModeOfferingById(id);
+    }
+
+    @Override
+    public InStudyModeOffering findStudyModeOfferingByIntakeAndStudyMode(InIntake intake, InStudyMode studyMode) {
+        return intakeDao.findModeOfferingByIntakeAndMode(intake, studyMode);
+    }
+
+    @Override
+    public List<InStudyModeOffering> findStudyModeOfferings(InIntake intake) {
+        return intakeDao.findModeOfferings(intake);
+    }
 
     //====================================================================================================
     // PRIVATE METHODS

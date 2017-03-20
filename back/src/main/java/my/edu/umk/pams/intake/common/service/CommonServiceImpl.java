@@ -84,9 +84,6 @@ public class CommonServiceImpl implements CommonService {
     private InVenueCodeDao venueCodeDao;
 
     @Autowired
-    private InCompetencyCodeDao competencyCodeDao;
-
-    @Autowired
     private InInvolvementTypeCodeDao involvementTypeCodeDao;
 
     @Autowired
@@ -103,6 +100,9 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private InEmploymentSectorCodeDao employmentSectorCodeDao;
+
+    @Autowired
+    private InStudyModeDao studyModeDao;
 
     @Autowired
     private InDunCodeDao dunCodeDao;
@@ -1747,4 +1747,59 @@ public class CommonServiceImpl implements CommonService {
         parliamentCodeDao.remove(ParliamentCode, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+
+    //====================================================================================================
+    // STUDY MODE
+    //====================================================================================================
+
+    @Override
+    public InStudyMode findStudyModeById(Long id) {
+        return studyModeDao.findById(id);
+    }
+
+    @Override
+    public InStudyMode findStudyModeByCode(String code) {
+        return studyModeDao.findByCode(code);
+    }
+
+    @Override
+    public List<InStudyMode> findStudyModes() {
+        return studyModeDao.find();
+    }
+
+    @Override
+    public List<InStudyMode> findStudyModes(String filter, Integer offset, Integer limit) {
+        return studyModeDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countStudyMode() {
+        return studyModeDao.count();
+    }
+
+    @Override
+    public Integer countStudyMode(String filter) {
+        return studyModeDao.count(filter);
+    }
+
+
+    @Override
+    public void saveStudyMode(InStudyMode studyMode) {
+        studyModeDao.save(studyMode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateStudyMode(InStudyMode studyMode) {
+        studyModeDao.update(studyMode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeStudyMode(InStudyMode studyMode) {
+        studyModeDao.remove(studyMode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+
 }

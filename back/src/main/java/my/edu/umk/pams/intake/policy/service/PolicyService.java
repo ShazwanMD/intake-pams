@@ -1,11 +1,9 @@
 package my.edu.umk.pams.intake.policy.service;
 
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.identity.model.InUser;
-import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InProgramLevel;
-import my.edu.umk.pams.intake.policy.model.InIntakeSession;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.model.*;
 import org.activiti.engine.task.Task;
 
 import java.util.List;
@@ -84,7 +82,9 @@ public interface PolicyService {
 
     void cancelIntake(InIntake intake);
 
-    void addProgramOffering(InIntake intake, InProgramOffering offering);
+    void addProgramOffering(InIntake intake, InProgramOffering programOffering);
+
+    void addStudyModeOffering(InIntake intake, InStudyModeOffering modeOffering);
 
     //====================================================================================================
     // INTAKE
@@ -115,5 +115,15 @@ public interface PolicyService {
     InProgramOffering findProgramOfferingByIntakeAndProgramCode(InIntake intake, InProgramCode programCode);
 
     List<InProgramOffering> findProgramOfferings(InIntake intake);
+
+    //====================================================================================================
+    // STUDY MODE OFFERING
+    //====================================================================================================
+
+    InStudyModeOffering findStudyModeOfferingById(Long id);
+
+    InStudyModeOffering findStudyModeOfferingByIntakeAndStudyMode(InIntake intake, InStudyMode studyMode);
+
+    List<InStudyModeOffering> findStudyModeOfferings(InIntake intake);
 
 }

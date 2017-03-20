@@ -60,11 +60,14 @@ public class InIntakeImpl implements InIntake {
     @JoinColumn(name = "LEVEL_ID", nullable = false)
     private InProgramLevel level;
 
+    @OneToMany(targetEntity = InStudyModeOfferingImpl.class, mappedBy = "intake")
+    private List<InStudyModeOffering> modeOfferings;
+    
     @OneToMany(targetEntity = InProgramOfferingImpl.class, mappedBy = "intake")
     private List<InProgramOffering> programOfferings;
     
     @OneToMany(targetEntity = InIntakeApplicationImpl.class, mappedBy = "intake")
-    private List<InIntakeApplication> intakeApplication;
+    private List<InIntakeApplication> applications;
 
     @Embedded
     private InMetadata metadata;
@@ -199,6 +202,24 @@ public class InIntakeImpl implements InIntake {
         this.programOfferings = programOfferings;
     }
 
+    @Override
+    public List<InStudyModeOffering> getModeOfferings() {
+        return modeOfferings;
+    }
+
+    @Override
+    public void setModeOfferings(List<InStudyModeOffering> modeOfferings) {
+        this.modeOfferings = modeOfferings;
+    }
+
+    public List<InIntakeApplication> getApplications() {
+        return applications;
+    }
+
+    public void setApplications(List<InIntakeApplication> applications) {
+        this.applications = applications;
+    }
+
     public InMetadata getMetadata() {
         return metadata;
     }
@@ -219,14 +240,4 @@ public class InIntakeImpl implements InIntake {
     public void setFlowdata(InFlowdata flowdata) {
         this.flowdata = flowdata;
     }
-    
-    @Override
-	public List<InIntakeApplication> getIntakeApplication() {
-		return intakeApplication;
-	}
-
-    @Override
-	public void setIntakeApplication(List<InIntakeApplication> intakeApplication) {
-		this.intakeApplication = intakeApplication;
-	}
 }

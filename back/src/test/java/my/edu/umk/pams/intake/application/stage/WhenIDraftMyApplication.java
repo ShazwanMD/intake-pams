@@ -11,7 +11,6 @@ import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
-import my.edu.umk.pams.intake.policy.model.InStudyMode;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import org.slf4j.Logger;
@@ -71,7 +70,7 @@ public class WhenIDraftMyApplication extends Stage<WhenIDraftMyApplication> {
         application.setCredentialNo("910607145581");
         application.setEmail("ibnu_khaldun@gmail.com");
         application.setAge(21);
-        application.setStudyMode(InStudyMode.FULLTIME);
+        application.setStudyMode(commonService.findStudyModeByCode("F")); // fulltime
         application.setGenderCode(commonService.findGenderCodeByCode("M"));
         application.setReligionCode(commonService.findReligionCodeByCode("ISLAM"));
         application.setNationalityCode(commonService.findNationalityCodeByCode("MALAYSIA"));
@@ -84,7 +83,11 @@ public class WhenIDraftMyApplication extends Stage<WhenIDraftMyApplication> {
 
         applicationService.draftIntakeApplication(intake, application);
 
-        //
+        return self();
+    }
+
+
+    //
 //        // add employment
 //        InEmployment employment = new InEmploymentImpl();
 //        employment.setLevelCode(commonService.findEmploymentLevelCodeByCode("EXECUTIVE"));
@@ -108,6 +111,5 @@ public class WhenIDraftMyApplication extends Stage<WhenIDraftMyApplication> {
 //        // ready to submit
 //        applicationService.submitIntakeApplication(intake, application);
 
-        return self();
-    }
+
 }
