@@ -7,16 +7,12 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
-import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Date;
-import java.util.UUID;
 
 /**
  * @author PAMS
@@ -33,7 +29,7 @@ public class WhenISelectMultipleProgramCode extends Stage<WhenISelectMultiplePro
     private InIntakeSession session;
 
     @ProvidedScenarioState
-    private InIntakeLevel level;
+    private InProgramLevel level;
 
     @ProvidedScenarioState
     private InIntake intake;

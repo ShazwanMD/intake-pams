@@ -56,9 +56,9 @@ public class InIntakeImpl implements InIntake {
     @JoinColumn(name = "SESSION_ID", nullable = false)
     private InIntakeSession session;
 
-    @OneToOne(targetEntity = InIntakeLevelImpl.class)
+    @OneToOne(targetEntity = InProgramLevelImpl.class)
     @JoinColumn(name = "LEVEL_ID", nullable = false)
-    private InIntakeLevel level;
+    private InProgramLevel level;
 
     @OneToMany(targetEntity = InProgramOfferingImpl.class, mappedBy = "intake")
     private List<InProgramOffering> programOfferings;
@@ -181,12 +181,12 @@ public class InIntakeImpl implements InIntake {
     }
 
     @Override
-    public InIntakeLevel getLevel() {
+    public InProgramLevel getLevel() {
         return level;
     }
 
     @Override
-    public void setLevel(InIntakeLevel level) {
+    public void setLevel(InProgramLevel level) {
         this.level = level;
     }
 

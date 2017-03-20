@@ -32,7 +32,7 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public InIntake findBySessionAndCategory(InIntakeSession session, InIntakeLevel category) {
+    public InIntake findBySessionAndCategory(InIntakeSession session, InProgramLevel category) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntake p where " +
                 "p.session = :session " +

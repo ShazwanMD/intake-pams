@@ -110,3 +110,7 @@ local.properties
 
 ### JGiven template
 /jgiven-reports
+
+
+#Schema Util template
+create.sql

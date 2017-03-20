@@ -19,7 +19,7 @@ import org.springframework.util.Assert;
  * @author PAMS
  */
 @JGivenStage
-public class CheckForRegistration extends Stage<CheckForRegistration> {
+public class CheckForApplication extends Stage<CheckForApplication> {
 
     @Autowired
     private RegistrationService registrationService;
@@ -33,11 +33,11 @@ public class CheckForRegistration extends Stage<CheckForRegistration> {
     @ProvidedScenarioState
     private boolean exists;
 
-    public CheckForRegistration I_check_for_registeration() {
+    public CheckForApplication i_check_for_application() {
 		
     	//uda and max, tolong tgk jap betul dak buat mcm ni untuk check for registered user?
     	exists = registrationService.isExists("applicant1");	
-    	Assert.isTrue(exists, "registered user doesnt exists");
+    	Assert.isTrue(exists, "registered user does not exists");
 		
 		return self();
 	}

@@ -5,8 +5,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
-import my.edu.umk.pams.intake.registration.stage.CheckForRegistration;
-import my.edu.umk.pams.intake.registration.stage.DontNeedtoRegisterAgain;
+import my.edu.umk.pams.intake.registration.stage.CheckForApplication;
+import my.edu.umk.pams.intake.registration.stage.MyApplicationIsComplete;
 import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
 import org.junit.After;
 import org.junit.Before;
@@ -23,14 +23,14 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * as a registered user
  * and i have an incomplete application,
- *      I want to complete my application
- *              so that my application is completed.
+ * I want to complete my application
+ * so that my application is completed.
  * @author PAMS
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckForRegistration, DontNeedtoRegisterAgain > {
+public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckForApplication, MyApplicationIsComplete > {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_2001.class);
 
@@ -54,8 +54,8 @@ public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckF
         given().I_am_an_applicant_in_current_intake_session();
 //      additionalState.and().given().i_have_an_incomplete_application();
         addStage(GivenIHaveIncompleteApplication.class).and().i_have_an_incomplete_application();
-        when().I_check_for_registeration();
-        then().dont_need_to_register_again();
+        when().i_check_for_application();
+        then().my_application_is_complete();
     }
 	
 	

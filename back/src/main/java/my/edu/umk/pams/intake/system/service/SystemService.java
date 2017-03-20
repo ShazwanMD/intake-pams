@@ -158,7 +158,4 @@ public interface SystemService {
     Integer countEmailQueue();
 
     void saveEmailQueue(InEmailQueue emailQueue);
-    
-    void addEmailQueue(InEmailQueue emailQueue);
-
 }

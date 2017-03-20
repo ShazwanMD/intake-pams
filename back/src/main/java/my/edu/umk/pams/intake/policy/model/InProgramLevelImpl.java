@@ -5,14 +5,14 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InIntakeLevel")
-@Table(name = "IN_INTK_LEVL")
-public class InIntakeLevelImpl implements InIntakeLevel {
+@Entity(name = "InProgramLevel")
+@Table(name = "IN_PRGM_LEVL")
+public class InProgramLevelImpl implements InProgramLevel {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(generator = "SQ_IN_INTK_LEVL")
-    @SequenceGenerator(name = "SQ_IN_INTK_LEVL", sequenceName = "SQ_IN_INTK_LEVL", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_IN_PRGM_LEVL")
+    @SequenceGenerator(name = "SQ_IN_PRGM_LEVL", sequenceName = "SQ_IN_PRGM_LEVL", allocationSize = 1)
     private Long id;
 
     @NotNull
@@ -66,6 +66,6 @@ public class InIntakeLevelImpl implements InIntakeLevel {
 
     @Override
     public Class<?> getInterfaceClass() {
-        return InIntakeLevel.class;
+        return InProgramLevel.class;
     }
 }

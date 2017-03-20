@@ -14,5 +14,5 @@ VALUES
    '201720181/MASTER',
     NULL,
    'MASTER/201720181', '2017-03-11 21:25:01.262000',
-   (select ID from IN_INTK_LEVL where code = 'MASTER'),
+   (select ID from IN_PRGM_LEVL where code = 'MASTER'),
    (select ID from IN_INTK_SESN where code = '201720181'));

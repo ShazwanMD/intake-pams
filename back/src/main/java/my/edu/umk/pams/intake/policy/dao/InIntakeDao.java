@@ -6,7 +6,7 @@ import my.edu.umk.pams.intake.core.GenericDao;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeLevel;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 
@@ -20,7 +20,7 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
 
     InIntake findByReferenceNo(String referenceNo);
 
-    InIntake findBySessionAndCategory(InIntakeSession session, InIntakeLevel category);
+    InIntake findBySessionAndCategory(InIntakeSession session, InProgramLevel category);
 
     InProgramOffering findOfferingById(Long id);
 
