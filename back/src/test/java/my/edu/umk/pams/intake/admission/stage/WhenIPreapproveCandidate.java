@@ -8,6 +8,7 @@ import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,6 +26,9 @@ public class WhenIPreapproveCandidate extends Stage<WhenIPreapproveCandidate> {
 
     @ProvidedScenarioState
     private InCandidate candidate;
+    
+    @ProvidedScenarioState
+    private InIntake intake;
 
     public WhenIPreapproveCandidate I_preapprove_candidate(){
 
@@ -32,10 +36,11 @@ public class WhenIPreapproveCandidate extends Stage<WhenIPreapproveCandidate> {
         Assert.notNull(intakeSession);
 
         // pps tengah isi
+        admissionService.findCandidates(intake);
         candidate = new InCandidateImpl();
-        candidate.setIdentityNo("980101142222");
-        candidate.setMatricNo("A139999");
-        candidate.setName("Sahir bin Messi");
+        candidate.setIdentityNo("801129035475");
+        candidate.setMatricNo("A00092");
+        candidate.setName("M.Syahrul Ahzan");
         candidate.setEmail("msyahrul@umk.edu.my");
       
 
