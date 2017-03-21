@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.policy.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 
@@ -20,9 +21,9 @@ import java.util.List;
  * @author PAMS
  */
 @JGivenStage
-public class ThenICanChooseFromASelectionOfChoices extends Stage<ThenICanChooseFromASelectionOfChoices> {
+public class ThenICanChooseFromASelectionOfChoicesPPS extends Stage<ThenICanChooseFromASelectionOfChoicesPPS> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseFromASelectionOfChoices.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseFromASelectionOfChoicesPPS.class);
 
     @Autowired
     private PolicyService policyService;
@@ -33,7 +34,8 @@ public class ThenICanChooseFromASelectionOfChoices extends Stage<ThenICanChooseF
     @ExpectedScenarioState
     private InIntake intake;
 
-    public ThenICanChooseFromASelectionOfChoices i_can_choose_from_selection_of_choices(){
+    @Pending
+    public ThenICanChooseFromASelectionOfChoicesPPS i_can_choose_from_selection_of_choices(){
 
         return self();
     }

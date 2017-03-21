@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.policy.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -18,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author PAMS
  */
 @JGivenStage
-public class WhenISelectMultipleProgramCode extends Stage<WhenISelectMultipleProgramCode> {
+public class WhenIAddMultipleProgramCodePPS extends Stage<WhenIAddMultipleProgramCodePPS> {
 
     private static final Logger LOG = LoggerFactory.getLogger(WhenIAddIntake.class);
 
@@ -34,9 +35,8 @@ public class WhenISelectMultipleProgramCode extends Stage<WhenISelectMultiplePro
     @ProvidedScenarioState
     private InIntake intake;
 
-    public WhenISelectMultipleProgramCode i_select_multiple_program_code() {
-
-
+    @Pending
+    public WhenIAddMultipleProgramCodePPS i_select_multiple_program_code() {
 
         return self();
     }

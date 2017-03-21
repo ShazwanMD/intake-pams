@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.policy.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -19,9 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @JGivenStage
-public class ToBeOfferedInAnIntake extends Stage<ToBeOfferedInAnIntake> {
+public class ToBeOfferedInAnIntakePPS extends Stage<ToBeOfferedInAnIntakePPS> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ToBeOfferedInAnIntake.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ToBeOfferedInAnIntakePPS.class);
 
     @Autowired
     private PolicyService policyService;
@@ -35,7 +36,8 @@ public class ToBeOfferedInAnIntake extends Stage<ToBeOfferedInAnIntake> {
     @ProvidedScenarioState
     private InIntake intake;
 
-    public ToBeOfferedInAnIntake i_offer_an_intake() {
+    @Pending
+    public ToBeOfferedInAnIntakePPS i_offer_an_intake() {
         
 
         return self();
