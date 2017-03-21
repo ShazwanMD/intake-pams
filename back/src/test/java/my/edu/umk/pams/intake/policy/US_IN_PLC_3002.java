@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
@@ -40,6 +41,7 @@ public class US_IN_PLC_3002 extends SpringScenarioTest <GivenIAmMGSEBAdministrat
     
     @Test
     @Rollback(true)
+    @Issue("PAMI-15")
     public void testScenario1() {
     	given().I_am_a_MGSEB_administrator_in_current_intake_session();
     	when().I_want_to_setup_competencies_matrix();
