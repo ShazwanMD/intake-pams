@@ -9,6 +9,7 @@ import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
+import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,10 +31,10 @@ public class WhenIReceiveNotificationForSignUp  extends Stage<WhenIReceiveNotifi
     public WhenIReceiveNotificationForSignUp I_receive_notification_for_sign_up() {
          
     	InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("123456");
+        emailQueue.setCode("123444");
      //   emailQueue.setTo(applicant.getEmail());
         emailQueue.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
-     //   emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+        emailQueue.setQueueStatus(InEmailQueueStatus.SENT);
         systemService.saveEmailQueue(emailQueue);
     	return self();
     }

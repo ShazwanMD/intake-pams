@@ -43,9 +43,9 @@ public class WhenIWantToViewTopApplicant extends Stage<WhenIWantToViewTopApplica
     
     public WhenIWantToViewTopApplicant I_want_to_view_top_applicant_application() {
     	
-    	InIntakeApplication application = new InIntakeApplicationImpl();
+   // 	InIntakeApplication application = new InIntakeApplicationImpl();
     	
-    	applicationService.findIntakeApplicationsOrderedByRank(intake);
+    //	applicationService.findIntakeApplicationsOrderedByRank(intake);
     	//List<InIntakeApplication>findIntakeApplicationsOrderedByRank(InIntake intake);
 		
     	return self();
