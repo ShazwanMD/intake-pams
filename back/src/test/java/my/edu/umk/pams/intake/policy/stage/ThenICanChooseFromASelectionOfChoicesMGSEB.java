@@ -3,7 +3,6 @@ package my.edu.umk.pams.intake.policy.stage;
 import com.tngtech.jgiven.Stage;
 
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.common.model.InProgramCode;
@@ -19,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,7 +31,7 @@ public class ThenICanChooseFromASelectionOfChoicesMGSEB extends Stage<ThenICanCh
 
     @Autowired
     private PolicyService policyService;
-    
+
     @Autowired
     private CommonService commonService;
 
@@ -40,20 +40,28 @@ public class ThenICanChooseFromASelectionOfChoicesMGSEB extends Stage<ThenICanCh
 
     @ExpectedScenarioState
     private InIntake intake;
-    
-    @ProvidedScenarioState
-    private InProgramCode programCode;
-    
-    @ProvidedScenarioState
+
+    @ExpectedScenarioState
+    private List<InProgramCode> programCodes;
+
+    @ExpectedScenarioState
     private List<InProgramOffering> programOfferings;
-    
+
     public ThenICanChooseFromASelectionOfChoicesMGSEB i_can_choose_from_selection_of_choices_MGSEB(){
       
 
       
 //todo     programOfferings = (List<InProgramOffering>) policyService.findProgramOfferingByIntakeAndProgramCode(intake, programCode);
 // todo     Assert.notEmpty(programOfferings, "program offering cannot be empty");
-        
+
+
+        programOfferings = new ArrayList<>();
+        programCodes.forEach(programCode -> {
+            InProgramOffering offering = policyService.findProgramOfferingByIntakeAndProgramCode(intake, programCode);
+            programOfferings.add(offering);
+        });
+        Assert.isTrue(programCodes.size() == programOfferings.size(), "The code & offering count should match");
+
         return self();
     }
   

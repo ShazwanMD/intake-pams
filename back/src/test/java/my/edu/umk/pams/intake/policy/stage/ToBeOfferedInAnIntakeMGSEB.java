@@ -16,6 +16,7 @@ import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -53,11 +54,11 @@ public class ToBeOfferedInAnIntakeMGSEB extends Stage<ToBeOfferedInAnIntakeMGSEB
     private boolean exists;
     
     @ProvidedScenarioState
-    private List<InProgramCode> programCode;
+    private List<InProgramCode> programCodes;
 
 	public ToBeOfferedInAnIntakeMGSEB i_offer_in_an_intake_MGSEB() {
 
-		InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+		intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 		 Assert.notNull(intake, "intake is null");
 		 
 		 InProgramOffering offering1 = new InProgramOfferingImpl();
@@ -78,11 +79,16 @@ public class ToBeOfferedInAnIntakeMGSEB extends Stage<ToBeOfferedInAnIntakeMGSEB
 		 policyService.addProgramOffering(intake, offering2);
 		 policyService.addProgramOffering(intake, offering3);
 		 
-		 programCode = commonService.findProgramCodes();
+//		 programCode = commonService.findProgramCodes();	// <-- This INCORRECTLY gives us 4 instead of 3 codes!
 		 
 		// Assert.notNull(offering, "program code is not offered");
-	
-		   
+
+		programCodes = new ArrayList<>();
+		List<InProgramCode> programCodesAll = commonService.findProgramCodes(); // <-- Because we can handle only 3...
+		for (InProgramCode code : programCodesAll)
+			if(!code.getCode().equals("MEM")) // <-- And so we remove MEM! And MEM will fail!
+				programCodes.add(code);
+
 		return self();
 	}
 }
