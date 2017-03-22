@@ -35,8 +35,8 @@ public class WhenIAddOffering extends Stage<WhenIAddOffering> {
         intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         InProgramOffering offering = new InProgramOfferingImpl();
         offering.setProjection(10);
-        offering.setGeneralCriteria(setupCmptncy.setGeneralCriteria());
-        offering.setSpecificCriteria(setupCmptncy.setSpecificCriteria());
+        offering.setGeneralCriteria(setupCmptncy.getGeneralCriteria());
+        offering.setSpecificCriteria(setupCmptncy.getSpecificCriteria());
         offering.setInterview(true);
        // offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("SC-001")); // todo(uda): need data
        // offering.setProgramCode(commonService.findProgramCodeByCode("MEM")); // todo(uda): need real data
