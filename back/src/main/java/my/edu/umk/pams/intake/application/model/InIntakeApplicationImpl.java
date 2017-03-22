@@ -160,6 +160,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @JoinColumn(name = "APPLICANT_ID")
     private InApplicant applicant;
 
+    @OneToMany(targetEntity = InResultImpl.class, mappedBy = "application")
+    private List<InResult> results;
+
     @OneToMany(targetEntity = InInvolvementImpl.class, mappedBy = "application")
     private List<InInvolvement> involvements;
 
@@ -588,6 +591,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setAddresses(List<InAddress> addresses) {
         this.addresses = addresses;
+    }
+
+    @Override
+    public List<InResult> getResults() {
+        return results;
+    }
+
+    @Override
+    public void setResults(List<InResult> results) {
+        this.results = results;
     }
 
     @Override

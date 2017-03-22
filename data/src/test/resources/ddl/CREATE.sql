@@ -91,6 +91,14 @@ create table IN_BANK_CODE (
   primary key (ID)
 );
 
+create table IN_BCLR_RSLT (
+  CGPA numeric(19, 2) not null,
+  MATRIC_NO varchar(255) not null,
+  YEAR int4 not null,
+  ID int8 not null,
+  primary key (ID)
+);
+
 create table IN_CITY_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
@@ -243,6 +251,14 @@ create table IN_DPCY_CODE (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  primary key (ID)
+);
+
+create table IN_DPLM_RSLT (
+  CGPA numeric(19, 2) not null,
+  REGISTRATION_NO varchar(255) not null,
+  YEAR int4 not null,
+  ID int8 not null,
   primary key (ID)
 );
 
@@ -704,6 +720,14 @@ create table IN_MRTL_CODE (
   primary key (ID)
 );
 
+create table IN_MUET_RSLT (
+  BAND int4 not null,
+  REGISTRATION_NO varchar(255) not null,
+  YEAR int4 not null,
+  ID int8 not null,
+  primary key (ID)
+);
+
 create table IN_NTLY_CODE (
   ID int8 not null,
   CODE varchar(255),
@@ -870,6 +894,35 @@ create table IN_RSCY_CODE (
   primary key (ID)
 );
 
+create table IN_RSLT (
+  ID int8 not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  RESULT_TYPE int4,
+  APPLICATION_ID int8,
+  primary key (ID)
+);
+
+create table IN_RSLT_ITEM (
+  ID int8 not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  GRADE_CODE_ID int8,
+  RESULT_ID int8,
+  SUBJECT_CODE_ID int8,
+  primary key (ID)
+);
+
 create table IN_SBJT_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
@@ -977,6 +1030,14 @@ create table IN_STTE_CODE (
   primary key (ID)
 );
 
+create table IN_TOFL_RSLT (
+  POINT int4 not null,
+  REGISTRATION_NO varchar(255) not null,
+  YEAR int4 not null,
+  ID int8 not null,
+  primary key (ID)
+);
+
 create table IN_USER (
   EMAIL varchar(255) not null,
   PASSWORD varchar(255),
@@ -1063,6 +1124,11 @@ alter table IN_BANK_CODE
 alter table IN_BANK_CODE
   add constraint uc_IN_BANK_CODE_3 unique (SWIFT_CODE);
 
+alter table IN_BCLR_RSLT
+  add constraint FKE5D330A7D81680
+foreign key (ID)
+references IN_RSLT;
+
 alter table IN_CITY_CODE
   add constraint uc_IN_CITY_CODE_1 unique (CODE);
 
@@ -1108,6 +1174,11 @@ alter table IN_DBLY_CODE
 
 alter table IN_DPCY_CODE
   add constraint uc_IN_DPCY_CODE_1 unique (CODE);
+
+alter table IN_DPLM_RSLT
+  add constraint FK4C431AE1D81680
+foreign key (ID)
+references IN_RSLT;
 
 alter table IN_DSCT_CODE
   add constraint uc_IN_DSCT_CODE_1 unique (CODE);
@@ -1345,6 +1416,11 @@ alter table IN_MODL
 alter table IN_MRTL_CODE
   add constraint uc_IN_MRTL_CODE_1 unique (CODE);
 
+alter table IN_MUET_RSLT
+  add constraint FK23B72FD7D81680
+foreign key (ID)
+references IN_RSLT;
+
 alter table IN_NTLY_CODE
   add constraint uc_IN_NTLY_CODE_1 unique (CODE);
 
@@ -1392,6 +1468,26 @@ alter table IN_RLGN_CODE
 alter table IN_RSCY_CODE
   add constraint uc_IN_RSCY_CODE_1 unique (CODE);
 
+alter table IN_RSLT
+  add constraint FKA022266337A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
+
+alter table IN_RSLT_ITEM
+  add constraint FKAB928B6FA6138B7C
+foreign key (GRADE_CODE_ID)
+references IN_GRDE_CODE;
+
+alter table IN_RSLT_ITEM
+  add constraint FKAB928B6F9463E1E2
+foreign key (RESULT_ID)
+references IN_RSLT;
+
+alter table IN_RSLT_ITEM
+  add constraint FKAB928B6FB1969366
+foreign key (SUBJECT_CODE_ID)
+references IN_SBJT_CODE;
+
 alter table IN_SBJT_CODE
   add constraint uc_IN_SBJT_CODE_1 unique (CODE);
 
@@ -1432,6 +1528,11 @@ alter table IN_STTE_CODE
 foreign key (COUNTRY_CODE_ID)
 references IN_CNTY_CODE;
 
+alter table IN_TOFL_RSLT
+  add constraint FKE98EA1EDD81680
+foreign key (ID)
+references IN_RSLT;
+
 alter table IN_USER
   add constraint uc_IN_USER_1 unique (EMAIL);
 
@@ -1447,6 +1548,10 @@ references IN_PCPL;
 
 alter table IN_VENU_CODE
   add constraint uc_IN_VENU_CODE_1 unique (CODE);
+
+create sequence SEQ_IN_RSLT;
+
+create sequence SEQ_IN_RSLT_ITEM;
 
 create sequence SQ_IN_ACTR;
 
