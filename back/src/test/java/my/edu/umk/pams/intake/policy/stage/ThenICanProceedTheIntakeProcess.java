@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.policy.stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -33,8 +34,13 @@ public class ThenICanProceedTheIntakeProcess  extends Stage<ThenICanProceedTheIn
     public ThenICanProceedTheIntakeProcess I_Can_Proceed_The_Intake_Process(){
     	
     	InIntake intake =  policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	
     	intake.getProjection();
+    	intake.getStartDate();
+    	intake.getEndDate();
     	policyService.startIntakeTask(intake);
+    	
+    	Assert.notNull(intake, "projection cannot be empty");
     	return self();
     }
 }

@@ -15,7 +15,6 @@ import my.edu.umk.pams.intake.policy.stage.WhenIAddIntake;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddMultipleProgramCodeMGSEB;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddMultipleProgramCodePPS;
 import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,6 +36,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
+
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_2000 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddMultipleProgramCodePPS, ThenICanChooseFromASelectionOfChoicesPPS> {
 

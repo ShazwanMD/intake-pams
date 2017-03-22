@@ -13,43 +13,40 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanProceedTheIntakeProcess;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetProjectionForCurrentIntake;
 
-/**
- * @author PAMS
-As a PPS Academic Administrator, 
+/*As a MGSEB Academic Administrator, 
 I want to set the projection for current intake session, 
-so that i can proceed the intake process
-*/
+so that i can proceed the intake process*/
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_PLC_2003 extends SpringScenarioTest<GivenIAmPPSAdministrator, 
-WhenIWantToSetProjectionForCurrentIntake, 
-ThenICanProceedTheIntakeProcess > {
+
+public class US_IN_PLC_3003 extends SpringScenarioTest <GivenIAmMGSEBAdministrator, WhenIWantToSetProjectionForCurrentIntake, 
+ThenICanProceedTheIntakeProcess> {
+	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3003.class);
 	
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2003.class);
-
-    @Before
+	@Before
     public void before() {
-    }
-
+   	}
+    
     @After
     public void after() {
     }
-
+    
     @Test
-    @Rollback(false)
-    @Issue("PAMI-9")
+    @Rollback(true)
+    @Issue("PAMI-16")
     public void testScenario1() {
-        given().I_am_a_PPS_administrator_in_current_intake_session();
-        when().I_Want_To_Set_Projection_For_Current_Intake();
+    	given().I_am_a_MGSEB_administrator_in_current_intake_session();
+    	when().I_Want_To_Set_Projection_For_Current_Intake();
         then().I_Can_Proceed_The_Intake_Process();
     }
+	
 
 }

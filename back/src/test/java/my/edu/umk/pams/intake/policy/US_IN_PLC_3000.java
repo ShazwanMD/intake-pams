@@ -4,7 +4,6 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
-import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromASelectionOfChoicesMGSEB;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeIsReadyForSetup;
@@ -51,7 +50,6 @@ public class US_IN_PLC_3000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 
     @Test
     @Rollback(true)
-    @Issue("PAMI-13")
     public void testScenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().i_add_multiple_program_code_MGSEB();

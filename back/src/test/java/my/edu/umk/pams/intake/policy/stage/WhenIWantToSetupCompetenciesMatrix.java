@@ -33,8 +33,8 @@ public class WhenIWantToSetupCompetenciesMatrix extends Stage <WhenIWantToSetupC
 	
 	public WhenIWantToSetupCompetenciesMatrix I_want_to_setup_competencies_matrix (){
 
-		String generalCriteria = getGeneralCriteria();
-		String specificCriteria = getSpecificCriteria();
+		String generalCriteria = setGeneralCriteria();
+		String specificCriteria = setSpecificCriteria();
    
        InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
        
@@ -51,7 +51,7 @@ public class WhenIWantToSetupCompetenciesMatrix extends Stage <WhenIWantToSetupC
 		return self();
 	}
 	
-	public String getGeneralCriteria(){
+	public String setGeneralCriteria(){
 		
 		String generalCriteria = 
 
@@ -65,7 +65,7 @@ public class WhenIWantToSetupCompetenciesMatrix extends Stage <WhenIWantToSetupC
 		
 	}
 	
-	public String getSpecificCriteria(){
+	public String setSpecificCriteria(){
 	    String specificCriteria =
 
 	               "(#{ (2.75 < Degree.CPA <= 4.0 " +

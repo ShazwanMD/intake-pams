@@ -1,7 +1,5 @@
 package my.edu.umk.pams.intake.policy.model;
 
-import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.core.InFlowdata;
@@ -70,9 +68,6 @@ public class InIntakeImpl implements InIntake {
     
     @OneToMany(targetEntity = InIntakeApplicationImpl.class, mappedBy = "intake")
     private List<InIntakeApplication> applications;
-
-    @OneToMany(targetEntity = InCandidateImpl.class, mappedBy = "intake")
-    private List<InCandidate> candidates;
 
     @Embedded
     private InMetadata metadata;
@@ -217,32 +212,18 @@ public class InIntakeImpl implements InIntake {
         this.modeOfferings = modeOfferings;
     }
 
-    @Override
     public List<InIntakeApplication> getApplications() {
         return applications;
     }
 
-    @Override
     public void setApplications(List<InIntakeApplication> applications) {
         this.applications = applications;
     }
 
-    @Override
-    public List<InCandidate> getCandidates() {
-        return candidates;
-    }
-
-    @Override
-    public void setCandidates(List<InCandidate> candidates) {
-        this.candidates = candidates;
-    }
-
-    @Override
     public InMetadata getMetadata() {
         return metadata;
     }
 
-    @Override
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }

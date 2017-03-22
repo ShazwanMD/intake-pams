@@ -17,7 +17,6 @@ import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
 @JGivenStage
-
 public class WhenIWantToSetProjectionForCurrentIntake extends Stage<WhenIWantToSetProjectionForCurrentIntake>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToSetProjectionForCurrentIntake.class);
@@ -39,6 +38,8 @@ public class WhenIWantToSetProjectionForCurrentIntake extends Stage<WhenIWantToS
 		//InIntake intk = new InIntakeImpl();
 		
 		intake.setProjection(1000);
+		intake.setStartDate(new Date());
+        intake.setEndDate(new Date());
 		policyService.updateIntake(intake);
 		
 		return self();
