@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.dao;
 
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.core.GenericDao;
@@ -40,6 +41,7 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
 
     List<InApplicant> findApplicants(InIntake intake);
 
+    List<InCandidate> findCandidates(InIntake intake);
 
     // ====================================================================================================
     // HELPER
@@ -53,6 +55,12 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
     Integer countProgramOffering(InIntake intake);
 
     Integer countModeOffering(InIntake intake);
+
+    Integer countApplication(InIntake intake);
+
+    Integer countApplicant(InIntake intake);
+
+    Integer countCandidate(InIntake intake);
 
 
     // ====================================================================================================

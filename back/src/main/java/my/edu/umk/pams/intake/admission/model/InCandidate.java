@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.admission.model;
 import my.edu.umk.pams.intake.core.InMetaObject;
 
 import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 
@@ -11,7 +12,7 @@ import my.edu.umk.pams.intake.common.model.InStudyMode;
  */
 public interface InCandidate extends InMetaObject {
 
-	String getName();
+    String getName();
 
     void setName(String name);
 
@@ -24,10 +25,10 @@ public interface InCandidate extends InMetaObject {
     String getMatricNo();
 
     void setMatricNo(String matricNo);
-  
-	String getEmail();
 
-	void setEmail(String email);
+    String getEmail();
+
+    void setEmail(String email);
 
     InStudyMode getStudyMode();
 
@@ -37,6 +38,10 @@ public interface InCandidate extends InMetaObject {
 
     void setStatus(InCandidateStatus status);
 
+    InIntake getIntake();
+
+    void setIntake(InIntake intake);
+
     InApplicant getApplicant();
 
     void setApplicant(InApplicant applicant);
@@ -44,6 +49,6 @@ public interface InCandidate extends InMetaObject {
     InProgramOffering getOffering();
 
     void setOffering(InProgramOffering offering);
-    
-    
+
+
 }

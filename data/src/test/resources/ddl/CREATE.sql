@@ -1,3 +1,4 @@
+
 create table IN_ACTR (
   ID int8 not null,
   ACTOR_TYPE int4,
@@ -173,6 +174,7 @@ create table IN_CNDT (
   STATUS int4 not null,
   STUDY_MODE_ID bytea not null,
   APPLICANT_ID int8,
+  INTAKE_ID int8,
   OFFERING_ID int8,
   primary key (ID)
 );
@@ -1155,6 +1157,11 @@ alter table IN_CNDT
   add constraint FKA01B4115BDADE6E0
 foreign key (APPLICANT_ID)
 references IN_APCN;
+
+alter table IN_CNDT
+  add constraint FKA01B41153AD22420
+foreign key (INTAKE_ID)
+references IN_INTK;
 
 alter table IN_CNDT
   add constraint FKA01B4115E4CD51E5

@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy.model;
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.core.model.InDocument;
 
@@ -39,4 +40,8 @@ public interface InIntake extends InDocument {
     List<InIntakeApplication> getApplications();
 
     void setApplications(List<InIntakeApplication> applications);
+
+    List<InCandidate> getCandidates();
+
+    void setCandidates(List<InCandidate> candidates);
 }

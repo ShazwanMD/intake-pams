@@ -76,6 +76,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setEmail(application.getEmail());
         candidate.setStudyMode(application.getStudyMode());
         candidate.setStatus(InCandidateStatus.SELECTED);
+        candidate.setIntake(application.getIntake());
         candidate.setApplicant(application.getApplicant());
         candidate.setOffering(application.getSelection());
         candidateDao.save(candidate, securityService.getCurrentUser());
@@ -97,14 +98,12 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Override
     public List<InCandidate> findCandidates(InIntake intake) {
-        // todo(uda):
-        return null;
+        return candidateDao.find(intake);
     }
 
     @Override
     public List<InCandidate> findCandidates(InIntake intake, Integer offset, Integer limit) {
-        // todo(uda):
-        return null;
+        return candidateDao.find(intake, offset, limit);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy.dao;
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
@@ -141,6 +142,15 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
+    public List<InCandidate> findCandidates(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select c from InCandidate c where " +
+                "c.intake = :intake");
+        query.setEntity("intake", intake);
+        return (List<InCandidate>) query.list();
+    }
+
+    @Override
     public Integer count(InIntakeSession session) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InIntake p " +
@@ -176,6 +186,33 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InStudyModeOffering p where " +
                 "p.intake = :intake");
+        query.setEntity("intake", intake);
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public Integer countApplication(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InIntakeApplication p where " +
+                "p.intake = :intake");
+        query.setEntity("intake", intake);
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public Integer countApplicant(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p.applicant) from InIntakeApplication p where " +
+                "p.intake = :intake");
+        query.setEntity("intake", intake);
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public Integer countCandidate(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(c) from InCandidate c where " +
+                "c.intake = :intake");
         query.setEntity("intake", intake);
         return ((Long) query.uniqueResult()).intValue();
     }
