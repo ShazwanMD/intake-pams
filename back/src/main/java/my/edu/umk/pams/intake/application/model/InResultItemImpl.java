@@ -17,8 +17,8 @@ public class InResultItemImpl implements InResultItem {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_IN_RSLT_ITEM")
-    @SequenceGenerator(name = "SEQ_IN_RSLT_ITEM", sequenceName = "SEQ_IN_RSLT_ITEM", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_IN_RSLT_ITEM")
+    @SequenceGenerator(name = "SQ_IN_RSLT_ITEM", sequenceName = "SQ_IN_RSLT_ITEM", allocationSize = 1)
     private Long id;
 
     @ManyToOne(targetEntity = InSubjectCodeImpl.class)

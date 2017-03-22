@@ -1550,10 +1550,6 @@ references IN_PCPL;
 alter table IN_VENU_CODE
   add constraint uc_IN_VENU_CODE_1 unique (CODE);
 
-create sequence SEQ_IN_RSLT;
-
-create sequence SEQ_IN_RSLT_ITEM;
-
 create sequence SQ_IN_ACTR;
 
 create sequence SQ_IN_ADDR;
@@ -1655,6 +1651,10 @@ create sequence SQ_IN_RFRN_NO;
 create sequence SQ_IN_RLGN_CODE;
 
 create sequence SQ_IN_RSCY_CODE;
+
+create sequence SQ_IN_RSLT;
+
+create sequence SQ_IN_RSLT_ITEM;
 
 create sequence SQ_IN_SBJT_CODE;
 

@@ -17,8 +17,8 @@ public class InResultImpl implements InResult {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SEQ_IN_RSLT")
-    @SequenceGenerator(name = "SEQ_IN_RSLT", sequenceName = "SEQ_IN_RSLT", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_IN_RSLT")
+    @SequenceGenerator(name = "SQ_IN_RSLT", sequenceName = "SQ_IN_RSLT", allocationSize = 1)
     private Long id;
 
     @NotNull
