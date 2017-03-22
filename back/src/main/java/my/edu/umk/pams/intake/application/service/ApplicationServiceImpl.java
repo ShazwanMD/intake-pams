@@ -7,6 +7,7 @@ import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
 import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.util.Util;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 import org.hibernate.SessionFactory;
@@ -21,7 +22,7 @@ import java.util.List;
  * @author PAMS
  */
 @Service
-public class ApplicationServiceImpl implements ApplicationService{
+public class ApplicationServiceImpl implements ApplicationService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationServiceImpl.class);
 
@@ -41,12 +42,15 @@ public class ApplicationServiceImpl implements ApplicationService{
     private WorkflowService workflowService;
 
     @Autowired
+    private SecurityService securityService;
+
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
     public void draftIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake:{}", intake.getReferenceNo());
-        LOG.debug("curr "+ Util.getCurrentUser());
+        LOG.debug("curr " + Util.getCurrentUser());
         intakeApplicationDao.save(application, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
@@ -57,6 +61,18 @@ public class ApplicationServiceImpl implements ApplicationService{
         LOG.debug("intake application: {}", application.getReferenceNo());
         application.setIntake(intake);
         updateIntakeApplication(application);
+    }
+
+    @Override
+    public void addResult(InIntakeApplication application, InResult result) {
+        intakeApplicationDao.addResult(application, result, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void addResultItem(InIntakeApplication application, InResult result, InResultItem item) {
+        intakeApplicationDao.addResultItem(result, item, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
@@ -197,6 +213,21 @@ public class ApplicationServiceImpl implements ApplicationService{
     }
 
     @Override
+    public InResult findResultById(Long id) {
+        return intakeApplicationDao.findResultById(id);
+    }
+
+    @Override
+    public InResult findResultByApplicationAndResultType(InIntakeApplication application, InResultType resultType) {
+        return intakeApplicationDao.findResult(application, resultType);
+    }
+
+    @Override
+    public InResultItem findResultItemById(Long id) {
+        return intakeApplicationDao.findResultItemById(id);
+    }
+
+    @Override
     public List<InIntakeApplication> findIntakeApplications(InIntake intake) {
         return intakeApplicationDao.find(intake);
     }
@@ -232,6 +263,16 @@ public class ApplicationServiceImpl implements ApplicationService{
     }
 
     @Override
+    public List<InResult> findResults(InIntakeApplication application) {
+        return intakeApplicationDao.findResults(application);
+    }
+
+    @Override
+    public List<InResultItem> findResultItems(InResult result) {
+        return intakeApplicationDao.findResultItems(result);
+    }
+
+    @Override
     public List<InEmployment> findEmployments(InIntakeApplication application) {
         return intakeApplicationDao.findEmployments(application);
     }
@@ -260,7 +301,7 @@ public class ApplicationServiceImpl implements ApplicationService{
     public List<InAddress> findAddresses(InIntakeApplication application) {
         return intakeApplicationDao.findAddresses(application);
     }
-    
+
     @Override
     public boolean hasEmployment(InIntakeApplication application) {
         return intakeApplicationDao.hasEmployment(application);
@@ -286,5 +327,8 @@ public class ApplicationServiceImpl implements ApplicationService{
         return intakeApplicationDao.count(filter, bidType, intake);
     }
 
-
+    @Override
+    public boolean hasResult(InIntakeApplication application, InResultType resultType) {
+        return intakeApplicationDao.hasResult(application, resultType);
+    }
 }

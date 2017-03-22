@@ -58,6 +58,29 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public InResult findResultById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InResult) currentSession.get(InResultImpl.class, id);
+    }
+
+    @Override
+    public InResult findResult(InIntakeApplication application, InResultType resultType) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InResult p where " +
+                "p.application = :application " +
+                "and p.resultType = :resultType ");
+        query.setEntity("application", application);
+        query.setInteger("resultType", resultType.ordinal());
+        return (InResult) query.uniqueResult();
+    }
+
+    @Override
+    public InResultItem findResultItemById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InResultItem) currentSession.get(InResultItemImpl.class, id);
+    }
+
+    @Override
     public InGuarantor findGuarantorById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (InGuarantor) currentSession.get(InGuarantorImpl.class, id);
@@ -77,27 +100,52 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
     @Override
     public InAddress findAddressById(Long id) {
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InAddress) currentSession.get(InAddressImpl.class, id);
     }
 
     @Override
     public InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application) {
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select a from InGuarantor a where " +
+                "a.application = :application " +
+                "and a.type = :type ");
+        query.setInteger("type", type.ordinal());
+        query.setEntity("application", application);
+        return (InGuarantor) query.uniqueResult();
     }
 
     @Override
-    public InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application) {
-        return null;
+    public InGuardian findGuardianByType(InGuardianType type, InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select a from InContact a where " +
+                "a.application = :application " +
+                "and a.type = :type ");
+        query.setInteger("type", type.ordinal());
+        query.setEntity("application", application);
+        return (InGuardian) query.uniqueResult();
     }
 
     @Override
     public InContact findContactByType(InContactType type, InIntakeApplication application) {
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select a from InContact a where " +
+                "a.application = :application " +
+                "and a.type = :type ");
+        query.setInteger("type", type.ordinal());
+        query.setEntity("application", application);
+        return (InContact) query.uniqueResult();
     }
 
     @Override
     public InAddress findAddressByType(InAddressType type, InIntakeApplication application) {
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select a from InAddress a where " +
+                "a.application = :application " +
+                "and a.type = :type ");
+        query.setInteger("type", type.ordinal());
+        query.setEntity("application", application);
+        return (InAddress) query.uniqueResult();
     }
 
     @Override
@@ -187,6 +235,24 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public List<InResult> findResults(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InResult p where " +
+                "p.application = :application ");
+        query.setEntity("application", application);
+        return (List<InResult>) query.list();
+    }
+
+    @Override
+    public List<InResultItem> findResultItems(InResult result) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InResultItem p where " +
+                "p.result = :result ");
+        query.setEntity("result", result);
+        return (List<InResultItem>) query.list();
+    }
+
+    @Override
     public List<InEmployment> findEmployments(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InEmployment p where " +
@@ -240,18 +306,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         return (List<InAddress>) query.list();
     }
     
-   /* @Override
-   public List<InStudyMode> findStudyModeTypes(InStudyModeType studymodeType) {
-		
-	} {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("select p from InStudyMode p where " +
-                "p.application = :application ");
-        query.setEntity("application", findStudyModeType(null, null));
-        
-        
-    	}
-*/
     // ====================================================================================================
     // HELPER
     // ====================================================================================================
@@ -287,6 +341,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public boolean hasResult(InIntakeApplication application, InResultType type) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InResult p " +
+                "where p.application = :application " +
+                "and p.resultType = :resultType");
+        query.setEntity("application", application);
+        query.setInteger("resultType", type.ordinal());
+        return ((Long) query.uniqueResult()).intValue() > 0;
+    }
+
+    @Override
     public boolean hasEmployment(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InEmployment p " +
@@ -307,6 +372,61 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
+
+    @Override
+    public void addResult(InIntakeApplication application, InResult result, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(result, "Result cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        result.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        result.setMetadata(metadata);
+        session.save(result);
+
+    }
+
+    @Override
+    public void deleteResult(InIntakeApplication application, InResult result, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(result, "Result cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(result);
+    }
+
+    @Override
+    public void addResultItem(InResult result, InResultItem item, InUser user) {
+        Validate.notNull(result, "Result cannot be null");
+        Validate.notNull(item, "Item cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        item.setResult(result);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        item.setMetadata(metadata);
+        session.save(item);
+    }
+
+    @Override
+    public void deleteResultItem(InResult result, InResultItem item, InUser user) {
+        Validate.notNull(result, "Result cannot be null");
+        Validate.notNull(item, "Item cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(item);
+    }
 
     @Override
     public void addEmployment(InIntakeApplication application, InEmployment employment, InUser user) {

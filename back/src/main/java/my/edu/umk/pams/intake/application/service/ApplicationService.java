@@ -18,6 +18,10 @@ public interface ApplicationService {
 
     void submitIntakeApplication(InIntake intake, InIntakeApplication application);
 
+    void addResult(InIntakeApplication application, InResult result);
+
+    void addResultItem(InIntakeApplication application, InResult result, InResultItem item);
+
     void addEmployment(InIntakeApplication application, InEmployment employment);
 
     void addInvolvement(InIntakeApplication application, InInvolvement involvement);
@@ -59,6 +63,12 @@ public interface ApplicationService {
 
     InIntakeApplication findIntakeApplicationByIntakeAndApplicant(InIntake intake, InApplicant applicant);
 
+    InResult findResultById(Long id);
+
+    InResult findResultByApplicationAndResultType(InIntakeApplication application, InResultType resultType);
+
+    InResultItem findResultItemById(Long id);
+
     InGuardian findGuardianById(Long id);
 
     InGuarantor findGuarantorById(Long id);
@@ -89,6 +99,10 @@ public interface ApplicationService {
 
     List<InIntakeApplication> findIntakeApplicationsOrderedByRank(InIntake intake);
 
+    List<InResult> findResults(InIntakeApplication application);
+
+    List<InResultItem> findResultItems(InResult result);
+
     List<InEmployment> findEmployments(InIntakeApplication application);
 
     List<InInvolvement> findInvolvements(InIntakeApplication application);
@@ -107,12 +121,11 @@ public interface ApplicationService {
 
     Integer countIntakeApplication(String filter, InBidType bidType, InIntake intake);
 
+    boolean hasResult(InIntakeApplication application, InResultType resultType);
+
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
 
-
-
-	
 }
 

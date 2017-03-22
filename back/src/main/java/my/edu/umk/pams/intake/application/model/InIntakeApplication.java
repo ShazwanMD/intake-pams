@@ -166,6 +166,10 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setGuarantors(List<InGuarantor> guarantors);
 
+    List<InResult> getResults();
+
+    void setResults(List<InResult> documents);
+
     List<InAttachment> getAttachments();
 
     void setAttachments(List<InAttachment> documents);
