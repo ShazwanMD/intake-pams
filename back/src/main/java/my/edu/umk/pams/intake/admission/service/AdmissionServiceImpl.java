@@ -5,7 +5,9 @@ import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
+import my.edu.umk.pams.intake.admission.selection.SelectionStrategyHelper;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -31,6 +33,12 @@ public class AdmissionServiceImpl implements AdmissionService {
     private InCandidateDao candidateDao;
 
     @Autowired
+    private SelectionStrategyHelper selectionStrategyHelper;
+
+    @Autowired
+    private ApplicationService applicationService;
+
+    @Autowired
     private CommonService commonService;
 
     @Autowired
@@ -45,6 +53,19 @@ public class AdmissionServiceImpl implements AdmissionService {
     //====================================================================================================
     // INTAKE, INTAKE APPLICATION
     //====================================================================================================
+
+    @Override
+    public void processIntake(InIntake intake){
+        // preselect
+        selectionStrategyHelper.select(intake);
+
+        // pickup all preselection application
+        // todo(uda) : InBidStatus.SELECTED
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
+        for (InIntakeApplication application : applications) {
+            preselectIntakeApplication(application);
+        }
+    }
 
     @Override
     public void preselectIntakeApplication(InIntakeApplication application) {
@@ -76,11 +97,13 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Override
     public List<InCandidate> findCandidates(InIntake intake) {
+        // todo(uda):
         return null;
     }
 
     @Override
     public List<InCandidate> findCandidates(InIntake intake, Integer offset, Integer limit) {
+        // todo(uda):
         return null;
     }
 
@@ -98,9 +121,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         emailQueue.setSubject("Sedang diproses");
         emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(emailQueue);
-
-        // link IMS
-        // imsService.findStudentByMatricNo(candidate.getMatricNo());
     }
 
     @Override
@@ -118,5 +138,4 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setStatus(InCandidateStatus.SELECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
-
 }

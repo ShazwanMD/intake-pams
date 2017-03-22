@@ -218,7 +218,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public InResult findResultByApplicationAndResultType(InIntakeApplication application, InResultType resultType) {
+    public InResult findResult(InIntakeApplication application, InResultType resultType) {
         return intakeApplicationDao.findResult(application, resultType);
     }
 

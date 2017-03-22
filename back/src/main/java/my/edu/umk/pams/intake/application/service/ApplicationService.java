@@ -65,7 +65,7 @@ public interface ApplicationService {
 
     InResult findResultById(Long id);
 
-    InResult findResultByApplicationAndResultType(InIntakeApplication application, InResultType resultType);
+    InResult findResult(InIntakeApplication application, InResultType resultType);
 
     InResultItem findResultItemById(Long id);
 
