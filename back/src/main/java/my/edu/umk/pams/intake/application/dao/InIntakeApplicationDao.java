@@ -20,6 +20,12 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     InIntakeApplication findByIntakeAndApplicant(InIntake intake, InApplicant applicant);
 
+    InResult findResultById(Long id);
+
+    InResult findResult(InIntakeApplication application, InResultType resultType);
+
+    InResultItem findResultItemById(Long id);
+
     InGuarantor findGuarantorById(Long id);
 
     InGuardian findGuardianById(Long id);
@@ -31,7 +37,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application);
 
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
-    
+
     InContact findContactByType(InContactType type, InIntakeApplication application);
 
     InAddress findAddressByType(InAddressType type, InIntakeApplication application);
@@ -52,6 +58,10 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InIntakeApplication> find(InIntake intake, InBidStatus status);
 
+    List<InResult> findResults(InIntakeApplication application);
+
+    List<InResultItem> findResultItems(InResult result);
+
     List<InEmployment> findEmployments(InIntakeApplication application);
 
     List<InInvolvement> findInvolvements(InIntakeApplication application);
@@ -59,7 +69,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InGuarantor> findGuarantors(InIntakeApplication application);
 
     List<InGuardian> findGuardians(InIntakeApplication application);
-    
+
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
@@ -74,6 +84,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     Integer count(String filter, InBidType bidType, InIntake intake);
 
+    boolean hasResult(InIntakeApplication application, InResultType resultType);
+
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
@@ -81,6 +93,14 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
+
+    void addResult(InIntakeApplication application, InResult result, InUser user);
+
+    void deleteResult(InIntakeApplication application, InResult result, InUser user);
+
+    void addResultItem(InResult result, InResultItem item, InUser user);
+
+    void deleteResultItem(InResult result, InResultItem item, InUser user);
 
     void addEmployment(InIntakeApplication application, InEmployment employment, InUser user);
 
@@ -106,5 +126,5 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     void deleteAddress(InIntakeApplication application, InAddress address, InUser user);
 
-	
+
 }
