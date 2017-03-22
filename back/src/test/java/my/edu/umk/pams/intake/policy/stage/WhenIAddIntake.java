@@ -46,7 +46,7 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
         intake.setSourceNo(level.getCode() + "/" + session.getCode() + "2");
         intake.setAuditNo(UUID.randomUUID().toString());
         intake.setDescription("Intake for Program Master 201720181");
-        intake.setLevel(level);
+        intake.setProgramLevel(level);
         intake.setSession(session);
         intake.setProjection(100);
         intake.setStartDate(new Date());

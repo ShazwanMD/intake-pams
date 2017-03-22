@@ -1,3 +1,4 @@
+
 create table IN_ACTR (
   ID int8 not null,
   ACTOR_TYPE int4,
@@ -561,7 +562,7 @@ create table IN_INTK (
   REMOVE_COMMENT varchar(255),
   SOURCE_NO varchar(255) not null,
   START_DATE timestamp not null,
-  LEVEL_ID int8 not null,
+  PROGRAM_LEVEL_ID int8 not null,
   SESSION_ID int8 not null,
   primary key (ID)
 );
@@ -1283,8 +1284,8 @@ alter table IN_INTK
   add constraint uc_IN_INTK_6 unique (SOURCE_NO);
 
 alter table IN_INTK
-  add constraint FKA01DFD3632D87A7C
-foreign key (LEVEL_ID)
+  add constraint FKA01DFD36ACAEA1D7
+foreign key (PROGRAM_LEVEL_ID)
 references IN_PRGM_LEVL;
 
 alter table IN_INTK
