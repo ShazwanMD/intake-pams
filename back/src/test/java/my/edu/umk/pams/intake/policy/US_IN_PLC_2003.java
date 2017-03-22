@@ -16,10 +16,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
 import my.edu.umk.pams.intake.policy.stage.ThenICanProceedTheIntakeProcess;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetProjectionForCurrentIntake;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
 
 /**
  * @author PAMS
@@ -38,8 +36,6 @@ ThenICanProceedTheIntakeProcess > {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2003.class);
 
-    private String referenceNo;
-
     @Before
     public void before() {
     }
@@ -49,7 +45,8 @@ ThenICanProceedTheIntakeProcess > {
     }
 
     @Test
-    @Rollback(true)
+    @Rollback(false)
+    @Issue("PAMI-9")
     public void testScenario1() {
         given().I_am_a_PPS_administrator_in_current_intake_session();
         when().I_Want_To_Set_Projection_For_Current_Intake();

@@ -10,12 +10,14 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
 @JGivenStage
+
 public class WhenIWantToSetProjectionForCurrentIntake extends Stage<WhenIWantToSetProjectionForCurrentIntake>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToSetProjectionForCurrentIntake.class);
