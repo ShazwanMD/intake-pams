@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @JGivenStage
 public class ThenIKnowWhoWillSuperviseMyProject extends Stage<ThenIKnowWhoWillSuperviseMyProject> {
-	
-	 @Autowired
-	    private ApplicationService applicationService;
 
-	    public ThenIKnowWhoWillSuperviseMyProject I_know_who_will_supervise_my_project() {
-	      
-	        return self();
-	    }
+    @Autowired
+    private ApplicationService applicationService;
+
+    public ThenIKnowWhoWillSuperviseMyProject I_know_who_will_supervise_my_project() {
+
+        return self();
+    }
 }
 

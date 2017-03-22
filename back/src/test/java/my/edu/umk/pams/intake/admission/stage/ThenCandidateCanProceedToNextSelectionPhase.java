@@ -23,7 +23,7 @@ public class ThenCandidateCanProceedToNextSelectionPhase extends Stage<ThenCandi
 
     public ThenCandidateCanProceedToNextSelectionPhase candidate_can_proceed() {
 
-        Assert.notNull(candidate , "candidate is required");
+        Assert.notNull(candidate, "candidate is required");
         InCandidate found = admissionService.findCandidateByIdentityNo(candidate.getIdentityNo());
         Assert.isTrue(InCandidateStatus.PREAPPROVED.equals(found.getStatus()),
                 "Candidate should be preapproved");

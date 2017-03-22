@@ -31,7 +31,7 @@ public class ThenIntakeHasOffering extends Stage<ThenIntakeHasOffering> {
     @ExpectedScenarioState
     private InIntake intake;
 
-    public ThenIntakeHasOffering intake_has_offering(){
+    public ThenIntakeHasOffering intake_has_offering() {
         List<InProgramOffering> offerings = policyService.findProgramOfferings(intake);
         Assert.assertTrue(!(offerings.isEmpty()));
         return self();

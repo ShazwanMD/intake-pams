@@ -25,11 +25,11 @@ public class WhenIPreapproveCandidate extends Stage<WhenIPreapproveCandidate> {
 
     @ProvidedScenarioState
     private InCandidate candidate;
-    
+
     @ProvidedScenarioState
     private InIntake intake;
 
-    public WhenIPreapproveCandidate I_preapprove_candidate(){
+    public WhenIPreapproveCandidate I_preapprove_candidate() {
 
         // pps tengah isi
         admissionService.findCandidates(intake);
@@ -38,12 +38,8 @@ public class WhenIPreapproveCandidate extends Stage<WhenIPreapproveCandidate> {
         candidate.setMatricNo("A00092");
         candidate.setName("M.Syahrul Ahzan");
         candidate.setEmail("msyahrul@umk.edu.my");
-      
 
         admissionService.preapproveCandidate(candidate);
-
-        // todo(syah&azah): notification
-
         return self();
     }
 }

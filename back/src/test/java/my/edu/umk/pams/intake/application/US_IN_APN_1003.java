@@ -1,8 +1,6 @@
 package my.edu.umk.pams.intake.application;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
-
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.application.stage.ThenIKnowWhoWillSuperviseMyProject;
@@ -29,11 +27,11 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, WhenIChooseMySupervisor, ThenIKnowWhoWillSuperviseMyProject> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1003.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1003.class);
 
     @Autowired
     private ApplicationService applicationService;
-    
+
     @Before
     public void before() {
     }
@@ -44,7 +42,7 @@ public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, WhenIC
 
     @Test
     @Rollback(true)
-    public void testScenario1() {
+    public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
         when().I_choose_my_supervisor();
         then().I_know_who_will_supervise_my_project();

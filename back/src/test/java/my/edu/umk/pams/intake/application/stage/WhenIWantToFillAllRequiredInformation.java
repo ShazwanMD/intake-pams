@@ -53,7 +53,7 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
 
     public WhenIWantToFillAllRequiredInformation I_fill_in_all_the_required_information_in_my_application() {
         // generate intake reference no
-        Map<String,Object> map = new HashMap<String,Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intakeSession);
         map.put("programLevel", intake.getProgramLevel());
         String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);

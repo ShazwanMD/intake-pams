@@ -116,7 +116,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 
         // notify candidate
         InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("123456");
+        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
         emailQueue.setTo(candidate.getEmail());
         emailQueue.setSubject("Sedang diproses");
         emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);

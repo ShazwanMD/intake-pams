@@ -6,8 +6,8 @@ import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.CheckForApplication;
-import my.edu.umk.pams.intake.registration.stage.MyApplicationIsComplete;
 import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
+import my.edu.umk.pams.intake.registration.stage.MyApplicationIsComplete;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,12 +25,13 @@ import org.springframework.transaction.annotation.Transactional;
  * and i have an incomplete application,
  * I want to complete my application
  * so that my application is completed.
+ *
  * @author PAMS
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckForApplication, MyApplicationIsComplete > {
+public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckForApplication, MyApplicationIsComplete> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_2001.class);
 
@@ -47,18 +48,16 @@ public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckF
 
 //    @ScenarioStage
 //    GivenIHaveIncompleteApplication additionalState;
-    
+
     @Test
     @Rollback(true)
-    public void testScenario1() {
+    public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
 //      additionalState.and().given().i_have_an_incomplete_application();
         addStage(GivenIHaveIncompleteApplication.class).and().i_have_an_incomplete_application();
         when().i_check_for_application();
         then().my_application_is_complete();
     }
-	
-	
-	
-	
+
+
 }

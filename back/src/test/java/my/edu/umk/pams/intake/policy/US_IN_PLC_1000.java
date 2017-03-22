@@ -38,7 +38,7 @@ public class US_IN_PLC_1000 extends SpringScenarioTest<GivenIAmPPSAdministrator,
 
     @Test
     @Rollback(true)
-    public void testScenario1() {
+    public void scenario1() {
         given().I_am_a_PPS_administrator_in_current_intake_session();
         when().I_add_intake();
         then().intake_is_ready_for_setup();

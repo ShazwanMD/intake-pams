@@ -9,17 +9,17 @@ import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 
 @JGivenStage
 public class WhenIWantToSelectSuitableAppealedApplicants extends Stage<WhenIWantToSelectSuitableAppealedApplicants> {
-	
-	@ExpectedScenarioState
+
+    @ExpectedScenarioState
     InIntakeSession intakeSession;
 
     @ProvidedScenarioState
     private InCandidate candidate;
 
-	public WhenIWantToSelectSuitableAppealedApplicants I_want_to_select_suitable_appealed_applicants() {
-		
-		// TODO Auto-generated method stub
-		return self();
-	}
+    public WhenIWantToSelectSuitableAppealedApplicants I_want_to_select_suitable_appealed_applicants() {
+
+        // TODO Auto-generated method stub
+        return self();
+    }
 
 }

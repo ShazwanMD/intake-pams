@@ -8,13 +8,13 @@ import my.edu.umk.pams.intake.admission.model.InCandidate;
 @JGivenStage
 public class ThenICanFilterTheTopApplicant extends Stage<ThenICanFilterTheTopApplicant> {
 
-	@ExpectedScenarioState
-	private InCandidate candidate;
+    @ExpectedScenarioState
+    private InCandidate candidate;
 
-	public ThenICanFilterTheTopApplicant I_can_filter_the_top_applicant() {
-		
-    // do something
-    return self();
-	}
+    public ThenICanFilterTheTopApplicant I_can_filter_the_top_applicant() {
+
+        // do something
+        return self();
+    }
 
 }

@@ -46,7 +46,7 @@ public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Test
     @Rollback(true)
     @Issue("PAMI-5")
-    public void testScenario1() {
+    public void scenario1() {
         given().I_am_a_PPS_administrator_in_current_intake_session();
         when().I_want_to_view_top_applicant_application();
         then().I_can_proceed_to_process_their_application();

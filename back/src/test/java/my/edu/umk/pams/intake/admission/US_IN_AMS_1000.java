@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * As academic administrator,
- *      I want to preapprove a candidate,
- *           so that the candidate can proceed to the next selection stage
+ * I want to preapprove a candidate,
+ * so that the candidate can proceed to the next selection stage
  *
  * @author PAMS
  */
@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1000 extends
-        SpringScenarioTest<GivenIAmPPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase>{
+        SpringScenarioTest<GivenIAmPPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase> {
 
     @Before
     public void before() {
@@ -37,9 +37,9 @@ public class US_IN_AMS_1000 extends
     }
 
     @Test
-    @Rollback(false)
+    @Rollback(true)
     @Issue("PAMI-6")
-    public void scenario1(){
+    public void scenario1() {
         given().I_am_a_PPS_administrator_in_current_intake_session();
         when().I_preapprove_candidate();
         then().candidate_can_proceed();

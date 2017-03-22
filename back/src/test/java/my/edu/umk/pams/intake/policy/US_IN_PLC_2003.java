@@ -1,5 +1,11 @@
 package my.edu.umk.pams.intake.policy;
 
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.intake.config.TestAppConfiguration;
+import my.edu.umk.pams.intake.policy.stage.ThenICanProceedTheIntakeProcess;
+import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetProjectionForCurrentIntake;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,29 +17,21 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
-import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.policy.stage.ThenICanProceedTheIntakeProcess;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetProjectionForCurrentIntake;
-
 /**
  * @author PAMS
-As a PPS Academic Administrator, 
-I want to set the projection for current intake session, 
-so that i can proceed the intake process
-*/
+ *         As a PPS Academic Administrator,
+ *         I want to set the projection for current intake session,
+ *         so that i can proceed the intake process
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_PLC_2003 extends SpringScenarioTest<GivenIAmPPSAdministrator, 
-WhenIWantToSetProjectionForCurrentIntake, 
-ThenICanProceedTheIntakeProcess > {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2003.class);
+public class US_IN_PLC_2003 extends SpringScenarioTest<GivenIAmPPSAdministrator,
+        WhenIWantToSetProjectionForCurrentIntake,
+        ThenICanProceedTheIntakeProcess> {
+
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2003.class);
 
     @Before
     public void before() {
@@ -44,7 +42,7 @@ ThenICanProceedTheIntakeProcess > {
     }
 
     @Test
-    @Rollback(false)
+    @Rollback(true)
     @Issue("PAMI-9")
     public void testScenario1() {
         given().I_am_a_PPS_administrator_in_current_intake_session();

@@ -3,10 +3,10 @@ package my.edu.umk.pams.intake.registration;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmAnonymous;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
+import my.edu.umk.pams.intake.policy.US_IN_PLC_1001;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanLogIn;
 import my.edu.umk.pams.intake.registration.stage.WhenIRegister;
-import my.edu.umk.pams.intake.policy.US_IN_PLC_1001;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -48,7 +48,7 @@ public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIR
 
     @Test
     @Rollback(true)
-    public void testScenario1() {
+    public void scenario1() {
         given().I_am_an_anonymous_in_current_intake_session();
         when().I_register();
         then().I_can_login();

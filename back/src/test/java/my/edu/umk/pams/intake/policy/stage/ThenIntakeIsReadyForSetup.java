@@ -29,7 +29,7 @@ public class ThenIntakeIsReadyForSetup extends Stage<ThenIntakeIsReadyForSetup> 
     @ExpectedScenarioState
     private InIntake intake;
 
-    public ThenIntakeIsReadyForSetup intake_is_ready_for_setup(){
+    public ThenIntakeIsReadyForSetup intake_is_ready_for_setup() {
         InIntake found = policyService.findIntakeByReferenceNo(intake.getReferenceNo());
         Assert.assertEquals(InFlowState.DRAFTED, found.getFlowdata().getState());
         return self();

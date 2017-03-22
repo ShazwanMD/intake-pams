@@ -1,17 +1,11 @@
 package my.edu.umk.pams.intake.policy;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromASelectionOfChoicesMGSEB;
-import my.edu.umk.pams.intake.policy.stage.ThenIntakeIsReadyForSetup;
 import my.edu.umk.pams.intake.policy.stage.ToBeOfferedInAnIntakeMGSEB;
-import my.edu.umk.pams.intake.policy.stage.WhenIAddIntake;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddMultipleProgramCodeMGSEB;
-import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,10 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author PAMS
-As a MGSEB academic administrator, 
-I want to select multiple program codes 
-to be offered in an intake so 
-that I can choose from a selection of choices
+ *         As a MGSEB academic administrator,
+ *         I want to select multiple program codes
+ *         to be offered in an intake so
+ *         that I can choose from a selection of choices
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -38,7 +32,6 @@ public class US_IN_PLC_3000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3000.class);
 
-    
 
     @Before
     public void before() {

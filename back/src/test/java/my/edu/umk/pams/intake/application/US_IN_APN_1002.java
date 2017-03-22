@@ -1,7 +1,7 @@
-/*package my.edu.umk.pams.intake.application;
+package my.edu.umk.pams.intake.application;
 
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.application.stage.ThenICanPayMyCourseFee;
@@ -21,18 +21,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author PAMS
-
-
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_APN_1002 extends SpringScenarioTest<GivenIAmApplicant, WhenIViewMyCourseFee, ThenICanPayMyCourseFee> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1002.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1002.class);
 
     @Autowired
     private ApplicationService applicationService;
-    
+
     @Before
     public void before() {
     }
@@ -43,11 +42,10 @@ public class US_IN_APN_1002 extends SpringScenarioTest<GivenIAmApplicant, WhenIV
 
     @Test
     @Rollback(true)
+    @Pending
     public void testScenario1() {
         given().I_am_an_applicant_in_current_intake_session();
         when().I_view_my_course_fee();
         then().I_can_pay_my_course_fee();
     }
 }
-
-*/

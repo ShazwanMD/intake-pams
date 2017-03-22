@@ -1,5 +1,11 @@
 package my.edu.umk.pams.intake.policy;
 
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.intake.config.TestAppConfiguration;
+import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
+import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,31 +17,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
-import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
-
 /**
  * @author PAMS
-As a PPS academic administrator, 
-I want to setup competencies matrix for an intake,
-so that I can identify eligible applicants.
-*/
+ *         As a PPS academic administrator,
+ *         I want to setup competencies matrix for an intake,
+ *         so that I can identify eligible applicants.
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @Issue("PAMI-8")
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_PLC_2002 extends 
-	SpringScenarioTest<GivenIAmPPSAdministrator, 
-							WhenIWantToSetupCompetenciesMatrix, 
-								ThenICanIdentifyEligibleApplicants > {
+public class US_IN_PLC_2002 extends
+        SpringScenarioTest<GivenIAmPPSAdministrator,
+                WhenIWantToSetupCompetenciesMatrix,
+                ThenICanIdentifyEligibleApplicants> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2002.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2002.class);
 
     private String referenceNo;
 

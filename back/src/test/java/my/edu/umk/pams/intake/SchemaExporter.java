@@ -15,4 +15,5 @@ public class SchemaExporter {
                 "my.edu.umk.pams");
         exporter.setGenerateDropQueries(false);
         exporter.export(new File("create.sql"));
-    }}
+    }
+}

@@ -1,12 +1,9 @@
 package my.edu.umk.pams.intake.policy;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromASelectionOfChoicesMGSEB;
-import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromASelectionOfChoicesPPS;
 import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromMultipleSelections;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToListOutProgrammes;
 import org.junit.After;
@@ -22,9 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author PAMS
-As a PPS academic administrator 
-I want to list out the programme
-so that applicants can make multiply selection
+ *         As a PPS academic administrator
+ *         I want to list out the programme
+ *         so that applicants can make multiply selection
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)

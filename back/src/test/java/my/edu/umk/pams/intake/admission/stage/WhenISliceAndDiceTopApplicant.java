@@ -10,15 +10,15 @@ import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 @JGivenStage
 public class WhenISliceAndDiceTopApplicant extends Stage<WhenISliceAndDiceTopApplicant> {
 
-	@ExpectedScenarioState
+    @ExpectedScenarioState
     InIntakeSession intakeSession;
 
     @ProvidedScenarioState
     private InCandidate candidate;
 
-    public WhenISliceAndDiceTopApplicant I_slide_and_dice_top_applicant_for_intake(){
-    	
-    	// masukkan prosesnya di sini
-    	return self();
+    public WhenISliceAndDiceTopApplicant I_slide_and_dice_top_applicant_for_intake() {
+
+        // masukkan prosesnya di sini
+        return self();
     }
 }

@@ -6,12 +6,8 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
-import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
-import my.edu.umk.pams.intake.identity.model.InUser;
-import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
@@ -34,14 +30,14 @@ public class CheckForApplication extends Stage<CheckForApplication> {
     private boolean exists;
 
     public CheckForApplication i_check_for_application() {
-		
-    	//uda and max, tolong tgk jap betul dak buat mcm ni untuk check for registered user?
-    	exists = registrationService.isExists("applicant1");	
-    	Assert.isTrue(exists, "registered user does not exists");
-		
-		return self();
-	}
 
-		
- }
+        //uda and max, tolong tgk jap betul dak buat mcm ni untuk check for registered user?
+        exists = registrationService.isExists("applicant1");
+        Assert.isTrue(exists, "registered user does not exists");
+
+        return self();
+    }
+
+
+}
 

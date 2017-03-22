@@ -1,5 +1,11 @@
 package my.edu.umk.pams.intake.policy;
 
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.intake.config.TestAppConfiguration;
+import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromMultipleSelections;
+import my.edu.umk.pams.intake.policy.stage.WhenIWantToListOutProgrammes;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,12 +16,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
-import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromMultipleSelections;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToListOutProgrammes;
 
 /*As a MGSEB academic administrator, 
 I want to list out the programmes, 
@@ -26,24 +26,24 @@ so that applicants can make multiply selection
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_IN_PLC_3005 extends SpringScenarioTest <GivenIAmMGSEBAdministrator, WhenIWantToListOutProgrammes, ThenICanChooseFromMultipleSelections>{
+public class US_IN_PLC_3005 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIWantToListOutProgrammes, ThenICanChooseFromMultipleSelections> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3005.class);
-	
-	@Before
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3005.class);
+
+    @Before
     public void before() {
-   	}
-    
+    }
+
     @After
     public void after() {
     }
-    
+
     @Test
     @Rollback(true)
     @Issue("PAMI-18")
     public void testScenario1() {
-    	given().I_am_a_MGSEB_administrator_in_current_intake_session();
-    	when().i_want_to_list_out_programmes();
-    	then().i_can_choose_from_multiple_selections();
+        given().I_am_a_MGSEB_administrator_in_current_intake_session();
+        when().i_want_to_list_out_programmes();
+        then().i_can_choose_from_multiple_selections();
     }
 }

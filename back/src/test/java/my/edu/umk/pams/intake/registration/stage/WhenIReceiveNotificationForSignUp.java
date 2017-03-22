@@ -14,28 +14,28 @@ import my.edu.umk.pams.intake.system.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
-public class WhenIReceiveNotificationForSignUp  extends Stage<WhenIReceiveNotificationForSignUp> {
+public class WhenIReceiveNotificationForSignUp extends Stage<WhenIReceiveNotificationForSignUp> {
 
-	@Autowired
+    @Autowired
     private RegistrationService registrationService;
 
-	@Autowired
+    @Autowired
     private SystemService systemService;
-	
+
     @ProvidedScenarioState
     private InUser user;
-    
+
     @ExpectedScenarioState
     private InApplicant applicant;
-    
+
     public WhenIReceiveNotificationForSignUp I_receive_notification_for_sign_up() {
-         
-    	InEmailQueue emailQueue = new InEmailQueueImpl();
+
+        InEmailQueue emailQueue = new InEmailQueueImpl();
         emailQueue.setCode("123444");
-     //   emailQueue.setTo(applicant.getEmail());
+        //   emailQueue.setTo(applicant.getEmail());
         emailQueue.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
         emailQueue.setQueueStatus(InEmailQueueStatus.SENT);
         systemService.saveEmailQueue(emailQueue);
-    	return self();
+        return self();
     }
 }

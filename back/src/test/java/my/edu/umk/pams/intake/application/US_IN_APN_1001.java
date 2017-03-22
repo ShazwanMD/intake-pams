@@ -2,8 +2,8 @@ package my.edu.umk.pams.intake.application;
 
 /**
  * @author PAMS
- * As a applicant, 
- * I want to view my study mode 
+ * As a applicant,
+ * I want to view my study mode
  * so that i can choose the study mode
  */
 
@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_1001 extends SpringScenarioTest <GivenIAmApplicant, WhenIWantToViewStuydMode, ThenICanChooseStudyMode>{
+public class US_IN_APN_1001 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToViewStuydMode, ThenICanChooseStudyMode> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1001.class);
 
@@ -36,18 +36,18 @@ public class US_IN_APN_1001 extends SpringScenarioTest <GivenIAmApplicant, WhenI
 
     @Autowired
     private ApplicationService applicationService;
-    
+
     @Before
     public void before() {
-   	}
-    
+    }
+
     @After
     public void after() {
     }
 
     @Test
-    @Rollback(false)
-    public void testScenario1() {
+    @Rollback(true)
+    public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
         when().I_want_to_view_offered_study_mode_by_intake_$(INTAKE_REFERENCE_NO);
         then().I_can_choose_offered_study_mode();

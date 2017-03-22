@@ -18,15 +18,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author PAMS
- * 
- * As a applicant, 
- *  I apply for an intake and fill in all the required information,
- *      so that I can submit my intake application
+ *         <p>
+ *         As a applicant,
+ *         I apply for an intake and fill in all the required information,
+ *         so that I can submit my intake application
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_1004 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToFillAllRequiredInformation,ThenICanSubmitMyApplication>{
+public class US_IN_APN_1004 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToFillAllRequiredInformation, ThenICanSubmitMyApplication> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1004.class);
 
