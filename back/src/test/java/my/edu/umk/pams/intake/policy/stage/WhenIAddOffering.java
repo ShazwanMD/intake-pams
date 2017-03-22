@@ -30,11 +30,13 @@ public class WhenIAddOffering extends Stage<WhenIAddOffering> {
     private InIntake intake;
 
     public WhenIAddOffering I_add_a_offering_for_intake_$(String referenceNo) {
+    	
+    	WhenIWantToSetupCompetenciesMatrix setupCmptncy = new WhenIWantToSetupCompetenciesMatrix();
         intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         InProgramOffering offering = new InProgramOfferingImpl();
         offering.setProjection(10);
-        offering.setGeneralCriteria("TEST");
-        offering.setSpecificCriteria("TEST");
+        offering.setGeneralCriteria(setupCmptncy.setGeneralCriteria());
+        offering.setSpecificCriteria(setupCmptncy.setSpecificCriteria());
         offering.setInterview(true);
        // offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("SC-001")); // todo(uda): need data
        // offering.setProgramCode(commonService.findProgramCodeByCode("MEM")); // todo(uda): need real data
