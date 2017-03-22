@@ -15,6 +15,8 @@ public interface AdmissionService {
     // INTAKE, INTAKE APPLICATION
     //====================================================================================================
 
+     void processIntake(InIntake intake);
+
     void preselectIntakeApplication(InIntakeApplication application);
 
     void rejectIntakeApplication(InIntakeApplication application);
