@@ -54,6 +54,14 @@ INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 2', 'applicant2@gmail.com', 'abc123');
 
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant3', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 3', 'applicant3@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant4', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 4', 'applicant4@gmail.com', 'abc123');
+
 ---------------------------------------------------------
 -- GROUP START
 ---------------------------------------------------------
