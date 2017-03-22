@@ -5,6 +5,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -25,6 +26,7 @@ import java.util.List;
  * @author PAMS
  */
 @JGivenStage
+
 public class ThenICanChooseFromASelectionOfChoicesPPS extends Stage<ThenICanChooseFromASelectionOfChoicesPPS> {
 
     private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseFromASelectionOfChoicesPPS.class);

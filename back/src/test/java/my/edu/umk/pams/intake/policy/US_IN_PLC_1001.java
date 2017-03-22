@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.policy;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeHasOffering;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddOffering;
@@ -25,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
+
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_1001 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddOffering, ThenIntakeHasOffering> {
 
@@ -40,6 +42,7 @@ public class US_IN_PLC_1001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
 
     @Test
     @Rollback(true)
+    @Issue("PAMI-4")
     public void testScenario1() {
         given().I_am_a_PPS_administrator_in_current_intake_session();
         when().I_add_a_offering_for_intake_$("201720181/MASTER");
