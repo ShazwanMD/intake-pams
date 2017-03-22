@@ -28,7 +28,6 @@ so that i can proceed the intake process
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Issue("PAMI-9")
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_2003 extends SpringScenarioTest<GivenIAmPPSAdministrator, 
 WhenIWantToSetProjectionForCurrentIntake, 
