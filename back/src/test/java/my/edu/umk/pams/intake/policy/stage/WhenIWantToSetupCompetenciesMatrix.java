@@ -25,26 +25,10 @@ public class WhenIWantToSetupCompetenciesMatrix extends Stage <WhenIWantToSetupC
 	private InIntake intake;
 	
 	public WhenIWantToSetupCompetenciesMatrix I_want_to_setup_competencies_matrix (){
-		String generalCriteria = 
 
-               "MUET.Band == 2 " +           
-
-               "&& SPM.History >= #{C} " +
-
-               "&& (SPM.BahasaMalaysia & SPM.English >= #{C})";
-
-       String specificCriteria =
-
-               "(#{ (2.75 < Degree.CPA <= 4.0 " +
-
-                       "&& #{DegreeEquivalent.CPA} >= 2.75)) " +                     
-
-                       "&& #{SPM.Mathematics} >= #{C} " +
-
-                       "&& MUET.Band > 2.0 " +
-
-                       "|| #{Diploma.Mathematics} >= #{C} ";
-       
+		String generalCriteria = setGeneralCriteria();
+		String specificCriteria = setSpecificCriteria();
+   
        InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
        
        InProgramOffering programOffering = new InProgramOfferingImpl();
@@ -58,4 +42,35 @@ public class WhenIWantToSetupCompetenciesMatrix extends Stage <WhenIWantToSetupC
        
 		return self();
 	}
+	
+	public String setGeneralCriteria(){
+		
+		String generalCriteria = 
+
+	               "MUET.Band == 2 " +           
+
+	               "&& SPM.History >= #{C} " +
+
+	               "&& (SPM.BahasaMalaysia & SPM.English >= #{C})";
+		
+		return generalCriteria;
+		
+	}
+	
+	public String setSpecificCriteria(){
+	    String specificCriteria =
+
+	               "(#{ (2.75 < Degree.CPA <= 4.0 " +
+
+	                       "&& #{DegreeEquivalent.CPA} >= 2.75)) " +                     
+
+	                       "&& #{SPM.Mathematics} >= #{C} " +
+
+	                       "&& MUET.Band > 2.0 " +
+
+	                       "|| #{Diploma.Mathematics} >= #{C} ";
+	    
+		return specificCriteria;  
+	}
+	
 }
