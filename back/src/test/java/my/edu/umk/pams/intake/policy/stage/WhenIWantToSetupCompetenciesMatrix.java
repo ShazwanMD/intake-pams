@@ -9,6 +9,8 @@ import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.util.Assert;
 
 @JGivenStage
 public class WhenIWantToSetupCompetenciesMatrix extends Stage <WhenIWantToSetupCompetenciesMatrix> {
@@ -49,7 +51,10 @@ public class WhenIWantToSetupCompetenciesMatrix extends Stage <WhenIWantToSetupC
        
        programOffering.setGeneralCriteria(generalCriteria);
        programOffering.setSpecificCriteria(specificCriteria);
+   //    policyService.
        policyService.addProgramOffering(intake, programOffering);
+       
+    //   Assert.
        
 		return self();
 	}

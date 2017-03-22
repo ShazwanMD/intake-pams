@@ -31,15 +31,10 @@ public class ThenICanIdentifyEligibleApplicants extends Stage <ThenICanIdentifyE
 
 	public ThenICanIdentifyEligibleApplicants I_can_identify_eligible_applicants(){
 		
-/*		for (InProgramOffering programOffering : programOfferings) {
-            InIntake intake = programOffering.getGeneralCriteria(generalCriteria);
-            InIntake intake = programOffering.getSpecificCriteria(specificCriteria);
-            LOG.debug("applicants available: {} {}", intake.getProgramOfferings());
-            		//studyMode.getDescription());
-        }
+		
 
-        Assert.notEmpty(programOfferings, "program offering cannot be empty");
-*/		
+    //    Assert.notEmpty(programOfferings, "program offering cannot be empty");
+		
 		return self();
 	}
 }
