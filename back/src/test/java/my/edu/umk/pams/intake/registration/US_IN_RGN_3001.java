@@ -47,7 +47,6 @@ public class US_IN_RGN_3001 extends SpringScenarioTest<GivenIAmAdministrator, Wh
 
     @Test
     @Rollback(true)
-    @Issue("")
     public void testScenario1() {
         given().I_am_a_administrator_in_current_intake_session_as_$("pps", "abc123");
         when().I_want_to_start_calculation_for_all_intake_applications();

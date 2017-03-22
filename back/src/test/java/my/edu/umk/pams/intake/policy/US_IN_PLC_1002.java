@@ -4,9 +4,11 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeIsReadyForSetup;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddIntake;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Issue ("PAMI-2")
 public class US_IN_PLC_1002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIAddIntake, ThenIntakeIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1002.class);

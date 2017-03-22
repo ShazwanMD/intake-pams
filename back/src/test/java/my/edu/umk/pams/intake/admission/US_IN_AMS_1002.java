@@ -26,7 +26,6 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Issue("PAMI-6")
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1002 extends
 	SpringScenarioTest<GivenIAmPPSAdministrator, WhenIWantToPreSelectEligibleEndCapableApplicant, ThenICanPreferredTheirApplicationt>{

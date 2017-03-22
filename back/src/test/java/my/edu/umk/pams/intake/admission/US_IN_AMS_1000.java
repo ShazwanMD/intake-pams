@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Issue("PAMI-6")
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1000 extends
         SpringScenarioTest<GivenIAmPPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase>{
@@ -38,7 +37,7 @@ public class US_IN_AMS_1000 extends
     }
 
     @Test
-    @Rollback(true)
+    @Rollback(false)
     @Issue("PAMI-6")
     public void scenario1(){
         given().I_am_a_PPS_administrator_in_current_intake_session();

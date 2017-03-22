@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
@@ -27,6 +28,7 @@ so that I can identify eligible applicants.
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
+@Issue("PAMI-8")
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_2002 extends 
 	SpringScenarioTest<GivenIAmPPSAdministrator, 
