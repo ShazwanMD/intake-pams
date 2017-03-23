@@ -31,10 +31,6 @@ public class InIntakeSessionImpl implements InIntakeSession {
     @Column(name = "CURRENT_", nullable = false)
     private Boolean current;
     
-    @NotNull
-    @Column(name = "LABEL", nullable = false)
-    private String label;
-
     @Embedded
     private InMetadata metadata;
 
@@ -96,16 +92,6 @@ public class InIntakeSessionImpl implements InIntakeSession {
         this.metadata = metadata;
     }
    
-    @Override
-    public String getLabel() {
-		return label;
-	}
-
-    @Override
-	public void setLabel(String label) {
-		this.label = label;
-	}
-
 	@Override
     public Class<?> getInterfaceClass() {
         return InIntakeSession.class;

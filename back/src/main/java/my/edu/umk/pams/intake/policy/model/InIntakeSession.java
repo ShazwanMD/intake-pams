@@ -20,8 +20,4 @@ public interface InIntakeSession extends InMetaObject {
     Boolean isCurrent();
 
     void setCurrent(Boolean current);
-
-	String getLabel();
-
-	void setLabel(String label);
 }
