@@ -102,7 +102,8 @@ create table IN_BCLR_RSLT (
 create table IN_BUMI_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -229,7 +230,8 @@ create table IN_CNTC (
 create table IN_CNTY_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -326,7 +328,8 @@ create table IN_EDCN (
 create table IN_EDCN_LEVL_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -497,7 +500,8 @@ create table IN_FILD_CODE (
 create table IN_GNDR_CODE (
   ID int8 not null,
   CODE varchar(1),
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -771,7 +775,8 @@ create table IN_MODL (
 create table IN_MRTL_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -793,7 +798,8 @@ create table IN_MUET_RSLT (
 create table IN_NTLY_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -898,7 +904,8 @@ create table IN_PRGM_OFRG (
 create table IN_RACE_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -931,7 +938,8 @@ create table IN_RFRN_NO (
 create table IN_RLGN_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1102,7 +1110,8 @@ create table IN_STPM_RSLT (
 create table IN_STTE_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
