@@ -969,7 +969,22 @@ create table IN_SMDL (
   primary key (ID)
 );
 
+create table IN_SPM_RSLT (
+  AGGREGATE int4 not null,
+  REGISTRATION_NO varchar(255) not null,
+  YEAR int4 not null,
+  ID int8 not null,
+  primary key (ID)
+);
+
 create table IN_STAF (
+  ID int8 not null,
+  primary key (ID)
+);
+
+create table IN_STAM_RSLT (
+  REGISTRATION_NO varchar(255) not null,
+  YEAR int4 not null,
   ID int8 not null,
   primary key (ID)
 );
@@ -1013,6 +1028,13 @@ create table IN_STDY_MODE_OFRG (
   M_ST int4,
   INTAKE_ID int8,
   STUDY_MODE_ID int8,
+  primary key (ID)
+);
+
+create table IN_STPM_RSLT (
+  REGISTRATION_NO varchar(255) not null,
+  YEAR int4 not null,
+  ID int8 not null,
   primary key (ID)
 );
 
@@ -1500,10 +1522,20 @@ alter table IN_SMDL
 foreign key (MODULE_ID)
 references IN_MODL;
 
+alter table IN_SPM_RSLT
+  add constraint FKA7B71AB2D81680
+foreign key (ID)
+references IN_RSLT;
+
 alter table IN_STAF
   add constraint FKA0229D20AB3274F6
 foreign key (ID)
 references IN_ACTR;
+
+alter table IN_STAM_RSLT
+  add constraint FK55E5C3A1D81680
+foreign key (ID)
+references IN_RSLT;
 
 alter table IN_STDY_CNTR_CODE
   add constraint uc_IN_STDY_CNTR_CODE_1 unique (CODE);
@@ -1520,6 +1552,11 @@ alter table IN_STDY_MODE_OFRG
   add constraint FK367FF379AF5A14A0
 foreign key (STUDY_MODE_ID)
 references IN_STDY_MODE;
+
+alter table IN_STPM_RSLT
+  add constraint FK6F633C70D81680
+foreign key (ID)
+references IN_RSLT;
 
 alter table IN_STTE_CODE
   add constraint uc_IN_STTE_CODE_1 unique (CODE);

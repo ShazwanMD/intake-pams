@@ -25,6 +25,10 @@ public class InMuetResultImpl extends InResultImpl implements InMuetResult {
     @Column(name = "BAND", nullable = false)
     private Integer band;
 
+    public InMuetResultImpl() {
+        setResultType(InResultType.MUET);
+    }
+
     @Override
     public int getYear() {
         return year;

@@ -3,8 +3,7 @@ package my.edu.umk.pams.intake.application.model;
 import java.math.BigDecimal;
 
 /**
- * @author team utmacad
- * @since 22/5/2015.
+ * @author PAMS
  */
 public interface InBachelorResult extends InResult {
 

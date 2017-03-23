@@ -4,6 +4,9 @@ package my.edu.umk.pams.intake.application.model;
  * @author PAMS
  */
 public enum InResultType {
+    SPM("SPM"),
+    STAM("STAM"),
+    STPM("STPM"),
     MUET("MUET"),
     TOEFL("TOEFL"),
     DIPLOMA("Diploma"),

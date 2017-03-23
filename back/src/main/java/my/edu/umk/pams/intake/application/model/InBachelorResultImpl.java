@@ -25,6 +25,10 @@ public class InBachelorResultImpl extends InResultImpl implements InBachelorResu
     @Column(name = "MATRIC_NO", nullable = false)
     private String matricNo;
 
+    public InBachelorResultImpl() {
+        setResultType(InResultType.BACHELOR);
+    }
+
     @Override
     public Integer getYear() {
         return year;

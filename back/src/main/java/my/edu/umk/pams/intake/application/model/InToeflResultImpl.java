@@ -25,6 +25,10 @@ public class InToeflResultImpl extends InResultImpl implements InToeflResult {
     @Column(name = "POINT", nullable = false)
     private Integer point;
 
+    public InToeflResultImpl() {
+        setResultType(InResultType.TOEFL);
+    }
+
     @Override
     public int getYear() {
         return year;

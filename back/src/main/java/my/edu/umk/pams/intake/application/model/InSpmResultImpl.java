@@ -4,57 +4,53 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
 /**
  * @author PAMS
  */
-@Entity(name = "InDiplomaResult")
-@Table(name = "IN_DPLM_RSLT")
-public class InDiplomaResultImpl extends InResultImpl implements InDiplomaResult {
+
+@Entity(name = "InSpmResult")
+@Table(name = "IN_SPM_RSLT")
+public class InSpmResultImpl extends InResultImpl implements InSpmResult {
 
     @NotNull
     @Column(name = "YEAR", nullable = false)
     private Integer year = 0;
 
     @NotNull
-    @Column(name = "CGPA", nullable = false)
-    private BigDecimal cgpa = BigDecimal.ZERO;
+    @Column(name = "AGGREGATE", nullable = false)
+    private Integer aggregate = 0;
 
     @NotNull
     @Column(name = "REGISTRATION_NO", nullable = false)
     private String registrationNo;
 
-    public InDiplomaResultImpl() {
-        setResultType(InResultType.DIPLOMA);
+    public InSpmResultImpl() {
+        setResultType(InResultType.SPM);
     }
 
-    @Override
     public Integer getYear() {
         return year;
     }
 
-    @Override
     public void setYear(Integer year) {
         this.year = year;
     }
 
     @Override
-    public BigDecimal getCgpa() {
-        return cgpa;
+    public Integer getAggregate() {
+        return aggregate;
     }
 
     @Override
-    public void setCgpa(BigDecimal cgpa) {
-        this.cgpa = cgpa;
+    public void setAggregate(Integer aggregate) {
+        this.aggregate = aggregate;
     }
 
-    @Override
     public String getRegistrationNo() {
         return registrationNo;
     }
 
-    @Override
     public void setRegistrationNo(String registrationNo) {
         this.registrationNo = registrationNo;
     }
