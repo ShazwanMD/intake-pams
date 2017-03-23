@@ -1,4 +1,3 @@
-
 create table IN_ACTR (
   ID int8 not null,
   ACTOR_TYPE int4,
@@ -97,6 +96,20 @@ create table IN_BCLR_RSLT (
   MATRIC_NO varchar(255) not null,
   YEAR int4 not null,
   ID int8 not null,
+  primary key (ID)
+);
+
+create table IN_BUMI_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
   primary key (ID)
 );
 
@@ -1152,6 +1165,9 @@ alter table IN_BCLR_RSLT
 foreign key (ID)
 references IN_RSLT;
 
+alter table IN_BUMI_CODE
+  add constraint uc_IN_BUMI_CODE_1 unique (CODE);
+
 alter table IN_CITY_CODE
   add constraint uc_IN_CITY_CODE_1 unique (CODE);
 
@@ -1596,6 +1612,8 @@ create sequence SQ_IN_ATMT;
 create sequence SQ_IN_AUDT;
 
 create sequence SQ_IN_BANK_CODE;
+
+create sequence SQ_IN_BUMI_CODE;
 
 create sequence SQ_IN_CITY_CODE;
 
