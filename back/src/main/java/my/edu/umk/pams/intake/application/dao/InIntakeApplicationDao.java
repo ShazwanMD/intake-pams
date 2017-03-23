@@ -62,6 +62,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InResultItem> findResultItems(InResult result);
 
+    List<InEducation> findEducations(InIntakeApplication application);
+
     List<InEmployment> findEmployments(InIntakeApplication application);
 
     List<InInvolvement> findInvolvements(InIntakeApplication application);
@@ -86,6 +88,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     boolean hasResult(InIntakeApplication application, InResultType resultType);
 
+    boolean hasEducation(InIntakeApplication application);
+
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
@@ -101,6 +105,10 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void addResultItem(InResult result, InResultItem item, InUser user);
 
     void deleteResultItem(InResult result, InResultItem item, InUser user);
+
+    void addEducation(InIntakeApplication application, InEducation education, InUser user);
+
+    void deleteEducation(InIntakeApplication application, InEducation education, InUser user);
 
     void addEmployment(InIntakeApplication application, InEmployment employment, InUser user);
 

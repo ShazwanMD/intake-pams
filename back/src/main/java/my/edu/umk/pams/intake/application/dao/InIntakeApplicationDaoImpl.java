@@ -253,6 +253,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public List<InEducation> findEducations(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InEducation p where " +
+                "p.application = :application ");
+        query.setEntity("application", application);
+        return (List<InEducation>) query.list();
+    }
+
+    @Override
     public List<InEmployment> findEmployments(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InEmployment p where " +
@@ -352,6 +361,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public boolean hasEducation(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InEducation p " +
+                "where p.application = :application");
+        query.setEntity("application", application);
+        return (Integer) query.uniqueResult() > 0;
+    }
+
+    @Override
     public boolean hasEmployment(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InEmployment p " +
@@ -426,6 +444,33 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(item);
+    }
+
+    @Override
+    public void addEducation(InIntakeApplication application, InEducation education, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(education, "Education cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        education.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        education.setMetadata(metadata);
+        session.save(education);
+    }
+
+    @Override
+    public void deleteEducation(InIntakeApplication application, InEducation education, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(education, "Education cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(education);
     }
 
     @Override
