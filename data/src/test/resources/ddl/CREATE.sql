@@ -1,4 +1,3 @@
-
 create table IN_ACTR (
   ID int8 not null,
   ACTOR_TYPE int4,
@@ -97,6 +96,20 @@ create table IN_BCLR_RSLT (
   MATRIC_NO varchar(255) not null,
   YEAR int4 not null,
   ID int8 not null,
+  primary key (ID)
+);
+
+create table IN_BUMI_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
   primary key (ID)
 );
 
@@ -281,6 +294,53 @@ create table IN_DUN_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
   DESCRIPTION varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
+);
+
+create table IN_EDCN (
+  ID int8 not null,
+  ACTIVE boolean not null,
+  END_DATE timestamp not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  PROVIDER varchar(255) not null,
+  START_DATE timestamp not null,
+  APPLICATION_ID int8,
+  LEVEL_CODE_ID int8,
+  SECTOR_CODE_ID int8,
+  primary key (ID)
+);
+
+create table IN_EDCN_LEVL_CODE (
+  ID int8 not null,
+  CODE varchar(255),
+  DESCRIPTION varchar(255),
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  primary key (ID)
+);
+
+create table IN_EDCN_SCTR_CODE (
+  ID int8 not null,
+  CODE varchar(2),
+  DESCRIPTION varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -619,6 +679,7 @@ create table IN_INTK_SESN (
   CODE varchar(255) not null,
   CURRENT_ boolean not null,
   DESCRIPTION varchar(255) not null,
+  LABEL varchar(255) not null,
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1152,6 +1213,9 @@ alter table IN_BCLR_RSLT
 foreign key (ID)
 references IN_RSLT;
 
+alter table IN_BUMI_CODE
+  add constraint uc_IN_BUMI_CODE_1 unique (CODE);
+
 alter table IN_CITY_CODE
   add constraint uc_IN_CITY_CODE_1 unique (CODE);
 
@@ -1208,6 +1272,27 @@ alter table IN_DSCT_CODE
 
 alter table IN_DUN_CODE
   add constraint uc_IN_DUN_CODE_1 unique (CODE);
+
+alter table IN_EDCN
+  add constraint FKA01C042437A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
+
+alter table IN_EDCN
+  add constraint FKA01C0424A6DAE648
+foreign key (LEVEL_CODE_ID)
+references IN_EDCN_LEVL_CODE;
+
+alter table IN_EDCN
+  add constraint FKA01C042433CF0EA2
+foreign key (SECTOR_CODE_ID)
+references IN_EDCN_SCTR_CODE;
+
+alter table IN_EDCN_LEVL_CODE
+  add constraint uc_IN_EDCN_LEVL_CODE_1 unique (CODE);
+
+alter table IN_EDCN_SCTR_CODE
+  add constraint uc_IN_EDCN_SCTR_CODE_1 unique (CODE);
 
 alter table IN_EMAL_QUEU
   add constraint uc_IN_EMAL_QUEU_1 unique (CODE);
@@ -1597,6 +1682,8 @@ create sequence SQ_IN_AUDT;
 
 create sequence SQ_IN_BANK_CODE;
 
+create sequence SQ_IN_BUMI_CODE;
+
 create sequence SQ_IN_CITY_CODE;
 
 create sequence SQ_IN_CLGE_CODE;
@@ -1620,6 +1707,12 @@ create sequence SQ_IN_DPCY_CODE;
 create sequence SQ_IN_DSCT_CODE;
 
 create sequence SQ_IN_DUN_CODE;
+
+create sequence SQ_IN_EDCN;
+
+create sequence SQ_IN_EDCN_LEVL_CODE;
+
+create sequence SQ_IN_EDCN_SCTR_CODE;
 
 create sequence SQ_IN_EMAL_QUEU;
 

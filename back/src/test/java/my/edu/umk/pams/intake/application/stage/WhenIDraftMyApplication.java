@@ -95,7 +95,7 @@ public class WhenIDraftMyApplication extends Stage<WhenIDraftMyApplication> {
 //        employment.setFieldCode(commonService.findEmploymentFieldCodeByCode("ENGINEERING"));
 //        employment.setStartDate(new Date());
 //        employment.setEndDate(new Date());
-//        employment.setEmployer("Universiti Malaysia Kelantan");
+//        employment.setProvider("Universiti Malaysia Kelantan");
 //        employment.setCurrent(true);
 //        employment.setApplication(application);
 //        applicationService.addEmployment(application, employment);

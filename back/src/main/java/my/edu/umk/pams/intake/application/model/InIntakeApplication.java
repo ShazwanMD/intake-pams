@@ -174,6 +174,10 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setAttachments(List<InAttachment> documents);
 
+    List<InEducation> getEducations();
+
+    void setEducations(List<InEducation> educations);
+
     List<InInvolvement> getInvolvements();
 
     void setInvolvements(List<InInvolvement> involvementExperiences);
