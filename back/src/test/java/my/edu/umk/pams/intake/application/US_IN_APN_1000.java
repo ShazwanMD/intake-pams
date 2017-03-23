@@ -19,7 +19,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
+ * As a applicant, 
+ * I want to reset my forget password 
+ * so that I can login again
  * @author PAMS
+ * 
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional

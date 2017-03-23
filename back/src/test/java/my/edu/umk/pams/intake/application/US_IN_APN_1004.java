@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.application;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -41,10 +42,11 @@ public class US_IN_APN_1004 extends SpringScenarioTest<GivenIAmApplicant, WhenIW
     }
 
     @Test
-    @Rollback(true)
+    @Issue("PAMI-25")
+    @Rollback(false)
     public void scenario1() {
-        given().I_am_an_applicant_in_current_intake_session()
-                .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
+    	given().I_am_an_applicant_in_current_intake_session()
+              .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
         when().I_fill_in_all_the_required_information_in_my_application();
         then().I_can_submit_my_application();
     }
