@@ -73,9 +73,16 @@ public class ApplicationServiceImpl implements ApplicationService {
         sessionFactory.getCurrentSession().flush();
     }
 
+
     @Override
     public void updateIntakeApplication(InIntakeApplication application) {
         intakeApplicationDao.update(application, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void addEducation(InIntakeApplication application, InEducation education) {
+        intakeApplicationDao.addEducation(application, education, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -271,6 +278,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public List<InEducation> findEducations(InIntakeApplication application) {
+        return intakeApplicationDao.findEducations(application);
+    }
+
+    @Override
     public List<InEmployment> findEmployments(InIntakeApplication application) {
         return intakeApplicationDao.findEmployments(application);
     }
@@ -299,17 +311,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<InAddress> findAddresses(InIntakeApplication application) {
         return intakeApplicationDao.findAddresses(application);
     }
-
-    @Override
-    public boolean hasEmployment(InIntakeApplication application) {
-        return intakeApplicationDao.hasEmployment(application);
-    }
-
-    @Override
-    public boolean hasInvolvement(InIntakeApplication application) {
-        return intakeApplicationDao.hasInvolvement(application);
-    }
-
     @Override
     public Integer countIntakeApplication(InIntake intake) {
         return intakeApplicationDao.count(intake);
@@ -323,6 +324,23 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public Integer countIntakeApplication(String filter, InBidType bidType, InIntake intake) {
         return intakeApplicationDao.count(filter, bidType, intake);
+    }
+
+
+    @Override
+    public boolean hasEducation(InIntakeApplication application) {
+        return intakeApplicationDao.hasEducation(application);
+    }
+
+
+    @Override
+    public boolean hasEmployment(InIntakeApplication application) {
+        return intakeApplicationDao.hasEmployment(application);
+    }
+
+    @Override
+    public boolean hasInvolvement(InIntakeApplication application) {
+        return intakeApplicationDao.hasInvolvement(application);
     }
 
     @Override

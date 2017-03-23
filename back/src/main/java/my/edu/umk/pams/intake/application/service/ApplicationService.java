@@ -22,6 +22,8 @@ public interface ApplicationService {
 
     void addResultItem(InIntakeApplication application, InResult result, InResultItem item);
 
+    void addEducation(InIntakeApplication application, InEducation education);
+
     void addEmployment(InIntakeApplication application, InEmployment employment);
 
     void addInvolvement(InIntakeApplication application, InInvolvement involvement);
@@ -103,6 +105,8 @@ public interface ApplicationService {
 
     List<InResultItem> findResultItems(InResult result);
 
+    List<InEducation> findEducations(InIntakeApplication application);
+
     List<InEmployment> findEmployments(InIntakeApplication application);
 
     List<InInvolvement> findInvolvements(InIntakeApplication application);
@@ -122,6 +126,8 @@ public interface ApplicationService {
     Integer countIntakeApplication(String filter, InBidType bidType, InIntake intake);
 
     boolean hasResult(InIntakeApplication application, InResultType resultType);
+
+    boolean hasEducation(InIntakeApplication application);
 
     boolean hasEmployment(InIntakeApplication application);
 
