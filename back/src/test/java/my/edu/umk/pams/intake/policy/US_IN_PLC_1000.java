@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.policy;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeIsReadyForSetup;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddIntake;
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_PLC_1000 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddIntake, ThenIntakeIsReadyForSetup> {
+public class US_IN_PLC_1000 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddIntake, ThenIntakeIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1000.class);
 
@@ -39,7 +39,7 @@ public class US_IN_PLC_1000 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator_in_current_intake_session();
+        given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_add_intake();
         then().intake_is_ready_for_setup();
     }

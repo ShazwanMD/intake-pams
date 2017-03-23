@@ -17,9 +17,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @JGivenStage
-public class GivenIAmPPSKeraniAdministrator extends Stage<GivenIAmPPSKeraniAdministrator> {
+public class GivenIAmCPSPegawaiAdministrator extends Stage<GivenIAmCPSPegawaiAdministrator> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(GivenIAmPPSKeraniAdministrator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GivenIAmCPSPegawaiAdministrator.class);
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -33,24 +33,23 @@ public class GivenIAmPPSKeraniAdministrator extends Stage<GivenIAmPPSKeraniAdmin
     @ProvidedScenarioState
     private InStaff staff;
 
-    public void I_am_a_PPS_administrator_in_$_intake_session(String intakeSessionCode){
-        loginAsPPS();
+    public void I_am_a_CPS_administrator_in_$_intake_session(String intakeSessionCode){
+        loginAsCPS();
         intakeSession = policyService.findIntakeSessionByCode(intakeSessionCode);
     }
 
-    public void I_am_a_PPS_administrator_in_current_intake_session(){
-        loginAsPPS();
+    public void I_am_a_CPS_administrator_in_current_intake_session(){
+        loginAsCPS();
         intakeSession = policyService.findCurrentIntakeSession();
     }
 
-    private void loginAsPPS() {
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("pps-kerani", "abc123");
+    private void loginAsCPS() {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("cps-pegawai", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
 
         // retrieve staff from user
         InUser user = ((InUserDetails) authed.getPrincipal()).getUser();
         staff = (InStaff) user.getActor();
-
     }
 }

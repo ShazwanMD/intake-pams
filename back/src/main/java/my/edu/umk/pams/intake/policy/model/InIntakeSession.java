@@ -13,9 +13,9 @@ public interface InIntakeSession extends InMetaObject {
 
     void setLabel(String label);
 
-    String getDescription();
+    String getDescriptionEn();
 
-    void setDescription(String description);
+    void setDescriptionEn(String descriptionEn);
 
     Boolean isCurrent();
 

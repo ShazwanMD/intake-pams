@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.registration;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmAdministrator, WhenIViewSponsorshipStatus, ThenICanProceedRegistration> {
+public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIViewSponsorshipStatus, ThenICanProceedRegistration> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3000.class);
 
@@ -42,8 +42,7 @@ public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmAdministrator, Wh
     @Test
     @Rollback(true)
     public void scenario1() {
-
-        given().I_am_a_administrator_in_current_intake_session_as_$("pps", "abc123");
+        given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_view_sponsorship_status();
         then().I_can_Proceed_Registration();
     }

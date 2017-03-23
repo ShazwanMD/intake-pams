@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.admission;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.ThenCandidateCanProceedToNextSelectionPhase;
 import my.edu.umk.pams.intake.admission.stage.WhenIPreapproveCandidate;
@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1000 extends
-        SpringScenarioTest<GivenIAmPPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase> {
+        SpringScenarioTest<GivenIAmCPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase> {
 
     @Before
     public void before() {
@@ -40,7 +40,7 @@ public class US_IN_AMS_1000 extends
     @Rollback(true)
     @Issue("PAMI-6")
     public void scenario1() {
-        given().I_am_a_PPS_administrator_in_current_intake_session();
+        given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_preapprove_candidate();
         then().candidate_can_proceed();
     }

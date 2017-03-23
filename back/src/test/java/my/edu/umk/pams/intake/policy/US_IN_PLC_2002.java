@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.policy;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
@@ -29,7 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Issue("PAMI-8")
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_2002 extends
-        SpringScenarioTest<GivenIAmPPSAdministrator,
+        SpringScenarioTest<GivenIAmCPSAdministrator,
                 WhenIWantToSetupCompetenciesMatrix,
                 ThenICanIdentifyEligibleApplicants> {
 
@@ -48,7 +48,7 @@ public class US_IN_PLC_2002 extends
     @Test
     @Rollback(true)
     public void testScenario1() {
-        given().I_am_a_PPS_administrator_in_current_intake_session();
+        given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_want_to_setup_competencies_matrix();
         then().I_can_identify_eligible_applicants();
     }

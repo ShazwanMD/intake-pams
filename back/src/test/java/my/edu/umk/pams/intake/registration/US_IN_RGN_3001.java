@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.registration;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanGradeApplicantResult;
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_IN_RGN_3001 extends SpringScenarioTest<GivenIAmAdministrator, WhenIWantToStartCalculationForAllIntakeApplications, ThenICanGradeApplicantResult> {
+public class US_IN_RGN_3001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToStartCalculationForAllIntakeApplications, ThenICanGradeApplicantResult> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3001.class);
 
@@ -45,7 +45,7 @@ public class US_IN_RGN_3001 extends SpringScenarioTest<GivenIAmAdministrator, Wh
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_administrator_in_current_intake_session_as_$("pps", "abc123");
+        given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_want_to_start_calculation_for_all_intake_applications();
         then().I_can_grade_applicant_result();
     }

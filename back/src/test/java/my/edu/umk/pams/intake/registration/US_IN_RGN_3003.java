@@ -2,7 +2,7 @@ package my.edu.umk.pams.intake.registration;
 
 import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSKeraniAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmAdministrator, WhenIWantToKnowApplicantReferee, ThenICanProcessTheirApplication> {
+public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdministrator, WhenIWantToKnowApplicantReferee, ThenICanProcessTheirApplication> {
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3003.class);
 
     @Autowired
@@ -44,14 +44,11 @@ public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmAdministrator, Wh
 
     }
 
-//	@ScenarioStage
-//	private GivenAnApplicantHasReferee additionalStage;					<--	add additional given
-
     @Test
     @Rollback
     @Issue("")
     public void scenario1() {
-        given().I_am_a_administrator_in_current_intake_session_as_$("pps", "abc123");
+        given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_want_to_know_applicant_referee();
         then().I_can_process_their_application();
     }

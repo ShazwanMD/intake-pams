@@ -24,8 +24,12 @@ public class InIntakeSessionImpl implements InIntakeSession {
     private String label;
 
     @NotNull
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
+    @Column(name = "DESCRIPTION_EN", nullable = false)
+    private String descriptionEn;
+
+    @NotNull
+    @Column(name = "DESCRIPTION_MS", nullable = false)
+    private String descriptionMs;
 
     @NotNull
     @Column(name = "CURRENT_", nullable = false)
@@ -63,14 +67,20 @@ public class InIntakeSessionImpl implements InIntakeSession {
         this.label = label;
     }
 
-    @Override
-    public String getDescription() {
-        return description;
+    public String getDescriptionEn() {
+        return descriptionEn;
     }
 
-    @Override
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+
+    public String getDescriptionMs() {
+        return descriptionMs;
+    }
+
+    public void setDescriptionMs(String descriptionMs) {
+        this.descriptionMs = descriptionMs;
     }
 
     public Boolean isCurrent() {

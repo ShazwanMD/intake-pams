@@ -28,7 +28,7 @@ public class IntakeRouterService extends RouterServiceSupport {
 
     static {
         strategies.put("MGSEB", new MGSEBIntakeRouterStrategy());
-        strategies.put("PPS", new PPSIntakeRouterStrategy());
+        strategies.put("PPS", new CPSIntakeRouterStrategy());
     }
 
     @Autowired
