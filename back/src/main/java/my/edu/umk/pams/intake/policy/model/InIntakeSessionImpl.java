@@ -20,6 +20,10 @@ public class InIntakeSessionImpl implements InIntakeSession {
     private String code;
 
     @NotNull
+    @Column(name = "LABEL", nullable = false)
+    private String label;
+
+    @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
@@ -47,6 +51,16 @@ public class InIntakeSessionImpl implements InIntakeSession {
     @Override
     public void setCode(String code) {
         this.code = code;
+    }
+
+    @Override
+    public String getLabel() {
+        return label;
+    }
+
+    @Override
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     @Override

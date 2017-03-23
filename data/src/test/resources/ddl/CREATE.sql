@@ -679,6 +679,7 @@ create table IN_INTK_SESN (
   CODE varchar(255) not null,
   CURRENT_ boolean not null,
   DESCRIPTION varchar(255) not null,
+  LABEL varchar(255) not null,
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,

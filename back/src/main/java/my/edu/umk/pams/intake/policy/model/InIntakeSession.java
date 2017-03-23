@@ -9,6 +9,10 @@ public interface InIntakeSession extends InMetaObject {
 
     void setCode(String code);
 
+    String getLabel();
+
+    void setLabel(String label);
+
     String getDescription();
 
     void setDescription(String description);
