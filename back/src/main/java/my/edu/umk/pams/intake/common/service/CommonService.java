@@ -329,6 +329,29 @@ public interface CommonService {
     void removeGenderCode(InGenderCode genderCode);
 
     //====================================================================================================
+    // BUMI CODE
+    //====================================================================================================
+
+
+    InBumiCode findBumiCodeById(Long id);
+
+    InBumiCode findBumiCodeByCode(String code);
+
+    List<InBumiCode> findBumiCodes();
+
+    List<InBumiCode> findBumiCodes(String filter, Integer offset, Integer limit);
+
+    Integer countBumiCode();
+
+    Integer countBumiCode(String filter);
+
+    void saveBumiCode(InBumiCode bumiCode);
+
+    void updateBumiCode(InBumiCode bumiCode);
+
+    void removeBumiCode(InBumiCode bumiCode);
+
+    //====================================================================================================
     // RACE CODE
     //====================================================================================================
 

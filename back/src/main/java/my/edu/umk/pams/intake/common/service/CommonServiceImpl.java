@@ -54,6 +54,9 @@ public class CommonServiceImpl implements CommonService {
     private InGenderCodeDao genderCodeDao;
 
     @Autowired
+    private InBumiCodeDao bumiCodeDao;
+
+    @Autowired
     private InRaceCodeDao raceCodeDao;
 
     @Autowired
@@ -614,6 +617,59 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public void removeGenderCode(InGenderCode genderCode) {
         genderCodeDao.remove(genderCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    //====================================================================================================
+    // BUMI CODE
+    //====================================================================================================
+
+    @Override
+    public InBumiCode findBumiCodeById(Long id) {
+        return bumiCodeDao.findById(id);
+    }
+
+    @Override
+    public InBumiCode findBumiCodeByCode(String code) {
+        return bumiCodeDao.findByCode(code);
+    }
+
+    @Override
+    public List<InBumiCode> findBumiCodes() {
+        return bumiCodeDao.find();
+    }
+
+    @Override
+    public List<InBumiCode> findBumiCodes(String filter, Integer offset, Integer limit) {
+        return bumiCodeDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countBumiCode() {
+        return bumiCodeDao.count();
+    }
+
+    @Override
+    public Integer countBumiCode(String filter) {
+        return bumiCodeDao.count(filter);
+    }
+
+
+    @Override
+    public void saveBumiCode(InBumiCode bumiCode) {
+        bumiCodeDao.save(bumiCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateBumiCode(InBumiCode bumiCode) {
+        bumiCodeDao.update(bumiCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeBumiCode(InBumiCode bumiCode) {
+        bumiCodeDao.remove(bumiCode, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
