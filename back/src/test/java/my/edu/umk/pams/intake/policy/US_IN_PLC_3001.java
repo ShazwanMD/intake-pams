@@ -4,6 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanViewtheStudyCenter;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeIsReadyForSetup;
@@ -45,7 +46,8 @@ public class US_IN_PLC_3001 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     }
 
     @Test
-    @Rollback(false)
+    @Issue("PAMI-14")
+    @Rollback(true)
     public void scenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().I_add_StudyCenter_in_intake();
