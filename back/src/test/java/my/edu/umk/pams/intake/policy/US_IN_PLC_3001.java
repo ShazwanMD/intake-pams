@@ -32,7 +32,7 @@ public class US_IN_PLC_3001 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 
     @Test
     @Issue("PAMI-14")
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().I_add_StudyCenter_in_intake();

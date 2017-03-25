@@ -36,7 +36,7 @@ public class US_IN_PLC_2002 extends
     private String referenceNo;
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void testScenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_want_to_setup_competencies_matrix();

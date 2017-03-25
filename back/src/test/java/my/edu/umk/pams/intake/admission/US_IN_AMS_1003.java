@@ -26,7 +26,7 @@ public class US_IN_AMS_1003 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSelectSuitableApplicants, ThenICanApprovedTheirApplication> {
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_want_to_select_suitable_applicants();

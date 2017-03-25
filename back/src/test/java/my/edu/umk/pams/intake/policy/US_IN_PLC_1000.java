@@ -27,7 +27,7 @@ public class US_IN_PLC_1000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     private String referenceNo;
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_add_intake();

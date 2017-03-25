@@ -28,7 +28,7 @@ public class US_IN_AMS_1004 extends
                 ThenICanInformTheSelectedApplicants> {
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_want_to_select_suitable_appealed_applicants();

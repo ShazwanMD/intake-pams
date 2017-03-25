@@ -37,7 +37,7 @@ public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIR
     private RegistrationService registrationService;
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_an_anonymous_in_current_intake_session();
         when().I_register();
@@ -45,7 +45,7 @@ public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIR
     }
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void testScenario2() {
         given().I_am_an_anonymous_in_current_intake_session();
         when().I_register();

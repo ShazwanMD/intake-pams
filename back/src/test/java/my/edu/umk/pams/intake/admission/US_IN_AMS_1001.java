@@ -28,7 +28,7 @@ public class US_IN_AMS_1001 extends
                 ThenICanFilterTheTopApplicant> {
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_slide_and_dice_top_applicant_for_intake();

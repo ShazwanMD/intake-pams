@@ -27,7 +27,7 @@ public class US_IN_AMS_1000 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase> {
 
     @Test
-    @Rollback(true)
+    @Rollback
     @Issue("PAMI-6")
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();

@@ -32,7 +32,7 @@ public class US_IN_PLC_1002 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     private String referenceNo;
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().I_add_intake();

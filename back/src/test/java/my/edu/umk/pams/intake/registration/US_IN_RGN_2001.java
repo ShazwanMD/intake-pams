@@ -40,7 +40,7 @@ public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckF
 //    GivenIHaveIncompleteApplication additionalState;
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
 //      additionalState.and().given().i_have_an_incomplete_application();

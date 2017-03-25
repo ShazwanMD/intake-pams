@@ -34,7 +34,7 @@ public class US_IN_RGN_2000 extends SpringScenarioTest<GivenIAmApplicant, WhenIR
     private RegistrationService registrationService;
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
         when().I_receive_notification_for_sign_up();

@@ -31,7 +31,7 @@ public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, WhenIC
     private ApplicationService applicationService;
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
         when().I_choose_my_supervisor();
