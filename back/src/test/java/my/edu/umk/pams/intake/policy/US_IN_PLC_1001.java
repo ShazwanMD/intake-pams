@@ -6,8 +6,6 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeHasOffering;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddOffering;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -30,14 +28,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_IN_PLC_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddOffering, ThenIntakeHasOffering> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1001.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

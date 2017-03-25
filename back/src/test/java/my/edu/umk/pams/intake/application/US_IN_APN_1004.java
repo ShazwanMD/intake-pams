@@ -6,8 +6,6 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -32,14 +30,6 @@ public class US_IN_APN_1004 extends SpringScenarioTest<GivenIAmApplicant, WhenIW
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1004.class);
 
     public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Issue("PAMI-25")

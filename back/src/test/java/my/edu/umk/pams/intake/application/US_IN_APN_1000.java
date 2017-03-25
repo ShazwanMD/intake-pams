@@ -6,8 +6,6 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.application.stage.ThenICanLoginAgain;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToResetForgetPassword;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -34,14 +32,6 @@ public class US_IN_APN_1000 extends SpringScenarioTest<GivenIAmApplicant, WhenIW
 
     @Autowired
     private ApplicationService applicationService;
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

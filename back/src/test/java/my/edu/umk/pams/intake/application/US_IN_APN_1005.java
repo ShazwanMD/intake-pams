@@ -1,7 +1,5 @@
 package my.edu.umk.pams.intake.application;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -38,14 +36,6 @@ public class US_IN_APN_1005 extends SpringScenarioTest<GivenIAmApplicant,
 
     public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
-    
     @Test
     @Issue("PAMI-26")
     @Rollback(false)

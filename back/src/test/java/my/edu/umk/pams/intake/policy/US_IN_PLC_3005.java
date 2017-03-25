@@ -6,8 +6,6 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromMultipleSelections;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToListOutProgrammes;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -29,14 +27,6 @@ so that applicants can make multiply selection
 public class US_IN_PLC_3005 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIWantToListOutProgrammes, ThenICanChooseFromMultipleSelections> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3005.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

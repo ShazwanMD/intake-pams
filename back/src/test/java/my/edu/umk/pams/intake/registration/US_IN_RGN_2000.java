@@ -6,8 +6,6 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenIWillKnowMyLoginStatus;
 import my.edu.umk.pams.intake.registration.stage.WhenIReceiveNotificationForSignUp;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -34,14 +32,6 @@ public class US_IN_RGN_2000 extends SpringScenarioTest<GivenIAmApplicant, WhenIR
 
     @Autowired
     private RegistrationService registrationService;
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

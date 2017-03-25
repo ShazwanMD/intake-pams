@@ -6,8 +6,6 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanProceedTheIntakeProcess;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetProjectionForCurrentIntake;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,14 +26,6 @@ so that i can proceed the intake process*/
 public class US_IN_PLC_3003 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIWantToSetProjectionForCurrentIntake,
         ThenICanProceedTheIntakeProcess> {
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3003.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

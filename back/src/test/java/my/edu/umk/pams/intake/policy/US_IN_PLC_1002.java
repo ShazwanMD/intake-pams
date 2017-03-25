@@ -6,8 +6,6 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeIsReadyForSetup;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddIntake;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -32,14 +30,6 @@ public class US_IN_PLC_1002 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1002.class);
 
     private String referenceNo;
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

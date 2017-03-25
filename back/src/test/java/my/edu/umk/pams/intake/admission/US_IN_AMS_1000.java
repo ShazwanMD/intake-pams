@@ -6,8 +6,6 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.ThenCandidateCanProceedToNextSelectionPhase;
 import my.edu.umk.pams.intake.admission.stage.WhenIPreapproveCandidate;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.Rollback;
@@ -27,14 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1000 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase> {
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

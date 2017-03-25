@@ -7,8 +7,6 @@ import my.edu.umk.pams.intake.policy.US_IN_PLC_1001;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanLogIn;
 import my.edu.umk.pams.intake.registration.stage.WhenIRegister;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -37,14 +35,6 @@ public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIR
 
     @Autowired
     private RegistrationService registrationService;
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

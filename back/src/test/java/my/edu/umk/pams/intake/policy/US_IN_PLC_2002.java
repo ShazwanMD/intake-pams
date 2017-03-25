@@ -6,8 +6,6 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -36,14 +34,6 @@ public class US_IN_PLC_2002 extends
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2002.class);
 
     private String referenceNo;
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

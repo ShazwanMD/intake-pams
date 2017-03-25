@@ -8,8 +8,6 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProcessTheirApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenIWantToKnowApplicantReferee;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -33,16 +31,6 @@ public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdminist
 
     @Autowired
     private RegistrationService registerationservice;
-
-    @Before
-    public void before() {
-
-    }
-
-    @After
-    public void after() {
-
-    }
 
     @Test
     @Rollback

@@ -6,8 +6,6 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenIViewSponsorshipStatus;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -30,14 +28,6 @@ public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     @Autowired
     private RegistrationService registrationService;
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

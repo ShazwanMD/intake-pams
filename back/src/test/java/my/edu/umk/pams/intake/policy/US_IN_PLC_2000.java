@@ -7,8 +7,6 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromASelectionOfChoicesPPS;
 import my.edu.umk.pams.intake.policy.stage.ToBeOfferedInAnIntakePPS;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddMultipleProgramCodePPS;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -33,14 +31,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_IN_PLC_2000 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddMultipleProgramCodePPS, ThenICanChooseFromASelectionOfChoicesPPS> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2000.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

@@ -5,8 +5,6 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.intake.admission.stage.ThenICanApprovedTheirApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableApplicants;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.Rollback;
@@ -26,14 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1003 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSelectSuitableApplicants, ThenICanApprovedTheirApplication> {
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)
