@@ -5,6 +5,7 @@ import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENC
 import java.util.HashMap;
 import java.util.Map;
 
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 
+@JGivenStage
 public class WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation 
 			extends Stage <WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation> {
 	
@@ -63,6 +65,8 @@ public class WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation
         
         intakeApplication = new InIntakeApplicationImpl();
         intakeApplication.setIntake(this.intake);
+//        intakeApplication.setName("whatever");
+//        intakeApplication.setEmail("whatever@emailbox.umk.edu.my");
         intakeApplication.setReferenceNo(referenceNo);
         intakeApplication.setSchoolCode(commonService.findSchoolCodeByCode("SMA"));
         intakeApplication.setSchoolName("Sekolah Agama Berasrama Penuh Ceruk Tok Kun");
