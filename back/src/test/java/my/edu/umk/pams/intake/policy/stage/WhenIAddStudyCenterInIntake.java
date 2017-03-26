@@ -20,7 +20,7 @@ import org.springframework.util.Assert;
 
 /**
  * @author PAMS
- */
+ **/
 @JGivenStage
 public class WhenIAddStudyCenterInIntake extends Stage<WhenIAddStudyCenterInIntake> {
 
