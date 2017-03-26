@@ -39,7 +39,7 @@ public class WhenIAddStudyCenterInIntake extends Stage<WhenIAddStudyCenterInInta
     private InProgramLevel level;
 
     @ProvidedScenarioState
-    private InStudyCenterCode studyCenter;
+    private InStudyCenterCode studyCenterCode;
     
     @ProvidedScenarioState
     private InProgramOffering programOffering;
@@ -48,9 +48,9 @@ public class WhenIAddStudyCenterInIntake extends Stage<WhenIAddStudyCenterInInta
     	
     	InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 
-        InProgramOffering programOffering = new InProgramOfferingImpl();
-
-        programOffering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("SC-003"));
+        programOffering = new InProgramOfferingImpl();
+        studyCenterCode = commonService.findStudyCenterCodeByCode("SC-003");
+        programOffering.setStudyCenterCode(studyCenterCode);
         Assert.notNull(programOffering.getStudyCenterCode(), "studycenter is null");
 
         policyService.addProgramOffering(intake, programOffering);
