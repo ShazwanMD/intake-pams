@@ -31,7 +31,7 @@ ThenICanDetermineTheLimitOfSupervisor> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2004.class);
 
     @Test
-    @Rollback
+    @Rollback(false)
     @Issue("PAMI-10")
     public void testScenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
