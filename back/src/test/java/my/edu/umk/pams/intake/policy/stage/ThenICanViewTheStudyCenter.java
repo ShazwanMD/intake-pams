@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.policy.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -40,7 +41,7 @@ public class ThenICanViewTheStudyCenter extends Stage<ThenICanViewTheStudyCenter
 	 @ProvidedScenarioState
 	 private InIntake intake;
 	 
-	 @ProvidedScenarioState
+	 @ExpectedScenarioState
 	 private InProgramOffering programOffering;
 	 
 	 @ExpectedScenarioState
@@ -57,6 +58,16 @@ public class ThenICanViewTheStudyCenter extends Stage<ThenICanViewTheStudyCenter
 
 	       // InProgramOffering offering = policyService.findProgramOfferingByIntakeAndProgramCode(intake, studyCenterCode);
 	        return self();
+	 }
+
+	 @Pending
+	 public ThenICanViewTheStudyCenter DRAFT_can_view_study_center() {
+		 InStudyCenterCode actualStudyCenterCode = programOffering.getStudyCenterCode();
+
+		 String message = "Expected " + studyCenterCode + ", found " + actualStudyCenterCode;
+		 Assert.isTrue(studyCenterCode.equals(actualStudyCenterCode), message);
+
+		 return self();
 	 }
 
 }
