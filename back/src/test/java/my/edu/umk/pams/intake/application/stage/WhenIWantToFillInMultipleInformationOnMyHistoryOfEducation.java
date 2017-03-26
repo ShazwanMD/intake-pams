@@ -57,8 +57,8 @@ public class WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation
 
 	public WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation 
 			I_want_to_fill_in_multiple_information_on_my_history_of_education() {
-		// TODO Auto-generated method stub
-		Map<String, Object> map = new HashMap<String, Object>();
+
+	    Map<String, Object> map = new HashMap<>();
         map.put("intakeSession", intakeSession);
         map.put("programLevel", intake.getProgramLevel());
         String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
