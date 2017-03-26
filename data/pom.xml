@@ -285,6 +285,7 @@
                                 <srcFile>src/test/resources/data/IN_DUN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PLMT_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_BUMI_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_SCHL_CODE.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>

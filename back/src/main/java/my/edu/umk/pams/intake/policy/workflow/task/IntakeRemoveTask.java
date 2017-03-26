@@ -41,7 +41,7 @@ public class IntakeRemoveTask extends BpmnActivityBehavior
         Long intakeId = (Long) execution.getVariable(INTAKE_ID);
         InIntake intake = policyService.findIntakeById(intakeId);
 
-        // serialize remove comment
+        // save remove comment
         String removeComment = (String) execution.getVariable(WorkflowConstants.REMOVE_COMMENT);
         intake.setRemoveComment(removeComment);
 
