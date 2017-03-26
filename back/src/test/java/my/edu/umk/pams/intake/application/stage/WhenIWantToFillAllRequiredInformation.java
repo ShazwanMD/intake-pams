@@ -62,10 +62,10 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
         intakeApplication = new InIntakeApplicationImpl();
         intakeApplication.setIntake(this.intake);
         intakeApplication.setReferenceNo(referenceNo);
-        intakeApplication.setName("Ahmad Radzif Radzol");
-        intakeApplication.setEmail("ahmad.razif@gmail.com");
-        intakeApplication.setPhone("123456789");
-        intakeApplication.setOkuNo("123461654");
+        intakeApplication.setName("dummy john bin john doe");
+        intakeApplication.setEmail("dummyjohn@gmail.com");
+        intakeApplication.setPhone("0111020202");
+        intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
         applicationService.draftIntakeApplication(intake, intakeApplication);
 
