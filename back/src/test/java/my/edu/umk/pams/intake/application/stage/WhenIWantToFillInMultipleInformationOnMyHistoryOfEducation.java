@@ -53,7 +53,8 @@ public class WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation
     private InIntakeApplication intakeApplication;
 
 
-	public WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation I_want_to_fill_in_multiple_information_on_my_history_of_education() {
+	public WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation 
+			I_want_to_fill_in_multiple_information_on_my_history_of_education() {
 		// TODO Auto-generated method stub
 		Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intakeSession);
@@ -63,9 +64,9 @@ public class WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation
         intakeApplication = new InIntakeApplicationImpl();
         intakeApplication.setIntake(this.intake);
         intakeApplication.setReferenceNo(referenceNo);
-        //intakeApplication.setSchoolCode("SMKA");
-        intakeApplication.setSchoolName("SMKZA");
-        //intakeApplication.setSchoolBatch("2001");
+        intakeApplication.setSchoolCode(commonService.findSchoolCodeByCode("SMA"));
+        intakeApplication.setSchoolName("Sekolah Agama Berasrama Penuh Ceruk Tok Kun");
+        intakeApplication.setSchoolBatch(2001);
         applicationService.draftIntakeApplication(intake, intakeApplication);
 		
 		return self();
