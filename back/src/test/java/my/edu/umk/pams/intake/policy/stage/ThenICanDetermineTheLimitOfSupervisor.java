@@ -35,10 +35,8 @@ public class ThenICanDetermineTheLimitOfSupervisor extends Stage<ThenICanDetermi
     public ThenICanDetermineTheLimitOfSupervisor I_Can_Determine_The_Limit_Of_Supervisor() {
     	
     		InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
-    	
-    		InConfiguration configuration = systemService.findConfigurationByKey
-    										(IntakeConstants.ADVISING_SUPERVISOR_LIMIT);
-    	 
+    		
+    		InConfiguration configuration = systemService.findConfigurationByKey(IntakeConstants.ADVISING_SUPERVISOR_LIMIT);
     		systemService.saveConfiguration(configuration);
     	 
      return self();
