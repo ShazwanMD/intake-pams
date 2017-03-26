@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  * @author PAMS
- */
+ **/
 @JGivenStage
 public class ThenICanViewTheStudyCenter extends Stage<ThenICanViewTheStudyCenter> {
 	
