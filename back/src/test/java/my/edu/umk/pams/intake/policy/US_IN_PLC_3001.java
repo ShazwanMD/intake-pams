@@ -36,7 +36,6 @@ public class US_IN_PLC_3001 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     public void scenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().I_add_StudyCenter_in_intake();
-        // todo(ashraf): ??
-//        then().i_can_view_study_center();
+        then().I_can_view_study_center();
     }
 }
