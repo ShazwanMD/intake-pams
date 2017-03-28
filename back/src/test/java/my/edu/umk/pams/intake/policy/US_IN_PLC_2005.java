@@ -5,7 +5,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromMultipleSelections;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToListOutProgrammes;
+import my.edu.umk.pams.intake.policy.stage.WhenIListProgrammes;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_PLC_2005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToListOutProgrammes, ThenICanChooseFromMultipleSelections> {
+public class US_IN_PLC_2005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIListProgrammes, ThenICanChooseFromMultipleSelections> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2005.class);
 
@@ -34,7 +34,7 @@ public class US_IN_PLC_2005 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Issue("PAMI-11")
     public void testScenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
-        when().i_want_to_list_out_programmes();
+        when().i_list_out_programmes();
         then().i_can_choose_from_multiple_selections();
     }
 }

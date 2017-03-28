@@ -13,7 +13,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanDetermineTheLimitOfSupervisor;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetMaximumNumberOfSupervisor;
+import my.edu.umk.pams.intake.policy.stage.WhenISetMaximumNumberOfSupervisor;
 
 /**
  * @author PAMS
@@ -25,7 +25,7 @@ import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetMaximumNumberOfSupervis
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_3004 extends SpringScenarioTest<GivenIAmCPSAdministrator,
-WhenIWantToSetMaximumNumberOfSupervisor,
+        WhenISetMaximumNumberOfSupervisor,
 ThenICanDetermineTheLimitOfSupervisor> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3004.class);
@@ -35,8 +35,8 @@ ThenICanDetermineTheLimitOfSupervisor> {
     @Issue("PAMI-17")
     public void testScenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
-        when().I_Want_To_Set_Maximum_Number_Of_Supervisor();
-        then().I_Can_Determine_The_Limit_Of_Supervisor();
+        when().I_set_maximum_number_of_supervisor();
+        then().the_applicant_supervisor_maximum_number_is_set();
     }
 
 }
