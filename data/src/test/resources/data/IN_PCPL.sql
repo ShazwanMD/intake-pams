@@ -2,7 +2,7 @@
 -- USER, PEGAWAI, KERANI, BENDAHARI
 -- abc123 = 6367c48dd193d56ea7b0baad25b19455e529f5ee
 
--- todo(uda): pps admin, pps pegawai, pps kerani
+-- todo(uda): cps admin, cps pegawai, cps kerani
 -- todo(uda): mgseb admin, mgseb pegawai, mgseb kerani
 -- todo(uda): bursary admin, bursary pegawai, bursary kerani
 
@@ -22,17 +22,17 @@ INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 VALUES (currval('SQ_IN_PCPL'), 'PAMS Bursary', 'bursary@umk.edu.my', 'abc123');
 
-INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'pps', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'cps', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_IN_PCPL'), 'PAMS PPS', 'pps@umk.edu.my', 'abc123');
+VALUES (currval('SQ_IN_PCPL'), 'PAMS cps', 'cps@umk.edu.my', 'abc123');
 
-INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'pps-kerani', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'cps-kerani', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_IN_PCPL'), 'PAMS PPS Kerani', 'pps-kerani@umk.edu.my', 'abc123');
+VALUES (currval('SQ_IN_PCPL'), 'PAMS cps Kerani', 'cps-kerani@umk.edu.my', 'abc123');
 
-INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'pps-pegawai', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'cps-pegawai', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_IN_PCPL'), 'PAMS PPS Pegawai', 'pps-pegawai@umk.edu.my', 'abc123');
+VALUES (currval('SQ_IN_PCPL'), 'PAMS cps Pegawai', 'cps-pegawai@umk.edu.my', 'abc123');
 
 INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'mgseb', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
