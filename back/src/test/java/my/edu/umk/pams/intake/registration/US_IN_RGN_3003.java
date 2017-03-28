@@ -7,7 +7,7 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProcessTheirApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenIWantToKnowApplicantReferee;
+import my.edu.umk.pams.intake.registration.stage.WhenIVerifyApplicantReferee;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdministrator, WhenIWantToKnowApplicantReferee, ThenICanProcessTheirApplication> {
+public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdministrator, WhenIVerifyApplicantReferee, ThenICanProcessTheirApplication> {
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3003.class);
 
     @Autowired
@@ -37,7 +37,7 @@ public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdminist
     @Issue("")
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
-        when().I_want_to_know_applicant_referee();
+        when().I_verify_applicant_has_referee();
         then().I_can_process_their_application();
     }
 

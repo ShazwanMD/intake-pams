@@ -5,9 +5,9 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
-import my.edu.umk.pams.intake.registration.stage.CheckForApplication;
+import my.edu.umk.pams.intake.registration.stage.WhenICheckApplication;
 import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
-import my.edu.umk.pams.intake.registration.stage.MyApplicationIsComplete;
+import my.edu.umk.pams.intake.registration.stage.ThenMyApplicationIsComplete;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -29,7 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, CheckForApplication, MyApplicationIsComplete> {
+public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, WhenICheckApplication, ThenMyApplicationIsComplete> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_2001.class);
 
