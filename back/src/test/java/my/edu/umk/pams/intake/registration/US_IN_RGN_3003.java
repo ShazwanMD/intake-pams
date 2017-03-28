@@ -7,7 +7,7 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProcessTheirApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenIVerifyApplicantReferee;
+import my.edu.umk.pams.intake.registration.stage.WhenIVerifyRefereeStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdministrator, WhenIVerifyApplicantReferee, ThenICanProcessTheirApplication> {
+public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdministrator, WhenIVerifyRefereeStatus, ThenICanProcessTheirApplication> {
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3003.class);
 
     @Autowired
