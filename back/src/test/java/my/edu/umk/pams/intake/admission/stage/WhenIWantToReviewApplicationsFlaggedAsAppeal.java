@@ -37,7 +37,7 @@ public class WhenIWantToReviewApplicationsFlaggedAsAppeal extends Stage <WhenIWa
 			inIntakeApplication.getEmail();
 		}
 		// TODO Auto-generated method stub
-		return null;
+		return self();
 			
 	}
 
