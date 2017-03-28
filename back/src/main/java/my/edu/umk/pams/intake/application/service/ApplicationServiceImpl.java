@@ -65,7 +65,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void withdrawIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
         LOG.debug("intake application: {}", application.getReferenceNo());
-        updateIntakeApplication(application);
+        updateIntakeApplication(application); 
     }
     
     @Override
