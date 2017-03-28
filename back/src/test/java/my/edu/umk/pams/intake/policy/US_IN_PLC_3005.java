@@ -5,7 +5,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanChooseFromMultipleSelections;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToListOutProgrammes;
+import my.edu.umk.pams.intake.policy.stage.WhenIListProgrammes;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -24,7 +24,7 @@ so that applicants can make multiply selection
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_IN_PLC_3005 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIWantToListOutProgrammes, ThenICanChooseFromMultipleSelections> {
+public class US_IN_PLC_3005 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIListProgrammes, ThenICanChooseFromMultipleSelections> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3005.class);
 
@@ -33,7 +33,7 @@ public class US_IN_PLC_3005 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Issue("PAMI-18")
     public void testScenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
-        when().i_want_to_list_out_programmes();
+        when().i_list_out_programmes();
         then().i_can_choose_from_multiple_selections();
     }
 }

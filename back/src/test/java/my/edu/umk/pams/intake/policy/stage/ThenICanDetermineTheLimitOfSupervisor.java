@@ -32,7 +32,7 @@ public class ThenICanDetermineTheLimitOfSupervisor extends Stage<ThenICanDetermi
    @ExpectedScenarioState
    private InIntakeSession Session;	
    
-    public ThenICanDetermineTheLimitOfSupervisor I_Can_Determine_The_Limit_Of_Supervisor() {
+    public ThenICanDetermineTheLimitOfSupervisor the_applicant_supervisor_maximum_number_is_set() {
     	
     		InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
     		
