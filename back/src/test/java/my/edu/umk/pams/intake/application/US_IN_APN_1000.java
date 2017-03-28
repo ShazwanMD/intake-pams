@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
  * As a applicant, 
  * I want to reset my forget password 
  * so that I can login again
- * @author PAMI-azah
+ * @author PAMI-azah~
 
  */
 @RunWith(SpringJUnit4ClassRunner.class)

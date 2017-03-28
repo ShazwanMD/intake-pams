@@ -22,4 +22,8 @@ public interface InStudyMode extends InMetaObject{
 	String getDescriptionEn();
 
 	void setDescriptionEn(String descriptionEn);
+
+	String getPrefix();
+
+	void setPrefix(String prefix);
 }

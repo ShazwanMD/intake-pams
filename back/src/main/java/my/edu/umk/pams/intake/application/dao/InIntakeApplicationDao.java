@@ -56,7 +56,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InIntakeApplication> findByOrderedRank(InIntake intake);
 
-    List<InIntakeApplication> find(InIntake intake, InBidStatus status);
+    List<InIntakeApplication> find(InIntake intake, InBidStatus bidStatus);
 
     List<InResult> findResults(InIntakeApplication application);
 

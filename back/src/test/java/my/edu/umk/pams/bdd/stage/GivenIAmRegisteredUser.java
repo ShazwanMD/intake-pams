@@ -44,6 +44,9 @@ public class GivenIAmRegisteredUser extends Stage<GivenIAmRegisteredUser> {
        
     	String username = "applicant1";
     	String password = "abc123";
+    	
+   
+    	
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
             
         Authentication authed = authenticationManager.authenticate(token);        
