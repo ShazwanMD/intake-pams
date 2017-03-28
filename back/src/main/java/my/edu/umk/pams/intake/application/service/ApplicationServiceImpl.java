@@ -60,12 +60,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         application.setIntake(intake);
         updateIntakeApplication(application);
     }
-    
-    
-    public void withdrawIntakeApplication(InIntake intake, InIntakeApplication application){
-    	application.setBidStatus(InBidStatus.WITHDRAWN);
-    	updateIntakeApplication(application);
-    }
 
     @Override
     public void addResult(InIntakeApplication application, InResult result) {
