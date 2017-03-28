@@ -43,7 +43,7 @@ public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
     public ThenICanChooseStudyMode I_can_choose_offered_study_mode() {
         for (InStudyModeOffering modeOffering : modeOfferings) {
             InStudyMode studyMode = modeOffering.getStudyMode();
-            LOG.debug("studyMode available: {} {}", studyMode.getCode(), studyMode.getDescription());
+            LOG.debug("studyMode available: {} {}", studyMode.getCode(), studyMode.getDescriptionMs());
         }
 
         Assert.notEmpty(modeOfferings, "mode offering cannot be empty");
