@@ -31,6 +31,7 @@ public class US_IN_AMS_1005 extends
         						WhenIWantToReviewApplicationsFlaggedAsAppeal,
         							ThenICanSubmitTheApplication> {
 
+	@Issue("PAMI-52")
 	@Test
     @Rollback
     public void scenario1() {

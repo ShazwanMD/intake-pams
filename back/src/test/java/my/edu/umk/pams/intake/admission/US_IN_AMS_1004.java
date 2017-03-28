@@ -28,6 +28,7 @@ public class US_IN_AMS_1004 extends
                 				WhenIWantToSelectSuitableAppealedApplicants,
                 					ThenICanInformTheSelectedApplicants> {
 
+	@Issue ("PAMI-51")
     @Test
     @Rollback
     public void scenario1() {
