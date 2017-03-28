@@ -62,6 +62,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public void withdrawIntakeApplication(InIntake intake, InIntakeApplication application) {
+        LOG.debug("intake: {}", intake.getReferenceNo());
+        LOG.debug("intake application: {}", application.getReferenceNo());
+        updateIntakeApplication(application);
+    }
+    
+    @Override
     public void addResult(InIntakeApplication application, InResult result) {
         intakeApplicationDao.addResult(application, result, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();

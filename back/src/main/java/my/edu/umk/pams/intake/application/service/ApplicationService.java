@@ -17,6 +17,8 @@ public interface ApplicationService {
     void updateIntakeApplication(InIntakeApplication application);
 
     void submitIntakeApplication(InIntake intake, InIntakeApplication application);
+    
+    void withdrawIntakeApplication(InIntake intake, InIntakeApplication application);
 
     void addResult(InIntakeApplication application, InResult result);
 
