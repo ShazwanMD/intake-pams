@@ -35,7 +35,6 @@ public class WhenIWantToListOutProgrammes extends Stage<WhenIWantToListOutProgra
 
     public WhenIWantToListOutProgrammes i_want_to_list_out_programmes() {
 
-
         List<InProgramCode> programs = commonService.findProgramCodes();
 
         for (InProgramCode programcode : programs) {
