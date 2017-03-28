@@ -5,5 +5,6 @@ public enum InBidStatus {
     PROCESSING,
     PRE_SELECTED,
     SELECTED,
-    REJECTED;
+    REJECTED,
+	WITHDRAWN; 
 }
