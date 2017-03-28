@@ -12,4 +12,8 @@ public interface InFacultyCode extends InMetaObject {
 
     void setDescription(String description);
 
+	String getIdPrefix();
+
+	void setIdPrefix(String idPrefix);
+
 }

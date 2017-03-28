@@ -22,6 +22,9 @@ public class InFacultyCodeImpl implements InFacultyCode {
     @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
+    
+    @Column(name = "ID_PREFIX")
+    private String idPrefix;
 
     @Embedded
     private InMetadata metadata;
@@ -67,4 +70,14 @@ public class InFacultyCodeImpl implements InFacultyCode {
     public Class<?> getInterfaceClass() {
         return InFacultyCode.class;
     }
+
+    @Override
+	public String getIdPrefix() {
+		return idPrefix;
+	}
+
+    @Override
+	public void setIdPrefix(String idPrefix) {
+		this.idPrefix = idPrefix;
+	}
 }
