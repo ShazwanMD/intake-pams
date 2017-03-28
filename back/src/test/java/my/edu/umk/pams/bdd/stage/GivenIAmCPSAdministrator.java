@@ -3,6 +3,8 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
@@ -27,16 +29,26 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     @ProvidedScenarioState
     InIntakeSession intakeSession;
 
-    public void I_am_a_CPS_administrator_in_$_academic_session(String academicSessionCode){
+    @ProvidedScenarioState
+    InIntake intake;
+
+    public GivenIAmCPSAdministrator I_am_a_CPS_administrator_in_$_academic_session(String academicSessionCode){
         loginAsCPS();
         intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
+        return self();
     }
 
-    public void I_am_a_CPS_administrator_in_current_intake_session(){
+    public GivenIAmCPSAdministrator I_am_a_CPS_administrator_in_current_intake_session(){
         loginAsCPS();
         intakeSession = policyService.findCurrentIntakeSession();
+        return self();
     }
 
+    public GivenIAmCPSAdministrator I_pick_an_intake_$(String intakeReferenceNo){
+    	intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+        return self();
+    }
+    
     private void loginAsCPS() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("cps", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
