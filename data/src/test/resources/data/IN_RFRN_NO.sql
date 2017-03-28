@@ -5,4 +5,4 @@ INSERT INTO IN_RFRN_NO (ID, CODE, CURRENT_VALUE, DESCRIPTION, INCREMENT_VALUE, P
 VALUES (nextval('SQ_IN_RFRN_NO'), 'InIntakeApplication.referenceNo', 1, 'Intake Application Reference No Format', 1, 'IAPP', '{#intakeSession.getCode()}/{#programLevel.getCode()}/{#j}', '000', 1, 0, CURRENT_TIMESTAMP );
 
 INSERT INTO IN_RFRN_NO (ID, CODE, CURRENT_VALUE, DESCRIPTION, INCREMENT_VALUE, PREFIX, REFERENCE_FORMAT, SEQUENCE_FORMAT, M_ST, C_ID, C_TS )
-VALUES (nextval('SQ_IN_RFRN_NO'), 'InCandidate.matricNo', 1, 'Candidate Matric No', 1, '', '{#facultyCode.getCode()}{#year}/{#studyMode.getCode()}', '000', 1, 0, CURRENT_TIMESTAMP );
+VALUES (nextval('SQ_IN_RFRN_NO'), 'InCandidate.matricNo', 1, 'Candidate Matric No', 1, '', '{#facultyCode.getIdPrefix()}{#c}{#j}{#studyMode.getCode()}', '0000', 1, 0, CURRENT_TIMESTAMP );
