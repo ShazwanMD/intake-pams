@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.ThenICanSubmitTheApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToReviewApplicationsFlaggedAsAppeal;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -30,6 +31,7 @@ public class US_IN_AMS_1005 extends
         						WhenIWantToReviewApplicationsFlaggedAsAppeal,
         							ThenICanSubmitTheApplication> {
 
+	@Issue("PAMI-52")
 	@Test
     @Rollback
     public void scenario1() {
