@@ -6,5 +6,6 @@ public enum InBidStatus {
     PRE_SELECTED,
     SELECTED,
     REJECTED,
-	WITHDRAWN; 
+	WITHDRAWN,
+	APPEAL;
 }

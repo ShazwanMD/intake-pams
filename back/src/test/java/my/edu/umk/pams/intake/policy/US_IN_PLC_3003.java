@@ -4,8 +4,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.policy.stage.ThenICanProceedTheIntakeProcess;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetProjectionForCurrentIntake;
+import my.edu.umk.pams.intake.policy.stage.ThenIProgressThenIntakeProcess;
+import my.edu.umk.pams.intake.policy.stage.WhenISetIntakeProjection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,8 +23,8 @@ so that i can proceed the intake process*/
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_IN_PLC_3003 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIWantToSetProjectionForCurrentIntake,
-        ThenICanProceedTheIntakeProcess> {
+public class US_IN_PLC_3003 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenISetIntakeProjection,
+        ThenIProgressThenIntakeProcess> {
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3003.class);
 
     @Test
@@ -32,8 +32,8 @@ public class US_IN_PLC_3003 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Issue("PAMI-16")
     public void testScenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
-        when().I_Want_To_Set_Projection_For_Current_Intake();
-        then().I_Can_Proceed_The_Intake_Process();
+        when().i_set_projection_for_current_intake();
+        then().i_can_progress_the_intake_process();
     }
 
 
