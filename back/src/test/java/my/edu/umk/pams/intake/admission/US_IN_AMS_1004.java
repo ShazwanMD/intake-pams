@@ -24,8 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1004 extends
         SpringScenarioTest<GivenIAmCPSAdministrator,
-                WhenIWantToSelectSuitableAppealedApplicants,
-                ThenICanInformTheSelectedApplicants> {
+                				WhenIWantToSelectSuitableAppealedApplicants,
+                					ThenICanInformTheSelectedApplicants> {
 
     @Test
     @Rollback

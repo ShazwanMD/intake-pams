@@ -28,8 +28,9 @@ public class US_IN_AMS_1002 extends
     @Test
     @Rollback
     public void scenario1() {
-        given().I_am_a_CPS_administrator_in_current_intake_session();
+        given().I_am_a_CPS_administrator_in_current_intake_session()
+        .and().I_pick_an_intake_$("201720181/MASTER");
         when().I_want_to_pre_select_eligible_and_capable_applicants();
         then().I_can_preferred_their_application();
-    }
+    } //pending ... wait for result
 }

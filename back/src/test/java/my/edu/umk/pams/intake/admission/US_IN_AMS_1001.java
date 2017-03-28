@@ -30,7 +30,8 @@ public class US_IN_AMS_1001 extends
     @Test
     @Rollback
     public void scenario1() {
-        given().I_am_a_CPS_administrator_in_current_intake_session();
+        given().I_am_a_CPS_administrator_in_current_intake_session()
+        .and().I_pick_an_intake_$("201720181/MASTER");
         when().I_slide_and_dice_top_applicant_for_intake();
         then().I_can_filter_the_top_applicant();
     }
