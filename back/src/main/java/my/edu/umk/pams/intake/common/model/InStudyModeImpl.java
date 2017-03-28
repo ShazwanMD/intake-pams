@@ -26,6 +26,10 @@ public class InStudyModeImpl implements InStudyMode {
     @NotNull
     @Column(name = "DESCRIPTION_EN", nullable = false)
     private String descriptionEn;
+    
+    @NotNull
+    @Column(name = "PREFIX", nullable = false)
+    private String prefix;
 
     @Embedded
     private InMetadata metadata;
@@ -80,5 +84,15 @@ public class InStudyModeImpl implements InStudyMode {
     @Override
 	public void setDescriptionEn(String descriptionEn) {
 		this.descriptionEn = descriptionEn;
+	}
+
+    @Override
+	public String getPrefix() {
+		return prefix;
+	}
+
+    @Override
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
 	}
 }

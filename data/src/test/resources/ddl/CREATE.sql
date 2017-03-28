@@ -1082,6 +1082,7 @@ create table IN_STDY_MODE (
   CODE varchar(255) not null,
   DESCRIPTION_MS varchar(255) not null,
   DESCRIPTION_EN varchar(255) not null,
+  PREFIX varchar(255) not null,
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
