@@ -224,13 +224,13 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
-    public List<InIntakeApplication> find(InIntake intake, InBidStatus status) {
+    public List<InIntakeApplication> find(InIntake intake, InBidStatus bidStatus) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
                 "p.intake = :intake " +
-                "and p.status = :status ");
+                "and p.bidStatus = :bidStatus ");
         query.setEntity("intake", intake);
-        query.setInteger("status", status.ordinal());
+        query.setInteger("bidStatus", bidStatus.ordinal());
         return (List<InIntakeApplication>) query.list();
     }
 
