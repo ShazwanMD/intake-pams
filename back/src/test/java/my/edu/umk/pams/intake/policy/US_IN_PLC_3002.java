@@ -5,7 +5,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
+import my.edu.umk.pams.intake.policy.stage.WhenISetupCompetenciesMatrix;
 import my.edu.umk.pams.intake.policy.stage.WhenIfillInApplicationResult;
 
 import org.junit.Test;
@@ -25,7 +25,7 @@ so that I can identify eligible applicants
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_PLC_3002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIWantToSetupCompetenciesMatrix, ThenICanIdentifyEligibleApplicants> {
+public class US_IN_PLC_3002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenISetupCompetenciesMatrix, ThenICanIdentifyEligibleApplicants> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3002.class);
 
@@ -34,7 +34,7 @@ public class US_IN_PLC_3002 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Issue("PAMI-15")
     public void testScenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
-        when().I_want_to_setup_competencies_matrix();
+        when().I_setup_competencies_matrix();
         addStage(WhenIfillInApplicationResult.class).and().I_fill_in_application_result();
         then().I_can_identify_eligible_applicants();
     }

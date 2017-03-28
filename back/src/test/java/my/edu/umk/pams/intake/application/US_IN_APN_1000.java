@@ -1,11 +1,14 @@
 package my.edu.umk.pams.intake.application;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
-import my.edu.umk.pams.intake.application.service.ApplicationService;
+
+import my.edu.umk.pams.bdd.stage.GivenIAmRegisteredUser;
+
 import my.edu.umk.pams.intake.application.stage.ThenICanLoginAgain;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToResetForgetPassword;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
+import my.edu.umk.pams.intake.identity.service.IdentityService;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,23 +23,23 @@ import org.springframework.transaction.annotation.Transactional;
  * As a applicant, 
  * I want to reset my forget password 
  * so that I can login again
- * @author PAMS
- * 
+ * @author PAMI-azah
+
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_1000 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToResetForgetPassword, ThenICanLoginAgain> {
+public class US_IN_APN_1000 extends SpringScenarioTest<GivenIAmRegisteredUser, WhenIWantToResetForgetPassword, ThenICanLoginAgain> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1000.class);
 
     @Autowired
-    private ApplicationService applicationService;
+    private IdentityService identityService;
 
     @Test
-    @Rollback
+    @Rollback(false)
     public void scenario1() {
-        given().I_am_an_applicant_in_current_intake_session();
+        given().I_am_a_registered_user();
         when().I_want_to_reset_forget_password();
         then().I_can_login_again();
     }

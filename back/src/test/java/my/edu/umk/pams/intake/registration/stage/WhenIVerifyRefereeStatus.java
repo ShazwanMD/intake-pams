@@ -9,7 +9,7 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class WhenIVerifyApplicantReferee extends Stage<WhenIVerifyApplicantReferee> {
+public class WhenIVerifyRefereeStatus extends Stage<WhenIVerifyRefereeStatus> {
 
     @Autowired
     private RegistrationService registrationservice;
@@ -23,7 +23,7 @@ public class WhenIVerifyApplicantReferee extends Stage<WhenIVerifyApplicantRefer
     @ExpectedScenarioState
     private InApplicant applicant;
 
-    public WhenIVerifyApplicantReferee I_verify_applicant_has_referee() {
+    public WhenIVerifyRefereeStatus I_verify_applicant_has_referee() {
 
         return self();
     }

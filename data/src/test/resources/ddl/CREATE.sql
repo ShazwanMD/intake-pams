@@ -475,6 +475,7 @@ create table IN_FCTY_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
   DESCRIPTION varchar(255) not null,
+  ID_PREFIX varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
