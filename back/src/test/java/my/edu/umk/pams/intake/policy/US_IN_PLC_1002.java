@@ -25,7 +25,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Issue("PAMI-2")
-public class US_IN_PLC_1002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIAddIntake, ThenIntakeIsReadyForSetup> {
+public class US_IN_PLC_1002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, 
+															WhenIAddIntake, 
+																ThenIntakeIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1002.class);
 
