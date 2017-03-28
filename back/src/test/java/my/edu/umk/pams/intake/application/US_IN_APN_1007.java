@@ -37,7 +37,7 @@ public class US_IN_APN_1007 extends SpringScenarioTest<GivenIAmApplicant, WhenIW
 
     @Test
     @Issue("PAMI-28")
-    @Rollback(false)
+    @Rollback
     public void scenario1() {
     	given().I_am_an_applicant_in_current_intake_session()
               .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
