@@ -13,7 +13,7 @@ public class ThenICanPreferredTheirApplicationt extends Stage<ThenICanPreferredT
 
     public ThenICanPreferredTheirApplicationt I_can_preferred_their_application() {
 
-        // do something
+        // do something pending ... wait for result
         return self();
 
     }
