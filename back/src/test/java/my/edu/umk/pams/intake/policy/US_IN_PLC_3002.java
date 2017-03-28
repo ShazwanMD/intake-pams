@@ -6,8 +6,6 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
 import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
-import my.edu.umk.pams.intake.policy.stage.WhenIfillInApplicationResult;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
