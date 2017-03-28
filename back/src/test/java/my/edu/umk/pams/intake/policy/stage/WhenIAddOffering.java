@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.stage;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -29,14 +30,14 @@ public class WhenIAddOffering extends Stage<WhenIAddOffering> {
     @ProvidedScenarioState
     private InIntake intake;
 
+    @Pending
     public WhenIAddOffering I_add_a_offering_for_intake_$(String referenceNo) {
 
-        WhenIWantToSetupCompetenciesMatrix setupCmptncy = new WhenIWantToSetupCompetenciesMatrix();
         intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         InProgramOffering offering = new InProgramOfferingImpl();
         offering.setProjection(10);
-        offering.setGeneralCriteria(setupCmptncy.setGeneralCriteria());
-        offering.setSpecificCriteria(setupCmptncy.setSpecificCriteria());
+        offering.setGeneralCriteria("TODO ADD GEN CRIT"); //todo
+        offering.setSpecificCriteria("TODO ADD SPECIFIC CRIT"); // todo
         offering.setInterview(true);
         // offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("SC-001")); // todo(uda): need data
         // offering.setProgramCode(commonService.findProgramCodeByCode("MEM")); // todo(uda): need real data

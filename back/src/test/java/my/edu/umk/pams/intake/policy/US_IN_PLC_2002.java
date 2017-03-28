@@ -5,7 +5,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
-import my.edu.umk.pams.intake.policy.stage.WhenIWantToSetupCompetenciesMatrix;
+import my.edu.umk.pams.intake.policy.stage.WhenISetupCompetenciesMatrix;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_2002 extends
         SpringScenarioTest<GivenIAmCPSAdministrator,
-                WhenIWantToSetupCompetenciesMatrix,
+                WhenISetupCompetenciesMatrix,
                 ThenICanIdentifyEligibleApplicants> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2002.class);
@@ -39,7 +39,7 @@ public class US_IN_PLC_2002 extends
     @Rollback
     public void testScenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
-        when().I_want_to_setup_competencies_matrix();
+        when().I_setup_competencies_matrix();
         then().I_can_identify_eligible_applicants();
     }
 
