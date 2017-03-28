@@ -5,7 +5,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanGradeApplicantResult;
-import my.edu.umk.pams.intake.registration.stage.WhenIWantToStartCalculationForAllIntakeApplications;
+import my.edu.umk.pams.intake.registration.stage.WhenICalculateMeritForIntakeApplications;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_IN_RGN_3001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToStartCalculationForAllIntakeApplications, ThenICanGradeApplicantResult> {
+public class US_IN_RGN_3001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenICalculateMeritForIntakeApplications, ThenICanGradeApplicantResult> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3001.class);
 
@@ -36,7 +36,7 @@ public class US_IN_RGN_3001 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
-        when().I_want_to_start_calculation_for_all_intake_applications();
+        when().I_calculate_merit_point_for_an_application();
         then().I_can_grade_applicant_result();
     }
 }
