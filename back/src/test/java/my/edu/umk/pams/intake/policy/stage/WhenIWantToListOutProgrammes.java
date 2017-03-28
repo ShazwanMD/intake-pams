@@ -39,7 +39,7 @@ public class WhenIWantToListOutProgrammes extends Stage<WhenIWantToListOutProgra
         List<InProgramCode> programs = commonService.findProgramCodes();
 
         for (InProgramCode programcode : programs) {
-            LOG.debug(programcode.getDescription());
+            LOG.debug(programcode.getDescriptionMs());
         }
 
 

@@ -8,7 +8,11 @@ public interface  InProgramCode extends InMetaObject {
 
     void setCode(String code);
 
-    String getDescription();
+    String getDescriptionMs();
 
     void setDescription(String description);
+
+	String getDescriptionEn();
+
+	void setDescriptionEn(String descriptionEn);
 }

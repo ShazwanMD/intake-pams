@@ -41,9 +41,9 @@ public class WhenWithdrawApplication extends Stage<WhenWithdrawApplication> {
 		 
 		
 		  
-	//	 intakeApplication = applicationService.findIntakeApplicationByReferenceNo("20052/MASTER/001");
+		 intakeApplication = applicationService.findIntakeApplicationByReferenceNo("20052/MASTER/001");
 		 intakeApplication.setBidStatus(InBidStatus.WITHDRAWN);
-	     applicationService.withdrawIntakeApplication(intake, intakeApplication);
+	    // applicationService.withdrawIntakeApplication(intake, intakeApplication);
 	     
 	    
 		 
