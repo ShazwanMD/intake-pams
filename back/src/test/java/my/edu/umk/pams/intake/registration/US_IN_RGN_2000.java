@@ -4,8 +4,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
-import my.edu.umk.pams.intake.registration.stage.ThenIWillKnowMyLoginStatus;
-import my.edu.umk.pams.intake.registration.stage.WhenIReceiveNotificationForSignUp;
+import my.edu.umk.pams.intake.registration.stage.ThenMyNotificationIsQueued;
+import my.edu.umk.pams.intake.registration.stage.WhenISignUpToReceiveNotification;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 //so that i will know my login status
 
 
-public class US_IN_RGN_2000 extends SpringScenarioTest<GivenIAmApplicant, WhenIReceiveNotificationForSignUp, ThenIWillKnowMyLoginStatus> {
+public class US_IN_RGN_2000 extends SpringScenarioTest<GivenIAmApplicant, WhenISignUpToReceiveNotification, ThenMyNotificationIsQueued> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_2000.class);
 
@@ -37,8 +37,8 @@ public class US_IN_RGN_2000 extends SpringScenarioTest<GivenIAmApplicant, WhenIR
     @Rollback
     public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
-        when().I_receive_notification_for_sign_up();
-        then().I_will_know_my_login_status();
+        when().I_sign_up_to_receive_notification();
+        then().my_notification_is_queued_for_me();
     }
 }
  
