@@ -37,7 +37,7 @@ public class US_IN_APN_1000 extends SpringScenarioTest<GivenIAmRegisteredUser, W
     private IdentityService identityService;
 
     @Test
-    @Rollback(false)
+    @Rollback
     public void scenario1() {
         given().I_am_a_registered_user();
         when().I_want_to_reset_forget_password();

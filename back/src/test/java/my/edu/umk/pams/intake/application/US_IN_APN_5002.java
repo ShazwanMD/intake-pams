@@ -44,7 +44,7 @@ ThenICanKnowTheDateline> {
 
     @Test
     @Issue("PAMI-43")
-    @Rollback(false)
+    @Rollback
     public void scenario1() {
     	given().I_am_an_applicant_in_current_intake_session()
               .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);

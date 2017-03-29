@@ -36,7 +36,7 @@ WhenIWantToFillAllRequiredInformation, ThenTheApplicationIsWithdrawn>{
 
 	 @Test
 	 @Issue("PAMI-34")
-	 @Rollback(true)
+	 @Rollback
 	 public void scenario1() {
 		 
 		 given().I_am_an_applicant_in_current_intake_session()

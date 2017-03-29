@@ -34,7 +34,7 @@ public class US_IN_APN_1010 extends
 
 	 @Test
 	 @Issue("PAMI-31")
-	 @Rollback(true)
+	 @Rollback
 	 public void scenario1() {
 		 
 		 given().I_am_an_applicant_in_current_intake_session()
