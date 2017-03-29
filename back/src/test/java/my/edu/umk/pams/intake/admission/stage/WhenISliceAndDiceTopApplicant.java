@@ -29,7 +29,7 @@ public class WhenISliceAndDiceTopApplicant extends Stage<WhenISliceAndDiceTopApp
     
 
     public WhenISliceAndDiceTopApplicant I_slide_and_dice_top_applicant_for_intake() {
-        // masukkan prosesnya di sini
+        
     	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake);
     	int i = 1;
         for (InIntakeApplication inIntakeApplication : applications) {
