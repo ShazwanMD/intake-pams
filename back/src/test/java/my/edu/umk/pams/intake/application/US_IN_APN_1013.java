@@ -35,7 +35,6 @@ WhenIWantToFillAllRequiredInformation, ThenTheApplicationIsWithdrawn>{
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
 	 @Test
-	 @Pending
 	 @Issue("PAMI-34")
 	 @Rollback(true)
 	 public void scenario1() {
