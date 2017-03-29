@@ -44,9 +44,9 @@ public class ThenApplicationIsSubmitted extends Stage<ThenApplicationIsSubmitted
     
 	public ThenApplicationIsSubmitted application_is_submitted(){
 		List<InEmailQueue> queues = systemService.findEmailQueues();
-		Assert.isTrue(!queues.isEmpty(), "The application is successfull submitted");
-		return self();
+		Assert.isTrue(!queues.isEmpty(), "I don't know my application submission status");
 		
+		return self();
 	}
 
 }
