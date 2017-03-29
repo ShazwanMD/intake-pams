@@ -30,6 +30,7 @@ public class InGuardianImpl implements InGuardian {
     @NotNull
     @Column(name = "GUARDIAN_TYPE")
     private InGuardianType type;
+    
 
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
@@ -111,4 +112,7 @@ public class InGuardianImpl implements InGuardian {
     public Class<?> getInterfaceClass() {
         return InGuardian.class;
     }
+
+   
+	
 }
