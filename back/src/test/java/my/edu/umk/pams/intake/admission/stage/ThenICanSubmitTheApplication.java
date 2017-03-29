@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -25,17 +26,18 @@ public class ThenICanSubmitTheApplication extends Stage<ThenICanSubmitTheApplica
     @ExpectedScenarioState
     private InIntake intake;
     
+    @ExpectedScenarioState
+    private InIntakeApplication intakeapplication;
+        
     @Autowired
     private ApplicationService applicationService;
 
-	public ThenICanSubmitTheApplication I_can_submit_the_application() {
+    public ThenICanSubmitTheApplication I_can_submit_the_application() {
 		
 		applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
 		// TODO Auto-generated method stub
 		return self();
 		
 	}
-
-	
 
 }
