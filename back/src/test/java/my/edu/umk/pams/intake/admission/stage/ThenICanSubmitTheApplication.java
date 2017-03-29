@@ -30,8 +30,12 @@ public class ThenICanSubmitTheApplication extends Stage<ThenICanSubmitTheApplica
 
 	public ThenICanSubmitTheApplication I_can_submit_the_application() {
 		
-		applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
-		// TODO Auto-generated method stub
+	
+		InIntakeApplication application = new InIntakeApplicationImpl();
+		
+		application.setBidStatus(InBidStatus.PROCESSING);
+		
+		applicationService.submitIntakeApplication(intake, application);
 		return self();
 		
 	}
