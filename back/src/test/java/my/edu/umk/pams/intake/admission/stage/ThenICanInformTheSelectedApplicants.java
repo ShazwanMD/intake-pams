@@ -12,7 +12,6 @@ public class ThenICanInformTheSelectedApplicants extends Stage<ThenICanInformThe
     @ExpectedScenarioState
     private InCandidate candidate;
 
-    @Pending
     public ThenICanInformTheSelectedApplicants I_can_inform_the_selected_applicants() {
 
       return self();

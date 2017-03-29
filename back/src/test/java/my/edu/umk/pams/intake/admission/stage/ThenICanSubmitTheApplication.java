@@ -28,21 +28,20 @@ public class ThenICanSubmitTheApplication extends Stage<ThenICanSubmitTheApplica
     @ExpectedScenarioState
     private InIntake intake;
     
+    @ExpectedScenarioState
+    private InIntakeApplication intakeapplication;
+        
     @Autowired
     private ApplicationService applicationService;
 
-	public ThenICanSubmitTheApplication I_can_submit_the_application() {
+    public ThenICanSubmitTheApplication I_can_submit_the_application() {
 		
 		InIntakeApplication application = new InIntakeApplicationImpl();
 		
 		application.setBidStatus(InBidStatus.PROCESSING);
-		
-		applicationService.submitIntakeApplication(intake, application);
-		
+			     		
 		return self();
 		
 	}
-
-	
 
 }
