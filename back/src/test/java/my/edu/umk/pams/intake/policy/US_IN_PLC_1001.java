@@ -30,7 +30,7 @@ public class US_IN_PLC_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1001.class);
 
     @Test
-    @Rollback
+    @Rollback(false)
     @Issue("PAMI-4")
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
