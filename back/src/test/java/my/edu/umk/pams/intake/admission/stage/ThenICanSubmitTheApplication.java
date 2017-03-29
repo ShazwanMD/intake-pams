@@ -10,6 +10,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
