@@ -33,15 +33,14 @@ public class US_IN_APN_1014 extends SpringScenarioTest <GivenIAmApplicant, WhenI
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
 	 @Test
-	 @Pending
 	 @Issue("PAMI-35")
-	 @Rollback(true)
+	 @Rollback
 	 public void scenario1() {
 		 given().I_am_an_applicant_in_current_intake_session()
      	.and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
 		 when().I_fill_in_all_the_required_information_in_my_application();
 		 addStage(WhenISubmitApplication.class).and().I_submit_application();
-		 addStage(WhenReceiveConfirmationEmail.class).and().i_receive_confirmation_email();		 
+		 addStage(WhenReceiveConfirmationEmail.class).and().I_receive_confirmation_email();		 
 		 then().application_is_submitted();
 	 }
 }
