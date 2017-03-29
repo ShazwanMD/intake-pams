@@ -32,7 +32,7 @@ public class WhenIWantToResetForgetPassword extends Stage<WhenIWantToResetForget
 //i changed password
     	
     	identityService.findUserByUsername("applicant1");
-    	user.setPassword("123abc");
+    	user.setPassword("abc123");
     	identityService.changePassword(user, user.getPassword());
     	
     	return self();
