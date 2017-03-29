@@ -30,6 +30,7 @@ public class US_IN_AMS_1003 extends
     @Test
     @Rollback
     public void scenario1() {
+    	//TODO
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_want_to_select_suitable_applicants();
         then().I_can_approved_their_application();
