@@ -8,12 +8,17 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableAppealedApplicants;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 
+@JGivenStage
 public class ThenDraftIsNotSubmitted extends Stage<ThenDraftIsNotSubmitted>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(ThenDraftIsNotSubmitted.class);
@@ -35,8 +40,9 @@ public class ThenDraftIsNotSubmitted extends Stage<ThenDraftIsNotSubmitted>{
     private InIntakeApplication intakeApplication;
 
     public ThenDraftIsNotSubmitted I_dont_submit_application() {
-    	Assert.notNull(intakeApplication, "intake application is not drafted");
-    	LOG.debug("application is not submitted {} ", intakeApplication);
+        applicationService.draftedIntakeApplication(intake, intakeApplication);
+        Assert.notNull(InBidStatus.DRAFTED, "withdraw application is null");
+    	
         return self();
     }
 
