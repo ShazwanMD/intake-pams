@@ -41,7 +41,7 @@ public class ThenDraftIsNotSubmitted extends Stage<ThenDraftIsNotSubmitted>{
 
     public ThenDraftIsNotSubmitted I_dont_submit_application() {
         applicationService.draftedIntakeApplication(intake, intakeApplication);
-        Assert.notNull(InBidStatus.DRAFTED, "withdraw application is null");
+        Assert.notNull(InBidStatus.DRAFTED, "drafted application is null");
     	
         return self();
     }
