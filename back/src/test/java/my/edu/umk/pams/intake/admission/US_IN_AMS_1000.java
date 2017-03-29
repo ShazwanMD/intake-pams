@@ -28,7 +28,7 @@ public class US_IN_AMS_1000 extends
 
     @Test
     @Rollback
-    @Issue("PAMI-6")
+    @Issue("PAMI-47")
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_preapprove_candidate();
