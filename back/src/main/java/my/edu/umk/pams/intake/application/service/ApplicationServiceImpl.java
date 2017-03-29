@@ -57,15 +57,16 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void submitIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
         LOG.debug("intake application: {}", application.getReferenceNo());
-        application.setIntake(intake);
+        application.setBidStatus(InBidStatus.SUBMITTED);
         updateIntakeApplication(application);
     }
 
     @Override
     public void withdrawIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
-        LOG.debug("intake application: {}", application.getReferenceNo()); 
-        updateIntakeApplication(application); 
+        LOG.debug("intake application: {}", application.getReferenceNo());
+        application.setBidStatus(InBidStatus.WITHDRAWN);
+        updateIntakeApplication(application);
     }
     
     @Override
