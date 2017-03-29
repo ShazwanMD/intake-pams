@@ -23,6 +23,7 @@ public interface InGuardian extends InMetaObject {
     void setType(InGuardianType type);
 
     // TODO: occupation
+ 
     // TODO: commitment
 
     InIntakeApplication getApplication();
