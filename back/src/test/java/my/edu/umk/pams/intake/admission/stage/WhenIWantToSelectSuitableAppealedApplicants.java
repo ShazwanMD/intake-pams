@@ -35,6 +35,7 @@ public class WhenIWantToSelectSuitableAppealedApplicants extends Stage<WhenIWant
     	for (InIntakeApplication inIntakeApplication : application) {
 			inIntakeApplication.setName("Msyahrul");
 			inIntakeApplication.setEmail("msyahrul@umk.edu.my");
+			applicationService.updateIntakeApplication(inIntakeApplication);
     	}
     	return self();
     }

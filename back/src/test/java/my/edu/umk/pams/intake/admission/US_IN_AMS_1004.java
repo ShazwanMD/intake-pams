@@ -6,6 +6,8 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.ThenICanInformTheSelectedApplicants;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableAppealedApplicants;
 import my.edu.umk.pams.intake.application.US_IN_APN_1001;
+import my.edu.umk.pams.intake.application.US_IN_APN_1007;
+import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyWorkingExperience;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
