@@ -18,6 +18,7 @@ public class WhenIViewMyCourseFee extends Stage<WhenIViewMyCourseFee> {
     private InUser user;
 
     public WhenIViewMyCourseFee I_view_my_course_fee() {
+    	//TODO when Course Fee table is up
         return self();
     }
 

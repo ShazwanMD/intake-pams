@@ -32,10 +32,11 @@ public class US_IN_APN_1002 extends SpringScenarioTest<GivenIAmApplicant, WhenIV
 
     @Test
     @Rollback
-    @Pending
-    public void testScenario1() {
-        given().I_am_an_applicant_in_current_intake_session();
-        when().I_view_my_course_fee();
+     public void testScenario1() {
+    	//Need to link with account module
+    	//Pending  
+    	given().I_am_an_applicant_in_current_intake_session();
+    	when().I_view_my_course_fee();
         then().I_can_pay_my_course_fee();
     }
 }
