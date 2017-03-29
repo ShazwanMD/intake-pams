@@ -23,15 +23,23 @@ public class WhenIWantToPreSelectEligibleEndCapableApplicant extends Stage<WhenI
 
     @ProvidedScenarioState
     private InCandidate candidate;
+    
+    @ProvidedScenarioState
+    private InIntakeApplication applications;
 
     @ExpectedScenarioState
     private InIntake intake;
     
-    @Autowired
+    @ExpectedScenarioState
     private ApplicationService applicationService;
     
     public WhenIWantToPreSelectEligibleEndCapableApplicant I_want_to_pre_select_eligible_and_capable_applicants() {
 		List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+		for (InIntakeApplication application : applications) {
+		    // fruit is an element of the `fruits` array.
+			application.getId();
+		}
+	
 //		how to return?
         return self();
     }
