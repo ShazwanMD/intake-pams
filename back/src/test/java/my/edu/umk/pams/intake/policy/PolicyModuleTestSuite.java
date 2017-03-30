@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         US_IN_PLC_1000.class,
-        US_IN_PLC_1001.class, //still pending
+        US_IN_PLC_1001.class, 
         US_IN_PLC_1002.class,
         US_IN_PLC_2000.class,
         US_IN_PLC_2001.class,
