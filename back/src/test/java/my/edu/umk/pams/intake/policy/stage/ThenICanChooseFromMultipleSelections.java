@@ -41,7 +41,7 @@ public class ThenICanChooseFromMultipleSelections extends Stage<ThenICanChooseFr
 
     public ThenICanChooseFromMultipleSelections i_can_choose_from_multiple_selections() {
 
-        InProgramCode programCodes = commonService.findProgramCodeByCode("MEM");
+        InProgramCode programCodes = commonService.findProgramCodeByCode("MAM");
         intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         Assert.notNull(intake, "intake is null");
 
