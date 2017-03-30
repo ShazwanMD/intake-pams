@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.application.stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -15,6 +16,7 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
 /**
@@ -27,27 +29,25 @@ public class WhenWithdrawApplication extends Stage<WhenWithdrawApplication> {
 	
 	@Autowired
     private ApplicationService applicationService;
-	
-	@Autowired
-    private PolicyService policyService;
 
-		
+	@ExpectedScenarioState
+    private InIntake intake;
+
+	@ExpectedScenarioState
+    private InIntakeSession intakeSession;
+	
+    @ExpectedScenarioState
+    private InApplicant applicant;
+	
     @ExpectedScenarioState
     private InIntakeApplication intakeApplication;
 	
 	 public WhenWithdrawApplication Withdraw_Application() {
 		 
-		 InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
-		 
-		
+		applicationService.withdrawIntakeApplication(intake, intakeApplication);
+		Assert.notNull(InBidStatus.WITHDRAWN, "withdraw application is null");
+	    return self();
 		  
-		 intakeApplication = applicationService.findIntakeApplicationByReferenceNo("20052/MASTER/001");
-		 intakeApplication.setBidStatus(InBidStatus.WITHDRAWN);
-	    // applicationService.withdrawIntakeApplication(intake, intakeApplication);
-	     
-	    
-		 
-		 return self();
 	 }
 
 }
