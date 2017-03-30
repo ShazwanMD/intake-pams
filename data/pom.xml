@@ -298,6 +298,7 @@
                                 <srcFile>src/test/resources/data/IN_CNTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_DBLY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_FCTY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_CNFG.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
