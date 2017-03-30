@@ -9,6 +9,8 @@ import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,7 @@ public class WhenIAddMultipleProgramCodeMGSEB extends Stage<WhenIAddMultipleProg
 
     @Autowired
     private CommonService commonService;
-
+    
 
     @ProvidedScenarioState
     private InIntake intake;
@@ -33,24 +35,29 @@ public class WhenIAddMultipleProgramCodeMGSEB extends Stage<WhenIAddMultipleProg
 
         InProgramCode code1 = new InProgramCodeImpl();
         code1.setCode("MOSG");
-        code1.setDescription("Master of Science Geoscience");
-
+        code1.setDescriptionEn("Master of Science Geoscience");
+        code1.setDescriptionMs("Master dalam Geosain");
+        
         InProgramCode code2 = new InProgramCodeImpl();
         code2.setCode("MOSET");
-        code2.setDescription("Master of Science Energy Technology");
+        code2.setDescriptionEn("Master of Science Energy Technology");
+        code2.setDescriptionMs("Master dalam Sains Tenaga Teknologi");
 
         InProgramCode code3 = new InProgramCodeImpl();
         code3.setCode("MOSETW");
-        code3.setDescription("Master of Science Energy Technologya");
+        code3.setDescriptionEn("Master of Arts");
+        code3.setDescriptionMs("Master dalam Seni");
 
         commonService.saveProgramCode(code1);
         Assert.notNull(code1.getCode(), "code1 is null");
-
+       
         commonService.saveProgramCode(code2);
         Assert.notNull(code2.getCode(), "code2 is null");
 
         commonService.saveProgramCode(code3);
         Assert.notNull(code3.getCode(), "code3 is null");
+        
+        
 
 
         return self();

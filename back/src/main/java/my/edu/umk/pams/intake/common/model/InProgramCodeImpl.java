@@ -55,7 +55,7 @@ public class InProgramCodeImpl implements InProgramCode {
     }
 
     @Override
-    public void setDescription(String descriptionMs) {
+    public void setDescriptionMs(String descriptionMs) {
         this.descriptionMs = descriptionMs;
     }
 
