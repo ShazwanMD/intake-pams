@@ -53,6 +53,8 @@ public class WhenIWantToReviewApplicationsFlaggedAsAppeal extends Stage <WhenIWa
 			intakeApplication.getEmail();
 			LOG.debug(intakeApplication.getEmail());
 			
+			LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+			
 		}
 			return self();
 	}
