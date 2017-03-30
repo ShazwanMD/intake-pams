@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.admission.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -28,16 +29,16 @@ public class ThenICanSubmitTheApplication extends Stage<ThenICanSubmitTheApplica
     private InIntake intake;
     
     @ExpectedScenarioState
-    private InIntakeApplication intakeapplication;
+    private InIntakeApplication intakeApplication;
         
     @Autowired
     private ApplicationService applicationService;
 
     public ThenICanSubmitTheApplication I_can_submit_the_application() {
 		
-		applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
-		// TODO Auto-generated method stub
-		return self();
+        applicationService.submitIntakeApplication(intake, intakeApplication);
+        Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
+        return self();
 		
 	}
 
