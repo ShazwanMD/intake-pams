@@ -14,6 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenICanCompleteMyApplication;
+import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
@@ -30,7 +31,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_APN_1005 extends SpringScenarioTest<GivenIAmApplicant, 
 															WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation, 
-																ThenICanCompleteMyApplication> {
+															ThenICanSubmitMyApplication> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1005.class);
 
@@ -43,7 +44,7 @@ public class US_IN_APN_1005 extends SpringScenarioTest<GivenIAmApplicant,
     	given().I_am_an_applicant_in_current_intake_session()
               .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
         when().I_want_to_fill_in_multiple_information_on_my_history_of_education();
-        then().I_can_complete_my_application();
+        then().I_can_submit_my_application();
     }
 
 }
