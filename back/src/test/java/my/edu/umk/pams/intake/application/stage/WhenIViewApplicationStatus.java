@@ -42,7 +42,7 @@ public class WhenIViewApplicationStatus extends Stage<WhenIViewApplicationStatus
 	
 
 
-		 intakeApplication = applicationService.findIntakeApplicationByReferenceNo("20052/MASTER/001");
+		 intakeApplication = applicationService.findIntakeApplicationByReferenceNo("20171/MASTER/001");
 		 LOG.debug("intake status {}", intakeApplication.getBidStatus());
 		 
 		 

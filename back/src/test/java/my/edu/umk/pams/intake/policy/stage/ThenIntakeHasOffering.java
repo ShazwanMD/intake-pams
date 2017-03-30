@@ -33,6 +33,7 @@ public class ThenIntakeHasOffering extends Stage<ThenIntakeHasOffering> {
 
     public ThenIntakeHasOffering intake_has_offering() {
         List<InProgramOffering> offerings = policyService.findProgramOfferings(intake);
+
         Assert.assertTrue(!(offerings.isEmpty()));
         return self();
     }

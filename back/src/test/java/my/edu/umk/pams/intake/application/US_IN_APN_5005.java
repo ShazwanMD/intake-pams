@@ -48,7 +48,7 @@ ThenTheApplicationIsWithdrawn> {
 	              .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
 	    	when().I_fill_in_all_the_required_information_in_my_application(); //fill application dulu baru boleh withdraw, klau x nanti null
 	    	addStage(WhenWithdrawApplication.class).and().Withdraw_Application();  //withdraw application yg dh diisi tadi
-	        then().The_Application_Is_Withdrawn();
+	        then().The_Application_Is_Withdrawn(); 
 	    }
 
 	}

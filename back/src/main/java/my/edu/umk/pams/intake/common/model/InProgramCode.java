@@ -10,7 +10,7 @@ public interface  InProgramCode extends InMetaObject {
 
     String getDescriptionMs();
 
-    void setDescription(String descriptionMs);
+    void setDescriptionMs(String descriptionMs);
 
 	String getDescriptionEn();
 
