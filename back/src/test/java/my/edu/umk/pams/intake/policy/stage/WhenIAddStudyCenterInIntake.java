@@ -49,7 +49,7 @@ public class WhenIAddStudyCenterInIntake extends Stage<WhenIAddStudyCenterInInta
     	InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 
         programOffering = new InProgramOfferingImpl();
-        studyCenterCode = commonService.findStudyCenterCodeByCode("SC-003");
+        studyCenterCode = commonService.findStudyCenterCodeByCode("A");
         programOffering.setStudyCenterCode(studyCenterCode);
         Assert.notNull(programOffering.getStudyCenterCode(), "studycenter is null");
 
