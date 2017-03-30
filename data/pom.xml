@@ -248,6 +248,8 @@
                         <configuration>
                             <driver>org.postgresql.Driver</driver>
                             <url>jdbc:postgresql://localhost:5432/postgres</url>
+                            <username>postgres</username>
+                            <password>postgres</password>
                             <settingsKey>postgres-dev</settingsKey>
                             <autocommit>true</autocommit>
                             <srcFiles>
@@ -273,11 +275,7 @@
                                 <srcFile>src/test/resources/ddl/ACL.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/ACT.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/BAT.POSTGRES.sql</srcFile>
-
-                                <!-- system -->
                                 <srcFile>src/test/resources/data/IN_RFRN_NO.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_CNFG.sql</srcFile>
-
                                 <srcFile>src/test/resources/data/IN_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_LEVL.sql</srcFile>
@@ -289,7 +287,17 @@
                                 <srcFile>src/test/resources/data/IN_DUN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PLMT_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_BUMI_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_SCHL_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_RACE_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_ETNY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_RLGN_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_STTE_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_MRTL_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_NTLY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_GNDR_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_EDCN_LEVL_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_CNTY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_DBLY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_FCTY_CODE.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
