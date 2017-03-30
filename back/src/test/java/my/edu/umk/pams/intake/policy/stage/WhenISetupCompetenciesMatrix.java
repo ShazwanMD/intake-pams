@@ -35,7 +35,7 @@ public class WhenISetupCompetenciesMatrix extends Stage<WhenISetupCompetenciesMa
         String generalCriteria = setGeneralCriteria();
         String specificCriteria = setSpecificCriteria();
 
-        InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+        intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 
         InProgramOffering programOffering = new InProgramOfferingImpl();
 
