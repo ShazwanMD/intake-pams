@@ -31,7 +31,7 @@ public class US_IN_PLC_3004 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3004.class);
 
     @Test
-    @Rollback(false)
+    @Rollback
     @Issue("PAMI-17")
     public void testScenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
