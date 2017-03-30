@@ -33,7 +33,7 @@ public class ThenTheApplicationStatusIsListed extends Stage<ThenTheApplicationSt
 	
 	public ThenTheApplicationStatusIsListed Application_Status_Listed() {
 	
-		Assert.notNull(intakeApplication.getBidStatus(), "withdraw application is null");
+		Assert.notNull(intakeApplication.getBidStatus(), "application status is not listed");
 		return self();
 	}
 }

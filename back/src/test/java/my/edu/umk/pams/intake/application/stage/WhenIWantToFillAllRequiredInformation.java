@@ -6,6 +6,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
@@ -61,6 +62,7 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
+        intakeApplication.setBidStatus(InBidStatus.DRAFTED);
         applicationService.draftIntakeApplication(intake, intakeApplication);
 
         return self();
