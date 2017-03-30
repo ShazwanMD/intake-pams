@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.policy.stage.ThenIProgressThenIntakeProcess;
+import my.edu.umk.pams.intake.policy.stage.ThenIProgressIntakeProcess;
 import my.edu.umk.pams.intake.policy.stage.WhenISetIntakeProjection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ so that i can proceed the intake process*/
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
 public class US_IN_PLC_3003 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenISetIntakeProjection,
-        ThenIProgressThenIntakeProcess> {
+        ThenIProgressIntakeProcess> {
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3003.class);
 
     @Test

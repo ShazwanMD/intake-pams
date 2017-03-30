@@ -19,9 +19,9 @@ import java.util.List;
  * @author PAMS
  */
 @JGivenStage
-public class ThenIProgressThenIntakeProcess extends Stage<ThenIProgressThenIntakeProcess> {
+public class ThenIProgressIntakeProcess extends Stage<ThenIProgressIntakeProcess> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ThenIProgressThenIntakeProcess.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ThenIProgressIntakeProcess.class);
 
     @Autowired
     private PolicyService policyService;
@@ -32,7 +32,7 @@ public class ThenIProgressThenIntakeProcess extends Stage<ThenIProgressThenIntak
     @ExpectedScenarioState
     private InIntake intake;
 
-    public ThenIProgressThenIntakeProcess i_can_progress_the_intake_process() {
+    public ThenIProgressIntakeProcess i_can_progress_the_intake_process() {
 
         InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 
