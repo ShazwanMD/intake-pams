@@ -1,10 +1,13 @@
 package my.edu.umk.pams.intake.policy;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeIsReadyForSetup;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddIntake;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
