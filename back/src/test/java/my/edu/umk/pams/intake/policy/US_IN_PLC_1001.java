@@ -34,7 +34,7 @@ public class US_IN_PLC_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Issue("PAMI-4")
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
-        when().I_add_a_offering_for_intake_$("201720181/MASTER");
+        when().I_add_a_offering_for_intake();
         then().intake_has_offering();
     }
 }

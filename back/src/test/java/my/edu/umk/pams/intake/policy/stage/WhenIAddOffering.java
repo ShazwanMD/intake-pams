@@ -30,10 +30,10 @@ public class WhenIAddOffering extends Stage<WhenIAddOffering> {
     @ProvidedScenarioState
     private InIntake intake;
 
-    @Pending
-    public WhenIAddOffering I_add_a_offering_for_intake_$(String referenceNo) {
+   
+    public WhenIAddOffering I_add_a_offering_for_intake() {
 
-    	InIntake intakeRef = policyService.findIntakeByReferenceNo(referenceNo);
+    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         InProgramOffering offering = new InProgramOfferingImpl();
         offering.setProjection(10);
         offering.setGeneralCriteria("TODO ADD GEN CRIT"); //todo
@@ -41,7 +41,7 @@ public class WhenIAddOffering extends Stage<WhenIAddOffering> {
         offering.setInterview(true);
         // offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("SC-001")); // todo(uda): need data
         // offering.setProgramCode(commonService.findProgramCodeByCode("MEM")); // todo(uda): need real data
-        policyService.addProgramOffering(intakeRef, offering);
+        policyService.addProgramOffering(intake, offering);
         return self();
     }
 }
