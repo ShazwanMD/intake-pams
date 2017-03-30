@@ -30,26 +30,29 @@ public class WhenIAddMultipleProgramCodePPS extends Stage<WhenIAddMultipleProgra
 
     public WhenIAddMultipleProgramCodePPS i_add_multiple_program_code_PPS() {
 
-        InProgramCode code1 = new InProgramCodeImpl();
-        code1.setCode("MOA");
-        code1.setDescription("MASTER OF ARTS");
+    	 InProgramCode code1 = new InProgramCodeImpl();
+         code1.setCode("MOA");
+         code1.setDescriptionEn("MASTER OF ARTS");
+         code1.setDescriptionMs("Master dalam Seni");
+         
+         InProgramCode code2 = new InProgramCodeImpl();
+         code2.setCode("MOS");
+         code2.setDescriptionEn("MASTER OF SCIENCE");
+         code2.setDescriptionMs("Master dalam Sains");
 
-        InProgramCode code2 = new InProgramCodeImpl();
-        code2.setCode("MOS");
-        code2.setDescription("MASTER OF SCIENCE");
+         InProgramCode code3 = new InProgramCodeImpl();
+         code3.setCode("MOSETH");
+         code3.setDescriptionEn("MASTER OF SCIENCE TECHNOLOGY (HERITAGE)");
+         code3.setDescriptionMs("Master dalam Teknologi Sains (Kebudayaan)");
 
-        InProgramCode code3 = new InProgramCodeImpl();
-        code3.setCode("MOSETH");
-        code3.setDescription("MASTER OF SCIENCE TECHNOLOGY (HERITAGE)");
+         commonService.saveProgramCode(code1);
+         Assert.notNull(code1.getCode(), "code1 is null");
+        
+         commonService.saveProgramCode(code2);
+         Assert.notNull(code2.getCode(), "code2 is null");
 
-        commonService.saveProgramCode(code1);
-        Assert.notNull(code1.getCode(), "code1 is null");
-
-        commonService.saveProgramCode(code2);
-        Assert.notNull(code2.getCode(), "code2 is null");
-
-        commonService.saveProgramCode(code3);
-        Assert.notNull(code3.getCode(), "code3 is null");
+         commonService.saveProgramCode(code3);
+         Assert.notNull(code3.getCode(), "code3 is null");
 
 
         return self();
