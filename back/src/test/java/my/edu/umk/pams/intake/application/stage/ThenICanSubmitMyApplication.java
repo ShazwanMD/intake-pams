@@ -10,12 +10,17 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 @JGivenStage
 public class ThenICanSubmitMyApplication extends Stage<ThenICanSubmitMyApplication> {
 
+	private static final Logger LOG = LoggerFactory.getLogger(ThenICanSubmitMyApplication.class);
+	
     @Autowired
     private ApplicationService applicationService;
 
@@ -34,6 +39,7 @@ public class ThenICanSubmitMyApplication extends Stage<ThenICanSubmitMyApplicati
     public ThenICanSubmitMyApplication I_can_submit_my_application() {
         applicationService.submitIntakeApplication(intake, intakeApplication);
         Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
+        LOG.debug("intake status {}", intakeApplication.getBidStatus());
         return self();
     }
 

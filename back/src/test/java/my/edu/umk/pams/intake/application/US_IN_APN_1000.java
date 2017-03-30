@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.application;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmRegisteredUser;
-
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenICanLoginAgain;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToResetForgetPassword;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -38,6 +38,7 @@ public class US_IN_APN_1000 extends SpringScenarioTest<GivenIAmRegisteredUser, W
 
     @Test
     @Rollback
+    @Issue("PAMI-21")
     public void scenario1() {
         given().I_am_a_registered_user();
         when().I_want_to_reset_forget_password();
