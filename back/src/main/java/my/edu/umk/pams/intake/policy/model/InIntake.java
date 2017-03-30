@@ -32,6 +32,10 @@ public interface InIntake extends InDocument {
 
     void setProgramOfferings(List<InProgramOffering> offerings);
 
+    List<InSupervisorOffering> getSupervisorOfferings();
+
+    void setSupervisorOfferings(List<InSupervisorOffering> offerings);
+
     List<InStudyModeOffering> getModeOfferings();
 
     void setModeOfferings(List<InStudyModeOffering> offerings);

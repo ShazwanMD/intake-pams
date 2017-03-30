@@ -34,7 +34,7 @@
                       targetRef="intake_draft_UT"/>
 
         <userTask id="intake_draft_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:DRAFTED"
-                  activiti:assignee="${userCreator}">
+                  activiti:assignee="${supervisor}">
             <documentation>
                 Draft Intake
                 - Setting Dasar

@@ -3,8 +3,6 @@ package my.edu.umk.pams.intake.application.service;
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
-import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
-import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -25,12 +23,6 @@ import java.util.List;
 public class ApplicationServiceImpl implements ApplicationService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationServiceImpl.class);
-
-    @Autowired
-    private InProgramOfferingDao programOfferingDao;
-
-    @Autowired
-    private InIntakeDao intakeDao;
 
     @Autowired
     private InIntakeApplicationDao intakeApplicationDao;
@@ -170,7 +162,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public List<InApplicant> findApplicants(InIntake intake) {
-        return intakeDao.findApplicants(intake);
+        return intakeApplicationDao.findApplicants(intake);
     }
 
     @Override

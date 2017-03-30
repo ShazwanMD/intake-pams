@@ -60,6 +60,16 @@ public class InProgramCodeImpl implements InProgramCode {
     }
 
     @Override
+    public String getDescriptionEn() {
+        return descriptionEn;
+    }
+
+    @Override
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+
+    @Override
     public InMetadata getMetadata() {
         return metadata;
     }
@@ -74,14 +84,4 @@ public class InProgramCodeImpl implements InProgramCode {
         return InProgramCode.class;
     }
 
-    @Override
-	public String getDescriptionEn() {
-		return descriptionEn;
-	}
-
-    @Override
-	public void setDescriptionEn(String descriptionEn) {
-		this.descriptionEn = descriptionEn;
-	}
-    
 }

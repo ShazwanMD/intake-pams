@@ -17,6 +17,10 @@ public interface InIntakeSession extends InMetaObject {
 
     void setDescriptionEn(String descriptionEn);
 
+    String getDescriptionMs();
+
+    void setDescriptionMs(String descriptionMs);
+
     Boolean isCurrent();
 
     void setCurrent(Boolean current);

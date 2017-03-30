@@ -248,8 +248,6 @@
                         <configuration>
                             <driver>org.postgresql.Driver</driver>
                             <url>jdbc:postgresql://localhost:5432/postgres</url>
-                            <username>postgres</username>
-                            <password>postgres</password>
                             <settingsKey>postgres-dev</settingsKey>
                             <autocommit>true</autocommit>
                             <srcFiles>

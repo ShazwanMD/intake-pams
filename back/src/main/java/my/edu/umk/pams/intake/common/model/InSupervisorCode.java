@@ -2,7 +2,7 @@ package my.edu.umk.pams.intake.common.model;
 
 import my.edu.umk.pams.intake.core.InMetaObject;
 
-public interface InBumiCode extends InMetaObject {
+public interface InSupervisorCode extends InMetaObject {
 
     String getCode();
 
@@ -12,7 +12,7 @@ public interface InBumiCode extends InMetaObject {
 
     void setDescriptionMs(String descriptionMs);
 
-    String getDescriptionEn();
+	String getDescriptionEn();
 
-    void setDescriptionEn(String descriptionEn);
+	void setDescriptionEn(String descriptionEn);
 }

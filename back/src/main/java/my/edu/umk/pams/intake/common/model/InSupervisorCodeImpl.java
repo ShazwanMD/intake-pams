@@ -1,19 +1,18 @@
 package my.edu.umk.pams.intake.common.model;
 
-
 import my.edu.umk.pams.intake.core.InMetadata;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InMaritalCode")
-@Table(name = "IN_MRTL_CODE")
-public class InMaritalCodeImpl implements InMaritalCode {
+@Entity(name = "InSupervisorCode")
+@Table(name = "IN_SPVR_CODE")
+public class InSupervisorCodeImpl implements InSupervisorCode {
 
     @Id
-    @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SQ_IN_MRTL_CODE")
-    @SequenceGenerator(name = "SQ_IN_MRTL_CODE", sequenceName = "SQ_IN_MRTL_CODE", allocationSize = 1)
+    @Column(name = "ID")
+    @GeneratedValue(generator = "SQ_IN_SPVR_CODE")
+    @SequenceGenerator(name = "SQ_IN_SPVR_CODE", sequenceName = "SQ_IN_SPVR_CODE", allocationSize = 1)
     private Long id;
 
     @NotNull
@@ -21,19 +20,24 @@ public class InMaritalCodeImpl implements InMaritalCode {
     private String code;
 
     @NotNull
-    @Column(name = "DESCRIPTION_MS")
+    @Column(name = "DESCRIPTION_MS", nullable = false)
     private String descriptionMs;
-
+    
     @NotNull
-    @Column(name = "DESCRIPTION_EN")
+    @Column(name = "DESCRIPTION_EN", nullable = false)
     private String descriptionEn;
 
     @Embedded
     private InMetadata metadata;
 
-    public Long getId() { return id; }
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-    public void setId(Long id) { this.id = id; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Override
     public String getCode() {
@@ -77,6 +81,7 @@ public class InMaritalCodeImpl implements InMaritalCode {
 
     @Override
     public Class<?> getInterfaceClass() {
-        return InMaritalCode.class;
+        return InSupervisorCode.class;
     }
+
 }
