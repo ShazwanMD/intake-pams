@@ -13,10 +13,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.application.stage.ThenICanKnowTheDateline;
 import my.edu.umk.pams.intake.application.stage.ThenICanViewTheAvailableProgram;
 import my.edu.umk.pams.intake.application.stage.WhenIWantListOfCurrentOfferedProgram;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToBeInformedOfTheClosingDate;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
 /**

@@ -13,11 +13,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.application.stage.ThenICanKnowTheDateline;
 import my.edu.umk.pams.intake.application.stage.ThenTheApplicationIsWithdrawn;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToBeInformedOfTheClosingDate;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyExtraCurricularExperience;
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
