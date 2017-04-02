@@ -53,7 +53,7 @@ public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
     private InIntakeSession intakeSession;
 	
 	public WhenISelectApplicant I_select_applicant(){
-		//todo: uda/max tlg fix problem
+		//todo: (uda/max) tlg fix problem
 		
 		stdSelStrategy.select(intake);
 	
