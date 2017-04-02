@@ -15,7 +15,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.registration.stage.ThenAlertAnyChanges;
-import my.edu.umk.pams.intake.application.stage.WhenReceiveConfirmationEmail;
+import my.edu.umk.pams.intake.registration.stage.WhenReceiveConfirmationEmailForRegistration;
 import my.edu.umk.pams.intake.application.stage.WhenISubmitApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -43,7 +43,7 @@ private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_5000.class);
      	.and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
 		 when().I_fill_in_all_the_required_information_in_my_application();
 		 addStage(WhenISubmitApplication.class).and().I_submit_application();
-		 addStage(WhenReceiveConfirmationEmail.class).and().I_receive_confirmation_email();
+		 addStage(WhenReceiveConfirmationEmailForRegistration.class).and().I_receive_confirmation_email();
 		 then().alert_any_changes();
 	 }
 }
