@@ -7,7 +7,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
 import my.edu.umk.pams.intake.policy.stage.WhenISelectApplicant;
 import my.edu.umk.pams.intake.policy.stage.WhenISetupCompetenciesMatrix;
-import my.edu.umk.pams.intake.policy.stage.WhenIfillInApplicationResult;
+import my.edu.umk.pams.intake.policy.stage.WhenIEnterApplicationResult;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,7 +36,7 @@ public class US_IN_PLC_3002 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     public void testScenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().I_setup_competencies_matrix();
-        addStage(WhenIfillInApplicationResult.class).and().I_fill_in_application_result();
+        addStage(WhenIEnterApplicationResult.class).and().I_enter_application_result();
         addStage(WhenISelectApplicant.class).and().I_select_applicant();
         then().I_can_identify_eligible_applicants();
     }

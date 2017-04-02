@@ -40,12 +40,16 @@ public abstract class SelectionStrategySupport implements SelectionStrategy {
         LOG.debug("expression: {}", expression);
         boolean result = false;
         prepareVariables(application);
-        try {
-            String resultString = evaluator.evaluate(expression);
-            if (resultString.equals(EvaluationConstants.BOOLEAN_STRING_TRUE)) result = true;
-            if (resultString.equals(EvaluationConstants.BOOLEAN_STRING_FALSE)) result = false;
-        } catch (EvaluationException e) {
-            // something is wrong expression syntax maybe?
+        if (expression == null || expression.isEmpty()) {
+            result = false;
+        } else {
+            try {
+                String resultString = evaluator.evaluate(expression);
+                if (resultString.equals(EvaluationConstants.BOOLEAN_STRING_TRUE)) result = true;
+                if (resultString.equals(EvaluationConstants.BOOLEAN_STRING_FALSE)) result = false;
+            } catch (EvaluationException e) {
+                // something is wrong expression syntax maybe?
+            }
         }
         return result;
     }
@@ -65,6 +69,7 @@ public abstract class SelectionStrategySupport implements SelectionStrategy {
     }
 
     protected void extractMuetResult(InIntakeApplication application) {
+        LOG.debug("extract muet result");
         InResultType type = InResultType.MUET;
         if (applicationService.hasResult(application, type)) {
             InMuetResult result = (InMuetResult) applicationService.findResult(application, type);
@@ -76,7 +81,7 @@ public abstract class SelectionStrategySupport implements SelectionStrategy {
         LOG.debug("extract diploma result");
         InResultType type = InResultType.DIPLOMA;
         if (applicationService.hasResult(application, type)) {
-            InDiplomaResult result = (InDiplomaResult) applicationService.findResults(application);
+            InDiplomaResult result = (InDiplomaResult) applicationService.findResult(application, type);
             evaluator.putVariable(type.getCode() + "." + "CPA", result.getCgpa().toString());
             List<InResultItem> items = applicationService.findResultItems(result);
             for (InResultItem item : items) {
@@ -87,10 +92,10 @@ public abstract class SelectionStrategySupport implements SelectionStrategy {
     }
 
     protected void extractBachelorResult(InIntakeApplication application) {
-        LOG.debug("extract diploma result");
+        LOG.debug("extract bachelor result");
         InResultType type = InResultType.BACHELOR;
         if (applicationService.hasResult(application, type)) {
-            InBachelorResult result = (InBachelorResult) applicationService.findResults(application);
+            InBachelorResult result = (InBachelorResult) applicationService.findResult(application, type);
             evaluator.putVariable(type.getCode() + "." + "CPA", result.getCgpa().toString());
             List<InResultItem> items = applicationService.findResultItems(result);
             for (InResultItem item : items) {

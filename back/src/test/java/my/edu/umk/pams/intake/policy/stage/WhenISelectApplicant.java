@@ -26,10 +26,9 @@ import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
-@Pending
+
 @JGivenStage
 public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
 	
@@ -47,7 +46,7 @@ public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
     private SecurityService securityService;
     
     @Autowired
-    AdmissionService admissionService;
+    private AdmissionService admissionService;
     
     @Autowired
     private InCandidateDao candidateDao;
@@ -74,38 +73,19 @@ public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
     private InApplicant applicant;
 	
 	public WhenISelectApplicant I_select_applicant(){
-		//todo: (uda/max) tlg fix problem
-		
-	//	stdSelStrategy.select(intake);
-	
-		
-		//List<InApplicant> applicant = applicationService.findApplicants(intake);
-		//List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByRank(intake);
-		//standardSelectionStrategy.select(intake);
-		
-		
-		selectionStrategyHelper.select(intake);
-		LOG.debug("testing {} :", intake);
+        standardSelectionStrategy.select(intake);
 		admissionService.preselectIntakeApplication(application);
-		
-		LOG.debug("testing {} :", intake);
-	//	List<InIntakeApplication> application = applicationService.findIntakeApplications(intake);
-		
-		InCandidate candidate = new InCandidateImpl();
-        candidate.setName(application.getName());
-        candidate.setIdentityNo(application.getCredentialNo());
-        candidate.setEmail(application.getEmail());
-        candidate.setStudyMode(application.getStudyMode());
-        candidate.setStatus(InCandidateStatus.SELECTED);
-        candidate.setApplicant(application.getApplicant());
-        candidate.setOffering(application.getSelection());
-        
-        
-        candidateDao.save(candidate, securityService.getCurrentUser());
-/*        for (InIntakeApplication application : applications) {
-            preselectIntakeApplication(application);
-        }*/
-		
+
+//		InCandidate candidate = new InCandidateImpl();
+//        candidate.setName(application.getName());
+//        candidate.setIdentityNo(application.getCredentialNo());
+//        candidate.setEmail(application.getEmail());
+//        candidate.setStudyMode(application.getStudyMode());
+//        candidate.setStatus(InCandidateStatus.SELECTED);
+//        candidate.setApplicant(application.getApplicant());
+//        candidate.setOffering(application.getSelection());
+//        candidateDao.save(candidate, securityService.getCurrentUser());
+
 		return self();
 	}
 

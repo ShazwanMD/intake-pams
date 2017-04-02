@@ -7,6 +7,7 @@ import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -25,6 +26,8 @@ public class StandardSelectionStrategy extends SelectionStrategySupport {
         for (InIntakeApplication application : applications) {
             // evaluate general criteria
             InProgramOffering offering = application.getSelection();
+            Assert.notNull(offering, "offering cannot be null");
+
             boolean evalGeneral = evaluate(application, offering.getGeneralCriteria());
             LOG.debug("general criteria: {}", evalGeneral);
             if (evalGeneral) {

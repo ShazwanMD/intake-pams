@@ -14,6 +14,9 @@ import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
+import java.util.List;
 
 @JGivenStage
 public class ThenICanIdentifyEligibleApplicants extends Stage<ThenICanIdentifyEligibleApplicants> {
@@ -44,10 +47,11 @@ public class ThenICanIdentifyEligibleApplicants extends Stage<ThenICanIdentifyEl
     public ThenICanIdentifyEligibleApplicants I_can_identify_eligible_applicants() {
        	
     	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
-//   	InIntakeApplication application=applicationService.findResult(application, resultType)   	
-//  	helper.select(intake);
+    	Assert.notNull(intake, "intake cannot be null");
 
-        //    Assert.notEmpty();
+    	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByRank(intake);
+        Assert.notEmpty(applications, "applications cannot be empty");
+        Assert.isTrue(applications.size() == 1, "application should be exactly one");
 
         return self();
     }
