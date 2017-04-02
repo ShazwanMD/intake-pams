@@ -16,7 +16,7 @@ import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
-@Pending
+//@Pending
 @JGivenStage
 public class WhenSelectProgramFromList extends Stage<WhenSelectProgramFromList> {
 	
@@ -39,15 +39,9 @@ private InProgramCode programCode;
 		 
 		 intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 		 List<InProgramOffering> programOfferings = policyService.findProgramOfferings(intake);
-		 Assert.notNull(commonService.findProgramCodeByCode("MCA"),"program is null");
-		// Assert.notNull(policyService.findProgramOfferingByIntakeAndProgramCode(intake, programCode);
-				
-		 
-		 
-		 
-		 
-		 
-		 
+		 Assert.notNull(commonService.findProgramCodeByCode("MCA"),"program is not offered");
+		
+	 
 	 return self();
 	 }
 }

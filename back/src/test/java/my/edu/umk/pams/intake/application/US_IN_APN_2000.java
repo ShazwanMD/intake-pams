@@ -9,9 +9,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
+import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenMyApplicationIsUpdated;
 import my.edu.umk.pams.intake.application.stage.WhenISubmitApplication;
@@ -26,7 +28,7 @@ so that I can add more details to strengthen my application*/
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_2000 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToFillAllRequiredInformation, ThenMyApplicationIsUpdated>{
+public class US_IN_APN_2000 extends SpringScenarioTest<GivenIAmCandidate, WhenIWantToFillAllRequiredInformation, ThenMyApplicationIsUpdated>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_2000.class);
 	
@@ -35,11 +37,11 @@ public class US_IN_APN_2000 extends SpringScenarioTest<GivenIAmApplicant, WhenIW
     @Test
     @Issue("PAMI-36")
     @Rollback
+    @Pending
     public void scenario1() {
-    	given().I_am_an_applicant_in_current_intake_session()
-              .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
+    	given().I_am_candidate_in_current_intake_session();
     	when().I_fill_in_all_the_required_information_in_my_application();
-		addStage(WhenISubmitApplication.class).and().I_submit_application();
+		//addStage(WhenISubmitApplication.class).and().I_submit_application();
 		addStage(WhenIUpdateInformationFurther.class).and().I_update_information_further();
     	then().my_application_is_updated();
     	

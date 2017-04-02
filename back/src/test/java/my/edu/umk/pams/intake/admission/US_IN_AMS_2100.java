@@ -14,6 +14,8 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.ThenStartIntakeApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenSelectProgramFromList;
 import my.edu.umk.pams.intake.application.US_IN_APN_5005;
+import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
+import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyExtraCurricularExperience;
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
@@ -28,7 +30,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_2100 extends SpringScenarioTest<GivenIAmApplicant,
-WhenSelectProgramFromList,
+WhenIWantToFillAllRequiredInformation,
 ThenStartIntakeApplication> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_2100.class);
@@ -37,13 +39,15 @@ ThenStartIntakeApplication> {
 	
 		@Test
 	    @Issue("PAMI-68")
-	    @Rollback
+	    @Rollback(false)
 	    public void scenario1() {
 			
 			given().I_am_an_applicant_in_current_intake_session()
             .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-			when().Select_Program_From_List(); 
+			when().I_fill_in_all_the_required_information_in_my_application();
+			addStage(WhenSelectProgramFromList.class).and().Select_Program_From_List(); 
   			then().Start_Intake_Application(); 
 		
 		}
 }
+

@@ -4,11 +4,15 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.common.service.CommonService;
-import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -17,29 +21,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 @JGivenStage
 public class WhenISelectTopApplicants extends Stage<WhenISelectTopApplicants> {
 
+	private static final Logger LOG = LoggerFactory.getLogger (WhenISelectTopApplicants.class);
+	
+	@ExpectedScenarioState
+    InIntakeSession intakeSession;
 
-    @Autowired
-    private CommonService commonService;
-
-    @Autowired
-    private PolicyService policyService;
-
+    @ProvidedScenarioState
+    private InCandidate candidate;
+    
+    @ExpectedScenarioState
+    private InIntake intake;
+    
+    @ExpectedScenarioState
+    private InIntakeApplication intakeApplication;
+    
     @Autowired
     private ApplicationService applicationService;
 
-    @ProvidedScenarioState
-    private InIntake intake;
-
-    @ExpectedScenarioState
-    private InApplicant applicant;
-
     public WhenISelectTopApplicants I_select_top_applicants() {
-
-        // 	InIntakeApplication application = new InIntakeApplicationImpl();
-
-        //	applicationService.findIntakeApplicationsOrderedByRank(intake);
-        //List<InIntakeApplication>findIntakeApplicationsOrderedByRank(InIntake intake);
-
+    	
+    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
+		for (InIntakeApplication intakeApplication : applications) {
+			intakeApplication.getName();
+			LOG.debug(intakeApplication.getName());
+			intakeApplication.getAddresses();
+			//LOG.debug(intakeApplication.getAddresses());
+			intakeApplication.getEmail();
+			LOG.debug(intakeApplication.getEmail());
+			
+			LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+			
+		}
+		
         return self();
 
     }

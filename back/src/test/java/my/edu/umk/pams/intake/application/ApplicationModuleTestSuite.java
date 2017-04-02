@@ -18,6 +18,7 @@ import org.junit.runners.Suite;
         US_IN_APN_1007.class,
         US_IN_APN_1008.class,
         US_IN_APN_1010.class,
+        US_IN_APN_1011.class, //pending
         US_IN_APN_1012.class,
         US_IN_APN_1013.class,
         US_IN_APN_1014.class,

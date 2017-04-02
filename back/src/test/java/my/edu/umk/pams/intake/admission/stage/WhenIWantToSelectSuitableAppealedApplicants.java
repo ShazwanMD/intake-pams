@@ -1,6 +1,9 @@
 package my.edu.umk.pams.intake.admission.stage;
 
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -16,6 +19,8 @@ import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 
 @JGivenStage
 public class WhenIWantToSelectSuitableAppealedApplicants extends Stage<WhenIWantToSelectSuitableAppealedApplicants> {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToSelectSuitableAppealedApplicants.class);
 
 	@ExpectedScenarioState
     InIntakeSession intakeSession;
@@ -31,13 +36,19 @@ public class WhenIWantToSelectSuitableAppealedApplicants extends Stage<WhenIWant
 
     public WhenIWantToSelectSuitableAppealedApplicants I_want_to_select_suitable_appealed_applicants() {
 
-    	List<InIntakeApplication> application  =  applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
-    	for (InIntakeApplication inIntakeApplication : application) {
-			inIntakeApplication.setName("Msyahrul");
-			inIntakeApplication.setEmail("msyahrul@umk.edu.my");
-			applicationService.updateIntakeApplication(inIntakeApplication);
+    	   	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
+    		for (InIntakeApplication intakeApplication : applications) {
+    			intakeApplication.getName();
+    			LOG.debug(intakeApplication.getName());
+    			intakeApplication.getAddresses();
+    			//LOG.debug(intakeApplication.getAddresses());
+    			intakeApplication.getEmail();
+    			LOG.debug(intakeApplication.getEmail());
+    			
+    			LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+    			
+    		}
+    			return self();
     	}
-    	return self();
-    }
-
 }
+    
