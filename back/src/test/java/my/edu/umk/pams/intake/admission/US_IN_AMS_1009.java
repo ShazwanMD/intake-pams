@@ -1,0 +1,46 @@
+package my.edu.umk.pams.intake.admission;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.intake.admission.stage.ThenICanGenerateAnOfferLetter;
+import my.edu.umk.pams.intake.admission.stage.WhenIOfferACandidate;
+import my.edu.umk.pams.intake.config.TestAppConfiguration;
+
+/**
+ * @author PAMS
+ * 
+ *  As a PPS academic administrator, 
+ *  I want to offer a candidate, 
+ *  so that candidate ready for next selection phase
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
+@ContextConfiguration(classes = TestAppConfiguration.class)
+public class US_IN_AMS_1009 extends SpringScenarioTest<GivenIAmCPSAdministrator,
+WhenIOfferACandidate,
+ThenICanGenerateAnOfferLetter> {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1009.class);
+
+	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	
+		@Test
+	    @Issue("PAMI-56")
+	    @Rollback
+	    public void scenario1() {
+			given().I_am_a_CPS_administrator_in_current_intake_session();
+			when().I_offer_a_candidate_in_current_intake_session_$(INTAKE_REFERENCE_NO);
+			then().I_can_generate_an_offer_letter();
+		}
+}
