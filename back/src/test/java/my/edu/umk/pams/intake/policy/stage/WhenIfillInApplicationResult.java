@@ -71,7 +71,7 @@ public class WhenIfillInApplicationResult extends Stage<WhenIfillInApplicationRe
         
       //adding result
         InResult result = new InResultImpl();
-        result.setResultType(resultType.DIPLOMA);
+        result.setResultType(resultType.BACHELOR);
         result.setApplication(intakeApplication);
         applicationService.addResult(intakeApplication, result);
         LOG.debug("results", result);
