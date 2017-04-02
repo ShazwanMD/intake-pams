@@ -66,6 +66,9 @@ public class InIntakeImpl implements InIntake {
     @OneToMany(targetEntity = InProgramOfferingImpl.class, mappedBy = "intake")
     private List<InProgramOffering> programOfferings;
     
+    @OneToMany(targetEntity = InSupervisorOfferingImpl.class, mappedBy = "intake")
+    private List<InSupervisorOffering> supervisorOfferings;
+    
     @OneToMany(targetEntity = InIntakeApplicationImpl.class, mappedBy = "intake")
     private List<InIntakeApplication> applications;
 
@@ -84,11 +87,12 @@ public class InIntakeImpl implements InIntake {
         this.id = id;
     }
 
-
+    @Override
     public String getReferenceNo() {
         return referenceNo;
     }
 
+    @Override
     public void setReferenceNo(String referenceNo) {
         this.referenceNo = referenceNo;
     }
@@ -198,8 +202,19 @@ public class InIntakeImpl implements InIntake {
         return programOfferings;
     }
 
+    @Override
     public void setProgramOfferings(List<InProgramOffering> programOfferings) {
         this.programOfferings = programOfferings;
+    }
+
+    @Override
+    public List<InSupervisorOffering> getSupervisorOfferings() {
+        return supervisorOfferings;
+    }
+
+    @Override
+    public void setSupervisorOfferings(List<InSupervisorOffering> supervisorOfferings) {
+        this.supervisorOfferings = supervisorOfferings;
     }
 
     @Override
@@ -212,20 +227,34 @@ public class InIntakeImpl implements InIntake {
         this.modeOfferings = modeOfferings;
     }
 
+    @Override
     public List<InIntakeApplication> getApplications() {
         return applications;
     }
 
+    @Override
     public void setApplications(List<InIntakeApplication> applications) {
         this.applications = applications;
     }
 
+    @Override
     public InMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
+    }
+
+    @Override
+    public InFlowdata getFlowdata() {
+        return flowdata;
+    }
+
+    @Override
+    public void setFlowdata(InFlowdata flowdata) {
+        this.flowdata = flowdata;
     }
 
     @Override
@@ -233,11 +262,4 @@ public class InIntakeImpl implements InIntake {
         return InIntake.class;
     }
 
-    public InFlowdata getFlowdata() {
-        return flowdata;
-    }
-
-    public void setFlowdata(InFlowdata flowdata) {
-        this.flowdata = flowdata;
-    }
 }

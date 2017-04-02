@@ -3,11 +3,11 @@ package my.edu.umk.pams.intake.policy.service;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.identity.model.InUser;
-import my.edu.umk.pams.intake.policy.dao.InProgramLevelDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeSessionDao;
-import my.edu.umk.pams.intake.policy.dao.InProgramOfferingDao;
+import my.edu.umk.pams.intake.policy.dao.InProgramLevelDao;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.workflow.service.WorkflowConstants;
@@ -36,9 +36,6 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Autowired
     private InIntakeDao intakeDao;
-
-    @Autowired
-    private InProgramOfferingDao programOfferingDao;
 
     @Autowired
     private WorkflowService workflowService;
@@ -228,6 +225,14 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
+    public void addSupervisorOffering(InIntake intake, InSupervisorOffering supervisorOffering) {
+        Validate.notNull(intake, "Intake cannot be null");
+        Validate.notNull(supervisorOffering, "Offering cannot be null");
+        Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        intakeDao.addSupervisorOffering(intake, supervisorOffering, securityService.getCurrentUser());
+    }
+
+    @Override
     public void addProgramOffering(InIntake intake, InProgramOffering programOffering) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(programOffering, "Offering cannot be null");
@@ -292,6 +297,26 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     //====================================================================================================
+    // SUPERVISOR OFFERING
+    //====================================================================================================
+
+    @Override
+    public InSupervisorOffering findSupervisorOfferingById(Long id) {
+        return intakeDao.findSupervisorOfferingById(id);
+    }
+
+    @Override
+    public InSupervisorOffering findSupervisorOfferingByIntakeAndSupervisorCode(InIntake intake, InSupervisorCode supervisorCode) {
+        return intakeDao.findSupervisorOfferingByIntakeAndSupervisorCode(intake, supervisorCode);
+    }
+
+    @Override
+    public List<InSupervisorOffering> findSupervisorOfferings(InIntake intake) {
+        return intakeDao.findSupervisorOfferings(intake);
+    }
+
+
+    //====================================================================================================
     // PROGRAM OFFERING
     //====================================================================================================
 
@@ -307,7 +332,7 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public List<InProgramOffering> findProgramOfferings(InIntake intake) {
-        return programOfferingDao.find(intake);
+        return intakeDao.findProgramOfferings(intake);
     }
 
 

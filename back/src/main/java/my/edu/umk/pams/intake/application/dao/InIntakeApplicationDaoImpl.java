@@ -235,6 +235,16 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public List<InApplicant> findApplicants(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p.applicant from InIntakeApplication p where " +
+                "p.intake = :intake " +
+                "order by p.rank");
+        query.setEntity("intake", intake);
+        return (List<InApplicant>) query.list();
+    }
+
+    @Override
     public List<InResult> findResults(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InResult p where " +

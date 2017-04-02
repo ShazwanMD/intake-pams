@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.policy.dao;
 
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.core.GenericDao;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -24,6 +25,10 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
 
     InProgramOffering findProgramOfferingByIntakeAndProgramCode(InIntake intake, InProgramCode programCode);
 
+    InSupervisorOffering findSupervisorOfferingById(Long id);
+
+    InSupervisorOffering findSupervisorOfferingByIntakeAndSupervisorCode(InIntake intake, InSupervisorCode supervisorCode);
+
     InStudyModeOffering findModeOfferingById(Long id);
 
     InStudyModeOffering findModeOfferingByIntakeAndMode(InIntake intake, InStudyMode studyMode);
@@ -36,21 +41,21 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
 
     List<InProgramOffering> findProgramOfferings(InIntake intake);
 
+    List<InSupervisorOffering> findSupervisorOfferings(InIntake intake);
+
     List<InStudyModeOffering> findModeOfferings(InIntake intake);
-
-    List<InApplicant> findApplicants(InIntake intake);
-
 
     // ====================================================================================================
     // HELPER
     // ====================================================================================================
-
 
     Integer count(InIntakeSession session);
 
     Integer count(String filter, InIntakeSession session);
 
     Integer countProgramOffering(InIntake intake);
+
+    Integer countSupervisorOffering(InIntake intake);
 
     Integer countModeOffering(InIntake intake);
 
@@ -62,6 +67,10 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
     void addProgramOffering(InIntake intake, InProgramOffering offering, InUser user);
 
     void deleteProgramOffering(InIntake intake, InProgramOffering offering, InUser user);
+
+    void addSupervisorOffering(InIntake intake, InSupervisorOffering offering, InUser user);
+
+    void deleteSupervisorOffering(InIntake intake, InSupervisorOffering offering, InUser user);
 
     void addModeOffering(InIntake intake, InStudyModeOffering offering, InUser user);
 

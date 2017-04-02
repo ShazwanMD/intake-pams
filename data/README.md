@@ -22,3 +22,7 @@
             <password>abc123</password>
         </server>
     </servers>
+
+-- REGEX
+-- ('[a-zA-Z \-()//]+')(, [0-9], [0-9])
+-- $1, $1 $2

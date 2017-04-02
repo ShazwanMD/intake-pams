@@ -58,6 +58,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InIntakeApplication> find(InIntake intake, InBidStatus bidStatus);
 
+    List<InApplicant> findApplicants(InIntake intake);
+
     List<InResult> findResults(InIntakeApplication application);
 
     List<InResultItem> findResultItems(InResult result);

@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.policy.service;
 
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.*;
 import org.activiti.engine.task.Task;
@@ -82,6 +83,8 @@ public interface PolicyService {
 
     void cancelIntake(InIntake intake);
 
+    void addSupervisorOffering(InIntake intake, InSupervisorOffering supervisorOffering);
+
     void addProgramOffering(InIntake intake, InProgramOffering programOffering);
 
     void addStudyModeOffering(InIntake intake, InStudyModeOffering modeOffering);
@@ -105,6 +108,16 @@ public interface PolicyService {
     Integer countIntake(InIntakeSession session);
 
     Integer countIntake(String filter, InIntakeSession session);
+
+    //====================================================================================================
+    // SUPERVISOR OFFERING
+    //====================================================================================================
+
+    InSupervisorOffering findSupervisorOfferingById(Long id);
+
+    InSupervisorOffering findSupervisorOfferingByIntakeAndSupervisorCode(InIntake intake, InSupervisorCode supervisorCode);
+
+    List<InSupervisorOffering> findSupervisorOfferings(InIntake intake);
 
     //====================================================================================================
     // PROGRAM OFFERING

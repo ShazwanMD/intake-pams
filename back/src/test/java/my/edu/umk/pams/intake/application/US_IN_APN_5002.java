@@ -5,19 +5,13 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.application.stage.ThenICanCompleteMyApplication;
-import my.edu.umk.pams.intake.application.stage.ThenICanKnowTheDateline;
-import my.edu.umk.pams.intake.application.stage.ThenIKnowWhoWillSuperviseMyProject;
-import my.edu.umk.pams.intake.application.stage.WhenIChooseMySupervisor;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToBeInformedOfTheClosingDate;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation;
+import my.edu.umk.pams.intake.application.stage.ThenGetIntakeEndDate;
+import my.edu.umk.pams.intake.application.stage.WhenCheckApplicationDeadline;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -34,9 +28,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_5002  extends SpringScenarioTest<GivenIAmApplicant, 
-WhenIWantToBeInformedOfTheClosingDate, 
-ThenICanKnowTheDateline> {
+public class US_IN_APN_5002  extends SpringScenarioTest<GivenIAmApplicant,
+        WhenCheckApplicationDeadline,
+        ThenGetIntakeEndDate> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_5002.class);
 
@@ -48,8 +42,8 @@ ThenICanKnowTheDateline> {
     public void scenario1() {
     	given().I_am_an_applicant_in_current_intake_session()
               .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-        when().I_want_to_be_informed_of_the_closing_date();
-        then().I_can_know_the_dateline();
+        when().i_check_intake_application_deadline();
+        then().i_get_intake_end_date();
     }
 
 }

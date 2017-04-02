@@ -13,10 +13,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.application.stage.ThenICanKnowTheDateline;
-import my.edu.umk.pams.intake.application.stage.ThenICanViewTheAvailableProgram;
-import my.edu.umk.pams.intake.application.stage.WhenIWantListOfCurrentOfferedProgram;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToBeInformedOfTheClosingDate;
+import my.edu.umk.pams.intake.application.stage.ThenIntakeHasProgramAvailable;
+import my.edu.umk.pams.intake.application.stage.WhenIListIntakeProgramsOffered;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
 /**
@@ -29,13 +27,14 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_5001 extends SpringScenarioTest<GivenIAmApplicant, 
-WhenIWantListOfCurrentOfferedProgram, 
-ThenICanViewTheAvailableProgram> {
+public class US_IN_APN_5001 extends SpringScenarioTest<GivenIAmApplicant,
+        WhenIListIntakeProgramsOffered,
+        ThenIntakeHasProgramAvailable> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_5001.class);
-	
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+
+    private static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	private static final String PROGRAM_CODE_MCA = "MCA";
 
     @Test
     @Issue("PAMI-42")
@@ -43,8 +42,8 @@ ThenICanViewTheAvailableProgram> {
     public void scenario1() {
     	given().I_am_an_applicant_in_current_intake_session()
               .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-        when().I_want_list_of_current_offered_program();
-        then().I_can_view_the_available_program();
+        when().i_list_current_intake_offered_programs(PROGRAM_CODE_MCA);
+        then().intake_has_program_as_available(PROGRAM_CODE_MCA);
     }
 
 }

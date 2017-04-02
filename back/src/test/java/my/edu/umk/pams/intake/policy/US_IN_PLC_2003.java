@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.policy.stage.ThenIProgressThenIntakeProcess;
+import my.edu.umk.pams.intake.policy.stage.ThenIProgressIntakeProcess;
 import my.edu.umk.pams.intake.policy.stage.WhenISetIntakeProjection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_PLC_2003 extends SpringScenarioTest<GivenIAmCPSAdministrator,
         WhenISetIntakeProjection,
-        ThenIProgressThenIntakeProcess> {
+        ThenIProgressIntakeProcess> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2003.class);
 

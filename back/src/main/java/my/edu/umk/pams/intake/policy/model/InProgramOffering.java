@@ -5,7 +5,6 @@ import my.edu.umk.pams.intake.common.model.InStudyCenterCode;
 import my.edu.umk.pams.intake.core.InMetaObject;
 
 /**
- * todo(uda): program offering children? competency/matrix?
  */
 public interface InProgramOffering extends InMetaObject {
 

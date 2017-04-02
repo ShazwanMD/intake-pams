@@ -67,22 +67,27 @@ public class InIntakeSessionImpl implements InIntakeSession {
         this.label = label;
     }
 
+    @Override
     public String getDescriptionEn() {
         return descriptionEn;
     }
 
+    @Override
     public void setDescriptionEn(String descriptionEn) {
         this.descriptionEn = descriptionEn;
     }
 
+    @Override
     public String getDescriptionMs() {
         return descriptionMs;
     }
 
+    @Override
     public void setDescriptionMs(String descriptionMs) {
         this.descriptionMs = descriptionMs;
     }
 
+    @Override
     public Boolean isCurrent() {
         return current;
     }
