@@ -20,12 +20,8 @@ public class InNationalityCodeImpl implements InNationalityCode {
     private String code;
 
     @NotNull
-    @Column(name = "DESCRIPTION_MS")
-    private String descriptionMs;
-    
-    @NotNull
-    @Column(name = "DESCRIPTION_EN")
-    private String descriptionEn;
+    @Column(name = "DESCRIPTION")
+    private String description;
 
     @Embedded
     private InMetadata metadata;
@@ -49,25 +45,17 @@ public class InNationalityCodeImpl implements InNationalityCode {
         this.code = code;
     }
 
-    public String getDescriptionEn() {
-		return descriptionEn;
-	}
-
-	public void setDescriptionEn(String descriptionEn) {
-		this.descriptionEn = descriptionEn;
-	}
-
-	@Override
-    public String getDescriptionMs() {
-		return descriptionMs;
-	}
+    @Override
+    public String getDescription() {
+        return description;
+    }
 
     @Override
-	public void setDescriptionMs(String descriptionMs) {
-		this.descriptionMs = descriptionMs;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	@Override
+    @Override
     public InMetadata getMetadata() {
         return metadata;
     }

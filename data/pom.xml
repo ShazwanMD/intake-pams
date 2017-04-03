@@ -281,6 +281,7 @@
                                 <srcFile>src/test/resources/data/IN_STDY_MODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_FCTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_STDY_CNTR_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_DUN_CODE.sql</srcFile>
