@@ -14,6 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenTheApplicationIsWithdrawn;
+import my.edu.umk.pams.intake.application.stage.WhenCandidateWithdrawApplication;
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 /*As a selected applicant, 
@@ -23,7 +24,7 @@ so that I can terminate my application
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_2002 extends SpringScenarioTest<GivenIAmCandidate, WhenWithdrawApplication, ThenTheApplicationIsWithdrawn>{
+public class US_IN_APN_2002 extends SpringScenarioTest<GivenIAmCandidate, WhenCandidateWithdrawApplication, ThenTheApplicationIsWithdrawn>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_2002.class);
 	
@@ -33,7 +34,7 @@ public class US_IN_APN_2002 extends SpringScenarioTest<GivenIAmCandidate, WhenWi
     @Pending
     public void testScenario1() {
     	given().I_am_candidate_in_current_intake_session();
-    	when().Withdraw_Application();
+    	when().candidate_withdraw_Application();
     	then().The_Application_Is_Withdrawn();
     	
     }
