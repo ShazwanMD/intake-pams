@@ -105,10 +105,7 @@ public interface InIntakeApplication extends InMetaObject {
     InBidResponse getBidResponse();
 
     void setBidResponse(InBidResponse response);
-    
-    InSupervisorCode getSupervisorCode();
-    
-    void setSupervisorCode(InSupervisorCode supervisor);
+
 
     InBankCode getBankCode();
 

@@ -139,9 +139,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @JoinColumn(name = "MARITAL_CODE_ID")
     private InMaritalCode maritalCode;
     
-    @ManyToOne(targetEntity = InSupervisorCode.class)
-    @JoinColumn(name = "SUPERVISOR_CODE_ID")
-    private InSupervisorCode supervisorCode;
+
 
     @ManyToOne(targetEntity = InDependencyCodeImpl.class)
     @JoinColumn(name = "DEPENDENCY_CODE_ID")
@@ -645,15 +643,5 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         return InIntakeApplication.class;
     }
 
-	@Override
-	public InSupervisorCode getSupervisorCode() {
-		// TODO Auto-generated method stub
-		return supervisorCode;
-	}
 
-	@Override
-	public void setSupervisorCode(InSupervisorCode supervisor) {
-		// TODO Auto-generated method stub
-		this.supervisorCode = supervisor;
-	}
 }

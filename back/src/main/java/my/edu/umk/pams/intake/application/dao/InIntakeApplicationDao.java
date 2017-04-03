@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.application.dao;
 
 import my.edu.umk.pams.intake.application.model.*;
+import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.core.GenericDao;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -43,6 +44,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InAddress findAddressByType(InAddressType type, InIntakeApplication application);
 
     InApplicant findApplicant(InIntakeApplication application);
+    
+
 
     List<InIntakeApplication> find(InIntake intake);
 

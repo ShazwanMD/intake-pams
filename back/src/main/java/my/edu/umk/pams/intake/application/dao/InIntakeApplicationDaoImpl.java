@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.application.dao;
 
 import my.edu.umk.pams.intake.application.model.*;
+import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.core.InMetadata;
@@ -644,4 +645,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(address);
     }
+
+
 }
