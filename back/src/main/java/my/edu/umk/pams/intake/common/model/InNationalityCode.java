@@ -8,7 +8,7 @@ public interface InNationalityCode extends InMetaObject {
 
     void setCode(String code);
 
-    String getDescription();
+    String getDescriptionMs();
 
-    void setDescription(String description);
+    void setDescriptionMs(String descriptionMs);
 }
