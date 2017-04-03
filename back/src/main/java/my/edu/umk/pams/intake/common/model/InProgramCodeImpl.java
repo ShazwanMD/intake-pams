@@ -26,10 +26,10 @@ public class InProgramCodeImpl implements InProgramCode {
     @NotNull
     @Column(name = "DESCRIPTION_EN", nullable = false)
     private String descriptionEn;
-    
-    @NotNull
-    @Column(name = "FACULTY_CODE", nullable = false)
-    private String facultyCode;
+
+    @OneToOne(targetEntity = InFacultyCodeImpl.class)
+    @JoinColumn(name = "FACULTY_CODE_ID", nullable = false)
+    private InFacultyCode facultyCode;
 
     @Embedded
     private InMetadata metadata;
@@ -72,18 +72,18 @@ public class InProgramCodeImpl implements InProgramCode {
     public void setDescriptionEn(String descriptionEn) {
         this.descriptionEn = descriptionEn;
     }
-    
-    @Override
-    public String getFacultyCode() {
-		return facultyCode;
-	}
 
     @Override
-	public void setFacultyCode(String facultyCode) {
-		this.facultyCode = facultyCode;
-	}
+    public InFacultyCode getFacultyCode() {
+        return facultyCode;
+    }
 
-	@Override
+    @Override
+    public void setFacultyCode(InFacultyCode facultyCode) {
+        this.facultyCode = facultyCode;
+    }
+
+    @Override
     public InMetadata getMetadata() {
         return metadata;
     }
