@@ -49,6 +49,7 @@ public abstract class SelectionStrategySupport implements SelectionStrategy {
                 if (resultString.equals(EvaluationConstants.BOOLEAN_STRING_FALSE)) result = false;
             } catch (EvaluationException e) {
                 // something is wrong expression syntax maybe?
+                LOG.debug("Got an Evaluation exception. Please handle me");
             }
         }
         return result;
