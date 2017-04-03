@@ -9,7 +9,9 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import io.jsonwebtoken.lang.Assert;
+import my.edu.umk.pams.intake.application.model.InBidResponse;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InBidType;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
@@ -57,15 +59,15 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
 
     	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
     	
-        String intakeReferenceNo = "201720181/MASTER";
-        InIntake intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+        //String intakeReferenceNo = "201720181/MASTER";
+        //InIntake intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
 
         Assert.notNull(intake, "intake cannot be null");
         Assert.notNull(intakeSession, "intakeSession cannot be null");
        // Assert.notNull(intake.getProgramLevel(), "programLevel cannot be null");
 
         // generate intake reference no
-      Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intakeSession);
         map.put("programLevel", intake.getProgramLevel());
         String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
@@ -81,15 +83,15 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setBidStatus(InBidStatus.SELECTED);
-
-//        intakeApplication.setRank();
-//        intakeApplication.setMerit();
-//        intakeApplication.setCredentialNo();
-//        intakeApplication.setPaymentSourceNo();
-//        intakeApplication.setAge();
-//        intakeApplication.setSchoolBatch();
-//        intakeApplication.setBidType();
-
+        intakeApplication.setRank(12);
+        //intakeApplication.setMerit();
+        intakeApplication.setCredentialNo("248674");
+        intakeApplication.setPaymentSourceNo("56468");
+        intakeApplication.setAge(26);
+        intakeApplication.setSchoolBatch(001);
+        intakeApplication.setBidType(InBidType.FIRST);
+        intakeApplication.setBidResponse(InBidResponse.NEW);
+        intakeApplication.setFax("0945666");
         applicationService.submitIntakeApplication(intake, intakeApplication);
 
         return self();

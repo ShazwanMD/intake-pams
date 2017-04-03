@@ -55,7 +55,7 @@ public class WhenViewListOfSelectedApplicant extends Stage<WhenViewListOfSelecte
 	    	LOG.debug("application {} :", application.getBidStatus());
         }
 	    Assert.notEmpty(intakeApplication, "intakeApplication is empty");
-	    return self();
+	    return self(); 
 	}
 }
 

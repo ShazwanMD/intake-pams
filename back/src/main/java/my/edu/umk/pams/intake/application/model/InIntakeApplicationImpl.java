@@ -57,7 +57,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "CREDENTIAL_NO")
     private String credentialNo;
 
-    @NotNull
+    
     @Column(name = "OKU_NO")
     private String okuNo;
 
