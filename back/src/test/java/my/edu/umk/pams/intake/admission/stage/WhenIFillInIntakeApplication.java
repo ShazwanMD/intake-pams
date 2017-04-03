@@ -66,6 +66,7 @@ public class WhenIFillInIntakeApplication extends Stage<WhenIFillInIntakeApplica
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setBidStatus(InBidStatus.PROCESSING);
+        intakeApplication.setPaymentSourceNo("PETRONAS");
         applicationService.draftIntakeApplication(intake, intakeApplication);
         //
 
