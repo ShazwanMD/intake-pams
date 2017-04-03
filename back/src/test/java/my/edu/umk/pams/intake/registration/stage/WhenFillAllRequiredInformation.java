@@ -8,6 +8,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
@@ -49,11 +50,17 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
     private InIntakeApplication intakeApplication;
 
     public WhenFillAllRequiredInformation I_fill_in_all_the_required_information_in_my_application() {
+
+        Assert.notNull(intake, "intake cannot be null");
+        Assert.notNull(intakeSession, "intakeSession cannot be null");
+        Assert.notNull(intake.getProgramLevel(), "programLevel cannot be null");
+
         // generate intake reference no
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intakeSession);
         map.put("programLevel", intake.getProgramLevel());
         String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
+        Assert.notNull(referenceNo, "referenceNo cannot be null");
 
         // start an intakeApplication
         intakeApplication = new InIntakeApplicationImpl();
