@@ -32,6 +32,7 @@ public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Test
     @Rollback
     public void scenario1() {
+    	//Test
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_fill_in_intake_applicaton();
         addStage(WhenIVerifySponsorshipStatus.class).and().I_verify_applicant_has_valid_sponsorship_status();
