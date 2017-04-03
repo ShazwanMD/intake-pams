@@ -57,6 +57,9 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
 
     	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
     	
+        String intakeReferenceNo = "201720181/MASTER";
+        InIntake intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+
         Assert.notNull(intake, "intake cannot be null");
         Assert.notNull(intakeSession, "intakeSession cannot be null");
        // Assert.notNull(intake.getProgramLevel(), "programLevel cannot be null");
@@ -70,17 +73,23 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
 
         // start an intakeApplication
         intakeApplication = new InIntakeApplicationImpl();
-        intakeApplication.setIntake(this.intake);
+        intakeApplication.setIntake(intake);
         intakeApplication.setReferenceNo(referenceNo);
         intakeApplication.setName("dummy john bin john doe");
         intakeApplication.setEmail("dummyjohn@gmail.com");
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
-        intakeApplication.setAccountNo("081204654");
-        //intakeApplication.setAge(26);
-        //intakeApplication.setBankCode(InBankCode.);
         intakeApplication.setBidStatus(InBidStatus.SELECTED);
+
+//        intakeApplication.setRank();
+//        intakeApplication.setMerit();
+//        intakeApplication.setCredentialNo();
+//        intakeApplication.setPaymentSourceNo();
+//        intakeApplication.setAge();
+//        intakeApplication.setSchoolBatch();
+//        intakeApplication.setBidType();
+
         applicationService.submitIntakeApplication(intake, intakeApplication);
 
         return self();
