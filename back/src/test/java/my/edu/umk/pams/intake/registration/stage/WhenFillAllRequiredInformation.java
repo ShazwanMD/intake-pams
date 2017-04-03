@@ -92,7 +92,8 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
         intakeApplication.setBidType(InBidType.FIRST);
         intakeApplication.setBidResponse(InBidResponse.NEW);
         intakeApplication.setFax("0945666");
-        applicationService.submitIntakeApplication(intake, intakeApplication);
+
+        applicationService.draftIntakeApplication(intake, intakeApplication);
 
         return self();
     }
