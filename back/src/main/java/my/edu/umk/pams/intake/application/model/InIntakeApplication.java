@@ -105,6 +105,10 @@ public interface InIntakeApplication extends InMetaObject {
     InBidResponse getBidResponse();
 
     void setBidResponse(InBidResponse response);
+    
+    InSupervisorCode getSupervisorCode();
+    
+    void setSupervisorCode(InSupervisorCode supervisor);
 
     InBankCode getBankCode();
 
@@ -185,5 +189,6 @@ public interface InIntakeApplication extends InMetaObject {
     List<InEmployment> getEmployments();
 
     void setEmployments(List<InEmployment> employments);
+    
 }
 
