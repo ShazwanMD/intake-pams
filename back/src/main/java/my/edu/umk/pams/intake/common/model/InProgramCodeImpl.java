@@ -26,6 +26,10 @@ public class InProgramCodeImpl implements InProgramCode {
     @NotNull
     @Column(name = "DESCRIPTION_EN", nullable = false)
     private String descriptionEn;
+    
+    @NotNull
+    @Column(name = "FACULTY_CODE", nullable = false)
+    private String facultyCode;
 
     @Embedded
     private InMetadata metadata;
@@ -68,8 +72,18 @@ public class InProgramCodeImpl implements InProgramCode {
     public void setDescriptionEn(String descriptionEn) {
         this.descriptionEn = descriptionEn;
     }
+    
+    @Override
+    public String getFacultyCode() {
+		return facultyCode;
+	}
 
     @Override
+	public void setFacultyCode(String facultyCode) {
+		this.facultyCode = facultyCode;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }
