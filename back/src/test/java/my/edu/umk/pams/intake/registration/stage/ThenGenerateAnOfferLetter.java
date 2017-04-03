@@ -40,7 +40,6 @@ public class ThenGenerateAnOfferLetter extends Stage<ThenGenerateAnOfferLetter> 
 	@Autowired
 	private AdmissionService admissionService;
 	
-
 	public ThenGenerateAnOfferLetter generate_an_offer_letter() {
 		
 		candidate = admissionService.findCandidateByIdentityNo(applicants.getApplicant().getIdentityNo());
