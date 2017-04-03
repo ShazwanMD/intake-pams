@@ -9,5 +9,6 @@ public enum InBidStatus {
     SELECTED,
     REJECTED,
 	WITHDRAWN,
-	APPEAL;
+	APPEAL,
+	APPROVED; //Add approved by Kimi
 }

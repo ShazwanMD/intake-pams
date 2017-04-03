@@ -20,8 +20,12 @@ public class InStateCodeImpl implements InStateCode {
     private String code;
 
     @NotNull
-    @Column(name = "DESCRIPTION")
-    private String description;
+    @Column(name = "DESCRIPTION_MS")
+    private String descriptionMs;
+
+    @NotNull
+    @Column(name = "DESCRIPTION_EN")
+    private String descriptionEn;
 
     @ManyToOne(targetEntity = InCountryCodeImpl.class)
     @JoinColumn(name = "COUNTRY_CODE_ID")
@@ -49,13 +53,21 @@ public class InStateCodeImpl implements InStateCode {
     }
 
     @Override
-    public String getDescription() {
-        return description;
+    public String getDescriptionMs() {
+        return descriptionMs;
     }
 
     @Override
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionMs(String descriptionMs) {
+        this.descriptionMs = descriptionMs;
+    }
+
+    public String getDescriptionEn() {
+        return descriptionEn;
+    }
+
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 
     @Override

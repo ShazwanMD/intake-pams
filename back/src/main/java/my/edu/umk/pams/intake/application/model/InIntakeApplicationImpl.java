@@ -138,6 +138,8 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @ManyToOne(targetEntity = InMaritalCodeImpl.class)
     @JoinColumn(name = "MARITAL_CODE_ID")
     private InMaritalCode maritalCode;
+    
+
 
     @ManyToOne(targetEntity = InDependencyCodeImpl.class)
     @JoinColumn(name = "DEPENDENCY_CODE_ID")
@@ -640,4 +642,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public Class<?> getInterfaceClass() {
         return InIntakeApplication.class;
     }
+
+
 }

@@ -277,6 +277,7 @@
                                 <srcFile>src/test/resources/data/IN_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_LEVL.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_FCTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_STDY_MODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK.sql</srcFile>
@@ -295,7 +296,6 @@
                                 <srcFile>src/test/resources/data/IN_EDCN_LEVL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_CNTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_DBLY_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_FCTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_CNFG.sql</srcFile>
                             </srcFiles>
                         </configuration>
