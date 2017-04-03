@@ -37,12 +37,10 @@ public class WhenISetupCompetenciesMatrix extends Stage<WhenISetupCompetenciesMa
 
         intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 
-        InProgramOffering programOffering = new InProgramOfferingImpl();
-
+        programOffering = new InProgramOfferingImpl();
         programOffering.setProgramCode(commonService.findProgramCodeByCode("MEM"));
         programOffering.setGeneralCriteria(generalCriteria);
         programOffering.setSpecificCriteria(specificCriteria);
-        //    policyService.
         policyService.addProgramOffering(intake, programOffering);
 
         Assert.notNull(programOffering, "Program Offering is null");
