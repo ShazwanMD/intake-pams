@@ -17,7 +17,6 @@ import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 
@@ -50,6 +49,9 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
     @ExpectedScenarioState
     private InIntakeSession intakeSession;
 
+    @ExpectedScenarioState
+    private InProgramOffering programOffering;
+
     public WhenIEnterApplicationResult I_enter_application_result() {
 
     	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
@@ -64,14 +66,6 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setCredentialNo("credential124");
         intakeApplication.setStudyMode(commonService.findStudyModeByCode("1"));
-
-        // offer a program
-        InProgramOffering programOffering = new InProgramOfferingImpl();
-        programOffering.setProgramCode(commonService.findProgramCodeByCode("MCK"));
-        programOffering.setIntake(intake);
-        policyService.addProgramOffering(intake, programOffering);
-
-        // then select the program
         intakeApplication.setSelection(programOffering);
 
         // then enter the intakeApplication
