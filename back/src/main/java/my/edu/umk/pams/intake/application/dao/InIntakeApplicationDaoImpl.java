@@ -647,4 +647,5 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
 
+    
 }
