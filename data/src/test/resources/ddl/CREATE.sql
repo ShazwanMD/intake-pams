@@ -1149,8 +1149,7 @@ create table IN_STPM_RSLT (
 create table IN_STTE_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
-  DESCRIPTION_MS varchar(255),
-  DESCRIPTION_EN varchar(255),
+  DESCRIPTION varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
