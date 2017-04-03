@@ -24,4 +24,8 @@ public interface InIntakeSession extends InMetaObject {
     Boolean isCurrent();
 
     void setCurrent(Boolean current);
+
+	int getYear();
+
+	void setYear(int year);
 }

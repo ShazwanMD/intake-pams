@@ -22,6 +22,10 @@ public class InIntakeSessionImpl implements InIntakeSession {
     @NotNull
     @Column(name = "LABEL", nullable = false)
     private String label;
+    
+    @NotNull
+    @Column(name = "YEAR", nullable = false)
+    private int year;
 
     @NotNull
     @Column(name = "DESCRIPTION_EN", nullable = false)
@@ -111,4 +115,14 @@ public class InIntakeSessionImpl implements InIntakeSession {
     public Class<?> getInterfaceClass() {
         return InIntakeSession.class;
     }
+
+	@Override
+	public int getYear() {
+		return year;
+	}
+
+	@Override
+	public void setYear(int year) {
+		this.year = year;
+	}
 }
