@@ -16,6 +16,7 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,15 +34,18 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
 
     @Autowired
     private ApplicationService applicationService;
+    
+    @Autowired
+    private PolicyService policyService;
 
     @Autowired
     private SystemService systemService;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private InIntake intake;
 
-    @ExpectedScenarioState
-    private InIntakeSession intakeSession;
+    @ProvidedScenarioState
+    InIntakeSession intakeSession;
 
     @ExpectedScenarioState
     private InApplicant applicant;
@@ -51,12 +55,14 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
 
     public WhenFillAllRequiredInformation I_fill_in_all_the_required_information_in_my_application() {
 
+    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	
         Assert.notNull(intake, "intake cannot be null");
         Assert.notNull(intakeSession, "intakeSession cannot be null");
-        Assert.notNull(intake.getProgramLevel(), "programLevel cannot be null");
+       // Assert.notNull(intake.getProgramLevel(), "programLevel cannot be null");
 
         // generate intake reference no
-        Map<String, Object> map = new HashMap<String, Object>();
+      Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intakeSession);
         map.put("programLevel", intake.getProgramLevel());
         String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
@@ -71,6 +77,9 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
+        intakeApplication.setAccountNo("081204654");
+        //intakeApplication.setAge(26);
+        //intakeApplication.setBankCode(InBankCode.);
         intakeApplication.setBidStatus(InBidStatus.SELECTED);
         applicationService.submitIntakeApplication(intake, intakeApplication);
 
