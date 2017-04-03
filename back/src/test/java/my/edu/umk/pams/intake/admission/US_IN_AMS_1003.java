@@ -3,7 +3,9 @@ package my.edu.umk.pams.intake.admission;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.intake.admission.stage.ThenICanApprovedTheirApplication;
+import my.edu.umk.pams.intake.admission.stage.WhenIFillInIntakeApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableApplicants;
+import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyWorkingExperience;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,21 +21,22 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author PAMS
  */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_AMS_1003 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, 
-        						WhenIWantToSelectSuitableApplicants, 
+        WhenIFillInIntakeApplication, 
         							ThenICanApprovedTheirApplication> {
 
     @Test
     @Rollback
     public void scenario1() {
     	//TODO
-    	//Test
         given().I_am_a_CPS_administrator_in_current_intake_session();
-        when().I_want_to_select_suitable_applicants();
+        when().I_fill_in_intake_applicaton();
+        addStage(WhenIWantToSelectSuitableApplicants.class).and().I_want_to_select_suitable_applicants();
         then().I_can_approved_their_application();
     }
 }
