@@ -83,7 +83,7 @@ public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
 //        candidate.setStudyMode(application.getStudyMode());
 //        candidate.setStatus(InCandidateStatus.SELECTED);
 //        candidate.setApplicant(application.getApplicant());
-//        candidate.setOffering(application.getSelection());
+//        candidate.setOffering(application.getProgramSelection());
 //        candidateDao.save(candidate, securityService.getCurrentUser());
 
 		return self();

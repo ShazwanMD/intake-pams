@@ -151,8 +151,13 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     // note: can draft without choosing
     @ManyToOne(targetEntity = InProgramOfferingImpl.class)
-    @JoinColumn(name = "SELECTION_ID", nullable = true)
-    private InProgramOffering selection;
+    @JoinColumn(name = "PROGRAM_SELECTION_ID", nullable = true)
+    private InProgramOffering programSelection;
+
+    // note: can draft without choosing
+    @ManyToOne(targetEntity = InSupervisorOfferingImpl.class)
+    @JoinColumn(name = "SUPERVISOR_SELECTION_ID", nullable = true)
+    private InSupervisorOffering supervisorSelection;
 
     @ManyToOne(targetEntity = InIntakeImpl.class)
     @JoinColumn(name = "INTAKE_ID")
@@ -189,7 +194,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Embedded
     private InMetadata metadata;
 
-	
     @Override
     public Long getId() {
         return id;
@@ -379,7 +383,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.bidResponse = bidResponse;
     }
 
-
     @Override
     public InBankCode getBankCode() {
         return bankCode;
@@ -450,10 +453,12 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.raceCode = raceCode;
     }
 
+    @Override
     public InEthnicityCode getEthnicityCode() {
         return ethnicityCode;
     }
 
+    @Override
     public void setEthnicityCode(InEthnicityCode ethnicityCode) {
         this.ethnicityCode = ethnicityCode;
     }
@@ -519,13 +524,21 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     }
 
     @Override
-    public InProgramOffering getSelection() {
-        return selection;
+    public InProgramOffering getProgramSelection() {
+        return programSelection;
     }
 
     @Override
-    public void setSelection(InProgramOffering selection) {
-        this.selection = selection;
+    public void setProgramSelection(InProgramOffering programSelection) {
+        this.programSelection = programSelection;
+    }
+
+    public InSupervisorOffering getSupervisorSelection() {
+        return supervisorSelection;
+    }
+
+    public void setSupervisorSelection(InSupervisorOffering supervisorSelection) {
+        this.supervisorSelection = supervisorSelection;
     }
 
     @Override
