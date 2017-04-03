@@ -16,7 +16,7 @@ public interface  InProgramCode extends InMetaObject {
 
 	void setDescriptionEn(String descriptionEn);
 
-	String getFacultyCode();
+	InFacultyCode getFacultyCode();
 
-	void setFacultyCode(String facultyCode);
+	void setFacultyCode(InFacultyCode facultyCode);
 }
