@@ -46,6 +46,7 @@ public class WhenWithdrawApplication extends Stage<WhenWithdrawApplication> {
 		 
 		applicationService.withdrawIntakeApplication(intake, intakeApplication);
 		Assert.notNull(InBidStatus.WITHDRAWN, "withdraw application is null");
+		LOG.debug("intake application status: {} ", intakeApplication.getBidStatus());
 	    return self();
 		  
 	 }
