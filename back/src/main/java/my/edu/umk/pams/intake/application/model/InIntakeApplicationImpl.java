@@ -188,6 +188,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @OneToMany(targetEntity = InGuarantorImpl.class, mappedBy = "application")
     private List<InGuarantor> guarantors;
 
+    @OneToMany(targetEntity = InFranchiseImpl.class, mappedBy = "application")
+    private List<InFranchise> franchises;
+    
     @OneToMany(targetEntity = InAttachmentImpl.class, mappedBy = "application")
     private List<InAttachment> attachments;
     
@@ -655,6 +658,17 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public Class<?> getInterfaceClass() {
         return InIntakeApplication.class;
     }
+
+	@Override
+	public void setFranchises(List<InFranchise> franchises) {
+		this.franchises = franchises;
+		
+	}
+
+	@Override
+	public List<InFranchise> getFranchises() {
+		return franchises;
+	}
 
 
 }
