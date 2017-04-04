@@ -4,6 +4,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -50,12 +52,16 @@ public class WhenIAddPrograms extends Stage<WhenIAddPrograms> {
     public WhenIAddPrograms i_add_program_codes(List<Data> codesData) {
         this.codesData = codesData;
 
+
         for (Data data : codesData) {
             InProgramCode code = new InProgramCodeImpl();
             code.setCode(data.name());
             code.setDescriptionEn(data.descriptionEn);
             code.setDescriptionMs(data.descriptionMs);
+            code.setFacultyCode(commonService.findFacultyCodeByCode("A09"));
             commonService.saveProgramCode(code);
+            
+            
         }
 
         return self();
