@@ -25,7 +25,7 @@ public class StandardSelectionStrategy extends SelectionStrategySupport {
         List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByRank(intake);
         for (InIntakeApplication application : applications) {
             // evaluate general criteria
-            InProgramOffering offering = application.getSelection();
+            InProgramOffering offering = application.getProgramSelection();
             Assert.notNull(offering, "offering cannot be null");
 
             boolean evalGeneral = evaluate(application, offering.getGeneralCriteria());

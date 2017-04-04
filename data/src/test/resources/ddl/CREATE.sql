@@ -189,7 +189,8 @@ create table IN_CNDT (
   STATUS int4 not null,
   STUDY_MODE_ID bytea not null,
   APPLICANT_ID int8,
-  OFFERING_ID int8,
+  PROGRAM_SELECTION_ID int8,
+  SUPERVISOR_SELECTION_ID int8,
   primary key (ID)
 );
 
@@ -476,7 +477,6 @@ create table IN_FCTY_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
   DESCRIPTION varchar(255) not null,
-  ID_PREFIX varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -484,6 +484,7 @@ create table IN_FCTY_CODE (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  PREFIX varchar(255),
   primary key (ID)
 );
 
@@ -673,12 +674,13 @@ create table IN_INTK_APLN (
   INTAKE_ID int8,
   MARITAL_CODE_ID int8,
   NATIONALITY_CODE_ID int8,
+  PROGRAM_SELECTION_ID int8,
   RACE_CODE_ID int8,
   RELIGION_CODE_ID int8,
   RESIDENCY_CODE_ID int8,
   SCHOOL_CODE_ID int8,
-  SELECTION_ID int8,
   STUDY_MODE_ID int8,
+  SUPERVISOR_SELECTION_ID int8,
   primary key (ID)
 );
 
@@ -804,8 +806,8 @@ create table IN_MUET_RSLT (
 create table IN_NTLY_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION_MS varchar(255),
   DESCRIPTION_EN varchar(255),
+  DESCRIPTION_MS varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1149,7 +1151,8 @@ create table IN_STPM_RSLT (
 create table IN_STTE_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
-  DESCRIPTION varchar(255),
+  DESCRIPTION_EN varchar(255),
+  DESCRIPTION_MS varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1291,9 +1294,14 @@ foreign key (APPLICANT_ID)
 references IN_APCN;
 
 alter table IN_CNDT
-  add constraint FKA01B4115E4CD51E5
-foreign key (OFFERING_ID)
-references IN_STTE_CODE;
+  add constraint FKA01B411554B90F8D
+foreign key (PROGRAM_SELECTION_ID)
+references IN_PRGM_OFRG;
+
+alter table IN_CNDT
+  add constraint FKA01B4115BAF48B99
+foreign key (SUPERVISOR_SELECTION_ID)
+references IN_SPVR_OFRG;
 
 alter table IN_CNTC
   add constraint FKA01B42F437A6AAA6
@@ -1496,6 +1504,11 @@ foreign key (NATIONALITY_CODE_ID)
 references IN_NTLY_CODE;
 
 alter table IN_INTK_APLN
+  add constraint FK5974F5A54B90F8D
+foreign key (PROGRAM_SELECTION_ID)
+references IN_PRGM_OFRG;
+
+alter table IN_INTK_APLN
   add constraint FK5974F5AEE5BDEA
 foreign key (RACE_CODE_ID)
 references IN_RACE_CODE;
@@ -1516,14 +1529,14 @@ foreign key (SCHOOL_CODE_ID)
 references IN_SCHL_CODE;
 
 alter table IN_INTK_APLN
-  add constraint FK5974F5A8B4C0DB2
-foreign key (SELECTION_ID)
-references IN_PRGM_OFRG;
-
-alter table IN_INTK_APLN
   add constraint FK5974F5AAF5A14A0
 foreign key (STUDY_MODE_ID)
 references IN_STDY_MODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5ABAF48B99
+foreign key (SUPERVISOR_SELECTION_ID)
+references IN_SPVR_OFRG;
 
 alter table IN_INTK_SESN
   add constraint uc_IN_INTK_SESN_1 unique (CODE);

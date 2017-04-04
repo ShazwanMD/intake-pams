@@ -9,16 +9,23 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.security.service.SecurityService;
 
+@JGivenStage
 public class GivenIAmCandidate extends Stage<GivenIAmCandidate>{
 	private static final Logger LOG = LoggerFactory.getLogger(GivenIAmCandidate.class);
 
     @Autowired
     private AuthenticationManager authenticationManager;
+    
+    @Autowired
+    private SecurityService securityService;
     
     @Autowired
     private PolicyService policyService;
@@ -53,6 +60,9 @@ public class GivenIAmCandidate extends Stage<GivenIAmCandidate>{
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("candidate1", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
+        
+        InUser currentUser = securityService.getCurrentUser();
+        candidate = (InCandidate) currentUser.getActor();
     }
 
 }

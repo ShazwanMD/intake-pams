@@ -20,12 +20,13 @@ public class InFacultyCodeImpl implements InFacultyCode {
     private String code;
 
     @NotNull
+    @Column(name = "PREFIX")
+    private String prefix;
+
+    @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
     
-    @Column(name = "ID_PREFIX")
-    private String idPrefix;
-
     @Embedded
     private InMetadata metadata;
 
@@ -49,6 +50,16 @@ public class InFacultyCodeImpl implements InFacultyCode {
     }
 
     @Override
+    public String getPrefix() {
+        return prefix;
+    }
+
+    @Override
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    @Override
     public String getDescription() {
         return description;
     }
@@ -58,10 +69,12 @@ public class InFacultyCodeImpl implements InFacultyCode {
         this.description = description;
     }
 
+    @Override
     public InMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }
@@ -70,14 +83,4 @@ public class InFacultyCodeImpl implements InFacultyCode {
     public Class<?> getInterfaceClass() {
         return InFacultyCode.class;
     }
-
-    @Override
-	public String getIdPrefix() {
-		return idPrefix;
-	}
-
-    @Override
-	public void setIdPrefix(String idPrefix) {
-		this.idPrefix = idPrefix;
-	}
 }
