@@ -104,7 +104,13 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         return (InAddress) currentSession.get(InAddressImpl.class, id);
     }
-
+    
+    @Override
+    public InFranchise findFranchiseById(Long id){
+    	 Session currentSession = sessionFactory.getCurrentSession();
+    	 return (InFranchise) currentSession.get(InFranchiseImpl.class,id);
+    }
+    
     @Override
     public InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -126,7 +132,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (InGuardian) query.uniqueResult();
     }
-
+    
     @Override
     public InContact findContactByType(InContactType type, InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -307,7 +313,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (List<InGuardian>) query.list();
     }
-
+    
+  @Override
+  public List<InFranchise> findFranchises(InIntakeApplication application) {
+	  Session currentSession = sessionFactory.getCurrentSession();
+	  Query query = currentSession.createQuery("select p from InFranchise p where " +
+			  	"p.application = :application");
+	  query.setEntity("application", application);
+	  return (List<InFranchise>) query.list();
+  }
     @Override
     public List<InContact> findContacts(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -644,8 +658,5 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(address);
-    }
-
-
-    
+    }   
 }

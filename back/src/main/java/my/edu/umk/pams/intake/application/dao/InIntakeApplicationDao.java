@@ -30,6 +30,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InGuarantor findGuarantorById(Long id);
 
     InGuardian findGuardianById(Long id);
+    
+    InFranchise findFranchiseById(Long id);
 
     InContact findContactById(Long id);
 
@@ -77,6 +79,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InGuardian> findGuardians(InIntakeApplication application);
 
+    List<InFranchise> findFranchises(InIntakeApplication application);
+    
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
