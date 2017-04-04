@@ -130,10 +130,13 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void offerCandidate(InCandidate candidate) {
         // start offering process
     	//{#facultyCode.getIdPrefix()}{#c}{#j}{#studyMode.getPrefix()}
+		//programLevel.getPrefix()
         // generate matric no
         Map<String, Object> map = new HashMap<String, Object>();
-        //map.put("facultyCode", );
+         map.put("facultyCode", candidate.getOffering().getProgramCode().getFacultyCode().getIdPrefix());
          map.put("studyMode", candidate.getStudyMode());
+         map.put("intakeSession", candidate.getOffering().getIntake().getSession().getYear());
+         map.put("programLevel", candidate);
         // map.put("year", xxxx); //
         // map.put("facultyCode", xxx);
         String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
