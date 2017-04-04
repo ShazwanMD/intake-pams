@@ -4,10 +4,7 @@ import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
-import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
-import my.edu.umk.pams.intake.policy.model.InSupervisorOfferingImpl;
+import my.edu.umk.pams.intake.policy.model.*;
 
 import javax.persistence.*;
 
@@ -54,6 +51,10 @@ public class InCandidateImpl implements InCandidate {
     @OneToOne(targetEntity = InApplicantImpl.class)
     @JoinColumn(name = "APPLICANT_ID")
     private InApplicant applicant;
+
+    @OneToOne(targetEntity = InIntakeImpl.class)
+    @JoinColumn(name = "INTAKE_ID")
+    private InIntake intake;
 
     @Embedded
     private InMetadata metadata;
@@ -155,6 +156,16 @@ public class InCandidateImpl implements InCandidate {
     @Override
     public void setApplicant(InApplicant applicant) {
         this.applicant = applicant;
+    }
+
+    @Override
+    public InIntake getIntake() {
+        return intake;
+    }
+
+    @Override
+    public void setIntake(InIntake intake) {
+        this.intake = intake;
     }
 
     @Override

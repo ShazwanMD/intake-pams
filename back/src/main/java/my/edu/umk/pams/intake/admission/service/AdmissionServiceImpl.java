@@ -29,93 +29,88 @@ import java.util.Map;
 @Service("admissionService")
 public class AdmissionServiceImpl implements AdmissionService {
 
-	@Autowired
-	private InCandidateDao candidateDao;
+    @Autowired
+    private InCandidateDao candidateDao;
 
-	@Autowired
-	private SelectionStrategyHelper selectionStrategyHelper;
+    @Autowired
+    private SelectionStrategyHelper selectionStrategyHelper;
 
-	@Autowired
-	private ApplicationService applicationService;
+    @Autowired
+    private ApplicationService applicationService;
 
-	@Autowired
-	private CommonService commonService;
+    @Autowired
+    private CommonService commonService;
 
-	@Autowired
-	private SessionFactory sessionFactory;
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	@Autowired
-	private SecurityService securityService;
+    @Autowired
+    private SecurityService securityService;
 
-	@Autowired
-	private SystemService systemService;
+    @Autowired
+    private SystemService systemService;
 
-	// ====================================================================================================
-	// INTAKE, INTAKE APPLICATION
-	// ====================================================================================================
+    // ====================================================================================================
+    // INTAKE, INTAKE APPLICATION
+    // ====================================================================================================
 
-	@Override
-	public void processIntake(InIntake intake) {
-		// preselect
-		selectionStrategyHelper.select(intake);
+    @Override
+    public void processIntake(InIntake intake) {
+        // preselect
+        selectionStrategyHelper.select(intake);
 
-		// pickup all preselection application
-		// todo(uda) : InBidStatus.SELECTED
-		List<InIntakeApplication> applications = applicationService
-				.findIntakeApplications(intake);
-		for (InIntakeApplication application : applications) {
-			preselectIntakeApplication(application);
-		}
-	}
+        // pickup all preselection application
+        // todo(uda) : InBidStatus.SELECTED
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
+        for (InIntakeApplication application : applications) {
+            preselectIntakeApplication(application);
+        }
+    }
 
-	@Override
-	public void preselectIntakeApplication(InIntakeApplication application) {
-		// create candidate
-		InCandidate candidate = new InCandidateImpl();
-		candidate.setName(application.getName());
-		candidate.setIdentityNo(application.getCredentialNo());
-		candidate.setEmail(application.getEmail());
-		candidate.setStudyMode(application.getStudyMode());
-		candidate.setStatus(InCandidateStatus.SELECTED);
-		candidate.setApplicant(application.getApplicant());
-		//candidate.setOffering(application.getSelection());
-		candidateDao.save(candidate, securityService.getCurrentUser());
-	}
+    @Override
+    public void preselectIntakeApplication(InIntakeApplication application) {
+        // create candidate
+        InCandidate candidate = new InCandidateImpl();
+        candidate.setName(application.getName());
+        candidate.setIdentityNo(application.getCredentialNo());
+        candidate.setEmail(application.getEmail());
+        candidate.setStudyMode(application.getStudyMode());
+        candidate.setStatus(InCandidateStatus.SELECTED);
+        candidate.setApplicant(application.getApplicant());
+        candidate.setProgramSelection(application.getProgramSelection());
+        candidate.setSupervisorSelection(application.getSupervisorSelection());
+        candidateDao.save(candidate, securityService.getCurrentUser());
+    }
 
-	@Override
-	public void rejectIntakeApplication(InIntakeApplication application) {
-		// don't create candidate
-	}
+    @Override
+    public void rejectIntakeApplication(InIntakeApplication application) {
+        // don't create candidate
+    }
 
-	// ====================================================================================================
-	// CANDIDATE
-	// ====================================================================================================
+    // ====================================================================================================
+    // CANDIDATE
+    // ====================================================================================================
 
-	@Override
-	public InCandidate findCandidateByIdentityNo(String identityNo) {
-		return candidateDao.findByIdentityNo(identityNo);
-	}
+    @Override
+    public InCandidate findCandidateByIdentityNo(String identityNo) {
+        return candidateDao.findByIdentityNo(identityNo);
+    }
 
-	@Override
-	public List<InCandidate> findCandidates(InIntake intake) {
-		// todo(uda):
-		return null;
-	}
+    @Override
+    public List<InCandidate> findCandidates(InIntake intake) {
+        return candidateDao.find(intake);
+    }
 
-	@Override
-	public List<InCandidate> findCandidates(InIntake intake, Integer offset,
-			Integer limit) {
-		// todo(uda):
-		return null;
-	}
+    @Override
+    public List<InCandidate> findCandidates(InIntake intake, Integer offset, Integer limit) {
+        return candidateDao.find(intake, offset, limit);
+    }
 
-	@Override
-	public void preapproveCandidate(InCandidate candidate) {
-		// save candidate
-		candidate.setStudyMode(commonService.findStudyModeByCode("F")); // FULL
-																		// TIME
-		candidate.setStatus(InCandidateStatus.PREAPPROVED);
-		candidateDao.save(candidate, securityService.getCurrentUser());
+    @Override
+    public void preapproveCandidate(InCandidate candidate) {
+        candidate.setStudyMode(commonService.findStudyModeByCode("F")); // FULL
+        candidate.setStatus(InCandidateStatus.PREAPPROVED);
+        candidateDao.save(candidate, securityService.getCurrentUser());
 
         // notify candidate
         InEmailQueue emailQueue = new InEmailQueueImpl();
@@ -126,16 +121,16 @@ public class AdmissionServiceImpl implements AdmissionService {
         systemService.saveEmailQueue(emailQueue);
     }
 
-	@Override
+    @Override
     public void offerCandidate(InCandidate candidate) {
         // start offering process
-    	//{#facultyCode.getIdPrefix()}{#c}{#j}{#studyMode.getPrefix()}
+        //{#facultyCode.getPrefix()}{#c}{#j}{#studyMode.getPrefix()}
         // generate matric no
         Map<String, Object> map = new HashMap<String, Object>();
-        //map.put("facultyCode", );
-         map.put("studyMode", candidate.getStudyMode());
-        // map.put("year", xxxx); //
-        // map.put("facultyCode", xxx);
+        map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode());
+        map.put("studyMode", candidate.getStudyMode());
+        map.put("year", candidate.getIntake().getSession().getYear());
+
         String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
         candidate.setMatricNo(generatedMatricNo);
         candidate.setStudyMode(candidate.getStudyMode());
