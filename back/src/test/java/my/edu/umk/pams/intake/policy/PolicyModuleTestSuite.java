@@ -16,10 +16,10 @@ import org.junit.runners.Suite;
         US_IN_PLC_2002.class,
         US_IN_PLC_2003.class,
         US_IN_PLC_2004.class,
-        US_IN_PLC_3005.class, //pending
+        US_IN_PLC_2005.class, //pending
         US_IN_PLC_3000.class,
         US_IN_PLC_3001.class,
-        US_IN_PLC_3002.class, //pending
+        US_IN_PLC_3002.class, 
         US_IN_PLC_3003.class,
         US_IN_PLC_3004.class,
         US_IN_PLC_3005.class, //pending
