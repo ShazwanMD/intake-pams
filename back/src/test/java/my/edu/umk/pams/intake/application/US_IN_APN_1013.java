@@ -8,15 +8,12 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
-import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.application.stage.ThenTheApplicationIsWithdrawn;
+import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
+import my.edu.umk.pams.intake.application.stage.ThenIFillInInformationAgain;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
 /*As a applicant, 
@@ -28,7 +25,7 @@ so that I can cancel or start my application process again.
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_APN_1013 extends SpringScenarioTest <GivenIAmApplicant, 
-WhenIWantToFillAllRequiredInformation, ThenTheApplicationIsWithdrawn>{
+WhenIWantToFillAllRequiredInformation, ThenIFillInInformationAgain>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1013.class);
 	
@@ -43,7 +40,7 @@ WhenIWantToFillAllRequiredInformation, ThenTheApplicationIsWithdrawn>{
          	.and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
 		 when().I_fill_in_all_the_required_information_in_my_application();	    	
 		 addStage(WhenWithdrawApplication.class).and().Withdraw_Application();		 
-	     then().The_Application_Is_Withdrawn();
+	     then().I_can_fill_in_information_in_my_application_again();
 		 		 
 	 }
 }
