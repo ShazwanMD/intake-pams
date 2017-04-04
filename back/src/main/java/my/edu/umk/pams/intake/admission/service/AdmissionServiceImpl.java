@@ -78,8 +78,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidate.setStudyMode(application.getStudyMode());
 		candidate.setStatus(InCandidateStatus.SELECTED);
 		candidate.setApplicant(application.getApplicant());
-		candidate.setProgramSelection(application.getProgramSelection());
-		candidate.setSupervisorSelection(application.getSupervisorSelection());
+		//candidate.setOffering(application.getSelection());
 		candidateDao.save(candidate, securityService.getCurrentUser());
 	}
 
@@ -130,7 +129,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 	@Override
     public void offerCandidate(InCandidate candidate) {
         // start offering process
-    	//{#facultyCode.getPrefix()}{#c}{#j}{#studyMode.getPrefix()}
+    	//{#facultyCode.getIdPrefix()}{#c}{#j}{#studyMode.getPrefix()}
         // generate matric no
         Map<String, Object> map = new HashMap<String, Object>();
         //map.put("facultyCode", );
