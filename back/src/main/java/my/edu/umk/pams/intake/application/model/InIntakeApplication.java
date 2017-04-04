@@ -5,7 +5,7 @@ import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -106,7 +106,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setBidResponse(InBidResponse response);
 
-
     InBankCode getBankCode();
 
     void setBankCode(InBankCode bankCode);
@@ -143,9 +142,13 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setGenderCode(InGenderCode genderCode);
 
-    InProgramOffering getSelection();
+    InProgramOffering getProgramSelection();
 
-    void setSelection(InProgramOffering selection);
+    void setProgramSelection(InProgramOffering programSelection);
+
+    InSupervisorOffering getSupervisorSelection();
+
+    void setSupervisorSelection(InSupervisorOffering SupervisorSelection);
 
     InIntake getIntake();
 

@@ -52,7 +52,7 @@ public class WhenViewListOfSelectedApplicant extends Stage<WhenViewListOfSelecte
 	   	List<InIntakeApplication> intakeApplication  =  applicationService.findIntakeApplications(intake,InBidStatus.SELECTED);
 	   	
 	    for (InIntakeApplication application : intakeApplication) {
-	    	LOG.debug("application {} :", application.getBidStatus());
+	    	LOG.debug("application : {} ", application.getBidStatus());
         }
 	    Assert.notEmpty(intakeApplication, "intakeApplication is empty");
 	    return self(); 

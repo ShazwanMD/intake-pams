@@ -1,11 +1,13 @@
 package my.edu.umk.pams.intake.admission.model;
 
-import my.edu.umk.pams.intake.common.model.InStateCodeImpl;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOfferingImpl;
 
 import javax.persistence.*;
 
@@ -41,16 +43,18 @@ public class InCandidateImpl implements InCandidate {
     @Column(name = "STATUS", nullable = false)
     private InCandidateStatus status = InCandidateStatus.SELECTED;
 
-    @OneToOne(targetEntity = InStateCodeImpl.class)
-    @JoinColumn(name = "OFFERING_ID", nullable = true)
-    private InProgramOffering offering;
+    @OneToOne(targetEntity = InProgramOfferingImpl.class)
+    @JoinColumn(name = "PROGRAM_SELECTION_ID", nullable = true)
+    private InProgramOffering programSelection;
+
+    @OneToOne(targetEntity = InSupervisorOfferingImpl.class)
+    @JoinColumn(name = "SUPERVISOR_SELECTION_ID", nullable = true)
+    private InSupervisorOffering supervisorSelection;
 
     @OneToOne(targetEntity = InApplicantImpl.class)
     @JoinColumn(name = "APPLICANT_ID")
     private InApplicant applicant;
 
-    
-    
     @Embedded
     private InMetadata metadata;
 
@@ -124,13 +128,23 @@ public class InCandidateImpl implements InCandidate {
     }
 
     @Override
-    public InProgramOffering getOffering() {
-        return offering;
+    public InProgramOffering getProgramSelection() {
+        return programSelection;
     }
 
     @Override
-    public void setOffering(InProgramOffering offering) {
-        this.offering = offering;
+    public void setProgramSelection(InProgramOffering programSelection) {
+        this.programSelection = programSelection;
+    }
+
+    @Override
+    public InSupervisorOffering getSupervisorSelection() {
+        return supervisorSelection;
+    }
+
+    @Override
+    public void setSupervisorSelection(InSupervisorOffering supervisorSelection) {
+        this.supervisorSelection = supervisorSelection;
     }
 
     @Override
@@ -148,6 +162,7 @@ public class InCandidateImpl implements InCandidate {
         return metadata;
     }
 
+    @Override
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }

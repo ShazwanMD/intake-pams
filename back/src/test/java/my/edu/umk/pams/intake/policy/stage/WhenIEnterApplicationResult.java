@@ -12,7 +12,7 @@ import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +52,9 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
     @ExpectedScenarioState
     private InProgramOffering programOffering;
 
+    @ExpectedScenarioState
+    private InSupervisorOffering supervisorOffering;
+
     public WhenIEnterApplicationResult I_enter_application_result() {
 
     	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
@@ -66,7 +69,8 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setCredentialNo("credential124");
         intakeApplication.setStudyMode(commonService.findStudyModeByCode("1"));
-        intakeApplication.setSelection(programOffering);
+        intakeApplication.setProgramSelection(programOffering);
+        intakeApplication.setSupervisorSelection(supervisorOffering);
 
         // then enter the intakeApplication
         applicationService.draftIntakeApplication(intake, intakeApplication);
@@ -104,10 +108,6 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         item.setSubjectCode(subject);
         
         applicationService.addResultItem(intakeApplication, result, item);
-          //    Assert.notEmpty(programOfferings, "program offering cannot be empty");
-
-//        helper.select(intake);
-
         return self();
     }
 }
