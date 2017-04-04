@@ -33,7 +33,11 @@ public class WhenISubmitApplication extends Stage<WhenISubmitApplication> {
 
     public WhenISubmitApplication I_submit_application() {
         applicationService.submitIntakeApplication(intake, intakeApplication);
-        Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
+        Assert.notNull(intakeApplication, "application is null");
+
+        InBidStatus bidStatus = intakeApplication.getBidStatus();
+        Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus), "application is not submitted");
+
         return self();
     }
 
