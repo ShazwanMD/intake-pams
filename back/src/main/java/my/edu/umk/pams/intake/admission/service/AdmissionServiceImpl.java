@@ -78,7 +78,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidate.setStudyMode(application.getStudyMode());
 		candidate.setStatus(InCandidateStatus.SELECTED);
 		candidate.setApplicant(application.getApplicant());
-		candidate.setOffering(application.getSelection());
+		//candidate.setOffering(application.getSelection());
 		candidateDao.save(candidate, securityService.getCurrentUser());
 	}
 
