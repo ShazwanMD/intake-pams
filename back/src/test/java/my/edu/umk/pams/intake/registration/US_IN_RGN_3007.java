@@ -17,17 +17,18 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.WhenIFillApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
+import my.edu.umk.pams.intake.registration.stage.ThenICanCompleteStudentRegistration;
 import my.edu.umk.pams.intake.registration.stage.ThenICanGradeApplicantResult;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedToProcessTheirApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenICalculateMeritForIntakeApplications;
 import my.edu.umk.pams.intake.registration.stage.WhenISelectTopApplicants;
-import my.edu.umk.pams.intake.registration.stage.WhenIWantToViewAllTheTopApplicantApplicationsForAnIntake;
+import my.edu.umk.pams.intake.registration.stage.WhenIWantToScanTheApplicantOfferLetterBarcode;
 
 /**
  * @author PAMS
  *         As an academic Administrator,
- *         I want to view all the top applicant applications for an intake,
- *         so that I can proceed to process their application
+ *         I want to scan the applicant's offer letter barcode for matriculation,
+ *         so that I can complete the student's registration
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,8 +36,9 @@ import my.edu.umk.pams.intake.registration.stage.WhenIWantToViewAllTheTopApplica
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
 public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator, 
-															WhenIFillApplication, 
-																ThenICanProceedToProcessTheirApplication> {
+															//WhenIFillApplication, 
+															WhenIWantToScanTheApplicantOfferLetterBarcode,
+																ThenICanCompleteStudentRegistration> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3007.class);
 	
@@ -51,10 +53,10 @@ public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(intakeReferenceNo);
-        when().I_fill_in_application();
-        addStage(WhenIWantToViewAllTheTopApplicantApplicationsForAnIntake.class)
-        .and().I_want_to_view_all_the_top_applicant_applications_for_an_intake();
-        then().I_can_proceed_to_process_their_application();
+        //when().I_fill_in_application();
+        //addStage(WhenIWantToScanTheApplicantOfferLetterBarcode.class)
+        when().I_want_to_scan_the_applicant_offer_letter_barcode();
+        then().I_can_complete_student_registration();
     }
 }
 
