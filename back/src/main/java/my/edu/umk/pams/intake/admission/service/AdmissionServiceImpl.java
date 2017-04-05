@@ -129,6 +129,8 @@ public class AdmissionServiceImpl implements AdmissionService {
         Map<String, Object> map = new HashMap<String, Object>();
 
         //map.put("facultyCode", );
+        //{#facultyCode.getPrefix()}{#intakeSession.getYear().toString().substring(2,4)}{#programLevel.getPrefix()}{#j}{#studyMode.getPrefix()}
+        //C17D0001F
          map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode().getPrefix());
          map.put("studyMode", candidate.getStudyMode().getPrefix());
          map.put("programLevel", candidate.getProgramSelection().getProgramCode().getProgramLevel().getPrefix());

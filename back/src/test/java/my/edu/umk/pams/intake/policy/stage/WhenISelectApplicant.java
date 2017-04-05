@@ -73,6 +73,7 @@ public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
     private InApplicant applicant;
 	
 	public WhenISelectApplicant I_select_applicant(){
+		
         standardSelectionStrategy.select(intake);
 		admissionService.preselectIntakeApplication(application);
 
