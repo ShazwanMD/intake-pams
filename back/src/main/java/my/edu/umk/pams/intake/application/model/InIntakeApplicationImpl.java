@@ -9,6 +9,7 @@ import my.edu.umk.pams.intake.policy.model.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Entity(name = "InIntakeApplication")
@@ -83,7 +84,17 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "REASON")
     private String reason;
-
+     
+    @Column(name = "PASSPORT_NO")
+    private String passport;
+    
+    @Column(name = "PASSPORT_EXPDATE")
+    private Date passExpDate;
+    
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "IMG_PASS_TYPE", nullable = false)
+    private InImmigrationPassType imgPassType = InImmigrationPassType.NON_APPLICABLE;
+    
     @Column(name = "PAID")
     private Boolean paid = false;
 
@@ -140,7 +151,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     private InMaritalCode maritalCode;
     
 
-
     @ManyToOne(targetEntity = InDependencyCodeImpl.class)
     @JoinColumn(name = "DEPENDENCY_CODE_ID")
     private InDependencyCode dependencyCode;
@@ -187,9 +197,11 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @OneToMany(targetEntity = InGuarantorImpl.class, mappedBy = "application")
     private List<InGuarantor> guarantors;
-
-    @OneToMany(targetEntity = InFranchiseImpl.class, mappedBy = "application")
-    private List<InFranchise> franchises;
+    
+//link with inFranchise
+    @OneToOne(targetEntity = InFranchiseImpl.class)
+    @JoinColumn(name = "IN_FRNSE_ID", nullable = false)
+    private InFranchise franchises;
     
     @OneToMany(targetEntity = InAttachmentImpl.class, mappedBy = "application")
     private List<InAttachment> attachments;
@@ -437,16 +449,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     }
 
     @Override
-    public Integer getAge() {
-        return age;
-    }
-
-    @Override
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    @Override
     public InRaceCode getRaceCode() {
         return raceCode;
     }
@@ -525,7 +527,27 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setSchoolBatch(Integer schoolBatch) {
         this.schoolBatch = schoolBatch;
     }
+    
+    @Override
+    public String getPassportNo() {
+        return passport;
+    }
 
+    @Override
+    public void setPassportNo(String passport) {
+        this.passport = passport;
+    }
+    
+    @Override
+    public Date getPassportExpDate() {
+        return passExpDate;
+    }
+
+    @Override
+    public void setPassportExpDate(Date passExpDate) {
+        this.passExpDate = passExpDate;
+    }
+    
     @Override
     public InProgramOffering getProgramSelection() {
         return programSelection;
@@ -542,6 +564,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     public void setSupervisorSelection(InSupervisorOffering supervisorSelection) {
         this.supervisorSelection = supervisorSelection;
+    }
+    
+    @Override
+    public Integer getAge() {
+        return age;
+    }
+
+    @Override
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     @Override
@@ -593,7 +625,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setEmployments(List<InEmployment> employments) {
         this.employments = employments;
     }
-
+    
     @Override
     public List<InGuardian> getGuardians() {
         return guardians;
@@ -660,15 +692,14 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     }
 
 	@Override
-	public void setFranchises(List<InFranchise> franchises) {
-		this.franchises = franchises;
-		
+	public InImmigrationPassType getImgPassType() {
+		return imgPassType;
 	}
 
 	@Override
-	public List<InFranchise> getFranchises() {
-		return franchises;
+	public void setImgPassType(InImmigrationPassType imgPassType) {
+		this.imgPassType = imgPassType;
+		
 	}
-
-
+	 
 }

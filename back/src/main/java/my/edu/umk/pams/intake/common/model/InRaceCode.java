@@ -6,7 +6,7 @@ public interface InRaceCode extends InMetaObject {
 
     String getCode();
 
-    void setCode(String code);
+    void setCode(String raceCode);
 
     String getDescriptionMs();
 

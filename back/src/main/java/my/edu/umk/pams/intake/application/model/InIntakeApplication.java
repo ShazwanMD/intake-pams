@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 public interface InIntakeApplication extends InMetaObject {
@@ -128,7 +129,7 @@ public interface InIntakeApplication extends InMetaObject {
 
     InRaceCode getRaceCode();
 
-    void setRaceCode(InRaceCode race);
+    void setRaceCode(InRaceCode raceCode);
 
     InEthnicityCode getEthnicityCode();
 
@@ -149,7 +150,21 @@ public interface InIntakeApplication extends InMetaObject {
     InSupervisorOffering getSupervisorSelection();
 
     void setSupervisorSelection(InSupervisorOffering SupervisorSelection);
-
+    
+    //Franchise column//
+    String getPassportNo();
+    
+    void setPassportNo(String passport);
+    
+    Date getPassportExpDate();
+    
+    void setPassportExpDate(Date passExpDate);
+    
+    InImmigrationPassType getImgPassType();
+    
+    void setImgPassType(InImmigrationPassType imgPassType);
+////
+    
     InIntake getIntake();
 
     void setIntake(InIntake intake);
@@ -170,9 +185,9 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setGuarantors(List<InGuarantor> guarantors);
     
-    List<InFranchise> getFranchises();
+   // List<InFranchise> getFranchises();
     
-    void setFranchises(List<InFranchise> franchises);
+   // void setFranchises(List<InFranchise> franchises);
 
     List<InResult> getResults();
 
