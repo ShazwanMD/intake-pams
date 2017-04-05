@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.common.model;
 
 import my.edu.umk.pams.intake.core.InMetaObject;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 
 public interface  InProgramCode extends InMetaObject {
 
@@ -19,4 +20,8 @@ public interface  InProgramCode extends InMetaObject {
 	InFacultyCode getFacultyCode();
 
 	void setFacultyCode(InFacultyCode facultyCode);
+
+	InProgramLevel getProgramLevel();
+
+	void setProgramLevel(InProgramLevel programLevel);
 }

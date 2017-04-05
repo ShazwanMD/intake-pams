@@ -130,12 +130,10 @@ public class AdmissionServiceImpl implements AdmissionService {
 
         //map.put("facultyCode", );
          map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode().getPrefix());
-         map.put("studyMode", candidate.getStudyMode());
+         map.put("studyMode", candidate.getStudyMode().getPrefix());
          map.put("programLevel", candidate.getProgramSelection().getProgramCode().getProgramLevel().getPrefix());
          map.put("intakeSession", candidate.getProgramSelection().getIntake().getSession().getYear());
-        map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode());
-        map.put("studyMode", candidate.getStudyMode());
-        map.put("year", candidate.getIntake().getSession().getYear());
+         map.put("year", candidate.getIntake().getSession().getYear());
         String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
         candidate.setMatricNo(generatedMatricNo);
         candidate.setStudyMode(candidate.getStudyMode());

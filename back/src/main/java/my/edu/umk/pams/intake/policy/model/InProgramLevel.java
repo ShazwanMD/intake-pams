@@ -22,4 +22,8 @@ public interface InProgramLevel extends InMetaObject {
 
     void setDescription(String description);
 
+	String getPrefix();
+
+	void setPrefix(String prefix);
+
 }
