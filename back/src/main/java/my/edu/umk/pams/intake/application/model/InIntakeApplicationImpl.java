@@ -200,7 +200,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     
 //link with inFranchise
     @OneToOne(targetEntity = InFranchiseImpl.class)
-    @JoinColumn(name = "IN_FRNSE_ID", nullable = false)
+    @JoinColumn(name = "IN_FRNSE_ID", nullable = true)
     private InFranchise franchises;
     
     @OneToMany(targetEntity = InAttachmentImpl.class, mappedBy = "application")
