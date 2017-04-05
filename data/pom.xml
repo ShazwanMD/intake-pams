@@ -304,8 +304,6 @@
                                 <srcFile>src/test/resources/data/IN_INTK.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_DBLY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_OFRG.sql</srcFile>
-								<srcFile>src/test/resources/data/IN_INTK_APLN.sql</srcFile>
-                                
                             </srcFiles>
                         </configuration>
                     </execution>
