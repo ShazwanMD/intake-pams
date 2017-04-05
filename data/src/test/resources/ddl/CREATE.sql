@@ -505,11 +505,11 @@ create table IN_FILD_CODE (
 
 create table IN_FRNSE (
   ID int8 not null,
-  DOB timestamp not null,
-  Email varchar(255) not null,
-  Gender varchar(255) not null,
-  IdentityNo varchar(255) not null,
-  VisaType varchar(255) not null,
+  PASSPORT_NO varchar(255) not null,
+  PASSPORT_EXPIRY timestamp not null,
+  ENTRY_PASS_TYPE varchar(255) not null,
+  NATIONALITY varchar(255) not null,
+  APPLICATION_ID int8,
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -517,11 +517,6 @@ create table IN_FRNSE (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
-  Name varchar(255) not null,
-  Nationality varchar(255) not null,
-  PassportExpDate timestamp not null,
-  PassportNo varchar(255) not null,
-  APPLICATION_ID int8,
   primary key (ID)
 );
 

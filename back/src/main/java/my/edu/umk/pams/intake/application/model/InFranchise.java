@@ -8,15 +8,19 @@ public interface InFranchise extends InMetaObject {
 	
     String getPassportNo();
     
-    void setPassportNo(String passport);
+    void setPassportNo(String passportNo);
     
-    Date getPassportExpDate();
+    Date getPassportExpiry();
     
-    void setPassportExpDate(Date passExpDate);
+    void setPassportExpiry(Date passportExpiry);
     
-    String getImgPassType();
+    String getEntryPassType();
     
-    void setImgPassType(String imgPassType);
+    void setEntryPassType(String entryPassType);
+
+    String getNationality();
+
+    void setNationality(String nationality);
 
     //InIntakeApplication getApplication();
 

@@ -30,9 +30,9 @@ public class WhenEnterFranchise extends Stage<WhenEnterFranchise> {
         LOG.debug("WHEN: Here we set the franchise object, etc"); // todo remove asap
 
         franchise = new InFranchiseImpl();
-        franchise.setImgPassType("SOME_IMMIG_PA");          // todo(farah) naming still tak kena
+        franchise.setEntryPassType("SOME_ENTRY_PASS_DOC");          // todo(farah) naming still tak kena
         franchise.setPassportNo("A1234567890");
-        franchise.setPassportExpDate(Date.valueOf(LocalDate.of(2020, 12, 31)));
+        franchise.setPassportExpiry(Date.valueOf(LocalDate.of(2020, 12, 31)));
 
         applicationService.addFranchise(franchise);         //todo(farah) naming still tak kena
 

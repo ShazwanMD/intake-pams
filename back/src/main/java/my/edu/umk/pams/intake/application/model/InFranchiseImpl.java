@@ -8,8 +8,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -27,16 +25,20 @@ public class InFranchiseImpl implements InFranchise {
 	 private Long id;
 	 
 	 @NotNull
-	 @Column(name = "PassportNo", nullable = false)
-	 private String passport;
+	 @Column(name = "PASSPORT_NO", nullable = false)
+	 private String passportNo;
 	 
 	 @NotNull
-	 @Column(name = "PassportExpDate", nullable = false)
-	 private Date passExpDate;
+	 @Column(name = "PASSPORT_EXPIRY", nullable = false)
+	 private Date passportExpiry;
+
+    @NotNull
+	 @Column(name = "ENTRY_PASS_TYPE", nullable = false)
+	 private String entryPassType;
 	 
-	 @Column(name = "ImgPassType", nullable = false)
-	 private String imgPassType;
-	 
+	 @Column(name = "NATIONALITY", nullable = true)
+	 private String nationality;
+
 	 //@ManyToOne(targetEntity = InIntakeApplicationImpl.class)
 	// @JoinColumn(name = "APPLICATION_ID")
 	// private InIntakeApplication application;
@@ -55,34 +57,42 @@ public class InFranchiseImpl implements InFranchise {
 	
 	@Override
 	public String getPassportNo() {
-		return passport;
+		return passportNo;
 	}
 
 	@Override
-	public void setPassportNo(String passport) {
-		this.passport = passport;
+	public void setPassportNo(String passportNo) {
+		this.passportNo = passportNo;
 	}
 
 	@Override
-	public Date getPassportExpDate() {
-		return passExpDate;
+	public Date getPassportExpiry() {
+		return passportExpiry;
 	}
 
 	@Override
-	public void setPassportExpDate(Date expDate) {
-		this.passExpDate = passExpDate;
+	public void setPassportExpiry(Date passportExpiry) {
+		this.passportExpiry = this.passportExpiry;
 		
 	}
 	
-	@Override
-	public String getImgPassType() {
-		return imgPassType;
+	public String getEntryPassType() {
+		return entryPassType;
 	}
 	
-	@Override
-	public void setImgPassType(String imgPassType) {
-		this.imgPassType = imgPassType;
+	public void setEntryPassType(String entryPassType) {
+		this.entryPassType = entryPassType;
 		
+	}
+
+	@Override
+	public String getNationality() {
+		return nationality;
+	}
+
+	@Override
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
 	}
 
 	/*@Override
