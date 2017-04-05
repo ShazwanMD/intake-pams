@@ -14,7 +14,6 @@ import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenTheApplicationIsWithdrawn;
 import my.edu.umk.pams.intake.application.stage.WhenIAmSelectedApplicant;
-import my.edu.umk.pams.intake.application.stage.WhenISubmittedCompleteApplicationWithResult;
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.WhenISetupCompetenciesMatrix;
