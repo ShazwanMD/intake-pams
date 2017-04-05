@@ -35,13 +35,15 @@ public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     @Autowired
     private RegistrationService registrationService;
+    
+    private String intakeReferenceNo = "201720181/MASTER";
 
     @Test
     @Rollback
     @Issue("PAMI-75")
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session()
-        .and().I_pick_an_intake_$("201720181/MASTER");
+        .and().I_pick_an_intake_$(intakeReferenceNo);
         when().I_fill_in_application();
         addStage(WhenISelectTopApplicants.class).and().I_select_top_applicants();
         then().I_can_proceed_to_process_their_application();
