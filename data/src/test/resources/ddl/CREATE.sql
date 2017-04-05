@@ -704,6 +704,9 @@ create table IN_INTK_APLN (
   SCHOOL_CODE_ID int8,
   STUDY_MODE_ID int8,
   SUPERVISOR_SELECTION_ID int8,
+  PASSPORT_NO varchar(255),
+  PASSPORT_EXPDATE varchar(255),
+  VISA_TYPE int4,
   primary key (ID)
 );
 
