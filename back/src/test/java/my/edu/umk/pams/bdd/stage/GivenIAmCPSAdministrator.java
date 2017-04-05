@@ -45,6 +45,7 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     }
 
     public GivenIAmCPSAdministrator I_pick_an_intake_$(String intakeReferenceNo){
+    	LOG.debug("intakeReferenceNo {}",intakeReferenceNo);
     	intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
         return self();
     }
