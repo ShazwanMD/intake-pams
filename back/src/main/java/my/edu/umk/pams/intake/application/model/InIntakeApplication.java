@@ -160,10 +160,9 @@ public interface InIntakeApplication extends InMetaObject {
     
     void setPassportExpDate(Date passExpDate);
     
-    InImmigrationPassType getImgPassType();
+    InVisaType getVisaType();
     
-    void setImgPassType(InImmigrationPassType imgPassType);
-////
+    void setVisaType(InVisaType visaType);
     
     InIntake getIntake();
 

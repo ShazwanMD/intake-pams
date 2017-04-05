@@ -92,8 +92,8 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     private Date passExpDate;
     
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "IMG_PASS_TYPE", nullable = false)
-    private InImmigrationPassType imgPassType = InImmigrationPassType.NON_APPLICABLE;
+    @Column(name = "VISA_TYPE", nullable = false)
+    private InVisaType visaType = InVisaType.NON_APPLICABLE;
     
     @Column(name = "PAID")
     private Boolean paid = false;
@@ -549,6 +549,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     }
     
     @Override
+    public InVisaType getVisaType() {
+        return visaType;
+    }
+
+    @Override
+    public void setVisaType(InVisaType visaType) {
+        this.visaType = visaType;
+    }
+    
+    @Override
     public InProgramOffering getProgramSelection() {
         return programSelection;
     }
@@ -691,15 +701,5 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         return InIntakeApplication.class;
     }
 
-	@Override
-	public InImmigrationPassType getImgPassType() {
-		return imgPassType;
-	}
 
-	@Override
-	public void setImgPassType(InImmigrationPassType imgPassType) {
-		this.imgPassType = imgPassType;
-		
-	}
-	 
 }
