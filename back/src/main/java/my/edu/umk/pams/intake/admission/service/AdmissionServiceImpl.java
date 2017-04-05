@@ -54,10 +54,10 @@ public class AdmissionServiceImpl implements AdmissionService {
     // INTAKE, INTAKE APPLICATION
     // ====================================================================================================
 
-    @Override
-    public void processIntake(InIntake intake) {
-        // preselect
-        selectionStrategyHelper.select(intake);
+	@Override
+	public void processIntake(InIntake intake) {
+		// preselect
+		selectionStrategyHelper.select(intake);
 
         // pickup all preselection application
         // todo(uda) : InBidStatus.SELECTED
@@ -124,13 +124,16 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public void offerCandidate(InCandidate candidate) {
         // start offering process
-        //{#facultyCode.getPrefix()}{#c}{#j}{#studyMode.getPrefix()}
+
         // generate matric no
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode());
-        map.put("studyMode", candidate.getStudyMode());
-        map.put("year", candidate.getIntake().getSession().getYear());
 
+        //map.put("facultyCode", );
+         map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode().getPrefix());
+         map.put("studyMode", candidate.getStudyMode().getPrefix());
+         map.put("programLevel", candidate.getProgramSelection().getProgramCode().getProgramLevel().getPrefix());
+         map.put("intakeSession", candidate.getProgramSelection().getIntake().getSession().getYear());
+         map.put("year", candidate.getIntake().getSession().getYear());
         String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
         candidate.setMatricNo(generatedMatricNo);
         candidate.setStudyMode(candidate.getStudyMode());

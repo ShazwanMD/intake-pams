@@ -38,17 +38,15 @@ public class WhenIOfferACandidate extends Stage<WhenIOfferACandidate>{
     @Autowired
     ApplicationService applicationService;
     
-    @ExpectedScenarioState
-    private InIntake intake;
 
 	public WhenIOfferACandidate I_offer_a_candidate_in_current_intake_session_$(String intakeSession) {
-		// generate candidate metric number
-		//dapatkan senarai pemohon yang telah dipilih
-		intake = policyService.findIntakeByReferenceNo(intakeSession);
+		InIntake intake = policyService.findIntakeByReferenceNo(intakeSession);
+		LOG.debug("intake {}", intake);
 		List<InIntakeApplication> applicants = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+		LOG.debug("applicants {}", applicants);
 		for (InIntakeApplication inIntakeApplication : applicants) {
 			Assert.notNull(inIntakeApplication, "list is null");
-			inIntakeApplication.setBidStatus(InBidStatus.SELECTED);
+			//inIntakeApplication.setBidStatus(InBidStatus.SELECTED);
 		}
 		
 		return self();

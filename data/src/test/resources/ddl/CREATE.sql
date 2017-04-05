@@ -898,6 +898,7 @@ create table IN_PRGM_CODE (
   M_ID int8,
   M_ST int4,
   FACULTY_CODE_ID int8 not null,
+  PROGRAM_LEVEL_ID int8 not null,
   primary key (ID)
 );
 
@@ -905,6 +906,7 @@ create table IN_PRGM_LEVL (
   ID int8 not null,
   CODE varchar(255) not null,
   DESCRIPTION varchar(255) not null,
+  PREFIX varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1643,6 +1645,11 @@ alter table IN_PRGM_CODE
   add constraint FK6B49ECA2DDFADD6
 foreign key (FACULTY_CODE_ID)
 references IN_FCTY_CODE;
+
+alter table IN_PRGM_CODE
+  add constraint FK6B49ECA2DDFADD7
+foreign key (PROGRAM_LEVEL_ID)
+references IN_PRGM_LEVL;
 
 alter table IN_PRGM_LEVL
   add constraint uc_IN_PRGM_LEVL_1 unique (CODE);

@@ -41,6 +41,6 @@ ThenICanGenerateAnOfferLetter> {
 	    public void scenario1() {
 			given().I_am_a_CPS_administrator_in_current_intake_session();
 			when().I_offer_a_candidate_in_current_intake_session_$(INTAKE_REFERENCE_NO);
-			then().I_can_generate_an_offer_letter();
+			then().I_can_generate_an_offer_letter_in_current_intake_session_$(INTAKE_REFERENCE_NO);
 		}
 }

@@ -20,10 +20,6 @@ public class InUserImpl extends InPrincipalImpl implements InUser {
     @NotNull
     @Column(name = "REAL_NAME", nullable = false)
     private String realName;
-    
-    //@NotNull
-    @Column(name = "TIPU_NAME"/*, nullable = false*/)
-    private String tipuName;
 
     @NotNull
     @Column(name = "EMAIL", nullable = false, unique = true)
@@ -91,15 +87,5 @@ public class InUserImpl extends InPrincipalImpl implements InUser {
     public Class<?> getInterfaceClass() {
         return InUser.class;
     }
-
-    @Override
-    public String getTipuName() {
-		return tipuName;
-	}
-
-    @Override
-	public void setTipuName(String tipuName) {
-		this.tipuName = tipuName;
-	}
 
 }

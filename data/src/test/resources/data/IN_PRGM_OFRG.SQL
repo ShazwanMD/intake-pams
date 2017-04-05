@@ -1,0 +1,1 @@
+insert into in_prgm_ofrg ("id", "general_criteria", "interview", "c_ts", "c_id", "d_ts", "d_id", "m_ts", "m_id", "m_st", "projection", "specific_criteria", "intake_id", "program_code_id", "study_center_code_id") values(1, '', 'false', CURRENT_TIMESTAMP, null, null, null, null, null, null, 100, null, 1, 1, 1)

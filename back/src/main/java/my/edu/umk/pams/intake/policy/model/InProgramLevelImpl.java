@@ -22,6 +22,10 @@ public class InProgramLevelImpl implements InProgramLevel {
     @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
+    
+    @NotNull
+    @Column(name = "PREFIX")
+    private String prefix;
 
     @Embedded
     private InMetadata metadata;
@@ -55,6 +59,16 @@ public class InProgramLevelImpl implements InProgramLevel {
     }
 
     @Override
+    public String getPrefix() {
+		return prefix;
+	}
+
+    @Override
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }

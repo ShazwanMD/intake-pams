@@ -1,6 +1,8 @@
 package my.edu.umk.pams.intake.common.model;
 
 import my.edu.umk.pams.intake.core.InMetadata;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
+import my.edu.umk.pams.intake.policy.model.InProgramLevelImpl;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -30,6 +32,10 @@ public class InProgramCodeImpl implements InProgramCode {
     @OneToOne(targetEntity = InFacultyCodeImpl.class)
     @JoinColumn(name = "FACULTY_CODE_ID", nullable = false)
     private InFacultyCode facultyCode;
+    
+    @OneToOne(targetEntity = InProgramLevelImpl.class)
+    @JoinColumn(name = "PROGRAM_LEVEL_ID", nullable = false)
+    private InProgramLevel programLevel;
 
     @Embedded
     private InMetadata metadata;
@@ -82,8 +88,18 @@ public class InProgramCodeImpl implements InProgramCode {
     public void setFacultyCode(InFacultyCode facultyCode) {
         this.facultyCode = facultyCode;
     }
+    
+    @Override
+	public InProgramLevel getProgramLevel() {
+		return programLevel;
+	}
 
     @Override
+	public void setProgramLevel(InProgramLevel programLevel) {
+		this.programLevel = programLevel;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }
