@@ -189,6 +189,7 @@ create table IN_CNDT (
   STATUS int4 not null,
   STUDY_MODE_ID bytea not null,
   APPLICANT_ID int8,
+  INTAKE_ID int8,
   PROGRAM_SELECTION_ID int8,
   SUPERVISOR_SELECTION_ID int8,
   primary key (ID)
@@ -499,6 +500,28 @@ create table IN_FILD_CODE (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  primary key (ID)
+);
+
+create table IN_FRNSE (
+  ID int8 not null,
+  F_DOB timestamp not null,
+  F_Email varchar(255) not null,
+  F_Gender varchar(255) not null,
+  F_IdentityNo varchar(255) not null,
+  F_ImgPassType varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  F_Name varchar(255) not null,
+  F_Nationality varchar(255) not null,
+  F_PassportExpDate timestamp not null,
+  F_PassportNo varchar(255) not null,
+  APPLICATION_ID int8,
   primary key (ID)
 );
 
@@ -1296,6 +1319,11 @@ foreign key (APPLICANT_ID)
 references IN_APCN;
 
 alter table IN_CNDT
+  add constraint FKA01B41153AD22420
+foreign key (INTAKE_ID)
+references IN_INTK;
+
+alter table IN_CNDT
   add constraint FKA01B411554B90F8D
 foreign key (PROGRAM_SELECTION_ID)
 references IN_PRGM_OFRG;
@@ -1394,6 +1422,11 @@ alter table IN_FCTY_CODE
 
 alter table IN_FILD_CODE
   add constraint uc_IN_FILD_CODE_1 unique (CODE);
+
+alter table IN_FRNSE
+  add constraint FK63791F3A37A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
 
 alter table IN_GNDR_CODE
   add constraint uc_IN_GNDR_CODE_1 unique (CODE);
@@ -1816,6 +1849,8 @@ create sequence SQ_IN_ETNY_CODE;
 create sequence SQ_IN_FCTY_CODE;
 
 create sequence SQ_IN_FILD_CODE;
+
+create sequence SQ_IN_FRNSE;
 
 create sequence SQ_IN_GNDR_CODE;
 

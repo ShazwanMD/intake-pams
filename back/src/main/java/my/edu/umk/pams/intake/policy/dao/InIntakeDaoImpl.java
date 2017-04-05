@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 import java.util.List;
 
+// todo: metadata
 @Repository("inIntakeDao")
 public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implements InIntakeDao {
 

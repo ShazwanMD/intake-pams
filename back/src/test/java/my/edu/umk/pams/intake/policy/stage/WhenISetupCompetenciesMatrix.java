@@ -51,11 +51,8 @@ public class WhenISetupCompetenciesMatrix extends Stage<WhenISetupCompetenciesMa
     public String setGeneralCriteria() {
 
         String generalCriteria =
-
                 "MUET.Band == 2 " +
-
                         "&& SPM.History >= #{C} " +
-
                         "&& (SPM.BahasaMalaysia & SPM.English >= #{C})";
 
         return generalCriteria;
@@ -65,14 +62,10 @@ public class WhenISetupCompetenciesMatrix extends Stage<WhenISetupCompetenciesMa
     public String setSpecificCriteria() {
         String specificCriteria =
 
-                "(#{ (2.75 < Degree.CPA <= 4.0 " +
-
+                "(#{(2.75 < Degree.CPA <= 4.0 " +
                         "&& #{DegreeEquivalent.CPA} >= 2.75)) " +
-
                         "&& #{SPM.Mathematics} >= #{C} " +
-
                         "&& MUET.Band > 2.0 " +
-
                         "|| #{Diploma.Mathematics} >= #{C} ";
 
         return specificCriteria;
