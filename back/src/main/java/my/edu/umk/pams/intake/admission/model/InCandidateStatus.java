@@ -6,8 +6,9 @@ package my.edu.umk.pams.intake.admission.model;
 public enum InCandidateStatus {
 
     SELECTED, // 0
-    PREAPPROVED, // 0
-    APPROVED,    // 1
-    DECLINED,    // 2
-    REJECTED;    // 3
+    PREAPPROVED, // 1
+    APPROVED,    // 2
+    DECLINED,    // 3
+    REJECTED,    // 4
+	WITHDRAWN;  //5
 }
