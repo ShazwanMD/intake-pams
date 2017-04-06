@@ -36,7 +36,6 @@ import my.edu.umk.pams.intake.registration.stage.WhenIWantToScanTheApplicantOffe
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
 public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator, 
-															//WhenIFillApplication, 
 															WhenIWantToScanTheApplicantOfferLetterBarcode,
 																ThenICanCompleteStudentRegistration> {
 	
@@ -53,8 +52,6 @@ public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(intakeReferenceNo);
-        //when().I_fill_in_application();
-        //addStage(WhenIWantToScanTheApplicantOfferLetterBarcode.class)
         when().I_want_to_scan_the_applicant_offer_letter_barcode();
         then().I_can_complete_student_registration();
     }
