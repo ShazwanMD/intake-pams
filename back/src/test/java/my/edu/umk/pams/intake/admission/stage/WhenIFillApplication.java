@@ -52,7 +52,9 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
         map.put("intakeSession", intakeSession);
         map.put("programLevel", intake.getProgramLevel());
         String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
-
+        
+       // LOG.debug(intake:"");
+        
         // start an intakeApplication
         intakeApplication = new InIntakeApplicationImpl();
         intakeApplication.setIntake(this.intake);
@@ -62,7 +64,7 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
-        intakeApplication.setBidStatus(InBidStatus.APPEAL);
+        intakeApplication.setBidStatus(InBidStatus.APPEAL);  
         applicationService.draftIntakeApplication(intake, intakeApplication);
 
         return self();

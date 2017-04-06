@@ -21,12 +21,12 @@ public class ThenCandidateProceedToNextSelectionPhase extends Stage<ThenCandidat
     private AdmissionService admissionService;
 
     public ThenCandidateProceedToNextSelectionPhase candidate_can_proceed_next_selection() {
-
+    	 //private static final Logger LOG = LoggerFactory.getLogger(WhenOfferToCandidate.class);
+    	//  LOG.debug("intake status {} :", application.getBidStatus());
+		 
         Assert.notNull(candidate, "candidate is required");
         InCandidate found = admissionService.findCandidateByIdentityNo(candidate.getIdentityNo());
         Assert.isTrue(InCandidateStatus.SELECTED.equals(found.getStatus()),"Candidate should be selected");
-        		//PREAPPROVED.equals(found.getStatus()),
-               // "Candidate should be preapproved");
 
         // do something
         return self();
