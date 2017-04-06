@@ -7,11 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.registration.US_IN_RGN_3002;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -24,29 +27,36 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 	
 	@Autowired
 	private PolicyService policyService;
+	
+	@Autowired
+	private AdmissionService admissionService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
     
     @ProvidedScenarioState
-    InIntakeApplication applicants;
+    InIntakeApplication application;
     
     @Autowired
     ApplicationService applicationService;
     
     @ProvidedScenarioState
-    private InIntake intake;
+    private InIntake intake; 
 
 	public WhenOfferToCandidate offer_to_candidate_in_current_intake_session_$(String intakeSession) {
 		// generate candidate metric number
 		//dapatkan senarai pemohon yang telah dipilih
+		
+		
 		intake = policyService.findIntakeByReferenceNo(intakeSession);
-		List<InIntakeApplication> applicants = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
-		for (InIntakeApplication inIntakeApplication : applicants) {
+		
+		List<InIntakeApplication> application = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+		for (InIntakeApplication inIntakeApplication : application) {
 			Assert.notNull(inIntakeApplication, "list is null");
 			inIntakeApplication.setBidStatus(InBidStatus.SELECTED);
+			//admissionService.preselectIntakeApplication(application);
 		}
-		
+	
 		return self();
 	}
 
