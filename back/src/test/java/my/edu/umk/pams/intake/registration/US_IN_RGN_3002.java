@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmCPSAdministrator, 
-															WhenIFillApplication, 
+															WhenIFillApplication,
 																ThenICanProceedToProcessTheirApplication> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3002.class);
