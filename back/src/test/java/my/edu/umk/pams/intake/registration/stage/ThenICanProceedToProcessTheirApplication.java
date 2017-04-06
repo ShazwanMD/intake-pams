@@ -40,7 +40,7 @@ public class ThenICanProceedToProcessTheirApplication extends Stage<ThenICanProc
     public ThenICanProceedToProcessTheirApplication I_can_proceed_to_process_their_application() {
 
     	applicationService.draftedIntakeApplication(intake, intakeApplication);
-        Assert.notNull(InBidStatus.APPEAL, "withdraw application is null");
+        //Assert.notNull(InBidStatus.APPEAL, "withdraw application is null");
         LOG.debug("intake status {} :", intakeApplication.getBidStatus());
         return self();
     }
