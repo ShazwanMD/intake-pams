@@ -6,6 +6,7 @@ import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.selection.SelectionStrategyHelper;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -15,6 +16,7 @@ import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
 import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 import my.edu.umk.pams.intake.system.service.SystemService;
+import my.edu.umk.pams.intake.util.Util;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,8 +88,21 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void rejectIntakeApplication(InIntakeApplication application) {
         // don't create candidate
     }
+    
+    @Override
+    public void withdrawSelectedCandidate(InIntake intake, InCandidate candidate) {    
+        candidate.setStatus(InCandidateStatus.WITHDRAWN);
+        updateSelectedCandidate(candidate);
+    }
 
-    // ====================================================================================================
+    @Override
+    public void updateSelectedCandidate(InCandidate candidate) {
+    	candidateDao.update(candidate, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+		
+	}
+
+	// ====================================================================================================
     // CANDIDATE
     // ====================================================================================================
 

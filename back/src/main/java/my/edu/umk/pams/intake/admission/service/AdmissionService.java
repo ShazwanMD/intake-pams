@@ -20,6 +20,10 @@ public interface AdmissionService {
     void preselectIntakeApplication(InIntakeApplication application);
 
     void rejectIntakeApplication(InIntakeApplication application);
+    
+    void withdrawSelectedCandidate(InIntake intake, InCandidate candidate); 
+    
+    void updateSelectedCandidate(InCandidate candidate);
 
     //====================================================================================================
     // CANDIDATE
