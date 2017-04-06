@@ -11,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.intake.admission.stage.WhenIFillApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenCandidateProceedToNextSelectionPhase;
 import my.edu.umk.pams.intake.registration.stage.ThenGenerateAnOfferLetter;
+import my.edu.umk.pams.intake.registration.stage.WhenISelectTopApplicants;
 import my.edu.umk.pams.intake.registration.stage.WhenOfferToCandidate;
 
 /**
@@ -28,7 +30,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenOfferToCandidate;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_IN_RGN_4011 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
-WhenOfferToCandidate,ThenCandidateProceedToNextSelectionPhase> {
+WhenIFillApplication,ThenCandidateProceedToNextSelectionPhase> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4011.class);
  
@@ -39,7 +41,8 @@ WhenOfferToCandidate,ThenCandidateProceedToNextSelectionPhase> {
 	    @Rollback
 	    public void scenario1() {
 			given().I_am_a_MGSEB_administrator_in_current_intake_session();
-			when().offer_to_candidate_in_current_intake_session_$(INTAKE_REFERENCE_NO);
-			then().candidate_can_proceed_next_selection();
+		    when().I_fill_in_application();
+		    addStage(WhenOfferToCandidate.class).and().offer_to_candidate_in_current_intake_session_$(INTAKE_REFERENCE_NO);
+		    then().candidate_can_proceed_next_selection();
 		}
 }
