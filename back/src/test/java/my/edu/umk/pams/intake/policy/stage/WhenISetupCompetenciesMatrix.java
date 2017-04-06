@@ -32,43 +32,15 @@ public class WhenISetupCompetenciesMatrix extends Stage<WhenISetupCompetenciesMa
 
     public WhenISetupCompetenciesMatrix I_setup_competencies_matrix() {
 
-        String generalCriteria = setGeneralCriteria();
-        String specificCriteria = setSpecificCriteria();
-
         intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
 
         programOffering = new InProgramOfferingImpl();
         programOffering.setProgramCode(commonService.findProgramCodeByCode("MEM"));
-        programOffering.setGeneralCriteria(generalCriteria);
-        programOffering.setSpecificCriteria(specificCriteria);
         policyService.addProgramOffering(intake, programOffering);
 
         Assert.notNull(programOffering, "Program Offering is null");
 
         return self();
-    }
-
-    public String setGeneralCriteria() {
-
-        String generalCriteria =
-                "MUET.Band == 2 " +
-                        "&& SPM.History >= #{C} " +
-                        "&& (SPM.BahasaMalaysia & SPM.English >= #{C})";
-
-        return generalCriteria;
-
-    }
-
-    public String setSpecificCriteria() {
-        String specificCriteria =
-
-                "(#{(2.75 < Degree.CPA <= 4.0 " +
-                        "&& #{DegreeEquivalent.CPA} >= 2.75)) " +
-                        "&& #{SPM.Mathematics} >= #{C} " +
-                        "&& MUET.Band > 2.0 " +
-                        "|| #{Diploma.Mathematics} >= #{C} ";
-
-        return specificCriteria;
     }
 
 }

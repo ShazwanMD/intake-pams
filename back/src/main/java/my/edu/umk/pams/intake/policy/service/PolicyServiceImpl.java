@@ -12,6 +12,7 @@ import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
+
 import org.activiti.engine.task.Task;
 import org.apache.commons.lang.Validate;
 import org.hibernate.SessionFactory;
@@ -237,6 +238,9 @@ public class PolicyServiceImpl implements PolicyService {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(programOffering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        programOffering = new InProgramOfferingImpl();
+        programOffering.setGeneralCriteria(generalCriteria());
+        programOffering.setSpecificCriteria(specificCriteria());
         intakeDao.addProgramOffering(intake, programOffering, securityService.getCurrentUser());
     }
 
@@ -248,6 +252,30 @@ public class PolicyServiceImpl implements PolicyService {
         intakeDao.addModeOffering(intake, modeOffering, securityService.getCurrentUser());
     }
 
+    @Override
+    public String generalCriteria() {
+
+        String generalCriteria =
+                "MUET.Band == 2 " +
+                        "&& SPM.History >= #{C} " +
+                        "&& (SPM.BahasaMalaysia & SPM.English >= #{C})";
+
+        return generalCriteria;
+
+    }
+
+    @Override
+    public String specificCriteria() {
+        String specificCriteria =
+
+                "(#{(2.75 < Degree.CPA <= 4.0 " +
+                        "&& #{DegreeEquivalent.CPA} >= 2.75)) " +
+                        "&& #{SPM.Mathematics} >= #{C} " +
+                        "&& MUET.Band > 2.0 " +
+                        "|| #{Diploma.Mathematics} >= #{C} ";
+
+        return specificCriteria;
+    }
     //    public InGroup getAdminGroup() {
 //        return groupDao.findByName();
 //    }

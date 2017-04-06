@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.*;
+
 import org.activiti.engine.task.Task;
 
 import java.util.List;
@@ -138,5 +139,9 @@ public interface PolicyService {
     InStudyModeOffering findStudyModeOfferingByIntakeAndStudyMode(InIntake intake, InStudyMode studyMode);
 
     List<InStudyModeOffering> findStudyModeOfferings(InIntake intake);
+
+	String generalCriteria();
+
+	String specificCriteria();
 
 }
