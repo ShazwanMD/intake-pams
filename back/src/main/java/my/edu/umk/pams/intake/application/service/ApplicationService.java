@@ -47,8 +47,9 @@ public interface ApplicationService {
     void addGuardian(InIntakeApplication application, InGuardian guardian);
 
     void deleteGuardian(InIntakeApplication application, InGuardian guardian);
-    
-    
+
+    void addFranchise(InFranchise franchise);
+
     //====================================================================================================
     // APPLICANT
     //====================================================================================================

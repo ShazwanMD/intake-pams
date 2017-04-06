@@ -154,6 +154,13 @@ public class ApplicationServiceImpl implements ApplicationService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    @Override
+    public void addFranchise(InFranchise franchise) {
+        LOG.debug("TODO: or NOT"); // todo the Dao maybe. Maybe not because franchise still has ambiguity
+
+//        franchiseDao.save()
+//        sessionFactory.getCurrentSession().flush();
+    }
 
     @Override
     public InApplicant findApplicant(InIntakeApplication application) {
