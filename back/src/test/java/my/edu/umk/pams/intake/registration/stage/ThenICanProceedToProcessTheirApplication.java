@@ -41,7 +41,7 @@ public class ThenICanProceedToProcessTheirApplication extends Stage<ThenICanProc
 
     	applicationService.draftedIntakeApplication(intake, intakeApplication);
         Assert.notNull(InBidStatus.APPEAL, "withdraw application is null");
-        LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+        LOG.debug("intake status {}", intakeApplication.getBidStatus());
         return self();
     }
 }
