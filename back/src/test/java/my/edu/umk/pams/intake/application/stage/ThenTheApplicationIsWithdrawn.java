@@ -10,6 +10,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -36,6 +37,7 @@ public class ThenTheApplicationIsWithdrawn extends Stage<ThenTheApplicationIsWit
 	public ThenTheApplicationIsWithdrawn The_Application_Is_Withdrawn() {
 	
 		Assert.notNull(InBidStatus.WITHDRAWN, "withdraw application is null");
+		Assert.notNull(InCandidateStatus.WITHDRAWN, "withdraw application is null");
 		return self();
 	}
 }
