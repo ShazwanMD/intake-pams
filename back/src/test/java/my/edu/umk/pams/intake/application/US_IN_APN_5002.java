@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.application;
 
 
 import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -17,17 +18,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author PAMS
- * 
- * As a applicant, 
- * I want to be informed of the closing date for my intake application 
- * so that I can know the dateline
- */
+
 @Pending
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a applicant, I want to be informed of the closing date for my intake application so that I can know the dateline")
 public class US_IN_APN_5002  extends SpringScenarioTest<GivenIAmApplicant,
         WhenCheckApplicationDeadline,
         ThenGetIntakeEndDate> {

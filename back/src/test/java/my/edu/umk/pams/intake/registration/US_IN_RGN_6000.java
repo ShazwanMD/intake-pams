@@ -7,6 +7,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmRegistrar;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -16,16 +17,11 @@ import my.edu.umk.pams.intake.registration.stage.WhenFillInApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenFillAllRequiredInformation;
 import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant;
 
-/**
- *As a registrar, 
- *I want to view a list of selected applicant 
- *so that I can proceed with the selected applicants registration progress
- *
- * @author PAMS
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a registrar, I want to view a list of selected applicant so that I can proceed with the selected applicants registration progress")
 public class US_IN_RGN_6000 extends SpringScenarioTest<GivenIAmRegistrar,WhenFillAllRequiredInformation,ThenProceedRegistrationForSelectedApplicants>{
 
 	  public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";

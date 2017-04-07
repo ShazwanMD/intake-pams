@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -15,22 +16,17 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author PAMS
- *         As a MGSEB Academic Administrator
- *         I want to configure initiated intake,
- *         so that the applicant can apply the application
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Issue("PAMI-2")
-public class US_IN_PLC_1002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, 
+@As("As MGSEB Academic Administrator I want to configure initiated intake, so that the applicant can apply the application")
+public class US_IN_PLC_1002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
 															WhenIAddIntake, 
 																ThenIntakeIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1002.class);
-
     private String referenceNo;
 
     @Test

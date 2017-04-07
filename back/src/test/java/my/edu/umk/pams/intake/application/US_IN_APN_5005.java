@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
@@ -18,23 +19,16 @@ import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInform
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/**
- * @author PAMS
- * 
- * As a applicant, 
- * I want to withdraw my intake application 
- * so that I can notify UMK that I dont want to apply
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_5005 extends SpringScenarioTest<GivenIAmApplicant, 
+@As("As a applicant, I want to withdraw my intake application so that I can notify UMK that I dont want to apply")
+public class US_IN_APN_5005 extends SpringScenarioTest<GivenIAmApplicant,
 WhenIWantToFillAllRequiredInformation, 
 ThenTheApplicationIsWithdrawn> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_5005.class);
-	
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	
 	    @Test

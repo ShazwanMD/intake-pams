@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.application;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
@@ -16,13 +17,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author PAMS
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a applicant, I want to choose my supervisor so that I can know who will supervise my project")
 public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, WhenIChooseMySupervisor, ThenIKnowWhoWillSuperviseMyProject> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1003.class);

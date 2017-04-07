@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
@@ -17,19 +18,15 @@ import my.edu.umk.pams.intake.application.stage.ThenDraftIsNotSubmitted;
 import my.edu.umk.pams.intake.application.stage.WhenIDraftMyIntake;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/*As a applicant, 
- * I want to be able to pause my intake application 
- * so that I can complete it later before the closing date
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a applicant, I want to be able to pause my intake application so that I can complete it later before the closing date")
 public class US_IN_APN_1010 extends
 		SpringScenarioTest<GivenIAmApplicant, WhenIDraftMyIntake, ThenDraftIsNotSubmitted> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1010.class);
-	
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
 	 @Test

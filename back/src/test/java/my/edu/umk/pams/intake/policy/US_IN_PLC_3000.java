@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -17,17 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * @author PAMS
- *         As a MGSEB academic administrator,
- *         I want to select multiple program codes
- *         to be offered in an intake so
- *         that I can choose from a selection of choices
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a MGSEB academic administrator, I want to add multiple program codes to be offered in an intake so that I can choose from a selection of choices")
 public class US_IN_PLC_3000 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIAddPrograms, ThenProgramsOfferedToIntake> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3000.class);

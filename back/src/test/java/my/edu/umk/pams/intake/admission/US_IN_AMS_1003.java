@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.admission;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.intake.admission.stage.ThenICanApprovedTheirApplication;
@@ -14,17 +15,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * As academic administrator,
- * I want to select suitable applicants,
- * so that I can approved their application.
- *
- * @author PAMS
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As CPS administrator, I want to select suitable applicants, so that i can approved their application")
 public class US_IN_AMS_1003 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, 
         WhenIFillInIntakeApplication, 
@@ -33,7 +28,6 @@ public class US_IN_AMS_1003 extends
     @Test
     @Rollback
     public void scenario1() {
-    	//TODO
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_fill_in_intake_applicaton();
         addStage(WhenIWantToSelectSuitableApplicants.class).and().I_want_to_select_suitable_applicants();

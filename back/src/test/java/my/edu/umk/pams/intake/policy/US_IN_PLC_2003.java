@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -15,16 +16,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author PAMS
- *         As a PPS Academic Administrator,
- *         I want to set the projection for current intake session,
- *         so that i can proceed the intake process
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As an academic administrator, I want to set the projection for current intake session, so that i can proceed the intake process")
 public class US_IN_PLC_2003 extends SpringScenarioTest<GivenIAmCPSAdministrator,
         WhenISetIntakeProjection,
         ThenIProgressIntakeProcess> {

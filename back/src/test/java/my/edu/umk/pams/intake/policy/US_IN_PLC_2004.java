@@ -8,6 +8,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -15,15 +16,11 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanDetermineTheLimitOfSupervisor;
 import my.edu.umk.pams.intake.policy.stage.WhenISetMaximumNumberOfSupervisor;
 
-/**
- * @author PAMS
- *  As a CPS academic Administrator, 
- * I want to set the maximum number of supervisors for applicant, 
- * so that I can determine the limit for applicant's supervisor
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a CPS academic Administrator, I want to set the maximum number of supervisors for applicant, so that I can determine the limit for applicant's supervisor")
 public class US_IN_PLC_2004 extends SpringScenarioTest<GivenIAmCPSAdministrator,
         WhenISetMaximumNumberOfSupervisor,
 ThenICanDetermineTheLimitOfSupervisor> {

@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.admission;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -13,16 +14,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * As academic administrator,
- * I want to preapprove a candidate,
- * so that the candidate can proceed to the next selection stage
- *
- * @author PAMS
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As CPS academic administrator, I want to preapprove a candidate so that the candidate can proceed to the next selection stage")
 public class US_IN_AMS_1000 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, WhenIPreapproveCandidate, ThenCandidateCanProceedToNextSelectionPhase> {
 

@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
@@ -24,18 +25,12 @@ import my.edu.umk.pams.intake.registration.stage.WhenICalculateMeritForIntakeApp
 import my.edu.umk.pams.intake.registration.stage.WhenISelectTopApplicants;
 import my.edu.umk.pams.intake.registration.stage.WhenIWantToScanTheApplicantOfferLetterBarcode;
 
-/**
- * @author PAMS
- *         As an academic Administrator,
- *         I want to scan the applicant's offer letter barcode for matriculation,
- *         so that I can complete the student's registration
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-
-public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator, 
+@As("As an academic administrator, I want to scan the applicant's offer letter barcode for matriculation so that I can complete the student's registration")
+public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator,
 															WhenIWantToScanTheApplicantOfferLetterBarcode,
 																ThenICanCompleteStudentRegistration> {
 	
@@ -43,7 +38,6 @@ public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator
 	
 	@Autowired
     private RegistrationService registrationService;
-    
     private String intakeReferenceNo = "201720181/MASTER";
 
     @Test

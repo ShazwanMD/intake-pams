@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.application;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmRegisteredUser;
@@ -19,16 +20,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * As a applicant, 
- * I want to reset my forget password 
- * so that I can login again
- * @author PAMI-azah~
 
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a applicant, I want to reset my forget password so that I can login again")
 public class US_IN_APN_1000 extends SpringScenarioTest<GivenIAmRegisteredUser, WhenIWantToResetForgetPassword, ThenICanLoginAgain> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1000.class);

@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
@@ -17,17 +18,11 @@ import my.edu.umk.pams.intake.admission.stage.WhenIWantToReviewApplicationsFlagg
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyExtraCurricularExperience;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/**
- * As academic administrator,
- * 	I want to review applications flagged as appeal, 
- *  	so that i can submit the application
- * 
- * @author PAMS
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As CPS administrator, I want to review applications flagged as appeal, so that i can submit the application ")
 public class US_IN_AMS_1005 extends
         SpringScenarioTest<GivenIAmCPSAdministrator,
         						WhenIFillApplication,

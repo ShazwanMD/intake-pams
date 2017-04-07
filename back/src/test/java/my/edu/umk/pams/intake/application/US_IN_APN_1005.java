@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
@@ -18,18 +19,12 @@ import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/**
- * @author PAMS
- *         <p>
- *         As a applicant,
- *         I want to fill in multiple information on my history of education,
- *         so that I can complete my application.
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_1005 extends SpringScenarioTest<GivenIAmApplicant, 
+@As("As a applicant, I want to fill in multiple information on my history of education so that I can complete my application")
+public class US_IN_APN_1005 extends SpringScenarioTest<GivenIAmApplicant,
 															WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation, 
 															ThenICanSubmitMyApplication> {
 	
