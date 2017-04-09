@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
+import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
@@ -17,9 +18,11 @@ import my.edu.umk.pams.intake.registration.US_IN_RGN_3002;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+//@Pending
 @JGivenStage
 public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 	
@@ -35,7 +38,7 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
     private AuthenticationManager authenticationManager;
     
     @ProvidedScenarioState
-    InIntakeApplication application;
+    List<InIntakeApplication>  application;
     
     @Autowired
     ApplicationService applicationService;
@@ -44,20 +47,27 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
     private InIntake intake; 
 
 	public WhenOfferToCandidate offer_to_candidate_in_current_intake_session_$(String intakeSession) {
-		// generate candidate metric number
-		//dapatkan senarai pemohon yang telah dipilih
 		
-		
+	
 		intake = policyService.findIntakeByReferenceNo(intakeSession);
+	
+		application = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING); 	
 		
-		List<InIntakeApplication> application = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
-		for (InIntakeApplication inIntakeApplication : application) {
-			Assert.notNull(inIntakeApplication, "list is null");
-			inIntakeApplication.setBidStatus(InBidStatus.SELECTED);
-			//admissionService.preselectIntakeApplication(application);
+		//dapatkan senarai pemohon yang telah dipilih
+		for (InIntakeApplication intakeApplication : application) {
+			
+			LOG.debug("intakeapplication {}", intakeApplication.getBidStatus());
+			Assert.notNull(intakeApplication, "list is null");
+			intakeApplication.setBidStatus(InBidStatus.SELECTED);
+			admissionService.preselectIntakeApplication(intakeApplication);
+			
+			
 		}
+		 //test preselectIntakeApplication function
+		//InCandidate candidate = admissionService.findCandidateByIdentityNo("248674");
+		//LOG.debug("candidate : {}", candidate);
 	
 		return self();
 	}
-
 }
+

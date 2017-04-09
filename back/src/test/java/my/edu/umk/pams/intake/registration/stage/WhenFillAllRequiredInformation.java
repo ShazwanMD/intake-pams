@@ -75,6 +75,7 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
 
         // start an intakeApplication
         intakeApplication = new InIntakeApplicationImpl();
+        
         intakeApplication.setIntake(intake);
         intakeApplication.setReferenceNo(referenceNo);
         intakeApplication.setName("dummy john bin john doe");
@@ -82,7 +83,7 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
-        intakeApplication.setBidStatus(InBidStatus.SELECTED);
+        intakeApplication.setBidStatus(InBidStatus.PROCESSING);
         intakeApplication.setRank(12);
         //intakeApplication.setMerit();
         intakeApplication.setCredentialNo("248674");
@@ -92,6 +93,7 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
         intakeApplication.setBidType(InBidType.FIRST);
         intakeApplication.setBidResponse(InBidResponse.NEW);
         intakeApplication.setFax("0945666");
+        intakeApplication.setStudyMode(policyService.findStudyModeByCode("1"));
 
         applicationService.draftIntakeApplication(intake, intakeApplication);
 
