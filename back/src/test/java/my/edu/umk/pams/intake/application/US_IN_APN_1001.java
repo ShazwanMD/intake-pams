@@ -14,7 +14,8 @@ import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.application.stage.ThenICanChooseStudyMode;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToViewStuydMode;
+import my.edu.umk.pams.intake.application.stage.WhenIWantToViewStudyMode;
+
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
 import org.junit.Test;
@@ -32,7 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a applicant, I want to view my study mode so that i can choose the study mode")
-public class US_IN_APN_1001 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToViewStuydMode, ThenICanChooseStudyMode> {
+public class US_IN_APN_1001 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToViewStudyMode, ThenICanChooseStudyMode> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1001.class);
 
