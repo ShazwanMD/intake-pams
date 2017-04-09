@@ -43,6 +43,9 @@ public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
     public ThenICanChooseStudyMode I_can_choose_offered_study_mode() {
         for (InStudyModeOffering modeOffering : modeOfferings) {
         	//need to add study mode in studymode offering
+        	modeOffering.setStudyMode(policyService.findStudyModeByCode("1"));
+        	policyService.addStudyModeOffering(intake, modeOffering);
+        	
             InStudyMode studyMode = modeOffering.getStudyMode();
             LOG.debug("studyMode available: {} {}", studyMode.getCode(), studyMode.getDescriptionMs());
         }

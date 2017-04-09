@@ -5,6 +5,8 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.google.common.primitives.Bytes;
+
 @Entity(name = "InAttachment")
 @Table(name = "IN_ATMT")
 public class InAttachmentImpl implements InAttachment {
@@ -19,13 +21,21 @@ public class InAttachmentImpl implements InAttachment {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @NotNull
-    @Column(name = "URL", nullable = false)
-    private String url;
-
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
     private InIntakeApplication application;
+    
+    @NotNull
+    @Column(name = "DATA", nullable = false)
+    private byte[] bytes;
+    
+    @NotNull
+    @Column(name = "MIME_TYPE", nullable = false)
+    private String mimeType;
+    
+    @NotNull
+    @Column(name = "SIZE", nullable = false)
+    private int size;
 
     @Embedded
     private InMetadata metadata;
@@ -48,18 +58,38 @@ public class InAttachmentImpl implements InAttachment {
     public void setName(String name) {
         this.name = name;
     }
+ 
+    @Override
+    public byte[] getBytes() {
+		return bytes;
+	}
 
     @Override
-    public String getUrl() {
-        return url;
-    }
+    public String getMimeType() {
+		return mimeType;
+	}
 
     @Override
-    public void setUrl(String url) {
-        this.url = url;
-    }
+	public void setMimeType(String mimeType) {
+		this.mimeType = mimeType;
+	}
 
-    public InIntakeApplication getApplication() {
+    @Override
+	public int getSize() {
+		return size;
+	}
+
+    @Override
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	@Override
+	public void setBytes(byte[] bytes) {
+		this.bytes = bytes;
+	}
+
+	public InIntakeApplication getApplication() {
         return application;
     }
 

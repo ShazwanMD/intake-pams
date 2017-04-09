@@ -1,8 +1,10 @@
-package my.edu.umk.pams.intake.registration.stage;
+package my.edu.umk.pams.intake.application.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
@@ -13,6 +15,7 @@ import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +25,9 @@ import org.springframework.util.Assert;
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
 
 @JGivenStage
-public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteApplication> {
+public class GivenIFillIncompleteApplication extends Stage<GivenIFillIncompleteApplication> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(GivenIHaveIncompleteApplication.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GivenIFillIncompleteApplication.class);
 
     @Autowired
     private CommonService commonService;
@@ -49,14 +52,18 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
 
     @ExpectedScenarioState
     private InApplicant applicant;
+    
+    @ProvidedScenarioState
+    private InIntakeApplication application;
+    
 
-    public GivenIHaveIncompleteApplication i_drafted_an_application() {
+    public GivenIFillIncompleteApplication i_drafted_an_application() {
         InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         Assert.notNull(intake, "intake is null");
 
  
 
-        InIntakeApplication application = new InIntakeApplicationImpl();
+         application = new InIntakeApplicationImpl();
         application.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); // auto
         // numbered
         application.setIntake(intake);
@@ -79,21 +86,6 @@ public class GivenIHaveIncompleteApplication extends Stage<GivenIHaveIncompleteA
         return self();
     }
 
-    public GivenIHaveIncompleteApplication i_have_an_incomplete_application() {
-        InIntake intake = policyService.findIntakeByReferenceNo("MASTER/201720181");
-        InUser currentUser = securityService.getCurrentUser();
-        Assert.isTrue((currentUser.getActor() instanceof InApplicant), "actor is not an applicant");
-
-        if (currentUser.getActor() instanceof InApplicant) {
-            applicant = (InApplicant) currentUser.getActor();
-            Assert.notNull(applicant, "applicant is null");
-            LOG.debug("applicant ", applicant);
-        } else {
-            InIntakeApplication application = applicationService.findIntakeApplicationByIntakeAndApplicant(intake,
-                    applicant);
-            Assert.notNull(application, "application should not be null");
-
-        }
-        return self();
-    }
+   
+    
 }

@@ -658,5 +658,25 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(address);
-    }   
+    }
+
+	@Override
+	public void addAttachment(InIntakeApplication application,
+			InAttachment attachment, InUser user) {
+		
+		Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(attachment, "Attachment cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        attachment.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        attachment.setMetadata(metadata);
+        session.save(attachment);
+		
+	}   
 }

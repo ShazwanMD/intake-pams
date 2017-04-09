@@ -16,6 +16,7 @@ public class WhenIChooseMySupervisor extends Stage<WhenIChooseMySupervisor> {
 
 
     public WhenIChooseMySupervisor I_choose_my_supervisor() {
+    	//find supervisor object
         return self();
     }
 

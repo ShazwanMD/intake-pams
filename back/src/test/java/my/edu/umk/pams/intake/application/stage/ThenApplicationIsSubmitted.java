@@ -11,10 +11,12 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.service.SystemService;
 @JGivenStage
@@ -28,7 +30,7 @@ public class ThenApplicationIsSubmitted extends Stage<ThenApplicationIsSubmitted
     private SystemService systemService;
 
     @ExpectedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application;
     
     @ExpectedScenarioState
     InUser user;
@@ -40,11 +42,15 @@ public class ThenApplicationIsSubmitted extends Stage<ThenApplicationIsSubmitted
     private InEmailQueue emailQueue;
     
     @ExpectedScenarioState
+    private InIntake intake;
+    
+    @ExpectedScenarioState
     boolean exists;
     
 	public ThenApplicationIsSubmitted application_is_submitted(){
-		List<InEmailQueue> queues = systemService.findEmailQueues();
-		Assert.isTrue(!queues.isEmpty(), "I don't know my application submission status");
+		applicationService.submitIntakeApplication(intake, application);
+        Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
+        LOG.debug("intake status {}", application.getBidStatus());
 		
 		return self();
 	}
