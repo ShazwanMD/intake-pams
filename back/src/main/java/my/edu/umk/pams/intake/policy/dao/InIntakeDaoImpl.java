@@ -95,6 +95,19 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         query.setEntity("studyMode", studyMode);
         return (InStudyModeOffering) query.uniqueResult();
     }
+    
+    @Override
+    public InStudyMode findStudyModeByCode(String code) {
+    	Session session = sessionFactory.getCurrentSession();
+     
+        Query query = session.createQuery("select p from InStudyMode p " +
+                "where p.code = :code ");
+        query.setString("code", code);
+		
+		 return (InStudyMode) query.uniqueResult();
+		 
+
+	}     
 
     @Override
     public List<InIntake> find(InIntakeSession session) {
