@@ -15,21 +15,22 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.intake.application.stage.GivenIFillIncompleteApplication;
 import my.edu.umk.pams.intake.application.stage.ThenApplicationIsSubmitted;
 import my.edu.umk.pams.intake.application.stage.WhenIUploadDocuments;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
+import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a applicant, I want to be able to upload related documents so that I can complete my application")
-public class US_IN_APN_1011 extends SpringScenarioTest<GivenIAmApplicant, WhenIUploadDocuments, ThenApplicationIsSubmitted> {
+public class US_IN_APN_1011 extends SpringScenarioTest<GivenIAmApplicant, GivenIFillIncompleteApplication, ThenApplicationIsSubmitted> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1011.class);
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	
-	 @Pending
 	 @Test
 	 @Issue("PAMI-32")
 	 @Rollback
@@ -37,7 +38,8 @@ public class US_IN_APN_1011 extends SpringScenarioTest<GivenIAmApplicant, WhenIU
 		 
 		 given().I_am_an_applicant_in_current_intake_session()
          	.and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-		 when().I_Upload_Documents();	    		 
+		 when().i_drafted_an_application();
+		 addStage(WhenIUploadDocuments.class).and().I_Upload_Documents();	    		 
 	     then().application_is_submitted();
 		 		 
 	 }

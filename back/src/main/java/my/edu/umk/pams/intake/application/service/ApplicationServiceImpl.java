@@ -167,8 +167,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Override
 	public void addAttachment(InIntakeApplication application,
 			InAttachment attachment) {
-		// TODO Auto-generated method stub
 		
+		intakeApplicationDao.addAttachment(application, attachment, Util.getCurrentUser());
 	}
 
     @Override
