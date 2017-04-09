@@ -8,11 +8,14 @@ package my.edu.umk.pams.intake.application;
  */
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.application.stage.ThenICanChooseStudyMode;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToViewStuydMode;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -37,6 +40,7 @@ public class US_IN_APN_1001 extends SpringScenarioTest<GivenIAmApplicant, WhenIW
 
     @Test
     @Rollback
+    @Issue("PAMI-22")
     public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
         when().I_want_to_view_offered_study_mode_by_intake_$(INTAKE_REFERENCE_NO);
