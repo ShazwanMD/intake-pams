@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.util.Util;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
+
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -161,6 +162,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 //        franchiseDao.save()
 //        sessionFactory.getCurrentSession().flush();
     }
+    
+
+	@Override
+	public void addAttachment(InIntakeApplication application,
+			InAttachment attachment) {
+		// TODO Auto-generated method stub
+		
+	}
 
     @Override
     public InApplicant findApplicant(InIntakeApplication application) {
@@ -362,4 +371,5 @@ public class ApplicationServiceImpl implements ApplicationService {
     public boolean hasResult(InIntakeApplication application, InResultType resultType) {
         return intakeApplicationDao.hasResult(application, resultType);
     }
+
 }
