@@ -13,10 +13,6 @@ public interface InAttachment extends InMetaObject {
 
     void setName(String name);
 
-    String getUrl();
-
-    void setUrl(String url);
-
     InIntakeApplication getApplication();
 
     void setApplication(InIntakeApplication application);

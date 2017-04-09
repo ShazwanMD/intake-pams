@@ -21,10 +21,6 @@ public class InAttachmentImpl implements InAttachment {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @NotNull
-    @Column(name = "URL", nullable = false)
-    private String url;
-
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
     private InIntakeApplication application;
@@ -61,16 +57,6 @@ public class InAttachmentImpl implements InAttachment {
     @Override
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public String getUrl() {
-        return url;
-    }
-
-    @Override
-    public void setUrl(String url) {
-        this.url = url;
     }
  
     @Override
