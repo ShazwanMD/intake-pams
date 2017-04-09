@@ -2,12 +2,20 @@ package my.edu.umk.pams.intake.admission.dao;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
+import my.edu.umk.pams.intake.core.InMetaState;
+import my.edu.umk.pams.intake.core.InMetadata;
+import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+
+import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -49,4 +57,14 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
         query.setMaxResults(limit);
         return (List<InCandidate>) query.list();
     }
+
+
+	@Override
+	public void updateCandidate(InIntakeApplication application, InCandidate candidate) {
+		 Validate.notNull(application, "Application cannot be null");
+		 Validate.notNull(candidate, "candidate cannot be null");
+		
+		 Session session = sessionFactory.getCurrentSession();
+	}
+
 }

@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.admission.service;
 
+import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
@@ -18,6 +19,8 @@ import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.util.Util;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +33,7 @@ import java.util.Map;
  */
 @Service("admissionService")
 public class AdmissionServiceImpl implements AdmissionService {
-
+	private static final Logger LOG = LoggerFactory.getLogger(AdmissionServiceImpl.class);
     @Autowired
     private InCandidateDao candidateDao;
 
@@ -39,6 +42,9 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Autowired
     private ApplicationService applicationService;
+    
+    @Autowired
+    private AdmissionService admissionService;
 
     @Autowired
     private CommonService commonService;
@@ -72,6 +78,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public void preselectIntakeApplication(InIntakeApplication application) {
         // create candidate
+    	
         InCandidate candidate = new InCandidateImpl();
         candidate.setName(application.getName());
         candidate.setIdentityNo(application.getCredentialNo());
@@ -81,7 +88,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setApplicant(application.getApplicant());
         candidate.setProgramSelection(application.getProgramSelection());
         candidate.setSupervisorSelection(application.getSupervisorSelection());
-        candidateDao.save(candidate, securityService.getCurrentUser());
+        candidateDao.save(candidate, Util.getCurrentUser());
     }
 
     @Override
