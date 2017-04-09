@@ -78,7 +78,7 @@ public interface PolicyService {
 
     List<Task> findPooledIntakeTasks(Integer offset, Integer limit);
 
-    void startIntakeTask(InIntake intake);
+    String startIntakeTask(InIntake intake);
 
     void updateIntake(InIntake intake);
 

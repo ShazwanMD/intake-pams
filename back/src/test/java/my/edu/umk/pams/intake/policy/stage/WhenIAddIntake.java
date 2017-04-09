@@ -36,14 +36,14 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
     @ProvidedScenarioState
     private InIntake intake;
 
+    @ProvidedScenarioState
+    private String referenceNo;
+
     public WhenIAddIntake I_add_intake() {
         level = policyService.findProgramLevelByCode("MASTER");
 
         // start a new intake
         intake = new InIntakeImpl();
-        String referenceNo = session.getCode() + "/" + level.getCode();
-        intake.setReferenceNo(referenceNo + "2");
-        intake.setSourceNo(level.getCode() + "/" + session.getCode() + "2");
         intake.setAuditNo(UUID.randomUUID().toString());
         intake.setDescription("Intake for Program Master 201720181");
         intake.setProgramLevel(level);
@@ -51,8 +51,7 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
         intake.setProjection(100);
         intake.setStartDate(new Date());
         intake.setEndDate(new Date());
-        policyService.startIntakeTask(intake);
-
+        referenceNo = policyService.startIntakeTask(intake);
         return self();
     }
 }

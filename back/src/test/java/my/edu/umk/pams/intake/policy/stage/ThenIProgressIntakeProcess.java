@@ -33,17 +33,14 @@ public class ThenIProgressIntakeProcess extends Stage<ThenIProgressIntakeProcess
     private InIntake intake;
 
     public ThenIProgressIntakeProcess i_can_progress_the_intake_process() {
-
         InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
-
         intake.getProjection();
         intake.getStartDate();
         intake.getEndDate();
-        policyService.startIntakeTask(intake);
+        String referenceNo = policyService.startIntakeTask(intake);
 
         List<Task> tasks = policyService.findAssignedIntakeTasks(0, 100);
         for (Task task : tasks) {
-
             // tambah policy
             // tambah offering
             // tambah studyenter
@@ -64,7 +61,6 @@ public class ThenIProgressIntakeProcess extends Stage<ThenIProgressIntakeProcess
             // betulkan yang salah
             policyService.completeTask(verifyAssignedTask);
         }
-
 
         Assert.notNull(intake, "projection cannot be empty"); // todo( Needs better assert)
         return self();

@@ -10,12 +10,14 @@ import my.edu.umk.pams.intake.policy.dao.InIntakeSessionDao;
 import my.edu.umk.pams.intake.policy.dao.InProgramLevelDao;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
-
 import org.activiti.engine.task.Task;
 import org.apache.commons.lang.Validate;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -24,10 +26,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_REFERENCE_NO;
 import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
 
 @Service
 public class PolicyServiceImpl implements PolicyService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PolicyServiceImpl.class);
 
     @Autowired
     private InIntakeSessionDao intakeSessionDao;
@@ -40,6 +45,9 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Autowired
     private WorkflowService workflowService;
+
+    @Autowired
+    private SystemService systemService;
 
     @Autowired
     private SecurityService securityService;
@@ -200,13 +208,21 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public void startIntakeTask(InIntake intake) {
-        intakeDao.save(intake, securityService.getCurrentUser());
+    public String startIntakeTask(InIntake intake) {
+        HashMap<String,Object> map = new HashMap<>();
+        map.put("intakeSession", intake.getSession());
+        map.put("programLevel", intake.getProgramLevel());
+        String refNo = systemService.generateFormattedReferenceNo(INTAKE_REFERENCE_NO, map);
+        intake.setReferenceNo(refNo);
+        LOG.debug("Processing application with refNo {}", new Object[]{refNo});
+
+        intakeDao.saveOrUpdate(intake, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(intake);
 
         // trigger workflow
         workflowService.processWorkflow(intake, prepareVariables(intake));
+        return refNo;
     }
 
     @Override
