@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
@@ -17,16 +18,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author PAMS
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a Administrator, I want to start an intake session so that intake session is ready for setup")
 public class US_IN_PLC_1000 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddIntake, ThenIntakeIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1000.class);
-
     private String referenceNo;
 
     @Test

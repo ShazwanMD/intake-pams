@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
@@ -17,16 +18,11 @@ import my.edu.umk.pams.intake.admission.stage.ThenICanGenerateAnOfferLetter;
 import my.edu.umk.pams.intake.admission.stage.WhenIOfferACandidate;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/**
- * @author PAMS
- * 
- *  As a PPS academic administrator, 
- *  I want to offer a candidate, 
- *  so that candidate ready for next selection phase
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As CPS academic administrator, I want to offer a candidate, so that candidate ready for next selection phase")
 public class US_IN_AMS_1009 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 WhenIOfferACandidate,
 ThenICanGenerateAnOfferLetter> {

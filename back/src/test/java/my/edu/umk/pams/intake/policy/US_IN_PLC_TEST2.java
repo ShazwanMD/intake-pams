@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -15,16 +16,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author PAMS
- *         As a PPS academic administrator
- *         I want to list out the programme
- *         so that applicants can make multiply selection
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("US_IN_PLC_TEST2 As an academic administrator I want to list out the programme so that applicants can make multiply selection")
 public class US_IN_PLC_TEST2 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIListProgrammes, ThenICanChooseFromMultipleSelections> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_TEST2.class);

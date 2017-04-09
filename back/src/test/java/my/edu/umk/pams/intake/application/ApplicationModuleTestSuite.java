@@ -23,8 +23,8 @@ import org.junit.runners.Suite;
         US_IN_APN_1013.class,
         US_IN_APN_1014.class,
         US_IN_APN_1015.class,
-        US_IN_APN_2000.class, //incomplete
-        US_IN_APN_2002.class, //incomplete
+        US_IN_APN_2000.class, 
+        US_IN_APN_2002.class, 
         US_IN_APN_3000.class, //incomplete
         US_IN_APN_5001.class,
         US_IN_APN_5002.class,

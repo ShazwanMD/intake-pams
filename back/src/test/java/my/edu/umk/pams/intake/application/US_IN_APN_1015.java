@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -18,22 +19,17 @@ import my.edu.umk.pams.intake.application.stage.ThenRegistrationIsComplete;
 import my.edu.umk.pams.intake.application.stage.WhenFillParentDetails;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/**
- * @author PAMS
- * As a applicant, 
- * I want to fill in the parent details, 
- * so that the registration will be complete.
- */
+
 @Pending
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a applicant, I want to fill in the parent details(guardian), so that the registration will be complete.")
 public class US_IN_APN_1015 extends SpringScenarioTest<GivenIAmApplicant,
 														WhenIWantToFillAllRequiredInformation,
 															ThenRegistrationIsComplete>{
 		
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1015.class);
-
     public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
     
     @Test

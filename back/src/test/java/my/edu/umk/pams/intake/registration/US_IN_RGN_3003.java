@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.registration;
 
 import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSKeraniAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -18,14 +19,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-//As an academic Administrator, 
-//I want to know who is applicant's referee, 
-//so that i can process their application
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-
+@As("As an academic administrator, I want to know who is applicant's referee so that i can process their application")
 public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdministrator, WhenIVerifyRefereeStatus, ThenICanProcessTheirApplication> {
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3003.class);
 

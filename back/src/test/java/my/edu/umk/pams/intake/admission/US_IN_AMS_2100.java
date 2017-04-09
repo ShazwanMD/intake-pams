@@ -8,6 +8,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -19,16 +20,11 @@ import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInforma
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/**
- * @author PAMS
- * 
- *  As a applicant, 
- *  I want to select a program from a list of available programs, 
- *  so that I can start my intake application
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a applicant, I want to select a program from a list of available programs, so that I can start my intake application")
 public class US_IN_AMS_2100 extends SpringScenarioTest<GivenIAmApplicant,
 WhenIWantToFillAllRequiredInformation,
 ThenStartIntakeApplication> {

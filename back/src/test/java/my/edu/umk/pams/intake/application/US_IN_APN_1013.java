@@ -8,6 +8,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
@@ -16,15 +17,12 @@ import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
 import my.edu.umk.pams.intake.application.stage.ThenIFillInInformationAgain;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/*As a applicant, 
-I want to cancel my intake application before submission 
-so that I can cancel or start my application process again.
-*/
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_APN_1013 extends SpringScenarioTest <GivenIAmApplicant, 
+@As("As a applicant, I want to cancel my intake application before submission so that I can cancel or start my application process again.")
+public class US_IN_APN_1013 extends SpringScenarioTest <GivenIAmApplicant,
 WhenIWantToFillAllRequiredInformation, ThenIFillInInformationAgain>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1013.class);

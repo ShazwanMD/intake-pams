@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
@@ -17,16 +18,11 @@ import my.edu.umk.pams.intake.application.stage.ThenIntakeHasProgramAvailable;
 import my.edu.umk.pams.intake.application.stage.WhenIListIntakeProgramsOffered;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/**
- * @author PAMS
- * 
- *As a applicant, 
- *I want a list of all the current offered programs, 
- *so that I can view what's available this session
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a applicant, I want a list of all the current offered programs, so that I can view what's available this session")
 public class US_IN_APN_5001 extends SpringScenarioTest<GivenIAmApplicant,
         WhenIListIntakeProgramsOffered,
         ThenIntakeHasProgramAvailable> {

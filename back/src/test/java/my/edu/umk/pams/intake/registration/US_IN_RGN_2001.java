@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.registration;
 
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -18,17 +19,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * as a registered user
- * and i have an incomplete application,
- * I want to complete my application
- * so that my application is completed.
- *
- * @author PAMS
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As an applicant and i have an incomplete application, I want to complete my application so that my completion is completed")
 public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, WhenICheckApplication, ThenMyApplicationIsComplete> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_2001.class);

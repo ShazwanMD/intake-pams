@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmAnonymous;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -17,18 +18,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author PAMS
- */
-
-//As an anonymous, 
-//I want to register, 
-//so that I can login as an applicant
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As an anonymous, I want to register, so that I can login as an applicant")
 public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIRegister, ThenICanLogIn> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1001.class);

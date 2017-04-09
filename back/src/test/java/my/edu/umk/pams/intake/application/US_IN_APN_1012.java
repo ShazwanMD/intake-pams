@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
@@ -18,14 +19,11 @@ import my.edu.umk.pams.intake.application.stage.WhenIViewApplicationStatus;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-/*As a applicant, 
- * I want to be able to see the current status of my application 
- * so that I can be aware of my application progress
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a applicant, I want to be able to see the current status of my application so that I can be aware of my application progress")
 public class US_IN_APN_1012 extends
 		SpringScenarioTest<GivenIAmApplicant, WhenIWantToFillAllRequiredInformation, ThenTheApplicationStatusIsListed> {
 	
@@ -37,12 +35,10 @@ public class US_IN_APN_1012 extends
 	 @Issue("PAMI-33")
 	 @Rollback
 	 public void scenario1() {
-		 
 		 given().I_am_an_applicant_in_current_intake_session()
          	.and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
 		 when().I_fill_in_all_the_required_information_in_my_application();	    	
 		 addStage(WhenIViewApplicationStatus.class).and().I_View_Application_Status();		 
 	     then().Application_Status_Listed();
-		 		 
 	 }
 }

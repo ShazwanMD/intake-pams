@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.intake.admission.stage.WhenIFillInIntakeApplication;
@@ -22,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a CPS academic Administrator, I want to view applicant that have sponsorship or not so that i can proceed the applicant's registration")
 public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIFillInIntakeApplication, ThenICanProceedRegistration> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3000.class);

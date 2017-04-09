@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -18,16 +19,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author PAMS
- *         As an academic Administrator,
- *         I want to view all the top applicant applications for an intake,
- *         so that I can proceed to process their application
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmCPSAdministrator, 
+@As("As a CPS academic Administrator, I want to view all the top applicant applications for an intake so that I can proceed to process their application")
+public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 															WhenIFillApplication,
 																ThenICanProceedToProcessTheirApplication> {
 
@@ -35,7 +32,6 @@ public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     @Autowired
     private RegistrationService registrationService;
-    
     private String intakeReferenceNo = "201720181/MASTER";
 
     @Test
