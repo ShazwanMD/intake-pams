@@ -143,5 +143,11 @@ public interface PolicyService {
 	String generalCriteria();
 
 	String specificCriteria();
+	
+    //====================================================================================================
+    // STUDY MODE 
+    //====================================================================================================
 
+	InStudyMode findStudyModeByCode(String code);
+	
 }

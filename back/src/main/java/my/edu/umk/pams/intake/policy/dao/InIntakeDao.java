@@ -32,6 +32,8 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
     InStudyModeOffering findModeOfferingById(Long id);
 
     InStudyModeOffering findModeOfferingByIntakeAndMode(InIntake intake, InStudyMode studyMode);
+    
+    InStudyMode findStudyModeByCode(String code);
 
     List<InIntake> find(InIntakeSession session);
 

@@ -381,6 +381,18 @@ public class PolicyServiceImpl implements PolicyService {
     public List<InStudyModeOffering> findStudyModeOfferings(InIntake intake) {
         return intakeDao.findModeOfferings(intake);
     }
+    
+    //====================================================================================================
+    // STUDY MODE 
+    //====================================================================================================
+    
+    @Override
+   
+    public InStudyMode findStudyModeByCode(String code) {
+    	
+		return intakeDao.findStudyModeByCode(code);
+	}
+
 
     //====================================================================================================
     // PRIVATE METHODS
