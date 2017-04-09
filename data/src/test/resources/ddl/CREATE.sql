@@ -56,7 +56,10 @@ create table IN_ATMT (
   M_ST int4,
   NAME varchar(255) not null,
   URL varchar(255) not null,
-  APPLICATION_ID int8,
+  APPLICATION_ID int8 not null,
+  DATA 			bytea not null,
+  MIME_TYPE     varchar(255) not null,
+  SIZE int8 not null,
   primary key (ID)
 );
 

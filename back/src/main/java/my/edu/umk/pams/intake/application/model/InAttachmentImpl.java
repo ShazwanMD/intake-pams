@@ -30,8 +30,16 @@ public class InAttachmentImpl implements InAttachment {
     private InIntakeApplication application;
     
     @NotNull
-    @Column(name = "BYTE", nullable = false)
+    @Column(name = "DATA", nullable = false)
     private byte[] bytes;
+    
+    @NotNull
+    @Column(name = "MIME_TYPE", nullable = false)
+    private String mimeType;
+    
+    @NotNull
+    @Column(name = "SIZE", nullable = false)
+    private int size;
 
     @Embedded
     private InMetadata metadata;
@@ -71,6 +79,26 @@ public class InAttachmentImpl implements InAttachment {
 	}
 
     @Override
+    public String getMimeType() {
+		return mimeType;
+	}
+
+    @Override
+	public void setMimeType(String mimeType) {
+		this.mimeType = mimeType;
+	}
+
+    @Override
+	public int getSize() {
+		return size;
+	}
+
+    @Override
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	@Override
 	public void setBytes(byte[] bytes) {
 		this.bytes = bytes;
 	}

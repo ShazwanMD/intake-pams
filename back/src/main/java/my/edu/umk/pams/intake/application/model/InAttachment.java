@@ -24,4 +24,12 @@ public interface InAttachment extends InMetaObject {
     byte[] getBytes();
 
     void setBytes(byte[] bytes);
+
+	String getMimeType();
+
+	void setMimeType(String mimeType);
+
+	int getSize();
+
+	void setSize(int size);
 }
