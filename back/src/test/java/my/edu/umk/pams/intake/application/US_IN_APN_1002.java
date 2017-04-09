@@ -3,11 +3,14 @@ package my.edu.umk.pams.intake.application;
 import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.application.stage.ThenICanPayMyCourseFee;
 import my.edu.umk.pams.intake.application.stage.WhenIViewMyCourseFee;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -32,6 +35,7 @@ public class US_IN_APN_1002 extends SpringScenarioTest<GivenIAmApplicant, WhenIV
 
     @Test
     @Rollback
+    @Issue("PAMI-23")
      public void testScenario1() {
     	//Need to link with account module
     	//Pending  

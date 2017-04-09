@@ -31,12 +31,15 @@ public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, WhenIC
 
     @Autowired
     private ApplicationService applicationService;
+    
+    public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
     @Test
     @Rollback
-    @Issue("PAMI-23")
+    @Issue("PAMI-24")
     public void scenario1() {
-        given().I_am_an_applicant_in_current_intake_session();
+    	given().I_am_an_applicant_in_current_intake_session()
+        .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
         when().I_choose_my_supervisor();
         then().I_know_who_will_supervise_my_project();
     }
