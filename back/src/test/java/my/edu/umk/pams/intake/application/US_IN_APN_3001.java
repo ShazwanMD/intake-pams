@@ -17,6 +17,7 @@ import my.edu.umk.pams.intake.application.stage.ThenSubmitTheProcessingFeeReceip
 import my.edu.umk.pams.intake.application.stage.WhenGeneratePayableProcessingFeeReceipt;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
+@Pending
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -29,7 +30,6 @@ public class US_IN_APN_3001 extends SpringScenarioTest<GivenIAmBursary, WhenGene
 	@Test
     @Rollback
     @Issue("PAMI-40")
-    @Pending
     public void testScenario1() {
     	given().I_am_a_bursary_in_current_academic_session();
     	when().Generate_Processing_Fee_Receipt();
