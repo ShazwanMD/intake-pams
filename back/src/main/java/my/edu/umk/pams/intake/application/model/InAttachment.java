@@ -1,5 +1,7 @@
 package my.edu.umk.pams.intake.application.model;
 
+import com.google.common.primitives.Bytes;
+
 import my.edu.umk.pams.intake.core.InMetaObject;
 
 /**
@@ -18,5 +20,8 @@ public interface InAttachment extends InMetaObject {
     InIntakeApplication getApplication();
 
     void setApplication(InIntakeApplication application);
+    
+    byte[] getBytes();
 
+    void setBytes(byte[] bytes);
 }
