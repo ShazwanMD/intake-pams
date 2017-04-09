@@ -34,6 +34,7 @@ public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, WhenIC
     
     public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
+    
     @Test
     @Rollback
     @Issue("PAMI-24")
