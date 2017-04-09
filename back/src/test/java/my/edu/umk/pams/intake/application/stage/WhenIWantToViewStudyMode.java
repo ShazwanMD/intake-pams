@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @JGivenStage
-public class WhenIWantToViewStuydMode extends Stage<WhenIWantToViewStuydMode> {
+public class WhenIWantToViewStudyMode extends Stage<WhenIWantToViewStudyMode> {
 
     @Autowired
     private PolicyService policyService;
