@@ -15,10 +15,15 @@ import my.edu.umk.pams.intake.application.model.InBidType;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.identity.dao.InApplicantDao;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
+import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +47,10 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
 
     @Autowired
     private SystemService systemService;
-
+    
+    @Autowired
+    private IdentityService identityService;
+    
     @ProvidedScenarioState
     private InIntake intake;
 
@@ -51,14 +59,30 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
 
     @ExpectedScenarioState
     private InApplicant applicant;
+    
+    
 
     @ProvidedScenarioState
     private InIntakeApplication intakeApplication;
 
     public WhenFillAllRequiredInformation I_fill_in_all_the_required_information_in_my_application() {
 
-    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
     	
+    	InApplicant applicant = new InApplicantImpl(); 
+    	//applicant.setActorType(actorType);
+    	//applicant.setApplicantApplication(applicantApplication);
+    	applicant.setApplicationNo("qwer123");
+    	applicant.setEmail("dummyjohn@gmail.com");
+    	applicant.setName("john");
+    	identityService.saveApplicant(applicant);
+
+    	Assert.notNull(applicant, "applicant is null");
+    	
+    	
+    	
+    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	LOG.debug("test {} :",applicant);
+        
         //String intakeReferenceNo = "201720181/MASTER";
         //InIntake intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
 
@@ -93,10 +117,16 @@ public class WhenFillAllRequiredInformation extends Stage<WhenFillAllRequiredInf
         intakeApplication.setBidType(InBidType.FIRST);
         intakeApplication.setBidResponse(InBidResponse.NEW);
         intakeApplication.setFax("0945666");
+        Assert.notNull(policyService.findStudyModeByCode("1"), "studymode is null");
         intakeApplication.setStudyMode(policyService.findStudyModeByCode("1"));
+       // Assert.notNull(intakeApplication, "intakeApplication cannot be null");
+        intakeApplication.setApplicant(applicant);
+   //     intakeApplication.setProgramSelection(programSelection);
+   //     intakeApplication.setSupervisorSelection(SupervisorSelection);
+        
 
         applicationService.draftIntakeApplication(intake, intakeApplication);
-
+        Assert.notNull(intakeApplication, "intakeApplication cannot be null");
         return self();
     }
 }

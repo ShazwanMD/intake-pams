@@ -60,12 +60,17 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 		
 		//dapatkan senarai pemohon yang telah dipilih
 		//for (InIntakeApplication intakeApplication : applications) {
+		
+		
 		InIntakeApplication intakeApplication = applications.get(0);
 			LOG.debug("intakeapplication {}", intakeApplication.getBidStatus());
 			Assert.notNull(intakeApplication, "list is null");
 			intakeApplication.setBidStatus(InBidStatus.SELECTED);
 			LOG.debug("intakeapplication {}", intakeApplication.getBidStatus());
 			admissionService.preselectIntakeApplication(intakeApplication);
+			
+			
+			
 			 //test preselectIntakeApplication function
 		//	InCandidate candidate = admissionService.findCandidateByIdentityNo("248674");
 		//	LOG.debug("candidate : {}", candidate);
