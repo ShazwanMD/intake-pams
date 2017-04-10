@@ -45,5 +45,3 @@ private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_5000.class);
 		 then().alert_any_changes();
 	 }
 }
-
-
