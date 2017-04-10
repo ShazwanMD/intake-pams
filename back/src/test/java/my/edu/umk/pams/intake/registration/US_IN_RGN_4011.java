@@ -10,15 +10,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.admission.stage.WhenIFillApplication;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenCandidateProceedToNextSelectionPhase;
-import my.edu.umk.pams.intake.registration.stage.ThenGenerateAnOfferLetter;
 import my.edu.umk.pams.intake.registration.stage.WhenFillAllRequiredInformation;
-import my.edu.umk.pams.intake.registration.stage.WhenISelectTopApplicants;
 import my.edu.umk.pams.intake.registration.stage.WhenOfferToCandidate;
 
 
@@ -37,6 +34,7 @@ WhenFillAllRequiredInformation,ThenCandidateProceedToNextSelectionPhase> {
 	    @Rollback
 	    public void scenario1() {
 			given().I_am_a_MGSEB_administrator_in_current_intake_session();
+			//addStage(GivenIAmApplicant.class).and().I_am_an_applicant_in_current_intake_session();
 			when().I_fill_in_all_the_required_information_in_my_application();
 			//when().offer_to_candidate_in_current_intake_session_$(INTAKE_REFERENCE_NO);
 		    addStage(WhenOfferToCandidate.class).and().offer_to_candidate_in_current_intake_session_$(INTAKE_REFERENCE_NO);
