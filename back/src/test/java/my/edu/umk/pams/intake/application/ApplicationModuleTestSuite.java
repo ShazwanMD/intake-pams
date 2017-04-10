@@ -11,7 +11,7 @@ import org.junit.runners.Suite;
         US_IN_APN_1000.class,
         US_IN_APN_1001.class, 
         US_IN_APN_1002.class, 
-        US_IN_APN_1003.class, //incomplete
+        US_IN_APN_1003.class,
         US_IN_APN_1004.class,
         US_IN_APN_1005.class,
         US_IN_APN_1006.class,

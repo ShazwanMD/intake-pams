@@ -34,12 +34,12 @@ public class ThenICanSubmitMyApplication extends Stage<ThenICanSubmitMyApplicati
     private InApplicant applicant;
 
     @ExpectedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application;
 
     public ThenICanSubmitMyApplication I_can_submit_my_application() {
-        applicationService.submitIntakeApplication(intake, intakeApplication);
+        applicationService.submitIntakeApplication(intake, application);
         Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
-        LOG.debug("intake status {}", intakeApplication.getBidStatus());
+        LOG.debug("intake status {}", application.getBidStatus());
         return self();
     }
 

@@ -44,7 +44,7 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
     private InApplicant applicant;
 
     @ProvidedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application;
 
     public WhenIWantToFillAllRequiredInformation I_fill_in_all_the_required_information_in_my_application() {
         // generate intake reference no
@@ -54,16 +54,16 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
         String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
 
         // start an intakeApplication
-        intakeApplication = new InIntakeApplicationImpl();
-        intakeApplication.setIntake(this.intake);
-        intakeApplication.setReferenceNo(referenceNo);
-        intakeApplication.setName("dummy john bin john doe");
-        intakeApplication.setEmail("dummyjohn@gmail.com");
-        intakeApplication.setPhone("0111020202");
-        intakeApplication.setOkuNo("S12223214");
-        intakeApplication.setSchoolName("SMKZA");
-        intakeApplication.setBidStatus(InBidStatus.DRAFTED);
-        applicationService.draftIntakeApplication(intake, intakeApplication);
+        application = new InIntakeApplicationImpl();
+        application.setIntake(this.intake);
+        application.setReferenceNo(referenceNo);
+        application.setName("dummy john bin john doe");
+        application.setEmail("dummyjohn@gmail.com");
+        application.setPhone("0111020202");
+        application.setOkuNo("S12223214");
+        application.setSchoolName("SMKZA");
+        application.setBidStatus(InBidStatus.DRAFTED);
+        applicationService.draftIntakeApplication(intake, application);
 
         return self();
     }

@@ -41,7 +41,7 @@ public class WhenIFillinMultipleAcademicQualificationInformation extends Stage<W
     private InApplicant applicant;
     
     @ExpectedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application;
     
     @ProvidedScenarioState
     private InResultType resultType;
@@ -52,8 +52,8 @@ public class WhenIFillinMultipleAcademicQualificationInformation extends Stage<W
     	//adding result
         InResult result = new InResultImpl();
         result.setResultType(InResultType.DIPLOMA);
-        result.setApplication(intakeApplication);
-        applicationService.addResult(intakeApplication, result);
+        result.setApplication(application);
+        applicationService.addResult(application, result);
 
         
         //adding grade code
@@ -78,7 +78,7 @@ public class WhenIFillinMultipleAcademicQualificationInformation extends Stage<W
         item.setGradeCode(grade);
         item.setSubjectCode(subject);
         
-        applicationService.addResultItem(intakeApplication, result, item);
+        applicationService.addResultItem(application, result, item);
       
         
     	
