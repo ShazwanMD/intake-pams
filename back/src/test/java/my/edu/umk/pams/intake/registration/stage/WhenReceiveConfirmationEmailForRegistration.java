@@ -59,7 +59,7 @@ public class WhenReceiveConfirmationEmailForRegistration extends Stage<WhenRecei
     public WhenReceiveConfirmationEmailForRegistration I_receive_confirmation_email() {
 
     	
-    	InEmailQueue emailQueue = new InEmailQueueImpl();
+    	/*InEmailQueue emailQueue = new InEmailQueueImpl();
         
     	emailQueue.setCode("12"+ System.currentTimeMillis());
         emailQueue.setTo(intakeApplication.getEmail());
@@ -67,20 +67,23 @@ public class WhenReceiveConfirmationEmailForRegistration extends Stage<WhenRecei
         emailQueue.setQueueStatus(InEmailQueueStatus.SENT);
         systemService.saveEmailQueue(emailQueue);
         
-        LOG.debug("email status is : {}", emailQueue.getQueueStatus());
-         
+        LOG.debug("email status is : {}", emailQueue.getQueueStatus());*/
          
     	
-    	/*for (InIntakeApplication intakeApplication : applications) {
+    	LOG.debug("intake is : {}", intake);
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED); 
+        
+    	
+    	for (InIntakeApplication intakeApplication : applications) {
 			intakeApplication.getName();
 			LOG.debug(intakeApplication.getName());
 			
 			intakeApplication.getEmail();
 			LOG.debug(intakeApplication.getEmail());
 			
-			LOG.debug("intake status : {}", intakeApplication.getBidStatus());*/
+			LOG.debug("intake status : {}", intakeApplication.getBidStatus());
 		
-    	
+    	}
         return self();
     	}
 }
