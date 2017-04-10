@@ -3,6 +3,8 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
@@ -27,15 +29,25 @@ public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator
     @ProvidedScenarioState
     InIntakeSession intakeSession;
 
+    @ProvidedScenarioState
+    InIntake intake;
+    
     public void I_am_a_MGSEB_administrator_in_$_academic_session(String academicSessionCode){
         loginAsMGSEB();
         intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
     }
 
-    public void I_am_a_MGSEB_administrator_in_current_intake_session(){
+    public GivenIAmMGSEBAdministrator I_am_a_MGSEB_administrator_in_current_intake_session(){
         loginAsMGSEB();
         intakeSession = policyService.findCurrentIntakeSession();
+        return self();
     }
+    
+    public GivenIAmMGSEBAdministrator I_apply_for_intake_$(String intakeReferenceNo){
+        intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+        return self();
+    }
+    
 
     private void loginAsMGSEB() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("mgseb", "abc123");
