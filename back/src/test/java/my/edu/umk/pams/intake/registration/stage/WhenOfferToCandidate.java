@@ -22,7 +22,7 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-//@Pending
+@Pending
 @JGivenStage
 public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 	
@@ -46,8 +46,8 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
     @ProvidedScenarioState
     private InIntake intake; 
     
-  //  @ProvidedScenarioState
-  //  private InCandidate candidate; 
+//    @ProvidedScenarioState
+ //   private InCandidate candidate; 
     
 
 
@@ -69,11 +69,16 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 			LOG.debug("intakeapplication {}", intakeApplication.getBidStatus());
 			admissionService.preselectIntakeApplication(intakeApplication);
 			
+			InCandidate candidate = admissionService.findCandidateByIdentityNo("248674");
+	    	Assert.notNull(candidate, "candidate is null");
+	    	LOG.debug("candidate {}", candidate);
+	    	
+			admissionService.offerCandidate(candidate);
+			//candidate offered is not offering
+			LOG.debug("candidate offered {}", candidate);
+			Assert.notNull(candidate, "candidate offered is null");
 			
-			
-			 //test preselectIntakeApplication function
-		//	InCandidate candidate = admissionService.findCandidateByIdentityNo("248674");
-		//	LOG.debug("candidate : {}", candidate);
+
 			
 	//	}
 
