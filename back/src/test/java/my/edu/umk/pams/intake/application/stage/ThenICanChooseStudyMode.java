@@ -3,10 +3,7 @@ package my.edu.umk.pams.intake.application.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import io.jsonwebtoken.lang.Assert;
-import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
-import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
@@ -21,12 +18,6 @@ import java.util.List;
 public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
 
     private static final Logger LOG = LoggerFactory.getLogger(ThenICanChooseStudyMode.class);
-
-    @Autowired
-    private ApplicationService applicationService;
-
-    @Autowired
-    private CommonService commonService;
 
     @Autowired
     private PolicyService policyService;
