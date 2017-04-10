@@ -38,34 +38,41 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
     private AuthenticationManager authenticationManager;
     
     @ProvidedScenarioState
-    List<InIntakeApplication>  application;
+    List<InIntakeApplication>  applications;
     
     @Autowired
     ApplicationService applicationService;
     
     @ProvidedScenarioState
     private InIntake intake; 
+    
+  //  @ProvidedScenarioState
+  //  private InCandidate candidate; 
+    
+
 
 	public WhenOfferToCandidate offer_to_candidate_in_current_intake_session_$(String intakeSession) {
 		
 	
 		intake = policyService.findIntakeByReferenceNo(intakeSession);
 	
-		application = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING); 	
+		applications = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING); 	
 		
 		//dapatkan senarai pemohon yang telah dipilih
-		for (InIntakeApplication intakeApplication : application) {
-			
+		//for (InIntakeApplication intakeApplication : applications) {
+		InIntakeApplication intakeApplication = applications.get(0);
 			LOG.debug("intakeapplication {}", intakeApplication.getBidStatus());
 			Assert.notNull(intakeApplication, "list is null");
 			intakeApplication.setBidStatus(InBidStatus.SELECTED);
+			LOG.debug("intakeapplication {}", intakeApplication.getBidStatus());
 			admissionService.preselectIntakeApplication(intakeApplication);
+			 //test preselectIntakeApplication function
+		//	InCandidate candidate = admissionService.findCandidateByIdentityNo("248674");
+		//	LOG.debug("candidate : {}", candidate);
 			
-			
-		}
-		 //test preselectIntakeApplication function
-		//InCandidate candidate = admissionService.findCandidateByIdentityNo("248674");
-		//LOG.debug("candidate : {}", candidate);
+	//	}
+
+
 	
 		return self();
 	}
