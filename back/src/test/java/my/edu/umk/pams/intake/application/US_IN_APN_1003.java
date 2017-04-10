@@ -6,8 +6,10 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.application.stage.GivenIFillIncompleteApplication;
 import my.edu.umk.pams.intake.application.stage.ThenIKnowWhoWillSuperviseMyProject;
 import my.edu.umk.pams.intake.application.stage.WhenIChooseMySupervisor;
+import my.edu.umk.pams.intake.application.stage.WhenIUploadDocuments;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
 import org.junit.Test;
@@ -25,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a applicant, I want to choose my supervisor so that I can know who will supervise my project")
-public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, WhenIChooseMySupervisor, ThenIKnowWhoWillSuperviseMyProject> {
+public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, GivenIFillIncompleteApplication, ThenIKnowWhoWillSuperviseMyProject> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1003.class);
 
@@ -39,10 +41,12 @@ public class US_IN_APN_1003 extends SpringScenarioTest<GivenIAmApplicant, WhenIC
     @Rollback
     @Issue("PAMI-24")
     public void scenario1() {
+    	
     	given().I_am_an_applicant_in_current_intake_session()
         .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-        when().I_choose_my_supervisor();
-        then().I_know_who_will_supervise_my_project();
+    	when().i_drafted_an_application();
+    	addStage(WhenIChooseMySupervisor.class).and().I_choose_my_supervisor_for_intake_$(INTAKE_REFERENCE_NO);
+        then().I_know_who_will_supervise_my_project_for_intake_$(INTAKE_REFERENCE_NO);
     }
 }
 

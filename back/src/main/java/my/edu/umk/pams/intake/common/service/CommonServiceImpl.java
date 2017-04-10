@@ -114,6 +114,9 @@ public class CommonServiceImpl implements CommonService {
     private InParliamentCodeDao parliamentCodeDao;
 
     @Autowired
+    private InSupervisorCodeDao supervisorCodeDao;
+    
+    @Autowired
     private SessionFactory sessionFactory;
 
     //====================================================================================================
@@ -1857,5 +1860,57 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
+  //====================================================================================================
+    // SUPERVISOR CODE
+    //====================================================================================================
 
+    @Override
+    public InSupervisorCode findSupervisorCodeById(Long id) {
+        return supervisorCodeDao.findById(id);
+    }
+
+    @Override
+    public InSupervisorCode findSupervisorCodeByCode(String code) {
+        return supervisorCodeDao.findByCode(code);
+    }
+
+    @Override
+    public List<InSupervisorCode> findSupervisorCodes() {
+        return supervisorCodeDao.find();
+    }
+
+    @Override
+    public List<InSupervisorCode> findSupervisorCodes(String filter, Integer offset, Integer limit) {
+        return supervisorCodeDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countSupervisorCode() {
+        return supervisorCodeDao.count();
+    }
+
+    @Override
+    public Integer countSupervisorCode(String filter) {
+        return supervisorCodeDao.count(filter);
+    }
+
+
+    @Override
+    public void saveSupervisorCode(InSupervisorCode supervisorCode) {
+        supervisorCodeDao.save(supervisorCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateSupervisorCode(InSupervisorCode supervisorCode) {
+        supervisorCodeDao.update(supervisorCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeSupervisorCode(InSupervisorCode supervisorCode) {
+        supervisorCodeDao.remove(supervisorCode, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
 }

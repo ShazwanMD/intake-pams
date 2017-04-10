@@ -716,6 +716,28 @@ public interface CommonService {
 
 
     //====================================================================================================
+    // SUPERVISOR CODE
+    //====================================================================================================
+
+    InSupervisorCode findSupervisorCodeById(Long id);
+
+    InSupervisorCode findSupervisorCodeByCode(String code);
+
+    List<InSupervisorCode> findSupervisorCodes();
+
+    List<InSupervisorCode> findSupervisorCodes(String filter, Integer offset, Integer limit);
+
+    Integer countSupervisorCode();
+
+    Integer countSupervisorCode(String filter);
+
+    void saveSupervisorCode(InSupervisorCode supervisorCode);
+
+    void updateSupervisorCode(InSupervisorCode supervisorCode);
+
+    void removeSupervisorCode(InSupervisorCode supervisorCode);
+    
+  //====================================================================================================
     // STUDY MODE
     //====================================================================================================
 
