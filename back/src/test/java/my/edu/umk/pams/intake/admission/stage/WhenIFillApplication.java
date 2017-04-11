@@ -124,7 +124,7 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
     	intakeApplication.setOkuNo("S12223214");
     	intakeApplication.setSchoolName("SMKZA");
     	intakeApplication.setBidStatus(InBidStatus.DRAFTED);
-    	applicationService.draftIntakeApplication(intake, intakeApplication);*/
+    	applicationService.draftIntakeApplication(intake, intakeApplication);
          
         return self() ;
     }
