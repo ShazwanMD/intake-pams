@@ -39,7 +39,7 @@ public class ThenUpdateReasonToApplicant  extends Stage<ThenUpdateReasonToApplic
    public ThenUpdateReasonToApplicant unsuccessful_applicant_view_the_reason(){
 		 
 
-	   LOG.debug("reason : {}", intakeApplication.getReason());
+
 	   Assert.notNull(intakeApplication, "reason is not set");
 		 LOG.debug("reason : {}", intakeApplication.getReason());
 		 return self();
