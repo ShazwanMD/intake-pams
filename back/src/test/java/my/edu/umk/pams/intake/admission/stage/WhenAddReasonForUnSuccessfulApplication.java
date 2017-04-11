@@ -34,7 +34,7 @@ public class WhenAddReasonForUnSuccessfulApplication  extends Stage<WhenAddReaso
 	 @ExpectedScenarioState
 	 private InIntakeApplication intakeApplication;
 	 
-	 public WhenAddReasonForUnSuccessfulApplication add_reason_for_unsuccessful_application(){
+	 public WhenAddReasonForUnSuccessfulApplication I_add_reason_for_unsuccessful_application(){
 		 
 		 intakeApplication.setReason("Your Application Is UnSuccessfull");
 		 applicationService.updateIntakeApplication(intakeApplication);

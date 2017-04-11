@@ -43,7 +43,7 @@ public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator
         return self();
     }
     
-    public GivenIAmMGSEBAdministrator I_apply_for_intake_$(String intakeReferenceNo){
+    public GivenIAmMGSEBAdministrator I_pick_an_intake_$(String intakeReferenceNo){
         intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
         return self();
     }

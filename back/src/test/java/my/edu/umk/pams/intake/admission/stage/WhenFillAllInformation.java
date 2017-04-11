@@ -43,7 +43,7 @@ public class WhenFillAllInformation extends Stage<WhenFillAllInformation> {
     @ProvidedScenarioState
     private InIntakeApplication intakeApplication;
 
-    public WhenFillAllInformation fill_all_required_information_$(String intakeReferenceNo) {
+    public WhenFillAllInformation Applicant_fill_all_required_information_$(String intakeReferenceNo) {
         // generate intake reference no
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intakeSession);
