@@ -27,7 +27,7 @@ public class US_IN_AMS_1003 extends
         						WhenFillAllInformation,
         							ThenICanApprovedTheirApplication> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1005.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1003.class);
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	
 	@Issue("PAMI-50")
