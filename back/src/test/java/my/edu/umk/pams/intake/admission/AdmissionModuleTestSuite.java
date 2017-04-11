@@ -15,7 +15,7 @@ import org.junit.runners.Suite;
         US_IN_AMS_1004.class,
         US_IN_AMS_1005.class,
         US_IN_AMS_1006.class,
-        US_IN_AMS_1007.class,
+        US_IN_AMS_1007.class, //pending
         US_IN_AMS_1009.class,
         US_IN_AMS_1100.class,
         US_IN_AMS_2000.class,
@@ -25,7 +25,7 @@ import org.junit.runners.Suite;
         US_IN_AMS_2004.class,
         US_IN_AMS_2005.class,
         US_IN_AMS_2006.class,
-        US_IN_AMS_2007.class,
+        US_IN_AMS_2007.class, //pending
         US_IN_AMS_2009.class,
         US_IN_AMS_2100.class,
         US_IN_AMS_2200.class,
