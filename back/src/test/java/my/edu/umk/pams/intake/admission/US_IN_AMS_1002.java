@@ -5,6 +5,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.ThenICanPreferredTheirApplicationt;
+import my.edu.umk.pams.intake.admission.stage.WhenFillAllInformation;
 import my.edu.umk.pams.intake.admission.stage.WhenIFillApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToPreSelectEligibleEndCapableApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -24,19 +25,18 @@ import org.springframework.transaction.annotation.Transactional;
 @As("As CPS academic administrator, I want to pre-select eligible and capable applicants so that I can preferred their application")
 public class US_IN_AMS_1002 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, 
-        							WhenIFillApplication, 
+        						WhenFillAllInformation,
         										ThenICanPreferredTheirApplicationt> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1002.class);
-	//public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	
     @Test
     @Rollback
     @Issue("PAMI-49")
     public void scenario1() {
-        given().I_am_a_CPS_administrator_in_current_intake_session()
-        .and().I_pick_an_intake_$("201720181/MASTER");
-        when().I_fill_in_application();
+    	given().I_am_a_CPS_administrator_in_current_intake_session().and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
+        when().Applicant_fill_all_required_information_$(INTAKE_REFERENCE_NO); 
         addStage(WhenIWantToPreSelectEligibleEndCapableApplicant.class).and().I_want_to_pre_select_eligible_and_capable_applicants();
         then().I_can_preferred_their_application();
     } 
