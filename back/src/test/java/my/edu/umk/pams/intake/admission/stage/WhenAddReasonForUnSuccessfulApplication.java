@@ -44,7 +44,7 @@ public class WhenAddReasonForUnSuccessfulApplication  extends Stage<WhenAddReaso
 
 	     InBidStatus bidStatus = intakeApplication.getBidStatus();
 	     Assert.isTrue(InBidStatus.REJECTED.equals(bidStatus), "application is not submitted");
-	     LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+	     LOG.debug("intake status : {} ", intakeApplication.getBidStatus());
 	     
 	     
 		 intakeApplication.setReason("Your Application Is UnSuccessfull");
