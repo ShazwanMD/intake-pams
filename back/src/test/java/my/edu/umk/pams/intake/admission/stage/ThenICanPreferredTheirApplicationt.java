@@ -1,9 +1,12 @@
 package my.edu.umk.pams.intake.admission.stage;
 
+import static org.junit.Assert.assertEquals;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
@@ -17,11 +20,18 @@ public class ThenICanPreferredTheirApplicationt extends Stage<ThenICanPreferredT
     private InCandidate candidate;
     
     @ExpectedScenarioState
-    private InIntakeApplication applications;
+    private InIntakeApplication preselectApplication;
 
+    InBidStatus status;
+    
     public ThenICanPreferredTheirApplicationt I_can_preferred_their_application() {
 
-        applications.setBidStatus(InBidStatus.SELECTED);
+    	 //From the last selected, now we set the status.
+    	preselectApplication.setBidStatus(InBidStatus.PRE_SELECTED);
+       	
+       	//Let Compare if it equals or not
+       	status = preselectApplication.getBidStatus();
+       	assertEquals(InBidStatus.PRE_SELECTED,status);
         return self();
 
     }
