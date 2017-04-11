@@ -28,6 +28,7 @@ public class US_IN_AMS_1002 extends
         										ThenICanPreferredTheirApplicationt> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1002.class);
+	//public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	
     @Test
     @Rollback
