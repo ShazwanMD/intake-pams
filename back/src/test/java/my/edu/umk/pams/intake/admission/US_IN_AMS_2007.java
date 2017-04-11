@@ -25,8 +25,8 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As MGSEB academic Administrator, I want to assign supervisor to applicant, so that the applicants can choose their supervisor")
 public class US_IN_AMS_2007 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
-WhenAssignSupervisorToApplicant,
-ThenApplicantChooseSupervisor> {
+															WhenAssignSupervisorToApplicant,
+																ThenApplicantChooseSupervisor> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_2007.class);
 
