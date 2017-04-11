@@ -71,7 +71,7 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
     	InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
          Assert.notNull(intake, "intake is null");
          
-        Map<String, Object> map = new HashMap<String, Object>();
+        /*Map<String, Object> map = new HashMap<String, Object>();
     	map.put("intakeSession", intakeSession);
     	map.put("programLevel", intake.getProgramLevel());
     	String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
@@ -105,11 +105,11 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
          application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
          application.setApplicant(applicant);
 
-         applicationService.submitIntakeApplication(intake, application);
+         applicationService.submitIntakeApplication(intake, application);*/
          //draftIntakeApplication(intake, application);
         
     	
-    	/*Map<String, Object> map = new HashMap<String, Object>();
+    	Map<String, Object> map = new HashMap<String, Object>();
     	map.put("intakeSession", intakeSession);
     	map.put("programLevel", intake.getProgramLevel());
     	String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
