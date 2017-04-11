@@ -38,7 +38,7 @@ public class WhenViewListOfSelectedApplicant extends Stage<WhenViewListOfSelecte
     private InIntake intake;
     
     @ExpectedScenarioState
-    private List<InIntakeApplication> intakeApplication;
+    private InIntakeApplication intakeApplication;
     
     @Autowired
     private ApplicationService applicationService;
@@ -49,12 +49,12 @@ public class WhenViewListOfSelectedApplicant extends Stage<WhenViewListOfSelecte
     public WhenViewListOfSelectedApplicant View_List_Of_Selected_Applicant() {
 
     	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
-	   	List<InIntakeApplication> intakeApplication  =  applicationService.findIntakeApplications(intake,InBidStatus.SELECTED);
+	   	List<InIntakeApplication> intakeApplications  =  applicationService.findIntakeApplications(intake,InBidStatus.SELECTED);
 	   	
-	    for (InIntakeApplication application : intakeApplication) {
+	    for (InIntakeApplication application : intakeApplications) {
 	    	LOG.debug("application : {} ", application.getBidStatus());
         }
-	    Assert.notEmpty(intakeApplication, "intakeApplication is empty");
+	    Assert.notNull(intakeApplication, "intakeApplication is empty");
 	    return self(); 
 	}
 }
