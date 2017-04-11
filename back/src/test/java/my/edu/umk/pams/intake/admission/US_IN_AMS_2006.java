@@ -37,11 +37,11 @@ public class US_IN_AMS_2006 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Rollback
     public void scenario1() {
 		
-		 given().I_am_a_MGSEB_administrator_in_current_intake_session().and().I_apply_for_intake_$(INTAKE_REFERENCE_NO);
+		 given().I_am_a_MGSEB_administrator_in_current_intake_session().and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
 	   // .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-		 when().fill_all_required_information_$(INTAKE_REFERENCE_NO);    	
-		 addStage(WhenSubmitApplication.class).and().submit_application();
-		 addStage(WhenAddReasonForUnSuccessfulApplication.class).and().add_reason_for_unsuccessful_application();
+		 when().Applicant_fill_all_required_information_$(INTAKE_REFERENCE_NO);    	
+		 addStage(WhenSubmitApplication.class).and().applicant_submit_application();
+		 addStage(WhenAddReasonForUnSuccessfulApplication.class).and().I_add_reason_for_unsuccessful_application();
 		// when().add_reason_for_unsuccessful_application();
 		 then().unsuccessful_applicant_view_the_reason();
 	}

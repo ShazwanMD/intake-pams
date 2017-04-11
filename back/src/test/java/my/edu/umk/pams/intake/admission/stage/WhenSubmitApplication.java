@@ -31,7 +31,7 @@ public class WhenSubmitApplication extends Stage<WhenSubmitApplication> {
     @ExpectedScenarioState
     private InIntakeApplication intakeApplication;
 
-    public WhenSubmitApplication submit_application() {
+    public WhenSubmitApplication applicant_submit_application() {
         applicationService.submitIntakeApplication(intake, intakeApplication);
         Assert.notNull(intakeApplication, "application is null");
 
