@@ -26,7 +26,7 @@ public class US_IN_RGN_6000 extends SpringScenarioTest<GivenIAmRegistrar,WhenEnt
 	  public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	@Issue ("PAMI-101")
     @Test
-    @Rollback(false)
+    @Rollback
     public void scenario1() {
      given().I_am_a_Registrar_in_current_intake_session();
      when().I_enter_information_required_for_application();
