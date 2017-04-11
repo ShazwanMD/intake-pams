@@ -51,6 +51,7 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
         intake.setProjection(100);
         intake.setStartDate(new Date());
         intake.setEndDate(new Date());
+        intake.setSourceNo("MASTER/201720182");
         referenceNo = policyService.startIntakeTask(intake);
         return self();
     }
