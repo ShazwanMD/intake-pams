@@ -20,7 +20,7 @@ public class WhenIWantToPreSelectEligibleEndCapableApplicant extends Stage<WhenI
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToPreSelectEligibleEndCapableApplicant.class);
 	
-	 @ProvidedScenarioState
+	 	@ProvidedScenarioState
 	    private InCandidate candidate;
 	    
 	    @ExpectedScenarioState
