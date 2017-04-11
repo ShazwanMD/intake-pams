@@ -9,10 +9,10 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         US_IN_RGN_1000.class,
-        US_IN_RGN_2000.class,
+        US_IN_RGN_2000.class, //pending
         US_IN_RGN_2001.class,
         US_IN_RGN_3000.class,
-        US_IN_RGN_3001.class,
+        US_IN_RGN_3001.class, //pending
         US_IN_RGN_3002.class, //pending
         US_IN_RGN_3003.class,
         US_IN_RGN_3007.class,
