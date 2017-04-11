@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.admission.stage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -38,6 +39,8 @@ public class WhenAddReasonForUnSuccessfulApplication  extends Stage<WhenAddReaso
 		 
 		 intakeApplication.setReason("Your Application Is UnSuccessfull");
 		 applicationService.updateIntakeApplication(intakeApplication);
+		 
+		 
 		 
 		 return self();
 	 }
