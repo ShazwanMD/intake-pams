@@ -8,38 +8,35 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.admission.stage.ThenApplicantChooseSupervisor;
-import my.edu.umk.pams.intake.admission.stage.WhenAssignSupervisorToApplicant;
+import my.edu.umk.pams.intake.admission.stage.ThenICanInformTheSelectedApplicants;
+import my.edu.umk.pams.intake.admission.stage.WhenFillAllInformation;
+import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableAppealedApplicants;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-@Pending
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As MGSEB academic Administrator, I want to assign supervisor to applicant, so that the applicants can choose their supervisor")
-public class US_IN_AMS_2007 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
-															WhenAssignSupervisorToApplicant,
-																ThenApplicantChooseSupervisor> {
-
-	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_2007.class);
-
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
-	private static final String SUPERVISOR_CODE = "SC001"; //Perlu seed data untuk supervisor list
+@As("As MGSEB administrator, I want to select suitable appealed applicants, so that i can inform the selected applicants")
+public class US_IN_AMS_2004 extends
+        SpringScenarioTest<GivenIAmMGSEBAdministrator,
+        						WhenFillAllInformation,
+                					ThenICanInformTheSelectedApplicants> {
 	
-	@Test
-    @Issue("PAMI-66")
+	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_2004.class);
+	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	
+	@Issue ("PAMI-63")
+    @Test
     @Rollback
     public void scenario1() {
-		
 		given().I_am_a_MGSEB_administrator_in_current_intake_session().and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
-		 when().I_assign_supervisor_to_applicant(SUPERVISOR_CODE); //Perlu seed data untuk supervisor list
-		 then().applicant_can_choose_the_supervisor();
-	}
+        when().Applicant_fill_all_required_information_$(INTAKE_REFERENCE_NO); 
+        addStage(WhenIWantToSelectSuitableAppealedApplicants.class).and().I_want_to_select_suitable_appealed_applicants();
+        then().I_can_inform_the_selected_applicants();
+    }
+
 }
