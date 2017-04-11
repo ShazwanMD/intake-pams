@@ -42,7 +42,7 @@ public class WhenSubmitApplication extends Stage<WhenSubmitApplication> {
 
         InBidStatus bidStatus = intakeApplication.getBidStatus();
         Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus), "application is not submitted");
-        LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+        LOG.debug("intake status : {} ", intakeApplication.getBidStatus());
         
 
         return self();
