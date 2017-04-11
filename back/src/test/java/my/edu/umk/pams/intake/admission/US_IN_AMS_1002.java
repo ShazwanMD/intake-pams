@@ -6,7 +6,6 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.ThenICanPreferredTheirApplicationt;
 import my.edu.umk.pams.intake.admission.stage.WhenFillAllInformation;
-import my.edu.umk.pams.intake.admission.stage.WhenIFillApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToPreSelectEligibleEndCapableApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import org.junit.Test;
