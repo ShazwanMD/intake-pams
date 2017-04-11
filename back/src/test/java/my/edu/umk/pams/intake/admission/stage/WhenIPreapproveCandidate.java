@@ -5,10 +5,14 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
-import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -17,29 +21,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 @JGivenStage
 public class WhenIPreapproveCandidate extends Stage<WhenIPreapproveCandidate> {
 
+	@ProvidedScenarioState
+    private InCandidate candidate;
+    
     @ExpectedScenarioState
     InIntakeSession intakeSession;
-
-    @Autowired
-    private AdmissionService admissionService;
-
-    @ProvidedScenarioState
-    private InCandidate candidate;
-
-    @ProvidedScenarioState
+    
+    @ExpectedScenarioState
     private InIntake intake;
-
+    
+    @Autowired
+    private ApplicationService applicationService;
+    
+    @ProvidedScenarioState
+    private InIntakeApplication preselectApplication;
+    
     public WhenIPreapproveCandidate I_preapprove_candidate() {
 
-        // pps tengah isi
-        admissionService.findCandidates(intake);
-        candidate = new InCandidateImpl();
-        candidate.setIdentityNo("801129035475");
-        candidate.setMatricNo("A00092");
-        candidate.setName("M.Syahrul Ahzan");
-        candidate.setEmail("msyahrul@umk.edu.my");
-
-        admissionService.preapproveCandidate(candidate);
-        return self();
-    }
+    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+		
+		 for (InIntakeApplication application : applications) {
+        	
+        	//Fromm the list, we selected one application and set the data to selectedApplication
+			 preselectApplication = application;
+        }
+	
+      return self();
+   }
 }
+    	

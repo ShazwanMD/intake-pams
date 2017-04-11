@@ -4,8 +4,10 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import static org.junit.Assert.assertEquals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
@@ -15,21 +17,22 @@ import org.springframework.util.Assert;
 @JGivenStage
 public class ThenCandidateCanProceedToNextSelectionPhase extends Stage<ThenCandidateCanProceedToNextSelectionPhase> {
 
+
     @ExpectedScenarioState
     private InCandidate candidate;
+    
+    @ExpectedScenarioState
+    private InIntakeApplication preselectApplication;
 
-    @Autowired
-    private AdmissionService admissionService;
-
+    InBidStatus status;
+    
     public ThenCandidateCanProceedToNextSelectionPhase candidate_can_proceed() {
 
-        Assert.notNull(candidate, "candidate is required");
-        InCandidate found = admissionService.findCandidateByIdentityNo(candidate.getIdentityNo());
-        Assert.isTrue(InCandidateStatus.PREAPPROVED.equals(found.getStatus()),
-                "Candidate should be preapproved");
+    	preselectApplication.setBidStatus(InBidStatus.PROCESSING);
 
-        // do something
+       	//Let Compare if it equals or not
+       	status = preselectApplication.getBidStatus();
+       	assertEquals(InBidStatus.PROCESSING,status);
         return self();
-    }
-
-}
+        }
+	}

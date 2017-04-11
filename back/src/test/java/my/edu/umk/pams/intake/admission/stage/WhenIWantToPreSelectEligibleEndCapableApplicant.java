@@ -20,7 +20,7 @@ public class WhenIWantToPreSelectEligibleEndCapableApplicant extends Stage<WhenI
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToPreSelectEligibleEndCapableApplicant.class);
 	
-	 @ProvidedScenarioState
+	 	@ProvidedScenarioState
 	    private InCandidate candidate;
 	    
 	    @ExpectedScenarioState
@@ -35,8 +35,7 @@ public class WhenIWantToPreSelectEligibleEndCapableApplicant extends Stage<WhenI
 	    @ProvidedScenarioState
 	    private InIntakeApplication preselectApplication;
  
-    //@Pending
-    public WhenIWantToPreSelectEligibleEndCapableApplicant I_want_to_pre_select_eligible_and_capable_applicants() {
+   public WhenIWantToPreSelectEligibleEndCapableApplicant I_want_to_pre_select_eligible_and_capable_applicants() {
 		
     	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
 		
