@@ -42,7 +42,7 @@ public class ThenICanSubmitTheApplication extends Stage<ThenICanSubmitTheApplica
 		
         applicationService.submitIntakeApplication(intake, intakeApplication);
         Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
-        LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+        LOG.debug("intake status : {}", intakeApplication.getBidStatus());
         return self();
 		
 	}
