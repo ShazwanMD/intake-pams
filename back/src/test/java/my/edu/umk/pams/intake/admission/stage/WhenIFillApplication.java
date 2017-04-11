@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.admission.stage;
 import com.tngtech.jgiven.Stage;
 
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -14,7 +15,9 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -31,6 +34,7 @@ import java.util.Map;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
 
+@Pending
 @JGivenStage
 public class WhenIFillApplication extends Stage<WhenIFillApplication> {
 
@@ -50,6 +54,9 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
     
     @Autowired
     private SecurityService securityService;
+    
+    @Autowired
+    private IdentityService identityService;
 
     @ExpectedScenarioState
     private InIntake intake;
@@ -57,7 +64,7 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
     @ExpectedScenarioState
     private InIntakeSession intakeSession;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private InApplicant applicant; 
 
     @ExpectedScenarioState
@@ -75,6 +82,13 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
     	map.put("intakeSession", intakeSession);
     	map.put("programLevel", intake.getProgramLevel());
     	String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
+    	
+        InApplicant applicant = new InApplicantImpl();
+        applicant.setApplicationNo("9999999");
+        applicant.setName("dummy john bin john doe");
+        applicant.setEmail("dummyjohn@gmail.com");
+        applicant.setPhone("0111020202");
+        identityService.saveApplicant(applicant);
     	
          InIntakeApplication application = new InIntakeApplicationImpl();
          application.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
@@ -94,16 +108,19 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
          application.setBidType(InBidType.FIRST);
          application.setBidStatus(InBidStatus.NEW);
          application.setBidResponse(InBidResponse.NEW);
-         application.setStudyMode(commonService.findStudyModeByCode("P")); // parttime
-         application.setGenderCode(commonService.findGenderCodeByCode("M"));
-         application.setReligionCode(commonService.findReligionCodeByCode("ISLAM"));
-         application.setNationalityCode(commonService.findNationalityCodeByCode("MALAYSIA"));
-         application.setRaceCode(commonService.findRaceCodeByCode("MALAY"));
-         application.setEthnicityCode(commonService.findEthnicityCodeByCode("JAVA"));
-         application.setMaritalCode(commonService.findMaritalCodeByCode("MARRIED"));
-         application.setDisabilityCode(commonService.findDisabilityCodeByCode("DISABLE"));
+         application.setStudyMode(commonService.findStudyModeByCode("1")); // parttime
+         application.setGenderCode(commonService.findGenderCodeByCode("1"));
+         application.setReligionCode(commonService.findReligionCodeByCode("1"));
+         application.setNationalityCode(commonService.findNationalityCodeByCode("1"));
+         application.setRaceCode(commonService.findRaceCodeByCode("0100"));
+         application.setEthnicityCode(commonService.findEthnicityCodeByCode("0100"));
+         application.setMaritalCode(commonService.findMaritalCodeByCode("1"));
+         application.setDisabilityCode(commonService.findDisabilityCodeByCode("12"));
          application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
          application.setApplicant(applicant);
+         
+         
+       
 
          applicationService.submitIntakeApplication(intake, application);
          //draftIntakeApplication(intake, application);

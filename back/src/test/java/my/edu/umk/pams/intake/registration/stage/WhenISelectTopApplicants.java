@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.registration.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author PAMS
  */
+@Pending
 @JGivenStage
 public class WhenISelectTopApplicants extends Stage<WhenISelectTopApplicants> {
 
