@@ -69,7 +69,7 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
     public WhenIFillApplication I_fill_in_application() {
        
     	InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
-         Assert.notNull(intake, "intake is null");
+        Assert.notNull(intake, "intake is null");
          
         Map<String, Object> map = new HashMap<String, Object>();
     	map.put("intakeSession", intakeSession);

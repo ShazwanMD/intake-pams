@@ -1,9 +1,9 @@
 package my.edu.umk.pams.intake.admission.stage;
 
 import java.util.List;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -18,29 +18,34 @@ import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 @JGivenStage
 public class WhenIWantToPreSelectEligibleEndCapableApplicant extends Stage<WhenIWantToPreSelectEligibleEndCapableApplicant> {
 
-    @ExpectedScenarioState
-    InIntakeSession intakeSession;
-
-    @ProvidedScenarioState
-    private InCandidate candidate;
-    
-    @ProvidedScenarioState
-    private InIntakeApplication applications;
-
-    @ExpectedScenarioState
-    private InIntake intake;
-    
-    @ExpectedScenarioState
-    private ApplicationService applicationService;
-    
-    public WhenIWantToPreSelectEligibleEndCapableApplicant I_want_to_pre_select_eligible_and_capable_applicants() {
-		List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
-		for (InIntakeApplication application : applications) {
-		    // fruit is an element of the `fruits` array.
-			application.getId();
-		}
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToPreSelectEligibleEndCapableApplicant.class);
 	
-//		how to return?
-        return self();
+	 @ProvidedScenarioState
+	    private InCandidate candidate;
+	    
+	    @ExpectedScenarioState
+	    InIntakeSession intakeSession;
+	    
+	    @ExpectedScenarioState
+	    private InIntake intake;
+	    
+	    @Autowired
+	    private ApplicationService applicationService;
+	    
+	    @ProvidedScenarioState
+	    private InIntakeApplication preselectApplication;
+ 
+    //@Pending
+    public WhenIWantToPreSelectEligibleEndCapableApplicant I_want_to_pre_select_eligible_and_capable_applicants() {
+		
+    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+		
+		 for (InIntakeApplication application : applications) {
+         	
+         	//Fromm the list, we selected one application and set the data to selectedApplication
+			 preselectApplication = application;
+         }
+	
+       return self();
     }
 }
