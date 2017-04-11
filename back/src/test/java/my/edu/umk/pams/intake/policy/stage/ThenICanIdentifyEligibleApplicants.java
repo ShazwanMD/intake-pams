@@ -51,6 +51,11 @@ public class ThenICanIdentifyEligibleApplicants extends Stage<ThenICanIdentifyEl
 
     	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByRank(intake);
         Assert.notEmpty(applications, "applications cannot be empty");
+        for (InIntakeApplication inIntakeApplication : applications) {
+        	LOG.debug("application1 {} ", inIntakeApplication.getReferenceNo());
+        	LOG.debug("application id {} ", inIntakeApplication.getId());
+			
+		}
         Assert.isTrue(applications.size() == 1, "application should be exactly one");
 
         return self();
