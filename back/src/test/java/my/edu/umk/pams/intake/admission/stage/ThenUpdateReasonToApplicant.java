@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
@@ -36,9 +38,9 @@ public class ThenUpdateReasonToApplicant  extends Stage<ThenUpdateReasonToApplic
 	 
    public ThenUpdateReasonToApplicant unsuccessful_applicant_view_the_reason(){
 		 
-	   applicationService.updateIntakeApplication(intakeApplication);
-	   //Assert.notNull(intakeApplication.getReason());
-	  // Assert.notNull(InBidStatus.PROCESSING, "application is not updated");
+
+	   LOG.debug("reason : {}", intakeApplication.getReason());
+	   Assert.notNull(intakeApplication, "reason is not set");
 		 LOG.debug("reason : {}", intakeApplication.getReason());
 		 return self();
    }
