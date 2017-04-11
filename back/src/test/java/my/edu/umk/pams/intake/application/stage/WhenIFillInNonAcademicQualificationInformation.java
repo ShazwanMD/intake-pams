@@ -22,7 +22,7 @@ public class WhenIFillInNonAcademicQualificationInformation extends Stage<WhenIF
     
     @ExpectedScenarioState
     private InApplicant applicant;
-    
+        
     @ProvidedScenarioState
     private InInvolvement involvement;
     
