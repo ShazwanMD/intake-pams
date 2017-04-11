@@ -28,8 +28,8 @@ public class US_IN_AMS_1006 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
 	@Test
-    @Issue("PAMI")
     @Rollback
+    @Issue("PAMI-53")
     public void scenario1() {
 		
 		given().I_am_a_CPS_administrator_in_current_intake_session().and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
