@@ -4,6 +4,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
@@ -61,7 +63,8 @@ public class WhenFillAllInformation extends Stage<WhenFillAllInformation> {
         intakeApplication.setSchoolName("SMKZ1");
         intakeApplication.setBidStatus(InBidStatus.DRAFTED);
         applicationService.draftIntakeApplication(intake, intakeApplication);
-
+        Assert.notNull(intakeApplication, "intake application is empty");
+        LOG.debug("intake appliaction {} :" , intakeApplication);
         return self();
     }
 }
