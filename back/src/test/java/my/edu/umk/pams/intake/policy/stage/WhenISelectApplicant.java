@@ -59,9 +59,6 @@ public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
     
     @ExpectedScenarioState
     private InIntake intake;
-
-    @ProvidedScenarioState
-    private InIntakeApplication application;
     
     @ProvidedScenarioState
     private InResultType resultType;
@@ -70,12 +67,15 @@ public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
     private InIntakeSession intakeSession;
     
     @ExpectedScenarioState
-    private InApplicant applicant;
+    private InIntakeApplication intakeApplication;
 	
 	public WhenISelectApplicant I_select_applicant(){
 		
+		
+		LOG.debug("intake {} :", intake);
+		LOG.debug("intake {} :", intakeApplication);
         standardSelectionStrategy.select(intake);
-		admissionService.preselectIntakeApplication(application);
+		admissionService.preselectIntakeApplication(intakeApplication);
 
 //		InCandidate candidate = new InCandidateImpl();
 //        candidate.setName(application.getName());
