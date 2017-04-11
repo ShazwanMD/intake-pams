@@ -1,6 +1,5 @@
 package my.edu.umk.pams.intake.registration.stage;
 
-import io.jsonwebtoken.lang.Assert;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,8 +20,9 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import org.springframework.util.Assert;
 
-@Pending
+//@Pending
 @JGivenStage
 public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 	
@@ -42,48 +42,31 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
     
     @Autowired
     ApplicationService applicationService;
-    
-    @ProvidedScenarioState
+
+	@ExpectedScenarioState
+	private InIntakeApplication intakeApplication;
+
+	@ProvidedScenarioState
     private InIntake intake; 
     
-//    @ProvidedScenarioState
- //   private InCandidate candidate; 
+    @ProvidedScenarioState
+    private InCandidate candidate;
     
 
 
-	public WhenOfferToCandidate offer_to_candidate_in_current_intake_session_$(String intakeSession) {
-		
-	
+	public WhenOfferToCandidate i_offer_to_candidate_in_intake_session_$(String identityNo, String intakeSession) {
 		intake = policyService.findIntakeByReferenceNo(intakeSession);
-	
-		applications = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING); 	
-		
+		applications = applicationService.findIntakeApplications(intake, InBidStatus.PROCESSING);
+		Assert.notEmpty(applications, "applications cannot be empty");
+
 		//dapatkan senarai pemohon yang telah dipilih
-		//for (InIntakeApplication intakeApplication : applications) {
-		
-		
-		InIntakeApplication intakeApplication = applications.get(0);
-			LOG.debug("intakeapplication {}", intakeApplication.getBidStatus());
-			Assert.notNull(intakeApplication, "list is null");
-			intakeApplication.setBidStatus(InBidStatus.SELECTED);
-			LOG.debug("intakeapplication {}", intakeApplication.getBidStatus());
-			admissionService.preselectIntakeApplication(intakeApplication);
-			
-			InCandidate candidate = admissionService.findCandidateByIdentityNo("248674");
-	    	Assert.notNull(candidate, "candidate is null");
-	    	LOG.debug("candidate {}", candidate);
-	    	
-			admissionService.offerCandidate(candidate);
-			//candidate offered is not offering
-			LOG.debug("candidate offered {}", candidate);
-			Assert.notNull(candidate, "candidate offered is null");
-			
+		for (InIntakeApplication application : applications) {
+			application.setBidStatus(InBidStatus.SELECTED);
+			admissionService.preselectIntakeApplication(application);
+			 //test preselectIntakeApplication function
+			candidate = admissionService.findCandidateByIdentityNo(identityNo);
+		}
 
-			
-	//	}
-
-
-	
 		return self();
 	}
 }

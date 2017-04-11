@@ -13,8 +13,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmRegistrar;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenProceedRegistrationForSelectedApplicants;
-import my.edu.umk.pams.intake.registration.stage.WhenFillInApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenFillAllRequiredInformation;
+import my.edu.umk.pams.intake.registration.stage.WhenEnterRequiredInformation;
 import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant;
 
 
@@ -22,7 +21,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a registrar, I want to view a list of selected applicant so that I can proceed with the selected applicants registration progress")
-public class US_IN_RGN_6000 extends SpringScenarioTest<GivenIAmRegistrar,WhenFillAllRequiredInformation,ThenProceedRegistrationForSelectedApplicants>{
+public class US_IN_RGN_6000 extends SpringScenarioTest<GivenIAmRegistrar,WhenEnterRequiredInformation,ThenProceedRegistrationForSelectedApplicants>{
 
 	  public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	@Issue ("PAMI-101")
@@ -30,7 +29,7 @@ public class US_IN_RGN_6000 extends SpringScenarioTest<GivenIAmRegistrar,WhenFil
     @Rollback(false)
     public void scenario1() {
      given().I_am_a_Registrar_in_current_intake_session();
-     when().I_fill_in_all_the_required_information_in_my_application();
+     when().I_enter_information_required_for_application();
      addStage (WhenViewListOfSelectedApplicant.class).and().View_List_Of_Selected_Applicant();
      then().Proceed_Registration_For_Selected_Applicants();
 }
