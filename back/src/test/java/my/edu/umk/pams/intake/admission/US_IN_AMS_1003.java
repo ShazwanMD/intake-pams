@@ -30,7 +30,7 @@ public class US_IN_AMS_1003 extends
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1005.class);
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	
-	@Issue("PAMI")
+	@Issue("PAMI-50")
     @Test
     @Rollback
     public void scenario1() {
