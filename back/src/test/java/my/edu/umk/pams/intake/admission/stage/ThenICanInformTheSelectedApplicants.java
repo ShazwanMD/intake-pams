@@ -7,7 +7,6 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
@@ -41,7 +40,7 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenICanSubmitTheAppli
     	
     	applicationService.submitIntakeApplication(intake, intakeApplication);
         Assert.notNull(InBidStatus.SUBMITTED,"withdraw application is null");
-        LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+        LOG.debug("intake status : {}", intakeApplication.getBidStatus());
         return self();
 		
    }
