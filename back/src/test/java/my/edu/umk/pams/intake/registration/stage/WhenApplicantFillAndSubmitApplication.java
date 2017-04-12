@@ -1,4 +1,4 @@
-package my.edu.umk.pams.intake.admission.stage;
+package my.edu.umk.pams.intake.registration.stage;
 
 import com.tngtech.jgiven.Stage;
 
@@ -23,7 +23,6 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillTheApplicationAndIsSelected;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import org.slf4j.Logger;
@@ -39,9 +38,9 @@ import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENC
 
 
 @JGivenStage
-public class WhenIFillApplication extends Stage<WhenIFillApplication> {
+public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFillAndSubmitApplication> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIFillApplication.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenApplicantFillAndSubmitApplication.class);
 
     @Autowired
     private ApplicationService applicationService;
@@ -76,7 +75,7 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
     @ProvidedScenarioState
     private InIntakeApplication application;
 
-    public WhenIFillApplication I_fill_in_application() {
+    public WhenApplicantFillAndSubmitApplication I_fill_in_application() {
        
     	InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         Assert.notNull(intake, "intake is null");
@@ -155,19 +154,23 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
          
          application.setApplicant(applicant);
          Assert.notNull(applicant, "applicant is null");
-         
+         LOG.debug("intake status : {} ", application.getBidStatus());
          applicationService.draftIntakeApplication(intake, application);
+         LOG.debug("intake status : {} ", application.getBidStatus());
+         
+         
          
          return self();
          
     }
-         public WhenIFillApplication applicant_submit_application() {
+         public WhenApplicantFillAndSubmitApplication applicant_submit_application() {
              
         	 applicationService.submitIntakeApplication(intake, application);
         	 
              Assert.notNull(application, "application is null");
              InBidStatus bidStatus = application.getBidStatus();
              Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus), "application is not submitted");
+             LOG.debug("intake status : {} ", application.getBidStatus());
 
             
               
