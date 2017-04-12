@@ -39,7 +39,7 @@ public class US_IN_RGN_4002 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     public void scenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(intakeReferenceNo);
-        when().I_fill_in_application();
+        when().I_fill_in_application().and().applicant_submit_application();
         addStage(WhenISelectTopApplicants.class).and().I_select_top_applicants();
         then().I_can_proceed_to_process_their_application();
     }
