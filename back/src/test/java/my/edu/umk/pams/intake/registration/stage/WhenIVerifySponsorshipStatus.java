@@ -50,12 +50,13 @@ public class WhenIVerifySponsorshipStatus extends Stage<WhenIVerifySponsorshipSt
 
           for (InIntakeApplication application : applications) {
           	
-          	//Fromm the list, we selected one application and set the data to selectedApplication
+          	//From the list, we selected one application and set the data to selectedApplication
               selectedApplication = application;
           }
           
           //Check if the Payment is not null
           assertNotNull(selectedApplication.getPaymentSourceNo());
+          LOG.debug("intake application sponsorship payment no. : {} ", selectedApplication.getPaymentSourceNo());
           
           return self();
           
