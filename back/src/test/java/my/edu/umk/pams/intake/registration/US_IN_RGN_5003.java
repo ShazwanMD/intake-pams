@@ -15,7 +15,8 @@ import my.edu.umk.pams.intake.application.stage.WhenISubmitApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenProceedWithTheRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenAcceptOffer;
-import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillTheApplicationAndIsSelected;
+import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -23,7 +24,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillTheApplication
 @As("As a selected applicant, I want to accept the offer, so that I can proceed with my registration")
 
 public class US_IN_RGN_5003 extends SpringScenarioTest<GivenIAmCandidate,
-WhenApplicantFillTheApplicationAndIsSelected,ThenProceedWithTheRegistration> {
+WhenApplicantFillAndSubmitApplication,ThenProceedWithTheRegistration> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_5003.class);
 
@@ -37,7 +38,7 @@ WhenApplicantFillTheApplicationAndIsSelected,ThenProceedWithTheRegistration> {
 		
 		 given().I_am_candidate_in_current_intake_session()
 		 .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-		 when().Applicant_fill_application_and_then_is_selected().and().applicant_submit_application();
+		 when().I_fill_in_application().and().applicant_submit_application();
 		 addStage(WhenAcceptOffer.class).and().candidate_is_offered_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO)
 		 .and().I_want_to_accept_offer_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
 		 then().I_can_proceed_with_the_registration(IDENTITY_NO);
