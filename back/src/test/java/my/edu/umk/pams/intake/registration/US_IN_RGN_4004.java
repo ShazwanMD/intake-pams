@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -29,6 +30,7 @@ private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3007.class);
     @Test
     @Rollback
     @Issue("PAMI-88")
+    @Pending
     public void scenario1() {
     	given().I_am_a_MGSEB_administrator_in_current_intake_session();
     	when().an_applicant_has_referee();
