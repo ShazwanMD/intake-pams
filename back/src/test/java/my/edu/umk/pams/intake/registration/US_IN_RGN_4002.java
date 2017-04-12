@@ -13,10 +13,10 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.admission.stage.WhenIFillApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedToProcessTheirApplication;
+import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenISelectTopApplicants;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,7 +24,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenISelectTopApplicants;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a MGSEB academic Administrator, I want to view all the top applicant applications for an intake so that I can proceed to process their application")
 public class US_IN_RGN_4002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
-														WhenIFillApplication,
+														WhenApplicantFillAndSubmitApplication,
 														ThenICanProceedToProcessTheirApplication> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4002.class);
