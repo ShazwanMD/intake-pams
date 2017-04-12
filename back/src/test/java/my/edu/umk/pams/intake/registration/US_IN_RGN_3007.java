@@ -9,20 +9,13 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.admission.stage.WhenIFillApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanCompleteStudentRegistration;
-import my.edu.umk.pams.intake.registration.stage.ThenICanGradeApplicantResult;
-import my.edu.umk.pams.intake.registration.stage.ThenICanProceedToProcessTheirApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenICalculateMeritForIntakeApplications;
-import my.edu.umk.pams.intake.registration.stage.WhenISelectTopApplicants;
 import my.edu.umk.pams.intake.registration.stage.WhenIWantToScanTheApplicantOfferLetterBarcode;
 
 
