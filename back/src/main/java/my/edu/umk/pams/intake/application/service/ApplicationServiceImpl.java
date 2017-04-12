@@ -40,6 +40,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void draftIntakeApplication(InIntake intake, InIntakeApplication application) {
+    	application.setBidStatus(InBidStatus.DRAFTED);
         intakeApplicationDao.save(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
