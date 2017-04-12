@@ -198,6 +198,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @OneToMany(targetEntity = InGuarantorImpl.class, mappedBy = "application")
     private List<InGuarantor> guarantors;
     
+   @OneToMany(targetEntity = InRefereeImpl.class, mappedBy = "application")
+   private List<InReferee> referees;
+    
 //link with inFranchise
     @OneToOne(targetEntity = InFranchiseImpl.class)
     @JoinColumn(name = "IN_FRNSE_ID", nullable = true)
@@ -656,6 +659,20 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.guarantors = guarantors;
     }
 
+    
+ @Override
+    public List<InReferee> getReferees() {
+        return referees;
+    }
+
+    @Override
+    public void setReferees(List<InReferee> referees) {
+        this.referees = referees;
+    } 
+
+    
+    
+    
     @Override
     public List<InAddress> getAddresses() {
         return addresses;
@@ -700,6 +717,8 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public Class<?> getInterfaceClass() {
         return InIntakeApplication.class;
     }
+
+	
 
 
 }
