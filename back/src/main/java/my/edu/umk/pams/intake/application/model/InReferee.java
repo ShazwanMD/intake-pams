@@ -1,11 +1,8 @@
-
-
-
 package my.edu.umk.pams.intake.application.model;
 
 import my.edu.umk.pams.intake.core.InMetaObject;
 
-public interface InReferee extends InMetaObject {
+public interface InReferee {
 
 
     String getName();
@@ -13,14 +10,11 @@ public interface InReferee extends InMetaObject {
     void setName(String name);
     
 
-  
-
-  
-
- InIntakeApplication getApplication();
-   void setApplication(InIntakeApplication application);
+    InIntakeApplication getApplication();
     
+    void setApplication(InIntakeApplication application);
     
+   /*   
 
 	String getOfficeAddrs();
 
@@ -41,6 +35,6 @@ public interface InReferee extends InMetaObject {
 	
 
 	void setType(InRefereeType type);
-	  InRefereeType getType();
+	  InRefereeType getType();*/
 
 }
