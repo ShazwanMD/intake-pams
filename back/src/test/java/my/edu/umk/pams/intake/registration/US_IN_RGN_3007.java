@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -14,7 +13,6 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanCompleteStudentRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenIWantToScanTheApplicantOfferLetterBarcode;
 
@@ -29,8 +27,6 @@ public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3007.class);
 	
-	@Autowired
-    private RegistrationService registrationService;
     private String intakeReferenceNo = "201720181/MASTER";
 
     @Test
