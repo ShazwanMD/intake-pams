@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
-@Pending
+
 @JGivenStage
 public class ThenICanProceedToProcessTheirApplication extends Stage<ThenICanProceedToProcessTheirApplication> {
 
@@ -33,16 +33,16 @@ public class ThenICanProceedToProcessTheirApplication extends Stage<ThenICanProc
     private InIntake intake;
     
     @ExpectedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application;
         
     @Autowired
     private ApplicationService applicationService;
 
     public ThenICanProceedToProcessTheirApplication I_can_proceed_to_process_their_application() {
 
-    	applicationService.draftedIntakeApplication(intake, intakeApplication);
-        //Assert.notNull(InBidStatus.APPEAL, "withdraw application is null");
-        LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+    	applicationService.processIntakeApplication(intake, application);
+       
+        LOG.debug("intake status {} :", application.getBidStatus());
         return self();
     }
 }
