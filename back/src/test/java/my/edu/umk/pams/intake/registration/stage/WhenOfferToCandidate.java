@@ -26,7 +26,7 @@ import org.springframework.util.Assert;
 @JGivenStage
 public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 	
-	private static final Logger LOG = LoggerFactory.getLogger(GivenIAmMGSEBAdministrator.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenOfferToCandidate.class);
 	
 	@Autowired
 	private PolicyService policyService;
@@ -65,6 +65,8 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 			admissionService.preselectIntakeApplication(application);
 			 //test preselectIntakeApplication function
 			candidate = admissionService.findCandidateByIdentityNo(identityNo);
+			admissionService.offerCandidate(candidate);
+			//TODO offer matrix number
 		}
 
 		return self();
