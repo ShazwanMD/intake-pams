@@ -22,6 +22,8 @@ public interface ApplicationService {
     
     void draftedIntakeApplication(InIntake intake, InIntakeApplication application); 
     
+    void processIntakeApplication(InIntake intake, InIntakeApplication application);
+    
     void rejectIntakeApplication(InIntake intake, InIntakeApplication application);
 
     void addResult(InIntakeApplication application, InResult result);
@@ -141,6 +143,8 @@ public interface ApplicationService {
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
+
+	
 
 	
 
