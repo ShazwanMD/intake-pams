@@ -20,6 +20,7 @@ import org.springframework.util.Assert;
 /**
  * @author PAMS
  */
+@Pending
 @JGivenStage
 public class ThenCandidateProceedToNextSelectionPhase extends Stage<ThenCandidateProceedToNextSelectionPhase> {
 	
