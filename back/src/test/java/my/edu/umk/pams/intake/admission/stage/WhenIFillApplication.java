@@ -23,6 +23,7 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillTheApplicationAndIsSelected;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import org.slf4j.Logger;
@@ -157,26 +158,19 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
          
          applicationService.draftIntakeApplication(intake, application);
          
-         //draftIntakeApplication(intake, application);
-        
-    	
-    	/*Map<String, Object> map = new HashMap<String, Object>();
-    	map.put("intakeSession", intakeSession);
-    	map.put("programLevel", intake.getProgramLevel());
-    	String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
-
-    	// start an intakeApplication
-    	intakeApplication = new InIntakeApplicationImpl();
-    	intakeApplication.setIntake(this.intake);
-    	intakeApplication.setReferenceNo(referenceNo);
-    	intakeApplication.setName("dummy john bin john doe");
-    	intakeApplication.setEmail("dummyjohn@gmail.com");
-    	intakeApplication.setPhone("0111020202");
-    	intakeApplication.setOkuNo("S12223214");
-    	intakeApplication.setSchoolName("SMKZA");
-    	intakeApplication.setBidStatus(InBidStatus.DRAFTED);
-    	applicationService.draftIntakeApplication(intake, intakeApplication);*/
+         return self();
          
+    }
+         public WhenIFillApplication applicant_submit_application() {
+             
+        	 applicationService.submitIntakeApplication(intake, application);
+        	 
+             Assert.notNull(application, "application is null");
+             InBidStatus bidStatus = application.getBidStatus();
+             Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus), "application is not submitted");
+
+            
+              
         return self() ;
     }
 }
