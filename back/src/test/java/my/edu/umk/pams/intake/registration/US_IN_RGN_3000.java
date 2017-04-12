@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.registration;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.WhenIFillInIntakeApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableApplicants;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -33,6 +34,7 @@ public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     @Test
     @Rollback
+    @Issue("PAMI-95")
     public void scenario1() {
     	//Test
         given().I_am_a_CPS_administrator_in_current_intake_session();
