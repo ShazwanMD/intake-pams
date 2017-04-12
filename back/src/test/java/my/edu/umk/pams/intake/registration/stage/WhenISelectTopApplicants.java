@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author PAMS
  */
-@Pending
+
 @JGivenStage
 public class WhenISelectTopApplicants extends Stage<WhenISelectTopApplicants> {
 
@@ -35,14 +35,14 @@ public class WhenISelectTopApplicants extends Stage<WhenISelectTopApplicants> {
     private InIntake intake;
     
     @ExpectedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application;
     
     @Autowired
     private ApplicationService applicationService;
 
     public WhenISelectTopApplicants I_select_top_applicants() {
     	
-    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
+    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplicationsOrderedByMerit(intake);
 		for (InIntakeApplication intakeApplication : applications) {
 			intakeApplication.getName();
 			LOG.debug(intakeApplication.getName());
