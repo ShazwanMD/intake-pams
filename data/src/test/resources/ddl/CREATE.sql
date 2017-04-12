@@ -1,4 +1,3 @@
-
 create table IN_ACTR (
   ID int8 not null,
   ACTOR_TYPE int4,
@@ -47,6 +46,7 @@ create table IN_APCN (
 
 create table IN_ATMT (
   ID int8 not null,
+  DATA bytea not null,
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -54,11 +54,10 @@ create table IN_ATMT (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  MIME_TYPE varchar(255) not null,
   NAME varchar(255) not null,
-  APPLICATION_ID int8 not null,
-  DATA 			bytea not null,
-  MIME_TYPE     varchar(255) not null,
-  SIZE int8 not null,
+  SIZE int4 not null,
+  APPLICATION_ID int8,
   primary key (ID)
 );
 
@@ -507,11 +506,7 @@ create table IN_FILD_CODE (
 
 create table IN_FRNSE (
   ID int8 not null,
-  PASSPORT_NO varchar(255) not null,
-  PASSPORT_EXPIRY timestamp not null,
   ENTRY_PASS_TYPE varchar(255) not null,
-  NATIONALITY varchar(255) not null,
-  APPLICATION_ID int8,
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -519,6 +514,9 @@ create table IN_FRNSE (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  NATIONALITY varchar(255),
+  PASSPORT_EXPIRY timestamp not null,
+  PASSPORT_NO varchar(255) not null,
   primary key (ID)
 );
 
@@ -660,7 +658,6 @@ create table IN_INTK_APLN (
   ID int8 not null,
   ACCOUNT_NO varchar(255),
   AGE int4,
-  BATCH_NO varchar(255),
   BID_RESPONSE int4,
   BID_STATUS int4,
   BID_TYPE int4 not null,
@@ -678,6 +675,8 @@ create table IN_INTK_APLN (
   NAME varchar(255) not null,
   OKU_NO varchar(255),
   PAID boolean,
+  PASSPORT_EXPDATE timestamp,
+  PASSPORT_NO varchar(255),
   PAYMENT_SOURCE_NO varchar(255),
   PHONE varchar(255),
   RANK int4 not null,
@@ -685,11 +684,13 @@ create table IN_INTK_APLN (
   REFERENCE_NO varchar(255) not null,
   SCHOOL_BATCH int4,
   SCHOOL_NAME varchar(255),
+  VISA_TYPE int4 not null,
   APPLICANT_ID int8,
   BANK_CODE_ID int8,
   DEPENDENCY_CODE_ID int8,
   DISABILITY_CODE_ID int8,
   ETHNICITY_CODE_ID int8,
+  IN_FRNSE_ID int8,
   GENDER_CODE_ID int8,
   INTAKE_ID int8,
   MARITAL_CODE_ID int8,
@@ -701,9 +702,6 @@ create table IN_INTK_APLN (
   SCHOOL_CODE_ID int8,
   STUDY_MODE_ID int8,
   SUPERVISOR_SELECTION_ID int8,
-  PASSPORT_NO varchar(255),
-  PASSPORT_EXPDATE varchar(255),
-  VISA_TYPE int4,
   primary key (ID)
 );
 
@@ -906,7 +904,6 @@ create table IN_PRGM_LEVL (
   ID int8 not null,
   CODE varchar(255) not null,
   DESCRIPTION varchar(255) not null,
-  PREFIX varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -914,6 +911,7 @@ create table IN_PRGM_LEVL (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  PREFIX varchar(255),
   primary key (ID)
 );
 
@@ -948,6 +946,20 @@ create table IN_RACE_CODE (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  primary key (ID)
+);
+
+create table IN_RFRE (
+  ID int8 not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  APPLICATION_ID int8,
   primary key (ID)
 );
 
@@ -1201,7 +1213,6 @@ create table IN_USER (
   EMAIL varchar(255) not null,
   PASSWORD varchar(255),
   REAL_NAME varchar(255) not null,
-  TIPU_NAME varchar(255),
   ID int8 not null,
   ACTOR_ID int8,
   primary key (ID)
@@ -1423,11 +1434,6 @@ alter table IN_FCTY_CODE
 alter table IN_FILD_CODE
   add constraint uc_IN_FILD_CODE_1 unique (CODE);
 
-alter table IN_FRNSE
-  add constraint FK63791F3A37A6AAA6
-foreign key (APPLICATION_ID)
-references IN_INTK_APLN;
-
 alter table IN_GNDR_CODE
   add constraint uc_IN_GNDR_CODE_1 unique (CODE);
 
@@ -1517,6 +1523,11 @@ alter table IN_INTK_APLN
   add constraint FK5974F5A8BB6434C
 foreign key (ETHNICITY_CODE_ID)
 references IN_ETNY_CODE;
+
+alter table IN_INTK_APLN
+  add constraint FK5974F5A98D544F5
+foreign key (IN_FRNSE_ID)
+references IN_FRNSE;
 
 alter table IN_INTK_APLN
   add constraint FK5974F5A481F1E8A
@@ -1647,7 +1658,7 @@ foreign key (FACULTY_CODE_ID)
 references IN_FCTY_CODE;
 
 alter table IN_PRGM_CODE
-  add constraint FK6B49ECA2DDFADD7
+  add constraint FK6B49ECAACAEA1D7
 foreign key (PROGRAM_LEVEL_ID)
 references IN_PRGM_LEVL;
 
@@ -1671,6 +1682,11 @@ references IN_STDY_CNTR_CODE;
 
 alter table IN_RACE_CODE
   add constraint uc_IN_RACE_CODE_1 unique (CODE);
+
+alter table IN_RFRE
+  add constraint FKA021F64137A6AAA6
+foreign key (APPLICATION_ID)
+references IN_INTK_APLN;
 
 alter table IN_RFRN_NO
   add constraint uc_IN_RFRN_NO_1 unique (CODE);
@@ -1895,6 +1911,8 @@ create sequence SQ_IN_PRGM_LEVL;
 create sequence SQ_IN_PRGM_OFRG;
 
 create sequence SQ_IN_RACE_CODE;
+
+create sequence SQ_IN_RFRE;
 
 create sequence SQ_IN_RFRN_NO;
 

@@ -25,12 +25,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setReferenceNo(String referenceNo);
 
-    // process staging no
-    // origin decision making
-    String getBatchNo();
-
-    void setBatchNo(String batchNo);
-
     String getName();
 
     void setName(String name);
@@ -150,16 +144,18 @@ public interface InIntakeApplication extends InMetaObject {
     InSupervisorOffering getSupervisorSelection();
 
     void setSupervisorSelection(InSupervisorOffering SupervisorSelection);
-    
-    //Franchise column//
+
+    // NOTE: international student
     String getPassportNo();
     
-    void setPassportNo(String passport);
-    
+    void setPassportNo(String passportNo);
+
+    // NOTE: international student
     Date getPassportExpDate();
     
     void setPassportExpDate(Date passExpDate);
-    
+
+    // NOTE: international student
     InVisaType getVisaType();
     
     void setVisaType(InVisaType visaType);

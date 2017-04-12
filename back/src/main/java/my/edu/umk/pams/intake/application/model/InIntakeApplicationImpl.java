@@ -34,9 +34,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "REFERENCE_NO", unique = true, nullable = false)
     private String referenceNo;
 
-    @Column(name = "BATCH_NO")
-    private String batchNo;
-
     @Column(name = "ACCOUNT_NO")
     private String accountNo;
 
@@ -58,7 +55,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "CREDENTIAL_NO")
     private String credentialNo;
 
-    
+
     @Column(name = "OKU_NO")
     private String okuNo;
 
@@ -84,17 +81,17 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "REASON")
     private String reason;
-     
+
     @Column(name = "PASSPORT_NO")
     private String passport;
-    
+
     @Column(name = "PASSPORT_EXPDATE")
     private Date passExpDate;
-    
+
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "VISA_TYPE", nullable = false)
     private InVisaType visaType = InVisaType.NON_APPLICABLE;
-    
+
     @Column(name = "PAID")
     private Boolean paid = false;
 
@@ -149,7 +146,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @ManyToOne(targetEntity = InMaritalCodeImpl.class)
     @JoinColumn(name = "MARITAL_CODE_ID")
     private InMaritalCode maritalCode;
-    
+
 
     @ManyToOne(targetEntity = InDependencyCodeImpl.class)
     @JoinColumn(name = "DEPENDENCY_CODE_ID")
@@ -197,18 +194,18 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @OneToMany(targetEntity = InGuarantorImpl.class, mappedBy = "application")
     private List<InGuarantor> guarantors;
-    
-   @OneToMany(targetEntity = InRefereeImpl.class, mappedBy = "application")
-   private List<InReferee> referees;
-    
-//link with inFranchise
+
+    @OneToMany(targetEntity = InRefereeImpl.class, mappedBy = "application")
+    private List<InReferee> referees;
+
+    //link with inFranchise
     @OneToOne(targetEntity = InFranchiseImpl.class)
     @JoinColumn(name = "IN_FRNSE_ID", nullable = true)
     private InFranchise franchises;
-    
+
     @OneToMany(targetEntity = InAttachmentImpl.class, mappedBy = "application")
     private List<InAttachment> attachments;
-    
+
     @Embedded
     private InMetadata metadata;
 
@@ -249,16 +246,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setReferenceNo(String referenceNo) {
         this.referenceNo = referenceNo;
-    }
-
-    @Override
-    public String getBatchNo() {
-        return batchNo;
-    }
-
-    @Override
-    public void setBatchNo(String batchNo) {
-        this.batchNo = batchNo;
     }
 
     @Override
@@ -530,7 +517,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setSchoolBatch(Integer schoolBatch) {
         this.schoolBatch = schoolBatch;
     }
-    
+
     @Override
     public String getPassportNo() {
         return passport;
@@ -540,7 +527,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setPassportNo(String passport) {
         this.passport = passport;
     }
-    
+
     @Override
     public Date getPassportExpDate() {
         return passExpDate;
@@ -550,7 +537,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setPassportExpDate(Date passExpDate) {
         this.passExpDate = passExpDate;
     }
-    
+
     @Override
     public InVisaType getVisaType() {
         return visaType;
@@ -560,7 +547,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setVisaType(InVisaType visaType) {
         this.visaType = visaType;
     }
-    
+
     @Override
     public InProgramOffering getProgramSelection() {
         return programSelection;
@@ -578,7 +565,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setSupervisorSelection(InSupervisorOffering supervisorSelection) {
         this.supervisorSelection = supervisorSelection;
     }
-    
+
     @Override
     public Integer getAge() {
         return age;
@@ -638,7 +625,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setEmployments(List<InEmployment> employments) {
         this.employments = employments;
     }
-    
+
     @Override
     public List<InGuardian> getGuardians() {
         return guardians;
@@ -659,7 +646,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.guarantors = guarantors;
     }
 
-    
+
     @Override
     public List<InReferee> getReferees() {
         return referees;
@@ -668,11 +655,8 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setReferees(List<InReferee> referees) {
         this.referees = referees;
-    } 
+    }
 
-    
-    
-    
     @Override
     public List<InAddress> getAddresses() {
         return addresses;
@@ -717,8 +701,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public Class<?> getInterfaceClass() {
         return InIntakeApplication.class;
     }
-
-	
 
 
 }
