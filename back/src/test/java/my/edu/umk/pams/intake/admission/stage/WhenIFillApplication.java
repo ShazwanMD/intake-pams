@@ -125,40 +125,38 @@ public class WhenIFillApplication extends Stage<WhenIFillApplication> {
          application.setBidResponse(InBidResponse.NEW);
          application.setOkuNo("S12223214");
          
-         application.setStudyMode(commonService.findStudyModeByCode("1")); 
+         application.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
          Assert.notNull(commonService.findStudyModeByCode("1"), "studymode is null");
          
-         application.setGenderCode(commonService.findGenderCodeByCode("1"));
-         Assert.notNull(commonService.findGenderCodeByCode("1"), "studymode is null");
+         application.setGenderCode(commonService.findGenderCodeByCode("1")); //Male
+         Assert.notNull(commonService.findGenderCodeByCode("1"), "gendercode is null");
          
-         application.setReligionCode(commonService.findReligionCodeByCode("1"));
-         Assert.notNull(commonService.findReligionCodeByCode("1"), "studymode is null");
+         application.setReligionCode(commonService.findReligionCodeByCode("1")); //Islam
+         Assert.notNull(commonService.findReligionCodeByCode("1"), "religioncode is null");
          
-         application.setNationalityCode(commonService.findNationalityCodeByCode("1"));
-         Assert.notNull(commonService.findNationalityCodeByCode("1"), "studymode is null");
+         application.setNationalityCode(commonService.findNationalityCodeByCode("1")); //Warganegara
+         Assert.notNull(commonService.findNationalityCodeByCode("1"), "nationalitycode is null");
          
-         application.setRaceCode(commonService.findRaceCodeByCode("0100"));
-         Assert.notNull(commonService.findRaceCodeByCode("0100"), "studymode is null");
+         application.setRaceCode(commonService.findRaceCodeByCode("0100")); //Melayu
+         Assert.notNull(commonService.findRaceCodeByCode("0100"), "racecode is null");
    
-         application.setEthnicityCode(commonService.findEthnicityCodeByCode("0100"));
-         Assert.notNull(commonService.findEthnicityCodeByCode("0100"), "studymode is null");
+         application.setEthnicityCode(commonService.findEthnicityCodeByCode("0100")); //Melayu
+         Assert.notNull(commonService.findEthnicityCodeByCode("0100"), "ethnicitycode is null");
          
-         application.setMaritalCode(commonService.findMaritalCodeByCode("1"));
-         Assert.notNull(commonService.findMaritalCodeByCode("1"), "studymode is null");
+         application.setMaritalCode(commonService.findMaritalCodeByCode("1")); //Bujang
+         Assert.notNull(commonService.findMaritalCodeByCode("1"), "maritalcode is null");
          
-         application.setDisabilityCode(commonService.findDisabilityCodeByCode("12"));
-         Assert.notNull(commonService.findDisabilityCodeByCode("12"), "studymode is null");
+         application.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); //Tidak cacat
+         Assert.notNull(commonService.findDisabilityCodeByCode("12"), "disabilitycode is null");
          
-         application.setResidencyCode(commonService.findResidencyCodeByCode("101"));
-         Assert.notNull(commonService.findResidencyCodeByCode("101"), "residency is null");
+         application.setResidencyCode(commonService.findResidencyCodeByCode("101")); //no data in seed, created test code in unit
+         Assert.notNull(commonService.findResidencyCodeByCode("101"), "residencycode is null");
          
          application.setApplicant(applicant);
-         Assert.notNull(applicant, "studymode is null");
+         Assert.notNull(applicant, "applicant is null");
          
-         
-       
-
          applicationService.draftIntakeApplication(intake, application);
+         
          //draftIntakeApplication(intake, application);
         
     	
