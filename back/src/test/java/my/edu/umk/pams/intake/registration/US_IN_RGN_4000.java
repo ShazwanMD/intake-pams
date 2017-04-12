@@ -23,6 +23,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenIVerifySponsorshipStatus;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a MGSEB academic Administrator, I want to view applicant that have sponsorship or not so that i can proceed the applicant's registration")
+
 public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenApplicantFillAndSubmitApplication, ThenICanProceedRegistration> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4000.class);
