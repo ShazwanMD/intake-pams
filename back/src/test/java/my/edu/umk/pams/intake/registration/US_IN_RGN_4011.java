@@ -36,7 +36,7 @@ public class US_IN_RGN_4011 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 			given().I_am_a_MGSEB_administrator_in_current_intake_session();
 			when().I_enter_information_required_for_application();
 		    addStage(WhenOfferToCandidate.class)
-					.and().i_offer_to_candidate_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+					.and().offer_to_candidate_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
 		    then().candidate_is_selected(IDENTITY_NO);
 		}
 }

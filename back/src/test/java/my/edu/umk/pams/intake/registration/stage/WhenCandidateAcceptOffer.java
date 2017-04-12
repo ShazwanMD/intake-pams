@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
@@ -20,7 +23,9 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
-public class WhenAcceptOffer extends Stage<WhenAcceptOffer>{
+
+@JGivenStage
+public class WhenCandidateAcceptOffer extends Stage<WhenCandidateAcceptOffer>{
 
 	@Autowired
 	private PolicyService policyService;
@@ -31,27 +36,23 @@ public class WhenAcceptOffer extends Stage<WhenAcceptOffer>{
 	@Autowired
 	ApplicationService applicationService;
 	
-	@ProvidedScenarioState
+	@ExpectedScenarioState
     private InIntake intake; 
-	
+
 	@ProvidedScenarioState
-    private InApplicant applicant; 
+	private InCandidate candidate;
 	
-	 @ProvidedScenarioState
-	 private InCandidate candidate;
-	
-	//@ProvidedScenarioState
-	//private InIntakeApplication intakeApplication; 
-	
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	List<InIntakeApplication>  applications;
 	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenAcceptOffer.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenCandidateAcceptOffer.class);
 	
-	public WhenAcceptOffer candidate_is_offered_in_intake_session_$(String identityNo, String intakeSession) {
+	public WhenCandidateAcceptOffer candidate_is_offered_in_intake_session_$(String identityNo, String intakeSession) {
 		
 			intake = policyService.findIntakeByReferenceNo(intakeSession);
-			applications = applicationService.findIntakeApplications(intake, InBidStatus.PROCESSING);
+			Assert.notNull(intake, "intake cannot be null");
+			
+			applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
 			Assert.notEmpty(applications, "applications cannot be empty");
 
 			//dapatkan senarai pemohon yang telah dipilih
@@ -63,10 +64,10 @@ public class WhenAcceptOffer extends Stage<WhenAcceptOffer>{
 			}
 
 			return self();
-		}
+	}
 
 	
-	public WhenAcceptOffer I_want_to_accept_offer_$(String identityNo, String intakeSession){
+	public WhenCandidateAcceptOffer i_accept_offer_$(String identityNo, String intakeSession) {
 		
 		candidate = admissionService.findCandidateByIdentityNo(identityNo);
 		candidate.setStatus(InCandidateStatus.APPROVED);

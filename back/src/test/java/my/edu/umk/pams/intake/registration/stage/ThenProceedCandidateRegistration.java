@@ -9,15 +9,19 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 
-public class ThenProceedWithTheRegistration extends Stage<ThenProceedWithTheRegistration>{
+
+@JGivenStage
+public class ThenProceedCandidateRegistration extends Stage<ThenProceedCandidateRegistration>{
 	
-	private static final Logger LOG = LoggerFactory.getLogger(ThenProceedWithTheRegistration.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ThenProceedCandidateRegistration.class);
 
 	  @Autowired
 	  private AdmissionService admissionService;
@@ -25,7 +29,7 @@ public class ThenProceedWithTheRegistration extends Stage<ThenProceedWithTheRegi
 	  @ExpectedScenarioState
 	  private InIntake intake; 
 	    
-	public ThenProceedWithTheRegistration I_can_proceed_with_the_registration(String identityNo) {
+	public ThenProceedCandidateRegistration I_can_proceed_with_the_registration(String identityNo) {
 		
 		Assert.notNull(intake, "intake cannot be null");
 		List<InCandidate> candidates = admissionService.findCandidates(intake);

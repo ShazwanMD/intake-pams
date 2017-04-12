@@ -37,7 +37,7 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
     @Autowired
     private AuthenticationManager authenticationManager;
     
-    @ProvidedScenarioState
+    @ExpectedScenarioState
     List<InIntakeApplication>  applications;
     
     @Autowired
@@ -54,9 +54,9 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
     
 
 
-	public WhenOfferToCandidate i_offer_to_candidate_in_intake_session_$(String identityNo, String intakeSession) {
+	public WhenOfferToCandidate offer_to_candidate_in_intake_session_$(String identityNo, String intakeSession) {
 		intake = policyService.findIntakeByReferenceNo(intakeSession);
-		applications = applicationService.findIntakeApplications(intake, InBidStatus.PROCESSING);
+		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
 		Assert.notEmpty(applications, "applications cannot be empty");
 
 		//dapatkan senarai pemohon yang telah dipilih
@@ -67,6 +67,7 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 			candidate = admissionService.findCandidateByIdentityNo(identityNo);
 			admissionService.offerCandidate(candidate);
 			//TODO offer matrix number
+			   LOG.debug("intake status : {} ", application.getBidStatus());
 		}
 
 		return self();
