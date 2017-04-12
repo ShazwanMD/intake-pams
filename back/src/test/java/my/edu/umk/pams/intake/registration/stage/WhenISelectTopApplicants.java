@@ -42,7 +42,7 @@ public class WhenISelectTopApplicants extends Stage<WhenISelectTopApplicants> {
 
     public WhenISelectTopApplicants I_select_top_applicants() {
     	
-    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.SUBMITTED);
+    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplicationsOrderedByMerit(intake);
 		for (InIntakeApplication intakeApplication : applications) {
 			intakeApplication.getName();
 			LOG.debug(intakeApplication.getName());
