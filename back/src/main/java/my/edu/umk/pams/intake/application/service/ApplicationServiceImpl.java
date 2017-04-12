@@ -6,9 +6,7 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
-import my.edu.umk.pams.intake.util.Util;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
-
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +18,7 @@ import java.util.List;
 /**
  * @author PAMS
  */
-@Service
+@Service("applicationService")
 public class ApplicationServiceImpl implements ApplicationService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ApplicationServiceImpl.class);
@@ -42,7 +40,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void draftIntakeApplication(InIntake intake, InIntakeApplication application) {
-        intakeApplicationDao.save(application, Util.getCurrentUser());
+        intakeApplicationDao.save(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -101,90 +99,86 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void updateIntakeApplication(InIntakeApplication application) {
-        intakeApplicationDao.update(application, Util.getCurrentUser());
+        intakeApplicationDao.update(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addEducation(InIntakeApplication application, InEducation education) {
-        intakeApplicationDao.addEducation(application, education, Util.getCurrentUser());
+        intakeApplicationDao.addEducation(application, education, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addEmployment(InIntakeApplication application, InEmployment employment) {
-        intakeApplicationDao.addEmployment(application, employment, Util.getCurrentUser());
+        intakeApplicationDao.addEmployment(application, employment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addInvolvement(InIntakeApplication application, InInvolvement involvement) {
-        intakeApplicationDao.addInvolvement(application, involvement, Util.getCurrentUser());
+        intakeApplicationDao.addInvolvement(application, involvement, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addAddress(InIntakeApplication application, InAddress address) {
-        intakeApplicationDao.addAddress(application, address, Util.getCurrentUser());
+        intakeApplicationDao.addAddress(application, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deleteAddress(InIntakeApplication application, InAddress address) {
-        intakeApplicationDao.deleteAddress(application, address, Util.getCurrentUser());
+        intakeApplicationDao.deleteAddress(application, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addContact(InIntakeApplication application, InContact contact) {
-        intakeApplicationDao.addContact(application, contact, Util.getCurrentUser());
+        intakeApplicationDao.addContact(application, contact, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deleteContact(InIntakeApplication application, InContact contact) {
-        intakeApplicationDao.deleteContact(application, contact, Util.getCurrentUser());
+        intakeApplicationDao.deleteContact(application, contact, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addGuarantor(InIntakeApplication application, InGuarantor guarantor) {
-        intakeApplicationDao.addGuarantor(application, guarantor, Util.getCurrentUser());
+        intakeApplicationDao.addGuarantor(application, guarantor, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deleteGuarantor(InIntakeApplication application, InGuarantor guarantor) {
-        intakeApplicationDao.deleteGuarantor(application, guarantor, Util.getCurrentUser());
+        intakeApplicationDao.deleteGuarantor(application, guarantor, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addGuardian(InIntakeApplication application, InGuardian guardian) {
-        intakeApplicationDao.addGuardian(application, guardian, Util.getCurrentUser());
+        intakeApplicationDao.addGuardian(application, guardian, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deleteGuardian(InIntakeApplication application, InGuardian guardian) {
-        intakeApplicationDao.deleteGuardian(application, guardian, Util.getCurrentUser());
+        intakeApplicationDao.deleteGuardian(application, guardian, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addFranchise(InFranchise franchise) {
         LOG.debug("TODO: or NOT"); // todo the Dao maybe. Maybe not because franchise still has ambiguity
-
 //        franchiseDao.save()
 //        sessionFactory.getCurrentSession().flush();
     }
     
-
 	@Override
-	public void addAttachment(InIntakeApplication application,
-			InAttachment attachment) {
-		
-		intakeApplicationDao.addAttachment(application, attachment, Util.getCurrentUser());
+	public void addAttachment(InIntakeApplication application, InAttachment attachment) {
+		intakeApplicationDao.addAttachment(application, attachment, securityService.getCurrentUser());
 	}
 
     @Override
@@ -366,12 +360,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         return intakeApplicationDao.count(filter, bidType, intake);
     }
 
-
     @Override
     public boolean hasEducation(InIntakeApplication application) {
         return intakeApplicationDao.hasEducation(application);
     }
-
 
     @Override
     public boolean hasEmployment(InIntakeApplication application) {
@@ -387,5 +379,4 @@ public class ApplicationServiceImpl implements ApplicationService {
     public boolean hasResult(InIntakeApplication application, InResultType resultType) {
         return intakeApplicationDao.hasResult(application, resultType);
     }
-
 }
