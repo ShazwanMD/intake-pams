@@ -16,6 +16,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenProceedWithTheRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenAcceptOffer;
 import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillTheApplicationAndIsSelected;
+import my.edu.umk.pams.intake.registration.stage.WhenOfferToCandidate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -38,8 +39,8 @@ WhenApplicantFillTheApplicationAndIsSelected,ThenProceedWithTheRegistration> {
 		 given().I_am_candidate_in_current_intake_session()
 		 .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
 		 when().Applicant_fill_application_and_then_is_selected().and().applicant_submit_application();
-		 addStage(WhenAcceptOffer.class).and().candidate_is_offered_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO)
-		 .and().I_want_to_accept_offer_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+		 addStage(WhenOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+		 addStage(WhenAcceptOffer.class).and().I_want_to_accept_offer_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
 		 then().I_can_proceed_with_the_registration(IDENTITY_NO);
 		
 		
