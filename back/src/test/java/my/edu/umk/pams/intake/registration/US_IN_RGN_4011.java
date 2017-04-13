@@ -28,24 +28,20 @@ import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
 @As("As a MGSEB academic administrator, I want to offer a candidate, so that candidate ready for next selection phase")
 public class US_IN_RGN_4011 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
 WhenApplicantFillAndSubmitApplication,ThenCandidateProceedToNextSelectionPhase> {
-	
-    @Autowired
-    private RegistrationService registrationService;
-    private String intakeReferenceNo = "201720181/MASTER";
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4011.class);
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
-	public static final String IDENTITY_NO = "248674";
+	private static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	private static final String IDENTITY_NO = "248674";
 
 		@Test
 	    @Issue("PAMI-95")
 	    @Rollback
 	    public void scenario1() {
 	        given().I_am_a_MGSEB_administrator_in_current_intake_session()
-	        .and().I_pick_an_intake_$(intakeReferenceNo);
+	        .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
 			when().I_fill_in_application().and().applicant_submit_application();
 		    addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
-		    addStage(WhenIOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+		    addStage(WhenIOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(INTAKE_REFERENCE_NO);
 		    then().candidate_is_selected(IDENTITY_NO);
 		}
 }

@@ -29,7 +29,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
@@ -69,26 +71,14 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
 
 
     public WhenApplicantFillAndSubmitApplication I_fill_in_application() {
-       
-    	
-    	//finding intake by reference number
-    	InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         Assert.notNull(intake, "intake is null");
          
-        Map<String, Object> map = new HashMap<String, Object>();
-    	map.put("intakeSession", intakeSession);
-    	map.put("programLevel", intake.getProgramLevel());
-    	String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
-    	
-    	
     	//created a residency code
     	InResidencyCode resident = new InResidencyCodeImpl();
     	resident.setCode("101");
     	resident.setDescription("test resident");
     	commonService.saveResidencyCode(resident);
-    	Assert.notNull(resident, "resident is null");
     	LOG.debug("test resident {} :", resident);
-    	
     	
     	//created an applicant1
         InApplicant applicant1 = new InApplicantImpl();
@@ -97,8 +87,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
         applicant1.setEmail("ibnu_khaldun@gmail.com");
         applicant1.setPhone("0111020202");
         identityService.saveApplicant(applicant1);
-        Assert.notNull(applicant1, "applicant is null");
-        
+
     	//created an applicant2
         InApplicant applicant2 = new InApplicantImpl();
         applicant2.setApplicationNo("9999991");
@@ -106,8 +95,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
         applicant2.setEmail("ahmad_sam@gmail.com");
         applicant2.setPhone("0111020203");
         identityService.saveApplicant(applicant2);
-        Assert.notNull(applicant2, "applicant is null");
-        
+
     	//created an applicant3
         InApplicant applicant3 = new InApplicantImpl();
         applicant3.setApplicationNo("9999992");
@@ -115,15 +103,9 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
         applicant3.setEmail("siti_samiya@gmail.com");
         applicant3.setPhone("0111020204");
         identityService.saveApplicant(applicant3);
-        Assert.notNull(applicant3, "applicant is null");
-        
+
          //Application 1
-    	
          InIntakeApplication application1 = new InIntakeApplicationImpl();
-         //application1.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
-         
-         BigDecimal merit1 = new BigDecimal("2.85");
-        
          application1.setIntake(intake);
          application1.setReferenceNo("INTAKE/10001");
          application1.setName(applicant1.getName());
@@ -132,7 +114,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
          application1.setPhone(applicant1.getPhone());
          application1.setAge(26);
          application1.setRank(3);
-         application1.setMerit(merit1);
+         application1.setMerit(new BigDecimal("2.85"));
          application1.setPaymentSourceNo("0024188");
          application1.setSchoolBatch(2006/2010);
          application1.setSchoolName("SMK Sultan Ismail");
@@ -156,14 +138,11 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
 		 Assert.notNull(application1, "application 1 is not drafted");
 		 LOG.debug("intake status : {} ", application1.getBidStatus());
          
-    
-		  //Application 2
 
+		  //Application 2
           InIntakeApplication  application2 = new InIntakeApplicationImpl();
           application2.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
           
-          BigDecimal merit2 = new BigDecimal("2.80");
-         
           application2.setIntake(intake);
           application2.setReferenceNo("INTAKE/10002");
           application2.setName(applicant2.getName());
@@ -172,7 +151,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           application2.setPhone(applicant2.getPhone());
           application2.setAge(25);
           application2.setRank(2);
-          application2.setMerit(merit2);
+          application2.setMerit(new BigDecimal("2.80"));
           application2.setPaymentSourceNo("002268sd");
           application2.setSchoolBatch(2006/2012);
           application2.setSchoolName("SMK Sultan Ismail Hash");
@@ -196,14 +175,8 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           Assert.notNull(application2, "applicantion2 is not drafted");
           LOG.debug("intake status : {} ", application2.getBidStatus());
           
-          
           //Application 3
-       	
           InIntakeApplication  application3 = new InIntakeApplicationImpl();
-          //application2.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
-          
-          BigDecimal merit3 = new BigDecimal("3.80");
-         
           application3.setIntake(intake);
           application3.setReferenceNo("INTAKE/10003");
           application3.setName(applicant3.getName());
@@ -212,7 +185,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           application3.setPhone(applicant3.getPhone());
           application3.setAge(30);
           application3.setRank(1);
-          application3.setMerit(merit3);
+          application3.setMerit(new BigDecimal("3.80"));
           application3.setPaymentSourceNo("767268sd");
           application3.setSchoolBatch(2003/2009);
           application3.setSchoolName("SMK Sultanah Asma");
@@ -236,51 +209,27 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           Assert.notNull(application3, "applicantion3 is not drafted");
           LOG.debug("intake status : {} ", application3.getBidStatus());
          
-         
+
          return self();
-         
     }
     
     
     
     public WhenApplicantFillAndSubmitApplication applicant_submit_application() {
-             
-        	 //submit application 1
-        	 
-        	 InIntakeApplication application1 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
-  
-        	 applicationService.submitIntakeApplication(intake, application1);
-             Assert.notNull(application1, "application is null");
-             
-             InBidStatus bidStatus1 = application1.getBidStatus();
-             Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus1), "application1 is not submitted");
-             LOG.debug("intake status : {} ", application1.getBidStatus());
-             
-        	 //submit application 2
-        	 
-             InIntakeApplication application2 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10002");
-        	 
-        	 applicationService.submitIntakeApplication(intake, application2);
-             Assert.notNull(application2, "application is null");
-             
-             InBidStatus bidStatus2 = application2.getBidStatus();
-             Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus2), "application2 is not submitted");
-             LOG.debug("intake status : {} ", application2.getBidStatus());
-             
-        	 //submit application 3
-        	 
-             InIntakeApplication application3 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10003");
-        	 
-        	 applicationService.submitIntakeApplication(intake, application3);
-             Assert.notNull(application3, "application is null");
-             
-             InBidStatus bidStatus3 = application3.getBidStatus();
-             Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus3), "application2 is not submitted");
-             LOG.debug("intake status : {} ", application3.getBidStatus());
 
+        List<String> referenceNos = Arrays.asList("INTAKE/10001", "INTAKE/10002", "INTAKE/10003");
 
-            
-              
+        //submit each application
+        for (String refNo : referenceNos) {
+            InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(refNo);
+            applicationService.submitIntakeApplication(intake, application);
+            Assert.notNull(application, refNo + " application is null");
+
+            InBidStatus bidStatus = application.getBidStatus();
+            Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus), refNo + "application is not submitted");
+            LOG.debug("intake status : {} ", application.getBidStatus());
+        }
+
         return self() ;
     }
 }

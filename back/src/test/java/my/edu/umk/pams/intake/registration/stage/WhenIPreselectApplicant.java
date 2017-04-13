@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration.stage;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,25 +51,20 @@ public class WhenIPreselectApplicant extends Stage<WhenIPreselectApplicant>{
     private InIntake intake; 
     
     @ProvidedScenarioState
-    private InCandidate candidate;
+    private List<InCandidate> candidates;
     
-
-
-	public WhenIPreselectApplicant I_preselect_applicant_in_intake_session_$(String identityNo, String intakeSession) {
-		intake = policyService.findIntakeByReferenceNo(intakeSession);
-		
+	public WhenIPreselectApplicant I_preselect_applicant_in_intake_session_$(String identityNo, String code) {
+		intake = policyService.findIntakeByReferenceNo(code);
 		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
-		
 		Assert.notEmpty(applications, "applications cannot be empty");
+
+		candidates = new ArrayList<>();
 
 		//dapatkan senarai pemohon yang telah dipilih
 		for (InIntakeApplication application : applications) {
-
 			admissionService.preselectIntakeApplication(application);
-
-			  
+			candidates.add(admissionService.findCandidateByIdentityNo(application.getCredentialNo()));
 		}
-
 
 		return self();
 	}

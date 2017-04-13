@@ -1,74 +1,35 @@
 package my.edu.umk.pams.intake.registration.stage;
 
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
-import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.service.AdmissionService;
-import my.edu.umk.pams.intake.application.model.InBidStatus;
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.registration.US_IN_RGN_3002;
-
 import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import org.springframework.util.Assert;
+import io.jsonwebtoken.lang.Assert;
+import my.edu.umk.pams.intake.admission.model.InCandidate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-//@Pending
+import java.util.List;
+
 @JGivenStage
-public class WhenIOfferToCandidate extends Stage<WhenIOfferToCandidate>{
-	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferToCandidate.class);
-	
-	@Autowired
-	private PolicyService policyService;
-	
-	@Autowired
-	private AdmissionService admissionService;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    
-    @ExpectedScenarioState
-    List<InIntakeApplication>  applications;
-    
-    @Autowired
-    ApplicationService applicationService;
-
-	@ExpectedScenarioState
-	private InIntakeApplication intakeApplication;
-
-
-    
+public class WhenIOfferToCandidate extends Stage<WhenIOfferToCandidate> {
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferToCandidate.class);
     @ProvidedScenarioState
-    private InCandidate candidate;
-    
+    private List<InCandidate> candidates;
 
+    public WhenIOfferToCandidate I_offer_to_candidate_in_intake_session_$(String referenceNo) {
+        for (InCandidate candidate : candidates) {
 
-	public WhenIOfferToCandidate I_offer_to_candidate_in_intake_session_$(String identityNo, String intakeSession) {
-		
-		InIntake intake = policyService.findIntakeByReferenceNo(intakeSession);
+            //todo(ashraf) Nothing to implement to make 'offer' here??
+            //todo(ashraf) Because we already set the following in the previous When
+//            candidate.setStatus(InCandidateStatus.SELECTED);
 
-		
-		List<InCandidate> candidates = admissionService.findCandidates(intake);
-		LOG.debug("candidates status for : {} ", candidates);
-		
-		for (InCandidate candidate : candidates) {
-			
-		LOG.debug("candidates status for : {} ", candidate.getName());
-		LOG.debug("candidates status for : {} ", candidate.getStatus());
-		
-		}
-		
+            String expected = referenceNo;
+            String found = candidate.getIntake().getReferenceNo();
+            Assert.isTrue(referenceNo.equals(found), "Expected " + expected + ", found " + found);
+            LOG.debug("candidates status for : {} ", candidate.getName());
+            LOG.debug("candidates status for : {} ", candidate.getStatus());
+        }
 
-		return self();
-	}
+        return self();
+    }
 }
