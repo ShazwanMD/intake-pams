@@ -20,7 +20,7 @@ import org.springframework.util.Assert;
 /**
  * @author PAMS
  */
-@Pending
+
 @JGivenStage
 public class ThenCandidateProceedToNextSelectionPhase extends Stage<ThenCandidateProceedToNextSelectionPhase> {
 	
@@ -36,10 +36,14 @@ public class ThenCandidateProceedToNextSelectionPhase extends Stage<ThenCandidat
     	Assert.notNull(intake, "intake cannot be null");
 		List<InCandidate> candidates = admissionService.findCandidates(intake);
     	Assert.notEmpty(candidates, "candidates cannot be empty");
+    	
 
     	for (InCandidate candidate : candidates) {
     		if (identityNo.equals(candidate.getIdentityNo()))
     		Assert.isTrue(InCandidateStatus.SELECTED.equals(candidate.getStatus()),"Candidate should be selected");
+    		LOG.debug("candidate: {} is {} :",candidate.getName(),candidate.getStatus());
+    		
+    		
 		}
 
         return self();

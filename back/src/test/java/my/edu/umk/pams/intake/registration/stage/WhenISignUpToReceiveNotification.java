@@ -24,17 +24,27 @@ public class WhenISignUpToReceiveNotification extends Stage<WhenISignUpToReceive
 
     @ProvidedScenarioState
     private InUser user;
+    
+    @ProvidedScenarioState
+    private InEmailQueue emailQueue;
+    
+    @ProvidedScenarioState
+    private InEmailQueueStatus status;
 
     @ExpectedScenarioState
     private InApplicant applicant;
+    
+    
 
     public WhenISignUpToReceiveNotification I_sign_up_to_receive_notification() {
 
-        InEmailQueue emailQueue = new InEmailQueueImpl();
+    	status = InEmailQueueStatus.SENT;
+    	
+        emailQueue = new InEmailQueueImpl();
         emailQueue.setCode("123444");
         //   emailQueue.setTo(applicant.getEmail());
         emailQueue.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
-        emailQueue.setQueueStatus(InEmailQueueStatus.SENT);
+        emailQueue.setQueueStatus(status);
         systemService.saveEmailQueue(emailQueue);
         return self();
     }

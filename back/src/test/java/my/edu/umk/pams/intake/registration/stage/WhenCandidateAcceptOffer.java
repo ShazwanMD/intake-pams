@@ -26,7 +26,9 @@ import my.edu.umk.pams.intake.policy.service.PolicyService;
 
 @JGivenStage
 public class WhenCandidateAcceptOffer extends Stage<WhenCandidateAcceptOffer>{
-
+ 
+	private static final Logger LOG = LoggerFactory.getLogger(WhenCandidateAcceptOffer.class);
+	
 	@Autowired
 	private PolicyService policyService;
 	
@@ -43,36 +45,20 @@ public class WhenCandidateAcceptOffer extends Stage<WhenCandidateAcceptOffer>{
 	private InCandidate candidate;
 	
 	@ExpectedScenarioState
-	List<InIntakeApplication>  applications;
+	private List<InCandidate> candidates;
 	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenCandidateAcceptOffer.class);
-	
-	public WhenCandidateAcceptOffer candidate_is_offered_in_intake_session_$(String identityNo, String intakeSession) {
-		
-			intake = policyService.findIntakeByReferenceNo(intakeSession);
-			Assert.notNull(intake, "intake cannot be null");
-			
-			applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
-			Assert.notEmpty(applications, "applications cannot be empty");
-
-			//dapatkan senarai pemohon yang telah dipilih
-			for (InIntakeApplication application : applications) {
-				application.setBidStatus(InBidStatus.SELECTED);
-				admissionService.preselectIntakeApplication(application);
-				 //test preselectIntakeApplication function
-				candidate = admissionService.findCandidateByIdentityNo(identityNo);
-			}
-
-			return self();
-	}
 
 	
 	public WhenCandidateAcceptOffer i_accept_offer_$(String identityNo, String intakeSession) {
+	
+		for (InCandidate candidate : candidates) {
+			
+	    candidate.setStatus(InCandidateStatus.APPROVED);
+		admissionService.updateSelectedCandidate(candidate);	
+		LOG.debug("candidates status for : {} ", candidate.getName());
+		LOG.debug("candidates status for : {} ", candidate.getStatus());
 		
-		candidate = admissionService.findCandidateByIdentityNo(identityNo);
-		candidate.setStatus(InCandidateStatus.APPROVED);
-		admissionService.updateSelectedCandidate(candidate);
-		
+		}
 		return self();
 	}
 }
