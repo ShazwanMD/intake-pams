@@ -37,7 +37,7 @@ public class US_IN_RGN_5001 extends SpringScenarioTest<GivenIAmCandidate,
 	 public void scenario1()  {
 	
 		 given().I_am_candidate_in_current_intake_session()
-		 .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
+		 .and().I_applied_for_intake_$(INTAKE_REFERENCE_NO);
 		 when().I_fill_in_all_the_required_information_in_my_application();
 		 addStage(WhenISubmitApplication.class).and().I_submit_application();
 		 addStage(WhenReceiveNotificationOnRegistrationDate.class).and().I_receive_notification_on_registration_date();

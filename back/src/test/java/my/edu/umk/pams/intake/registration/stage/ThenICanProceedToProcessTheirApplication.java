@@ -31,18 +31,29 @@ public class ThenICanProceedToProcessTheirApplication extends Stage<ThenICanProc
     
     @ExpectedScenarioState
     private InIntake intake;
-    
-    @ExpectedScenarioState
-    private InIntakeApplication application;
         
     @Autowired
     private ApplicationService applicationService;
 
     public ThenICanProceedToProcessTheirApplication I_can_proceed_to_process_their_application() {
 
-    	applicationService.processIntakeApplication(intake, application);
-       
-        LOG.debug("intake status {} :", application.getBidStatus());
+    	
+    	//prosses application 1
+    	InIntakeApplication application1 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
+    	applicationService.processIntakeApplication(intake, application1);
+        LOG.debug("intake status {} :", application1.getBidStatus());
+        
+    	
+    	//prosses application 2
+        InIntakeApplication application2 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10002");
+    	applicationService.processIntakeApplication(intake, application2);
+        LOG.debug("intake status {} :", application2.getBidStatus());
+        
+        
+    	//prosses application 3
+        InIntakeApplication application3 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10003");
+    	applicationService.processIntakeApplication(intake, application3);
+        LOG.debug("intake status {} :", application3.getBidStatus());
         return self();
     }
 }

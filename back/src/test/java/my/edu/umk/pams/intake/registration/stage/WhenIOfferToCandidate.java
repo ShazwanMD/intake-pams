@@ -24,9 +24,9 @@ import org.springframework.util.Assert;
 
 //@Pending
 @JGivenStage
-public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
+public class WhenIOfferToCandidate extends Stage<WhenIOfferToCandidate>{
 	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenOfferToCandidate.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferToCandidate.class);
 	
 	@Autowired
 	private PolicyService policyService;
@@ -46,31 +46,29 @@ public class WhenOfferToCandidate extends Stage<WhenOfferToCandidate>{
 	@ExpectedScenarioState
 	private InIntakeApplication intakeApplication;
 
-	@ProvidedScenarioState
-    private InIntake intake; 
+
     
     @ProvidedScenarioState
     private InCandidate candidate;
     
 
 
-	public WhenOfferToCandidate offer_to_candidate_in_intake_session_$(String identityNo, String intakeSession) {
-		intake = policyService.findIntakeByReferenceNo(intakeSession);
-		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
-		Assert.notEmpty(applications, "applications cannot be empty");
+	public WhenIOfferToCandidate I_offer_to_candidate_in_intake_session_$(String identityNo, String intakeSession) {
+		
+		InIntake intake = policyService.findIntakeByReferenceNo(intakeSession);
 
-		//dapatkan senarai pemohon yang telah dipilih
-		for (InIntakeApplication application : applications) {
-			application.setBidStatus(InBidStatus.SELECTED);
-			admissionService.preselectIntakeApplication(application);
-			 //test preselectIntakeApplication function
-			candidate = admissionService.findCandidateByIdentityNo(identityNo);
-			admissionService.offerCandidate(candidate);
-			//TODO offer matrix number
-			   LOG.debug("intake status : {} ", application.getBidStatus());
+		
+		List<InCandidate> candidates = admissionService.findCandidates(intake);
+		LOG.debug("candidates status for : {} ", candidates);
+		
+		for (InCandidate candidate : candidates) {
+			
+		LOG.debug("candidates status for : {} ", candidate.getName());
+		LOG.debug("candidates status for : {} ", candidate.getStatus());
+		
 		}
+		
 
 		return self();
 	}
 }
-
