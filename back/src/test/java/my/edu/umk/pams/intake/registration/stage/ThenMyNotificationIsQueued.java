@@ -55,10 +55,12 @@ public class ThenMyNotificationIsQueued extends Stage<ThenMyNotificationIsQueued
     public ThenMyNotificationIsQueued my_notification_is_queued_for_me() {
 
 
-        //todo mia : email queue cannot find status
+        
     	Assert.notNull(status, "status is null");
     	
         List<InEmailQueue> emailQueues = systemService.findEmailQueues(status);
+      //todo mia : email queue cannot find status, 
+      //todo uda or max : is somthing wrong emailQueuDao?  
         LOG.debug("email {} :", emailQueues);
         Assert.notEmpty(emailQueues, "email queuse cannot be empty");
 
