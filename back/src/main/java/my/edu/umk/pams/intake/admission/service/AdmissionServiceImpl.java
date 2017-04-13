@@ -10,6 +10,7 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
@@ -32,6 +33,9 @@ import java.util.Map;
 @Service("admissionService")
 public class AdmissionServiceImpl implements AdmissionService {
 	private static final Logger LOG = LoggerFactory.getLogger(AdmissionServiceImpl.class);
+		
+	private String intakeReferenceNo = "201720181/MASTER";
+	
     @Autowired
     private InCandidateDao candidateDao;
 
@@ -40,6 +44,9 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Autowired
     private ApplicationService applicationService;
+    
+    @Autowired
+    private PolicyService policyService;
     
     @Autowired
     private AdmissionService admissionService;
@@ -77,7 +84,10 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void preselectIntakeApplication(InIntakeApplication application) {
         // create candidate
     	
+    	
         InCandidate candidate = new InCandidateImpl();
+        //temporarly adding set intake 
+        candidate.setIntake(policyService.findIntakeByReferenceNo(intakeReferenceNo));
         candidate.setName(application.getName());
         candidate.setIdentityNo(application.getCredentialNo());
         candidate.setEmail(application.getEmail());
