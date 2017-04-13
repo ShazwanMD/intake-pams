@@ -45,11 +45,12 @@ package my.edu.umk.pams.intake.registration.stage;
 
 		@ExpectedScenarioState
 		private InIntakeApplication intakeApplication;
+		
+		@ProvidedScenarioState
+		private List<InCandidate> candidates;
 
 
-	    
-	    @ProvidedScenarioState
-	    private InCandidate candidate;
+
 	    
 
 
@@ -58,7 +59,7 @@ package my.edu.umk.pams.intake.registration.stage;
 			InIntake intake = policyService.findIntakeByReferenceNo(intakeSession);
 
 			
-			List<InCandidate> candidates = admissionService.findCandidates(intake);
+			candidates = admissionService.findCandidates(intake);
 			LOG.debug("candidates status for : {} ", candidates);
 			
 			for (InCandidate candidate : candidates) {
