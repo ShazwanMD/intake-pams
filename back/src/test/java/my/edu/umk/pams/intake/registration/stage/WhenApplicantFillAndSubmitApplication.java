@@ -70,6 +70,8 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
 
     public WhenApplicantFillAndSubmitApplication I_fill_in_application() {
        
+    	
+    	//finding intake by reference number
     	InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         Assert.notNull(intake, "intake is null");
          
@@ -79,7 +81,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
     	String referenceNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
     	
     	
-    	
+    	//created a residency code
     	InResidencyCode resident = new InResidencyCodeImpl();
     	resident.setCode("101");
     	resident.setDescription("test resident");
@@ -88,28 +90,46 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
     	LOG.debug("test resident {} :", resident);
     	
     	
-    	
-        InApplicant applicant = new InApplicantImpl();
-        applicant.setApplicationNo("9999999");
-        applicant.setName("dummy john bin john doe");
-        applicant.setEmail("dummyjohn@gmail.com");
-        applicant.setPhone("0111020202");
-        identityService.saveApplicant(applicant);
-        Assert.notNull(applicant, "applicant is null");
+    	//created an applicant1
+        InApplicant applicant1 = new InApplicantImpl();
+        applicant1.setApplicationNo("9999990");
+        applicant1.setName("Ahmad Kharizmi bin Khaldun");
+        applicant1.setEmail("ibnu_khaldun@gmail.com");
+        applicant1.setPhone("0111020202");
+        identityService.saveApplicant(applicant1);
+        Assert.notNull(applicant1, "applicant is null");
         
-       //application 1
+    	//created an applicant2
+        InApplicant applicant2 = new InApplicantImpl();
+        applicant2.setApplicationNo("9999991");
+        applicant2.setName("Ahmad Sam bin Khaldun Sam");
+        applicant2.setEmail("ahmad_sam@gmail.com");
+        applicant2.setPhone("0111020203");
+        identityService.saveApplicant(applicant2);
+        Assert.notNull(applicant2, "applicant is null");
+        
+    	//created an applicant3
+        InApplicant applicant3 = new InApplicantImpl();
+        applicant3.setApplicationNo("9999992");
+        applicant3.setName("Siti Samiya bin Khaldun Sam");
+        applicant3.setEmail("siti_samiya@gmail.com");
+        applicant3.setPhone("0111020204");
+        identityService.saveApplicant(applicant3);
+        Assert.notNull(applicant3, "applicant is null");
+        
+         //Application 1
     	
-        InIntakeApplication application1 = new InIntakeApplicationImpl();
-       //  application1.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
+         InIntakeApplication application1 = new InIntakeApplicationImpl();
+         //application1.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
          
          BigDecimal merit1 = new BigDecimal("2.85");
         
          application1.setIntake(intake);
          application1.setReferenceNo("INTAKE/10001");
-         application1.setName("Ahmad Kharizmi bin Khaldun");
+         application1.setName(applicant1.getName());
          application1.setCredentialNo("910607145581");
-         application1.setEmail("ibnu_khaldun@gmail.com");
-         application1.setPhone("0111020202");
+         application1.setEmail(applicant1.getEmail());
+         application1.setPhone(applicant1.getPhone());
          application1.setAge(26);
          application1.setRank(3);
          application1.setMerit(merit1);
@@ -120,54 +140,36 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
          application1.setBidStatus(InBidStatus.NEW);
          application1.setBidResponse(InBidResponse.NEW);
          application1.setOkuNo("S12223214");
-         
          application1.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
-         Assert.notNull(commonService.findStudyModeByCode("1"), "studymode is null");
+		 application1.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
+		 application1.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
+		 application1.setNationalityCode(commonService.findNationalityCodeByCode("1")); // Warganegara
+		 application1.setRaceCode(commonService.findRaceCodeByCode("0100")); // Melayu
+		 application1.setEthnicityCode(commonService.findEthnicityCodeByCode("0100")); // Melayu
+		 application1.setMaritalCode(commonService.findMaritalCodeByCode("1")); // Bujang
+		 application1.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); // Tidak
+		 application1.setResidencyCode(commonService.findResidencyCodeByCode("101")); // no data in seed, created test code for residency in unit
+		 application1.setApplicant(applicant1);
+		 LOG.debug("intake status : {} ", application1.getBidStatus());
+		 
+		 applicationService.draftIntakeApplication(intake, application1);
+		 Assert.notNull(application1, "application 1 is not drafted");
+		 LOG.debug("intake status : {} ", application1.getBidStatus());
          
-         application1.setGenderCode(commonService.findGenderCodeByCode("1")); //Male
-         Assert.notNull(commonService.findGenderCodeByCode("1"), "gendercode is null");
-         
-         application1.setReligionCode(commonService.findReligionCodeByCode("1")); //Islam
-         Assert.notNull(commonService.findReligionCodeByCode("1"), "religioncode is null");
-         
-         application1.setNationalityCode(commonService.findNationalityCodeByCode("1")); //Warganegara
-         Assert.notNull(commonService.findNationalityCodeByCode("1"), "nationalitycode is null");
-         
-         application1.setRaceCode(commonService.findRaceCodeByCode("0100")); //Melayu
-         Assert.notNull(commonService.findRaceCodeByCode("0100"), "racecode is null");
-   
-         application1.setEthnicityCode(commonService.findEthnicityCodeByCode("0100")); //Melayu
-         Assert.notNull(commonService.findEthnicityCodeByCode("0100"), "ethnicitycode is null");
-         
-         application1.setMaritalCode(commonService.findMaritalCodeByCode("1")); //Bujang
-         Assert.notNull(commonService.findMaritalCodeByCode("1"), "maritalcode is null");
-         
-         application1.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); //Tidak cacat
-         Assert.notNull(commonService.findDisabilityCodeByCode("12"), "disabilitycode is null");
-         
-         application1.setResidencyCode(commonService.findResidencyCodeByCode("101")); //no data in seed, created test code in unit
-         Assert.notNull(commonService.findResidencyCodeByCode("101"), "residencycode is null");
-         
-         application1.setApplicant(applicant);
-         Assert.notNull(applicant, "applicant is null");
-         LOG.debug("intake status : {} ", application1.getBidStatus());
-         applicationService.draftIntakeApplication(intake, application1);
-         LOG.debug("intake status : {} ", application1.getBidStatus());
-         
-       //application 2
+    
+		  //Application 2
 
-     	
           InIntakeApplication  application2 = new InIntakeApplicationImpl();
-    //      application2.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
+          application2.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
           
           BigDecimal merit2 = new BigDecimal("2.80");
          
           application2.setIntake(intake);
           application2.setReferenceNo("INTAKE/10002");
-          application2.setName("Ahmad Sam bin Khaldun Sam");
+          application2.setName(applicant2.getName());
           application2.setCredentialNo("910607149913");
-          application2.setEmail("ahmad_sam@gmail.com");
-          application2.setPhone("01710112002");
+          application2.setEmail(applicant2.getEmail());
+          application2.setPhone(applicant2.getPhone());
           application2.setAge(25);
           application2.setRank(2);
           application2.setMerit(merit2);
@@ -178,54 +180,36 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           application2.setBidStatus(InBidStatus.NEW);
           application2.setBidResponse(InBidResponse.NEW);
           application2.setOkuNo("S17453214");
-          
           application2.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
-          Assert.notNull(commonService.findStudyModeByCode("1"), "studymode is null");
-          
           application2.setGenderCode(commonService.findGenderCodeByCode("1")); //Male
-          Assert.notNull(commonService.findGenderCodeByCode("1"), "gendercode is null");
-          
-          application2.setReligionCode(commonService.findReligionCodeByCode("1")); //Islam
-          Assert.notNull(commonService.findReligionCodeByCode("1"), "religioncode is null");
-          
-          application2.setNationalityCode(commonService.findNationalityCodeByCode("1")); //Warganegara
-          Assert.notNull(commonService.findNationalityCodeByCode("1"), "nationalitycode is null");
-          
+          application2.setReligionCode(commonService.findReligionCodeByCode("1")); //Islam    
+          application2.setNationalityCode(commonService.findNationalityCodeByCode("1")); //Warganegara  
           application2.setRaceCode(commonService.findRaceCodeByCode("0100")); //Melayu
-          Assert.notNull(commonService.findRaceCodeByCode("0100"), "racecode is null");
-    
           application2.setEthnicityCode(commonService.findEthnicityCodeByCode("0100")); //Melayu
-          Assert.notNull(commonService.findEthnicityCodeByCode("0100"), "ethnicitycode is null");
-          
           application2.setMaritalCode(commonService.findMaritalCodeByCode("1")); //Bujang
-          Assert.notNull(commonService.findMaritalCodeByCode("1"), "maritalcode is null");
-          
           application2.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); //Tidak cacat
-          Assert.notNull(commonService.findDisabilityCodeByCode("12"), "disabilitycode is null");
-          
-          application2.setResidencyCode(commonService.findResidencyCodeByCode("101")); //no data in seed, created test code in unit
-          Assert.notNull(commonService.findResidencyCodeByCode("101"), "residencycode is null");
-          
-          application2.setApplicant(applicant);
-          Assert.notNull(applicant, "applicant is null");
+          application2.setResidencyCode(commonService.findResidencyCodeByCode("101")); // no data in seed, created test code for residency in unit
+          application2.setApplicant(applicant2);
           LOG.debug("intake status : {} ", application2.getBidStatus());
+          
           applicationService.draftIntakeApplication(intake, application2);
+          Assert.notNull(application2, "applicantion2 is not drafted");
           LOG.debug("intake status : {} ", application2.getBidStatus());
           
-          //application 2
-
+          
+          //Application 3
        	
           InIntakeApplication  application3 = new InIntakeApplicationImpl();
-    //    application2.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
+          //application2.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); 
           
           BigDecimal merit3 = new BigDecimal("3.80");
          
           application3.setIntake(intake);
           application3.setReferenceNo("INTAKE/10003");
-          application3.setName("Siti Samiya bin Khaldun Sam");
+          application3.setName(applicant3.getName());
           application3.setCredentialNo("870607149913");
-          application3.setEmail("siti_samiya@gmail.com");
-          application3.setPhone("0171023442");
+          application3.setEmail(applicant3.getEmail());
+          application3.setPhone(applicant3.getPhone());
           application3.setAge(30);
           application3.setRank(1);
           application3.setMerit(merit3);
@@ -235,39 +219,21 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           application3.setBidType(InBidType.FIRST);
           application3.setBidStatus(InBidStatus.NEW);
           application3.setBidResponse(InBidResponse.NEW);
-          application3.setOkuNo("S17453217874");
-          
-          application3.setStudyMode(commonService.findStudyModeByCode("2")); //Part time
-          Assert.notNull(commonService.findStudyModeByCode("2"), "studymode is null");
-          
+          application3.setOkuNo("S17453217874");  
+          application3.setStudyMode(commonService.findStudyModeByCode("2")); //Part time  
           application3.setGenderCode(commonService.findGenderCodeByCode("2")); //Female
-          Assert.notNull(commonService.findGenderCodeByCode("2"), "gendercode is null");
-          
-          application3.setReligionCode(commonService.findReligionCodeByCode("1")); //Islam
-          Assert.notNull(commonService.findReligionCodeByCode("1"), "religioncode is null");
-          
-          application3.setNationalityCode(commonService.findNationalityCodeByCode("1")); //Warganegara
-          Assert.notNull(commonService.findNationalityCodeByCode("1"), "nationalitycode is null");
-          
-          application3.setRaceCode(commonService.findRaceCodeByCode("0100")); //Melayu
-          Assert.notNull(commonService.findRaceCodeByCode("0100"), "racecode is null");
-    
-          application3.setEthnicityCode(commonService.findEthnicityCodeByCode("0403")); //Minangkabau
-          Assert.notNull(commonService.findEthnicityCodeByCode("0403"), "ethnicitycode is null");
-          
+          application3.setReligionCode(commonService.findReligionCodeByCode("1")); //Islam  
+          application3.setNationalityCode(commonService.findNationalityCodeByCode("1")); //Warganegara                
+          application3.setRaceCode(commonService.findRaceCodeByCode("0100")); //Melayu   
+          application3.setEthnicityCode(commonService.findEthnicityCodeByCode("0403")); //Minangkabau       
           application3.setMaritalCode(commonService.findMaritalCodeByCode("1")); //Bujang
-          Assert.notNull(commonService.findMaritalCodeByCode("1"), "maritalcode is null");
-          
           application3.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); //Tidak cacat
-          Assert.notNull(commonService.findDisabilityCodeByCode("12"), "disabilitycode is null");
-          
-          application3.setResidencyCode(commonService.findResidencyCodeByCode("101")); //no data in seed, created test code in unit
-          Assert.notNull(commonService.findResidencyCodeByCode("101"), "residencycode is null");
-          
-          application3.setApplicant(applicant);
-          Assert.notNull(applicant, "applicant is null");
+          application3.setResidencyCode(commonService.findResidencyCodeByCode("101")); // no data in seed, created test code for residency in unit
+          application3.setApplicant(applicant3);
           LOG.debug("intake status : {} ", application3.getBidStatus());
+          
           applicationService.draftIntakeApplication(intake, application3);
+          Assert.notNull(application3, "applicantion3 is not drafted");
           LOG.debug("intake status : {} ", application3.getBidStatus());
          
          
@@ -284,8 +250,8 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
         	 InIntakeApplication application1 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
   
         	 applicationService.submitIntakeApplication(intake, application1);
-        	 
              Assert.notNull(application1, "application is null");
+             
              InBidStatus bidStatus1 = application1.getBidStatus();
              Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus1), "application1 is not submitted");
              LOG.debug("intake status : {} ", application1.getBidStatus());
@@ -295,8 +261,8 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
              InIntakeApplication application2 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10002");
         	 
         	 applicationService.submitIntakeApplication(intake, application2);
-        	 
              Assert.notNull(application2, "application is null");
+             
              InBidStatus bidStatus2 = application2.getBidStatus();
              Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus2), "application2 is not submitted");
              LOG.debug("intake status : {} ", application2.getBidStatus());
@@ -306,8 +272,8 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
              InIntakeApplication application3 = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10003");
         	 
         	 applicationService.submitIntakeApplication(intake, application3);
-        	 
              Assert.notNull(application3, "application is null");
+             
              InBidStatus bidStatus3 = application3.getBidStatus();
              Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus3), "application2 is not submitted");
              LOG.debug("intake status : {} ", application3.getBidStatus());
