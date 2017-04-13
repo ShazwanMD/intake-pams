@@ -51,7 +51,7 @@ public class GivenIAmCandidate extends Stage<GivenIAmCandidate>{
         return self();
     }
     
-    public GivenIAmCandidate I_am_applying_for_intake_$(String intakeReferenceNo){
+    public GivenIAmCandidate I_applied_for_intake_$(String intakeReferenceNo){
         intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
         return self();
     }
