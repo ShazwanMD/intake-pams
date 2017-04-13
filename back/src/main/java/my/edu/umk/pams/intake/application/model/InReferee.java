@@ -20,7 +20,7 @@ public interface InReferee extends InMetaObject {
 
     void setApplication(InIntakeApplication application);
     
-   /*   
+      
 	String getOfficeAddrs();
 
 	void setOfficeAddrs(String officeAddrs);
@@ -34,6 +34,7 @@ public interface InReferee extends InMetaObject {
 	void setPhoneNo(String phoneNo);
 	
 	void setType(InRefereeType type);
-	  InRefereeType getType();*/
+	
+	InRefereeType getType();
 
 }

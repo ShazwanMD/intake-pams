@@ -20,7 +20,7 @@ public class InRefereeImpl implements InReferee {
     @NotNull
     @Column(name = "NAME", nullable = false)
     private String name;
-    /*
+    
         @NotNull
         @Column(name = "OFFICE_ADDRS", nullable = false)
         private String officeAddrs;
@@ -36,7 +36,7 @@ public class InRefereeImpl implements InReferee {
         @NotNull
         @Column(name = "REFEREE_TYPE")
         private InRefereeType type;
-    */
+    
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
     private InIntakeApplication application;
@@ -62,7 +62,7 @@ public class InRefereeImpl implements InReferee {
         this.name = name;
     }
 
-    /*
+    
         @Override
         public String getOfficeAddrs() {
             return officeAddrs;
@@ -106,7 +106,7 @@ public class InRefereeImpl implements InReferee {
         public void setType(InRefereeType type) {
             this.type = type;
         }
-    */
+    
     @Override
     public InIntakeApplication getApplication() {
         return application;
