@@ -20,9 +20,8 @@ import static my.edu.umk.pams.intake.core.InMetaState.ACTIVE;
  * @author canang technologies
  * @since 1/31/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("principalDao")
-public final class InPrincipalDaoImpl extends GenericDaoSupport<Long, InPrincipal> implements InPrincipalDao {
+public class InPrincipalDaoImpl extends GenericDaoSupport<Long, InPrincipal> implements InPrincipalDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(InPrincipalDaoImpl.class);
 

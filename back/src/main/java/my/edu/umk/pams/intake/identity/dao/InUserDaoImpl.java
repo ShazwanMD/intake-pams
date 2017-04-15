@@ -16,9 +16,8 @@ import java.util.List;
  * @author canang technologies
  * @since 1/31/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("userDao")
-public final class InUserDaoImpl extends GenericDaoSupport<Long, InUser> implements InUserDao {
+public class InUserDaoImpl extends GenericDaoSupport<Long, InUser> implements InUserDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(InUserDaoImpl.class);
 

@@ -17,7 +17,7 @@ import java.util.List;
  * @since 4/18/14
  */
 @Repository("subModuleDao")
-public final class InSubModuleDaoImpl extends GenericDaoSupport<Long, InSubModule> implements InSubModuleDao {
+public class InSubModuleDaoImpl extends GenericDaoSupport<Long, InSubModule> implements InSubModuleDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(InSubModuleDaoImpl.class);
 

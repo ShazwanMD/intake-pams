@@ -22,9 +22,8 @@ import static my.edu.umk.pams.intake.core.InMetaState.ACTIVE;
  * @author canang technologies
  * @since 1/31/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("groupDao")
-public final class InGroupDaoImpl extends GenericDaoSupport<Long, InGroup> implements InGroupDao {
+public class InGroupDaoImpl extends GenericDaoSupport<Long, InGroup> implements InGroupDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(InGroupDaoImpl.class);
 

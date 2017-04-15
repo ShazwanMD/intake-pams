@@ -14,10 +14,8 @@ import java.util.List;
  * @author canang technologies
  * @since 1/31/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("actorDao")
-public final class
-InActorDaoImpl extends GenericDaoSupport<Long, my.edu.umk.pams.intake.identity.model.InActor> implements InActorDao {
+public class InActorDaoImpl extends GenericDaoSupport<Long, my.edu.umk.pams.intake.identity.model.InActor> implements InActorDao {
 
     public InActorDaoImpl() {
         super(InActorImpl.class);
