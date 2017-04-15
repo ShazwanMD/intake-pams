@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/policy")
+@RequestMapping("/api/common")
 public class CommonController {
 
     @Autowired
