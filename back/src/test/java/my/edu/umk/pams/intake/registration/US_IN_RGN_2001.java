@@ -4,11 +4,12 @@ package my.edu.umk.pams.intake.registration;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
+import my.edu.umk.pams.intake.application.stage.WhenISubmitApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
-import my.edu.umk.pams.intake.registration.stage.WhenICheckApplication;
-import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
-import my.edu.umk.pams.intake.registration.stage.ThenMyApplicationIsComplete;
+import my.edu.umk.pams.intake.registration.stage.WhenCompleteApplication;
+import my.edu.umk.pams.intake.registration.stage.GivenIncompleteApplication;
+import my.edu.umk.pams.intake.registration.stage.ThenApplicationComplete;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -24,25 +25,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an applicant and i have an incomplete application, I want to complete my application so that my completion is completed")
-public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, WhenICheckApplication, ThenMyApplicationIsComplete> {
+public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, WhenCompleteApplication, ThenApplicationComplete> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_2001.class);
-
-    @Autowired
-    private RegistrationService registrationService;
-
-//    @ScenarioStage
-//    GivenIHaveIncompleteApplication additionalState;
 
     @Test
     @Rollback
     public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
-//      additionalState.and().given().i_have_an_incomplete_application();
-        addStage(GivenIHaveIncompleteApplication.class).and().i_have_an_incomplete_application();
-        when().i_check_for_application();
-        then().my_application_is_complete();
+            addStage(GivenIncompleteApplication.class).and().i_drafted_an_application();
+        when().i_complete_my_application();
+            addStage(WhenISubmitApplication.class).and().I_submit_application();
+        then().the_application_is_complete();
     }
-
 
 }

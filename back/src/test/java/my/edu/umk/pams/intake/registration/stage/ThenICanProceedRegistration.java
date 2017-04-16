@@ -14,6 +14,7 @@ import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 
 @JGivenStage
@@ -37,13 +38,16 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
     private InIntake intake;
 
     @ExpectedScenarioState
-    private InIntakeApplication selectedApplication;
+    private InIntakeApplication intakeApplication;
     
     public ThenICanProceedRegistration I_can_process_applicant_registration() {
-    	
-    	selectedApplication.setBidStatus(InBidStatus.SELECTED);
-    	
-    	LOG.debug("intake status : {} ", selectedApplication.getBidStatus());
+        Assert.notNull(intakeApplication, "intakeApplication cannot be null");
+        Assert.isTrue(InBidStatus.SELECTED.equals(intakeApplication.getBidStatus()), "Bid Status does not equal SELECTED");
+        Assert.isTrue(intakeApplication.isPaid(), "intakeApplication cannot be unpaid");
+
+//        intakeApplication.setBidStatus(InBidStatus.SELECTED);
+    	LOG.debug("intake status : {} ", intakeApplication.getBidStatus());
+
         return self();
     }
 

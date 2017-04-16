@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
@@ -19,7 +18,6 @@ import my.edu.umk.pams.intake.application.stage.GivenIFillIncompleteApplication;
 import my.edu.umk.pams.intake.application.stage.ThenApplicationIsSubmitted;
 import my.edu.umk.pams.intake.application.stage.WhenIUploadDocuments;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

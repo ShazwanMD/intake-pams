@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration.stage;
 
+import io.jsonwebtoken.lang.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,10 @@ public class WhenReceiveProofOfPayment extends Stage <WhenReceiveProofOfPayment>
 	private String intakeReferenceNo = "201720181/MASTER";
 
 	public WhenReceiveProofOfPayment receive_proof_of_payment(){
+		Assert.notNull(intakeApplication, "intakeApplication cannot be null");
+		Assert.isTrue(intakeApplication.isPaid(), "intakeApplication cannot be unpaid");
+        //todo Need better impl
+
 		return self();
 	}
 
