@@ -25,8 +25,7 @@ public class WhenISignUpToReceiveNotification extends Stage<WhenISignUpToReceive
     @ProvidedScenarioState
     private InUser user;
     
-    @ProvidedScenarioState
-    private InEmailQueue emailQueue;
+
     
     @ProvidedScenarioState
     private InEmailQueueStatus status;
@@ -38,14 +37,30 @@ public class WhenISignUpToReceiveNotification extends Stage<WhenISignUpToReceive
 
     public WhenISignUpToReceiveNotification I_sign_up_to_receive_notification() {
 
-    	status = InEmailQueueStatus.SENT;
     	
-        emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("123444");
+    	
+    	InEmailQueue emailQueue1 = new InEmailQueueImpl();
+        emailQueue1.setCode("123444");
         //   emailQueue.setTo(applicant.getEmail());
-        emailQueue.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
-        emailQueue.setQueueStatus(status);
-        systemService.saveEmailQueue(emailQueue);
+        emailQueue1.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
+        emailQueue1.setQueueStatus(InEmailQueueStatus.SENT);
+        systemService.saveEmailQueue(emailQueue1);
+        
+    	InEmailQueue emailQueue2 = new InEmailQueueImpl();
+        emailQueue2.setCode("123445");
+        //   emailQueue.setTo(applicant.getEmail());
+        emailQueue2.setSubject("Email sedang diproses");
+        emailQueue2.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(emailQueue2);
+        
+    	InEmailQueue emailQueue3 = new InEmailQueueImpl();
+        emailQueue3.setCode("123446");
+        //   emailQueue.setTo(applicant.getEmail());
+        emailQueue3.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
+        emailQueue3.setQueueStatus(InEmailQueueStatus.SENT);
+        systemService.saveEmailQueue(emailQueue3);
+        
+        
         return self();
     }
 }
