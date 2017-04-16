@@ -13,11 +13,8 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.admission.stage.ThenApplicantChooseSupervisor;
 import my.edu.umk.pams.intake.admission.stage.ThenInternationalApplicantIsDeclared;
-import my.edu.umk.pams.intake.admission.stage.WhenAssignSupervisorToApplicant;
 import my.edu.umk.pams.intake.admission.stage.WhenIDeclareInternationalApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
@@ -30,12 +27,10 @@ public class US_IN_AMS_1008 extends SpringScenarioTest	<GivenIAmCPSAdministrator
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1008.class);
 
-	//public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
-	//private static final String SUPERVISOR_CODE = "SC001"; //Perlu seed data untuk supervisor list
 	
 	@Test
     @Rollback
-    @Issue("PAMI-54")
+    @Issue("PAMI-55")
     public void scenario1() {
 			given().I_am_a_CPS_administrator_in_current_intake_session();
 			when().I_declare_international_applicant();
