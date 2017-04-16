@@ -4,6 +4,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
@@ -24,6 +26,9 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
 
     @Autowired
     private RegistrationService registrationService;
+    
+    @Autowired
+    private InCandidateDao candidateDao;
 
     @ProvidedScenarioState
     private InUser user;
@@ -50,6 +55,14 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
 
         return self();
     }
+    
+    public ThenICanProceedRegistration registration_is_unmatriculated(){
+        Assert.isNull(candidate.getMatricNo(), "registration is unmatriculated");
+        return self();
+      }
 
-
+      public ThenICanProceedRegistration registration_is_matriculated(){
+        Assert.notNull(candidate.getMatricNo(), "registration is matriculated");
+        return self();
+      }
 }
