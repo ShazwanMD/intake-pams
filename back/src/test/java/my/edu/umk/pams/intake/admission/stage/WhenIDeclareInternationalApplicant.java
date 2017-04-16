@@ -43,20 +43,21 @@ public class WhenIDeclareInternationalApplicant extends Stage<WhenIDeclareIntern
 
     public WhenIDeclareInternationalApplicant I_declare_international_applicant(){
 
-       //LOG.debug("WHEN: Here we set the franchise object, etc"); // todo remove asap
+    	
+
     	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
-       
         intakeApplication = new InIntakeApplicationImpl();
         intakeApplication.setIntake(intake);
         intakeApplication.setReferenceNo("master123");
-        intakeApplication.setName("dummy john bin john doe");
-        intakeApplication.setEmail("dummyjohn@gmail.com");
-        intakeApplication.setPhone("0111020202");
-        intakeApplication.setOkuNo("S12223214");
-        intakeApplication.setSchoolName("SMKZA");
+        intakeApplication.setName("foreign test bin john doe");
+        intakeApplication.setEmail("foreigntest@gmail.com");
+        intakeApplication.setPhone("0111020206");
+        intakeApplication.setOkuNo("S12223217");
+        intakeApplication.setSchoolName("SchoolOfCalgary");
+        
         //international Student record //
-        intakeApplication.setPassportNo("A1234567890");
-        intakeApplication.setPassportExpDate(Date.valueOf(LocalDate.of(2020, 12, 31)));
+        intakeApplication.setPassportNo("A1234561240");
+        intakeApplication.setPassportExpDate(Date.valueOf(LocalDate.of(2022, 10, 30)));
         intakeApplication.setVisaType(InVisaType.STUDENT);
         applicationService.draftIntakeApplication(intake, intakeApplication);
               
