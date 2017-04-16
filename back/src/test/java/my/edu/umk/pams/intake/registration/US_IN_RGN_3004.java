@@ -11,35 +11,34 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.registration.stage.ThenICanProceedToProcessTheirApplication;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProcessTheirApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenApplicantHasReferee;
-import my.edu.umk.pams.intake.registration.stage.WhenISelectTopApplicants;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a MGSEB academic Administrator, I want to know applicant's referee's educational background, so that i can process the application")
-public class US_IN_RGN_4004 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIWantToFillAllRequiredInformation, ThenICanSubmitMyApplication>{
+@As("As a CPS academic Administrator, I want to know applicant's referee's educational background, so that i can process the application")
 
-private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4004.class);
+public class US_IN_RGN_3004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToFillAllRequiredInformation, ThenICanSubmitMyApplication>{
+
+private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3004.class);
 	
     private String intakeReferenceNo = "201720181/MASTER";
 
     @Test
     @Rollback
-    @Issue("PAMI-88")
+    @Issue("PAMI-77")
     @Pending
     public void scenario1() {
-    	given().I_am_a_MGSEB_administrator_in_current_intake_session()
+    	given().I_am_a_CPS_administrator_in_current_intake_session()
     		.and().I_pick_an_intake_$(intakeReferenceNo);
     	when().I_fill_in_all_the_required_information_in_my_application();
-    	addStage(WhenApplicantHasReferee.class).and().an_applicant_has_referee();  
+    	addStage(WhenApplicantHasReferee.class).and().an_applicant_has_referee(); 
     	//add referee item(education background)
     	then().I_can_submit_my_application();
     	addStage(ThenICanProcessTheirApplication.class).and().I_can_process_the_application();
