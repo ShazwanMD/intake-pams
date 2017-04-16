@@ -5,7 +5,9 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import org.springframework.util.Assert;
  * @author PAMS
  */
 @JGivenStage
-public class WhenICheckApplication extends Stage<WhenICheckApplication> {
+public class WhenCompleteApplication extends Stage<WhenCompleteApplication> {
 
     @Autowired
     private RegistrationService registrationService;
@@ -24,16 +26,16 @@ public class WhenICheckApplication extends Stage<WhenICheckApplication> {
     private SecurityService securityService;
 
     @ExpectedScenarioState
-    private InApplicant applicant;
+    private InIntake intake;
 
-    @ProvidedScenarioState
-    private boolean exists;
+    @ExpectedScenarioState
+    private InIntakeApplication intakeApplication;
 
-    public WhenICheckApplication i_check_for_application() {
+    public WhenCompleteApplication i_complete_my_application() {
 
         //uda and max, tolong tgk jap betul dak buat mcm ni untuk check for registered user?
-        exists = registrationService.isExists("applicant1");
-        Assert.isTrue(exists, "registered user does not exists");
+        // TODO: Instead of check for registered user, just 'complete' this application
+        // TODO: application.setSomething() to complete this application;
 
         return self();
     }

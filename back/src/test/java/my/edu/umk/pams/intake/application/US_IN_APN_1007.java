@@ -6,10 +6,8 @@ import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyExtraCurricularExperience;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyWorkingExperience;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.registration.stage.GivenIHaveIncompleteApplication;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
