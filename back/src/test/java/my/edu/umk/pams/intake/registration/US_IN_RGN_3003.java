@@ -40,18 +40,5 @@ public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 		addStage(WhenApplicantHasReferee.class).and().an_applicant_has_referee();    	
 		then().I_can_submit_my_application();
 		addStage(ThenICanProcessTheirApplication.class).and().I_can_process_the_application();
-}
-
-    // todo(samiya + ashraf)
-    @Pending
-    public void testScenario1_pending() {
-//		given().I_am_a_administrator_in_current_intake_session_as_$("pps", "abc123");
-        // Add additional given
-//        additionalStage.and().an_applicant_has_a_referee(applicant);	<-- put assertion(s) inside
-        // Perform the behavior
-//        when().I_process_the_student_application(); 					<-- put assertion(s) inside
-        // Verify the behavior
-//        then().the_student_application_is_processed(); 				<-- put assertion(s) inside
     }
-
 }
