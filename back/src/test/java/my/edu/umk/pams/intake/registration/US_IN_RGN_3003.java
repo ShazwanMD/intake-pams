@@ -27,8 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdministrator, WhenIVerifyRefereeStatus, ThenICanProcessTheirApplication> {
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3003.class);
 
-    @Autowired
-    private RegistrationService registerationservice;
+
 
     @Test
     @Rollback
