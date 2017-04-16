@@ -41,21 +41,18 @@ public class WhenISignUpToReceiveNotification extends Stage<WhenISignUpToReceive
     	
     	InEmailQueue emailQueue1 = new InEmailQueueImpl();
         emailQueue1.setCode("123444");
-        //   emailQueue.setTo(applicant.getEmail());
         emailQueue1.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
         emailQueue1.setQueueStatus(InEmailQueueStatus.SENT);
         systemService.saveEmailQueue(emailQueue1);
         
     	InEmailQueue emailQueue2 = new InEmailQueueImpl();
         emailQueue2.setCode("123445");
-        //   emailQueue.setTo(applicant.getEmail());
         emailQueue2.setSubject("Email sedang diproses");
         emailQueue2.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(emailQueue2);
         
     	InEmailQueue emailQueue3 = new InEmailQueueImpl();
         emailQueue3.setCode("123446");
-        //   emailQueue.setTo(applicant.getEmail());
         emailQueue3.setSubject("Anda telah berjaya sign up,sila log masuk utk memohon");
         emailQueue3.setQueueStatus(InEmailQueueStatus.SENT);
         systemService.saveEmailQueue(emailQueue3);
