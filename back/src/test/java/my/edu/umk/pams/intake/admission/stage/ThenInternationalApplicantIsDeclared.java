@@ -34,18 +34,15 @@ public class ThenInternationalApplicantIsDeclared extends Stage<ThenInternationa
     private InIntake intake;
     
     public ThenInternationalApplicantIsDeclared international_applicant_is_declared() {
-
-        //LOG.debug("THEN: Assert franchise state"); // todo remove asap
-        // Assert.notNull(intakeApplication, "application cannot be null");
-     	
-    	LOG.debug("intake status {} :", intakeApplication);
-    	LOG.debug("intake status {} :", intake);
-    	
+    
     	 applicationService.submitIntakeApplication(intake, intakeApplication);   	 
-         Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
-         LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+         Assert.notNull(InBidStatus.SUBMITTED, "submitted application is null");
+         LOG.debug("intake status : {} ", intakeApplication.getBidStatus());
          
+         Assert.notNull(intakeApplication.getPassportNo(), "not an international student");
+         LOG.debug("international student's passport number : {}", intakeApplication.getPassportNo());
          
+
          return self();
  
     }
