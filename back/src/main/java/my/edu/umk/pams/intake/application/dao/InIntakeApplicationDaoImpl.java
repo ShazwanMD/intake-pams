@@ -578,6 +578,23 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(guardian);
     }
+    
+    @Override
+    public void addReferee(InIntakeApplication application, InReferee referee, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(referee, "Employment cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        referee.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        referee.setMetadata(metadata);
+        session.save(referee);
+    }
 
     @Override
     public void addGuarantor(InIntakeApplication application, InGuarantor guarantor, InUser user) {

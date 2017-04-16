@@ -144,4 +144,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void deleteAddress(InIntakeApplication application, InAddress address, InUser user);
 
 	void addAttachment(InIntakeApplication application,InAttachment attachment, InUser currentUser);
+
+	void addReferee(InIntakeApplication application, InReferee referee, InUser currentUser);
 }

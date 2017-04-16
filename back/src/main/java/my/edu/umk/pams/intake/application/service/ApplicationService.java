@@ -144,6 +144,8 @@ public interface ApplicationService {
 
     boolean hasInvolvement(InIntakeApplication application);
 
+	void addReferee(InIntakeApplication application, InReferee referee);
+
 	
 
 	
