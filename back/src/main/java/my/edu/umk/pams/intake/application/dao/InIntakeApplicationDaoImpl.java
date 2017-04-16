@@ -104,13 +104,13 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         return (InAddress) currentSession.get(InAddressImpl.class, id);
     }
-    
+
     @Override
-    public InFranchise findFranchiseById(Long id){
-    	 Session currentSession = sessionFactory.getCurrentSession();
-    	 return (InFranchise) currentSession.get(InFranchiseImpl.class,id);
+    public InFranchise findFranchiseById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InFranchise) currentSession.get(InFranchiseImpl.class, id);
     }
-    
+
     @Override
     public InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -132,7 +132,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (InGuardian) query.uniqueResult();
     }
-    
+
     @Override
     public InContact findContactByType(InContactType type, InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -313,15 +313,16 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (List<InGuardian>) query.list();
     }
-    
-  @Override
-  public List<InFranchise> findFranchises(InIntakeApplication application) {
-	  Session currentSession = sessionFactory.getCurrentSession();
-	  Query query = currentSession.createQuery("select p from InFranchise p where " +
-			  	"p.application = :application");
-	  query.setEntity("application", application);
-	  return (List<InFranchise>) query.list();
-  }
+
+    @Override
+    public List<InFranchise> findFranchises(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InFranchise p where " +
+                "p.application = :application");
+        query.setEntity("application", application);
+        return (List<InFranchise>) query.list();
+    }
+
     @Override
     public List<InContact> findContacts(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -339,7 +340,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (List<InAddress>) query.list();
     }
-    
+
     // ====================================================================================================
     // HELPER
     // ====================================================================================================
@@ -578,11 +579,11 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(guardian);
     }
-    
+
     @Override
     public void addReferee(InIntakeApplication application, InReferee referee, InUser user) {
         Validate.notNull(application, "Application cannot be null");
-        Validate.notNull(referee, "Employment cannot be null");
+        Validate.notNull(referee, "Referee cannot be null");
         Validate.notNull(user, "User cannot be null");
 
         Session session = sessionFactory.getCurrentSession();
@@ -677,11 +678,9 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         session.delete(address);
     }
 
-	@Override
-	public void addAttachment(InIntakeApplication application,
-			InAttachment attachment, InUser user) {
-		
-		Validate.notNull(application, "Application cannot be null");
+    @Override
+    public void addAttachment(InIntakeApplication application, InAttachment attachment, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
         Validate.notNull(attachment, "Attachment cannot be null");
         Validate.notNull(user, "User cannot be null");
 
@@ -694,6 +693,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         metadata.setState(InMetaState.ACTIVE);
         attachment.setMetadata(metadata);
         session.save(attachment);
-		
-	}   
+
+    }
 }

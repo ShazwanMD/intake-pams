@@ -24,7 +24,7 @@ public class DatasourceConfig {
     @Bean
     public SessionFactory sessionFactory() {
         return new LocalSessionFactoryBuilder(dataSource())
-                .scanPackages("com.canang.sagacity.finance")
+                .scanPackages("my.edu.umk.pams.intake")
                 .addProperties(hibernateProperties())
                 .buildSessionFactory();
     }
