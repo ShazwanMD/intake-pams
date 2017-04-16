@@ -5,7 +5,9 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -47,6 +49,7 @@ public class ThenICanProcessTheirApplication extends Stage<ThenICanProcessTheirA
     	//prosses application 
     
     	applicationService.processIntakeApplication(intake, application);
+    	Assert.notNull(InBidStatus.PROCESSING, "is not processing");
         LOG.debug("intake status {} :", application.getBidStatus());
         return self();
     }
