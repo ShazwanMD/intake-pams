@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Pending
+@JGivenStage
 public class ThenMyNotificationIsQueued extends Stage<ThenMyNotificationIsQueued> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ThenMyNotificationIsQueued.class);
@@ -46,31 +46,25 @@ public class ThenMyNotificationIsQueued extends Stage<ThenMyNotificationIsQueued
 
     @ExpectedScenarioState
     private InUser user;
-    
-    @ExpectedScenarioState
-    private InEmailQueueStatus status;
+
 
 
     
     public ThenMyNotificationIsQueued my_notification_is_queued_for_me() {
 
+    	
+        List<InEmailQueue> emailQueues = systemService.findEmailQueues(InEmailQueueStatus.SENT);
+        Assert.notEmpty(emailQueues, "email queuse cannot be empty");
+        
+        for (InEmailQueue emailQueue : emailQueues) {
+        	
+        	LOG.debug("email queue status : {}", emailQueue.getCode());
+        	LOG.debug("email queue status : {}", emailQueue.getQueueStatus());
+        	Assert.notNull(emailQueue.getQueueStatus(), "email queue status is not applied");
+
+		}
 
         
-    	Assert.notNull(status, "status is null");
-    	
-        List<InEmailQueue> emailQueues = systemService.findEmailQueues(status);
-      //todo mia : email queue cannot find status, 
-      //todo uda or max : is somthing wrong emailQueuDao?  
-        LOG.debug("email {} :", emailQueues);
-        Assert.notEmpty(emailQueues, "email queuse cannot be empty");
-
-//        LOG.debug("email {} :", emailQueues );
-        //(applicant.getApplicationNo())
-//    	Assert.isTrue(InEmailQueueStatus.SENT.equals(found.getQueueStatus()),
-//    				"Applicant should receive login notification status");
-
-
-        //   	List<InEmailQueue> find(InEmailQueueStatus status);
         return self();
     }
 
