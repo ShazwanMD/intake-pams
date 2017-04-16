@@ -36,7 +36,7 @@ public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSKeraniAdminist
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_verify_applicant_has_referee();
-        then().I_can_process_their_application();
+        then().I_can_process_the_application();
     }
 
     // todo(samiya + ashraf)
