@@ -41,10 +41,7 @@ public class WhenApplicantHasReferee extends Stage<WhenApplicantHasReferee>{
 		 LOG.debug("intake status {}", application.getBidStatus());
 		 
 		 InReferee referee = new InRefereeImpl();
-		 // referee.setApplication(application);		 
-		 
-		 //todo mia : need to add a method for drafting an application
-		 
+		 referee.setApplication(application); 
 		 referee.setName("Mr. Chan");
 		 referee.setOccupation("Lecturer");
 		 referee.setOfficeAddrs("UMK Pengkalan Chepa, Kota Bharu");
@@ -65,8 +62,7 @@ public class WhenApplicantHasReferee extends Stage<WhenApplicantHasReferee>{
 		 applicationService.addReferee(application, referee);
 		
 		 Assert.notNull(referee, "referee cannot be null");
-		 LOG.debug("referee status : {} ", referee.getType());
-		 //todo mia : need to add a method to save referee
+		 LOG.debug("referee status : {} ", referee.getType());		 
 		 
 		 return self();
 	 }

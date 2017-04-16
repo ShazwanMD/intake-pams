@@ -13,7 +13,6 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
-import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +21,6 @@ public class ThenICanProcessTheirApplication extends Stage<ThenICanProcessTheirA
 
     public static final Logger LOG = LoggerFactory.getLogger(ThenICanProcessTheirApplication.class);
 
-    @Autowired
-    private RegistrationService registrationService;
-    
     @Autowired
     private ApplicationService applicationService;
 
@@ -50,7 +46,7 @@ public class ThenICanProcessTheirApplication extends Stage<ThenICanProcessTheirA
     
     	applicationService.processIntakeApplication(intake, application);
     	Assert.notNull(InBidStatus.PROCESSING, "is not processing");
-        LOG.debug("intake status {} :", application.getBidStatus());
+        LOG.debug("intake status : {} ", application.getBidStatus());
         return self();
     }
 
