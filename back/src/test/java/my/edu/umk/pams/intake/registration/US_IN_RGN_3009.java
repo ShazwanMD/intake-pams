@@ -1,6 +1,5 @@
 package my.edu.umk.pams.intake.registration;
 
-import my.edu.umk.pams.intake.registration.stage.GivenIncompleteApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -12,7 +11,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
@@ -24,7 +22,6 @@ import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitAppli
 import my.edu.umk.pams.intake.registration.stage.WhenIOfferToCandidate;
 import my.edu.umk.pams.intake.registration.stage.WhenIPickPaidOrUnpaidStatus;
 import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
-import my.edu.umk.pams.intake.registration.stage.WhenReceiveProofOfPayment;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -34,10 +31,6 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
   
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3009.class);
 
-      @Autowired
-      private RegistrationService registrationService;
-      
-      
       private static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
     //  private String REGISTRATION_REFERENCE_NO="201720181/MASTER";
       private static final String IDENTITY_NO = "248674";
@@ -45,22 +38,20 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
       @Test
       @Rollback
       @Issue("PAMI-86")
-      @Pending
       public void unpaid() {
       given().I_am_a_CPS_administrator_in_current_intake_session()
       .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
       when().I_fill_in_application().and().applicant_submit_application();
-      addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
- //     addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
-      addStage(WhenIOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(INTAKE_REFERENCE_NO);
-      then().registration_is_matriculated();
+      addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+   //   addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+   //   addStage(WhenIOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(INTAKE_REFERENCE_NO);
+      then().application_process_cannot_be_proceeded();
       
       }
       
       
       @Test
-      @Rollback
-      
+      @Rollback     
       public void paid() {
 
           given().I_am_a_CPS_administrator_in_current_intake_session()
