@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration.stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -40,7 +41,7 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
     @Autowired
     ApplicationService applicationService;
 
-	@ExpectedScenarioState
+    @ProvidedScenarioState
 	private InIntakeApplication intakeApplication;
 
 	@ProvidedScenarioState
@@ -55,6 +56,9 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
 		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
 		Assert.notEmpty(applications, "applications cannot be empty");
 		
+
+
+		
 		Assert.isTrue(intakeApplication.isPaid(), "Payment is receive");
 	    LOG.debug("intake application payment status : {} ", intakeApplication.isPaid());
     	return self();
@@ -65,6 +69,8 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
     	intake = policyService.findIntakeByReferenceNo(code);
 		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
 		Assert.notEmpty(applications, "applications cannot be empty");
+		
+
 		
 		Assert.isTrue(intakeApplication.isPaid(), "Payment is receive");
 	    LOG.debug("intake application payment status : {} ", intakeApplication.isPaid());
