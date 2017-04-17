@@ -19,7 +19,7 @@ import my.edu.umk.pams.intake.application.stage.WhenIFillinMultipleAcademicQuali
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-@Pending
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
