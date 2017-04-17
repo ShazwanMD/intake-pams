@@ -7,6 +7,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -29,6 +30,9 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
     
     @Autowired
     private InCandidateDao candidateDao;
+    
+    @Autowired
+    private AdmissionService admissionService;
 
     @ProvidedScenarioState
     private InUser user;
@@ -62,6 +66,10 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
       }
 
       public ThenICanProceedRegistration registration_is_matriculated(){
+    	  
+    	candidate = admissionService.findCandidateByIdentityNo("910607145581");
+    	admissionService.offerCandidate(candidate);
+    	LOG.debug("candidate's matric number : {} ", candidate.getMatricNo());
         Assert.notNull(candidate.getMatricNo(), "registration is matriculated");
         return self();
       }
