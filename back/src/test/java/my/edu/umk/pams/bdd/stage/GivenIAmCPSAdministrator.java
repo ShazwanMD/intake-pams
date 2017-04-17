@@ -3,7 +3,6 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import org.springframework.util.Assert;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -61,21 +60,6 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
       LOG.debug("intakeReferenceNo {}",intakeReferenceNo);
       intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
         return self();
-    }
-    
-    public GivenIAmCPSAdministrator I_pick_an_unpaid_registration_$(String registrationReferenceNo){
-      //applicationService.findApplicant(selectedApplication.isPaid());
-      
-      LOG.debug("registrationReferenceNo {}",registrationReferenceNo);
-      Assert.isTrue(!selectedApplication.isPaid(), "Payment not yet receive");
-      
-      return self();
-    }
-    
-    public GivenIAmCPSAdministrator I_pick_a_paid_registration_$(String registrationReferenceNo){
-      LOG.debug("registrationReferenceNo {}",registrationReferenceNo);
-      Assert.isTrue(selectedApplication.isPaid(), "Payment is receive");
-      return self();
     }
     
     private void loginAsCPS() {
