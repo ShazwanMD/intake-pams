@@ -161,11 +161,20 @@ public class AdmissionServiceImpl implements AdmissionService {
         //map.put("facultyCode", );
         //{#facultyCode.getPrefix()}{#intakeSession.getYear().toString().substring(2,4)}{#programLevel.getPrefix()}{#j}{#studyMode.getPrefix()}
         //C17D0001F
-         map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode().getPrefix());
-         map.put("studyMode", candidate.getStudyMode().getPrefix());
-         map.put("programLevel", candidate.getProgramSelection().getProgramCode().getProgramLevel().getPrefix());
-         map.put("intakeSession", candidate.getProgramSelection().getIntake().getSession().getYear());
-         map.put("year", candidate.getIntake().getSession().getYear());
+        
+         candidate.getProgramSelection().getProgramCode().getFacultyCode().getPrefix();
+         map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode()); 
+         candidate.getStudyMode().getPrefix();
+         map.put("studyMode", candidate.getStudyMode());  
+         candidate.getProgramSelection().getProgramCode().getProgramLevel().getPrefix();
+         map.put("programLevel", candidate.getProgramSelection().getProgramCode().getProgramLevel());  
+         candidate.getProgramSelection().getIntake().getSession().getYear();
+         map.put("intakeSession", candidate.getProgramSelection().getIntake().getSession());         
+         candidate.getIntake().getSession().getYear();
+         map.put("year", candidate.getIntake().getSession());
+         
+         
+         
         String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
         candidate.setMatricNo(generatedMatricNo);
         candidate.setStudyMode(candidate.getStudyMode());
