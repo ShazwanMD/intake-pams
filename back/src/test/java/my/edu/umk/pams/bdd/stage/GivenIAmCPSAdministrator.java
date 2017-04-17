@@ -4,7 +4,6 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
@@ -28,9 +27,6 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     @Autowired
     private PolicyService policyService;
     
-    @Autowired
-    private ApplicationService applicationService;
-
     @ProvidedScenarioState
     InIntakeSession intakeSession;
 
@@ -57,7 +53,6 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     }
 
     public GivenIAmCPSAdministrator I_pick_an_intake_$(String intakeReferenceNo){
-      LOG.debug("intakeReferenceNo {}",intakeReferenceNo);
       intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
         return self();
     }
