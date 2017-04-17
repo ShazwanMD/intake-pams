@@ -15,10 +15,12 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenUpdatePaymentStatus;
+import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
+import my.edu.umk.pams.intake.application.stage.WhenPayForProcessingFee;
 import my.edu.umk.pams.intake.application.stage.WhenReceiveConfirmationPaymentOfProcessingFee;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
-@Pending
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -27,8 +29,8 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 		+ "so that I can know if my payment has been made")
 
 public class US_IN_APN_5004 extends SpringScenarioTest<GivenIAmApplicant,
-										WhenReceiveConfirmationPaymentOfProcessingFee,
-											ThenUpdatePaymentStatus> {
+													WhenIWantToFillAllRequiredInformation,
+														ThenUpdatePaymentStatus> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_5004.class);
 
@@ -36,11 +38,13 @@ public class US_IN_APN_5004 extends SpringScenarioTest<GivenIAmApplicant,
 	 
 		@Test
 	    @Issue("PAMI-45")
-	    @Rollback
+	    @Rollback(false)
 	    public void scenario1() {
 	    	given().I_am_an_applicant_in_current_intake_session()
 	              .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-	        when().Receive_Confirmation_Payment_Of_Processing_Fee();
+	    	when().I_fill_in_all_the_required_information_in_my_application();
+	    	addStage(WhenPayForProcessingFee.class).and().I_Pay_Processing_Fee();
+	        addStage(WhenReceiveConfirmationPaymentOfProcessingFee.class).and().Receive_Confirmation_Payment_Of_Processing_Fee();
 	        then().Update_Payment_Status();
 	    }
 
