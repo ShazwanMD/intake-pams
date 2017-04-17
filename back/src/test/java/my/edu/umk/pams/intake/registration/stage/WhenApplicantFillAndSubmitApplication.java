@@ -21,6 +21,8 @@ import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import org.slf4j.Logger;
@@ -73,7 +75,18 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
     public WhenApplicantFillAndSubmitApplication I_fill_in_application() {
         Assert.notNull(intake, "intake is null");
          
-    	//created a residency code
+    	//create offering    
+        InProgramOffering offering = new InProgramOfferingImpl();
+        offering.setProjection(10);
+        offering.setGeneralCriteria("TODO ADD GEN CRIT"); //todo
+        offering.setSpecificCriteria("TODO ADD SPECIFIC CRIT"); // todo
+        offering.setInterview(true);
+        offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("A")); 
+        offering.setProgramCode(commonService.findProgramCodeByCode("MCK")); 
+        policyService.addProgramOffering(intake, offering);
+        
+        
+        //created a residency code
     	InResidencyCode resident = new InResidencyCodeImpl();
     	resident.setCode("101");
     	resident.setDescription("test resident");
@@ -122,6 +135,8 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
          application1.setBidStatus(InBidStatus.NEW);
          application1.setBidResponse(InBidResponse.NEW);
          application1.setOkuNo("S12223214");
+         application1.setProgramSelection(offering);
+         
          application1.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
 		 application1.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
 		 application1.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
@@ -169,6 +184,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           application2.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); //Tidak cacat
           application2.setResidencyCode(commonService.findResidencyCodeByCode("101")); // no data in seed, created test code for residency in unit
           application2.setApplicant(applicant2);
+          application2.setProgramSelection(offering);
           LOG.debug("intake status : {} ", application2.getBidStatus());
           
           applicationService.draftIntakeApplication(intake, application2);
@@ -203,6 +219,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           application3.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); //Tidak cacat
           application3.setResidencyCode(commonService.findResidencyCodeByCode("101")); // no data in seed, created test code for residency in unit
           application3.setApplicant(applicant3);
+          application3.setProgramSelection(offering);
           LOG.debug("intake status : {} ", application3.getBidStatus());
           
           applicationService.draftIntakeApplication(intake, application3);
