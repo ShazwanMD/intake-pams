@@ -20,6 +20,7 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
+import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenIOfferToCandidate;
 import my.edu.umk.pams.intake.registration.stage.WhenIPickPaidOrUnpaidStatus;
 import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
@@ -29,7 +30,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenReceiveProofOfPayment;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a CPS academic administrator, I want to receive proof of payment for matriculation so that I can proceed to the applicant's registration.")
-public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator,WhenIPreselectApplicant, ThenICanProceedRegistration>{
+public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator,WhenApplicantFillAndSubmitApplication, ThenICanProceedRegistration>{
   
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3009.class);
 
@@ -41,35 +42,33 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
     //  private String REGISTRATION_REFERENCE_NO="201720181/MASTER";
       private static final String IDENTITY_NO = "248674";
 
- //     @Test
-//      @Rollback
+      @Test
+      @Rollback
       @Issue("PAMI-86")
- //     @Pending
-//      public void unpaid() {
-//          given().I_am_a_CPS_administrator_in_current_intake_session()
-//          .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);                   
-//       //   .and().I_pick_an_unpaid_registration_$(REGISTRATION_REFERENCE_NO);
-//          when().generate_matriculation_number();
-//          then().registration_is_unmatriculated();
-//          
-//        //  when().receive_proof_of_payment();
-//       //   then().I_can_process_applicant_registration();
-//
-//      }
+      @Pending
+      public void unpaid() {
+      given().I_am_a_CPS_administrator_in_current_intake_session()
+      .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
+      when().I_fill_in_application().and().applicant_submit_application();
+      addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+ //     addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+      addStage(WhenIOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(INTAKE_REFERENCE_NO);
+      then().registration_is_matriculated();
+      
+      }
       
       
       @Test
       @Rollback
-      @Pending
+      
       public void paid() {
 
           given().I_am_a_CPS_administrator_in_current_intake_session()
           .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
-        //  .and().I_pick_a_paid_registration_$(REGISTRATION_REFERENCE_NO);
-          when().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+          when().I_fill_in_application().and().applicant_submit_application();
+          addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
           addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_paid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
           addStage(WhenIOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(INTAKE_REFERENCE_NO);
-          //(WhenGenerateMatriculationNumber.class).and().generate_matriculation_number();
           then().registration_is_matriculated();
 
       }

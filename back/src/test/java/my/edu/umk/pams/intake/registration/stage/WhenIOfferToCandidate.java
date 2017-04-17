@@ -32,6 +32,9 @@ public class WhenIOfferToCandidate extends Stage<WhenIOfferToCandidate> {
         for (InCandidate candidate : candidates) {
 
         	admissionService.offerCandidate(candidate);
+        	Assert.notNull(candidate.getMatricNo() , "candidate's matric number is not generated");
+        	LOG.debug("candidates status for : {} ", candidate.getMatricNo());
+        	
             String expected = referenceNo;
             String found = candidate.getIntake().getReferenceNo();
             Assert.isTrue(referenceNo.equals(found), "Expected " + expected + ", found " + found);
