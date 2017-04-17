@@ -26,7 +26,6 @@ import org.junit.runners.Suite;
         US_IN_RGN_4011.class,
         US_IN_RGN_5000.class,
         US_IN_RGN_5001.class,
-        US_IN_RGN_5002.class,
         US_IN_RGN_5003.class,
         US_IN_RGN_6000.class,
 })
