@@ -24,7 +24,6 @@ import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.system.service.SystemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +31,7 @@ import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
 
 
@@ -50,9 +46,6 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
     @Autowired
     private PolicyService policyService;
 
-    @Autowired
-    private SystemService systemService;
-    
     @Autowired
     private CommonService commonService;
     
@@ -73,7 +66,9 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
 
 
     public WhenApplicantFillAndSubmitApplication I_fill_in_application() {
-        Assert.notNull(intake, "intake is null");
+        
+    	//test if there is an intake or not
+    	Assert.notNull(intake, "intake is null");
          
     	//create offering    
         InProgramOffering offering = new InProgramOfferingImpl();
@@ -86,14 +81,14 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
         policyService.addProgramOffering(intake, offering);
         
         
-        //created a residency code
+        //create a residency code
     	InResidencyCode resident = new InResidencyCodeImpl();
     	resident.setCode("101");
     	resident.setDescription("test resident");
     	commonService.saveResidencyCode(resident);
-    	LOG.debug("test resident {} :", resident);
+    	Assert.notNull(resident, "resident does not exists");
     	
-    	//created an applicant1
+    	//create applicant1
         InApplicant applicant1 = new InApplicantImpl();
         applicant1.setApplicationNo("9999990");
         applicant1.setName("Ahmad Kharizmi bin Khaldun");
@@ -101,7 +96,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
         applicant1.setPhone("0111020202");
         identityService.saveApplicant(applicant1);
 
-    	//created an applicant2
+    	//create applicant2
         InApplicant applicant2 = new InApplicantImpl();
         applicant2.setApplicationNo("9999991");
         applicant2.setName("Ahmad Sam bin Khaldun Sam");
@@ -109,7 +104,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
         applicant2.setPhone("0111020203");
         identityService.saveApplicant(applicant2);
 
-    	//created an applicant3
+    	//create applicant3
         InApplicant applicant3 = new InApplicantImpl();
         applicant3.setApplicationNo("9999992");
         applicant3.setName("Siti Samiya bin Khaldun Sam");
