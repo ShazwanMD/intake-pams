@@ -53,21 +53,19 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
     public WhenIPickPaidOrUnpaidStatus I_pick_paid_status_in_intake_session_$(String identityNo, String code){
     	
     	intake = policyService.findIntakeByReferenceNo(code);
-		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
-		Assert.notEmpty(applications, "applications cannot be empty");
-		
+    
+    	intakeApplication = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
+	//	Assert.notEmpty(applications, "applications cannot be empty");
 
-
-		
-		Assert.isTrue(intakeApplication.isPaid(), "Payment is receive");
+		Assert.isTrue(intakeApplication.isPaid(), "Payment is not received");
 	    LOG.debug("intake application payment status : {} ", intakeApplication.isPaid());
     	return self();
     }
     
-    public WhenIPickPaidOrUnpaidStatus I_pick_unpaid_status_in_intake_session_$(String identityNo, String code){
+  /*  public WhenIPickPaidOrUnpaidStatus I_pick_unpaid_status_in_intake_session_$(String identityNo, String code){
     	
     	intake = policyService.findIntakeByReferenceNo(code);
-		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
+		application = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
 		Assert.notEmpty(applications, "applications cannot be empty");
 		
 
@@ -75,6 +73,6 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
 		Assert.isTrue(intakeApplication.isPaid(), "Payment is receive");
 	    LOG.debug("intake application payment status : {} ", intakeApplication.isPaid());
     	return self();
-    }
-
+}
+*/
 }
