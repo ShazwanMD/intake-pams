@@ -60,9 +60,7 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
         application.setName("dummy john bin john doe");
         application.setEmail("dummyjohn@gmail.com");
         application.setPhone("0111020202");
-        application.setOkuNo("S12223214");
-        application.setSchoolName("SMKZA");
-        application.setBidStatus(InBidStatus.DRAFTED);
+        application.setBidStatus(InBidStatus.NEW);
         applicationService.draftIntakeApplication(intake, application);
 
         return self();

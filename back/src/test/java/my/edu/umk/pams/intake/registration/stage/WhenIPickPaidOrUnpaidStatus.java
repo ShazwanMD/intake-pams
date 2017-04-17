@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration.stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -40,7 +41,7 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
     @Autowired
     ApplicationService applicationService;
 
-	@ExpectedScenarioState
+    @ProvidedScenarioState
 	private InIntakeApplication intakeApplication;
 
 	@ProvidedScenarioState
@@ -52,23 +53,26 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
     public WhenIPickPaidOrUnpaidStatus I_pick_paid_status_in_intake_session_$(String identityNo, String code){
     	
     	intake = policyService.findIntakeByReferenceNo(code);
-		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
-		Assert.notEmpty(applications, "applications cannot be empty");
-		
-		Assert.isTrue(intakeApplication.isPaid(), "Payment is receive");
+    
+    	intakeApplication = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
+	//	Assert.notEmpty(applications, "applications cannot be empty");
+
+		Assert.isTrue(intakeApplication.isPaid(), "Payment is not received");
 	    LOG.debug("intake application payment status : {} ", intakeApplication.isPaid());
     	return self();
     }
     
-    public WhenIPickPaidOrUnpaidStatus I_pick_unpaid_status_in_intake_session_$(String identityNo, String code){
+  /*  public WhenIPickPaidOrUnpaidStatus I_pick_unpaid_status_in_intake_session_$(String identityNo, String code){
     	
     	intake = policyService.findIntakeByReferenceNo(code);
-		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
+		application = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
 		Assert.notEmpty(applications, "applications cannot be empty");
+		
+
 		
 		Assert.isTrue(intakeApplication.isPaid(), "Payment is receive");
 	    LOG.debug("intake application payment status : {} ", intakeApplication.isPaid());
     	return self();
-    }
-
+}
+*/
 }

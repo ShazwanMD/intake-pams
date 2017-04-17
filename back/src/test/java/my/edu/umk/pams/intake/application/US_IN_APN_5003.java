@@ -14,7 +14,9 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.application.stage.ThenProceedWithApplicationProcess;
-import my.edu.umk.pams.intake.application.stage.WhenAbleToPayForProcessingFee;
+import my.edu.umk.pams.intake.application.stage.WhenPayForProcessingFee;
+import my.edu.umk.pams.intake.application.stage.WhenIFillinMultipleAcademicQualificationInformation;
+import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
 @Pending
@@ -25,7 +27,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 		+ "I want to be able to pay for my intake application processing fees "
 		+ "so that I can proceed with the application process")
 public class US_IN_APN_5003 extends SpringScenarioTest<GivenIAmApplicant,
-													WhenAbleToPayForProcessingFee,
+												WhenIWantToFillAllRequiredInformation,
 														ThenProceedWithApplicationProcess> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_5003.class);
@@ -38,7 +40,8 @@ public class US_IN_APN_5003 extends SpringScenarioTest<GivenIAmApplicant,
 	    public void scenario1() {
 	    	given().I_am_an_applicant_in_current_intake_session()
 	              .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
-	        when().Pay_Processing_Fee();
+	        when().I_fill_in_all_the_required_information_in_my_application();
+	        addStage(WhenPayForProcessingFee.class).and().I_Pay_Processing_Fee();
 	        then().Proceed_Application_Process();
 	    }
 

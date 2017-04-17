@@ -78,8 +78,8 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
     	//create offering    
         InProgramOffering offering = new InProgramOfferingImpl();
         offering.setProjection(10);
-        offering.setGeneralCriteria("TODO ADD GEN CRIT"); //todo
-        offering.setSpecificCriteria("TODO ADD SPECIFIC CRIT"); // todo
+        offering.setGeneralCriteria("TODO ADD GEN CRIT");
+        offering.setSpecificCriteria("TODO ADD SPECIFIC CRIT");
         offering.setInterview(true);
         offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("A")); 
         offering.setProgramCode(commonService.findProgramCodeByCode("MCK")); 
@@ -127,6 +127,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
          application1.setPhone(applicant1.getPhone());
          application1.setAge(26);
          application1.setRank(3);
+         application1.setPaid(true);
          application1.setMerit(new BigDecimal("2.85"));
          application1.setPaymentSourceNo("0024188");
          application1.setSchoolBatch(2006/2010);
@@ -136,7 +137,6 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
          application1.setBidResponse(InBidResponse.NEW);
          application1.setOkuNo("S12223214");
          application1.setProgramSelection(offering);
-         
          application1.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
 		 application1.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
 		 application1.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
@@ -166,6 +166,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           application2.setPhone(applicant2.getPhone());
           application2.setAge(25);
           application2.setRank(2);
+          application2.setPaid(false);
           application2.setMerit(new BigDecimal("2.80"));
           application2.setPaymentSourceNo("002268sd");
           application2.setSchoolBatch(2006/2012);
@@ -199,6 +200,7 @@ public class WhenApplicantFillAndSubmitApplication extends Stage<WhenApplicantFi
           application3.setCredentialNo("870607149913");
           application3.setEmail(applicant3.getEmail());
           application3.setPhone(applicant3.getPhone());
+          application3.setPaid(true);
           application3.setAge(30);
           application3.setRank(1);
           application3.setMerit(new BigDecimal("3.80"));
