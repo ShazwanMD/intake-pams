@@ -51,7 +51,7 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
       .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
       when().I_fill_in_application().and().applicant_submit_application();
       addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
-      addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+ //     addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
       addStage(WhenIOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(INTAKE_REFERENCE_NO);
       then().registration_is_matriculated();
       
@@ -60,7 +60,7 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
       
       @Test
       @Rollback
-      @Pending
+      
       public void paid() {
 
           given().I_am_a_CPS_administrator_in_current_intake_session()
