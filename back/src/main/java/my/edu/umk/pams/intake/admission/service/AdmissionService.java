@@ -39,7 +39,7 @@ public interface AdmissionService {
 
     void offerCandidate(InCandidate candidate);
     
-    void RegisteredCandidate(List<InCandidate> candidates);
+    void RegisterCandidate(List<InCandidate> candidates);
 
 	List<InCandidate> findCandidateByStatus(InIntake intake, InCandidateStatus status);
 
