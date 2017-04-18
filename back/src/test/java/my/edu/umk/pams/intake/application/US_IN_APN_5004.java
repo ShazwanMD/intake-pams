@@ -8,9 +8,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -38,7 +36,7 @@ public class US_IN_APN_5004 extends SpringScenarioTest<GivenIAmApplicant,
 	 
 		@Test
 	    @Issue("PAMI-45")
-	    @Rollback(false)
+	    @Rollback
 	    public void scenario1() {
 	    	given().I_am_an_applicant_in_current_intake_session()
 	              .and().I_am_applying_for_intake_$(INTAKE_REFERENCE_NO);
