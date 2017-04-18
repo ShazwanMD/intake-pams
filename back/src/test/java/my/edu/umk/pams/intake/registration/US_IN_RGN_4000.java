@@ -18,6 +18,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
+import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
 import my.edu.umk.pams.intake.registration.stage.WhenIVerifySponsorshipStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -43,6 +44,7 @@ public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
         .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
         when().I_fill_in_application().and().applicant_submit_application();
         addStage(WhenIVerifySponsorshipStatus.class).and().I_verify_applicant_has_valid_sponsorship_status_in_current_intake_session_$(INTAKE_REFERENCE_NO);
+  //      addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
         then().I_can_process_applicant_registration();
     }
 }
