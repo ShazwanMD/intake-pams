@@ -26,6 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIFillInIntakeApplication, ThenICanProceedRegistration> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3000.class);
+    
+    private String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
     @Pending
     @Test
@@ -35,7 +37,7 @@ public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     	//Test
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_fill_in_intake_applicaton();
-        addStage(WhenIVerifySponsorshipStatus.class).and().I_verify_applicant_has_valid_sponsorship_status();
+        addStage(WhenIVerifySponsorshipStatus.class).and().I_verify_applicant_has_valid_sponsorship_status_in_current_intake_session_$(INTAKE_REFERENCE_NO);
         then().I_can_process_applicant_registration();
     }
 }
