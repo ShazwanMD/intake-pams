@@ -5,18 +5,22 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.intake.admission.selection.SelectionStrategyHelper;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
+import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 
@@ -33,15 +37,15 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
 
     @Autowired
     private ApplicationService applicationService;
-
+    
     @Autowired
-    private SelectionStrategyHelper helper;
-
+    private IdentityService identityService;
+    
     @ProvidedScenarioState
     private InIntake intake;
 
     @ProvidedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application1;
     
     @ProvidedScenarioState
     private InResultType resultType;
@@ -56,24 +60,70 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
     private InSupervisorOffering supervisorOffering;
 
     public WhenIEnterApplicationResult I_enter_application_result() {
+    	
+    	//create offering    
+        InProgramOffering offering = new InProgramOfferingImpl();
+        offering.setProjection(10);
+        offering.setGeneralCriteria("2");
+        offering.setSpecificCriteria("3.50");
+        offering.setInterview(true);
+        offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("A")); 
+        offering.setProgramCode(commonService.findProgramCodeByCode("MCK")); 
+        policyService.addProgramOffering(intake, offering);
+        
+        
+        //create a residency code
+    	InResidencyCode resident = new InResidencyCodeImpl();
+    	resident.setCode("101");
+    	resident.setDescription("test resident");
+    	commonService.saveResidencyCode(resident);
+    	Assert.notNull(resident, "resident does not exists");
+    	
+    	//create applicant1
+        InApplicant applicant1 = new InApplicantImpl();
+        applicant1.setApplicationNo("9999990");
+        applicant1.setName("Ahmad Kharizmi bin Khaldun");
+        applicant1.setEmail("ibnu_khaldun@gmail.com");
+        applicant1.setPhone("0111020202");
+        identityService.saveApplicant(applicant1);
 
     	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         // start an intakeApplication
-        intakeApplication = new InIntakeApplicationImpl();
-        intakeApplication.setIntake(this.intake);
-        intakeApplication.setReferenceNo("testest124");
-        intakeApplication.setName("dummy john bin john doe");
-        intakeApplication.setEmail("dummyjohn@gmail.com");
-        intakeApplication.setPhone("0111020202");
-        intakeApplication.setOkuNo("S12223214");
-        intakeApplication.setSchoolName("SMKZA");
-        intakeApplication.setCredentialNo("credential124");
-        intakeApplication.setStudyMode(commonService.findStudyModeByCode("1"));
-        intakeApplication.setProgramSelection(programOffering);
-        intakeApplication.setSupervisorSelection(supervisorOffering);
-
-        // then enter the intakeApplication
-        applicationService.draftIntakeApplication(intake, intakeApplication);
+        //Application 1
+        application1 = new InIntakeApplicationImpl();
+        application1.setIntake(intake);
+        application1.setReferenceNo("INTAKE/10001");
+        application1.setName(applicant1.getName());
+        application1.setCredentialNo("910607145581");
+        application1.setEmail(applicant1.getEmail());
+        application1.setPhone(applicant1.getPhone());
+        application1.setAge(26);
+        application1.setRank(3);
+        application1.setPaid(true);
+        application1.setMerit(new BigDecimal("2.85"));
+        application1.setPaymentSourceNo("0024188");
+        application1.setSchoolBatch(2006/2010);
+        application1.setSchoolName("SMK Sultan Ismail");
+        application1.setBidType(InBidType.FIRST);
+        application1.setBidStatus(InBidStatus.NEW);
+        application1.setBidResponse(InBidResponse.NEW);
+        application1.setOkuNo("S12223214");
+        application1.setProgramSelection(offering);
+        application1.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
+		 application1.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
+		 application1.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
+		 application1.setNationalityCode(commonService.findNationalityCodeByCode("1")); // Warganegara
+		 application1.setRaceCode(commonService.findRaceCodeByCode("0100")); // Melayu
+		 application1.setEthnicityCode(commonService.findEthnicityCodeByCode("0100")); // Melayu
+		 application1.setMaritalCode(commonService.findMaritalCodeByCode("1")); // Bujang
+		 application1.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); // Tidak
+		 application1.setResidencyCode(commonService.findResidencyCodeByCode("101")); // no data in seed, created test code for residency in unit
+		 application1.setApplicant(applicant1);
+		 LOG.debug("intake status : {} ", application1.getBidStatus());
+		 
+		 applicationService.draftIntakeApplication(intake, application1);
+		 Assert.notNull(application1, "application 1 is not drafted");
+		 LOG.debug("intake status : {} ", application1.getBidStatus());
         
 
       //adding result
@@ -81,8 +131,8 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         result.setYear(2017);
         result.setCgpa(new BigDecimal( (long)3.3));
         result.setMatricNo("11111111");
-        result.setApplication(intakeApplication);
-        applicationService.addResult(intakeApplication, result);
+        result.setApplication(application1);
+        applicationService.addResult(application1, result);
         LOG.debug("results year:{}, cgpa:{}", result.getYear(), result.getCgpa());
 
         //adding grade code
@@ -107,7 +157,11 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         item.setGradeCode(grade);
         item.setSubjectCode(subject);
         
-        applicationService.addResultItem(intakeApplication, result, item);
+        applicationService.addResultItem(application1, result, item);
+        
+
+        
+        
         return self();
     }
 }
