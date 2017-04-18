@@ -9,44 +9,76 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.registration.US_IN_RGN_3000;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 
-import static org.junit.Assert.assertNotNull;
+//import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 
 @JGivenStage
 public class WhenIVerifySponsorshipStatus extends Stage<WhenIVerifySponsorshipStatus> {
+	
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIVerifySponsorshipStatus.class);
 
     @Autowired
-    private RegistrationService registrationService;
+    private ApplicationService applicationService;
+    
+    @Autowired
+    private PolicyService policyService;
+
+    @Autowired
+    private CommonService commonService;
+    
+    @Autowired
+    private IdentityService identityService;
+    
+    @Autowired
+    private RegistrationService registrationService;   
 
     @ExpectedScenarioState
     private InIntake intake;
     
-    @ProvidedScenarioState
+    @ExpectedScenarioState
+    private InIntakeSession intakeSession;
+    
+    @ExpectedScenarioState
     private InIntakeApplication selectedApplication;
     
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3000.class);
-    
-    @Autowired
-    private ApplicationService applicationService;
-    
+    @ExpectedScenarioState
+    private InApplicant applicant; 
+      
     @ProvidedScenarioState
     private InUser user;
+    
 
-    public WhenIVerifySponsorshipStatus I_verify_applicant_has_valid_sponsorship_status() {
-   
+    public WhenIVerifySponsorshipStatus I_verify_applicant_has_valid_sponsorship_status_in_current_intake_session_$(String intakeReferenceNo) {
     	
+    	intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+    	Assert.notNull(intake, "intake is null");
+    	LOG.debug("intake : {} ", intake);
+    	
+    	
+/*    	applicationService.processIntakeApplication(intake, application1);
+    	Assert.notNull(InBidStatus.PROCESSING, "is not processing");
+        LOG.debug("intake status : {} ", application1.getBidStatus());
+ */      
     	  List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+    	  
+    	  LOG.debug("intake status : {} ", selectedApplication.getBidStatus());
 
           for (InIntakeApplication application : applications) {
           	
@@ -55,9 +87,10 @@ public class WhenIVerifySponsorshipStatus extends Stage<WhenIVerifySponsorshipSt
           }
           
           //Check if the Payment is not null
-          assertNotNull(selectedApplication.getPaymentSourceNo());
+          Assert.notNull(selectedApplication.getPaymentSourceNo(), "intake application sponsorship payment no. : {} ");
+      //    assertNotNull(selectedApplication.getPaymentSourceNo());
           LOG.debug("intake application sponsorship payment no. : {} ", selectedApplication.getPaymentSourceNo());
-          
+         
           return self();
           
     }
