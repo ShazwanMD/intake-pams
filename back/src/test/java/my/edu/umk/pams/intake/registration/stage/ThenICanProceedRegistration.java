@@ -3,30 +3,16 @@ package my.edu.umk.pams.intake.registration.stage;
 import com.tngtech.jgiven.Stage;
 
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
-import my.edu.umk.pams.intake.application.model.InBidResponse;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
-import my.edu.umk.pams.intake.application.model.InBidType;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.common.model.InResidencyCode;
-import my.edu.umk.pams.intake.common.model.InResidencyCodeImpl;
-import my.edu.umk.pams.intake.common.service.CommonService;
-import my.edu.umk.pams.intake.identity.model.InApplicant;
-import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
-import my.edu.umk.pams.intake.identity.model.InUser;
-import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
-import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 
 import org.slf4j.Logger;
@@ -34,8 +20,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -45,13 +29,7 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
    	private static final Logger LOG = LoggerFactory.getLogger(ThenICanProceedRegistration.class);
 
     @Autowired
-    private RegistrationService registrationService;
-    
-    @Autowired
     private ApplicationService applicationService;
-    
-    @Autowired
-    private InCandidateDao candidateDao;
     
     @Autowired
     private AdmissionService admissionService;

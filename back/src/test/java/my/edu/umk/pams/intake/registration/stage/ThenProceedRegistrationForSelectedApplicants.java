@@ -42,19 +42,17 @@ public class ThenProceedRegistrationForSelectedApplicants extends Stage<ThenProc
 	@ExpectedScenarioState
 	InApplicant applicant;
 	
-    @ProvidedScenarioState
-    private InIntakeApplication application;
-    
     @ExpectedScenarioState
     private List<InCandidate> candidates;
+
 	 
 	 public ThenProceedRegistrationForSelectedApplicants Proceed_Registration_For_Selected_Applicants() {
 		 
 
 			for (InCandidate candidate : candidates) {
 				
-				 Assert.notNull(InBidStatus.SELECTED, "candidate is not selected");
-			     LOG.debug("intake application status is {}", candidate.getStatus());
+				Assert.notNull(InBidStatus.SELECTED, "candidate is not selected");
+			 
 				
 			}
 			

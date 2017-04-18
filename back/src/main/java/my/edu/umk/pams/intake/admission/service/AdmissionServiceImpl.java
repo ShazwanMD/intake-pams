@@ -100,8 +100,23 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setApplicant(application.getApplicant());
         candidate.setProgramSelection(application.getProgramSelection());
         candidate.setSupervisorSelection(application.getSupervisorSelection());
+        candidate.setRegistration(false);
         candidateDao.save(candidate, Util.getCurrentUser());
     }
+    
+   
+
+   /*@Override
+    public void RegisteredCandidate(List<InCandidate> candidates) {
+        // create candidate
+			candidates = admissionService.findCandidates(InCandidateStatus.APPROVED); //todo farah : find candidates by status
+    	
+    			for (InCandidate candidate: candidates) {
+    				//activate candidate status to false
+    				candidate.setRegistration(true);
+    	}
+		} 
+   */ 	
 
     @Override
     public void rejectIntakeApplication(InIntakeApplication application) {
@@ -139,6 +154,11 @@ public class AdmissionServiceImpl implements AdmissionService {
     public List<InCandidate> findCandidates(InIntake intake, Integer offset, Integer limit) {
         return candidateDao.find(intake, offset, limit);
     }
+    
+    @Override
+	public List<InCandidate> findCandidateByStatus(InIntake intake, InCandidateStatus status) {
+		return candidateDao.find(intake, status);
+	}
 
     @Override
     public void preapproveCandidate(InCandidate candidate) {
@@ -181,4 +201,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidate.setStatus(InCandidateStatus.SELECTED);
 		candidateDao.update(candidate, securityService.getCurrentUser());
     }
+
+	
+	
 }
