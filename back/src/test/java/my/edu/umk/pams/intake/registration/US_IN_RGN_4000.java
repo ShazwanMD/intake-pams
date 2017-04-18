@@ -32,7 +32,7 @@ public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Autowired
     private RegistrationService registrationService;
     
-    private String intakeReferenceNo = "201720181/MASTER";
+    private String INTAKE_REFERENCE_NO = "201720181/MASTER";
 
     @Test
     @Rollback
@@ -40,9 +40,9 @@ public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Pending
     public void scenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session()
-        .and().I_pick_an_intake_$(intakeReferenceNo);
+        .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
         when().I_fill_in_application().and().applicant_submit_application();
-        addStage(WhenIVerifySponsorshipStatus.class).and().I_verify_applicant_has_valid_sponsorship_status();
+        addStage(WhenIVerifySponsorshipStatus.class).and().I_verify_applicant_has_valid_sponsorship_status_in_current_intake_session_$(INTAKE_REFERENCE_NO);
         then().I_can_process_applicant_registration();
     }
 }
