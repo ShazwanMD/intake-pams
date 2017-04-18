@@ -23,34 +23,25 @@ public class StandardSelectionStrategy extends SelectionStrategySupport {
     public void select(InIntake intake) {
         // go through each application
         List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByRank(intake);
-        InIntakeApplication application = applications.get(0);
-        // temporary for studying purposes, removed by: 17th April
-        String expected = "testest124";
-        String actual = application.getReferenceNo();
-        Long actual2 = application.getId();
-        Assert.isTrue((expected).equals(actual), "Expected " + expected + " but found " + actual + " with Id " + actual2);
-        
-        InProgramOffering offering = application.getProgramSelection();
-        Assert.notNull(offering, "offering cannot be null 2");
-        
-        for (InIntakeApplication application1 : applications) {
+        for (InIntakeApplication application : applications) {
             // evaluate general criteria
+            InProgramOffering offering = application.getProgramSelection();
+            Assert.notNull(offering, "offering cannot be null");
 
-
-            boolean evalGeneral = evaluate(application1, offering.getGeneralCriteria());
+            boolean evalGeneral = evaluate(application, offering.getGeneralCriteria());
             LOG.debug("general criteria: {}", evalGeneral);
             if (evalGeneral) {
                 // evaluate specific criteria
-                boolean evalSpecific = evaluate(application1, offering.getSpecificCriteria());
+                boolean evalSpecific = evaluate(application, offering.getSpecificCriteria());
                 LOG.debug("specific criteria: {}", evalSpecific);
                 if (evalSpecific) {
-                    application1.setBidStatus(InBidStatus.SELECTED);
+                    application.setBidStatus(InBidStatus.SELECTED);
                 } else {
                     continue;
                 }
             } else {
                 continue;
             }
-        } 
+        }
     }
 }
