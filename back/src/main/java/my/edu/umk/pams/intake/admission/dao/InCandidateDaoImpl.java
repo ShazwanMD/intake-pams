@@ -2,6 +2,8 @@ package my.edu.umk.pams.intake.admission.dao;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
@@ -66,5 +68,29 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
 		
 		 Session session = sessionFactory.getCurrentSession();
 	}
+
+
+	@Override
+	public List<InCandidate> find(InIntake intake, InCandidateStatus status) {
+		
+		 Session currentSession = sessionFactory.getCurrentSession();
+		 Query query = currentSession.createQuery("select p from InCandidate p where " +
+				 "p.intake = :intake " +
+				 "and p.status = :status ");
+		 query.setEntity("intake", intake);
+		 query.setInteger("status", status.ordinal());
+		return (List<InCandidate>) query.list();
+	}
+
+
+	@Override
+	public List<InCandidate> findCandidateByStatus(InIntake intake, InCandidateStatus status) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query query = currentSession.createQuery("select p from InCandidate p " +
+                "where p.status = :status ");
+		query.setInteger("status", status.ordinal());
+		return (List<InCandidate>) query.list();
+	}
+	
 
 }
