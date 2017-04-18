@@ -100,8 +100,26 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setApplicant(application.getApplicant());
         candidate.setProgramSelection(application.getProgramSelection());
         candidate.setSupervisorSelection(application.getSupervisorSelection());
+        candidate.setRegistration(false);
         candidateDao.save(candidate, Util.getCurrentUser());
     }
+    
+
+ /*   @Override
+    public void RegisteredCandidate(InCandidate candidates) {
+        // create candidate
+			List<InCandidate> candidates = admissionService.findCandidates(InCandidateStatus.APPROVED); //todo farah : find candidates by status
+    	
+    			for (InCandidate candidate: candidates) {
+    				//activate candidate status to false
+    				candidate.setRegistration(true);
+    				candidateDao.save(candidate, Util.getCurrentUser());
+    				
+    				
+    			}
+					
+				} */
+    	
 
     @Override
     public void rejectIntakeApplication(InIntakeApplication application) {
