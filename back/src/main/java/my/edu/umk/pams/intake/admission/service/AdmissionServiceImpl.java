@@ -112,7 +112,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidates = admissionService.findCandidateByStatus(policyService.findIntakeByReferenceNo(intakeReferenceNo),
 				InCandidateStatus.APPROVED);
 		for (InCandidate candidate : candidates) {
-			// activate candidate status to false
+			// activate candidate status to true
 			candidate.setRegistration(true);
 			candidateDao.save(candidate, Util.getCurrentUser());
 		}
