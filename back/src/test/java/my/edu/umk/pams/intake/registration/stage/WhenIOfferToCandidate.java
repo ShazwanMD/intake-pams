@@ -33,7 +33,7 @@ public class WhenIOfferToCandidate extends Stage<WhenIOfferToCandidate> {
 
         	admissionService.offerCandidate(candidate);
         	Assert.notNull(candidate.getMatricNo() , "candidate's matric number is not generated");
-        	LOG.debug("candidates status for : {} ", candidate.getMatricNo());
+        	
         	
             String expected = referenceNo;
             String found = candidate.getIntake().getReferenceNo();

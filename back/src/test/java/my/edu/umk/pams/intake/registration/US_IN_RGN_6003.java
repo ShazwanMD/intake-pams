@@ -16,21 +16,20 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenProceedRegistrationForSelectedApplicants;
 import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
-import my.edu.umk.pams.intake.registration.stage.WhenViewSelectedApplicantDetails;
+import my.edu.umk.pams.intake.registration.stage.WhenIPullSelectedApplicantsDetails;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a registrar, "
-		+ "I want to be able to view selected applicant detail information "
-		+ "so that I can proceed with the selected applicants registration progress")
-public class US_IN_RGN_6001 extends
+@As( "As a registrar, I want to pull up information on selected applicant's given name or ic number or bill presentment number "
+	+ "so that I can proceed with the selected applicants registration progress")
+public class US_IN_RGN_6003 extends
 		SpringScenarioTest<GivenIAmRegistrar, WhenApplicantFillAndSubmitApplication, ThenProceedRegistrationForSelectedApplicants> {
 	
 	 public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	 private static final String IDENTITY_NO = "248674";
 		
-	 @Issue ("PAMI-102")
+	 @Issue ("PAMI-104")
 	 @Test
 	 @Rollback
 	 public void scenario1() {
@@ -38,8 +37,7 @@ public class US_IN_RGN_6001 extends
 	     .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
 	     when().I_fill_in_application().and().applicant_submit_application();
 	     addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
-	     addStage(WhenViewSelectedApplicantDetails.class).and().View_selected_applicant_details();
-	    // addStage (WhenViewListOfSelectedApplicant.class).and().View_List_Of_Selected_Applicant();
+	     addStage(WhenIPullSelectedApplicantsDetails.class).and().I_pull_selected_applicant_details();
 	     then().Proceed_Registration_For_Selected_Applicants();
 	}
 
