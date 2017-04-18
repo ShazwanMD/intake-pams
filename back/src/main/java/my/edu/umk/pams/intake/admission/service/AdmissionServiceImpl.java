@@ -36,10 +36,10 @@ import java.util.Map;
  */
 @Service("admissionService")
 public class AdmissionServiceImpl implements AdmissionService {
-	private static final Logger LOG = LoggerFactory.getLogger(AdmissionServiceImpl.class);
-		
-	private String intakeReferenceNo = "201720181/MASTER";
-	
+    private static final Logger LOG = LoggerFactory.getLogger(AdmissionServiceImpl.class);
+
+    private String intakeReferenceNo = "201720181/MASTER";
+
     @Autowired
     private InCandidateDao candidateDao;
 
@@ -48,10 +48,10 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Autowired
     private ApplicationService applicationService;
-    
+
     @Autowired
     private PolicyService policyService;
-    
+
     @Autowired
     private AdmissionService admissionService;
 
@@ -71,10 +71,10 @@ public class AdmissionServiceImpl implements AdmissionService {
     // INTAKE, INTAKE APPLICATION
     // ====================================================================================================
 
-	@Override
-	public void processIntake(InIntake intake) {
-		// preselect
-		selectionStrategyHelper.select(intake);
+    @Override
+    public void processIntake(InIntake intake) {
+        // preselect
+        selectionStrategyHelper.select(intake);
 
         // pickup all preselection application
         // todo(uda) : InBidStatus.SELECTED
@@ -87,11 +87,8 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public void preselectIntakeApplication(InIntakeApplication application) {
         // create candidate
-    	
-    	
         InCandidate candidate = new InCandidateImpl();
-        //temporarly adding set intake 
-        candidate.setIntake(policyService.findIntakeByReferenceNo(intakeReferenceNo));
+        candidate.setIntake(application.getIntake());
         candidate.setName(application.getName());
         candidate.setIdentityNo(application.getCredentialNo());
         candidate.setEmail(application.getEmail());
@@ -103,41 +100,37 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setRegistration(false);
         candidateDao.save(candidate, Util.getCurrentUser());
     }
-    
-   
 
-	@Override
-	public void RegisterCandidate(List<InCandidate> candidates) {
-		// create candidate
-		candidates = admissionService.findCandidateByStatus(policyService.findIntakeByReferenceNo(intakeReferenceNo),
-				InCandidateStatus.APPROVED);
-		for (InCandidate candidate : candidates) {
-			// activate candidate status to true
-			candidate.setRegistration(true);
-			candidateDao.save(candidate, Util.getCurrentUser());
-		}
-	}
-    	
+    @Override
+    public void registerCandidates(InIntake intake, List<InCandidate> candidates) {
+        // create candidate
+        candidates = admissionService.findCandidatesByStatus(intake,InCandidateStatus.APPROVED); // note: accepted
+        for (InCandidate candidate : candidates) {
+            // activate candidate status to true
+            candidate.setRegistration(true);
+            candidateDao.save(candidate, Util.getCurrentUser());
+        }
+    }
 
     @Override
     public void rejectIntakeApplication(InIntakeApplication application) {
         // don't create candidate
     }
-    
+
     @Override
-    public void withdrawSelectedCandidate(InIntake intake, InCandidate candidate) {    
+    public void withdrawSelectedCandidate(InIntake intake, InCandidate candidate) {
         candidate.setStatus(InCandidateStatus.WITHDRAWN);
         updateSelectedCandidate(candidate);
     }
 
     @Override
     public void updateSelectedCandidate(InCandidate candidate) {
-    	candidateDao.update(candidate, Util.getCurrentUser());
+        candidateDao.update(candidate, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-		
-	}
 
-	// ====================================================================================================
+    }
+
+    // ====================================================================================================
     // CANDIDATE
     // ====================================================================================================
 
@@ -155,11 +148,11 @@ public class AdmissionServiceImpl implements AdmissionService {
     public List<InCandidate> findCandidates(InIntake intake, Integer offset, Integer limit) {
         return candidateDao.find(intake, offset, limit);
     }
-    
+
     @Override
-	public List<InCandidate> findCandidateByStatus(InIntake intake, InCandidateStatus status) {
-		return candidateDao.find(intake, status);
-	}
+    public List<InCandidate> findCandidatesByStatus(InIntake intake, InCandidateStatus status) {
+        return candidateDao.find(intake, status);
+    }
 
     @Override
     public void preapproveCandidate(InCandidate candidate) {
@@ -178,31 +171,24 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Override
     public void offerCandidate(InCandidate candidate) {
-		// start offering process
+        // start offering process
+        // generate matric no
+        Map<String, Object> map = new HashMap<String, Object>();
+        InFacultyCode facultyCode = candidate.getProgramSelection().getProgramCode().getFacultyCode();
+        InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
+        InProgramLevel programLevel = candidate.getProgramSelection().getProgramCode().getProgramLevel();
+        InStudyMode studyMode = candidate.getStudyMode();
+        map.put("facultyCode", facultyCode);
+        map.put("studyMode", studyMode);
+        map.put("programLevel", programLevel);
+        map.put("intakeSession", session);
 
-		// generate matric no
-		Map<String, Object> map = new HashMap<String, Object>();
-
-		// map.put("facultyCode", );
-		// {#facultyCode.getPrefix()}{#intakeSession.getYear().toString().substring(2,4)}{#programLevel.getPrefix()}{#j}{#studyMode.getPrefix()}
-		// C17D0001F
-
-		InFacultyCode facultyCode = candidate.getProgramSelection().getProgramCode().getFacultyCode();
-		InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
-		InProgramLevel programLevel = candidate.getProgramSelection().getProgramCode().getProgramLevel();
-		InStudyMode studyMode = candidate.getStudyMode();
-		map.put("facultyCode", facultyCode);
-		map.put("studyMode", studyMode);
-		map.put("programLevel", programLevel);
-		map.put("intakeSession", session);
-
-		String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
-		candidate.setMatricNo(generatedMatricNo);
-		candidate.setStudyMode(candidate.getStudyMode());
-		candidate.setStatus(InCandidateStatus.SELECTED);
-		candidateDao.update(candidate, securityService.getCurrentUser());
+        String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
+        candidate.setMatricNo(generatedMatricNo);
+        candidate.setStudyMode(candidate.getStudyMode());
+        candidate.setStatus(InCandidateStatus.SELECTED);
+        candidateDao.update(candidate, securityService.getCurrentUser());
     }
 
-	
-	
+
 }
