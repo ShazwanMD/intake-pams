@@ -17,6 +17,7 @@ import org.junit.runners.Suite;
         US_IN_APN_1006.class,
         US_IN_APN_1007.class,
         US_IN_APN_1008.class,
+        US_IN_APN_1009.class,
         US_IN_APN_1010.class,
         US_IN_APN_1011.class, 
         US_IN_APN_1012.class,
@@ -26,8 +27,11 @@ import org.junit.runners.Suite;
         US_IN_APN_2000.class, 
         US_IN_APN_2002.class, 
         US_IN_APN_3000.class, //incomplete
+        US_IN_APN_3001.class, //pending
         US_IN_APN_5001.class,
         US_IN_APN_5002.class,
+        US_IN_APN_5003.class,
+        US_IN_APN_5004.class,
         US_IN_APN_5005.class,
 })
 public class ApplicationModuleTestSuite {
