@@ -107,7 +107,7 @@ public class AdmissionServiceImpl implements AdmissionService {
    
 
 	@Override
-	public void RegistereCandidate(List<InCandidate> candidates) {
+	public void RegisteredCandidate(List<InCandidate> candidates) {
 		// create candidate
 		candidates = admissionService.findCandidateByStatus(policyService.findIntakeByReferenceNo(intakeReferenceNo),
 				InCandidateStatus.APPROVED);
