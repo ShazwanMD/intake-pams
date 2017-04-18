@@ -15,27 +15,38 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenActivateStudentStatus;
+import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorOfferToCandidate;
+import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorPreselectApplicant;
 import my.edu.umk.pams.intake.registration.stage.WhenActivateStudentAdmission;
+import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
+import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a PPS academic administrator, I want to activate students admission during registration day, so that the student status will be activated")
+@As("As a PPS academic administrator, "
+		+ "I want to activate students admission during registration day, "
+		+ "so that the student status will be activated")
 
-public class US_IN_RGN_3006 extends  SpringScenarioTest<GivenIAmCPSAdministrator, WhenActivateStudentAdmission, ThenActivateStudentStatus> {
+public class US_IN_RGN_3006 extends  SpringScenarioTest<GivenIAmCPSAdministrator, WhenApplicantFillAndSubmitApplication, ThenActivateStudentStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3006.class);
+	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	public static final String IDENTITY_NO = "248674";
 	
 	    @Test
 	    @Rollback
-	    @Pending
 	    @Issue("PAMI-79")
 	    public void scenario1() {
-	    	//Test
-	        given().I_am_a_CPS_administrator_in_current_intake_session();
-	        when().I_want_to_activate_student_during_registration();
-	      //  addStage(WhenIVerifySponsorshipStatus.class).and().I_verify_applicant_has_valid_sponsorship_status();
+	    	
+	        given().I_am_a_CPS_administrator_in_current_intake_session()
+	        .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
+            when().I_fill_in_application().and().applicant_submit_application();
+			addStage(WhenAcademicAdministratorPreselectApplicant.class).and().academic_admin_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+			addStage(WhenAcademicAdministratorOfferToCandidate.class).and().offer_to_candidate_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+			addStage(WhenCandidateAcceptOffer.class).and().i_accept_offer_$(IDENTITY_NO,INTAKE_REFERENCE_NO);
+	        addStage(WhenActivateStudentAdmission.class).and().I_want_to_activate_student_during_registration_$(IDENTITY_NO,INTAKE_REFERENCE_NO);
+	      
 	        then().student_status_is_activated();
 	    }
 	}
-
