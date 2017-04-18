@@ -105,10 +105,10 @@ public class AdmissionServiceImpl implements AdmissionService {
     }
     
 
- /*   @Override
-    public void RegisteredCandidate(InCandidate candidates) {
+/*    @Override
+    public void RegisteredCandidate(List<InCandidate> candidates) {
         // create candidate
-			List<InCandidate> candidates = admissionService.findCandidates(InCandidateStatus.APPROVED); //todo farah : find candidates by status
+			candidates = admissionService.findCandidates(InCandidateStatus.APPROVED); //todo farah : find candidates by status
     	
     			for (InCandidate candidate: candidates) {
     				//activate candidate status to false
@@ -118,8 +118,8 @@ public class AdmissionServiceImpl implements AdmissionService {
     				
     			}
 					
-				} */
-    	
+				} 
+   */ 	
 
     @Override
     public void rejectIntakeApplication(InIntakeApplication application) {
