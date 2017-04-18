@@ -5,6 +5,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -51,8 +53,15 @@ private List<InCandidate> candidates;
 		 
 		 intake = policyService.findIntakeByReferenceNo(intake.getReferenceNo());
 		 
-		 
-
+	    /*candidates = admissionService.findCandidates(intake);
+	     for (InCandidate candidate : candidates) {
+	    	 
+	    	 LOG.debug("study fee paid : {}",candidate.getSourcePaymentNo)); 
+	     }
+	     
+	     	Assert.isTrue(candidates.isPaid(), "Payment is not received");
+		    LOG.debug("study fee payment status : {} ", candidates.isPaid());*/
+	    
 	   
 	     return self();
 		 
