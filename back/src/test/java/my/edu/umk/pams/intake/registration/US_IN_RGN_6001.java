@@ -15,9 +15,7 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenProceedRegistrationForSelectedApplicants;
 import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenEnterRequiredInformation;
 import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
-import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant;
 import my.edu.umk.pams.intake.registration.stage.WhenViewSelectedApplicantDetails;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,14 +24,13 @@ import my.edu.umk.pams.intake.registration.stage.WhenViewSelectedApplicantDetail
 @As("As a registrar, "
 		+ "I want to be able to view selected applicant detail information "
 		+ "so that I can proceed with the selected applicants registration progress")
-public class US_IN_RGN_6001 extends SpringScenarioTest<GivenIAmRegistrar,
-WhenApplicantFillAndSubmitApplication,
-																ThenProceedRegistrationForSelectedApplicants>{
+public class US_IN_RGN_6001 extends
+		SpringScenarioTest<GivenIAmRegistrar, WhenApplicantFillAndSubmitApplication, ThenProceedRegistrationForSelectedApplicants> {
 	
 	 public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	 private static final String IDENTITY_NO = "248674";
 		
-	 @Issue ("PAMI-101")
+	 @Issue ("PAMI-102")
 	 @Test
 	 @Rollback
 	 public void scenario1() {
