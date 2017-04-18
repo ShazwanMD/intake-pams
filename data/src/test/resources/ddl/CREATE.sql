@@ -193,6 +193,8 @@ create table IN_CNDT (
   INTAKE_ID int8,
   PROGRAM_SELECTION_ID int8,
   SUPERVISOR_SELECTION_ID int8,
+  REGISTRATION_STATUS boolean,
+  ACCEPT_STATUS boolean,
   primary key (ID)
 );
 

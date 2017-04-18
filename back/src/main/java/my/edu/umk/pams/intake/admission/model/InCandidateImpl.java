@@ -32,6 +32,12 @@ public class InCandidateImpl implements InCandidate {
     
     @Column(name = "EMAIL", nullable = false)
     private String email;
+    
+    @Column(name = "REGISTRATION_STATUS", nullable = false)
+    private boolean registration = false;
+    
+    @Column(name = "ACCEPTION_STATUS", nullable = false)
+    private boolean acception = false;
 
     @Column(name = "STUDY_MODE_ID", nullable = false)
     private InStudyMode studyMode ;
@@ -169,6 +175,24 @@ public class InCandidateImpl implements InCandidate {
     }
 
     @Override
+    public boolean isRegistration() {
+		return registration;
+	}
+
+    @Override
+	public void setRegistration(boolean registration) {
+		this.registration = registration;
+	}
+
+	public boolean isAcception() {
+		return acception;
+	}
+
+	public void setAcception(boolean acception) {
+		this.acception = acception;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }
