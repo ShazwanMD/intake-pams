@@ -29,7 +29,7 @@ public class US_IN_RGN_4006 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 	@Test
     @Rollback
     @Pending
-    @Issue("PAMI-79")
+    @Issue("PAMI-90")
     public void scenario1() {
     	given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().I_want_to_activate_student_during_registration();
