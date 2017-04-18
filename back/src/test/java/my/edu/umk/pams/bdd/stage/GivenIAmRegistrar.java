@@ -3,6 +3,8 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
@@ -26,15 +28,25 @@ public class GivenIAmRegistrar extends Stage<GivenIAmRegistrar> {
 
     @ProvidedScenarioState
     InIntakeSession intakeSession;
+    
+    @ProvidedScenarioState
+    InIntake intake;
+
 
     public void I_am_a_Registrar_in_$_academic_session(String academicSessionCode){
         loginAsRegistrar();
         intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
     }
 
-    public void I_am_a_Registrar_in_current_intake_session(){
+    public GivenIAmRegistrar I_am_a_Registrar_in_current_intake_session(){
         loginAsRegistrar();
         intakeSession = policyService.findCurrentIntakeSession();
+        return self();
+    }
+    
+    public GivenIAmRegistrar I_pick_an_intake_$(String intakeReferenceNo){
+        intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+        return self();
     }
 
     private void loginAsRegistrar() {
