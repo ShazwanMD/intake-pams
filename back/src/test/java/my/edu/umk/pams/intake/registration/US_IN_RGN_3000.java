@@ -1,20 +1,18 @@
 package my.edu.umk.pams.intake.registration;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.admission.stage.WhenIFillInIntakeApplication;
-import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableApplicants;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenIVerifySponsorshipStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -29,9 +27,7 @@ public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3000.class);
 
-    @Autowired
-    private RegistrationService registrationService;
-
+    @Pending
     @Test
     @Rollback
     @Issue("PAMI-95")
