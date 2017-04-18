@@ -11,7 +11,7 @@ import org.junit.runners.Suite;
         US_IN_RGN_1000.class,
         US_IN_RGN_2000.class, 
         US_IN_RGN_2001.class,
-        US_IN_RGN_3000.class,
+        US_IN_RGN_3000.class, //pending
         US_IN_RGN_3001.class, //pending
         US_IN_RGN_3002.class, 
         US_IN_RGN_3003.class, //pending
@@ -28,6 +28,7 @@ import org.junit.runners.Suite;
         US_IN_RGN_5001.class,
         US_IN_RGN_5003.class,
         US_IN_RGN_6000.class,
+        US_IN_RGN_6001.class,
 })
 
 public class RegistrationModuleTestSuite {
