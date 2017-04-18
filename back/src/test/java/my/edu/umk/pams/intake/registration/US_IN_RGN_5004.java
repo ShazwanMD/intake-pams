@@ -14,6 +14,8 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
+import my.edu.umk.pams.intake.application.stage.WhenPayForProcessingFee;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenSubmitPaymentInfo;
 import my.edu.umk.pams.intake.registration.stage.WhenMakePaymentForStudyFee;
@@ -23,7 +25,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenMakePaymentForStudyFee;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As(" As a selected applicant, I want to make a payment for study fees, so that I can submit the payment info to the bursary")
 public class US_IN_RGN_5004  extends SpringScenarioTest<GivenIAmCandidate,
-WhenMakePaymentForStudyFee,ThenSubmitPaymentInfo> {
+WhenIWantToFillAllRequiredInformation,ThenSubmitPaymentInfo> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_5004.class);
 	
@@ -37,7 +39,8 @@ WhenMakePaymentForStudyFee,ThenSubmitPaymentInfo> {
     public void scenario1() {
 		given().I_am_candidate_in_current_intake_session()
 		 .and().I_applied_for_intake_$(INTAKE_REFERENCE_NO);
-		when().I_want_to_make_payment_for_my_study_fee_$(MATRIC_NO,INTAKE_REFERENCE_NO);
+		when().I_fill_in_all_the_required_information_in_my_application();
+		addStage(WhenMakePaymentForStudyFee.class).and().I_want_to_make_payment_for_my_study_fee_$(MATRIC_NO,INTAKE_REFERENCE_NO);
 		then().I_can_submit_the_payment_info_to_bursary(MATRIC_NO);
 	}
 	

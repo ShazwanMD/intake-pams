@@ -29,7 +29,10 @@ private InIntake intake;
 	  
 	 public WhenMakePaymentForStudyFee I_want_to_make_payment_for_my_study_fee_$(String identityNo,String intakeSession) {
 		 
-		 
+		 //TODO add column payment for study fee in candidate
+		 /* candidate.setPaymentSourceNo
+		  * admissionService.updateSelectedCandidate(candidate);
+		  */
 		
 		 return self();
 	 }
