@@ -8,8 +8,12 @@ import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.selection.SelectionStrategyHelper;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InFacultyCode;
+import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
@@ -153,32 +157,28 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Override
     public void offerCandidate(InCandidate candidate) {
-        // start offering process
+		// start offering process
 
-        // generate matric no
-        Map<String, Object> map = new HashMap<String, Object>();
+		// generate matric no
+		Map<String, Object> map = new HashMap<String, Object>();
 
-        //map.put("facultyCode", );
-        //{#facultyCode.getPrefix()}{#intakeSession.getYear().toString().substring(2,4)}{#programLevel.getPrefix()}{#j}{#studyMode.getPrefix()}
-        //C17D0001F
-        
-         candidate.getProgramSelection().getProgramCode().getFacultyCode().getPrefix();
-         map.put("facultyCode", candidate.getProgramSelection().getProgramCode().getFacultyCode()); 
-         candidate.getStudyMode().getPrefix();
-         map.put("studyMode", candidate.getStudyMode());  
-         candidate.getProgramSelection().getProgramCode().getProgramLevel().getPrefix();
-         map.put("programLevel", candidate.getProgramSelection().getProgramCode().getProgramLevel());  
-         candidate.getProgramSelection().getIntake().getSession().getYear();
-         map.put("intakeSession", candidate.getProgramSelection().getIntake().getSession());         
-         candidate.getIntake().getSession().getYear();
-         map.put("year", candidate.getIntake().getSession());
-         
-         
-         
-        String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
-        candidate.setMatricNo(generatedMatricNo);
-        candidate.setStudyMode(candidate.getStudyMode());
-        candidate.setStatus(InCandidateStatus.SELECTED);
-        candidateDao.update(candidate, securityService.getCurrentUser());
+		// map.put("facultyCode", );
+		// {#facultyCode.getPrefix()}{#intakeSession.getYear().toString().substring(2,4)}{#programLevel.getPrefix()}{#j}{#studyMode.getPrefix()}
+		// C17D0001F
+
+		InFacultyCode facultyCode = candidate.getProgramSelection().getProgramCode().getFacultyCode();
+		InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
+		InProgramLevel programLevel = candidate.getProgramSelection().getProgramCode().getProgramLevel();
+		InStudyMode studyMode = candidate.getStudyMode();
+		map.put("facultyCode", facultyCode);
+		map.put("studyMode", studyMode);
+		map.put("programLevel", programLevel);
+		map.put("intakeSession", session);
+
+		String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
+		candidate.setMatricNo(generatedMatricNo);
+		candidate.setStudyMode(candidate.getStudyMode());
+		candidate.setStatus(InCandidateStatus.SELECTED);
+		candidateDao.update(candidate, securityService.getCurrentUser());
     }
 }
