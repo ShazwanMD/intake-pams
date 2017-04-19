@@ -10,7 +10,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -20,9 +19,6 @@ import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorOfferT
 import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorPreselectApplicant;
 import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
-import my.edu.umk.pams.intake.registration.stage.WhenIOfferToCandidate;
-import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
-
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -18,7 +18,6 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
 import my.edu.umk.pams.intake.registration.stage.WhenIVerifySponsorshipStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
