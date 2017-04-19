@@ -43,15 +43,13 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
 		Assert.notNull(intakeApplication, "applications cannot be empty");
     	
     	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByPaidStatus(intake, true);
-    		//	findIntakeApplications(intakeApplication.isPaid(true));
+    	Assert.notEmpty(applications, "applications cannot be empty");
+
     	for (InIntakeApplication application : applications) {
-    		
     		LOG.debug("paid applications : {}",application.isPaid());
-			
+        	Assert.isTrue(application.isPaid(), "application cannot be unpaid");
 		}
 
-//	Assert.isTrue(intakeApplication.isPaid(), "Payment is not received");
-//	    LOG.debug("intake application payment status : {} ", intakeApplication.isPaid());
   	return self();
     }
 
