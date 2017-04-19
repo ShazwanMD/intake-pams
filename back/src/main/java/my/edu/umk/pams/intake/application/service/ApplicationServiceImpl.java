@@ -388,13 +388,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
 	@Override
-	public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean Paid) {
-		 return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, Paid);
+	public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid) {
+		 return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, paid);
 	}
 	
-	@Override
-	public boolean isPaid(InIntakeApplication application) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

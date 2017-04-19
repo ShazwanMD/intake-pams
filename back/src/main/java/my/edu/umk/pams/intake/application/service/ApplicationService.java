@@ -142,8 +142,6 @@ public interface ApplicationService {
 
     boolean hasEducation(InIntakeApplication application);
     
-    boolean isPaid(InIntakeApplication application);
-
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
