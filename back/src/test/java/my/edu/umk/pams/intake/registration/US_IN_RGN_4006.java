@@ -43,8 +43,7 @@ public class US_IN_RGN_4006 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 		addStage(WhenAcademicAdministratorPreselectApplicant.class).and().academic_admin_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
 		addStage(WhenAcademicAdministratorOfferToCandidate.class).and().offer_to_candidate_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
 		addStage(WhenCandidateAcceptOffer.class).and().i_accept_offer_$(IDENTITY_NO,INTAKE_REFERENCE_NO);
-        addStage(WhenActivateStudentAdmission.class).and().I_want_to_activate_student_during_registration_$(IDENTITY_NO,INTAKE_REFERENCE_NO);
-      
+        addStage(WhenActivateStudentAdmission.class).and().I_want_to_activate_student_during_registration_$(IDENTITY_NO,INTAKE_REFERENCE_NO);      
         then().student_status_is_activated();
     }
 }
