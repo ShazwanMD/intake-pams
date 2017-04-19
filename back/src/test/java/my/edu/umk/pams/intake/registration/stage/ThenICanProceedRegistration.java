@@ -38,7 +38,7 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
     InIntakeSession intakeSession;
     
     @ExpectedScenarioState
-    InCandidate candidate;
+    private List<InCandidate> candidates;
     
     @ExpectedScenarioState
     private InIntake intake;
@@ -77,10 +77,13 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
 
       public ThenICanProceedRegistration registration_is_matriculated(){
     	  
-    	candidate = admissionService.findCandidateByIdentityNo("910607145581");
-    	admissionService.offerCandidate(candidate); 
-    	LOG.debug("candidate's matric number : {} ", candidate.getMatricNo());
-        Assert.notNull(candidate.getMatricNo(), "registration is unmatriculated");
+//    	  LOG.debug("candidates {}", candidates);
+    	for (InCandidate candidate : candidates) {
+    		admissionService.offerCandidate(candidate);
+        	LOG.debug("candidate's matric number : {} ", candidate.getMatricNo());
+            Assert.notNull(candidate.getMatricNo(), "registration is unmatriculated");
+		}
+
         return self();
       }
 }

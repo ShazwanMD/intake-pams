@@ -54,8 +54,10 @@ public class WhenPreselectApplicant extends Stage<WhenPreselectApplicant>{
 		for (InIntakeApplication application : applications) {
 			if (identityNo.equals(application.getCredentialNo()))
 				admissionService.preselectIntakeApplication(application);
+			 LOG.debug("candidates {}", candidates);
 			candidates.add(admissionService.findCandidateByIdentityNo(application.getCredentialNo()));
 		}
+	//	 LOG.debug("candidates {}", candidates);
 
 		return self();
 	}
