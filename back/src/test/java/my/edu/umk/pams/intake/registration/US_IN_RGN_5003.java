@@ -17,7 +17,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenProceedCandidateRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorOfferToCandidate;
 import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorPreselectApplicant;
-import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
+import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
 
 
@@ -26,7 +26,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As(" As a selected applicant, I want to accept the offer, so that I can proceed with my registration")
 public class US_IN_RGN_5003 extends SpringScenarioTest<GivenIAmCandidate,
-WhenApplicantFillAndSubmitApplication,ThenProceedCandidateRegistration> {
+        WhenPrepareApplicationSubmission,ThenProceedCandidateRegistration> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_5003.class);
 
@@ -42,7 +42,7 @@ WhenApplicantFillAndSubmitApplication,ThenProceedCandidateRegistration> {
 
 		 given().I_am_candidate_in_current_intake_session()
 		 .and().I_applied_for_intake_$(INTAKE_REFERENCE_NO);
-		 when().I_fill_in_application().and().applicant_submit_application();
+		 when().I_prepare_3_applications().and().I_submit_3_applications();
 		 addStage(WhenAcademicAdministratorPreselectApplicant.class).and().academic_admin_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
 		 addStage(WhenAcademicAdministratorOfferToCandidate.class).and().offer_to_candidate_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
 		 addStage(WhenCandidateAcceptOffer.class).and().i_accept_offer_$(IDENTITY_NO,INTAKE_REFERENCE_NO);

@@ -15,15 +15,15 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
-import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
+import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenVerifyStudyFees;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a CPS academic administrator, I want to verify the study fees, so that I can proceed with the registration")
-public class US_IN_RGN_3010 extends SpringScenarioTest<GivenIAmCPSAdministrator, 
-														WhenApplicantFillAndSubmitApplication,
+public class US_IN_RGN_3010 extends SpringScenarioTest<GivenIAmCPSAdministrator,
+        WhenPrepareApplicationSubmission,
 														ThenICanProceedRegistration>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3010.class);
@@ -37,7 +37,7 @@ public class US_IN_RGN_3010 extends SpringScenarioTest<GivenIAmCPSAdministrator,
    	 
    	 given().I_am_a_CPS_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
-   	 when().I_fill_in_application().and().applicant_submit_application();
+   	 when().I_prepare_3_applications().and().I_submit_3_applications();
    	 addStage(WhenVerifyStudyFees.class).and().I_want_to_verify_study_fees();
    	 then().I_can_process_applicant_registration(); 
     }
