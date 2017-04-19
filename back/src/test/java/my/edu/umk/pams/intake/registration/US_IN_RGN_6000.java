@@ -34,7 +34,7 @@ public class US_IN_RGN_6000 extends SpringScenarioTest<GivenIAmRegistrar,WhenPre
      given().I_am_a_Registrar_in_current_intake_session()
      .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
      when().I_prepare_3_applications().and().I_submit_3_applications();
-     addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_in_intake_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+     addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_$(IDENTITY_NO);
      addStage (WhenViewListOfSelectedApplicant.class).and().View_List_Of_Selected_Applicant();
      then().Proceed_Registration_For_Selected_Applicants();
 }

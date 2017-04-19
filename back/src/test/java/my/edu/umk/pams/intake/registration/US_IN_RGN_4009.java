@@ -54,8 +54,8 @@ public class US_IN_RGN_4009 extends SpringScenarioTest <GivenIAmMGSEBAdministrat
         	 given().I_am_a_MGSEB_administrator_in_current_intake_session()
              .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
              when().I_prepare_3_applications().and().I_submit_3_applications();
-             addStage(WhenPickApplicationsByFeeStatus.class).and().I_pick_paid_applications(IDENTITY_NO, INTAKE_REFERENCE_NO);
-             addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_in_intake_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+             addStage(WhenPickApplicationsByFeeStatus.class).and().I_pick_paid_applications();
+             addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_$(IDENTITY_NO);
              then().registration_is_matriculated();
 
          }

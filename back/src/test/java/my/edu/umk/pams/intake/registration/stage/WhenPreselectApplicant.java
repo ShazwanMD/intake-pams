@@ -39,14 +39,13 @@ public class WhenPreselectApplicant extends Stage<WhenPreselectApplicant>{
 	@ExpectedScenarioState
 	private InIntakeApplication intakeApplication;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
     private InIntake intake; 
     
     @ProvidedScenarioState
     private List<InCandidate> candidates;
     
-	public WhenPreselectApplicant I_preselect_applicant_in_intake_$(String identityNo, String intakeCode) {
-		intake = policyService.findIntakeByReferenceNo(intakeCode);
+	public WhenPreselectApplicant I_preselect_applicant_$(String identityNo) {
 		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
 		Assert.notEmpty(applications, "applications cannot be empty");
 
