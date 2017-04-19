@@ -53,9 +53,6 @@ public class AdmissionServiceImpl implements AdmissionService {
     private PolicyService policyService;
 
     @Autowired
-    private AdmissionService admissionService;
-
-    @Autowired
     private CommonService commonService;
 
     @Autowired
@@ -104,7 +101,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public void registerCandidates(InIntake intake, List<InCandidate> candidates) {
         // create candidate
-        candidates = admissionService.findCandidatesByStatus(intake,InCandidateStatus.ACCEPTED); // note: accepted
+        candidates = this.findCandidatesByStatus(intake,InCandidateStatus.ACCEPTED); // note: accepted
         for (InCandidate candidate : candidates) {
             // activate candidate status to true
             candidate.setRegistration(true);
