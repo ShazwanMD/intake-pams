@@ -211,11 +211,11 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
-    public List<InIntakeApplication> findByOrderedMerit(InIntake intake) {
+    public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean Paid) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
                 "p.intake = :intake " +
-                "order by p.merit desc");
+                "by p.paid ");
         query.setEntity("intake", intake);
         return (List<InIntakeApplication>) query.list();
     }
@@ -226,6 +226,16 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
                 "p.intake = :intake " +
                 "order by p.rank asc");
+        query.setEntity("intake", intake);
+        return (List<InIntakeApplication>) query.list();
+    }
+    
+    @Override
+    public List<InIntakeApplication> findByOrderedMerit(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
+                "p.intake = :intake " +
+                "order by p.merit desc");
         query.setEntity("intake", intake);
         return (List<InIntakeApplication>) query.list();
     }
