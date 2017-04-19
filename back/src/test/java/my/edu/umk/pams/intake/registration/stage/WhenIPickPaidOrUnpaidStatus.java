@@ -37,14 +37,11 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
     private InIntakeApplication application2;
     
     public WhenIPickPaidOrUnpaidStatus I_pick_paid_status_in_intake_session_$(String identityNo, String code){
-    	
-    
-    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
-		Assert.notNull(intakeApplication, "applications cannot be empty");
-    	
-    	List<InIntakeApplication> paidApplications = applicationService.findIntakeApplicationsByPaidStatus(intake, true);
+    	final int expectedCount = 2;
+		List<InIntakeApplication> paidApplications = applicationService.findIntakeApplicationsByPaidStatus(intake, true);
     	Assert.notEmpty(paidApplications, "paidApplications cannot be empty");
-    	Assert.isTrue(paidApplications.size() == 2, "paidApplications count must be exactly 2");
+		String countMessage = "paidApplications count must be exactly " + expectedCount;
+		Assert.isTrue(paidApplications.size() == expectedCount, countMessage);
 
     	for (InIntakeApplication application : paidApplications) {
     		LOG.debug("paid applications : {}",application.isPaid());
@@ -54,7 +51,7 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
         	String foundIdentityNo = application.getApplicant().getIdentityNo();
 
 			String message = "Expecting identityNo " + identityNo + " found " + foundIdentityNo;
-			Assert.isTrue(identityNo.equals(foundIdentityNo), message);
+			Assert.isTrue(expectedIdentityNo.equals(foundIdentityNo), message);
 		}
 
   		return self();
