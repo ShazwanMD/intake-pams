@@ -14,9 +14,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenCompleteApplicantRegistration;
-import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
+import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenCollectStudyFeeForMatriculation;
-import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
+import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -26,7 +26,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
 		+ "so that i can complete the applicant's registration")
 
 public class US_IN_RGN_3008 extends SpringScenarioTest <GivenIAmCPSAdministrator,
-WhenApplicantFillAndSubmitApplication, ThenCompleteApplicantRegistration> {
+        WhenPrepareApplicationSubmission, ThenCompleteApplicantRegistration> {
 	
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3008.class);
@@ -41,8 +41,8 @@ WhenApplicantFillAndSubmitApplication, ThenCompleteApplicantRegistration> {
     	
         given().I_am_a_CPS_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
-        when().I_fill_in_application().and().applicant_submit_application();
-	    addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+        when().I_prepare_3_applications().and().I_submit_3_applications();
+	    addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_$(IDENTITY_NO);
 	    addStage(WhenCollectStudyFeeForMatriculation.class).and().I_want_to_collect_study_fee_for_matriculation_$(INTAKE_REFERENCE_NO);
 	  
         then().I_can_complete_applicant_registration();

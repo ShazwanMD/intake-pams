@@ -13,21 +13,20 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.registration.stage.ThenCompleteApplicantRegistration;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
-import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenIPickPaidOrUnpaidStatus;
-import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
+import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
+import my.edu.umk.pams.intake.registration.stage.WhenPickApplicationsByFeeStatus;
+import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a MGSEB academic administrator, "
 		+ "I want to receive proof of payment for matriculation "
-		+ "so that I can proceed to the applicant’s registration")
+		+ "so that I can proceed to the applicantï¿½s registration")
 
 public class US_IN_RGN_4009 extends SpringScenarioTest <GivenIAmMGSEBAdministrator,
-WhenApplicantFillAndSubmitApplication, ThenICanProceedRegistration> {
+        WhenPrepareApplicationSubmission, ThenICanProceedRegistration> {
 
 	 private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4009.class);
 
@@ -41,8 +40,8 @@ WhenApplicantFillAndSubmitApplication, ThenICanProceedRegistration> {
      public void unpaid() {
     	 given().I_am_a_MGSEB_administrator_in_current_intake_session()
          .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
-         when().I_fill_in_application().and().applicant_submit_application();
-         addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+         when().I_prepare_3_applications().and().I_submit_3_applications();
+         addStage(WhenPickApplicationsByFeeStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
          then().application_process_cannot_be_proceeded();
          
          }
@@ -54,9 +53,9 @@ WhenApplicantFillAndSubmitApplication, ThenICanProceedRegistration> {
 
         	 given().I_am_a_MGSEB_administrator_in_current_intake_session()
              .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
-             when().I_fill_in_application().and().applicant_submit_application();
-             addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_paid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
-             addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+             when().I_prepare_3_applications().and().I_submit_3_applications();
+             addStage(WhenPickApplicationsByFeeStatus.class).and().I_pick_paid_applications();
+             addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_$(IDENTITY_NO);
              then().registration_is_matriculated();
 
          }

@@ -15,7 +15,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
-import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
+import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenVerifyStudyFees;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,7 +26,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenVerifyStudyFees;
 		+ "so that I can proceed with the registration")
 
 public class US_IN_RGN_4010 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
-WhenApplicantFillAndSubmitApplication,ThenICanProceedRegistration> {
+        WhenPrepareApplicationSubmission,ThenICanProceedRegistration> {
 	
 	 private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4010.class);
      private static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
@@ -39,7 +39,7 @@ WhenApplicantFillAndSubmitApplication,ThenICanProceedRegistration> {
     	 
     	 given().I_am_a_MGSEB_administrator_in_current_intake_session()
          .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
-    	 when().I_fill_in_application().and().applicant_submit_application();
+    	 when().I_prepare_3_applications().and().I_submit_3_applications();
     	 addStage(WhenVerifyStudyFees.class).and().I_want_to_verify_study_fees();
     	 then().I_can_process_applicant_registration(); 
      }

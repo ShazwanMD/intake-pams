@@ -17,8 +17,7 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
-import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenIPreselectApplicant;
+import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenIVerifySponsorshipStatus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,7 +25,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenIVerifySponsorshipStatus;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a MGSEB academic Administrator, I want to view applicant that have sponsorship or not so that i can proceed the applicant's registration")
 
-public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenApplicantFillAndSubmitApplication, ThenICanProceedRegistration> {
+public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenPrepareApplicationSubmission, ThenICanProceedRegistration> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4000.class);
 
@@ -42,7 +41,7 @@ public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     public void scenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
-        when().I_fill_in_application().and().applicant_submit_application();
+        when().I_prepare_3_applications().and().I_submit_3_applications();
         addStage(WhenIVerifySponsorshipStatus.class).and().I_verify_applicant_has_valid_sponsorship_status_in_current_intake_session_$(INTAKE_REFERENCE_NO);
   //      addStage(WhenIPreselectApplicant.class).and().I_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
         then().I_can_process_applicant_registration();

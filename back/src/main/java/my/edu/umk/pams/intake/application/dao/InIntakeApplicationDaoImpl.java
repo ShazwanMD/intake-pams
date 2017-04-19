@@ -211,13 +211,13 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
-    public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean Paid) {
+    public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
                 "p.intake = :intake " +
-                "by p.paid =:Paid");
+                "and p.paid =:Paid");
         query.setEntity("intake", intake);
-        query.setBoolean("paid", Paid);
+        query.setBoolean("paid", paid);
         return (List<InIntakeApplication>) query.list();
     }  
 
