@@ -42,7 +42,7 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
     	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
 		Assert.notNull(intakeApplication, "applications cannot be empty");
     	
-    	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByPaidStatus(intake, (true));
+    	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByPaidStatus(intake, true);
     		//	findIntakeApplications(intakeApplication.isPaid(true));
     	for (InIntakeApplication application : applications) {
     		
