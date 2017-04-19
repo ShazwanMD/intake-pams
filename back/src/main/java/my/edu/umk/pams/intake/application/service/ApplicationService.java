@@ -112,7 +112,7 @@ public interface ApplicationService {
 
     List<InIntakeApplication> findIntakeApplicationsOrderedByRank(InIntake intake);
     
-    List<InIntakeApplication> findIntakeApplicationsByPaidStatus (InIntake intake, Boolean Paid);
+    List<InIntakeApplication> findIntakeApplicationsByPaidStatus (InIntake intake, Boolean paid);
 
     List<InResult> findResults(InIntakeApplication application);
 
