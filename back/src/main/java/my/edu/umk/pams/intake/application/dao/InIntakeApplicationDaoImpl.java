@@ -215,10 +215,11 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
                 "p.intake = :intake " +
-                "by p.paid ");
+                "by p.paid =:Paid");
         query.setEntity("intake", intake);
+        query.setBoolean("paid", Paid);
         return (List<InIntakeApplication>) query.list();
-    }
+    }  
 
     @Override
     public List<InIntakeApplication> findByOrderedRank(InIntake intake) {
