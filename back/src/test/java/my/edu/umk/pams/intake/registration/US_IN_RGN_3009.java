@@ -16,7 +16,7 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenApplicantFillAndSubmitApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenIPickPaidOrUnpaidStatus;
+import my.edu.umk.pams.intake.registration.stage.WhenPickApplicationsByFeeStatus;
 import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -39,7 +39,7 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
       given().I_am_a_CPS_administrator_in_current_intake_session()
       .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
       when().I_fill_in_application().and().applicant_submit_application();
-      addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+      addStage(WhenPickApplicationsByFeeStatus.class).and().I_pick_unpaid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
       then().application_process_cannot_be_proceeded();
       
       }
@@ -53,7 +53,7 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
           given().I_am_a_CPS_administrator_in_current_intake_session()
           .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
           when().I_fill_in_application().and().applicant_submit_application();
-          addStage(WhenIPickPaidOrUnpaidStatus.class).and().I_pick_paid_status_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
+          addStage(WhenPickApplicationsByFeeStatus.class).and().I_pick_paid_applications();
           addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_in_intake_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
           then().registration_is_matriculated();
 
