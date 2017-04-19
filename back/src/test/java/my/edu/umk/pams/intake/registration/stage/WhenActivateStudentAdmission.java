@@ -41,7 +41,7 @@ public class WhenActivateStudentAdmission extends Stage<WhenActivateStudentAdmis
 			String intakeSession) {
 		admissionService.registerCandidates(intake, candidates);
 		for (InCandidate candidate : candidates) {
-			LOG.debug("candidate {}'s registration status : {} ", candidate.getName(), candidate.isRegistration());
+			LOG.debug("candidate {}'s registration status : {} ", candidate.getName(), candidate.getRegistration());
 
 		}
 

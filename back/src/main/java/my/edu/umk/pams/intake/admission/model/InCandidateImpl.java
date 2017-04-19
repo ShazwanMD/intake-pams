@@ -175,7 +175,7 @@ public class InCandidateImpl implements InCandidate {
     }
 
     @Override
-    public boolean isRegistration() {
+    public boolean getRegistration() {
 		return registration;
 	}
 

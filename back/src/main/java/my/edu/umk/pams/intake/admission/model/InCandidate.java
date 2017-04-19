@@ -54,7 +54,7 @@ public interface InCandidate extends InMetaObject {
 
     void setSupervisorSelection(InSupervisorOffering offering);
 
-	boolean isRegistration();
+	boolean getRegistration();
 
 	void setRegistration(boolean registration);
 }
