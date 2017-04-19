@@ -42,17 +42,22 @@ public class WhenIPickPaidOrUnpaidStatus extends Stage<WhenIPickPaidOrUnpaidStat
     	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
 		Assert.notNull(intakeApplication, "applications cannot be empty");
     	
-    	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByPaidStatus(intake, (true));
-    		//	findIntakeApplications(intakeApplication.isPaid(true));
-    	for (InIntakeApplication application : applications) {
-    		
+    	List<InIntakeApplication> paidApplications = applicationService.findIntakeApplicationsByPaidStatus(intake, true);
+    	Assert.notEmpty(paidApplications, "paidApplications cannot be empty");
+    	Assert.isTrue(paidApplications.size() == 2, "paidApplications count must be exactly 2");
+
+    	for (InIntakeApplication application : paidApplications) {
     		LOG.debug("paid applications : {}",application.isPaid());
-			
+        	Assert.isTrue(application.isPaid(), "application cannot be unpaid");
+
+        	String expectedIdentityNo = identityNo;
+        	String foundIdentityNo = application.getApplicant().getIdentityNo();
+
+			String message = "Expecting identityNo " + identityNo + " found " + foundIdentityNo;
+			Assert.isTrue(identityNo.equals(foundIdentityNo), message);
 		}
 
-//	Assert.isTrue(intakeApplication.isPaid(), "Payment is not received");
-//	    LOG.debug("intake application payment status : {} ", intakeApplication.isPaid());
-  	return self();
+  		return self();
     }
 
 
