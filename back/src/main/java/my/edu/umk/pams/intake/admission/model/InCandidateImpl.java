@@ -184,7 +184,7 @@ public class InCandidateImpl implements InCandidate {
 		this.registration = registration;
 	}
 
-	public boolean isAcception() {
+	public boolean getAcception() {
 		return acception;
 	}
 
