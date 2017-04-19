@@ -386,4 +386,15 @@ public class ApplicationServiceImpl implements ApplicationService {
     public boolean hasResult(InIntakeApplication application, InResultType resultType) {
         return intakeApplicationDao.hasResult(application, resultType);
     }
+
+	@Override
+	public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean Paid) {
+		 return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, Paid);
+	}
+	
+	@Override
+	public boolean isPaid(InIntakeApplication application) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

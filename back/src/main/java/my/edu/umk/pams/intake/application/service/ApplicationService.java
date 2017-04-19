@@ -111,6 +111,8 @@ public interface ApplicationService {
     List<InIntakeApplication> findIntakeApplicationsOrderedByMerit(InIntake intake);
 
     List<InIntakeApplication> findIntakeApplicationsOrderedByRank(InIntake intake);
+    
+    List<InIntakeApplication> findIntakeApplicationsByPaidStatus (InIntake intake, Boolean Paid);
 
     List<InResult> findResults(InIntakeApplication application);
 
@@ -139,6 +141,8 @@ public interface ApplicationService {
     boolean hasResult(InIntakeApplication application, InResultType resultType);
 
     boolean hasEducation(InIntakeApplication application);
+    
+    boolean isPaid(InIntakeApplication application);
 
     boolean hasEmployment(InIntakeApplication application);
 
