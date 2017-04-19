@@ -3,8 +3,11 @@ package my.edu.umk.pams.intake.registration.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -15,15 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @JGivenStage
-public class WhenActivateStudentAdmission extends Stage<WhenActivateStudentAdmission> {
+public class ThenStudentRegistrationIsConfirmed extends Stage<ThenStudentRegistrationIsConfirmed> {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenActivateStudentAdmission.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ThenStudentRegistrationIsConfirmed.class);
 
 	@Autowired
 	private AdmissionService admissionService;
-
-    @ExpectedScenarioState
-    List<InIntakeApplication>  applications;
     
     @Autowired
     ApplicationService applicationService;
@@ -36,16 +36,19 @@ public class WhenActivateStudentAdmission extends Stage<WhenActivateStudentAdmis
     
 	@ExpectedScenarioState
     private List<InCandidate> candidates;
+
 	
-	public WhenActivateStudentAdmission I_want_to_activate_student_during_registration_$(String identityNo,
-			String intakeSession) {
+	public ThenStudentRegistrationIsConfirmed student_registration_is_confirmed() {
 		
-		admissionService.registerCandidates(intake, candidates);
 		for (InCandidate candidate : candidates) {
-			LOG.debug("candidate {}'s registration status : {} ", candidate.getName(), candidate.getRegistration());
-
+            
+			Assert.notNull(candidate.getRegistration());
+			LOG.debug("candidates {} are confirmed to be registered : {} ", candidate.getName(), candidate.getRegistration());
+			
 		}
-
+		
 		return self();
 	}
+		 
+
 }
