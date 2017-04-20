@@ -14,8 +14,8 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
-import my.edu.umk.pams.intake.application.stage.WhenPayForProcessingFee;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenSubmitPaymentInfo;
 import my.edu.umk.pams.intake.registration.stage.WhenMakePaymentForStudyFee;
@@ -23,6 +23,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenMakePaymentForStudyFee;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As(" As a selected applicant, I want to make a payment for study fees, so that I can submit the payment info to the bursary")
 public class US_IN_RGN_5004  extends SpringScenarioTest<GivenIAmCandidate,
 WhenIWantToFillAllRequiredInformation,ThenSubmitPaymentInfo> {

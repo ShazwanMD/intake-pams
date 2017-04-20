@@ -12,6 +12,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.admission.stage.ThenICanApprovedTheirApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenFillAllInformation;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableApplicants;
@@ -20,6 +21,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Admission")
 @As("As MGSEB administrator, I want to select suitable applicants, so that i can approved their application")
 public class US_IN_AMS_2003 extends
         SpringScenarioTest<GivenIAmMGSEBAdministrator, 

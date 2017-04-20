@@ -4,6 +4,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmInternationalOfficer;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.admission.stage.ThenApplicationIsInternational;
 import my.edu.umk.pams.intake.admission.stage.WhenApplicationSetAsInternational;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Admission")
 @As("As an International Officer, I want to declare international student id number, so that I can identify their record")
 public class US_IN_AMS_2200 extends SpringScenarioTest<GivenIAmInternationalOfficer,
         WhenApplicationSetAsInternational,

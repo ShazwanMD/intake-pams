@@ -15,6 +15,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.registration.stage.ThenAlertAnyChanges;
 import my.edu.umk.pams.intake.registration.stage.WhenReceiveConfirmationEmailForRegistration;
 import my.edu.umk.pams.intake.application.stage.WhenISubmitApplication;
@@ -26,6 +27,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As a selected applicant, I want to receive notification on offering via email broadcast so that I can be alert of any changes")
 public class US_IN_RGN_5000 extends SpringScenarioTest <GivenIAmCandidate, WhenIWantToFillAllRequiredInformation, ThenAlertAnyChanges>{
 	
