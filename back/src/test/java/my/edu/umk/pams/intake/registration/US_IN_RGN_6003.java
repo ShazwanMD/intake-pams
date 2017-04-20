@@ -12,6 +12,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmRegistrar;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenProceedRegistrationForSelectedApplicants;
 import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
@@ -21,6 +22,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenIPullSelectedApplicantsDeta
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As( "As a registrar, I want to pull up information on selected applicant's given name or ic number or bill presentment number "
 	+ "so that I can proceed with the selected applicants registration progress")
 public class US_IN_RGN_6003 extends

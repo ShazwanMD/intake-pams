@@ -13,6 +13,7 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -22,6 +23,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenApplicantHasReferee;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As a CPS academic Administrator, I want to know applicant's referee's educational background, so that i can process the application")
 
 public class US_IN_RGN_3004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToFillAllRequiredInformation, ThenICanSubmitMyApplication>{

@@ -13,6 +13,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenProceedCandidateRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorOfferToCandidate;
@@ -24,6 +25,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As(" As a selected applicant, I want to accept the offer, so that I can proceed with my registration")
 public class US_IN_RGN_5003 extends SpringScenarioTest<GivenIAmCandidate,
         WhenPrepareApplicationSubmission,ThenProceedCandidateRegistration> {

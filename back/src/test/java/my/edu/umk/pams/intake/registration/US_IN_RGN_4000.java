@@ -22,7 +22,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenIVerifySponsorshipStatus;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@Submodule("Application")
+@Submodule("Registration")
 @As("As a MGSEB academic Administrator, I want to view applicant that have sponsorship or not so that i can proceed the applicant's registration")
 
 public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenPrepareApplicationSubmission, ThenICanProceedRegistration> {

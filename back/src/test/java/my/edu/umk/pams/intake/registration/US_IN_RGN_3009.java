@@ -9,10 +9,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
@@ -22,6 +22,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As a CPS academic administrator, I want to receive proof of payment for matriculation so that I can proceed to the applicant's registration.")
 public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator,WhenPrepareApplicationSubmission, ThenICanProceedRegistration>{
   
