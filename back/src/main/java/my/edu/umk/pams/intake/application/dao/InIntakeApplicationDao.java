@@ -147,5 +147,5 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
 	void addReferee(InIntakeApplication application, InReferee referee, InUser currentUser);
 
-	List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean Paid);
+	List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
 }
