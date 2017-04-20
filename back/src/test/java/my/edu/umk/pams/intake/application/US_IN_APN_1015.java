@@ -13,8 +13,8 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyWorkingExperience;
 import my.edu.umk.pams.intake.application.stage.ThenRegistrationIsComplete;
 import my.edu.umk.pams.intake.application.stage.WhenFillParentDetails;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -24,6 +24,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a applicant, I want to fill in the parent details(guardian), so that the registration will be complete.")
 public class US_IN_APN_1015 extends SpringScenarioTest<GivenIAmApplicant,
 														WhenIWantToFillAllRequiredInformation,

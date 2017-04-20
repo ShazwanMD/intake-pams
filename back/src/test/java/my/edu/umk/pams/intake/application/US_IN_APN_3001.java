@@ -13,6 +13,7 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenSubmitTheProcessingFeeReceipt;
 import my.edu.umk.pams.intake.application.stage.WhenGeneratePayableProcessingFeeReceipt;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -21,6 +22,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a bursary, I want to generate payable processing fees receipt, so that I can submit the receipt")
 public class US_IN_APN_3001 extends SpringScenarioTest<GivenIAmBursary, WhenGeneratePayableProcessingFeeReceipt, ThenSubmitTheProcessingFeeReceipt>{
 

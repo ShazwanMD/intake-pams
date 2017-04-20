@@ -12,6 +12,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenMyApplicationIsUpdated;
 import my.edu.umk.pams.intake.application.stage.WhenISubmitApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIUpdateInformationFurther;
@@ -22,6 +23,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a selected applicant, I want to be able to key in my information further so that I can add more details to strengthen my application")
 public class US_IN_APN_2000 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToFillAllRequiredInformation, ThenMyApplicationIsUpdated>{
 
