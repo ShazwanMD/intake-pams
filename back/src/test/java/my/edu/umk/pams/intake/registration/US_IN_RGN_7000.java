@@ -12,15 +12,15 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmInternationalOfficer;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.registration.stage.ThenProceedRegistrationForSelectedApplicants;
 import my.edu.umk.pams.intake.registration.stage.ThenValidateTheApplication;
-import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenViewApplicationWithInternationalAcademicQualification;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As an International Officer, "
 		+ "I want to view applications with an international academic qualification, "
 		+ "so that I can validate the application")
