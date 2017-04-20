@@ -11,7 +11,7 @@ import {StoreModule, combineReducers, ActionReducer} from "@ngrx/store";
 
 import {AppComponent} from './app.component';
 import {MainComponent} from './main/main.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
+import {DashboardPage} from './dashboard/dashboard.page';
 import {LoginComponent} from './login/login.component';
 import {appRoutes, appRoutingProviders} from './app.routes';
 
@@ -34,6 +34,7 @@ import {
   INITIAL_REGISTRATION_STATE
 } from "./registration/index";
 import {centreModuleReducers, INITIAL_CENTRE_STATE, CentreModuleState, CentreModule} from "./centre/index";
+import {DashboardModule} from "./dashboard/index";
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -78,7 +79,6 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   declarations: [
     AppComponent,
     MainComponent,
-    DashboardComponent,
     LoginComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
@@ -97,6 +97,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 
     StoreModule.provideStore(applicationReducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    DashboardModule.forRoot(),
     CentreModule.forRoot(),
     PolicyModule.forRoot(),
     ApplicationModule.forRoot(),

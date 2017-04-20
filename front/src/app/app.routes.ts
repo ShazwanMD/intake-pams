@@ -7,12 +7,14 @@ import {PolicyModuleRoutes} from "./policy/policy-module.routes";
 import {ApplicationModuleRoutes} from "./application/application-module.routes";
 import {AdmissionModuleRoutes} from "./admission/admission-module.routes";
 import {CentreModuleRoutes} from "./centre/centre-module.routes";
+import {DashboardModuleRoutes} from "./dashboard/dashboard-module.routes";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {
     path: '', component: MainComponent,
     children: [
+      ...DashboardModuleRoutes,
       ...RegistrationModuleRoutes,
       ...PolicyModuleRoutes,
       ...ApplicationModuleRoutes,
