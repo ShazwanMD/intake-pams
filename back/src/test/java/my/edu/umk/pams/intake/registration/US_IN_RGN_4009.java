@@ -23,6 +23,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Registration")
+@Issue("PAMI-93")
 @As("As a MGSEB academic administrator, "
 		+ "I want to receive proof of payment for matriculation "
 		+ "so that I can proceed to the applicant�s registration")
@@ -37,8 +38,7 @@ public class US_IN_RGN_4009 extends SpringScenarioTest <GivenIAmMGSEBAdministrat
      private static final String IDENTITY_NO = "248674";
 
      @Test
-     @Rollback
-     @Issue("PAMI-93")
+     @Rollback 
      public void unpaid() {
     	 given().I_am_a_MGSEB_administrator_in_current_intake_session()
          .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);

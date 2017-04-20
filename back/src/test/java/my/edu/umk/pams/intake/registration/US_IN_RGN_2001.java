@@ -4,6 +4,7 @@ package my.edu.umk.pams.intake.registration;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.WhenISubmitApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -31,6 +32,7 @@ public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, WhenCo
 
     @Test
     @Rollback
+    @Issue("PAMI-72")
     public void scenario1() {
         given().I_am_an_applicant_in_current_intake_session();
             addStage(GivenIncompleteApplication.class).and().i_drafted_an_application();
