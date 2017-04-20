@@ -24,7 +24,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenApplicantHasReferee;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Registration")
-@As("As a CPS academic Administrator, I want to know applicant's referee's educational background, so that i can process the application")
+@As("As a CPS academic Administrator, I want to know applicant's referee's occupation background, so that i can process the application")
 
 public class US_IN_RGN_3004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToFillAllRequiredInformation, ThenICanSubmitMyApplication>{
 
