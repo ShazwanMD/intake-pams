@@ -4,6 +4,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
 import my.edu.umk.pams.intake.policy.stage.WhenIEnterApplicationResult;
@@ -21,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-@Issue("PAMI-8")
+@Submodule("Policy")
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a CPS academic administration, I want to setup competencies matrix for an intake so that I can identify eligible applicants")
 public class US_IN_PLC_2002 extends
@@ -30,10 +31,9 @@ public class US_IN_PLC_2002 extends
                 ThenICanIdentifyEligibleApplicants> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_2002.class);
-    private String referenceNo;
-
     @Test
     @Rollback
+    @Issue("PAMI-8")
     public void testScenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().I_setup_competencies_matrix();
