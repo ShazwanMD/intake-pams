@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.registration;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmAnonymous;
+import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.US_IN_PLC_1001;
@@ -22,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Registration")
+@Issue("PAMI-70")
 @As("As an anonymous, I want to register, so that I can login as an applicant")
 public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIRegister, ThenICanLogIn> {
 
