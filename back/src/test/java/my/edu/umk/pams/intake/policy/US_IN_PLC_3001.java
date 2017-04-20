@@ -4,6 +4,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanViewTheStudyCenter;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddStudyCenterInIntake;
@@ -20,12 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Policy")
 @As("As a MGSEB Academic Administrator, I want to initiate an intake by selecting a session, campus/site and offered program, so that the applicant can notice the intake session")
 public class US_IN_PLC_3001 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIAddStudyCenterInIntake, ThenICanViewTheStudyCenter> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3001.class);
-    private String referenceNo;
-
     @Test
     @Issue("PAMI-14")
     @Rollback

@@ -6,6 +6,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIDontPayProccessingFee;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddPromoCode;
@@ -22,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Policy")
 @As("As a CPS academic Administrator, I want to create a promo code for the offered applicant so that I can excuse applicant for pay the processing fee")
 public class US_IN_PLC_2005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddPromoCode, ThenIDontPayProccessingFee> {
 

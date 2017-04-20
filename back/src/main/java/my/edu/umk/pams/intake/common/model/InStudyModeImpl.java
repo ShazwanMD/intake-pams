@@ -20,6 +20,10 @@ public class InStudyModeImpl implements InStudyMode {
     private String code;
 
     @NotNull
+    @Column(name = "PREFIX", nullable = false)
+    private String prefix;
+
+    @NotNull
     @Column(name = "DESCRIPTION_MS", nullable = false)
     private String descriptionMs;
     
@@ -27,10 +31,6 @@ public class InStudyModeImpl implements InStudyMode {
     @Column(name = "DESCRIPTION_EN", nullable = false)
     private String descriptionEn;
     
-    @NotNull
-    @Column(name = "PREFIX", nullable = false)
-    private String prefix;
-
     @Embedded
     private InMetadata metadata;
 
@@ -54,6 +54,16 @@ public class InStudyModeImpl implements InStudyMode {
     }
 
     @Override
+    public String getPrefix() {
+        return prefix;
+    }
+
+    @Override
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    @Override
     public String getDescriptionMs() {
         return descriptionMs;
     }
@@ -63,10 +73,22 @@ public class InStudyModeImpl implements InStudyMode {
         this.descriptionMs = descriptionMs;
     }
 
+    @Override
+    public String getDescriptionEn() {
+        return descriptionEn;
+    }
+
+    @Override
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+
+    @Override
     public InMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }
@@ -76,23 +98,4 @@ public class InStudyModeImpl implements InStudyMode {
         return InStudyMode.class;
     }
 
-    @Override
-	public String getDescriptionEn() {
-		return descriptionEn;
-	}
-
-    @Override
-	public void setDescriptionEn(String descriptionEn) {
-		this.descriptionEn = descriptionEn;
-	}
-
-    @Override
-	public String getPrefix() {
-		return prefix;
-	}
-
-    @Override
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
-	}
 }

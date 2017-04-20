@@ -15,6 +15,10 @@ public interface InStudyMode extends InMetaObject{
 
     void setCode(String code);
 
+    String getPrefix();
+
+    void setPrefix(String prefix);
+
     String getDescriptionMs();
 
     void setDescriptionMs(String descriptionMs);
@@ -23,7 +27,4 @@ public interface InStudyMode extends InMetaObject{
 
 	void setDescriptionEn(String descriptionEn);
 
-	String getPrefix();
-
-	void setPrefix(String prefix);
 }

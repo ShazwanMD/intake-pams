@@ -12,6 +12,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanDetermineTheLimitOfSupervisor;
 import my.edu.umk.pams.intake.policy.stage.WhenISetMaximumNumberOfSupervisor;
@@ -20,6 +21,7 @@ import my.edu.umk.pams.intake.policy.stage.WhenISetMaximumNumberOfSupervisor;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Policy")
 @As("As a MGSEB academic Administrator, I want to set the maximum number of supervisors for applicant so that I can determine the limit for applicant's supervisor")
 public class US_IN_PLC_3004 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
         													WhenISetMaximumNumberOfSupervisor,

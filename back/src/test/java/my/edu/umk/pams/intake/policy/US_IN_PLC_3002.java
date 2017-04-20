@@ -4,6 +4,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenICanIdentifyEligibleApplicants;
 import my.edu.umk.pams.intake.policy.stage.WhenISelectApplicant;
@@ -23,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Policy")
 @As("As a MGSEB academic administration, I want to setup competencies matrix for an intake so that I can identify eligible applicants")
 public class US_IN_PLC_3002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenISetupCompetenciesMatrix, ThenICanIdentifyEligibleApplicants> {
 

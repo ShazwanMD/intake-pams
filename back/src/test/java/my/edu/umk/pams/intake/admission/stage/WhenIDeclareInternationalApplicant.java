@@ -55,7 +55,7 @@ public class WhenIDeclareInternationalApplicant extends Stage<WhenIDeclareIntern
         intakeApplication.setOkuNo("S12223217");
         intakeApplication.setSchoolName("SchoolOfCalgary");
         
-        //international Student record //
+        //international Applicant record //
         intakeApplication.setPassportNo("A1234561240");
         intakeApplication.setPassportExpDate(Date.valueOf(LocalDate.of(2022, 10, 30)));
         intakeApplication.setVisaType(InVisaType.STUDENT);

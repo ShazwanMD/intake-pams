@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +30,8 @@ import java.util.Map;
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_REFERENCE_NO;
 import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
 
-@Service
+@Transactional
+@Service("policyService")
 public class PolicyServiceImpl implements PolicyService {
 
     private static final Logger LOG = LoggerFactory.getLogger(PolicyServiceImpl.class);
@@ -198,6 +200,11 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
+    public Task findIntakeTaskByTaskId(String taskId) {
+        return workflowService.findTask(taskId);
+    }
+
+    @Override
     public List<Task> findAssignedIntakeTasks(Integer offset, Integer limit) {
         return workflowService.findAssignedTasks(InIntake.class.getName(), offset, limit);
     }
@@ -312,6 +319,11 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public InIntake findIntakeBySessionAndCategory(InIntakeSession session, InProgramLevel category) {
         return intakeDao.findBySessionAndCategory(session, category);
+    }
+
+    @Override
+    public List<InIntake> findIntakes() {
+        return intakeDao.find();
     }
 
     @Override
