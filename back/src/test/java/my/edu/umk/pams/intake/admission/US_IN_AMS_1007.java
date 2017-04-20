@@ -13,8 +13,8 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.admission.stage.ThenApplicantChooseSupervisor;
 import my.edu.umk.pams.intake.admission.stage.WhenAssignSupervisorToApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -23,6 +23,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Admission")
 @As("As CPS academic Administrator, I want to assign supervisor to applicant, so that the applicants can choose their supervisor")
 public class US_IN_AMS_1007 extends SpringScenarioTest	<GivenIAmCPSAdministrator,
 															WhenAssignSupervisorToApplicant,

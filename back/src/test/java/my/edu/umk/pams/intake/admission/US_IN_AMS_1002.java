@@ -4,6 +4,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.admission.stage.ThenICanPreferredTheirApplicationt;
 import my.edu.umk.pams.intake.admission.stage.WhenFillAllInformation;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToPreSelectEligibleEndCapableApplicant;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Admission")
 @As("As CPS academic administrator, I want to pre-select eligible and capable applicants so that I can preferred their application")
 public class US_IN_AMS_1002 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, 

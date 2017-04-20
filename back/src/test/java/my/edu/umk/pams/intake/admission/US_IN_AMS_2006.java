@@ -13,6 +13,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.admission.stage.ThenUpdateReasonToApplicant;
 import my.edu.umk.pams.intake.admission.stage.WhenAddReasonForUnSuccessfulApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenSubmitApplication;
@@ -22,6 +23,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Admission")
 @As("As MGSEB academic Administrator, I want to add reason for unsuccessful application, so that the applicant can view the reason")
 
 public class US_IN_AMS_2006 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,

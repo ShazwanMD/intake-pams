@@ -10,6 +10,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.admission.stage.ThenCandidateCanProceedToNextSelectionPhase;
 import my.edu.umk.pams.intake.admission.stage.WhenFillAllInformation;
 import my.edu.umk.pams.intake.admission.stage.WhenIPreapproveCandidate;
@@ -18,6 +19,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Admission")
 @As("As MGSEB academic administrator, I want to preapprove a candidate so that the candidate can proceed to the next selection stage")
 public class US_IN_AMS_2000 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, 
 															WhenFillAllInformation, 

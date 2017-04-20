@@ -13,6 +13,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.registration.stage.ThenICanGradeApplicantResult;
@@ -21,15 +22,13 @@ import my.edu.umk.pams.intake.registration.stage.WhenICalculateMeritForIntakeApp
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As a MGSEB administrator, I want to start calculation of merit for all intake applications so that I can grade the applicant's result")
 public class US_IN_RGN_4001 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, 
 															WhenICalculateMeritForIntakeApplications, 
 																ThenICanGradeApplicantResult> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4001.class);
-
-    @Autowired
-    private RegistrationService registrationService;
 
     @Test
     @Rollback

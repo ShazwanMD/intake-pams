@@ -12,16 +12,17 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCandidate;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.WhenISubmitApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenAlertAnyChanges;
-import my.edu.umk.pams.intake.registration.stage.WhenReceiveConfirmationEmailForRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenReceiveNotificationOnRegistrationDate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As a selected applicant, I want to receive notification on registration date and itineraries so that I can be alert about my registration")
 public class US_IN_RGN_5001 extends SpringScenarioTest<GivenIAmCandidate,
 											WhenIWantToFillAllRequiredInformation,
