@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@Submodule("Application")
+@Submodule("Registration")
 @As("As an anonymous, I want to register, so that I can login as an applicant")
 public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIRegister, ThenICanLogIn> {
 
