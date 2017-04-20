@@ -106,6 +106,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "BID_STATUS")
     private InBidStatus bidStatus = InBidStatus.NEW;
 
+    @Column(name = "VERIFICATION_STATUS", nullable = false)
+    private boolean verification = false;
+    
+    
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_RESPONSE")
@@ -687,6 +691,17 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.attachments = attachments;
     }
 
+    @Override
+    public boolean getVerification() {
+		return verification;
+	}
+
+    @Override
+	public void setVerification(boolean verification) {
+		this.verification = verification;
+	}
+
+    
     @Override
     public InMetadata getMetadata() {
         return metadata;

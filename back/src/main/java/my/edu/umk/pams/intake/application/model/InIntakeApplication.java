@@ -207,5 +207,9 @@ public interface InIntakeApplication extends InMetaObject {
 	void setReferees(List<InReferee> referees);
 
 	List<InReferee> getReferees();
+
+	boolean getVerification();
+
+	void setVerification(boolean verification);
 }
 
