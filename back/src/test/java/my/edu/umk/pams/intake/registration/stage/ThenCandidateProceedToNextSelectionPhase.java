@@ -1,13 +1,12 @@
 package my.edu.umk.pams.intake.registration.stage;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 
 import java.util.List;
@@ -32,9 +31,11 @@ public class ThenCandidateProceedToNextSelectionPhase extends Stage<ThenCandidat
     @ExpectedScenarioState
     private InIntake intake; 
     
+    @ExpectedScenarioState
+    private List<InCandidate> candidates; 
+    
     public ThenCandidateProceedToNextSelectionPhase candidate_is_selected(String identityNo) {
     	Assert.notNull(intake, "intake cannot be null");
-		List<InCandidate> candidates = admissionService.findCandidates(intake);
     	Assert.notEmpty(candidates, "candidates cannot be empty");
 
     	for (InCandidate candidate : candidates) {
