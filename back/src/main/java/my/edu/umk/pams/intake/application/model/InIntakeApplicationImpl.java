@@ -34,9 +34,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "REFERENCE_NO", unique = true, nullable = false)
     private String referenceNo;
 
-    @Column(name = "ACCOUNT_NO")
-    private String accountNo;
-
     @NotNull
     @Column(name = "NAME", nullable = false)
     private String name;
@@ -151,7 +148,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @JoinColumn(name = "MARITAL_CODE_ID")
     private InMaritalCode maritalCode;
 
-
     @ManyToOne(targetEntity = InDependencyCodeImpl.class)
     @JoinColumn(name = "DEPENDENCY_CODE_ID")
     private InDependencyCode dependencyCode;
@@ -202,11 +198,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @OneToMany(targetEntity = InRefereeImpl.class, mappedBy = "application")
     private List<InReferee> referees;
 
-    //link with inFranchise
-    @OneToOne(targetEntity = InFranchiseImpl.class)
-    @JoinColumn(name = "IN_FRNSE_ID", nullable = true)
-    private InFranchise franchises;
-
     @OneToMany(targetEntity = InAttachmentImpl.class, mappedBy = "application")
     private List<InAttachment> attachments;
 
@@ -250,16 +241,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setReferenceNo(String referenceNo) {
         this.referenceNo = referenceNo;
-    }
-
-    @Override
-    public String getAccountNo() {
-        return accountNo;
-    }
-
-    @Override
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo;
     }
 
     @Override

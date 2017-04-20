@@ -34,7 +34,7 @@ public class US_IN_RGN_3000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Pending
     @Test
     @Rollback
-    @Issue("PAMI-95")
+    @Issue("PAMI-73")
     public void scenario1() {
     	//Test
         given().I_am_a_CPS_administrator_in_current_intake_session();

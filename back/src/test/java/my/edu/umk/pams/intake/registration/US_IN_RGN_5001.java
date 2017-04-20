@@ -33,7 +33,7 @@ public class US_IN_RGN_5001 extends SpringScenarioTest<GivenIAmCandidate,
 	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
 	
 	 @Test
-	 @Issue("PAMI-96")
+	 @Issue("PAMI-97")
 	 @Rollback
 	 public void scenario1()  {
 	
