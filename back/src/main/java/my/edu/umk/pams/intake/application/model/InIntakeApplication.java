@@ -33,10 +33,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setCredentialNo(String credentialNo);
 
-    String getAccountNo();
-
-    void setAccountNo(String accountNo);
-
     String getEmail();
 
     void setEmail(String email);
@@ -145,12 +141,12 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setSupervisorSelection(InSupervisorOffering SupervisorSelection);
 
-    // NOTE: international student
+    // NOTE: optional, international student
     String getPassportNo();
     
     void setPassportNo(String passportNo);
 
-    // NOTE: international student
+    // NOTE: optional, international student
     Date getPassportExpDate();
     
     void setPassportExpDate(Date passExpDate);
@@ -180,10 +176,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setGuarantors(List<InGuarantor> guarantors);
     
-   // List<InFranchise> getFranchises();
-    
-   // void setFranchises(List<InFranchise> franchises);
-
     List<InResult> getResults();
 
     void setResults(List<InResult> documents);

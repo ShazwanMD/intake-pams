@@ -20,38 +20,38 @@ import java.util.stream.Collectors;
 public class CommonTransformer {
 
     public StudyMode toStudyModeVo(InStudyMode e) {
-        StudyMode m = new StudyMode();
-        m.setId(e.getId());
-        m.setCode(e.getCode());
-        m.setDescriptionMs(e.getDescriptionMs());
-        m.setDescriptionEn(e.getDescriptionEn());
-        return m;
+        StudyMode vo = new StudyMode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        return vo;
     }
 
     public ProgramCode toProgramCodeVo(InProgramCode e) {
-        ProgramCode m = new ProgramCode();
-        m.setId(e.getId());
-        m.setCode(e.getCode());
-        m.setDescriptionMs(e.getDescriptionMs());
-        m.setDescriptionEn(e.getDescriptionEn());
-        return m;
+        ProgramCode vo = new ProgramCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        return vo;
     }
 
     public SupervisorCode toSupervisorCodeVo(InSupervisorCode e) {
-        SupervisorCode m = new SupervisorCode();
-        m.setId(e.getId());
-        m.setCode(e.getCode());
-        m.setDescriptionMs(e.getDescriptionMs());
-        m.setDescriptionEn(e.getDescriptionEn());
-        return m;
+        SupervisorCode vo = new SupervisorCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        return vo;
     }
 
     public SchoolCode toSchoolCodeVo(InSchoolCode e) {
-        SchoolCode m = new SchoolCode();
-        m.setId(e.getId());
-        m.setCode(e.getCode());
-        m.setDescription(e.getDescription());
-        return m;
+        SchoolCode vo = new SchoolCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescription(e.getDescription());
+        return vo;
     }
 
     public List<ProgramCode> toProgramCodeVos(List<InProgramCode> e) {

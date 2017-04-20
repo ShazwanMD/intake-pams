@@ -103,6 +103,13 @@ public class PolicyTransformer {
         return vo;
     }
 
+    public StudyModeOffering toStudyModeOfferingVo(InStudyModeOffering e) {
+        StudyModeOffering vo = new StudyModeOffering();
+        vo.setId(e.getId());
+        vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));
+        return vo;
+    }
+
     public List<IntakeTask> toIntakeTaskVos(List<Task> tasks) {
         return tasks.stream()
                 .map((task) -> toIntakeTaskVo(task))
