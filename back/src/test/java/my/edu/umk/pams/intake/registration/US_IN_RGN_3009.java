@@ -47,7 +47,6 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
       
       @Test
       @Rollback 
-      @Pending
       public void paid() {
 
           given().I_am_a_CPS_administrator_in_current_intake_session()

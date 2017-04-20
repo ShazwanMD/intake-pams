@@ -215,7 +215,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
                 "p.intake = :intake " +
-                "and p.paid =:Paid");
+                "and p.paid =:paid");
         query.setEntity("intake", intake);
         query.setBoolean("paid", paid);
         return (List<InIntakeApplication>) query.list();
