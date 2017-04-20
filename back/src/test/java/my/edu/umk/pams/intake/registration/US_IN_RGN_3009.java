@@ -23,7 +23,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Registration")
-@Issue("PAMI-86")
+@Issue("PAMI-82")
 @As("As a CPS academic administrator, I want to receive proof of payment for matriculation so that I can proceed to the applicant's registration.")
 public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator,WhenPrepareApplicationSubmission, ThenICanProceedRegistration>{
   
