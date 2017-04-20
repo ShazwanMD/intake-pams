@@ -1,3 +1,4 @@
+
 create table IN_ACTR (
   ID int8 not null,
   ACTOR_TYPE int4,
@@ -176,6 +177,7 @@ create table IN_CMPS_CODE (
 
 create table IN_CNDT (
   ID int8 not null,
+  ACCEPTION_STATUS boolean not null,
   EMAIL varchar(255) not null,
   IDENTITY_NO varchar(255) not null,
   MATRIC_NO varchar(255),
@@ -187,14 +189,13 @@ create table IN_CNDT (
   M_ID int8,
   M_ST int4,
   NAME varchar(255) not null,
+  REGISTRATION_STATUS boolean not null,
   STATUS int4 not null,
   STUDY_MODE_ID bytea not null,
   APPLICANT_ID int8,
   INTAKE_ID int8,
   PROGRAM_SELECTION_ID int8,
   SUPERVISOR_SELECTION_ID int8,
-  REGISTRATION_STATUS boolean,
-  ACCEPT_STATUS boolean,
   primary key (ID)
 );
 
@@ -961,6 +962,10 @@ create table IN_RFRE (
   M_ID int8,
   M_ST int4,
   NAME varchar(255) not null,
+  OCCUPATION varchar(255) not null,
+  OFFICE_ADDRS varchar(255) not null,
+  PHONE_NO varchar(255) not null,
+  REFEREE_TYPE int4,
   APPLICATION_ID int8,
   primary key (ID)
 );

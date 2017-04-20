@@ -53,7 +53,7 @@ public class WhenApplicationSetAsInternational extends Stage<WhenApplicationSetA
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
-        //international Student record //
+        //international Applicant record //
         intakeApplication.setPassportNo("A1234567890");
         intakeApplication.setPassportExpDate(Date.valueOf(LocalDate.of(2020, 12, 31)));
         intakeApplication.setVisaType(InVisaType.STUDENT);
