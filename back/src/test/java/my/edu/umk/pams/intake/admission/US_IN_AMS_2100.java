@@ -12,18 +12,17 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.admission.stage.ThenStartIntakeApplication;
 import my.edu.umk.pams.intake.admission.stage.WhenSelectProgramFromList;
-import my.edu.umk.pams.intake.application.US_IN_APN_5005;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
-import my.edu.umk.pams.intake.application.stage.WhenIWantToFillinMultipleInformationOnMyExtraCurricularExperience;
-import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Admission")
 @As("As a applicant, I want to select a program from a list of available programs, so that I can start my intake application")
 public class US_IN_AMS_2100 extends SpringScenarioTest<GivenIAmApplicant,
 WhenIWantToFillAllRequiredInformation,
