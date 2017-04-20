@@ -961,6 +961,10 @@ create table IN_RFRE (
   M_ID int8,
   M_ST int4,
   NAME varchar(255) not null,
+  OFFICE_ADDRS varchar(255) not null,
+  OCCUPATION varchar(255) not null,
+  PHONE_NO varchar(255) not null,
+  REFEREE_TYPE int8 not null,
   APPLICATION_ID int8,
   primary key (ID)
 );

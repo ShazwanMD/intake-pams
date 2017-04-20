@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service("commonService")
 @Transactional
+@Service("commonService")
 public class CommonServiceImpl implements CommonService {
 
     @Autowired
