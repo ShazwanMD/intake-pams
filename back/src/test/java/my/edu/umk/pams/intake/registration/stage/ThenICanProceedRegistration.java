@@ -45,19 +45,19 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
 
     @ExpectedScenarioState
     private InIntakeApplication application2;
-    
+
     public ThenICanProceedRegistration I_can_process_applicant_registration() {
-    	
-    	List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
-    	for (InIntakeApplication intakeApplication : applications) {
-    		
-            Assert.notNull(intakeApplication, "intakeApplication cannot be null");
-            Assert.isTrue(InBidStatus.SELECTED.equals(intakeApplication.getBidStatus()), "Bid Status does not equal SELECTED");
+    	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByPaidStatus(intake, true);
+        Assert.notEmpty(applications, "applications cannot be empty");
+
+        InBidStatus expected = InBidStatus.SUBMITTED;
+        for (InIntakeApplication intakeApplication : applications) {
+            InBidStatus found = intakeApplication.getBidStatus();
+            String message = "Bid Status does not equal " + expected;
+            Assert.isTrue(expected.equals(found), message);
+
             Assert.isTrue(intakeApplication.isPaid(), "intakeApplication cannot be unpaid");
-//            intakeApplication.setBidStatus(InBidStatus.SELECTED);
-        	LOG.debug("intake status : {} ", intakeApplication.getBidStatus());	
 		}
-    	
 
         return self();
     }
