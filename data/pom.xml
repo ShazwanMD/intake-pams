@@ -283,6 +283,7 @@
                                 <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile>
 
                                 <!--COMMON-->
+                                <srcFile>src/test/resources/data/IN_GRDT_CNTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_FCTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_STDY_MODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_LEVL.sql</srcFile>

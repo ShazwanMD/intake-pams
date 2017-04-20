@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.web.module.application.controller;
 
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
+import my.edu.umk.pams.intake.application.model.*;
+import my.edu.umk.pams.intake.web.module.application.vo.*;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +20,88 @@ public class ApplicationTransformer {
         vo.setReferenceNo(e.getReferenceNo());
         vo.setName(e.getName());
         vo.setCredentialNo(e.getCredentialNo());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    
+    public Guardian toGuardianVo(InGuardian e){
+        Guardian vo = new Guardian();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+    
+    public Guarantor toGuarantorVo(InGuarantor e){
+        Guarantor vo = new Guarantor();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+    
+    public Address toAddressVo(InAddress e){
+        Address vo = new Address();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public Contact toContactVo(InContact e){
+        Contact vo = new Contact();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public Attachment toAttachmentVo(InAttachment e){
+        Attachment vo = new Attachment();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+
+    public Education toEducationVo(InEducation e){
+        Education vo = new Education();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public Employment toEmploymentVo(InEmployment e){
+        Employment vo = new Employment();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public Involvement toInvolvementVo(InInvolvement e){
+        Involvement vo = new Involvement();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public Referee toRefereeVo(InReferee e){
+        Referee vo = new Referee();
+        vo.setId(e.getId());
+        // todo(uda): more props
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public Result toResultVo(InResult e){
+        Result vo = new Result();
+        vo.setId(e.getId());
         // todo(uda): more props
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;

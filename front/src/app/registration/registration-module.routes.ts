@@ -1,5 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
+import {RegistrationPage} from "./registration.page";
 
 
-export const PolicyModuleRoutes: Routes = [
+export const RegistrationModuleRoutes: Routes = [
+  {path: 'registration', component: RegistrationPage},
 ];

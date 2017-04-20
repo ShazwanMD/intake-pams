@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * @author PAMS
  */
-public class StudyMode extends MetaObject{
+public class StudyMode extends MetaObject {
     private String code;
     private String prefix;
     private String descriptionMs;

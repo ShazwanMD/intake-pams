@@ -220,15 +220,16 @@ public class PolicyServiceImpl implements PolicyService {
         map.put("intakeSession", intake.getSession());
         map.put("programLevel", intake.getProgramLevel());
         String refNo = systemService.generateFormattedReferenceNo(INTAKE_REFERENCE_NO, map);
-        intake.setReferenceNo(refNo);
-        LOG.debug("Processing application with refNo {}", new Object[]{refNo});
 
+        // save and process
+        intake.setReferenceNo(refNo);
         intakeDao.saveOrUpdate(intake, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(intake);
 
         // trigger workflow
         workflowService.processWorkflow(intake, prepareVariables(intake));
+        LOG.debug("Processing application with refNo {}", new Object[]{refNo});
         return refNo;
     }
 

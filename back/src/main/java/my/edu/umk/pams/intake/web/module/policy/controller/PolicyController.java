@@ -1,10 +1,14 @@
 package my.edu.umk.pams.intake.web.module.policy.controller;
 
+import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
+import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
+import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
+import my.edu.umk.pams.intake.web.module.common.vo.SupervisorCode;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
@@ -36,6 +40,9 @@ public class PolicyController {
 
     @Autowired
     private PolicyTransformer policyTransformer;
+
+    @Autowired
+    private CommonTransformer commonTransformer;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -90,7 +97,9 @@ public class PolicyController {
         intake.setDescription(vo.getDescription());
         intake.setStartDate(vo.getStarDate());
         intake.setEndDate(vo.getEndDate());
-        // todo(uda): more props
+        intake.setProjection(vo.getProjection());
+        intake.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
+        intake.setSession(policyService.findIntakeSessionById(vo.getIntakeSession().getId()));
         return new ResponseEntity<String>(policyService.startIntakeTask(intake), HttpStatus.OK);
     }
 
@@ -126,6 +135,29 @@ public class PolicyController {
         return new ResponseEntity<List<SupervisorOffering>>(policyTransformer
                 .toSupervisorOfferingVos(policyService.findSupervisorOfferings(intake)), HttpStatus.OK);
     }
+
+    // ==================================================================================================== //
+    //  PROGRAM CODES
+    // ==================================================================================================== //
+
+    @RequestMapping(value = "/faculty/{code}/programCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramCode>> findProgramCodes(@PathVariable String code) {
+        InFacultyCode facultyCode = commonService.findFacultyCodeByCode(code);
+        return new ResponseEntity<List<ProgramCode>>(commonTransformer
+                .toProgramCodeVos(commonService.findProgramCodes(facultyCode)), HttpStatus.OK);
+    }
+
+    // ==================================================================================================== //
+    //  SUPERVISOR CODES
+    // ==================================================================================================== //
+
+    @RequestMapping(value = "/faculty/{code}/supervisorCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorCode>> findSupervisorCodes(@PathVariable String code) {
+        InFacultyCode facultyCode = commonService.findFacultyCodeByCode(code);
+        return new ResponseEntity<List<SupervisorCode>>(commonTransformer
+                .toSupervisorCodeVos(commonService.findSupervisorCodes(facultyCode)), HttpStatus.OK);
+    }
+
 
     // ====================================================================================================
     // PRIVATE METHODS

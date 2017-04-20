@@ -1,0 +1,56 @@
+<td-layout-nav>
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>PAMS: Postgraduate Management System</span>
+    <span flex></span>
+  </div>
+  <td-layout-card-over>
+    <div layout="row" layout-align="start center">
+      <div>
+        <md-card-title>Applicant Registration</md-card-title>
+        <md-card-subtitle>Applicant Registration for Programs</md-card-subtitle>
+      </div>
+    </div>
+    <md-divider></md-divider>
+    <div layout="column" layout-md="row" class="inset" flex>
+      <form [formGroup]="registrationForm">
+        <div layout="row" class="pad-bottom" flex>
+          <md-input-container flex>
+            <input mdInput
+                   placeholder="Name"
+                   formControlName="name"
+                   flex/>
+          </md-input-container>
+        </div>
+        <div layout="row" class="pad-bottom" flex>
+          <md-input-container flex>
+            <input mdInput
+                   placeholder="NRIC/Passport"
+                   formControlName="identityNo"
+                   flex/>
+          </md-input-container>
+        </div>
+        <div layout="row" class="pad-bottom" flex>
+          <md-input-container flex>
+            <input mdInput
+                   placeholder="Email"
+                   formControlName="email"
+                   flex/>
+          </md-input-container>
+        </div>
+        <div layout="row" class="pad-bottom" flex>
+          <md-input-container flex>
+            <input mdInput
+                   placeholder="Password"
+                   formControlName="password"
+                   flex/>
+          </md-input-container>
+        </div>
+      </form>
+    </div>
+    <md-divider></md-divider>
+    <md-card-actions>
+      <button md-button color="primary" (click)="goBack()">Back</button>
+      <button md-button color="accent" (click)="register(registrationForm.value, registrationForm.valid)">Register</button>
+    </md-card-actions>
+  </td-layout-card-over>
+</td-layout-nav>

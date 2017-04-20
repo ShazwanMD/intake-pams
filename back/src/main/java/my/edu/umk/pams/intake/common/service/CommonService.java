@@ -1,10 +1,32 @@
 package my.edu.umk.pams.intake.common.service;
 
 import my.edu.umk.pams.intake.common.model.*;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 
 import java.util.List;
 
 public interface CommonService {
+
+    //====================================================================================================
+    // GRADUATE CENTRE
+    //====================================================================================================
+
+    InGraduateCentre findGraduateCentreById(Long id);
+
+    InGraduateCentre findGraduateCentreByCode(String code);
+
+    List<InGraduateCentre> findGraduateCentres();
+
+    List<InGraduateCentre> findGraduateCentres(String filter, Integer offset, Integer limit);
+
+    Integer countGraduateCentre(String filter);
+
+    void saveGraduateCentre(InGraduateCentre graduateCentre);
+
+    void updateGraduateCentre(InGraduateCentre graduateCentre);
+
+    void removeGraduateCentre(InGraduateCentre graduateCentre);
+
 
     //====================================================================================================
     // COUNTRY CODE
@@ -187,7 +209,6 @@ public interface CommonService {
 
     void removeBankCode(InBankCode bankCode);
 
-
     //====================================================================================================
     // PROGRAM CODE
     //====================================================================================================
@@ -196,15 +217,29 @@ public interface CommonService {
 
     InProgramCode findProgramCodeByCode(String code);
 
-    InProgramCode findProgramCodeByUpuCode(String upuCode);
-
     List<InProgramCode> findProgramCodes();
+
+    List<InProgramCode> findProgramCodes(InFacultyCode facultyCode);
+
+    List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre);
+
+    List<InProgramCode> findProgramCodes(InFacultyCode facultyCode, InProgramLevel programLevel);
+
+    List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre, InProgramLevel programLevel);
 
     List<InProgramCode> findProgramCodes(String filter, Integer offset, Integer limit);
 
     Integer countProgramCode();
 
     Integer countProgramCode(String filter);
+
+    Integer countProgramCode(InFacultyCode facultyCode);
+
+    Integer countProgramCode(InGraduateCentre graduateCentre);
+
+    Integer countProgramCode(InFacultyCode facultyCode, InProgramLevel programLevel);
+
+    Integer countProgramCode(InGraduateCentre graduateCentre, InProgramLevel programLevel);
 
     void saveProgramCode(InProgramCode programCode);
 
@@ -725,9 +760,13 @@ public interface CommonService {
 
     List<InSupervisorCode> findSupervisorCodes();
 
+    List<InSupervisorCode> findSupervisorCodes(InFacultyCode facultyCode);
+
     List<InSupervisorCode> findSupervisorCodes(String filter, Integer offset, Integer limit);
 
     Integer countSupervisorCode();
+
+    Integer countSupervisorCode(InFacultyCode facultyCode);
 
     Integer countSupervisorCode(String filter);
 
@@ -736,8 +775,8 @@ public interface CommonService {
     void updateSupervisorCode(InSupervisorCode supervisorCode);
 
     void removeSupervisorCode(InSupervisorCode supervisorCode);
-    
-  //====================================================================================================
+
+    //====================================================================================================
     // STUDY MODE
     //====================================================================================================
 

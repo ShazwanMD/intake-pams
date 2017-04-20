@@ -1,17 +1,24 @@
 import {Routes, RouterModule} from '@angular/router';
 
 import {MainComponent} from './main/main.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
+import {RegistrationModuleRoutes} from "./registration/registration-module.routes";
+import {PolicyModuleRoutes} from "./policy/policy-module.routes";
+import {ApplicationModuleRoutes} from "./application/application-module.routes";
+import {AdmissionModuleRoutes} from "./admission/admission-module.routes";
+import {CentreModuleRoutes} from "./centre/centre-module.routes";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {
-    path: '', component: MainComponent, children: [{
-    component: DashboardComponent,
-    path: '',
-  },
-  ]
+    path: '', component: MainComponent,
+    children: [
+      ...RegistrationModuleRoutes,
+      ...PolicyModuleRoutes,
+      ...ApplicationModuleRoutes,
+      ...AdmissionModuleRoutes,
+      ...CentreModuleRoutes,
+    ]
   },
 ];
 

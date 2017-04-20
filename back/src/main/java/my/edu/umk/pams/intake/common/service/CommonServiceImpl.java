@@ -2,7 +2,8 @@ package my.edu.umk.pams.intake.common.service;
 
 import my.edu.umk.pams.intake.common.dao.*;
 import my.edu.umk.pams.intake.common.model.*;
-import my.edu.umk.pams.intake.util.Util;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
+import my.edu.umk.pams.intake.security.service.SecurityService;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ import java.util.List;
 @Transactional
 @Service("commonService")
 public class CommonServiceImpl implements CommonService {
+
+    @Autowired
+    private InGraduateCentreDao graduateCentreDao;
 
     @Autowired
     private InCountryCodeDao countryCodeDao;
@@ -117,12 +121,63 @@ public class CommonServiceImpl implements CommonService {
     private InSupervisorCodeDao supervisorCodeDao;
     
     @Autowired
+    private SecurityService securityService;
+
+    @Autowired
     private SessionFactory sessionFactory;
+
+    //====================================================================================================
+    // GRADUATE CENTRE
+    //====================================================================================================
+
+    @Override
+    public InGraduateCentre findGraduateCentreById(Long id) {
+        return graduateCentreDao.findById(id);
+    }
+
+    @Override
+    public InGraduateCentre findGraduateCentreByCode(String code) {
+        return graduateCentreDao.findByCode(code);
+    }
+
+    @Override
+    public List<InGraduateCentre> findGraduateCentres() {
+        return graduateCentreDao.find();
+    }
+
+    @Override
+    public List<InGraduateCentre> findGraduateCentres(String filter, Integer offset, Integer limit) {
+        return graduateCentreDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countGraduateCentre(String filter) {
+        return graduateCentreDao.count(filter);
+    }
+
+
+    @Override
+    public void saveGraduateCentre(InGraduateCentre graduateCentre) {
+        graduateCentreDao.save(graduateCentre, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateGraduateCentre(InGraduateCentre graduateCentre) {
+        graduateCentreDao.update(graduateCentre, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeGraduateCentre(InGraduateCentre graduateCentre) {
+        graduateCentreDao.remove(graduateCentre, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
 
     //====================================================================================================
     // COUNTRY CODE
     //====================================================================================================
-
 
     @Override
     public InCountryCode findCountryCodeById(Long id) {
@@ -147,19 +202,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveCountryCode(InCountryCode countryCode) {
-        countryCodeDao.save(countryCode, Util.getCurrentUser());
+        countryCodeDao.save(countryCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateCountryCode(InCountryCode countryCode) {
-        countryCodeDao.update(countryCode, Util.getCurrentUser());
+        countryCodeDao.update(countryCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeCountryCode(InCountryCode countryCode) {
-        countryCodeDao.remove(countryCode, Util.getCurrentUser());
+        countryCodeDao.remove(countryCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -219,19 +274,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveStateCode(InStateCode stateCode) {
-        stateCodeDao.save(stateCode, Util.getCurrentUser());
+        stateCodeDao.save(stateCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateStateCode(InStateCode stateCode) {
-        stateCodeDao.update(stateCode, Util.getCurrentUser());
+        stateCodeDao.update(stateCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeStateCode(InStateCode stateCode) {
-        stateCodeDao.remove(stateCode, Util.getCurrentUser());
+        stateCodeDao.remove(stateCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -274,19 +329,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveDistrictCode(InDistrictCode districtCode) {
-        districtCodeDao.save(districtCode, Util.getCurrentUser());
+        districtCodeDao.save(districtCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateDistrictCode(InDistrictCode districtCode) {
-        districtCodeDao.update(districtCode, Util.getCurrentUser());
+        districtCodeDao.update(districtCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeDistrictCode(InDistrictCode districtCode) {
-        districtCodeDao.remove(districtCode, Util.getCurrentUser());
+        districtCodeDao.remove(districtCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -327,19 +382,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveCityCode(InCityCode cityCode) {
-        cityCodeDao.save(cityCode, Util.getCurrentUser());
+        cityCodeDao.save(cityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateCityCode(InCityCode cityCode) {
-        cityCodeDao.update(cityCode, Util.getCurrentUser());
+        cityCodeDao.update(cityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeCityCode(InCityCode cityCode) {
-        cityCodeDao.remove(cityCode, Util.getCurrentUser());
+        cityCodeDao.remove(cityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -385,19 +440,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveSubjectCode(InSubjectCode subjectCode) {
-        subjectCodeDao.save(subjectCode, Util.getCurrentUser());
+        subjectCodeDao.save(subjectCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateSubjectCode(InSubjectCode subjectCode) {
-        subjectCodeDao.update(subjectCode, Util.getCurrentUser());
+        subjectCodeDao.update(subjectCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeSubjectCode(InSubjectCode subjectCode) {
-        subjectCodeDao.remove(subjectCode, Util.getCurrentUser());
+        subjectCodeDao.remove(subjectCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -442,19 +497,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveGradeCode(InGradeCode gradeCode) {
-        gradeCodeDao.save(gradeCode, Util.getCurrentUser());
+        gradeCodeDao.save(gradeCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateGradeCode(InGradeCode gradeCode) {
-        gradeCodeDao.update(gradeCode, Util.getCurrentUser());
+        gradeCodeDao.update(gradeCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeGradeCode(InGradeCode gradeCode) {
-        gradeCodeDao.remove(gradeCode, Util.getCurrentUser());
+        gradeCodeDao.remove(gradeCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -473,13 +528,28 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public InProgramCode findProgramCodeByUpuCode(String upuCode) {
-        return programCodeDao.findByUpuCode(upuCode);
+    public List<InProgramCode> findProgramCodes() {
+        return programCodeDao.find();
     }
 
     @Override
-    public List<InProgramCode> findProgramCodes() {
-        return programCodeDao.find();
+    public List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre) {
+        return programCodeDao.find(graduateCentre);
+    }
+
+    @Override
+    public List<InProgramCode> findProgramCodes(InFacultyCode facultyCode, InProgramLevel programLevel) {
+        return null;
+    }
+
+    @Override
+    public List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre, InProgramLevel programLevel) {
+        return null;
+    }
+
+    @Override
+    public List<InProgramCode> findProgramCodes(InFacultyCode facultyCode) {
+        return programCodeDao.find(facultyCode);
     }
 
     @Override
@@ -498,20 +568,40 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
+    public Integer countProgramCode(InFacultyCode facultyCode) {
+        return programCodeDao.count(facultyCode);
+    }
+
+    @Override
+    public Integer countProgramCode(InGraduateCentre graduateCentre) {
+        return programCodeDao.count(graduateCentre);
+    }
+
+    @Override
+    public Integer countProgramCode(InFacultyCode facultyCode, InProgramLevel programLevel) {
+        return null;
+    }
+
+    @Override
+    public Integer countProgramCode(InGraduateCentre graduateCentre, InProgramLevel programLevel) {
+        return null;
+    }
+
+    @Override
     public void saveProgramCode(InProgramCode programCode) {
-        programCodeDao.save(programCode, Util.getCurrentUser());
+        programCodeDao.save(programCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateProgramCode(InProgramCode programCode) {
-        programCodeDao.update(programCode, Util.getCurrentUser());
+        programCodeDao.update(programCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeProgramCode(InProgramCode programCode) {
-        programCodeDao.remove(programCode, Util.getCurrentUser());
+        programCodeDao.remove(programCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -556,19 +646,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveFieldCode(InFieldCode fieldCode) {
-        fieldCodeDao.save(fieldCode, Util.getCurrentUser());
+        fieldCodeDao.save(fieldCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateFieldCode(InFieldCode fieldCode) {
-        fieldCodeDao.update(fieldCode, Util.getCurrentUser());
+        fieldCodeDao.update(fieldCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeFieldCode(InFieldCode fieldCode) {
-        fieldCodeDao.remove(fieldCode, Util.getCurrentUser());
+        fieldCodeDao.remove(fieldCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -607,19 +697,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveGenderCode(InGenderCode genderCode) {
-        genderCodeDao.save(genderCode, Util.getCurrentUser());
+        genderCodeDao.save(genderCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateGenderCode(InGenderCode genderCode) {
-        genderCodeDao.update(genderCode, Util.getCurrentUser());
+        genderCodeDao.update(genderCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeGenderCode(InGenderCode genderCode) {
-        genderCodeDao.remove(genderCode, Util.getCurrentUser());
+        genderCodeDao.remove(genderCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -660,19 +750,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveBumiCode(InBumiCode bumiCode) {
-        bumiCodeDao.save(bumiCode, Util.getCurrentUser());
+        bumiCodeDao.save(bumiCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateBumiCode(InBumiCode bumiCode) {
-        bumiCodeDao.update(bumiCode, Util.getCurrentUser());
+        bumiCodeDao.update(bumiCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeBumiCode(InBumiCode bumiCode) {
-        bumiCodeDao.remove(bumiCode, Util.getCurrentUser());
+        bumiCodeDao.remove(bumiCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -713,19 +803,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveRaceCode(InRaceCode raceCode) {
-        raceCodeDao.save(raceCode, Util.getCurrentUser());
+        raceCodeDao.save(raceCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateRaceCode(InRaceCode raceCode) {
-        raceCodeDao.update(raceCode, Util.getCurrentUser());
+        raceCodeDao.update(raceCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeRaceCode(InRaceCode raceCode) {
-        raceCodeDao.remove(raceCode, Util.getCurrentUser());
+        raceCodeDao.remove(raceCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -765,19 +855,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveEthnicityCode(InEthnicityCode ethnicityCode) {
-        ethnicityCodeDao.save(ethnicityCode, Util.getCurrentUser());
+        ethnicityCodeDao.save(ethnicityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateEthnicityCode(InEthnicityCode ethnicityCode) {
-        ethnicityCodeDao.update(ethnicityCode, Util.getCurrentUser());
+        ethnicityCodeDao.update(ethnicityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeEthnicityCode(InEthnicityCode ethnicityCode) {
-        ethnicityCodeDao.remove(ethnicityCode, Util.getCurrentUser());
+        ethnicityCodeDao.remove(ethnicityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -819,19 +909,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveReligionCode(InReligionCode religionCode) {
-        religionCodeDao.save(religionCode, Util.getCurrentUser());
+        religionCodeDao.save(religionCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateReligionCode(InReligionCode religionCode) {
-        religionCodeDao.update(religionCode, Util.getCurrentUser());
+        religionCodeDao.update(religionCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeReligionCode(InReligionCode religionCode) {
-        religionCodeDao.remove(religionCode, Util.getCurrentUser());
+        religionCodeDao.remove(religionCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -876,19 +966,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveDisabilityCode(InDisabilityCode disabilityCode) {
-        disabilityCodeDao.save(disabilityCode, Util.getCurrentUser());
+        disabilityCodeDao.save(disabilityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateDisabilityCode(InDisabilityCode disabilityCode) {
-        disabilityCodeDao.update(disabilityCode, Util.getCurrentUser());
+        disabilityCodeDao.update(disabilityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeDisabilityCode(InDisabilityCode disabilityCode) {
-        disabilityCodeDao.remove(disabilityCode, Util.getCurrentUser());
+        disabilityCodeDao.remove(disabilityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -929,19 +1019,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveNationalityCode(InNationalityCode nationalityCode) {
-        nationalityCodeDao.save(nationalityCode, Util.getCurrentUser());
+        nationalityCodeDao.save(nationalityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateNationalityCode(InNationalityCode nationalityCode) {
-        nationalityCodeDao.update(nationalityCode, Util.getCurrentUser());
+        nationalityCodeDao.update(nationalityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeNationalityCode(InNationalityCode nationalityCode) {
-        nationalityCodeDao.remove(nationalityCode, Util.getCurrentUser());
+        nationalityCodeDao.remove(nationalityCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -983,19 +1073,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveResidencyCode(InResidencyCode residencyCode) {
-        residencyCodeDao.save(residencyCode, Util.getCurrentUser());
+        residencyCodeDao.save(residencyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateResidencyCode(InResidencyCode residencyCode) {
-        residencyCodeDao.update(residencyCode, Util.getCurrentUser());
+        residencyCodeDao.update(residencyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeResidencyCode(InResidencyCode residencyCode) {
-        residencyCodeDao.remove(residencyCode, Util.getCurrentUser());
+        residencyCodeDao.remove(residencyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1026,19 +1116,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveSchoolCode(InSchoolCode schoolCode) {
-        schoolCodeDao.save(schoolCode, Util.getCurrentUser());
+        schoolCodeDao.save(schoolCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateSchoolCode(InSchoolCode schoolCode) {
-        schoolCodeDao.update(schoolCode, Util.getCurrentUser());
+        schoolCodeDao.update(schoolCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeSchoolCode(InSchoolCode schoolCode) {
-        schoolCodeDao.remove(schoolCode, Util.getCurrentUser());
+        schoolCodeDao.remove(schoolCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1077,19 +1167,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveFacultyCode(InFacultyCode facultyCode) {
-        facultyCodeDao.save(facultyCode, Util.getCurrentUser());
+        facultyCodeDao.save(facultyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateFacultyCode(InFacultyCode facultyCode) {
-        facultyCodeDao.update(facultyCode, Util.getCurrentUser());
+        facultyCodeDao.update(facultyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeFacultyCode(InFacultyCode facultyCode) {
-        facultyCodeDao.remove(facultyCode, Util.getCurrentUser());
+        facultyCodeDao.remove(facultyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1130,19 +1220,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveStudyCenterCode(InStudyCenterCode studyCenterCode) {
-        studyCenterCodeDao.save(studyCenterCode, Util.getCurrentUser());
+        studyCenterCodeDao.save(studyCenterCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateStudyCenterCode(InStudyCenterCode studyCenterCode) {
-        studyCenterCodeDao.update(studyCenterCode, Util.getCurrentUser());
+        studyCenterCodeDao.update(studyCenterCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeStudyCenterCode(InStudyCenterCode studyCenterCode) {
-        studyCenterCodeDao.remove(studyCenterCode, Util.getCurrentUser());
+        studyCenterCodeDao.remove(studyCenterCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1182,19 +1272,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveVenueCode(InVenueCode venueCode) {
-        venueCodeDao.save(venueCode, Util.getCurrentUser());
+        venueCodeDao.save(venueCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateVenueCode(InVenueCode venueCode) {
-        venueCodeDao.update(venueCode, Util.getCurrentUser());
+        venueCodeDao.update(venueCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeVenueCode(InVenueCode venueCode) {
-        venueCodeDao.remove(venueCode, Util.getCurrentUser());
+        venueCodeDao.remove(venueCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1234,19 +1324,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveDependencyCode(InDependencyCode dependencyCode) {
-        dependencyCodeDao.save(dependencyCode, Util.getCurrentUser());
+        dependencyCodeDao.save(dependencyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateDependencyCode(InDependencyCode dependencyCode) {
-        dependencyCodeDao.update(dependencyCode, Util.getCurrentUser());
+        dependencyCodeDao.update(dependencyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeDependencyCode(InDependencyCode dependencyCode) {
-        dependencyCodeDao.remove(dependencyCode, Util.getCurrentUser());
+        dependencyCodeDao.remove(dependencyCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1287,19 +1377,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveBankCode(InBankCode bankCode) {
-        bankCodeDao.save(bankCode, Util.getCurrentUser());
+        bankCodeDao.save(bankCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateBankCode(InBankCode bankCode) {
-        bankCodeDao.update(bankCode, Util.getCurrentUser());
+        bankCodeDao.update(bankCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeBankCode(InBankCode bankCode) {
-        bankCodeDao.remove(bankCode, Util.getCurrentUser());
+        bankCodeDao.remove(bankCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1339,19 +1429,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveMaritalCode(InMaritalCode MaritalCode) {
-        maritalCodeDao.save(MaritalCode, Util.getCurrentUser());
+        maritalCodeDao.save(MaritalCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateMaritalCode(InMaritalCode MaritalCode) {
-        maritalCodeDao.update(MaritalCode, Util.getCurrentUser());
+        maritalCodeDao.update(MaritalCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeMaritalCode(InMaritalCode MaritalCode) {
-        maritalCodeDao.remove(MaritalCode, Util.getCurrentUser());
+        maritalCodeDao.remove(MaritalCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1397,19 +1487,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveInvolvementTypeCode(InInvolvementTypeCode involvementTypeCode) {
-        involvementTypeCodeDao.save(involvementTypeCode, Util.getCurrentUser());
+        involvementTypeCodeDao.save(involvementTypeCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateInvolvementTypeCode(InInvolvementTypeCode involvementTypeCode) {
-        involvementTypeCodeDao.update(involvementTypeCode, Util.getCurrentUser());
+        involvementTypeCodeDao.update(involvementTypeCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeInvolvementTypeCode(InInvolvementTypeCode involvementTypeCode) {
-        involvementTypeCodeDao.remove(involvementTypeCode, Util.getCurrentUser());
+        involvementTypeCodeDao.remove(involvementTypeCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1455,19 +1545,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveInvolvementLevelCode(InInvolvementLevelCode involvementLevelCode) {
-        involvementLevelCodeDao.save(involvementLevelCode, Util.getCurrentUser());
+        involvementLevelCodeDao.save(involvementLevelCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateInvolvementLevelCode(InInvolvementLevelCode involvementLevelCode) {
-        involvementLevelCodeDao.update(involvementLevelCode, Util.getCurrentUser());
+        involvementLevelCodeDao.update(involvementLevelCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeInvolvementLevelCode(InInvolvementLevelCode involvementLevelCode) {
-        involvementLevelCodeDao.remove(involvementLevelCode, Util.getCurrentUser());
+        involvementLevelCodeDao.remove(involvementLevelCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1513,19 +1603,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveInvolvementTitleCode(InInvolvementTitleCode involvementTitleCode) {
-        involvementTitleCodeDao.save(involvementTitleCode, Util.getCurrentUser());
+        involvementTitleCodeDao.save(involvementTitleCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateInvolvementTitleCode(InInvolvementTitleCode involvementTitleCode) {
-        involvementTitleCodeDao.update(involvementTitleCode, Util.getCurrentUser());
+        involvementTitleCodeDao.update(involvementTitleCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeInvolvementTitleCode(InInvolvementTitleCode involvementTitleCode) {
-        involvementTitleCodeDao.remove(involvementTitleCode, Util.getCurrentUser());
+        involvementTitleCodeDao.remove(involvementTitleCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1572,19 +1662,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveEmploymentFieldCode(InEmploymentFieldCode employmentFieldCode) {
-        employmentFieldCodeDao.save(employmentFieldCode, Util.getCurrentUser());
+        employmentFieldCodeDao.save(employmentFieldCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateEmploymentFieldCode(InEmploymentFieldCode employmentFieldCode) {
-        employmentFieldCodeDao.update(employmentFieldCode, Util.getCurrentUser());
+        employmentFieldCodeDao.update(employmentFieldCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeEmploymentFieldCode(InEmploymentFieldCode employmentFieldCode) {
-        employmentFieldCodeDao.remove(employmentFieldCode, Util.getCurrentUser());
+        employmentFieldCodeDao.remove(employmentFieldCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1629,19 +1719,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveEmploymentLevelCode(InEmploymentLevelCode employmentLevelCode) {
-        employmentLevelCodeDao.save(employmentLevelCode, Util.getCurrentUser());
+        employmentLevelCodeDao.save(employmentLevelCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateEmploymentLevelCode(InEmploymentLevelCode employmentLevelCode) {
-        employmentLevelCodeDao.update(employmentLevelCode, Util.getCurrentUser());
+        employmentLevelCodeDao.update(employmentLevelCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeEmploymentLevelCode(InEmploymentLevelCode employmentLevelCode) {
-        employmentLevelCodeDao.remove(employmentLevelCode, Util.getCurrentUser());
+        employmentLevelCodeDao.remove(employmentLevelCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1686,19 +1776,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveEmploymentSectorCode(InEmploymentSectorCode employmentSectorCode) {
-        employmentSectorCodeDao.save(employmentSectorCode, Util.getCurrentUser());
+        employmentSectorCodeDao.save(employmentSectorCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateEmploymentSectorCode(InEmploymentSectorCode employmentSectorCode) {
-        employmentSectorCodeDao.update(employmentSectorCode, Util.getCurrentUser());
+        employmentSectorCodeDao.update(employmentSectorCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeEmploymentSectorCode(InEmploymentSectorCode employmentSectorCode) {
-        employmentSectorCodeDao.remove(employmentSectorCode, Util.getCurrentUser());
+        employmentSectorCodeDao.remove(employmentSectorCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1739,19 +1829,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveDunCode(InDunCode DunCode) {
-        dunCodeDao.save(DunCode, Util.getCurrentUser());
+        dunCodeDao.save(DunCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateDunCode(InDunCode DunCode) {
-        dunCodeDao.update(DunCode, Util.getCurrentUser());
+        dunCodeDao.update(DunCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeDunCode(InDunCode DunCode) {
-        dunCodeDao.remove(DunCode, Util.getCurrentUser());
+        dunCodeDao.remove(DunCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1791,19 +1881,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveParliamentCode(InParliamentCode ParliamentCode) {
-        parliamentCodeDao.save(ParliamentCode, Util.getCurrentUser());
+        parliamentCodeDao.save(ParliamentCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateParliamentCode(InParliamentCode ParliamentCode) {
-        parliamentCodeDao.update(ParliamentCode, Util.getCurrentUser());
+        parliamentCodeDao.update(ParliamentCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeParliamentCode(InParliamentCode ParliamentCode) {
-        parliamentCodeDao.remove(ParliamentCode, Util.getCurrentUser());
+        parliamentCodeDao.remove(ParliamentCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1844,19 +1934,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveStudyMode(InStudyMode studyMode) {
-        studyModeDao.save(studyMode, Util.getCurrentUser());
+        studyModeDao.save(studyMode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateStudyMode(InStudyMode studyMode) {
-        studyModeDao.update(studyMode, Util.getCurrentUser());
+        studyModeDao.update(studyMode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeStudyMode(InStudyMode studyMode) {
-        studyModeDao.remove(studyMode, Util.getCurrentUser());
+        studyModeDao.remove(studyMode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1880,6 +1970,11 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
+    public List<InSupervisorCode> findSupervisorCodes(InFacultyCode facultyCode) {
+        throw new UnsupportedOperationException(); // todo:
+    }
+
+    @Override
     public List<InSupervisorCode> findSupervisorCodes(String filter, Integer offset, Integer limit) {
         return supervisorCodeDao.find(filter, offset, limit);
     }
@@ -1890,6 +1985,11 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
+    public Integer countSupervisorCode(InFacultyCode facultyCode) {
+        throw new UnsupportedOperationException(); // todo:
+    }
+
+    @Override
     public Integer countSupervisorCode(String filter) {
         return supervisorCodeDao.count(filter);
     }
@@ -1897,19 +1997,19 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void saveSupervisorCode(InSupervisorCode supervisorCode) {
-        supervisorCodeDao.save(supervisorCode, Util.getCurrentUser());
+        supervisorCodeDao.save(supervisorCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateSupervisorCode(InSupervisorCode supervisorCode) {
-        supervisorCodeDao.update(supervisorCode, Util.getCurrentUser());
+        supervisorCodeDao.update(supervisorCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeSupervisorCode(InSupervisorCode supervisorCode) {
-        supervisorCodeDao.remove(supervisorCode, Util.getCurrentUser());
+        supervisorCodeDao.remove(supervisorCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
     

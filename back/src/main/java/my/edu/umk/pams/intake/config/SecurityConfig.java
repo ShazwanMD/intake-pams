@@ -74,14 +74,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/common/**").hasRole("USER")
-                .antMatchers("/api/dashboard/**").hasRole("USER")
-                .antMatchers("/api/identity/**").hasRole("USER")
-                .antMatchers("/api/ledger/**").hasRole("USER")
-                .antMatchers("/api/payable/**").hasRole("USER")
-                .antMatchers("/api/receivable/**").hasRole("USER")
-                .antMatchers("/api/billing/**").hasRole("USER")
-                .antMatchers("/api/disbursement/**").hasRole("USER")
+                .antMatchers("/api/common/**").permitAll() // todo(uda): .hasRole("USER")
+                .antMatchers("/api/identity/**").permitAll() // todo(uda): .hasRole("USER")
+                .antMatchers("/api/registration/**").permitAll() // todo(uda): .hasRole("USER")
+                .antMatchers("/api/policy/**").permitAll() // todo(uda): .hasRole("USER")
+                .antMatchers("/api/application/**").permitAll() // todo(uda): .hasRole("USER")
+                .antMatchers("/api/admission/**").permitAll() // todo(uda): .hasRole("USER")
                 .antMatchers("/download/**").hasRole("USER")
                 .antMatchers("/login").permitAll()
                 .anyRequest().permitAll()
@@ -119,7 +117,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public RestAuthenticationEntryPoint restAuthenticationEntryPoint() {
         return new RestAuthenticationEntryPoint();
     }
-
 
     @Bean
     @Override

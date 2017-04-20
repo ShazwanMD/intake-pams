@@ -21,6 +21,10 @@ public interface  InProgramCode extends InMetaObject {
 
 	void setFacultyCode(InFacultyCode facultyCode);
 
+	InGraduateCentre getGraduateCentre();
+
+	void setGraduateCentre(InGraduateCentre graduateCentre);
+
 	InProgramLevel getProgramLevel();
 
 	void setProgramLevel(InProgramLevel programLevel);

@@ -14,7 +14,7 @@ import static my.edu.umk.pams.intake.identity.model.InPrincipalType.USER;
 public class InUserImpl extends InPrincipalImpl implements InUser {
 
     @NotNull
-    @Column(name = "PASSWORD")
+    @Column(name = "PASSWORD", nullable = false)
     private String password;
 
     @NotNull

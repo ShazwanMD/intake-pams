@@ -1,19 +1,15 @@
 package my.edu.umk.pams.intake.identity.model;
 
-import java.util.List;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
+import java.util.List;
 
 /**
- * @author canang technologies
- * @since 1/31/14
+ * @author PAMS
  */
 @Entity(name = "InApplicant")
 @Table(name = "IN_APCN")
@@ -21,6 +17,10 @@ public class InApplicantImpl extends InActorImpl implements InApplicant {
 	
 	@OneToMany(targetEntity = InIntakeApplicationImpl.class, mappedBy = "applicant")
 	private List<InIntakeApplication> applicantApplication;
+
+    public InApplicantImpl() {
+        setActorType(InActorType.APPLICANT);
+    }
 
     @Override
     public String getApplicationNo() {
@@ -33,18 +33,17 @@ public class InApplicantImpl extends InActorImpl implements InApplicant {
     }
 
     @Override
-    public Class<?> getInterfaceClass() {
-        return InApplicant.class;
-    }
-
-    @Override
 	public List<InIntakeApplication> getApplicantApplication() {
 		return applicantApplication;
 	}
 
     @Override
-	public void setApplicantApplication(
-			List<InIntakeApplication> applicantApplication) {
+	public void setApplicantApplication(List<InIntakeApplication> applicantApplication) {
 		this.applicantApplication = applicantApplication;
 	}
+
+    @Override
+    public Class<?> getInterfaceClass() {
+        return InApplicant.class;
+    }
 }
