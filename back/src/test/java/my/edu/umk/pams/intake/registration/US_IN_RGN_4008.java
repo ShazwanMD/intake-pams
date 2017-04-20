@@ -12,6 +12,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenCompleteApplicantRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
@@ -21,6 +22,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As a MGSEB academic administrator,  "
 		+ "I want to collect study fees for matriculation, "
 		+ "so that i can complete the applicant's registration")

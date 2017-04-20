@@ -12,6 +12,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmRegistrar;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenStudentRegistrationIsConfirmed;
 import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorOfferToCandidate;
@@ -23,6 +24,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As a registrar, "
   + "I want to be able to confirm selected applicant admission on registration day, "
   + "so that the applicants are registered")

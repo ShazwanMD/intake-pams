@@ -3,6 +3,8 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import org.slf4j.Logger;
@@ -26,17 +28,27 @@ public class GivenIAmInternationalOfficer extends Stage<GivenIAmInternationalOff
 
     @ProvidedScenarioState
     InIntakeSession intakeSession;
+    
+    @ProvidedScenarioState
+    InIntake intake;
 
     public void I_am_a_International_Officer_in_$_academic_session(String academicSessionCode){
         loginAsIO();
         intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
     }
 
-    public void I_am_a_International_Officer_in_current_intake_session(){
+    public GivenIAmInternationalOfficer I_am_a_International_Officer_in_current_intake_session(){
         loginAsIO();
         intakeSession = policyService.findCurrentIntakeSession();
+		return self();
+        
     }
 
+    public GivenIAmInternationalOfficer I_pick_an_intake_$(String intakeReferenceNo){
+        intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
+        return self();
+    }
+        
     private void loginAsIO() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("international-officer", "abc123");
         Authentication authed = authenticationManager.authenticate(token);

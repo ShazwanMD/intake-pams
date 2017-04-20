@@ -13,6 +13,7 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenICanCompleteStudentRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorOfferToCandidate;
@@ -26,6 +27,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmissio
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Registration")
 @As("As an academic administrator, I want to scan the applicant's offer letter barcode for matriculation so that I can complete the student's registration")
 public class US_IN_RGN_3007 extends SpringScenarioTest <GivenIAmCPSAdministrator,
 														WhenPrepareApplicationSubmission,
