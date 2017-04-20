@@ -4,9 +4,9 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
-import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIDontPayProccessingFee;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddPromoCode;
@@ -23,12 +23,11 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Policy")
 @As("As a MGSEB academic Administrator, I want to create a promo code for the offered applicant so that the applicant do not need to pay the processing fee")
 public class US_IN_PLC_3005 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIAddPromoCode, ThenIDontPayProccessingFee> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_3005.class);
-    private String referenceNo;
-
     @Pending
     @Test
     @Issue("PAMI-19")

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
@@ -21,6 +22,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a applicant, I want to cancel my intake application before submission so that I can cancel or start my application process again.")
 public class US_IN_APN_1013 extends SpringScenarioTest <GivenIAmApplicant,
 WhenIWantToFillAllRequiredInformation, ThenIFillInInformationAgain>{

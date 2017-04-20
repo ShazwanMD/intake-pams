@@ -4,6 +4,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenIntakeIsReadyForSetup;
 import my.edu.umk.pams.intake.policy.stage.WhenIAddIntake;
@@ -20,17 +21,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@Issue("PAMI-2")
+@Submodule("Policy")
 @As("As MGSEB Academic Administrator I want to configure initiated intake, so that the applicant can apply the application")
 public class US_IN_PLC_1002 extends SpringScenarioTest<GivenIAmMGSEBAdministrator,
 															WhenIAddIntake, 
 																ThenIntakeIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1002.class);
-    private String referenceNo;
-
     @Test
     @Rollback
+    @Issue("PAMI-2")
     public void scenario1() {
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().I_add_intake();

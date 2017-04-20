@@ -30,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
@@ -61,6 +62,12 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
     @ProvidedScenarioState
     private InApplicant applicant; 
     
+    @ProvidedScenarioState
+    private List<InIntakeApplication> paidApplications = new ArrayList<>();
+
+    @ProvidedScenarioState
+    private List<InIntakeApplication> unpaidApplications = new ArrayList<>();
+
     @ExpectedScenarioState
     private InUser user;
 
@@ -239,9 +246,16 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
             applicationService.submitIntakeApplication(intake, application);
             Assert.notNull(application, refNo + " application is null");
 
-            InBidStatus bidStatus = application.getBidStatus();
-            Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus), refNo + "application is not submitted");
+            InBidStatus expected = InBidStatus.SUBMITTED;
+            InBidStatus found = application.getBidStatus();
+            String message = refNo + "application expected " + expected + ", found " + found;
+            Assert.isTrue(expected.equals(found), message);
             LOG.debug("intake status : {} ", application.getBidStatus());
+
+            if (application.isPaid())
+                paidApplications.add(application);
+            else
+                unpaidApplications.add(application);
         }
 
         return self() ;

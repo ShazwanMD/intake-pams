@@ -14,6 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenTheApplicationIsWithdrawn;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInformation;
 import my.edu.umk.pams.intake.application.stage.WhenWithdrawApplication;
@@ -23,6 +24,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a applicant, I want to withdraw my intake application so that I can notify UMK that I dont want to apply")
 public class US_IN_APN_5005 extends SpringScenarioTest<GivenIAmApplicant,
 WhenIWantToFillAllRequiredInformation, 

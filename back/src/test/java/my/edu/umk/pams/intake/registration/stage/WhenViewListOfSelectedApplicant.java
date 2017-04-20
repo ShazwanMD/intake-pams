@@ -50,6 +50,20 @@ public class WhenViewListOfSelectedApplicant extends Stage<WhenViewListOfSelecte
 			}
 	    return self(); 
 	}
+    
+    public WhenViewListOfSelectedApplicant broadcast_result_of_Selected_Applicant() {
+    	
+    	 List<InCandidate> candidates = admissionService.findCandidates(intake);
+		 
+			for (InCandidate candidate : candidates) {
+				
+				
+			     LOG.debug("the selected applicant is : {} {} ", candidate.getName(), candidate.getIdentityNo());
+				
+			}
+	    return self(); 
+    }
+
 }
 
 	

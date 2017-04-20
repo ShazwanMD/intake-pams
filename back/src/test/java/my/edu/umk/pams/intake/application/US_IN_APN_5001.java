@@ -14,6 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenIntakeHasProgramAvailable;
 import my.edu.umk.pams.intake.application.stage.WhenIListIntakeProgramsOffered;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -22,6 +23,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a applicant, I want a list of all the current offered programs, so that I can view what's available this session")
 public class US_IN_APN_5001 extends SpringScenarioTest<GivenIAmApplicant,
         WhenIListIntakeProgramsOffered,

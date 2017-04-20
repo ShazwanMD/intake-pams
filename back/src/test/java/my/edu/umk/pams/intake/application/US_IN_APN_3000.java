@@ -15,6 +15,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenIProcessTheReceipt;
 import my.edu.umk.pams.intake.application.stage.WhenIListOutOfPayableProcessingFees;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -23,6 +24,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a bursary, I want to view list of payable processing fees, so that I can process the receipt")
 public class US_IN_APN_3000 extends SpringScenarioTest<GivenIAmBursary, WhenIListOutOfPayableProcessingFees, ThenIProcessTheReceipt>{
 	

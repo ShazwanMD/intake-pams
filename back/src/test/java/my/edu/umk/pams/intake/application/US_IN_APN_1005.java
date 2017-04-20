@@ -14,7 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
-import my.edu.umk.pams.intake.application.stage.ThenICanCompleteMyApplication;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.application.stage.WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -23,6 +23,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a applicant, I want to fill in multiple information on my history of education so that I can complete my application")
 public class US_IN_APN_1005 extends SpringScenarioTest<GivenIAmApplicant,
 															WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation, 

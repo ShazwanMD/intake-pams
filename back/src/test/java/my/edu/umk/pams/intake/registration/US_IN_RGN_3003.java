@@ -32,7 +32,7 @@ public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     @Test
     @Rollback
-    @Issue("76")
+    @Issue("PAMI-76")
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_intake_session()
 		.and().I_pick_an_intake_$(intakeReferenceNo);

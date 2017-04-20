@@ -33,7 +33,6 @@ public class US_IN_RGN_4010 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
      
      @Test
      @Rollback
-     @Pending
      @Issue("PAMI-94")
      public void scenario1() {
     	 

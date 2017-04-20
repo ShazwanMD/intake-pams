@@ -6,6 +6,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenGetIntakeEndDate;
 import my.edu.umk.pams.intake.application.stage.WhenCheckApplicationDeadline;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -23,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a applicant, I want to be informed of the closing date for my intake application so that I can know the dateline")
 public class US_IN_APN_5002  extends SpringScenarioTest<GivenIAmApplicant,
         WhenCheckApplicationDeadline,

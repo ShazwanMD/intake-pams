@@ -72,7 +72,10 @@ public interface PolicyService {
     // INTAKE
     //====================================================================================================
 
+    // workflow
     InIntake findIntakeByTaskId(String taskId);
+
+    Task findIntakeTaskByTaskId(String taskId);
 
     List<Task> findAssignedIntakeTasks(Integer offset, Integer limit);
 
@@ -90,15 +93,15 @@ public interface PolicyService {
 
     void addStudyModeOffering(InIntake intake, InStudyModeOffering modeOffering);
 
-    //====================================================================================================
-    // INTAKE
-    //====================================================================================================
+    // finder
 
     InIntake findIntakeById(Long id);
 
     InIntake findIntakeByReferenceNo(String referenceNo);
 
     InIntake findIntakeBySessionAndCategory(InIntakeSession session, InProgramLevel category);
+
+    List<InIntake> findIntakes();
 
     List<InIntake> findIntakes(InIntakeSession session);
 
@@ -140,14 +143,14 @@ public interface PolicyService {
 
     List<InStudyModeOffering> findStudyModeOfferings(InIntake intake);
 
-	String generalCriteria();
+    String generalCriteria();
 
-	String specificCriteria();
-	
+    String specificCriteria();
+
     //====================================================================================================
     // STUDY MODE 
     //====================================================================================================
 
-	InStudyMode findStudyModeByCode(String code);
-	
+    InStudyMode findStudyModeByCode(String code);
+
 }

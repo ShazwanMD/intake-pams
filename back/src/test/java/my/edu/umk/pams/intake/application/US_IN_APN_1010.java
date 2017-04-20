@@ -14,6 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmApplicant;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.application.stage.ThenDraftIsNotSubmitted;
 import my.edu.umk.pams.intake.application.stage.WhenIDraftMyIntake;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -22,6 +23,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@Submodule("Application")
 @As("As a applicant, I want to be able to pause my intake application so that I can complete it later before the closing date")
 public class US_IN_APN_1010 extends
 		SpringScenarioTest<GivenIAmApplicant, WhenIDraftMyIntake, ThenDraftIsNotSubmitted> {
