@@ -39,6 +39,8 @@ public class US_IN_RGN_4000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Issue("PAMI-84")
     @Pending
     public void scenario1() {
+    	
+    	//removed from user story as MGSEB do not have sponsorship
         given().I_am_a_MGSEB_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
         when().I_prepare_3_applications().and().I_submit_3_applications();
