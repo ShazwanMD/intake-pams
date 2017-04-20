@@ -11,7 +11,6 @@ import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.service.PolicyService;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -21,14 +20,11 @@ import org.springframework.util.Assert;
 //@Pending
 @JGivenStage
 public class WhenPreselectApplicant extends Stage<WhenPreselectApplicant>{
-	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenPreselectApplicant.class);
-	
-	@Autowired
-	private PolicyService policyService;
-	
-	@Autowired
-	private AdmissionService admissionService;
+  
+  private static final Logger LOG = LoggerFactory.getLogger(WhenPreselectApplicant.class);
+  
+  @Autowired
+  private AdmissionService admissionService;
 
     @ExpectedScenarioState
     List<InIntakeApplication>  applications;
@@ -36,30 +32,29 @@ public class WhenPreselectApplicant extends Stage<WhenPreselectApplicant>{
     @Autowired
     ApplicationService applicationService;
 
-	@ExpectedScenarioState
-	private InIntakeApplication intakeApplication;
+  @ExpectedScenarioState
+  private InIntakeApplication intakeApplication;
 
-	@ExpectedScenarioState
+  @ExpectedScenarioState
     private InIntake intake; 
     
     @ProvidedScenarioState
     private List<InCandidate> candidates;
     
-	public WhenPreselectApplicant I_preselect_applicant_$(String identityNo) {
-		applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
-		Assert.notEmpty(applications, "applications cannot be empty");
+  public WhenPreselectApplicant I_preselect_applicant_$(String identityNo) {
+    applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
+    Assert.notEmpty(applications, "applications cannot be empty");
 
-		candidates = new ArrayList<>(); // todo(farah) Why collection when we method use a single identityNo?
+    candidates = new ArrayList<>(); // todo(farah) Why collection when we method use a single identityNo?
 
-		for (InIntakeApplication application : applications) {
-			if (identityNo.equals(application.getCredentialNo()))
-				admissionService.preselectIntakeApplication(application);
-			 LOG.debug("candidates {}", candidates);
-			candidates.add(admissionService.findCandidateByIdentityNo(application.getCredentialNo()));
-		}
-	//	 LOG.debug("candidates {}", candidates);
+    for (InIntakeApplication application : applications) {
+    //  if (identityNo.equals(application.getCredentialNo()))
+        admissionService.preselectIntakeApplication(application);
+      
+      candidates.add(admissionService.findCandidateByIdentityNo(application.getCredentialNo()));
+    }
 
-		return self();
-	}
+
+    return self();
+  }
 }
-
