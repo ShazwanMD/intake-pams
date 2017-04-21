@@ -11,16 +11,22 @@ import {IdentityService} from '../../services';
 
 import {PolicyPage} from "./policy.page";
 import {PolicyService} from "../../services/policy.service";
+import {IntakeSubModule} from "./intakes/index";
+import {IntakeState, intakeReducer} from "./intakes/intake.reducer";
+import {IntakeTaskListState, intakeTaskListReducer} from "./intakes/intake-task-list.reducer";
+import {IntakeTaskState, intakeTaskReducer} from "./intakes/intake-task.reducer";
 
 export interface PolicyModuleState {
-  // intakes: IntakeListState;
-  // intake: IntakeState;
+  intakeTasks: IntakeTaskListState;
+  intakeTask: IntakeTaskState;
+  intake: IntakeState;
 };
 
 export const INITIAL_POLICY_STATE: PolicyModuleState = <PolicyModuleState>{};
 export const policyModuleReducers = {
-   // intakes:intakeListReducer,
-   // intake:intakeReducer
+   intakeTasks:intakeTaskListReducer,
+   intakeTask:intakeTaskReducer,
+   intake:intakeReducer
  };
 
 @NgModule({
@@ -29,7 +35,7 @@ export const policyModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    // IntakeSubModule.forRoot(),
+    IntakeSubModule.forRoot(),
   ],
   declarations: [
     // page
