@@ -24,8 +24,8 @@
           <div layout="column" flex>
             <md-list dense>
               <md-list-item>
-                <h4 md-line>xx</h4>
-                <p md-line>xx</p>
+                <h4 md-line>{{intakeTask?.projection}}</h4>
+                <p md-line>Projection</p>
               </md-list-item>
             </md-list>
           </div>
@@ -37,8 +37,8 @@
 
 
       <md-card>
-        <md-card-title>Items</md-card-title>
-        <md-card-subtitle>Intake items</md-card-subtitle>
+        <md-card-title>Program Offerings</md-card-title>
+        <md-card-subtitle>Offered program codes</md-card-subtitle>
         <md-divider></md-divider>
         <div toolbar-buttons layout="row" layout-align="start center" flex>
           <span flex></span>
@@ -57,18 +57,15 @@
              layout-align="start center"
              layout-wrap>
           <md-nav-list dense flex>
-            <!--<template let-intakeEntry let-last="last" ngFor [ngForOf]="intakeItems">-->
-              <!--<a md-list-item (click)="attachVoucher(intakeEntry)">-->
-                <!--<md-icon md-list-avatar>payment</md-icon>-->
-                <!--<h3 md-line> {{intakeEntry.description}} </h3>-->
-                <!--<p md-line> {{intakeEntry.sourceNo}} </p>-->
+            <template let-programOffering let-last="last" ngFor [ngForOf]="programOfferings$ | async">
+              <a md-list-item>
+                <md-icon md-list-avatar>label</md-icon>
+                <h3 md-line> {{programOffering.programCode?.descriptionMs}} </h3>
+                <p md-line> {{programOffering.programCode?.code}} </p>
                 <!--<span flex></span>-->
-                <!--<span flex="40"> {{intakeEntry.period?.costCenterCode?.code}} </span>-->
-                <!--<span flex="40"> {{intakeEntry.sodoCode?.code}} </span>-->
-                <!--<span flex="20"> {{intakeEntry.debitAmount | number:'.2-2'}} </span>-->
-                <!--<span flex="20"> {{intakeEntry.creditAmount | number:'.2-2'}} </span>-->
-              <!--</a>-->
-            <!--</template>-->
+                <!--<span flex="40"> xxx </span>-->
+              </a>
+            </template>
           </md-nav-list>
         </div>
       </md-card>

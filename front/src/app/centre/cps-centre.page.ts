@@ -26,7 +26,7 @@ export class CpsCentrePage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.centreActions.findGraduateCentreByCode("CPS"))
+    this.store.dispatch(this.centreActions.findGraduateCentreByCode("CPS"));
     this.graduateCentre$.subscribe(graduateCentre => {
         if (null != graduateCentre.code) {
           this.store.dispatch(this.centreActions.findProgramCodes(graduateCentre));
@@ -34,4 +34,12 @@ export class CpsCentrePage implements OnInit {
       }
     );
   }
+
+  viewProgramCode(programCode: ProgramCode) {
+    console.log("programCode: " + programCode.id);
+    this.router.navigate(['/common/program-codes', programCode.id]);
+  }
+
+
+
 }

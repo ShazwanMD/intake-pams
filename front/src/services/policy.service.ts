@@ -39,32 +39,34 @@ export class PolicyService {
   }
 
   findIntakeByReferenceNo(referenceNo: string): Observable<Intake> {
-    console.log("encoded uri: " + encodeURI (referenceNo))
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encodeURI (referenceNo))
+    let encoded = referenceNo.replace(/\//g,'%252F');
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded)
       .map((res: Response) => <Intake>res.json());
   }
 
   findIntakeByTaskId(taskId: string): Observable<Intake> {
-    console.log("encoded uri: " + encodeURI (taskId))
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encodeURI (taskId))
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' +  taskId)
       .map((res: Response) => <Intake>res.json());
   }
 
   findProgramOfferings(intake:Intake): Observable<ProgramOffering[]> {
-    console.log("findIntakeItems");
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/programOffering")
+    console.log("findProgramOfferings");
+    let encoded = intake.referenceNo.replace(/\//g,'%252F');
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/programOfferings")
       .map((res: Response) => <ProgramOffering[]>res.json());
   }
 
   findSupervisorOfferings(intake:Intake): Observable<SupervisorOffering[]> {
-    console.log("findIntakeItems");
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/supervisorOffering")
+    console.log("findSupervisorOfferings");
+    let encoded = intake.referenceNo.replace(/\//g,'%252F');
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/supervisorOfferings")
       .map((res: Response) => <SupervisorOffering[]>res.json());
   }
 
   findStudyModeOfferings(intake:Intake): Observable<StudyModeOffering[]> {
-    console.log("findIntakeItems");
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/studyModeOffering")
+    console.log("findStudyModeOfferings");
+    let encoded = intake.referenceNo.replace(/\//g,'%252F');
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/studyModeOfferings")
       .map((res: Response) => <StudyModeOffering[]>res.json());
   }
 

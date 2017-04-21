@@ -1,49 +1,8 @@
-<td-layout-nav class="white-red">
+<td-layout>
   <div td-toolbar-content layout="row" layout-align="start center" flex>
     <span hide-xs>Centre for Postgraduate Studies Univesiti Malaysia Kelantan</span>
     <span flex></span>
   </div>
-  <md-toolbar color="primary" class="pad-none pull-top">
-    <nav md-tab-nav-bar class="pull-bottom">
-      <a md-tab-link
-         [routerLink]="['/programs/']"
-         class="active">
-        All Programs
-      </a>
-      <a md-tab-link
-         [routerLink]="['/faculty/mgseb']">
-        MGSEB
-      </a>
-      <a md-tab-link
-         [routerLink]="['/faculty/cps']">
-        PPS
-      </a>
-    </nav>
-  </md-toolbar>
-  <section class="bgc-red-50">
-    <div layout-gt-xs="row">
-      <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xl']">
-        <div class="push-top-xl" hide-xs></div>
-        <div tdMediaToggle="gt-sm" [mediaClasses]="['push-lg']">
-          <h1 class="md-display-1 tc-grey-800 push-top-xs push-bottom-sm">Degree of Success</h1>
-          <p class="mat-2-line tc-grey-600">Centre for Postgraduates Studies is dedicated to educating leaders who can
-            think transformatively and create lasting value in the workplace and society.
-            CPS offers a broad array of interdisciplinary technical graduate degrees, professional certificates, short
-            courses, and custom programs that are taught by outstanding faculty from across campus along with professors
-            of practice and experts from industry.</p>
-          <p class="mat-2-line tc-grey-600">Courses and programs are delivered on Michigan's campus, online, at work
-            locations around the world, or in a
-            combination of delivery modes. Learn more about us.</p>
-          <button md-raised-button color="accent" class="push-bottom md-button-lg">Learn More</button>
-        </div>
-        <div class="push-bottom-xl" hide-xs></div>
-      </div>
-
-      <div flex="55" class="bg-cover"
-           style="background-image:url('banner1.jpg');background-size:cover;">
-      </div>
-    </div>
-  </section>
 
   <section class="bgc-red-600 tc-red-50" tdMediaToggle="gt-xs"
            [mediaClasses]="['pad-top-xl', 'pad-bottom-xl']">
@@ -56,7 +15,7 @@
         </div>
         <div class="text-center" flex-xs="33" flex-gt-xs="33">
           <md-icon class="tc-grey-50 md-display-2 ">dashboard</md-icon>
-          <div class="pad-bottom-md">Professional Programs</div>
+          <div class="pad-bottom-md">Masters Programs</div>
         </div>
         <div class="text-center" flex-xs="33" flex-gt-xs="33">
           <md-icon class="tc-grey-50 md-display-2">email</md-icon>
@@ -69,14 +28,24 @@
   <section class="bgc-white">
     <div layout-gt-xs="row">
       <div flex class="bg-cover"
-           style="background-image:url('banner1.jpg');background-size:cover;">
+           style="background-image:url('/assets/banner/banner1.jpg');background-size:cover;">
       </div>
       <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
         <div class="push-top-xxl" hide-xs></div>
         <h3 class="md-display-1 tc-grey-600 push-top-xs push-bottom-sm">Register Our Programs</h3>
         <p class="md-title tc-grey-600">Ready to make dive ? Get started today and register!</p>
-        <button md-raised-button color="accent" class="push-bottom">Contact Us</button>
+        <button md-raised-button color="accent" class="push-bottom" [routerLink]="['/registration']">Register or Login
+        </button>
         <div class="push-top-xxl" hide-xs></div>
+      </div>
+    </div>
+  </section>
+  <section class="bgc-red-50">
+    <div layout-gt-xs="row">
+      <div flex tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
+        <h4 class="md-display-1 tc-grey-600">Our Programs</h4>
+        <pams-program-code-list [programCodes]="programCodes$ | async"
+                                (view)="viewProgramCode($event)"></pams-program-code-list>
       </div>
     </div>
   </section>
@@ -133,5 +102,4 @@
       </div>
     </div>
   </section>
-</td-layout-nav>
-
+</td-layout>

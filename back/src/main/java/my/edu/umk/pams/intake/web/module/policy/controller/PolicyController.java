@@ -11,10 +11,7 @@ import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
 import my.edu.umk.pams.intake.web.module.common.vo.SupervisorCode;
-import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
-import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
-import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
-import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
+import my.edu.umk.pams.intake.web.module.policy.vo.*;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLDecoder;
 import java.util.List;
 
 @RestController
@@ -67,13 +65,15 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}", method = RequestMethod.GET)
     public ResponseEntity<Intake> findIntakeByReferenceNo(@PathVariable String referenceNo) {
-        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(referenceNo);
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(decode);
         return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}", method = RequestMethod.PUT)
     public ResponseEntity<Intake> updateIntake(@PathVariable String referenceNo, @RequestBody Intake vo) {
-        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(referenceNo);
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(decode);
         return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
     }
 
@@ -125,18 +125,28 @@ public class PolicyController {
         workflowService.completeTask(task);
     }
 
-    @RequestMapping(value = "/intake/{referenceNo}/programOfferings", method = RequestMethod.GET)
+    @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<ProgramOffering>> findProgramOfferings(@PathVariable String referenceNo) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
         return new ResponseEntity<List<ProgramOffering>>(policyTransformer
                 .toProgramOfferingVos(policyService.findProgramOfferings(intake)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intake/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
+    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
         return new ResponseEntity<List<SupervisorOffering>>(policyTransformer
                 .toSupervisorOfferingVos(policyService.findSupervisorOfferings(intake)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.GET)
+    public ResponseEntity<List<StudyModeOffering>> findstudyModeOfferings(@PathVariable String referenceNo) {
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        return new ResponseEntity<List<StudyModeOffering>>(policyTransformer
+                .toStudyModeOfferingVos(policyService.findStudyModeOfferings(intake)), HttpStatus.OK);
     }
 
     // ==================================================================================================== //

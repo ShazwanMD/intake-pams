@@ -153,4 +153,11 @@ public class PolicyTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
+
+    public List<StudyModeOffering> toStudyModeOfferingVos(List<InStudyModeOffering> e) {
+        List<StudyModeOffering> vos = e.stream()
+                .map((e1) -> toStudyModeOfferingVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
 }

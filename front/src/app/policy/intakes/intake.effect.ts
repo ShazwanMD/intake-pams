@@ -37,7 +37,8 @@ export class IntakeEffects {
     .mergeMap(action => from([action,
       this.intakeActions.findProgramOfferings(action.payload),
       this.intakeActions.findSupervisorOfferings(action.payload),
-      this.intakeActions.findStudyModeOfferings(action.payload)]));
+      // this.intakeActions.findStudyModeOfferings(action.payload)
+    ]));
 
   @Effect() findProgramOfferings$ = this.actions$
     .ofType(IntakeActions.FIND_PROGRAM_OFFERINGS)

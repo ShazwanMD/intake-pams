@@ -90,7 +90,7 @@ public class IntakeDraftWorkflowTest {
         mckOffering.setProgramCode(mck);
         policyService.addProgramOffering(intake, mckOffering);
 
-        InProgramCode mcn = commonService.findProgramCodeByCode("MCK");
+        InProgramCode mcn = commonService.findProgramCodeByCode("MCN");
         InProgramOffering mcnOffering = new InProgramOfferingImpl();
         mcnOffering.setProgramCode(mcn);
         policyService.addProgramOffering(intake, mcnOffering);
