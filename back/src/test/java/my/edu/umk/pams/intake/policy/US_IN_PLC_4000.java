@@ -4,15 +4,11 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.policy.stage.ThenCPSProgramsOfferedToIntake;
-import my.edu.umk.pams.intake.policy.stage.ThenCPSProgramsOfferedToIntake;
-import my.edu.umk.pams.intake.policy.stage.WhenIAddPrograms;
 import my.edu.umk.pams.intake.policy.stage.WhenIOfferCPSProgramsInIntake;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -21,8 +17,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -39,7 +33,6 @@ public class US_IN_PLC_4000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Issue("")
     public void testScenario1() {
         
-        List<Data> dataCPS = Data.codesCPS();
         String referenceNo = "201720181/MASTER";
 
         given().I_am_a_CPS_administrator_in_current_intake_session();

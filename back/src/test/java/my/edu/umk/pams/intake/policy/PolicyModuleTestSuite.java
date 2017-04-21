@@ -23,6 +23,8 @@ import org.junit.runners.Suite;
         US_IN_PLC_3003.class,
         US_IN_PLC_3004.class,
         US_IN_PLC_3005.class, //pending
+        US_IN_PLC_4000.class,
+        US_IN_PLC_4001.class, //pending, no data for MGSEB programs
 
 
 })

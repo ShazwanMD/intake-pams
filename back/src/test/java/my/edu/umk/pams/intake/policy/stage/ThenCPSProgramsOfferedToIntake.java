@@ -34,6 +34,7 @@ public class ThenCPSProgramsOfferedToIntake extends Stage<ThenCPSProgramsOffered
 			String actualReferenceNo = programOffering.getIntake().getReferenceNo(); 
 			String message = "Expected " + expectedReferenceNo + ", found " + actualReferenceNo;
 			Assert.isTrue(expectedReferenceNo.equals(actualReferenceNo), message);
+
 		}
 
 		return self();
