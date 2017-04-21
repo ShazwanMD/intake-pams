@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions id="definitions"
              xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
@@ -7,7 +8,7 @@
 
     <!--
     ====================================================================================================
-    == DRAFTED > VERIFIED > PUBLISHED > PREPARED > SELECTED > SELECTED > COMPLETED
+    == DRAFTED > VERIFIED > PUBLISHED  > EVALUATED > SELECTED > COMPLETED
     == VARIABLE:
     == intakeId: intake id
     ======================================================================================================

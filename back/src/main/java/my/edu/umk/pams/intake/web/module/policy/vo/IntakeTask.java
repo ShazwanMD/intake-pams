@@ -5,23 +5,40 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.intake.web.module.core.vo.Task;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * @author PAMS
  */
 public class IntakeTask extends Task {
 
-    private String referenceNo;
+    private Integer projection;
+    private Date startDate;
+    private Date endDate;
     private Intake intake;
 
-    @Override
-    public String getReferenceNo() {
-        return referenceNo;
+    public Integer getProjection() {
+        return projection;
     }
 
-    @Override
-    public void setReferenceNo(String referenceNo) {
-        this.referenceNo = referenceNo;
+    public void setProjection(Integer projection) {
+        this.projection = projection;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public Intake getIntake() {

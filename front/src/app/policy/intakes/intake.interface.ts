@@ -6,10 +6,8 @@ export interface Intake extends MetaObject{
   referenceNo: string;
   sourceNo: string;
   description: string;
-  paid: Boolean;
-  totalPretaxAmount: number;
-  totalTaxAmount: number;
-  totalAmount: number;
-  balanceAmount: number;
+  projection: number;
+  startDate: Date;
+  endDate: Date;
   intakeSession:IntakeSession;
 }
