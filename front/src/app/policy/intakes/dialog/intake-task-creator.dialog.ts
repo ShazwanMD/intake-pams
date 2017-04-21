@@ -9,6 +9,7 @@ import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
 import {PolicyService} from "../../../../services/policy.service";
 import {IntakeSession} from "../intake-session.interface";
+import {GraduateCentre} from "../../../common/graduate-centre.interface";
 
 
 @Component({
@@ -37,12 +38,11 @@ export class IntakeTaskCreatorDialog implements OnInit {
       sourceNo:'',
       intakeNo:'',
       description: '',
-      totalPretaxAmount:0,
-      totalTaxAmount:0,
-      totalAmount:0,
-      balanceAmount:0,
-      paid:false,
+      projection:0,
+      startDate:null,
+      endDate:null,
       intakeSession:<IntakeSession>{},
+      graduateCentre:<GraduateCentre>{}
     });
 
     // todo: componentize

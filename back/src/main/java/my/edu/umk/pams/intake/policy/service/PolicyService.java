@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy.service;
 
+import my.edu.umk.pams.intake.common.model.InGraduateCentre;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
@@ -103,15 +104,27 @@ public interface PolicyService {
 
     List<InIntake> findIntakes();
 
+    List<InIntake> findIntakes(InGraduateCentre graduateCentre);
+
     List<InIntake> findIntakes(InIntakeSession session);
+
+    List<InIntake> findIntakes(InIntakeSession session, InGraduateCentre graduateCentre);
 
     List<InIntake> findIntakes(InIntakeSession session, Integer offset, Integer limit);
 
+    List<InIntake> findIntakes(InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit);
+
     List<InIntake> findIntakes(String filter, InIntakeSession session, Integer offset, Integer limit);
+
+    List<InIntake> findIntakes(String filter, InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit);
 
     Integer countIntake(InIntakeSession session);
 
+    Integer countIntake(InIntakeSession session, InGraduateCentre graduateCentre);
+
     Integer countIntake(String filter, InIntakeSession session);
+
+    Integer countIntake(String filter, InIntakeSession session, InGraduateCentre graduateCentre);
 
     //====================================================================================================
     // SUPERVISOR OFFERING
@@ -143,14 +156,9 @@ public interface PolicyService {
 
     List<InStudyModeOffering> findStudyModeOfferings(InIntake intake);
 
+    // todo(uda): ni utk apa?
     String generalCriteria();
 
+    // todo(uda): ni utk apa?
     String specificCriteria();
-
-    //====================================================================================================
-    // STUDY MODE 
-    //====================================================================================================
-
-    InStudyMode findStudyModeByCode(String code);
-
 }

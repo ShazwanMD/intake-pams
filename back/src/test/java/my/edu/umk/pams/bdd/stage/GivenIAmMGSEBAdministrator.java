@@ -4,6 +4,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -19,6 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator> {
 
     private static final Logger LOG = LoggerFactory.getLogger(GivenIAmMGSEBAdministrator.class);
+    public static final String GRADUATE_CENTRE = "MGSEB";
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -26,12 +29,18 @@ public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator
     @Autowired
     private PolicyService policyService;
 
+    @Autowired
+    private CommonService commonService;
+
     @ProvidedScenarioState
     InIntakeSession intakeSession;
 
     @ProvidedScenarioState
     InIntake intake;
     
+    @ProvidedScenarioState
+    InGraduateCentre graduateCentre;
+
     public void I_am_a_MGSEB_administrator_in_$_academic_session(String academicSessionCode){
         loginAsMGSEB();
         intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
@@ -53,5 +62,7 @@ public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("mgseb", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
+
+        graduateCentre = commonService.findGraduateCentreByCode(GRADUATE_CENTRE);
     }
 }

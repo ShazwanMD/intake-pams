@@ -1,5 +1,6 @@
 import {MetaObject} from "../../core/meta-object.interface";
 import {IntakeSession} from "./intake-session.interface";
+import {GraduateCentre} from "../../common/graduate-centre.interface";
 export interface Intake extends MetaObject{
 
   id: number;
@@ -10,4 +11,5 @@ export interface Intake extends MetaObject{
   startDate: Date;
   endDate: Date;
   intakeSession:IntakeSession;
+  graduateCentre:GraduateCentre;
 }

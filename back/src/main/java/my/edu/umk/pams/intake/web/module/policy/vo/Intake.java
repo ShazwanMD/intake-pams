@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.web.module.policy.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
 import my.edu.umk.pams.intake.web.module.core.vo.Document;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class Intake extends Document {
     private Integer projection;
     private IntakeSession intakeSession;
     private ProgramLevel programLevel;
+    private GraduateCentre graduateCentre;
 
     public Date getStarDate() {
         return starDate;
@@ -56,6 +58,14 @@ public class Intake extends Document {
 
     public void setProgramLevel(ProgramLevel programLevel) {
         this.programLevel = programLevel;
+    }
+
+    public GraduateCentre getGraduateCentre() {
+        return graduateCentre;
+    }
+
+    public void setGraduateCentre(GraduateCentre graduateCentre) {
+        this.graduateCentre = graduateCentre;
     }
 
     @JsonCreator

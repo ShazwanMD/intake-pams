@@ -2,8 +2,10 @@ package my.edu.umk.pams.intake.policy.workflow.router;
 
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InGraduateCentre;
 import my.edu.umk.pams.intake.common.router.RouterServiceSupport;
 import my.edu.umk.pams.intake.common.router.RouterStrategy;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +30,7 @@ public class IntakeRouterService extends RouterServiceSupport {
 
     static {
         strategies.put("MGSEB", new MGSEBIntakeRouterStrategy());
-        strategies.put("PPS", new CPSIntakeRouterStrategy());
+        strategies.put("CPS", new CPSIntakeRouterStrategy());
     }
 
     @Autowired
@@ -39,7 +41,9 @@ public class IntakeRouterService extends RouterServiceSupport {
         Validate.notNull(applicationId, "Id must not be null");
 
         InIntakeApplication application = applicationService.findIntakeApplicationById(applicationId);
-        RouterStrategy strategy = strategies.get("MGSEB");
+        InIntake intake = application.getIntake();
+        InGraduateCentre centre = intake.getGraduateCentre();
+        RouterStrategy strategy = strategies.get(centre.getCode());
         String candidate = strategy.findRegistererCandidate();
 
         // todo(uda): permission publishing

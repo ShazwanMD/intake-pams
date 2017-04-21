@@ -760,12 +760,14 @@ public interface CommonService {
 
     List<InSupervisorCode> findSupervisorCodes();
 
+    // todo: find supervisorcode by faculty
     List<InSupervisorCode> findSupervisorCodes(InFacultyCode facultyCode);
 
     List<InSupervisorCode> findSupervisorCodes(String filter, Integer offset, Integer limit);
 
     Integer countSupervisorCode();
 
+    // todo: count supervisorcode by faculty
     Integer countSupervisorCode(InFacultyCode facultyCode);
 
     Integer countSupervisorCode(String filter);

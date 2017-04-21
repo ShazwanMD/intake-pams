@@ -2,6 +2,8 @@ package my.edu.umk.pams.intake.policy.model;
 
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
+import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCentreImpl;
 import my.edu.umk.pams.intake.core.InFlowdata;
 import my.edu.umk.pams.intake.core.InMetadata;
 
@@ -25,13 +27,13 @@ public class InIntakeImpl implements InIntake {
     @Column(name = "REFERENCE_NO", unique = true, nullable = false)
     private String referenceNo; // programLevel + session  DIPLOMA/201420151
 
-    @Column(name = "SOURCE_NO", unique = true, nullable = false)
+    @Column(name = "SOURCE_NO", nullable = false)
     private String sourceNo;
 
     @Column(name = "AUDIT_NO", unique = true, nullable = false)
     private String auditNo;
 
-    @Column(name = "DESCRIPTION", unique = true, nullable = false)
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
     @NotNull
@@ -59,6 +61,10 @@ public class InIntakeImpl implements InIntake {
     @OneToOne(targetEntity = InProgramLevelImpl.class)
     @JoinColumn(name = "PROGRAM_LEVEL_ID", nullable = false)
     private InProgramLevel programLevel;
+
+    @OneToOne(targetEntity = InGraduateCentreImpl.class)
+    @JoinColumn(name = "GRADUATE_CENTRE_ID", nullable = false)
+    private InGraduateCentre graduateCentre;
 
     @OneToMany(targetEntity = InStudyModeOfferingImpl.class, mappedBy = "intake")
     private List<InStudyModeOffering> modeOfferings;
@@ -195,6 +201,16 @@ public class InIntakeImpl implements InIntake {
     @Override
     public void setProgramLevel(InProgramLevel programLevel) {
         this.programLevel = programLevel;
+    }
+
+    @Override
+    public InGraduateCentre getGraduateCentre() {
+        return graduateCentre;
+    }
+
+    @Override
+    public void setGraduateCentre(InGraduateCentre graduateCentre) {
+        this.graduateCentre = graduateCentre;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
@@ -22,6 +23,9 @@ public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
     @Autowired
     private PolicyService policyService;
 
+    @Autowired
+    private CommonService commonService;
+
     @ExpectedScenarioState
     private InIntakeSession session;
 
@@ -34,7 +38,7 @@ public class ThenICanChooseStudyMode extends Stage<ThenICanChooseStudyMode> {
     public ThenICanChooseStudyMode I_can_choose_offered_study_mode() {
         for (InStudyModeOffering modeOffering : modeOfferings) {
         	//need to add study mode in studymode offering
-        	modeOffering.setStudyMode(policyService.findStudyModeByCode("1"));
+        	modeOffering.setStudyMode(commonService.findStudyModeByCode("1"));
         	policyService.addStudyModeOffering(intake, modeOffering);
         	
             InStudyMode studyMode = modeOffering.getStudyMode();

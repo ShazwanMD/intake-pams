@@ -15,6 +15,7 @@ import my.edu.umk.pams.intake.application.model.InBidType;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
@@ -40,6 +41,9 @@ public class WhenEnterRequiredInformation extends Stage<WhenEnterRequiredInforma
     
     @Autowired
     private PolicyService policyService;
+
+    @Autowired
+    private CommonService commonService;
 
     @Autowired
     private SystemService systemService;
@@ -103,7 +107,7 @@ public class WhenEnterRequiredInformation extends Stage<WhenEnterRequiredInforma
         intakeApplication.setBidType(InBidType.FIRST);
         intakeApplication.setBidResponse(InBidResponse.NEW);
         intakeApplication.setFax("0945666");
-        intakeApplication.setStudyMode(policyService.findStudyModeByCode("1"));
+        intakeApplication.setStudyMode(commonService.findStudyModeByCode("1"));
 
 //        applicant.setApplicantApplication(Collections.singletonList(intakeApplication));
 //        intakeApplication.setApplicant(applicant);

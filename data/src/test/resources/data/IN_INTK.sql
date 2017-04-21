@@ -5,17 +5,19 @@ INSERT INTO IN_INTK (ID, AUDIT_NO, CANCEL_COMMENT, DESCRIPTION, END_DATE,
                      UP_ID, UV_TS, UV_ID, VF_TS, VF_ID, C_TS, C_ID, D_TS,
                      D_ID, M_TS, M_ID, M_ST,
                      PROJECTION, REFERENCE_NO, REMOVE_COMMENT, SOURCE_NO,
-                     START_DATE, PROGRAM_LEVEL_ID, SESSION_ID)
+                     START_DATE, PROGRAM_LEVEL_ID, SESSION_ID, GRADUATE_CENTRE_ID)
 VALUES
   (nextval('SQ_IN_INTK'), '30085BE1-05D1-45EB-AC33-456CD50B7963', NULL, 'INTAKE FOR MASTERS 201720181', '2017-03-11 21:25:01.262000', NULL,
       NULL, NULL, NULL, NULL, NULL, '2017-03-11 21:25:01.264000', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2017-03-11 21:25:01.264000', 5, NULL,
                                                              NULL, NULL, NULL, 1, 100,
-   '201720181/MASTER',
+   'MGSEB/201720181/MASTER',
     NULL,
    'MASTER/201720181', '2017-03-11 21:25:01.262000',
    (select ID from IN_PRGM_LEVL where code = 'MASTER'),
-   (select ID from IN_INTK_SESN where code = '20052'));
+   (select ID from IN_INTK_SESN where code = '20052'),
+   (select ID from IN_GRDT_CNTR where code = 'MGSEB')
+  );
 
 
 -- add study mode offering FULLTIME and PARTIME

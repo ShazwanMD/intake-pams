@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.service;
 
 import my.edu.umk.pams.intake.IntakeConstants;
+import my.edu.umk.pams.intake.common.model.InGraduateCentre;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
@@ -219,6 +220,7 @@ public class PolicyServiceImpl implements PolicyService {
         HashMap<String,Object> map = new HashMap<>();
         map.put("intakeSession", intake.getSession());
         map.put("programLevel", intake.getProgramLevel());
+        map.put("graduateCentre", intake.getGraduateCentre());
         String refNo = systemService.generateFormattedReferenceNo(INTAKE_REFERENCE_NO, map);
 
         // save and process
@@ -328,8 +330,18 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
+    public List<InIntake> findIntakes(InGraduateCentre graduateCentre) {
+        return intakeDao.find(graduateCentre);
+    }
+
+    @Override
     public List<InIntake> findIntakes(InIntakeSession session) {
         return intakeDao.find(session);
+    }
+
+    @Override
+    public List<InIntake> findIntakes(InIntakeSession session, InGraduateCentre graduateCentre) {
+        return intakeDao.find(session, graduateCentre);
     }
 
     @Override
@@ -338,8 +350,18 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
+    public List<InIntake> findIntakes(InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit) {
+        return intakeDao.find(session, graduateCentre, offset, limit);
+    }
+
+    @Override
     public List<InIntake> findIntakes(String filter, InIntakeSession session, Integer offset, Integer limit) {
         return intakeDao.find(filter, session, offset, limit);
+    }
+
+    @Override
+    public List<InIntake> findIntakes(String filter, InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit) {
+        return intakeDao.find(filter, session, graduateCentre, offset, limit);
     }
 
     @Override
@@ -348,8 +370,18 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
+    public Integer countIntake(InIntakeSession session, InGraduateCentre graduateCentre) {
+        return intakeDao.count(session, graduateCentre);
+    }
+
+    @Override
     public Integer countIntake(String filter, InIntakeSession session) {
         return intakeDao.count(filter, session);
+    }
+
+    @Override
+    public Integer countIntake(String filter, InIntakeSession session, InGraduateCentre graduateCentre) {
+        return intakeDao.count(filter, session, graduateCentre);
     }
 
     //====================================================================================================
@@ -411,18 +443,6 @@ public class PolicyServiceImpl implements PolicyService {
         return intakeDao.findModeOfferings(intake);
     }
     
-    //====================================================================================================
-    // STUDY MODE 
-    //====================================================================================================
-    
-    @Override
-   
-    public InStudyMode findStudyModeByCode(String code) {
-    	
-		return intakeDao.findStudyModeByCode(code);
-	}
-
-
     //====================================================================================================
     // PRIVATE METHODS
     //====================================================================================================

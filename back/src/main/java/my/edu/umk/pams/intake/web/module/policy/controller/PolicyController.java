@@ -1,9 +1,11 @@
 package my.edu.umk.pams.intake.web.module.policy.controller;
 
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
+import my.edu.umk.pams.intake.common.model.InGraduateCentre;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
+import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
@@ -100,6 +102,7 @@ public class PolicyController {
         intake.setProjection(vo.getProjection());
         intake.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
         intake.setSession(policyService.findIntakeSessionById(vo.getIntakeSession().getId()));
+        intake.setGraduateCentre(commonService.findGraduateCentreById(vo.getGraduateCentre().getId()));
         return new ResponseEntity<String>(policyService.startIntakeTask(intake), HttpStatus.OK);
     }
 
@@ -137,6 +140,25 @@ public class PolicyController {
     }
 
     // ==================================================================================================== //
+    //  GRADUATE CENTRE
+    // ==================================================================================================== //
+
+    @RequestMapping(value = "/graduateCentre/{code}/intakes", method = RequestMethod.GET)
+    public ResponseEntity<List<Intake>> findIntakesByGraduateCentre(@PathVariable String code) {
+        InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
+        List<InIntake> intakes = policyService.findIntakes(graduateCentre); // todo(uda): pagination
+        return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/graduateCentre/{code}/intakes/current", method = RequestMethod.GET)
+    public ResponseEntity<List<Intake>> findCurrentIntakesByGraduateCentre(@PathVariable String code) {
+        InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
+        InIntakeSession intakeSession = policyService.findCurrentIntakeSession();
+        List<InIntake> intakes = policyService.findIntakes(intakeSession, graduateCentre); // todo(uda): pagination
+        return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
+    }
+
+    // ==================================================================================================== //
     //  PROGRAM CODES
     // ==================================================================================================== //
 
@@ -157,7 +179,6 @@ public class PolicyController {
         return new ResponseEntity<List<SupervisorCode>>(commonTransformer
                 .toSupervisorCodeVos(commonService.findSupervisorCodes(facultyCode)), HttpStatus.OK);
     }
-
 
     // ====================================================================================================
     // PRIVATE METHODS

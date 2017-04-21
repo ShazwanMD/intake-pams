@@ -4,6 +4,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
@@ -20,13 +22,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     private static final Logger LOG = LoggerFactory.getLogger(GivenIAmCPSAdministrator.class);
+    public static final String GRADUATE_CENTRE = "CPS";
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired
     private PolicyService policyService;
-    
+
+    @Autowired
+    private CommonService commonService;
+
     @ProvidedScenarioState
     InIntakeSession intakeSession;
 
@@ -38,8 +44,10 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     
     @ProvidedScenarioState
     private InApplicant applicant;
-    
-    
+
+    @ProvidedScenarioState
+    InGraduateCentre graduateCentre;
+
     public GivenIAmCPSAdministrator I_am_a_CPS_administrator_in_$_academic_session(String academicSessionCode){
         loginAsCPS();
         intakeSession = policyService.findIntakeSessionByCode(academicSessionCode);
@@ -61,6 +69,8 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("cps", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
+
+        graduateCentre = commonService.findGraduateCentreByCode(GRADUATE_CENTRE);
     }
 
 }
