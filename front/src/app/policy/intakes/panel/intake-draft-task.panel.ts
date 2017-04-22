@@ -16,12 +16,16 @@ import {SupervisorOffering} from "../supervisor-offering.interface";
   templateUrl: './intake-draft-task.panel.html',
 })
 
-export class IntakeDraftTaskPanel implements OnInit{
+export class IntakeDraftTaskPanel implements OnInit {
+
+  private PROGRAM_OFFERINGS = "policyModuleState.programOfferings".split(".");
+  private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
+  private STUDY_MODE_OFFERINGS = "policyModuleState.studyModeOfferings".split(".");
 
   @Input() intakeTask: IntakeTask;
-  programOfferings$:Observable<ProgramOffering[]>;
-  supervisorOfferings$:Observable<SupervisorOffering[]>;
-  studyModeOfferings$:Observable<StudyModeOffering[]>;
+  programOfferings$: Observable<ProgramOffering[]>;
+  supervisorOfferings$: Observable<SupervisorOffering[]>;
+  studyModeOfferings$: Observable<StudyModeOffering[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -30,12 +34,12 @@ export class IntakeDraftTaskPanel implements OnInit{
               private store: Store<PolicyModuleState>,
               private dialog: MdDialog,
               private snackBar: MdSnackBar) {
-    this.programOfferings$ =  this.store.select(state => state.programOfferings);
-    this.supervisorOfferings$ =  this.store.select(state => state.supervisorOfferings);
-    this.studyModeOfferings$ =  this.store.select(state => state.studyModeOfferings);
+    this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERINGS);
+    this.supervisorOfferings$ = this.store.select(...this.SUPERVISOR_OFFERINGS);
+    this.studyModeOfferings$ = this.store.select(...this.STUDY_MODE_OFFERINGS);
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
   }
 

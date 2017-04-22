@@ -1,7 +1,6 @@
 package my.edu.umk.pams.intake.web.module.policy.controller;
 
-import my.edu.umk.pams.intake.common.model.InFacultyCode;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -12,6 +11,8 @@ import my.edu.umk.pams.intake.web.module.common.vo.SupervisorCode;
 import my.edu.umk.pams.intake.web.module.policy.vo.*;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,10 +23,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URLDecoder;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/policy")
 public class PolicyController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PolicyController.class);
 
     @Autowired
     private PolicyService policyService;
@@ -44,6 +48,26 @@ public class PolicyController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    // ==================================================================================================== //
+    //  INTAKE SESSION
+    // ==================================================================================================== //
+
+    @RequestMapping(value = "/intakeSessions", method = RequestMethod.GET)
+    public ResponseEntity<List<IntakeSession>> findIntakeSessions() {
+        List<InIntakeSession> sessions = policyService.findIntakeSessions(0,100);
+        return new ResponseEntity<List<IntakeSession>>(policyTransformer.toIntakeSessionVos(sessions), HttpStatus.OK);
+    }
+
+    // ==================================================================================================== //
+    //  PROGRAM LEVEL
+    // ==================================================================================================== //
+
+    @RequestMapping(value = "/programLevels", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramLevel>> findProgramLevels() {
+        List<InProgramLevel> levels = policyService.findProgramLevels(0,100);
+        return new ResponseEntity<List<ProgramLevel>>(policyTransformer.toProgramLevelVos(levels), HttpStatus.OK);
+    }
 
     // ==================================================================================================== //
     //  INTAKE
@@ -94,8 +118,10 @@ public class PolicyController {
         dummyLogin();
 
         InIntake intake = new InIntakeImpl();
+        intake.setSourceNo(UUID.randomUUID().toString());
+        intake.setAuditNo(UUID.randomUUID().toString());
         intake.setDescription(vo.getDescription());
-        intake.setStartDate(vo.getStarDate());
+        intake.setStartDate(vo.getStartDate());
         intake.setEndDate(vo.getEndDate());
         intake.setProjection(vo.getProjection());
         intake.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
@@ -134,19 +160,33 @@ public class PolicyController {
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.POST)
     public ResponseEntity<Boolean> addProgramOfferings(@PathVariable String referenceNo,
                                                        @RequestBody ProgramOffering vo) {
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
-        InProgramOffering offering = new InProgramOfferingImpl();
-        offering.setProjection(vo.getProjection());
-        offering.setInterview(vo.getInterview());
-        // todo: offering.setStudyCenterCode();
-        policyService.addProgramOffering(intake, offering);
+        dummyLogin();
+
+        try {
+            LOG.debug("addProgramOfferings");
+            String decode = URLDecoder.decode(referenceNo);
+            InIntake intake = policyService.findIntakeByReferenceNo(decode);
+            InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
+            InProgramOffering offering = new InProgramOfferingImpl();
+            offering.setProjection(vo.getProjection());
+            offering.setInterview(vo.getInterview());
+            offering.setGeneralCriteria("TODO");
+            offering.setSpecificCriteria("TODO");
+            offering.setProgramCode(programCode);
+            // todo: offering.setStudyCenterCode();
+            policyService.addProgramOffering(intake, offering);
+        } catch (Exception e) {
+            LOG.debug(e.getMessage());
+        }
+
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings/{id}", method = RequestMethod.POST)
     public ResponseEntity<Boolean> deleteProgramOfferings(@PathVariable String referenceNo,
                                                           @PathVariable Long id) {
+        dummyLogin();
+
         String decode = URLDecoder.decode(referenceNo);
         InIntake intake = policyService.findIntakeByReferenceNo(decode);
         InProgramOffering offering = policyService.findProgramOfferingById(id);
@@ -156,6 +196,8 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
+        dummyLogin();
+
         String decode = URLDecoder.decode(referenceNo);
         InIntake intake = policyService.findIntakeByReferenceNo(decode);
         return new ResponseEntity<List<SupervisorOffering>>(policyTransformer
@@ -165,9 +207,13 @@ public class PolicyController {
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.POST)
     public ResponseEntity<Boolean> addsupervisorOfferings(@PathVariable String referenceNo,
                                                           @RequestBody SupervisorOffering vo) {
+        dummyLogin();
+
         String decode = URLDecoder.decode(referenceNo);
         InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InSupervisorCode supervisorCode = commonService.findSupervisorCodeById(vo.getId());
         InSupervisorOffering offering = new InSupervisorOfferingImpl();
+        offering.setSupervisorCode(supervisorCode);
         policyService.addSupervisorOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
@@ -175,6 +221,8 @@ public class PolicyController {
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings/{id}", method = RequestMethod.POST)
     public ResponseEntity<Boolean> deletesupervisorOfferings(@PathVariable String referenceNo,
                                                              @PathVariable Long id) {
+        dummyLogin();
+
         String decode = URLDecoder.decode(referenceNo);
         InIntake intake = policyService.findIntakeByReferenceNo(decode);
         InSupervisorOffering offering = policyService.findSupervisorOfferingById(id);
@@ -184,6 +232,8 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<StudyModeOffering>> findstudyModeOfferings(@PathVariable String referenceNo) {
+        dummyLogin();
+
         String decode = URLDecoder.decode(referenceNo);
         InIntake intake = policyService.findIntakeByReferenceNo(decode);
         return new ResponseEntity<List<StudyModeOffering>>(policyTransformer
@@ -191,18 +241,24 @@ public class PolicyController {
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> addstudyModeOfferings(@PathVariable String referenceNo,
+    public ResponseEntity<Boolean> addStudyModeOfferings(@PathVariable String referenceNo,
                                                           @RequestBody StudyModeOffering vo) {
+        dummyLogin();
+
         String decode = URLDecoder.decode(referenceNo);
         InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InStudyMode studyMode = commonService.findStudyModeById(vo.getId());
         InStudyModeOffering offering = new InStudyModeOfferingImpl();
+        offering.setStudyMode(studyMode);
         policyService.addStudyModeOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> deletestudyModeOfferings(@PathVariable String referenceNo,
+    public ResponseEntity<Boolean> deleteStudyModeOfferings(@PathVariable String referenceNo,
                                                              @PathVariable Long id) {
+        dummyLogin();
+
         String decode = URLDecoder.decode(referenceNo);
         InIntake intake = policyService.findIntakeByReferenceNo(decode);
         InStudyModeOffering offering = policyService.findStudyModeOfferingById(id);

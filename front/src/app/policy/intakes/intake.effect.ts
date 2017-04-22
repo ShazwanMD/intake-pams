@@ -3,6 +3,7 @@ import {Effect, Actions} from '@ngrx/effects';
 import {IntakeActions} from "./intake.action";
 import {from} from "rxjs/observable/from";
 import {PolicyService} from "../../../services/policy.service";
+import {switchMap} from "rxjs/operator/switchMap";
 
 
 @Injectable()
@@ -94,8 +95,6 @@ export class IntakeEffects {
   @Effect() addProgramOffering$ = this.actions$
     .ofType(IntakeActions.ADD_PROGRAM_OFFERING)
     .map(action => action.payload)
-    .mergeMap(payload => from([payload,
-      this.policyService.addProgramOffering(payload.intake, payload.programOffering),
-      this.policyService.findProgramOfferings(payload.intake)
-    ]));
+    .switchMap(payload => this.policyService.addProgramOffering(payload.intake, payload.programOffering))
+    .map(message => this.intakeActions.addProgramOfferingSuccess(message));
 }

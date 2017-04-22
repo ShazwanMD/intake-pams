@@ -22,6 +22,25 @@ export class CommonActions {
     };
   }
 
+  static FIND_GRADUATE_CENTRES = '[Common] Find Graduate Centres';
+
+  findGraduateCentres(): Action {
+    console.log("findGraduateCentres");
+    return {
+      type: CommonActions.FIND_GRADUATE_CENTRES,
+    };
+  }
+
+  static FIND_GRADUATE_CENTRES_SUCCESS = '[Common] Find Graduate Centres Success';
+
+  findGraduateCentresSuccess(centres): Action {
+    console.log("findGraduateCentresSuccess");
+    return {
+      type: CommonActions.FIND_GRADUATE_CENTRES_SUCCESS,
+      payload: centres
+    };
+  }
+
   static FIND_PROGRAM_CODES = '[Common] Find Program Codes';
 
   findProgramCodes(): Action {

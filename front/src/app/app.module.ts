@@ -36,6 +36,7 @@ import {
 import {centreModuleReducers, INITIAL_CENTRE_STATE, CentreModuleState, CentreModule} from "./centre/index";
 import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
+import {intakeTaskListReducer} from "./policy/intakes/intake-task-list.reducer";
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -65,12 +66,12 @@ export const INITIAL_APP_STATE: ApplicationState =
   };
 
 export const applicationReducers = {
-  ...policyModuleReducers,
-  ...applicationModuleReducers,
-  ...admissionModuleReducers,
-  ...registrationModuleReducers,
-  ...commonModuleReducers,
-  ...centreModuleReducers,
+  commonModuleState: combineReducers({...commonModuleReducers,}),
+  policyModuleState: combineReducers({...policyModuleReducers}),
+  applicationModuleState: combineReducers({...applicationModuleReducers}),
+  admissionModuleState: combineReducers({...admissionModuleReducers,}),
+  registrationModuleState: combineReducers({...registrationModuleReducers,}),
+  centreModuleState: combineReducers({...centreModuleReducers}),
 };
 
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);

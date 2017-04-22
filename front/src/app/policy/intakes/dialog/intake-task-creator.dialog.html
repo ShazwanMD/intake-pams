@@ -1,35 +1,62 @@
 <h2 md-dialog-title>Intake Task Creator</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #description
-               placeholder="description"
-               formControlName="description"
-               value="Description"
-               flex/>
-      </md-input-container>
+    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+      <div layout="column" class="pad-right" flex>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput #description
+                   placeholder="Description"
+                   formControlName="description"
+                   flex/>
+          </md-input-container>
+        </div>
+        <div layout="row" class="pad-top">
+          <md-select formControlName="intakeSession" placeholder="Intake Session" flex>
+            <md-option *ngFor="let intakeSession of intakeSessions$ | async" [value]="intakeSession">
+              {{intakeSession.label}}: {{intakeSession.descriptionMs}}
+            </md-option>
+          </md-select>
+        </div>
+      </div>
+      <div layout="column" class="pad-left" flex>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput
+                   type="date"
+                   placeholder="Start Date"
+                   formControlName="startDate"
+                   flex/>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput
+                   type="date"
+                   placeholder="End Date"
+                   formControlName="endDate"
+                   flex/>
+          </md-input-container>
+        </div>
+      </div>
     </div>
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #sourceNo
-               placeholder="sourceNo"
-               formControlName="sourceNo"
-               value="Description"
-               flex/>
-      </md-input-container>
+    <div layout="row" class="pad-top">
+      <md-select formControlName="graduateCentre" placeholder="Graduate Centre" flex>
+        <md-option *ngFor="let graduateCentre of graduateCentres$ | async" [value]="graduateCentre">
+          {{graduateCentre.centre}}: {{graduateCentre.descriptionMs}}
+        </md-option>
+      </md-select>
     </div>
-      <div layout="row" class="pad-bottom pad-top">
-        <md-select formControlName="account"  placeholder="account" style="width: 100%">
-          <md-option *ngFor="let account of accounts" [value]="account">
-            {{account.code}}: {{account.name}}
-          </md-option>
-        </md-select>
+    <div layout="row" class="pad-top">
+      <md-select formControlName="programLevel" placeholder="Program Level" flex>
+        <md-option *ngFor="let programLevel of programLevels$ | async" [value]="programLevel">
+          {{programLevel.code}}: {{programLevel.description}}
+        </md-option>
+      </md-select>
     </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-button color="primary" (click)="goBack()">Back</button>
   <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
 </md-dialog-actions>
 

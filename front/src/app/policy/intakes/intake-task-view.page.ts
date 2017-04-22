@@ -16,13 +16,14 @@ import {Store} from "@ngrx/store";
 })
 export class IntakeTaskViewPage implements OnInit {
 
+  private INTAKE_TASK = "policyModuleState.intakeTask".split(".");
   private intakeTask$: Observable<IntakeTask>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<PolicyModuleState>,
               private actions: IntakeActions) {
-    this.intakeTask$ = this.store.select(state => state.intakeTask)
+    this.intakeTask$ = this.store.select(...this.INTAKE_TASK)
   }
 
   ngOnInit(): void {

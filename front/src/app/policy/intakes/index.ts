@@ -25,6 +25,7 @@ import {StudyModeOfferingListComponent} from "./component/study-mode-offering-li
 import {ProgramOfferingEditorDialog} from "./dialog/program-offering-editor.dialog";
 import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
+import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
 
 
 @NgModule({
@@ -75,6 +76,7 @@ export class IntakeSubModule {
         CommonService,
         PolicyService,
         IntakeActions,
+        IntakeSessionActions,
         CommonActions,
       ],
     };

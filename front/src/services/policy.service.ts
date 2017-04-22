@@ -8,12 +8,33 @@ import {IntakeTask} from "../app/policy/intakes/intake-task.interface";
 import {ProgramOffering} from "../app/policy/intakes/program-offering.interface";
 import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.interface";
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
+import {IntakeSession} from "../app/policy/intake-sessions/intake-session.interface";
 
 @Injectable()
 export class PolicyService {
 
   constructor(private http: Http,
               private _http: HttpInterceptorService) {
+  }
+
+  // ====================================================================================================
+  // INTAKE SESSION
+  // ====================================================================================================
+
+  findIntakeSessions(): Observable<IntakeSession[]> {
+    console.log("findIntakeSessions");
+    return this.http.get(environment.endpoint + '/api/policy/intakeSessions')
+      .map((res: Response) => <IntakeSession[]>res.json());
+  }
+
+  // ====================================================================================================
+  // PROGRAM LEVEL
+  // ====================================================================================================
+
+  findProgramLevels(): Observable<ProgramLevel[]> {
+    console.log("findProgramLevels");
+    return this.http.get(environment.endpoint + '/api/policy/programLevels')
+      .map((res: Response) => <ProgramLevel[]>res.json());
   }
 
   // ====================================================================================================
@@ -85,10 +106,15 @@ export class PolicyService {
       .flatMap(data => Observable.of(true));
   }
 
-  addProgramOffering(intake: Intake, offering: ProgramOffering): Observable<Boolean> {
+  addProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
     let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/programOfferings', JSON.stringify(offering))
-      .flatMap(data => Observable.of(true));
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/programOfferings', JSON.stringify(offering), options)
+      .flatMap((res:Response) => Observable.of(res.text()));
   }
 
   deleteProgramOffering(intake: Intake, offering: ProgramOffering): Observable<Boolean> {
@@ -98,8 +124,14 @@ export class PolicyService {
   }
 
   addSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<Boolean> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
     let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/supervisorOfferings', JSON.stringify(offering))
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/supervisorOfferings',
+      JSON.stringify(offering), options)
       .flatMap(data => Observable.of(true));
   }
 
@@ -110,8 +142,14 @@ export class PolicyService {
   }
 
   addStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<Boolean> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
     let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/studyModeOfferings', JSON.stringify(offering))
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/studyModeOfferings',
+      JSON.stringify(offering), options)
       .flatMap(data => Observable.of(true));
   }
 

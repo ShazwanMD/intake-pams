@@ -249,6 +249,8 @@ public class PolicyServiceImpl implements PolicyService {
 
         List<InProgramOffering> offerings = findProgramOfferings(intake);
         // todo(uda) intake cancel event
+
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
@@ -265,6 +267,7 @@ public class PolicyServiceImpl implements PolicyService {
         Validate.notNull(supervisorOffering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
         intakeDao.deleteSupervisorOffering(intake, supervisorOffering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
@@ -275,6 +278,7 @@ public class PolicyServiceImpl implements PolicyService {
         programOffering.setGeneralCriteria(generalCriteria());
         programOffering.setSpecificCriteria(specificCriteria());
         intakeDao.addProgramOffering(intake, programOffering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
@@ -283,6 +287,7 @@ public class PolicyServiceImpl implements PolicyService {
         Validate.notNull(programOffering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
         intakeDao.deleteProgramOffering(intake, programOffering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
@@ -291,6 +296,7 @@ public class PolicyServiceImpl implements PolicyService {
         Validate.notNull(modeOffering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
         intakeDao.addModeOffering(intake, modeOffering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
@@ -299,6 +305,7 @@ public class PolicyServiceImpl implements PolicyService {
         Validate.notNull(modeOffering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
         intakeDao.deleteModeOffering(intake, modeOffering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override

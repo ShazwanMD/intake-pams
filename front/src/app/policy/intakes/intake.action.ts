@@ -276,10 +276,10 @@ export class IntakeActions {
 
   static ADD_PROGRAM_OFFERING_SUCCESS = '[Intake] Add Program Offering Success';
 
-  addProgramOfferingSuccess(intake:Intake, programOffering: ProgramOffering) {
+  addProgramOfferingSuccess(message) {
     return {
       type: IntakeActions.ADD_PROGRAM_OFFERING_SUCCESS,
-      payload:intake
+      payload:message
     };
   }
 

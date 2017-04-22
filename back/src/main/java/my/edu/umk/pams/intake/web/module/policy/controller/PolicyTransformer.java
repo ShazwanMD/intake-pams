@@ -84,7 +84,7 @@ public class PolicyTransformer {
         vo.setSourceNo(e.getSourceNo());
         vo.setDescription(e.getDescription());
         vo.setProjection(e.getProjection());
-        vo.setStarDate(e.getStartDate());
+        vo.setStartDate(e.getStartDate());
         vo.setEndDate(e.getEndDate());
         vo.setIntakeSession(toIntakeSessionVo(e.getSession()));
         vo.setProgramLevel(toProgramLevelVo(e.getProgramLevel()));

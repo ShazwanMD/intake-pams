@@ -14,21 +14,21 @@ import java.util.Date;
  */
 public class Intake extends Document {
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a")
-    private Date starDate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date startDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date endDate;
     private Integer projection;
     private IntakeSession intakeSession;
     private ProgramLevel programLevel;
     private GraduateCentre graduateCentre;
 
-    public Date getStarDate() {
-        return starDate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setStarDate(Date starDate) {
-        this.starDate = starDate;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public Date getEndDate() {

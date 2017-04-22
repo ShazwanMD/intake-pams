@@ -8,17 +8,19 @@ import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 
-import {programCodeListReducer, ProgramCodeListState} from "./program-code-list.reducer";
-import {StudyModeListState, studyModeListReducer} from "./study-mode-list.reducer";
-import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-code-list.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {CommonEffects} from "./common.effect";
 import {CommonActions} from "./common.action";
+import {ProgramCodeListState, programCodeListReducer} from "./program-code-list.reducer";
+import {StudyModeListState, studyModeListReducer} from "./study-mode-list.reducer";
+import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-code-list.reducer";
+import {GraduateCentreListState, graduateCentreListReducer} from "./graduate-centre-list.reducer";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
   studyModes: StudyModeListState;
   supervisorCodes: SupervisorCodeListState;
+  graduateCentres: GraduateCentreListState;
 }
 ;
 
@@ -27,6 +29,7 @@ export const commonModuleReducers = {
   programCodes: programCodeListReducer,
   studyModes: studyModeListReducer,
   supervisorCodes: supervisorCodeListReducer,
+  graduateCentres: graduateCentreListReducer,
 };
 
 @NgModule({
@@ -37,8 +40,7 @@ export const commonModuleReducers = {
     CovalentCoreModule.forRoot(),
     EffectsModule.run(CommonEffects),
   ],
-  declarations: [
-  ],
+  declarations: [],
   exports: [],
 })
 export class CommonModule {

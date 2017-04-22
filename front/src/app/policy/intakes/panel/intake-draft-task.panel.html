@@ -41,6 +41,20 @@
               </md-list-item>
             </md-list>
           </div>
+          <div layout="column" flex>
+            <md-list dense>
+              <md-list-item a>
+                <md-icon md-list-icon>local_offer</md-icon>
+                <h4 md-line>{{intakeTask?.startDate| date :'longDate'}}</h4>
+                <p md-line>Start Date</p>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-icon>local_offer</md-icon>
+                <h4 md-line>{{intakeTask?.endDate | date :'longDate'}}</h4>
+                <p md-line>End Date</p>
+              </md-list-item>
+            </md-list>
+          </div>
         </div>
 
         <md-card-actions>

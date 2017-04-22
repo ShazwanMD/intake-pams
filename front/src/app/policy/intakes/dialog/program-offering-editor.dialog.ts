@@ -8,7 +8,7 @@ import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
 import {PolicyService} from "../../../../services/policy.service";
-import {IntakeSession} from "../intake-session.interface";
+import {IntakeSession} from "../../intake-sessions/intake-session.interface";
 import {GraduateCentre} from "../../../common/graduate-centre.interface";
 import {ProgramCode} from "../../../common/program-code.interface";
 import {ProgramOffering} from "../program-offering.interface";
@@ -24,9 +24,10 @@ import {Observable} from "rxjs";
 
 export class ProgramOfferingEditorDialog implements OnInit {
 
-  private editorForm: FormGroup;
+  private PROGRAM_CODES = "commonModuleState.programCodes".split(".");
   private programCodes$: Observable<ProgramCode[]>;
-  private _intake: Intake;
+  private editorForm: FormGroup;
+  @Input() intake: Intake;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -37,11 +38,7 @@ export class ProgramOfferingEditorDialog implements OnInit {
               private actions: IntakeActions,
               private commonActions: CommonActions,
               private dialog: MdDialogRef<ProgramOfferingEditorDialog>) {
-    this.programCodes$ = this.commonStore.select(state => state.programCodes);
-  }
-
-  set intake(value: Intake) {
-    this._intake = value;
+    this.programCodes$ = this.commonStore.select(...this.PROGRAM_CODES);
   }
 
   ngOnInit(): void {
@@ -52,15 +49,14 @@ export class ProgramOfferingEditorDialog implements OnInit {
       programCode: <ProgramCode>{},
     });
 
-    // retrieve program codes for select
+    // retrieve select options
     this.store.dispatch(this.commonActions.findProgramCodes());
   }
 
   add(offering: ProgramOffering, isValid: boolean) {
     console.log("add program offering");
-    this.store.dispatch(this.actions.addProgramOffering(this._intake, offering));
+    this.store.dispatch(this.actions.addProgramOffering(this.intake, offering));
     this.dialog.close();
-
     // todo(uda): snackbar
   }
 }

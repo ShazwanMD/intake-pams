@@ -23,18 +23,18 @@ import {CentreActions} from "./centre.action";
 
 export interface CentreModuleState {
   graduateCentre:GraduateCentreState,
-  // programCodes:ProgramCodeListState,
+  programCodes:ProgramCodeListState,
 };
 
 export const INITIAL_CENTRE_STATE: CentreModuleState =
   <CentreModuleState>{
     graduateCentre:<GraduateCentre>{},
-    // programCodes:[]
+    programCodes:[]
   };
 
 export const centreModuleReducers = {
   graduateCentre:graduateCentreReducer,
-  // programCodes:programCodeListReducer
+  programCodes:programCodeListReducer
  };
 
 @NgModule({

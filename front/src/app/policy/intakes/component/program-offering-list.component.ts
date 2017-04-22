@@ -25,14 +25,6 @@ export class ProgramOfferingListComponent {
               private dialog: MdDialog) {
   }
 
-  add(programOffering: ProgramOffering) {
-    this.store.dispatch(this.actions.addProgramOffering(this.intake, programOffering));
-  }
-
-  delete(programOffering: ProgramOffering) {
-    this.store.dispatch(this.actions.deleteProgramOffering(this.intake, programOffering));
-  }
-
   showDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
@@ -45,7 +37,9 @@ export class ProgramOfferingListComponent {
     this.editorDialogRef.componentInstance.intake = this.intake;
 
     this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+      console.log("closeDialog");
+      // reload program offerings
+      this.store.dispatch(this.actions.findProgramOfferings(this.intake));
     });
   }
 
