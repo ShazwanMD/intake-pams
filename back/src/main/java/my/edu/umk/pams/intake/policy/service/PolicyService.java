@@ -90,9 +90,15 @@ public interface PolicyService {
 
     void addSupervisorOffering(InIntake intake, InSupervisorOffering supervisorOffering);
 
+    void deleteSupervisorOffering(InIntake intake, InSupervisorOffering supervisorOffering);
+
     void addProgramOffering(InIntake intake, InProgramOffering programOffering);
 
+    void deleteProgramOffering(InIntake intake, InProgramOffering programOffering);
+
     void addStudyModeOffering(InIntake intake, InStudyModeOffering modeOffering);
+
+    void deleteStudyModeOffering(InIntake intake, InStudyModeOffering modeOffering);
 
     // finder
 

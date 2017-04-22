@@ -16,16 +16,28 @@
           <div layout="column" flex>
             <md-list dense>
               <md-list-item>
+                <md-icon md-list-icon>local_offer</md-icon>
                 <h4 md-line>{{intakeTask?.referenceNo}}</h4>
                 <p md-line>Reference No</p>
+              </md-list-item>
+              <md-list-item>
+                <md-icon md-list-icon>local_offer</md-icon>
+                <h4 md-line>{{intakeTask?.projection}}</h4>
+                <p md-line>Projection</p>
               </md-list-item>
             </md-list>
           </div>
           <div layout="column" flex>
             <md-list dense>
+              <md-list-item a>
+                <md-icon md-list-icon>local_offer</md-icon>
+                <h4 md-line>{{intakeTask?.startDate| date :'longDate'}}</h4>
+                <p md-line>Start Date</p>
+              </md-list-item>
               <md-list-item>
-                <h4 md-line>{{intakeTask?.projection}}</h4>
-                <p md-line>Projection</p>
+                <md-icon md-list-icon>local_offer</md-icon>
+                <h4 md-line>{{intakeTask?.endDate | date :'longDate'}}</h4>
+                <p md-line>End Date</p>
               </md-list-item>
             </md-list>
           </div>
@@ -35,44 +47,30 @@
         </md-card-actions>
       </md-card>
 
-
       <md-card>
-        <md-card-title>Program Offerings</md-card-title>
-        <md-card-subtitle>Offered program codes</md-card-subtitle>
+        <md-card-title>Offerings</md-card-title>
+        <md-card-subtitle>Offered programs, modes and supervisors</md-card-subtitle>
         <md-divider></md-divider>
-        <div toolbar-buttons layout="row" layout-align="start center" flex>
-          <span flex></span>
-          <button md-button class="md-icon-button">
-            <md-icon class="md-24 tc-grey-700">add</md-icon>
-          </button>
-          <button md-button class="md-icon-button">
-            <md-icon class="md-24 tc-grey-700">clear</md-icon>
-          </button>
-          <button md-button class="md-icon-button">
-            <md-icon class="md-24 tc-grey-700">content_copy</md-icon>
-          </button>
-        </div>
-        <md-divider></md-divider>
-        <div layout="row"
-             layout-align="start center"
-             layout-wrap>
-          <md-nav-list dense flex>
-            <template let-programOffering let-last="last" ngFor [ngForOf]="programOfferings$ | async">
-              <a md-list-item>
-                <md-icon md-list-avatar>label</md-icon>
-                <h3 md-line> {{programOffering.programCode?.descriptionMs}} </h3>
-                <p md-line> {{programOffering.programCode?.code}} </p>
-                <!--<span flex></span>-->
-                <!--<span flex="40"> xxx </span>-->
-              </a>
-            </template>
-          </md-nav-list>
-        </div>
+        <md-tab-group>
+          <md-tab label="Programs">
+            <pams-program-offering-list
+              [programOfferings]="programOfferings$|async"
+              [intake]="intakeTask.intake"></pams-program-offering-list>
+          </md-tab>
+          <md-tab label="Study Modes">
+            <pams-study-mode-offering-list
+              [studyModeOfferings]="studyModeOfferings$|async"
+              [intake]="intakeTask.intake"></pams-study-mode-offering-list>
+          </md-tab>
+          <md-tab label="Supervisors">
+            <pams-supervisor-offering-list
+              [supervisorOfferings]="supervisorOfferings$|async"
+              [intake]="intakeTask.intake"></pams-supervisor-offering-list>
+          </md-tab>
+        </md-tab-group>
       </md-card>
-
     </div>
     <div flex-gt-md="30">
-
       <md-card>
         <md-card-title>Action</md-card-title>
         <md-card-subtitle>Actions available on current intake</md-card-subtitle>

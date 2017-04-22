@@ -35,6 +35,7 @@ import {
 } from "./registration/index";
 import {centreModuleReducers, INITIAL_CENTRE_STATE, CentreModuleState, CentreModule} from "./centre/index";
 import {DashboardModule} from "./dashboard/index";
+import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -43,6 +44,7 @@ const httpInterceptorProviders: Type<any>[] = [
 
 // state
 interface ApplicationState {
+  commonModuleState: CommonModuleState;
   policyModuleState: PolicyModuleState;
   applicationModuleState: ApplicationModuleState;
   admissionModuleState: AdmissionModuleState;
@@ -54,6 +56,7 @@ interface ApplicationState {
 // reducer
 export const INITIAL_APP_STATE: ApplicationState =
   <ApplicationState>{
+    commonModuleState: INITIAL_COMMON_STATE,
     policyModuleState: INITIAL_POLICY_STATE,
     applicationModuleState: INITIAL_APPLICATION_STATE,
     admissionModuleState: INITIAL_ADMISSION_STATE,
@@ -66,6 +69,7 @@ export const applicationReducers = {
   ...applicationModuleReducers,
   ...admissionModuleReducers,
   ...registrationModuleReducers,
+  ...commonModuleReducers,
   ...centreModuleReducers,
 };
 
@@ -98,6 +102,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     StoreModule.provideStore(applicationReducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     DashboardModule.forRoot(),
+    CommonModule.forRoot(),
     CentreModule.forRoot(),
     PolicyModule.forRoot(),
     ApplicationModule.forRoot(),

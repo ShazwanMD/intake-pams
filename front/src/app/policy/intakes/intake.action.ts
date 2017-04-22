@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
+import {Intake} from "./intake.interface";
+import {ProgramOffering} from "./program-offering.interface";
+import {SupervisorOffering} from "./supervisor-offering.interface";
+import {StudyModeOffering} from "./study-mode-offering.interface";
 
 @Injectable()
 export class IntakeActions {
 
   static FIND_ASSIGNED_INTAKE_TASKS = '[Intake] Find Assigned Intake Tasks';
+
   findAssignedIntakeTasks(): Action {
     return {
       type: IntakeActions.FIND_ASSIGNED_INTAKE_TASKS
@@ -12,6 +17,7 @@ export class IntakeActions {
   }
 
   static FIND_ASSIGNED_INTAKE_TASKS_SUCCESS = '[Intake] Find Assigned Intake Tasks Success';
+
   findAssignedIntakeTasksSuccess(tasks): Action {
     console.log("findAssignedIntakeTasksSuccess");
     return {
@@ -21,6 +27,7 @@ export class IntakeActions {
   }
 
   static FIND_POOLED_INTAKE_TASKS = '[Intake] Find Pooled Intake Tasks';
+
   findPooledIntakeTasks(): Action {
     return {
       type: IntakeActions.FIND_POOLED_INTAKE_TASKS
@@ -28,6 +35,7 @@ export class IntakeActions {
   }
 
   static FIND_POOLED_INTAKE_TASKS_SUCCESS = '[Intake] Find Pooled Intake Tasks Success';
+
   findPooledIntakeTasksSuccess(tasks): Action {
     console.log("findAssignedIntakeTasksSuccess");
     return {
@@ -35,7 +43,9 @@ export class IntakeActions {
       payload: tasks
     };
   }
+
   static FIND_INTAKE_TASK_BY_TASK_ID = '[Intake] Find Intake Task By Task Id';
+
   findIntakeTaskByTaskId(taskId): Action {
     console.log("findIntakeTaskByTaskId");
     return {
@@ -45,6 +55,7 @@ export class IntakeActions {
   }
 
   static FIND_INTAKE_TASK_BY_TASK_ID_SUCCESS = '[Intake] Find Intake Task By Task Id Success';
+
   findIntakeTaskByTaskIdSuccess(task): Action {
     console.log("findIntakeTaskByTaskIdSuccess");
     return {
@@ -54,6 +65,7 @@ export class IntakeActions {
   }
 
   static START_INTAKE_TASK = '[Intake] Start Intake Task';
+
   startIntakeTask(intake): Action {
     return {
       type: IntakeActions.START_INTAKE_TASK,
@@ -62,6 +74,7 @@ export class IntakeActions {
   }
 
   static START_INTAKE_TASK_SUCCESS = '[Intake] Start Intake Task Success';
+
   startIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.START_INTAKE_TASK_SUCCESS,
@@ -70,6 +83,7 @@ export class IntakeActions {
   }
 
   static COMPLETE_INTAKE_TASK = '[Intake] Complete Intake Task';
+
   completeIntakeTask(intake): Action {
     return {
       type: IntakeActions.COMPLETE_INTAKE_TASK,
@@ -78,6 +92,7 @@ export class IntakeActions {
   }
 
   static COMPLETE_INTAKE_TASK_SUCCESS = '[Intake] Complete Intake Task Success';
+
   completeIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.COMPLETE_INTAKE_TASK_SUCCESS,
@@ -86,6 +101,7 @@ export class IntakeActions {
   }
 
   static ASSIGN_INTAKE_TASK = '[Intake] Assign Intake Task';
+
   assignIntakeTask(intake): Action {
     return {
       type: IntakeActions.ASSIGN_INTAKE_TASK,
@@ -94,6 +110,7 @@ export class IntakeActions {
   }
 
   static ASSIGN_INTAKE_TASK_SUCCESS = '[Intake] Assign Intake Task Success';
+
   assignIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.ASSIGN_INTAKE_TASK_SUCCESS,
@@ -102,6 +119,7 @@ export class IntakeActions {
   }
 
   static RELEASE_INTAKE_TASK = '[Intake] Release Intake Task';
+
   releaseIntakeTask(intake): Action {
     return {
       type: IntakeActions.RELEASE_INTAKE_TASK,
@@ -110,6 +128,7 @@ export class IntakeActions {
   }
 
   static RELEASE_INTAKE_TASK_SUCCESS = '[Intake] Release Intake Task Success';
+
   releaseIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.RELEASE_INTAKE_TASK_SUCCESS,
@@ -118,6 +137,7 @@ export class IntakeActions {
   }
 
   static FIND_INTAKE_BY_ID = '[Intake] Find Intake By Id';
+
   findIntakeById(id): Action {
     return {
       type: IntakeActions.FIND_INTAKE_BY_ID,
@@ -126,6 +146,7 @@ export class IntakeActions {
   }
 
   static FIND_INTAKE_BY_ID_SUCCESS = '[Intake] Find Intake By Id Success';
+
   findIntakeByIdSuccess(intake): Action {
     return {
       type: IntakeActions.FIND_INTAKE_BY_ID_SUCCESS,
@@ -134,6 +155,7 @@ export class IntakeActions {
   }
 
   static FIND_INTAKE_BY_REFERENCE_NO = '[Intake] Find Intake By Reference No';
+
   findIntakeByReferenceNo(referenceNo): Action {
     return {
       type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO,
@@ -142,6 +164,7 @@ export class IntakeActions {
   }
 
   static FIND_INTAKE_BY_REFERENCE_NO_SUCCESS = '[Intake] Find Intake By Reference No Success';
+
   findIntakeByReferenceNoSuccess(intake): Action {
     return {
       type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_SUCCESS,
@@ -150,6 +173,7 @@ export class IntakeActions {
   }
 
   static FIND_PROGRAM_OFFERINGS = '[Intake] Find Program Offerings';
+
   findProgramOfferings(intake): Action {
     return {
       type: IntakeActions.FIND_PROGRAM_OFFERINGS,
@@ -158,6 +182,7 @@ export class IntakeActions {
   }
 
   static FIND_PROGRAM_OFFERINGS_SUCCESS = '[Intake] Find Program Offerings Success';
+
   findProgramOfferingsSuccess(items): Action {
     console.log("findProgramOfferingsSuccess");
     return {
@@ -167,6 +192,7 @@ export class IntakeActions {
   }
 
   static FIND_SUPERVISOR_OFFERINGS = '[Intake] Find Supervisor Offerings';
+
   findSupervisorOfferings(intake): Action {
     return {
       type: IntakeActions.FIND_SUPERVISOR_OFFERINGS,
@@ -175,6 +201,7 @@ export class IntakeActions {
   }
 
   static FIND_SUPERVISOR_OFFERINGS_SUCCESS = '[Intake] Find Supervisor Offering Success';
+
   findSupervisorOfferingsSuccess(offerings): Action {
     console.log("findSupervisorOfferingsSuccess");
     return {
@@ -184,6 +211,7 @@ export class IntakeActions {
   }
 
   static FIND_STUDY_MODE_OFFERINGS = '[Intake] Find Study Mode Offerings';
+
   findStudyModeOfferings(intake): Action {
     return {
       type: IntakeActions.FIND_STUDY_MODE_OFFERINGS,
@@ -192,6 +220,7 @@ export class IntakeActions {
   }
 
   static FIND_STUDY_MODE_OFFERINGS_SUCCESS = '[Intake] Find Study Mode Offering Success';
+
   findStudyModeOfferingsSuccess(offerings): Action {
     console.log("findStudyModeOfferingsSuccess");
     return {
@@ -201,6 +230,7 @@ export class IntakeActions {
   }
 
   static UPDATE_INTAKE = '[Intake] Update Intake';
+
   updateIntake(intake): Action {
     return {
       type: IntakeActions.UPDATE_INTAKE,
@@ -209,6 +239,7 @@ export class IntakeActions {
   }
 
   static UPDATE_INTAKE_SUCCESS = '[Intake] Update Intake Success';
+
   updateIntakeSuccess(intake): Action {
     return {
       type: IntakeActions.UPDATE_INTAKE_SUCCESS,
@@ -217,6 +248,7 @@ export class IntakeActions {
   }
 
   static REMOVE_INTAKE = '[Intake] Remove Intake';
+
   removeIntake(intake): Action {
     return {
       type: IntakeActions.REMOVE_INTAKE,
@@ -225,10 +257,118 @@ export class IntakeActions {
   }
 
   static REMOVE_INTAKE_SUCCESS = '[Intake] Remove Intake Success';
+
   removeIntakeSuccess(intake): Action {
     return {
       type: IntakeActions.REMOVE_INTAKE_SUCCESS,
       payload: intake
+    };
+  }
+
+  static ADD_PROGRAM_OFFERING = '[Intake] Add Program Offering';
+
+  addProgramOffering(intake:Intake, programOffering: ProgramOffering) {
+    return {
+      type: IntakeActions.ADD_PROGRAM_OFFERING,
+      payload:{intake:intake, programOffering:programOffering}
+    };
+  }
+
+  static ADD_PROGRAM_OFFERING_SUCCESS = '[Intake] Add Program Offering Success';
+
+  addProgramOfferingSuccess(intake:Intake, programOffering: ProgramOffering) {
+    return {
+      type: IntakeActions.ADD_PROGRAM_OFFERING_SUCCESS,
+      payload:intake
+    };
+  }
+
+  static DELETE_PROGRAM_OFFERING = '[Intake] DELETE Program Offering';
+
+  deleteProgramOffering(intake:Intake, programOffering: ProgramOffering) {
+    return {
+      type: IntakeActions.DELETE_PROGRAM_OFFERING,
+      payload:{intake:intake, programOffering:programOffering}
+    };
+  }
+
+  static DELETE_PROGRAM_OFFERING_SUCCESS = '[Intake] Delete Program Offering Success';
+
+  deleteProgramOfferingSuccess(intake:Intake, programOffering: ProgramOffering) {
+    return {
+      type: IntakeActions.DELETE_PROGRAM_OFFERING_SUCCESS,
+      payload:intake
+    };
+  }
+
+  static ADD_SUPERVISOR_OFFERING = '[Intake] Add Supervisor Offering';
+
+  addSupervisorOffering(intake:Intake, supervisorOffering: SupervisorOffering) {
+    return {
+      type: IntakeActions.ADD_SUPERVISOR_OFFERING,
+      payload:{intake:intake, supervisorOffering:supervisorOffering}
+    };
+  }
+
+  static ADD_SUPERVISOR_OFFERING_SUCCESS = '[Intake] Add Supervisor Offering Success';
+
+  addSupervisorOfferingSuccess(intake:Intake, supervisorOffering: SupervisorOffering) {
+    return {
+      type: IntakeActions.ADD_SUPERVISOR_OFFERING_SUCCESS,
+      payload:intake
+    };
+  }
+
+  static DELETE_SUPERVISOR_OFFERING = '[Intake] Delete Supervisor Offering';
+
+  deleteSupervisorOffering(intake:Intake, supervisorOffering: SupervisorOffering) {
+    return {
+      type: IntakeActions.DELETE_SUPERVISOR_OFFERING,
+      payload:{intake:intake, supervisorOffering:supervisorOffering}
+    };
+  }
+
+  static DELETE_SUPERVISOR_OFFERING_SUCCESS = '[Intake] Delete Supervisor Offering Success';
+
+  deleteSupervisorOfferingSuccess(intake:Intake, supervisorOffering: SupervisorOffering) {
+    return {
+      type: IntakeActions.DELETE_SUPERVISOR_OFFERING_SUCCESS,
+      payload:intake
+    };
+  }
+  static ADD_STUDY_MODE_OFFERING = '[Intake] Add StudyMode Offering';
+
+  addStudyModeOffering(intake:Intake, studyModeOffering: StudyModeOffering) {
+    return {
+      type: IntakeActions.ADD_STUDY_MODE_OFFERING,
+      payload:{intake:intake, studyModeOffering:studyModeOffering}
+    };
+  }
+
+  static ADD_STUDY_MODE_OFFERING_SUCCESS = '[Intake] Add StudyMode Offering Success';
+
+  addStudyModeOfferingSuccess(intake:Intake, studyModeOffering: StudyModeOffering) {
+    return {
+      type: IntakeActions.ADD_STUDY_MODE_OFFERING_SUCCESS,
+      payload:intake
+    };
+  }
+
+  static DELETE_STUDY_MODE_OFFERING = '[Intake] Delete Study Mode Offering';
+
+  deleteStudyModeOffering(intake:Intake, studyModeOffering: StudyModeOffering) {
+    return {
+      type: IntakeActions.DELETE_STUDY_MODE_OFFERING,
+      payload:{intake:intake, studyModeOffering:studyModeOffering}
+    };
+  }
+
+  static DELETE_STUDY_MODE_OFFERING_SUCCESS = '[Intake] Delete Study Mode Offering Success';
+
+  deleteStudyModeOfferingSuccess(intake:Intake, studyModeOffering: StudyModeOffering) {
+    return {
+      type: IntakeActions.DELETE_STUDY_MODE_OFFERING_SUCCESS,
+      payload:intake
     };
   }
 }

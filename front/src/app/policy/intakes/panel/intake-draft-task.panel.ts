@@ -3,7 +3,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {IntakeTask} from "../intake-task.interface";
 import {IntakeActions} from "../intake.action";
-import {IntakeTaskState} from "../intake-task.reducer";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {PolicyModuleState} from "../../index";

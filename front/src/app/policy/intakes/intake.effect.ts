@@ -78,7 +78,6 @@ export class IntakeEffects {
   // .switchMap(intake => this.policyService.startIntakeTask(intake))
   // .map(task => this.intakeActions.startIntakeTaskSuccess(task));
 
-
   @Effect() releaseIntakeTask$ = this.actions$
     .ofType(IntakeActions.RELEASE_INTAKE_TASK)
     .map(action => action.payload);
@@ -91,4 +90,12 @@ export class IntakeEffects {
     .map(action => action.payload)
     .switchMap(intake => this.policyService.updateIntake(intake))
     .map(intake => this.intakeActions.updateIntakeSuccess(intake));
+
+  @Effect() addProgramOffering$ = this.actions$
+    .ofType(IntakeActions.ADD_PROGRAM_OFFERING)
+    .map(action => action.payload)
+    .mergeMap(payload => from([payload,
+      this.policyService.addProgramOffering(payload.intake, payload.programOffering),
+      this.policyService.findProgramOfferings(payload.intake)
+    ]));
 }

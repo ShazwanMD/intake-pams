@@ -1,0 +1,27 @@
+<h2 md-dialog-title>Program Offering Editor for {{intake?.referenceNo}}</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm">
+    <div layout="row" class="pad-bottom">
+    </div>
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput type="number"
+               placeholder="projection"
+               formControlName="projection"
+               value="Projection"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="pad-bottom pad-top">
+      <md-select formControlName="programCode" placeholder="Program Code" style="width: 100%">
+        <md-option *ngFor="let programCode of programCodes$ | async" [value]="programCode">
+          {{programCode.code}}: {{programCode.descriptionMs}}
+        </md-option>
+      </md-select>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="add(editorForm.value, editorForm.valid)">Save</button>
+</md-dialog-actions>
+

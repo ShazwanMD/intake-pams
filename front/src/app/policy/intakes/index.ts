@@ -19,6 +19,12 @@ import {IntakeRegisterTaskPanel} from "./panel/intake-register-task.panel";
 import {IntakeTaskWorkflowPanel} from "./panel/intake-task-workflow.panel";
 import {IntakeTaskCreatorDialog} from "./dialog/intake-task-creator.dialog";
 import {IntakeTaskViewPage} from "./intake-task-view.page";
+import {ProgramOfferingListComponent} from "./component/program-offering-list.component";
+import {SupervisorOfferingListComponent} from "./component/supervisor-offering-list.component";
+import {StudyModeOfferingListComponent} from "./component/study-mode-offering-list.component";
+import {ProgramOfferingEditorDialog} from "./dialog/program-offering-editor.dialog";
+import {CommonModule} from "../../common/index";
+import {CommonActions} from "../../common/common.action";
 
 
 @NgModule({
@@ -27,6 +33,7 @@ import {IntakeTaskViewPage} from "./intake-task-view.page";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    CommonModule.forRoot(),
     EffectsModule.run(IntakeEffects),
   ],
   declarations: [
@@ -36,16 +43,25 @@ import {IntakeTaskViewPage} from "./intake-task-view.page";
 
     // components
     IntakeTaskListComponent,
+    ProgramOfferingListComponent,
+    SupervisorOfferingListComponent,
+    StudyModeOfferingListComponent,
+
+    // panels
     IntakeTaskWorkflowPanel,
     IntakeDraftTaskPanel,
     IntakeRegisterTaskPanel,
+
+    // dialogs
     IntakeTaskCreatorDialog,
+    ProgramOfferingEditorDialog,
   ],
   exports: [],
   entryComponents: [
     IntakeDraftTaskPanel,
     IntakeRegisterTaskPanel,
     IntakeTaskCreatorDialog,
+    ProgramOfferingEditorDialog,
   ],
 
 })
@@ -59,6 +75,7 @@ export class IntakeSubModule {
         CommonService,
         PolicyService,
         IntakeActions,
+        CommonActions,
       ],
     };
   }

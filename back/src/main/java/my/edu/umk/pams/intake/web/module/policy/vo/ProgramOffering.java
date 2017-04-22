@@ -13,7 +13,25 @@ import java.io.IOException;
  */
 public class ProgramOffering extends MetaObject {
 
+    private Boolean interview;
+    private Integer projection;
     private ProgramCode programCode;
+
+    public Boolean getInterview() {
+        return interview;
+    }
+
+    public void setInterview(Boolean interview) {
+        this.interview = interview;
+    }
+
+    public Integer getProjection() {
+        return projection;
+    }
+
+    public void setProjection(Integer projection) {
+        this.projection = projection;
+    }
 
     public ProgramCode getProgramCode() {
         return programCode;

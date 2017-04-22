@@ -39,11 +39,11 @@ public class InProgramOfferingImpl implements InProgramOffering {
     private InIntake intake;
 
     @ManyToOne(targetEntity = InProgramCodeImpl.class)
-    @JoinColumn(name = "PROGRAM_CODE_ID")
+    @JoinColumn(name = "PROGRAM_CODE_ID", nullable = false)
     private InProgramCode programCode;
 
     @ManyToOne(targetEntity = InStudyCenterCodeImpl.class)
-    @JoinColumn(name = "STUDY_CENTER_CODE_ID")
+    @JoinColumn(name = "STUDY_CENTER_CODE_ID") // nullable?
     private InStudyCenterCode studyCenterCode;
 
     @Embedded

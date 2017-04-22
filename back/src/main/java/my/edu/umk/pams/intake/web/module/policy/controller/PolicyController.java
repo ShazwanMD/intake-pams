@@ -3,9 +3,7 @@ package my.edu.umk.pams.intake.web.module.policy.controller;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InGraduateCentre;
 import my.edu.umk.pams.intake.common.service.CommonService;
-import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
-import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
@@ -133,12 +131,55 @@ public class PolicyController {
                 .toProgramOfferingVos(policyService.findProgramOfferings(intake)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> addProgramOfferings(@PathVariable String referenceNo,
+                                                       @RequestBody ProgramOffering vo) {
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InProgramOffering offering = new InProgramOfferingImpl();
+        offering.setProjection(vo.getProjection());
+        offering.setInterview(vo.getInterview());
+        // todo: offering.setStudyCenterCode();
+        policyService.addProgramOffering(intake, offering);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/programOfferings/{id}", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> deleteProgramOfferings(@PathVariable String referenceNo,
+                                                          @PathVariable Long id) {
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InProgramOffering offering = policyService.findProgramOfferingById(id);
+        policyService.deleteProgramOffering(intake, offering);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
         String decode = URLDecoder.decode(referenceNo);
         InIntake intake = policyService.findIntakeByReferenceNo(decode);
         return new ResponseEntity<List<SupervisorOffering>>(policyTransformer
                 .toSupervisorOfferingVos(policyService.findSupervisorOfferings(intake)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> addsupervisorOfferings(@PathVariable String referenceNo,
+                                                          @RequestBody SupervisorOffering vo) {
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InSupervisorOffering offering = new InSupervisorOfferingImpl();
+        policyService.addSupervisorOffering(intake, offering);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings/{id}", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> deletesupervisorOfferings(@PathVariable String referenceNo,
+                                                             @PathVariable Long id) {
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InSupervisorOffering offering = policyService.findSupervisorOfferingById(id);
+        policyService.deleteSupervisorOffering(intake, offering);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.GET)
@@ -149,6 +190,25 @@ public class PolicyController {
                 .toStudyModeOfferingVos(policyService.findStudyModeOfferings(intake)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> addstudyModeOfferings(@PathVariable String referenceNo,
+                                                          @RequestBody StudyModeOffering vo) {
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InStudyModeOffering offering = new InStudyModeOfferingImpl();
+        policyService.addStudyModeOffering(intake, offering);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings/{id}", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> deletestudyModeOfferings(@PathVariable String referenceNo,
+                                                             @PathVariable Long id) {
+        String decode = URLDecoder.decode(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InStudyModeOffering offering = policyService.findStudyModeOfferingById(id);
+        policyService.deleteStudyModeOffering(intake, offering);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
     // ==================================================================================================== //
     //  GRADUATE CENTRE
     // ==================================================================================================== //

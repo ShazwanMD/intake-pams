@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
-import { HttpInterceptorService } from '@covalent/http';
+import {HttpInterceptorService} from '@covalent/http';
 import {Intake} from "../app/policy/intakes/intake.interface";
 import {Observable} from "rxjs";
 import {environment} from "../environments/environment";
@@ -39,33 +39,33 @@ export class PolicyService {
   }
 
   findIntakeByReferenceNo(referenceNo: string): Observable<Intake> {
-    let encoded = referenceNo.replace(/\//g,'%252F');
+    let encoded = referenceNo.replace(/\//g, '%252F');
     return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded)
       .map((res: Response) => <Intake>res.json());
   }
 
   findIntakeByTaskId(taskId: string): Observable<Intake> {
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' +  taskId)
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + taskId)
       .map((res: Response) => <Intake>res.json());
   }
 
-  findProgramOfferings(intake:Intake): Observable<ProgramOffering[]> {
+  findProgramOfferings(intake: Intake): Observable<ProgramOffering[]> {
     console.log("findProgramOfferings");
-    let encoded = intake.referenceNo.replace(/\//g,'%252F');
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
     return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/programOfferings")
       .map((res: Response) => <ProgramOffering[]>res.json());
   }
 
-  findSupervisorOfferings(intake:Intake): Observable<SupervisorOffering[]> {
+  findSupervisorOfferings(intake: Intake): Observable<SupervisorOffering[]> {
     console.log("findSupervisorOfferings");
-    let encoded = intake.referenceNo.replace(/\//g,'%252F');
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
     return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/supervisorOfferings")
       .map((res: Response) => <SupervisorOffering[]>res.json());
   }
 
-  findStudyModeOfferings(intake:Intake): Observable<StudyModeOffering[]> {
+  findStudyModeOfferings(intake: Intake): Observable<StudyModeOffering[]> {
     console.log("findStudyModeOfferings");
-    let encoded = intake.referenceNo.replace(/\//g,'%252F');
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
     return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/studyModeOfferings")
       .map((res: Response) => <StudyModeOffering[]>res.json());
   }
@@ -77,7 +77,7 @@ export class PolicyService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/policy/intakes/startTask', JSON.stringify(intake), options)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateIntake(intake: Intake): Observable<Boolean> {
@@ -85,4 +85,39 @@ export class PolicyService {
       .flatMap(data => Observable.of(true));
   }
 
+  addProgramOffering(intake: Intake, offering: ProgramOffering): Observable<Boolean> {
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/programOfferings', JSON.stringify(offering))
+      .flatMap(data => Observable.of(true));
+  }
+
+  deleteProgramOffering(intake: Intake, offering: ProgramOffering): Observable<Boolean> {
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
+    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + encoded + '/programOfferings/' + offering.id)
+      .flatMap(data => Observable.of(true));
+  }
+
+  addSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<Boolean> {
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/supervisorOfferings', JSON.stringify(offering))
+      .flatMap(data => Observable.of(true));
+  }
+
+  deleteSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<Boolean> {
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
+    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + encoded + '/supervisorOfferings/' + offering.id)
+      .flatMap(data => Observable.of(true));
+  }
+
+  addStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<Boolean> {
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/studyModeOfferings', JSON.stringify(offering))
+      .flatMap(data => Observable.of(true));
+  }
+
+  deleteStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<Boolean> {
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
+    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + encoded + '/studyModeOfferings/' + offering.id)
+      .flatMap(data => Observable.of(true));
+  }
 }

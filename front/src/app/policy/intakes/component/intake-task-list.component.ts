@@ -13,7 +13,6 @@ export class IntakeTaskListComponent {
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
-    {name: 'description', label: 'Description'},
     {name: 'projection', label: 'Projection'},
     {name: 'startDate', label: 'Start Date'},
     {name: 'endDate', label: 'End Date'},

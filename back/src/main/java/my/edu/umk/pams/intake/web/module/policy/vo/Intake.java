@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.web.module.policy.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
 import my.edu.umk.pams.intake.web.module.core.vo.Document;
@@ -13,7 +14,9 @@ import java.util.Date;
  */
 public class Intake extends Document {
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a")
     private Date starDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a")
     private Date endDate;
     private Integer projection;
     private IntakeSession intakeSession;
