@@ -135,6 +135,11 @@ public class AdmissionServiceImpl implements AdmissionService {
     public InCandidate findCandidateByIdentityNo(String identityNo) {
         return candidateDao.findByIdentityNo(identityNo);
     }
+    
+    @Override
+    public InCandidate findCandidateByMatricNo(String matricNo) {
+        return candidateDao.findCandidateByMatricNo(matricNo);
+    }
 
     @Override
     public List<InCandidate> findCandidates(InIntake intake) {
