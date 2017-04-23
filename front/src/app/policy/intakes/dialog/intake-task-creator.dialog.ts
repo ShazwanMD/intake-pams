@@ -33,9 +33,7 @@ export class IntakeTaskCreatorDialog implements OnInit {
   private programLevels$: Observable<ProgramLevel[]>;
   private createForm: FormGroup;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
               private store: Store<PolicyModuleState>,
               private commonStore: Store<CommonModuleState>,
@@ -72,6 +70,9 @@ export class IntakeTaskCreatorDialog implements OnInit {
 
   save(intake: Intake, isValid: boolean) {
     console.log("intake: " + intake.description);
+    console.log("program level: " + intake.programLevel.code);
+    console.log("session " + intake.intakeSession.code);
+    console.log("graduate centre " + intake.graduateCentre.code);
     this.store.dispatch(this.actions.startIntakeTask(intake));
     this.dialog.close();
   }

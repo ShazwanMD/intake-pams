@@ -12,6 +12,7 @@ import {IdentityService} from '../../services';
 import {ApplicationPage} from "./application.page";
 import {ApplicationService} from "../../services/application.service";
 import {PolicyService} from "../../services/policy.service";
+import {IntakeApplicationSubModule} from "./intake-applications/index";
 
 export interface ApplicationModuleState {
   // intakeApplications: IntakeApplicationListState;
@@ -30,7 +31,7 @@ export const applicationModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    // IntakeApplicationSubModule.forRoot(),
+    IntakeApplicationSubModule.forRoot(),
   ],
   declarations: [
     // page

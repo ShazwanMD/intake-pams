@@ -17,9 +17,9 @@ const routes: Routes = [
       ...DashboardModuleRoutes,
       ...RegistrationModuleRoutes,
       ...PolicyModuleRoutes,
-      ...ApplicationModuleRoutes,
       ...AdmissionModuleRoutes,
       ...CentreModuleRoutes,
+      ...ApplicationModuleRoutes,
     ]
   },
 ];

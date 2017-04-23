@@ -35,8 +35,7 @@ export class ProgramLevelSelectComponent implements ControlValueAccessor, AfterV
   programLevels$: Observable<ProgramLevel[]>;
 
   @Input() innerFormControl: FormControl = new FormControl();
-  @ViewChild('select') inputRef: ElementRef;
-
+  @ViewChild('select') selectRef: ElementRef;
 
   constructor(private store: Store<PolicyModuleState>,
               private actions: ProgramLevelActions) {
@@ -56,7 +55,7 @@ export class ProgramLevelSelectComponent implements ControlValueAccessor, AfterV
           this.innerFormControl.value == null ||
           this.innerFormControl.value == undefined) {
           this._value = "";
-          this.inputRef.nativeElement.value = "";
+          this.selectRef.nativeElement.value = "";
         }
       }
     );
@@ -69,6 +68,7 @@ export class ProgramLevelSelectComponent implements ControlValueAccessor, AfterV
   // later propagated up to the form control
   // using the custom value accessor interface
   onChange(e:Event, value:any){
+    console.log("value: " + value);
     //set changed value
     this._value = value;
     // propagate value into form control using control value accessor interface
