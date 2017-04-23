@@ -28,7 +28,7 @@ public class US_IN_RGN_4003 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4003.class);
 	
-	private String intakeReferenceNo = "201720181/MASTER";
+	private String intakeReferenceNo = "MGSEB/201720181/MASTER";
 	
 	@Test
     @Rollback

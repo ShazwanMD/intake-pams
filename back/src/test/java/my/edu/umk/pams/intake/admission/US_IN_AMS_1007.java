@@ -31,7 +31,7 @@ public class US_IN_AMS_1007 extends SpringScenarioTest	<GivenIAmCPSAdministrator
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1007.class);
 
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 	private static final String SUPERVISOR_CODE = "SC001"; //Perlu seed data untuk supervisor list
 	
 	@Test

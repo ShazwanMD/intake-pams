@@ -26,7 +26,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant
 @As("As a registrar, I want to view a list of selected applicant so that I can proceed with the selected applicants registration progress")
 public class US_IN_RGN_6000 extends SpringScenarioTest<GivenIAmRegistrar,WhenPrepareApplicationSubmission,ThenProceedRegistrationForSelectedApplicants>{
 
-	  public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	  public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 	  private static final String IDENTITY_NO = "248674";
 	  
 	@Issue ("PAMI-101")

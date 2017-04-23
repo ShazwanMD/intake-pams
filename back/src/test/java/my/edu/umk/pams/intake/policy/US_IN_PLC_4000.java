@@ -33,7 +33,7 @@ public class US_IN_PLC_4000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Issue("")
     public void testScenario1() {
         
-        String referenceNo = "201720181/MASTER";
+        String referenceNo = "MGSEB/201720181/MASTER";
 
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().i_list_and_offer_programs_under_CPS_to_intake(referenceNo);

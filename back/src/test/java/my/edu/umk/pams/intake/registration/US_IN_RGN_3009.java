@@ -29,7 +29,7 @@ public class US_IN_RGN_3009 extends SpringScenarioTest <GivenIAmCPSAdministrator
   
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3009.class);
 
-      private static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+      private static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
   
       private static final String IDENTITY_NO = "248674";
 

@@ -28,7 +28,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 public class US_IN_APN_1014 extends SpringScenarioTest <GivenIAmApplicant, WhenIWantToFillAllRequiredInformation, ThenApplicationIsSubmitted>{
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1014.class);
 	
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 
 	 @Test
 	 @Issue("PAMI-35")

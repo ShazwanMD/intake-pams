@@ -31,7 +31,7 @@ ThenICanGenerateAnOfferLetter> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1009.class);
 
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 	
 		@Test
 	    @Issue("PAMI-56")

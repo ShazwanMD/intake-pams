@@ -25,7 +25,7 @@ public class US_IN_AMS_2000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 															WhenFillAllInformation, 
 																ThenCandidateCanProceedToNextSelectionPhase> {
 	
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 	
 	@Test
     @Rollback

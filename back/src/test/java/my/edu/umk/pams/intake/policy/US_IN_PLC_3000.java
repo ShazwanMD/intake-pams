@@ -34,7 +34,7 @@ public class US_IN_PLC_3000 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Issue("PAMI-13")
     public void testScenario1() {
         List<Data> dataMGSEB = Data.codesMGSEB();
-        String referenceNo = "201720181/MASTER";
+        String referenceNo = "MGSEB/201720181/MASTER";
 
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().i_add_program_codes(dataMGSEB)

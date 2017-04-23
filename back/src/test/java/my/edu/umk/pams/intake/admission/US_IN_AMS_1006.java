@@ -27,7 +27,7 @@ public class US_IN_AMS_1006 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 															WhenFillAllInformation,
 																ThenUpdateReasonToApplicant> {
 	
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 
 	@Test
     @Rollback

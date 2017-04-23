@@ -28,7 +28,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenIPullMatricNoInfo;
 public class US_IN_RGN_6005 extends
 		SpringScenarioTest<GivenIAmRegistrar, WhenPrepareApplicationSubmission, ThenProceedRegistrationForSelectedApplicants> {
 	
-	 public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	 public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 	 private static final String IDENTITY_NO = "248674";
 		
 	 @Issue ("PAMI-106")

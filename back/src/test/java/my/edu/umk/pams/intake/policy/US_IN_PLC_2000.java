@@ -34,7 +34,7 @@ public class US_IN_PLC_2000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Issue("PAMI-5")
     public void testScenario1() {
         List<Data> dataCPS = Data.codesCPS();
-        String referenceNo = "201720181/MASTER";
+        String referenceNo = "MGSEB/201720181/MASTER";
 
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().i_add_program_codes(dataCPS)

@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_IN_APN_1007 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToFillAllRequiredInformation, ThenICanSubmitMyApplication> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1007.class);
-    public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+    public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 
     @Test
     @Issue("PAMI-28")

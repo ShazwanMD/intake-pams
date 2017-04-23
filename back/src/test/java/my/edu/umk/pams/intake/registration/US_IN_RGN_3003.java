@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_IN_RGN_3003 extends SpringScenarioTest<GivenIAmCPSAdministrator,  WhenIWantToFillAllRequiredInformation, ThenICanSubmitMyApplication>{	
   private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3003.class);
     
-    private String intakeReferenceNo = "201720181/MASTER";
+    private String intakeReferenceNo = "MGSEB/201720181/MASTER";
 
     @Test
     @Rollback

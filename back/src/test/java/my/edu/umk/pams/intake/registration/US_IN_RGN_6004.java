@@ -32,7 +32,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
 public class US_IN_RGN_6004 extends SpringScenarioTest<GivenIAmRegistrar, WhenPrepareApplicationSubmission, ThenStudentRegistrationIsConfirmed> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_6004.class);
-	public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 	public static final String IDENTITY_NO = "248674";
 	
 	@Test

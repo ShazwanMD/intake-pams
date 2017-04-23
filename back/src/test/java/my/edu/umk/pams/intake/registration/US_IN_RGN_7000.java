@@ -28,7 +28,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenViewApplicationWithInternat
 public class US_IN_RGN_7000 extends
 SpringScenarioTest<GivenIAmInternationalOfficer, WhenViewApplicationWithInternationalAcademicQualification, ThenValidateTheApplication> {
 	
-	 public static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+	 public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 	 
 	 @Issue ("PAMI-107")
 	 @Test

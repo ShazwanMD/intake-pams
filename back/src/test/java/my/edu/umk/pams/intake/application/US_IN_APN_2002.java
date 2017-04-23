@@ -27,7 +27,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 public class US_IN_APN_2002 extends SpringScenarioTest<GivenIAmApplicant, WhenIFillProcessingApplication, ThenTheApplicationIsWithdrawn>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_2002.class);
-	private String intakeReferenceNo = "201720181/MASTER";
+	private String intakeReferenceNo = "MGSEB/201720181/MASTER";
 	
     @Test
     @Rollback

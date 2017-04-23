@@ -31,7 +31,7 @@ public class US_IN_APN_5001 extends SpringScenarioTest<GivenIAmApplicant,
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_5001.class);
 
-    private static final String INTAKE_REFERENCE_NO = "201720181/MASTER";
+    private static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
 	private static final String PROGRAM_CODE_MCA = "MCA";
 
     @Test
