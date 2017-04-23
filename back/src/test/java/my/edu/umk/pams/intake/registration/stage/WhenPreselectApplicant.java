@@ -45,7 +45,7 @@ public class WhenPreselectApplicant extends Stage<WhenPreselectApplicant>{
     applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
     Assert.notEmpty(applications, "applications cannot be empty");
 
-    candidates = new ArrayList<>(); // todo(farah) Why collection when we method use a single identityNo?
+    candidates = new ArrayList<>(); 
 
     for (InIntakeApplication application : applications) {
     //  if (identityNo.equals(application.getCredentialNo()))
