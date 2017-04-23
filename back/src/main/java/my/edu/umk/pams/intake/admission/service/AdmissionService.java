@@ -31,6 +31,8 @@ public interface AdmissionService {
     //====================================================================================================
 
     InCandidate findCandidateByIdentityNo(String identityNo);
+    
+    InCandidate findCandidateByMatricNo(String matricNo);
 
     List<InCandidate> findCandidates(InIntake intake);
 
