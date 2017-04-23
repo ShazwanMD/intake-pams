@@ -13,7 +13,7 @@ export class MainComponent {
     route: '/',
     icon: 'dashboard',
   }, {
-    title: 'Regisration',
+    title: 'Registration',
     route: '/registration',
     icon: 'label',
   }, {
