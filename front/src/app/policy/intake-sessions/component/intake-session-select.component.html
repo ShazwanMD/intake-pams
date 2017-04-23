@@ -1,0 +1,8 @@
+<md-select
+  [placeholder]="placeholder"
+  (change)="selectChangeEvent($event.value)" flex>
+
+  <md-option *ngFor="let intakeSession of intakeSessions$ | async" [value]="intakeSession">
+    {{intakeSession.code}}: {{intakeSession.descriptionMs}}
+  </md-option>
+</md-select>

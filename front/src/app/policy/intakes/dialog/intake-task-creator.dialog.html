@@ -12,11 +12,13 @@
           </md-input-container>
         </div>
         <div layout="row" class="pad-top">
-          <md-select formControlName="intakeSession" placeholder="Intake Session" flex>
-            <md-option *ngFor="let intakeSession of intakeSessions$ | async" [value]="intakeSession">
-              {{intakeSession.label}}: {{intakeSession.descriptionMs}}
-            </md-option>
-          </md-select>
+          <md-input-container flex>
+            <input mdInput
+                   type="number"
+                   placeholder="Projection"
+                   formControlName="projection"
+                   flex/>
+          </md-input-container>
         </div>
       </div>
       <div layout="column" class="pad-left" flex>
@@ -41,16 +43,22 @@
       </div>
     </div>
     <div layout="row" class="pad-top">
-      <md-select formControlName="graduateCentre" placeholder="Graduate Centre" flex>
-        <md-option *ngFor="let graduateCentre of graduateCentres$ | async" [value]="graduateCentre">
-          {{graduateCentre.centre}}: {{graduateCentre.descriptionMs}}
-        </md-option>
-      </md-select>
+      <pams-program-level-select
+        [placeholder]="'Program Level'"
+        [innerFormControl]="createForm.controls.programLevel">
+      </pams-program-level-select>
     </div>
     <div layout="row" class="pad-top">
-      <pams-program-level-select
-        formControlName="programLevel"
-        [innerFormControl]="createForm.controls.programLevel" flex></pams-program-level-select>
+      <pams-graduate-centre-select
+        [placeholder]="'Graduate Centre'"
+        [innerFormControl]="createForm.controls.graduateCentre">
+      </pams-graduate-centre-select>
+    </div>
+    <div layout="row" class="pad-top">
+      <pams-intake-session-select
+        [placeholder]="'Intake Session'"
+        [innerFormControl]="createForm.controls.intakeSession">
+      </pams-intake-session-select>
     </div>
   </form>
 </md-dialog-content>

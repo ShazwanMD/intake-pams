@@ -15,6 +15,7 @@ import {ProgramCodeListState, programCodeListReducer} from "./program-code-list.
 import {StudyModeListState, studyModeListReducer} from "./study-mode-list.reducer";
 import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-code-list.reducer";
 import {GraduateCentreListState, graduateCentreListReducer} from "./graduate-centre-list.reducer";
+import {GraduateCentreSelectComponent} from "./component/graduate-centre-select.component";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -40,8 +41,12 @@ export const commonModuleReducers = {
     CovalentCoreModule.forRoot(),
     EffectsModule.run(CommonEffects),
   ],
-  declarations: [],
-  exports: [],
+  declarations: [
+    GraduateCentreSelectComponent,
+  ],
+  exports: [
+    GraduateCentreSelectComponent,
+  ],
 })
 export class CommonModule {
   static forRoot(): ModuleWithProviders {

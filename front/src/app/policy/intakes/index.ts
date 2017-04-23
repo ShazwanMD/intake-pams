@@ -27,6 +27,7 @@ import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
 import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
 import {ProgramLevelSubModule} from "../program-levels/index";
+import {IntakeSessionSubModule} from "../intake-sessions/index";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {ProgramLevelSubModule} from "../program-levels/index";
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
+    IntakeSessionSubModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
     EffectsModule.run(IntakeEffects),
   ],

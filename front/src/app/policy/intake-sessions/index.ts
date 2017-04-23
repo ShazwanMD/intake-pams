@@ -14,6 +14,7 @@ import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
 import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
 import {IntakeSessionEffects} from "./intake-session.effect";
+import {IntakeSessionSelectComponent} from "./component/intake-session-select.component";
 
 
 @NgModule({
@@ -26,12 +27,15 @@ import {IntakeSessionEffects} from "./intake-session.effect";
     EffectsModule.run(IntakeSessionEffects),
   ],
   declarations: [
+    IntakeSessionSelectComponent,
     // page
     // components
     // panels
     // dialogs
   ],
-  exports: [],
+  exports: [
+    IntakeSessionSelectComponent,
+  ],
   entryComponents: [
   ],
 

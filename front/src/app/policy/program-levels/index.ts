@@ -15,6 +15,7 @@ import {CommonActions} from "../../common/common.action";
 import {ProgramLevelActions} from "./program-level.action";
 import {ProgramLevelEffects} from "./program-level.effect";
 import {ProgramLevelSelectComponent} from "./component/program-level-select.component";
+import {IntakeSessionSubModule} from "../intake-sessions/index";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {ProgramLevelSelectComponent} from "./component/program-level-select.comp
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
+    IntakeSessionSubModule.forRoot(),
     EffectsModule.run(ProgramLevelEffects),
   ],
   declarations: [

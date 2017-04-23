@@ -38,10 +38,10 @@ import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
 import {intakeTaskListReducer} from "./policy/intakes/intake-task-list.reducer";
 
+// interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
-
 
 // state
 interface ApplicationState {
@@ -54,7 +54,7 @@ interface ApplicationState {
 }
 ;
 
-// reducer
+// initial state
 export const INITIAL_APP_STATE: ApplicationState =
   <ApplicationState>{
     commonModuleState: INITIAL_COMMON_STATE,
@@ -65,6 +65,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     centreModuleState: INITIAL_CENTRE_STATE,
   };
 
+// combine reducer
 export const applicationReducers = {
   commonModuleState: combineReducers({...commonModuleReducers,}),
   policyModuleState: combineReducers({...policyModuleReducers}),
@@ -73,7 +74,6 @@ export const applicationReducers = {
   registrationModuleState: combineReducers({...registrationModuleReducers,}),
   centreModuleState: combineReducers({...centreModuleReducers}),
 };
-
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
   return productionReducer(applicationState, action);

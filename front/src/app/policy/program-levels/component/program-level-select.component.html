@@ -1,5 +1,7 @@
 <md-select
-  placeholder="Program Level" #select (blur)="onChange($event, select.value)">
+  [placeholder]="placeholder"
+  (change)="selectChangeEvent($event.value)" flex>
+
   <md-option *ngFor="let programLevel of programLevels$ | async" [value]="programLevel">
     {{programLevel.code}}: {{programLevel.description}}
   </md-option>
