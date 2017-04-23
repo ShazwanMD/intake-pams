@@ -15,6 +15,8 @@ import org.springframework.util.Assert;
 
 import java.util.List;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 /**
  * @author PAMS
  */
@@ -33,7 +35,7 @@ public class ThenIProgressIntakeProcess extends Stage<ThenIProgressIntakeProcess
     private InIntake intake;
 
     public ThenIProgressIntakeProcess i_can_progress_the_intake_process() {
-        InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+        InIntake intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
         intake.getProjection();
         intake.getStartDate();
         intake.getEndDate();

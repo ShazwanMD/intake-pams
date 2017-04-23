@@ -18,6 +18,8 @@ import my.edu.umk.pams.intake.admission.stage.WhenFillAllInformation;
 import my.edu.umk.pams.intake.admission.stage.WhenIWantToSelectSuitableAppealedApplicants;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -29,7 +31,7 @@ public class US_IN_AMS_2004 extends
                 					ThenICanInformTheSelectedApplicants> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_2004.class);
-	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 	
 	@Issue ("PAMI-63")
     @Test

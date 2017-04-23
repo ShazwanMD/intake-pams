@@ -19,6 +19,8 @@ import my.edu.umk.pams.intake.application.stage.ThenRegistrationIsComplete;
 import my.edu.umk.pams.intake.application.stage.WhenFillParentDetails;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @Pending
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,7 +33,7 @@ public class US_IN_APN_1015 extends SpringScenarioTest<GivenIAmApplicant,
 															ThenRegistrationIsComplete>{
 		
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1015.class);
-    public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+    public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
     
     @Test
     @Issue("PAMI-41")

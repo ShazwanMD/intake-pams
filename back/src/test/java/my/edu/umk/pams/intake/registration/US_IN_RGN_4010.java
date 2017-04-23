@@ -18,6 +18,8 @@ import my.edu.umk.pams.intake.registration.stage.ThenICanProceedRegistration;
 import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenVerifyStudyFees;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -30,7 +32,7 @@ public class US_IN_RGN_4010 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
         WhenPrepareApplicationSubmission,ThenICanProceedRegistration> {
 	
 	 private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4010.class);
-     private static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+     private static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
      
      @Test
      @Rollback

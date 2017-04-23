@@ -30,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.*;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
 
 @JGivenStage
 public class WhenEnterRequiredInformation extends Stage<WhenEnterRequiredInformation> {
@@ -71,9 +72,9 @@ public class WhenEnterRequiredInformation extends Stage<WhenEnterRequiredInforma
         applicant.setPhone("0111020202");
         identityService.saveApplicant(applicant);
 
-        intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+        intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
     	
-        //String intakeReferenceNo = "201720181/MASTER";
+        //String intakeReferenceNo = INTAKE_REFERENCE_NO_MGSSEB;
         //InIntake intake = policyService.findIntakeByReferenceNo(intakeReferenceNo);
 
         Assert.notNull(intake, "intake cannot be null");

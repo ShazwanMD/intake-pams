@@ -22,6 +22,8 @@ import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @Pending
 @JGivenStage
 public class WhenAssignSupervisorToApplicant extends Stage<WhenAssignSupervisorToApplicant> {
@@ -44,7 +46,7 @@ public class WhenAssignSupervisorToApplicant extends Stage<WhenAssignSupervisorT
 		  preloadSupervisorOffering(code);
 		  
 		 Assert.notNull(intake, "intake cannot be null");
-		 intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+		 intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 		 
 		  supervisorOfferings = policyService.findSupervisorOfferings(intake);
 		  Assert.notEmpty(supervisorOfferings, "supervisor Offerings cannot be empty");

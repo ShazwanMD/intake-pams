@@ -21,6 +21,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.util.Assert;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
 
 @JGivenStage
 public class GivenIncompleteApplication extends Stage<GivenIncompleteApplication> {
@@ -58,7 +59,7 @@ public class GivenIncompleteApplication extends Stage<GivenIncompleteApplication
     private InIntakeApplication application;
 
     public GivenIncompleteApplication i_drafted_an_application() {
-        intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+        intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
         Assert.notNull(intake, "intake is null");
 
         application = new InIntakeApplicationImpl();

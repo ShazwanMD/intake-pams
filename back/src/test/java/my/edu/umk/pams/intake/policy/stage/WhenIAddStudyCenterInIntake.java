@@ -18,6 +18,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 /**
  * @author PAMS
  **/
@@ -46,7 +48,7 @@ public class WhenIAddStudyCenterInIntake extends Stage<WhenIAddStudyCenterInInta
 
     public WhenIAddStudyCenterInIntake I_add_StudyCenter_in_intake() {
     	
-    	InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	InIntake intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 
         programOffering = new InProgramOfferingImpl();
         studyCenterCode = commonService.findStudyCenterCodeByCode("A");

@@ -17,6 +17,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -26,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_IN_APN_1004 extends SpringScenarioTest<GivenIAmApplicant, WhenIWantToFillAllRequiredInformation, ThenICanSubmitMyApplication> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1004.class);
-    public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+    public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 
     @Test
     @Issue("PAMI-25")

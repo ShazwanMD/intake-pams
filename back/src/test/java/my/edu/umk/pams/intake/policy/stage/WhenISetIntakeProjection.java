@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @JGivenStage
 public class WhenISetIntakeProjection extends Stage<WhenISetIntakeProjection> {
 
@@ -29,7 +31,7 @@ public class WhenISetIntakeProjection extends Stage<WhenISetIntakeProjection> {
 
     public WhenISetIntakeProjection i_set_projection_for_current_intake() {
 
-        InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+        InIntake intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 
         //InIntake intk = new InIntakeImpl();
 

@@ -20,6 +20,8 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenSubmitPaymentInfo;
 import my.edu.umk.pams.intake.registration.stage.WhenMakePaymentForStudyFee;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -30,7 +32,7 @@ WhenIWantToFillAllRequiredInformation,ThenSubmitPaymentInfo> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_5004.class);
 	
-	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 	public static final String MATRIC_NO = "248674";
 	
 	@Test

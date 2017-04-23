@@ -14,6 +14,8 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @JGivenStage
 public class WhenReceiveProofOfPayment extends Stage <WhenReceiveProofOfPayment> {
 	public static final Logger LOG = LoggerFactory.getLogger(WhenReceiveProofOfPayment.class);
@@ -30,7 +32,7 @@ public class WhenReceiveProofOfPayment extends Stage <WhenReceiveProofOfPayment>
 	@ProvidedScenarioState
 	private InIntakeApplication intakeApplication;
 	
-	private String intakeReferenceNo = "201720181/MASTER";
+	private String intakeReferenceNo = INTAKE_REFERENCE_NO_MGSSEB;
 
 	public WhenReceiveProofOfPayment receive_proof_of_payment(){
 		Assert.notNull(intakeApplication, "intakeApplication cannot be null");

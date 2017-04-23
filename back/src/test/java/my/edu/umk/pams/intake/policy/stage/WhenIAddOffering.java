@@ -13,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 /**
  * @author PAMS
  */
@@ -33,7 +35,7 @@ public class WhenIAddOffering extends Stage<WhenIAddOffering> {
    
     public WhenIAddOffering I_add_a_offering_for_intake() {
 
-    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
         InProgramOffering offering = new InProgramOfferingImpl();
         offering.setProjection(10);
         offering.setGeneralCriteria("TODO ADD GEN CRIT"); //todo

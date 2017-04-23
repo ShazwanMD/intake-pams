@@ -21,6 +21,8 @@ import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorPresel
 import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -32,7 +34,7 @@ public class US_IN_RGN_5003 extends SpringScenarioTest<GivenIAmCandidate,
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_5003.class);
 
-	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 	public static final String IDENTITY_NO = "248674";
 	
 	

@@ -23,6 +23,8 @@ import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
 import my.edu.umk.pams.intake.registration.stage.WhenIWantToScanTheApplicantOfferLetterBarcode;
 import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -35,7 +37,7 @@ public class US_IN_RGN_4007 extends SpringScenarioTest <GivenIAmMGSEBAdministrat
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_4007.class);
 	
-	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 	public static final String IDENTITY_NO = "248674";
 
     @Test

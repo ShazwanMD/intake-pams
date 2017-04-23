@@ -18,6 +18,8 @@ import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmissio
 import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -26,7 +28,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant
 @As("As a registrar, I want to view a list of selected applicant so that I can proceed with the selected applicants registration progress")
 public class US_IN_RGN_6000 extends SpringScenarioTest<GivenIAmRegistrar,WhenPrepareApplicationSubmission,ThenProceedRegistrationForSelectedApplicants>{
 
-	  public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	  public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 	  private static final String IDENTITY_NO = "248674";
 	  
 	@Issue ("PAMI-101")

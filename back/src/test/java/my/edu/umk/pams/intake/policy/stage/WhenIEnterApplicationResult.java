@@ -24,6 +24,8 @@ import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @JGivenStage
 public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResult> {
 
@@ -87,7 +89,7 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         applicant1.setPhone("0111020202");
         identityService.saveApplicant(applicant1);
 
-    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
         // start an intakeApplication
         //Application 1
         application1 = new InIntakeApplicationImpl();

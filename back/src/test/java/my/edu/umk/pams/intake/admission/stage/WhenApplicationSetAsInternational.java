@@ -19,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.sql.Date;
 import java.time.LocalDate;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @JGivenStage
 public class WhenApplicationSetAsInternational extends Stage<WhenApplicationSetAsInternational> {
@@ -43,7 +45,7 @@ public class WhenApplicationSetAsInternational extends Stage<WhenApplicationSetA
     public WhenApplicationSetAsInternational I_set_an_application_as_international(){
 
        //LOG.debug("WHEN: Here we set the franchise object, etc"); // todo remove asap
-    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
        
         intakeApplication = new InIntakeApplicationImpl();
         intakeApplication.setIntake(intake);

@@ -19,6 +19,8 @@ import my.edu.umk.pams.intake.application.stage.WhenIWantToFillAllRequiredInform
 import my.edu.umk.pams.intake.application.stage.WhenReceiveConfirmationEmailForApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -28,7 +30,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 public class US_IN_APN_1014 extends SpringScenarioTest <GivenIAmApplicant, WhenIWantToFillAllRequiredInformation, ThenApplicationIsSubmitted>{
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_1014.class);
 	
-	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 
 	 @Test
 	 @Issue("PAMI-35")

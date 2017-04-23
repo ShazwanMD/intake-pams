@@ -19,6 +19,8 @@ import my.edu.umk.pams.intake.admission.stage.ThenICanGenerateAnOfferLetter;
 import my.edu.umk.pams.intake.admission.stage.WhenIOfferACandidate;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -31,7 +33,7 @@ ThenICanGenerateAnOfferLetter> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_1009.class);
 
-	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 	
 		@Test
 	    @Issue("PAMI-56")

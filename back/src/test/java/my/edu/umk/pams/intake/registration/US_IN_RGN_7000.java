@@ -17,6 +17,8 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenValidateTheApplication;
 import my.edu.umk.pams.intake.registration.stage.WhenViewApplicationWithInternationalAcademicQualification;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -28,7 +30,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenViewApplicationWithInternat
 public class US_IN_RGN_7000 extends
 SpringScenarioTest<GivenIAmInternationalOfficer, WhenViewApplicationWithInternationalAcademicQualification, ThenValidateTheApplication> {
 	
-	 public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	 public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 	 
 	 @Issue ("PAMI-107")
 	 @Test

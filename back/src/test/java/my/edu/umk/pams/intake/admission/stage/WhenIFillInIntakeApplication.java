@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
 
 @JGivenStage
 public class WhenIFillInIntakeApplication extends Stage<WhenIFillInIntakeApplication> {
@@ -54,7 +55,7 @@ public class WhenIFillInIntakeApplication extends Stage<WhenIFillInIntakeApplica
 
     public WhenIFillInIntakeApplication I_fill_in_intake_applicaton() {
 
-    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
     	
         // start an intakeApplication
         intakeApplication = new InIntakeApplicationImpl();

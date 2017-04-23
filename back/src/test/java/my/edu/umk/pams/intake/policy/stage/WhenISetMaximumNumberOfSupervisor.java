@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 /**
  * @author PAMS
  */
@@ -38,7 +40,7 @@ public class WhenISetMaximumNumberOfSupervisor extends Stage<WhenISetMaximumNumb
 	    
 	 public WhenISetMaximumNumberOfSupervisor I_set_maximum_number_of_supervisor() {
 		 
-		 InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+		 InIntake intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 		 
 		 //InConfiguration configuration = systemService.findConfigurationByKey(IntakeConstants.ADVISING_SUPERVISOR_LIMIT);
 		 //Integer limit = configuration.getValueAsInteger();

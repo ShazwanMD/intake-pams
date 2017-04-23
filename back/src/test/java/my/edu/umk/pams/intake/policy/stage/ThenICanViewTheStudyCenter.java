@@ -21,6 +21,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 /**
  * @author PAMS
  **/
@@ -53,7 +55,7 @@ public class ThenICanViewTheStudyCenter extends Stage<ThenICanViewTheStudyCenter
 	 public ThenICanViewTheStudyCenter I_can_view_study_center() {
 		 
 		// InStudyCenterCode studyCenterCode = commonService.findStudyCenterCodeByCode("SC_003");
-	        intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+	        intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 	        Assert.isNull(commonService.findStudyCenterCodeByCode("SC_003"), "study centre is null");
 
 	       // InProgramOffering offering = policyService.findProgramOfferingByIntakeAndProgramCode(intake, studyCenterCode);

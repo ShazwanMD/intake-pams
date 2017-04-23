@@ -18,6 +18,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -30,7 +32,7 @@ public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3002.class);
 
-    private String intakeReferenceNo = "MGSEB/201720181/MASTER";
+    private String intakeReferenceNo = INTAKE_REFERENCE_NO_MGSSEB;
 
     @Test
     @Rollback

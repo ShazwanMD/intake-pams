@@ -17,6 +17,8 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @JGivenStage
 public class WhenApplicantHasReferee extends Stage<WhenApplicantHasReferee>{
 	private static final Logger LOG = LoggerFactory.getLogger(WhenApplicantHasReferee.class);
@@ -36,7 +38,7 @@ public class WhenApplicantHasReferee extends Stage<WhenApplicantHasReferee>{
 	
 	 public WhenApplicantHasReferee an_applicant_has_referee(){
 		
-		 intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+		 intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 		 Assert.notNull(intake, "intake cannot be null");
 		 LOG.debug("intake status {}", application.getBidStatus());
 		 

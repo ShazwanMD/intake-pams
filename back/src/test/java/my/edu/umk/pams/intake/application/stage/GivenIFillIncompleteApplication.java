@@ -55,13 +55,12 @@ public class GivenIFillIncompleteApplication extends Stage<GivenIFillIncompleteA
     
     @ProvidedScenarioState
     private InIntakeApplication application;
-    
+
+    @ExpectedScenarioState
+    private InIntake intake;
 
     public GivenIFillIncompleteApplication i_drafted_an_application() {
-        InIntake intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
         Assert.notNull(intake, "intake is null");
-
- 
 
          application = new InIntakeApplicationImpl();
         application.setReferenceNo(INTAKE_APPLICATION_REFERENCE_NO); // auto

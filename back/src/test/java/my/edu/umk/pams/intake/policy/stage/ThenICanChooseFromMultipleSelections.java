@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 /**
  * @author PAMS
  */
@@ -42,7 +44,7 @@ public class ThenICanChooseFromMultipleSelections extends Stage<ThenICanChooseFr
     public ThenICanChooseFromMultipleSelections i_can_choose_from_multiple_selections() {
 
         InProgramCode programCodes = commonService.findProgramCodeByCode("MAM");
-        intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+        intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
         Assert.notNull(intake, "intake is null");
 
         InProgramOffering offering = policyService.findProgramOfferingByIntakeAndProgramCode(intake, programCodes);

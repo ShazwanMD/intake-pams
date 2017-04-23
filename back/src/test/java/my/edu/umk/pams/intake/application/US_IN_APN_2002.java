@@ -18,6 +18,8 @@ import my.edu.umk.pams.intake.application.stage.WhenIFillProcessingApplication;
 import my.edu.umk.pams.intake.application.stage.WhenSelectedApplicantWithdrawApplication;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -27,7 +29,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 public class US_IN_APN_2002 extends SpringScenarioTest<GivenIAmApplicant, WhenIFillProcessingApplication, ThenTheApplicationIsWithdrawn>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_APN_2002.class);
-	private String intakeReferenceNo = "MGSEB/201720181/MASTER";
+	private String intakeReferenceNo = INTAKE_REFERENCE_NO_MGSSEB;
 	
     @Test
     @Rollback

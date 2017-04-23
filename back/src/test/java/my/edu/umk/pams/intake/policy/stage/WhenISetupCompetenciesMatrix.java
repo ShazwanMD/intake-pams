@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @JGivenStage
 public class WhenISetupCompetenciesMatrix extends Stage<WhenISetupCompetenciesMatrix> {
     private static final Logger LOG = LoggerFactory.getLogger(WhenISetupCompetenciesMatrix.class);
@@ -32,7 +34,7 @@ public class WhenISetupCompetenciesMatrix extends Stage<WhenISetupCompetenciesMa
 
     public WhenISetupCompetenciesMatrix I_setup_competencies_matrix() {
 
-        intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+        intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 
         programOffering = new InProgramOfferingImpl();
         programOffering.setProgramCode(commonService.findProgramCodeByCode("MEM"));

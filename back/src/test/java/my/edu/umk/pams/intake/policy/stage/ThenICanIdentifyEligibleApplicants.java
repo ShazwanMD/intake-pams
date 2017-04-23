@@ -18,6 +18,8 @@ import org.springframework.util.Assert;
 
 import java.util.List;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @JGivenStage
 public class ThenICanIdentifyEligibleApplicants extends Stage<ThenICanIdentifyEligibleApplicants> {
 
@@ -46,7 +48,7 @@ public class ThenICanIdentifyEligibleApplicants extends Stage<ThenICanIdentifyEl
     
     public ThenICanIdentifyEligibleApplicants I_can_identify_eligible_applicants() {
        	
-    	intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+    	intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
     	Assert.notNull(intake, "intake cannot be null");
 
     	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByRank(intake);

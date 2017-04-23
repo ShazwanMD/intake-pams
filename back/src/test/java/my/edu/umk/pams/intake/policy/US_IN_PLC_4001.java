@@ -18,6 +18,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -33,7 +35,7 @@ public class US_IN_PLC_4001 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
     @Issue("")
     public void testScenario1() {
         
-        String referenceNo = "MGSEB/201720181/MASTER";
+        String referenceNo = INTAKE_REFERENCE_NO_MGSSEB;
 
         given().I_am_a_MGSEB_administrator_in_current_intake_session();
         when().i_list_and_offer_programs_under_MGSEB_to_intake(referenceNo);

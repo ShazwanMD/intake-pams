@@ -20,6 +20,8 @@ import my.edu.umk.pams.intake.admission.stage.ThenApplicantChooseSupervisor;
 import my.edu.umk.pams.intake.admission.stage.WhenAssignSupervisorToApplicant;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 @Pending
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -32,7 +34,7 @@ public class US_IN_AMS_2007 extends SpringScenarioTest<GivenIAmMGSEBAdministrato
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_AMS_2007.class);
 
-	public static final String INTAKE_REFERENCE_NO = "MGSEB/201720181/MASTER";
+	public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 	private static final String SUPERVISOR_CODE = "SC001"; //Perlu seed data untuk supervisor list
 	
 	@Test

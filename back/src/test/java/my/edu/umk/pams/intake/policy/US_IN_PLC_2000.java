@@ -19,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
@@ -34,7 +36,7 @@ public class US_IN_PLC_2000 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Issue("PAMI-5")
     public void testScenario1() {
         List<Data> dataCPS = Data.codesCPS();
-        String referenceNo = "MGSEB/201720181/MASTER";
+        String referenceNo = INTAKE_REFERENCE_NO_MGSSEB;
 
         given().I_am_a_CPS_administrator_in_current_intake_session();
         when().i_add_program_codes(dataCPS)

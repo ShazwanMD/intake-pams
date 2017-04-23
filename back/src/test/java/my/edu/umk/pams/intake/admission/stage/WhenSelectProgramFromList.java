@@ -16,6 +16,8 @@ import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
+import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
+
 //@Pending
 @JGivenStage
 public class WhenSelectProgramFromList extends Stage<WhenSelectProgramFromList> {
@@ -37,7 +39,7 @@ private InProgramCode programCode;
 	
 	 public WhenSelectProgramFromList Select_Program_From_List() {
 		 
-		 intake = policyService.findIntakeByReferenceNo("201720181/MASTER");
+		 intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 		 List<InProgramOffering> programOfferings = policyService.findProgramOfferings(intake);
 		 Assert.notNull(commonService.findProgramCodeByCode("MCA"),"program is not offered");
 		
