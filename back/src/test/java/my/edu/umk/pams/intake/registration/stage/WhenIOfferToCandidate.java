@@ -1,11 +1,14 @@
 package my.edu.umk.pams.intake.registration.stage;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 
 import org.slf4j.Logger;
@@ -23,13 +26,16 @@ public class WhenIOfferToCandidate extends Stage<WhenIOfferToCandidate> {
     
     @Autowired
     private PolicyService policyService;
+    
+    @ExpectedScenarioState
+    private InIntake intake;
        
     @ProvidedScenarioState
     private List<InCandidate> candidates;
 
     public WhenIOfferToCandidate I_offer_to_candidate_in_intake_session_$(String referenceNo) {
 
-      candidates = admissionService.findCandidates(policyService.findIntakeByReferenceNo(referenceNo));
+      candidates = admissionService.findCandidatesByStatus(intake, InCandidateStatus.SELECTED);
    
 		for (InCandidate candidate : candidates) {
 
