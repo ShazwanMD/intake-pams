@@ -18,7 +18,7 @@ import org.junit.runners.Suite;
         US_IN_RGN_3004.class, //pending
         US_IN_RGN_3005.class,
         US_IN_RGN_3006.class, 
-        US_IN_RGN_3007.class, //pending
+        US_IN_RGN_3007.class, 
         US_IN_RGN_3008.class,
         US_IN_RGN_3009.class, 
         US_IN_RGN_3010.class, //pending
@@ -29,7 +29,7 @@ import org.junit.runners.Suite;
         US_IN_RGN_4004.class, //pending
         US_IN_RGN_4005.class,
         US_IN_RGN_4006.class, 
-        US_IN_RGN_4007.class, //pending
+        US_IN_RGN_4007.class, 
         US_IN_RGN_4008.class,
         US_IN_RGN_4009.class,
         US_IN_RGN_4010.class, //pending
