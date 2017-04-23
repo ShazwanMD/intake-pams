@@ -37,6 +37,9 @@ public class WhenActivateStudentAdmission extends Stage<WhenActivateStudentAdmis
 	@ExpectedScenarioState
     private List<InCandidate> candidates;
 	
+	@ExpectedScenarioState
+	private InCandidate candidate;
+	
 	public WhenActivateStudentAdmission I_want_to_activate_student_during_registration_$(String identityNo,
 			String intakeSession) {
 		
@@ -46,6 +49,32 @@ public class WhenActivateStudentAdmission extends Stage<WhenActivateStudentAdmis
 
 		}
 
+		return self();
+	}
+	
+	public WhenActivateStudentAdmission I_scan_offer_letter_barcode_$(String identityNo,
+			String intakeSession) {
+		
+		admissionService.registerCandidates(intake, candidates);
+		
+		for (InCandidate candidate : candidates) {
+			LOG.debug("candidate {}'s matric no : {}  ", candidate.getName(), candidate.getMatricNo());
+			LOG.debug("registration status : {}", candidate.getRegistration());
+		}
+
+		return self();
+	}
+	
+	
+	public WhenActivateStudentAdmission I_scan_offer_letter_barcode_for_a_candidate_$(String identityNo,
+			String intakeSession) {
+		
+		InCandidate candidate1 = admissionService.findCandidateByIdentityNo("910607145581");
+
+		admissionService.registerCandidates(intake, candidates);
+		LOG.debug("candidate matric no : {}", candidate1.getMatricNo() );
+		LOG.debug("candidate matric no : {}", candidate1.getRegistration() );
+	
 		return self();
 	}
 }
