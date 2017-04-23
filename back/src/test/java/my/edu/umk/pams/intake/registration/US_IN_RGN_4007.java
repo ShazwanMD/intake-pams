@@ -16,12 +16,11 @@ import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.registration.stage.ThenICanCompleteStudentRegistration;
-import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorOfferToCandidate;
-import my.edu.umk.pams.intake.registration.stage.WhenAcademicAdministratorPreselectApplicant;
 import my.edu.umk.pams.intake.registration.stage.WhenActivateStudentAdmission;
 import my.edu.umk.pams.intake.registration.stage.WhenCandidateAcceptOffer;
-import my.edu.umk.pams.intake.registration.stage.WhenIWantToScanTheApplicantOfferLetterBarcode;
+import my.edu.umk.pams.intake.registration.stage.WhenIOfferToCandidate;
 import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
+import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 
 import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
 
@@ -45,20 +44,16 @@ public class US_IN_RGN_4007 extends SpringScenarioTest <GivenIAmMGSEBAdministrat
     @Issue("PAMI-91")
     @Pending
     public void scenario1() {
-/*        given().I_am_a_MGSEB_administrator_in_current_intake_session()
-        .and().I_pick_an_intake_$(intakeReferenceNo);
-        when().I_want_to_scan_the_applicant_offer_letter_barcode();
-        then().I_can_complete_student_registration();
- */        
-        
-        given().I_am_a_MGSEB_administrator_in_current_intake_session()
+    	
+    	given().I_am_a_MGSEB_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(INTAKE_REFERENCE_NO);
         when().I_prepare_3_applications().and().I_submit_3_applications();
-		addStage(WhenAcademicAdministratorPreselectApplicant.class).and().academic_admin_preselect_applicant_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
-		addStage(WhenAcademicAdministratorOfferToCandidate.class).and().offer_to_candidate_in_intake_session_$(IDENTITY_NO, INTAKE_REFERENCE_NO);
-		addStage(WhenCandidateAcceptOffer.class).and().i_accept_offer_$(IDENTITY_NO,INTAKE_REFERENCE_NO);
-        addStage(WhenActivateStudentAdmission.class).and().I_want_to_activate_student_during_registration_$(IDENTITY_NO,INTAKE_REFERENCE_NO);      
-        addStage(WhenIWantToScanTheApplicantOfferLetterBarcode.class).and().I_want_to_scan_the_applicant_offer_letter_barcode_$(IDENTITY_NO,INTAKE_REFERENCE_NO); ;
-        then().I_can_complete_student_registration();
+        addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_$(IDENTITY_NO);
+        addStage(WhenIOfferToCandidate.class).and().I_offer_to_candidate_in_intake_session_$(INTAKE_REFERENCE_NO);
+        addStage(WhenCandidateAcceptOffer.class).and().a_candidate_accept_offer_$(IDENTITY_NO,INTAKE_REFERENCE_NO);
+        addStage(WhenActivateStudentAdmission.class).and().I_scan_offer_letter_barcode_for_a_candidate_$(IDENTITY_NO,INTAKE_REFERENCE_NO);
+        then().I_can_complete_student_registration(); 
+           
    }
+       
 }
