@@ -73,7 +73,7 @@ public class WhenActivateStudentAdmission extends Stage<WhenActivateStudentAdmis
 
 		admissionService.registerCandidates(intake, candidates);
 		LOG.debug("candidate matric no : {}", candidate1.getMatricNo() );
-		LOG.debug("candidate matric no : {}", candidate1.getRegistration() );
+		LOG.debug("candidate registration status : {}", candidate1.getRegistration() );
 	
 		return self();
 	}
