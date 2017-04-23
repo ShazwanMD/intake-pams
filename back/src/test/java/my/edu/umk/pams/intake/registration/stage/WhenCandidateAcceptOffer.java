@@ -39,6 +39,8 @@ public class WhenCandidateAcceptOffer extends Stage<WhenCandidateAcceptOffer>{
 	
 	public WhenCandidateAcceptOffer i_accept_offer_$(String identityNo, String intakeSession) {
 	
+		LOG.debug("intake status : {} ", intake);
+		
 		for (InCandidate candidate : candidates) {
 			
 	    candidate.setStatus(InCandidateStatus.ACCEPTED);
@@ -46,6 +48,19 @@ public class WhenCandidateAcceptOffer extends Stage<WhenCandidateAcceptOffer>{
 		LOG.debug("candidate {} has {} the offer", candidate.getName(),candidate.getStatus());
 		
 		}
+		return self();
+	}
+	
+	public WhenCandidateAcceptOffer a_candidate_accept_offer_$(String identityNo, String intakeSession) {
+		
+		LOG.debug("intake status : {} ", intake);
+		
+		InCandidate candidate1 = admissionService.findCandidateByIdentityNo("910607145581");
+		LOG.debug("candidate1 status : {} ", candidate1);
+	    candidate1.setStatus(InCandidateStatus.ACCEPTED);
+		admissionService.updateSelectedCandidate(candidate1);	
+		LOG.debug("candidate status: {}", candidate1.getStatus());
+
 		return self();
 	}
 }
