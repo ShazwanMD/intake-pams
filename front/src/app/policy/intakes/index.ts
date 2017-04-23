@@ -26,6 +26,7 @@ import {ProgramOfferingEditorDialog} from "./dialog/program-offering-editor.dial
 import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
 import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
+import {ProgramLevelSubModule} from "../program-levels/index";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
+    ProgramLevelSubModule.forRoot(),
     EffectsModule.run(IntakeEffects),
   ],
   declarations: [

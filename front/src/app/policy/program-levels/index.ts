@@ -14,6 +14,7 @@ import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
 import {ProgramLevelActions} from "./program-level.action";
 import {ProgramLevelEffects} from "./program-level.effect";
+import {ProgramLevelSelectComponent} from "./component/program-level-select.component";
 
 
 @NgModule({
@@ -28,10 +29,13 @@ import {ProgramLevelEffects} from "./program-level.effect";
   declarations: [
     // page
     // components
+    ProgramLevelSelectComponent,
     // panels
     // dialogs
   ],
-  exports: [],
+  exports: [
+    ProgramLevelSelectComponent,
+  ],
   entryComponents: [
   ],
 

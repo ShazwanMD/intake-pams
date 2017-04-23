@@ -48,11 +48,9 @@
       </md-select>
     </div>
     <div layout="row" class="pad-top">
-      <md-select formControlName="programLevel" placeholder="Program Level" flex>
-        <md-option *ngFor="let programLevel of programLevels$ | async" [value]="programLevel">
-          {{programLevel.code}}: {{programLevel.description}}
-        </md-option>
-      </md-select>
+      <pams-program-level-select
+        formControlName="programLevel"
+        [innerFormControl]="createForm.controls.programLevel" flex></pams-program-level-select>
     </div>
   </form>
 </md-dialog-content>

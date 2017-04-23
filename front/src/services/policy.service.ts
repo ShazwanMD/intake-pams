@@ -9,6 +9,7 @@ import {ProgramOffering} from "../app/policy/intakes/program-offering.interface"
 import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.interface";
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 import {IntakeSession} from "../app/policy/intake-sessions/intake-session.interface";
+import {ProgramLevel} from "../app/policy/program-levels/program-level.interface";
 
 @Injectable()
 export class PolicyService {
