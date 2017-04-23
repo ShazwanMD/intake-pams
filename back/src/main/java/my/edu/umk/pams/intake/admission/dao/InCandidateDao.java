@@ -24,6 +24,8 @@ public interface InCandidateDao extends GenericDao<Long, InCandidate> {
     List<InCandidate> find(InIntake intake, InCandidateStatus status);
     
     void updateCandidate (InIntakeApplication application,InCandidate candidate);
+
+	InCandidate findCandidateByMatricNo(String matricNo);
     
     //void registeredCandidate (InIntake intake, InCandidate candidate);
 }
