@@ -40,8 +40,6 @@ import java.util.Map;
 public class AdmissionServiceImpl implements AdmissionService {
     private static final Logger LOG = LoggerFactory.getLogger(AdmissionServiceImpl.class);
 
-    private String intakeReferenceNo = "201720181/MASTER";
-
     @Autowired
     private InCandidateDao candidateDao;
 
