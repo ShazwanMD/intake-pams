@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
@@ -42,7 +41,6 @@ public class US_IN_RGN_4007 extends SpringScenarioTest <GivenIAmMGSEBAdministrat
     @Test
     @Rollback
     @Issue("PAMI-91")
-    @Pending
     public void scenario1() {
     	
     	given().I_am_a_MGSEB_administrator_in_current_intake_session()
