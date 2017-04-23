@@ -42,7 +42,7 @@ public class WhenIAddOffering extends Stage<WhenIAddOffering> {
         offering.setSpecificCriteria("TODO ADD SPECIFIC CRIT"); // todo
         offering.setInterview(true);
         // offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("SC-001")); // todo(uda): need data
-        // offering.setProgramCode(commonService.findProgramCodeByCode("MEM")); // todo(uda): need real data
+         offering.setProgramCode(commonService.findProgramCodeByCode("MAA"));
         policyService.addProgramOffering(intake, offering);
         return self();
     }
