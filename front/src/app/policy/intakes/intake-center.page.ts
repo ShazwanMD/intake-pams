@@ -46,7 +46,7 @@ export class IntakeCenterPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '70%';
-    config.height = '60%';
+    config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(IntakeTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {
