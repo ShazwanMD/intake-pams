@@ -130,6 +130,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
          application1.setAge(26);
          application1.setRank(3);
          application1.setPaid(true);
+         application1.setVerification(false);
          application1.setMerit(new BigDecimal("2.85"));
          application1.setPaymentSourceNo("0024188");
          application1.setSchoolBatch(2006/2010);
@@ -169,6 +170,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application2.setAge(25);
           application2.setRank(2);
           application2.setPaid(false);
+          application1.setVerification(true);
           application2.setMerit(new BigDecimal("2.80"));
           application2.setPaymentSourceNo("002268sd");
           application2.setSchoolBatch(2006/2012);
@@ -203,6 +205,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application3.setEmail(applicant3.getEmail());
           application3.setPhone(applicant3.getPhone());
           application3.setPaid(true);
+          application1.setVerification(true);
           application3.setAge(30);
           application3.setRank(1);
           application3.setMerit(new BigDecimal("3.80"));
