@@ -32,7 +32,7 @@ public class US_IN_RGN_7001 extends
 
 	public static final String INTAKE_REFERENCE_NO = INTAKE_REFERENCE_NO_MGSSEB;
 
-	@Issue("PAMI-109")
+	@Issue("PAMI-108")
 	@Test
 	@Rollback
 	public void scenario1() {
