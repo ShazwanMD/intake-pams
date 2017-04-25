@@ -220,6 +220,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setBoolean("paid", paid);
         return (List<InIntakeApplication>) query.list();
     }  
+    
+    @Override
+    public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
+                "p.intake = :intake " +
+                "and p.verification =:verification");
+        query.setEntity("intake", intake);
+        query.setBoolean("verification", verification);
+        return (List<InIntakeApplication>) query.list();
+    } 
 
     @Override
     public List<InIntakeApplication> findByOrderedRank(InIntake intake) {
