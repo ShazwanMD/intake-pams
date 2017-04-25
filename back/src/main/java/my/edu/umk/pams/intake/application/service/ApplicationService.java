@@ -24,6 +24,8 @@ public interface ApplicationService {
     
     void processIntakeApplication(InIntake intake, InIntakeApplication application);
     
+    void verifyInternationalApplications(InIntake intake, InIntakeApplication application);
+    
     void rejectIntakeApplication(InIntake intake, InIntakeApplication application);
 
     void addResult(InIntakeApplication application, InResult result);
@@ -113,6 +115,8 @@ public interface ApplicationService {
     List<InIntakeApplication> findIntakeApplicationsOrderedByRank(InIntake intake);
     
     List<InIntakeApplication> findIntakeApplicationsByPaidStatus (InIntake intake, Boolean paid);
+    
+    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus (InIntake intake, Boolean verifiction);
 
     List<InResult> findResults(InIntakeApplication application);
 
@@ -148,9 +152,6 @@ public interface ApplicationService {
 
 	void addReferee(InIntakeApplication application, InReferee referee);
 
-	
-
-	
 
 }
 

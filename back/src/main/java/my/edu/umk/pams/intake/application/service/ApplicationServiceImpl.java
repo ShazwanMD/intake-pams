@@ -88,6 +88,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     
     @Override
+    public void verifyInternationalApplications(InIntake intake, InIntakeApplication application) {
+        application.setVerification(true);
+        updateIntakeApplication(application);
+    }
+    
+    @Override
     public void addResult(InIntakeApplication application, InResult result) {
         intakeApplicationDao.addResult(application, result, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -392,6 +398,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Override
 	public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid) {
 		 return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, paid);
+	}
+	
+	@Override
+	public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
+		 return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, verification);
 	}
 	
 }
