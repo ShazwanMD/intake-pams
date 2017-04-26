@@ -26,9 +26,9 @@ import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGS
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Policy")
 @As("As a MGSEB academic administrator, I want to list MGSEB programs to be offered in an intake so that I can choose from a selection of choices")
-public class US_IN_PLC_4001 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIOfferMGSEBProgramsInIntake, ThenMGSEBProgramsOfferedToIntake> {
+public class US_IN_PLC_5001 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIOfferMGSEBProgramsInIntake, ThenMGSEBProgramsOfferedToIntake> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_4001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_5001.class);
 
     @Test
     @Rollback

@@ -26,9 +26,9 @@ import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGS
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Policy")
 @As("As a CPS academic administrator, I want to list CPS programs to be offered in an intake so that I can choose from a selection of choices")
-public class US_IN_PLC_4000 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferCPSProgramsInIntake, ThenCPSProgramsOfferedToIntake> {
+public class US_IN_PLC_5000 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferCPSProgramsInIntake, ThenCPSProgramsOfferedToIntake> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_4000.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_5000.class);
 
     @Test
     @Rollback
