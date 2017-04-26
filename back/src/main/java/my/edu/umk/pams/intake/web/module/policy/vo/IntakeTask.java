@@ -17,6 +17,10 @@ public class IntakeTask extends Task {
     private Date endDate;
     private Intake intake;
 
+    // transient
+    private Integer candidateCount;
+    private Integer applicationCount;
+
     public Integer getProjection() {
         return projection;
     }
@@ -47,6 +51,22 @@ public class IntakeTask extends Task {
 
     public void setIntake(Intake intake) {
         this.intake = intake;
+    }
+
+    public Integer getCandidateCount() {
+        return candidateCount;
+    }
+
+    public void setCandidateCount(Integer candidateCount) {
+        this.candidateCount = candidateCount;
+    }
+
+    public Integer getApplicationCount() {
+        return applicationCount;
+    }
+
+    public void setApplicationCount(Integer applicationCount) {
+        this.applicationCount = applicationCount;
     }
 
     @JsonCreator

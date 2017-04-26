@@ -25,12 +25,11 @@ import java.util.List;
  */
 
 @Repository("inCandidateDao")
-public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> implements InCandidateDao{
+public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> implements InCandidateDao {
 
     public InCandidateDaoImpl() {
         super(InCandidateImpl.class);
     }
-
 
     @Override
     public InCandidate findByIdentityNo(String identityNo) {
@@ -39,7 +38,7 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
         query.setString("identityNo", identityNo);
         return (InCandidate) query.uniqueResult();
     }
-    
+
     @Override
     public InCandidate findCandidateByMatricNo(String matricNo) {
         Session session = sessionFactory.getCurrentSession();
@@ -68,37 +67,43 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
         return (List<InCandidate>) query.list();
     }
 
-
-	@Override
-	public void updateCandidate(InIntakeApplication application, InCandidate candidate) {
-		 Validate.notNull(application, "Application cannot be null");
-		 Validate.notNull(candidate, "candidate cannot be null");
-		
-		 Session session = sessionFactory.getCurrentSession();
-	}
-
-
-	@Override
-	public List<InCandidate> find(InIntake intake, InCandidateStatus status) {
-		
-		 Session currentSession = sessionFactory.getCurrentSession();
-		 Query query = currentSession.createQuery("select p from InCandidate p where " +
-				 "p.intake = :intake " +
-				 "and p.status = :status ");
-		 query.setEntity("intake", intake);
-		 query.setInteger("status", status.ordinal());
-		return (List<InCandidate>) query.list();
-	}
-
-
-	@Override
-	public List<InCandidate> findCandidateByStatus(InIntake intake, InCandidateStatus status) {
-		Session currentSession = sessionFactory.getCurrentSession();
-		Query query = currentSession.createQuery("select p from InCandidate p " +
+    @Override
+    public List<InCandidate> findCandidateByStatus(InIntake intake, InCandidateStatus status) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InCandidate p " +
                 "where p.status = :status ");
-		query.setInteger("status", status.ordinal());
-		return (List<InCandidate>) query.list();
-	}
-	
+        query.setInteger("status", status.ordinal());
+        return (List<InCandidate>) query.list();
+    }
 
+    @Override
+    public List<InCandidate> find(InIntake intake, InCandidateStatus status) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InCandidate p where " +
+                "p.intake = :intake " +
+                "and p.status = :status ");
+        query.setEntity("intake", intake);
+        query.setInteger("status", status.ordinal());
+        return (List<InCandidate>) query.list();
+    }
+
+    @Override
+    public Integer count(InIntake intake) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InCandidate p " +
+                "where p.intake = :intake");
+        query.setEntity("intake", intake);
+        return ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public Integer count(InIntake intake, InCandidateStatus status) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InCandidate p " +
+                "where p.intake = :intake " +
+                "and p.status = :status ");
+        query.setEntity("intake", intake);
+        query.setInteger("status", status.ordinal());
+        return ((Long) query.uniqueResult()).intValue();
+    }
 }

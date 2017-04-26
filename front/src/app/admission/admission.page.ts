@@ -2,10 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {AdmissionModuleState} from "./index";
-import {PolicyModuleState} from "../policy/index";
-import {IntakeActions} from "../policy/intakes/intake.action";
 import {IntakeTask} from "../policy/intakes/intake-task.interface";
 import {Observable} from "rxjs/Observable";
+import {AdmissionActions} from "./admission.action";
 
 @Component({
   selector: 'pams-admission-page',
@@ -14,20 +13,25 @@ import {Observable} from "rxjs/Observable";
 
 export class AdmissionPage implements OnInit {
 
-  private INTAKE_TASKS = "policyModuleState.intakeTasks".split(".");
+  private INTAKE_TASKS = "admissionModuleState.intakeTasks".split(".");
   private intakeTasks$: Observable<IntakeTask[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<AdmissionModuleState>,
-              private policyStore: Store<PolicyModuleState>,
-              private intakeActions: IntakeActions) {
-    this.intakeTasks$ = this.policyStore.select(...this.INTAKE_TASKS);
+              private actions: AdmissionActions) {
+    this.intakeTasks$ = this.store.select(...this.INTAKE_TASKS);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(() => {
-      this.policyStore.dispatch(this.intakeActions.findAssignedIntakeTasks());
+      this.store.dispatch(this.actions.findAssignedIntakeTasks());
     });
   }
+
+  view(intake: IntakeTask) {
+    console.log("intake: " + intake.taskId);
+    this.router.navigate(['/view-task', intake.taskId]);
+  }
+
 }
