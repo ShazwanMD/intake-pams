@@ -13,6 +13,9 @@ import {IdentityService} from '../../services';
 import {AdmissionPage} from "./admission.page";
 import {AdmissionService} from "../../services/admission.service";
 import {ActionReducer, combineReducers} from "@ngrx/store";
+import {PolicyModule} from "../policy/index";
+import {IntakeSubModule} from "../policy/intakes/index";
+import {IntakeTaskListComponent} from "./component/intake-task-list.component";
 
 export interface AdmissionModuleState {
 };
@@ -27,11 +30,11 @@ export const admissionModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    // AdmissionSubModule.forRoot(),
   ],
   declarations: [
     // page
     AdmissionPage,
+    IntakeTaskListComponent,
   ],
   exports: [],
 })

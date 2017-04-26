@@ -61,7 +61,7 @@ import {IntakeSessionSubModule} from "../intake-sessions/index";
     IntakeTaskCreatorDialog,
     ProgramOfferingEditorDialog,
   ],
-  exports: [],
+  exports: [IntakeTaskListComponent],
   entryComponents: [
     IntakeDraftTaskPanel,
     IntakeRegisterTaskPanel,

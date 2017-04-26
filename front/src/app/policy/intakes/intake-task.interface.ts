@@ -12,6 +12,7 @@ export interface IntakeTask {
   projection: number;
   startDate: number;
   endDate: number;
+  candidateCount?:number;
   intake: Intake;
   flowState:FlowState;
 }

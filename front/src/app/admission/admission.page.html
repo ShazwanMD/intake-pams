@@ -17,5 +17,21 @@
       </button>
     </div>
 
+    <md-card class="">
+      <md-card-title>Intakes</md-card-title>
+      <md-card-subtitle>List of intake</md-card-subtitle>
+
+      <pams-intake-task-list
+        [intakeTasks]="intakeTasks$ | async"
+        (view)="view($event)"></pams-intake-task-list>
+
+      <md-divider></md-divider>
+      <md-card-actions>
+        <a md-button color="accent" class="text-upper" [routerLink]="['/intakes-search']">
+          <span>View More</span>
+        </a>
+      </md-card-actions>
+    </md-card>
+
   </td-layout-manage-list>
 </td-layout-nav>
