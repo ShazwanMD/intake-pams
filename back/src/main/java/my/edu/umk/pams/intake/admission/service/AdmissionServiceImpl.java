@@ -197,6 +197,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 		List<InCandidate> candidates = this.findCandidatesByStatus(intake, InCandidateStatus.SELECTED);
 		for (InCandidate candidate : candidates) {
+			LOG.debug("These candidates are selected : {}", candidate.getName());
 			candidateDao.save(candidate, securityService.getCurrentUser());
 
 		}
