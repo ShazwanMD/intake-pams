@@ -1,9 +1,9 @@
 import {Routes, RouterModule} from '@angular/router';
-import {IntakeApplicationPersonalPage} from "./intake-application-personal.page";
-import {IntakeApplicationEducationPage} from "./intake-application-education.page";
+import {CpsIntakeApplicationRoutes} from "./cps/cps-intake-application.routes";
+import {MgsebIntakeApplicationRoutes} from "./mgseb/mgseb-intake-application.routes";
 
 
 export const IntakeApplicationRoutes: Routes = [
-  {path: 'application/intake-applications/personal', component: IntakeApplicationPersonalPage},
-  {path: 'application/intake-applications/education', component: IntakeApplicationEducationPage},
+  ...CpsIntakeApplicationRoutes,
+  ...MgsebIntakeApplicationRoutes,
 ];

@@ -1,22 +1,22 @@
 <td-layout-nav>
-  <div toolbar-content layout="row" layout-align="center center" flex>
+<div toolbar-content layout="row" layout-align="center center" flex>
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
   <td-layout-card-over>
-    <form>
-      <div layout="row" layout-align="start center">
+  <div layout="row" layout-align="start center">
         <div>
           <md-card-title>Intake Application</md-card-title>
           <md-card-subtitle>Intake Registration for Session 201720181</md-card-subtitle>
         </div>
       </div>
       <md-divider></md-divider>
-      <md-card>
-        <div layout="row" class="inset">
-          <h3 md-subheader class="text-upper tc-grey-700">Personal Information</h3>
-        </div>
-        <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+      
+<md-tab-group md-stretch-tabs>
+  <md-tab>
+  <md-card>
+    <template md-tab-label>Personal Information</template>
+    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
           <!-- first column -->
           <div layout="column" class="pad-right" flex>
             <div layout="row" class="pad-bottom" flex>
@@ -81,13 +81,12 @@
           </div>
 
         </div>
-      </md-card>
-
-      <md-card>
-        <div layout="row" class="inset">
-          <h3 md-subheader class="text-upper tc-grey-700">Address Information</h3>
-        </div>
-        <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+  </md-card>
+  </md-tab>
+  <md-tab>
+  <md-card>
+    <template md-tab-label>Address Information</template>
+    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
           <div layout="column" class="pad-right" flex>
             <div layout="row" class="insert" flex>
               <md-input-container flex>
@@ -119,10 +118,20 @@
             </div>
           </div>
         </div>
-      </md-card>
-      <md-card-actions align="end">
-        <button md-raised-button color="accent"  [routerLink]="['/application/intake-applications/education']">Next</button>
-      </md-card-actions>
-    </form>
-  </td-layout-card-over>
+        </md-card>
+  </md-tab>
+  <md-tab>
+  <md-card>
+    <template md-tab-label>Education Information</template>
+    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+          <div layout="column" class="pad-right" flex>
+            <div layout="row" class="insert" flex>
+             
+            </div>
+          </div>
+        </div>
+        </md-card>
+  </md-tab>
+</md-tab-group>
+</td-layout-card-over>
 </td-layout-nav>

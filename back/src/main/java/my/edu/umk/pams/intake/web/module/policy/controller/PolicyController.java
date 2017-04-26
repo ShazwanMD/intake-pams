@@ -55,7 +55,7 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakeSessions", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeSession>> findIntakeSessions() {
-        List<InIntakeSession> sessions = policyService.findIntakeSessions(0,100);
+        List<InIntakeSession> sessions = policyService.findIntakeSessions(0, 100);
         return new ResponseEntity<List<IntakeSession>>(policyTransformer.toIntakeSessionVos(sessions), HttpStatus.OK);
     }
 
@@ -65,7 +65,7 @@ public class PolicyController {
 
     @RequestMapping(value = "/programLevels", method = RequestMethod.GET)
     public ResponseEntity<List<ProgramLevel>> findProgramLevels() {
-        List<InProgramLevel> levels = policyService.findProgramLevels(0,100);
+        List<InProgramLevel> levels = policyService.findProgramLevels(0, 100);
         return new ResponseEntity<List<ProgramLevel>>(policyTransformer.toProgramLevelVos(levels), HttpStatus.OK);
     }
 
@@ -242,7 +242,7 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.POST)
     public ResponseEntity<Boolean> addStudyModeOfferings(@PathVariable String referenceNo,
-                                                          @RequestBody StudyModeOffering vo) {
+                                                         @RequestBody StudyModeOffering vo) {
         dummyLogin();
 
         String decode = URLDecoder.decode(referenceNo);
@@ -256,7 +256,7 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings/{id}", method = RequestMethod.POST)
     public ResponseEntity<Boolean> deleteStudyModeOfferings(@PathVariable String referenceNo,
-                                                             @PathVariable Long id) {
+                                                            @PathVariable Long id) {
         dummyLogin();
 
         String decode = URLDecoder.decode(referenceNo);
