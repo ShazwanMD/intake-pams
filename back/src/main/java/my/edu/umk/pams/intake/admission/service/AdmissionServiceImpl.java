@@ -205,8 +205,14 @@ public class AdmissionServiceImpl implements AdmissionService {
 	public void broadcastResult(InIntake intake) {
 		List<InCandidate> candidates = this.findCandidatesByStatus(intake, InCandidateStatus.SELECTED);
 		for (InCandidate candidate : candidates) {
-			LOG.debug("These candidates are selected : {}", candidate.getName());
-			candidateDao.save(candidate, securityService.getCurrentUser());
+			
+	        // notify candidate
+	        InEmailQueue emailQueue = new InEmailQueueImpl();
+	        emailQueue.setCode("EQ/" + System.currentTimeMillis()); 
+	        emailQueue.setTo(candidate.getEmail());
+	        emailQueue.setSubject("in process");
+	        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+	        systemService.saveEmailQueue(emailQueue);
 		}
     }
 }
