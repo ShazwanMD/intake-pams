@@ -12,12 +12,9 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.registration.service.RegistrationService;
-import my.edu.umk.pams.intake.security.service.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.util.Assert;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
@@ -30,15 +27,6 @@ public class GivenIncompleteApplication extends Stage<GivenIncompleteApplication
 
     @Autowired
     private CommonService commonService;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private RegistrationService registrationService;
-
-    @Autowired
-    private SecurityService securityService;
 
     @Autowired
     private ApplicationService applicationService;

@@ -18,19 +18,19 @@ public class ThenApplicationComplete extends Stage<ThenApplicationComplete> {
     private static final Logger LOG = LoggerFactory.getLogger(ThenApplicationComplete.class);
 
     @ExpectedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application;
 
     public ThenApplicationComplete the_application_is_complete() {
 
-//      TODO:  Assert.isTrue(something.equals(application.getSomething()), "application is not completed");
-        LOG.debug("TODO FIX ME");
+    	Assert.notNull(application, "application is not complete");
         return self();
     }
 
     public ThenApplicationComplete the_application_is_submitted() {
 
         String message = "application is not submitted";
-        Assert.isTrue(InBidStatus.SUBMITTED.equals(intakeApplication.getBidStatus()), message);
+        Assert.isTrue(InBidStatus.SUBMITTED.equals(application.getBidStatus()), message);
+        LOG.debug("intake status : {} ", application.getBidStatus());
 
         return self();
     }

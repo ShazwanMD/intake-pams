@@ -38,7 +38,7 @@ public class US_IN_RGN_2001 extends SpringScenarioTest<GivenIAmApplicant, WhenCo
             addStage(GivenIncompleteApplication.class).and().i_drafted_an_application();
         when().i_complete_my_application();
             addStage(WhenISubmitApplication.class).and().I_submit_application();
-        then().the_application_is_complete();
+        then().the_application_is_complete().and().the_application_is_submitted();
     }
 
 }

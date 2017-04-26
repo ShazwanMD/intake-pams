@@ -29,13 +29,13 @@ public class WhenISubmitApplication extends Stage<WhenISubmitApplication> {
     private InApplicant applicant;
 
     @ExpectedScenarioState
-    private InIntakeApplication intakeApplication;
+    private InIntakeApplication application;
 
     public WhenISubmitApplication I_submit_application() {
-        applicationService.submitIntakeApplication(intake, intakeApplication);
-        Assert.notNull(intakeApplication, "application is null");
+        applicationService.submitIntakeApplication(intake, application);
+        Assert.notNull(application, "application is null");
 
-        InBidStatus bidStatus = intakeApplication.getBidStatus();
+        InBidStatus bidStatus = application.getBidStatus();
         Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus), "application is not submitted");
 
         return self();
