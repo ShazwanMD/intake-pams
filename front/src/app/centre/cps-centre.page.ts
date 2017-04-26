@@ -14,6 +14,9 @@ import {CentreModuleState} from "./index";
 
 export class CpsCentrePage implements OnInit {
 
+  private GRADUATE_CENTRE = "centreModuleState.graduateCentre".split(".");
+  private PROGRAM_CODES = "centreModuleState.programCodes".split(".");
+
   private programCodes$: Observable<ProgramCode[]>;
   private graduateCentre$: Observable<GraduateCentre>;
 
@@ -21,8 +24,8 @@ export class CpsCentrePage implements OnInit {
               private route: ActivatedRoute,
               private centreActions: CentreActions,
               private store: Store<CentreModuleState>) {
-    this.graduateCentre$ = this.store.select(state => state.graduateCentre);
-    this.programCodes$ = this.store.select(state => state.programCodes);
+    this.graduateCentre$ = this.store.select(...this.GRADUATE_CENTRE);
+    this.programCodes$ = this.store.select(...this.PROGRAM_CODES);
   }
 
   ngOnInit(): void {

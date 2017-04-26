@@ -33,6 +33,7 @@
       <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
         <div class="push-top-xxl" hide-xs></div>
         <h3 class="md-display-1 tc-grey-600 push-top-xs push-bottom-sm">Register Our Programs</h3>
+        <p class="md-title tc-grey-600">{{(graduateCentre$ | async)?.descriptionEn}}</p>
         <p class="md-title tc-grey-600">Ready to make dive ? Get started today and register!</p>
         <button md-raised-button color="accent" class="push-bottom" [routerLink]="['/registration']">Register or Login
         </button>
@@ -44,7 +45,8 @@
     <div layout-gt-xs="row">
       <div flex tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
         <h4 class="md-display-1 tc-grey-600">Our Programs</h4>
-        <pams-program-code-list [programCodes]="programCodes$ | async"></pams-program-code-list>
+        <pams-program-code-list [programCodes]="programCodes$ | async"
+                                (view)="viewProgramCode($event)"></pams-program-code-list>
       </div>
     </div>
   </section>
