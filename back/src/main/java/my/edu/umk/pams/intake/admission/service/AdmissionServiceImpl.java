@@ -191,6 +191,19 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setStatus(InCandidateStatus.SELECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
+    
+	@Override
+	public void broadcastResult(InIntake intake) {
+
+		List<InCandidate> candidates = this.findCandidatesByStatus(intake, InCandidateStatus.SELECTED);
+		for (InCandidate candidate : candidates) {
+			candidateDao.save(candidate, securityService.getCurrentUser());
+
+		}
+        
+
+
+    }
 
 
 }

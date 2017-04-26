@@ -45,5 +45,7 @@ public interface AdmissionService {
     void offerCandidate(InCandidate candidate);
 
     void registerCandidates(InIntake intake, List<InCandidate> candidates);
+    
+    void broadcastResult(InIntake intake);
 
 }
