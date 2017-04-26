@@ -72,7 +72,6 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void processIntake(InIntake intake) {
         // preselect
         selectionStrategyHelper.select(intake);
-
         // pickup all preselection application
         // todo(uda) : InBidStatus.SELECTED
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
@@ -154,6 +153,16 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public List<InCandidate> findCandidatesByStatus(InIntake intake, InCandidateStatus status) {
         return candidateDao.find(intake, status);
+    }
+
+    @Override
+    public Integer countCandidate(InIntake intake) {
+        return candidateDao.count(intake);
+    }
+
+    @Override
+    public Integer countCandidate(InIntake intake, InCandidateStatus candidateStatus) {
+        return candidateDao.count(intake, candidateStatus);
     }
 
     @Override

@@ -36,8 +36,5 @@ public class AdmissionTransformer {
                 .map((task) -> toCandidateVo(task))
                 .collect(toCollection(() -> new ArrayList<Candidate>()));
     }
-
-
-
 }
 

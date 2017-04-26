@@ -40,6 +40,11 @@ public interface AdmissionService {
 
     List<InCandidate> findCandidatesByStatus(InIntake intake, InCandidateStatus status);
 
+    Integer countCandidate(InIntake intake);
+
+    Integer countCandidate(InIntake intake, InCandidateStatus candidateStatus);
+
+    // note: still true?? or has it changed?
     void preapproveCandidate(InCandidate candidate);
 
     void offerCandidate(InCandidate candidate);
