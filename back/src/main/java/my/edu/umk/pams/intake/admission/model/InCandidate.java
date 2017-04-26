@@ -30,6 +30,10 @@ public interface InCandidate extends InMetaObject {
 
 	void setEmail(String email);
 
+    boolean getRegistration();
+
+    void setRegistration(boolean registration);
+
     InStudyMode getStudyMode();
 
     void setStudyMode(InStudyMode studyMode);
@@ -54,7 +58,4 @@ public interface InCandidate extends InMetaObject {
 
     void setSupervisorSelection(InSupervisorOffering offering);
 
-	boolean getRegistration();
-
-	void setRegistration(boolean registration);
 }
