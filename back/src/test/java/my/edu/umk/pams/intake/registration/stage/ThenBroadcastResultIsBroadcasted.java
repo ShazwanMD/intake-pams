@@ -41,17 +41,12 @@ public class ThenBroadcastResultIsBroadcasted extends Stage<ThenBroadcastResultI
     @ExpectedScenarioState
     private InIntakeApplication intakeApplication;
     
-    public ThenBroadcastResultIsBroadcasted I_broadcasted_the_results() {
-		 
+	public ThenBroadcastResultIsBroadcasted I_broadcasted_the_results() {
 
-			
 		List<InEmailQueue> emailQueue = systemService.findEmailQueues();
 		Assert.notEmpty(emailQueue, "email queue is empty, result is not broadcasted");
-		
 
-		 
-		
-		 return self();
-	 }
+		return self();
+	}
 
 }

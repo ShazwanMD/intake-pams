@@ -27,7 +27,7 @@ import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGS
 @Submodule("Registration")
 @As("As a PPS academic Administrator, "
 		+ "I want to broadcast the result of the selection, "
-		+ "so that candidates will know their result")
+		+ "so that I can be alert of any changes")
 public class US_IN_RGN_3005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenPrepareApplicationSubmission, ThenBroadcastResultIsBroadcasted>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3005.class);

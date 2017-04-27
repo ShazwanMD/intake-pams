@@ -3,12 +3,14 @@ package my.edu.umk.pams.intake.registration.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.application.model.InBidResponse;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InBidType;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InResidencyCodeImpl;
@@ -50,9 +52,11 @@ public class WhenCompleteApplication extends Stage<WhenCompleteApplication> {
 
     @ExpectedScenarioState
     private InIntake intake;
-
-    @ExpectedScenarioState
+    
+    @ProvidedScenarioState
     private InIntakeApplication application;
+
+
 
     public WhenCompleteApplication i_complete_my_application() {
 
@@ -85,7 +89,7 @@ public class WhenCompleteApplication extends Stage<WhenCompleteApplication> {
         applicant.setPhone("0111020542");
         identityService.saveApplicant(applicant);
 
-         
+         application = new InIntakeApplicationImpl();
          application.setIntake(intake);
          application.setReferenceNo("INTAKE/10005");
          application.setName(applicant.getName());
