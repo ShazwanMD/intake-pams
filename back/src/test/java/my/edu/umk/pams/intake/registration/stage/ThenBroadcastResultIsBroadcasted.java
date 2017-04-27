@@ -9,14 +9,10 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.service.AdmissionService;
-import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
@@ -45,10 +41,7 @@ public class ThenBroadcastResultIsBroadcasted extends Stage<ThenBroadcastResultI
     @ExpectedScenarioState
     private InIntakeApplication intakeApplication;
     
-    @Autowired
-    private AdmissionService admissionService;
-    	
-	 public ThenBroadcastResultIsBroadcasted I_broadcasted_the_results() {
+    public ThenBroadcastResultIsBroadcasted I_broadcasted_the_results() {
 		 
 
 			
