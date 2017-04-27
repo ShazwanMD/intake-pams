@@ -9,6 +9,8 @@ import {MdIconRegistry} from '@angular/material';
 })
 export class AppComponent {
 
+	
+
   constructor(private _iconRegistry: MdIconRegistry,
               private _domSanitizer: DomSanitizer) {
     this._iconRegistry.addSvgIconInNamespace('assets', 'covalent',

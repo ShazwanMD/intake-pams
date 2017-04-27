@@ -2,6 +2,7 @@ import {NgModule, Type} from '@angular/core';
 import {BrowserModule, Title}  from '@angular/platform-browser';
 
 import {CovalentCoreModule} from '@covalent/core';
+import {CovalentExpansionPanelModule} from '@covalent/core';
 import {CovalentHttpModule, IHttpInterceptor} from '@covalent/http';
 import {CovalentHighlightModule} from '@covalent/highlight';
 import {CovalentMarkdownModule} from '@covalent/markdown';
@@ -89,6 +90,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   imports: [
     appRoutes,
     BrowserModule,
+    CovalentExpansionPanelModule,
     CovalentCoreModule.forRoot(),
     CovalentChartsModule.forRoot(),
     CovalentHttpModule.forRoot({
