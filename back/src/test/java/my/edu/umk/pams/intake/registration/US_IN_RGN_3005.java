@@ -14,7 +14,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
-import my.edu.umk.pams.intake.registration.stage.ThenSubmitResultOfSelection;
+import my.edu.umk.pams.intake.registration.stage.ThenBroadcastResultIsBroadcasted;
 import my.edu.umk.pams.intake.registration.stage.WhenPrepareApplicationSubmission;
 import my.edu.umk.pams.intake.registration.stage.WhenPreselectApplicant;
 import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant;
@@ -27,8 +27,8 @@ import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGS
 @Submodule("Registration")
 @As("As a PPS academic Administrator, "
 		+ "I want to broadcast the result of the selection, "
-		+ "so that I can submit the result")
-public class US_IN_RGN_3005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenPrepareApplicationSubmission, ThenSubmitResultOfSelection>{
+		+ "so that candidates will know their result")
+public class US_IN_RGN_3005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenPrepareApplicationSubmission, ThenBroadcastResultIsBroadcasted>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_IN_RGN_3005.class);
 
@@ -45,7 +45,7 @@ public class US_IN_RGN_3005 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 	    	when().I_prepare_3_applications().and().I_submit_3_applications();
 	        addStage(WhenPreselectApplicant.class).and().I_preselect_applicant_$(IDENTITY_NO);
 	        addStage (WhenViewListOfSelectedApplicant.class).and().broadcast_result_of_Selected_Applicant();
-	        then().I_can_submit_the_result();
+	        then().I_broadcasted_the_results();
 	    }
 		
 	}
