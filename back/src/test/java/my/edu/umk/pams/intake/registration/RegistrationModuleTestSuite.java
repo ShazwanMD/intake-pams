@@ -42,6 +42,8 @@ import org.junit.runners.Suite;
         US_IN_RGN_6001.class,
         US_IN_RGN_6003.class,
         US_IN_RGN_6005.class,
+        US_IN_RGN_7000.class,
+        US_IN_RGN_7001.class,
 })
 
 public class RegistrationModuleTestSuite {
