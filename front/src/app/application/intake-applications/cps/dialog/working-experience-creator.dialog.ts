@@ -3,10 +3,8 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {IntakeApplication} from "../intake-application.interface";
-import {ApplicationModuleState} from "../../index";
-import {IntakeApplicationPersonal} from "./intake-application.interface";
-import {ProgramLevel} from "../../../policy/program-levels/program-level.interface";
+import {ApplicationModuleState} from "../../../index";
+import {IntakeApplication} from "../../intake-application.interface";
 
 
 @Component({
@@ -15,7 +13,6 @@ import {ProgramLevel} from "../../../policy/program-levels/program-level.interfa
 })
 
 export class IntakeApplicationWorkingExperience implements OnInit {
-
 
   private createForm: FormGroup;
 
@@ -28,15 +25,15 @@ export class IntakeApplicationWorkingExperience implements OnInit {
 
   ngOnInit(): void {
   }
-  
-   expandedEvent(): void {
-   
+
+  expandedEvent(): void {
+
   }
 
   collapsedEvent(): void {
-    
+
   }
-  
-  next(application:IntakeApplication , isValid: boolean) {
+
+  next(application: IntakeApplication, isValid: boolean) {
   }
 }

@@ -11,11 +11,11 @@ import {IdentityService} from '../../services';
 import {EffectsModule} from "@ngrx/effects";
 import {CommonEffects} from "./common.effect";
 import {CommonActions} from "./common.action";
-import {ProgramCodeListState, programCodeListReducer} from "./program-code-list.reducer";
-import {StudyModeListState, studyModeListReducer} from "./study-mode-list.reducer";
-import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-code-list.reducer";
-import {GraduateCentreListState, graduateCentreListReducer} from "./graduate-centre-list.reducer";
-import {GraduateCentreSelectComponent} from "./component/graduate-centre-select.component";
+import {ProgramCodeListState, programCodeListReducer} from "./program-codes/program-code-list.reducer";
+import {StudyModeListState, studyModeListReducer} from "./study-modes/study-mode-list.reducer";
+import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-codes/supervisor-code-list.reducer";
+import {GraduateCentreListState, graduateCentreListReducer} from "./graduate-centres/graduate-centre-list.reducer";
+import {GraduateCentreSelectComponent} from "./graduate-centres/component/graduate-centre-select.component";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;

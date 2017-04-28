@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {ProgramCode} from "../../common/program-code.interface";
+import {ProgramCode} from "../../common/program-codes/program-code.interface";
 
 @Component({
   selector: 'pams-program-code-list',

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {FacultyCode} from "../common/faculty-code.interface";
-import {CommonActions} from "./common.action";
+import {FacultyCode} from "./faculty-code.interface";
+import {CommonActions} from "../common.action";
 
 export type FacultyCodeListState = FacultyCode[];
 

@@ -3,14 +3,13 @@ import {Observable} from "rxjs";
 import {GraduateCentre} from "../graduate-centre.interface";
 import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
-import {CommonActions} from "../common.action";
-import {CommonModuleState} from "../index";
+import {CommonActions} from "../../common.action";
+import {CommonModuleState} from "../../index";
 
 
 @Component({
   selector: 'pams-graduate-centre-select',
   templateUrl: './graduate-centre-select.component.html',
-  styleUrls: ['./graduate-centre-select.scss'],
 })
 export class GraduateCentreSelectComponent implements OnInit {
 

@@ -7,7 +7,7 @@ import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
 import {IntakeSession} from "../../intake-sessions/intake-session.interface";
-import {GraduateCentre} from "../../../common/graduate-centre.interface";
+import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
 import {ProgramLevel} from "../../program-levels/program-level.interface";
 
 

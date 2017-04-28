@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {Response, Http, RequestOptions, Headers} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {environment} from "../environments/environment";
-import {ProgramCode} from "../app/common/program-code.interface";
+import {ProgramCode} from "../app/common/program-codes/program-code.interface";
 import {Observable} from "rxjs";
-import {FacultyCode} from "../app/common/faculty-code.interface";
+import {FacultyCode} from "../app/common/faculty-codes/faculty-code.interface";
 import {UserRegistration} from "../app/registration/user-registration.interface";
 
 @Injectable()

@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {CommonActions} from "./common.action";
+import {CommonActions} from "../common.action";
 import {StudyMode} from "./study-mode.interface";
 
 export type StudyModeListState = StudyMode[];

@@ -14,7 +14,7 @@ import {IdentityService} from '../../services';
 import {ProgramCodeListComponent} from "./component/program-code-list.component";
 import {ProgramCodeListState, programCodeListReducer} from "./program-code-list.reducer";
 import {GraduateCentreState, graduateCentreReducer} from "./graduate-centre.reducer";
-import {GraduateCentre} from "../common/graduate-centre.interface";
+import {GraduateCentre} from "../common/graduate-centres/graduate-centre.interface";
 import {MgsebCentrePage} from "./mgseb-centre.page";
 import {CpsCentrePage} from "./cps-centre.page";
 import {CentrePage} from "./centre.page";

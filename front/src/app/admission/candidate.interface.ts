@@ -1,4 +1,4 @@
-import {StudyMode} from "../common/study-mode.interface";
+import {StudyMode} from "../common/study-modes/study-mode.interface";
 import {Intake} from "../policy/intakes/intake.interface";
 import {IntakeApplication} from "../application/intake-applications/intake-application.interface";
 import {SupervisorOffering} from "../policy/intakes/supervisor-offering.interface";

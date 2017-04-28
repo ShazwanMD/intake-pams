@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import {Response, Http} from '@angular/http';
 import { HttpInterceptorService } from '@covalent/http';
 import {Observable} from "rxjs";
-import {FacultyCode} from "../app/common/faculty-code.interface";
+import {FacultyCode} from "../app/common/faculty-codes/faculty-code.interface";
 import {environment} from "../environments/environment";
-import {ProgramCode} from "../app/common/program-code.interface";
-import {GraduateCentre} from "../app/common/graduate-centre.interface";
+import {ProgramCode} from "../app/common/program-codes/program-code.interface";
+import {GraduateCentre} from "../app/common/graduate-centres/graduate-centre.interface";
 
 @Injectable()
 export class CommonService {

@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {ProgramCode} from "../common/program-code.interface";
+import {ProgramCode} from "../common/program-codes/program-code.interface";
 import {CentreActions} from "./centre.action";
 
 export type ProgramCodeListState = ProgramCode[];

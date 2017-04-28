@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 import {CentreActions} from "./centre.action";
-import {FacultyCode} from "../common/faculty-code.interface";
-import {GraduateCentre} from "../common/graduate-centre.interface";
+import {FacultyCode} from "../common/faculty-codes/faculty-code.interface";
+import {GraduateCentre} from "../common/graduate-centres/graduate-centre.interface";
 
 export type GraduateCentreState = GraduateCentre;
 

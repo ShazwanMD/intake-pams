@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {SupervisorCode} from "../common/supervisor-code.interface";
-import {CommonActions} from "./common.action";
+import {SupervisorCode} from "./supervisor-code.interface";
+import {CommonActions} from "../common.action";
 
 export type SupervisorCodeListState = SupervisorCode[];
 
