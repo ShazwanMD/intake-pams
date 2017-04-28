@@ -45,8 +45,6 @@
     <div layout-gt-xs="row">
       <div flex tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
         <h4 class="md-display-1 tc-grey-600">Our Programs</h4>
-        <pams-program-code-list [programCodes]="programCodes$ | async"
-                                (view)="viewProgramCode($event)"></pams-program-code-list>
       </div>
     </div>
   </section>

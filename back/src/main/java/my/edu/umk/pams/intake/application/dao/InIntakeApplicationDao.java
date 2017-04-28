@@ -1,7 +1,6 @@
 package my.edu.umk.pams.intake.application.dao;
 
 import my.edu.umk.pams.intake.application.model.*;
-import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.core.GenericDao;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -56,6 +55,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InIntakeApplication> find(String filter, InIntake intake, Integer offset, Integer limit);
 
     List<InIntakeApplication> find(String filter, InBidType bidType, InIntake intake, Integer offset, Integer limit);
+
+    List<InIntakeApplication> find(InApplicant applicant, InBidStatus bidStatus);
 
     List<InIntakeApplication> findByOrderedMerit(InIntake intake);
 
@@ -150,4 +151,5 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 	List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
 	
 	List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification);
+
 }

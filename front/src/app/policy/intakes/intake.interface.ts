@@ -14,4 +14,7 @@ export interface Intake extends MetaObject{
   programLevel:ProgramLevel;
   intakeSession:IntakeSession;
   graduateCentre:GraduateCentre;
+
+  // transient
+  applied?:boolean;
 }

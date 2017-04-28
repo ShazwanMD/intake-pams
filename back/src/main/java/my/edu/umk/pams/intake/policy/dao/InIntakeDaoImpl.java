@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -95,6 +96,15 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         query.setEntity("intake", intake);
         query.setEntity("studyMode", studyMode);
         return (InStudyModeOffering) query.uniqueResult();
+    }
+
+    @Override
+    public List<InIntake> find(InFlowState flowState) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InIntake p where " +
+                "p.flowdata.state = :flowState ");
+        query.setInteger("flowState", flowState.ordinal());
+        return (List<InIntake>) query.list();
     }
 
     @Override

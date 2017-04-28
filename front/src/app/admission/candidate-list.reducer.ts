@@ -8,7 +8,7 @@ const initialState: CandidateListState = <Candidate[]>[];
 
 export function candidateListReducer(state = initialState, action: Action): CandidateListState {
   switch (action.type) {
-    case AdmissionActions.FIND_CANDIDATES: {
+    case AdmissionActions.FIND_CANDIDATES_SUCCESS: {
       return action.payload;
     }
     default: {

@@ -12,20 +12,20 @@ public interface ApplicationService {
     // INTAKE APPLICATION
     //====================================================================================================
 
-    void draftIntakeApplication(InIntake intake, InIntakeApplication application);
+    String draftIntakeApplication(InIntake intake, InIntakeApplication application);
 
     void updateIntakeApplication(InIntakeApplication application);
 
-    void submitIntakeApplication(InIntake intake, InIntakeApplication application); 
-    
-    void withdrawIntakeApplication(InIntake intake, InIntakeApplication application); 
-    
-    void draftedIntakeApplication(InIntake intake, InIntakeApplication application); 
-    
+    void submitIntakeApplication(InIntake intake, InIntakeApplication application);
+
+    void withdrawIntakeApplication(InIntake intake, InIntakeApplication application);
+
+    void draftedIntakeApplication(InIntake intake, InIntakeApplication application);
+
     void processIntakeApplication(InIntake intake, InIntakeApplication application);
-    
+
     void verifyInternationalApplications(InIntake intake, InIntakeApplication application);
-    
+
     void rejectIntakeApplication(InIntake intake, InIntakeApplication application);
 
     void addResult(InIntakeApplication application, InResult result);
@@ -55,7 +55,7 @@ public interface ApplicationService {
     void deleteGuardian(InIntakeApplication application, InGuardian guardian);
 
     void addFranchise(InFranchise franchise);
-    
+
     void addAttachment(InIntakeApplication application, InAttachment attachment);
 
     //====================================================================================================
@@ -93,12 +93,14 @@ public interface ApplicationService {
     InContact findContactById(Long id);
 
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
-    
+
     InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application);
 
     InAddress findAddressByType(InAddressType addressType, InIntakeApplication application);
 
     InContact findContactByType(InContactType contactType, InIntakeApplication application);
+
+    List<InIntakeApplication> findIntakeApplications(InApplicant applicant, InBidStatus bidStatus);
 
     List<InIntakeApplication> findIntakeApplications(InIntake intake);
 
@@ -113,10 +115,10 @@ public interface ApplicationService {
     List<InIntakeApplication> findIntakeApplicationsOrderedByMerit(InIntake intake);
 
     List<InIntakeApplication> findIntakeApplicationsOrderedByRank(InIntake intake);
-    
-    List<InIntakeApplication> findIntakeApplicationsByPaidStatus (InIntake intake, Boolean paid);
-    
-    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus (InIntake intake, Boolean verifiction);
+
+    List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
+
+    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verifiction);
 
     List<InResult> findResults(InIntakeApplication application);
 
@@ -129,7 +131,7 @@ public interface ApplicationService {
     List<InInvolvement> findInvolvements(InIntakeApplication application);
 
     List<InGuardian> findGuardians(InIntakeApplication application);
-    
+
     List<InGuarantor> findGuarantors(InIntakeApplication application);
 
     List<InContact> findContacts(InIntakeApplication application);
@@ -145,12 +147,12 @@ public interface ApplicationService {
     boolean hasResult(InIntakeApplication application, InResultType resultType);
 
     boolean hasEducation(InIntakeApplication application);
-    
+
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
 
-	void addReferee(InIntakeApplication application, InReferee referee);
+    void addReferee(InIntakeApplication application, InReferee referee);
 
 
 }

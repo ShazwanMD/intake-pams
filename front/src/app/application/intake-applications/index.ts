@@ -9,6 +9,10 @@ import {IdentityService} from '../../../services';
 import {PolicyService} from "../../../services/policy.service";
 import {MgsebIntakeApplicationSubModule} from "./mgseb/index";
 import {CpsIntakeApplicationSubModule} from "./cps/index";
+import {EffectsModule} from "@ngrx/effects";
+import {IntakeApplicationEffects} from "./intake-application.effect";
+import {IntakeApplicationActions} from "./intake-application.action";
+import {IntakeDetailPage} from "./intake-detail.page";
 
 
 @NgModule({
@@ -19,8 +23,10 @@ import {CpsIntakeApplicationSubModule} from "./cps/index";
     CovalentCoreModule.forRoot(),
     MgsebIntakeApplicationSubModule.forRoot(),
     CpsIntakeApplicationSubModule.forRoot(),
+    EffectsModule.run(IntakeApplicationEffects),
   ],
   declarations: [
+    IntakeDetailPage,
   ],
   exports: [],
   entryComponents: [
@@ -35,6 +41,7 @@ export class IntakeApplicationSubModule {
         IdentityService,
         CommonService,
         PolicyService,
+        IntakeApplicationActions,
       ],
     };
   }

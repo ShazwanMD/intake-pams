@@ -13,16 +13,28 @@ import {ApplicationPage} from "./application.page";
 import {ApplicationService} from "../../services/application.service";
 import {PolicyService} from "../../services/policy.service";
 import {IntakeApplicationSubModule} from "./intake-applications/index";
+import {intakeApplicationReducer, IntakeApplicationState} from "./intake-applications/intake-application.reducer";
+import {
+  intakeApplicationListReducer,
+  IntakeApplicationListState
+} from "./intake-applications/intake-application-list.reducer";
+import {intakeListReducer, IntakeListState} from "./intake-applications/intake-list.reducer";
+import {intakeReducer, IntakeState} from "./intake-applications/intake.reducer";
 
 export interface ApplicationModuleState {
-  // intakeApplications: IntakeApplicationListState;
-  // intakeApplication: IntakeApplicationState;
+  intakes:IntakeListState;
+  intake:IntakeState;
+  intakeApplications: IntakeApplicationListState;
+  intakeApplication: IntakeApplicationState;
 };
 
 export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationModuleState>{};
 export const applicationModuleReducers = {
-   // intakeApplications:intakeApplicationListReducer,
-   // intakeApplication:intakeApplicationReducer
+   intakes:intakeListReducer,
+   intake:intakeReducer,
+   intakeApplications:intakeApplicationListReducer,
+   intakeApplication:intakeApplicationReducer
+
  };
 
 @NgModule({

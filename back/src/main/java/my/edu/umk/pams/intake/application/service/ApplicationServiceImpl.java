@@ -1,11 +1,13 @@
 package my.edu.umk.pams.intake.application.service;
 
+import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -14,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author PAMS
@@ -38,13 +42,22 @@ public class ApplicationServiceImpl implements ApplicationService {
     private SecurityService securityService;
 
     @Autowired
+    private SystemService systemService;
+
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public void draftIntakeApplication(InIntake intake, InIntakeApplication application) {
+    public String draftIntakeApplication(InIntake intake, InIntakeApplication application) {
+        Map<String,Object> map = new HashMap<String,Object>();
+        String generatedReferenceNo = systemService.generateFormattedReferenceNo(IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO, map);
+
+        application.setReferenceNo(generatedReferenceNo);
     	application.setBidStatus(InBidStatus.DRAFTED);
+    	application.setIntake(intake);
         intakeApplicationDao.save(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        return generatedReferenceNo;
     }
 
     @Override
@@ -251,6 +264,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         return intakeApplicationDao.findContactByType(contactType, application);
     }
 
+
     @Override
     public InIntakeApplication findIntakeApplicationByReferenceNo(String referenceNo) {
         return intakeApplicationDao.findByReferenceNo(referenceNo);
@@ -279,6 +293,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public InResultItem findResultItemById(Long id) {
         return intakeApplicationDao.findResultItemById(id);
+    }
+
+    @Override
+    public List<InIntakeApplication> findIntakeApplications(InApplicant applicant, InBidStatus bidStatus) {
+        return intakeApplicationDao.find(applicant, bidStatus);
     }
 
     @Override

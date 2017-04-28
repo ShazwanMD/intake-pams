@@ -4,6 +4,7 @@ import my.edu.umk.pams.intake.common.model.InGraduateCentre;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.*;
 
@@ -109,6 +110,8 @@ public interface PolicyService {
     InIntake findIntakeBySessionAndCategory(InIntakeSession session, InProgramLevel category);
 
     List<InIntake> findIntakes();
+
+    List<InIntake> findIntakes(InFlowState flowState);
 
     List<InIntake> findIntakes(InGraduateCentre graduateCentre);
 

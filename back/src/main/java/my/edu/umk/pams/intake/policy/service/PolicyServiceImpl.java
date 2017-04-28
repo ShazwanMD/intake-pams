@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.common.model.InGraduateCentre;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
 import my.edu.umk.pams.intake.policy.dao.InIntakeSessionDao;
@@ -358,6 +359,11 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public List<InIntake> findIntakes() {
         return intakeDao.find();
+    }
+
+    @Override
+    public List<InIntake> findIntakes(InFlowState flowState) {
+        return intakeDao.find(flowState);
     }
 
     @Override

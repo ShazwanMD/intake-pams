@@ -6,6 +6,7 @@ import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.core.GenericDao;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.*;
 
@@ -32,6 +33,8 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
     InStudyModeOffering findModeOfferingById(Long id);
 
     InStudyModeOffering findModeOfferingByIntakeAndMode(InIntake intake, InStudyMode studyMode);
+
+    List<InIntake> find(InFlowState flowState);
 
     List<InIntake> find(InGraduateCentre graduateCentre);
 
@@ -87,4 +90,5 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
     void addModeOffering(InIntake intake, InStudyModeOffering offering, InUser user);
 
     void deleteModeOffering(InIntake intake, InStudyModeOffering offering, InUser user);
+
 }

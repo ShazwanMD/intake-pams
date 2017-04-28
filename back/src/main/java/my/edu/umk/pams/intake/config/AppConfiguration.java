@@ -35,6 +35,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         "my.edu.umk.pams.intake.web.module.common",
         "my.edu.umk.pams.intake.web.module.policy",
         "my.edu.umk.pams.intake.web.module.admission",
+        "my.edu.umk.pams.intake.web.module.application",
         "my.edu.umk.pams.intake.web.module.registration",
 
 }

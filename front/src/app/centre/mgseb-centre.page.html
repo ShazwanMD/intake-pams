@@ -1,4 +1,4 @@
-<td-layout>
+<td-layout-nav>
   <div td-toolbar-content layout="row" layout-align="start center" flex>
     <span hide-xs>Centre for Postgraduate Studies Univesiti Malaysia Kelantan</span>
     <span flex></span>
@@ -35,7 +35,9 @@
         <h3 class="md-display-1 tc-grey-600 push-top-xs push-bottom-sm">Register Our Programs</h3>
         <p class="md-title tc-grey-600">{{(graduateCentre$ | async)?.descriptionEn}}</p>
         <p class="md-title tc-grey-600">Ready to make dive ? Get started today and register!</p>
-        <button md-raised-button color="accent" class="push-bottom" [routerLink]="['/registration']">Register or Login
+        <button md-raised-button color="accent" class="push-bottom" [routerLink]="['/registration']">Register
+        </button>
+        <button md-raised-button color="primary" class="push-bottom" [routerLink]="['/application']">Apply
         </button>
         <div class="push-top-xxl" hide-xs></div>
       </div>
@@ -103,4 +105,4 @@
       </div>
     </div>
   </section>
-</td-layout>
+</td-layout-nav>
