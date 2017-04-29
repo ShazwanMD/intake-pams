@@ -25,7 +25,7 @@ export class IntakeCenterPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: IntakeActions,
-              private store: Store<PolicyModuleState>,
+              private store: Store<IntakeTaskListState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
     this.intakeTasks$ = this.store.select(...this.INTAKE_TASKS);

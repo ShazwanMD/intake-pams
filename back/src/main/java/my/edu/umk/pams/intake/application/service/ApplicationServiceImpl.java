@@ -50,6 +50,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public String draftIntakeApplication(InIntake intake, InIntakeApplication application) {
         Map<String,Object> map = new HashMap<String,Object>();
+        map.put("intakeSession", intake.getSession());
+        map.put("programLevel", intake.getProgramLevel());
         String generatedReferenceNo = systemService.generateFormattedReferenceNo(IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO, map);
 
         application.setReferenceNo(generatedReferenceNo);

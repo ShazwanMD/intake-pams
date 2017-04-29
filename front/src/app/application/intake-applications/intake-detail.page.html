@@ -4,6 +4,55 @@
     <span flex></span>
   </div>
 
+  <section class="bgc-white">
+    <div layout-gt-xs="row" layout-align-gt-xs="center center">
+      <div layout-gt-sm="row" flex-gt-xs="75" layout-margin layout-padding>
+        <div flex>
+          <p class="md-title tc-grey-600">Take your time filling up the application</p>
+          <p>Be sure to have all the information you need close at hand. Review your responses and check
+            for accuracy. Still, we know mistakes can happen. If after applying you discover an error,
+            you can make changes to your application.
+          </p>
+        </div>
+        <div flex>
+          <p class="md-title tc-grey-600">What you'll need</p>
+          <p>
+            Transcripts. Don't submit your transcripts to UC at this point, but refer to them as
+            you fill out the application to ensure the information you enter is accurate.*
+            Test scores. If you're a freshman or sophomore applicant, you'll have to include your
+            scores.
+          </p>
+        </div>
+        <div flex>
+          <p class="md-title tc-grey-600">Browser recommendations</p>
+          <p>
+            The UC online application functions with versions of Firefox, Internet Explorer 8 or higher,
+            Chrome 6 or higher and Safari 5 or higher. You can download one of these browsers from the list below.
+            Mozilla Firefox
+            Internet Explorer
+            Chrome
+            Safari
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bgc-white">
+    <div layout-gt-xs="row">
+      <div flex class="bg-cover"
+           style="background-image:url('/assets/banner/banner1.jpg');background-size:cover;">
+      </div>
+      <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
+        <div class="push-top-xxl" hide-xs></div>
+        <h3 class="md-display-1 tc-grey-600 push-top-xs push-bottom-sm">Apply for this intake</h3>
+        <p class="md-title tc-grey-600">{{(graduateCentre$ | async)?.descriptionEn}}</p>
+        <p class="md-title tc-grey-600">Ready to ma</p>
+        <button md-raised-button color="accent" class="push-bottom" (click)="apply()">I'm ready to apply
+        </button>
+        <div class="push-top-xxl" hide-xs></div>
+      </div>
+    </div>
+  </section>
   <section class="bgc-red-600 tc-red-50" tdMediaToggle="gt-xs"
            [mediaClasses]="['pad-top-xl', 'pad-bottom-xl']">
     <h2 class="md-headline text-upper text-center tc-grey-50 push-bottom">Programs</h2>
@@ -21,30 +70,6 @@
           <md-icon class="tc-grey-50 md-display-2">email</md-icon>
           <div class="pad-bottom-md">Custom Programs</div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bgc-white">
-    <div layout-gt-xs="row">
-      <div flex class="bg-cover"
-           style="background-image:url('/assets/banner/banner1.jpg');background-size:cover;">
-      </div>
-      <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
-        <div class="push-top-xxl" hide-xs></div>
-        <h3 class="md-display-1 tc-grey-600 push-top-xs push-bottom-sm">Register Our Programs</h3>
-        <p class="md-title tc-grey-600">{{(graduateCentre$ | async)?.descriptionEn}}</p>
-        <p class="md-title tc-grey-600">Ready to make dive ? Get started today and register!</p>
-        <button md-raised-button color="accent" class="push-bottom" [routerLink]="['/registration']">Register or Login
-        </button>
-        <div class="push-top-xxl" hide-xs></div>
-      </div>
-    </div>
-  </section>
-  <section class="bgc-indigo-50">
-    <div layout-gt-xs="row">
-      <div flex tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
-        <h4 class="md-display-1 tc-grey-600">Our Programs</h4>
       </div>
     </div>
   </section>

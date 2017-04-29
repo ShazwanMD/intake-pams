@@ -32,7 +32,6 @@ export class IntakeDetailPage implements OnInit {
   }
 
   apply(intake: Intake) {
-    this.store.dispatch(this.actions.applyIntake(intake));
+    this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntake(intake)));
   }
-
 }
