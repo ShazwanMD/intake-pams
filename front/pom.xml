@@ -48,19 +48,10 @@
           </execution>
           <execution>
             <id>npm install</id>
+            <phase>generate-sources</phase>
             <goals>
               <goal>npm</goal>
             </goals>
-          </execution>
-          <execution>
-            <id>npm run-script prod</id>
-            <phase>package</phase>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <configuration>
-              <arguments>run-script prod</arguments>
-            </configuration>
           </execution>
           <execution>
             <id>build</id>
