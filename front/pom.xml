@@ -74,7 +74,7 @@
           </execution>
           <execution>
             <id>serve</id>
-            <phase>package</phase>
+            <phase>install</phase>
             <goals>
               <goal>npm</goal>
             </goals>
