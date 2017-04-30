@@ -65,7 +65,6 @@
           </execution>
           <execution>
             <id>serve</id>
-            <phase>install</phase>
             <goals>
               <goal>npm</goal>
             </goals>
