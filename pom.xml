@@ -23,8 +23,8 @@
     <description>PAMS Intake Project</description>
 
     <modules>
+        <module>data</module>
         <module>front</module>
         <module>back</module>
-        <module>data</module>
     </modules>
 </project>
