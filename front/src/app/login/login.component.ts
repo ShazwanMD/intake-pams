@@ -24,4 +24,14 @@ export class LoginComponent {
       this._loadingService.resolve();
     }, 2000);
   }
+  
+   forgetPassword() : void {
+    this._loadingService.register();
+    alert('reset new password' + this.password);
+    setTimeout(() => {
+      this._router.navigate(['/']);
+      this._loadingService.resolve();
+    }, 2000);
+  }
+
 }
