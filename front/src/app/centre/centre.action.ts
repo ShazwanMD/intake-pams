@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Action} from '@ngrx/store';
 @Injectable()
+//test
 export class CentreActions {
 
   static FIND_GRADUATE_CENTRE_BY_CODE = '[Centre] Find Graduate Centre By Code';
