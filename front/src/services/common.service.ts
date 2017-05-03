@@ -5,7 +5,8 @@ import {Observable} from "rxjs";
 import {FacultyCode} from "../app/common/faculty-codes/faculty-code.interface";
 import {environment} from "../environments/environment";
 import {ProgramCode} from "../app/common/program-codes/program-code.interface";
-import {GraduateCentre} from "../app/common/graduate-centres/graduate-centre.interface";
+import { GraduateCentre } from "../app/common/graduate-centres/graduate-centre.interface";
+import { StudyMode } from "../app/common/study-modes/study-mode.interface";
 
 @Injectable()
 export class CommonService {
@@ -73,5 +74,21 @@ export class CommonService {
     console.log("findProgramCodeByCode");
     return this.http.get(environment.endpoint + '/api/common/programCodes/' + code)
       .map((res: Response) => <ProgramCode>res.json());
+  }
+
+  // ====================================================================================================
+  // STUDY MODE
+  // ====================================================================================================
+
+  findStudyMode(): Observable<StudyMode[]> {
+    console.log("findStudyMode");
+    return this.http.get(environment.endpoint + '/api/common/findStudyMode')
+      .map((res: Response) => <StudyMode[]>res.json());
+  }
+
+  findStudyModeByCode(code:string): Observable<ProgramCode> {
+    console.log("findStudyModeByCode");
+    return this.http.get(environment.endpoint + '/api/common/studyMode/' + code)
+      .map((res: Response) => <StudyMode>res.json());
   }
 }
