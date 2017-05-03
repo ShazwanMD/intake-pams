@@ -8,6 +8,7 @@ import {IntakeApplicationPage} from "./intake-application.page";
 import {IdentityService} from "../../../../services/identity.service";
 import { CommonService } from "../../../../services/common.service";
 import { ProgramLevelSubModule } from "../../../policy/program-levels/index";
+import { CommonModule } from "../../../common/index";
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ProgramLevelSubModule } from "../../../policy/program-levels/index";
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
+    CommonModule.forRoot(),
   ],
   declarations: [
     IntakeApplicationPage,

@@ -6,7 +6,6 @@ import {Store} from "@ngrx/store";
 import {IntakeApplication} from "../intake-application.interface";
 import {ApplicationModuleState} from "../../index";
 import { IntakeApplicationPersonal } from "./intake-application.interface";
-import { ProgramLevel } from "../../../policy/program-levels/program-level.interface";
 
 
 @Component({
