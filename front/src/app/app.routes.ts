@@ -7,10 +7,12 @@ import {PolicyModuleRoutes} from "./policy/policy-module.routes";
 import {ApplicationModuleRoutes} from "./application/application-module.routes";
 import {AdmissionModuleRoutes} from "./admission/admission-module.routes";
 import {CentreModuleRoutes} from "./centre/centre-module.routes";
-import {DashboardModuleRoutes} from "./dashboard/dashboard-module.routes";
+import { DashboardModuleRoutes } from "./dashboard/dashboard-module.routes";
+import { ForgetPasswordComponent } from "./login/forget-password.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
+   {path: 'forget-password', component: ForgetPasswordComponent},
   {
     path: '', component: MainComponent,
     children: [

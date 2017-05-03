@@ -14,6 +14,7 @@ import {AppComponent} from './app.component';
 import {MainComponent} from './main/main.component';
 import {DashboardPage} from './dashboard/dashboard.page';
 import {LoginComponent} from './login/login.component';
+import {ForgetPasswordComponent} from './login/forget-password.component';
 import {appRoutes, appRoutingProviders} from './app.routes';
 
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
@@ -37,7 +38,8 @@ import {
 import {centreModuleReducers, INITIAL_CENTRE_STATE, CentreModuleState, CentreModule} from "./centre/index";
 import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
-import {intakeTaskListReducer} from "./policy/intakes/intake-task-list.reducer";
+import { intakeTaskListReducer } from "./policy/intakes/intake-task-list.reducer";
+
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -82,11 +84,14 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 
 
 @NgModule({
+  
   declarations: [
     AppComponent,
     MainComponent,
     LoginComponent,
+    ForgetPasswordComponent,
   ], // directives, components, and pipes owned by this NgModule
+
   imports: [
     appRoutes,
     BrowserModule,
@@ -122,4 +127,5 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   bootstrap: [AppComponent],
 })
 export class AppModule {
+
 }

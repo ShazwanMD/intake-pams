@@ -10,6 +10,7 @@
           <md-card-subtitle>sign in via your current corporate account</md-card-subtitle>
           <md-divider></md-divider>
           <md-card-content>
+
             <form #loginForm="ngForm">
               <div layout="row">
                 <md-input-container flex> 
@@ -36,7 +37,8 @@
           <md-divider></md-divider>
           <md-card-actions layout="row">
             <button flex md-raised-button color="accent" [disabled]="!loginForm.form.valid" (click)="login()">Sign In</button>
-             <button flex md-button color="primary" [routerLink]="['/forget-password']" (click)="forgetPassword()" >Forget Password</button>
+             <!--<button flex md-button color="primary" [routerLink]="['forget-password']">Forget Password</button>-->
+               <button flex md-button color="primary"  class="push-bottom" [routerLink]="['/forget-password']">Forget Password</button>
              
           </md-card-actions>
         </md-card>
