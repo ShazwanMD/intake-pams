@@ -68,14 +68,9 @@
           		</md-input-container>
             </div>
             <div layout="row" class="pad-bottom" flex>
-              <md-select placeholder="Gender">
-      			<md-option>
-      				MALE
-      			</md-option>
-      			<md-option>
-      				FEMALE
-      			</md-option>
-   			  </md-select>
+              <pams-gender-code-select
+              [placeHolder]= "Gender"
+              ></pams-gender-code-select>
             </div>
             <div layout="row" class="pad-bottom" flex>
               <md-select placeholder="Citizenship">

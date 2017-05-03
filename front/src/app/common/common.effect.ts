@@ -10,6 +10,13 @@ export class CommonEffects {
               private commonService: CommonService) {
   }
 
+  @Effect() findGenderCodes$ = this.actions$
+    .ofType(CommonActions.FIND_GENDER_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findGenderCodes())
+    .map(codes => this.commonActions.findGenderCodesSuccess(codes));
+
+
   @Effect() findFacultyCodes$ = this.actions$
     .ofType(CommonActions.FIND_FACULTY_CODES)
     .map(action => action.payload)
@@ -33,12 +40,6 @@ export class CommonEffects {
   //   .map(action => action.payload)
   //   .switchMap(() => this.commonService.findSupervisorCodes(code))
   //   .map(codes => this.commonActions.findSupervisorCodesSuccess(codes));
-
-  // @Effect() findStudyModes$ = this.actions$
-  //   .ofType(CommonActions.FIND_STUDY_MODES)
-  //   .map(action => action.payload)
-  //   .switchMap(() => this.commonService.findStudyModes())
-  //   .map(codes => this.commonActions.findStudyModesSuccess(codes));
 
    @Effect() findStudyMode$ = this.actions$
      .ofType(CommonActions.FIND_STUDY_MODES)

@@ -14,12 +14,14 @@ import {CommonActions} from "./common.action";
 import {ProgramCodeListState, programCodeListReducer} from "./program-codes/program-code-list.reducer";
 import {StudyModeListState, studyModeListReducer} from "./study-modes/study-mode-list.reducer";
 import {FacultyCodeListState, facultyCodeListReducer} from "./faculty-codes/faculty-code-list.reducer";
+import {GenderCodeListState, genderCodeListReducer} from "./gender-codes/gender-code-list.reducer";
 import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-codes/supervisor-code-list.reducer";
 import {GraduateCentreListState, graduateCentreListReducer} from "./graduate-centres/graduate-centre-list.reducer";
 import {GraduateCentreSelectComponent} from "./graduate-centres/component/graduate-centre-select.component";
 import { ProgramCodeSelectComponent } from "./program-codes/component/program-code-select.component";
 import { StudyModeCodeSelectComponent } from "./study-modes/component/study-mode-select.component";
 import { FacultyCodeSelectComponent } from "./faculty-codes/component/faculty-code-select.component";
+import { GenderCodeSelectComponent } from "./gender-codes/component/gender-code-select.component";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -27,6 +29,7 @@ export interface CommonModuleState {
   supervisorCodes: SupervisorCodeListState;
   graduateCentres: GraduateCentreListState;
   facultyCodes: FacultyCodeListState;
+  genderCodes: GenderCodeListState;
 }
 ;
 
@@ -37,6 +40,7 @@ export const commonModuleReducers = {
   supervisorCodes: supervisorCodeListReducer,
   graduateCentres: graduateCentreListReducer,
   facultyCodes: facultyCodeListReducer,
+  genderCodes: genderCodeListReducer,
 };
 
 @NgModule({
@@ -52,12 +56,14 @@ export const commonModuleReducers = {
     ProgramCodeSelectComponent,
     StudyModeCodeSelectComponent,
     FacultyCodeSelectComponent,
+    GenderCodeSelectComponent,
   ],
   exports: [
     GraduateCentreSelectComponent,
     ProgramCodeSelectComponent,
     StudyModeCodeSelectComponent,
     FacultyCodeSelectComponent,
+    GenderCodeSelectComponent,
   ],
 })
 export class CommonModule {
