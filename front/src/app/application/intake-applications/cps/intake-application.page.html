@@ -17,14 +17,7 @@
           <!-- first column -->
           <div layout="column" class="pad-right" flex>
             <div layout="row" class="pad-bottom" flex>
-              <md-select placeholder="Programme Level Applied">
-      			<md-option>
-      				MASTER
-      			</md-option>
-      			<md-option>
-      				PHD
-      			</md-option>
-   			  </md-select>
+              <pams-program-level-select [placeholder]="'Please Select'"></pams-program-level-select>
             </div>
             <div layout="row" class="pad-bottom" flex>
               <md-select placeholder="Faculty Applied">
@@ -326,6 +319,31 @@
     </md-card>
 
         </div>
+</td-expansion-panel>
+<td-expansion-panel label="Upload Document Checkist Information">
+
+    <div layout="column" class="pad-right" flex>
+       <md-card class="">
+      <md-card-title>Upload Document Checkist</md-card-title>
+      <md-card-subtitle>List of Document Uploaded</md-card-subtitle>
+    </md-card>
+
+    </div>
+</td-expansion-panel>
+<td-expansion-panel label="Submit Application">
+
+    <div layout="column" class="pad-right" flex>
+       <md-card class="">
+      <md-card-title>Submit Application for Intake September 2017</md-card-title>
+      <md-card-subtitle>Declaration
+      <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+            <md-checkbox><div layout="column" flex>
+            I am hereby to declare all the information that I was entered is true.
+            </div> </md-checkbox>
+          </div><button md-button>Submit</button></md-card-subtitle>
+    </md-card>
+
+    </div>
 </td-expansion-panel>
 </td-layout-card-over>
 </td-layout-nav>
