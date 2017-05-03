@@ -13,18 +13,18 @@ import {StudyMode} from "../study-mode.interface";
 })
 export class StudyModeCodeSelectComponent implements OnInit {
 
-  private STUDY_MODE_CODES = "commonModuleState.StudyModeCodes".split(".");
+  private STUDY_MODE = "commonModuleState.studyModes".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  studyModeCodes$: Observable<StudyMode[]>;
+  studyModes$: Observable<StudyMode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
-    this.studyModeCodes$ = this.store.select(...this.STUDY_MODE_CODES);
+    this.studyModes$ = this.store.select(...this.STUDY_MODE);
   }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.findStudyModeCodes());
+    this.store.dispatch(this.actions.findStudyMode());
   }
 
   selectChangeEvent(event: StudyMode) {

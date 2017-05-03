@@ -81,8 +81,8 @@ export class CommonActions {
 
   static FIND_STUDY_MODES = '[Common] Find Study Modes';
 
-  findStudyModeCodes(): Action {
-    console.log("findStudyModeCodes");
+  findStudyMode(): Action {
+    console.log("findStudyMode");
     return {
       type: CommonActions.FIND_STUDY_MODES,
     };
