@@ -13,11 +13,10 @@
       </md-input-container>
     </div>
     <div layout="row" class="pad-bottom pad-top">
-      <md-select formControlName="programCode" placeholder="Program Code" style="width: 100%">
-        <md-option *ngFor="let programCode of programCodes$ | async" [value]="programCode">
-          {{programCode.code}}: {{programCode.descriptionMs}}
-        </md-option>
-      </md-select>
+      <pams-program-code-select
+        [placeholder]="'Program Codes'"
+        [innerFormControl]="editorForm.controls['programCode']" flex>
+      </pams-program-code-select>
     </div>
   </form>
 </md-dialog-content>

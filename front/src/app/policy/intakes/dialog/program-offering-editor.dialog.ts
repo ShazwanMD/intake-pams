@@ -1,4 +1,4 @@
-import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
+  import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -24,21 +24,13 @@ import {Observable} from "rxjs";
 
 export class ProgramOfferingEditorDialog implements OnInit {
 
-  private PROGRAM_CODES = "commonModuleState.programCodes".split(".");
-  private programCodes$: Observable<ProgramCode[]>;
   private editorForm: FormGroup;
   @Input() intake: Intake;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private viewContainerRef: ViewContainerRef,
+  constructor(private formBuilder: FormBuilder,
               private store: Store<PolicyModuleState>,
-              private commonStore: Store<CommonModuleState>,
               private actions: IntakeActions,
-              private commonActions: CommonActions,
               private dialog: MdDialogRef<ProgramOfferingEditorDialog>) {
-    this.programCodes$ = this.commonStore.select(...this.PROGRAM_CODES);
   }
 
   ngOnInit(): void {
@@ -48,9 +40,6 @@ export class ProgramOfferingEditorDialog implements OnInit {
       interview: true,
       programCode: <ProgramCode>{},
     });
-
-    // retrieve select options
-    this.store.dispatch(this.commonActions.findProgramCodes());
   }
 
   add(offering: ProgramOffering, isValid: boolean) {

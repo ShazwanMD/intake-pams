@@ -16,6 +16,7 @@ import {StudyModeListState, studyModeListReducer} from "./study-modes/study-mode
 import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-codes/supervisor-code-list.reducer";
 import {GraduateCentreListState, graduateCentreListReducer} from "./graduate-centres/graduate-centre-list.reducer";
 import {GraduateCentreSelectComponent} from "./graduate-centres/component/graduate-centre-select.component";
+import {ProgramCodeSelectComponent} from "./program-codes/component/program-code-select.component";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -43,9 +44,11 @@ export const commonModuleReducers = {
   ],
   declarations: [
     GraduateCentreSelectComponent,
+    ProgramCodeSelectComponent,
   ],
   exports: [
     GraduateCentreSelectComponent,
+    ProgramCodeSelectComponent,
   ],
 })
 export class CommonModule {
