@@ -1,13 +1,14 @@
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+
+import {Router, ActivatedRoute} from '@angular/router';
 import {TdLoadingService} from '@covalent/core';
 
 @Component({
-  selector: 'qs-login',
-  templateUrl: './login.component.html',
+  selector: 'pams-login-forgetpassword',
+  templateUrl: './forget-password.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class ForgetPasswordComponent {
 
   username: string;
   password: string;
@@ -16,14 +17,13 @@ export class LoginComponent {
               private _loadingService: TdLoadingService) {
   }
 
-  login(): void {
+   forgetPassword() : void {
     this._loadingService.register();
-    alert('Mock log in as ' + this.username);
+    alert('reset new password' + this.username);
     setTimeout(() => {
       this._router.navigate(['/']);
       this._loadingService.resolve();
     }, 2000);
   }
-  
-   
+
 }

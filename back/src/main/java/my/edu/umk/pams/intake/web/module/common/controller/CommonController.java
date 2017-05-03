@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.web.module.common.vo.FacultyCode;
 import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
 import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
+import my.edu.umk.pams.intake.web.module.common.vo.StudyMode;
 import my.edu.umk.pams.intake.web.module.common.vo.SupervisorCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -118,4 +119,19 @@ public class CommonController {
     public ResponseEntity<SupervisorCode> findSupervisorCode(@PathVariable String code) {
         return new ResponseEntity<SupervisorCode>(commonTransformer.toSupervisorCodeVo(commonService.findSupervisorCodeByCode(code)), HttpStatus.OK);
     }
+    
+  //====================================================================================================
+    // STUDY MODES
+    //====================================================================================================
+
+    @RequestMapping(value = "/studyMode", method = RequestMethod.GET)
+    public ResponseEntity<List<StudyMode>> findStudyMode() {
+        return new ResponseEntity<List<StudyMode>>(commonTransformer.toStudyModeVos(commonService.findStudyModes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyMode/{code}", method = RequestMethod.GET)
+    public ResponseEntity<StudyMode> findStudyMode(@PathVariable String code) {
+        return new ResponseEntity<StudyMode>(commonTransformer.toStudyModeVo(commonService.findStudyModeByCode(code)), HttpStatus.OK);
+    }
+
 }
