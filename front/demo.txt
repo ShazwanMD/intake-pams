@@ -1,0 +1,33 @@
+<td-layout-nav>
+  <div td-toolbar-content layout="row" layout-align="start center" flex>
+    <span hide-xs>Centre for Postgraduate Studies Univesiti Malaysia Kelantan</span>
+    <span flex></span>
+  </div>
+</td-layout-nav>
+
+
+  <md-card>
+    <td-data-table
+      [data]="intakeSessions$ | async"
+      [sortBy]="summary"
+      [sortOrder]="ASC"
+      [sortable]="false"
+      [multiple]="false"
+      [selectable]="false" dense>
+      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <span flex>{{value}}</span>
+        </div>
+      </template>
+    </td-data-table>
+  </md-card>
+
+
+
+  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/admission/view-task', row['taskId']]">
+        <span>View</span>
+      </a>
+    </div>
+  </template>

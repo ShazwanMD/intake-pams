@@ -16,6 +16,12 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findGenderCodes())
     .map(codes => this.commonActions.findGenderCodesSuccess(codes));
 
+  @Effect() findMaritalCodes$ = this.actions$
+    .ofType(CommonActions.FIND_MARITAL_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findMaritalCodes())
+    .map(codes => this.commonActions.findMaritalCodesSuccess(codes));
+
 
   @Effect() findFacultyCodes$ = this.actions$
     .ofType(CommonActions.FIND_FACULTY_CODES)
@@ -44,6 +50,6 @@ export class CommonEffects {
    @Effect() findStudyMode$ = this.actions$
      .ofType(CommonActions.FIND_STUDY_MODES)
      .map(action => action.payload)
-     .switchMap(() => this.commonService.findStudyMode())
+     .switchMap(() => this.commonService.findStudyModes())
      .map(codes => this.commonActions.findStudyModeSuccess(codes));
 }

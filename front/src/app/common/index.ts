@@ -18,10 +18,11 @@ import {GenderCodeListState, genderCodeListReducer} from "./gender-codes/gender-
 import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-codes/supervisor-code-list.reducer";
 import {GraduateCentreListState, graduateCentreListReducer} from "./graduate-centres/graduate-centre-list.reducer";
 import {GraduateCentreSelectComponent} from "./graduate-centres/component/graduate-centre-select.component";
-import { ProgramCodeSelectComponent } from "./program-codes/component/program-code-select.component";
-import { StudyModeCodeSelectComponent } from "./study-modes/component/study-mode-select.component";
-import { FacultyCodeSelectComponent } from "./faculty-codes/component/faculty-code-select.component";
-import { GenderCodeSelectComponent } from "./gender-codes/component/gender-code-select.component";
+import {ProgramCodeSelectComponent} from "./program-codes/component/program-code-select.component";
+import {StudyModeCodeSelectComponent} from "./study-modes/component/study-mode-select.component";
+import {FacultyCodeSelectComponent} from "./faculty-codes/component/faculty-code-select.component";
+import {GenderCodeSelectComponent} from "./gender-codes/component/gender-code-select.component";
+import {maritalCodeListReducer, MaritalCodeListState} from "./marital-codes/marital-code-list.reducer";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -30,6 +31,7 @@ export interface CommonModuleState {
   graduateCentres: GraduateCentreListState;
   facultyCodes: FacultyCodeListState;
   genderCodes: GenderCodeListState;
+  maritalCodes: MaritalCodeListState;
 }
 ;
 
@@ -41,6 +43,7 @@ export const commonModuleReducers = {
   graduateCentres: graduateCentreListReducer,
   facultyCodes: facultyCodeListReducer,
   genderCodes: genderCodeListReducer,
+  maritalCodes: maritalCodeListReducer,
 };
 
 @NgModule({
