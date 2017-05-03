@@ -82,7 +82,7 @@ export class CommonService {
 
   findStudyMode(): Observable<StudyMode[]> {
     console.log("findStudyMode");
-    return this.http.get(environment.endpoint + '/api/common/findStudyMode')
+    return this.http.get(environment.endpoint + '/api/common/studyMode')
       .map((res: Response) => <StudyMode[]>res.json());
   }
 

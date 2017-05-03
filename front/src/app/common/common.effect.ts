@@ -39,4 +39,10 @@ export class CommonEffects {
   //   .map(action => action.payload)
   //   .switchMap(() => this.commonService.findStudyModes())
   //   .map(codes => this.commonActions.findStudyModesSuccess(codes));
+
+   @Effect() findStudyMode$ = this.actions$
+     .ofType(CommonActions.FIND_STUDY_MODES)
+     .map(action => action.payload)
+     .switchMap(() => this.commonService.findStudyMode())
+     .map(codes => this.commonActions.findStudyModeSuccess(codes));
 }
