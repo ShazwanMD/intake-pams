@@ -1,7 +1,47 @@
 import {Injectable} from "@angular/core";
 import {Action} from '@ngrx/store';
+
 @Injectable()
 export class CommonActions {
+
+  static FIND_DUN_CODES = '[Common] Find DunCodes';
+
+  findDunCodes(): Action {
+    console.log("findDunCodes");
+    return {
+      type: CommonActions.FIND_DUN_CODES
+  };
+  }
+
+  static FIND_DUN_CODES_SUCCESS = '[Common] Find DunCodes Success';
+
+  findDunCodesSuccess(codes): Action {
+    console.log("findDunCodesSuccess");
+    return {
+      type: CommonActions.FIND_DUN_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static FIND_PARLIAMENT_CODES = '[Common] Find ParliamentCodes';
+
+  findParliamentCodes(): Action {
+    console.log("findParliamentCodes");
+    return {
+      type: CommonActions.FIND_PARLIAMENT_CODES
+  };
+  }
+
+  static FIND_PARLIAMENT_CODES_SUCCESS = '[Common] Find ParliamentCodes Success';
+
+  findParliamentCodesSuccess(codes): Action {
+    console.log("findParliamentCodesSuccess");
+    return {
+      type: CommonActions.FIND_PARLIAMENT_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
 
   static FIND_GENDER_CODES = '[Common] Find Gender Codes';
 
