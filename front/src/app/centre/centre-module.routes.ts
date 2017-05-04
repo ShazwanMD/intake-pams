@@ -2,7 +2,6 @@ import {Routes, RouterModule} from '@angular/router';
 import {CentrePage} from "./centre.page";
 import {MgsebCentrePage} from "./mgseb-centre.page";
 import {CpsCentrePage} from "./cps-centre.page";
-import {AbcPage} from "./abc.page";
 
 export const CentreModuleRoutes: Routes = [
   {path: 'centre', component: CentrePage},
