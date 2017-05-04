@@ -6,6 +6,7 @@ import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.web.module.common.vo.FacultyCode;
+import my.edu.umk.pams.intake.web.module.common.vo.GenderCode;
 import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
 import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
 import my.edu.umk.pams.intake.web.module.common.vo.StudyMode;
