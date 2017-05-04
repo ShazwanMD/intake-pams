@@ -8,6 +8,7 @@ import {environment} from "../environments/environment";
 import {ProgramCode} from "../app/common/program-codes/program-code.interface";
 import { GraduateCentre } from "../app/common/graduate-centres/graduate-centre.interface";
 import { StudyMode } from "../app/common/study-modes/study-mode.interface";
+import { MaritalCode } from "../app/common/marital-codes/marital-code.interface";
 
 @Injectable()
 export class CommonService {
@@ -97,8 +98,8 @@ export class CommonService {
   // STUDY MODE
   // ====================================================================================================
 
-  findStudyMode(): Observable<StudyMode[]> {
-    console.log("findStudyMode");
+  findStudyModes(): Observable<StudyMode[]> {
+    console.log("findStudyModes");
     return this.http.get(environment.endpoint + '/api/common/studyMode')
       .map((res: Response) => <StudyMode[]>res.json());
   }
@@ -108,4 +109,21 @@ export class CommonService {
     return this.http.get(environment.endpoint + '/api/common/studyMode/' + code)
       .map((res: Response) => <StudyMode>res.json());
   }
+  
+  //====================================================================================================
+  //MARITALCODE
+  //====================================================================================================
+
+  findMaritalCodes(): Observable<MaritalCode[]> {
+      console.log("findMaritalCodes()");
+      return this.http.get(environment.endpoint + '/api/common/maritalCodes')
+      .map((res: Response) => <MaritalCode[]>res.json());
+  }
+
+  findMaritalCodeByCode(code:string): Observable<MaritalCode> {
+      console.log("findMaritalCodeByCode");
+      return this.http.get(environment.endpoint + '/api/common/maritalCodes/' + code)
+      .map((res: Response) => <MaritalCode>res.json());
+  }
+
 }

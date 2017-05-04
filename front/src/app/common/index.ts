@@ -22,7 +22,8 @@ import {ProgramCodeSelectComponent} from "./program-codes/component/program-code
 import {StudyModeCodeSelectComponent} from "./study-modes/component/study-mode-select.component";
 import {FacultyCodeSelectComponent} from "./faculty-codes/component/faculty-code-select.component";
 import {GenderCodeSelectComponent} from "./gender-codes/component/gender-code-select.component";
-import {maritalCodeListReducer, MaritalCodeListState} from "./marital-codes/marital-code-list.reducer";
+import { maritalCodeListReducer, MaritalCodeListState } from "./marital-codes/marital-code-list.reducer";
+import { MaritalCodeSelectComponent } from "./marital-codes/component/marital-code-select.component";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -60,6 +61,7 @@ export const commonModuleReducers = {
     StudyModeCodeSelectComponent,
     FacultyCodeSelectComponent,
     GenderCodeSelectComponent,
+    MaritalCodeSelectComponent,
   ],
   exports: [
     GraduateCentreSelectComponent,
@@ -67,6 +69,7 @@ export const commonModuleReducers = {
     StudyModeCodeSelectComponent,
     FacultyCodeSelectComponent,
     GenderCodeSelectComponent,
+    MaritalCodeSelectComponent,
   ],
 })
 export class CommonModule {
