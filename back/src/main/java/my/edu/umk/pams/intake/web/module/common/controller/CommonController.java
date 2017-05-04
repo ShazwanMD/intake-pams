@@ -6,7 +6,9 @@ import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.web.module.common.vo.FacultyCode;
+import my.edu.umk.pams.intake.web.module.common.vo.GenderCode;
 import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
+import my.edu.umk.pams.intake.web.module.common.vo.MaritalCode;
 import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
 import my.edu.umk.pams.intake.web.module.common.vo.StudyMode;
 import my.edu.umk.pams.intake.web.module.common.vo.SupervisorCode;
@@ -124,14 +126,45 @@ public class CommonController {
     // STUDY MODES
     //====================================================================================================
 
-    @RequestMapping(value = "/studyMode", method = RequestMethod.GET)
-    public ResponseEntity<List<StudyMode>> findStudyMode() {
+    @RequestMapping(value = "/studyModes", method = RequestMethod.GET)
+    public ResponseEntity<List<StudyMode>> findStudyModes() {
         return new ResponseEntity<List<StudyMode>>(commonTransformer.toStudyModeVos(commonService.findStudyModes()), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/studyMode/{code}", method = RequestMethod.GET)
+    @RequestMapping(value = "/studyModes/{code}", method = RequestMethod.GET)
     public ResponseEntity<StudyMode> findStudyMode(@PathVariable String code) {
         return new ResponseEntity<StudyMode>(commonTransformer.toStudyModeVo(commonService.findStudyModeByCode(code)), HttpStatus.OK);
     }
 
+    //====================================================================================================
+    // GENDER CODES
+    //====================================================================================================
+
+    @RequestMapping(value = "/genderCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<GenderCode>> findGenderCodes() {
+        return new ResponseEntity<List<GenderCode>>(commonTransformer.toGenderCodeVos(commonService.findGenderCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/genderCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<GenderCode> findGenderCode(@PathVariable String code) {
+        return new ResponseEntity<GenderCode>(commonTransformer.toGenderCodeVo(commonService.findGenderCodeByCode(code)), HttpStatus.OK);
+    }
+    
+  //====================================================================================================
+ // MARITAL_CODE
+ //====================================================================================================
+
+ @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
+ public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
+         return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
+         commonService.findMaritalCodes()), HttpStatus.OK);
+         }
+
+ @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
+ public ResponseEntity<MaritalCode> findMaritalCodeByCode(@PathVariable String code) {
+         return new ResponseEntity<MaritalCode>(commonTransformer.toMaritalCodeVo(
+         commonService.findMaritalCodeByCode(code)), HttpStatus.OK);
+         }
+
 }
+

@@ -1,8 +1,8 @@
-<h2 md-dialog-title>Intake Task Creator</h2>
+<h2 md-dialog-title>Working Experience Creator</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
-    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-      <div layout="column" class="pad-right" flex>
+<form [formGroup]="createForm">
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+  <div layout="column" class="pad-right" flex>
         <div layout="row">
           <md-input-container flex>
             <input mdInput #description
@@ -11,56 +11,9 @@
                    flex/>
           </md-input-container>
         </div>
-        <div layout="row">
-          <md-input-container flex>
-            <input mdInput
-                   type="number"
-                   placeholder="Projection"
-                   formControlName="projection"
-                   flex/>
-          </md-input-container>
-        </div>
-      </div>
-      <div layout="column" class="pad-left" flex>
-        <div layout="row">
-          <md-input-container flex>
-            <input mdInput
-                   type="date"
-                   placeholder="Start Date"
-                   formControlName="startDate"
-                   flex/>
-          </md-input-container>
-        </div>
-        <div layout="row">
-          <md-input-container flex>
-            <input mdInput
-                   type="date"
-                   placeholder="End Date"
-                   formControlName="endDate"
-                   flex/>
-          </md-input-container>
-        </div>
-      </div>
-    </div>
-    <div layout="row" class="pad-top">
-      <pams-program-level-select
-        [placeholder]="'Program Level'"
-        [innerFormControl]="createForm.controls.programLevel">
-      </pams-program-level-select>
-    </div>
-    <div layout="row" class="pad-top">
-      <pams-graduate-centre-select
-        [placeholder]="'Graduate Centre'"
-        [innerFormControl]="createForm.controls.graduateCentre">
-      </pams-graduate-centre-select>
-    </div>
-    <div layout="row" class="pad-top">
-      <pams-intake-session-select
-        [placeholder]="'Intake Session'"
-        [innerFormControl]="createForm.controls.intakeSession">
-      </pams-intake-session-select>
-    </div>
-  </form>
+</div>
+</div>
+</form>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>

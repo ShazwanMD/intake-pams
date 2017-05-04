@@ -30,6 +30,15 @@ public class CommonTransformer {
         vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
     }
+    
+    public GenderCode toGenderCodeVo(InGenderCode e) {
+    	GenderCode vo = new GenderCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        return vo;
+    }
 
     public ProgramCode toProgramCodeVo(InProgramCode e) {
         ProgramCode vo = new ProgramCode();
@@ -106,4 +115,31 @@ public class CommonTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
+    
+    public List<GenderCode> toGenderCodeVos(List<InGenderCode> e) {
+        List<GenderCode> vos = e.stream()
+                .map((e1) -> toGenderCodeVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+    
+  //====================================================================================================
+ // MARITAL_CODE
+ //====================================================================================================
+
+    public MaritalCode toMaritalCodeVo(InMaritalCode e) {
+     MaritalCode vo = new MaritalCode();
+         vo.setId(e.getId());
+         vo.setCode(e.getCode());
+         vo.setDescriptionEn(e.getDescriptionEn());
+         vo.setDescriptionMs(e.getDescriptionMs());
+         return vo;
+         }
+
+    public List<MaritalCode> toMaritalCodeVos(List<InMaritalCode> e) {
+         List<MaritalCode> vos = e.stream()
+         .map((e1) -> toMaritalCodeVo(e1))
+         .collect(Collectors.toList());
+         return vos;
+         }
 }
