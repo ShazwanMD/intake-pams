@@ -126,7 +126,7 @@ public class CommonController {
     //====================================================================================================
 
     @RequestMapping(value = "/studyMode", method = RequestMethod.GET)
-    public ResponseEntity<List<StudyMode>> findStudyMode() {
+    public ResponseEntity<List<StudyMode>> findStudyModes() {
         return new ResponseEntity<List<StudyMode>>(commonTransformer.toStudyModeVos(commonService.findStudyModes()), HttpStatus.OK);
     }
 
@@ -135,4 +135,18 @@ public class CommonController {
         return new ResponseEntity<StudyMode>(commonTransformer.toStudyModeVo(commonService.findStudyModeByCode(code)), HttpStatus.OK);
     }
 
+    //====================================================================================================
+    // GENDER CODES
+    //====================================================================================================
+
+    @RequestMapping(value = "/genderCode", method = RequestMethod.GET)
+    public ResponseEntity<List<GenderCode>> findGenderCodes() {
+        return new ResponseEntity<List<GenderCode>>(commonTransformer.toGenderCodeVos(commonService.findGenderCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/genderCode/{code}", method = RequestMethod.GET)
+    public ResponseEntity<GenderCode> findGenderCode(@PathVariable String code) {
+        return new ResponseEntity<GenderCode>(commonTransformer.toGenderCodeVo(commonService.findGenderCodeByCode(code)), HttpStatus.OK);
+    }
 }
+
