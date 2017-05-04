@@ -1,3 +1,4 @@
+import { WorkingExperienceCreatorDialog } from './dialog/working-experience-creator.dialog';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -22,9 +23,10 @@ import { CommonModule } from "../../../common/index";
   ],
   declarations: [
     IntakeApplicationPage,
+    WorkingExperienceCreatorDialog,
   ],
   exports: [],
-  entryComponents: [],
+  entryComponents: [WorkingExperienceCreatorDialog],
 })
 export class CpsIntakeApplicationSubModule {
   static forRoot(): ModuleWithProviders {
