@@ -24,13 +24,13 @@ export class CommonService {
 
   findGenderCodes(): Observable<GenderCode[]> {
     console.log("findGenderCodes");
-    return this.http.get(environment.endpoint + '/api/common/genderCode')
+    return this.http.get(environment.endpoint + '/api/common/genderCodes')
       .map((res: Response) => <GenderCode[]>res.json());
   }
 
   findGenderCodeByCode(code:string): Observable<GenderCode> {
     console.log("findGenderCodeByCode");
-    return this.http.get(environment.endpoint + '/api/common/genderCode/' + code)
+    return this.http.get(environment.endpoint + '/api/common/genderCodes/' + code)
       .map((res: Response) => <GenderCode>res.json());
   }
 
@@ -100,13 +100,13 @@ export class CommonService {
 
   findStudyModes(): Observable<StudyMode[]> {
     console.log("findStudyModes");
-    return this.http.get(environment.endpoint + '/api/common/studyMode')
+    return this.http.get(environment.endpoint + '/api/common/studyModes')
       .map((res: Response) => <StudyMode[]>res.json());
   }
 
   findStudyModeByCode(code:string): Observable<ProgramCode> {
     console.log("findStudyModeByCode");
-    return this.http.get(environment.endpoint + '/api/common/studyMode/' + code)
+    return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       .map((res: Response) => <StudyMode>res.json());
   }
   
