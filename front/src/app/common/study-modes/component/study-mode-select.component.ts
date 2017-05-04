@@ -24,7 +24,7 @@ export class StudyModeCodeSelectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.findStudyMode());
+    this.store.dispatch(this.actions.findStudyModes());
   }
 
   selectChangeEvent(event: StudyMode) {

@@ -3,7 +3,7 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class CommonActions {
 
-static FIND_GENDER_CODES = '[Common] Find Gender Codes';
+  static FIND_GENDER_CODES = '[Common] Find Gender Codes';
 
   findGenderCodes(): Action {
     console.log("findGenderCodes");
@@ -18,6 +18,25 @@ static FIND_GENDER_CODES = '[Common] Find Gender Codes';
     console.log("findGenderCodesSuccess");
     return {
       type: CommonActions.FIND_GENDER_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static FIND_MARITAL_CODES = '[Common] Find Marital Codes';
+
+  findMaritalCodes(): Action {
+    console.log("findMaritalCodes");
+    return {
+      type: CommonActions.FIND_MARITAL_CODES,
+    };
+  }
+
+  static FIND_MARITAL_CODES_SUCCESS = '[Common] Find Marital Codes Success';
+
+  findMaritalCodesSuccess(codes): Action {
+    console.log("findMaritalCodesSuccess");
+    return {
+      type: CommonActions.FIND_MARITAL_CODES_SUCCESS,
       payload: codes
     };
   }
@@ -100,8 +119,8 @@ static FIND_GENDER_CODES = '[Common] Find Gender Codes';
 
   static FIND_STUDY_MODES = '[Common] Find Study Modes';
 
-  findStudyMode(): Action {
-    console.log("findStudyMode");
+  findStudyModes(): Action {
+    console.log("findStudyModes");
     return {
       type: CommonActions.FIND_STUDY_MODES,
     };
