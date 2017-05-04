@@ -11,6 +11,7 @@ import {StudyMode} from "../app/common/study-modes/study-mode.interface";
 import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
+import {BankCode} from "../app/common/bank-codes/bank-code.interface";
 
 @Injectable()
 export class CommonService {
@@ -19,6 +20,23 @@ export class CommonService {
   constructor(private http: Http,
               private _http: HttpInterceptorService) {
   }
+
+  // ====================================================================================================
+  // BANKCODE
+  // ====================================================================================================
+
+  findBankCodes(): Observable<BankCode[]> {
+    console.log("findBankCodes()");
+    return this.http.get(environment.endpoint + '/api/common/bankCodes')
+      .map((res: Response) => <BankCode[]>res.json());
+  }
+
+  findBankCodeByCode(code: string): Observable<BankCode> {
+    console.log("findBankCodeByCode");
+    return this.http.get(environment.endpoint + '/api/common/bankCodes/' + code)
+      .map((res: Response) => <BankCode>res.json());
+  }
+
 
   // ====================================================================================================
   // DUNCODE

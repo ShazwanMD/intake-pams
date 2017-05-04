@@ -39,7 +39,7 @@ import {centreModuleReducers, INITIAL_CENTRE_STATE, CentreModuleState, CentreMod
 import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
 import { intakeTaskListReducer } from "./policy/intakes/intake-task-list.reducer";
-import {SetupModule} from "./setup/index";
+import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./setup/index";
 
 
 // interceptor
@@ -55,6 +55,7 @@ interface ApplicationState {
   admissionModuleState: AdmissionModuleState;
   registrationModuleState: RegistrationModuleState;
   centreModuleState: CentreModuleState;
+  setupModuleState: SetupModuleState;
 }
 ;
 
@@ -67,6 +68,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     admissionModuleState: INITIAL_ADMISSION_STATE,
     registrationModuleState: INITIAL_REGISTRATION_STATE,
     centreModuleState: INITIAL_CENTRE_STATE,
+    setupModuleState: INITIAL_SETUP_STATE,
   };
 
 // combine reducer
@@ -77,6 +79,7 @@ export const applicationReducers = {
   admissionModuleState: combineReducers({...admissionModuleReducers,}),
   registrationModuleState: combineReducers({...registrationModuleReducers,}),
   centreModuleState: combineReducers({...centreModuleReducers}),
+  setupModuleState: combineReducers({...setupModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
@@ -107,9 +110,9 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     CovalentHighlightModule.forRoot(),
     CovalentMarkdownModule.forRoot(),
     NgxChartsModule,
-
     StoreModule.provideStore(applicationReducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
     DashboardModule.forRoot(),
     CommonModule.forRoot(),
     CentreModule.forRoot(),
@@ -118,7 +121,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     AdmissionModule.forRoot(),
     RegistrationModule.forRoot(),
     SetupModule.forRoot(),
-  ], // modules needed to run this module
+  ],
   providers: [
     appRoutingProviders,
     httpInterceptorProviders,

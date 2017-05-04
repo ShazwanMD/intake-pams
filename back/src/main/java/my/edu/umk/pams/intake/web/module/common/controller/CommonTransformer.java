@@ -40,6 +40,14 @@ public class CommonTransformer {
         return vo;
     }
 
+    public BankCode toBankCodeVo(InBankCode e) {
+        BankCode vo = new BankCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setName(e.getName());
+        return vo;
+    }
+
     public ProgramCode toProgramCodeVo(InProgramCode e) {
         ProgramCode vo = new ProgramCode();
         vo.setId(e.getId());
@@ -91,6 +99,13 @@ public class CommonTransformer {
     public List<FacultyCode> toFacultyCodeVos(List<InFacultyCode> e) {
         List<FacultyCode> vos = e.stream()
                 .map((e1) -> toFacultyCodeVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+
+    public List<BankCode> toBankCodeVos(List<InBankCode> e) {
+        List<BankCode> vos = e.stream()
+                .map((e1) -> toBankCodeVo(e1))
                 .collect(Collectors.toList());
         return vos;
     }

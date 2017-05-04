@@ -9,11 +9,11 @@ import {MdDialogRef} from "@angular/material";
 
 
 @Component({
-  selector: 'pams-working-experience-creator',
-  templateUrl: './working-experience-creator.dialog.html',
+  selector: 'pams-employment-creator',
+  templateUrl: './employment-creator.dialog.html',
 })
 
-export class WorkingExperienceCreatorDialog implements OnInit {
+export class EmploymentCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
 
@@ -22,7 +22,7 @@ export class WorkingExperienceCreatorDialog implements OnInit {
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
-              private dialog: MdDialogRef<WorkingExperienceCreatorDialog>) {
+              private dialog: MdDialogRef<EmploymentCreatorDialog>) {
   }
 
   ngOnInit(): void {

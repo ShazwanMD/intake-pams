@@ -1,24 +1,14 @@
 package my.edu.umk.pams.intake.web.module.common.controller;
 
-import my.edu.umk.pams.intake.common.model.InFacultyCode;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.web.module.common.vo.FacultyCode;
-import my.edu.umk.pams.intake.web.module.common.vo.GenderCode;
-import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
-import my.edu.umk.pams.intake.web.module.common.vo.MaritalCode;
-import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
-import my.edu.umk.pams.intake.web.module.common.vo.StudyMode;
-import my.edu.umk.pams.intake.web.module.common.vo.SupervisorCode;
+import my.edu.umk.pams.intake.web.module.common.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,7 +26,52 @@ public class CommonController {
     private CommonTransformer commonTransformer;
 
     //====================================================================================================
-    // FACULTY CODES
+    // BANK CODES
+    //====================================================================================================
+
+    @RequestMapping(value = "/bankCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<BankCode>> findBankCodes() {
+        return new ResponseEntity<List<BankCode>>(commonTransformer.toBankCodeVos(
+                commonService.findBankCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/bankCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<BankCode> findBankCode(@PathVariable String code) {
+        return new ResponseEntity<BankCode>(commonTransformer.toBankCodeVo(
+                commonService.findBankCodeByCode(code)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/bankCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveBankCode(@RequestBody BankCode vo) {
+        InBankCode bankCode = new InBankCodeImpl();
+        bankCode.setCode(vo.getCode());
+        bankCode.setName(vo.getName());
+        bankCode.setIbgCode("TODO");
+        bankCode.setSwiftCode("TODO");
+        commonService.saveBankCode(bankCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/bankCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateBankCode(@PathVariable String code, @RequestBody BankCode vo) {
+        InBankCode bankCode = commonService.findBankCodeById(vo.getId());
+        bankCode.setCode(vo.getCode());
+        bankCode.setName(vo.getName());
+        bankCode.setIbgCode("TODO");
+        bankCode.setSwiftCode("TODO");
+        commonService.updateBankCode(bankCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/bankCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeBankCode(@PathVariable String code) {
+        InBankCode bankCode = commonService.findBankCodeByCode(code);
+        commonService.removeBankCode(bankCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    //====================================================================================================
+    // GRADUATE CENTRE
     //====================================================================================================
 
     @RequestMapping(value = "/graduateCentres", method = RequestMethod.GET)
@@ -67,6 +102,33 @@ public class CommonController {
                 commonService.findProgramCodes(graduateCentre, programLevel)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/graduateCentres", method = RequestMethod.POST)
+    public ResponseEntity<String> saveGraduateCentre(@RequestBody GraduateCentre vo) {
+        InGraduateCentre graduateCentre = new InGraduateCentreImpl();
+        graduateCentre.setCode(vo.getCode());
+        graduateCentre.setDescriptionEn(vo.getDescriptionEn());
+        graduateCentre.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveGraduateCentre(graduateCentre);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/graduateCentres/{centre}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateGraduateCentre(@PathVariable String centre, @RequestBody GraduateCentre vo) {
+        InGraduateCentre graduateCentre = commonService.findGraduateCentreById(vo.getId());
+        graduateCentre.setCode(vo.getCode());
+        graduateCentre.setDescriptionEn(vo.getDescriptionEn());
+        graduateCentre.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateGraduateCentre(graduateCentre);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/graduateCentres/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeGraduateCentre(@PathVariable String code) {
+        InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
+        commonService.removeGraduateCentre(graduateCentre);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
     //====================================================================================================
     // FACULTY CODES
     //====================================================================================================
@@ -91,11 +153,11 @@ public class CommonController {
     }
 
     @RequestMapping(value = "/facultyCodes/{code}/programCodes/{levelCode}", method = RequestMethod.GET)
-    public ResponseEntity<List<ProgramCode>> findProgramCodesByFacultyCode(@PathVariable String code,@PathVariable String levelCode) {
+    public ResponseEntity<List<ProgramCode>> findProgramCodesByFacultyCode(@PathVariable String code, @PathVariable String levelCode) {
         InFacultyCode facultyCode = commonService.findFacultyCodeByCode(code);
         InProgramLevel programLevel = policyService.findProgramLevelByCode(levelCode);
         return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(
-                commonService.findProgramCodes(facultyCode,programLevel)), HttpStatus.OK);
+                commonService.findProgramCodes(facultyCode, programLevel)), HttpStatus.OK);
     }
 
     //====================================================================================================
@@ -121,8 +183,8 @@ public class CommonController {
     public ResponseEntity<SupervisorCode> findSupervisorCode(@PathVariable String code) {
         return new ResponseEntity<SupervisorCode>(commonTransformer.toSupervisorCodeVo(commonService.findSupervisorCodeByCode(code)), HttpStatus.OK);
     }
-    
-  //====================================================================================================
+
+    //====================================================================================================
     // STUDY MODES
     //====================================================================================================
 
@@ -149,22 +211,22 @@ public class CommonController {
     public ResponseEntity<GenderCode> findGenderCode(@PathVariable String code) {
         return new ResponseEntity<GenderCode>(commonTransformer.toGenderCodeVo(commonService.findGenderCodeByCode(code)), HttpStatus.OK);
     }
-    
-      //====================================================================================================
-     // MARITAL_CODE
-     //====================================================================================================
 
-     @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
-     public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
-             return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
-             commonService.findMaritalCodes()), HttpStatus.OK);
-             }
+    //====================================================================================================
+    // MARITAL_CODE
+    //====================================================================================================
 
-     @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
-     public ResponseEntity<MaritalCode> findMaritalCodeByCode(@PathVariable String code) {
-             return new ResponseEntity<MaritalCode>(commonTransformer.toMaritalCodeVo(
-             commonService.findMaritalCodeByCode(code)), HttpStatus.OK);
-             }
+    @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
+        return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
+                commonService.findMaritalCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<MaritalCode> findMaritalCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<MaritalCode>(commonTransformer.toMaritalCodeVo(
+                commonService.findMaritalCodeByCode(code)), HttpStatus.OK);
+    }
 
 }
 

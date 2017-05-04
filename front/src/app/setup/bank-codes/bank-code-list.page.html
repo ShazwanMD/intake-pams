@@ -6,10 +6,6 @@
         <md-icon>label</md-icon>
         Bank Code
       </a>
-      <a md-list-item [routerLink]="['/setup/graduate-centres']">
-        <md-icon>label</md-icon>
-        Graduate Centre
-      </a>
       <a md-list-item [routerLink]="['/setup/marital-codes']">
         <md-icon>label</md-icon>
         Marital Code
@@ -72,6 +68,33 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
+
+    <div layout="row" layout-wrap>
+    </div>
+
+    <md-card class="">
+      <md-card-title>Intakes</md-card-title>
+      <md-card-subtitle>List of intake tasks</md-card-subtitle>
+      <td-data-table
+        [data]="bankCodes$ | async"
+        [columns]="columns"
+        [sortBy]="summary"
+        [sortOrder]="ASC"
+        [sortable]="false"
+        [multiple]="false"
+        [selectable]="false"
+        (rowSelect)="view.emit($event)" dense>
+        <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+          <div layout="row">
+            <span flex>{{value}}</span>
+          </div>
+        </template>
+      </td-data-table>
+
+      <md-divider></md-divider>
+      <md-card-actions>
+      </md-card-actions>
+    </md-card>
 
   </td-layout-manage-list>
 </td-layout-nav>
