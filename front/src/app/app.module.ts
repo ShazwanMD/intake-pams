@@ -39,6 +39,7 @@ import {centreModuleReducers, INITIAL_CENTRE_STATE, CentreModuleState, CentreMod
 import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
 import { intakeTaskListReducer } from "./policy/intakes/intake-task-list.reducer";
+import {SetupModule} from "./setup/index";
 
 
 // interceptor
@@ -84,7 +85,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 
 
 @NgModule({
-  
+
   declarations: [
     AppComponent,
     MainComponent,
@@ -116,6 +117,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     ApplicationModule.forRoot(),
     AdmissionModule.forRoot(),
     RegistrationModule.forRoot(),
+    SetupModule.forRoot(),
   ], // modules needed to run this module
   providers: [
     appRoutingProviders,

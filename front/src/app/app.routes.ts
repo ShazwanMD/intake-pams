@@ -9,6 +9,7 @@ import {AdmissionModuleRoutes} from "./admission/admission-module.routes";
 import {CentreModuleRoutes} from "./centre/centre-module.routes";
 import { DashboardModuleRoutes } from "./dashboard/dashboard-module.routes";
 import { ForgetPasswordComponent } from "./login/forget-password.component";
+import {SetupModuleRoutes} from "./setup/setup-module.routes";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
       ...AdmissionModuleRoutes,
       ...CentreModuleRoutes,
       ...ApplicationModuleRoutes,
+      ...SetupModuleRoutes,
     ]
   },
 ];
