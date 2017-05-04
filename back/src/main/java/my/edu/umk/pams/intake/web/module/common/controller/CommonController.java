@@ -150,21 +150,21 @@ public class CommonController {
         return new ResponseEntity<GenderCode>(commonTransformer.toGenderCodeVo(commonService.findGenderCodeByCode(code)), HttpStatus.OK);
     }
     
-  //====================================================================================================
- // MARITAL_CODE
- //====================================================================================================
+      //====================================================================================================
+     // MARITAL_CODE
+     //====================================================================================================
 
- @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
- public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
-         return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
-         commonService.findMaritalCodes()), HttpStatus.OK);
-         }
+     @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
+     public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
+             return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
+             commonService.findMaritalCodes()), HttpStatus.OK);
+             }
 
- @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
- public ResponseEntity<MaritalCode> findMaritalCodeByCode(@PathVariable String code) {
-         return new ResponseEntity<MaritalCode>(commonTransformer.toMaritalCodeVo(
-         commonService.findMaritalCodeByCode(code)), HttpStatus.OK);
-         }
+     @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
+     public ResponseEntity<MaritalCode> findMaritalCodeByCode(@PathVariable String code) {
+             return new ResponseEntity<MaritalCode>(commonTransformer.toMaritalCodeVo(
+             commonService.findMaritalCodeByCode(code)), HttpStatus.OK);
+             }
 
 }
 

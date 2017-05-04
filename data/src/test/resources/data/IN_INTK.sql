@@ -11,9 +11,9 @@ VALUES
       NULL, NULL, NULL, NULL, NULL, '2017-03-11 21:25:01.264000', 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL, '2017-03-11 21:25:01.264000', 5, NULL,
                                                              NULL, NULL, NULL, 1, 100,
-   'MGSEB/201720181/MASTER',
+   'MGSEB-201720181-MASTER',
     NULL,
-   'MASTER/201720181', '2017-03-11 21:25:01.262000',
+   'MGSEB-MASTER-201720181', '2017-03-11 21:25:01.262000',
    (select ID from IN_PRGM_LEVL where code = 'MASTER'),
    (select ID from IN_INTK_SESN where code = '20052'),
    (select ID from IN_GRDT_CNTR where code = 'MGSEB')
