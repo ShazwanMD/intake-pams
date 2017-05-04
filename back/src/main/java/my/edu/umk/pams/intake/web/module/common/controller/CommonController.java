@@ -4,10 +4,14 @@ import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.web.module.common.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +28,9 @@ public class CommonController {
 
     @Autowired
     private CommonTransformer commonTransformer;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     //====================================================================================================
     // BANK CODES
@@ -43,6 +50,8 @@ public class CommonController {
 
     @RequestMapping(value = "/bankCodes", method = RequestMethod.POST)
     public ResponseEntity<String> saveBankCode(@RequestBody BankCode vo) {
+        dummyLogin();
+
         InBankCode bankCode = new InBankCodeImpl();
         bankCode.setCode(vo.getCode());
         bankCode.setName(vo.getName());
@@ -54,6 +63,8 @@ public class CommonController {
 
     @RequestMapping(value = "/bankCodes/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateBankCode(@PathVariable String code, @RequestBody BankCode vo) {
+        dummyLogin();
+
         InBankCode bankCode = commonService.findBankCodeById(vo.getId());
         bankCode.setCode(vo.getCode());
         bankCode.setName(vo.getName());
@@ -65,6 +76,8 @@ public class CommonController {
 
     @RequestMapping(value = "/bankCodes/{code}", method = RequestMethod.DELETE)
     public ResponseEntity<String> removeBankCode(@PathVariable String code) {
+        dummyLogin();
+
         InBankCode bankCode = commonService.findBankCodeByCode(code);
         commonService.removeBankCode(bankCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -104,6 +117,8 @@ public class CommonController {
 
     @RequestMapping(value = "/graduateCentres", method = RequestMethod.POST)
     public ResponseEntity<String> saveGraduateCentre(@RequestBody GraduateCentre vo) {
+        dummyLogin();
+
         InGraduateCentre graduateCentre = new InGraduateCentreImpl();
         graduateCentre.setCode(vo.getCode());
         graduateCentre.setDescriptionEn(vo.getDescriptionEn());
@@ -114,6 +129,8 @@ public class CommonController {
 
     @RequestMapping(value = "/graduateCentres/{centre}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateGraduateCentre(@PathVariable String centre, @RequestBody GraduateCentre vo) {
+        dummyLogin();
+
         InGraduateCentre graduateCentre = commonService.findGraduateCentreById(vo.getId());
         graduateCentre.setCode(vo.getCode());
         graduateCentre.setDescriptionEn(vo.getDescriptionEn());
@@ -124,6 +141,8 @@ public class CommonController {
 
     @RequestMapping(value = "/graduateCentres/{code}", method = RequestMethod.DELETE)
     public ResponseEntity<String> removeGraduateCentre(@PathVariable String code) {
+        dummyLogin();
+
         InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
         commonService.removeGraduateCentre(graduateCentre);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -226,6 +245,17 @@ public class CommonController {
     public ResponseEntity<MaritalCode> findMaritalCodeByCode(@PathVariable String code) {
         return new ResponseEntity<MaritalCode>(commonTransformer.toMaritalCodeVo(
                 commonService.findMaritalCodeByCode(code)), HttpStatus.OK);
+    }
+
+
+    // ====================================================================================================
+    // PRIVATE METHODS
+    // ====================================================================================================
+
+    private void dummyLogin() {
+        InAutoLoginToken token = new InAutoLoginToken("root");
+        Authentication authed = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authed);
     }
 
 }

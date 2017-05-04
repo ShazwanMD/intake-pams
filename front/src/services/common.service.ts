@@ -1,6 +1,6 @@
 import {GenderCode} from './../app/common/gender-codes/gender-code.interface';
 import {Injectable} from '@angular/core';
-import {Response, Http} from '@angular/http';
+import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from "rxjs";
 import {FacultyCode} from "../app/common/faculty-codes/faculty-code.interface";
@@ -178,5 +178,15 @@ export class CommonService {
     console.log("findStudyModeByCode");
     return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       .map((res: Response) => <StudyMode>res.json());
+  }
+
+  saveGraduateCentre(code:GraduateCentre) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/graduateCentres', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 }

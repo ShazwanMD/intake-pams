@@ -20,4 +20,10 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findGraduateCentres())
     .map(codes => this.commonActions.findGraduateCentresSuccess(codes));
+
+  @Effect() saveGraduateCentre$ = this.actions$
+    .ofType(SetupActions.SAVE_GRADUATE_CENTRE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveGraduateCentre(payload))
+    .map(message => this.commonActions.saveGraduateCentreSuccess(message));
 }

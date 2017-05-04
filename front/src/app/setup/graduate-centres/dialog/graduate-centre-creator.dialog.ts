@@ -7,6 +7,7 @@ import {MdDialogRef} from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {BankCode} from "../../../common/bank-codes/bank-code.interface";
 import {SetupActions} from "../../setup.action";
+import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
 
 
 @Component({
@@ -30,14 +31,16 @@ export class GraduateCentreCreatorDialog implements OnInit {
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<BankCode>{
+    this.createForm = this.formBuilder.group(<GraduateCentre>{
       id: null,
       code: '',
-      description: '',
+      descriptionMs: '',
+      descriptionEn: '',
     });
   }
 
   save(code: BankCode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveBankCode(code));
+    this.store.dispatch(this.actions.saveGraduateCentre(code));
+    this.dialog.close();
   }
 }

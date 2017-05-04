@@ -15,6 +15,8 @@ import {SetupActions} from "./setup.action";
 import {graduateCentreListReducer, GraduateCentreListState} from "./graduate-centres/graduate-centre-list.reducer";
 import {GraduateCentre} from "../common/graduate-centres/graduate-centre.interface";
 import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.page";
+import {GraduateCentreCreatorDialog} from "./graduate-centres/dialog/graduate-centre-creator.dialog";
+import {BankCodeCreatorDialog} from "./bank-codes/dialog/bank-code-creator.dialog";
 
 export interface SetupModuleState {
   bankCodes: BankCodeListState;
@@ -44,14 +46,19 @@ export const setupModuleReducers = {
 
   ],
   declarations: [
+    // page
     SetupPage,
     BankCodeListPage,
     GraduateCentreListPage,
 
+    // dialog
+    BankCodeCreatorDialog,
+    GraduateCentreCreatorDialog,
   ],
   exports: [],
   entryComponents: [
-
+    BankCodeCreatorDialog,
+    GraduateCentreCreatorDialog,
   ],
 
 })
