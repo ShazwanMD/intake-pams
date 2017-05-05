@@ -16,6 +16,7 @@ export class GraduateCentreListPage implements OnInit {
   private GRADUATE_CENTRES = "setupModuleState.graduateCentres".split(".");
   private graduateCentres$: Observable<GraduateCentre>;
   private creatorDialogRef: MdDialogRef<GraduateCentreCreatorDialog>;
+
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'Description Ms'},
@@ -47,6 +48,10 @@ export class GraduateCentreListPage implements OnInit {
       console.log("close dialog");
       // load something here
     });
+  }
+
+  deactivate(code:GraduateCentre): void {
+    console.log("code: " + code.code);
   }
 
 }

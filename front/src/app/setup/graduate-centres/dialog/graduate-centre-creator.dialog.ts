@@ -39,7 +39,7 @@ export class GraduateCentreCreatorDialog implements OnInit {
     });
   }
 
-  save(code: BankCode, isValid: boolean) {
+  save(code: GraduateCentre, isValid: boolean) {
     this.store.dispatch(this.actions.saveGraduateCentre(code));
     this.dialog.close();
   }
