@@ -179,6 +179,37 @@ public class CommonController {
                 commonService.findProgramCodes(facultyCode, programLevel)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/facultyCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveFacultyCode(@RequestBody FacultyCode vo) {
+        dummyLogin();
+
+        InFacultyCode facultyCode = new InFacultyCodeImpl();
+        facultyCode.setCode(vo.getCode());
+        facultyCode.setDescription(vo.getDescription());
+        commonService.saveFacultyCode(facultyCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/facultyCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateFacultyCode(@PathVariable String code, @RequestBody FacultyCode vo) {
+        dummyLogin();
+
+        InFacultyCode facultyCode = commonService.findFacultyCodeById(vo.getId());
+        facultyCode.setCode(vo.getCode());
+        facultyCode.setDescription(vo.getDescription());
+        commonService.updateFacultyCode(facultyCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/facultyCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeFacultyCode(@PathVariable String code) {
+        dummyLogin();
+
+        InFacultyCode facultyCode = commonService.findFacultyCodeByCode(code);
+        commonService.removeFacultyCode(facultyCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
     //====================================================================================================
     // PROGRAM CODES
     //====================================================================================================
@@ -193,6 +224,43 @@ public class CommonController {
         return new ResponseEntity<ProgramCode>(commonTransformer.toProgramCodeVo(commonService.findProgramCodeByCode(code)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/programCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveProgramCode(@RequestBody ProgramCode vo) {
+        dummyLogin();
+
+        InProgramCode programCode = new InProgramCodeImpl();
+        programCode.setCode(vo.getCode());
+        programCode.setDescriptionEn(vo.getDescriptionEn());
+        programCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveProgramCode(programCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/programCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateProgramCode(@PathVariable String code, @RequestBody ProgramCode vo) {
+        dummyLogin();
+
+        InProgramCode programCode = commonService.findProgramCodeById(vo.getId());
+        programCode.setCode(vo.getCode());
+        programCode.setDescriptionEn(vo.getDescriptionEn());
+        programCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateProgramCode(programCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/programCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeProgramCode(@PathVariable String code) {
+        dummyLogin();
+
+        InProgramCode programCode = commonService.findProgramCodeByCode(code);
+        commonService.removeProgramCode(programCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    //====================================================================================================
+    // SUPERVISOR CODES
+    //====================================================================================================
+
     @RequestMapping(value = "/supervisorCodes", method = RequestMethod.GET)
     public ResponseEntity<List<SupervisorCode>> findSupervisorCodes() {
         return new ResponseEntity<List<SupervisorCode>>(commonTransformer.toSupervisorCodeVos(commonService.findSupervisorCodes()), HttpStatus.OK);
@@ -201,6 +269,39 @@ public class CommonController {
     @RequestMapping(value = "/supervisorCodes/{code}", method = RequestMethod.GET)
     public ResponseEntity<SupervisorCode> findSupervisorCode(@PathVariable String code) {
         return new ResponseEntity<SupervisorCode>(commonTransformer.toSupervisorCodeVo(commonService.findSupervisorCodeByCode(code)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/supervisorCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveSupervisorCode(@RequestBody SupervisorCode vo) {
+        dummyLogin();
+
+        InSupervisorCode supervisorCode = new InSupervisorCodeImpl();
+        supervisorCode.setCode(vo.getCode());
+        supervisorCode.setDescriptionEn(vo.getDescriptionEn());
+        supervisorCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveSupervisorCode(supervisorCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/supervisorCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateSupervisorCode(@PathVariable String code, @RequestBody SupervisorCode vo) {
+        dummyLogin();
+
+        InSupervisorCode supervisorCode = commonService.findSupervisorCodeById(vo.getId());
+        supervisorCode.setCode(vo.getCode());
+        supervisorCode.setDescriptionEn(vo.getDescriptionEn());
+        supervisorCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateSupervisorCode(supervisorCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/supervisorCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeSupervisorCode(@PathVariable String code) {
+        dummyLogin();
+
+        InSupervisorCode supervisorCode = commonService.findSupervisorCodeByCode(code);
+        commonService.removeSupervisorCode(supervisorCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     //====================================================================================================
@@ -217,6 +318,39 @@ public class CommonController {
         return new ResponseEntity<StudyMode>(commonTransformer.toStudyModeVo(commonService.findStudyModeByCode(code)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/studyModes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveStudyMode(@RequestBody StudyMode vo) {
+        dummyLogin();
+
+        InStudyMode studyMode = new InStudyModeImpl();
+        studyMode.setCode(vo.getCode());
+        studyMode.setDescriptionEn(vo.getDescriptionEn());
+        studyMode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveStudyMode(studyMode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyModes/{mode}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStudyMode(@PathVariable String mode, @RequestBody StudyMode vo) {
+        dummyLogin();
+
+        InStudyMode studyMode = commonService.findStudyModeById(vo.getId());
+        studyMode.setCode(vo.getCode());
+        studyMode.setDescriptionEn(vo.getDescriptionEn());
+        studyMode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateStudyMode(studyMode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyModes/{mode}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeStudyMode(@PathVariable String mode) {
+        dummyLogin();
+
+        InStudyMode studyMode = commonService.findStudyModeByCode(mode);
+        commonService.removeStudyMode(studyMode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
     //====================================================================================================
     // GENDER CODES
     //====================================================================================================
@@ -229,6 +363,39 @@ public class CommonController {
     @RequestMapping(value = "/genderCodes/{code}", method = RequestMethod.GET)
     public ResponseEntity<GenderCode> findGenderCode(@PathVariable String code) {
         return new ResponseEntity<GenderCode>(commonTransformer.toGenderCodeVo(commonService.findGenderCodeByCode(code)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/genderCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveGenderCode(@RequestBody GenderCode vo) {
+        dummyLogin();
+
+        InGenderCode genderCode = new InGenderCodeImpl();
+        genderCode.setCode(vo.getCode());
+        genderCode.setDescriptionEn(vo.getDescriptionEn());
+        genderCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveGenderCode(genderCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/genderCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateGenderCode(@PathVariable String code, @RequestBody GenderCode vo) {
+        dummyLogin();
+
+        InGenderCode genderCode = commonService.findGenderCodeById(vo.getId());
+        genderCode.setCode(vo.getCode());
+        genderCode.setDescriptionEn(vo.getDescriptionEn());
+        genderCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateGenderCode(genderCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/genderCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeGenderCode(@PathVariable String code) {
+        dummyLogin();
+
+        InGenderCode genderCode = commonService.findGenderCodeByCode(code);
+        commonService.removeGenderCode(genderCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     //====================================================================================================
@@ -247,6 +414,38 @@ public class CommonController {
                 commonService.findMaritalCodeByCode(code)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/maritalCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveMaritalCode(@RequestBody MaritalCode vo) {
+        dummyLogin();
+
+        InMaritalCode maritalCode = new InMaritalCodeImpl();
+        maritalCode.setCode(vo.getCode());
+        maritalCode.setDescriptionEn(vo.getDescriptionEn());
+        maritalCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveMaritalCode(maritalCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateMaritalCode(@PathVariable String code, @RequestBody MaritalCode vo) {
+        dummyLogin();
+
+        InMaritalCode maritalCode = commonService.findMaritalCodeById(vo.getId());
+        maritalCode.setCode(vo.getCode());
+        maritalCode.setDescriptionEn(vo.getDescriptionEn());
+        maritalCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateMaritalCode(maritalCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeMaritalCode(@PathVariable String code) {
+        dummyLogin();
+
+        InMaritalCode maritalCode = commonService.findMaritalCodeByCode(code);
+        commonService.removeMaritalCode(maritalCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // PRIVATE METHODS
@@ -257,6 +456,5 @@ public class CommonController {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
-
 }
 

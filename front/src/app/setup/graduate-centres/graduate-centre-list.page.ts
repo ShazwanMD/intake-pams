@@ -50,8 +50,8 @@ export class GraduateCentreListPage implements OnInit {
     });
   }
 
-  deactivate(code:GraduateCentre): void {
-    console.log("code: " + code.code);
+  deactivate(event): void {
+    console.log("event" + event);
   }
 
 }
