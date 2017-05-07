@@ -29,6 +29,11 @@ export class MainComponent {
     route: '/admission',
     icon: 'label',
   }
+, {
+    title: 'Setup',
+    route: '/setup',
+    icon: 'label',
+  }
   ];
 
   constructor(private _router: Router) {

@@ -98,7 +98,7 @@
     ],
     "no-internal-module": true,
     "no-invalid-this": true,
-    "no-magic-numbers": false, //TODO_LINT (we should lint for this)
+    "no-magic-numbers": false, 
     "no-namespace": true,
     "no-null-keyword": true,
     "no-reference": true,

@@ -7,8 +7,19 @@ import {CommonActions} from "./common.action";
 export class CommonEffects {
   constructor(private actions$: Actions,
               private commonActions: CommonActions,
-              private commonService: CommonService) {
-  }
+              private commonService: CommonService) {}
+
+  @Effect() findDunCodes$ = this.actions$
+    .ofType(CommonActions.FIND_DUN_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findDunCodes())
+    .map(codes => this.commonActions.findDunCodesSuccess(codes));
+
+  @Effect() findParliamentCodes$ = this.actions$
+    .ofType(CommonActions.FIND_PARLIAMENT_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findParliamentCodes())
+    .map(codes => this.commonActions.findParliamentCodesSuccess(codes));
 
   @Effect() findGenderCodes$ = this.actions$
     .ofType(CommonActions.FIND_GENDER_CODES)
@@ -40,12 +51,6 @@ export class CommonEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findProgramCodes())
     .map(codes => this.commonActions.findProgramCodesSuccess(codes));
-
-  // @Effect() findSupervisorCodes$ = this.actions$
-  //   .ofType(CommonActions.FIND_SUPERVISOR_CODES)
-  //   .map(action => action.payload)
-  //   .switchMap(() => this.commonService.findSupervisorCodes(code))
-  //   .map(codes => this.commonActions.findSupervisorCodesSuccess(codes));
 
    @Effect() findStudyMode$ = this.actions$
      .ofType(CommonActions.FIND_STUDY_MODES)
