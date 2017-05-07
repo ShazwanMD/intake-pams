@@ -6,7 +6,6 @@ import {MdDialogRef} from "@angular/material";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
-import {IntakeSession} from "../../intake-sessions/intake-session.interface";
 import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
 import {ProgramLevel} from "../../program-levels/program-level.interface";
 
@@ -39,7 +38,6 @@ export class IntakeTaskCreatorDialog implements OnInit {
       startDate: null,
       endDate: null,
       programLevel: <ProgramLevel>{},
-      intakeSession: <IntakeSession>{},
       graduateCentre: <GraduateCentre>{}
     });
   }
@@ -47,7 +45,6 @@ export class IntakeTaskCreatorDialog implements OnInit {
   save(intake: Intake, isValid: boolean) {
     console.log("intake: " + intake.description);
     console.log("program level: " + intake.programLevel.code);
-    console.log("session " + intake.intakeSession.code);
     console.log("graduate centre " + intake.graduateCentre.code);
     this.store.dispatch(this.actions.startIntakeTask(intake));
     this.dialog.close();
