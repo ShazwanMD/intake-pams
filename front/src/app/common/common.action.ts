@@ -62,6 +62,25 @@ export class CommonActions {
     };
   }
 
+  static FIND_BANK_CODES = '[Common] Find Bank Codes';
+
+  findBankCodes(): Action {
+    console.log("findBankCodes");
+    return {
+      type: CommonActions.FIND_BANK_CODES,
+    };
+  }
+
+  static FIND_BANK_CODES_SUCCESS = '[Common] Find Bank Codes Success';
+
+  findBankCodesSuccess(codes): Action {
+    console.log("findBankCodesSuccess");
+    return {
+      type: CommonActions.FIND_BANK_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
   static FIND_MARITAL_CODES = '[Common] Find Marital Codes';
 
   findMaritalCodes(): Action {

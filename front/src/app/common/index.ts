@@ -1,3 +1,4 @@
+
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -24,6 +25,8 @@ import {FacultyCodeSelectComponent} from "./faculty-codes/component/faculty-code
 import {GenderCodeSelectComponent} from "./gender-codes/component/gender-code-select.component";
 import { maritalCodeListReducer, MaritalCodeListState } from "./marital-codes/marital-code-list.reducer";
 import { MaritalCodeSelectComponent } from "./marital-codes/component/marital-code-select.component";
+import {BankCodeSelectComponent} from "./bank-codes/component/bank-code-select.component";
+import {BankCodeListState, bankCodeListReducer} from "./bank-codes/bank-code-list.reducer";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -33,6 +36,7 @@ export interface CommonModuleState {
   facultyCodes: FacultyCodeListState;
   genderCodes: GenderCodeListState;
   maritalCodes: MaritalCodeListState;
+  bankCodes: BankCodeListState;
 }
 ;
 
@@ -45,6 +49,7 @@ export const commonModuleReducers = {
   facultyCodes: facultyCodeListReducer,
   genderCodes: genderCodeListReducer,
   maritalCodes: maritalCodeListReducer,
+  bankCodes: bankCodeListReducer,
 };
 
 @NgModule({
@@ -62,6 +67,7 @@ export const commonModuleReducers = {
     FacultyCodeSelectComponent,
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
+    BankCodeSelectComponent,
   ],
   exports: [
     GraduateCentreSelectComponent,
@@ -70,6 +76,7 @@ export const commonModuleReducers = {
     FacultyCodeSelectComponent,
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
+    BankCodeSelectComponent,
   ],
 })
 export class CommonModule {
