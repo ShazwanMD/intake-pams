@@ -23,9 +23,9 @@ export class IntakeDraftTaskPanel implements OnInit {
   private STUDY_MODE_OFFERINGS = "policyModuleState.studyModeOfferings".split(".");
 
   @Input() intakeTask: IntakeTask;
-  programOfferings$: Observable<ProgramOffering[]>;
-  supervisorOfferings$: Observable<SupervisorOffering[]>;
-  studyModeOfferings$: Observable<StudyModeOffering[]>;
+  private programOfferings$: Observable<ProgramOffering[]>;
+  private supervisorOfferings$: Observable<SupervisorOffering[]>;
+  private studyModeOfferings$: Observable<StudyModeOffering[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
