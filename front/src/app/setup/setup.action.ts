@@ -122,4 +122,63 @@ export class SetupActions {
     };
   }
 
+  static FIND_RELIGION_CODES = '[Setup] Find Religion Codes';
+
+  findReligionCodes(): Action {
+    console.log("findReligionCodes");
+    return {
+      type: SetupActions.FIND_RELIGION_CODES,
+    };
+  }
+
+  static FIND_RELIGION_CODES_SUCCESS = '[Setup] Find Religion Codes Success';
+
+  findReligionCodesSuccess(codes): Action {
+    console.log("findReligionCodesSuccess");
+    return {
+      type: SetupActions.FIND_RELIGION_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static SAVE_RELIGION_CODE = '[Setup] Save Religion Code';
+
+  religionBankCode(code): Action {
+    console.log("saveReligionCode");
+    return {
+      type: SetupActions.SAVE_RELIGION_CODE,
+      payload:code
+    };
+  }
+
+  static SAVE_RELIGION_CODE_SUCCESS = '[Setup] Save Religion Code Success';
+
+  saveReligionCodeSuccess(message): Action {
+    console.log("saveReligionCodeSuccess");
+    return {
+      type: SetupActions.SAVE_RELIGION_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_RELIGION_CODE = '[Setup] Update Religion Code';
+
+  updateReligionCode(code): Action {
+    console.log("updateReligionCode");
+    return {
+      type: SetupActions.UPDATE_RELIGION_CODE,
+      payload:code
+    };
+  }
+
+  static UPDATE_RELIGION_CODE_SUCCESS = '[Setup] Update Religion Code  Success';
+
+  updateReligionCodeSuccess(message): Action {
+    console.log("updateReligionCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_RELIGION_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
 }

@@ -29,4 +29,10 @@ export class SetupEffects {
     .switchMap(payload => this.commonService.saveGraduateCentre(payload))
     .map(message => this.commonActions.saveGraduateCentreSuccess(message))
     .mergeMap(action => from([action, this.commonActions.findGraduateCentres()]));
+
+   @Effect() findReligionCode$ = this.actions$
+    .ofType(SetupActions.FIND_RELIGION_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findReligionCodes())
+    .map(codes => this.commonActions.findReligionCodesSuccess(codes))
 }

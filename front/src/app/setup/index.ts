@@ -1,3 +1,6 @@
+import { ReligionCode } from './../common/religion-codes/religion-code.interface';
+
+import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
 import { SetupPage } from './setup.page';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -8,6 +11,7 @@ import {CovalentCoreModule} from '@covalent/core';
 import {CommonModule} from "../common/index";
 import {BankCode} from "../common/bank-codes/bank-code.interface";
 import {bankCodeListReducer, BankCodeListState} from "./bank-codes/bank-code-list.reducer";
+import {religionCodeListReducer, ReligionCodeListState} from "./religion-codes/religion-code-list.reducer";
 import {SetupEffects} from "./setup.effect";
 import {EffectsModule} from "@ngrx/effects";
 import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
@@ -27,10 +31,13 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
   <SetupModuleState>{
     bankCodes: <BankCode[]>[],
     graduateCentres: <GraduateCentre[]>[],
+    religionCode: <ReligionCode[]>[],
+
   };
 export const setupModuleReducers = {
   bankCodes: bankCodeListReducer,
   graduateCentres: graduateCentreListReducer,
+  religionCodes: religionCodeListReducer,
 };
 
 
@@ -50,6 +57,7 @@ export const setupModuleReducers = {
     SetupPage,
     BankCodeListPage,
     GraduateCentreListPage,
+    ReligionCodeListPage,
 
     // dialog
     BankCodeCreatorDialog,
