@@ -1,4 +1,4 @@
-import { ReligionCode } from './../../common/religion-codes/religion-code.interfaces';
+import { ReligionCode } from "./../../common/religion-codes/religion-code.interface";
 import {Action} from '@ngrx/store';
 import {SetupActions} from "../setup.action";
 
