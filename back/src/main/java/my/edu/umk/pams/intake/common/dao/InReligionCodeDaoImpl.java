@@ -37,7 +37,7 @@ public class InReligionCodeDaoImpl extends GenericDaoSupport<Long, InReligionCod
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from InReligionCode s where " +
                 "(upper(s.code) like upper(:filter) " +
-                "or upper(s.descriptionMs) like upper(:filter)) " +
+                "or upper(s.descriptionMs) like upper(:filter) " +
                 "or upper(s.descriptionEn) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
@@ -47,7 +47,6 @@ public class InReligionCodeDaoImpl extends GenericDaoSupport<Long, InReligionCod
         query.setCacheable(true);
         
         return (List<InReligionCode>) query.list();
-
     }
 
     @Override
