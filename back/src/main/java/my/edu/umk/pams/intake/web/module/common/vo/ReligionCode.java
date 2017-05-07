@@ -12,6 +12,8 @@ import java.io.IOException;
 public class ReligionCode extends MetaObject {
     private String code;
     private String name;
+    private String descriptionMs;
+    private String descriptionEn;
 
     public String getCode() {
         return code;
@@ -28,6 +30,25 @@ public class ReligionCode extends MetaObject {
     public void setName(String name) {
         this.name = name;
     }
+    
+
+    public String getDescriptionMs() {
+        return descriptionMs;
+    }
+
+    public void setDescriptionMs(String descriptionMs) {
+        this.descriptionMs = descriptionMs;
+    }
+
+    public String getDescriptionEn() {
+        return descriptionEn;
+    }
+
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+    
+    
 
     @JsonCreator
     public static ReligionCode create(String jsonString) {
