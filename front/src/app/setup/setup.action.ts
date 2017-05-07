@@ -143,7 +143,7 @@ export class SetupActions {
 
   static SAVE_RELIGION_CODE = '[Setup] Save Religion Code';
 
-  religionBankCode(code): Action {
+  saveReligionCode(code): Action {
     console.log("saveReligionCode");
     return {
       type: SetupActions.SAVE_RELIGION_CODE,
