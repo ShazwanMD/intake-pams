@@ -8,7 +8,6 @@ import {IntakeTask} from "../app/policy/intakes/intake-task.interface";
 import {ProgramOffering} from "../app/policy/intakes/program-offering.interface";
 import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.interface";
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
-import {IntakeSession} from "../app/policy/intake-sessions/intake-session.interface";
 import {ProgramLevel} from "../app/policy/program-levels/program-level.interface";
 
 @Injectable()
@@ -22,11 +21,7 @@ export class PolicyService {
   // INTAKE SESSION
   // ====================================================================================================
 
-  findIntakeSessions(): Observable<IntakeSession[]> {
-    console.log("findIntakeSessions");
-    return this.http.get(environment.endpoint + '/api/policy/intakeSessions')
-      .map((res: Response) => <IntakeSession[]>res.json());
-  }
+
 
   // ====================================================================================================
   // PROGRAM LEVEL
