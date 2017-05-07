@@ -18,6 +18,10 @@ public class InReligionCodeImpl implements InReligionCode {
     @NotNull
     @Column(name = "CODE", unique = true)
     private String code;
+    
+    @NotNull
+    @Column(name = "NAME", nullable = false)
+    private String name;
 
     @NotNull
     @Column(name = "DESCRIPTION_MS")
@@ -47,6 +51,16 @@ public class InReligionCodeImpl implements InReligionCode {
     @Override
     public void setCode(String code) {
         this.code = code;
+    }
+    
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String description) {
+        this.name = description;
     }
 
     @Override

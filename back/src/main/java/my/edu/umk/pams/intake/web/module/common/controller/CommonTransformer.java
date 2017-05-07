@@ -196,4 +196,23 @@ public class CommonTransformer {
          .collect(Collectors.toList());
          return vos;
          }
+
+  //====================================================================================================
+  // IN_RELIGION_CODE
+  //====================================================================================================
+
+	public ReligionCode toReligionCodeVo(InReligionCode e) {
+		ReligionCode vo = new ReligionCode();
+		vo.setId(e.getId());
+		vo.setCode(e.getCode());
+		vo.setName(e.getName());
+		return vo;
+	}
+
+    public List<ReligionCode> toReligionCodeVos(List<InReligionCode> e) {
+        List<ReligionCode> vos = e.stream()
+                .map((e1) -> toReligionCodeVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
 }
