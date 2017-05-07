@@ -12,10 +12,5 @@ export class IntakeSessionEffects {
               private intakeSessionActions: IntakeSessionActions,
               private policyService: PolicyService) {
   }
-
-  @Effect() findIntakeSessions$ = this.actions$
-    .ofType(IntakeSessionActions.FIND_INTAKE_SESSIONS)
-    .map(action => action.payload)
-    .switchMap(() => this.policyService.findIntakeSessions())
-    .map(sessions => this.intakeSessionActions.findIntakeSessionsSuccess(sessions));
 }
+
