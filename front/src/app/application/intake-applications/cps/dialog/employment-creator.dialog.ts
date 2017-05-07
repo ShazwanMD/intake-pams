@@ -5,14 +5,15 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../../index";
 import {IntakeApplication} from "../../intake-application.interface";
+import {MdDialogRef} from "@angular/material";
 
 
 @Component({
-  selector: 'pams-intake-application',
-  templateUrl: './working-experience-creator.dialog.html',
+  selector: 'pams-employment-creator',
+  templateUrl: './employment-creator.dialog.html',
 })
 
-export class IntakeApplicationWorkingExperience implements OnInit {
+export class EmploymentCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
 
@@ -20,7 +21,8 @@ export class IntakeApplicationWorkingExperience implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private store: Store<ApplicationModuleState>) {
+              private store: Store<ApplicationModuleState>,
+              private dialog: MdDialogRef<EmploymentCreatorDialog>) {
   }
 
   ngOnInit(): void {
