@@ -4,19 +4,13 @@ import {IntakeActions} from "./intake.action";
 import {from} from "rxjs/observable/from";
 import {PolicyService} from "../../../services/policy.service";
 import {switchMap} from "rxjs/operator/switchMap";
-import {PolicyModuleState} from "../index";
-import {Store} from "@ngrx/store";
 
 
 @Injectable()
 export class IntakeEffects {
-
-  private INTAKE = "policyModuleState.intake".split(".");
-
   constructor(private actions$: Actions,
               private intakeActions: IntakeActions,
-              private policyService: PolicyService,
-              private store$: Store<PolicyModuleState>) {
+              private policyService: PolicyService) {
   }
 
   @Effect() findAssignedIntakeTasks$ = this.actions$
@@ -44,7 +38,7 @@ export class IntakeEffects {
     .mergeMap(action => from([action,
       this.intakeActions.findProgramOfferings(action.payload),
       this.intakeActions.findSupervisorOfferings(action.payload),
-      this.intakeActions.findStudyModeOfferings(action.payload)
+      // this.intakeActions.findStudyModeOfferings(action.payload)
     ]));
 
   @Effect() findProgramOfferings$ = this.actions$
@@ -74,14 +68,23 @@ export class IntakeEffects {
   @Effect() completeIntakeTask$ = this.actions$
     .ofType(IntakeActions.COMPLETE_INTAKE_TASK)
     .map(action => action.payload);
+  // todo
+  // .switchMap(intake => this.policyService.startIntakeTask(intake))
+  // .map(task => this.intakeActions.startIntakeTaskSuccess(task));
 
   @Effect() assignIntakeTask$ = this.actions$
     .ofType(IntakeActions.ASSIGN_INTAKE_TASK)
     .map(action => action.payload);
+  // todo
+  // .switchMap(intake => this.policyService.startIntakeTask(intake))
+  // .map(task => this.intakeActions.startIntakeTaskSuccess(task));
 
   @Effect() releaseIntakeTask$ = this.actions$
     .ofType(IntakeActions.RELEASE_INTAKE_TASK)
     .map(action => action.payload);
+  // todo
+  // .switchMap(intake => this.policyService.startIntakeTask(intake))
+  // .map(task => this.intakeActions.startIntakeTaskSuccess(task));
 
   @Effect() updateIntake$ = this.actions$
     .ofType(IntakeActions.UPDATE_INTAKE)
@@ -93,20 +96,5 @@ export class IntakeEffects {
     .ofType(IntakeActions.ADD_PROGRAM_OFFERING)
     .map(action => action.payload)
     .switchMap(payload => this.policyService.addProgramOffering(payload.intake, payload.programOffering))
-    .map(message => this.intakeActions.addProgramOfferingSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE))
-    .map(state => state[1])
-    .map(intake => this.intakeActions.findProgramOfferings(intake));
-
-
-  @Effect() addSupervisorOffering$ = this.actions$
-    .ofType(IntakeActions.ADD_SUPERVISOR_OFFERING)
-    .map(action => action.payload)
-    .switchMap(payload => this.policyService.addSupervisorOffering(payload.intake, payload.supervisorOffering))
-    .map(message => this.intakeActions.addSupervisorOfferingSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE))
-    .map(state => state[1])
-    .map(intake => this.intakeActions.findSupervisorOfferings(intake));
-
-
+    .map(message => this.intakeActions.addProgramOfferingSuccess(message));
 }

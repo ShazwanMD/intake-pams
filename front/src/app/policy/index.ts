@@ -30,7 +30,9 @@ import {IntakeSessionSubModule} from "./intake-sessions/index";
 import {ProgramLevelSubModule} from "./program-levels/index";
 import {ProgramLevel} from "./program-levels/program-level.interface";
 import {ProgramLevelListState, programLevelListReducer} from "./program-levels/program-level.reducer";
-import {programOfferingListReducer, ProgramOfferingListState} from "./intakes/program-offering-list.reducer";
+import {ProgramOfferingCreatorDialog} from "./programs/dialog/program-offering-creator.dialog";
+import {ProgramOfferingCenterPage} from "./programs/program-offering-center.page";
+
 
 export interface PolicyModuleState {
   intakeSessions: IntakeSessionListState;
@@ -38,7 +40,6 @@ export interface PolicyModuleState {
   intakeTasks: IntakeTaskListState;
   intakeTask: IntakeTaskState;
   intake: IntakeState;
-  programOfferings: ProgramOfferingListState;
   supervisorOfferings: SupervisorOfferingListState;
   studyModeOfferings: StudyModeOfferingListState;
 };
@@ -62,7 +63,6 @@ export const policyModuleReducers = {
   intakeTasks: intakeTaskListReducer,
   intakeTask: intakeTaskReducer,
   intake: intakeReducer,
-  programOfferings: programOfferingListReducer,
   supervisorOfferings: supervisorOfferingListReducer,
   studyModeOfferings: studyModeOfferingListReducer,
 };
@@ -82,12 +82,20 @@ export const policyModuleReducers = {
   declarations: [
     // page
     PolicyPage,
+    ProgramOfferingCenterPage,
+
+    // dialog
+    ProgramOfferingCreatorDialog, 
+
 
   ],
-
-  exports: [
-  ProgramModule,
-   IntakeSubModule,
+  
+  exports: [],
+  entryComponents: [
+   
+    ProgramOfferingCreatorDialog,
+    ProgramModule,
+    IntakeSubModule,
   ],
 
 })

@@ -8,6 +8,11 @@ public interface InReligionCode extends InMetaObject {
 
     void setCode(String code);
     
+    String getName();
+
+    void setName(String name);
+    
+
     String getDescriptionMs();
 
     void setDescriptionMs(String descriptionMs);

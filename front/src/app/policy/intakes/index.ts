@@ -5,6 +5,7 @@ import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {environment} from '../../../environments/environment';
 
 import {CovalentCoreModule} from '@covalent/core';
+
 import {EffectsModule} from "@ngrx/effects";
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';

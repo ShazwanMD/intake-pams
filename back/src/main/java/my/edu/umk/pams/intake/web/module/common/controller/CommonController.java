@@ -494,6 +494,26 @@ public class CommonController {
         commonService.saveStateCode(stateCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/studyModes/{mode}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStateCode(@PathVariable String mode, @RequestBody StateCode vo) {
+        dummyLogin();
+
+        InStateCode stateCode = new InStateCodeImpl();
+        stateCode.setCode(vo.getCode());
+        stateCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveStateCode(stateCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyModes/{mode}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeStateCode(@PathVariable String mode) {
+        dummyLogin();
+
+        InStateCode stateCode = commonService.findStateCodeByCode(mode);
+        commonService.removeStateCode(stateCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 }
 
 	

@@ -11,6 +11,7 @@ import java.io.IOException;
  */
 public class ReligionCode extends MetaObject {
     private String code;
+    private String name;
     private String descriptionMs;
     private String descriptionEn;
 
@@ -21,6 +22,15 @@ public class ReligionCode extends MetaObject {
     public void setCode(String code) {
         this.code = code;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 
     public String getDescriptionMs() {
         return descriptionMs;

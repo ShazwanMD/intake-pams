@@ -10,6 +10,7 @@ import {PolicyModuleState} from "../../index";
 @Component({
   selector: 'pams-intake-session-select',
   templateUrl: './intake-session-select.component.html',
+  styleUrls: ['./intake-session-select.scss'],
 })
 export class IntakeSessionSelectComponent implements OnInit {
 

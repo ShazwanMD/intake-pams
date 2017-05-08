@@ -1,5 +1,8 @@
 import {FlowState} from "../../core/flow-state.enum";
-export interface IntakeSessionTask {
+import {Program} from "./program.interface";
+
+export interface ProgramOfferingTask {
+  
   taskId:string;
   taskName:string;
   candidate:string;
@@ -12,5 +15,6 @@ export interface IntakeSessionTask {
   startDate: number;
   endDate: number;
   candidateCount?:number;
+  program: Program;
   flowState:FlowState;
 }

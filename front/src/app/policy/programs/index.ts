@@ -13,8 +13,7 @@ import {ProgramActions} from "./program.action";
 import {ProgramOfferingCenterPage} from "./program-offering-center.page";
 import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
-
-
+import {ProgramOfferingCreatorDialog} from "./dialog/program-offering-creator.dialog";
 
 @NgModule({
   imports: [
@@ -28,9 +27,16 @@ import {CommonActions} from "../../common/common.action";
   declarations: [
     // page
     ProgramOfferingCenterPage,
+
+    // dialogs
+    ProgramOfferingCreatorDialog,
+    
+],
+   exports: [],
+   entryComponents: [
+   ProgramOfferingCreatorDialog,
+  
   ],
-
-
 
 })
 export class ProgramModule {

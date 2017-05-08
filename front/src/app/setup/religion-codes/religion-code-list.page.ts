@@ -15,8 +15,7 @@ export class ReligionCodeListPage implements OnInit {
   private religionCodes$:Observable<ReligionCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'descriptionMs', label: 'DescriptionMs'},
-    {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'name', label: 'Name'},
     {name: 'action', label: ''}
   ];
 

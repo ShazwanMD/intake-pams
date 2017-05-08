@@ -1,9 +1,3 @@
-import { ReligionCodeCreatorDialog } from './religion-codes/dialog/religion-code-creator';
-import { MaritalCodeCreatorDialog } from './marital-codes/dialog/marital-code-creator';
-import { BankCode } from './../common/bank-codes/bank-code.interface';
-import { MaritalCodeListPage } from './marital-codes/marital-code-list.page';
-import { MaritalCode } from './../common/marital-codes/marital-code.interface';
-
 import { ReligionCode } from './../common/religion-codes/religion-code.interface';
 
 import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
@@ -12,12 +6,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
 import {NgModule, ModuleWithProviders} from "@angular/core";
-
 import {CovalentCoreModule} from '@covalent/core';
 import {CommonModule} from "../common/index";
-
+import {BankCode} from "../common/bank-codes/bank-code.interface";
 import {bankCodeListReducer, BankCodeListState} from "./bank-codes/bank-code-list.reducer";
-import {maritalCodeListReducer, MaritalCodeListState} from "./marital-codes/marital-code-list.reducer";
 import {religionCodeListReducer, ReligionCodeListState} from "./religion-codes/religion-code-list.reducer";
 import {SetupEffects} from "./setup.effect";
 import {EffectsModule} from "@ngrx/effects";
@@ -29,31 +21,22 @@ import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.pa
 import {GraduateCentreCreatorDialog} from "./graduate-centres/dialog/graduate-centre-creator.dialog";
 import {BankCodeCreatorDialog} from "./bank-codes/dialog/bank-code-creator.dialog";
 
-
 export interface SetupModuleState {
-  maritalCodes: MaritalCodeListState;
   bankCodes: BankCodeListState;
   graduateCentres: GraduateCentreListState;
-  religionCodes : ReligionCodeListState;
-  
-
 };
 
 export const INITIAL_SETUP_STATE: SetupModuleState =
   <SetupModuleState>{
     bankCodes: <BankCode[]>[],
     graduateCentres: <GraduateCentre[]>[],
-    religionCodes: <ReligionCode[]>[],
-   // maritalCodes: <BankCode[]>[],
+    religionCode: <ReligionCode[]>[],
 
   };
-
-
 export const setupModuleReducers = {
   bankCodes: bankCodeListReducer,
   graduateCentres: graduateCentreListReducer,
   religionCodes: religionCodeListReducer,
-  maritalCodes: maritalCodeListReducer,
 };
 
 
@@ -74,20 +57,15 @@ export const setupModuleReducers = {
     BankCodeListPage,
     GraduateCentreListPage,
     ReligionCodeListPage,
-    MaritalCodeListPage,
 
     // dialog
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
-    MaritalCodeCreatorDialog,
-    ReligionCodeCreatorDialog,
   ],
   exports: [],
   entryComponents: [
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
-    ReligionCodeCreatorDialog,
-    MaritalCodeCreatorDialog,
   ],
 
 })
