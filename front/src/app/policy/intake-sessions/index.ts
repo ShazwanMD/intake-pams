@@ -15,6 +15,7 @@ import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
 import {IntakeSessionEffects} from "./intake-session.effect";
 import {IntakeSessionCenterPage} from "./intake-session-center.page";
 import {IntakeSessionSelectComponent} from "./component/intake-session-select.component";
+import { IntakeSessionTaskCreatorDialog } from "./dialog/intake-session-task-creator.dialog";
 
 
 @NgModule({
@@ -33,11 +34,13 @@ import {IntakeSessionSelectComponent} from "./component/intake-session-select.co
     // components
     // panels
     // dialogs
+    IntakeSessionTaskCreatorDialog,
   ],
   exports: [
     IntakeSessionSelectComponent,
   ],
   entryComponents: [
+     IntakeSessionTaskCreatorDialog,
   ],
 
 })
