@@ -3,14 +3,19 @@ import {Effect, Actions} from '@ngrx/effects';
 import {IntakeActions} from "./intake.action";
 import {from} from "rxjs/observable/from";
 import {PolicyService} from "../../../services/policy.service";
-import {switchMap} from "rxjs/operator/switchMap";
+import {PolicyModuleState} from "../index";
+import {Store} from "@ngrx/store";
 
 
 @Injectable()
 export class IntakeEffects {
+
+  private INTAKE = "policyModuleState.intake".split(".");
+
   constructor(private actions$: Actions,
               private intakeActions: IntakeActions,
-              private policyService: PolicyService) {
+              private policyService: PolicyService,
+              private store$: Store<PolicyModuleState>) {
   }
 
   @Effect() findAssignedIntakeTasks$ = this.actions$
@@ -83,8 +88,6 @@ export class IntakeEffects {
     .ofType(IntakeActions.RELEASE_INTAKE_TASK)
     .map(action => action.payload);
   // todo
-  // .switchMap(intake => this.policyService.startIntakeTask(intake))
-  // .map(task => this.intakeActions.startIntakeTaskSuccess(task));
 
   @Effect() updateIntake$ = this.actions$
     .ofType(IntakeActions.UPDATE_INTAKE)
@@ -96,5 +99,26 @@ export class IntakeEffects {
     .ofType(IntakeActions.ADD_PROGRAM_OFFERING)
     .map(action => action.payload)
     .switchMap(payload => this.policyService.addProgramOffering(payload.intake, payload.programOffering))
-    .map(message => this.intakeActions.addProgramOfferingSuccess(message));
+    .map(message => this.intakeActions.addProgramOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state => state[1])
+    .map(intake => this.intakeActions.findProgramOfferings(intake));
+
+  @Effect() addStudyModeOffering$ = this.actions$
+    .ofType(IntakeActions.ADD_STUDY_MODE_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.policyService.addStudyModeOffering(payload.intake, payload.studyModeOffering))
+    .map(message => this.intakeActions.addStudyModeOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state => state[1])
+    .map(intake => this.intakeActions.findStudyModeOfferings(intake));
+
+  @Effect() addSupervisorOffering$ = this.actions$
+    .ofType(IntakeActions.ADD_SUPERVISOR_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.policyService.addSupervisorOffering(payload.intake, payload.supervisorOffering))
+    .map(message => this.intakeActions.addSupervisorOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state => state[1])
+    .map(intake => this.intakeActions.findSupervisorOfferings(intake));
 }

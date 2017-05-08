@@ -177,7 +177,7 @@ public class PolicyController {
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakes/{referenceNo}/programOfferings/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/intakes/{referenceNo}/programOfferings/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteProgramOfferings(@PathVariable String referenceNo,
                                                           @PathVariable Long id) {
         dummyLogin();
@@ -203,7 +203,7 @@ public class PolicyController {
         dummyLogin();
 
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        InSupervisorCode supervisorCode = commonService.findSupervisorCodeById(vo.getId());
+        InSupervisorCode supervisorCode = commonService.findSupervisorCodeById(vo.getSupervisorCode().getId());
         InSupervisorOffering offering = new InSupervisorOfferingImpl();
         offering.setSupervisorCode(supervisorCode);
         policyService.addSupervisorOffering(intake, offering);
@@ -236,14 +236,14 @@ public class PolicyController {
         dummyLogin();
 
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        InStudyMode studyMode = commonService.findStudyModeById(vo.getId());
+        InStudyMode studyMode = commonService.findStudyModeById(vo.getStudyMode().getId());
         InStudyModeOffering offering = new InStudyModeOfferingImpl();
         offering.setStudyMode(studyMode);
         policyService.addStudyModeOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteStudyModeOfferings(@PathVariable String referenceNo,
                                                             @PathVariable Long id) {
         dummyLogin();

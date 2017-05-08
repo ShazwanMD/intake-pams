@@ -312,10 +312,10 @@ export class IntakeActions {
 
   static ADD_SUPERVISOR_OFFERING_SUCCESS = '[Intake] Add Supervisor Offering Success';
 
-  addSupervisorOfferingSuccess(intake:Intake, supervisorOffering: SupervisorOffering) {
+  addSupervisorOfferingSuccess(message) {
     return {
       type: IntakeActions.ADD_SUPERVISOR_OFFERING_SUCCESS,
-      payload:intake
+      payload:message
     };
   }
 
@@ -347,10 +347,10 @@ export class IntakeActions {
 
   static ADD_STUDY_MODE_OFFERING_SUCCESS = '[Intake] Add StudyMode Offering Success';
 
-  addStudyModeOfferingSuccess(intake:Intake, studyModeOffering: StudyModeOffering) {
+  addStudyModeOfferingSuccess(message) {
     return {
       type: IntakeActions.ADD_STUDY_MODE_OFFERING_SUCCESS,
-      payload:intake
+      payload:message
     };
   }
 

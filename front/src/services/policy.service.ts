@@ -61,8 +61,7 @@ export class PolicyService {
   }
 
   findIntakeByReferenceNo(referenceNo: string): Observable<Intake> {
-    let encoded = referenceNo.replace(/\//g, '%252F');
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded)
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + referenceNo)
       .map((res: Response) => <Intake>res.json());
   }
 
@@ -73,22 +72,19 @@ export class PolicyService {
 
   findProgramOfferings(intake: Intake): Observable<ProgramOffering[]> {
     console.log("findProgramOfferings");
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/programOfferings")
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/programOfferings")
       .map((res: Response) => <ProgramOffering[]>res.json());
   }
 
   findSupervisorOfferings(intake: Intake): Observable<SupervisorOffering[]> {
     console.log("findSupervisorOfferings");
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/supervisorOfferings")
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/supervisorOfferings")
       .map((res: Response) => <SupervisorOffering[]>res.json());
   }
 
   findStudyModeOfferings(intake: Intake): Observable<StudyModeOffering[]> {
     console.log("findStudyModeOfferings");
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + encoded + "/studyModeOfferings")
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/studyModeOfferings")
       .map((res: Response) => <StudyModeOffering[]>res.json());
   }
 
