@@ -13,6 +13,7 @@ public class StateCode  extends MetaObject{
 
     private String code;
     private String descriptionMs;
+    private String descriptionEn;
     
     
     public String getCode() {
@@ -30,6 +31,15 @@ public class StateCode  extends MetaObject{
     public void setDescriptionMs(String descriptionMs) {
         this.descriptionMs = descriptionMs;
     }
+    
+    public String getDescriptionEn() {
+        return descriptionEn;
+    }
+
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
+    }
+
 
     @JsonCreator
     public static StateCode create(String jsonString) {
