@@ -143,7 +143,7 @@ export class SetupActions {
 
   static SAVE_RELIGION_CODE = '[Setup] Save Religion Code';
 
-  religionBankCode(code): Action {
+  saveReligionCode(code): Action {
     console.log("saveReligionCode");
     return {
       type: SetupActions.SAVE_RELIGION_CODE,
@@ -177,6 +177,65 @@ export class SetupActions {
     console.log("updateReligionCodeSuccess");
     return {
       type: SetupActions.UPDATE_RELIGION_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static FIND_MARITAL_CODES = '[Setup] Find Marital Codes';
+
+  findMaritalCodes(): Action {
+    console.log("findMaritalCodes");
+    return {
+      type: SetupActions.FIND_MARITAL_CODES,
+    };
+  }
+
+  static FIND_MARITAL_CODES_SUCCESS = '[Setup] Find Marital Codes Success';
+
+  findMaritalCodesSuccess(codes): Action {
+    console.log("findMaritalCodesSuccess");
+    return {
+      type: SetupActions.FIND_MARITAL_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static SAVE_MARITAL_CODE = '[Setup] Save Marital Code';
+
+  saveMaritalCode(code): Action {
+    console.log("saveMaritalCode");
+    return {
+      type: SetupActions.SAVE_MARITAL_CODE,
+      payload:code
+    };
+  }
+
+  static SAVE_MARITAL_CODE_SUCCESS = '[Setup] Save Marital Code Success';
+
+  saveMaritalCodeSuccess(message): Action {
+    console.log("saveMaritalCodeSuccess");
+    return {
+      type: SetupActions.SAVE_MARITAL_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_MARITAL_CODE = '[Setup] Update Marital Code';
+
+  updateMaritalCode(code): Action {
+    console.log("updateMaritalCode");
+    return {
+      type: SetupActions.UPDATE_MARITAL_CODE,
+      payload:code
+    };
+  }
+
+  static UPDATE_MARITAL_CODE_SUCCESS = '[Setup] Update Marital Code  Success';
+
+  updateMaritalCodeSuccess(message): Action {
+    console.log("updateMaritalCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_MARITAL_CODE_SUCCESS,
       payload: message
     };
   }
