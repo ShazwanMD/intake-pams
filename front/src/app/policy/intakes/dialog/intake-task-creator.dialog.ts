@@ -48,7 +48,8 @@ export class IntakeTaskCreatorDialog implements OnInit {
     console.log("intake: " + intake.description);
     console.log("program level: " + intake.programLevel.code);
     console.log("session " + intake.intakeSession.code);
-    console.log("graduate centre " + intake.graduateCentre.code);
+    console.log("startDate " + intake.startDate);
+    console.log("endDate " + intake.endDate);
     this.store.dispatch(this.actions.startIntakeTask(intake));
     this.dialog.close();
   }
