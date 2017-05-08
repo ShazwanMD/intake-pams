@@ -475,45 +475,6 @@ public class CommonController {
 				commonTransformer.toReligionCodeVo(commonService.findReligionCodeByCode(code)), HttpStatus.OK);
 	}
 	
-	//====================================================================================================
-    // STATE CODES
-    //====================================================================================================
-
-    @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
-    public ResponseEntity<StateCode> findStateCode(@PathVariable String code) {
-        return new ResponseEntity<StateCode>(commonTransformer.toStateCodeVo(commonService.findStateCodeByCode(code)), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/stateCodes", method = RequestMethod.POST)
-    public ResponseEntity<String> saveStateCode(@RequestBody StateCode vo) {
-        dummyLogin();
-
-        InStateCode stateCode = new InStateCodeImpl();
-        stateCode.setCode(vo.getCode());
-        stateCode.setDescriptionMs(vo.getDescriptionMs());
-        commonService.saveStateCode(stateCode);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/studyModes/{mode}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateStateCode(@PathVariable String mode, @RequestBody StateCode vo) {
-        dummyLogin();
-
-        InStateCode stateCode = new InStateCodeImpl();
-        stateCode.setCode(vo.getCode());
-        stateCode.setDescriptionMs(vo.getDescriptionMs());
-        commonService.saveStateCode(stateCode);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/studyModes/{mode}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> removeStateCode(@PathVariable String mode) {
-        dummyLogin();
-
-        InStateCode stateCode = commonService.findStateCodeByCode(mode);
-        commonService.removeStateCode(stateCode);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
 }
 
 	
