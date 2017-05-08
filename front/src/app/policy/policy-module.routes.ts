@@ -7,7 +7,6 @@ import {ProgramOfferingCenterPage} from "./programs/program-offering-center.page
 export const PolicyModuleRoutes: Routes = [
   {path: 'policy', component: PolicyPage},
    {path: 'policy/programs', component: ProgramOfferingCenterPage},
- 
   ...IntakeRoutes,
    ...ProgramRoutes,
  
