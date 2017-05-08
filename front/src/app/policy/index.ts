@@ -30,8 +30,6 @@ import {IntakeSessionSubModule} from "./intake-sessions/index";
 import {ProgramLevelSubModule} from "./program-levels/index";
 import {ProgramLevel} from "./program-levels/program-level.interface";
 import {ProgramLevelListState, programLevelListReducer} from "./program-levels/program-level.reducer";
-import {ProgramOfferingCreatorDialog} from "./programs/dialog/program-offering-creator.dialog";
-import {ProgramOfferingCenterPage} from "./programs/program-offering-center.page";
 
 
 export interface PolicyModuleState {
@@ -82,20 +80,12 @@ export const policyModuleReducers = {
   declarations: [
     // page
     PolicyPage,
-    ProgramOfferingCenterPage,
-
-    // dialog
-    ProgramOfferingCreatorDialog, 
 
 
   ],
   
   exports: [],
   entryComponents: [
-   
-    ProgramOfferingCreatorDialog,
-    ProgramModule,
-    IntakeSubModule,
   ],
 
 })
