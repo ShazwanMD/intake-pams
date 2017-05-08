@@ -6,7 +6,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
 import {NgModule, ModuleWithProviders} from "@angular/core";
-
 import {CovalentCoreModule} from '@covalent/core';
 import {CommonModule} from "../common/index";
 import {BankCode} from "../common/bank-codes/bank-code.interface";

@@ -60,6 +60,26 @@ static FIND_PROGRAM_OFFERING_BY_NAME = '[Program] Find Program Offering';
     };
   }
 
+ static SAVE_PROGRAM_OFFERING = '[Setup] Save Program Offering';
+
+  saveProgramOffering(code): Action {
+    console.log("saveProgramOffering");
+    return {
+      type: ProgramActions.SAVE_PROGRAM_OFFERING,
+      payload:code
+    };
+  }
+
+  static SAVE_PROGRAM_OFFERING_SUCCESS = '[Setup] Save Program Offering  Success';
+
+  saveProgramOfferingSuccess(message): Action {
+    console.log("saveProgramOfferingSuccess");
+    return {
+      type: ProgramActions.SAVE_PROGRAM_OFFERING_SUCCESS,
+      payload: message
+    };
+  }
+
   static DELETE_PROGRAM_OFFERING = '[Program] DELETE Program Offering';
 
   deleteProgramOffering(program:Program, programOffering: ProgramOffering) {
