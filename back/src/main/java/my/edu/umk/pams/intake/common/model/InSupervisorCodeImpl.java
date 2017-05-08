@@ -18,6 +18,10 @@ public class InSupervisorCodeImpl implements InSupervisorCode {
     @NotNull
     @Column(name = "CODE", unique = true, nullable = false)
     private String code;
+    
+    @NotNull
+    @Column(name = "NAME", unique = true, nullable = false)
+    private String name;
 
     @NotNull
     @Column(name = "DESCRIPTION_MS", nullable = false)
@@ -50,6 +54,16 @@ public class InSupervisorCodeImpl implements InSupervisorCode {
     }
 
     @Override
+    public String getName() {
+		return name;
+	}
+
+    @Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
     public String getDescriptionMs() {
         return descriptionMs;
     }

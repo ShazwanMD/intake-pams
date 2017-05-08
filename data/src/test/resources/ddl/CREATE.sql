@@ -1119,6 +1119,7 @@ create table IN_SPM_RSLT (
 create table IN_SPVR_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
+  name varchar(255) not null,
   DESCRIPTION_EN varchar(255) not null,
   DESCRIPTION_MS varchar(255) not null,
   C_TS timestamp,
