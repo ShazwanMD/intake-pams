@@ -11,7 +11,6 @@ import {IdentityService} from '../../services';
 import {PolicyPage} from "./policy.page";
 import {PolicyService} from "../../services/policy.service";
 import {IntakeSubModule} from "./intakes/index";
-import {ProgramModule} from "./programs/index";
 import {IntakeState, intakeReducer} from "./intakes/intake.reducer";
 import {IntakeTaskListState, intakeTaskListReducer} from "./intakes/intake-task-list.reducer";
 import {IntakeTaskState, intakeTaskReducer} from "./intakes/intake-task.reducer";
@@ -19,7 +18,6 @@ import {SupervisorOfferingListState, supervisorOfferingListReducer} from "./inta
 import {StudyModeOfferingListState, studyModeOfferingListReducer} from "./intakes/study-mode-offering-list.reducer";
 import {IntakeTask} from "./intakes/intake-task.interface";
 import {Intake} from "./intakes/intake.interface";
-import {Program} from "./programs/program.interface";
 // import {IntakeSessionTask} from "./intake-sessions/intake-session-task.interface";
 import {ProgramOffering} from "./intakes/program-offering.interface";
 import {SupervisorOffering} from "./intakes/supervisor-offering.interface";
@@ -49,7 +47,6 @@ export const INITIAL_POLICY_STATE: PolicyModuleState =
     intakeTasks: <IntakeTask[]>[],
     intakeTask: <IntakeTask>{},
     intake: <Intake>{},
-    program: <Program>{},
     programOfferings: <ProgramOffering[]>[],
     supervisorOfferings: <SupervisorOffering[]>[],
     studyModeOfferings: <StudyModeOffering[]>[],
@@ -74,7 +71,6 @@ export const policyModuleReducers = {
     ProgramLevelSubModule.forRoot(),
     IntakeSessionSubModule.forRoot(),
     IntakeSubModule.forRoot(),
-    ProgramModule.forRoot(),
 
   ],
   declarations: [
