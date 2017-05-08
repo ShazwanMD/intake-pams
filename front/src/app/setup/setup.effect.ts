@@ -35,4 +35,10 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findReligionCodes())
     .map(codes => this.commonActions.findReligionCodesSuccess(codes))
+
+    @Effect() findMaritalCode$ = this.actions$
+    .ofType(SetupActions.FIND_MARITAL_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findMaritalCodes())
+    .map(codes => this.commonActions.findMaritalCodesSuccess(codes))
 }
