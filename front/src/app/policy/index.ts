@@ -20,7 +20,7 @@ import {StudyModeOfferingListState, studyModeOfferingListReducer} from "./intake
 import {IntakeTask} from "./intakes/intake-task.interface";
 import {Intake} from "./intakes/intake.interface";
 import {Program} from "./programs/program.interface";
-import {IntakeSessionTask} from "./intake-sessions/intake-session-task.interface";
+// import {IntakeSessionTask} from "./intake-sessions/intake-session-task.interface";
 import {ProgramOffering} from "./intakes/program-offering.interface";
 import {SupervisorOffering} from "./intakes/supervisor-offering.interface";
 import {StudyModeOffering} from "./intakes/study-mode-offering.interface";
