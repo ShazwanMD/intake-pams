@@ -21,7 +21,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URLDecoder;
 import java.util.List;
 import java.util.UUID;
 
@@ -87,15 +86,13 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}", method = RequestMethod.GET)
     public ResponseEntity<Intake> findIntakeByReferenceNo(@PathVariable String referenceNo) {
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}", method = RequestMethod.PUT)
     public ResponseEntity<Intake> updateIntake(@PathVariable String referenceNo, @RequestBody Intake vo) {
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
     }
 
@@ -151,8 +148,7 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<ProgramOffering>> findProgramOfferings(@PathVariable String referenceNo) {
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<List<ProgramOffering>>(policyTransformer
                 .toProgramOfferingVos(policyService.findProgramOfferings(intake)), HttpStatus.OK);
     }
@@ -164,8 +160,7 @@ public class PolicyController {
 
         try {
             LOG.debug("addProgramOfferings");
-            String decode = URLDecoder.decode(referenceNo);
-            InIntake intake = policyService.findIntakeByReferenceNo(decode);
+            InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
             InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
             InProgramOffering offering = new InProgramOfferingImpl();
             offering.setProjection(vo.getProjection());
@@ -187,8 +182,7 @@ public class PolicyController {
                                                           @PathVariable Long id) {
         dummyLogin();
 
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InProgramOffering offering = policyService.findProgramOfferingById(id);
         policyService.deleteProgramOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
@@ -198,8 +192,7 @@ public class PolicyController {
     public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
         dummyLogin();
 
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<List<SupervisorOffering>>(policyTransformer
                 .toSupervisorOfferingVos(policyService.findSupervisorOfferings(intake)), HttpStatus.OK);
     }
@@ -209,8 +202,7 @@ public class PolicyController {
                                                           @RequestBody SupervisorOffering vo) {
         dummyLogin();
 
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InSupervisorCode supervisorCode = commonService.findSupervisorCodeById(vo.getId());
         InSupervisorOffering offering = new InSupervisorOfferingImpl();
         offering.setSupervisorCode(supervisorCode);
@@ -223,8 +215,7 @@ public class PolicyController {
                                                              @PathVariable Long id) {
         dummyLogin();
 
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InSupervisorOffering offering = policyService.findSupervisorOfferingById(id);
         policyService.deleteSupervisorOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
@@ -234,8 +225,7 @@ public class PolicyController {
     public ResponseEntity<List<StudyModeOffering>> findstudyModeOfferings(@PathVariable String referenceNo) {
         dummyLogin();
 
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<List<StudyModeOffering>>(policyTransformer
                 .toStudyModeOfferingVos(policyService.findStudyModeOfferings(intake)), HttpStatus.OK);
     }
@@ -245,8 +235,7 @@ public class PolicyController {
                                                          @RequestBody StudyModeOffering vo) {
         dummyLogin();
 
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InStudyMode studyMode = commonService.findStudyModeById(vo.getId());
         InStudyModeOffering offering = new InStudyModeOfferingImpl();
         offering.setStudyMode(studyMode);
@@ -259,8 +248,7 @@ public class PolicyController {
                                                             @PathVariable Long id) {
         dummyLogin();
 
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InStudyModeOffering offering = policyService.findStudyModeOfferingById(id);
         policyService.deleteStudyModeOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);

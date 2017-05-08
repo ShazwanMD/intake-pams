@@ -113,18 +113,16 @@ export class PolicyService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/programOfferings', JSON.stringify(offering), options)
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings', JSON.stringify(offering), options)
       .flatMap((res:Response) => Observable.of(res.text()));
   }
 
-  deleteProgramOffering(intake: Intake, offering: ProgramOffering): Observable<Boolean> {
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + encoded + '/programOfferings/' + offering.id)
-      .flatMap(data => Observable.of(true));
+  deleteProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
+    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings/' + offering.id)
+      .flatMap((res:Response) => Observable.of(res.text()));
   }
 
-  addSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<Boolean> {
+  addSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -133,30 +131,28 @@ export class PolicyService {
     let encoded = intake.referenceNo.replace(/\//g, '%252F');
     return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/supervisorOfferings',
       JSON.stringify(offering), options)
-      .flatMap(data => Observable.of(true));
+      .flatMap((res:Response) => Observable.of(res.text()));
   }
 
-  deleteSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<Boolean> {
+  deleteSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<String> {
     let encoded = intake.referenceNo.replace(/\//g, '%252F');
     return this.http.delete(environment.endpoint + '/api/policy/intakes/' + encoded + '/supervisorOfferings/' + offering.id)
-      .flatMap(data => Observable.of(true));
+      .flatMap((res:Response) => Observable.of(res.text()));
   }
 
-  addStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<Boolean> {
+  addStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/studyModeOfferings',
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/studyModeOfferings',
       JSON.stringify(offering), options)
-      .flatMap(data => Observable.of(true));
+      .flatMap((res:Response) => Observable.of(res.text()));
   }
 
-  deleteStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<Boolean> {
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + encoded + '/studyModeOfferings/' + offering.id)
-      .flatMap(data => Observable.of(true));
+  deleteStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<String> {
+    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/studyModeOfferings/' + offering.id)
+      .flatMap((res:Response) => Observable.of(res.text()));
   }
 }

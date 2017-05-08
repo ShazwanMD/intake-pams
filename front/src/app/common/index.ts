@@ -20,7 +20,7 @@ import {SupervisorCodeListState, supervisorCodeListReducer} from "./supervisor-c
 import {GraduateCentreListState, graduateCentreListReducer} from "./graduate-centres/graduate-centre-list.reducer";
 import {GraduateCentreSelectComponent} from "./graduate-centres/component/graduate-centre-select.component";
 import {ProgramCodeSelectComponent} from "./program-codes/component/program-code-select.component";
-import {StudyModeCodeSelectComponent} from "./study-modes/component/study-mode-select.component";
+import {StudyModeSelectComponent} from "./study-modes/component/study-mode-select.component";
 import {FacultyCodeSelectComponent} from "./faculty-codes/component/faculty-code-select.component";
 import {GenderCodeSelectComponent} from "./gender-codes/component/gender-code-select.component";
 import { maritalCodeListReducer, MaritalCodeListState } from "./marital-codes/marital-code-list.reducer";
@@ -63,7 +63,7 @@ export const commonModuleReducers = {
   declarations: [
     GraduateCentreSelectComponent,
     ProgramCodeSelectComponent,
-    StudyModeCodeSelectComponent,
+    StudyModeSelectComponent,
     FacultyCodeSelectComponent,
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
@@ -72,7 +72,7 @@ export const commonModuleReducers = {
   exports: [
     GraduateCentreSelectComponent,
     ProgramCodeSelectComponent,
-    StudyModeCodeSelectComponent,
+    StudyModeSelectComponent,
     FacultyCodeSelectComponent,
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,

@@ -28,6 +28,7 @@ import {CommonActions} from "../../common/common.action";
 import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
 import {ProgramLevelSubModule} from "../program-levels/index";
 import {IntakeSessionSubModule} from "../intake-sessions/index";
+import {StudyModeOfferingEditorDialog} from "./dialog/study-mode-offering-editor.dialog";
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {IntakeSessionSubModule} from "../intake-sessions/index";
     // dialogs
     IntakeTaskCreatorDialog,
     ProgramOfferingEditorDialog,
+    StudyModeOfferingEditorDialog,
   ],
   exports: [IntakeTaskListComponent],
   entryComponents: [
@@ -67,6 +69,7 @@ import {IntakeSessionSubModule} from "../intake-sessions/index";
     IntakeRegisterTaskPanel,
     IntakeTaskCreatorDialog,
     ProgramOfferingEditorDialog,
+    StudyModeOfferingEditorDialog,
   ],
 
 })

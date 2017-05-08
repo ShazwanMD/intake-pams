@@ -11,7 +11,7 @@ import {StudyMode} from "../study-mode.interface";
   selector: 'pams-study-mode-select',
   templateUrl: './study-mode-select.component.html',
 })
-export class StudyModeCodeSelectComponent implements OnInit {
+export class StudyModeSelectComponent implements OnInit {
 
   private STUDY_MODE = "commonModuleState.studyModes".split(".");
   @Input() placeholder: string;

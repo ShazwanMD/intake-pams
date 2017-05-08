@@ -46,6 +46,5 @@ export class ProgramOfferingEditorDialog implements OnInit {
     console.log("add program offering");
     this.store.dispatch(this.actions.addProgramOffering(this.intake, offering));
     this.dialog.close();
-    // todo(uda): snackbar
   }
 }

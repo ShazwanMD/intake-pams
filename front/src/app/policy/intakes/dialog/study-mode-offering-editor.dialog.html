@@ -1,0 +1,17 @@
+<h2 md-dialog-title>Study Mode Offering Editor for {{intake?.referenceNo}}</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm">
+    <div layout="row" class="pad-bottom">
+    </div>
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-study-mode-select
+        [placeholder]="'Study Mode'"
+        [innerFormControl]="editorForm.controls['studyMode']" flex>
+      </pams-study-mode-select>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="add(editorForm.value, editorForm.valid)">Save</button>
+</md-dialog-actions>
+
