@@ -3,11 +3,10 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {IntakeApplication} from "../intake-application.interface";
 import {ApplicationModuleState} from "../../index";
-import {IntakeApplicationPersonal} from "./intake-application.interface";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
+import { IntakeApplication } from "./intake-application.interface";
 
 
 @Component({
