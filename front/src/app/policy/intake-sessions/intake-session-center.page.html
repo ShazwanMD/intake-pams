@@ -4,19 +4,12 @@
     <span flex></span>
   </div>
 
-  <md-nav-list menu-items>
-    <a *ngFor="let item of routes" md-list-item [routerLink]="[item.route]" (click)="layout.close()">
-      <md-icon>{{item.icon}}</md-icon>
-      {{item.title}}
-    </a>
-  </md-nav-list>
-
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
       <a md-list-item (click)="showDialog()">
         <md-icon>create</md-icon>
-        Create Intake
+        Create Intake Session
       </a>
       <md-divider></md-divider>
     </md-nav-list>
@@ -33,6 +26,6 @@
     <div layout="row" layout-wrap>
     </div>
 
-    
+
   </td-layout-manage-list>
 </td-layout-nav>

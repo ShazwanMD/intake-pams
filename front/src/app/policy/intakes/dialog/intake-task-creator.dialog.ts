@@ -8,6 +8,7 @@ import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
 import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
 import {ProgramLevel} from "../../program-levels/program-level.interface";
+import {IntakeSession} from "../../intake-sessions/intake-session.interface";
 
 
 @Component({
@@ -38,7 +39,8 @@ export class IntakeTaskCreatorDialog implements OnInit {
       startDate: null,
       endDate: null,
       programLevel: <ProgramLevel>{},
-      graduateCentre: <GraduateCentre>{}
+      graduateCentre: <GraduateCentre>{},
+      intakeSession: <IntakeSession>{}
     });
   }
 

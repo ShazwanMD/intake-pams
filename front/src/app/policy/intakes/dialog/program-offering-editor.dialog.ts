@@ -1,4 +1,4 @@
-  import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
+import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -45,6 +45,5 @@ export class ProgramOfferingEditorDialog implements OnInit {
     console.log("add program offering");
     this.store.dispatch(this.actions.addProgramOffering(this.intake, offering));
     this.dialog.close();
-    // todo(uda): snackbar
   }
 }

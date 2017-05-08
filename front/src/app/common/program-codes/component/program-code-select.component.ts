@@ -16,11 +16,11 @@ export class ProgramCodeSelectComponent implements OnInit {
   private PROGRAM_CODES = "commonModuleState.programCodes".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  ProgramCodes$: Observable<ProgramCode[]>;
+  private programCodes$: Observable<ProgramCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
-    this.ProgramCodes$ = this.store.select(...this.PROGRAM_CODES);
+    this.programCodes$ = this.store.select(...this.PROGRAM_CODES);
   }
 
   ngOnInit() {

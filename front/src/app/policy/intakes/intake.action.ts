@@ -312,10 +312,10 @@ export class IntakeActions {
 
   static ADD_SUPERVISOR_OFFERING_SUCCESS = '[Intake] Add Supervisor Offering Success';
 
-  addSupervisorOfferingSuccess(intake:Intake, supervisorOffering: SupervisorOffering) {
+  addSupervisorOfferingSuccess(message) {
     return {
       type: IntakeActions.ADD_SUPERVISOR_OFFERING_SUCCESS,
-      payload:intake
+      payload:message
     };
   }
 
