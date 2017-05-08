@@ -4,6 +4,7 @@ import {from} from "rxjs/observable/from";
 import {PolicyService} from "../../../services/policy.service";
 import {switchMap} from "rxjs/operator/switchMap";
 import {IntakeSessionActions} from "./intake-session.action";
+import {ProgramLevelActions} from "../program-levels/program-level.action";
 
 
 @Injectable()
@@ -13,9 +14,11 @@ export class IntakeSessionEffects {
               private policyService: PolicyService) {
   }
 
-  @Effect() findIntakeSessions$ = this.actions$
+  @Effect() findProgramLevels$ = this.actions$
     .ofType(IntakeSessionActions.FIND_INTAKE_SESSIONS)
     .map(action => action.payload)
     .switchMap(() => this.policyService.findIntakeSessions())
     .map(sessions => this.intakeSessionActions.findIntakeSessionsSuccess(sessions));
+
 }
+

@@ -1,4 +1,4 @@
-  import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
+import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -8,7 +8,6 @@ import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
 import {PolicyService} from "../../../../services/policy.service";
-import {IntakeSession} from "../../intake-sessions/intake-session.interface";
 import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
 import {ProgramCode} from "../../../common/program-codes/program-code.interface";
 import {ProgramOffering} from "../program-offering.interface";
@@ -46,6 +45,5 @@ export class ProgramOfferingEditorDialog implements OnInit {
     console.log("add program offering");
     this.store.dispatch(this.actions.addProgramOffering(this.intake, offering));
     this.dialog.close();
-    // todo(uda): snackbar
   }
 }

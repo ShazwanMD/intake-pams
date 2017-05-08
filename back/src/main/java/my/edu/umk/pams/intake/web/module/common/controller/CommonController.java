@@ -462,19 +462,58 @@ public class CommonController {
 	// IN_RELIGION_CODE
 	// ====================================================================================================
 
-	@RequestMapping(value = "/InReligionCodes", method = RequestMethod.GET)
+	@RequestMapping(value = "/religionCodes", method = RequestMethod.GET)
 	public ResponseEntity<List<ReligionCode>> findReligionCodes() {
 		return new ResponseEntity<List<ReligionCode>>(
 				commonTransformer.toReligionCodeVos(commonService.findReligionCodes()), HttpStatus.OK);
 				
 	}
 
-	@RequestMapping(value = "/InReligionCodes/{code}", method = RequestMethod.GET)
+	@RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.GET)
 	public ResponseEntity<ReligionCode> findReligionCodeByCode(@PathVariable String code) {
 		return new ResponseEntity<ReligionCode>(
 				commonTransformer.toReligionCodeVo(commonService.findReligionCodeByCode(code)), HttpStatus.OK);
 	}
+	
+	//====================================================================================================
+    // STATE CODES
+    //====================================================================================================
 
+    @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<StateCode> findStateCode(@PathVariable String code) {
+        return new ResponseEntity<StateCode>(commonTransformer.toStateCodeVo(commonService.findStateCodeByCode(code)), HttpStatus.OK);
+    }
 
+    @RequestMapping(value = "/stateCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveStateCode(@RequestBody StateCode vo) {
+        dummyLogin();
+
+        InStateCode stateCode = new InStateCodeImpl();
+        stateCode.setCode(vo.getCode());
+        stateCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveStateCode(stateCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyModes/{mode}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStateCode(@PathVariable String mode, @RequestBody StateCode vo) {
+        dummyLogin();
+
+        InStateCode stateCode = new InStateCodeImpl();
+        stateCode.setCode(vo.getCode());
+        stateCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveStateCode(stateCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyModes/{mode}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeStateCode(@PathVariable String mode) {
+        dummyLogin();
+
+        InStateCode stateCode = commonService.findStateCodeByCode(mode);
+        commonService.removeStateCode(stateCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 }
 
+	

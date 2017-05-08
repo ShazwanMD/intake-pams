@@ -1,4 +1,4 @@
-import { ReligionCode } from "./../../common/religion-codes/religion-code.interface";
+import { MaritalCode } from './../../common/marital-codes/marital-code.interface';
 import {Component, OnInit} from "@angular/core";
 import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
@@ -6,13 +6,13 @@ import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 
 @Component({
-  selector: 'pams-religion-list-page',
-  templateUrl: './religion-code-list.page.html',
+  selector: 'pams-marital-list-page',
+  templateUrl: './marital-code-list.page.html',
 })
-export class ReligionCodeListPage implements OnInit {
+export class MaritalCodeListPage implements OnInit {
 
-  private RELIGION_CODES = "setupModuleState.religionCodes".split(".");
-  private religionCodes$:Observable<ReligionCode>;
+  private MARITAL_CODES = "setupModuleState.maritalCodes".split(".");
+  private maritalCodes$:Observable<MaritalCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
@@ -22,11 +22,11 @@ export class ReligionCodeListPage implements OnInit {
 
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>){
-    this.religionCodes$ = this.store.select(...this.RELIGION_CODES);
+    this.maritalCodes$ = this.store.select(...this.MARITAL_CODES);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findReligionCodes())
+    this.store.dispatch(this.actions.findMaritalCodes())
   }
 
 }

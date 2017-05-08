@@ -10,7 +10,6 @@ import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.inte
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 import {IntakeSession} from "../app/policy/intake-sessions/intake-session.interface";
 import {ProgramLevel} from "../app/policy/program-levels/program-level.interface";
-import { IntakeApplication } from "../app/application/intake-applications/cps/intake-application.interface";
 
 @Injectable()
 export class PolicyService {
@@ -160,15 +159,4 @@ export class PolicyService {
     return this.http.delete(environment.endpoint + '/api/policy/intakes/' + encoded + '/studyModeOfferings/' + offering.id)
       .flatMap(data => Observable.of(true));
   }
-
-/*  addEmployement(employement: IntakeApplication): Observable<Boolean> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/studyModeOfferings',
-      JSON.stringify(offering), options)
-      .flatMap(data => Observable.of(true));
-  }*/
 }

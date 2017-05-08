@@ -20,6 +20,7 @@ import {StudyModeOfferingListState, studyModeOfferingListReducer} from "./intake
 import {IntakeTask} from "./intakes/intake-task.interface";
 import {Intake} from "./intakes/intake.interface";
 import {Program} from "./programs/program.interface";
+import {IntakeSessionTask} from "./intake-sessions/intake-session-task.interface";
 import {ProgramOffering} from "./intakes/program-offering.interface";
 import {SupervisorOffering} from "./intakes/supervisor-offering.interface";
 import {StudyModeOffering} from "./intakes/study-mode-offering.interface";
@@ -29,6 +30,7 @@ import {IntakeSessionSubModule} from "./intake-sessions/index";
 import {ProgramLevelSubModule} from "./program-levels/index";
 import {ProgramLevel} from "./program-levels/program-level.interface";
 import {ProgramLevelListState, programLevelListReducer} from "./program-levels/program-level.reducer";
+import {programOfferingListReducer, ProgramOfferingListState} from "./intakes/program-offering-list.reducer";
 
 export interface PolicyModuleState {
   intakeSessions: IntakeSessionListState;
@@ -36,6 +38,7 @@ export interface PolicyModuleState {
   intakeTasks: IntakeTaskListState;
   intakeTask: IntakeTaskState;
   intake: IntakeState;
+  programOfferings: ProgramOfferingListState;
   supervisorOfferings: SupervisorOfferingListState;
   studyModeOfferings: StudyModeOfferingListState;
 };
@@ -59,6 +62,7 @@ export const policyModuleReducers = {
   intakeTasks: intakeTaskListReducer,
   intakeTask: intakeTaskReducer,
   intake: intakeReducer,
+  programOfferings: programOfferingListReducer,
   supervisorOfferings: supervisorOfferingListReducer,
   studyModeOfferings: studyModeOfferingListReducer,
 };
@@ -73,12 +77,12 @@ export const policyModuleReducers = {
     IntakeSessionSubModule.forRoot(),
     IntakeSubModule.forRoot(),
     ProgramModule.forRoot(),
-       
+
   ],
   declarations: [
     // page
     PolicyPage,
-  
+
   ],
 
   exports: [
