@@ -217,4 +217,26 @@ public class CommonTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
+    
+
+  //====================================================================================================
+  // COUNTRY_CODE
+  //====================================================================================================
+
+  public CountryCode toCountryCodeVo(InCountryCode e) {
+      CountryCode vo = new CountryCode();
+		vo.setId(e.getId());
+		vo.setCode(e.getCode());
+		vo.setDescriptionMs(e.getDescriptionMs());
+		vo.setDescriptionEn(e.getDescriptionEn());
+          return vo;
+          }
+
+  public List<CountryCode> toCountryCodeVos(List<InCountryCode> e) {
+          List<CountryCode> vos = e.stream()
+          .map((e1) -> toCountryCodeVo(e1))
+          .collect(Collectors.toList());
+          return vos;
+          }
+
 }

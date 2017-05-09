@@ -240,4 +240,34 @@ export class SetupActions {
     };
   }
 
+static FIND_COUNTRY_CODES = '[Common] Find CountryCodes';
+
+findCountryCodes(): Action {
+    console.log("findCountryCodes");
+    return {
+        type: SetupActions.FIND_COUNTRY_CODES,
+    };
+}
+
+static FIND_COUNTRY_CODES_SUCCESS = '[Common] Find CountryCodes Success';
+
+findCountryCodesSuccess(codes): Action {
+    console.log("findCountryCodesSuccess");
+    return {
+        type: SetupActions.FIND_COUNTRY_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+  static SAVE_COUNTRY_CODE = '[Setup] Save Country Code';
+
+  saveCountryCode(code): Action {
+    console.log("saveCountryCode");
+    return {
+      type: SetupActions.SAVE_COUNTRY_CODE,
+      payload:code
+    };
+  }
+
+
 }
