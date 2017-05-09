@@ -11,6 +11,10 @@ public interface InStateCode extends InMetaObject {
     String getDescriptionMs();
 
     void setDescriptionMs(String descriptionMs);
+    
+    String getDescriptionEn();
+
+    void setDescriptionEn(String descriptionEn);
 
     InCountryCode getCountryCode();
 

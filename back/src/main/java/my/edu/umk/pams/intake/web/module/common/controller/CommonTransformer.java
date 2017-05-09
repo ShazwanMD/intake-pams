@@ -238,6 +238,27 @@ public class CommonTransformer {
           .map((e1) -> toCountryCodeVo(e1))
           .collect(Collectors.toList());
           return vos;
-          }
+      }
+  
+//====================================================================================================
+//STATE_CODE
+//====================================================================================================
+
+public StateCode toStateCodeVo(InStateCode e) {
+   StateCode vo = new StateCode();
+       vo.setId(e.getId());
+       vo.setCode(e.getCode());
+       vo.setDescriptionMs(e.getDescriptionMs());
+       vo.setDescriptionEn(e.getDescriptionEn());
+       return vo;
+       }
+
+public List<StateCode> toStateCodeVos(List<InStateCode> e) {
+       List<StateCode> vos = e.stream()
+       .map((e1) -> toStateCodeVo(e1))
+       .collect(Collectors.toList());
+       return vos;
+       }
+
 
 }

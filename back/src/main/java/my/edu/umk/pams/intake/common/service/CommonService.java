@@ -7,796 +7,792 @@ import java.util.List;
 
 public interface CommonService {
 
-    //====================================================================================================
-    // GRADUATE CENTRE
-    //====================================================================================================
+	// ====================================================================================================
+	// GRADUATE CENTRE
+	// ====================================================================================================
 
-    InGraduateCentre findGraduateCentreById(Long id);
+	InGraduateCentre findGraduateCentreById(Long id);
 
-    InGraduateCentre findGraduateCentreByCode(String code);
+	InGraduateCentre findGraduateCentreByCode(String code);
 
-    List<InGraduateCentre> findGraduateCentres();
+	List<InGraduateCentre> findGraduateCentres();
 
-    List<InGraduateCentre> findGraduateCentres(String filter, Integer offset, Integer limit);
+	List<InGraduateCentre> findGraduateCentres(String filter, Integer offset, Integer limit);
 
-    Integer countGraduateCentre(String filter);
+	Integer countGraduateCentre(String filter);
 
-    void saveGraduateCentre(InGraduateCentre graduateCentre);
+	void saveGraduateCentre(InGraduateCentre graduateCentre);
 
-    void updateGraduateCentre(InGraduateCentre graduateCentre);
+	void updateGraduateCentre(InGraduateCentre graduateCentre);
 
-    void removeGraduateCentre(InGraduateCentre graduateCentre);
+	void removeGraduateCentre(InGraduateCentre graduateCentre);
 
+	// ====================================================================================================
+	// COUNTRY CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // COUNTRY CODE
-    //====================================================================================================
+	InCountryCode findCountryCodeById(Long id);
 
-    InCountryCode findCountryCodeById(Long id);
+	InCountryCode findCountryCodeByCode(String code);
 
-    InCountryCode findCountryCodeByCode(String code);
+	List<InCountryCode> findCountryCodes();
 
-    List<InCountryCode> findCountryCodes();
+	Integer countCountryCode(String filter);
 
-    Integer countCountryCode(String filter);
+	void saveCountryCode(InCountryCode countryCode);
 
-    void saveCountryCode(InCountryCode countryCode);
+	void updateCountryCode(InCountryCode countryCode);
 
-    void updateCountryCode(InCountryCode countryCode);
+	void removeCountryCode(InCountryCode countryCode);
 
-    void removeCountryCode(InCountryCode countryCode);
+	// ====================================================================================================
+	// STATE CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // STATE CODE
-    //====================================================================================================
+	InStateCode findStateCodeById(Long id);
 
-    InStateCode findStateCodeById(Long id);
+	InStateCode findStateCodeByCode(String code);
 
-    InStateCode findStateCodeByCode(String code);
+	List<InStateCode> findStateCodes();
 
-    List<InStateCode> findStateCodes(Integer offset, Integer limit);
+	List<InStateCode> findStateCodes(Integer offset, Integer limit);
 
-    List<InStateCode> findStateCodes(String filter, Integer offset, Integer limit);
+	List<InStateCode> findStateCodes(String filter, Integer offset, Integer limit);
 
-    List<InStateCode> findStateCodes(InCountryCode countryCode, Integer offset, Integer limit);
+	List<InStateCode> findStateCodes(InCountryCode countryCode, Integer offset, Integer limit);
 
-    List<InStateCode> findStateCodes(String filter, InCountryCode countryCode, Integer offset, Integer limit);
+	List<InStateCode> findStateCodes(String filter, InCountryCode countryCode, Integer offset, Integer limit);
 
-    Integer countStateCode();
+	Integer countStateCode();
 
-    Integer countStateCode(String filter);
+	Integer countStateCode(String filter);
 
-    Integer countStateCode(InCountryCode countryCode);
+	Integer countStateCode(InCountryCode countryCode);
 
-    Integer countStateCode(String filter, InCountryCode countryCode);
+	Integer countStateCode(String filter, InCountryCode countryCode);
 
-    void saveStateCode(InStateCode stateCode);
+	void saveStateCode(InStateCode stateCode);
 
-    void updateStateCode(InStateCode stateCode);
+	void updateStateCode(InStateCode stateCode);
 
-    void removeStateCode(InStateCode stateCode);
+	void removeStateCode(InStateCode stateCode);
 
-    //====================================================================================================
-    // DISTRICT CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// DISTRICT CODE
+	// ====================================================================================================
 
-    InDistrictCode findDistrictCodeById(Long id);
+	InDistrictCode findDistrictCodeById(Long id);
 
-    InDistrictCode findDistrictCodeByCode(String code);
+	InDistrictCode findDistrictCodeByCode(String code);
 
-    List<InDistrictCode> findDistrictCodes(InStateCode stateCod, Integer offset, Integer limit);
+	List<InDistrictCode> findDistrictCodes(InStateCode stateCod, Integer offset, Integer limit);
 
-    List<InDistrictCode> findDistrictCodes(String filter, InStateCode stateCode, Integer offset, Integer limit);
+	List<InDistrictCode> findDistrictCodes(String filter, InStateCode stateCode, Integer offset, Integer limit);
 
-    Integer countDistrictCode(InStateCode stateCode);
+	Integer countDistrictCode(InStateCode stateCode);
 
-    Integer countDistrictCode(String filter, InStateCode stateCode);
+	Integer countDistrictCode(String filter, InStateCode stateCode);
 
-    void saveDistrictCode(InDistrictCode districtCode);
+	void saveDistrictCode(InDistrictCode districtCode);
 
-    void updateDistrictCode(InDistrictCode districtCode);
+	void updateDistrictCode(InDistrictCode districtCode);
 
-    void removeDistrictCode(InDistrictCode districtCode);
+	void removeDistrictCode(InDistrictCode districtCode);
 
-    //====================================================================================================
-    // CITY CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// CITY CODE
+	// ====================================================================================================
 
-    InCityCode findCityCodeById(Long id);
+	InCityCode findCityCodeById(Long id);
 
-    InCityCode findCityCodeByCode(String code);
+	InCityCode findCityCodeByCode(String code);
 
-    List<InCityCode> findCityCodes(InStateCode stateCode, Integer offset, Integer limit);
+	List<InCityCode> findCityCodes(InStateCode stateCode, Integer offset, Integer limit);
 
-    List<InCityCode> findCityCodes(String filter, InStateCode stateCode, Integer offset, Integer limit);
+	List<InCityCode> findCityCodes(String filter, InStateCode stateCode, Integer offset, Integer limit);
 
-    Integer countCityCode(InStateCode stateCode);
+	Integer countCityCode(InStateCode stateCode);
 
-    Integer countCityCode(String filter, InStateCode stateCode);
+	Integer countCityCode(String filter, InStateCode stateCode);
 
-    void saveCityCode(InCityCode cityCode);
+	void saveCityCode(InCityCode cityCode);
 
-    void updateCityCode(InCityCode cityCode);
+	void updateCityCode(InCityCode cityCode);
 
-    void removeCityCode(InCityCode cityCode);
+	void removeCityCode(InCityCode cityCode);
 
-    //====================================================================================================
-    // FACULTY CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// FACULTY CODE
+	// ====================================================================================================
 
-    InFacultyCode findFacultyCodeById(Long id);
+	InFacultyCode findFacultyCodeById(Long id);
 
-    InFacultyCode findFacultyCodeByCode(String code);
+	InFacultyCode findFacultyCodeByCode(String code);
 
-    List<InFacultyCode> findFacultyCodes();
+	List<InFacultyCode> findFacultyCodes();
 
-    List<InFacultyCode> findFacultyCodes(String filter, Integer offset, Integer limit);
+	List<InFacultyCode> findFacultyCodes(String filter, Integer offset, Integer limit);
 
-    Integer countFacultyCode();
+	Integer countFacultyCode();
 
-    Integer countFacultyCode(String filter);
+	Integer countFacultyCode(String filter);
 
-    void saveFacultyCode(InFacultyCode facultyCode);
+	void saveFacultyCode(InFacultyCode facultyCode);
 
-    void updateFacultyCode(InFacultyCode facultyCode);
+	void updateFacultyCode(InFacultyCode facultyCode);
 
-    void removeFacultyCode(InFacultyCode facultyCode);
+	void removeFacultyCode(InFacultyCode facultyCode);
 
-    //====================================================================================================
-    // STUDY CENTER CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// STUDY CENTER CODE
+	// ====================================================================================================
 
-    InStudyCenterCode findStudyCenterCodeById(Long id);
+	InStudyCenterCode findStudyCenterCodeById(Long id);
 
-    InStudyCenterCode findStudyCenterCodeByCode(String code);
+	InStudyCenterCode findStudyCenterCodeByCode(String code);
 
-    List<InStudyCenterCode> findStudyCenterCodes();
+	List<InStudyCenterCode> findStudyCenterCodes();
 
-    List<InStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit);
+	List<InStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit);
 
-    Integer countStudyCenterCode();
+	Integer countStudyCenterCode();
 
-    Integer countStudyCenterCode(String filter);
+	Integer countStudyCenterCode(String filter);
 
-    void saveStudyCenterCode(InStudyCenterCode studyCenterCode);
+	void saveStudyCenterCode(InStudyCenterCode studyCenterCode);
 
-    void updateStudyCenterCode(InStudyCenterCode studyCenterCode);
+	void updateStudyCenterCode(InStudyCenterCode studyCenterCode);
 
-    void removeStudyCenterCode(InStudyCenterCode studyCenterCode);
+	void removeStudyCenterCode(InStudyCenterCode studyCenterCode);
 
-    //====================================================================================================
-    // VENUE CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// VENUE CODE
+	// ====================================================================================================
 
-    InVenueCode findVenueCodeById(Long id);
+	InVenueCode findVenueCodeById(Long id);
 
-    InVenueCode findVenueCodeByCode(String code);
+	InVenueCode findVenueCodeByCode(String code);
 
-    List<InVenueCode> findVenueCodes();
+	List<InVenueCode> findVenueCodes();
 
-    List<InVenueCode> findVenueCodes(String filter, Integer offset, Integer limit);
+	List<InVenueCode> findVenueCodes(String filter, Integer offset, Integer limit);
 
-    Integer countVenueCode();
+	Integer countVenueCode();
 
-    Integer countVenueCode(String filter);
+	Integer countVenueCode(String filter);
 
-    void saveVenueCode(InVenueCode venueCode);
+	void saveVenueCode(InVenueCode venueCode);
 
-    void updateVenueCode(InVenueCode venueCode);
+	void updateVenueCode(InVenueCode venueCode);
 
-    void removeVenueCode(InVenueCode venueCode);
+	void removeVenueCode(InVenueCode venueCode);
 
-    //====================================================================================================
-    // BANK CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// BANK CODE
+	// ====================================================================================================
 
-    InBankCode findBankCodeById(Long id);
+	InBankCode findBankCodeById(Long id);
 
-    InBankCode findBankCodeByCode(String code);
+	InBankCode findBankCodeByCode(String code);
 
-    List<InBankCode> findBankCodes();
+	List<InBankCode> findBankCodes();
 
-    List<InBankCode> findBankCodes(String filter, Integer offset, Integer limit);
+	List<InBankCode> findBankCodes(String filter, Integer offset, Integer limit);
 
-    Integer countBankCode();
+	Integer countBankCode();
 
-    Integer countBankCode(String filter);
+	Integer countBankCode(String filter);
 
-    void saveBankCode(InBankCode bankCode);
+	void saveBankCode(InBankCode bankCode);
 
-    void updateBankCode(InBankCode bankCode);
+	void updateBankCode(InBankCode bankCode);
 
-    void removeBankCode(InBankCode bankCode);
+	void removeBankCode(InBankCode bankCode);
 
-    //====================================================================================================
-    // PROGRAM CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// PROGRAM CODE
+	// ====================================================================================================
 
-    InProgramCode findProgramCodeById(Long id);
+	InProgramCode findProgramCodeById(Long id);
 
-    InProgramCode findProgramCodeByCode(String code);
+	InProgramCode findProgramCodeByCode(String code);
 
-    List<InProgramCode> findProgramCodes();
+	List<InProgramCode> findProgramCodes();
 
-    List<InProgramCode> findProgramCodes(InFacultyCode facultyCode);
+	List<InProgramCode> findProgramCodes(InFacultyCode facultyCode);
 
-    List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre);
+	List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre);
 
-    List<InProgramCode> findProgramCodes(InFacultyCode facultyCode, InProgramLevel programLevel);
+	List<InProgramCode> findProgramCodes(InFacultyCode facultyCode, InProgramLevel programLevel);
 
-    List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre, InProgramLevel programLevel);
+	List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre, InProgramLevel programLevel);
 
-    List<InProgramCode> findProgramCodes(String filter, Integer offset, Integer limit);
+	List<InProgramCode> findProgramCodes(String filter, Integer offset, Integer limit);
 
-    Integer countProgramCode();
+	Integer countProgramCode();
 
-    Integer countProgramCode(String filter);
+	Integer countProgramCode(String filter);
 
-    Integer countProgramCode(InFacultyCode facultyCode);
+	Integer countProgramCode(InFacultyCode facultyCode);
 
-    Integer countProgramCode(InGraduateCentre graduateCentre);
+	Integer countProgramCode(InGraduateCentre graduateCentre);
 
-    Integer countProgramCode(InFacultyCode facultyCode, InProgramLevel programLevel);
+	Integer countProgramCode(InFacultyCode facultyCode, InProgramLevel programLevel);
 
-    Integer countProgramCode(InGraduateCentre graduateCentre, InProgramLevel programLevel);
+	Integer countProgramCode(InGraduateCentre graduateCentre, InProgramLevel programLevel);
 
-    void saveProgramCode(InProgramCode programCode);
+	void saveProgramCode(InProgramCode programCode);
 
-    void updateProgramCode(InProgramCode programCode);
+	void updateProgramCode(InProgramCode programCode);
 
-    void removeProgramCode(InProgramCode programCode);
+	void removeProgramCode(InProgramCode programCode);
 
-    //====================================================================================================
-    // FIELD CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// FIELD CODE
+	// ====================================================================================================
 
-    InFieldCode findFieldCodeById(Long id);
+	InFieldCode findFieldCodeById(Long id);
 
-    InFieldCode findFieldCodeByCode(String code);
+	InFieldCode findFieldCodeByCode(String code);
 
-    List<InFieldCode> findFieldCodes();
+	List<InFieldCode> findFieldCodes();
 
-    List<InFieldCode> findFieldCodes(Integer offset, Integer limit);
+	List<InFieldCode> findFieldCodes(Integer offset, Integer limit);
 
-    List<InFieldCode> findFieldCodes(String filter, Integer offset, Integer limit);
+	List<InFieldCode> findFieldCodes(String filter, Integer offset, Integer limit);
 
-    Integer countFieldCode();
+	Integer countFieldCode();
 
-    Integer countFieldCode(String filter);
+	Integer countFieldCode(String filter);
 
-    void saveFieldCode(InFieldCode fieldCode);
+	void saveFieldCode(InFieldCode fieldCode);
 
-    void updateFieldCode(InFieldCode fieldCode);
+	void updateFieldCode(InFieldCode fieldCode);
 
-    void removeFieldCode(InFieldCode fieldCode);
+	void removeFieldCode(InFieldCode fieldCode);
 
-    //====================================================================================================
-    // RELIGION CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// RELIGION CODE
+	// ====================================================================================================
 
-    InReligionCode findReligionCodeById(Long id);
+	InReligionCode findReligionCodeById(Long id);
 
-    InReligionCode findReligionCodeByCode(String code);
+	InReligionCode findReligionCodeByCode(String code);
 
-    List<InReligionCode> findReligionCodes();
+	List<InReligionCode> findReligionCodes();
 
-    List<InReligionCode> findReligionCodes(String filter, Integer offset, Integer limit);
+	List<InReligionCode> findReligionCodes(String filter, Integer offset, Integer limit);
 
-    Integer countReligionCode();
+	Integer countReligionCode();
 
-    Integer countReligionCode(String filter);
+	Integer countReligionCode(String filter);
 
-    void saveReligionCode(InReligionCode religionCode);
+	void saveReligionCode(InReligionCode religionCode);
 
-    void updateReligionCode(InReligionCode religionCode);
+	void updateReligionCode(InReligionCode religionCode);
 
-    void removeReligionCode(InReligionCode religionCode);
+	void removeReligionCode(InReligionCode religionCode);
 
-    //====================================================================================================
-    // SUBJECT CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// SUBJECT CODE
+	// ====================================================================================================
 
-    InSubjectCode findSubjectCodeById(Long id);
+	InSubjectCode findSubjectCodeById(Long id);
 
-    InSubjectCode findSubjectCodeByCode(String code);
+	InSubjectCode findSubjectCodeByCode(String code);
 
-    List<InSubjectCode> findSubjectCodes();
+	List<InSubjectCode> findSubjectCodes();
 
-    List<InSubjectCode> findSubjectCodes(Integer offset, Integer limit);
+	List<InSubjectCode> findSubjectCodes(Integer offset, Integer limit);
 
-    List<InSubjectCode> findSubjectCodes(String filter, Integer offset, Integer limit);
+	List<InSubjectCode> findSubjectCodes(String filter, Integer offset, Integer limit);
 
-    Integer countSubjectCode();
+	Integer countSubjectCode();
 
-    Integer countSubjectCode(String filter);
+	Integer countSubjectCode(String filter);
 
-    void saveSubjectCode(InSubjectCode subjectCode);
+	void saveSubjectCode(InSubjectCode subjectCode);
 
-    void updateSubjectCode(InSubjectCode subjectCode);
+	void updateSubjectCode(InSubjectCode subjectCode);
 
-    void removeSubjectCode(InSubjectCode subjectCode);
+	void removeSubjectCode(InSubjectCode subjectCode);
 
-    //====================================================================================================
-    // GRADE CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// GRADE CODE
+	// ====================================================================================================
 
-    InGradeCode findGradeCodeById(Long id);
+	InGradeCode findGradeCodeById(Long id);
 
-    InGradeCode findGradeCodeByCode(String code);
+	InGradeCode findGradeCodeByCode(String code);
 
-    List<InGradeCode> findGradeCodes();
+	List<InGradeCode> findGradeCodes();
 
-    List<InGradeCode> findGradeCodes(Integer offset, Integer limit);
+	List<InGradeCode> findGradeCodes(Integer offset, Integer limit);
 
-    List<InGradeCode> findGradeCodes(String filter, Integer offset, Integer limit);
+	List<InGradeCode> findGradeCodes(String filter, Integer offset, Integer limit);
 
-    Integer countGradeCode();
+	Integer countGradeCode();
 
-    Integer countGradeCode(String filter);
+	Integer countGradeCode(String filter);
 
-    void saveGradeCode(InGradeCode gradeCode);
+	void saveGradeCode(InGradeCode gradeCode);
 
-    void updateGradeCode(InGradeCode gradeCode);
+	void updateGradeCode(InGradeCode gradeCode);
 
-    void removeGradeCode(InGradeCode gradeCode);
+	void removeGradeCode(InGradeCode gradeCode);
 
-    //====================================================================================================
-    // GENDER CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// GENDER CODE
+	// ====================================================================================================
 
-    InGenderCode findGenderCodeById(Long id);
+	InGenderCode findGenderCodeById(Long id);
 
-    InGenderCode findGenderCodeByCode(String code);
+	InGenderCode findGenderCodeByCode(String code);
 
-    List<InGenderCode> findGenderCodes();
+	List<InGenderCode> findGenderCodes();
 
-    List<InGenderCode> findGenderCodes(String filter, Integer offset, Integer limit);
+	List<InGenderCode> findGenderCodes(String filter, Integer offset, Integer limit);
 
-    Integer countGenderCode();
+	Integer countGenderCode();
 
-    Integer countGenderCode(String filter);
+	Integer countGenderCode(String filter);
 
-    void saveGenderCode(InGenderCode genderCode);
+	void saveGenderCode(InGenderCode genderCode);
 
-    void updateGenderCode(InGenderCode genderCode);
+	void updateGenderCode(InGenderCode genderCode);
 
-    void removeGenderCode(InGenderCode genderCode);
+	void removeGenderCode(InGenderCode genderCode);
 
-    //====================================================================================================
-    // BUMI CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// BUMI CODE
+	// ====================================================================================================
 
+	InBumiCode findBumiCodeById(Long id);
 
-    InBumiCode findBumiCodeById(Long id);
+	InBumiCode findBumiCodeByCode(String code);
 
-    InBumiCode findBumiCodeByCode(String code);
+	List<InBumiCode> findBumiCodes();
 
-    List<InBumiCode> findBumiCodes();
+	List<InBumiCode> findBumiCodes(String filter, Integer offset, Integer limit);
 
-    List<InBumiCode> findBumiCodes(String filter, Integer offset, Integer limit);
+	Integer countBumiCode();
 
-    Integer countBumiCode();
+	Integer countBumiCode(String filter);
 
-    Integer countBumiCode(String filter);
+	void saveBumiCode(InBumiCode bumiCode);
 
-    void saveBumiCode(InBumiCode bumiCode);
+	void updateBumiCode(InBumiCode bumiCode);
 
-    void updateBumiCode(InBumiCode bumiCode);
+	void removeBumiCode(InBumiCode bumiCode);
 
-    void removeBumiCode(InBumiCode bumiCode);
+	// ====================================================================================================
+	// RACE CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // RACE CODE
-    //====================================================================================================
+	InRaceCode findRaceCodeById(Long id);
 
+	InRaceCode findRaceCodeByCode(String code);
 
-    InRaceCode findRaceCodeById(Long id);
+	List<InRaceCode> findRaceCodes();
 
-    InRaceCode findRaceCodeByCode(String code);
+	List<InRaceCode> findRaceCodes(String filter, Integer offset, Integer limit);
 
-    List<InRaceCode> findRaceCodes();
+	Integer countRaceCode();
 
-    List<InRaceCode> findRaceCodes(String filter, Integer offset, Integer limit);
+	Integer countRaceCode(String filter);
 
-    Integer countRaceCode();
+	void saveRaceCode(InRaceCode raceCode);
 
-    Integer countRaceCode(String filter);
+	void updateRaceCode(InRaceCode raceCode);
 
-    void saveRaceCode(InRaceCode raceCode);
+	void removeRaceCode(InRaceCode raceCode);
 
-    void updateRaceCode(InRaceCode raceCode);
+	// ====================================================================================================
+	// ETHNICITY CODE
+	// ====================================================================================================
 
-    void removeRaceCode(InRaceCode raceCode);
+	InEthnicityCode findEthnicityCodeById(Long id);
 
-    //====================================================================================================
-    // ETHNICITY CODE
-    //====================================================================================================
+	InEthnicityCode findEthnicityCodeByCode(String code);
 
-    InEthnicityCode findEthnicityCodeById(Long id);
+	List<InEthnicityCode> findEthnicityCodes();
 
-    InEthnicityCode findEthnicityCodeByCode(String code);
+	List<InEthnicityCode> findEthnicityCodes(String filter, Integer offset, Integer limit);
 
-    List<InEthnicityCode> findEthnicityCodes();
+	Integer countEthnicityCode();
 
-    List<InEthnicityCode> findEthnicityCodes(String filter, Integer offset, Integer limit);
+	Integer countEthnicityCode(String filter);
 
-    Integer countEthnicityCode();
+	void saveEthnicityCode(InEthnicityCode ethnicityCode);
 
-    Integer countEthnicityCode(String filter);
+	void updateEthnicityCode(InEthnicityCode ethnicityCode);
 
-    void saveEthnicityCode(InEthnicityCode ethnicityCode);
+	void removeEthnicityCode(InEthnicityCode ethnicityCode);
 
-    void updateEthnicityCode(InEthnicityCode ethnicityCode);
+	// ====================================================================================================
+	// MARITAL CODE
+	// ====================================================================================================
 
-    void removeEthnicityCode(InEthnicityCode ethnicityCode);
+	InMaritalCode findMaritalCodeById(Long id);
 
-    //====================================================================================================
-    // MARITAL CODE
-    //====================================================================================================
+	InMaritalCode findMaritalCodeByCode(String code);
 
-    InMaritalCode findMaritalCodeById(Long id);
+	List<InMaritalCode> findMaritalCodes();
 
-    InMaritalCode findMaritalCodeByCode(String code);
+	List<InMaritalCode> findMaritalCodes(String filter, Integer offset, Integer limit);
 
-    List<InMaritalCode> findMaritalCodes();
+	Integer countMaritalCode();
 
-    List<InMaritalCode> findMaritalCodes(String filter, Integer offset, Integer limit);
+	Integer countMaritalCode(String filter);
 
-    Integer countMaritalCode();
+	void saveMaritalCode(InMaritalCode maritalCode);
 
-    Integer countMaritalCode(String filter);
+	void updateMaritalCode(InMaritalCode maritalCode);
 
-    void saveMaritalCode(InMaritalCode maritalCode);
+	void removeMaritalCode(InMaritalCode maritalCode);
 
-    void updateMaritalCode(InMaritalCode maritalCode);
+	// ====================================================================================================
+	// DEPENDENCY CODE
+	// ====================================================================================================
 
-    void removeMaritalCode(InMaritalCode maritalCode);
+	InDependencyCode findDependencyCodeById(Long id);
 
-    //====================================================================================================
-    // DEPENDENCY CODE
-    //====================================================================================================
+	InDependencyCode findDependencyCodeByCode(String code);
 
-    InDependencyCode findDependencyCodeById(Long id);
+	List<InDependencyCode> findDependencyCodes();
 
-    InDependencyCode findDependencyCodeByCode(String code);
+	List<InDependencyCode> findDependencyCodes(String filter, Integer offset, Integer limit);
 
-    List<InDependencyCode> findDependencyCodes();
+	Integer countDependencyCode();
 
-    List<InDependencyCode> findDependencyCodes(String filter, Integer offset, Integer limit);
+	Integer countDependencyCode(String filter);
 
-    Integer countDependencyCode();
+	void saveDependencyCode(InDependencyCode dependencyCode);
 
-    Integer countDependencyCode(String filter);
+	void updateDependencyCode(InDependencyCode dependencyCode);
 
-    void saveDependencyCode(InDependencyCode dependencyCode);
+	void removeDependencyCode(InDependencyCode dependencyCode);
 
-    void updateDependencyCode(InDependencyCode dependencyCode);
+	// ====================================================================================================
+	// DISABILITY CODE
+	// ====================================================================================================
 
-    void removeDependencyCode(InDependencyCode dependencyCode);
+	InDisabilityCode findDisabilityCodeById(Long id);
 
-    //====================================================================================================
-    // DISABILITY CODE
-    //====================================================================================================
+	InDisabilityCode findDisabilityCodeByCode(String code);
 
-    InDisabilityCode findDisabilityCodeById(Long id);
+	List<InDisabilityCode> findDisabilityCodes();
 
-    InDisabilityCode findDisabilityCodeByCode(String code);
+	List<InDisabilityCode> findDisabilityCodes(String filter, Integer offset, Integer limit);
 
-    List<InDisabilityCode> findDisabilityCodes();
+	Integer countDisabilityCode();
 
-    List<InDisabilityCode> findDisabilityCodes(String filter, Integer offset, Integer limit);
+	Integer countDisabilityCode(String filter);
 
-    Integer countDisabilityCode();
+	void saveDisabilityCode(InDisabilityCode disabilityCode);
 
-    Integer countDisabilityCode(String filter);
+	void updateDisabilityCode(InDisabilityCode disabilityCode);
 
-    void saveDisabilityCode(InDisabilityCode disabilityCode);
+	void removeDisabilityCode(InDisabilityCode disabilityCode);
 
-    void updateDisabilityCode(InDisabilityCode disabilityCode);
+	// ====================================================================================================
+	// NATIONALITY CODE
+	// ====================================================================================================
 
-    void removeDisabilityCode(InDisabilityCode disabilityCode);
+	InNationalityCode findNationalityCodeById(Long id);
 
-    //====================================================================================================
-    // NATIONALITY CODE
-    //====================================================================================================
+	InNationalityCode findNationalityCodeByCode(String code);
 
-    InNationalityCode findNationalityCodeById(Long id);
+	List<InNationalityCode> findNationalityCodes();
 
-    InNationalityCode findNationalityCodeByCode(String code);
+	List<InNationalityCode> findNationalityCodes(String filter, Integer offset, Integer limit);
 
-    List<InNationalityCode> findNationalityCodes();
+	Integer countNationalityCode();
 
-    List<InNationalityCode> findNationalityCodes(String filter, Integer offset, Integer limit);
+	Integer countNationalityCode(String filter);
 
-    Integer countNationalityCode();
+	void saveNationalityCode(InNationalityCode nationalityCode);
 
-    Integer countNationalityCode(String filter);
+	void updateNationalityCode(InNationalityCode nationalityCode);
 
-    void saveNationalityCode(InNationalityCode nationalityCode);
+	void removeNationalityCode(InNationalityCode nationalityCode);
 
-    void updateNationalityCode(InNationalityCode nationalityCode);
+	// ====================================================================================================
+	// RESIDENCY CODE
+	// ====================================================================================================
 
-    void removeNationalityCode(InNationalityCode nationalityCode);
+	InResidencyCode findResidencyCodeById(Long id);
 
+	InResidencyCode findResidencyCodeByCode(String code);
 
-    //====================================================================================================
-    // RESIDENCY CODE
-    //====================================================================================================
+	List<InResidencyCode> findResidencyCodes();
 
-    InResidencyCode findResidencyCodeById(Long id);
+	List<InResidencyCode> findResidencyCodes(String filter, Integer offset, Integer limit);
 
-    InResidencyCode findResidencyCodeByCode(String code);
+	Integer countResidencyCode();
 
-    List<InResidencyCode> findResidencyCodes();
+	Integer countResidencyCode(String filter);
 
-    List<InResidencyCode> findResidencyCodes(String filter, Integer offset, Integer limit);
+	void saveResidencyCode(InResidencyCode residencyCode);
 
-    Integer countResidencyCode();
+	void updateResidencyCode(InResidencyCode residencyCode);
 
-    Integer countResidencyCode(String filter);
+	void removeResidencyCode(InResidencyCode residencyCode);
 
-    void saveResidencyCode(InResidencyCode residencyCode);
+	// ====================================================================================================
+	// SCHOOL CODE
+	// ====================================================================================================
 
-    void updateResidencyCode(InResidencyCode residencyCode);
+	InSchoolCode findSchoolCodeById(Long id);
 
-    void removeResidencyCode(InResidencyCode residencyCode);
+	InSchoolCode findSchoolCodeByCode(String code);
 
-    //====================================================================================================
-    // SCHOOL CODE
-    //====================================================================================================
+	List<InSchoolCode> findSchoolCodes(String filter, Integer offset, Integer limit);
 
-    InSchoolCode findSchoolCodeById(Long id);
+	Integer countSchoolCode(String filter);
 
-    InSchoolCode findSchoolCodeByCode(String code);
+	void saveSchoolCode(InSchoolCode schoolCode);
 
-    List<InSchoolCode> findSchoolCodes(String filter, Integer offset, Integer limit);
+	void updateSchoolCode(InSchoolCode schoolCode);
 
-    Integer countSchoolCode(String filter);
+	void removeSchoolCode(InSchoolCode schoolCode);
 
-    void saveSchoolCode(InSchoolCode schoolCode);
+	// ====================================================================================================
+	// INVOLVEMENT TYPE CODE
+	// ====================================================================================================
 
-    void updateSchoolCode(InSchoolCode schoolCode);
+	InInvolvementTypeCode findInvolvementTypeCodeById(Long id);
 
-    void removeSchoolCode(InSchoolCode schoolCode);
+	InInvolvementTypeCode findInvolvementTypeCodeByCode(String code);
 
-    //====================================================================================================
-    // INVOLVEMENT TYPE CODE
-    //====================================================================================================
+	List<InInvolvementTypeCode> findInvolvementTypeCodes();
 
-    InInvolvementTypeCode findInvolvementTypeCodeById(Long id);
+	List<InInvolvementTypeCode> findInvolvementTypeCodes(Integer offset, Integer limit);
 
-    InInvolvementTypeCode findInvolvementTypeCodeByCode(String code);
+	List<InInvolvementTypeCode> findInvolvementTypeCodes(String filter, Integer offset, Integer limit);
 
-    List<InInvolvementTypeCode> findInvolvementTypeCodes();
+	Integer countInvolvementTypeCode();
 
-    List<InInvolvementTypeCode> findInvolvementTypeCodes(Integer offset, Integer limit);
+	Integer countInvolvementTypeCode(String filter);
 
-    List<InInvolvementTypeCode> findInvolvementTypeCodes(String filter, Integer offset, Integer limit);
+	void saveInvolvementTypeCode(InInvolvementTypeCode involvementtypeCode);
 
-    Integer countInvolvementTypeCode();
+	void updateInvolvementTypeCode(InInvolvementTypeCode involvementtypeCode);
 
-    Integer countInvolvementTypeCode(String filter);
+	void removeInvolvementTypeCode(InInvolvementTypeCode involvementtypeCode);
 
-    void saveInvolvementTypeCode(InInvolvementTypeCode involvementtypeCode);
+	// ====================================================================================================
+	// INVOLVEMENT LEVEL CODE
+	// ====================================================================================================
 
-    void updateInvolvementTypeCode(InInvolvementTypeCode involvementtypeCode);
+	InInvolvementLevelCode findInvolvementLevelCodeById(Long id);
 
-    void removeInvolvementTypeCode(InInvolvementTypeCode involvementtypeCode);
+	InInvolvementLevelCode findInvolvementLevelCodeByCode(String code);
 
-    //====================================================================================================
-    // INVOLVEMENT LEVEL CODE
-    //====================================================================================================
+	List<InInvolvementLevelCode> findInvolvementLevelCodes();
 
-    InInvolvementLevelCode findInvolvementLevelCodeById(Long id);
+	List<InInvolvementLevelCode> findInvolvementLevelCodes(Integer offset, Integer limit);
 
-    InInvolvementLevelCode findInvolvementLevelCodeByCode(String code);
+	List<InInvolvementLevelCode> findInvolvementLevelCodes(String filter, Integer offset, Integer limit);
 
-    List<InInvolvementLevelCode> findInvolvementLevelCodes();
+	Integer countInvolvementLevelCode();
 
-    List<InInvolvementLevelCode> findInvolvementLevelCodes(Integer offset, Integer limit);
+	Integer countInvolvementLevelCode(String filter);
 
-    List<InInvolvementLevelCode> findInvolvementLevelCodes(String filter, Integer offset, Integer limit);
+	void saveInvolvementLevelCode(InInvolvementLevelCode involvementlevelCode);
 
-    Integer countInvolvementLevelCode();
+	void updateInvolvementLevelCode(InInvolvementLevelCode involvementlevelCode);
 
-    Integer countInvolvementLevelCode(String filter);
+	void removeInvolvementLevelCode(InInvolvementLevelCode involvementlevelCode);
 
-    void saveInvolvementLevelCode(InInvolvementLevelCode involvementlevelCode);
+	// ====================================================================================================
+	// INVOLVEMENT TITLE CODE
+	// ====================================================================================================
 
-    void updateInvolvementLevelCode(InInvolvementLevelCode involvementlevelCode);
+	InInvolvementTitleCode findInvolvementTitleCodeById(Long id);
 
-    void removeInvolvementLevelCode(InInvolvementLevelCode involvementlevelCode);
+	InInvolvementTitleCode findInvolvementTitleCodeByCode(String code);
 
-    //====================================================================================================
-    // INVOLVEMENT TITLE CODE
-    //====================================================================================================
+	List<InInvolvementTitleCode> findInvolvementTitleCodes();
 
+	List<InInvolvementTitleCode> findInvolvementTitleCodes(Integer offset, Integer limit);
 
-    InInvolvementTitleCode findInvolvementTitleCodeById(Long id);
+	List<InInvolvementTitleCode> findInvolvementTitleCodes(String filter, Integer offset, Integer limit);
 
-    InInvolvementTitleCode findInvolvementTitleCodeByCode(String code);
+	Integer countInvolvementTitleCode();
 
-    List<InInvolvementTitleCode> findInvolvementTitleCodes();
+	Integer countInvolvementTitleCode(String filter);
 
-    List<InInvolvementTitleCode> findInvolvementTitleCodes(Integer offset, Integer limit);
+	void saveInvolvementTitleCode(InInvolvementTitleCode involvementtitleCode);
 
-    List<InInvolvementTitleCode> findInvolvementTitleCodes(String filter, Integer offset, Integer limit);
+	void updateInvolvementTitleCode(InInvolvementTitleCode involvementtitleCode);
 
-    Integer countInvolvementTitleCode();
+	void removeInvolvementTitleCode(InInvolvementTitleCode involvementtitleCode);
 
-    Integer countInvolvementTitleCode(String filter);
+	// ====================================================================================================
+	// EMPLOYMENT FIELD CODE
+	// ====================================================================================================
 
-    void saveInvolvementTitleCode(InInvolvementTitleCode involvementtitleCode);
+	InEmploymentFieldCode findEmploymentFieldCodeById(Long id);
 
-    void updateInvolvementTitleCode(InInvolvementTitleCode involvementtitleCode);
+	InEmploymentFieldCode findEmploymentFieldCodeByCode(String code);
 
-    void removeInvolvementTitleCode(InInvolvementTitleCode involvementtitleCode);
+	List<InEmploymentFieldCode> findEmploymentFieldCodes();
 
-    //====================================================================================================
-    // EMPLOYMENT FIELD CODE
-    //====================================================================================================
+	List<InEmploymentFieldCode> findEmploymentFieldCodes(Integer offset, Integer limit);
 
-    InEmploymentFieldCode findEmploymentFieldCodeById(Long id);
+	List<InEmploymentFieldCode> findEmploymentFieldCodes(String filter, Integer offset, Integer limit);
 
-    InEmploymentFieldCode findEmploymentFieldCodeByCode(String code);
+	Integer countEmploymentFieldCode();
 
-    List<InEmploymentFieldCode> findEmploymentFieldCodes();
+	Integer countEmploymentFieldCode(String filter);
 
-    List<InEmploymentFieldCode> findEmploymentFieldCodes(Integer offset, Integer limit);
+	void saveEmploymentFieldCode(InEmploymentFieldCode employmentfieldCode);
 
-    List<InEmploymentFieldCode> findEmploymentFieldCodes(String filter, Integer offset, Integer limit);
+	void updateEmploymentFieldCode(InEmploymentFieldCode employmentfieldCode);
 
-    Integer countEmploymentFieldCode();
+	void removeEmploymentFieldCode(InEmploymentFieldCode employmentfieldCode);
 
-    Integer countEmploymentFieldCode(String filter);
+	// ====================================================================================================
+	// EMPLOYMENT LEVEL CODE
+	// ====================================================================================================
 
-    void saveEmploymentFieldCode(InEmploymentFieldCode employmentfieldCode);
+	InEmploymentLevelCode findEmploymentLevelCodeById(Long id);
 
-    void updateEmploymentFieldCode(InEmploymentFieldCode employmentfieldCode);
+	InEmploymentLevelCode findEmploymentLevelCodeByCode(String code);
 
-    void removeEmploymentFieldCode(InEmploymentFieldCode employmentfieldCode);
+	List<InEmploymentLevelCode> findEmploymentLevelCodes();
 
-    //====================================================================================================
-    // EMPLOYMENT LEVEL CODE
-    //====================================================================================================
+	List<InEmploymentLevelCode> findEmploymentLevelCodes(Integer offset, Integer limit);
 
-    InEmploymentLevelCode findEmploymentLevelCodeById(Long id);
+	List<InEmploymentLevelCode> findEmploymentLevelCodes(String filter, Integer offset, Integer limit);
 
-    InEmploymentLevelCode findEmploymentLevelCodeByCode(String code);
+	Integer countEmploymentLevelCode();
 
-    List<InEmploymentLevelCode> findEmploymentLevelCodes();
+	Integer countEmploymentLevelCode(String filter);
 
-    List<InEmploymentLevelCode> findEmploymentLevelCodes(Integer offset, Integer limit);
+	void saveEmploymentLevelCode(InEmploymentLevelCode employmentlevelCode);
 
-    List<InEmploymentLevelCode> findEmploymentLevelCodes(String filter, Integer offset, Integer limit);
+	void updateEmploymentLevelCode(InEmploymentLevelCode employmentlevelCode);
 
-    Integer countEmploymentLevelCode();
+	void removeEmploymentLevelCode(InEmploymentLevelCode employmentlevelCode);
 
-    Integer countEmploymentLevelCode(String filter);
+	// ====================================================================================================
+	// EMPLOYMENT SECTOR CODE
+	// ====================================================================================================
 
-    void saveEmploymentLevelCode(InEmploymentLevelCode employmentlevelCode);
+	InEmploymentSectorCode findEmploymentSectorCodeById(Long id);
 
-    void updateEmploymentLevelCode(InEmploymentLevelCode employmentlevelCode);
+	InEmploymentSectorCode findEmploymentSectorCodeByCode(String code);
 
-    void removeEmploymentLevelCode(InEmploymentLevelCode employmentlevelCode);
+	List<InEmploymentSectorCode> findEmploymentSectorCodes();
 
-    //====================================================================================================
-    // EMPLOYMENT SECTOR CODE
-    //====================================================================================================
+	List<InEmploymentSectorCode> findEmploymentSectorCodes(Integer offset, Integer limit);
 
-    InEmploymentSectorCode findEmploymentSectorCodeById(Long id);
+	List<InEmploymentSectorCode> findEmploymentSectorCodes(String filter, Integer offset, Integer limit);
 
-    InEmploymentSectorCode findEmploymentSectorCodeByCode(String code);
+	Integer countEmploymentSectorCode();
 
-    List<InEmploymentSectorCode> findEmploymentSectorCodes();
+	Integer countEmploymentSectorCode(String filter);
 
-    List<InEmploymentSectorCode> findEmploymentSectorCodes(Integer offset, Integer limit);
+	void saveEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
 
-    List<InEmploymentSectorCode> findEmploymentSectorCodes(String filter, Integer offset, Integer limit);
+	void updateEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
 
-    Integer countEmploymentSectorCode();
+	void removeEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
 
-    Integer countEmploymentSectorCode(String filter);
+	// ====================================================================================================
+	// DUN CODE
+	// ====================================================================================================
 
-    void saveEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
+	InDunCode findDunCodeById(Long id);
 
-    void updateEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
+	InDunCode findDunCodeByCode(String code);
 
-    void removeEmploymentSectorCode(InEmploymentSectorCode employmentsectorCode);
+	List<InDunCode> findDunCodes();
 
-    //====================================================================================================
-    // DUN CODE
-    //====================================================================================================
+	List<InDunCode> findDunCodes(String filter, Integer offset, Integer limit);
 
-    InDunCode findDunCodeById(Long id);
+	Integer countDunCode();
 
-    InDunCode findDunCodeByCode(String code);
+	Integer countDunCode(String filter);
 
-    List<InDunCode> findDunCodes();
+	void saveDunCode(InDunCode DunCode);
 
-    List<InDunCode> findDunCodes(String filter, Integer offset, Integer limit);
+	void updateDunCode(InDunCode DunCode);
 
-    Integer countDunCode();
+	void removeDunCode(InDunCode DunCode);
 
-    Integer countDunCode(String filter);
+	// ====================================================================================================
+	// PARLIAMENT CODE
+	// ====================================================================================================
 
-    void saveDunCode(InDunCode DunCode);
+	InParliamentCode findParliamentCodeById(Long id);
 
-    void updateDunCode(InDunCode DunCode);
+	InParliamentCode findParliamentCodeByCode(String code);
 
-    void removeDunCode(InDunCode DunCode);
+	List<InParliamentCode> findParliamentCodes();
 
-    //====================================================================================================
-    // PARLIAMENT CODE
-    //====================================================================================================
+	List<InParliamentCode> findParliamentCodes(String filter, Integer offset, Integer limit);
 
-    InParliamentCode findParliamentCodeById(Long id);
+	Integer countParliamentCode();
 
-    InParliamentCode findParliamentCodeByCode(String code);
+	Integer countParliamentCode(String filter);
 
-    List<InParliamentCode> findParliamentCodes();
+	void saveParliamentCode(InParliamentCode ParliamentCode);
 
-    List<InParliamentCode> findParliamentCodes(String filter, Integer offset, Integer limit);
+	void updateParliamentCode(InParliamentCode ParliamentCode);
 
-    Integer countParliamentCode();
+	void removeParliamentCode(InParliamentCode ParliamentCode);
 
-    Integer countParliamentCode(String filter);
+	// ====================================================================================================
+	// SUPERVISOR CODE
+	// ====================================================================================================
 
-    void saveParliamentCode(InParliamentCode ParliamentCode);
+	InSupervisorCode findSupervisorCodeById(Long id);
 
-    void updateParliamentCode(InParliamentCode ParliamentCode);
+	InSupervisorCode findSupervisorCodeByCode(String code);
 
-    void removeParliamentCode(InParliamentCode ParliamentCode);
+	List<InSupervisorCode> findSupervisorCodes();
 
+	// todo: find supervisorcode by faculty
+	List<InSupervisorCode> findSupervisorCodes(InFacultyCode facultyCode);
 
-    //====================================================================================================
-    // SUPERVISOR CODE
-    //====================================================================================================
+	List<InSupervisorCode> findSupervisorCodes(String filter, Integer offset, Integer limit);
 
-    InSupervisorCode findSupervisorCodeById(Long id);
+	Integer countSupervisorCode();
 
-    InSupervisorCode findSupervisorCodeByCode(String code);
+	// todo: count supervisorcode by faculty
+	Integer countSupervisorCode(InFacultyCode facultyCode);
 
-    List<InSupervisorCode> findSupervisorCodes();
+	Integer countSupervisorCode(String filter);
 
-    // todo: find supervisorcode by faculty
-    List<InSupervisorCode> findSupervisorCodes(InFacultyCode facultyCode);
+	void saveSupervisorCode(InSupervisorCode supervisorCode);
 
-    List<InSupervisorCode> findSupervisorCodes(String filter, Integer offset, Integer limit);
+	void updateSupervisorCode(InSupervisorCode supervisorCode);
 
-    Integer countSupervisorCode();
+	void removeSupervisorCode(InSupervisorCode supervisorCode);
 
-    // todo: count supervisorcode by faculty
-    Integer countSupervisorCode(InFacultyCode facultyCode);
+	// ====================================================================================================
+	// STUDY MODE
+	// ====================================================================================================
 
-    Integer countSupervisorCode(String filter);
+	InStudyMode findStudyModeById(Long id);
 
-    void saveSupervisorCode(InSupervisorCode supervisorCode);
+	InStudyMode findStudyModeByCode(String code);
 
-    void updateSupervisorCode(InSupervisorCode supervisorCode);
+	List<InStudyMode> findStudyModes();
 
-    void removeSupervisorCode(InSupervisorCode supervisorCode);
+	List<InStudyMode> findStudyModes(String filter, Integer offset, Integer limit);
 
-    //====================================================================================================
-    // STUDY MODE
-    //====================================================================================================
+	Integer countStudyMode();
 
-    InStudyMode findStudyModeById(Long id);
+	Integer countStudyMode(String filter);
 
-    InStudyMode findStudyModeByCode(String code);
+	void saveStudyMode(InStudyMode studyMode);
 
-    List<InStudyMode> findStudyModes();
+	void updateStudyMode(InStudyMode studyMode);
 
-    List<InStudyMode> findStudyModes(String filter, Integer offset, Integer limit);
-
-    Integer countStudyMode();
-
-    Integer countStudyMode(String filter);
-
-    void saveStudyMode(InStudyMode studyMode);
-
-    void updateStudyMode(InStudyMode studyMode);
-
-    void removeStudyMode(InStudyMode studyMode);
+	void removeStudyMode(InStudyMode studyMode);
 
 }

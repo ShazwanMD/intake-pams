@@ -490,6 +490,24 @@ public class CommonController {
 	        return new ResponseEntity<CountryCode>(commonTransformer.toCountryCodeVo(
 	        commonService.findCountryCodeByCode(code)), HttpStatus.OK);
 	        }
+	
+	//====================================================================================================
+	// STATE_CODE
+	//====================================================================================================
+
+	@RequestMapping(value = "/stateCodes", method = RequestMethod.GET)
+	public ResponseEntity<List<StateCode>> findStateCodes() {
+	        return new ResponseEntity<List<StateCode>>(commonTransformer.toStateCodeVos(
+	        commonService.findStateCodes()), HttpStatus.OK);
+	        }
+
+	@RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
+	public ResponseEntity<StateCode> findStateCodeByCode(@PathVariable String code) {
+	        return new ResponseEntity<StateCode>(commonTransformer.toStateCodeVo(
+	        commonService.findStateCodeByCode(code)), HttpStatus.OK);
+	        }
+
+
 
 }
 
