@@ -206,7 +206,7 @@ public class CommonTransformer {
 		ReligionCode vo = new ReligionCode();
 		vo.setId(e.getId());
 		vo.setCode(e.getCode());
-		vo.setName(e.getName());
+
 		vo.setDescriptionMs(e.getDescriptionMs());
 		vo.setDescriptionEn(e.getDescriptionEn());
 		return vo;

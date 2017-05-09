@@ -100,20 +100,20 @@ export class IntakeActions {
     };
   }
 
-  static ASSIGN_INTAKE_TASK = '[Intake] Assign Intake Task';
+  static CLAIM_INTAKE_TASK = '[Intake] Assign Intake Task';
 
-  assignIntakeTask(intake): Action {
+  claimIntakeTask(intake): Action {
     return {
-      type: IntakeActions.ASSIGN_INTAKE_TASK,
+      type: IntakeActions.CLAIM_INTAKE_TASK,
       payload: intake
     };
   }
 
-  static ASSIGN_INTAKE_TASK_SUCCESS = '[Intake] Assign Intake Task Success';
+  static CLAIM_INTAKE_TASK_SUCCESS = '[Intake] Assign Intake Task Success';
 
-  assignIntakeTaskSuccess(task): Action {
+  claimIntakeTaskSuccess(task): Action {
     return {
-      type: IntakeActions.ASSIGN_INTAKE_TASK_SUCCESS,
+      type: IntakeActions.CLAIM_INTAKE_TASK_SUCCESS,
       payload: task
     };
   }

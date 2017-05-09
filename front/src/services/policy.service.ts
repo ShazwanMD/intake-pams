@@ -98,6 +98,37 @@ export class PolicyService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  completeIntakeTask(intakeTask: IntakeTask): Observable<String> {
+    console.log("TaskId: " + intakeTask.taskId);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/policy/intakes/completeTask', JSON.stringify(intakeTask), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  claimIntakeTask(intakeTask: IntakeTask): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/policy/intakes/claimTask', JSON.stringify(intakeTask), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  releaseIntakeTask(intakeTask: IntakeTask): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/policy/intakes/releaseTask', JSON.stringify(intakeTask), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   updateIntake(intake: Intake): Observable<Boolean> {
     return this.http.put(environment.endpoint + '/api/policy/intakes', JSON.stringify(intake))
       .flatMap(data => Observable.of(true));

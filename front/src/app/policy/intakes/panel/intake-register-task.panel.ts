@@ -25,8 +25,9 @@ export class IntakeRegisterTaskPanel {
               private snackBar: MdSnackBar) {
   }
 
-  approve(intakeTask: IntakeTask) {
-    this.store.dispatch(this.actions.completeIntakeTask(intakeTask));
+  verify() {
+    this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
+    this.goBack();
   }
 
   goBack(): void {

@@ -4,14 +4,6 @@
     <span flex></span>
   </div>
 
-  <md-nav-list menu-items>
-    <a *ngFor="let item of routes" md-list-item [routerLink]="[item.route]" (click)="layout.close()">
-      <md-icon>{{item.icon}}</md-icon>
-      {{item.title}}
-    </a>
-  </md-nav-list>
-
-
   <td-layout-manage-list #list>
     <md-nav-list list-items>
       <a md-list-item (click)="showDialog()">
@@ -37,9 +29,19 @@
       <md-card-title>Intakes</md-card-title>
       <md-card-subtitle>List of intake tasks</md-card-subtitle>
 
-      <pams-intake-task-list
-        [intakeTasks]="intakeTasks$ | async"
-        (view)="view($event)"></pams-intake-task-list>
+      <!-- TODO: split to assigned and pooled -->
+        <md-tab-group [selectedIndex]="0">
+          <md-tab label="Assigned">
+            <pams-intake-task-list
+              [intakeTasks]="intakeTasks$ | async"
+              (view)="view($event)"></pams-intake-task-list>
+          </md-tab>
+          <md-tab label="Pooled">
+            <pams-intake-task-list
+              [intakeTasks]="intakeTasks$ | async"
+              (view)="view($event)"></pams-intake-task-list>
+          </md-tab>
+        </md-tab-group>
 
       <md-divider></md-divider>
       <md-card-actions>

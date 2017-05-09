@@ -68,26 +68,48 @@ export class IntakeEffects {
     .ofType(IntakeActions.START_INTAKE_TASK)
     .map(action => action.payload)
     .switchMap(intake => this.policyService.startIntakeTask(intake))
-    .map(() => this.intakeActions.findAssignedIntakeTasks())
+    .mergeMap(action => from([action,
+        this.intakeActions.findAssignedIntakeTasks(),
+        this.intakeActions.findPooledIntakeTasks()
+      ]
+    ));
 
   @Effect() completeIntakeTask$ = this.actions$
     .ofType(IntakeActions.COMPLETE_INTAKE_TASK)
-    .map(action => action.payload);
-  // todo
-  // .switchMap(intake => this.policyService.startIntakeTask(intake))
-  // .map(task => this.intakeActions.startIntakeTaskSuccess(task));
+    .map(action => action.payload)
+    .switchMap(intakeTask => this.policyService.completeIntakeTask(intakeTask))
+    .map(message => this.intakeActions.completeIntakeTaskSuccess(message))
+    .mergeMap(action => from([action,
+        this.intakeActions.findAssignedIntakeTasks(),
+        this.intakeActions.findPooledIntakeTasks()
+      ]
+    ));
 
-  @Effect() assignIntakeTask$ = this.actions$
-    .ofType(IntakeActions.ASSIGN_INTAKE_TASK)
-    .map(action => action.payload);
-  // todo
-  // .switchMap(intake => this.policyService.startIntakeTask(intake))
-  // .map(task => this.intakeActions.startIntakeTaskSuccess(task));
+  @Effect() claimIntakeTask$ = this.actions$
+    .ofType(IntakeActions.CLAIM_INTAKE_TASK)
+    .map(action => action.payload)
+    .switchMap(intakeTask => this.policyService.claimIntakeTask(intakeTask))
+    .map(message => this.intakeActions.claimIntakeTaskSuccess(message))
+    .mergeMap(action => from([action,
+        this.intakeActions.findAssignedIntakeTasks(),
+        this.intakeActions.findPooledIntakeTasks()
+      ]
+    ));
 
   @Effect() releaseIntakeTask$ = this.actions$
     .ofType(IntakeActions.RELEASE_INTAKE_TASK)
-    .map(action => action.payload);
-  // todo
+    .map(action => action.payload)
+    .switchMap(intakeTask => this.policyService.releaseIntakeTask(intakeTask))
+    .map(message => this.intakeActions.releaseIntakeTaskSuccess(message))
+    .mergeMap(action => from([action,
+        this.intakeActions.findAssignedIntakeTasks(),
+        this.intakeActions.findPooledIntakeTasks()
+      ]
+    ));
+
+
+
+
 
   @Effect() updateIntake$ = this.actions$
     .ofType(IntakeActions.UPDATE_INTAKE)
