@@ -1,5 +1,4 @@
 import { ProgramCode } from './../../common/program-codes/program-code.interface';
-
 import {Action} from '@ngrx/store';
 import {SetupActions} from "../setup.action";
 

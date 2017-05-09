@@ -134,6 +134,16 @@ export class CommonService {
       .map((res: Response) => <ProgramCode[]>res.json());
   }
 
+  saveGraduateCentre(code:GraduateCentre) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/graduateCentres', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // FACULTY CODES
   // ====================================================================================================
@@ -172,6 +182,16 @@ export class CommonService {
       .map((res: Response) => <ProgramCode>res.json());
   }
 
+  saveProgramCode(code:ProgramCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/programCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // STUDY MODE
   // ====================================================================================================
@@ -188,15 +208,6 @@ export class CommonService {
       .map((res: Response) => <StudyMode>res.json());
   }
 
-  saveGraduateCentre(code:GraduateCentre) {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/common/graduateCentres', JSON.stringify(code), options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
 
   // ====================================================================================================
   // RELIGION CODE
@@ -246,6 +257,16 @@ findSupervisorCodeByCode(code:string): Observable<SupervisorCode> {
 return this.http.get(environment.endpoint + '/api/common/supervisorCodes/' + code)
     .map((res: Response) => <SupervisorCode>res.json());
 }
+
+saveSupervisorCode(code:SupervisorCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/supervisorCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
 // ====================================================================================================
 // COUNTRYCODE

@@ -327,4 +327,53 @@ findStateCodesSuccess(codes): Action {
     };
   }
 
+  static SAVE_PROGRAM_CODE_SUCCESS = '[Setup] Save Program Code Success';
+
+  saveProgramCodeSuccess(message): Action {
+    console.log("saveProgramCodeSuccess");
+    return {
+      type: SetupActions.SAVE_PROGRAM_CODE_SUCCESS,
+      payload: message
+    };
+  } 
+
+  static SAVE_SUPERVISOR_CODE = '[Setup] Save Supervisor Code';
+
+  saveSupervisorCode(code): Action {
+    console.log("saveSupervisorCode");
+    return {
+      type: SetupActions.SAVE_SUPERVISOR_CODE,
+      payload:code
+    };
+  }
+
+  static FIND_SUPERVISOR_CODES = '[Common] Find SupervisorCodes';
+
+  findSupervisorCodes(): Action {
+    console.log("findSupervisorCodes");
+    return {
+        type: SetupActions.FIND_SUPERVISOR_CODES,
+    };
+}
+
+ static FIND_SUPERVISOR_CODES_SUCCESS = '[Common] Find SupervisorCodes Success';
+
+findSupervisorCodesSuccess(codes): Action {
+   console.log("findSupervisorCodesSuccess");
+  return {
+      type: SetupActions.FIND_SUPERVISOR_CODES_SUCCESS,
+        payload: codes
+    };
+} 
+
+ static SAVE_SUPERVISOR_CODE_SUCCESS = '[Setup] Save Supervisor Code Success';
+
+saveSupervisorCodeSuccess(message): Action {
+  console.log("saveSupervisorCodeSuccess");
+  return {
+      type: SetupActions.SAVE_SUPERVISOR_CODE_SUCCESS,
+      payload: message
+    };
+  } 
+
 }

@@ -6,7 +6,7 @@
         <md-icon>label</md-icon>
         Bank Code
       </a>
-       <a md-list-item [routerLink]="['/setup/graduate-centre']">
+      <a md-list-item [routerLink]="['/setup/graduate-centre']">
         <md-icon>label</md-icon>
         Graduate Centre
        </a>
@@ -85,10 +85,10 @@
     </div>
 
     <md-card class="">
-      <md-card-title>Program codes and descriptions</md-card-title>
-      <md-card-subtitle>List of program codes and descriptions</md-card-subtitle>
+      <md-card-title>Supervisor codes and descriptions</md-card-title>
+      <md-card-subtitle>List of supervisor codes and descriptions</md-card-subtitle>
       <td-data-table
-        [data]="programCodes$ | async"
+        [data]="supervisorCodes$ | async"
         [columns]="columns"
         [sortBy]="summary"
         [sortOrder]="ASC"
@@ -110,4 +110,3 @@
 
   </td-layout-manage-list>
 </td-layout-nav>
-

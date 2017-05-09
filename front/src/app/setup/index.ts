@@ -1,3 +1,6 @@
+import { SupervisorCodeCreatorDialog } from './supervisor-codes/dialog/supervisor-code-creator.dialog';
+import { SupervisorCodeListPage } from './supervisor-codes/supervisor-code-list.page';
+import { SupervisorCode } from './../common/supervisor-codes/supervisor-code.interface';
 import { ReligionCodeCreatorDialog } from './religion-codes/dialog/religion-code-creator.dialog';
 import { ProgramCodeCreatorDialog } from './program-codes/dialog/program-code-creator.dialog';
 import { ProgramCodeListPage } from './program-codes/program-code-list.page';
@@ -36,6 +39,7 @@ import {BankCodeCreatorDialog} from "./bank-codes/dialog/bank-code-creator.dialo
 import {countryCodeListReducer, CountryCodeListState} from "./country-codes/country-code-list.reducer";
 import {stateCodeListReducer, StateCodeListState} from "./state-codes/state-code-list.reducer";
 import {programCodeListReducer, ProgramCodeListState} from "./program-codes/program-code-list.reducer";
+import {supervisorCodeListReducer, SupervisorCodeListState} from "./supervisor-codes/supervisor-code-list.reducer";
 
 
 
@@ -45,9 +49,10 @@ export interface SetupModuleState {
   bankCodes: BankCodeListState;
   graduateCentres: GraduateCentreListState;
   religionCodes : ReligionCodeListState;
-  countryCodes : CountryCodeListPage;
-  stateCodes : StateCodeListPage;
-  programCodes : ProgramCodeListPage;
+  countryCodes : CountryCodeListState;
+  stateCodes : StateCodeListState;
+  programCodes : ProgramCodeListState;
+  supervisorCodes : SupervisorCodeListState;
   
 
 };
@@ -57,9 +62,10 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     bankCodes: <BankCode[]>[],
     graduateCentres: <GraduateCentre[]>[],
     religionCodes: <ReligionCode[]>[],
-   // programCodes: <ProgramCode[]>[],
-   // stateCodes: <StateCode[]>[],
-   // countryCodes: <CountryCode[]>[],
+    supervisorCodes: <SupervisorCode[]>[],
+    programCodes: <ProgramCode[]>[],
+    stateCodes: <StateCode[]>[],
+    countryCodes: <CountryCode[]>[],
    // maritalCodes: <BankCode[]>[],
 
   };
@@ -73,6 +79,7 @@ export const setupModuleReducers = {
   countryCodes: countryCodeListReducer,
   stateCodes: stateCodeListReducer,
   programCodes: programCodeListReducer,
+  supervisorCodes: supervisorCodeListReducer,
 };
 
 
@@ -97,6 +104,7 @@ export const setupModuleReducers = {
     CountryCodeListPage,
     StateCodeListPage,
     ProgramCodeListPage,
+    SupervisorCodeListPage,
 
     // dialog
     BankCodeCreatorDialog,
@@ -106,6 +114,7 @@ export const setupModuleReducers = {
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,
     ReligionCodeCreatorDialog,
+    SupervisorCodeCreatorDialog,
   ],
   exports: [],
   entryComponents: [
@@ -116,6 +125,7 @@ export const setupModuleReducers = {
     CountryCodeCreatorDialog,
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,
+    SupervisorCodeCreatorDialog,
   ],
 
 })

@@ -59,4 +59,25 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findProgramCodes())
     .map(codes => this.commonActions.findProgramCodesSuccess(codes));
+
+    @Effect() saveProgramCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_PROGRAM_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveProgramCode(payload))
+    .map(message => this.commonActions.saveProgramCodeSuccess(message))
+    .mergeMap(action => from([action, this.commonActions.findProgramCodes()]));
+
+    @Effect() findSupervisorCodes$ = this.actions$
+    .ofType(SetupActions.FIND_SUPERVISOR_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findSupervisorCodes())
+    .map(codes => this.commonActions.findSupervisorCodesSuccess(codes));
+
+    @Effect() saveSupervisorCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_SUPERVISOR_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveSupervisorCode(payload))
+    .map(message => this.commonActions.saveSupervisorCodeSuccess(message))
+    .mergeMap(action => from([action, this.commonActions.findSupervisorCodes()]));
+
 }
