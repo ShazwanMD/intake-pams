@@ -1,3 +1,7 @@
+import { MdDialog } from '@angular/material';
+
+import { ProgramCodeCreatorDialog } from './dialog/program-code-creator.dialog';
+
 import { ProgramCode } from './../../common/program-codes/program-code.interface';
 
 import {Component, OnInit} from "@angular/core";
@@ -5,6 +9,7 @@ import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
+
 
 
 
@@ -26,7 +31,8 @@ export class ProgramCodeListPage implements OnInit {
   ];
 
   constructor(private actions: SetupActions,
-              private store: Store<SetupModuleState>){
+              private store: Store<SetupModuleState>,
+              private dialog: MdDialog){
     this.programCodes$ = this.store.select(...this.PROGRAM_CODES);
   }
 
