@@ -311,6 +311,7 @@
                                 <srcFile>src/test/resources/data/IN_INTK_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_DBLY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_SPVR_CODE.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
