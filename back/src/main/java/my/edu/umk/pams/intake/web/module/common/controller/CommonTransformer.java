@@ -34,7 +34,7 @@ public class CommonTransformer {
     }
 
     //====================================================================================================
-    // GRADUATE CENTER
+    // STUDY MODE
     //====================================================================================================
 
     public StudyMode toStudyModeVo(InStudyMode e) {
@@ -54,7 +54,7 @@ public class CommonTransformer {
     }
 
     //====================================================================================================
-    // GRADUATE CENTER
+    // GENDER CODE
     //====================================================================================================
 
     public GenderCode toGenderCodeVo(InGenderCode e) {
@@ -75,7 +75,7 @@ public class CommonTransformer {
     }
 
     //====================================================================================================
-    // GRADUATE CENTER
+    // BANK CODE
     //====================================================================================================
 
     public BankCode toBankCodeVo(InBankCode e) {
@@ -95,7 +95,7 @@ public class CommonTransformer {
 
 
     //====================================================================================================
-    // GRADUATE CENTER
+    // PROGRAM CODE
     //====================================================================================================
 
     public ProgramCode toProgramCodeVo(InProgramCode e) {
@@ -116,7 +116,7 @@ public class CommonTransformer {
     }
 
     //====================================================================================================
-    // GRADUATE CENTER
+    // FACULTY CODE
     //====================================================================================================
 
     public FacultyCode toFacultyCodeVo(InFacultyCode e) {
@@ -137,7 +137,7 @@ public class CommonTransformer {
 
 
     //====================================================================================================
-    // GRADUATE CENTER
+    // SUPERVISOR CODE
     //====================================================================================================
 
     public SupervisorCode toSupervisorCodeVo(InSupervisorCode e) {
@@ -159,7 +159,7 @@ public class CommonTransformer {
 
 
     //====================================================================================================
-    // GRADUATE CENTER
+    // SCHOOL CODE
     //====================================================================================================
 
     public SchoolCode toSchoolCodeVo(InSchoolCode e) {
@@ -199,14 +199,13 @@ public class CommonTransformer {
          }
 
   //====================================================================================================
-  // IN_RELIGION_CODE
+  // RELIGION CODE
   //====================================================================================================
 
 	public ReligionCode toReligionCodeVo(InReligionCode e) {
 		ReligionCode vo = new ReligionCode();
 		vo.setId(e.getId());
 		vo.setCode(e.getCode());
-
 		vo.setDescriptionMs(e.getDescriptionMs());
 		vo.setDescriptionEn(e.getDescriptionEn());
 		return vo;
@@ -231,7 +230,7 @@ public class CommonTransformer {
 		vo.setDescriptionMs(e.getDescriptionMs());
 		vo.setDescriptionEn(e.getDescriptionEn());
           return vo;
-          }
+     }
 
   public List<CountryCode> toCountryCodeVos(List<InCountryCode> e) {
           List<CountryCode> vos = e.stream()

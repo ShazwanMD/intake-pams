@@ -464,16 +464,15 @@ public class CommonController {
 
 	@RequestMapping(value = "/religionCodes", method = RequestMethod.GET)
 	public ResponseEntity<List<ReligionCode>> findReligionCodes() {
-		return new ResponseEntity<List<ReligionCode>>(
-				commonTransformer.toReligionCodeVos(commonService.findReligionCodes()), HttpStatus.OK);
-				
-	}
+	        return new ResponseEntity<List<ReligionCode>>(commonTransformer.toReligionCodeVos(
+	        commonService.findReligionCodes()), HttpStatus.OK);
+	        }
 
 	@RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.GET)
 	public ResponseEntity<ReligionCode> findReligionCodeByCode(@PathVariable String code) {
-		return new ResponseEntity<ReligionCode>(
-				commonTransformer.toReligionCodeVo(commonService.findReligionCodeByCode(code)), HttpStatus.OK);
-	}
+	        return new ResponseEntity<ReligionCode>(commonTransformer.toReligionCodeVo(
+	        commonService.findReligionCodeByCode(code)), HttpStatus.OK);
+	        }
 	
 	//====================================================================================================
 	// COUNTRY_CODE
