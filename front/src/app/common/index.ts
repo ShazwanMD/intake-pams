@@ -27,6 +27,7 @@ import { maritalCodeListReducer, MaritalCodeListState } from "./marital-codes/ma
 import { MaritalCodeSelectComponent } from "./marital-codes/component/marital-code-select.component";
 import {BankCodeSelectComponent} from "./bank-codes/component/bank-code-select.component";
 import {BankCodeListState, bankCodeListReducer} from "./bank-codes/bank-code-list.reducer";
+import { SupervisorCodeSelectComponent } from "./supervisor-codes/component/supervisor-code-select.component";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -68,6 +69,8 @@ export const commonModuleReducers = {
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
     BankCodeSelectComponent,
+    SupervisorCodeSelectComponent,
+
   ],
   exports: [
     GraduateCentreSelectComponent,
@@ -77,6 +80,8 @@ export const commonModuleReducers = {
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
     BankCodeSelectComponent,
+    SupervisorCodeSelectComponent,
+
   ],
 })
 export class CommonModule {
