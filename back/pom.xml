@@ -494,7 +494,8 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <warName>intake-back</warName>
+                    <warName>intake</warName>
+                    <packagingExcludes>WEB-INF/lib/websocket-*.jar</packagingExcludes>
                 </configuration>
             </plugin>
             <plugin>
