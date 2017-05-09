@@ -57,4 +57,12 @@ export class CommonEffects {
      .map(action => action.payload)
      .switchMap(() => this.commonService.findStudyModes())
      .map(codes => this.commonActions.findStudyModeSuccess(codes));
+
+     @Effect() findSupervisorCodes$ = this.actions$
+    .ofType(CommonActions.FIND_SUPERVISOR_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findSupervisorCodes())
+    .map(codes => this.commonActions.findSupervisorCodesSuccess(codes));
+
+
 }

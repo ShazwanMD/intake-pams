@@ -1,3 +1,4 @@
+import { SupervisorCode } from './../app/common/supervisor-codes/supervisor-code.interface';
 import { CountryCode } from './../app/common/country-codes/country-code.interface';
 import { ReligionCode } from './../app/common/religion-codes/religion-code.interface';
 import {GenderCode} from './../app/common/gender-codes/gender-code.interface';
@@ -14,6 +15,7 @@ import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
+
 
 
 
@@ -226,6 +228,24 @@ findCountryCodeByCode(code:string): Observable<CountryCode> {
 return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
     .map((res: Response) => <CountryCode>res.json());
 }
+
+// ====================================================================================================
+// SUPERVISORCODE
+// ====================================================================================================
+
+findSupervisorCodes(): Observable<SupervisorCode[]> {
+    console.log("findSupervisorCodes()");
+return this.http.get(environment.endpoint + '/api/common/supervisorCodes')
+    .map((res: Response) => <SupervisorCode[]>res.json());
+}
+
+findSupervisorCodeByCode(code:string): Observable<SupervisorCode> {
+    console.log("findSupervisorCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/supervisorCodes/' + code)
+    .map((res: Response) => <SupervisorCode>res.json());
+}
+
+
 
 
 }
