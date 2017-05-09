@@ -1,3 +1,4 @@
+import { ReligionCodeCreatorDialog } from './religion-codes/dialog/religion-code-creator.dialog';
 import { ProgramCodeCreatorDialog } from './program-codes/dialog/program-code-creator.dialog';
 import { ProgramCodeListPage } from './program-codes/program-code-list.page';
 import { ProgramCode } from './../common/program-codes/program-code.interface';
@@ -9,24 +10,17 @@ import { CountryCodeListPage } from './country-codes/country-code-list.page';
 import { CountryCode } from './../common/country-codes/country-code.interface';
 import { MaritalCodeCreatorDialog } from './marital-codes/dialog/marital-code-creator.dialog';
 import { MaritalCodeListPage } from './marital-codes/marital-code-list-page';
-//import { ReligionCodeCreatorDialog } from './religion-codes/dialog/religion-code-creator';
-
 import { BankCode } from './../common/bank-codes/bank-code.interface';
-
 import { MaritalCode } from './../common/marital-codes/marital-code.interface';
-
 import { ReligionCode } from './../common/religion-codes/religion-code.interface';
-
 import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
 import { SetupPage } from './setup.page';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
 import {NgModule, ModuleWithProviders} from "@angular/core";
-
 import {CovalentCoreModule} from '@covalent/core';
 import {CommonModule} from "../common/index";
-
 import {bankCodeListReducer, BankCodeListState} from "./bank-codes/bank-code-list.reducer";
 import {maritalCodeListReducer, MaritalCodeListState} from "./marital-codes/marital-code-list.reducer";
 import {religionCodeListReducer, ReligionCodeListState} from "./religion-codes/religion-code-list.reducer";
@@ -111,13 +105,13 @@ export const setupModuleReducers = {
     CountryCodeCreatorDialog,
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,
-    //ReligionCodeCreatorDialog,
+    ReligionCodeCreatorDialog,
   ],
   exports: [],
   entryComponents: [
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
-   // ReligionCodeCreatorDialog,
+    ReligionCodeCreatorDialog,
     MaritalCodeCreatorDialog,
     CountryCodeCreatorDialog,
     StateCodeCreatorDialog,
