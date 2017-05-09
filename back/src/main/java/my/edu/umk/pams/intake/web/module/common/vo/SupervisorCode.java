@@ -12,6 +12,7 @@ import java.io.IOException;
 public class SupervisorCode  extends MetaObject{
 
     private String code;
+    private String name;
     private String descriptionEn;
     private String descriptionMs;
 
@@ -39,7 +40,15 @@ public class SupervisorCode  extends MetaObject{
         this.descriptionMs = descriptionMs;
     }
 
-    @JsonCreator
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@JsonCreator
     public static SupervisorCode create(String jsonString) {
         SupervisorCode o = null;
         try {
@@ -50,5 +59,7 @@ public class SupervisorCode  extends MetaObject{
         }
         return o;
     }
+
+	
 
 }

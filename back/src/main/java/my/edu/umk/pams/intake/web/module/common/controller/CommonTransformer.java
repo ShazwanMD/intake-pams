@@ -144,6 +144,7 @@ public class CommonTransformer {
         SupervisorCode vo = new SupervisorCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
+        vo.setName(e.getName());
         vo.setDescriptionMs(e.getDescriptionMs());
         vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
