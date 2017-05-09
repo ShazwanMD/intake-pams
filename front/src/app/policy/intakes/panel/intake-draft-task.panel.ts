@@ -43,8 +43,9 @@ export class IntakeDraftTaskPanel implements OnInit {
     this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
   }
 
-  draft(intakeTask: IntakeTask) {
-    this.store.dispatch(this.actions.completeIntakeTask(intakeTask));
+  register() {
+    this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
+    this.goBack();
   }
 
   goBack(): void {
