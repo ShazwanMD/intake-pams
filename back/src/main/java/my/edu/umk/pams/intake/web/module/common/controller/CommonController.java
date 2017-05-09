@@ -475,6 +475,22 @@ public class CommonController {
 				commonTransformer.toReligionCodeVo(commonService.findReligionCodeByCode(code)), HttpStatus.OK);
 	}
 	
+	//====================================================================================================
+	// COUNTRY_CODE
+	//====================================================================================================
+
+	@RequestMapping(value = "/countryCodes", method = RequestMethod.GET)
+	public ResponseEntity<List<CountryCode>> findCountryCodes() {
+	        return new ResponseEntity<List<CountryCode>>(commonTransformer.toCountryCodeVos(
+	        commonService.findCountryCodes()), HttpStatus.OK);
+	        }
+
+	@RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.GET)
+	public ResponseEntity<CountryCode> findCountryCodeByCode(@PathVariable String code) {
+	        return new ResponseEntity<CountryCode>(commonTransformer.toCountryCodeVo(
+	        commonService.findCountryCodeByCode(code)), HttpStatus.OK);
+	        }
+
 }
 
 	

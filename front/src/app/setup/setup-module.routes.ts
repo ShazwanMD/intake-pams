@@ -5,6 +5,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {SetupPage} from "./setup.page";
 import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
 import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.page";
+import { CountryCodeListPage } from './country-codes/country-code-list.page';
+
 
 
 
@@ -14,5 +16,6 @@ export const SetupModuleRoutes: Routes = [
   {path: 'setup/graduate-centres', component: GraduateCentreListPage},
   {path: 'setup/religion-codes', component: ReligionCodeListPage},
   {path: 'setup/marital-codes', component: MaritalCodeListPage},
+  {path: 'setup/country-codes', component: CountryCodeListPage},
 
 ];

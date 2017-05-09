@@ -1,3 +1,4 @@
+import { CountryCode } from './../app/common/country-codes/country-code.interface';
 import { ReligionCode } from './../app/common/religion-codes/religion-code.interface';
 import {GenderCode} from './../app/common/gender-codes/gender-code.interface';
 import {Injectable} from '@angular/core';
@@ -13,6 +14,7 @@ import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
+
 
 
 @Injectable()
@@ -207,4 +209,23 @@ export class CommonService {
     return this.http.get(environment.endpoint + '/api/common/religionCodes/' + code)
       .map((res: Response) => <ReligionCode>res.json());
   }
+
+  
+// ====================================================================================================
+// COUNTRYCODE
+// ====================================================================================================
+
+findCountryCodes(): Observable<CountryCode[]> {
+    console.log("findCountryCodes()");
+return this.http.get(environment.endpoint + '/api/common/countryCodes')
+    .map((res: Response) => <CountryCode[]>res.json());
+}
+
+findCountryCodeByCode(code:string): Observable<CountryCode> {
+    console.log("findCountryCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
+    .map((res: Response) => <CountryCode>res.json());
+}
+
+
 }
