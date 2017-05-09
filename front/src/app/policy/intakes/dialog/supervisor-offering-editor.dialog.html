@@ -3,20 +3,23 @@
   <form [formGroup]="editorForm">
     <div layout="row" class="pad-bottom">
     <md-input-container flex>
-        <input mdInput type="number"
+    <input mdInput type="number"
                placeholder="Projection"
                formControlName="projection"
                value="Projection"
                flex/>
-      </md-input-container>
+    </md-input-container>
     </div>  
-   <div layout="row" class="pad-bottom pad-top">
-      <pams-supervisor-code-select
+
+   <div layout="row" class="pad-top">
+    
+   <pams-supervisor-code-select
         [placeholder]="'Supervisor Code'"
-        [innerFormControl]="editorForm.controls['supervisorCode']" flex>
-      </pams-supervisor-code-select>
-    </div>  
-  </form>
+        [innerFormControl]="editorForm.controls['supervisorCode']">
+   </pams-supervisor-code-select>
+   </div>  
+</form>
+
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="add(editorForm.value, editorForm.valid)">Save</button>
