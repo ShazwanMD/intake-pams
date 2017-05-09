@@ -1,3 +1,7 @@
+import { StateCodeCreatorDialog } from './state-codes/dialog/state-code-creator.dialog';
+
+import { StateCodeListPage } from './state-codes/state-code-list.page';
+import { StateCode } from './../common/state-codes/state-code.interface';
 import { CountryCodeCreatorDialog } from './country-codes/dialog/country-code-creator.dialog';
 import { CountryCodeListPage } from './country-codes/country-code-list.page';
 import { CountryCode } from './../common/country-codes/country-code.interface';
@@ -34,6 +38,7 @@ import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.pa
 import {GraduateCentreCreatorDialog} from "./graduate-centres/dialog/graduate-centre-creator.dialog";
 import {BankCodeCreatorDialog} from "./bank-codes/dialog/bank-code-creator.dialog";
 import {countryCodeListReducer, CountryCodeListState} from "./country-codes/country-code-list.reducer";
+import {stateCodeListReducer, StateCodeListState} from "./state-codes/state-code-list.reducer";
 
 
 
@@ -43,6 +48,7 @@ export interface SetupModuleState {
   graduateCentres: GraduateCentreListState;
   religionCodes : ReligionCodeListState;
   countryCodes : CountryCodeListPage;
+  stateCodes : StateCodeListPage;
   
 
 };
@@ -52,6 +58,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     bankCodes: <BankCode[]>[],
     graduateCentres: <GraduateCentre[]>[],
     religionCodes: <ReligionCode[]>[],
+   // stateCodes: <StateCode[]>[],
    // countryCodes: <CountryCode[]>[],
    // maritalCodes: <BankCode[]>[],
 
@@ -64,6 +71,7 @@ export const setupModuleReducers = {
   religionCodes: religionCodeListReducer,
   maritalCodes: maritalCodeListReducer,
   countryCodes: countryCodeListReducer,
+  stateCodes: stateCodeListReducer,
 };
 
 
@@ -86,12 +94,14 @@ export const setupModuleReducers = {
     ReligionCodeListPage,
     MaritalCodeListPage,
     CountryCodeListPage,
+    StateCodeListPage,
 
     // dialog
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
     MaritalCodeCreatorDialog,
     CountryCodeCreatorDialog,
+    StateCodeCreatorDialog,
     //ReligionCodeCreatorDialog,
   ],
   exports: [],
@@ -101,6 +111,7 @@ export const setupModuleReducers = {
    // ReligionCodeCreatorDialog,
     MaritalCodeCreatorDialog,
     CountryCodeCreatorDialog,
+    StateCodeCreatorDialog,
   ],
 
 })

@@ -269,5 +269,34 @@ findCountryCodesSuccess(codes): Action {
     };
   }
 
+  static FIND_STATE_CODES_SUCCESS = '[Common] Find StateCodes Success';
+
+findStateCodesSuccess(codes): Action {
+    console.log("findStateCodesSuccess");
+    return {
+        type: SetupActions.FIND_STATE_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+  static SAVE_STATE_CODE = '[Setup] Save State Code';
+
+  saveStateCode(code): Action {
+    console.log("saveStateCode");
+    return {
+      type: SetupActions.SAVE_STATE_CODE,
+      payload:code
+    };
+  }
+
+  static FIND_STATE_CODES = '[Common] Find StateCodes';
+
+  findStateCodes(): Action {
+    console.log("findStateCodes");
+    return {
+        type: SetupActions.FIND_STATE_CODES,
+    };
+}
+
 
 }
