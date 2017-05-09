@@ -275,8 +275,9 @@ public class CommonController {
     public ResponseEntity<String> saveSupervisorCode(@RequestBody SupervisorCode vo) {
         dummyLogin();
 
-        InSupervisorCode supervisorCode = new InSupervisorCodeImpl();
+        InSupervisorCode supervisorCode = new InSupervisorCodeImpl();        
         supervisorCode.setCode(vo.getCode());
+        supervisorCode.setName(vo.getName());
         supervisorCode.setDescriptionEn(vo.getDescriptionEn());
         supervisorCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.saveSupervisorCode(supervisorCode);
