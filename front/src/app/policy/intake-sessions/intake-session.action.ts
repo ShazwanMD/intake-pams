@@ -3,7 +3,7 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class IntakeSessionActions {
 
-  static FIND_INTAKE_SESSIONS = '[Common] Find Intake Sessions';
+  static FIND_INTAKE_SESSIONS = '[IntakeSession] Find Intake Sessions';
 
   findIntakeSessions(): Action {
     console.log("findIntakeSessions");
@@ -12,7 +12,7 @@ export class IntakeSessionActions {
     };
   }
 
-  static FIND_INTAKE_SESSIONS_SUCCESS = '[Common] Find Intake Sessions Success';
+  static FIND_INTAKE_SESSIONS_SUCCESS = '[IntakeSession] Find Intake Sessions Success';
 
   findIntakeSessionsSuccess(sessions): Action {
     console.log("findIntakeSessionsSuccess");
