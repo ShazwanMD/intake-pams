@@ -9,7 +9,8 @@
      layout-align="start center"
      layout-wrap>
   <md-nav-list dense flex>
-    <template let-supervisorOffering let-last="last" ngFor [ngForOf]="supervisorOfferings$ | async">
+    <!--<template let-supervisorOffering let-last="last" ngFor [ngForOf]="supervisorOfferings$ | async">-->
+      <template let-supervisorOffering let-last="last" ngFor [ngForOf]="supervisorOfferings">
       <a md-list-item>
         <md-icon md-list-avatar>label</md-icon>
         <h3 md-line> {{supervisorOffering.supervisorCode?.descriptionMs}} </h3>
@@ -20,3 +21,5 @@
     </template>
   </md-nav-list>
 </div>
+
+ 
