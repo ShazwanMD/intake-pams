@@ -298,5 +298,33 @@ findStateCodesSuccess(codes): Action {
     };
 }
 
+    static FIND_PROGRAM_CODES = '[Common] Find ProgramCodes';
+
+  findProgramCodes(): Action {
+    console.log("findProgramCodes");
+    return {
+        type: SetupActions.FIND_PROGRAM_CODES,
+    };
+}
+
+    static FIND_PROGRAM_CODES_SUCCESS = '[Common] Find ProgramCodes Success';
+
+  findProgramCodesSuccess(codes): Action {
+    console.log("findProgramCodesSuccess");
+    return {
+        type: SetupActions.FIND_PROGRAM_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+  static SAVE_PROGRAM_CODE = '[Setup] Save Program Code';
+
+  saveProgramCode(code): Action {
+    console.log("saveProgramCode");
+    return {
+      type: SetupActions.SAVE_PROGRAM_CODE,
+      payload:code
+    };
+  }
 
 }

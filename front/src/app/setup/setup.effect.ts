@@ -53,4 +53,10 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findStateCodes())
     .map(codes => this.commonActions.findStateCodesSuccess(codes));
+
+    @Effect() findProgramCodes$ = this.actions$
+    .ofType(SetupActions.FIND_PROGRAM_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findProgramCodes())
+    .map(codes => this.commonActions.findProgramCodesSuccess(codes));
 }
