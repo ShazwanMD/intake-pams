@@ -93,4 +93,17 @@ export class SetupEffects {
     .map(message => this.commonActions.saveRaceCodeSuccess(message))
     .mergeMap(action => from([action, this.commonActions.findRaceCodes()]));    
 
+    @Effect() findGenderCodes$ = this.actions$
+    .ofType(SetupActions.FIND_GENDER_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findGenderCodes())
+    .map(codes => this.commonActions.findGenderCodesSuccess(codes));
+
+    @Effect() saveGenderCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_GENDER_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveGenderCode(payload))
+    .map(message => this.commonActions.saveGenderCodeSuccess(message))
+    .mergeMap(action => from([action, this.commonActions.findGenderCodes()]));     
+
 }

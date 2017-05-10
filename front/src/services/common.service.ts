@@ -97,6 +97,16 @@ export class CommonService {
       .map((res: Response) => <GenderCode>res.json());
   }
 
+  saveGenderCode(code:GenderCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/genderCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
   // ====================================================================================================
   // MARITAL CODES
@@ -311,5 +321,7 @@ saveRaceCode(code:RaceCode) {
     return this.http.post(environment.endpoint + '/api/common/raceCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+
 
 }

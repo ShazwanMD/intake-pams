@@ -385,7 +385,7 @@ saveSupervisorCodeSuccess(message): Action {
     };
 }
 
-    static FIND_RACE_CODES_SUCCESS = '[Common] Find RaceCodes Success';
+    static FIND_RACE_CODES_SUCCESS = '[Common] Find Race Codes Success';
 
   findRaceCodesSuccess(codes): Action {
     console.log("findRaceCodesSuccess");
@@ -411,6 +411,45 @@ saveSupervisorCodeSuccess(message): Action {
     console.log("saveRaceCodeSuccess");
     return {
       type: SetupActions.SAVE_RACE_CODE_SUCCESS,
+      payload: message
+    };
+  } 
+
+    static FIND_GENDER_CODES = '[Common] Find Gender Codes';
+
+  findGenderCodes(): Action {
+    console.log("findGenderCodes");
+    return {
+        type: SetupActions.FIND_GENDER_CODES,
+    };
+}
+
+    static FIND_GENDER_CODES_SUCCESS = '[Common] Find Gender Codes Success';
+
+  findGenderCodesSuccess(codes): Action {
+    console.log("findGenderCodesSuccess");
+    return {
+        type: SetupActions.FIND_GENDER_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+  static SAVE_GENDER_CODE = '[Setup] Save Gender Code';
+
+  saveGenderCode(code): Action {
+    console.log("saveGenderCode");
+    return {
+      type: SetupActions.SAVE_GENDER_CODE,
+      payload:code
+    };
+  }
+
+  static SAVE_GENDER_CODE_SUCCESS = '[Setup] Save Gender Code Success';
+
+  saveGenderCodeSuccess(message): Action {
+    console.log("saveGenderCodeSuccess");
+    return {
+      type: SetupActions.SAVE_GENDER_CODE_SUCCESS,
       payload: message
     };
   } 
