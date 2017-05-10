@@ -5,7 +5,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
 import {SetupModuleState} from "../../index";
-import {BankCode} from "../../../common/bank-codes/bank-code.interface";
 import {SetupActions} from "../../setup.action";
 import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
 

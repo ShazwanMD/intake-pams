@@ -1,3 +1,4 @@
+import { RaceCodeListPage } from './race-codes/race-code-list.page';
 import { SupervisorCodeListPage } from './supervisor-codes/supervisor-code-list.page';
 import { ProgramCodeListPage } from './program-codes/program-code-list.page';
 import { StateCodeListPage } from './state-codes/state-code-list.page';
@@ -11,6 +12,7 @@ import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.pa
 import { CountryCodeListPage } from './country-codes/country-code-list.page';
 
 
+
 export const SetupModuleRoutes: Routes = [
   {path: 'setup', component: SetupPage},
   {path: 'setup/bank-codes', component: BankCodeListPage},
@@ -21,5 +23,6 @@ export const SetupModuleRoutes: Routes = [
   {path: 'setup/state-codes', component: StateCodeListPage},
   {path: 'setup/program-codes', component: ProgramCodeListPage},
   {path: 'setup/supervisor-codes', component: SupervisorCodeListPage},
+  {path: 'setup/race-codes', component: RaceCodeListPage},
 
 ];

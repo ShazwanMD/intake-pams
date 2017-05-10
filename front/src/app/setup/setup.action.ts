@@ -376,4 +376,43 @@ saveSupervisorCodeSuccess(message): Action {
     };
   } 
 
+    static FIND_RACE_CODES = '[Common] Find RaceCodes';
+
+  findRaceCodes(): Action {
+    console.log("findRaceCodes");
+    return {
+        type: SetupActions.FIND_RACE_CODES,
+    };
+}
+
+    static FIND_RACE_CODES_SUCCESS = '[Common] Find RaceCodes Success';
+
+  findRaceCodesSuccess(codes): Action {
+    console.log("findRaceCodesSuccess");
+    return {
+        type: SetupActions.FIND_RACE_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+  static SAVE_RACE_CODE = '[Setup] Save Race Code';
+
+  saveRaceCode(code): Action {
+    console.log("saveRaceCode");
+    return {
+      type: SetupActions.SAVE_RACE_CODE,
+      payload:code
+    };
+  }
+
+  static SAVE_RACE_CODE_SUCCESS = '[Setup] Save Race Code Success';
+
+  saveRaceCodeSuccess(message): Action {
+    console.log("saveRaceCodeSuccess");
+    return {
+      type: SetupActions.SAVE_RACE_CODE_SUCCESS,
+      payload: message
+    };
+  } 
+
 }

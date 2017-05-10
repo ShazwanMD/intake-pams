@@ -4,4 +4,6 @@ export interface BankCode extends MetaObject{
     swiftCode:string;
     ibgCode:string;
     name:string;
+    descriptionEn:string;
+    descriptionMs:string;
 }

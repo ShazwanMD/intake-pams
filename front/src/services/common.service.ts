@@ -1,3 +1,4 @@
+import { RaceCode } from './../app/common/race-codes/race-code.interface';
 import { StateCode } from './../app/common/state-codes/state-code.interface';
 import { SupervisorCode } from './../app/common/supervisor-codes/supervisor-code.interface';
 import { CountryCode } from './../app/common/country-codes/country-code.interface';
@@ -16,6 +17,7 @@ import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
+
 
 
 
@@ -284,6 +286,30 @@ return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
     .map((res: Response) => <StateCode>res.json());
 }
 
+// ====================================================================================================
+// RACECODE
+// ====================================================================================================
 
+findRaceCodes(): Observable<RaceCode[]> {
+    console.log("findRaceCodes()");
+return this.http.get(environment.endpoint + '/api/common/raceCodes')
+    .map((res: Response) => <RaceCode[]>res.json());
+}
+
+findRaceCodeByCode(code:string): Observable<RaceCode> {
+    console.log("findRaceCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/raceCodes/' + code)
+    .map((res: Response) => <RaceCode>res.json());
+}
+
+saveRaceCode(code:RaceCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/raceCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
 }
