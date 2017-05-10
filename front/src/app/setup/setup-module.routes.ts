@@ -1,3 +1,4 @@
+import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
 import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
 import { GenderCodeListPage } from './gender-codes/gender-code-list.page';
 import { RaceCodeListPage } from './race-codes/race-code-list.page';
@@ -17,6 +18,7 @@ import { CountryCodeListPage } from './country-codes/country-code-list.page';
 
 
 
+
 export const SetupModuleRoutes: Routes = [
   {path: 'setup', component: SetupPage},
   {path: 'setup/bank-codes', component: BankCodeListPage},
@@ -30,5 +32,6 @@ export const SetupModuleRoutes: Routes = [
   {path: 'setup/race-codes', component: RaceCodeListPage},
   {path: 'setup/gender-codes', component: GenderCodeListPage},
   {path: 'setup/ethnicity-codes', component: EthnicityCodeListPage},
+  {path: 'setup/nationality-codes', component: NationalityCodeListPage},
 
 ];

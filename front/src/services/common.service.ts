@@ -1,3 +1,4 @@
+import { NationalityCode } from './../app/common/nationality-codes/nationality-code.interface';
 import { EthnicityCode } from './../app/common/ethnicity-codes/ethnicity-code.interface';
 import { RaceCode } from './../app/common/race-codes/race-code.interface';
 import { StateCode } from './../app/common/state-codes/state-code.interface';
@@ -25,6 +26,7 @@ import {BankCode} from "../app/common/bank-codes/bank-code.interface";
 
 
 
+
 @Injectable()
 export class CommonService {
 
@@ -34,7 +36,7 @@ export class CommonService {
   }
 
   // ====================================================================================================
-  // BANKCODE
+  // BANK CODES
   // ====================================================================================================
 
   findBankCodes(): Observable<BankCode[]> {
@@ -51,7 +53,7 @@ export class CommonService {
 
 
   // ====================================================================================================
-  // DUNCODE
+  // DUN CODES
   // ====================================================================================================
 
   findDunCodes(): Observable<DunCode[]> {
@@ -68,7 +70,7 @@ export class CommonService {
 
 
   // ====================================================================================================
-  // PARLIAMENTCODE
+  // PARLIAMENT CODES
   // ====================================================================================================
 
   findParliamentCodes(): Observable<ParliamentCode[]> {
@@ -224,7 +226,7 @@ export class CommonService {
 
 
   // ====================================================================================================
-  // RELIGION CODE
+  // RELIGION CODES
   // ====================================================================================================
 
   findReligionCodes(): Observable<ReligionCode[]> {
@@ -241,7 +243,7 @@ export class CommonService {
 
   
 // ====================================================================================================
-// COUNTRYCODE
+// COUNTRY CODES
 // ====================================================================================================
 
 findCountryCodes(): Observable<CountryCode[]> {
@@ -257,7 +259,7 @@ return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
 }
 
 // ====================================================================================================
-// SUPERVISORCODE
+// SUPERVISOR CODES
 // ====================================================================================================
 
 findSupervisorCodes(): Observable<SupervisorCode[]> {
@@ -283,7 +285,7 @@ saveSupervisorCode(code:SupervisorCode) {
   }
 
 // ====================================================================================================
-// COUNTRYCODE
+// COUNTRY CODES
 // ====================================================================================================
 
 findStateCodes(): Observable<StateCode[]> {
@@ -299,7 +301,7 @@ return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
 }
 
 // ====================================================================================================
-// RACECODE
+// RACE CODES
 // ====================================================================================================
 
 findRaceCodes(): Observable<RaceCode[]> {
@@ -325,7 +327,7 @@ saveRaceCode(code:RaceCode) {
   }
 
 // ====================================================================================================
-// ETHNICITYCODE
+// ETHNICITY CODES
 // ====================================================================================================
 
 findEthnicityCodes(): Observable<EthnicityCode[]> {
@@ -338,6 +340,22 @@ findEthnicityCodeByCode(code:string): Observable<EthnicityCode> {
     console.log("findEthnicityCodeByCode");
 return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
     .map((res: Response) => <EthnicityCode>res.json());
+}
+
+// ====================================================================================================
+// NATIONALITY CODES
+// ====================================================================================================
+
+findNationalityCodes(): Observable<NationalityCode[]> {
+    console.log("findNationalityCodes()");
+return this.http.get(environment.endpoint + '/api/common/nationalityCodes')
+    .map((res: Response) => <RaceCode[]>res.json());
+}
+
+findNationalityCodeByCode(code:string): Observable<NationalityCode> {
+    console.log("findNationalityCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/nationalityCodes/' + code)
+    .map((res: Response) => <NationalityCode>res.json());
 }
 
 

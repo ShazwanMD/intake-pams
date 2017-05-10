@@ -493,6 +493,43 @@ saveSupervisorCodeSuccess(message): Action {
     };
   } 
   
-   
+ static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
+
+  findNationalityCodes(): Action {
+    console.log("findNationalityCodes");
+    return {
+        type: SetupActions.FIND_NATIONALITY_CODES,
+    };
+}
+
+ static FIND_NATIONALITY_CODES_SUCCESS = '[Common] Find Nationality Codes Success';
+
+  findNationalityCodesSuccess(codes): Action {
+    console.log("findNationalityCodesSuccess");
+    return {
+        type: SetupActions.FIND_NATIONALITY_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+ static SAVE_NATIONALITY_CODE = '[Setup] Save Nationality Code';
+
+  saveNationalityCode(code): Action {
+    console.log("saveNationalityCode");
+    return {
+      type: SetupActions.SAVE_NATIONALITY_CODE,
+      payload:code
+    };
+  }
+
+ static SAVE_NATIONALITY_CODE_SUCCESS = '[Setup] Save Nationality Code Success';
+
+  saveNationalityCodeSuccess(message): Action {
+    console.log("saveNationalityCodeSuccess");
+    return {
+      type: SetupActions.SAVE_NATIONALITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
 
 }

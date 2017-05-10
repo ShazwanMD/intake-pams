@@ -1,3 +1,6 @@
+import { NationalityCodeCreatorDialog } from './nationality-codes/dialog/nationality-code-creator.dialog';
+import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
+import { NationalityCode } from './../common/nationality-codes/nationality-code.interface';
 import { EthnicityCodeCreatorDialog } from './ethnicity-codes/dialog/ethnicity-code-creator.dialog';
 import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
 import { EthnicityCode } from './../common/ethnicity-codes/ethnicity-code.interface';
@@ -52,6 +55,7 @@ import {supervisorCodeListReducer, SupervisorCodeListState} from "./supervisor-c
 import {raceCodeListReducer, RaceCodeListState} from "./race-codes/race-code-list.reducer";
 import {genderCodeListReducer, GenderCodeListState} from "./gender-codes/gender-code-list.reducer";
 import {ethnicityCodeListReducer, EthnicityCodeListState} from "./ethnicity-codes/ethnicity-code-list.reducer";
+import {nationalityCodeListReducer, NationalityCodeListState} from "./nationality-codes/nationality-code-list.reducer";
 
 
 
@@ -67,6 +71,7 @@ export interface SetupModuleState {
   raceCodes : RaceCodeListState;
   genderCodes : GenderCodeListState;
   ethnicityCodes : EthnicityCodeListState;
+  nationalityCodes : NationalityCodeListState;
 
   
 
@@ -85,6 +90,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     genderCodes: <GenderCode[]>[],
     maritalCodes: <BankCode[]>[],
     ethnicityCodes: <EthnicityCode[]>[],
+    nationalityCodes: <NationalityCode[]>[],
 
   };
 
@@ -101,6 +107,7 @@ export const setupModuleReducers = {
   raceCodes: raceCodeListReducer,
   genderCodes: genderCodeListReducer,
   ethnicityCodes: ethnicityCodeListReducer,
+  nationalityCodes: nationalityCodeListReducer,
 };
 
 
@@ -129,6 +136,7 @@ export const setupModuleReducers = {
     RaceCodeListPage,
     GenderCodeListPage,
     EthnicityCodeListPage,
+    NationalityCodeListPage,
 
     // dialog
     BankCodeCreatorDialog,
@@ -142,6 +150,7 @@ export const setupModuleReducers = {
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
+    NationalityCodeCreatorDialog,
   ],
   exports: [],
   entryComponents: [
@@ -156,6 +165,7 @@ export const setupModuleReducers = {
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
+    NationalityCodeCreatorDialog,
   ],
 
 })
