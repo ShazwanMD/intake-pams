@@ -20,9 +20,7 @@ public class CountryCode extends MetaObject {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    
+    }  
 
     public String getDescriptionMs() {
         return descriptionMs;

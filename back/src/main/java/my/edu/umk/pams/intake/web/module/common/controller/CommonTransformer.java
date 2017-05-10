@@ -244,5 +244,23 @@ public class CommonTransformer {
 		List<RaceCode> vos = e.stream().map((e1) -> toRaceCodeVo(e1)).collect(Collectors.toList());
 		return vos;
 	}
+	
+	// ====================================================================================================
+	// ETHNICITY CODE
+	// ====================================================================================================
+
+	public EthnicityCode toEthnicityCodeVo(InEthnicityCode e) {
+		EthnicityCode vo = new EthnicityCode();
+		vo.setId(e.getId());
+		vo.setCode(e.getCode());
+		vo.setDescriptionMs(e.getDescriptionMs());
+		vo.setDescriptionEn(e.getDescriptionEn());
+		return vo;
+	}
+
+	public List<EthnicityCode> toEthnicityCodeVos(List<InEthnicityCode> e) {
+		List<EthnicityCode> vos = e.stream().map((e1) -> toEthnicityCodeVo(e1)).collect(Collectors.toList());
+		return vos;
+	}	
 
 }

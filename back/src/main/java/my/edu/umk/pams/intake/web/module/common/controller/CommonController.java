@@ -554,6 +554,22 @@ public class CommonController {
         commonService.removeRaceCode(raceCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+	//====================================================================================================
+	// ETHNICITY_CODE
+	//====================================================================================================
+
+	@RequestMapping(value = "/ethnicityCodes", method = RequestMethod.GET)
+	public ResponseEntity<List<EthnicityCode>> findEthnicityCodes() {
+	        return new ResponseEntity<List<EthnicityCode>>(commonTransformer.toEthnicityCodeVos(
+	        commonService.findEthnicityCodes()), HttpStatus.OK);
+	        }
+
+	@RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.GET)
+	public ResponseEntity<EthnicityCode> findEtnicityCodeByCode(@PathVariable String code) {
+	        return new ResponseEntity<EthnicityCode>(commonTransformer.toEthnicityCodeVo(
+	        commonService.findEthnicityCodeByCode(code)), HttpStatus.OK);
+	        }   
 
 }
 
