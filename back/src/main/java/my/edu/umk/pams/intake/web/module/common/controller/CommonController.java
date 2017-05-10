@@ -570,6 +570,22 @@ public class CommonController {
 	        return new ResponseEntity<EthnicityCode>(commonTransformer.toEthnicityCodeVo(
 	        commonService.findEthnicityCodeByCode(code)), HttpStatus.OK);
 	        }   
+	
+	//====================================================================================================
+	// NATIONALITY_CODE
+	//====================================================================================================
+
+	@RequestMapping(value = "/nationalityCodes", method = RequestMethod.GET)
+	public ResponseEntity<List<NationalityCode>> findNationalityCodes() {
+	        return new ResponseEntity<List<NationalityCode>>(commonTransformer.toNationalityCodeVos(
+	        commonService.findNationalityCodes()), HttpStatus.OK);
+	        }
+
+	@RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.GET)
+	public ResponseEntity<NationalityCode> findNationalityCodeByCode(@PathVariable String code) {
+	        return new ResponseEntity<NationalityCode>(commonTransformer.toNationalityCodeVo(
+	        commonService.findNationalityCodeByCode(code)), HttpStatus.OK);
+	        }   
 
 }
 
