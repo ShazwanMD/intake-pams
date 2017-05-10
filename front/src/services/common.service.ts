@@ -1,3 +1,4 @@
+import { EthnicityCode } from './../app/common/ethnicity-codes/ethnicity-code.interface';
 import { RaceCode } from './../app/common/race-codes/race-code.interface';
 import { StateCode } from './../app/common/state-codes/state-code.interface';
 import { SupervisorCode } from './../app/common/supervisor-codes/supervisor-code.interface';
@@ -17,6 +18,7 @@ import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
+
 
 
 
@@ -322,6 +324,21 @@ saveRaceCode(code:RaceCode) {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+// ====================================================================================================
+// ETHNICITYCODE
+// ====================================================================================================
+
+findEthnicityCodes(): Observable<EthnicityCode[]> {
+    console.log("findEthinicityCodes()");
+return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
+    .map((res: Response) => <RaceCode[]>res.json());
+}
+
+findEthnicityCodeByCode(code:string): Observable<EthnicityCode> {
+    console.log("findEthnicityCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
+    .map((res: Response) => <EthnicityCode>res.json());
+}
 
 
 }

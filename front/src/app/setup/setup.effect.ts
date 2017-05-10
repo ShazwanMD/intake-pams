@@ -106,4 +106,10 @@ export class SetupEffects {
     .map(message => this.commonActions.saveGenderCodeSuccess(message))
     .mergeMap(action => from([action, this.commonActions.findGenderCodes()]));     
 
+     @Effect() findEthnicityCodes$ = this.actions$
+    .ofType(SetupActions.FIND_ETHNICITY_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findEthnicityCodes())
+    .map(codes => this.commonActions.findEthnicityCodesSuccess(codes));
+
 }

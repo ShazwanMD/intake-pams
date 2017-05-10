@@ -452,6 +452,47 @@ saveSupervisorCodeSuccess(message): Action {
       type: SetupActions.SAVE_GENDER_CODE_SUCCESS,
       payload: message
     };
+  }
+
+  static FIND_ETHNICITY_CODES = '[Common] Find Gender Codes'; 
+
+  findEthnicityCodes(): Action {
+    console.log("findEthnicityCodes");
+    return {
+        type: SetupActions.FIND_ETHNICITY_CODES,
+    };
+}
+
+  static FIND_ETHNICITY_CODES_SUCCESS = '[Common] Find Ethnicity Codes Success';
+
+  findEthnicityCodesSuccess(codes): Action {
+    console.log("findEthnicityCodesSuccess");
+    return {
+        type: SetupActions.FIND_ETHNICITY_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+  static SAVE_ETHNICITY_CODE = '[Setup] Save Ethnicity Code';
+
+  saveEthnicityCode(code): Action {
+    console.log("saveEthnicityCode");
+    return {
+      type: SetupActions.SAVE_ETHNICITY_CODE,
+      payload:code
+    };
+  }
+
+  static SAVE_ETHNICITY_CODE_SUCCESS = '[Setup] Save Ethnicity Code Success';
+
+  saveEthnicityCodeSuccess(message): Action {
+    console.log("saveEthnicityCodeSuccess");
+    return {
+      type: SetupActions.SAVE_ETHNICITY_CODE_SUCCESS,
+      payload: message
+    };
   } 
+  
+   
 
 }

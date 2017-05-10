@@ -1,4 +1,4 @@
-import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
+import { EthnicityCode } from './../../../common/ethnicity-codes/ethnicity-code.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -10,12 +10,13 @@ import {SetupActions} from "../../setup.action";
 
 
 
+
 @Component({
-  selector: 'pams-gender-code-creator',
-  templateUrl: './gender-code-creator.dialog.html',
+  selector: 'pams-ethnicity-code-creator',
+  templateUrl: './ethnicity-code-creator.dialog.html',
 })
 
-export class GenderCodeCreatorDialog implements OnInit {
+export class EthnicityCodeCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
 
@@ -23,7 +24,7 @@ export class GenderCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<GenderCodeCreatorDialog>,
+              private dialog: MdDialogRef<EthnicityCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions
   ) {
@@ -31,7 +32,7 @@ export class GenderCodeCreatorDialog implements OnInit {
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<GenderCode>{
+    this.createForm = this.formBuilder.group(<EthnicityCode>{
       id: null,
       code: '',
       descriptionMs: '',
@@ -42,7 +43,7 @@ export class GenderCodeCreatorDialog implements OnInit {
     });
   }
 
-  save(code: GenderCode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveGenderCode(code));
+  save(code: EthnicityCode, isValid: boolean) {
+    this.store.dispatch(this.actions.saveEthnicityCode(code));
   }
 }
