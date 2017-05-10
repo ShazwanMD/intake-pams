@@ -508,6 +508,52 @@ public class CommonController {
 	        }
 
 
+    //====================================================================================================
+    // RACE CODES
+    //====================================================================================================
+
+    @RequestMapping(value = "/raceCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<RaceCode>> findRaceCodes() {
+        return new ResponseEntity<List<RaceCode>>(commonTransformer.toRaceCodeVos(commonService.findRaceCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/raceCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<RaceCode> findRaceCode(@PathVariable String code) {
+        return new ResponseEntity<RaceCode>(commonTransformer.toRaceCodeVo(commonService.findRaceCodeByCode(code)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/raceCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveRaceCode(@RequestBody RaceCode vo) {
+        dummyLogin();
+
+        InRaceCode raceCode = new InRaceCodeImpl();
+        raceCode.setCode(vo.getCode());
+        raceCode.setDescriptionEn(vo.getDescriptionEn());
+        raceCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveRaceCode(raceCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/raceCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateRaceCode(@PathVariable String code, @RequestBody RaceCode vo) {
+        dummyLogin();
+
+        InRaceCode raceCode = commonService.findRaceCodeById(vo.getId());
+        raceCode.setCode(vo.getCode());
+        raceCode.setDescriptionEn(vo.getDescriptionEn());
+        raceCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateRaceCode(raceCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/raceCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeRaceCode(@PathVariable String code) {
+        dummyLogin();
+
+        InRaceCode raceCode = commonService.findRaceCodeByCode(code);
+        commonService.removeRaceCode(raceCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
 }
 
