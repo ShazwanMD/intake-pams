@@ -347,6 +347,16 @@ findStateCodesSuccess(codes): Action {
     };
   }
 
+ static SAVE_SUPERVISOR_CODE_SUCCESS = '[Setup] Save Supervisor Code Success';
+
+saveSupervisorCodeSuccess(message): Action {
+  console.log("saveSupervisorCodeSuccess");
+  return {
+      type: SetupActions.SAVE_SUPERVISOR_CODE_SUCCESS,
+      payload: message
+    };
+  }  
+
   static FIND_SUPERVISOR_CODES = '[Common] Find SupervisorCodes';
 
   findSupervisorCodes(): Action {
@@ -366,15 +376,46 @@ findSupervisorCodesSuccess(codes): Action {
     };
 } 
 
- static SAVE_SUPERVISOR_CODE_SUCCESS = '[Setup] Save Supervisor Code Success';
 
-saveSupervisorCodeSuccess(message): Action {
-  console.log("saveSupervisorCodeSuccess");
-  return {
-      type: SetupActions.SAVE_SUPERVISOR_CODE_SUCCESS,
+   static REMOVE_SUPERVISOR_CODE = '[Setup] Remove Supervisor Code';
+
+  removeSupervisorCode(code): Action {
+    console.log("removeSupervisorCode");
+    return {
+      type: SetupActions.REMOVE_SUPERVISOR_CODE,
+      payload:code
+    };
+  }
+
+  static REMOVE_SUPERVISOR_CODE_SUCCESS = '[Setup] Remove Supervisor Code Success';
+
+  removeSupervisorCodeSuccess(message): Action {
+    console.log("removeSupervisorCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_SUPERVISOR_CODE_SUCCESS,
       payload: message
     };
-  } 
+  }
+
+  static UPDATE_SUPERVISOR_CODE = '[Setup] Update Supervisor Code';
+
+  updateSupervisorCode(code): Action {
+    console.log("updateSupervisorCode");
+    return {
+      type: SetupActions.UPDATE_SUPERVISOR_CODE,
+      payload:code
+    };
+  }
+
+  static UPDATE_SUPERVISOR_CODE_SUCCESS = '[Setup] Update Supervisor Code Success';
+
+  updateSupervisorCodeSuccess(message): Action {
+    console.log("updateSupervisorCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_SUPERVISOR_CODE_SUCCESS,
+      payload: message
+    };
+  }  
 
     static FIND_RACE_CODES = '[Common] Find RaceCodes';
 

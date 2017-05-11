@@ -43,8 +43,18 @@ export class SupervisorCodeCreatorDialog implements OnInit {
     });
   }
 
-  save(code: SupervisorCode, isValid: boolean) {
+    save(code: SupervisorCode, isValid: boolean) {
     this.store.dispatch(this.actions.saveSupervisorCode(code));
     this.dialog.close();
   }
+    remove(code: SupervisorCode, isValid: boolean) {
+    this.store.dispatch(this.actions.removeSupervisorCode(code));
+    this.dialog.close();
+  }
+    update(code: SupervisorCode, isValid: boolean) {
+    this.store.dispatch(this.actions.updateSupervisorCode(code));
+    this.dialog.close();
+  }
 }
+    
+    

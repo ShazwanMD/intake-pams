@@ -80,6 +80,20 @@ export class SetupEffects {
     .map(message => this.commonActions.saveSupervisorCodeSuccess(message))
     .mergeMap(action => from([action, this.commonActions.findSupervisorCodes()]));
 
+    @Effect() removeSupervisorCodes$ = this.actions$
+    .ofType(SetupActions.REMOVE_SUPERVISOR_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeSupervisorCode(payload))
+    .map(message => this.commonActions.removeSupervisorCodeSuccess(message))
+    .mergeMap(action => from([action, this.commonActions.findSupervisorCodes()]));
+
+    @Effect() updateSupervisorCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_SUPERVISOR_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateSupervisorCode(payload))
+    .map(message => this.commonActions.updateSupervisorCodeSuccess(message))
+    .mergeMap(action => from([action, this.commonActions.findSupervisorCodes()]));
+
     @Effect() findRaceCodes$ = this.actions$
     .ofType(SetupActions.FIND_RACE_CODES)
     .map(action => action.payload)

@@ -284,6 +284,26 @@ saveSupervisorCode(code:SupervisorCode) {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+removeSupervisorCode(code:SupervisorCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/supervisorCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+updateSupervisorCode(code:SupervisorCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/supervisorCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }   
+
 // ====================================================================================================
 // COUNTRY CODES
 // ====================================================================================================
