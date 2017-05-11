@@ -18,8 +18,10 @@ import {ApplicationModuleState} from "../../application/index";
 
 export class IntakeCenterPage implements OnInit {
 
-  private INTAKE_TASKS = "policyModuleState.intakeTasks".split(".");
-  private intakeTasks$: Observable<IntakeTask[]>;
+  private ASSIGNED_INTAKE_TASKS = "policyModuleState.assignedIntakeTasks".split(".");
+  private POOLED_INTAKE_TASKS = "policyModuleState.pooledIntakeTasks".split(".");
+  private assignedIntakeTasks$: Observable<IntakeTask[]>;
+  private pooledIntakeTasks$: Observable<IntakeTask[]>;
   private creatorDialogRef: MdDialogRef<IntakeTaskCreatorDialog>;
 
   constructor(private router: Router,
@@ -28,7 +30,8 @@ export class IntakeCenterPage implements OnInit {
               private store: Store<IntakeTaskListState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
-    this.intakeTasks$ = this.store.select(...this.INTAKE_TASKS);
+    this.assignedIntakeTasks$ = this.store.select(...this.ASSIGNED_INTAKE_TASKS);
+    this.pooledIntakeTasks$ = this.store.select(...this.POOLED_INTAKE_TASKS);
   }
 
   goBack(route: string): void {
@@ -58,6 +61,7 @@ export class IntakeCenterPage implements OnInit {
   ngOnInit(): void {
     console.log("find assigned intake tasks");
     this.store.dispatch(this.actions.findAssignedIntakeTasks());
+    this.store.dispatch(this.actions.findPooledIntakeTasks());
   }
 }
 

@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.common.dao;
 
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
+import my.edu.umk.pams.intake.common.model.InSupervisorCodeImpl;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import org.hibernate.Query;
@@ -11,13 +12,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("InSupervisorCodeDao")
+@Repository("inSupervisorCodeDao")
 public class InSupervisorCodeDaoImpl extends GenericDaoSupport<Long, InSupervisorCode> implements InSupervisorCodeDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(InSupervisorCodeDaoImpl.class);
 
     public InSupervisorCodeDaoImpl() {
-        super(InSupervisorCodeDaoImpl.class);
+        super(InSupervisorCodeImpl.class);
     }
 
     @Override

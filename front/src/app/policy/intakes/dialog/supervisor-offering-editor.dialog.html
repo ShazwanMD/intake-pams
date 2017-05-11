@@ -1,24 +1,13 @@
 <h2 md-dialog-title>Supervisor Offering Editor for {{intake?.referenceNo}}</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <div layout="row" class="pad-bottom">
-    <md-input-container flex>
-    <input mdInput type="number"
-               placeholder="Projection"
-               formControlName="projection"
-               value="Projection"
-               flex/>
-    </md-input-container>
-    </div>  
-
-   <div layout="row" class="pad-top">
-    
-   <pams-supervisor-code-select
+    <div layout="row" class="pad-top">
+      <pams-supervisor-code-select
         [placeholder]="'Supervisor Code'"
         [innerFormControl]="editorForm.controls['supervisorCode']">
-   </pams-supervisor-code-select>
-   </div>  
-</form>
+      </pams-supervisor-code-select>
+    </div>
+  </form>
 
 </md-dialog-content>
 <md-dialog-actions align="end">

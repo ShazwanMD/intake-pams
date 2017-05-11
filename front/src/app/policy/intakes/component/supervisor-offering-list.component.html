@@ -9,17 +9,15 @@
      layout-align="start center"
      layout-wrap>
   <md-nav-list dense flex>
-    <!--<template let-supervisorOffering let-last="last" ngFor [ngForOf]="supervisorOfferings$ | async">-->
-      <template let-supervisorOffering let-last="last" ngFor [ngForOf]="supervisorOfferings">
+    <template let-supervisorOffering let-last="last" ngFor [ngForOf]="supervisorOfferings">
       <a md-list-item>
         <md-icon md-list-avatar>label</md-icon>
-        <h3 md-line> {{supervisorOffering.supervisorCode?.descriptionMs}} </h3>
-        <p md-line> {{supervisorOffering.supervisorCode?.code}} </p>
-        <!--<span flex></span>-->
-        <!--<span flex="40"> xxx </span>-->
+        <h3 md-line> {{supervisorOffering.supervisorCode?.name}} </h3>
+        <p md-line> {{supervisorOffering.supervisorCode?.descriptionEn}} </p>
+        <span flex></span>
+        <span flex="20">{{supervisorOffering.supervisorCode?.code}}</span>
       </a>
     </template>
   </md-nav-list>
 </div>
 
- 

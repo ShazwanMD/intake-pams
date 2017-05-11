@@ -33,12 +33,12 @@
         <md-tab-group [selectedIndex]="0">
           <md-tab label="Assigned">
             <pams-intake-task-list
-              [intakeTasks]="intakeTasks$ | async"
+              [intakeTasks]="assignedIntakeTasks$ | async"
               (view)="view($event)"></pams-intake-task-list>
           </md-tab>
           <md-tab label="Pooled">
             <pams-intake-task-list
-              [intakeTasks]="intakeTasks$ | async"
+              [intakeTasks]="pooledIntakeTasks$ | async"
               (view)="view($event)"></pams-intake-task-list>
           </md-tab>
         </md-tab-group>

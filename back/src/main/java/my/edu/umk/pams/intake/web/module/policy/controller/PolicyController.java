@@ -206,7 +206,7 @@ public class PolicyController {
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> addsupervisorOfferings(@PathVariable String referenceNo,
+    public ResponseEntity<Boolean> addSupervisorOfferings(@PathVariable String referenceNo,
                                                           @RequestBody SupervisorOffering vo) {
         dummyLogin();
 
@@ -219,7 +219,7 @@ public class PolicyController {
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> deletesupervisorOfferings(@PathVariable String referenceNo,
+    public ResponseEntity<Boolean> deleteSupervisorOfferings(@PathVariable String referenceNo,
                                                              @PathVariable Long id) {
         dummyLogin();
 
