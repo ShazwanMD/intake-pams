@@ -1,3 +1,4 @@
+import { SupervisorCodeRemoverDialog } from './supervisor-codes/dialog/supervisor-code-remover.dialog';
 import { NationalityCodeCreatorDialog } from './nationality-codes/dialog/nationality-code-creator.dialog';
 import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
 import { NationalityCode } from './../common/nationality-codes/nationality-code.interface';
@@ -56,6 +57,7 @@ import {raceCodeListReducer, RaceCodeListState} from "./race-codes/race-code-lis
 import {genderCodeListReducer, GenderCodeListState} from "./gender-codes/gender-code-list.reducer";
 import {ethnicityCodeListReducer, EthnicityCodeListState} from "./ethnicity-codes/ethnicity-code-list.reducer";
 import {nationalityCodeListReducer, NationalityCodeListState} from "./nationality-codes/nationality-code-list.reducer";
+
 
 
 
@@ -147,6 +149,7 @@ export const setupModuleReducers = {
     ProgramCodeCreatorDialog,
     ReligionCodeCreatorDialog,
     SupervisorCodeCreatorDialog,
+    SupervisorCodeRemoverDialog,
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
@@ -162,6 +165,7 @@ export const setupModuleReducers = {
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,
     SupervisorCodeCreatorDialog,
+    SupervisorCodeRemoverDialog,
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
