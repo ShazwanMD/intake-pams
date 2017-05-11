@@ -35,10 +35,11 @@ export class ProgramCodeCreatorDialog implements OnInit {
     this.createForm = this.formBuilder.group(<ProgramCode>{
       id: null,
       code: '',
-      name: '',
       descriptionMs: '',
       descriptionEn: '',
-      prefix: '',
+      
+      
+     
      
 
     });
