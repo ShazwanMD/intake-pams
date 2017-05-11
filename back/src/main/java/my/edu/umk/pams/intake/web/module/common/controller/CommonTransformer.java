@@ -94,6 +94,8 @@ public class CommonTransformer {
 		vo.setCode(e.getCode());
 		vo.setDescriptionMs(e.getDescriptionMs());
 		vo.setDescriptionEn(e.getDescriptionEn());
+		vo.setFacultyCode(toFacultyCodeVo(e.getFacultyCode()));
+		vo.setGraduateCentre(toGraduateCentreVo(e.getGraduateCentre()));
 		return vo;
 	}
 

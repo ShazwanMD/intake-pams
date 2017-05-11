@@ -228,10 +228,15 @@ public class CommonController {
     public ResponseEntity<String> saveProgramCode(@RequestBody ProgramCode vo) {
         dummyLogin();
 
+        
+        
         InProgramCode programCode = new InProgramCodeImpl();
         programCode.setCode(vo.getCode());
         programCode.setDescriptionEn(vo.getDescriptionEn());
         programCode.setDescriptionMs(vo.getDescriptionMs());
+        programCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
+        programCode.setGraduateCentre(commonService.findGraduateCentreById(vo.getGraduateCentre().getId()));
+        programCode.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
         commonService.saveProgramCode(programCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
