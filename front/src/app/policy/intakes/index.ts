@@ -15,7 +15,6 @@ import {IntakeActions} from "./intake.action";
 import {IntakeCenterPage} from "./intake-center.page";
 import {IntakeTaskListComponent} from "./component/intake-task-list.component";
 import {IntakeDraftTaskPanel} from "./panel/intake-draft-task.panel";
-import {IntakeRegisterTaskPanel} from "./panel/intake-register-task.panel";
 import {IntakeTaskWorkflowPanel} from "./panel/intake-task-workflow.panel";
 import {IntakeTaskCreatorDialog} from "./dialog/intake-task-creator.dialog";
 import {IntakeTaskViewPage} from "./intake-task-view.page";
@@ -30,6 +29,8 @@ import {ProgramLevelSubModule} from "../program-levels/index";
 import {IntakeSessionSubModule} from "../intake-sessions/index";
 import {StudyModeOfferingEditorDialog} from "./dialog/study-mode-offering-editor.dialog";
 import { SupervisorOfferingEditorDialog } from "./dialog/supervisor-offering-editor.dialog";
+import {IntakeVerifyTaskPanel} from "./panel/intake-verify-task.panel";
+import {IntakeTaskStatusComponent} from "./component/intake-task-status.component";
 
 
 @NgModule({
@@ -53,11 +54,12 @@ import { SupervisorOfferingEditorDialog } from "./dialog/supervisor-offering-edi
     ProgramOfferingListComponent,
     SupervisorOfferingListComponent,
     StudyModeOfferingListComponent,
+    IntakeTaskStatusComponent,
 
     // panels
     IntakeTaskWorkflowPanel,
     IntakeDraftTaskPanel,
-    IntakeRegisterTaskPanel,
+    IntakeVerifyTaskPanel,
 
     // dialogs
     IntakeTaskCreatorDialog,
@@ -68,7 +70,7 @@ import { SupervisorOfferingEditorDialog } from "./dialog/supervisor-offering-edi
   exports: [IntakeTaskListComponent],
   entryComponents: [
     IntakeDraftTaskPanel,
-    IntakeRegisterTaskPanel,
+    IntakeVerifyTaskPanel,
     IntakeTaskCreatorDialog,
     ProgramOfferingEditorDialog,
     StudyModeOfferingEditorDialog,

@@ -5,8 +5,8 @@ import {
 import {Observable} from "rxjs";
 import {IntakeTask} from "../intake-task.interface";
 import {FlowState} from "../../../core/flow-state.enum";
-import {IntakeRegisterTaskPanel} from "./intake-register-task.panel";
 import {IntakeDraftTaskPanel} from "./intake-draft-task.panel";
+import {IntakeVerifyTaskPanel} from "./intake-verify-task.panel";
 
 
 @Component({
@@ -35,8 +35,11 @@ export class IntakeTaskWorkflowPanel implements OnInit {
           case FlowState.DRAFTED:
             componentFactory = this.cfr.resolveComponentFactory(IntakeDraftTaskPanel);
             break;
-          case FlowState.REGISTERED:
-            componentFactory = this.cfr.resolveComponentFactory(IntakeRegisterTaskPanel);
+          case FlowState.VERIFIED:
+            componentFactory = this.cfr.resolveComponentFactory(IntakeVerifyTaskPanel);
+            break;
+          default:
+            componentFactory = this.cfr.resolveComponentFactory(IntakeDraftTaskPanel);
             break;
         }
         this.componentRef = this.taskPanel.createComponent(componentFactory);

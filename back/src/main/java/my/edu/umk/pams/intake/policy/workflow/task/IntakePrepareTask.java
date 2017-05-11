@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.sql.Timestamp;
 
 import static java.lang.System.currentTimeMillis;
-import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
+import static my.edu.umk.pams.intake.core.InFlowState.PREPARED;
 
 @Component("intake_prepare_ST")
 public class IntakePrepareTask extends BpmnActivityBehavior
@@ -40,7 +40,7 @@ public class IntakePrepareTask extends BpmnActivityBehavior
         InIntake intake = policyService.findIntakeById(intakeId);
 
         // update flow state
-        intake.getFlowdata().setState(DRAFTED);
+        intake.getFlowdata().setState(PREPARED);
         intake.getFlowdata().setPreparedDate(new Timestamp(currentTimeMillis()));
         intake.getFlowdata().setPreparerId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);

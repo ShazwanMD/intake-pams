@@ -68,7 +68,8 @@ export class IntakeEffects {
     .ofType(IntakeActions.START_INTAKE_TASK)
     .map(action => action.payload)
     .switchMap(intake => this.policyService.startIntakeTask(intake))
-    .mergeMap(message => from([message,
+    .map(message => this.intakeActions.startIntakeTaskSuccess(message))
+    .mergeMap(action => from([action,
         this.intakeActions.findAssignedIntakeTasks(),
         this.intakeActions.findPooledIntakeTasks()
       ]

@@ -12,11 +12,11 @@ import {SupervisorOffering} from "../supervisor-offering.interface";
 
 
 @Component({
-  selector: 'pams-intake-draft-task',
-  templateUrl: './intake-draft-task.panel.html',
+  selector: 'pams-intake-verify-task',
+  templateUrl: './intake-verify-task.panel.html',
 })
 
-export class IntakeDraftTaskPanel implements OnInit {
+export class IntakeVerifyTaskPanel implements OnInit {
 
   private PROGRAM_OFFERINGS = "policyModuleState.programOfferings".split(".");
   private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
@@ -43,7 +43,7 @@ export class IntakeDraftTaskPanel implements OnInit {
     this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
   }
 
-  verify() {
+  publish() {
     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
     this.goBack();
   }

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 import java.sql.Timestamp;
 
 import static java.lang.System.currentTimeMillis;
-import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
+import static my.edu.umk.pams.intake.core.InFlowState.VERIFIED;
 
 @Component("intake_verify_ST")
 public class IntakeVerifyTask extends BpmnActivityBehavior
@@ -40,7 +40,7 @@ public class IntakeVerifyTask extends BpmnActivityBehavior
         InIntake intake = policyService.findIntakeById(intakeId);
 
         // update flow state
-        intake.getFlowdata().setState(DRAFTED);
+        intake.getFlowdata().setState(VERIFIED);
         intake.getFlowdata().setVerifiedDate(new Timestamp(currentTimeMillis()));
         intake.getFlowdata().setVerifierId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);
