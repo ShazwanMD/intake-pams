@@ -132,4 +132,17 @@ export class SetupEffects {
     .switchMap(() => this.commonService.findNationalityCodes())
     .map(codes => this.commonActions.findNationalityCodesSuccess(codes));    
 
+    @Effect() findFacultyCodes$ = this.actions$
+    .ofType(SetupActions.FIND_FACULTY_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findFacultyCodes())
+    .map(codes => this.commonActions.findFacultyCodesSuccess(codes));
+
+    @Effect() saveFacultyCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_FACULTY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveFacultyCode(payload))
+    .map(message => this.commonActions.saveFacultyCodeSuccess(message))
+    .mergeMap(action => from([action, this.commonActions.findFacultyCodes()]));     
+
 }

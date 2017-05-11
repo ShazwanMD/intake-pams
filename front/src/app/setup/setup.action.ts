@@ -573,4 +573,44 @@ findSupervisorCodesSuccess(codes): Action {
     };
   }
 
+ static SAVE_FACULTY_CODE = '[Setup] Save Faculty Code';
+
+  saveFacultyCode(code): Action {
+    console.log("saveFacultyCode");
+    return {
+      type: SetupActions.SAVE_FACULTY_CODE,
+      payload:code
+    };
+  }
+
+ static SAVE_FACULTY_CODE_SUCCESS = '[Setup] Save Faculty Code Success';
+
+saveFacultyCodeSuccess(message): Action {
+  console.log("saveFacultyCodeSuccess");
+  return {
+      type: SetupActions.SAVE_FACULTY_CODE_SUCCESS,
+      payload: message
+    };
+  }  
+
+  static FIND_FACULTY_CODES = '[Common] Find Faculty Codes';
+
+  findFacultyCodes(): Action {
+    console.log("findFacultyCodes");
+    return {
+        type: SetupActions.FIND_FACULTY_CODES,
+    };
+}
+
+ static FIND_FACULTY_CODES_SUCCESS = '[Common] Find SupervisorCodes Success';
+
+findFacultyCodesSuccess(codes): Action {
+   console.log("findFacultyCodesSuccess");
+  return {
+      type: SetupActions.FIND_FACULTY_CODES_SUCCESS,
+        payload: codes
+    };
+} 
+
+
 }
