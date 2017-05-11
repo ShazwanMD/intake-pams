@@ -45,5 +45,6 @@ export class SupervisorCodeCreatorDialog implements OnInit {
 
   save(code: SupervisorCode, isValid: boolean) {
     this.store.dispatch(this.actions.saveSupervisorCode(code));
+    this.dialog.close();
   }
 }

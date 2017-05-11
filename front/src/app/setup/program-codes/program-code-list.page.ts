@@ -1,19 +1,11 @@
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
-
 import { ProgramCodeCreatorDialog } from './dialog/program-code-creator.dialog';
-
 import { ProgramCode } from './../../common/program-codes/program-code.interface';
-
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
-
-
-
-
-
 
 
 @Component({

@@ -37,9 +37,7 @@ export class ProgramCodeCreatorDialog implements OnInit {
       code: '',
       descriptionMs: '',
       descriptionEn: '',
-      
-      
-     
+
      
 
     });
@@ -48,4 +46,6 @@ export class ProgramCodeCreatorDialog implements OnInit {
   save(code: ProgramCode, isValid: boolean) {
     this.store.dispatch(this.actions.saveProgramCode(code));
   }
+
+  
 }
