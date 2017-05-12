@@ -310,7 +310,7 @@ removeSupervisorCode(code:SupervisorCode) {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/common/supervisorCodes/' + code, JSON.stringify(code), options)
+    return this.http.delete(environment.endpoint + '/api/common/supervisorCodes/' + code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -320,7 +320,7 @@ updateSupervisorCode(code:SupervisorCode) {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/common/supervisorCodes', JSON.stringify(code), options)
+    return this.http.put(environment.endpoint + '/api/common/supervisorCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }   
 
