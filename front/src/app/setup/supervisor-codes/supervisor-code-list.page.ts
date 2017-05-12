@@ -1,4 +1,3 @@
-import { SupervisorCodeRemoverDialog } from './dialog/supervisor-code-remover.dialog';
 import { SupervisorCodeCreatorDialog } from './dialog/supervisor-code-creator.dialog';
 import { SupervisorCode } from './../../common/supervisor-codes/supervisor-code.interface';
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
@@ -18,7 +17,6 @@ export class SupervisorCodeListPage implements OnInit {
 
   private SUPERVISOR_CODES = "setupModuleState.supervisorCodes".split(".");
   private creatorDialogRef: MdDialogRef<SupervisorCodeCreatorDialog>;
-  private removerDialogRef: MdDialogRef<SupervisorCodeRemoverDialog>;
   private supervisorCodes$:Observable<SupervisorCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
@@ -35,8 +33,8 @@ export class SupervisorCodeListPage implements OnInit {
     this.supervisorCodes$ = this.store.select(...this.SUPERVISOR_CODES);
   }
 
-    showDialog1(): void {
-    console.log("showDialog1");
+    showDialog(): void {
+    console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -51,21 +49,6 @@ export class SupervisorCodeListPage implements OnInit {
     });
   }
 
-    showDialog2(): void {
-    console.log("showDialog2");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = {top: '0px'};
-    this.removerDialogRef = this.dialog.open(SupervisorCodeRemoverDialog, config);
-    this.removerDialogRef.afterClosed().subscribe(res =>{
-      
-      console.log("close dialog");
-      // load something here
-    });
-  }
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findSupervisorCodes())

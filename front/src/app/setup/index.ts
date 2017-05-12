@@ -4,7 +4,6 @@ import { StudyModeCreatorDialog } from './study-modes/dialog/study-mode-creator.
 import { FacultyCodeCreatorDialog } from './faculty-codes/dialog/faculty-code-creator.dialog';
 import { FacultyCodeListPage } from './faculty-codes/faculty-code-list.page';
 import { FacultyCode } from './../common/faculty-codes/faculty-code.interface';
-import { SupervisorCodeRemoverDialog } from './supervisor-codes/dialog/supervisor-code-remover.dialog';
 import { NationalityCodeCreatorDialog } from './nationality-codes/dialog/nationality-code-creator.dialog';
 import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
 import { NationalityCode } from './../common/nationality-codes/nationality-code.interface';
@@ -65,9 +64,6 @@ import {ethnicityCodeListReducer, EthnicityCodeListState} from "./ethnicity-code
 import {nationalityCodeListReducer, NationalityCodeListState} from "./nationality-codes/nationality-code-list.reducer";
 import {facultyCodeListReducer, FacultyCodeListState} from "./faculty-codes/faculty-code-list.reducer";
 import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode-list.reducer';
-
-
-
 
 
 export interface SetupModuleState {
@@ -165,7 +161,6 @@ export const setupModuleReducers = {
     ProgramCodeCreatorDialog,
     ReligionCodeCreatorDialog,
     SupervisorCodeCreatorDialog,
-    SupervisorCodeRemoverDialog,
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
@@ -183,7 +178,6 @@ export const setupModuleReducers = {
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,
     SupervisorCodeCreatorDialog,
-    SupervisorCodeRemoverDialog,
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
