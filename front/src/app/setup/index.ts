@@ -64,9 +64,10 @@ import {ethnicityCodeListReducer, EthnicityCodeListState} from "./ethnicity-code
 import {nationalityCodeListReducer, NationalityCodeListState} from "./nationality-codes/nationality-code-list.reducer";
 import {facultyCodeListReducer, FacultyCodeListState} from "./faculty-codes/faculty-code-list.reducer";
 import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode-list.reducer';
-
+import {titleReducer, TitleState} from "./title.reducer";
 
 export interface SetupModuleState {
+  title:TitleState;
   maritalCodes: MaritalCodeListState;
   bankCodes: BankCodeListState;
   graduateCentres: GraduateCentreListState;
@@ -81,13 +82,11 @@ export interface SetupModuleState {
   nationalityCodes : NationalityCodeListState;
   facultyCodes : FacultyCodeListState;
   studyModes : StudyModeListState;
-
-  
-
 };
 
 export const INITIAL_SETUP_STATE: SetupModuleState =
   <SetupModuleState>{
+    title:'Setup Codes',
     bankCodes: <BankCode[]>[],
     graduateCentres: <GraduateCentre[]>[],
     religionCodes: <ReligionCode[]>[],
@@ -102,12 +101,11 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     nationalityCodes: <NationalityCode[]>[],
     facultyCodes: <FacultyCode[]>[],
     studyModes: <StudyMode[]>[],
-
-
   };
 
 
 export const setupModuleReducers = {
+  title:titleReducer,
   bankCodes: bankCodeListReducer,
   graduateCentres: graduateCentreListReducer,
   religionCodes: religionCodeListReducer,

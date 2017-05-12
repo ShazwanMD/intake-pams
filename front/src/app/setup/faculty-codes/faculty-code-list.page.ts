@@ -41,7 +41,7 @@ export class FacultyCodeListPage implements OnInit {
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(FacultyCodeCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res =>{
-      
+
       console.log("close dialog");
       // load something here
     });
@@ -50,6 +50,7 @@ export class FacultyCodeListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findFacultyCodes())
+    this.store.dispatch(this.actions.changeTitle("Faculty Codes"))
   }
 
 }

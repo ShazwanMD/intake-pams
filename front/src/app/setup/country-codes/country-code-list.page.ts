@@ -30,6 +30,7 @@ export class CountryCodeListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findCountryCodes())
+    this.store.dispatch(this.actions.changeTitle("Country Codes"))
   }
 
 }

@@ -1,11 +1,11 @@
-import { StudyMode } from './../app/common/study-modes/study-mode.interface';
-import { NationalityCode } from './../app/common/nationality-codes/nationality-code.interface';
-import { EthnicityCode } from './../app/common/ethnicity-codes/ethnicity-code.interface';
-import { RaceCode } from './../app/common/race-codes/race-code.interface';
-import { StateCode } from './../app/common/state-codes/state-code.interface';
-import { SupervisorCode } from './../app/common/supervisor-codes/supervisor-code.interface';
-import { CountryCode } from './../app/common/country-codes/country-code.interface';
-import { ReligionCode } from './../app/common/religion-codes/religion-code.interface';
+import {StudyMode} from './../app/common/study-modes/study-mode.interface';
+import {NationalityCode} from './../app/common/nationality-codes/nationality-code.interface';
+import {EthnicityCode} from './../app/common/ethnicity-codes/ethnicity-code.interface';
+import {RaceCode} from './../app/common/race-codes/race-code.interface';
+import {StateCode} from './../app/common/state-codes/state-code.interface';
+import {SupervisorCode} from './../app/common/supervisor-codes/supervisor-code.interface';
+import {CountryCode} from './../app/common/country-codes/country-code.interface';
+import {ReligionCode} from './../app/common/religion-codes/religion-code.interface';
 import {GenderCode} from './../app/common/gender-codes/gender-code.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
@@ -19,12 +19,6 @@ import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
-
-
-
-
-
-
 
 
 @Injectable()
@@ -101,7 +95,7 @@ export class CommonService {
       .map((res: Response) => <GenderCode>res.json());
   }
 
-  saveGenderCode(code:GenderCode) {
+  saveGenderCode(code: GenderCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -150,7 +144,7 @@ export class CommonService {
       .map((res: Response) => <ProgramCode[]>res.json());
   }
 
-  saveGraduateCentre(code:GraduateCentre) {
+  saveGraduateCentre(code: GraduateCentre) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -182,7 +176,7 @@ export class CommonService {
       .map((res: Response) => <ProgramCode[]>res.json());
   }
 
-  saveFacultyCode(code:FacultyCode) {
+  saveFacultyCode(code: FacultyCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -208,7 +202,7 @@ export class CommonService {
       .map((res: Response) => <ProgramCode>res.json());
   }
 
-  saveProgramCode(code:ProgramCode) {
+  saveProgramCode(code: ProgramCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -234,7 +228,7 @@ export class CommonService {
       .map((res: Response) => <StudyMode>res.json());
   }
 
-  saveStudyMode(code:StudyMode) {
+  saveStudyMode(code: StudyMode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -242,7 +236,7 @@ export class CommonService {
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/studyModes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
-  } 
+  }
 
 
   // ====================================================================================================
@@ -261,40 +255,46 @@ export class CommonService {
       .map((res: Response) => <ReligionCode>res.json());
   }
 
-  
+
 // ====================================================================================================
 // COUNTRY CODES
 // ====================================================================================================
 
-findCountryCodes(): Observable<CountryCode[]> {
+  findCountryCodes(): Observable<CountryCode[]> {
     console.log("findCountryCodes()");
-return this.http.get(environment.endpoint + '/api/common/countryCodes')
-    .map((res: Response) => <CountryCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/countryCodes')
+      .map((res: Response) => <CountryCode[]>res.json());
+  }
 
-findCountryCodeByCode(code:string): Observable<CountryCode> {
+  findCountryCodeByCode(code: string): Observable<CountryCode> {
     console.log("findCountryCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
-    .map((res: Response) => <CountryCode>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
+      .map((res: Response) => <CountryCode>res.json());
+  }
 
 // ====================================================================================================
 // SUPERVISOR CODES
 // ====================================================================================================
 
-findSupervisorCodes(): Observable<SupervisorCode[]> {
+  findSupervisorCodes(): Observable<SupervisorCode[]> {
     console.log("findSupervisorCodes()");
-return this.http.get(environment.endpoint + '/api/common/supervisorCodes')
-    .map((res: Response) => <SupervisorCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/supervisorCodes')
+      .map((res: Response) => <SupervisorCode[]>res.json());
+  }
 
-findSupervisorCodeByCode(code:string): Observable<SupervisorCode> {
+  findSupervisorCodesByFilter(filter: string): Observable<SupervisorCode[]> {
+    console.log("findSupervisorCodesByFilter");
+    return this.http.get(environment.endpoint + '/api/common/supervisorCodes/byFilter/' + filter)
+      .map((res: Response) => <SupervisorCode[]>res.json());
+  }
+
+  findSupervisorCodeByCode(code: string): Observable<SupervisorCode> {
     console.log("findSupervisorCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/supervisorCodes/' + code)
-    .map((res: Response) => <SupervisorCode>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/supervisorCodes/' + code)
+      .map((res: Response) => <SupervisorCode>res.json());
+  }
 
-saveSupervisorCode(code:SupervisorCode) {
+  saveSupervisorCode(code: SupervisorCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -304,7 +304,7 @@ saveSupervisorCode(code:SupervisorCode) {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-removeSupervisorCode(code:SupervisorCode) {
+  removeSupervisorCode(code: SupervisorCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -314,7 +314,7 @@ removeSupervisorCode(code:SupervisorCode) {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-updateSupervisorCode(code:SupervisorCode) {
+  updateSupervisorCode(code: SupervisorCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -322,41 +322,41 @@ updateSupervisorCode(code:SupervisorCode) {
     let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/common/supervisorCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
-  }   
+  }
 
 // ====================================================================================================
 // COUNTRY CODES
 // ====================================================================================================
 
-findStateCodes(): Observable<StateCode[]> {
+  findStateCodes(): Observable<StateCode[]> {
     console.log("findStateCodes()");
-return this.http.get(environment.endpoint + '/api/common/stateCodes')
-    .map((res: Response) => <StateCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/stateCodes')
+      .map((res: Response) => <StateCode[]>res.json());
+  }
 
-findStateCodeByCode(code:string): Observable<StateCode> {
+  findStateCodeByCode(code: string): Observable<StateCode> {
     console.log("findStateCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
-    .map((res: Response) => <StateCode>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
+      .map((res: Response) => <StateCode>res.json());
+  }
 
 // ====================================================================================================
 // RACE CODES
 // ====================================================================================================
 
-findRaceCodes(): Observable<RaceCode[]> {
+  findRaceCodes(): Observable<RaceCode[]> {
     console.log("findRaceCodes()");
-return this.http.get(environment.endpoint + '/api/common/raceCodes')
-    .map((res: Response) => <RaceCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/raceCodes')
+      .map((res: Response) => <RaceCode[]>res.json());
+  }
 
-findRaceCodeByCode(code:string): Observable<RaceCode> {
+  findRaceCodeByCode(code: string): Observable<RaceCode> {
     console.log("findRaceCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/raceCodes/' + code)
-    .map((res: Response) => <RaceCode>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/raceCodes/' + code)
+      .map((res: Response) => <RaceCode>res.json());
+  }
 
-saveRaceCode(code:RaceCode) {
+  saveRaceCode(code: RaceCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -370,33 +370,33 @@ saveRaceCode(code:RaceCode) {
 // ETHNICITY CODES
 // ====================================================================================================
 
-findEthnicityCodes(): Observable<EthnicityCode[]> {
+  findEthnicityCodes(): Observable<EthnicityCode[]> {
     console.log("findEthinicityCodes()");
-return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
-    .map((res: Response) => <RaceCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
+      .map((res: Response) => <RaceCode[]>res.json());
+  }
 
-findEthnicityCodeByCode(code:string): Observable<EthnicityCode> {
+  findEthnicityCodeByCode(code: string): Observable<EthnicityCode> {
     console.log("findEthnicityCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
-    .map((res: Response) => <EthnicityCode>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
+      .map((res: Response) => <EthnicityCode>res.json());
+  }
 
 // ====================================================================================================
 // NATIONALITY CODES
 // ====================================================================================================
 
-findNationalityCodes(): Observable<NationalityCode[]> {
+  findNationalityCodes(): Observable<NationalityCode[]> {
     console.log("findNationalityCodes()");
-return this.http.get(environment.endpoint + '/api/common/nationalityCodes')
-    .map((res: Response) => <RaceCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/nationalityCodes')
+      .map((res: Response) => <RaceCode[]>res.json());
+  }
 
-findNationalityCodeByCode(code:string): Observable<NationalityCode> {
+  findNationalityCodeByCode(code: string): Observable<NationalityCode> {
     console.log("findNationalityCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/nationalityCodes/' + code)
-    .map((res: Response) => <NationalityCode>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/nationalityCodes/' + code)
+      .map((res: Response) => <NationalityCode>res.json());
+  }
 
 
 }

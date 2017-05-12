@@ -46,8 +46,12 @@ public class InSupervisorCodeDaoImpl extends GenericDaoSupport<Long, InSuperviso
     public List<InSupervisorCode> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from InSupervisorCode s where " +
-                "(upper(s.code) like upper(:filter) " +
-                "or upper(s.description) like upper(:filter)) " +
+                "(" +
+                "upper(s.code) like upper(:filter) " +
+                "or upper(s.name) like upper(:filter)" +
+                "or upper(s.descriptionMs) like upper(:filter)" +
+                "or upper(s.descriptionEn) like upper(:filter)" +
+                ") " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());

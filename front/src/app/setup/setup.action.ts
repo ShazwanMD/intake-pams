@@ -4,6 +4,27 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class SetupActions {
 
+  static CHANGE_TITLE = '[Setup] Change Title';
+
+  changeTitle(title): Action {
+    console.log("changeTitle");
+    return {
+      type: SetupActions.CHANGE_TITLE,
+      payload: title
+    };
+  }
+
+  static CHANGE_TITLE_SUCCESS = '[Setup] Change Title Success';
+
+  changeTitleSuccess(title): Action {
+    console.log("changeTitleSuccess");
+    return {
+      type: SetupActions.CHANGE_TITLE_SUCCESS,
+      payload: title
+    };
+  }
+
+
   static FIND_BANK_CODES = '[Setup] Find Bank Codes';
 
   findBankCodes(): Action {
@@ -29,7 +50,7 @@ export class SetupActions {
     console.log("saveBankCode");
     return {
       type: SetupActions.SAVE_BANK_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -49,7 +70,7 @@ export class SetupActions {
     console.log("updateBankCode");
     return {
       type: SetupActions.UPDATE_BANK_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -88,7 +109,7 @@ export class SetupActions {
     console.log("saveGraduateCentre");
     return {
       type: SetupActions.SAVE_GRADUATE_CENTRE,
-      payload:code
+      payload: code
     };
   }
 
@@ -108,7 +129,7 @@ export class SetupActions {
     console.log("updateGraduateCentre");
     return {
       type: SetupActions.UPDATE_GRADUATE_CENTRE,
-      payload:code
+      payload: code
     };
   }
 
@@ -147,7 +168,7 @@ export class SetupActions {
     console.log("saveReligionCode");
     return {
       type: SetupActions.SAVE_RELIGION_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -167,7 +188,7 @@ export class SetupActions {
     console.log("updateReligionCode");
     return {
       type: SetupActions.UPDATE_RELIGION_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -206,7 +227,7 @@ export class SetupActions {
     console.log("saveMaritalCode");
     return {
       type: SetupActions.SAVE_MARITAL_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -226,7 +247,7 @@ export class SetupActions {
     console.log("updateMaritalCode");
     return {
       type: SetupActions.UPDATE_MARITAL_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -240,24 +261,24 @@ export class SetupActions {
     };
   }
 
-static FIND_COUNTRY_CODES = '[Common] Find CountryCodes';
+  static FIND_COUNTRY_CODES = '[Common] Find CountryCodes';
 
-findCountryCodes(): Action {
+  findCountryCodes(): Action {
     console.log("findCountryCodes");
     return {
-        type: SetupActions.FIND_COUNTRY_CODES,
+      type: SetupActions.FIND_COUNTRY_CODES,
     };
-}
+  }
 
-static FIND_COUNTRY_CODES_SUCCESS = '[Common] Find CountryCodes Success';
+  static FIND_COUNTRY_CODES_SUCCESS = '[Common] Find CountryCodes Success';
 
-findCountryCodesSuccess(codes): Action {
+  findCountryCodesSuccess(codes): Action {
     console.log("findCountryCodesSuccess");
     return {
-        type: SetupActions.FIND_COUNTRY_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_COUNTRY_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
   static SAVE_COUNTRY_CODE = '[Setup] Save Country Code';
 
@@ -265,19 +286,19 @@ findCountryCodesSuccess(codes): Action {
     console.log("saveCountryCode");
     return {
       type: SetupActions.SAVE_COUNTRY_CODE,
-      payload:code
+      payload: code
     };
   }
 
   static FIND_STATE_CODES_SUCCESS = '[Common] Find StateCodes Success';
 
-findStateCodesSuccess(codes): Action {
+  findStateCodesSuccess(codes): Action {
     console.log("findStateCodesSuccess");
     return {
-        type: SetupActions.FIND_STATE_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_STATE_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
   static SAVE_STATE_CODE = '[Setup] Save State Code';
 
@@ -285,7 +306,7 @@ findStateCodesSuccess(codes): Action {
     console.log("saveStateCode");
     return {
       type: SetupActions.SAVE_STATE_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -294,28 +315,28 @@ findStateCodesSuccess(codes): Action {
   findStateCodes(): Action {
     console.log("findStateCodes");
     return {
-        type: SetupActions.FIND_STATE_CODES,
+      type: SetupActions.FIND_STATE_CODES,
     };
-}
+  }
 
-    static FIND_PROGRAM_CODES = '[Common] Find ProgramCodes';
+  static FIND_PROGRAM_CODES = '[Common] Find ProgramCodes';
 
   findProgramCodes(): Action {
     console.log("findProgramCodes");
     return {
-        type: SetupActions.FIND_PROGRAM_CODES,
+      type: SetupActions.FIND_PROGRAM_CODES,
     };
-}
+  }
 
-    static FIND_PROGRAM_CODES_SUCCESS = '[Common] Find ProgramCodes Success';
+  static FIND_PROGRAM_CODES_SUCCESS = '[Common] Find ProgramCodes Success';
 
   findProgramCodesSuccess(codes): Action {
     console.log("findProgramCodesSuccess");
     return {
-        type: SetupActions.FIND_PROGRAM_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_PROGRAM_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
   static SAVE_PROGRAM_CODE = '[Setup] Save Program Code';
 
@@ -323,7 +344,7 @@ findStateCodesSuccess(codes): Action {
     console.log("saveProgramCode");
     return {
       type: SetupActions.SAVE_PROGRAM_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -335,7 +356,7 @@ findStateCodesSuccess(codes): Action {
       type: SetupActions.SAVE_PROGRAM_CODE_SUCCESS,
       payload: message
     };
-  } 
+  }
 
   static SAVE_SUPERVISOR_CODE = '[Setup] Save Supervisor Code';
 
@@ -343,47 +364,68 @@ findStateCodesSuccess(codes): Action {
     console.log("saveSupervisorCode");
     return {
       type: SetupActions.SAVE_SUPERVISOR_CODE,
-      payload:code
+      payload: code
     };
   }
 
- static SAVE_SUPERVISOR_CODE_SUCCESS = '[Setup] Save Supervisor Code Success';
+  static SAVE_SUPERVISOR_CODE_SUCCESS = '[Setup] Save Supervisor Code Success';
 
-saveSupervisorCodeSuccess(message): Action {
-  console.log("saveSupervisorCodeSuccess");
-  return {
+  saveSupervisorCodeSuccess(message): Action {
+    console.log("saveSupervisorCodeSuccess");
+    return {
       type: SetupActions.SAVE_SUPERVISOR_CODE_SUCCESS,
       payload: message
     };
-  }  
+  }
 
   static FIND_SUPERVISOR_CODES = '[Common] Find SupervisorCodes';
 
   findSupervisorCodes(): Action {
     console.log("findSupervisorCodes");
     return {
-        type: SetupActions.FIND_SUPERVISOR_CODES,
+      type: SetupActions.FIND_SUPERVISOR_CODES,
     };
-}
+  }
 
- static FIND_SUPERVISOR_CODES_SUCCESS = '[Common] Find SupervisorCodes Success';
+  static FIND_SUPERVISOR_CODES_SUCCESS = '[Common] Find SupervisorCodes Success';
 
-findSupervisorCodesSuccess(codes): Action {
-   console.log("findSupervisorCodesSuccess");
-  return {
+  findSupervisorCodesSuccess(codes): Action {
+    console.log("findSupervisorCodesSuccess");
+    return {
       type: SetupActions.FIND_SUPERVISOR_CODES_SUCCESS,
-        payload: codes
+      payload: codes
     };
-} 
+  }
 
 
-   static REMOVE_SUPERVISOR_CODE = '[Setup] Remove Supervisor Code';
+  static FIND_SUPERVISOR_CODES_BY_FILTER = '[Common] Find SupervisorCodes By Filter';
+
+  findSupervisorCodesByFilter(filter): Action {
+    console.log("findSupervisorCodesByFilter");
+    return {
+      type: SetupActions.FIND_SUPERVISOR_CODES_BY_FILTER,
+      payload: filter
+    };
+  }
+
+  static FIND_SUPERVISOR_CODES_BY_FILTER_SUCCESS = '[Common] Find SupervisorCodes By Filter Success';
+
+  findSupervisorCodesByFilterSuccess(codes): Action {
+    console.log("findSupervisorCodesByFilterSuccess");
+    return {
+      type: SetupActions.FIND_SUPERVISOR_CODES_BY_FILTER_SUCCESS,
+      payload: codes
+    };
+  }
+
+
+  static REMOVE_SUPERVISOR_CODE = '[Setup] Remove Supervisor Code';
 
   removeSupervisorCode(code): Action {
     console.log("removeSupervisorCode");
     return {
       type: SetupActions.REMOVE_SUPERVISOR_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -403,7 +445,7 @@ findSupervisorCodesSuccess(codes): Action {
     console.log("updateSupervisorCode");
     return {
       type: SetupActions.UPDATE_SUPERVISOR_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -415,26 +457,26 @@ findSupervisorCodesSuccess(codes): Action {
       type: SetupActions.UPDATE_SUPERVISOR_CODE_SUCCESS,
       payload: message
     };
-  }  
+  }
 
-    static FIND_RACE_CODES = '[Common] Find RaceCodes';
+  static FIND_RACE_CODES = '[Common] Find RaceCodes';
 
   findRaceCodes(): Action {
     console.log("findRaceCodes");
     return {
-        type: SetupActions.FIND_RACE_CODES,
+      type: SetupActions.FIND_RACE_CODES,
     };
-}
+  }
 
-    static FIND_RACE_CODES_SUCCESS = '[Common] Find Race Codes Success';
+  static FIND_RACE_CODES_SUCCESS = '[Common] Find Race Codes Success';
 
   findRaceCodesSuccess(codes): Action {
     console.log("findRaceCodesSuccess");
     return {
-        type: SetupActions.FIND_RACE_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_RACE_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
   static SAVE_RACE_CODE = '[Setup] Save Race Code';
 
@@ -442,7 +484,7 @@ findSupervisorCodesSuccess(codes): Action {
     console.log("saveRaceCode");
     return {
       type: SetupActions.SAVE_RACE_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -454,26 +496,26 @@ findSupervisorCodesSuccess(codes): Action {
       type: SetupActions.SAVE_RACE_CODE_SUCCESS,
       payload: message
     };
-  } 
+  }
 
-    static FIND_GENDER_CODES = '[Common] Find Gender Codes';
+  static FIND_GENDER_CODES = '[Common] Find Gender Codes';
 
   findGenderCodes(): Action {
     console.log("findGenderCodes");
     return {
-        type: SetupActions.FIND_GENDER_CODES,
+      type: SetupActions.FIND_GENDER_CODES,
     };
-}
+  }
 
-    static FIND_GENDER_CODES_SUCCESS = '[Common] Find Gender Codes Success';
+  static FIND_GENDER_CODES_SUCCESS = '[Common] Find Gender Codes Success';
 
   findGenderCodesSuccess(codes): Action {
     console.log("findGenderCodesSuccess");
     return {
-        type: SetupActions.FIND_GENDER_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_GENDER_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
   static SAVE_GENDER_CODE = '[Setup] Save Gender Code';
 
@@ -481,7 +523,7 @@ findSupervisorCodesSuccess(codes): Action {
     console.log("saveGenderCode");
     return {
       type: SetupActions.SAVE_GENDER_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -495,24 +537,24 @@ findSupervisorCodesSuccess(codes): Action {
     };
   }
 
-  static FIND_ETHNICITY_CODES = '[Common] Find Gender Codes'; 
+  static FIND_ETHNICITY_CODES = '[Common] Find Gender Codes';
 
   findEthnicityCodes(): Action {
     console.log("findEthnicityCodes");
     return {
-        type: SetupActions.FIND_ETHNICITY_CODES,
+      type: SetupActions.FIND_ETHNICITY_CODES,
     };
-}
+  }
 
   static FIND_ETHNICITY_CODES_SUCCESS = '[Common] Find Ethnicity Codes Success';
 
   findEthnicityCodesSuccess(codes): Action {
     console.log("findEthnicityCodesSuccess");
     return {
-        type: SetupActions.FIND_ETHNICITY_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_ETHNICITY_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
   static SAVE_ETHNICITY_CODE = '[Setup] Save Ethnicity Code';
 
@@ -520,7 +562,7 @@ findSupervisorCodesSuccess(codes): Action {
     console.log("saveEthnicityCode");
     return {
       type: SetupActions.SAVE_ETHNICITY_CODE,
-      payload:code
+      payload: code
     };
   }
 
@@ -532,38 +574,38 @@ findSupervisorCodesSuccess(codes): Action {
       type: SetupActions.SAVE_ETHNICITY_CODE_SUCCESS,
       payload: message
     };
-  } 
-  
- static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
+  }
+
+  static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
 
   findNationalityCodes(): Action {
     console.log("findNationalityCodes");
     return {
-        type: SetupActions.FIND_NATIONALITY_CODES,
+      type: SetupActions.FIND_NATIONALITY_CODES,
     };
-}
+  }
 
- static FIND_NATIONALITY_CODES_SUCCESS = '[Common] Find Nationality Codes Success';
+  static FIND_NATIONALITY_CODES_SUCCESS = '[Common] Find Nationality Codes Success';
 
   findNationalityCodesSuccess(codes): Action {
     console.log("findNationalityCodesSuccess");
     return {
-        type: SetupActions.FIND_NATIONALITY_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_NATIONALITY_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
- static SAVE_NATIONALITY_CODE = '[Setup] Save Nationality Code';
+  static SAVE_NATIONALITY_CODE = '[Setup] Save Nationality Code';
 
   saveNationalityCode(code): Action {
     console.log("saveNationalityCode");
     return {
       type: SetupActions.SAVE_NATIONALITY_CODE,
-      payload:code
+      payload: code
     };
   }
 
- static SAVE_NATIONALITY_CODE_SUCCESS = '[Setup] Save Nationality Code Success';
+  static SAVE_NATIONALITY_CODE_SUCCESS = '[Setup] Save Nationality Code Success';
 
   saveNationalityCodeSuccess(message): Action {
     console.log("saveNationalityCodeSuccess");
@@ -573,82 +615,82 @@ findSupervisorCodesSuccess(codes): Action {
     };
   }
 
- static SAVE_FACULTY_CODE = '[Setup] Save Faculty Code';
+  static SAVE_FACULTY_CODE = '[Setup] Save Faculty Code';
 
   saveFacultyCode(code): Action {
     console.log("saveFacultyCode");
     return {
       type: SetupActions.SAVE_FACULTY_CODE,
-      payload:code
+      payload: code
     };
   }
 
- static SAVE_FACULTY_CODE_SUCCESS = '[Setup] Save Faculty Code Success';
+  static SAVE_FACULTY_CODE_SUCCESS = '[Setup] Save Faculty Code Success';
 
-saveFacultyCodeSuccess(message): Action {
-  console.log("saveFacultyCodeSuccess");
-  return {
+  saveFacultyCodeSuccess(message): Action {
+    console.log("saveFacultyCodeSuccess");
+    return {
       type: SetupActions.SAVE_FACULTY_CODE_SUCCESS,
       payload: message
     };
-  }  
+  }
 
   static FIND_FACULTY_CODES = '[Common] Find Faculty Codes';
 
   findFacultyCodes(): Action {
     console.log("findFacultyCodes");
     return {
-        type: SetupActions.FIND_FACULTY_CODES,
+      type: SetupActions.FIND_FACULTY_CODES,
     };
-}
+  }
 
- static FIND_FACULTY_CODES_SUCCESS = '[Common] Find SupervisorCodes Success';
+  static FIND_FACULTY_CODES_SUCCESS = '[Common] Find SupervisorCodes Success';
 
-findFacultyCodesSuccess(codes): Action {
-   console.log("findFacultyCodesSuccess");
-  return {
+  findFacultyCodesSuccess(codes): Action {
+    console.log("findFacultyCodesSuccess");
+    return {
       type: SetupActions.FIND_FACULTY_CODES_SUCCESS,
-        payload: codes
+      payload: codes
     };
-} 
+  }
 
- static SAVE_STUDY_MODE = '[Setup] Save Study Mode';
+  static SAVE_STUDY_MODE = '[Setup] Save Study Mode';
 
   saveStudyMode(code): Action {
     console.log("saveStudyMode");
     return {
       type: SetupActions.SAVE_STUDY_MODE,
-      payload:code
+      payload: code
     };
   }
 
- static SAVE_STUDY_MODE_SUCCESS = '[Setup] Save Study Mode Success';
+  static SAVE_STUDY_MODE_SUCCESS = '[Setup] Save Study Mode Success';
 
-saveStudyModeSuccess(message): Action {
-  console.log("saveStudyModeSuccess");
-  return {
+  saveStudyModeSuccess(message): Action {
+    console.log("saveStudyModeSuccess");
+    return {
       type: SetupActions.SAVE_STUDY_MODE_SUCCESS,
       payload: message
     };
-  }  
+  }
 
   static FIND_STUDY_MODES = '[Common] Find Study Modes';
 
   findStudyModes(): Action {
     console.log("findStudyModes");
     return {
-        type: SetupActions.FIND_STUDY_MODES,
+      type: SetupActions.FIND_STUDY_MODES,
     };
-}
+  }
 
- static FIND_STUDY_MODES_SUCCESS = '[Common] Find Study Modes Success';
+  static FIND_STUDY_MODES_SUCCESS = '[Common] Find Study Modes Success';
 
-findStudyModesSuccess(codes): Action {
-   console.log("findStudyModesSuccess");
-  return {
+  findStudyModesSuccess(codes): Action {
+    console.log("findStudyModesSuccess");
+    return {
       type: SetupActions.FIND_STUDY_MODES_SUCCESS,
-        payload: codes
+      payload: codes
     };
-} 
+  }
 
 }

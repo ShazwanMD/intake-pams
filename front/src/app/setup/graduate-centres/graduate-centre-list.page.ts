@@ -33,6 +33,7 @@ export class GraduateCentreListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findGraduateCentres())
+    this.store.dispatch(this.actions.changeTitle("Graduate Codes"))
   }
 
   showDialog(): void {

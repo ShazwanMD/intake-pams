@@ -13,6 +13,10 @@ export function supervisorCodeListReducer(state = initialState, action: Action):
     case SetupActions.FIND_SUPERVISOR_CODES_SUCCESS: {
       return action.payload;
     }
+
+    case SetupActions.FIND_SUPERVISOR_CODES_BY_FILTER_SUCCESS: {
+      return action.payload;
+    }
     default: {
       return state;
     }

@@ -48,6 +48,7 @@ export class StudyModeListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findStudyModes())
+    this.store.dispatch(this.actions.changeTitle("Study Mode Codes"))
   }
 
 }

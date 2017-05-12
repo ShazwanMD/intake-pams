@@ -30,6 +30,7 @@ export class StateCodeListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findStateCodes())
+    this.store.dispatch(this.actions.changeTitle("State Codes"))
   }
 
 }

@@ -228,8 +228,7 @@ public class CommonController {
     public ResponseEntity<String> saveProgramCode(@RequestBody ProgramCode vo) {
         dummyLogin();
 
-        
-        
+
         InProgramCode programCode = new InProgramCodeImpl();
         programCode.setCode(vo.getCode());
         programCode.setDescriptionEn(vo.getDescriptionEn());
@@ -271,6 +270,13 @@ public class CommonController {
         return new ResponseEntity<List<SupervisorCode>>(commonTransformer.toSupervisorCodeVos(commonService.findSupervisorCodes()), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/supervisorCodes/byFilter/{filter}", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorCode>> findSupervisorCodes(@PathVariable String filter) {
+        List<InSupervisorCode> supervisorCodes = commonService.findSupervisorCodes(filter, 0, Integer.MAX_VALUE);
+        return new ResponseEntity<List<SupervisorCode>>(
+                commonTransformer.toSupervisorCodeVos(supervisorCodes), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/supervisorCodes/{code}", method = RequestMethod.GET)
     public ResponseEntity<SupervisorCode> findSupervisorCode(@PathVariable String code) {
         return new ResponseEntity<SupervisorCode>(commonTransformer.toSupervisorCodeVo(commonService.findSupervisorCodeByCode(code)), HttpStatus.OK);
@@ -280,7 +286,7 @@ public class CommonController {
     public ResponseEntity<String> saveSupervisorCode(@RequestBody SupervisorCode vo) {
         dummyLogin();
 
-        InSupervisorCode supervisorCode = new InSupervisorCodeImpl();        
+        InSupervisorCode supervisorCode = new InSupervisorCodeImpl();
         supervisorCode.setCode(vo.getCode());
         supervisorCode.setName(vo.getName());
         supervisorCode.setDescriptionEn(vo.getDescriptionEn());
@@ -462,55 +468,55 @@ public class CommonController {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
-    
 
-	// ====================================================================================================
-	// IN_RELIGION_CODE
-	// ====================================================================================================
 
-	@RequestMapping(value = "/religionCodes", method = RequestMethod.GET)
-	public ResponseEntity<List<ReligionCode>> findReligionCodes() {
-	        return new ResponseEntity<List<ReligionCode>>(commonTransformer.toReligionCodeVos(
-	        commonService.findReligionCodes()), HttpStatus.OK);
-	        }
+    // ====================================================================================================
+    // IN_RELIGION_CODE
+    // ====================================================================================================
 
-	@RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.GET)
-	public ResponseEntity<ReligionCode> findReligionCodeByCode(@PathVariable String code) {
-	        return new ResponseEntity<ReligionCode>(commonTransformer.toReligionCodeVo(
-	        commonService.findReligionCodeByCode(code)), HttpStatus.OK);
-	        }
-	
-	//====================================================================================================
-	// COUNTRY_CODE
-	//====================================================================================================
+    @RequestMapping(value = "/religionCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<ReligionCode>> findReligionCodes() {
+        return new ResponseEntity<List<ReligionCode>>(commonTransformer.toReligionCodeVos(
+                commonService.findReligionCodes()), HttpStatus.OK);
+    }
 
-	@RequestMapping(value = "/countryCodes", method = RequestMethod.GET)
-	public ResponseEntity<List<CountryCode>> findCountryCodes() {
-	        return new ResponseEntity<List<CountryCode>>(commonTransformer.toCountryCodeVos(
-	        commonService.findCountryCodes()), HttpStatus.OK);
-	        }
+    @RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<ReligionCode> findReligionCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<ReligionCode>(commonTransformer.toReligionCodeVo(
+                commonService.findReligionCodeByCode(code)), HttpStatus.OK);
+    }
 
-	@RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.GET)
-	public ResponseEntity<CountryCode> findCountryCodeByCode(@PathVariable String code) {
-	        return new ResponseEntity<CountryCode>(commonTransformer.toCountryCodeVo(
-	        commonService.findCountryCodeByCode(code)), HttpStatus.OK);
-	        }
-	
-	//====================================================================================================
-	// STATE_CODE
-	//====================================================================================================
+    //====================================================================================================
+    // COUNTRY_CODE
+    //====================================================================================================
 
-	@RequestMapping(value = "/stateCodes", method = RequestMethod.GET)
-	public ResponseEntity<List<StateCode>> findStateCodes() {
-	        return new ResponseEntity<List<StateCode>>(commonTransformer.toStateCodeVos(
-	        commonService.findStateCodes()), HttpStatus.OK);
-	        }
+    @RequestMapping(value = "/countryCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<CountryCode>> findCountryCodes() {
+        return new ResponseEntity<List<CountryCode>>(commonTransformer.toCountryCodeVos(
+                commonService.findCountryCodes()), HttpStatus.OK);
+    }
 
-	@RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
-	public ResponseEntity<StateCode> findStateCodeByCode(@PathVariable String code) {
-	        return new ResponseEntity<StateCode>(commonTransformer.toStateCodeVo(
-	        commonService.findStateCodeByCode(code)), HttpStatus.OK);
-	        }
+    @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<CountryCode> findCountryCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<CountryCode>(commonTransformer.toCountryCodeVo(
+                commonService.findCountryCodeByCode(code)), HttpStatus.OK);
+    }
+
+    //====================================================================================================
+    // STATE_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/stateCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<StateCode>> findStateCodes() {
+        return new ResponseEntity<List<StateCode>>(commonTransformer.toStateCodeVos(
+                commonService.findStateCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<StateCode> findStateCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<StateCode>(commonTransformer.toStateCodeVo(
+                commonService.findStateCodeByCode(code)), HttpStatus.OK);
+    }
 
 
     //====================================================================================================
@@ -559,38 +565,38 @@ public class CommonController {
         commonService.removeRaceCode(raceCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
-	//====================================================================================================
-	// ETHNICITY_CODE
-	//====================================================================================================
 
-	@RequestMapping(value = "/ethnicityCodes", method = RequestMethod.GET)
-	public ResponseEntity<List<EthnicityCode>> findEthnicityCodes() {
-	        return new ResponseEntity<List<EthnicityCode>>(commonTransformer.toEthnicityCodeVos(
-	        commonService.findEthnicityCodes()), HttpStatus.OK);
-	        }
+    //====================================================================================================
+    // ETHNICITY_CODE
+    //====================================================================================================
 
-	@RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.GET)
-	public ResponseEntity<EthnicityCode> findEtnicityCodeByCode(@PathVariable String code) {
-	        return new ResponseEntity<EthnicityCode>(commonTransformer.toEthnicityCodeVo(
-	        commonService.findEthnicityCodeByCode(code)), HttpStatus.OK);
-	        }   
-	
-	//====================================================================================================
-	// NATIONALITY_CODE
-	//====================================================================================================
+    @RequestMapping(value = "/ethnicityCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<EthnicityCode>> findEthnicityCodes() {
+        return new ResponseEntity<List<EthnicityCode>>(commonTransformer.toEthnicityCodeVos(
+                commonService.findEthnicityCodes()), HttpStatus.OK);
+    }
 
-	@RequestMapping(value = "/nationalityCodes", method = RequestMethod.GET)
-	public ResponseEntity<List<NationalityCode>> findNationalityCodes() {
-	        return new ResponseEntity<List<NationalityCode>>(commonTransformer.toNationalityCodeVos(
-	        commonService.findNationalityCodes()), HttpStatus.OK);
-	        }
+    @RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<EthnicityCode> findEtnicityCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<EthnicityCode>(commonTransformer.toEthnicityCodeVo(
+                commonService.findEthnicityCodeByCode(code)), HttpStatus.OK);
+    }
 
-	@RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.GET)
-	public ResponseEntity<NationalityCode> findNationalityCodeByCode(@PathVariable String code) {
-	        return new ResponseEntity<NationalityCode>(commonTransformer.toNationalityCodeVo(
-	        commonService.findNationalityCodeByCode(code)), HttpStatus.OK);
-	        }   
+    //====================================================================================================
+    // NATIONALITY_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/nationalityCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<NationalityCode>> findNationalityCodes() {
+        return new ResponseEntity<List<NationalityCode>>(commonTransformer.toNationalityCodeVos(
+                commonService.findNationalityCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<NationalityCode> findNationalityCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<NationalityCode>(commonTransformer.toNationalityCodeVo(
+                commonService.findNationalityCodeByCode(code)), HttpStatus.OK);
+    }
 
 }
 

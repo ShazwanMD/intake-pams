@@ -27,6 +27,7 @@ export class ReligionCodeListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findReligionCodes())
+    this.store.dispatch(this.actions.changeTitle("Religion Codes"))
   }
 
 }

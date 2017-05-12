@@ -30,6 +30,7 @@ export class GenderCodeListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findGenderCodes())
+    this.store.dispatch(this.actions.changeTitle("Gender Codes"))
   }
 
 }

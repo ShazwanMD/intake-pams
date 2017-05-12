@@ -3,159 +3,172 @@ import {Effect, Actions} from '@ngrx/effects';
 import {SetupActions} from "./setup.action";
 import {CommonService} from "../../services/common.service";
 import {from} from "rxjs/observable/from";
+import {SetupModuleState} from "./index";
+import {Store} from "@ngrx/store";
 
 @Injectable()
 export class SetupEffects {
   constructor(private actions$: Actions,
-              private commonActions: SetupActions,
-              private commonService: CommonService) {
+              private setupActions: SetupActions,
+              private commonService: CommonService,
+              private store: Store<SetupModuleState>) {
   }
+
+  @Effect() changeTitle$ = this.actions$
+    .ofType(SetupActions.CHANGE_TITLE)
+    .map(action => action.payload)
+    .map(payload => this.setupActions.changeTitleSuccess(payload));
 
   @Effect() findBankCode$ = this.actions$
     .ofType(SetupActions.FIND_BANK_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findBankCodes())
-    .map(codes => this.commonActions.findBankCodesSuccess(codes))
+    .map(codes => this.setupActions.findBankCodesSuccess(codes));
 
   @Effect() findGraduateCentres$ = this.actions$
     .ofType(SetupActions.FIND_GRADUATE_CENTRES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findGraduateCentres())
-    .map(codes => this.commonActions.findGraduateCentresSuccess(codes))
+    .map(codes => this.setupActions.findGraduateCentresSuccess(codes));
 
   @Effect() saveGraduateCentre$ = this.actions$
     .ofType(SetupActions.SAVE_GRADUATE_CENTRE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveGraduateCentre(payload))
-    .map(message => this.commonActions.saveGraduateCentreSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findGraduateCentres()]));
+    .map(message => this.setupActions.saveGraduateCentreSuccess(message));
 
-   @Effect() findReligionCode$ = this.actions$
+  @Effect() findReligionCode$ = this.actions$
     .ofType(SetupActions.FIND_RELIGION_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findReligionCodes())
-    .map(codes => this.commonActions.findReligionCodesSuccess(codes))
+    .map(codes => this.setupActions.findReligionCodesSuccess(codes));
 
-    @Effect() findMaritalCode$ = this.actions$
+  @Effect() findMaritalCode$ = this.actions$
     .ofType(SetupActions.FIND_MARITAL_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findMaritalCodes())
-    .map(codes => this.commonActions.findMaritalCodesSuccess(codes))
+    .map(codes => this.setupActions.findMaritalCodesSuccess(codes));
 
-    @Effect() findCountryCodes$ = this.actions$
+  @Effect() findCountryCodes$ = this.actions$
     .ofType(SetupActions.FIND_COUNTRY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findCountryCodes())
-    .map(codes => this.commonActions.findCountryCodesSuccess(codes));
+    .map(codes => this.setupActions.findCountryCodesSuccess(codes));
 
-    @Effect() findStateCodes$ = this.actions$
+  @Effect() findStateCodes$ = this.actions$
     .ofType(SetupActions.FIND_STATE_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findStateCodes())
-    .map(codes => this.commonActions.findStateCodesSuccess(codes));
+    .map(codes => this.setupActions.findStateCodesSuccess(codes));
 
-    @Effect() findProgramCodes$ = this.actions$
+  @Effect() findProgramCodes$ = this.actions$
     .ofType(SetupActions.FIND_PROGRAM_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findProgramCodes())
-    .map(codes => this.commonActions.findProgramCodesSuccess(codes));
+    .map(codes => this.setupActions.findBankCodesSuccess(codes));
 
-    @Effect() saveProgramCodes$ = this.actions$
+  @Effect() saveProgramCodes$ = this.actions$
     .ofType(SetupActions.SAVE_PROGRAM_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveProgramCode(payload))
-    .map(message => this.commonActions.saveProgramCodeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findProgramCodes()]));
+    .map(message => this.setupActions.saveProgramCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findProgramCodes()]));
 
-    @Effect() findSupervisorCodes$ = this.actions$
+  @Effect() findSupervisorCodes$ = this.actions$
     .ofType(SetupActions.FIND_SUPERVISOR_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findSupervisorCodes())
-    .map(codes => this.commonActions.findSupervisorCodesSuccess(codes));
+    .map(codes => this.setupActions.findSupervisorCodesSuccess(codes));
 
-    @Effect() saveSupervisorCodes$ = this.actions$
+  @Effect() findSupervisorCodesByFilter$ = this.actions$
+    .ofType(SetupActions.FIND_SUPERVISOR_CODES_BY_FILTER)
+    .map(action => action.payload)
+    .switchMap(filter => this.commonService.findSupervisorCodesByFilter(filter))
+    .map(codes => this.setupActions.findSupervisorCodesByFilterSuccess(codes));
+
+  @Effect() saveSupervisorCodes$ = this.actions$
     .ofType(SetupActions.SAVE_SUPERVISOR_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveSupervisorCode(payload))
-    .map(message => this.commonActions.saveSupervisorCodeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findSupervisorCodes()]));
+    .map(message => this.setupActions.saveSupervisorCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSupervisorCodes()]));
 
-    @Effect() removeSupervisorCodes$ = this.actions$
+  @Effect() removeSupervisorCodes$ = this.actions$
     .ofType(SetupActions.REMOVE_SUPERVISOR_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.removeSupervisorCode(payload))
-    .map(message => this.commonActions.removeSupervisorCodeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findSupervisorCodes()]));
+    .map(message => this.setupActions.removeSupervisorCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSupervisorCodes()]));
 
-    @Effect() updateSupervisorCodes$ = this.actions$
+  @Effect() updateSupervisorCodes$ = this.actions$
     .ofType(SetupActions.UPDATE_SUPERVISOR_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.updateSupervisorCode(payload))
-    .map(message => this.commonActions.updateSupervisorCodeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findSupervisorCodes()]));
+    .map(message => this.setupActions.updateSupervisorCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSupervisorCodes()]));
 
-    @Effect() findRaceCodes$ = this.actions$
+  @Effect() findRaceCodes$ = this.actions$
     .ofType(SetupActions.FIND_RACE_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findRaceCodes())
-    .map(codes => this.commonActions.findRaceCodesSuccess(codes));
+    .map(codes => this.setupActions.findRaceCodesSuccess(codes));
 
-    @Effect() saveRaceCodes$ = this.actions$
+  @Effect() saveRaceCodes$ = this.actions$
     .ofType(SetupActions.SAVE_RACE_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveRaceCode(payload))
-    .map(message => this.commonActions.saveRaceCodeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findRaceCodes()]));    
+    .map(message => this.setupActions.saveRaceCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findRaceCodes()]));
 
-    @Effect() findGenderCodes$ = this.actions$
+  @Effect() findGenderCodes$ = this.actions$
     .ofType(SetupActions.FIND_GENDER_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findGenderCodes())
-    .map(codes => this.commonActions.findGenderCodesSuccess(codes));
+    .map(codes => this.setupActions.findGenderCodesSuccess(codes));
 
-    @Effect() saveGenderCodes$ = this.actions$
+  @Effect() saveGenderCodes$ = this.actions$
     .ofType(SetupActions.SAVE_GENDER_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveGenderCode(payload))
-    .map(message => this.commonActions.saveGenderCodeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findGenderCodes()]));     
+    .map(message => this.setupActions.saveGenderCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findGenderCodes()]));
 
-     @Effect() findEthnicityCodes$ = this.actions$
+  @Effect() findEthnicityCodes$ = this.actions$
     .ofType(SetupActions.FIND_ETHNICITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findEthnicityCodes())
-    .map(codes => this.commonActions.findEthnicityCodesSuccess(codes));
+    .map(codes => this.setupActions.findEthnicityCodesSuccess(codes));
 
-     @Effect() findNationalityCodes$ = this.actions$
+  @Effect() findNationalityCodes$ = this.actions$
     .ofType(SetupActions.FIND_NATIONALITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findNationalityCodes())
-    .map(codes => this.commonActions.findNationalityCodesSuccess(codes));    
+    .map(codes => this.setupActions.findNationalityCodesSuccess(codes));
 
-    @Effect() findFacultyCodes$ = this.actions$
+  @Effect() findFacultyCodes$ = this.actions$
     .ofType(SetupActions.FIND_FACULTY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findFacultyCodes())
-    .map(codes => this.commonActions.findFacultyCodesSuccess(codes));
+    .map(codes => this.setupActions.findFacultyCodesSuccess(codes));
 
-    @Effect() saveFacultyCodes$ = this.actions$
+  @Effect() saveFacultyCodes$ = this.actions$
     .ofType(SetupActions.SAVE_FACULTY_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveFacultyCode(payload))
-    .map(message => this.commonActions.saveFacultyCodeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findFacultyCodes()]));    
+    .map(message => this.setupActions.saveFacultyCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findFacultyCodes()]));
 
-    @Effect() findStudyModes$ = this.actions$
+  @Effect() findStudyModes$ = this.actions$
     .ofType(SetupActions.FIND_STUDY_MODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findStudyModes())
-    .map(codes => this.commonActions.findStudyModesSuccess(codes));
+    .map(codes => this.setupActions.findStudyModesSuccess(codes));
 
-    @Effect() saveStudyModes$ = this.actions$
+  @Effect() saveStudyModes$ = this.actions$
     .ofType(SetupActions.SAVE_STUDY_MODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveStudyMode(payload))
-    .map(message => this.commonActions.saveStudyModeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findStudyModes()]));       
+    .map(message => this.setupActions.saveStudyModeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStudyModes()]));
 
 }

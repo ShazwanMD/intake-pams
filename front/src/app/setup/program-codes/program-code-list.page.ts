@@ -48,6 +48,10 @@ export class ProgramCodeListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findProgramCodes())
+    this.store.dispatch(this.actions.changeTitle("Program Codes"))
   }
 
+  filter(filter:string):void {
+    console.log("filter");
+  }
 }

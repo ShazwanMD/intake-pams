@@ -1,8 +1,13 @@
 <td-layout-nav toolbarTitle="Code Manager">
+
   <td-layout-manage-list #list title="Manage" logo="path/to/toolbar-logo.svg">
-    <md-nav-list list-items dense>
-      <h3 md-subheader>Setup Menu</h3>
-      <a md-list-item [routerLink]="['/setup/bank-codes']">
+
+    <md-toolbar td-sidenav-content>
+      <span>Setup Menu</span>
+    </md-toolbar>
+
+    <md-nav-list td-sidenav-content dense>
+      <a md-list-item [routerLink]="['bank-codes']">
         <md-icon>label</md-icon>
         Bank Code
       </a>
@@ -10,22 +15,22 @@
         <md-icon>label</md-icon>
         Graduate Centre
       </a>
-        <a md-list-item [routerLink]="['/setup/program-codes']">
+      <a md-list-item [routerLink]="['/setup/program-codes']">
         <md-icon>label</md-icon>
         Program Code
       </a>
-        <a md-list-item [routerLink]="['/setup/supervisor-codes']">
+      <a md-list-item [routerLink]="['/setup/supervisor-codes']">
         <md-icon>label</md-icon>
         Supervisor Code
       </a>
-        <a md-list-item [routerLink]="['/setup/faculty-codes']">
+      <a md-list-item [routerLink]="['/setup/faculty-codes']">
         <md-icon>label</md-icon>
         Faculty Code
-      </a>   
-        <a md-list-item [routerLink]="['/setup/study-modes']">
+      </a>
+      <a md-list-item [routerLink]="['/setup/study-modes']">
         <md-icon>label</md-icon>
         Study Mode
-      </a>          
+      </a>
       <a md-list-item [routerLink]="['/setup/marital-codes']">
         <md-icon>label</md-icon>
         Marital Code
@@ -79,15 +84,11 @@
         Country Code
       </a>
     </md-nav-list>
+
     <div toolbar-buttons layout="row" layout-align="start center" flex>
-      <span flex></span>
-      <button md-button class="md-icon-button">
-        <md-icon class="md-24">settings</md-icon>
-      </button>
-      <button md-button class="md-icon-button">
-        <md-icon class="md-24">more_vert</md-icon>
-      </button>
+      <span flex>{{title$ | async}}</span>
     </div>
 
+    <router-outlet></router-outlet>
   </td-layout-manage-list>
 </td-layout-nav>

@@ -18,6 +18,7 @@ export class SupervisorCodeListPage implements OnInit {
   private SUPERVISOR_CODES = "setupModuleState.supervisorCodes".split(".");
   private creatorDialogRef: MdDialogRef<SupervisorCodeCreatorDialog>;
   private supervisorCodes$:Observable<SupervisorCode>;
+
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'name', label: 'Name'},
@@ -43,15 +44,21 @@ export class SupervisorCodeListPage implements OnInit {
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(SupervisorCodeCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res =>{
-      
+
       console.log("close dialog");
       // load something here
     });
   }
 
+  filter(filter: string): void {
+    if (filter) this.store.dispatch(this.actions.findSupervisorCodesByFilter(filter));
+    else this.store.dispatch(this.actions.findSupervisorCodes())
+  }
+
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findSupervisorCodes())
+    this.store.dispatch(this.actions.changeTitle("Supervisor Codes"))
   }
 
 }
