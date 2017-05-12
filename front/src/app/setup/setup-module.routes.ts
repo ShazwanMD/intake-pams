@@ -1,3 +1,4 @@
+import { StudyModeListPage } from './study-modes/study-mode-list.page';
 import { FacultyCodeListPage } from './faculty-codes/faculty-code-list.page';
 import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
 import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
@@ -16,11 +17,6 @@ import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.pa
 import { CountryCodeListPage } from './country-codes/country-code-list.page';
 
 
-
-
-
-
-
 export const SetupModuleRoutes: Routes = [
   {path: 'setup', component: SetupPage},
   {path: 'setup/bank-codes', component: BankCodeListPage},
@@ -36,5 +32,6 @@ export const SetupModuleRoutes: Routes = [
   {path: 'setup/ethnicity-codes', component: EthnicityCodeListPage},
   {path: 'setup/nationality-codes', component: NationalityCodeListPage},
   {path: 'setup/faculty-codes', component: FacultyCodeListPage},
+  {path: 'setup/study-modes', component: StudyModeListPage},
 
 ];

@@ -143,6 +143,19 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveFacultyCode(payload))
     .map(message => this.commonActions.saveFacultyCodeSuccess(message))
-    .mergeMap(action => from([action, this.commonActions.findFacultyCodes()]));     
+    .mergeMap(action => from([action, this.commonActions.findFacultyCodes()]));    
+
+    @Effect() findStudyModes$ = this.actions$
+    .ofType(SetupActions.FIND_STUDY_MODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findStudyModes())
+    .map(codes => this.commonActions.findStudyModesSuccess(codes));
+
+    @Effect() saveStudyModes$ = this.actions$
+    .ofType(SetupActions.SAVE_STUDY_MODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveStudyMode(payload))
+    .map(message => this.commonActions.saveStudyModeSuccess(message))
+    .mergeMap(action => from([action, this.commonActions.findStudyModes()]));       
 
 }

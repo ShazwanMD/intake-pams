@@ -612,5 +612,43 @@ findFacultyCodesSuccess(codes): Action {
     };
 } 
 
+ static SAVE_STUDY_MODE = '[Setup] Save Study Mode';
+
+  saveStudyMode(code): Action {
+    console.log("saveStudyMode");
+    return {
+      type: SetupActions.SAVE_STUDY_MODE,
+      payload:code
+    };
+  }
+
+ static SAVE_STUDY_MODE_SUCCESS = '[Setup] Save Study Mode Success';
+
+saveStudyModeSuccess(message): Action {
+  console.log("saveStudyModeSuccess");
+  return {
+      type: SetupActions.SAVE_STUDY_MODE_SUCCESS,
+      payload: message
+    };
+  }  
+
+  static FIND_STUDY_MODES = '[Common] Find Study Modes';
+
+  findStudyModes(): Action {
+    console.log("findStudyModes");
+    return {
+        type: SetupActions.FIND_STUDY_MODES,
+    };
+}
+
+ static FIND_STUDY_MODES_SUCCESS = '[Common] Find Study Modes Success';
+
+findStudyModesSuccess(codes): Action {
+   console.log("findStudyModesSuccess");
+  return {
+      type: SetupActions.FIND_STUDY_MODES_SUCCESS,
+        payload: codes
+    };
+} 
 
 }

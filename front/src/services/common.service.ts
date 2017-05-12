@@ -1,3 +1,4 @@
+import { StudyMode } from './../app/common/study-modes/study-mode.interface';
 import { NationalityCode } from './../app/common/nationality-codes/nationality-code.interface';
 import { EthnicityCode } from './../app/common/ethnicity-codes/ethnicity-code.interface';
 import { RaceCode } from './../app/common/race-codes/race-code.interface';
@@ -14,7 +15,6 @@ import {FacultyCode} from "../app/common/faculty-codes/faculty-code.interface";
 import {environment} from "../environments/environment";
 import {ProgramCode} from "../app/common/program-codes/program-code.interface";
 import {GraduateCentre} from "../app/common/graduate-centres/graduate-centre.interface";
-import {StudyMode} from "../app/common/study-modes/study-mode.interface";
 import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
@@ -233,6 +233,16 @@ export class CommonService {
     return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       .map((res: Response) => <StudyMode>res.json());
   }
+
+  saveStudyMode(code:StudyMode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/studyModes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  } 
 
 
   // ====================================================================================================

@@ -1,3 +1,6 @@
+import { StudyMode } from './../common/study-modes/study-mode.interface';
+import { StudyModeListPage } from './study-modes/study-mode-list.page';
+import { StudyModeCreatorDialog } from './study-modes/dialog/study-mode-creator.dialog';
 import { FacultyCodeCreatorDialog } from './faculty-codes/dialog/faculty-code-creator.dialog';
 import { FacultyCodeListPage } from './faculty-codes/faculty-code-list.page';
 import { FacultyCode } from './../common/faculty-codes/faculty-code.interface';
@@ -61,6 +64,8 @@ import {genderCodeListReducer, GenderCodeListState} from "./gender-codes/gender-
 import {ethnicityCodeListReducer, EthnicityCodeListState} from "./ethnicity-codes/ethnicity-code-list.reducer";
 import {nationalityCodeListReducer, NationalityCodeListState} from "./nationality-codes/nationality-code-list.reducer";
 import {facultyCodeListReducer, FacultyCodeListState} from "./faculty-codes/faculty-code-list.reducer";
+import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode-list.reducer';
+
 
 
 
@@ -79,6 +84,7 @@ export interface SetupModuleState {
   ethnicityCodes : EthnicityCodeListState;
   nationalityCodes : NationalityCodeListState;
   facultyCodes : FacultyCodeListState;
+  studyModes : StudyModeListState;
 
   
 
@@ -99,6 +105,8 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     ethnicityCodes: <EthnicityCode[]>[],
     nationalityCodes: <NationalityCode[]>[],
     facultyCodes: <FacultyCode[]>[],
+    studyModes: <StudyMode[]>[],
+
 
   };
 
@@ -117,9 +125,8 @@ export const setupModuleReducers = {
   ethnicityCodes: ethnicityCodeListReducer,
   nationalityCodes: nationalityCodeListReducer,
   facultyCodes: facultyCodeListReducer,
-};
-
-
+  studyModes: studyModeListReducer,
+}
 
 @NgModule({
   imports: [
@@ -147,6 +154,7 @@ export const setupModuleReducers = {
     EthnicityCodeListPage,
     NationalityCodeListPage,
     FacultyCodeListPage,
+    StudyModeListPage,
 
     // dialog
     BankCodeCreatorDialog,
@@ -163,6 +171,7 @@ export const setupModuleReducers = {
     EthnicityCodeCreatorDialog,
     NationalityCodeCreatorDialog,
     FacultyCodeCreatorDialog,
+    StudyModeCreatorDialog,
   ],
   exports: [],
   entryComponents: [
@@ -180,7 +189,7 @@ export const setupModuleReducers = {
     EthnicityCodeCreatorDialog,
     NationalityCodeCreatorDialog,
     FacultyCodeCreatorDialog,
-
+    StudyModeCreatorDialog,
   ],
 
 })
