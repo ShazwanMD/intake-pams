@@ -2,15 +2,6 @@
   <md-card-title>Faculty codes and descriptions</md-card-title>
   <md-card-subtitle>List of faculty codes and descriptions</md-card-subtitle>
 
-  <md-nav-list list-items>
-    <a md-list-item (click)="showDialog()">
-      <md-icon>create</md-icon>
-      Add Faculty Code
-    </a>
-    <md-divider></md-divider>
-  </md-nav-list>
-
-
   <td-data-table
     [data]="facultyCodes$ | async"
     [columns]="columns"
@@ -31,3 +22,7 @@
   <md-card-actions>
   </md-card-actions>
 </md-card>
+
+<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+  <md-icon>add</md-icon>
+</a>
