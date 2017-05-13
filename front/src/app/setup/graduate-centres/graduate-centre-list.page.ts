@@ -51,7 +51,12 @@ export class GraduateCentreListPage implements OnInit {
     });
   }
 
+  filter(filter:string):void {
+    console.log("filter");
+  }
+
   deactivate(event): void {
+    // this.store.dispatch(this.actions.removeGraduateCentre())
     console.log("event" + event);
   }
 

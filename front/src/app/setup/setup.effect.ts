@@ -65,7 +65,7 @@ export class SetupEffects {
     .ofType(SetupActions.FIND_PROGRAM_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findProgramCodes())
-    .map(codes => this.setupActions.findBankCodesSuccess(codes));
+    .map(codes => this.setupActions.findProgramCodesSuccess(codes));
 
   @Effect() saveProgramCodes$ = this.actions$
     .ofType(SetupActions.SAVE_PROGRAM_CODE)
