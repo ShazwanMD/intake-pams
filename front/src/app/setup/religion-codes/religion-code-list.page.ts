@@ -30,4 +30,7 @@ export class ReligionCodeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("Religion Codes"))
   }
 
+  filter():void {
+
+  }
 }

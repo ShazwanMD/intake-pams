@@ -51,4 +51,6 @@ export class StudyModeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("Study Mode Codes"))
   }
 
+  filter():void {}
+
 }

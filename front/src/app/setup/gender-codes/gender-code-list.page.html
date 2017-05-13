@@ -1,6 +1,11 @@
 <md-card class="">
-  <md-card-title>Gender codes and descriptions</md-card-title>
-  <md-card-subtitle>List of gender codes and descriptions</md-card-subtitle>
+  <td-search-box class="push-left push-right"
+                 placeholder="search"
+                 [alwaysVisible]="true"
+                 (searchDebounce)="filter($event)">
+
+  </td-search-box>
+
   <td-data-table
     [data]="genderCodes$ | async"
     [columns]="columns"

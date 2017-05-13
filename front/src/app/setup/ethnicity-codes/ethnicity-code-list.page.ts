@@ -30,4 +30,5 @@ export class EthnicityCodeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("Ethnicity Codes"))
   }
 
+  filter():void{}
 }

@@ -1,6 +1,11 @@
-<md-card class="">
-  <md-card-title>State</md-card-title>
-  <md-card-subtitle>List of State tasks</md-card-subtitle>
+<md-card>
+  <td-search-box class="push-left push-right"
+                 placeholder="search"
+                 [alwaysVisible]="true"
+                 (searchDebounce)="filter($event)">
+
+  </td-search-box>
+
   <td-data-table
     [data]="stateCodes$ | async"
     [columns]="columns"

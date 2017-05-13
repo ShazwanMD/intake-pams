@@ -34,4 +34,6 @@ export class NationalityCodeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("Nationality Codes"))
   }
 
+  filter():void{}
+
 }

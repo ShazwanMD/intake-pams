@@ -33,4 +33,7 @@ export class StateCodeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("State Codes"))
   }
 
+  filter():void {
+
+  }
 }

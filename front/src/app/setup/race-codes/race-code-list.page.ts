@@ -33,4 +33,5 @@ export class RaceCodeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("Race Codes"))
   }
 
+  filter():void {}
 }

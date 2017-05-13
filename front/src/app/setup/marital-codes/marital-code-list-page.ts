@@ -30,4 +30,5 @@ export class MaritalCodeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("Marital Codes"))
   }
 
+  filter():void {}
 }

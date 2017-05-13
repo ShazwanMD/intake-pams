@@ -1,6 +1,10 @@
-<md-card class="">
-  <md-card-title>Race codes and descriptions</md-card-title>
-  <md-card-subtitle>List of race codes and descriptions</md-card-subtitle>
+<md-card>
+  <td-search-box class="push-left push-right"
+                 placeholder="search"
+                 [alwaysVisible]="true"
+                 (searchDebounce)="filter($event)">
+
+  </td-search-box>
 
   <td-data-table
     [data]="raceCodes$ | async"
