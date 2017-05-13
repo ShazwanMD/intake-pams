@@ -31,6 +31,7 @@ import {StudyModeOfferingEditorDialog} from "./dialog/study-mode-offering-editor
 import { SupervisorOfferingEditorDialog } from "./dialog/supervisor-offering-editor.dialog";
 import {IntakeVerifyTaskPanel} from "./panel/intake-verify-task.panel";
 import {IntakeTaskStatusComponent} from "./component/intake-task-status.component";
+import {IntakePublishTaskPanel} from "./panel/intake-publish-task.panel";
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import {IntakeTaskStatusComponent} from "./component/intake-task-status.componen
     IntakeTaskWorkflowPanel,
     IntakeDraftTaskPanel,
     IntakeVerifyTaskPanel,
+    IntakePublishTaskPanel,
 
     // dialogs
     IntakeTaskCreatorDialog,
@@ -71,6 +73,7 @@ import {IntakeTaskStatusComponent} from "./component/intake-task-status.componen
   entryComponents: [
     IntakeDraftTaskPanel,
     IntakeVerifyTaskPanel,
+    IntakePublishTaskPanel,
     IntakeTaskCreatorDialog,
     ProgramOfferingEditorDialog,
     StudyModeOfferingEditorDialog,

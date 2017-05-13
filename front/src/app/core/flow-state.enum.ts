@@ -11,9 +11,10 @@ export enum FlowState {
   UPPER_APPROVED,         // 9
   SELECTED,               // 10
   EVALUATED,              // 11
-  CANCELLED,              // 12
-  REJECTED,               // 13
-  REMOVED,                // 14
+  PUBLISHED,              // 12
+  CANCELLED,              // 13
+  REJECTED,               // 14
+  REMOVED,                // 15
   COMPLETED,              // 16
   ARCHIVED,               // 17
 

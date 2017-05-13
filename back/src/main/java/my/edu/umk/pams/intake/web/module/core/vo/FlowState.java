@@ -16,11 +16,12 @@ public enum FlowState {
     UPPER_APPROVED,         // 9
     SELECTED,               // 10
     EVALUATED,              // 11
-    CANCELLED,              // 12
-    REJECTED,               // 13
-    REMOVED,                // 14
-    COMPLETED,              // 15
-    ARCHIVED;               // 16
+    PUBLISHED,              // 12
+    CANCELLED,              // 13
+    REJECTED,               // 14
+    REMOVED,                // 15
+    COMPLETED,              // 16
+    ARCHIVED;               // 17
 
     public static FlowState get(int index) {
         return values()[index];
