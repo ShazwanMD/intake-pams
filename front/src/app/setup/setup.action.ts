@@ -261,6 +261,26 @@ export class SetupActions {
     };
   }
 
+  static REMOVE_MARITAL_CODE = '[Setup] Remove Marital Code';
+
+  removeMaritalCode(code): Action {
+    console.log("removeMaritalCode");
+    return {
+      type: SetupActions.REMOVE_MARITAL_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_MARITAL_CODE_SUCCESS = '[Setup] Remove Marital Code  Success';
+
+  removeMaritalCodeSuccess(message): Action {
+    console.log("removeMaritalCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_MARITAL_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
   static FIND_COUNTRY_CODES = '[Common] Find CountryCodes';
 
   findCountryCodes(): Action {

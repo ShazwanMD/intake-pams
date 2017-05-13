@@ -29,7 +29,6 @@ import { StateCode } from './../common/state-codes/state-code.interface';
 import { CountryCodeCreatorDialog } from './country-codes/dialog/country-code-creator.dialog';
 import { CountryCodeListPage } from './country-codes/country-code-list.page';
 import { CountryCode } from './../common/country-codes/country-code.interface';
-import { MaritalCodeCreatorDialog } from './marital-codes/dialog/marital-code-creator.dialog';
 import { MaritalCodeListPage } from './marital-codes/marital-code-list-page';
 import { BankCode } from './../common/bank-codes/bank-code.interface';
 import { MaritalCode } from './../common/marital-codes/marital-code.interface';
@@ -65,6 +64,7 @@ import {nationalityCodeListReducer, NationalityCodeListState} from "./nationalit
 import {facultyCodeListReducer, FacultyCodeListState} from "./faculty-codes/faculty-code-list.reducer";
 import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode-list.reducer';
 import {titleReducer, TitleState} from "./title.reducer";
+import {MaritalCodeEditorDialog} from "./marital-codes/dialog/marital-code-editor.dialog";
 
 export interface SetupModuleState {
   title:TitleState;
@@ -151,9 +151,9 @@ export const setupModuleReducers = {
     StudyModeListPage,
 
     // dialog
+    MaritalCodeEditorDialog,
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
-    MaritalCodeCreatorDialog,
     CountryCodeCreatorDialog,
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,
@@ -168,10 +168,10 @@ export const setupModuleReducers = {
   ],
   exports: [],
   entryComponents: [
+    MaritalCodeEditorDialog,
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
     ReligionCodeCreatorDialog,
-    MaritalCodeCreatorDialog,
     CountryCodeCreatorDialog,
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,

@@ -122,6 +122,36 @@ export class CommonService {
       .map((res: Response) => <MaritalCode>res.json());
   }
 
+  saveMaritalCode(code: MaritalCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/maritalCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateMaritalCode(code: MaritalCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/maritalCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeMaritalCode(code: MaritalCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/maritalCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // GRADUATE CENTRE
   // ====================================================================================================
@@ -336,7 +366,7 @@ export class CommonService {
   }
 
 // ====================================================================================================
-// COUNTRY CODES
+// STATE CODES
 // ====================================================================================================
 
   findStateCodes(): Observable<StateCode[]> {

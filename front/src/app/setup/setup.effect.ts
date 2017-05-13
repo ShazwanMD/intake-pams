@@ -14,6 +14,10 @@ export class SetupEffects {
               private store: Store<SetupModuleState>) {
   }
 
+  // ====================================================================================================
+  // TITLE
+  // ====================================================================================================
+
   @Effect() changeTitle$ = this.actions$
     .ofType(SetupActions.CHANGE_TITLE)
     .map(action => action.payload)
@@ -24,6 +28,10 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findBankCodes())
     .map(codes => this.setupActions.findBankCodesSuccess(codes));
+
+  // ====================================================================================================
+  // GRADUATE CENTER
+  // ====================================================================================================
 
   @Effect() findGraduateCentres$ = this.actions$
     .ofType(SetupActions.FIND_GRADUATE_CENTRES)
@@ -37,11 +45,19 @@ export class SetupEffects {
     .switchMap(payload => this.commonService.saveGraduateCentre(payload))
     .map(message => this.setupActions.saveGraduateCentreSuccess(message));
 
+  // ====================================================================================================
+  // RELIGION CODE
+  // ====================================================================================================
+
   @Effect() findReligionCode$ = this.actions$
     .ofType(SetupActions.FIND_RELIGION_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findReligionCodes())
     .map(codes => this.setupActions.findReligionCodesSuccess(codes));
+
+  // ====================================================================================================
+  // MARITAL CODE
+  // ====================================================================================================
 
   @Effect() findMaritalCode$ = this.actions$
     .ofType(SetupActions.FIND_MARITAL_CODES)
@@ -49,17 +65,50 @@ export class SetupEffects {
     .switchMap(() => this.commonService.findMaritalCodes())
     .map(codes => this.setupActions.findMaritalCodesSuccess(codes));
 
+  @Effect() saveMaritalCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_MARITAL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveMaritalCode(payload))
+    .map(message => this.setupActions.saveMaritalCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findMaritalCodes()]));
+
+  @Effect() updateMaritalCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_MARITAL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateMaritalCode(payload))
+    .map(message => this.setupActions.updateMaritalCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findMaritalCodes()]));
+
+  @Effect() removeMaritalCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_MARITAL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeMaritalCode(payload))
+    .map(message => this.setupActions.removeMaritalCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findMaritalCodes()]));
+
+  // ====================================================================================================
+  // COUNTRY CODE
+  // ====================================================================================================
+
   @Effect() findCountryCodes$ = this.actions$
     .ofType(SetupActions.FIND_COUNTRY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findCountryCodes())
     .map(codes => this.setupActions.findCountryCodesSuccess(codes));
 
+  // ====================================================================================================
+  // STATE CODE
+  // ====================================================================================================
+
   @Effect() findStateCodes$ = this.actions$
     .ofType(SetupActions.FIND_STATE_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findStateCodes())
     .map(codes => this.setupActions.findStateCodesSuccess(codes));
+
+  // ====================================================================================================
+  // PROGRAM CODE
+  // ====================================================================================================
 
   @Effect() findProgramCodes$ = this.actions$
     .ofType(SetupActions.FIND_PROGRAM_CODES)
@@ -80,6 +129,10 @@ export class SetupEffects {
     .switchMap(payload => this.commonService.removeProgramCode(payload))
     .map(message => this.setupActions.removeProgramCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findProgramCodes()]));
+
+  // ====================================================================================================
+  // SUPERVISOR CODE
+  // ====================================================================================================
 
   @Effect() findSupervisorCodes$ = this.actions$
     .ofType(SetupActions.FIND_SUPERVISOR_CODES)
@@ -114,6 +167,10 @@ export class SetupEffects {
     .map(message => this.setupActions.updateSupervisorCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findSupervisorCodes()]));
 
+  // ====================================================================================================
+  // RACE CODE
+  // ====================================================================================================
+
   @Effect() findRaceCodes$ = this.actions$
     .ofType(SetupActions.FIND_RACE_CODES)
     .map(action => action.payload)
@@ -126,6 +183,10 @@ export class SetupEffects {
     .switchMap(payload => this.commonService.saveRaceCode(payload))
     .map(message => this.setupActions.saveRaceCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findRaceCodes()]));
+
+  // ====================================================================================================
+  // GENDER CODE
+  // ====================================================================================================
 
   @Effect() findGenderCodes$ = this.actions$
     .ofType(SetupActions.FIND_GENDER_CODES)
@@ -140,17 +201,29 @@ export class SetupEffects {
     .map(message => this.setupActions.saveGenderCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findGenderCodes()]));
 
+  // ====================================================================================================
+  // ETHNICITY CODE
+  // ====================================================================================================
+
   @Effect() findEthnicityCodes$ = this.actions$
     .ofType(SetupActions.FIND_ETHNICITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findEthnicityCodes())
     .map(codes => this.setupActions.findEthnicityCodesSuccess(codes));
 
+  // ====================================================================================================
+  // NATIONALITY CODE
+  // ====================================================================================================
+
   @Effect() findNationalityCodes$ = this.actions$
     .ofType(SetupActions.FIND_NATIONALITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findNationalityCodes())
     .map(codes => this.setupActions.findNationalityCodesSuccess(codes));
+
+  // ====================================================================================================
+  // FACULTY CODE
+  // ====================================================================================================
 
   @Effect() findFacultyCodes$ = this.actions$
     .ofType(SetupActions.FIND_FACULTY_CODES)
@@ -164,6 +237,10 @@ export class SetupEffects {
     .switchMap(payload => this.commonService.saveFacultyCode(payload))
     .map(message => this.setupActions.saveFacultyCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findFacultyCodes()]));
+
+  // ====================================================================================================
+  // STUDY CODE
+  // ====================================================================================================
 
   @Effect() findStudyModes$ = this.actions$
     .ofType(SetupActions.FIND_STUDY_MODES)

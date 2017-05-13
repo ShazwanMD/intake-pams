@@ -65,7 +65,7 @@
         <md-card-subtitle>Offered programs, modes and supervisors</md-card-subtitle>
         <md-divider></md-divider>
         <md-tab-group>
-          <md-tab label="Programs">
+          <md-tab label="Programs ({{(programOfferings$ | async)?.length}})">
             <pams-program-offering-list
               [programOfferings]="programOfferings$|async"
               [intake]="intakeTask.intake"></pams-program-offering-list>
@@ -84,7 +84,7 @@
       </md-card>
     </div>
     <div flex-gt-md="30">
-      <pams-intake-task-status [intakeTask]="intakeTask" ></pams-intake-task-status>
+      <pams-intake-task-status [intakeTask]="intakeTask"></pams-intake-task-status>
 
       <md-card>
         <md-card-title>Action</md-card-title>
