@@ -54,4 +54,10 @@ export class ProgramCodeListPage implements OnInit {
   filter(filter:string):void {
     console.log("filter");
   }
+
+  delete(code:ProgramCode):void {
+    console.log("deleting code: " + code.code);
+    console.log("deleting code: " + code.descriptionEn);
+    this.store.dispatch(this.actions.removeProgramCode(code))
+  }
 }

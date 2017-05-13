@@ -74,6 +74,13 @@ export class SetupEffects {
     .map(message => this.setupActions.saveProgramCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findProgramCodes()]));
 
+  @Effect() removeProgramCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_PROGRAM_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeProgramCode(payload))
+    .map(message => this.setupActions.removeProgramCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findProgramCodes()]));
+
   @Effect() findSupervisorCodes$ = this.actions$
     .ofType(SetupActions.FIND_SUPERVISOR_CODES)
     .map(action => action.payload)

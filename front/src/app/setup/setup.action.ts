@@ -358,6 +358,27 @@ export class SetupActions {
     };
   }
 
+  static REMOVE_PROGRAM_CODE = '[Setup] Remove Program Code';
+
+  removeProgramCode(code): Action {
+    console.log("removeProgramCode");
+    return {
+      type: SetupActions.REMOVE_PROGRAM_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_PROGRAM_CODE_SUCCESS = '[Setup] Remove Program Code Success';
+
+  removeProgramCodeSuccess(message): Action {
+    console.log("removeProgramCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_PROGRAM_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+
   static SAVE_SUPERVISOR_CODE = '[Setup] Save Supervisor Code';
 
   saveSupervisorCode(code): Action {

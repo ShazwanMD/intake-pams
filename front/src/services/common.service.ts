@@ -212,6 +212,17 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  removeProgramCode(code: ProgramCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/programCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+
   // ====================================================================================================
   // STUDY MODE
   // ====================================================================================================
