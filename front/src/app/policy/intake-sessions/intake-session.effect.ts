@@ -14,7 +14,7 @@ export class IntakeSessionEffects {
               private policyService: PolicyService) {
   }
 
-  @Effect() findProgramLevels$ = this.actions$
+  @Effect() findIntakeSessions$ = this.actions$
     .ofType(IntakeSessionActions.FIND_INTAKE_SESSIONS)
     .map(action => action.payload)
     .switchMap(() => this.policyService.findIntakeSessions())

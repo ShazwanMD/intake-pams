@@ -20,7 +20,6 @@ import {CpsCentrePage} from "./cps-centre.page";
 import {CentrePage} from "./centre.page";
 import {CentreEffects} from "./centre.effect";
 import {CentreActions} from "./centre.action";
-import {IntakeSessionListComponent} from "./component/intake-session-list.component";
 
 export interface CentreModuleState {
   graduateCentre:GraduateCentreState,
@@ -55,7 +54,6 @@ export const centreModuleReducers = {
 
     // component
     ProgramCodeListComponent,
-    IntakeSessionListComponent,
   ],
   exports: [],
 })

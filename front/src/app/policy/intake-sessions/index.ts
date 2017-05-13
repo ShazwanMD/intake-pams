@@ -10,10 +10,11 @@ import {IdentityService} from '../../../services';
 import {PolicyService} from "../../../services/policy.service";
 import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
-import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
+import {IntakeSessionActions} from "./intake-session.action";
 import {IntakeSessionEffects} from "./intake-session.effect";
 import {IntakeSessionCenterPage} from "./intake-session-center.page";
 import {IntakeSessionSelectComponent} from "./component/intake-session-select.component";
+import {IntakeSessionListComponent} from "./component/intake-session-list.component";
 
 @NgModule({
   imports: [
@@ -25,11 +26,14 @@ import {IntakeSessionSelectComponent} from "./component/intake-session-select.co
     EffectsModule.run(IntakeSessionEffects),
   ],
   declarations: [
-    IntakeSessionSelectComponent,
     // page
     IntakeSessionCenterPage,
+
     // components
+    IntakeSessionSelectComponent,
+    IntakeSessionListComponent,
     // panels
+
     // dialogs
   ],
   exports: [
@@ -49,7 +53,6 @@ export class IntakeSessionSubModule {
         CommonService,
         PolicyService,
         IntakeSessionActions,
-        CommonActions,
       ],
     };
   }

@@ -8,8 +8,6 @@ import {IntakeTask} from "./intake-task.interface";
 import {PolicyModuleState} from "../index";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import {IntakeTaskCreatorDialog} from "./dialog/intake-task-creator.dialog";
-import {IntakeTaskListState} from "./intake-task-list.reducer";
-import {ApplicationModuleState} from "../../application/index";
 
 @Component({
   selector: 'pams-intake-center',
@@ -27,7 +25,7 @@ export class IntakeCenterPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: IntakeActions,
-              private store: Store<IntakeTaskListState>,
+              private store: Store<PolicyModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
     this.assignedIntakeTasks$ = this.store.select(...this.ASSIGNED_INTAKE_TASKS);
@@ -59,7 +57,7 @@ export class IntakeCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("find assigned intake tasks");
+    console.log("find assigned/pooled intake tasks");
     this.store.dispatch(this.actions.findAssignedIntakeTasks());
     this.store.dispatch(this.actions.findPooledIntakeTasks());
   }

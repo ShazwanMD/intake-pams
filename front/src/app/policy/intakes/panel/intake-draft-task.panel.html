@@ -59,17 +59,17 @@
         <md-card-subtitle>Offered programs, modes and supervisors</md-card-subtitle>
         <md-divider></md-divider>
         <md-tab-group>
-          <md-tab label="Programs">
+          <md-tab label="Programs ({{(programOfferings$ | async)?.length}})">
             <pams-program-offering-list
               [programOfferings]="programOfferings$|async"
               [intake]="intakeTask.intake"></pams-program-offering-list>
           </md-tab>
-          <md-tab label="Study Modes">
+          <md-tab label="Study Modes ({{(studyModeOfferings$ | async)?.length}})">
             <pams-study-mode-offering-list
               [studyModeOfferings]="studyModeOfferings$|async"
               [intake]="intakeTask.intake"></pams-study-mode-offering-list>
           </md-tab>
-          <md-tab label="Supervisors">
+          <md-tab label="Supervisors ({{(supervisorOfferings$ | async)?.length}})">
             <pams-supervisor-offering-list
               [supervisorOfferings]="supervisorOfferings$|async"
               [intake]="intakeTask.intake"></pams-supervisor-offering-list>

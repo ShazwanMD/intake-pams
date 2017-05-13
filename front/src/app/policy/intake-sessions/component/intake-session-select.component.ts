@@ -14,9 +14,9 @@ import {PolicyModuleState} from "../../index";
 export class IntakeSessionSelectComponent implements OnInit {
 
   private INTAKE_SESSIONS = "policyModuleState.intakeSessions".split(".");
+  private intakeSessions$: Observable<IntakeSession[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  intakeSessions$: Observable<IntakeSession[]>;
 
   constructor(private store: Store<PolicyModuleState>,
               private actions: IntakeSessionActions) {

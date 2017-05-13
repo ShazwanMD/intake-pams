@@ -1,39 +1,46 @@
- <td-layout-nav>
-   <div toolbar-content layout="row" layout-align="center center" flex>
-     <span>PAMS: Postgraduate Management System</span>
-     <span flex></span>
-   </div>
+<td-layout-nav>
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>PAMS: Postgraduate Management System</span>
+    <span flex></span>
+  </div>
 
+  <td-layout-manage-list #list>
+    <md-nav-list list-items>
+      <a md-list-item (click)="showDialog()">
+        <md-icon>create</md-icon>
+        Create Intake Session
+      </a>
+      <md-divider></md-divider>
+    </md-nav-list>
+    <div toolbar-buttons layout="row" layout-align="start center" flex>
+      <span flex>Intake Session Center</span>
+      <button md-button class="md-icon-button">
+        <md-icon class="md-24">settings</md-icon>
+      </button>
+      <button md-button class="md-icon-button">
+        <md-icon class="md-24">more_vert</md-icon>
+      </button>
+    </div>
+    <div layout="row" layout-wrap>
+    </div>
+    <md-card>
+      <td-search-box class="push-left push-right"
+                     placeholder="search"
+                     [alwaysVisible]="true"
+                     (searchDebounce)="filter($event)">
+      </td-search-box>
 
-   <td-layout-manage-list #list>
-     <md-nav-list list-items>
-       <a md-list-item (click)="showDialog()">
-         <md-icon>create</md-icon>
-         Create Intake Session
-       </a>
-       <md-divider></md-divider>
-     </md-nav-list>
-     <div toolbar-buttons layout="row" layout-align="start center" flex>
-       <span flex>Intake Session Center</span>
-       <button md-button class="md-icon-button">
-         <md-icon class="md-24">settings</md-icon>
-       </button>
-       <button md-button class="md-icon-button">
-         <md-icon class="md-24">more_vert</md-icon>
-       </button>
-     </div> 
-     <div layout="row" layout-wrap>
-     </div> 
-     <md-card class="">
-      <md-card-title>Intake Sessions</md-card-title>
-      <md-card-subtitle>List of intake session tasks</md-card-subtitle>
-    
-    <md-divider></md-divider>
+      <md-divider></md-divider>
+      <pams-intake-session-list
+        [intakeSessions]="intakeSessions$ | async">
+      </pams-intake-session-list>
+
+      {{(intakeSessions$ | async).length}}
       <md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/intake-sessions-search']">
+        <a md-button color="accent" class="text-upper" [routerLink]="['/policy/intake-sessions']">
           <span>View More</span>
         </a>
       </md-card-actions>
- </md-card>     
-   </td-layout-manage-list>
- </td-layout-nav>
+    </md-card>
+  </td-layout-manage-list>
+</td-layout-nav>

@@ -20,7 +20,6 @@ import {Intake} from "./intakes/intake.interface";
 import {ProgramOffering} from "./intakes/program-offering.interface";
 import {SupervisorOffering} from "./intakes/supervisor-offering.interface";
 import {StudyModeOffering} from "./intakes/study-mode-offering.interface";
-import {IntakeSessionListState, intakeSessionListReducer} from "./intake-sessions/intake-session.reducer";
 import {IntakeSession} from "./intake-sessions/intake-session.interface";
 import {IntakeSessionSubModule} from "./intake-sessions/index";
 import {ProgramLevelSubModule} from "./program-levels/index";
@@ -31,6 +30,7 @@ import {
   assignedIntakeTaskListReducer, IntakeTaskListState,
   pooledIntakeTaskListReducer
 } from "./intakes/intake-task-list.reducer";
+import {intakeSessionListReducer, IntakeSessionListState} from "./intake-sessions/intake-session-list.reducer";
 
 export interface PolicyModuleState {
   intakeSessions: IntakeSessionListState;
@@ -46,8 +46,8 @@ export interface PolicyModuleState {
 
 export const INITIAL_POLICY_STATE: PolicyModuleState =
   <PolicyModuleState>{
-    programLevels: <ProgramLevel[]>[],
     intakeSessions: <IntakeSession[]>[],
+    programLevels: <ProgramLevel[]>[],
     assignedIntakeTasks: <IntakeTask[]>[],
     pooledIntakeTasks: <IntakeTask[]>[],
     intakeTask: <IntakeTask>{},
@@ -59,8 +59,8 @@ export const INITIAL_POLICY_STATE: PolicyModuleState =
   };
 
 export const policyModuleReducers = {
-  programLevels: programLevelListReducer,
   intakeSessions: intakeSessionListReducer,
+  programLevels: programLevelListReducer,
   assignedIntakeTasks: assignedIntakeTaskListReducer,
   pooledIntakeTasks: pooledIntakeTaskListReducer,
   intakeTask: intakeTaskReducer,
