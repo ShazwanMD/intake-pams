@@ -2,15 +2,16 @@
 <div toolbar-content layout="row" layout-align="center center" flex>
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
-  </div>
-  <td-layout-card-over>
-  <div layout="row" layout-align="start center">
-        <div>
-          <md-card-title>Intake Application</md-card-title>
-          <md-card-subtitle>Intake Registration for Session 201720181</md-card-subtitle>
-        </div>
-      </div>
-      <md-divider></md-divider>
+</div>
+
+<td-layout-card-over>
+<div layout="row" layout-align="start center"><div>
+<md-card-title>Intake Application</md-card-title>
+<md-card-subtitle>Intake Registration for Session 201720181</md-card-subtitle>
+</div>
+</div>
+<md-divider></md-divider>
+
 <td-expansion-panel label="Program Choice Information">
 	<md-card>
     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
@@ -37,292 +38,390 @@
               </md-input-container>
             </div>
           </div>
-        </div>
+      </div>
   </md-card>
 </td-expansion-panel>
+
 <td-expansion-panel label="Personal Information">
-	<md-card>
-    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          <!-- first column -->
-          <div layout="column" class="pad-right" flex>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Name"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="NRIC/Passport"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-            	<input mdInput
-                   type="date"
-                   placeholder="Date of Birth"
-                   flex/>
-          		</md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <pams-gender-code-select [placeholder]= "'Select Gender'"></pams-gender-code-select>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-select placeholder="Citizenship">
-      			<md-option>
-      				YES
-      			</md-option>
-      			<md-option>
-      				NO
-      			</md-option>
-   			  </md-select>
-            </div>
-          </div>
-        </div>
-  </md-card>
+<md-card>
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+  <!-- first column -->
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Name" flex/>
+</md-input-container>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="NRIC/Passport" flex/>
+</md-input-container>
+</div>
+</div>
+
+<!-- second column -->
+
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput type="date"placeholder="Date of Birth"flex/>
+</md-input-container>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<pams-gender-code-select [placeholder]= "'Select Gender'"></pams-gender-code-select>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-select placeholder="Citizenship">
+<md-option>YES</md-option>
+<md-option>NO</md-option>
+</md-select>
+</div>
+</div>
+</div>
+</md-card>
 </td-expansion-panel>
+
 <td-expansion-panel label="Address Information">
-	<md-card>
-    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          <!-- first column -->
-          <div layout="column" class="pad-right" flex>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Address 1"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Address 2"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Address 3"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Poscode"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-select placeholder="State">
-      			<md-option>
-      				PAHANG
-      			</md-option>
-      			<md-option>
-      				KELANTAN
-      			</md-option>
-   			  </md-select>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-select placeholder="Country">
-      			<md-option>
-      				MALAYSIA
-      			</md-option>
-      			<md-option>
-      				INDONESIA
-      			</md-option>
-   			  </md-select>
-            </div>
-          </div>
+<md-card>
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+  <!-- first column -->
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Address 1" flex/>
+</md-input-container>
+</div>
+ 
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Address 2"flex/>
+</md-input-container>
+</div>
 
-        </div>
-  </md-card>
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Address 3"flex/>
+</md-input-container>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Poscode" flex/>
+</md-input-container>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-select placeholder="State">
+<md-option>PAHANG	</md-option>
+<md-option>KELANTAN</md-option>
+</md-select>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-select placeholder="Country">
+<md-option>MALAYSIA</md-option>
+<md-option>INDONESIA</md-option>
+</md-select>
+</div>
+</div>
+
+</div>
+</md-card>
 </td-expansion-panel>
+
 <td-expansion-panel label="Education Information">
-	<td-expansion-panel label="SPM Information">
-	<md-card>
-    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          <!-- first column -->
-          <div layout="column" class="pad-right" flex>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Name"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="NRIC/Passport"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Email"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Password"
-                       flex/>
-              </md-input-container>
-            </div>
-          </div>
-          <!-- second column -->
-          <div layout="column" class="pad-right" flex>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Name"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="NRIC/Passport"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Email"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Password"
-                       flex/>
-              </md-input-container>
-            </div>
-          </div>
+<td-expansion-panel label="SPM Information">
+<md-card>
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+          
+   <!-- first column -->
+   <div layout="column" class="pad-right" flex>
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Bahasa Malaysia">
+   </md-select>
+   </div>
+      
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Bahasa Inggeris">
+   <md-option>MATEMATIK</md-option>
+   <md-option>MATEMATIK TAMBAHAN</md-option>
+   <md-option>SEJARAH</md-option>
+   <md-option>PENDIDIKAN ISLAM</md-option>
+   </md-select>
+   </div>
+          
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Sila Pilih">
+   <md-option>MATEMATIK</md-option>
+   <md-option>MATEMATIK TAMBAHAN</md-option>
+   <md-option>SEJARAH</md-option>
+   <md-option>PENDIDIKAN ISLAM</md-option>
+   </md-select>
+   </div>
 
-        </div>
- 	 </md-card>
-	</td-expansion-panel>
-	<td-expansion-panel label="STPM/DIPLOMA/Equivalent Information">
-	<md-card>
-    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          <!-- first column -->
-          <div layout="column" class="pad-right" flex>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Name"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="NRIC/Passport"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Email"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Password"
-                       flex/>
-              </md-input-container>
-            </div>
-          </div>
-          <!-- second column -->
-          <div layout="column" class="pad-right" flex>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Name"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="NRIC/Passport"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Email"
-                       flex/>
-              </md-input-container>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Password"
-                       flex/>
-              </md-input-container>
-            </div>
-          </div>
-        </div>
- 	 </md-card>
-	</td-expansion-panel>
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Sila Pilih">
+   <md-option>MATEMATIK</md-option>
+   <md-option>MATEMATIK TAMBAHAN</md-option>
+   <md-option>SEJARAH</md-option>
+   <md-option>PENDIDIKAN ISLAM</md-option>
+   </md-select>
+   </div>
+
+    <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Sila Pilih">
+   <md-option>MATEMATIK</md-option>
+   <md-option>MATEMATIK TAMBAHAN</md-option>
+   <md-option>SEJARAH</md-option>
+   <md-option>PENDIDIKAN ISLAM</md-option>
+   </md-select>
+   </div>
+
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Sila Pilih">
+   <md-option>MATEMATIK</md-option>
+   <md-option>MATEMATIK TAMBAHAN</md-option>
+   <md-option>SEJARAH</md-option>
+   <md-option>PENDIDIKAN ISLAM</md-option>
+   </md-select>
+   </div>
+
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Sila Pilih">
+   <md-option>MATEMATIK</md-option>
+   <md-option>MATEMATIK TAMBAHAN</md-option>
+   <md-option>SEJARAH</md-option>
+   <md-option>PENDIDIKAN ISLAM</md-option>
+   </md-select>
+   </div>
+
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Sila Pilih">
+   <md-option>MATEMATIK</md-option>
+   <md-option>MATEMATIK TAMBAHAN</md-option>
+   <md-option>SEJARAH</md-option>
+   <md-option>PENDIDIKAN ISLAM</md-option>
+   </md-select>
+   </div>
+
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Sila Pilih">
+   <md-option>MATEMATIK</md-option>
+   <md-option>MATEMATIK TAMBAHAN</md-option>
+   <md-option>SEJARAH</md-option>
+   <md-option>PENDIDIKAN ISLAM</md-option>
+   </md-select>
+   </div>
+   </div>
+   <!-- second column -->
+
+  <div layout="column" class="pad-right" flex>
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+  
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+ 
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+ 
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+  
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+   
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+
+  <div layout="row" class="pad-bottom" flex>
+  <md-select placeholder="Gred">
+  <md-option>A+</md-option>
+  <md-option>A-</md-option>
+  <md-option>A</md-option>
+  <md-option>B</md-option>
+  </md-select>
+  </div>
+  </div> 
+</div>
+</md-card>
 </td-expansion-panel>
+
+<td-expansion-panel label="STPM / Diploma / Equivalent Information">
+<md-card>
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+<!-- first column -->
+
+ <div layout="column" class="pad-right" flex>
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Name of School / College / University"flex/>
+ </md-input-container>
+ </div>
+ 
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput type="date" placeholder="Year Of Graduation"flex/>
+ </md-input-container>
+ </div>
+ </div>
+
+<!-- second column -->
+
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Name Of Diploma"flex/>
+ </md-input-container>
+ </div>
+
+<div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Grade / CGPA" flex/>
+ </md-input-container>
+ </div>
+</div>
+</div>
+</md-card>
+</td-expansion-panel>
+
+<td-expansion-panel label="Bachelor Degree Information">
+<md-card>
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+<!-- first column -->
+
+ <div layout="column" class="pad-right" flex>
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Name of School / College / University"flex/>
+ </md-input-container>
+ </div>
+ 
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput type="date" placeholder="Year Of Graduation"flex/>
+ </md-input-container>
+ </div>
+ </div>
+
+<!-- second column -->
+
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Name Of Bachelor Degree / Master"flex/>
+ </md-input-container>
+ </div>
+
+<div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Grade / CGPA" flex/>
+ </md-input-container>
+ </div>
+
+</div>
+</div>
+</md-card>
+</td-expansion-panel>
+
+</td-expansion-panel>
+
 <td-expansion-panel label="Working Experience Information">
+<div layout="column" class="pad-right" flex>
+<md-card class="">
 
-    <div layout="column" class="pad-right" flex>
-       <md-card class="">
-      <md-card-title>Working Experience</md-card-title>
-      <md-card-subtitle>List of Working Experience</md-card-subtitle>
+<md-card-title>Working Experience</md-card-title>
+<md-card-subtitle>List of Working Experience</md-card-subtitle>
 
+<md-divider></md-divider>
+<md-card-actions>
+<a md-list-item (click)="showDialog()">
+<span>Add More</span>
+</a>
+</md-card-actions>
 
-      <md-divider></md-divider>
-      <md-card-actions>
-        <a md-list-item (click)="showDialog()">
-          <span>Add More</span>
-        </a>
-      </md-card-actions>
-    </md-card>
-
-        </div>
+</md-card>
+</div>
 </td-expansion-panel>
+
 <td-expansion-panel label="Upload Document Checkist Information">
-
-    <div layout="column" class="pad-right" flex>
-       <md-card class="">
-      <md-card-title>Upload Document Checkist</md-card-title>
-      <md-card-subtitle>List of Document Uploaded</md-card-subtitle>
-    </md-card>
-
-    </div>
+<div layout="column" class="pad-right" flex>
+<md-card class="">
+<md-card-title>Upload Document Checkist</md-card-title>
+<md-card-subtitle>List of Document Uploaded</md-card-subtitle>
+</md-card>
+</div>
 </td-expansion-panel>
+
 <td-expansion-panel label="Submit Application">
-
-    <div layout="column" class="pad-right" flex>
-       <md-card class="">
-      <md-card-title>Submit Application for Intake September 2017</md-card-title>
-      <md-card-subtitle>Declaration
-      <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-            <md-checkbox><div layout="column" flex>
-            I am hereby to declare all the information that I was entered is true.
-            </div> </md-checkbox>
-          </div><button md-button>Submit</button></md-card-subtitle>
-    </md-card>
-
-    </div>
+<div layout="column" class="pad-right" flex>
+<md-card class="">
+<md-card-title>Submit Application for Intake September 2017</md-card-title>
+<md-card-subtitle>Declaration
+<div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+<md-checkbox><div layout="column" flex>
+ I am hereby to declare all the information that I was entered is true.
+</div> </md-checkbox>
+</div><button md-button>Submit</button></md-card-subtitle>
+</md-card>
+</div>
 </td-expansion-panel>
 </td-layout-card-over>
 </td-layout-nav>
