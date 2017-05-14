@@ -4,6 +4,7 @@ import {IntakeApplicationEducationPage} from "./intake-application-education.pag
 
 
 export const MgsebIntakeApplicationRoutes: Routes = [
-  {path: 'application/intake-applications/mgseb/personal', component: IntakeApplicationPersonalPage},
-  {path: 'application/intake-applications/mgseb/education', component: IntakeApplicationEducationPage},
+  {path: 'application/intake-applications/mgseb', component: IntakeApplicationPersonalPage}
+ // {path: 'application/intake-applications/mgseb/personal', component: IntakeApplicationPersonalPage},
+  //{path: 'application/intake-applications/mgseb/education', component: IntakeApplicationEducationPage},
 ];

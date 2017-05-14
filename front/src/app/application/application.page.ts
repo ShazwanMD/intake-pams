@@ -38,6 +38,12 @@ export class ApplicationPage implements OnInit {
 
   apply(intake: Intake): void {
     console.log("apply");
-    this.store.dispatch(this.intakeApplicationActions.applyIntake(intake));
+    console.log("intake"+intake);
+    if(intake.graduateCentre.code=="CPS")
+    {
+      this.store.dispatch(this.intakeApplicationActions.applyIntakeCps(intake));
+    }else{
+      this.store.dispatch(this.intakeApplicationActions.applyIntakeMgseb(intake));
+    }
   }
 }

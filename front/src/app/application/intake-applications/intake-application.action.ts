@@ -48,7 +48,14 @@ export class IntakeApplicationActions {
 
   static APPLY_INTAKE = '[Intake Application] Apply Intake';
 
-  applyIntake(intake): Action {
+  applyIntakeCps(intake): Action {
+    return {
+      type: IntakeApplicationActions.APPLY_INTAKE,
+      payload: intake
+    };
+  }
+
+  applyIntakeMgseb(intake): Action {
     return {
       type: IntakeApplicationActions.APPLY_INTAKE,
       payload: intake

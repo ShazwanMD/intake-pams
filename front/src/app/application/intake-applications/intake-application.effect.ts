@@ -37,13 +37,22 @@ export class IntakeApplicationEffects {
     .map(applications => this.intakeApplicationActions.findIntakeApplicationsSuccess(applications));
 
 
-  @Effect() applyIntake$ = this.actions$
+  @Effect() applyIntakeCps$ = this.actions$
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map(action => action.payload)
     .switchMap(intake => this.applicationService.applyIntake(intake))
     .mergeMap(referenceNo => from([referenceNo,
       this.intakeApplicationActions.applyIntakeSuccess(referenceNo),
       this.router.navigate(['/application/intake-applications/cps'])
+    ]));
+
+    @Effect() applyIntakeMgseb$ = this.actions$
+    .ofType(IntakeApplicationActions.APPLY_INTAKE)
+    .map(action => action.payload)
+    .switchMap(intake => this.applicationService.applyIntake(intake))
+    .mergeMap(referenceNo => from([referenceNo,
+      this.intakeApplicationActions.applyIntakeSuccess(referenceNo),
+      this.router.navigate(['/application/intake-applications/mgseb'])
     ]));
 
   // ====================================================================================================
