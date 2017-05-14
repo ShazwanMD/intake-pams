@@ -64,5 +64,10 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findSupervisorCodes())
     .map(codes => this.commonActions.findSupervisorCodesSuccess(codes));
 
+@Effect() findRaceCodes$ = this.actions$
+    .ofType(CommonActions.FIND_RACE_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findRaceCodes())
+    .map(codes => this.commonActions.findRaceCodesSuccess(codes));
 
 }
