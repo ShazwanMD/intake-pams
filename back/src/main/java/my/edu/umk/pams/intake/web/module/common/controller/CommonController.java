@@ -292,6 +292,22 @@ public class CommonController {
         commonService.removeProgramCode(programCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    //====================================================================================================
+    // RESIDENCY_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/residencyCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<ResidencyCode>> findResidencyCodes() {
+        return new ResponseEntity<List<ResidencyCode>>(commonTransformer.toResidencyCodeVos(
+                commonService.findResidencyCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/residencyCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<ResidencyCode> findResidencyCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<ResidencyCode>(commonTransformer.toResidencyCodeVo(
+                commonService.findResidencyCodeByCode(code)), HttpStatus.OK);
+    }
 
     //====================================================================================================
     // SUPERVISOR CODES
