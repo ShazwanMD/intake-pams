@@ -28,6 +28,12 @@ export class PolicyService {
       .map((res: Response) => <IntakeSession[]>res.json());
   }
 
+  saveIntakeSession(): Observable<IntakeSession[]> {
+    console.log("saveIntakeSession");
+    return this.http.get(environment.endpoint + '/api/policy/intakeSessions')
+      .map((res: Response) => <IntakeSession[]>res.json());
+  }
+
   // ====================================================================================================
   // PROGRAM LEVEL
   // ====================================================================================================
