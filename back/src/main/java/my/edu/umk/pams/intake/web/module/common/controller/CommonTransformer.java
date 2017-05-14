@@ -284,7 +284,7 @@ public class CommonTransformer {
 	}		
 
 	// ====================================================================================================
-	// STATE_CODE
+	// DUN_CODE
 	// ====================================================================================================
 
 	public DunCode toDunCodeVo(InDunCode e) {
@@ -298,6 +298,24 @@ public class CommonTransformer {
 
 	public List<DunCode> toDunCodeVos(List<InDunCode> e) {
 		List<DunCode> vos = e.stream().map((e1) -> toDunCodeVo(e1)).collect(Collectors.toList());
+		return vos;
+	}
+	
+	// ====================================================================================================
+	// DISTRICT_CODE
+	// ====================================================================================================
+
+	public DistrictCode toDistrictCodeVo(InDistrictCode e) {
+		DistrictCode vo = new DistrictCode();
+		vo.setId(e.getId());
+		vo.setCode(e.getCode());
+		vo.setDescription(e.getDescription());
+		//vo.setDescriptionEn(e.getDescriptionEn());
+		return vo;
+	}
+
+	public List<DistrictCode> toDistrictCodeVos(List<InDistrictCode> e) {
+		List<DistrictCode> vos = e.stream().map((e1) -> toDistrictCodeVo(e1)).collect(Collectors.toList());
 		return vos;
 	}
 
