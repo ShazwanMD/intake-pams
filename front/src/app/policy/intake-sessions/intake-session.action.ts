@@ -21,4 +21,25 @@ export class IntakeSessionActions {
       payload: sessions
     };
   }
+
+  static SAVE_INTAKE_SESSIONS = '[IntakeSession] Save Intake Sessions';
+
+  saveIntakeSession(sessions): Action {
+    console.log("saveIntakeSession");
+    return {
+      type: IntakeSessionActions.SAVE_INTAKE_SESSIONS,
+      payload: sessions
+    };
+  }  
+
+  static SAVE_INTAKE_SESSION_SUCCESS = '[IntakeSession] Save Intake Sessions Success';
+
+  saveIntakeSessionSuccess(message): Action {
+    console.log("saveIntakeSessionSuccess");
+    return {
+      type: IntakeSessionActions.SAVE_INTAKE_SESSION_SUCCESS,
+      payload: message
+    };
+  }
+
 }

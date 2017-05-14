@@ -20,5 +20,12 @@ export class IntakeSessionEffects {
     .switchMap(() => this.policyService.findIntakeSessions())
     .map(sessions => this.intakeSessionActions.findIntakeSessionsSuccess(sessions));
 
+  @Effect() saveIntakeSessions$ = this.actions$
+    .ofType(IntakeSessionActions.SAVE_INTAKE_SESSIONS)
+    .map(action => action.payload)
+    .switchMap(payload => this.policyService.saveIntakeSession(payload))
+    .map(message => this.intakeSessionActions.saveIntakeSessionSuccess(message))
+    .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]));
+
 }
 

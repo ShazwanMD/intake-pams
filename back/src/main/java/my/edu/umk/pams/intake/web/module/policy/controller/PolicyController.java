@@ -57,6 +57,23 @@ public class PolicyController {
         List<InIntakeSession> sessions = policyService.findIntakeSessions(0, 100);
         return new ResponseEntity<List<IntakeSession>>(policyTransformer.toIntakeSessionVos(sessions), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intake-sessions", method = RequestMethod.POST)
+    public ResponseEntity<String> saveIntakeSession(@RequestBody IntakeSession vo) {
+        dummyLogin();
+
+        InIntakeSession session = new InIntakeSessionImpl();
+       
+        session.setCode(vo.getCode());
+        session.setLabel(vo.getLabel());
+        session.setDescriptionMs(vo.getDescriptionMs());
+        session.setDescriptionEn(vo.getDescriptionEn());
+        session.setCurrent(vo.isCurrent());
+        session.setYear(vo.getYear());
+        policyService.saveIntakeSession(session);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     // ==================================================================================================== //
     //  PROGRAM LEVEL

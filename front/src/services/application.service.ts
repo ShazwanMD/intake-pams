@@ -35,7 +35,18 @@ export class ApplicationService {
   }
 
 
-  applyIntake(intake: Intake): Observable<String> {
+  applyIntakeCps(intake: Intake): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    let encoded = intake.referenceNo.replace(/\//g, '%252F');
+    return this.http.post(environment.endpoint + '/api/application/intakes/' + encoded + '/apply', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  applyIntakeMgseb(intake: Intake): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token

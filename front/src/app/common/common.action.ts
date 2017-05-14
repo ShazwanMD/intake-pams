@@ -194,4 +194,24 @@ export class CommonActions {
       payload: codes
     };
   }
+
+   static FIND_RACE_CODES = '[Common] Find Race Codes';
+
+  findRaceCodes(): Action {
+    console.log("findRaceCodes");
+    return {
+      type: CommonActions.FIND_RACE_CODES,
+    };
+  }
+
+  static FIND_RACE_CODES_SUCCESS = '[Common] Find Race Codes Success';
+
+  findRaceCodesSuccess(codes): Action {
+    console.log("findRaceCodesSuccess");
+    return {
+      type: CommonActions.FIND_RACE_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
 }
