@@ -59,7 +59,7 @@
         </template>
         <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
           <div layout="row">
-            <a md-button color="warn" class="text-upper" [routerLink]="['/application/intakes/', row['referenceNo']]">
+            <a md-button color="warn" class="text-upper" (click)="apply(row)">
               <span>Apply</span>
             </a>
           </div>

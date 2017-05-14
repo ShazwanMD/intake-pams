@@ -28,9 +28,6 @@ export class ApplicationPage implements OnInit {
               private intakeApplicationActions: IntakeApplicationActions,
               private store: Store<ApplicationModuleState>) {
     this.intakes$ = this.store.select(...this.INTAKES);
-
-
-
   }
 
   ngOnInit(): void {
@@ -39,6 +36,8 @@ export class ApplicationPage implements OnInit {
     });
   }
 
-
-
+  apply(intake: Intake): void {
+    console.log("apply");
+    this.store.dispatch(this.intakeApplicationActions.applyIntake(intake));
+  }
 }

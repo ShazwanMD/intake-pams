@@ -3,9 +3,7 @@ import {Effect, Actions} from '@ngrx/effects';
 import {from} from "rxjs/observable/from";
 import {IntakeApplicationActions} from "./intake-application.action";
 import {ApplicationService} from "../../../services/application.service";
-import {environment} from "../../../environments/environment";
-import {IntakeApplication} from "./intake-application.interface";
-import {Observable} from "rxjs/Observable";
+import {Router} from "@angular/router";
 
 
 @Injectable()
@@ -13,7 +11,8 @@ export class IntakeApplicationEffects {
 
   constructor(private actions$: Actions,
               private intakeApplicationActions: IntakeApplicationActions,
-              private applicationService: ApplicationService) {
+              private applicationService: ApplicationService,
+              private router: Router) {
   }
 
   // ====================================================================================================
@@ -42,7 +41,10 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map(action => action.payload)
     .switchMap(intake => this.applicationService.applyIntake(intake))
-    .map(referenceNo => this.intakeApplicationActions.applyIntakeSuccess(referenceNo))
+    .mergeMap(referenceNo => from([referenceNo,
+      this.intakeApplicationActions.applyIntakeSuccess(referenceNo),
+      this.router.navigate(['/application/intake-applications/cps'])
+    ]));
 
   // ====================================================================================================
   // INTAKE APPLICATION
