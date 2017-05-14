@@ -317,6 +317,11 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
+    public List<InDistrictCode> findDistrictCodes() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public List<InDistrictCode> findDistrictCodes(String filter, InStateCode stateCode, Integer offset, Integer limit) {
         return districtCodeDao.find(filter, offset, limit);
     }

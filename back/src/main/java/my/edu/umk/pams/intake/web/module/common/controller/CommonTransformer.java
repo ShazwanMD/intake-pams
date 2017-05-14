@@ -336,6 +336,24 @@ public class CommonTransformer {
 	public List<DisabilityCode> toDisabilityCodeVos(List<InDisabilityCode> e) {
 		List<DisabilityCode> vos = e.stream().map((e1) -> toDisabilityCodeVo(e1)).collect(Collectors.toList());
 		return vos;
-	}		
+	}
+	
+	// ====================================================================================================
+	// RESIDENCY_CODE
+	// ====================================================================================================
+
+	public ResidencyCode toResidencyCodeVo(InResidencyCode e) {
+		ResidencyCode vo = new ResidencyCode();
+		vo.setId(e.getId());
+		vo.setCode(e.getCode());
+		vo.setDescription(e.getDescription());
+		//vo.setDescriptionEn(e.getDescriptionEn());
+		return vo;
+	}
+
+	public List<ResidencyCode> toResidencyCodeVos(List<InResidencyCode> e) {
+		List<ResidencyCode> vos = e.stream().map((e1) -> toResidencyCodeVo(e1)).collect(Collectors.toList());
+		return vos;
+	}
 
 }
