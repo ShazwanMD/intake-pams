@@ -84,6 +84,22 @@ public class CommonController {
     }
 
     //====================================================================================================
+    // DUN_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/dunCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<DunCode>> findDunCodes() {
+        return new ResponseEntity<List<DunCode>>(commonTransformer.toDunCodeVos(
+                commonService.findDunCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/dunCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<DunCode> findDunCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<DunCode>(commonTransformer.toDunCodeVo(
+                commonService.findDunCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    //====================================================================================================
     // GRADUATE CENTRE
     //====================================================================================================
 
