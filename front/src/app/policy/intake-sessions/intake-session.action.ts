@@ -28,16 +28,17 @@ export class IntakeSessionActions {
     console.log("saveIntakeSession");
     return {
       type: IntakeSessionActions.SAVE_INTAKE_SESSIONS,
+      payload: sessions
     };
   }  
 
   static SAVE_INTAKE_SESSION_SUCCESS = '[IntakeSession] Save Intake Sessions Success';
 
-  saveIntakeSessionSuccess(sessions): Action {
+  saveIntakeSessionSuccess(message): Action {
     console.log("saveIntakeSessionSuccess");
     return {
       type: IntakeSessionActions.SAVE_INTAKE_SESSION_SUCCESS,
-      payload: sessions
+      payload: message
     };
   }
 

@@ -28,11 +28,16 @@ export class PolicyService {
       .map((res: Response) => <IntakeSession[]>res.json());
   }
 
-  saveIntakeSession(): Observable<IntakeSession[]> {
-    console.log("saveIntakeSession");
-    return this.http.get(environment.endpoint + '/api/policy/intakeSessions')
-      .map((res: Response) => <IntakeSession[]>res.json());
-  }
+
+    saveIntakeSession(sessions: IntakeSession) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/policy/intake-sessions', JSON.stringify(sessions), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+    } 
 
   // ====================================================================================================
   // PROGRAM LEVEL
