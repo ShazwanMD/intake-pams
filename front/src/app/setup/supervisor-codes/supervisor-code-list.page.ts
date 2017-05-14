@@ -1,13 +1,11 @@
-import { SupervisorCodeCreatorDialog } from './dialog/supervisor-code-creator.dialog';
+import { SupervisorCodeEditorDialog } from './dialog/supervisor-code-editor.dialog';
 import { SupervisorCode } from './../../common/supervisor-codes/supervisor-code.interface';
-import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
-import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from "@angular/core";
 import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
-
-
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 @Component({
   selector: 'pams-supervisor-list-page',
@@ -16,49 +14,55 @@ import {Observable} from "rxjs/Observable";
 export class SupervisorCodeListPage implements OnInit {
 
   private SUPERVISOR_CODES = "setupModuleState.supervisorCodes".split(".");
-  private creatorDialogRef: MdDialogRef<SupervisorCodeCreatorDialog>;
-  private supervisorCodes$:Observable<SupervisorCode>;
-
+  private supervisorCodes$: Observable<SupervisorCode>;
+  private creatorDialogRef: MdDialogRef<SupervisorCodeEditorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'name', label: 'Name'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'name', label: 'Name'},
     {name: 'action', label: ''}
   ];
 
   constructor(private actions: SetupActions,
+              private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog,
-              private store: Store<SetupModuleState>){
+              private dialog: MdDialog) {
     this.supervisorCodes$ = this.store.select(...this.SUPERVISOR_CODES);
   }
 
-    showDialog(): void {
-    console.log("showDialog");
+  ngOnInit(): void {
+    this.store.dispatch(this.actions.findSupervisorCodes());
+    this.store.dispatch(this.actions.changeTitle("Supervisor Codes"))
+  }
+
+  createDialog(): void {
+    this.showDialog(null);
+  }
+
+  editDialog(code:SupervisorCode): void {
+    this.showDialog(code);
+  }
+
+  delete(code: SupervisorCode): void {
+    this.store.dispatch(this.actions.removeSupervisorCode(code))
+  }
+
+  filter(): void {
+  }
+
+  private showDialog(code:SupervisorCode): void {
+    console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(SupervisorCodeCreatorDialog, config);
-    this.creatorDialogRef.afterClosed().subscribe(res =>{
-
+    this.creatorDialogRef = this.dialog.open(SupervisorCodeEditorDialog, config);
+    if(code) this.creatorDialogRef.componentInstance.supervisorCode = code; // set
+    this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
-      // load something here
     });
   }
-
-  filter(filter: string): void {
-    if (filter) this.store.dispatch(this.actions.findSupervisorCodesByFilter(filter));
-    else this.store.dispatch(this.actions.findSupervisorCodes())
-  }
-
-
-  ngOnInit(): void {
-    this.store.dispatch(this.actions.findSupervisorCodes())
-    this.store.dispatch(this.actions.changeTitle("Supervisor Codes"))
-  }
-
 }

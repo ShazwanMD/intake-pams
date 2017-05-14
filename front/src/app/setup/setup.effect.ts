@@ -146,6 +146,7 @@ export class SetupEffects {
     .switchMap(filter => this.commonService.findSupervisorCodesByFilter(filter))
     .map(codes => this.setupActions.findSupervisorCodesByFilterSuccess(codes));
 
+
   @Effect() saveSupervisorCodes$ = this.actions$
     .ofType(SetupActions.SAVE_SUPERVISOR_CODE)
     .map(action => action.payload)
@@ -153,18 +154,18 @@ export class SetupEffects {
     .map(message => this.setupActions.saveSupervisorCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findSupervisorCodes()]));
 
-  @Effect() removeSupervisorCodes$ = this.actions$
-    .ofType(SetupActions.REMOVE_SUPERVISOR_CODE)
-    .map(action => action.payload)
-    .switchMap(payload => this.commonService.removeSupervisorCode(payload))
-    .map(message => this.setupActions.removeSupervisorCodeSuccess(message))
-    .mergeMap(action => from([action, this.setupActions.findSupervisorCodes()]));
-
   @Effect() updateSupervisorCodes$ = this.actions$
     .ofType(SetupActions.UPDATE_SUPERVISOR_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.updateSupervisorCode(payload))
     .map(message => this.setupActions.updateSupervisorCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSupervisorCodes()]));
+
+  @Effect() removeSupervisorCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_SUPERVISOR_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeSupervisorCode(payload))
+    .map(message => this.setupActions.removeSupervisorCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findSupervisorCodes()]));
 
   // ====================================================================================================

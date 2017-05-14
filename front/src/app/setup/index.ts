@@ -1,3 +1,4 @@
+import { SupervisorCodeEditorDialog } from './supervisor-codes/dialog/supervisor-code-editor.dialog';
 import { StudyMode } from './../common/study-modes/study-mode.interface';
 import { StudyModeListPage } from './study-modes/study-mode-list.page';
 import { StudyModeCreatorDialog } from './study-modes/dialog/study-mode-creator.dialog';
@@ -16,7 +17,6 @@ import { GenderCode } from './../common/gender-codes/gender-code.interface';
 import { RaceCodeCreatorDialog } from './race-codes/dialog/race-code-creator.dialog';
 import { RaceCodeListPage } from './race-codes/race-code-list.page';
 import { RaceCode } from './../common/race-codes/race-code.interface';
-import { SupervisorCodeCreatorDialog } from './supervisor-codes/dialog/supervisor-code-creator.dialog';
 import { SupervisorCodeListPage } from './supervisor-codes/supervisor-code-list.page';
 import { SupervisorCode } from './../common/supervisor-codes/supervisor-code.interface';
 import { ReligionCodeCreatorDialog } from './religion-codes/dialog/religion-code-creator.dialog';
@@ -158,7 +158,7 @@ export const setupModuleReducers = {
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,
     ReligionCodeCreatorDialog,
-    SupervisorCodeCreatorDialog,
+    SupervisorCodeEditorDialog,
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
@@ -175,8 +175,7 @@ export const setupModuleReducers = {
     CountryCodeCreatorDialog,
     StateCodeCreatorDialog,
     ProgramCodeCreatorDialog,
-    SupervisorCodeCreatorDialog,
-    RaceCodeCreatorDialog,
+    SupervisorCodeEditorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
     NationalityCodeCreatorDialog,

@@ -1,4 +1,4 @@
-import {MaritalCode} from './../../../common/marital-codes/marital-code.interface';
+import { SupervisorCode } from './../../../common/supervisor-codes/supervisor-code.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -10,32 +10,32 @@ import {SetupActions} from "../../setup.action";
 
 
 @Component({
-  selector: 'pams-marital-code-editor',
-  templateUrl: './marital-code-editor.dialog.html',
+  selector: 'pams-supervisor-code-editor',
+  templateUrl: './supervisor-code-editor.dialog.html',
 })
 
-export class MaritalCodeEditorDialog implements OnInit {
+export class SupervisorCodeEditorDialog implements OnInit {
 
   private editorForm: FormGroup;
   private edit: boolean = false;
-  private _maritalCode: MaritalCode;
+  private _supervisorCode: SupervisorCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<MaritalCodeEditorDialog>,
+              private dialog: MdDialogRef<SupervisorCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions) {
   }
 
-  set maritalCode(value: MaritalCode) {
-    this._maritalCode = value;
+  set supervisorCode(value: SupervisorCode) {
+    this._supervisorCode = value;
     this.edit = true;
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<MaritalCode>{
+    this.editorForm = this.formBuilder.group(<SupervisorCode>{
       id: null,
       code: '',
       name: '',
@@ -43,12 +43,12 @@ export class MaritalCodeEditorDialog implements OnInit {
       descriptionMs: '',
     });
 
-    if (this.edit) this.editorForm.patchValue(this._maritalCode);
+    if (this.edit) this.editorForm.patchValue(this._supervisorCode);
   }
 
-  submit(code: MaritalCode, isValid: boolean) {
-    if (!code.id) this.store.dispatch(this.actions.saveMaritalCode(code));
-    else  this.store.dispatch(this.actions.updateMaritalCode(code));
+  submit(code: SupervisorCode, isValid: boolean) {
+    if (!code.id) this.store.dispatch(this.actions.saveSupervisorCode(code));
+    else  this.store.dispatch(this.actions.updateSupervisorCode(code));
     this.dialog.close();
   }
 }
