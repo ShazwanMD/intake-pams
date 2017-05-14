@@ -14,7 +14,6 @@ import {ProgramLevel} from "../../program-levels/program-level.interface";
 @Component({
   selector: 'pams-intake-task-creator',
   templateUrl: './intake-task-creator.dialog.html',
-  styleUrls: ['./intake-task-creator.dialog.scss'],
 })
 
 export class IntakeTaskCreatorDialog implements OnInit {
