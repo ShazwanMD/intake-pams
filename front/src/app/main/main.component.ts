@@ -12,6 +12,11 @@ export class MainComponent {
     title: 'Dashboard',
     route: '/',
     icon: 'dashboard',
+  }, 
+   {
+    title: 'Apps Setup',
+    route: '/setup',
+    icon: 'label',
   }, {
     title: 'Applicant Registration',
     route: '/registration',
@@ -27,11 +32,6 @@ export class MainComponent {
   }, {
     title: 'Candidate Admission',
     route: '/admission',
-    icon: 'label',
-  }
-, {
-    title: 'Apps Setup',
-    route: '/setup',
     icon: 'label',
   }
   ];
