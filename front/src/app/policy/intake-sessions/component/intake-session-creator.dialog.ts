@@ -16,6 +16,7 @@ import {IntakeSessionActions} from "../intake-session.action";
 })
 
 export class IntakeSessionCreatorDialog implements OnInit {
+  
 
   private createForm: FormGroup;
 
@@ -24,6 +25,8 @@ export class IntakeSessionCreatorDialog implements OnInit {
               private store: Store<PolicyModuleState>,
               private actions: IntakeSessionActions,
               private dialog: MdDialogRef<IntakeSessionCreatorDialog>) {
+       
+          
   }
 
   ngOnInit(): void {
@@ -38,9 +41,9 @@ export class IntakeSessionCreatorDialog implements OnInit {
     });
   }
 
-  save(intake: IntakeSession, isValid: boolean) {
+  save(sessions: IntakeSession, isValid: boolean) {
     // todo(samiya): add method, effect, action
-    // this.store.dispatch(this.actions.saveIntakeSession(intake));
+    this.store.dispatch(this.actions.saveIntakeSession(sessions));
     this.dialog.close();
   }
 }
