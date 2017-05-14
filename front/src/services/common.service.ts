@@ -351,19 +351,20 @@ export class CommonService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.delete(environment.endpoint + '/api/common/supervisorCodes/' + code, options)
+    return this.http.delete(environment.endpoint + '/api/common/supervisorCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  updateSupervisorCode(code: SupervisorCode) {
+ updateSupervisorCode(code: SupervisorCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/common/supervisorCodes', JSON.stringify(code), options)
+    return this.http.put(environment.endpoint + '/api/common/supervisorCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
 
 // ====================================================================================================
 // STATE CODES
