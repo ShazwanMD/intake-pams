@@ -98,6 +98,22 @@ public class CommonController {
         return new ResponseEntity<DunCode>(commonTransformer.toDunCodeVo(
                 commonService.findDunCodeByCode(code)), HttpStatus.OK);
     }
+
+    //====================================================================================================
+    // DISTRICT_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/districtCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<DistrictCode>> findDistrictCodes() {
+        return new ResponseEntity<List<DistrictCode>>(commonTransformer.toDistrictCodeVos(
+                commonService.findDistrictCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/districtCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<DistrictCode> findDistrictCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<DistrictCode>(commonTransformer.toDistrictCodeVo(
+                commonService.findDistrictCodeByCode(code)), HttpStatus.OK);
+    }
     
     //====================================================================================================
     // GRADUATE CENTRE
