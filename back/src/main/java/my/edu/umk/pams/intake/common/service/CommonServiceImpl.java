@@ -322,6 +322,11 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
+	public List<InDistrictCode> findDistrictCodes() {
+    	return districtCodeDao.find();
+	}
+    
+    @Override
     public Integer countDistrictCode(InStateCode stateCode) {
         return districtCodeDao.count();
     }
@@ -2017,5 +2022,7 @@ public class CommonServiceImpl implements CommonService {
         supervisorCodeDao.remove(supervisorCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+
+	
     
 }
