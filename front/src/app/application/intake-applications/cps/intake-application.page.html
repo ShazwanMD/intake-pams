@@ -5,44 +5,49 @@
 </div>
 
 <td-layout-card-over>
-<div layout="row" layout-align="start center"><div>
+<div layout="row" layout-align="start center">
+<div>
 <md-card-title>Intake Application</md-card-title>
 <md-card-subtitle>Intake Registration for Session 201720181</md-card-subtitle>
 </div>
 </div>
 <md-divider></md-divider>
 
-<td-expansion-panel label="Program Choice Information">
-	<md-card>
-    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+<md-tab-group md-stretch-tabs>
+<md-tab>
+<md-card>
+<template md-tab-label>Program Choice Information</template>
+
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
           <!-- first column -->
-          <div layout="column" class="pad-right" flex>
-            <div layout="row" class="pad-bottom" flex>
-              <pams-program-level-select [placeholder]="'Please Select'"></pams-program-level-select>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <pams-faculty-code-select [placeholder]="'Please Select'"></pams-faculty-code-select>
-            </div>
-          </div>
+ <div layout="column" class="pad-right" flex>
+ <div layout="row" class="pad-bottom" flex>
+ <pams-program-level-select [placeholder]="'Please Select'"></pams-program-level-select>
+ </div>
+ <div layout="row" class="pad-bottom" flex>
+ <pams-faculty-code-select [placeholder]="'Please Select'"></pams-faculty-code-select>
+ </div>
+ </div>
 
-          <!-- second column -->
-          <div layout="column" class="pad-right" flex>
-            <div layout="row" class="pad-bottom" flex>
-              <pams-study-mode-select [placeholder]="'Please Select'"></pams-study-mode-select>
-            </div>
-            <div layout="row" class="pad-bottom" flex>
-              <md-input-container flex>
-                <input mdInput
-                       placeholder="Research Title"
-                       flex/>
-              </md-input-container>
-            </div>
-          </div>
-      </div>
-  </md-card>
-</td-expansion-panel>
+  <!-- second column -->
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+<pams-study-mode-select [placeholder]="'Please Select'"></pams-study-mode-select>
+</div>
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Research Title"flex/>
+</md-input-container>
+    </div>
+   </div>
+ </div>
+</md-card>
+</md-tab>
 
-<td-expansion-panel label="Personal Information">
+<md-tab>
+<md-card>
+<template md-tab-label>Personal Information</template>
+<td-expansion-panel label="Personal Details">
 <md-card>
 <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
   <!-- first column -->
@@ -58,19 +63,11 @@
 <input mdInput placeholder="NRIC/Passport" flex/>
 </md-input-container>
 </div>
-</div>
 
-<!-- second column -->
-
-<div layout="column" class="pad-right" flex>
 <div layout="row" class="pad-bottom" flex>
 <md-input-container flex>
 <input mdInput type="date"placeholder="Date of Birth"flex/>
 </md-input-container>
-</div>
-
-<div layout="row" class="pad-bottom" flex>
-<pams-gender-code-select [placeholder]= "'Select Gender'"></pams-gender-code-select>
 </div>
 
 <div layout="row" class="pad-bottom" flex>
@@ -79,6 +76,37 @@
 <md-option>NO</md-option>
 </md-select>
 </div>
+</div>
+
+<!-- second column -->
+
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+<pams-gender-code-select [placeholder]= "'Select Gender'"></pams-gender-code-select>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<pams-gender-code-select [placeholder]= "'Race'"></pams-gender-code-select>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Phone No" flex/>
+</md-input-container>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Office No" flex/>
+</md-input-container>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Fax No" flex/>
+</md-input-container>
+</div>
+
 </div>
 </div>
 </md-card>
@@ -127,12 +155,33 @@
 </md-select>
 </div>
 </div>
+</div>
+</md-card>
+</td-expansion-panel>
+<td-expansion-panel label="Working Experience">
+<md-card>
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+
+<md-card-subtitle>List of Working Experience</md-card-subtitle>
+
+<md-divider></md-divider>
+<md-card-actions>
+<a md-list-item (click)="showDialog()">
+<span>Add More</span>
+</a>
+</md-card-actions>
 
 </div>
 </md-card>
 </td-expansion-panel>
+</md-card>
+</md-tab>
 
-<td-expansion-panel label="Education Information">
+
+<md-tab>
+<md-card>
+<template md-tab-label>Academic Qualification</template>
+
 <td-expansion-panel label="SPM Information">
 <md-card>
 <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
@@ -304,7 +353,7 @@
 </md-card>
 </td-expansion-panel>
 
-<td-expansion-panel label="STPM / Diploma / Equivalent Information">
+<td-expansion-panel label="STPM / Diploma / Degree Information">
 <md-card>
 <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
 <!-- first column -->
@@ -316,6 +365,12 @@
  </md-input-container>
  </div>
  
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput type="date" placeholder="Year Of Entry"flex/>
+ </md-input-container>
+ </div>
+
  <div layout="row" class="pad-bottom" flex>
  <md-input-container flex>
  <input mdInput type="date" placeholder="Year Of Graduation"flex/>
@@ -334,7 +389,7 @@
 
 <div layout="row" class="pad-bottom" flex>
  <md-input-container flex>
- <input mdInput placeholder="Grade / CGPA" flex/>
+ <input mdInput placeholder="Honours Classification / CGPA / Equavalent" flex/>
  </md-input-container>
  </div>
 </div>
@@ -342,21 +397,38 @@
 </md-card>
 </td-expansion-panel>
 
-<td-expansion-panel label="Bachelor Degree Information">
+<td-expansion-panel label="Proficiency in Malay / English Language">
 <md-card>
 <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-<!-- first column -->
 
- <div layout="column" class="pad-right" flex>
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput placeholder="Name of School / College / University"flex/>
- </md-input-container>
- </div>
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput type="date" placeholder="Malay Language (SPM)"flex/>
+</md-input-container>
+</div>
  
  <div layout="row" class="pad-bottom" flex>
  <md-input-container flex>
- <input mdInput type="date" placeholder="Year Of Graduation"flex/>
+ <input mdInput type="date" placeholder="English Language (SPM)"flex/>
+ </md-input-container>
+ </div>
+
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput type="date" placeholder="English MUET"flex/>
+ </md-input-container>
+ </div>
+
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput type="date" placeholder="TOEFL"flex/>
+ </md-input-container>
+ </div>
+
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput type="date" placeholder="IELTS"flex/>
  </md-input-container>
  </div>
  </div>
@@ -366,45 +438,120 @@
 <div layout="column" class="pad-right" flex>
 <div layout="row" class="pad-bottom" flex>
  <md-input-container flex>
- <input mdInput placeholder="Name Of Bachelor Degree / Master"flex/>
+ <input mdInput  placeholder="Grade"flex/>
  </md-input-container>
  </div>
+
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput  placeholder="Grade"flex/>
+ </md-input-container>
+ </div>
+
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput  placeholder="Grade"flex/>
+ </md-input-container>
+ </div>
+
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput  placeholder="Grade"flex/>
+ </md-input-container>
+ </div>
+
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput  placeholder="Grade"flex/>
+ </md-input-container>
+ </div>
+</div>
+</div>
+</md-card>
+</td-expansion-panel>
+
+<td-expansion-panel label="Financial Support">
+<md-card>
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+<div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+<md-checkbox>
+<div layout="column" flex>
+ Sponsor by Employer / Government. Please attach letter from Sponsor.
+</div>
+</md-checkbox>
+</div>
+
+<div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+<md-checkbox>
+<div layout="column" flex>
+ Self Supporting . Please enclose financial guarantee or bank statement.
+</div>
+</md-checkbox>
+</div>
+</div>
+</md-card>
+</td-expansion-panel>
+
+<td-expansion-panel label="Referees">
+<md-card>
+<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+
+<!--first column-->
+
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Name"flex/>
+</md-input-container>
+</div>
 
 <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput placeholder="Grade / CGPA" flex/>
- </md-input-container>
- </div>
+<md-input-container flex>
+<input mdInput placeholder="Employer's Address"flex/>
+</md-input-container>
+</div>
 
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Name"flex/>
+</md-input-container>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Employer's Address"flex/>
+</md-input-container>
+</div>
+</div>
+
+<!--second column-->
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Position"flex/>
+</md-input-container>
+</div>
+
+<div layout="row" class="pad-bottom" flex>
+<md-input-container flex>
+<input mdInput placeholder="Position"flex/>
+</md-input-container>
+</div>
 </div>
 </div>
 </md-card>
 </td-expansion-panel>
-
-</td-expansion-panel>
-
-<td-expansion-panel label="Working Experience Information">
-<div layout="column" class="pad-right" flex>
-<md-card class="">
-
-<md-card-title>Working Experience</md-card-title>
-<md-card-subtitle>List of Working Experience</md-card-subtitle>
-
-<md-divider></md-divider>
-<md-card-actions>
-<a md-list-item (click)="showDialog()">
-<span>Add More</span>
-</a>
-</md-card-actions>
-
 </md-card>
-</div>
-</td-expansion-panel>
+</md-tab>
 
-<td-expansion-panel label="Upload Document Checkist Information">
+<md-tab>
+<md-card>
+<template md-tab-label>Upload Document</template>
+
+<td-expansion-panel label="Upload Document">
 <div layout="column" class="pad-right" flex>
 <md-card class="">
-<md-card-title>Upload Document Checkist</md-card-title>
+<md-card-title>Upload Document Checklist</md-card-title>
 <md-card-subtitle>List of Document Uploaded</md-card-subtitle>
 </md-card>
 </div>
@@ -413,15 +560,19 @@
 <td-expansion-panel label="Submit Application">
 <div layout="column" class="pad-right" flex>
 <md-card class="">
-<md-card-title>Submit Application for Intake September 2017</md-card-title>
-<md-card-subtitle>Declaration
+<md-card-title>Declaration</md-card-title>
+<md-card-subtitle>Submit Application for Intake September 2017</md-card-subtitle>
 <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
 <md-checkbox><div layout="column" flex>
  I am hereby to declare all the information that I was entered is true.
 </div> </md-checkbox>
-</div><button md-button>Submit</button></md-card-subtitle>
+</div>
+<button md-button>Submit</button>
 </md-card>
 </div>
 </td-expansion-panel>
+</md-card>
+</md-tab>
+</md-tab-group>
 </td-layout-card-over>
 </td-layout-nav>
