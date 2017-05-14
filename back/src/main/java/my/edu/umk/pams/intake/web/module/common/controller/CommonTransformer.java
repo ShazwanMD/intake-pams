@@ -301,4 +301,23 @@ public class CommonTransformer {
 		return vos;
 	}
 
+
+	// ====================================================================================================
+	// DISABILITY CODE
+	// ====================================================================================================
+
+	public DisabilityCode toDisabilityCodeVo(InDisabilityCode e) {
+		DisabilityCode vo = new DisabilityCode();
+		vo.setId(e.getId());
+		vo.setCode(e.getCode());
+		vo.setDescriptionMs(e.getDescriptionMs());
+		vo.setDescriptionEn(e.getDescriptionEn());
+		return vo;
+	}
+
+	public List<DisabilityCode> toDisabilityCodeVos(List<InDisabilityCode> e) {
+		List<DisabilityCode> vos = e.stream().map((e1) -> toDisabilityCodeVo(e1)).collect(Collectors.toList());
+		return vos;
+	}		
+
 }
