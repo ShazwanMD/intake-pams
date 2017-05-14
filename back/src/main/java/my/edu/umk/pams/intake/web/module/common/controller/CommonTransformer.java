@@ -283,4 +283,22 @@ public class CommonTransformer {
 		return vos;
 	}		
 
+	// ====================================================================================================
+	// STATE_CODE
+	// ====================================================================================================
+
+	public DunCode toDunCodeVo(InDunCode e) {
+		DunCode vo = new DunCode();
+		vo.setId(e.getId());
+		vo.setCode(e.getCode());
+		vo.setDescription(e.getDescription());
+		//vo.setDescriptionEn(e.getDescriptionEn());
+		return vo;
+	}
+
+	public List<DunCode> toDunCodeVos(List<InDunCode> e) {
+		List<DunCode> vos = e.stream().map((e1) -> toDunCodeVo(e1)).collect(Collectors.toList());
+		return vos;
+	}
+
 }
