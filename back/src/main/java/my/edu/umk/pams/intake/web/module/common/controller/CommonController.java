@@ -614,6 +614,22 @@ public class CommonController {
                 commonService.findNationalityCodeByCode(code)), HttpStatus.OK);
     }
 
+    //====================================================================================================
+    // DISABILITY_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/disabilityCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<DisabilityCode>> findDisabilityCodes() {
+        return new ResponseEntity<List<DisabilityCode>>(commonTransformer.toDisabilityCodeVos(
+                commonService.findDisabilityCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/disabilityCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<DisabilityCode> findDisabilityCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<DisabilityCode>(commonTransformer.toDisabilityCodeVo(
+                commonService.findDisabilityCodeByCode(code)), HttpStatus.OK);
+    }
+
 }
 
 	
