@@ -13,24 +13,24 @@ export class MainComponent {
     route: '/',
     icon: 'dashboard',
   }, {
-    title: 'Registration',
+    title: 'Applicant Registration',
     route: '/registration',
     icon: 'label',
   }, {
-    title: 'Policy',
+    title: 'Intake Manager',
     route: '/policy',
     icon: 'label',
   }, {
-    title: 'Application',
+    title: 'Intake Application',
     route: '/application',
     icon: 'label',
   }, {
-    title: 'Admission',
+    title: 'Candidate Admission',
     route: '/admission',
     icon: 'label',
   }
 , {
-    title: 'Setup',
+    title: 'Apps Setup',
     route: '/setup',
     icon: 'label',
   }
