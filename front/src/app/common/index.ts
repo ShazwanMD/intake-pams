@@ -30,13 +30,10 @@ import { StateCodeSelectComponent } from './state-codes/component/state-code-sel
 import { StateCodeListState, stateCodeListReducer } from "./state-codes/state-code-list.reducer";
 import { CountryCodeListState, countryCodeListReducer } from "./country-codes/country-code-list.reducer";
 import { CountryCodeSelectComponent } from "./country-codes/component/country-code-select.component";
-<<<<<<< HEAD
 import { ReligionCodeListState, religionCodeListReducer } from "./religion-codes/religion-code-list.reducer";
 import { ReligionCodeSelectComponent } from "./religion-codes/component/religion-code-select.component";
-=======
 import { disabilityCodeListReducer, DisabilityCodeListState } from "./disability-codes/disability-code-list.reducer";
 import { DisabilityCodeSelectComponent } from "./disability-codes/component/disability-code-select.component";
->>>>>>> 544e99605ab47d215a0a557b2048b16fba865040
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -50,11 +47,6 @@ export interface CommonModuleState {
   raceCodes: RaceCodeListState;
   stateCodes : StateCodeListState;
   countryCodes : CountryCodeListState;
-<<<<<<< HEAD
-  religionCodes : ReligionCodeListState;
-=======
-  disabilityCodes: DisabilityCodeListState;
->>>>>>> 544e99605ab47d215a0a557b2048b16fba865040
 }
 ;
 
@@ -71,11 +63,6 @@ export const commonModuleReducers = {
   raceCodes: raceCodeListReducer,
   stateCodes : stateCodeListReducer,
   countryCodes : countryCodeListReducer,
-<<<<<<< HEAD
-  religionCodes : religionCodeListReducer,
-=======
-  disabilityCodes: disabilityCodeListReducer,
->>>>>>> 544e99605ab47d215a0a557b2048b16fba865040
 };
 
 @NgModule({
@@ -98,11 +85,6 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
-<<<<<<< HEAD
-    ReligionCodeSelectComponent,
-=======
-    DisabilityCodeSelectComponent,
->>>>>>> 544e99605ab47d215a0a557b2048b16fba865040
 
   ],
   exports: [
@@ -117,11 +99,6 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
-<<<<<<< HEAD
-    ReligionCodeSelectComponent,
-=======
-    DisabilityCodeSelectComponent,
->>>>>>> 544e99605ab47d215a0a557b2048b16fba865040
 
   ],
 })
