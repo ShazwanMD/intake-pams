@@ -465,7 +465,7 @@ public class CommonController {
     @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
     public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
         return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
-                commonService.findMaritalCodes()), HttpStatus.OK);
+        		commonService.findMaritalCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
@@ -653,7 +653,7 @@ public class CommonController {
     @RequestMapping(value = "/disabilityCodes", method = RequestMethod.GET)
     public ResponseEntity<List<DisabilityCode>> findDisabilityCodes() {
         return new ResponseEntity<List<DisabilityCode>>(commonTransformer.toDisabilityCodeVos(
-                commonService.findDisabilityCodes()), HttpStatus.OK);
+        		commonService.findDisabilityCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/disabilityCodes/{code}", method = RequestMethod.GET)
