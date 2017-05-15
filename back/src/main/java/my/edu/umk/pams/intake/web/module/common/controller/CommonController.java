@@ -465,7 +465,7 @@ public class CommonController {
     @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
     public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
         return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
-                commonService.findMaritalCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+                commonService.findMaritalCodes()), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
