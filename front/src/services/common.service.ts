@@ -1,3 +1,4 @@
+import { StudyCenterCode } from './../app/common/study-center-codes/study-center-code.interface';
 import {StudyMode} from './../app/common/study-modes/study-mode.interface';
 import {NationalityCode} from './../app/common/nationality-codes/nationality-code.interface';
 import {EthnicityCode} from './../app/common/ethnicity-codes/ethnicity-code.interface';
@@ -531,6 +532,52 @@ export class CommonService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/schoolCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  // ====================================================================================================
+  // STUDY CENTER CODES
+  // ====================================================================================================
+
+  findStudyCenterCodes(): Observable<StudyCenterCode[]> {
+    console.log("findStudyCenterCodes");
+    return this.http.get(environment.endpoint + '/api/common/studyCenterCodes')
+      .map((res: Response) => <StudyCenterCode[]>res.json());
+  }
+
+  findStudyCenterCodeByCode(code: string): Observable<StudyCenterCode> {
+    console.log("findStudyCenterCodeByCode");
+    return this.http.get(environment.endpoint + '/api/common/studyCenterCodes/' + code)
+      .map((res: Response) => <StudyCenterCode>res.json());
+  }
+
+  saveStudyCenterCode(code: StudyCenterCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/studyCenterCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateStudyCenterCode(code: StudyCenterCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/studyCenterCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeStudyCenterCode(code:StudyCenterCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/studyCenterCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

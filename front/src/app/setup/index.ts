@@ -1,3 +1,6 @@
+import { StudyCenterCodeEditorDialog } from './study-center-codes/dialogs/study-center-code-editor.dialog';
+import { StudyCenterCode } from './../common/study-center-codes/study-center-code.interface';
+import { StudyCenterCodeListPage } from './study-center-codes/study-center-code-list.page';
 import { SchoolCodeEditorDialog } from './school-codes/dialog/school-code-editor.dialog';
 import { SchoolCodeListPage } from './school-codes/school-code-list-page';
 import { DisabilityCode } from './../common/disability-codes/disability-code.interface';
@@ -80,6 +83,8 @@ import {MaritalCodeEditorDialog} from "./marital-codes/dialog/marital-code-edito
 import {disabilityCodeListReducer, DisabilityCodeListState} from "./disability-codes/disability-code-list.reducer";
 import {schoolCodeListReducer, SchoolCodeListState} from "./school-codes/school-code-list.reducer";
 import { SchoolCode } from './../common/school-codes/school-code.interface';
+import {studyCenterCodeListReducer, StudyCenterCodeListState} from "./study-center-codes/study-center-code-list.reducer";
+
 
 
 
@@ -101,6 +106,7 @@ export interface SetupModuleState {
   studyModes : StudyModeListState;
   disabilityCodes: DisabilityCodeListState;
   schoolCodes: SchoolCodeListState;
+  studyCenterCodes: StudyCenterCodeListState;
 };
 
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -121,7 +127,9 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     facultyCodes: <FacultyCode[]>[],
     studyModes: <StudyMode[]>[],
     disabilityCodes: <DisabilityCode[]>[],
-    schoolCodes: <SchoolCode[]>[]
+    schoolCodes: <SchoolCode[]>[],
+    studyCenterCodes: <StudyCenterCode[]>[],
+
   };
 
 
@@ -143,6 +151,7 @@ export const setupModuleReducers = {
   studyModes: studyModeListReducer,
   disabilityCodes: disabilityCodeListReducer,
   schoolCodes: schoolCodeListReducer,
+  studyCenterCodes: studyCenterCodeListReducer,
 }
 
 @NgModule({
@@ -176,6 +185,7 @@ export const setupModuleReducers = {
     StudyModeListPage,
     DisabilityCodeListPage,
     SchoolCodeListPage,
+    StudyCenterCodeListPage,
   
     // dialog
     MaritalCodeEditorDialog,
@@ -194,6 +204,7 @@ export const setupModuleReducers = {
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,
+    StudyCenterCodeEditorDialog,
   ],
   exports: [],
   entryComponents: [
@@ -212,6 +223,7 @@ export const setupModuleReducers = {
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,
+    StudyCenterCodeEditorDialog,
 
   ],
 

@@ -900,6 +900,83 @@ export class SetupActions {
     };
   }
 
+    static FIND_STUDY_CENTER_CODES = '[Setup] Find Study Center Codes';
 
+  findStudyCenterCodes(): Action {
+    console.log("findStudyCenterCodes");
+    return {
+      type: SetupActions.FIND_STUDY_CENTER_CODES,
+    };
+  }
+
+  static FIND_STUDY_CENTER_CODES_SUCCESS = '[Setup] Study Center Codes Success';
+
+  findStudyCenterCodesSuccess(codes): Action {
+    console.log("findStudyCenterCodesSuccess");
+    return {
+      type: SetupActions.FIND_STUDY_CENTER_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static SAVE_STUDY_CENTER_CODE = '[Setup] Save Study Center Code';
+
+  saveStudyCenterCode(code): Action {
+    console.log("saveStudyCenterCode");
+    return {
+      type: SetupActions.SAVE_STUDY_CENTER_CODE,
+      payload: code
+    };
+  }
+
+ static SAVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Save Study Center Code Success';
+
+  saveStudyCenterCodeSuccess(message): Action {
+    console.log("saveStudyCenterCodeSuccess");
+    return {
+      type: SetupActions.SAVE_STUDY_CENTER_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+static UPDATE_STUDY_CENTER_CODE = '[Setup] Update Study Center Code';
+
+  updateStudyCenterCode(code): Action {
+    console.log("updateStudyCenterCode");
+    return {
+      type: SetupActions.UPDATE_STUDY_CENTER_CODE,
+      payload: code
+    };
+  }
+
+static UPDATE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Update Study Center Code Success';
+
+  updateStudyCenterCodeSuccess(message): Action {
+    console.log("updateStudyCenterCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_STUDY_CENTER_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+static REMOVE_STUDY_CENTER_CODE = '[Setup] Remove Study Center Code';
+
+  removeStudyCenterCode(code): Action {
+    console.log("removeStudyCenterCode");
+    return {
+      type: SetupActions.REMOVE_STUDY_CENTER_CODE,
+      payload: code
+    };
+  }
+
+static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Success';
+
+  removeStudyCenterCodeSuccess(message): Action {
+    console.log("removeStudyCenterCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_STUDY_CENTER_CODE_SUCCESS,
+      payload: message
+    };
+  }
 
 }
