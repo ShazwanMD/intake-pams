@@ -12,14 +12,14 @@ import { CountryCode } from "../country-code.interface";
 })
 export class CountryCodeSelectComponent implements OnInit {
 
-  private COUNTRY_CODE = "commonModuleState.countryState".split(".");
+  private COUNTRY_CODE = "commonModuleState.countryCodes".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  CountryCodes$: Observable<CountryCode[]>;
+  countryCodes$: Observable<CountryCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
-    this.CountryCodes$ = this.store.select(...this.COUNTRY_CODE);
+    this.countryCodes$ = this.store.select(...this.COUNTRY_CODE);
   }
 
   ngOnInit() {
