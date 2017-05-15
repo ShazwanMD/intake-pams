@@ -1,3 +1,4 @@
+import { RaceCodeSelectComponent } from './race-codes/component/race-code-select.component';
 
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -28,6 +29,8 @@ import { MaritalCodeSelectComponent } from "./marital-codes/component/marital-co
 import {BankCodeSelectComponent} from "./bank-codes/component/bank-code-select.component";
 import {BankCodeListState, bankCodeListReducer} from "./bank-codes/bank-code-list.reducer";
 import { SupervisorCodeSelectComponent } from "./supervisor-codes/component/supervisor-code-select.component";
+import {RaceCodeListState, raceCodeListReducer} from "./race-codes/race-code-list.reducer";
+
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -38,6 +41,7 @@ export interface CommonModuleState {
   genderCodes: GenderCodeListState;
   maritalCodes: MaritalCodeListState;
   bankCodes: BankCodeListState;
+  raceCodes: RaceCodeListState;
 }
 ;
 
@@ -51,6 +55,7 @@ export const commonModuleReducers = {
   genderCodes: genderCodeListReducer,
   maritalCodes: maritalCodeListReducer,
   bankCodes: bankCodeListReducer,
+  raceCodes: raceCodeListReducer,
 };
 
 @NgModule({
@@ -70,6 +75,7 @@ export const commonModuleReducers = {
     MaritalCodeSelectComponent,
     BankCodeSelectComponent,
     SupervisorCodeSelectComponent,
+    RaceCodeSelectComponent,
 
   ],
   exports: [
@@ -81,6 +87,7 @@ export const commonModuleReducers = {
     MaritalCodeSelectComponent,
     BankCodeSelectComponent,
     SupervisorCodeSelectComponent,
+    RaceCodeSelectComponent,
 
   ],
 })
@@ -92,7 +99,7 @@ export class CommonModule {
         appRoutingProviders,
         IdentityService,
         CommonService,
-        CommonActions
+        CommonActions,
       ],
     };
   }
