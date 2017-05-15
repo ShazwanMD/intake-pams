@@ -4,12 +4,9 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
-
 import {CovalentCoreModule} from '@covalent/core';
-
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
-
 import {EffectsModule} from "@ngrx/effects";
 import {CommonEffects} from "./common.effect";
 import {CommonActions} from "./common.action";
@@ -30,7 +27,8 @@ import {BankCodeSelectComponent} from "./bank-codes/component/bank-code-select.c
 import {BankCodeListState, bankCodeListReducer} from "./bank-codes/bank-code-list.reducer";
 import { SupervisorCodeSelectComponent } from "./supervisor-codes/component/supervisor-code-select.component";
 import {RaceCodeListState, raceCodeListReducer} from "./race-codes/race-code-list.reducer";
-
+import { StateCodeSelectComponent } from './state-codes/component/state-code-select.component';
+import { StateCodeListState, stateCodeListReducer } from "../setup/state-codes/state-code-list.reducer";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -42,6 +40,7 @@ export interface CommonModuleState {
   maritalCodes: MaritalCodeListState;
   bankCodes: BankCodeListState;
   raceCodes: RaceCodeListState;
+  stateCodes : StateCodeListState;
 }
 ;
 
@@ -56,6 +55,7 @@ export const commonModuleReducers = {
   maritalCodes: maritalCodeListReducer,
   bankCodes: bankCodeListReducer,
   raceCodes: raceCodeListReducer,
+  stateCodes : stateCodeListReducer,
 };
 
 @NgModule({
@@ -76,6 +76,7 @@ export const commonModuleReducers = {
     BankCodeSelectComponent,
     SupervisorCodeSelectComponent,
     RaceCodeSelectComponent,
+    StateCodeSelectComponent,
 
   ],
   exports: [
@@ -88,6 +89,7 @@ export const commonModuleReducers = {
     BankCodeSelectComponent,
     SupervisorCodeSelectComponent,
     RaceCodeSelectComponent,
+    StateCodeSelectComponent,
 
   ],
 })

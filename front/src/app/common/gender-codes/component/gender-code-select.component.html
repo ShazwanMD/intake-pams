@@ -3,6 +3,7 @@
   (change)="selectChangeEvent($event.value)" flex>
 
   <md-option *ngFor="let genderCode of genderCodes$ | async" [value]="genderCode">
-    {{genderCode.code}}: {{genderCode.descriptionEn}}
+    <!--{{genderCode.code}}: {{genderCode.descriptionEn}}-->
+    {{genderCode.descriptionEn}}
   </md-option>
 </md-select>

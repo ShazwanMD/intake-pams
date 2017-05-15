@@ -214,4 +214,23 @@ export class CommonActions {
     };
   }
 
+   static FIND_STATE_CODES = '[Common] Find State Codes';
+
+  findStateCodes(): Action {
+    console.log("findStateCodes");
+    return {
+      type: CommonActions.FIND_STATE_CODES,
+    };
+  }
+
+  static FIND_STATE_CODES_SUCCESS = '[Common] Find State Codes Success';
+
+  findStateCodesSuccess(codes): Action {
+    console.log("findStateCodesSuccess");
+    return {
+      type: CommonActions.FIND_STATE_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
 }
