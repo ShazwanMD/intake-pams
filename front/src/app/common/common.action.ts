@@ -233,4 +233,23 @@ export class CommonActions {
     };
   }
 
+   static FIND_COUNTRY_CODES = '[Common] Find Country Codes';
+
+  findCountryCodes(): Action {
+    console.log("findCountryCodes");
+    return {
+      type: CommonActions.FIND_COUNTRY_CODES,
+    };
+  }
+
+  static FIND_COUNTRY_CODES_SUCCESS = '[Common] Find Country Codes Success';
+
+  findCountryCodesSuccess(codes): Action {
+    console.log("findCountryCodesSuccess");
+    return {
+      type: CommonActions.FIND_COUNTRY_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
 }
