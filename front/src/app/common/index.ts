@@ -30,6 +30,8 @@ import { StateCodeSelectComponent } from './state-codes/component/state-code-sel
 import { StateCodeListState, stateCodeListReducer } from "./state-codes/state-code-list.reducer";
 import { CountryCodeListState, countryCodeListReducer } from "./country-codes/country-code-list.reducer";
 import { CountryCodeSelectComponent } from "./country-codes/component/country-code-select.component";
+import { disabilityCodeListReducer, DisabilityCodeListState } from "./disability-codes/disability-code-list.reducer";
+import { DisabilityCodeSelectComponent } from "./disability-codes/component/disability-code-select.component";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -43,6 +45,7 @@ export interface CommonModuleState {
   raceCodes: RaceCodeListState;
   stateCodes : StateCodeListState;
   countryCodes : CountryCodeListState;
+  disabilityCodes: DisabilityCodeListState;
 }
 ;
 
@@ -59,6 +62,7 @@ export const commonModuleReducers = {
   raceCodes: raceCodeListReducer,
   stateCodes : stateCodeListReducer,
   countryCodes : countryCodeListReducer,
+  disabilityCodes: disabilityCodeListReducer,
 };
 
 @NgModule({
@@ -81,6 +85,7 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
+    DisabilityCodeSelectComponent,
 
   ],
   exports: [
@@ -95,6 +100,7 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
+    DisabilityCodeSelectComponent,
 
   ],
 })
