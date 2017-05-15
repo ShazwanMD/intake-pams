@@ -1,5 +1,4 @@
 import { RaceCodeSelectComponent } from './race-codes/component/race-code-select.component';
-
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -28,7 +27,7 @@ import {BankCodeListState, bankCodeListReducer} from "./bank-codes/bank-code-lis
 import { SupervisorCodeSelectComponent } from "./supervisor-codes/component/supervisor-code-select.component";
 import {RaceCodeListState, raceCodeListReducer} from "./race-codes/race-code-list.reducer";
 import { StateCodeSelectComponent } from './state-codes/component/state-code-select.component';
-import { StateCodeListState, stateCodeListReducer } from "../setup/state-codes/state-code-list.reducer";
+import { StateCodeListState, stateCodeListReducer } from "./state-codes/state-code-list.reducer";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
