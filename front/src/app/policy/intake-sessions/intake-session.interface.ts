@@ -6,11 +6,4 @@ export interface IntakeSession extends MetaObject{
   descriptionEn: string;
   current: boolean;
   year: number;
-
-  page: number;
-  maxPage: number;
-  pageSize: number;
-  total: number;
-  fromRow: number;
-  toRow: number;
 }
