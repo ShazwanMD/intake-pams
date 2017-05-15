@@ -42,4 +42,44 @@ export class IntakeSessionActions {
     };
   }
 
+  static REMOVE_INTAKE_SESSION = '[IntakeSession] Remove Intake Session';
+
+  removeIntakeSession(code): Action {
+    console.log("removeIntakeSession");
+    return {
+      type: IntakeSessionActions.REMOVE_INTAKE_SESSION,
+      payload: code
+    };
+  }
+
+  static REMOVE_INTAKE_SESSION_SUCCESS = '[IntakeSession] Remove Intake Session Success';
+
+  removeIntakeSessionSuccess(message): Action {
+    console.log("removeIntakeSessionSuccess");
+    return {
+      type: IntakeSessionActions.REMOVE_INTAKE_SESSION_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_INTAKE_SESSION = '[IntakeSession] Update Intake Session';
+
+  updateIntakeSession(code): Action {
+    console.log("updateIntakeSession");
+    return {
+      type: IntakeSessionActions.UPDATE_INTAKE_SESSION,
+      payload: code
+    };
+  }
+
+  static UPDATE_INTAKE_SESSION_SUCCESS = '[IntakeSession] Update Intake Session Success';
+
+  updateIntakeSessionSuccess(message): Action {
+    console.log("updateIntakeSessionSuccess");
+    return {
+      type: IntakeSessionActions.UPDATE_INTAKE_SESSION_SUCCESS,
+      payload: message
+    };
+  }
+
 }
