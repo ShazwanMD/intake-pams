@@ -47,6 +47,7 @@ export interface CommonModuleState {
   raceCodes: RaceCodeListState;
   stateCodes : StateCodeListState;
   countryCodes : CountryCodeListState;
+  religionCodes : ReligionCodeListState;
 }
 ;
 
@@ -63,6 +64,7 @@ export const commonModuleReducers = {
   raceCodes: raceCodeListReducer,
   stateCodes : stateCodeListReducer,
   countryCodes : countryCodeListReducer,
+  religionCodes : religionCodeListReducer,
 };
 
 @NgModule({
@@ -85,6 +87,7 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
+    ReligionCodeSelectComponent,
 
   ],
   exports: [
@@ -99,7 +102,7 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
-
+    ReligionCodeSelectComponent,
   ],
 })
 export class CommonModule {
