@@ -290,4 +290,42 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
+  //  static FIND_STUDY_CENTER_CODES = '[Common] Find Study Center Codes';
+
+  // findStudyCenterCodes(): Action {
+  //   console.log("findStudyCenterCodes");
+  //   return {
+  //     type: CommonActions.FIND_STUDY_CENTER_CODES,
+  //   };
+  // }
+
+  // static FIND_STUDY_CENTER_CODES_SUCCESS = '[Common] Find Study Center Codes Success';
+
+  // findStudyCenterCodesSuccess(codes): Action {
+  //   console.log("findStudyCenterCodesSuccess");
+  //   return {
+  //     type: CommonActions.FIND_STUDY_CENTER_CODES_SUCCESS,
+  //     payload: codes
+  //   };
+  // }
+
+   static FIND_RELIGION_CODES = '[Common] Find Religion Codes';
+
+  findReligionCodes(): Action {
+    console.log("findReligionCodes");
+    return {
+      type: CommonActions.FIND_RELIGION_CODES,
+    };
+  }
+
+  static FIND_RELIGION_CODES_SUCCESS = '[Common] Find Religion Codes Success';
+
+  findReligionCodesSuccess(codes): Action {
+    console.log("findReligionCodesSuccess");
+    return {
+      type: CommonActions.FIND_RELIGION_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
 }

@@ -19,19 +19,23 @@
     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
           <!-- first column -->
     <div layout="column" class="pad-right" flex>
-    
      <div layout="row" class="pad-bottom" flex>
-     <md-input-container flex>
-     <input mdInput placeholder="Centre Of Study"flex/>
-     </md-input-container>
+     <pams-program-level-select [placeholder]="'Select Program Level'"></pams-program-level-select>
      </div>
      </div>
     <!-- second column -->
      <div layout="column" class="pad-right" flex>
      <div layout="row" class="pad-bottom" flex>
      <md-input-container flex>
-     <input mdInput placeholder="Type Of Classes" flex/>
+     <input mdInput placeholder="Centre Of Study"flex/>
      </md-input-container>
+     </div>
+     </div>
+
+     <!-- third column -->
+     <div layout="column" class="pad-right" flex>
+     <div layout="row" class="pad-bottom" flex>
+     <pams-study-mode-select [placeholder]="'Select Study Mode'"></pams-study-mode-select>
      </div>
      </div>
 
@@ -42,32 +46,34 @@
   <md-tab>
   <md-card>
     <template md-tab-label>Personal Details</template>
+    <td-expansion-panel label="Personal Information">
+    <md-card>
     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
           <!-- first column -->
     <div layout="column" class="pad-right" flex>
-    <div layout="row" class="insert" flex>
+      
+    <div layout="row" class="pad-bottom" flex>
     <md-input-container flex>
     <input mdInput placeholder="Name"flex/>
     </md-input-container>
     </div>
+
+   <div layout="row" class="pad-bottom" flex>
+   <pams-gender-code-select [placeholder]="'Select Gender'"></pams-gender-code-select>
+   </div>
            
     <div layout="row" class="pad-bottom" flex>
     <md-input-container flex>
     <input mdInput type="date" placeholder="Date Of Birth"flex/>
     </md-input-container>
     </div>
-   
 
     <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-    <input mdInput placeholder="Gender"flex/>
-     </md-input-container>
+    <pams-state-code-select [placeholder]="'Select State Of Birth'"></pams-state-code-select>
     </div>
 
     <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-    <input mdInput placeholder="Marital Status"flex/>
-     </md-input-container>
+    <pams-marital-code-select [placeholder]="'Marital Status'"></pams-marital-code-select>
     </div>
     </div>
       
@@ -79,26 +85,25 @@
     </md-input-container>
     </div>
 
-    <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-    <input mdInput placeholder="Race"flex/>
-     </md-input-container>
-    </div>
+   <div layout="row" class="pad-bottom" flex>
+   <pams-race-code-select [placeholder]="'Select Race'"></pams-race-code-select>
+   </div>
 
-     <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-    <input mdInput placeholder="Religion"flex/>
-     </md-input-container>
-    </div>
+   <div layout="row" class="pad-bottom" flex>
+   <pams-religion-code-select [placeholder]="'Select Religion'"></pams-religion-code-select>
+   </div>
 
-    <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-    <input mdInput placeholder="Citizen"flex/>
-     </md-input-container>
-    </div>
+   <div layout="row" class="pad-bottom" flex>
+   <md-select placeholder="Citizenship">
+   <md-option>YES</md-option>
+   <md-option>NO</md-option>
+   </md-select>
+   </div>
      </div>
 
     </div>
+    </md-card>
+    </td-expansion-panel>
 
 <td-expansion-panel label="Address Information">
 <md-card>
@@ -129,6 +134,14 @@
 </md-input-container>
 </div>
 
+ <div layout="row" class="pad-bottom" flex>
+ <pams-state-code-select [placeholder]="'Select State'"></pams-state-code-select>
+ </div>
+
+<div layout="row" class="pad-bottom" flex>
+ <pams-country-code-select [placeholder]="'Select Country'"></pams-country-code-select>
+ </div>
+
 </div>
 </div>
 </md-card>
@@ -141,25 +154,19 @@
 <div layout="column" class="pad-right" flex>
 <div layout="row" class="pad-bottom" flex>
 <md-input-container flex>
-<input mdInput placeholder="Address 1" flex/>
+<input mdInput placeholder="Phone No" flex/>
 </md-input-container>
 </div>
  
 <div layout="row" class="pad-bottom" flex>
 <md-input-container flex>
-<input mdInput placeholder="Address 2"flex/>
+<input mdInput placeholder="Office No"flex/>
 </md-input-container>
 </div>
 
 <div layout="row" class="pad-bottom" flex>
 <md-input-container flex>
-<input mdInput placeholder="Address 3"flex/>
-</md-input-container>
-</div>
-
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Poscode" flex/>
+<input mdInput placeholder="Email"flex/>
 </md-input-container>
 </div>
 
@@ -171,33 +178,16 @@
 <td-expansion-panel label="Working Experience">
 <md-card>
 <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-  <!-- first column -->
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 1" flex/>
-</md-input-container>
-</div>
- 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 2"flex/>
-</md-input-container>
-</div>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 3"flex/>
-</md-input-container>
-</div>
+<md-card-subtitle>List of Working Experience</md-card-subtitle>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Poscode" flex/>
-</md-input-container>
-</div>
+<md-divider></md-divider>
+<md-card-actions>
+<a md-list-item (click)="showDialog()">
+<button md-button color="primary">Add More</button>
+</a>
+</md-card-actions>
 
-</div>
 </div>
 </md-card>
 </td-expansion-panel>

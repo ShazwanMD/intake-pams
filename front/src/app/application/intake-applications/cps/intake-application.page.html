@@ -16,23 +16,26 @@
 <md-tab-group md-stretch-tabs>
 <md-tab>
 <md-card>
-<template md-tab-label>Program Choice Information</template>
+<template md-tab-label>Program Choice</template>
 
 <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
           <!-- first column -->
  <div layout="column" class="pad-right" flex>
  <div layout="row" class="pad-bottom" flex>
- <pams-program-level-select [placeholder]="'Please Select'"></pams-program-level-select>
+ <pams-program-level-select [placeholder]="'Program Level'"></pams-program-level-select>
  </div>
  <div layout="row" class="pad-bottom" flex>
- <pams-faculty-code-select [placeholder]="'Please Select'"></pams-faculty-code-select>
+ <pams-faculty-code-select [placeholder]="'Faculty'"></pams-faculty-code-select>
+ </div>
+ <div layout="row" class="pad-bottom" flex>
+ <pams-program-code-select [placeholder]="'Program Applied'"></pams-program-code-select>
  </div>
  </div>
 
   <!-- second column -->
 <div layout="column" class="pad-right" flex>
 <div layout="row" class="pad-bottom" flex>
-<pams-study-mode-select [placeholder]="'Please Select'"></pams-study-mode-select>
+<pams-study-mode-select [placeholder]="'Study Mode'"></pams-study-mode-select>
 </div>
 <div layout="row" class="pad-bottom" flex>
 <md-input-container flex>
@@ -159,10 +162,37 @@
 
 <md-card-subtitle>List of Working Experience</md-card-subtitle>
 
-<md-divider></md-divider>
+<md-divider>
+   <td-data-table
+    [data]="facultyCodes$ | async"
+    [columns]="columns"
+    [sortBy]="summary"
+    [sortOrder]="ASC"
+    [sortable]="false"
+    [multiple]="false"
+    [selectable]="false"
+    (rowSelect)="view.emit($event)" dense>
+    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <span flex>{{value}}</span>
+      </div>
+    </template>
+    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu="mdMenu">
+          <a md-menu-item>Edit</a>
+          <button md-menu-item (click)="delete(row)">Delete</button>
+        </md-menu>
+      </div>
+    </template>
+  </td-data-table>
+</md-divider>
 <md-card-actions>
-<a md-list-item (click)="showDialog()">
-<span>Add More</span>
+<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+  <md-icon>add</md-icon>
 </a>
 </md-card-actions>
 
@@ -179,289 +209,115 @@
 
 <td-expansion-panel label="SPM Information">
 <md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          
-   <!-- first column -->
-   <div layout="column" class="pad-right" flex>
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Bahasa Malaysia">
-   </md-select>
-   </div>
-      
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Bahasa Inggeris">
-   <md-option>MATEMATIK</md-option>
-   <md-option>MATEMATIK TAMBAHAN</md-option>
-   <md-option>SEJARAH</md-option>
-   <md-option>PENDIDIKAN ISLAM</md-option>
-   </md-select>
-   </div>
-          
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Sila Pilih">
-   <md-option>MATEMATIK</md-option>
-   <md-option>MATEMATIK TAMBAHAN</md-option>
-   <md-option>SEJARAH</md-option>
-   <md-option>PENDIDIKAN ISLAM</md-option>
-   </md-select>
-   </div>
-
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Sila Pilih">
-   <md-option>MATEMATIK</md-option>
-   <md-option>MATEMATIK TAMBAHAN</md-option>
-   <md-option>SEJARAH</md-option>
-   <md-option>PENDIDIKAN ISLAM</md-option>
-   </md-select>
-   </div>
-
-    <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Sila Pilih">
-   <md-option>MATEMATIK</md-option>
-   <md-option>MATEMATIK TAMBAHAN</md-option>
-   <md-option>SEJARAH</md-option>
-   <md-option>PENDIDIKAN ISLAM</md-option>
-   </md-select>
-   </div>
-
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Sila Pilih">
-   <md-option>MATEMATIK</md-option>
-   <md-option>MATEMATIK TAMBAHAN</md-option>
-   <md-option>SEJARAH</md-option>
-   <md-option>PENDIDIKAN ISLAM</md-option>
-   </md-select>
-   </div>
-
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Sila Pilih">
-   <md-option>MATEMATIK</md-option>
-   <md-option>MATEMATIK TAMBAHAN</md-option>
-   <md-option>SEJARAH</md-option>
-   <md-option>PENDIDIKAN ISLAM</md-option>
-   </md-select>
-   </div>
-
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Sila Pilih">
-   <md-option>MATEMATIK</md-option>
-   <md-option>MATEMATIK TAMBAHAN</md-option>
-   <md-option>SEJARAH</md-option>
-   <md-option>PENDIDIKAN ISLAM</md-option>
-   </md-select>
-   </div>
-
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Sila Pilih">
-   <md-option>MATEMATIK</md-option>
-   <md-option>MATEMATIK TAMBAHAN</md-option>
-   <md-option>SEJARAH</md-option>
-   <md-option>PENDIDIKAN ISLAM</md-option>
-   </md-select>
-   </div>
-   </div>
-   <!-- second column -->
-
-  <div layout="column" class="pad-right" flex>
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
-  
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
- 
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
-
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
- 
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
-  
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
-   
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
-
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
-
-  <div layout="row" class="pad-bottom" flex>
-  <md-select placeholder="Gred">
-  <md-option>A+</md-option>
-  <md-option>A-</md-option>
-  <md-option>A</md-option>
-  <md-option>B</md-option>
-  </md-select>
-  </div>
-  </div> 
-</div>
+<md-divider>
+   <td-data-table
+    [data]="facultyCodes$ | async"
+    [columns]="columns"
+    [sortBy]="summary"
+    [sortOrder]="ASC"
+    [sortable]="false"
+    [multiple]="false"
+    [selectable]="false"
+    (rowSelect)="view.emit($event)" dense>
+    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <span flex>{{value}}</span>
+      </div>
+    </template>
+    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu="mdMenu">
+          <a md-menu-item>Edit</a>
+          <button md-menu-item (click)="delete(row)">Delete</button>
+        </md-menu>
+      </div>
+    </template>
+  </td-data-table>
+</md-divider>
+<md-card-actions>
+<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+  <md-icon>add</md-icon>
+</a>
+</md-card-actions>
 </md-card>
 </td-expansion-panel>
 
 <td-expansion-panel label="STPM / Diploma / Degree Information">
 <md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-<!-- first column -->
-
- <div layout="column" class="pad-right" flex>
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput placeholder="Name of School / College / University"flex/>
- </md-input-container>
- </div>
- 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="Year Of Entry"flex/>
- </md-input-container>
- </div>
-
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="Year Of Graduation"flex/>
- </md-input-container>
- </div>
- </div>
-
-<!-- second column -->
-
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput placeholder="Name Of Diploma"flex/>
- </md-input-container>
- </div>
-
-<div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput placeholder="Honours Classification / CGPA / Equavalent" flex/>
- </md-input-container>
- </div>
-</div>
-</div>
+<md-divider>
+   <td-data-table
+    [data]="facultyCodes$ | async"
+    [columns]="columns"
+    [sortBy]="summary"
+    [sortOrder]="ASC"
+    [sortable]="false"
+    [multiple]="false"
+    [selectable]="false"
+    (rowSelect)="view.emit($event)" dense>
+    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <span flex>{{value}}</span>
+      </div>
+    </template>
+    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu="mdMenu">
+          <a md-menu-item>Edit</a>
+          <button md-menu-item (click)="delete(row)">Delete</button>
+        </md-menu>
+      </div>
+    </template>
+  </td-data-table>
+</md-divider>
+<md-card-actions>
+<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+  <md-icon>add</md-icon>
+</a>
+</md-card-actions>
 </md-card>
 </td-expansion-panel>
 
 <td-expansion-panel label="Proficiency in Malay / English Language">
 <md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput type="date" placeholder="Malay Language (SPM)"flex/>
-</md-input-container>
-</div>
- 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="English Language (SPM)"flex/>
- </md-input-container>
- </div>
-
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="English MUET"flex/>
- </md-input-container>
- </div>
-
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="TOEFL"flex/>
- </md-input-container>
- </div>
-
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="IELTS"flex/>
- </md-input-container>
- </div>
- </div>
-
-<!-- second column -->
-
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
-
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
-
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
-
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
-
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
-</div>
-</div>
+<md-divider>
+   <td-data-table
+    [data]="facultyCodes$ | async"
+    [columns]="columns"
+    [sortBy]="summary"
+    [sortOrder]="ASC"
+    [sortable]="false"
+    [multiple]="false"
+    [selectable]="false"
+    (rowSelect)="view.emit($event)" dense>
+    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <span flex>{{value}}</span>
+      </div>
+    </template>
+    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu="mdMenu">
+          <a md-menu-item>Edit</a>
+          <button md-menu-item (click)="delete(row)">Delete</button>
+        </md-menu>
+      </div>
+    </template>
+  </td-data-table>
+</md-divider>
+<md-card-actions>
+<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+  <md-icon>add</md-icon>
+</a>
+</md-card-actions>
 </md-card>
 </td-expansion-panel>
 
@@ -489,51 +345,39 @@
 
 <td-expansion-panel label="Referees">
 <md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-
-<!--first column-->
-
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Name"flex/>
-</md-input-container>
-</div>
-
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Employer's Address"flex/>
-</md-input-container>
-</div>
-
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Name"flex/>
-</md-input-container>
-</div>
-
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Employer's Address"flex/>
-</md-input-container>
-</div>
-</div>
-
-<!--second column-->
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Position"flex/>
-</md-input-container>
-</div>
-
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Position"flex/>
-</md-input-container>
-</div>
-</div>
-</div>
+<md-divider>
+   <td-data-table
+    [data]="facultyCodes$ | async"
+    [columns]="columns"
+    [sortBy]="summary"
+    [sortOrder]="ASC"
+    [sortable]="false"
+    [multiple]="false"
+    [selectable]="false"
+    (rowSelect)="view.emit($event)" dense>
+    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <span flex>{{value}}</span>
+      </div>
+    </template>
+    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu="mdMenu">
+          <a md-menu-item>Edit</a>
+          <button md-menu-item (click)="delete(row)">Delete</button>
+        </md-menu>
+      </div>
+    </template>
+  </td-data-table>
+</md-divider>
+<md-card-actions>
+<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+  <md-icon>add</md-icon>
+</a>
+</md-card-actions>
 </md-card>
 </td-expansion-panel>
 </md-card>
@@ -543,31 +387,81 @@
 <md-card>
 <template md-tab-label>Upload Document</template>
 
-<td-expansion-panel label="Upload Document">
 <div layout="column" class="pad-right" flex>
-<md-card class="">
+
 <md-card-title>Upload Document Checklist</md-card-title>
-<md-card-subtitle>List of Document Uploaded</md-card-subtitle>
+<md-card>
+  <md-divider>
+   <td-data-table
+    [data]="facultyCodes$ | async"
+    [columns]="columns"
+    [sortBy]="summary"
+    [sortOrder]="ASC"
+    [sortable]="false"
+    [multiple]="false"
+    [selectable]="false"
+    (rowSelect)="view.emit($event)" dense>
+    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <span flex>{{value}}</span>
+      </div>
+    </template>
+    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+        <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu="mdMenu">
+          <a md-menu-item>Edit</a>
+          <button md-menu-item (click)="delete(row)">Delete</button>
+        </md-menu>
+      </div>
+    </template>
+  </td-data-table>
+</md-divider>
+<md-card-actions>
+<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+  <md-icon>add</md-icon>
+</a>
+</md-card-actions>
 </md-card>
 </div>
-</td-expansion-panel>
+<<<<<<< HEAD
+</md-card>
+</md-tab>
+<md-tab>
+<md-card>
+<template md-tab-label>Submit Application</template>
 
-<td-expansion-panel label="Submit Application">
 <div layout="column" class="pad-right" flex>
-<md-card class="">
+=======
+</td-expansion-panel>
+</md-card>
+</md-tab>
+
+<md-tab>
+<md-card>
+<template md-tab-label>Declaration</template>
+>>>>>>> 41322dbe2e9e4c16185fc42ecd5ab46488a64376
+
+<div layout="column" class="pad-right" flex>
+
 <md-card-title>Declaration</md-card-title>
 <md-card-subtitle>Submit Application for Intake September 2017</md-card-subtitle>
 <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
 <md-checkbox><div layout="column" flex>
- I am hereby to declare all the information that I was entered is true.
+ I declare that the statements made in this application form are correct. I am fully aware that UMK reserves the right to reject my application or terminate my candidature if the information given above is incorrect or incomplete.
 </div> </md-checkbox>
 </div>
-<button md-button>Submit</button>
-</md-card>
+<md-dialog-actions align="end">
+ <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Submit</button>
+</md-dialog-actions>
 </div>
-</td-expansion-panel>
+</div>
 </md-card>
 </md-tab>
+
+
 </md-tab-group>
 </td-layout-card-over>
 </td-layout-nav>

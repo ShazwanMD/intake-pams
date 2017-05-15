@@ -8,7 +8,8 @@ import {IntakeApplicationPersonalPage} from "./intake-application-personal.page"
 import {IntakeApplicationEducationPage} from "./intake-application-education.page";
 import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
-
+import {CommonModule} from "../../../common/index";
+import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
 
 @NgModule({
   imports: [
@@ -16,6 +17,8 @@ import {CommonService} from "../../../../services/common.service";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    CommonModule.forRoot(),
+    ProgramLevelSubModule.forRoot(),
   ],
   declarations: [
     IntakeApplicationPersonalPage,
