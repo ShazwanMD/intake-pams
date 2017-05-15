@@ -1,3 +1,7 @@
+import { PolicyModule } from './../../policy/index';
+import { FacultyCode } from './../../common/faculty-codes/faculty-code.interface';
+import { ProgramLevel } from './../../policy/program-levels/program-level.interface';
+import { GraduateCentre } from './../../common/graduate-centres/graduate-centre.interface';
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import {ProgramCodeCreatorDialog} from './dialog/program-code-creator.dialog';
 import {ProgramCode} from './../../common/program-codes/program-code.interface';
@@ -8,12 +12,17 @@ import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 
 
+
+
 @Component({
   selector: 'pams-program-list-page',
   templateUrl: './program-code-list.page.html',
 })
 export class ProgramCodeListPage implements OnInit {
 
+  private FACULTY_CODES = "setupModuleState.facultyCodes".split(".");
+  private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
+  private GRADUATE_CENTRE = "setupModuleState.graduateCentres".split(".");
   private PROGRAM_CODES = "setupModuleState.programCodes".split(".");
   private creatorDialogRef: MdDialogRef<ProgramCodeCreatorDialog>;
   private programCodes$: Observable<ProgramCode>;

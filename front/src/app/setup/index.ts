@@ -1,3 +1,10 @@
+import { IntakeSessionSubModule } from './../policy/intake-sessions/index';
+import { ProgramLevelSubModule } from './../policy/program-levels/index';
+import { FacultyCodeSelectComponent } from './../common/faculty-codes/component/faculty-code-select.component';
+import { ProgramCodeSelectComponent } from './../common/program-codes/component/program-code-select.component';
+import { StudyModeSelectComponent } from './../common/study-modes/component/study-mode-select.component';
+import { ProgramLevelSelectComponent } from './../policy/program-levels/component/program-level-select.component';
+import { GraduateCentreSelectComponent } from './../common/graduate-centres/component/graduate-centre-select.component';
 import { SupervisorCodeEditorDialog } from './supervisor-codes/dialog/supervisor-code-editor.dialog';
 import { StudyMode } from './../common/study-modes/study-mode.interface';
 import { StudyModeListPage } from './study-modes/study-mode-list.page';
@@ -66,6 +73,9 @@ import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode
 import {titleReducer, TitleState} from "./title.reducer";
 import {MaritalCodeEditorDialog} from "./marital-codes/dialog/marital-code-editor.dialog";
 
+
+
+
 export interface SetupModuleState {
   title:TitleState;
   maritalCodes: MaritalCodeListState;
@@ -127,8 +137,10 @@ export const setupModuleReducers = {
     appRoutes,
     BrowserModule,
     ReactiveFormsModule,
+    ProgramLevelSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
+    IntakeSessionSubModule.forRoot(),
     EffectsModule.run(SetupEffects),
 
   ],
@@ -149,6 +161,9 @@ export const setupModuleReducers = {
     NationalityCodeListPage,
     FacultyCodeListPage,
     StudyModeListPage,
+
+
+    
 
     // dialog
     MaritalCodeEditorDialog,
@@ -181,6 +196,7 @@ export const setupModuleReducers = {
     NationalityCodeCreatorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
+
   ],
 
 })
