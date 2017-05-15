@@ -82,4 +82,12 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findCountryCodes())
     .map(codes => this.commonActions.findCountryCodesSuccess(codes));
 
+     @Effect() findReligionCodes$ = this.actions$
+    .ofType(CommonActions.FIND_RELIGION_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findReligionCodes())
+    .map(codes => this.commonActions.findReligionCodesSuccess(codes));
+
+    
+
 }

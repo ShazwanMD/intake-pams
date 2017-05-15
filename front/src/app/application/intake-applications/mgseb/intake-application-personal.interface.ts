@@ -1,5 +1,12 @@
+import {ProgramLevel} from "../../../policy/program-levels/program-level.interface";
 export interface IntakeApplicationPersonal{
-  name:string;
-  identityNo:string;
-  birthdate:Date;
+
+  id: number;
+  startDate: Date;
+  endDate: Date;
+  employer:String;
+
+
+    // transient
+  current?:boolean;
 }
