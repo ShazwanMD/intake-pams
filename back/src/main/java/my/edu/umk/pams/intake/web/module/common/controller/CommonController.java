@@ -465,7 +465,7 @@ public class CommonController {
     @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
     public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
         return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
-                commonService.findMaritalCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+        		commonService.findMaritalCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
@@ -653,7 +653,7 @@ public class CommonController {
     @RequestMapping(value = "/disabilityCodes", method = RequestMethod.GET)
     public ResponseEntity<List<DisabilityCode>> findDisabilityCodes() {
         return new ResponseEntity<List<DisabilityCode>>(commonTransformer.toDisabilityCodeVos(
-                commonService.findDisabilityCodes()), HttpStatus.OK);
+        		commonService.findDisabilityCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/disabilityCodes/{code}", method = RequestMethod.GET)
@@ -661,7 +661,135 @@ public class CommonController {
         return new ResponseEntity<DisabilityCode>(commonTransformer.toDisabilityCodeVo(
                 commonService.findDisabilityCodeByCode(code)), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/disabilityCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveDisabilityCode(@RequestBody DisabilityCode vo) {
+        dummyLogin();
 
+        InDisabilityCode disabilityCode = new InDisabilityCodeImpl();
+        disabilityCode.setCode(vo.getCode());
+        disabilityCode.setDescriptionEn(vo.getDescriptionEn());
+        disabilityCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveDisabilityCode(disabilityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/disabilityCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateDisabilityCode(@PathVariable String code, @RequestBody DisabilityCode vo) {
+        dummyLogin();
+
+        InDisabilityCode disabilityCode = commonService.findDisabilityCodeById(vo.getId());
+        disabilityCode.setCode(vo.getCode());
+        disabilityCode.setDescriptionEn(vo.getDescriptionEn());
+        disabilityCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateDisabilityCode(disabilityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/disabilityCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeDisabilityCode(@PathVariable String code) {
+        dummyLogin();
+
+        InDisabilityCode disabilityCode = commonService.findDisabilityCodeByCode(code);
+        commonService.removeDisabilityCode(disabilityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    //====================================================================================================
+    // STUDY_CENTER_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/studyCenterCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<StudyCenterCode>> findStudyCenterCodes() {
+        return new ResponseEntity<List<StudyCenterCode>>(commonTransformer.toStudyCenterCodeVos(
+        		commonService.findStudyCenterCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyCenterCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<StudyCenterCode> findStudyCenterCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<StudyCenterCode>(commonTransformer.toStudyCenterCodeVo(
+                commonService.findStudyCenterCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/studyCenterCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveStudyCenterCode(@RequestBody StudyCenterCode vo) {
+        dummyLogin();
+
+        InStudyCenterCode studyCenterCode = new InStudyCenterCodeImpl();
+        studyCenterCode.setCode(vo.getCode());
+        studyCenterCode.setDescriptionEn(vo.getDescriptionEn());
+        studyCenterCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveStudyCenterCode(studyCenterCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyCenterCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStudyCenterCode(@PathVariable String code, @RequestBody StudyCenterCode vo) {
+        dummyLogin();
+
+        InStudyCenterCode studyCenterCode = commonService.findStudyCenterCodeById(vo.getId());
+        studyCenterCode.setCode(vo.getCode());
+        studyCenterCode.setDescriptionEn(vo.getDescriptionEn());
+        studyCenterCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateStudyCenterCode(studyCenterCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/studyCenterCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeStudyCenterCode(@PathVariable String code) {
+        dummyLogin();
+
+        InStudyCenterCode studyCenterCode = commonService.findStudyCenterCodeByCode(code);
+        commonService.removeStudyCenterCode(studyCenterCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    } 
+    
+    //====================================================================================================
+    // SCHOOL_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/schoolCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<SchoolCode>> findSchoolCodes() {
+        return new ResponseEntity<List<SchoolCode>>(commonTransformer.toSchoolCodeVos(
+        		commonService.findSchoolCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/schoolCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<SchoolCode> findSchoolCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<SchoolCode>(commonTransformer.toSchoolCodeVo(
+                commonService.findSchoolCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/schoolCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveSchoolCode(@RequestBody SchoolCode vo) {
+        dummyLogin();
+
+        InSchoolCode schoolCode = new InSchoolCodeImpl();
+        schoolCode.setCode(vo.getCode());
+        schoolCode.setDescription(vo.getDescription());
+        commonService.saveSchoolCode(schoolCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/schoolCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateSchoolCode(@PathVariable String code, @RequestBody SchoolCode vo) {
+        dummyLogin();
+
+        InSchoolCode schoolCode = commonService.findSchoolCodeById(vo.getId());
+        schoolCode.setCode(vo.getCode());
+        schoolCode.setDescription(vo.getDescription());
+        commonService.updateSchoolCode(schoolCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/schoolCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeSchoolCode(@PathVariable String code) {
+        dummyLogin();
+
+        InSchoolCode schoolCode = commonService.findSchoolCodeByCode(code);
+        commonService.removeSchoolCode(schoolCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 }
 
 	

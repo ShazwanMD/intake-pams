@@ -4,29 +4,31 @@ import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
 import {CommonActions} from "../../common.action";
 import { CommonModuleState } from "../../index";
-import { MaritalCode } from "../marital-code.interface";
+import { ReligionCode } from "../religion-code.interface";
+
+
 
 @Component({
-  selector: 'pams-marital-code-select',
-  templateUrl: './marital-code-select.component.html',
+  selector: 'pams-religion-code-select',
+  templateUrl: './religion-code-select.component.html',
 })
-export class MaritalCodeSelectComponent implements OnInit {
+export class ReligionCodeSelectComponent implements OnInit {
 
-  private MARITAL_CODE = "commonModuleState.maritalCodes".split(".");
+  private RELIGION_CODE = "commonModuleState.religionCodes".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  maritalCodes$: Observable<MaritalCode[]>;
+  religionCodes$: Observable<ReligionCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
-    this.maritalCodes$ = this.store.select(...this.MARITAL_CODE);
+    this.religionCodes$ = this.store.select(...this.RELIGION_CODE);
   }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.findMaritalCodes());
+    this.store.dispatch(this.actions.findReligionCodes());
   }
 
-  selectChangeEvent(event: MaritalCode) {
+  selectChangeEvent(event: ReligionCode) {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
