@@ -100,6 +100,25 @@ export class CommonActions {
     };
   }
 
+static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
+
+  findDisabilityCodes(): Action {
+    console.log("findDisabilityCodes");
+    return {
+      type: CommonActions.FIND_DISABILITY_CODES,
+    };
+  }
+
+  static FIND_DISABILITY_CODES_SUCCESS = '[Common] Find Disability Codes Success';
+
+  findDisabilityCodesSuccess(codes): Action {
+    console.log("findDisabilityCodesSuccess");
+    return {
+      type: CommonActions.FIND_DISABILITY_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
   static FIND_FACULTY_CODES = '[Common] Find Faculty Codes';
 
   findFacultyCodes(): Action {
