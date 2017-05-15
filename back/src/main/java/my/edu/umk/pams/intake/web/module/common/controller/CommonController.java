@@ -661,6 +661,39 @@ public class CommonController {
         return new ResponseEntity<DisabilityCode>(commonTransformer.toDisabilityCodeVo(
                 commonService.findDisabilityCodeByCode(code)), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/disabilityCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveDisabilityCode(@RequestBody DisabilityCode vo) {
+        dummyLogin();
+
+        InDisabilityCode disabilityCode = new InDisabilityCodeImpl();
+        disabilityCode.setCode(vo.getCode());
+        disabilityCode.setDescriptionEn(vo.getDescriptionEn());
+        disabilityCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveDisabilityCode(disabilityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/disabilityCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateDisabilityCode(@PathVariable String code, @RequestBody DisabilityCode vo) {
+        dummyLogin();
+
+        InDisabilityCode disabilityCode = commonService.findDisabilityCodeById(vo.getId());
+        disabilityCode.setCode(vo.getCode());
+        disabilityCode.setDescriptionEn(vo.getDescriptionEn());
+        disabilityCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateDisabilityCode(disabilityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/disabilityCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeDisabilityCode(@PathVariable String code) {
+        dummyLogin();
+
+        InDisabilityCode disabilityCode = commonService.findDisabilityCodeByCode(code);
+        commonService.removeDisabilityCode(disabilityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
 }
 
