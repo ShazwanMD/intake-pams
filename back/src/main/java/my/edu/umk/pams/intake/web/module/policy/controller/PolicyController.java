@@ -74,6 +74,30 @@ public class PolicyController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intake-sessions/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateIntakeSession(@PathVariable String code, @RequestBody InIntakeSession vo) {
+        dummyLogin();
+
+        InIntakeSession session = policyService.findIntakeSessionById(vo.getId());
+        session.setCode(vo.getCode());
+        session.setLabel(vo.getLabel());
+        session.setDescriptionMs(vo.getDescriptionMs());
+        session.setDescriptionEn(vo.getDescriptionEn());
+        session.setCurrent(vo.isCurrent());
+        session.setYear(vo.getYear());
+        policyService.updateIntakeSession(session);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intake-sessions/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeIntakeSession(@PathVariable String code) {
+        dummyLogin();
+
+        InIntakeSession session = policyService.findIntakeSessionByCode(code);
+        policyService.removeIntakeSession(session);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     // ==================================================================================================== //
     //  PROGRAM LEVEL
