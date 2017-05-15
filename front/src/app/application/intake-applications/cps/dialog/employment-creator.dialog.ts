@@ -1,3 +1,6 @@
+import { IntakeActions } from './../../../../policy/intakes/intake.action';
+import { IntakeApplication } from './../intake-application.interface';
+import { Employment } from './../../employment.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -5,7 +8,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
-import { IntakeApplication } from "../../cps/intake-application.interface";
+
+
+
 
 
 @Component({
@@ -35,11 +40,13 @@ export class EmploymentCreatorDialog implements OnInit {
   ngOnInit(): void {
 
     this.createForm = this.formBuilder.group(<IntakeApplication>{
+
      id: null,
      startDate: null,
      endDate: null,
-     employer:'',
-     current:false
+  // employer:'',
+  // current:false
+
    });
   }
 

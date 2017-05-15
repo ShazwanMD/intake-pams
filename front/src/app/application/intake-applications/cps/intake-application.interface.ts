@@ -1,3 +1,4 @@
+import { Employment } from './../employment.interface';
 import { Intake } from './../../../policy/intakes/intake.interface';
 import { Applicant } from './../../../identity/applicant.interface';
 import { ProgramOffering } from './../../../policy/intakes/program-offering.interface';
@@ -8,7 +9,12 @@ import {ProgramLevel} from "../../../policy/program-levels/program-level.interfa
 import { StudyMode } from "../../../common/study-modes/study-mode.interface";
 import { DisabilityCode } from "../../../common/disability-codes/disability-code.interface";
 import { RaceCode } from "../../../common/race-codes/race-code.interface";
+
 export interface IntakeApplication {
+
+  startDate: Date;
+  endDate: Date;
+  employer:String;
   id: number;
   rank: number;
   merit: number;
@@ -42,7 +48,7 @@ export interface IntakeApplication {
   applicant: Applicant;
   //results: Results;
   //educations: Educations;
-  //employments: Employments;
+  employments: Employment;
   //addresses: Addresses;
   //referees: Referees;
   //attachments: Attachments;
