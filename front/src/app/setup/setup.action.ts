@@ -817,6 +817,89 @@ export class SetupActions {
     };
   }
 
-//----------------------------------------------------------------------------------------
+//=================================================================================//
+//  SCHOOL_CODES                                                                   //
+//=================================================================================//
+
+  static FIND_SCHOOL_CODES = '[Setup] Find School Codes';
+
+  findSchoolCodes(): Action {
+    console.log("findSchoolCodes");
+    return {
+      type: SetupActions.FIND_SCHOOL_CODES,
+    };
+  }
+
+  static FIND_SCHOOL_CODES_SUCCESS = '[Setup] Find School Codes Success';
+
+  findSchoolCodesSuccess(codes): Action {
+    console.log("findSchoolCodesSuccess");
+    return {
+      type: SetupActions.FIND_SCHOOL_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static SAVE_SCHOOL_CODE = '[Setup] Save School Code';
+
+  saveSchoolCode(code): Action {
+    console.log("saveSchoolCode");
+    return {
+      type: SetupActions.SAVE_SCHOOL_CODE,
+      payload: code
+    };
+  }
+
+  static SAVE_SCHOOL_CODE_SUCCESS = '[Setup] Save School Code Success';
+
+  saveSchoolCodeSuccess(message): Action {
+    console.log("saveSchoolCodeSuccess");
+    return {
+      type: SetupActions.SAVE_SCHOOL_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_SCHOOL_CODE = '[Setup] Update School Code';
+
+  updateSchoolCode(code): Action {
+    console.log("updateSchoolCode");
+    return {
+      type: SetupActions.UPDATE_SCHOOL_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_SCHOOL_CODE_SUCCESS = '[Setup] Update School Code  Success';
+
+  updateSchoolCodeSuccess(message): Action {
+    console.log("updateSchoolCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_SCHOOL_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_SCHOOL_CODE = '[Setup] Remove School Code';
+
+  removeSchoolCode(code): Action {
+    console.log("removeSchoolCode");
+    return {
+      type: SetupActions.REMOVE_SCHOOL_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_SCHOOL_CODE_SUCCESS = '[Setup] Remove School Code  Success';
+
+  removeSchoolCodeSuccess(message): Action {
+    console.log("removeSchoolCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_SCHOOL_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+
 
 }

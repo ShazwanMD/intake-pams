@@ -87,7 +87,12 @@
         <md-icon>label</md-icon>
         Disability Code
       </a>
+      <a md-list-item [routerLink]="['/setup/school-codes']">
+        <md-icon>label</md-icon>
+        School Code
+      </a>
     </md-nav-list>
+
 
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>{{title$ | async}}</span>

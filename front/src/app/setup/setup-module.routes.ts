@@ -1,3 +1,5 @@
+import { SchoolCodeListPage } from './school-codes/school-code-list-page';
+import { SchoolCode } from './../common/school-codes/school-code.interface';
 import { DisabilityCodeListPage } from './disability-codes/disability-code-list-page';
 import { DisabilityCode } from './../common/disability-codes/disability-code.interface';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
@@ -38,6 +40,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'faculty-codes', component: FacultyCodeListPage},
       {path: 'study-modes', component: StudyModeListPage},
       {path: 'disability-codes', component: DisabilityCodeListPage},
+      {path: 'school-codes', component: SchoolCodeListPage},
     ]
   },
 

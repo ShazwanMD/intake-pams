@@ -287,4 +287,34 @@ export class SetupEffects {
     .map(message => this.setupActions.removeDisabilityCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findDisabilityCodes()]));
 
+  // ====================================================================================================
+  // SCHOOL CODE
+  // ====================================================================================================
+
+  @Effect() findSchoolCode$ = this.actions$
+    .ofType(SetupActions.FIND_SCHOOL_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findSchoolCodes())
+    .map(codes => this.setupActions.findSchoolCodesSuccess(codes));
+
+  @Effect() saveSchoolCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_SCHOOL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveSchoolCode(payload))
+    .map(message => this.setupActions.saveSchoolCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSchoolCodes()]));
+
+  @Effect() updateSchoolCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_SCHOOL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateSchoolCode(payload))
+    .map(message => this.setupActions.updateSchoolCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSchoolCodes()]));
+
+  @Effect() removeSchoolCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_SCHOOL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeSchoolCode(payload))
+    .map(message => this.setupActions.removeSchoolCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSchoolCodes()]));
 }

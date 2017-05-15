@@ -33,6 +33,17 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findMaritalCodes())
     .map(codes => this.commonActions.findMaritalCodesSuccess(codes));
 
+     @Effect() findDisabilityCodes$ = this.actions$
+    .ofType(CommonActions.FIND_DISABILITY_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findDisabilityCodes())
+    .map(codes => this.commonActions.findDisabilityCodesSuccess(codes));
+
+ @Effect() findSchoolCodes$ = this.actions$
+    .ofType(CommonActions.FIND_SCHOOL_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findSchoolCodes())
+    .map(codes => this.commonActions.findSchoolCodesSuccess(codes));
 
   @Effect() findFacultyCodes$ = this.actions$
     .ofType(CommonActions.FIND_FACULTY_CODES)
