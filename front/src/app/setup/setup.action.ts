@@ -734,4 +734,89 @@ export class SetupActions {
     };
   }
 
+//=================================================================================//
+//  DISABILITY_CODES                                                               //
+//=================================================================================//
+
+  static FIND_DISABILITY_CODES = '[Setup] Find Disability Codes';
+
+  findDisabilityCodes(): Action {
+    console.log("findDisabilityCodes");
+    return {
+      type: SetupActions.FIND_DISABILITY_CODES,
+    };
+  }
+
+  static FIND_DISABILITY_CODES_SUCCESS = '[Setup] Find Disability Codes Success';
+
+  findDisabilityCodesSuccess(codes): Action {
+    console.log("findDisabilityCodesSuccess");
+    return {
+      type: SetupActions.FIND_DISABILITY_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static SAVE_DISABILITY_CODE = '[Setup] Save Disability Code';
+
+  saveDisabilityCode(code): Action {
+    console.log("saveDisabilityCode");
+    return {
+      type: SetupActions.SAVE_DISABILITY_CODE,
+      payload: code
+    };
+  }
+
+  static SAVE_DISABILITY_CODE_SUCCESS = '[Setup] Save Disability Code Success';
+
+  saveDisabilityCodeSuccess(message): Action {
+    console.log("saveDisabilityCodeSuccess");
+    return {
+      type: SetupActions.SAVE_DISABILITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_DISABILITY_CODE = '[Setup] Update Disability Code';
+
+  updateDisabilityCode(code): Action {
+    console.log("updateDisabilityCode");
+    return {
+      type: SetupActions.UPDATE_DISABILITY_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_DISABILITY_CODE_SUCCESS = '[Setup] Update Disability Code  Success';
+
+  updateDisabilityCodeSuccess(message): Action {
+    console.log("updateDisabilityCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_DISABILITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_DISABILITY_CODE = '[Setup] Remove Disability Code';
+
+  removeDisabilityCode(code): Action {
+    console.log("removeDisabilityCode");
+    return {
+      type: SetupActions.REMOVE_DISABILITY_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_DISABILITY_CODE_SUCCESS = '[Setup] Remove Disability Code  Success';
+
+  removeDisabilityCodeSuccess(message): Action {
+    console.log("removeDisabilityCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_DISABILITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+//----------------------------------------------------------------------------------------
+
 }
