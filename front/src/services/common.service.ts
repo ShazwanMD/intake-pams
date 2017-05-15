@@ -19,6 +19,7 @@ import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
+import {DisabilityCode} from "../app/common/disability-codes/disability-code.interface";
 
 
 @Injectable()
@@ -263,7 +264,7 @@ export class CommonService {
       .map((res: Response) => <StudyMode[]>res.json());
   }
 
-  findStudyModeByCode(code: string): Observable<ProgramCode> {
+  findStudyModeByCode(code: string): Observable<StudyMode> {
     console.log("findStudyModeByCode");
     return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       .map((res: Response) => <StudyMode>res.json());
@@ -440,5 +441,50 @@ export class CommonService {
       .map((res: Response) => <NationalityCode>res.json());
   }
 
+  // ====================================================================================================
+  // DISABILITY CODES
+  // ====================================================================================================
+
+  findDisabilityCodes(): Observable<DisabilityCode[]> {
+    console.log("findDisabilityCodes");
+    return this.http.get(environment.endpoint + '/api/common/disabilityCodes')
+      .map((res: Response) => <DisabilityCode[]>res.json());
+  }
+
+  findDisabilityCodeByCode(code: string): Observable<DisabilityCode> {
+    console.log("findDisabilityCodeByCode");
+    return this.http.get(environment.endpoint + '/api/common/disabilityCodes/' + code)
+      .map((res: Response) => <DisabilityCode>res.json());
+  }
+
+  saveDisabilityCode(code: DisabilityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/disabilityCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateDisabilityCode(code: DisabilityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/disabilityCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeDisabilityCode(code: DisabilityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/disabilityCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
 }

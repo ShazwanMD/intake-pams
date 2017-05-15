@@ -1,5 +1,9 @@
+import { PolicyModuleState } from './../../../policy/index';
+import { CommonModuleState } from './../../../common/index';
+import { FacultyCode } from './../../../common/faculty-codes/faculty-code.interface';
+import { ProgramLevel } from './../../../policy/program-levels/program-level.interface';
+import { GraduateCentre } from './../../../common/graduate-centres/graduate-centre.interface';
 import { ProgramCode } from './../../../common/program-codes/program-code.interface';
-
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -8,6 +12,7 @@ import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
+
 
 
 
@@ -24,7 +29,7 @@ export class ProgramCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<ProgramCodeCreatorDialog>,
+              private dialog: MdDialogRef<ProgramCodeCreatorDialog>,              
               private store: Store<SetupModuleState>,
               private actions: SetupActions
   ) {
@@ -37,6 +42,9 @@ export class ProgramCodeCreatorDialog implements OnInit {
       code: '',
       descriptionMs: '',
       descriptionEn: '',
+      programLevel: <ProgramLevel>{},
+      facultyCode: <FacultyCode>{},
+      graduateCentre: <GraduateCentre>{},
 
      
 

@@ -1,3 +1,12 @@
+import { DisabilityCode } from './../common/disability-codes/disability-code.interface';
+import { DisabilityCodeEditorDialog } from './disability-codes/dialog/disability-code-editor.dialog';
+import { IntakeSessionSubModule } from './../policy/intake-sessions/index';
+import { ProgramLevelSubModule } from './../policy/program-levels/index';
+import { FacultyCodeSelectComponent } from './../common/faculty-codes/component/faculty-code-select.component';
+import { ProgramCodeSelectComponent } from './../common/program-codes/component/program-code-select.component';
+import { StudyModeSelectComponent } from './../common/study-modes/component/study-mode-select.component';
+import { ProgramLevelSelectComponent } from './../policy/program-levels/component/program-level-select.component';
+import { GraduateCentreSelectComponent } from './../common/graduate-centres/component/graduate-centre-select.component';
 import { SupervisorCodeEditorDialog } from './supervisor-codes/dialog/supervisor-code-editor.dialog';
 import { StudyMode } from './../common/study-modes/study-mode.interface';
 import { StudyModeListPage } from './study-modes/study-mode-list.page';
@@ -35,6 +44,7 @@ import { MaritalCode } from './../common/marital-codes/marital-code.interface';
 import { ReligionCode } from './../common/religion-codes/religion-code.interface';
 import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
 import { SetupPage } from './setup.page';
+import { DisabilityCodeListPage } from './disability-codes/disability-code-list-page';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
@@ -65,6 +75,9 @@ import {facultyCodeListReducer, FacultyCodeListState} from "./faculty-codes/facu
 import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode-list.reducer';
 import {titleReducer, TitleState} from "./title.reducer";
 import {MaritalCodeEditorDialog} from "./marital-codes/dialog/marital-code-editor.dialog";
+import {disabilityCodeListReducer, DisabilityCodeListState} from "./disability-codes/disability-code-list.reducer";
+
+
 
 export interface SetupModuleState {
   title:TitleState;
@@ -82,6 +95,7 @@ export interface SetupModuleState {
   nationalityCodes : NationalityCodeListState;
   facultyCodes : FacultyCodeListState;
   studyModes : StudyModeListState;
+  disabilityCodes: DisabilityCodeListState;
 };
 
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -96,11 +110,12 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     countryCodes: <CountryCode[]>[],
     raceCodes: <RaceCode[]>[],
     genderCodes: <GenderCode[]>[],
-    maritalCodes: <BankCode[]>[],
+    maritalCodes: <MaritalCode[]>[],
     ethnicityCodes: <EthnicityCode[]>[],
     nationalityCodes: <NationalityCode[]>[],
     facultyCodes: <FacultyCode[]>[],
     studyModes: <StudyMode[]>[],
+    disabilityCodes: <DisabilityCode[]>[]
   };
 
 
@@ -120,6 +135,7 @@ export const setupModuleReducers = {
   nationalityCodes: nationalityCodeListReducer,
   facultyCodes: facultyCodeListReducer,
   studyModes: studyModeListReducer,
+  disabilityCodes: disabilityCodeListReducer,
 }
 
 @NgModule({
@@ -127,8 +143,10 @@ export const setupModuleReducers = {
     appRoutes,
     BrowserModule,
     ReactiveFormsModule,
+    ProgramLevelSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
+    IntakeSessionSubModule.forRoot(),
     EffectsModule.run(SetupEffects),
 
   ],
@@ -149,6 +167,10 @@ export const setupModuleReducers = {
     NationalityCodeListPage,
     FacultyCodeListPage,
     StudyModeListPage,
+    DisabilityCodeListPage,
+
+
+    
 
     // dialog
     MaritalCodeEditorDialog,
@@ -165,6 +187,7 @@ export const setupModuleReducers = {
     NationalityCodeCreatorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
+    DisabilityCodeEditorDialog,
   ],
   exports: [],
   entryComponents: [
@@ -181,6 +204,8 @@ export const setupModuleReducers = {
     NationalityCodeCreatorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
+    DisabilityCodeEditorDialog,
+
   ],
 
 })

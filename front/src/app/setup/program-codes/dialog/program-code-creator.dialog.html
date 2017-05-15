@@ -27,6 +27,24 @@
                flex/>
       </md-input-container>
     </div>
+      <div layout="row" class="pad-top">
+      <pams-program-level-select
+        [placeholder]="'Program Level'"
+        [innerFormControl]="createForm.controls.programLevel">
+      </pams-program-level-select>
+    </div>
+    <div layout="row" class="pad-top">
+      <pams-graduate-centre-select
+        [placeholder]="'Graduate Centre'"
+        [innerFormControl]="createForm.controls.graduateCentre">
+      </pams-graduate-centre-select>
+    </div>
+    <div layout="row" class="pad-top">
+      <pams-intake-session-select
+        [placeholder]="'Faculty Code'"
+        [innerFormControl]="createForm.controls.facultyCode">
+      </pams-intake-session-select>
+    </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">

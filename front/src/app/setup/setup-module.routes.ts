@@ -1,3 +1,5 @@
+import { DisabilityCodeListPage } from './disability-codes/disability-code-list-page';
+import { DisabilityCode } from './../common/disability-codes/disability-code.interface';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
 import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
@@ -35,6 +37,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'nationality-codes', component: NationalityCodeListPage},
       {path: 'faculty-codes', component: FacultyCodeListPage},
       {path: 'study-modes', component: StudyModeListPage},
+      {path: 'disability-codes', component: DisabilityCodeListPage},
     ]
   },
 
