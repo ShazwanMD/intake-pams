@@ -744,6 +744,52 @@ public class CommonController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     } 
     
+    //====================================================================================================
+    // SCHOOL_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/schoolCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<SchoolCode>> findSchoolCodes() {
+        return new ResponseEntity<List<SchoolCode>>(commonTransformer.toSchoolCodeVos(
+        		commonService.findSchoolCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/schoolCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<SchoolCode> findSchoolCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<SchoolCode>(commonTransformer.toSchoolCodeVo(
+                commonService.findSchoolCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/schoolCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveSchoolCode(@RequestBody SchoolCode vo) {
+        dummyLogin();
+
+        InSchoolCode schoolCode = new InSchoolCodeImpl();
+        schoolCode.setCode(vo.getCode());
+        schoolCode.setDescription(vo.getDescription());
+        commonService.saveSchoolCode(schoolCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/schoolCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateSchoolCode(@PathVariable String code, @RequestBody SchoolCode vo) {
+        dummyLogin();
+
+        InSchoolCode schoolCode = commonService.findSchoolCodeById(vo.getId());
+        schoolCode.setCode(vo.getCode());
+        schoolCode.setDescription(vo.getDescription());
+        commonService.updateSchoolCode(schoolCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/schoolCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeSchoolCode(@PathVariable String code) {
+        dummyLogin();
+
+        InSchoolCode schoolCode = commonService.findSchoolCodeByCode(code);
+        commonService.removeSchoolCode(schoolCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 }
 
 	
