@@ -38,7 +38,8 @@ public class InStudyCenterCodeDaoImpl extends GenericDaoSupport<Long, InStudyCen
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from InStudyCenterCode s where " +
                 "(upper(s.code) like upper(:filter) " +
-                "or upper(s.description) like upper(:filter)) " +
+                "or upper(s.descriptionEn) like upper(:filter) " +
+                "or upper(s.descriptionMs) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
