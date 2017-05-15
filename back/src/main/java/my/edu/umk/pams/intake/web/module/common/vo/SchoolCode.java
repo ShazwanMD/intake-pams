@@ -13,7 +13,6 @@ public class SchoolCode extends MetaObject{
 
     private String code;
     private String description;
-
     public String getCode() {
         return code;
     }
