@@ -356,4 +356,22 @@ public class CommonTransformer {
 		return vos;
 	}
 
+	// ====================================================================================================
+	// STUDY CENTER CODE
+	// ====================================================================================================
+
+	public StudyCenterCode toStudyCenterCodeVo(InStudyCenterCode e) {
+		StudyCenterCode vo = new StudyCenterCode();
+		vo.setId(e.getId());
+		vo.setCode(e.getCode());
+		vo.setDescriptionMs(e.getDescriptionMs());
+		vo.setDescriptionEn(e.getDescriptionEn());
+		return vo;
+	}
+
+	public List<StudyCenterCode> toStudyCenterCodeVos(List<InStudyCenterCode> e) {
+		List<StudyCenterCode> vos = e.stream().map((e1) -> toStudyCenterCodeVo(e1)).collect(Collectors.toList());
+		return vos;
+	}	
+	
 }
