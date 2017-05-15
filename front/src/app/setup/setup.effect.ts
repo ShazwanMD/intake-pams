@@ -256,4 +256,35 @@ export class SetupEffects {
     .map(message => this.setupActions.saveStudyModeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findStudyModes()]));
 
+  // ====================================================================================================
+  // DISABILITY CODE
+  // ====================================================================================================
+
+  @Effect() findDisabilityCode$ = this.actions$
+    .ofType(SetupActions.FIND_DISABILITY_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findDisabilityCodes())
+    .map(codes => this.setupActions.findDisabilityCodesSuccess(codes));
+
+  @Effect() saveDisabilityCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_DISABILITY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveDisabilityCode(payload))
+    .map(message => this.setupActions.saveDisabilityCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDisabilityCodes()]));
+
+  @Effect() updateDisabilityCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_DISABILITY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateDisabilityCode(payload))
+    .map(message => this.setupActions.updateDisabilityCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDisabilityCodes()]));
+
+  @Effect() removeDisabilityCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_DISABILITY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeDisabilityCode(payload))
+    .map(message => this.setupActions.removeDisabilityCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDisabilityCodes()]));
+
 }
