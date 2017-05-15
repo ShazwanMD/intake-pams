@@ -14,7 +14,7 @@ export class MainComponent {
     icon: 'dashboard',
   }, 
    {
-    title: 'Apps Setup',
+    title: 'Code Setup',
     route: '/setup',
     icon: 'label',
   }, {

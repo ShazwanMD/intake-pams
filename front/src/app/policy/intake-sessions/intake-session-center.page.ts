@@ -7,6 +7,7 @@ import {IntakeSession} from "./intake-session.interface";
 import {PolicyModuleState} from "../index";
 import {Store} from "@ngrx/store";
 import {IntakeSessionCreatorDialog} from "./component/intake-session-creator.dialog";
+import { IPageChangeEvent } from "@covalent/core";
 
 @Component({
   selector: 'pams-intake-session-center',
@@ -14,6 +15,13 @@ import {IntakeSessionCreatorDialog} from "./component/intake-session-creator.dia
 })
 
 export class IntakeSessionCenterPage implements OnInit {
+  page: number;
+  maxPage: number;
+  pageSize: number;
+  total: number;
+  fromRow: number;
+  toRow: number;
+  data: any[];
 
   private INTAKE_SESSIONS = "policyModuleState.intakeSessions".split(".");
   private intakeSessions$: Observable<IntakeSession[]>;
@@ -54,6 +62,22 @@ export class IntakeSessionCenterPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findIntakeSessions());
+  }
+
+  event: IPageChangeEvent;
+  firstLast: boolean = false;
+  pageSizeAll: boolean = false;
+
+  change(event: IPageChangeEvent): void {
+    //this.fromRow = event.fromRow;
+    this.page = event.page;
+    this.pageSize = event.pageSize;
+    this.filter();
+    //this.event = event;
+  }
+
+  toggleFirstLast(): void {
+    this.firstLast = !this.firstLast;
   }
 }
 
