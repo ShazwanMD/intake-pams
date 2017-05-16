@@ -17,6 +17,8 @@ import {SetupActions} from "../../setup.action";
 export class CountryCodeCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private edit: boolean = false;
+  private _countryCode: CountryCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -24,25 +26,29 @@ export class CountryCodeCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<CountryCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions
-  ) {
+              private actions: SetupActions) {
+  }
+
+  set countryCode(value: CountryCode) {
+    this._countryCode = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
-
     this.createForm = this.formBuilder.group(<CountryCode>{
       id: null,
       code: '',
       name: '',
       descriptionMs: '',
       descriptionEn: '',
-      prefix: '',
-     
+     });
 
-    });
+     if (this.edit) this.createForm.patchValue(this._countryCode);
   }
 
   save(code: CountryCode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveCountryCode(code));
+    if (!code.id) this.store.dispatch(this.actions.saveCountryCode(code));
+    else  this.store.dispatch(this.actions.updateCountryCode(code));
+    this.dialog.close();
   }
 }

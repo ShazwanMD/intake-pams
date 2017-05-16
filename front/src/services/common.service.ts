@@ -304,8 +304,8 @@ export class CommonService {
 // COUNTRY CODES
 // ====================================================================================================
 
-  findCountryCodes(): Observable<CountryCode[]> {
-    console.log("findCountryCodes()");
+   findCountryCodes(): Observable<CountryCode[]> {
+    console.log("findCountryCodes");
     return this.http.get(environment.endpoint + '/api/common/countryCodes')
       .map((res: Response) => <CountryCode[]>res.json());
   }
@@ -314,6 +314,36 @@ export class CommonService {
     console.log("findCountryCodeByCode");
     return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
       .map((res: Response) => <CountryCode>res.json());
+  }
+
+  saveCountryCode(code: CountryCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/countryCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateCountryCode(code: CountryCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/countryCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeCountryCode(code: CountryCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/countryCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
 // ====================================================================================================
