@@ -44,11 +44,11 @@ export class IntakeSessionActions {
 
   static REMOVE_INTAKE_SESSION = '[IntakeSession] Remove Intake Session';
 
-  removeIntakeSession(code): Action {
+  removeIntakeSession(id): Action {
     console.log("removeIntakeSession");
     return {
       type: IntakeSessionActions.REMOVE_INTAKE_SESSION,
-      payload: code
+      payload: id
     };
   }
 
@@ -64,11 +64,11 @@ export class IntakeSessionActions {
 
   static UPDATE_INTAKE_SESSION = '[IntakeSession] Update Intake Session';
 
-  updateIntakeSession(code): Action {
+  updateIntakeSession(id): Action {
     console.log("updateIntakeSession");
     return {
       type: IntakeSessionActions.UPDATE_INTAKE_SESSION,
-      payload: code
+      payload: id
     };
   }
 
