@@ -37,13 +37,8 @@ export class ApplicationPage implements OnInit {
   }
 
   apply(intake: Intake): void {
+      
     console.log("apply");
-    console.log("intake"+intake);
-    if(intake.graduateCentre.code=="CPS")
-    {
-      this.store.dispatch(this.intakeApplicationActions.applyIntakeCps(intake));
-    }else{
-      this.store.dispatch(this.intakeApplicationActions.applyIntakeMgseb(intake));
-    }
+      this.router.navigate(['application/intake-applications/',intake.referenceNo]);
   }
 }

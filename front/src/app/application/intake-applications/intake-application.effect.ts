@@ -27,6 +27,7 @@ export class IntakeApplicationEffects {
 
   @Effect() findIntakeByReferenceNo$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_INTAKE_BY_REFERENCE_NO)
+    .map(action => action.payload)
     .switchMap(referenceNo => this.applicationService.findIntakeByReferenceNo(referenceNo))
     .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake));
 
@@ -37,23 +38,15 @@ export class IntakeApplicationEffects {
     .map(applications => this.intakeApplicationActions.findIntakeApplicationsSuccess(applications));
 
 
-  @Effect() applyIntakeCps$ = this.actions$
+  @Effect() applyIntake$ = this.actions$
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map(action => action.payload)
-    .switchMap(intake => this.applicationService.applyIntakeCps(intake))
+    .switchMap(intake => this.applicationService.applyIntake(intake))
     .mergeMap(referenceNo => from([referenceNo,
       this.intakeApplicationActions.applyIntakeSuccess(referenceNo),
-      this.router.navigate(['/application/intake-applications/cps'])
+      this.router.navigate(['/application/intake-applications/'])
     ]));
 
-    @Effect() applyIntakeMgseb$ = this.actions$
-    .ofType(IntakeApplicationActions.APPLY_INTAKE)
-    .map(action => action.payload)
-    .switchMap(intake => this.applicationService.applyIntakeMgseb(intake))
-    .mergeMap(referenceNo => from([referenceNo,
-      this.intakeApplicationActions.applyIntakeSuccess(referenceNo),
-      this.router.navigate(['/application/intake-applications/mgseb'])
-    ]));
 
   // ====================================================================================================
   // INTAKE APPLICATION

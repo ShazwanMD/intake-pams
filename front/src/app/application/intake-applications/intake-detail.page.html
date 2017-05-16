@@ -1,6 +1,6 @@
 <td-layout-nav>
   <div td-toolbar-content layout="row" layout-align="start center" flex>
-    <span hide-xs>Centre for Postgraduate Studies Univesiti Malaysia Kelantan</span>
+    <span hide-xs><p class="md-title tc-grey-600">{{(intake$| async)?.graduateCentre?.descriptionMs}}</p></span>
     <span flex></span>
   </div>
 
@@ -15,12 +15,11 @@
           </p>
         </div>
         <div flex>
-          <p class="md-title tc-grey-600">What you'll need</p>
+          <p class="md-title tc-grey-600">About this intake</p>
           <p>
-            Transcripts. Don't submit your transcripts to UC at this point, but refer to them as
-            you fill out the application to ensure the information you enter is accurate.*
-            Test scores. If you're a freshman or sophomore applicant, you'll have to include your
-            scores.
+            {{(intake$| async)?.referenceNo}}
+            {{(intake$| async)?.startDate}}
+            {{(intake$| async)?.endDate}}
           </p>
         </div>
         <div flex>
@@ -39,14 +38,10 @@
   </section>
   <section class="bgc-white">
     <div layout-gt-xs="row">
-      <div flex class="bg-cover"
-           style="background-image:url('/assets/banner/banner1.jpg');background-size:cover;">
-      </div>
       <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
         <div class="push-top-xxl" hide-xs></div>
         <h3 class="md-display-1 tc-grey-600 push-top-xs push-bottom-sm">Apply for this intake</h3>
-        <p class="md-title tc-grey-600">{{(graduateCentre$ | async)?.descriptionEn}}</p>
-        <p class="md-title tc-grey-600">Ready to ma</p>
+        
         <button md-raised-button color="accent" class="push-bottom" (click)="apply()">I'm ready to apply
         </button>
         <div class="push-top-xxl" hide-xs></div>

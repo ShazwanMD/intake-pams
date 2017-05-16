@@ -28,32 +28,19 @@ export class ApplicationService {
   }
 
   findIntakeByReferenceNo(referenceNo:string): Observable<Intake> {
-    console.log("findIntakeByReferenceNo");
-    let encoded = referenceNo.replace(/\//g, '%252F');
-    return this.http.get(environment.endpoint + '/api/application/intakes/' + encoded)
+    console.log("findIntakeByReferenceNo : "+referenceNo);
+    return this.http.get(environment.endpoint + '/api/application/intakes/' + referenceNo)
       .map((res: Response) => <Intake>res.json());
   }
 
 
-  applyIntakeCps(intake: Intake): Observable<String> {
+  applyIntake(intake: Intake): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/application/intakes/' + encoded + '/apply', options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
-
-  applyIntakeMgseb(intake: Intake): Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
-    let encoded = intake.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/application/intakes/' + encoded + '/apply', options)
+    return this.http.post(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/apply', options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -68,8 +55,7 @@ export class ApplicationService {
   }
 
   findIntakeApplicationByReferenceNo(referenceNo: string): Observable<IntakeApplication> {
-    let encoded = referenceNo.replace(/\//g, '%252F');
-    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + encoded)
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + referenceNo)
       .map((res: Response) => <IntakeApplication>res.json());
   }
 
@@ -95,14 +81,12 @@ export class ApplicationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    let encoded = application.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + encoded + '/educations', JSON.stringify(education), options)
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/educations', JSON.stringify(education), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteEducation(application: IntakeApplication, education: Education): Observable<String> {
-    let encoded = application.referenceNo.replace(/\//g, '%252F');
-    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + encoded + '/educations/' + education.id)
+    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/educations/' + education.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -112,14 +96,12 @@ export class ApplicationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    let encoded = application.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + encoded + '/employments', JSON.stringify(employment), options)
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments', JSON.stringify(employment), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
-    let encoded = application.referenceNo.replace(/\//g, '%252F');
-    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + encoded + '/employments/' + employment.id)
+    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments/' + employment.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -129,14 +111,12 @@ export class ApplicationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    let encoded = application.referenceNo.replace(/\//g, '%252F');
-    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + encoded + '/addresses', JSON.stringify(address), options)
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses', JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteAddress(application: IntakeApplication, address: Address): Observable<String> {
-    let encoded = application.referenceNo.replace(/\//g, '%252F');
-    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + encoded + '/addresses/' + address.id)
+    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 }
