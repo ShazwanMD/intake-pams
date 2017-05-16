@@ -203,5 +203,7 @@ public interface InIntakeApplication extends InMetaObject {
 	boolean getVerification();
 
 	void setVerification(boolean verification);
+
+
 }
 

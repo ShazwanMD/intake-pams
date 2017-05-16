@@ -64,10 +64,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "AGE")
     private Integer age = 0;
 
-    @ManyToOne(targetEntity = InSchoolCodeImpl.class)
-    @JoinColumn(name = "SCHOOL_CODE_ID")
-    private InSchoolCode schoolCode;
-
+    
     @NotNull
     @Column(name = "SCHOOL_NAME")
     private String schoolName;
@@ -111,6 +108,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_RESPONSE")
     private InBidResponse bidResponse = InBidResponse.NEW;
+    
+    @ManyToOne(targetEntity = InSchoolCodeImpl.class)
+    @JoinColumn(name = "SCHOOL_CODE_ID")
+    private InSchoolCode schoolCode;
 
     @ManyToOne(targetEntity = InStudyModeImpl.class)
     @JoinColumn(name = "STUDY_MODE_ID")
@@ -160,6 +161,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @ManyToOne(targetEntity = InProgramOfferingImpl.class)
     @JoinColumn(name = "PROGRAM_SELECTION_ID", nullable = true)
     private InProgramOffering programSelection;
+    
+    @ManyToOne(targetEntity = InStudyCenterCodeImpl.class)
+    @JoinColumn(name = "STUDY_CENTER_CODE_ID")
+    private InStudyCenterCode studyCenterCode;
 
     // note: can draft without choosing
     @ManyToOne(targetEntity = InSupervisorOfferingImpl.class)
@@ -482,6 +487,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setSchoolCode(InSchoolCode schoolType) {
         this.schoolCode = schoolType;
     }
+    
 
     @Override
     public String getSchoolName() {
