@@ -21,6 +21,7 @@ export class StudyModeListPage implements OnInit {
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'prefix', label: 'Prefix'},
     {name: 'action', label: ''}
   ];
 
