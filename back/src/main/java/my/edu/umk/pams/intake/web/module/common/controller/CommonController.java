@@ -717,14 +717,48 @@ public class CommonController {
     @RequestMapping(value = "/ethnicityCodes", method = RequestMethod.GET)
     public ResponseEntity<List<EthnicityCode>> findEthnicityCodes() {
         return new ResponseEntity<List<EthnicityCode>>(commonTransformer.toEthnicityCodeVos(
-                commonService.findEthnicityCodes()), HttpStatus.OK);
+        		commonService.findEthnicityCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.GET)
-    public ResponseEntity<EthnicityCode> findEtnicityCodeByCode(@PathVariable String code) {
+    public ResponseEntity<EthnicityCode> findEthnicityCodeByCode(@PathVariable String code) {
         return new ResponseEntity<EthnicityCode>(commonTransformer.toEthnicityCodeVo(
                 commonService.findEthnicityCodeByCode(code)), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/ethnicityCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveEthnicityCode(@RequestBody EthnicityCode vo) {
+        dummyLogin();
+
+        InEthnicityCode ethnicityCode = new InEthnicityCodeImpl();
+        ethnicityCode.setCode(vo.getCode());
+        ethnicityCode.setDescriptionEn(vo.getDescriptionEn());
+        ethnicityCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveEthnicityCode(ethnicityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateEthnicityCode(@PathVariable String code, @RequestBody EthnicityCode vo) {
+        dummyLogin();
+
+        InEthnicityCode ethnicityCode = commonService.findEthnicityCodeById(vo.getId());
+        ethnicityCode.setCode(vo.getCode());
+        ethnicityCode.setDescriptionEn(vo.getDescriptionEn());
+        ethnicityCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateEthnicityCode(ethnicityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeEthnicityCode(@PathVariable String code) {
+        dummyLogin();
+
+        InEthnicityCode ethnicityCode = commonService.findEthnicityCodeByCode(code);
+        commonService.removeEthnicityCode(ethnicityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
 
     //====================================================================================================
     // NATIONALITY_CODE
