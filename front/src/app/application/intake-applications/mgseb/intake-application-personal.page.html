@@ -13,24 +13,13 @@
       <md-divider></md-divider>
       
 <md-tab-group md-stretch-tabs>
+
   <md-tab>
   <md-card>
     <template md-tab-label>Detail of Candidate</template>
-    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          <!-- first column -->
-    <div layout="column" class="pad-right" flex>
-     <div layout="row" class="pad-bottom" flex>
-     <pams-program-level-select [placeholder]="'Select Program Level'"></pams-program-level-select>
-     </div>
-     </div>
-    <!-- second column -->
-     <div layout="column" class="pad-right" flex>
-     <div layout="row" class="pad-bottom" flex>
-     <pams-study-center-code-select [placeholder]="'Select Center Of Study'"></pams-study-center-code-select>
-     </div>
-     </div>
 
-     <!-- third column -->
+     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+          <!-- first column -->
      <div layout="column" class="pad-right" flex>
      <div layout="row" class="pad-bottom" flex>
      <pams-study-mode-select [placeholder]="'Select Study Mode'"></pams-study-mode-select>
@@ -38,13 +27,8 @@
      </div>
 
       </div>
-  </md-card>
-  </md-tab>
 
-  <md-tab>
-  <md-card>
-    <template md-tab-label>Personal Details</template>
-    <td-expansion-panel label="Personal Information">
+    <td-expansion-panel label="Personal Details">
     <md-card>
     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
           <!-- first column -->
