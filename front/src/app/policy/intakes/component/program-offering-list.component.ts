@@ -7,6 +7,7 @@ import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
 import {MdDialogConfig, MdDialog, MdDialogRef} from "@angular/material";
 import {ProgramOfferingEditorDialog} from "../dialog/program-offering-editor.dialog";
+import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: 'pams-program-offering-list',
@@ -17,13 +18,20 @@ export class ProgramOfferingListComponent {
 
   @Input() intake: Intake;
   @Input() programOfferings: ProgramOffering[];
+
   private editorDialogRef: MdDialogRef<ProgramOfferingEditorDialog>;
+  private INTAKE = "policyModuleState.intake".split(".");
+  private intake$:Observable<Intake>;
 
   constructor(private store: Store<PolicyModuleState>,
               private actions: IntakeActions,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
+          this.intake$ = this.store.select(...this.INTAKE);
+
   }
+
+ 
 
   showDialog(): void {
     console.log("showDialog");
