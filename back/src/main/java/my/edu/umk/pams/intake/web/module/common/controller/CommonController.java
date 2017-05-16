@@ -767,7 +767,7 @@ public class CommonController {
     @RequestMapping(value = "/nationalityCodes", method = RequestMethod.GET)
     public ResponseEntity<List<NationalityCode>> findNationalityCodes() {
         return new ResponseEntity<List<NationalityCode>>(commonTransformer.toNationalityCodeVos(
-                commonService.findNationalityCodes()), HttpStatus.OK);
+        		commonService.findNationalityCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.GET)
