@@ -886,6 +886,53 @@ public class CommonController {
         commonService.removeSchoolCode(schoolCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    //====================================================================================================
+    // PARLIAMENT_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/parliamentCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<ParliamentCode>> findParliamentCodes() {
+        return new ResponseEntity<List<ParliamentCode>>(commonTransformer.toParliamentCodeVos(
+        		commonService.findParliamentCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<ParliamentCode> findParliamentCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<ParliamentCode>(commonTransformer.toParliamentCodeVo(
+                commonService.findParliamentCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/parliamentCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveParliamentCode(@RequestBody ParliamentCode vo) {
+        dummyLogin();
+
+        InParliamentCode parliamentCode = new InParliamentCodeImpl();
+        parliamentCode.setCode(vo.getCode());
+        parliamentCode.setDescription(vo.getDescription());
+        commonService.saveParliamentCode(parliamentCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateParliamentCode(@PathVariable String code, @RequestBody ParliamentCode vo) {
+        dummyLogin();
+
+        InParliamentCode parliamentCode = commonService.findParliamentCodeById(vo.getId());
+        parliamentCode.setCode(vo.getCode());
+        parliamentCode.setDescription(vo.getDescription());
+        commonService.updateParliamentCode(parliamentCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeParliamentCode(@PathVariable String code) {
+        dummyLogin();
+
+        InParliamentCode parliamentCode = commonService.findParliamentCodeByCode(code);
+        commonService.removeParliamentCode(parliamentCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 }
 
 	
