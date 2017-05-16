@@ -36,6 +36,8 @@ public interface CommonService {
 	InCountryCode findCountryCodeByCode(String code);
 
 	List<InCountryCode> findCountryCodes();
+	
+	List<InCountryCode> findCountryCodes(String filter, Integer offset, Integer limit);
 
 	Integer countCountryCode(String filter);
 

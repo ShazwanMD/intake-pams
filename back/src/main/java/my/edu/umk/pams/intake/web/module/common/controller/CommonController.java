@@ -542,7 +542,7 @@ public class CommonController {
     @RequestMapping(value = "/countryCodes", method = RequestMethod.GET)
     public ResponseEntity<List<CountryCode>> findCountryCodes() {
         return new ResponseEntity<List<CountryCode>>(commonTransformer.toCountryCodeVos(
-        		commonService.findCountryCodes()), HttpStatus.OK);
+        		commonService.findCountryCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.GET)
