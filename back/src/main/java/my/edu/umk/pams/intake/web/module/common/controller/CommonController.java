@@ -775,6 +775,39 @@ public class CommonController {
         return new ResponseEntity<NationalityCode>(commonTransformer.toNationalityCodeVo(
                 commonService.findNationalityCodeByCode(code)), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/nationalityCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveNationalityCode(@RequestBody NationalityCode vo) {
+        dummyLogin();
+
+        InNationalityCode nationalityCode = new InNationalityCodeImpl();
+        nationalityCode.setCode(vo.getCode());
+        nationalityCode.setDescriptionEn(vo.getDescriptionEn());
+        nationalityCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveNationalityCode(nationalityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateNationalityCode(@PathVariable String code, @RequestBody NationalityCode vo) {
+        dummyLogin();
+
+        InNationalityCode nationalityCode = commonService.findNationalityCodeById(vo.getId());
+        nationalityCode.setCode(vo.getCode());
+        nationalityCode.setDescriptionEn(vo.getDescriptionEn());
+        nationalityCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateNationalityCode(nationalityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeNationalityCode(@PathVariable String code) {
+        dummyLogin();
+
+        InNationalityCode nationalityCode = commonService.findNationalityCodeByCode(code);
+        commonService.removeNationalityCode(nationalityCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     //====================================================================================================
     // DISABILITY_CODE
