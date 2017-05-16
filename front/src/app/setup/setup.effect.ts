@@ -90,11 +90,32 @@ export class SetupEffects {
   // COUNTRY CODE
   // ====================================================================================================
 
-  @Effect() findCountryCodes$ = this.actions$
+  @Effect() findCountryCode$ = this.actions$
     .ofType(SetupActions.FIND_COUNTRY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findCountryCodes())
     .map(codes => this.setupActions.findCountryCodesSuccess(codes));
+
+  @Effect() saveCountryCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_COUNTRY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveCountryCode(payload))
+    .map(message => this.setupActions.saveCountryCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findCountryCodes()]));
+
+  @Effect() updateCountryCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_COUNTRY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateCountryCode(payload))
+    .map(message => this.setupActions.updateCountryCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findCountryCodes()]));
+
+  @Effect() removeCountryCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_COUNTRY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeCountryCode(payload))
+    .map(message => this.setupActions.removeCountryCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findCountryCodes()]));
 
   // ====================================================================================================
   // STATE CODE

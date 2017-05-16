@@ -281,7 +281,11 @@ export class SetupActions {
     };
   }
 
-  static FIND_COUNTRY_CODES = '[Common] Find CountryCodes';
+//=================================================================================//
+//  COUNTRY_CODES                                                               //
+//=================================================================================//
+//1-------------------------------------------------------------
+  static FIND_COUNTRY_CODES = '[Setup] Find Country Codes';
 
   findCountryCodes(): Action {
     console.log("findCountryCodes");
@@ -289,8 +293,8 @@ export class SetupActions {
       type: SetupActions.FIND_COUNTRY_CODES,
     };
   }
-
-  static FIND_COUNTRY_CODES_SUCCESS = '[Common] Find CountryCodes Success';
+//2-------------------------------------------------------------------------------------
+  static FIND_COUNTRY_CODES_SUCCESS = '[Setup] Find Country Codes Success';
 
   findCountryCodesSuccess(codes): Action {
     console.log("findCountryCodesSuccess");
@@ -299,7 +303,7 @@ export class SetupActions {
       payload: codes
     };
   }
-
+//3----------------------------------------------------------------
   static SAVE_COUNTRY_CODE = '[Setup] Save Country Code';
 
   saveCountryCode(code): Action {
@@ -309,6 +313,58 @@ export class SetupActions {
       payload: code
     };
   }
+//4------------------------------------------------------------------------------
+  static SAVE_COUNTRY_CODE_SUCCESS = '[Setup] Save Country Code Success';
+
+  saveCountryCodeSuccess(message): Action {
+    console.log("saveCountryCodeSuccess");
+    return {
+      type: SetupActions.SAVE_COUNTRY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_COUNTRY_CODE = '[Setup] Update Country Code';
+
+  updateCountryCode(code): Action {
+    console.log("updateCountryCode");
+    return {
+      type: SetupActions.UPDATE_COUNTRY_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_COUNTRY_CODE_SUCCESS = '[Setup] Update Country Code  Success';
+
+  updateCountryCodeSuccess(message): Action {
+    console.log("updateCountryCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_COUNTRY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_COUNTRY_CODE = '[Setup] Remove Country Code';
+
+  removeCountryCode(code): Action {
+    console.log("removeCountryCode");
+    return {
+      type: SetupActions.REMOVE_COUNTRY_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_COUNTRY_CODE_SUCCESS = '[Setup] Remove Country Code  Success';
+
+  removeCountryCodeSuccess(message): Action {
+    console.log("removeCountryCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_COUNTRY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+//-------------------------------------------------------------------------------------
 
   static FIND_STATE_CODES_SUCCESS = '[Common] Find StateCodes Success';
 
@@ -737,7 +793,7 @@ export class SetupActions {
 //=================================================================================//
 //  DISABILITY_CODES                                                               //
 //=================================================================================//
-
+//1-------------------------------------------------------------
   static FIND_DISABILITY_CODES = '[Setup] Find Disability Codes';
 
   findDisabilityCodes(): Action {
@@ -746,7 +802,7 @@ export class SetupActions {
       type: SetupActions.FIND_DISABILITY_CODES,
     };
   }
-
+//2-------------------------------------------------------------------------------------
   static FIND_DISABILITY_CODES_SUCCESS = '[Setup] Find Disability Codes Success';
 
   findDisabilityCodesSuccess(codes): Action {
@@ -756,7 +812,7 @@ export class SetupActions {
       payload: codes
     };
   }
-
+//3----------------------------------------------------------------
   static SAVE_DISABILITY_CODE = '[Setup] Save Disability Code';
 
   saveDisabilityCode(code): Action {
@@ -766,7 +822,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//4------------------------------------------------------------------------------
   static SAVE_DISABILITY_CODE_SUCCESS = '[Setup] Save Disability Code Success';
 
   saveDisabilityCodeSuccess(message): Action {
@@ -776,7 +832,7 @@ export class SetupActions {
       payload: message
     };
   }
-
+//5------------------------------------------------------------------
   static UPDATE_DISABILITY_CODE = '[Setup] Update Disability Code';
 
   updateDisabilityCode(code): Action {
@@ -786,7 +842,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//6----------------------------------------------------------------------------------
   static UPDATE_DISABILITY_CODE_SUCCESS = '[Setup] Update Disability Code  Success';
 
   updateDisabilityCodeSuccess(message): Action {
@@ -796,7 +852,7 @@ export class SetupActions {
       payload: message
     };
   }
-
+//7------------------------------------------------------------------
   static REMOVE_DISABILITY_CODE = '[Setup] Remove Disability Code';
 
   removeDisabilityCode(code): Action {
@@ -806,7 +862,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//8------------------------------------------------------------------------------------
   static REMOVE_DISABILITY_CODE_SUCCESS = '[Setup] Remove Disability Code  Success';
 
   removeDisabilityCodeSuccess(message): Action {
