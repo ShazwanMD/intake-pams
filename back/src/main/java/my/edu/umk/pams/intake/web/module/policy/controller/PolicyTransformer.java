@@ -108,6 +108,8 @@ public class PolicyTransformer {
 	public ProgramOffering toProgramOfferingVo(InProgramOffering e) {
         ProgramOffering vo = new ProgramOffering();
         vo.setId(e.getId());
+        vo.setGeneralCriteria(e.getGeneralCriteria());
+        vo.setSpecificCriteria(e.getSpecificCriteria());
         vo.setProgramCode(commonTransformer.toProgramCodeVo(e.getProgramCode()));
         return vo;
     }
