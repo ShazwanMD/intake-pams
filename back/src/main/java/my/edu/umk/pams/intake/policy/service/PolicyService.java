@@ -154,6 +154,8 @@ public interface PolicyService {
     InProgramOffering findProgramOfferingByIntakeAndProgramCode(InIntake intake, InProgramCode programCode);
 
     List<InProgramOffering> findProgramOfferings(InIntake intake);
+    
+    void updateProgramOfferings(InIntake intake, InProgramOffering programOffering);
 
     //====================================================================================================
     // STUDY MODE OFFERING
@@ -170,4 +172,5 @@ public interface PolicyService {
 
     // todo(uda): ni utk apa?
     String specificCriteria();
+	
 }
