@@ -315,7 +315,9 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     public List<InEmployment> findEmployments(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InEmployment p where " +
-                "p.application = :application ");
+                "p.application = :application " +
+        		"and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());		
         query.setEntity("application", application);
         return (List<InEmployment>) query.list();
     }

@@ -3,7 +3,11 @@ package my.edu.umk.pams.intake.web.module.application.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.intake.web.module.common.vo.FacultyCode;
+import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramLevel;
 
 import java.io.IOException;
 import java.util.Date;
@@ -13,11 +17,24 @@ import java.util.Date;
  */
 public class Employment extends MetaObject {
     private String employer;
+    private String designation;
     private boolean current;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a")
     private Date startDate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a")
     private Date endDate;
+    private FieldCode fieldCode;
+    private LevelCode levelCode;
+    private SectorCode sectorCode;
+
+
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
 
     public String getEmployer() {
         return employer;
@@ -50,7 +67,31 @@ public class Employment extends MetaObject {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+    
+    public FieldCode getFieldCode() {
+        return fieldCode;
+    }
 
+    public void setFieldCode(FieldCode fieldCode) {
+        this.fieldCode = fieldCode;
+    }
+    
+    public LevelCode getLevelCode() {
+        return levelCode;
+    }
+
+    public void setLevelCode(LevelCode levelCode) {
+        this.levelCode = levelCode;
+    }
+
+    public SectorCode getSectorCode() {
+        return sectorCode;
+    }
+
+    public void setSectorCode(SectorCode sectorCode) {
+        this.sectorCode = sectorCode;
+    }       
+   
     @JsonCreator
     public static Employment create(String jsonString) {
         Employment o = null;

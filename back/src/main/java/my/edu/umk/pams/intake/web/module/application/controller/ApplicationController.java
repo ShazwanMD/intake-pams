@@ -1,20 +1,30 @@
 package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InEmployment;
+import my.edu.umk.pams.intake.application.model.InEmploymentImpl;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InActor;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import my.edu.umk.pams.intake.policy.model.InIntakeSessionImpl;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.web.module.application.vo.Employment;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
+import my.edu.umk.pams.intake.web.module.policy.vo.IntakeSession;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramLevel;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +45,9 @@ public class ApplicationController {
     @Autowired
     private PolicyService policyService;
 
+    @Autowired
+    private CommonService commonService;
+    
     @Autowired
     private PolicyTransformer policyTransformer;
 
@@ -86,23 +99,15 @@ public class ApplicationController {
         return new ResponseEntity<String>(refNo, HttpStatus.OK);
     }
 
-    // ====================================================================================================
-    // INTAKE APPLICATION
-    // ====================================================================================================
-
-    @RequestMapping(value = "/intakeApplications", method = RequestMethod.GET)
-    public ResponseEntity<List<IntakeApplication>> findIntakeApplications() {
+    @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications", method = RequestMethod.POST)
+    public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByIntake(@PathVariable String referenceNo) {
         dummyLogin();
 
-        // user & applicant
-        InUser currentUser = securityService.getCurrentUser();
-        InActor actor = currentUser.getActor();
-        InApplicant applicant = null;
-        if (actor instanceof InApplicant) applicant = (InApplicant) actor;
-
-        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant, InBidStatus.DRAFTED);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+       List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications), HttpStatus.OK);
     }
+
 
     // ====================================================================================================
     // INTAKE APPLICATION
@@ -139,4 +144,42 @@ public class ApplicationController {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
+    
+    // ====================================================================================================
+    // EMPLOYMENTS
+    // ====================================================================================================
+    
+    @RequestMapping(value = "/intakeApplication/{referenceNo}/employments", method = RequestMethod.GET)
+    public ResponseEntity<List<Employment>> findEmployments(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        
+        List<InEmployment> employments = applicationService.findEmployments(application);
+    
+        return new ResponseEntity<List<Employment>>(applicationTransformer.toEmploymentVos(employments), HttpStatus.OK);
+    }
+    
+    
+	@RequestMapping(value = "/intakeApplication/{referenceNo}/employments", method = RequestMethod.POST)
+	public ResponseEntity<String> addEmployments(@PathVariable String referenceNo, @RequestBody Employment vo) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InEmployment employment = new InEmploymentImpl();
+		employment.setEmployer(vo.getEmployer());
+		employment.setStartDate(vo.getStartDate());
+		employment.setEndDate(vo.getEndDate());
+		employment.setDesignation(vo.getDesignation());
+		//employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
+
+		//employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
+
+		//employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
+		employment.setCurrent(false);
+		applicationService.addEmployment(application, employment);
+		;
+
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
+
 }

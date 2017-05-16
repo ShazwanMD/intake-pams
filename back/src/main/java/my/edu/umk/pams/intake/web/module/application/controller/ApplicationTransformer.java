@@ -78,11 +78,21 @@ public class ApplicationTransformer {
     public Employment toEmploymentVo(InEmployment e){
         Employment vo = new Employment();
         vo.setId(e.getId());
-        // todo(uda): more props
+  //      vo.setCurrent(true);
+        vo.setEmployer(e.getEmployer());
+        vo.setStartDate(e.getStartDate());
+        vo.setEndDate(e.getEndDate());
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
 
+    public List<Employment> toEmploymentVos(List<InEmployment> e) {
+        List<Employment> vos = e.stream()
+                .map((e1) -> toEmploymentVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+    
     public Involvement toInvolvementVo(InInvolvement e){
         Involvement vo = new Involvement();
         vo.setId(e.getId());
