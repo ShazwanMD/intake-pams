@@ -362,13 +362,44 @@ public class CommonController {
     @RequestMapping(value = "/residencyCodes", method = RequestMethod.GET)
     public ResponseEntity<List<ResidencyCode>> findResidencyCodes() {
         return new ResponseEntity<List<ResidencyCode>>(commonTransformer.toResidencyCodeVos(
-                commonService.findResidencyCodes()), HttpStatus.OK);
+        		commonService.findResidencyCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/residencyCodes/{code}", method = RequestMethod.GET)
     public ResponseEntity<ResidencyCode> findResidencyCodeByCode(@PathVariable String code) {
         return new ResponseEntity<ResidencyCode>(commonTransformer.toResidencyCodeVo(
                 commonService.findResidencyCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/residencyCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveResidencyCode(@RequestBody ResidencyCode vo) {
+        dummyLogin();
+
+        InResidencyCode residencyCode = new InResidencyCodeImpl();
+        residencyCode.setCode(vo.getCode());
+        residencyCode.setDescription(vo.getDescription());
+        commonService.saveResidencyCode(residencyCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/residencyCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateResidencyCode(@PathVariable String code, @RequestBody ResidencyCode vo) {
+        dummyLogin();
+
+        InResidencyCode residencyCode = commonService.findResidencyCodeById(vo.getId());
+        residencyCode.setCode(vo.getCode());
+        residencyCode.setDescription(vo.getDescription());
+        commonService.updateResidencyCode(residencyCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/residencyCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeResidencyCode(@PathVariable String code) {
+        dummyLogin();
+
+        InResidencyCode residencyCode = commonService.findResidencyCodeByCode(code);
+        commonService.removeResidencyCode(residencyCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     //====================================================================================================
