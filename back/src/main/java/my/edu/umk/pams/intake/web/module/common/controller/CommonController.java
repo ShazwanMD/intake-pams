@@ -386,6 +386,7 @@ public class CommonController {
         studyMode.setCode(vo.getCode());
         studyMode.setDescriptionEn(vo.getDescriptionEn());
         studyMode.setDescriptionMs(vo.getDescriptionMs());
+        studyMode.setPrefix(vo.getPrefix());
         commonService.saveStudyMode(studyMode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

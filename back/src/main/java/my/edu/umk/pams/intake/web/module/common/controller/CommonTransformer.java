@@ -41,6 +41,7 @@ public class CommonTransformer {
 		vo.setCode(e.getCode());
 		vo.setDescriptionMs(e.getDescriptionMs());
 		vo.setDescriptionEn(e.getDescriptionEn());
+		vo.setPrefix(e.getPrefix());
 		return vo;
 	}
 
@@ -59,6 +60,7 @@ public class CommonTransformer {
 		vo.setCode(e.getCode());
 		vo.setDescriptionMs(e.getDescriptionMs());
 		vo.setDescriptionEn(e.getDescriptionEn());
+		
 		return vo;
 	}
 

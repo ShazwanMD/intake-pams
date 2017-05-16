@@ -36,6 +36,7 @@ export class StudyModeCreatorDialog implements OnInit {
       code: '',
       descriptionMs: '',
       descriptionEn: '',
+      prefix: '',
       
      
 
