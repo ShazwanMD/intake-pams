@@ -90,7 +90,7 @@ public class CommonController {
     @RequestMapping(value = "/dunCodes", method = RequestMethod.GET)
     public ResponseEntity<List<DunCode>> findDunCodes() {
         return new ResponseEntity<List<DunCode>>(commonTransformer.toDunCodeVos(
-                commonService.findDunCodes()), HttpStatus.OK);
+        		commonService.findDunCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/dunCodes/{code}", method = RequestMethod.GET)
@@ -98,7 +98,38 @@ public class CommonController {
         return new ResponseEntity<DunCode>(commonTransformer.toDunCodeVo(
                 commonService.findDunCodeByCode(code)), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/dunCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveDunCode(@RequestBody DunCode vo) {
+        dummyLogin();
 
+        InDunCode dunCode = new InDunCodeImpl();
+        dunCode.setCode(vo.getCode());
+        dunCode.setDescription(vo.getDescription());
+        commonService.saveDunCode(dunCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/dunCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateDunCode(@PathVariable String code, @RequestBody DunCode vo) {
+        dummyLogin();
+
+        InDunCode dunCode = commonService.findDunCodeById(vo.getId());
+        dunCode.setCode(vo.getCode());
+        dunCode.setDescription(vo.getDescription());
+        commonService.updateDunCode(dunCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/dunCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeDunCode(@PathVariable String code) {
+        dummyLogin();
+
+        InDunCode dunCode = commonService.findDunCodeByCode(code);
+        commonService.removeDunCode(dunCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
     //====================================================================================================
     // DISTRICT_CODE
     //====================================================================================================
