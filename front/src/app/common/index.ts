@@ -36,6 +36,8 @@ import { disabilityCodeListReducer, DisabilityCodeListState } from "./disability
 import { DisabilityCodeSelectComponent } from "./disability-codes/component/disability-code-select.component";
 import { SchoolCodeSelectComponent } from "./school-codes/component/school-code-select.component";
 import { schoolCodeListReducer, SchoolCodeListState } from "./school-codes/school-code-list.reducer";
+import { StudyCenterCodeListState, studyCenterCodeListReducer } from "./study-center-codes/study-center-code-list.reducer";
+import { StudyCenterCodeSelectComponent } from "./study-center-codes/component/study-center-code-select.component";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -49,11 +51,9 @@ export interface CommonModuleState {
   raceCodes: RaceCodeListState;
   stateCodes : StateCodeListState;
   countryCodes : CountryCodeListState;
-
   disabilityCodes: DisabilityCodeListState;
   schoolCodes: SchoolCodeListState;
-
-
+  studyCenterCodes : StudyCenterCodeListState;
   religionCodes : ReligionCodeListState;
 
 }
@@ -72,11 +72,9 @@ export const commonModuleReducers = {
   raceCodes: raceCodeListReducer,
   stateCodes : stateCodeListReducer,
   countryCodes : countryCodeListReducer,
-
   disabilityCodes: disabilityCodeListReducer,
   schoolCodes: schoolCodeListReducer,
-
-
+  studyCenterCodes : studyCenterCodeListReducer,
   religionCodes : religionCodeListReducer,
 
 };
@@ -101,11 +99,9 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
-
     DisabilityCodeSelectComponent,
     SchoolCodeSelectComponent,
-
-
+    StudyCenterCodeSelectComponent,
     ReligionCodeSelectComponent,
 
 
@@ -122,11 +118,9 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
-
     DisabilityCodeSelectComponent,
     SchoolCodeSelectComponent,
-
-
+    StudyCenterCodeSelectComponent,
     ReligionCodeSelectComponent,
 
   ],

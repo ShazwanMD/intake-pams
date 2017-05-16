@@ -2,8 +2,9 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
-
+import {environment} from '../../../environments/environment';
 import {CovalentCoreModule} from '@covalent/core';
+
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 import {PolicyService} from "../../../services/policy.service";
@@ -13,6 +14,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {IntakeApplicationEffects} from "./intake-application.effect";
 import {IntakeApplicationActions} from "./intake-application.action";
 import {IntakeDetailPage} from "./intake-detail.page";
+import { EmploymentCreatorDialog } from "./mgseb/dialog/employment-creator.dialog";
 
 
 @NgModule({
@@ -27,9 +29,16 @@ import {IntakeDetailPage} from "./intake-detail.page";
   ],
   declarations: [
     IntakeDetailPage,
+
+    //components
+
+
+    //dialogs
+    EmploymentCreatorDialog,
   ],
   exports: [],
   entryComponents: [
+    EmploymentCreatorDialog,
   ],
 })
 export class IntakeApplicationSubModule {

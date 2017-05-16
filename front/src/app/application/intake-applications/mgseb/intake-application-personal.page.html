@@ -26,9 +26,7 @@
     <!-- second column -->
      <div layout="column" class="pad-right" flex>
      <div layout="row" class="pad-bottom" flex>
-     <md-input-container flex>
-     <input mdInput placeholder="Centre Of Study"flex/>
-     </md-input-container>
+     <pams-study-center-code-select [placeholder]="'Select Center Of Study'"></pams-study-center-code-select>
      </div>
      </div>
 
@@ -183,9 +181,11 @@
 
 <md-divider></md-divider>
 <md-card-actions>
+<md-nav-list list-items>
 <a md-list-item (click)="showDialog()">
-<button md-button color="primary">Add More</button>
-</a>
+<md-icon>add</md-icon>Add More</a>
+ <md-divider></md-divider>
+</md-nav-list>
 </md-card-actions>
 
 </div>
