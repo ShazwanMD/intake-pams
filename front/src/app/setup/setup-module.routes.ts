@@ -1,3 +1,4 @@
+import { DistrictCodeListPage } from './district-codes/district-code-list-page';
 import { SchoolCodeListPage } from './school-codes/school-code-list-page';
 import { SchoolCode } from './../common/school-codes/school-code.interface';
 import { DisabilityCodeListPage } from './disability-codes/disability-code-list-page';
@@ -44,6 +45,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'disability-codes', component: DisabilityCodeListPage},
       {path: 'school-codes', component: SchoolCodeListPage},
       {path: 'study-centre-codes', component: StudyCenterCodeListPage},
+      {path: 'district-codes', component: DistrictCodeListPage},
 
     ]
   },
