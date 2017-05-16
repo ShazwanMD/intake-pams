@@ -376,4 +376,21 @@ public class CommonTransformer {
 		return vos;
 	}	
 	
+	// ====================================================================================================
+    // PARLIAMENT CODE
+    // ====================================================================================================
+
+		public ParliamentCode toParliamentCodeVo(InParliamentCode e) {
+			ParliamentCode vo = new ParliamentCode();
+			vo.setId(e.getId());
+			vo.setCode(e.getCode());
+			vo.setDescription(e.getDescription());
+			return vo;
+		}
+
+		public List<ParliamentCode> toParliamentCodeVos(List<InParliamentCode> e) {
+			List<ParliamentCode> vos = e.stream().map((e1) -> toParliamentCodeVo(e1)).collect(Collectors.toList());
+			return vos;
+		}
+
 }
