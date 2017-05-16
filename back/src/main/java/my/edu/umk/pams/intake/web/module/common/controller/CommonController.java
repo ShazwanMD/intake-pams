@@ -106,13 +106,44 @@ public class CommonController {
     @RequestMapping(value = "/districtCodes", method = RequestMethod.GET)
     public ResponseEntity<List<DistrictCode>> findDistrictCodes() {
         return new ResponseEntity<List<DistrictCode>>(commonTransformer.toDistrictCodeVos(
-                commonService.findDistrictCodes()), HttpStatus.OK);
+        		commonService.findDistrictCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/districtCodes/{code}", method = RequestMethod.GET)
     public ResponseEntity<DistrictCode> findDistrictCodeByCode(@PathVariable String code) {
         return new ResponseEntity<DistrictCode>(commonTransformer.toDistrictCodeVo(
                 commonService.findDistrictCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/districtCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveDistrictCode(@RequestBody DistrictCode vo) {
+        dummyLogin();
+
+        InDistrictCode districtCode = new InDistrictCodeImpl();
+        districtCode.setCode(vo.getCode());
+        districtCode.setDescription(vo.getDescription());
+        commonService.saveDistrictCode(districtCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/districtCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateDistrictCode(@PathVariable String code, @RequestBody DistrictCode vo) {
+        dummyLogin();
+
+        InDistrictCode districtCode = commonService.findDistrictCodeById(vo.getId());
+        districtCode.setCode(vo.getCode());
+        districtCode.setDescription(vo.getDescription());
+        commonService.updateDistrictCode(districtCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/districtCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeDistrictCode(@PathVariable String code) {
+        dummyLogin();
+
+        InDistrictCode districtCode = commonService.findDistrictCodeByCode(code);
+        commonService.removeDistrictCode(districtCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
     //====================================================================================================
