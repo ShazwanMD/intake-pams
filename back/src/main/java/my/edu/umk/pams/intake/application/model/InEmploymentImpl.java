@@ -17,6 +17,11 @@ public class InEmploymentImpl implements InEmployment {
     @GeneratedValue(generator = "SQ_IN_EMPT")
     @SequenceGenerator(name = "SQ_IN_EMPT", sequenceName = "SQ_IN_EMPT", allocationSize = 1)
     private Long id;
+    
+    @NotNull
+    @Column(name = "DESIGNATION", nullable = false)
+    private String designation;
+
 
     @NotNull
     @Column(name = "START_DATE", nullable = false)
@@ -61,6 +66,17 @@ public class InEmploymentImpl implements InEmployment {
         this.id = id;
     }
 
+    
+    @Override
+    public String getDesignation() {
+        return designation;
+    }
+
+    @Override
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+    
     @Override
     public Date getStartDate() {
         return startDate;

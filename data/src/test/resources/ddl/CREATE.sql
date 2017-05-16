@@ -405,6 +405,7 @@ create table IN_EMPT (
   ID int8 not null,
   ACTIVE boolean not null,
   EMPLOYER varchar(255) not null,
+  DESIGNATION varchar(255) not null,
   END_DATE timestamp not null,
   C_TS timestamp,
   C_ID int8,
