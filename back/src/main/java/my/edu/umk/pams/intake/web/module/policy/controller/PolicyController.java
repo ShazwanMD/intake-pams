@@ -75,8 +75,8 @@ public class PolicyController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/intake-sessions/{code}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateIntakeSession(@PathVariable String code, @RequestBody InIntakeSession vo) {
+    @RequestMapping(value = "/intake-sessions/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Boolean> updateIntakeSession(@PathVariable Long id, @RequestBody InIntakeSession vo) {
         dummyLogin();
 
         InIntakeSession session = policyService.findIntakeSessionById(vo.getId());
@@ -87,16 +87,16 @@ public class PolicyController {
         session.setCurrent(vo.isCurrent());
         session.setYear(vo.getYear());
         policyService.updateIntakeSession(session);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intake-sessions/{code}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> removeIntakeSession(@PathVariable String code) {
+    @RequestMapping(value = "/intake-sessions/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> removeIntakeSession(@PathVariable Long id) {
         dummyLogin();
 
-        InIntakeSession session = policyService.findIntakeSessionByCode(code);
+        InIntakeSession session = policyService.findIntakeSessionById(id);
         policyService.removeIntakeSession(session);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
     // ==================================================================================================== //
@@ -223,6 +223,21 @@ public class PolicyController {
             LOG.debug(e.getMessage());
         }
 
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakes/{referenceNo}/programOfferings/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Boolean> updateProgramOfferings(@PathVariable String referenceNo, @RequestBody ProgramOffering vo) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
+        InProgramOffering offering = new InProgramOfferingImpl();
+        offering.setGeneralCriteria(vo.getGeneralCriteria());
+        offering.setSpecificCriteria(vo.getSpecificCriteria());
+        offering.setProgramCode(programCode);
+        
+        policyService.updateProgramOfferings(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
