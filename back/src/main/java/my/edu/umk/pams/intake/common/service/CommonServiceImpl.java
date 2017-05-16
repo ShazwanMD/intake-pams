@@ -322,6 +322,10 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
+    public List<InDistrictCode> findDistrictCodes(String filter, Integer offset, Integer limit) {
+        return districtCodeDao.find(filter, offset, limit);
+    }
+    @Override
     public List<InDistrictCode> findDistrictCodes(String filter, InStateCode stateCode, Integer offset, Integer limit) {
         return districtCodeDao.find(filter, offset, limit);
     }
