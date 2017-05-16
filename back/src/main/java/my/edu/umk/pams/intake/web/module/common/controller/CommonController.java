@@ -717,13 +717,46 @@ public class CommonController {
     @RequestMapping(value = "/stateCodes", method = RequestMethod.GET)
     public ResponseEntity<List<StateCode>> findStateCodes() {
         return new ResponseEntity<List<StateCode>>(commonTransformer.toStateCodeVos(
-                commonService.findStateCodes()), HttpStatus.OK);
+        		commonService.findStateCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
     public ResponseEntity<StateCode> findStateCodeByCode(@PathVariable String code) {
         return new ResponseEntity<StateCode>(commonTransformer.toStateCodeVo(
                 commonService.findStateCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/stateCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveStateCode(@RequestBody StateCode vo) {
+        dummyLogin();
+
+        InStateCode stateCode = new InStateCodeImpl();
+        stateCode.setCode(vo.getCode());
+        stateCode.setDescriptionEn(vo.getDescriptionEn());
+        stateCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveStateCode(stateCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStateCode(@PathVariable String code, @RequestBody StateCode vo) {
+        dummyLogin();
+
+        InStateCode stateCode = commonService.findStateCodeById(vo.getId());
+        stateCode.setCode(vo.getCode());
+        stateCode.setDescriptionEn(vo.getDescriptionEn());
+        stateCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateStateCode(stateCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeStateCode(@PathVariable String code) {
+        dummyLogin();
+
+        InStateCode stateCode = commonService.findStateCodeByCode(code);
+        commonService.removeStateCode(stateCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
 
