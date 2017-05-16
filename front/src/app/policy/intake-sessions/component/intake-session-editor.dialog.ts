@@ -50,9 +50,9 @@ export class IntakeSessionEditorDialog implements OnInit {
     if (this.edit) this.editorForm.patchValue(this._intakeSession);
   }
 
-  submit(code: IntakeSession, isValid: boolean) {
-    if (!code.id) this.store.dispatch(this.actions.saveIntakeSession(code));
-    else  this.store.dispatch(this.actions.updateIntakeSession(code));
+  submit(id: IntakeSession, isValid: boolean) {
+    if (!id.id) this.store.dispatch(this.actions.saveIntakeSession(id));
+    else  this.store.dispatch(this.actions.updateIntakeSession(id));
     this.dialog.close();
   }
 }
