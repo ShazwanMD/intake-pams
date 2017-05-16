@@ -6,6 +6,7 @@ import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {MaritalCodeEditorDialog} from "./dialog/marital-code-editor.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'pams-marital-list-page',
@@ -25,6 +26,7 @@ export class MaritalCodeListPage implements OnInit {
 
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
+              private _snackBarService: MdSnackBar,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
     this.maritalCodes$ = this.store.select(...this.MARITAL_CODES);
@@ -64,5 +66,9 @@ export class MaritalCodeListPage implements OnInit {
       console.log("close dialog");
     });
   }
+
+  showSnackBar(): void {
+  let snackBarRef = this._snackBarService.open('Message', 'Action', { duration: 3000 });
+}
 
 }
