@@ -38,6 +38,8 @@ export class ProgramOfferingEditorDialog implements OnInit {
       id: null,
       projection: 0,
       interview: true,
+      generalCriteria:'',
+      specificCriteria:'',
       programCode: <ProgramCode>{},
     });
   }
