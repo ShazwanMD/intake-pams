@@ -82,6 +82,8 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
     void addProgramOffering(InIntake intake, InProgramOffering offering, InUser user);
 
     void deleteProgramOffering(InIntake intake, InProgramOffering offering, InUser user);
+    
+    void updateProgramOfferings(InIntake intake, InProgramOffering offering, InUser user);
 
     void addSupervisorOffering(InIntake intake, InSupervisorOffering offering, InUser user);
 
