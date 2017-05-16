@@ -90,6 +90,8 @@ public interface CommonService {
 	List<InDistrictCode> findDistrictCodes(InStateCode stateCod, Integer offset, Integer limit);
 	
 	List<InDistrictCode> findDistrictCodes();
+	
+	List<InDistrictCode> findDistrictCodes(String filter, Integer offset, Integer limit);
 
 	List<InDistrictCode> findDistrictCodes(String filter, InStateCode stateCode, Integer offset, Integer limit);
 
