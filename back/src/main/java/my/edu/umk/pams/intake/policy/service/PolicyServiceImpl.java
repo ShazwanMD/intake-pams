@@ -281,6 +281,16 @@ public class PolicyServiceImpl implements PolicyService {
         intakeDao.addProgramOffering(intake, programOffering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+    public void updateProgramOfferings(InIntake intake, InProgramOffering programOffering) {
+        Validate.notNull(intake, "Intake cannot be null");
+        Validate.notNull(programOffering, "Offering cannot be null");
+        Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        programOffering.setGeneralCriteria(generalCriteria());
+        programOffering.setSpecificCriteria(specificCriteria());
+        intakeDao.updateProgramOfferings(intake, programOffering, securityService.getCurrentUser());
+    }
 
     @Override
     public void deleteProgramOffering(InIntake intake, InProgramOffering programOffering) {
