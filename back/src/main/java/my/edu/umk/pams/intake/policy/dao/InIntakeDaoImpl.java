@@ -307,6 +307,23 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         offering.setMetadata(metadata);
         session.save(offering);
     }
+    
+    @Override
+    public void updateProgramOfferings(InIntake intake, InProgramOffering offering, InUser user) {
+        Validate.notNull(intake, "Intake cannot be null");
+        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        offering.setIntake(intake);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        offering.setMetadata(metadata);
+        session.update(offering);
+    }
 
     @Override
     public void deleteProgramOffering(InIntake intake, InProgramOffering offering, InUser user) {
