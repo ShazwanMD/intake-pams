@@ -34,6 +34,8 @@ import { ReligionCodeListState, religionCodeListReducer } from "./religion-codes
 import { ReligionCodeSelectComponent } from "./religion-codes/component/religion-code-select.component";
 import { disabilityCodeListReducer, DisabilityCodeListState } from "./disability-codes/disability-code-list.reducer";
 import { DisabilityCodeSelectComponent } from "./disability-codes/component/disability-code-select.component";
+import { SchoolCodeSelectComponent } from "./school-codes/component/school-code-select.component";
+import { schoolCodeListReducer, SchoolCodeListState } from "./school-codes/school-code-list.reducer";
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -47,7 +49,13 @@ export interface CommonModuleState {
   raceCodes: RaceCodeListState;
   stateCodes : StateCodeListState;
   countryCodes : CountryCodeListState;
+
+  disabilityCodes: DisabilityCodeListState;
+  schoolCodes: SchoolCodeListState;
+
+
   religionCodes : ReligionCodeListState;
+
 }
 ;
 
@@ -64,7 +72,13 @@ export const commonModuleReducers = {
   raceCodes: raceCodeListReducer,
   stateCodes : stateCodeListReducer,
   countryCodes : countryCodeListReducer,
+
+  disabilityCodes: disabilityCodeListReducer,
+  schoolCodes: schoolCodeListReducer,
+
+
   religionCodes : religionCodeListReducer,
+
 };
 
 @NgModule({
@@ -87,7 +101,13 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
+
+    DisabilityCodeSelectComponent,
+    SchoolCodeSelectComponent,
+
+
     ReligionCodeSelectComponent,
+
 
   ],
   exports: [
@@ -102,7 +122,13 @@ export const commonModuleReducers = {
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
+
+    DisabilityCodeSelectComponent,
+    SchoolCodeSelectComponent,
+
+
     ReligionCodeSelectComponent,
+
   ],
 })
 export class CommonModule {

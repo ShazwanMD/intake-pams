@@ -119,6 +119,25 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
+  static FIND_SCHOOL_CODES = '[Common] Find School Codes';
+
+  findSchoolCodes(): Action {
+    console.log("findSchoolCodes");
+    return {
+      type: CommonActions.FIND_SCHOOL_CODES,
+    };
+  }
+
+  static FIND_SCHOOL_CODES_SUCCESS = '[Common] Find School Codes Success';
+
+  findSchoolCodesSuccess(codes): Action {
+    console.log("findSchoolCodesSuccess");
+    return {
+      type: CommonActions.FIND_SCHOOL_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
   static FIND_FACULTY_CODES = '[Common] Find Faculty Codes';
 
   findFacultyCodes(): Action {

@@ -1,3 +1,5 @@
+import { SchoolCodeListPage } from './school-codes/school-code-list-page';
+import { SchoolCode } from './../common/school-codes/school-code.interface';
 import { DisabilityCodeListPage } from './disability-codes/disability-code-list-page';
 import { DisabilityCode } from './../common/disability-codes/disability-code.interface';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
@@ -17,6 +19,8 @@ import {SetupPage} from "./setup.page";
 import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
 import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.page";
 import {CountryCodeListPage} from './country-codes/country-code-list.page';
+import { StudyCenterCodeListPage } from './study-center-codes/study-center-code-list.page';
+import { StudyCenterCode } from './../common/study-center-codes/study-center-code.interface';
 
 
 export const SetupModuleRoutes: Routes = [
@@ -38,6 +42,9 @@ export const SetupModuleRoutes: Routes = [
       {path: 'faculty-codes', component: FacultyCodeListPage},
       {path: 'study-modes', component: StudyModeListPage},
       {path: 'disability-codes', component: DisabilityCodeListPage},
+      {path: 'school-codes', component: SchoolCodeListPage},
+      {path: 'study-centre-codes', component: StudyCenterCodeListPage},
+
     ]
   },
 

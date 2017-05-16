@@ -27,6 +27,10 @@
         <md-icon>label</md-icon>
         Faculty Code
       </a>
+      <a md-list-item [routerLink]="['/setup/study-centre-codes']">
+        <md-icon>label</md-icon>
+        Study Center Code
+      </a>
       <a md-list-item [routerLink]="['/setup/study-modes']">
         <md-icon>label</md-icon>
         Study Mode
@@ -87,7 +91,12 @@
         <md-icon>label</md-icon>
         Disability Code
       </a>
+      <a md-list-item [routerLink]="['/setup/school-codes']">
+        <md-icon>label</md-icon>
+        School Code
+      </a>
     </md-nav-list>
+
 
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>{{title$ | async}}</span>

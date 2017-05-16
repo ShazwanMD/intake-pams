@@ -287,4 +287,68 @@ export class SetupEffects {
     .map(message => this.setupActions.removeDisabilityCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findDisabilityCodes()]));
 
+  // ====================================================================================================
+  // SCHOOL CODE
+  // ====================================================================================================
+
+  @Effect() findSchoolCode$ = this.actions$
+    .ofType(SetupActions.FIND_SCHOOL_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findSchoolCodes())
+    .map(codes => this.setupActions.findSchoolCodesSuccess(codes));
+
+  @Effect() saveSchoolCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_SCHOOL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveSchoolCode(payload))
+    .map(message => this.setupActions.saveSchoolCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSchoolCodes()]));
+
+  @Effect() updateSchoolCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_SCHOOL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateSchoolCode(payload))
+    .map(message => this.setupActions.updateSchoolCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSchoolCodes()]));
+
+  @Effect() removeSchoolCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_SCHOOL_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeSchoolCode(payload))
+    .map(message => this.setupActions.removeSchoolCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSchoolCodes()]));
+
+
+  //=====================================================================================================
+  // STUDY CENTER CODE
+  // ====================================================================================================
+
+  @Effect() findStudyCenterCodes$ = this.actions$
+    .ofType(SetupActions.FIND_STUDY_CENTER_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findStudyCenterCodes())
+    .map(codes => this.setupActions.findStudyCenterCodesSuccess(codes));
+
+  @Effect() saveStudyCenterCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_STUDY_CENTER_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveStudyCenterCode(payload))
+    .map(message => this.setupActions.saveStudyCenterCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStudyCenterCodes()]));
+
+  @Effect() updateStudyCenterCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_STUDY_CENTER_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateStudyCenterCode(payload))
+    .map(message => this.setupActions.updateStudyCenterCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStudyCenterCodes()]));
+
+  @Effect() removeStudyCenterCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_STUDY_CENTER_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeStudyCenterCode(payload))
+    .map(message => this.setupActions.removeStudyCenterCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStudyCenterCodes()]));    
+
+    
 }
