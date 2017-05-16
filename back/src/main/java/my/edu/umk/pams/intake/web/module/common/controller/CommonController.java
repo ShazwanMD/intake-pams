@@ -588,13 +588,46 @@ public class CommonController {
     @RequestMapping(value = "/religionCodes", method = RequestMethod.GET)
     public ResponseEntity<List<ReligionCode>> findReligionCodes() {
         return new ResponseEntity<List<ReligionCode>>(commonTransformer.toReligionCodeVos(
-                commonService.findReligionCodes()), HttpStatus.OK);
+        		commonService.findReligionCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.GET)
     public ResponseEntity<ReligionCode> findReligionCodeByCode(@PathVariable String code) {
         return new ResponseEntity<ReligionCode>(commonTransformer.toReligionCodeVo(
                 commonService.findReligionCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/religionCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveReligionCode(@RequestBody ReligionCode vo) {
+        dummyLogin();
+
+        InReligionCode religionCode = new InReligionCodeImpl();
+        religionCode.setCode(vo.getCode());
+        religionCode.setDescriptionEn(vo.getDescriptionEn());
+        religionCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveReligionCode(religionCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateReligionCode(@PathVariable String code, @RequestBody ReligionCode vo) {
+        dummyLogin();
+
+        InReligionCode religionCode = commonService.findReligionCodeById(vo.getId());
+        religionCode.setCode(vo.getCode());
+        religionCode.setDescriptionEn(vo.getDescriptionEn());
+        religionCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateReligionCode(religionCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeReligionCode(@PathVariable String code) {
+        dummyLogin();
+
+        InReligionCode religionCode = commonService.findReligionCodeByCode(code);
+        commonService.removeReligionCode(religionCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     //====================================================================================================
