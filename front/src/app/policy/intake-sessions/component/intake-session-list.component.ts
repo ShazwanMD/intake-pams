@@ -48,18 +48,18 @@ export class IntakeSessionListComponent {
     this.showDialog(null);
   }
 
-  editDialog(code:IntakeSession): void {
-    this.showDialog(code);
+  editDialog(id:IntakeSession): void {
+    this.showDialog(id);
   }
 
-  delete(code: IntakeSession): void {
-    this.store.dispatch(this.actions.removeIntakeSession(code))
+  delete(id: IntakeSession): void {
+    this.store.dispatch(this.actions.removeIntakeSession(id))
   }
 
   filter(): void {
   }
 
-  private showDialog(code:IntakeSession): void {
+  private showDialog(id:IntakeSession): void {
     console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -68,7 +68,7 @@ export class IntakeSessionListComponent {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(IntakeSessionEditorDialog, config);
-    if(code) this.creatorDialogRef.componentInstance.intakeSession = code; // set
+    if(id) this.creatorDialogRef.componentInstance.intakeSession = id; // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
