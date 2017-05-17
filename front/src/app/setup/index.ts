@@ -1,5 +1,7 @@
 import { DistrictCodeEditorDialog } from './district-codes/dialog/district-code-editor.dialog';
 import { DistrictCodeListPage } from './district-codes/district-code-list-page';
+import { DunCodeEditorDialog } from './dun-codes/dialog/dun-code-editor.dialog';
+import { DunCodeListPage } from './dun-codes/dun-code-list-page';
 import { StudyCenterCodeEditorDialog } from './study-center-codes/dialogs/study-center-code-editor.dialog';
 import { StudyCenterCode } from './../common/study-center-codes/study-center-code.interface';
 import { StudyCenterCodeListPage } from './study-center-codes/study-center-code-list.page';
@@ -88,7 +90,8 @@ import { SchoolCode } from './../common/school-codes/school-code.interface';
 import {studyCenterCodeListReducer, StudyCenterCodeListState} from "./study-center-codes/study-center-code-list.reducer";
 import {districtCodeListReducer, DistrictCodeListState} from "./district-codes/district-code-list.reducer";
 import { DistrictCode } from './../common/district-codes/district-code.interface';
-
+import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.reducer";
+import { DunCode } from './../common/dun-codes/dun-code.interface';
 
 
 export interface SetupModuleState {
@@ -111,6 +114,8 @@ export interface SetupModuleState {
   schoolCodes: SchoolCodeListState;
   studyCenterCodes: StudyCenterCodeListState;
   districtCodes: DistrictCodeListState;
+  dunCodes: DunCodeListState;
+
 };
 
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -134,6 +139,8 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     schoolCodes: <SchoolCode[]>[],
     studyCenterCodes: <StudyCenterCode[]>[],
     districtCodes: <DistrictCode[]>[],
+    dunCodes: <DunCode[]>[],
+
   };
 
 
@@ -157,6 +164,8 @@ export const setupModuleReducers = {
   schoolCodes: schoolCodeListReducer,
   studyCenterCodes: studyCenterCodeListReducer,
   districtCodes: districtCodeListReducer,
+  dunCodes: dunCodeListReducer,
+
 }
 
 @NgModule({
@@ -192,6 +201,7 @@ export const setupModuleReducers = {
     SchoolCodeListPage,
     StudyCenterCodeListPage,
     DistrictCodeListPage,
+    DunCodeListPage,
   
     // dialog
     MaritalCodeEditorDialog,
@@ -212,6 +222,7 @@ export const setupModuleReducers = {
     SchoolCodeEditorDialog,
     StudyCenterCodeEditorDialog,
     DistrictCodeEditorDialog,
+    DunCodeEditorDialog,
   ],
   exports: [],
   entryComponents: [
@@ -232,7 +243,7 @@ export const setupModuleReducers = {
     SchoolCodeEditorDialog,
     StudyCenterCodeEditorDialog,
     DistrictCodeEditorDialog,
-
+    DunCodeEditorDialog,
   ],
 
 })
