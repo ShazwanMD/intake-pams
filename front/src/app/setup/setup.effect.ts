@@ -402,5 +402,35 @@ export class SetupEffects {
     .map(message => this.setupActions.removeDistrictCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findDistrictCodes()]));
 
+  // ====================================================================================================
+  // DUN CODE
+  // ====================================================================================================
+
+  @Effect() findDunCode$ = this.actions$
+    .ofType(SetupActions.FIND_DUN_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findDunCodes())
+    .map(codes => this.setupActions.findDunCodesSuccess(codes));
+
+  @Effect() saveDunCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_DUN_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveDunCode(payload))
+    .map(message => this.setupActions.saveDunCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDunCodes()]));
+
+  @Effect() updateDunCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_DUN_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateDunCode(payload))
+    .map(message => this.setupActions.updateDunCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDunCodes()]));
+
+  @Effect() removeDunCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_DUN_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeDunCode(payload))
+    .map(message => this.setupActions.removeDunCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDunCodes()]));
     
 }
