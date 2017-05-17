@@ -5,8 +5,6 @@ import {Observable} from "rxjs";
 import {ApplicationModuleState} from "../index";
 import {Intake} from "../../policy/intakes/intake.interface";
 import {IntakeApplicationActions} from "./intake-application.action";
-import { GraduateCentre } from "../../common/graduate-centres/graduate-centre.interface";
-
 
 @Component({
   selector: 'pams-intake-detail',
@@ -16,16 +14,13 @@ import { GraduateCentre } from "../../common/graduate-centres/graduate-centre.in
 export class IntakeDetailPage implements OnInit {
 
   private INTAKE = "applicationModuleState.intake".split(".");
-  private GRADUATE_CENTRE = "commonModuleState.graduateCentres".split(".");
   private intake$: Observable<Intake>;
-  private graduateCentre$: Observable<GraduateCentre>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: IntakeApplicationActions,
               private store: Store<ApplicationModuleState>) {
     this.intake$ = this.store.select(...this.INTAKE);
-    this.graduateCentre$ = this.store.select(...this.GRADUATE_CENTRE);
   }
 
   ngOnInit(): void {
@@ -37,7 +32,6 @@ export class IntakeDetailPage implements OnInit {
   }
 
   apply(intake: Intake) {
-      //  this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntake(intake)));
-        this.router.navigate(['application/intake-applications/mgseb/intake-application-personal',intake.referenceNo]);
+       this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntake(intake)));
   }
 }

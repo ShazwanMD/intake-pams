@@ -396,7 +396,7 @@ export class SetupEffects {
     .mergeMap(action => from([action, this.setupActions.findDistrictCodes()]));
 
   @Effect() removeDistrictCode$ = this.actions$
-    .ofType(SetupActions.REMOVE_COUNTRY_CODE)
+    .ofType(SetupActions.REMOVE_DISTRICT_CODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.removeDistrictCode(payload))
     .map(message => this.setupActions.removeDistrictCodeSuccess(message))

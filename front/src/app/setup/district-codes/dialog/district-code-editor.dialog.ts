@@ -38,9 +38,8 @@ export class DistrictCodeEditorDialog implements OnInit {
     this.editorForm = this.formBuilder.group(<DistrictCode>{
       id: null,
       code: '',
-      descriptionMs: '',
-      descriptionEn: '',
-    });
+      description: '',
+     });
 
     if (this.edit) this.editorForm.patchValue(this._districtCode);
   }
