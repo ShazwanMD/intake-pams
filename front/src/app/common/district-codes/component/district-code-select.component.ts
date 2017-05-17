@@ -1,10 +1,13 @@
+import { SetupActions } from './../../../setup/setup.action';
+import { SetupModuleState } from './../../../setup/index';
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import { CommonModuleState } from "../../index";
+
 import { DistrictCode } from "../district-code.interface";
+
+
 
 @Component({
   selector: 'pams-district-code-select',
@@ -12,13 +15,13 @@ import { DistrictCode } from "../district-code.interface";
 })
 export class DistrictCodeSelectComponent implements OnInit {
 
-  private DISTRICT_CODE = "commonModuleState.districtCodes".split(".");
+  private DISTRICT_CODE = "setupModuleState.districtCodes".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   districtCodes$: Observable<DistrictCode[]>;
 
-  constructor(private store: Store<CommonModuleState>,
-              private actions: CommonActions) {
+  constructor(private store: Store<SetupModuleState>,
+              private actions: SetupActions) {
     this.districtCodes$ = this.store.select(...this.DISTRICT_CODE);
   }
 
