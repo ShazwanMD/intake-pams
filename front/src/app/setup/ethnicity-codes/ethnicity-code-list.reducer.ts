@@ -2,8 +2,6 @@ import { EthnicityCode } from './../../common/ethnicity-codes/ethnicity-code.int
 import {Action} from '@ngrx/store';
 import {SetupActions} from "../setup.action";
 
-
-
 export type EthnicityCodeListState = EthnicityCode[];
 
 const initialState: EthnicityCodeListState = <EthnicityCode[]>[];
