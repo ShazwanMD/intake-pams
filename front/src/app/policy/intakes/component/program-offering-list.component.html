@@ -16,19 +16,19 @@
         <p md-line> {{programOffering.programCode?.code}} </p>
         <!--<span flex></span>-->
         <!--<span flex="40"> xxx </span>-->
-      </a>
-    </template>
-
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
+      
         <button md-icon-button [md-menu-trigger-for]="menu">
           <md-icon>more_vert</md-icon>
         </button>
         <md-menu x-position="before" #menu="mdMenu">
           <button md-menu-item (click)="editDialog(row)">Edit</button>
           <button md-menu-item (click)="delete(row)">Delete</button>
-        </md-menu>
-      </div>
-  </template>
+        </md-menu>            
+      </a>
+    </template>
+
+    <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">-->
+    
+  <!--</template>-->
   </md-nav-list>
 </div>
