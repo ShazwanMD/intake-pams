@@ -1111,10 +1111,18 @@ create table IN_SMDL (
 
 create table IN_SPM_RSLT (
   AGGREGATE int4 not null,
-  REGISTRATION_NO varchar(255) not null,
   YEAR int4 not null,
   ID int8 not null,
-  primary key (ID)
+  MALAY varchar(255) not null,
+  ENGLISH varchar(255) not null,
+  MATH varchar(255) not null,
+  ADDMATH varchar(255) not null,
+  BIOLOGY varchar(255) not null,
+  PHYSIC varchar(255) not null,
+  CHEMIST varchar(255) not null,
+  HISTORY varchar(255) not null,
+  ISLAMICEDUC varchar(255) not null,
+ primary key (ID)
 );
 
 create table IN_SPVR_CODE (
