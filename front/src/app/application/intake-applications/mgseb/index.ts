@@ -31,6 +31,7 @@ import { EmploymentTaskListComponent } from "./component/employment-task-list.co
   ],
   exports: [],
   entryComponents: [
+    EmploymentTaskListComponent,
 
 
   ],
