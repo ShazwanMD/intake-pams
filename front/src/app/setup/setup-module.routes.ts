@@ -22,6 +22,7 @@ import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.pa
 import {CountryCodeListPage} from './country-codes/country-code-list.page';
 import { StudyCenterCodeListPage } from './study-center-codes/study-center-code-list.page';
 import { StudyCenterCode } from './../common/study-center-codes/study-center-code.interface';
+import { DunCodeListPage } from './dun-codes/dun-code-list-page';
 
 
 export const SetupModuleRoutes: Routes = [
@@ -46,6 +47,8 @@ export const SetupModuleRoutes: Routes = [
       {path: 'school-codes', component: SchoolCodeListPage},
       {path: 'study-centre-codes', component: StudyCenterCodeListPage},
       {path: 'district-codes', component: DistrictCodeListPage},
+      {path: 'dun-codes', component: DunCodeListPage},
+
 
     ]
   },
