@@ -328,4 +328,23 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
+  static FIND_ETHNICITY_CODES = '[Common] Find Ethnicity Codes';
+
+  findEthnicityCodes(): Action {
+    console.log("findEthnicityCodes");
+    return {
+      type: CommonActions.FIND_COUNTRY_CODES,
+    };
+  }
+
+  static FIND_ETHNICITY_CODES_SUCCESS = '[Common] Find Ethnicity Codes Success';
+
+  findEthnicityCodesSuccess(codes): Action {
+    console.log("findEthnicityCodesSuccess");
+    return {
+      type: CommonActions.FIND_ETHNICITY_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
 }
