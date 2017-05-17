@@ -1118,5 +1118,88 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
     };
   }
 
+//=================================================================================//
+//  DUN_CODES                                                                      //
+//=================================================================================//
+//1-------------------------------------------------------------
+  static FIND_DUN_CODES = '[Setup] Find Dun Codes';
+
+  findDunCodes(): Action {
+    console.log("findDunCodes");
+    return {
+      type: SetupActions.FIND_DUN_CODES,
+    };
+  }
+//2-------------------------------------------------------------------------------------
+  static FIND_DUN_CODES_SUCCESS = '[Setup] Find Dun Codes Success';
+
+  findDunCodesSuccess(codes): Action {
+    console.log("findDunCodesSuccess");
+    return {
+      type: SetupActions.FIND_DUN_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+//3----------------------------------------------------------------
+  static SAVE_DUN_CODE = '[Setup] Save Dun Code';
+
+  saveDunCode(code): Action {
+    console.log("saveDunCode");
+    return {
+      type: SetupActions.SAVE_DUN_CODE,
+      payload: code
+    };
+  }
+//4------------------------------------------------------------------------------
+  static SAVE_DUN_CODE_SUCCESS = '[Setup] Save Dun Code Success';
+
+  saveDunCodeSuccess(message): Action {
+    console.log("saveDunCodeSuccess");
+    return {
+      type: SetupActions.SAVE_DUN_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_DUN_CODE = '[Setup] Update Dun Code';
+
+  updateDunCode(code): Action {
+    console.log("updateDunCode");
+    return {
+      type: SetupActions.UPDATE_DUN_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_DUN_CODE_SUCCESS = '[Setup] Update Dun Code  Success';
+
+  updateDunCodeSuccess(message): Action {
+    console.log("updateDunCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_DUN_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_DUN_CODE = '[Setup] Remove Dun Code';
+
+  removeDunCode(code): Action {
+    console.log("removeDunCode");
+    return {
+      type: SetupActions.REMOVE_DUN_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_DUN_CODE_SUCCESS = '[Setup] Remove Dun Code  Success';
+
+  removeDunCodeSuccess(message): Action {
+    console.log("removeDunCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_DUN_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
 //-------------------------------------------------------------------------------------
 }
