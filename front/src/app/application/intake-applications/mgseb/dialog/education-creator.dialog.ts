@@ -7,14 +7,13 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import { IntakeApplicationPersonal } from "../intake-application-personal.interface";
 import { IntakeApplicationActions } from "../../intake-application.action";
-
-
+import { IntakeApplicationEducation } from "../intake-application-education.interface";
 @Component({
-  selector: 'pams-employment-creator',
-  templateUrl: './employment-creator.dialog.html',
+  selector: 'pams-education-creator',
+  templateUrl: './education-creator.dialog.html',
 })
 
-export class EmploymentCreatorDialog implements OnInit {
+export class EducationCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
 
@@ -24,26 +23,27 @@ export class EmploymentCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions : IntakeApplicationActions,
-              private dialog: MdDialogRef<EmploymentCreatorDialog>) {
+              private dialog: MdDialogRef<EducationCreatorDialog>) {
   }
 
-  save(employement: IntakeApplicationPersonal, isValid: boolean) {
-    console.log("employement end date: " + employement.endDate);
-    console.log("employement start date: " + employement.startDate);
-     console.log("employement employer: " + employement.employer);
-      console.log("employement designation: " + employement.designation);
+  save(education: IntakeApplicationEducation, isValid: boolean) {
+    console.log("education school name : " + education.schoolName);
+    console.log("education course name : " + education.courseName);
+    console.log("education Entry Year : " + education.entryDate);
+    console.log("education Graduation Year : " + education.graduationDate);
     //this.store.dispatch(this.actions.startIntakeTask(intake));
     this.dialog.close();
   }
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<IntakeApplicationPersonal>{
+    this.createForm = this.formBuilder.group(<IntakeApplicationEducation>{
      id: null,
-     startDate: null,
-     endDate: null,
-     employer:'',
-     designation:'',
+     grade:'',
+     schoolName: '',
+     courseName: '',
+     entryDate: null,
+     graduationDate: null,
      current:false
    });
   }

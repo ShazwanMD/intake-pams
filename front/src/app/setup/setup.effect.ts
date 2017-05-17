@@ -371,5 +371,36 @@ export class SetupEffects {
     .map(message => this.setupActions.removeStudyCenterCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findStudyCenterCodes()]));    
 
+  // ====================================================================================================
+  // DISTRICT CODE
+  // ====================================================================================================
+
+  @Effect() findDistrictCode$ = this.actions$
+    .ofType(SetupActions.FIND_DISTRICT_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findDistrictCodes())
+    .map(codes => this.setupActions.findDistrictCodesSuccess(codes));
+
+  @Effect() saveDistrictCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_DISTRICT_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveDistrictCode(payload))
+    .map(message => this.setupActions.saveDistrictCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDistrictCodes()]));
+
+  @Effect() updateDistrictCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_DISTRICT_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateDistrictCode(payload))
+    .map(message => this.setupActions.updateDistrictCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDistrictCodes()]));
+
+  @Effect() removeDistrictCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_COUNTRY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeDistrictCode(payload))
+    .map(message => this.setupActions.removeDistrictCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findDistrictCodes()]));
+
     
 }

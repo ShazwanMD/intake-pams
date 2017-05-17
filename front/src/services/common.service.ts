@@ -22,6 +22,7 @@ import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
 import {DisabilityCode} from "../app/common/disability-codes/disability-code.interface";
 import {SchoolCode} from "../app/common/school-codes/school-code.interface";
+import {DistrictCode} from "../app/common/district-codes/district-code.interface";
 
 
 @Injectable()
@@ -48,6 +49,51 @@ export class CommonService {
       .map((res: Response) => <BankCode>res.json());
   }
 
+  // ====================================================================================================
+  // DISTRICT CODES
+  // ====================================================================================================
+
+  findDistrictCodes(): Observable<DistrictCode[]> {
+    console.log("findDistrictCodes");
+    return this.http.get(environment.endpoint + '/api/common/districtCodes')
+      .map((res: Response) => <DistrictCode[]>res.json());
+  }
+
+  findDistrictCodeByCode(code: string): Observable<DistrictCode> {
+    console.log("findDistrictCodeByCode");
+    return this.http.get(environment.endpoint + '/api/common/districtCodes/' + code)
+      .map((res: Response) => <DistrictCode>res.json());
+  }
+
+  saveDistrictCode(code: DistrictCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/districtCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateDistrictCode(code: DistrictCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/districtCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeDistrictCode(code: DistrictCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/districtCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   // ====================================================================================================
   // DUN CODES

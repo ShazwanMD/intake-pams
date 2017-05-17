@@ -1035,4 +1035,88 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
     };
   }
 
+//=================================================================================//
+//  DISTRICT_CODES                                                               //
+//=================================================================================//
+//1-------------------------------------------------------------
+  static FIND_DISTRICT_CODES = '[Setup] Find District Codes';
+
+  findDistrictCodes(): Action {
+    console.log("findDistrictCodes");
+    return {
+      type: SetupActions.FIND_DISTRICT_CODES,
+    };
+  }
+//2-------------------------------------------------------------------------------------
+  static FIND_DISTRICT_CODES_SUCCESS = '[Setup] Find District Codes Success';
+
+  findDistrictCodesSuccess(codes): Action {
+    console.log("findDistrictCodesSuccess");
+    return {
+      type: SetupActions.FIND_DISTRICT_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+//3----------------------------------------------------------------
+  static SAVE_DISTRICT_CODE = '[Setup] Save District Code';
+
+  saveDistrictCode(code): Action {
+    console.log("saveDistrictCode");
+    return {
+      type: SetupActions.SAVE_DISTRICT_CODE,
+      payload: code
+    };
+  }
+//4------------------------------------------------------------------------------
+  static SAVE_DISTRICT_CODE_SUCCESS = '[Setup] Save District Code Success';
+
+  saveDistrictCodeSuccess(message): Action {
+    console.log("saveDistrictCodeSuccess");
+    return {
+      type: SetupActions.SAVE_DISTRICT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_DISTRICT_CODE = '[Setup] Update District Code';
+
+  updateDistrictCode(code): Action {
+    console.log("updateDistrictCode");
+    return {
+      type: SetupActions.UPDATE_DISTRICT_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_DISTRICT_CODE_SUCCESS = '[Setup] Update District Code  Success';
+
+  updateDistrictCodeSuccess(message): Action {
+    console.log("updateDistrictCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_DISTRICT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_DISTRICT_CODE = '[Setup] Remove District Code';
+
+  removeDistrictCode(code): Action {
+    console.log("removeDistrictCode");
+    return {
+      type: SetupActions.REMOVE_DISTRICT_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_DISTRICT_CODE_SUCCESS = '[Setup] Remove District Code  Success';
+
+  removeDistrictCodeSuccess(message): Action {
+    console.log("removeDistrictCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_DISTRICT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+//-------------------------------------------------------------------------------------
 }

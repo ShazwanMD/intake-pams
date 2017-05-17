@@ -1,0 +1,36 @@
+import { SetupActions } from './../../../setup/setup.action';
+import { SetupModuleState } from './../../../setup/index';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {Store} from "@ngrx/store";
+import {FormControl} from "@angular/forms";
+
+import { DistrictCode } from "../district-code.interface";
+
+
+
+@Component({
+  selector: 'pams-district-code-select',
+  templateUrl: './district-code-select.component.html',
+})
+export class DistrictCodeSelectComponent implements OnInit {
+
+  private DISTRICT_CODE = "setupModuleState.districtCodes".split(".");
+  @Input() placeholder: string;
+  @Input() innerFormControl: FormControl;
+  districtCodes$: Observable<DistrictCode[]>;
+
+  constructor(private store: Store<SetupModuleState>,
+              private actions: SetupActions) {
+    this.districtCodes$ = this.store.select(...this.DISTRICT_CODE);
+  }
+
+  ngOnInit() {
+    this.store.dispatch(this.actions.findDistrictCodes());
+  }
+
+  selectChangeEvent(event: DistrictCode) {
+    this.innerFormControl.setValue(event, {emitEvent: false});
+  }
+}
+

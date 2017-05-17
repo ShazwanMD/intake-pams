@@ -6,4 +6,5 @@ import {IntakeApplicationRoutes} from "./intake-applications/intake-application.
 export const ApplicationModuleRoutes: Routes = [
   {path: 'application', component: ApplicationPage},
   ...IntakeApplicationRoutes,
+
 ];
