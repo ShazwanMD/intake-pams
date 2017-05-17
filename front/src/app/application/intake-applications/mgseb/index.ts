@@ -10,6 +10,10 @@ import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
 import {CommonModule} from "../../../common/index";
 import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
+import { IntakeApplicationActions } from "../intake-application.action";
+import { CommonActions } from "../../../common/common.action";
+import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
+import { EmploymentTaskListComponent } from "./component/employment-task-list.component";
 
 @NgModule({
   imports: [
@@ -23,9 +27,13 @@ import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
   declarations: [
     IntakeApplicationPersonalPage,
     IntakeApplicationEducationPage,
+    
   ],
   exports: [],
-  entryComponents: [],
+  entryComponents: [
+
+
+  ],
 })
 export class MgsebIntakeApplicationSubModule {
   static forRoot(): ModuleWithProviders {
@@ -35,6 +43,9 @@ export class MgsebIntakeApplicationSubModule {
         appRoutingProviders,
         IdentityService,
         CommonService,
+        IntakeApplicationActions,
+         CommonActions,
+         
       ],
     };
   }

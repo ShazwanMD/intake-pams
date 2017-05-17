@@ -8,6 +8,7 @@ import {ApplicationModuleState} from "../../index";
 import {IntakeApplicationPersonal} from "./intake-application-personal.interface";
 import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
+import { EducationCreatorDialog } from "./dialog/education-creator.dialog";
 
 
 @Component({
@@ -42,6 +43,7 @@ export class IntakeApplicationPersonalPage implements OnInit {
       // load something here
     });
   }
+
   ngOnInit(): void {
     
   }

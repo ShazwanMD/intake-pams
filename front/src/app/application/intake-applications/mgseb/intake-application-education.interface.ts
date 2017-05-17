@@ -1,11 +1,12 @@
 import {ProgramLevel} from "../../../policy/program-levels/program-level.interface";
-export interface IntakeApplicationPersonal{
+export interface IntakeApplicationEducation{
 
   id: number;
-  startDate: Date;
-  endDate: Date;
-  employer:String;
-  designation:String;
+  entryDate: Date;
+  graduationDate: Date;
+  courseName : String;
+  schoolName : String;
+
 
     // transient
   current?:boolean;
