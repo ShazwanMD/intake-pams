@@ -100,7 +100,7 @@ export class CommonService {
   // ====================================================================================================
 
   findDunCodes(): Observable<DunCode[]> {
-    console.log("findDunCodes()");
+    console.log("findDunCodes");
     return this.http.get(environment.endpoint + '/api/common/dunCodes')
       .map((res: Response) => <DunCode[]>res.json());
   }
@@ -111,6 +111,35 @@ export class CommonService {
       .map((res: Response) => <DunCode>res.json());
   }
 
+  saveDunCode(code: DunCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/dunCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateDunCode(code: DunCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/dunCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeDunCode(code: DunCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/dunCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   // ====================================================================================================
   // PARLIAMENT CODES
