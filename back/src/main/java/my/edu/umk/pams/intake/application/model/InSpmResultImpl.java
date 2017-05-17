@@ -170,23 +170,5 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
 	public void setHistory(String history) {
 		this.history = history;
 	}
-		
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-	    
-  
-
-  
+		  
 }
