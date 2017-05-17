@@ -520,10 +520,10 @@ export class CommonService {
 // ETHNICITY CODES
 // ====================================================================================================
 
-  findEthnicityCodes(): Observable<EthnicityCode[]> {
-    console.log("findEthinicityCodes()");
+findEthnicityCodes(): Observable<EthnicityCode[]> {
+    console.log("findEthnicityCodes");
     return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
-      .map((res: Response) => <RaceCode[]>res.json());
+      .map((res: Response) => <EthnicityCode[]>res.json());
   }
 
   findEthnicityCodeByCode(code: string): Observable<EthnicityCode> {
@@ -532,6 +532,35 @@ export class CommonService {
       .map((res: Response) => <EthnicityCode>res.json());
   }
 
+  saveEthnicityCode(code: EthnicityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/ethnicityCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateEthnicityCode(code: EthnicityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/ethnicityCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeEthnicityCode(code: EthnicityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/ethnicityCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 // ====================================================================================================
 // NATIONALITY CODES
 // ====================================================================================================
