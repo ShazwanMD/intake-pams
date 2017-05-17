@@ -11,4 +11,5 @@ public interface InDistrictCode extends InMetaObject {
     String getDescription();
 
     void setDescription(String description);
+    
 }
