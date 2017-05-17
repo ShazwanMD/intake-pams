@@ -2,34 +2,45 @@
 <md-dialog-content>
 <form [formGroup]="createForm">
     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-     <div layout="column" class="pad-right" flex>
-     <div layout="row" class="pad-bottom" flex>
-     <md-input-container flex>
-     <input mdInput placeholder="Employer Name" flex/>
-     </md-input-container>
-     </div>
+      <div layout="column" class="pad-right" flex>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput 
+                   placeholder="Employer Name"
+                  formControlName="employerName"
+                   flex/>
+          </md-input-container>
+        </div>
 
-     <div layout="row" class="pad-bottom" flex>
-     <md-input-container flex>
-     <input mdInput placeholder="Designation" flex/>
-     </md-input-container>
-     </div>
- 
-    <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-     <input mdInput type="date" placeholder="End Date"flex/>
-    </md-input-container>
-    </div>
-
-   <div layout="row" class="pad-bottom" flex>
-   <md-input-container flex>
-   <input mdInput type="date" placeholder="End Date"flex/>
-   </md-input-container>
-   </div>
-
-   </div>
-    
-    </div>
+         <div layout="row">
+          <md-input-container flex>
+            <input mdInput
+                   placeholder="Designation"
+                  formControlName="designation"
+                   flex/>
+          </md-input-container>
+        </div>
+        
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput
+                   type="date"
+                   placeholder="Start Date"
+                  formControlName="startDate"
+                   flex/>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput
+                   type="date"
+                   placeholder="End Date"
+                   formControlName="endDate"
+                   flex/>
+          </md-input-container>
+        </div>
+      </div>
+      </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">

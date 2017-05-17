@@ -4,6 +4,7 @@ export interface Employment extends MetaObject {
   startDate: Date;
   endDate: Date,
   employer: string,
+  designation: string,
   // levelCode:EmploymentLevelCode;
   // sectorCode:EmploymentSectorCode;
 // } fieldCode:EmploymentFieldCode;

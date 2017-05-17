@@ -1,0 +1,48 @@
+<h2 md-dialog-title>Intake Task Creator</h2>
+<md-dialog-content>
+  <form [formGroup]="createForm">
+    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+<!-- first column -->
+
+ <div layout="column" class="pad-right" flex>
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Name of School / College / University" formControlName="schoolName" flex/>
+ </md-input-container>
+ </div>
+ 
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput type="date" placeholder="Year Of Entry" formControlName="entryYear"   flex/>
+ </md-input-container>
+ </div>
+
+ <div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput type="date" placeholder="Year Of Graduation" formControlName="graduationYear" flex/>
+ </md-input-container>
+ </div>
+ </div>
+
+<!-- second column -->
+
+<div layout="column" class="pad-right" flex>
+<div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Name Of Course"  formControlName="courseName" flex/>
+ </md-input-container>
+ </div>
+
+<div layout="row" class="pad-bottom" flex>
+ <md-input-container flex>
+ <input mdInput placeholder="Honours Classification / CGPA / Equavalent" formControlName="grade" flex/>
+ </md-input-container>
+ </div>
+</div>
+</div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+</md-dialog-actions>
+

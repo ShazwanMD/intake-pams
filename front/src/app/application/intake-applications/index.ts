@@ -15,6 +15,8 @@ import {IntakeApplicationEffects} from "./intake-application.effect";
 import {IntakeApplicationActions} from "./intake-application.action";
 import {IntakeDetailPage} from "./intake-detail.page";
 import { EmploymentCreatorDialog } from "./mgseb/dialog/employment-creator.dialog";
+import { EmploymentTaskListComponent } from "./mgseb/component/employment-task-list.component";
+import { EducationCreatorDialog } from "./mgseb/dialog/education-creator.dialog";
 
 
 @NgModule({
@@ -31,14 +33,16 @@ import { EmploymentCreatorDialog } from "./mgseb/dialog/employment-creator.dialo
     IntakeDetailPage,
 
     //components
-
+    EmploymentTaskListComponent,
 
     //dialogs
     EmploymentCreatorDialog,
+    EducationCreatorDialog,
   ],
   exports: [],
   entryComponents: [
     EmploymentCreatorDialog,
+    EducationCreatorDialog,
   ],
 })
 export class IntakeApplicationSubModule {

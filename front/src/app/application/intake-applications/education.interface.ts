@@ -4,6 +4,7 @@ export interface Education extends MetaObject {
   startDate: Date;
   endDate: Date,
   provider: string,
+  
   // levelCode:EmploymentLevelCode;
   // sectorCode:EmploymentSectorCode;
 }
