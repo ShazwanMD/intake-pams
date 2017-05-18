@@ -62,13 +62,13 @@ export class IntakeSessionActions {
     };
   }
 
-  static UPDATE_INTAKE_SESSION = '[IntakeSession] Update Intake Session';
+   static UPDATE_INTAKE_SESSION = '[IntakeSession] Update Intake Session';
 
-  updateIntakeSession(id): Action {
+  updateIntakeSession(code): Action {
     console.log("updateIntakeSession");
     return {
       type: IntakeSessionActions.UPDATE_INTAKE_SESSION,
-      payload: id
+      payload: code
     };
   }
 
