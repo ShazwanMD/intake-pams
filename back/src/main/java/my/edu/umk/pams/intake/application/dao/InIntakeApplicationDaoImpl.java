@@ -106,6 +106,12 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public InSpmResult findSpmResultById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InSpmResult) currentSession.get(InSpmResultImpl.class, id);
+    }
+    
+    @Override
     public InFranchise findFranchiseById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (InFranchise) currentSession.get(InFranchiseImpl.class, id);
@@ -374,6 +380,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
                 "p.application = :application");
         query.setEntity("application", application);
         return (List<InAddress>) query.list();
+    }
+    
+    @Override
+    public List<InSpmResult> findSpmResults(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InSpmResult where " +
+                "p.application = :application");
+        query.setEntity("application", application);
+        return (List<InSpmResult>) query.list();
     }
 
     // ====================================================================================================
@@ -713,6 +728,33 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         session.delete(address);
     }
 
+    @Override
+    public void addSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(spmResult, "Spm Result cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        spmResult.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        spmResult.setMetadata(metadata);
+        session.save(spmResult);
+    }
+
+    @Override
+    public void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(spmResult, "Address cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(spmResult);
+    }
+    
     @Override
     public void addAttachment(InIntakeApplication application, InAttachment attachment, InUser user) {
         Validate.notNull(application, "Application cannot be null");

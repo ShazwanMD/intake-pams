@@ -8,6 +8,9 @@ import {Education} from "../app/application/intake-applications/education.interf
 import {Employment} from "../app/application/intake-applications/employment.interface";
 import {Address} from "../app/application/intake-applications/address.interface";
 import {Intake} from "../app/policy/intakes/intake.interface";
+import { SpmResult } from "../app/application/intake-applications/spmResult.interface";
+
+
 
 @Injectable()
 export class ApplicationService {
@@ -119,4 +122,5 @@ export class ApplicationService {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
 }

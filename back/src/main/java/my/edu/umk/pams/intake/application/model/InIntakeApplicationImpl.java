@@ -193,6 +193,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @OneToMany(targetEntity = InAddressImpl.class, mappedBy = "application")
     private List<InAddress> addresses;
+    
+    @OneToMany(targetEntity = InSpmResultImpl.class, mappedBy = "application")
+    private List<InSpmResult> spmresults;
 
     @OneToMany(targetEntity = InGuardianImpl.class, mappedBy = "application")
     private List<InGuardian> guardians;

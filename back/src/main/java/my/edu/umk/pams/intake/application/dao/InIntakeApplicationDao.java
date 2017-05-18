@@ -35,6 +35,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InContact findContactById(Long id);
 
     InAddress findAddressById(Long id);
+    
+    InSpmResult findSpmResultById(Long id);
 
     InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application);
 
@@ -45,6 +47,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InAddress findAddressByType(InAddressType type, InIntakeApplication application);
 
     InApplicant findApplicant(InIntakeApplication application);
+    
     
 
 
@@ -85,6 +88,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
+    
+    List<InSpmResult> findSpmResults (InIntakeApplication application);
 
     // ====================================================================================================
     // HELPER
@@ -143,6 +148,10 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void addAddress(InIntakeApplication application, InAddress address, InUser user);
 
     void deleteAddress(InIntakeApplication application, InAddress address, InUser user);
+    
+    void addSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user);
+    
+    void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user);
 
 	void addAttachment(InIntakeApplication application,InAttachment attachment, InUser currentUser);
 
