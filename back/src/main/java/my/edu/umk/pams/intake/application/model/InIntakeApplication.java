@@ -195,6 +195,10 @@ public interface InIntakeApplication extends InMetaObject {
     List<InEmployment> getEmployments();
 
     void setEmployments(List<InEmployment> employments);
+    
+    List<InSpmResult> getSpmResults();
+
+    void setSpmResults(List<InSpmResult> spmResults);
 
 	void setReferees(List<InReferee> referees);
 

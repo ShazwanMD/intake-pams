@@ -48,6 +48,10 @@ public interface InSpmResult extends InResult {
 	void setHistory(String history);
 
 	String getHistory();
+	
+    InIntakeApplication getApplication();
+
+    void setApplication(InIntakeApplication application);
 
 	
 

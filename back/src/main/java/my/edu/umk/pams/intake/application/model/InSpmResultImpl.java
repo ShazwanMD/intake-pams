@@ -2,6 +2,8 @@ package my.edu.umk.pams.intake.application.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -56,6 +58,10 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
     @NotNull
     @Column(name = "SEJARAH", nullable = false)
     private String history;
+    
+    @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
+    @JoinColumn(name = "APPLICATION_ID")
+    private InIntakeApplication application;
     
  
     public InSpmResultImpl() {
@@ -170,5 +176,15 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
 	public void setHistory(String history) {
 		this.history = history;
 	}
+	
+    @Override
+    public InIntakeApplication getApplication() {
+        return application;
+    }
+
+    @Override
+    public void setApplication(InIntakeApplication application) {
+        this.application = application;
+    }
 		  
 }

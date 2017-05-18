@@ -195,7 +195,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     private List<InAddress> addresses;
     
     @OneToMany(targetEntity = InSpmResultImpl.class, mappedBy = "application")
-    private List<InSpmResult> spmresults;
+    private List<InSpmResult> spmResults;
 
     @OneToMany(targetEntity = InGuardianImpl.class, mappedBy = "application")
     private List<InGuardian> guardians;
@@ -618,6 +618,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setEmployments(List<InEmployment> employments) {
         this.employments = employments;
+    }
+    
+    @Override
+    public List<InSpmResult> getSpmResults() {
+        return spmResults;
+    }
+
+    @Override
+    public void setSpmResults(List<InSpmResult> spmResults) {
+        this.spmResults = spmResults;
     }
 
     @Override
