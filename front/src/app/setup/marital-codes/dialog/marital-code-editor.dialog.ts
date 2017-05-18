@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import {MaritalCode} from './../../../common/marital-codes/marital-code.interface';
-=======
 import { MaritalCode } from './../../../common/marital-codes/marital-code.interface';
-
->>>>>>> 6be999f169162eda3a4f89dfeb6fceede6ee81a9
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -13,11 +8,6 @@ import {MdDialogRef} from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 6be999f169162eda3a4f89dfeb6fceede6ee81a9
 @Component({
   selector: 'pams-marital-code-editor',
   templateUrl: './marital-code-editor.dialog.html',
