@@ -1,3 +1,4 @@
+import { ParliamentCode } from './../app/common/parliament-codes/parliament-code.interface';
 import { StudyCenterCode } from './../app/common/study-center-codes/study-center-code.interface';
 import {StudyMode} from './../app/common/study-modes/study-mode.interface';
 import {NationalityCode} from './../app/common/nationality-codes/nationality-code.interface';
@@ -17,12 +18,13 @@ import {environment} from "../environments/environment";
 import {ProgramCode} from "../app/common/program-codes/program-code.interface";
 import {GraduateCentre} from "../app/common/graduate-centres/graduate-centre.interface";
 import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
-import {ParliamentCode} from "../app/common/parliament-codes/parliament-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
 import {DisabilityCode} from "../app/common/disability-codes/disability-code.interface";
 import {SchoolCode} from "../app/common/school-codes/school-code.interface";
 import {DistrictCode} from "../app/common/district-codes/district-code.interface";
+
+
 
 
 @Injectable()
