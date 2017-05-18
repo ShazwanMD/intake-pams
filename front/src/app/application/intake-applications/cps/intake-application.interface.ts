@@ -1,3 +1,4 @@
+import { SpmResult } from './../spmResult.interface';
 import { Employment } from './../employment.interface';
 import { Intake } from './../../../policy/intakes/intake.interface';
 import { Applicant } from './../../../identity/applicant.interface';
@@ -46,6 +47,7 @@ export interface IntakeApplication {
   programSelection: ProgramOffering;
   intake: Intake;
   applicant: Applicant;
+  spmResult: SpmResult;
   //results: Results;
   //educations: Educations;
   employments: Employment;
