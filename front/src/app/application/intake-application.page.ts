@@ -24,10 +24,10 @@ export class IntakeApplicationPage implements OnInit {
     this.intakes$ = this.store.select(...this.INTAKES);
   }
 
-  ngOnInit(intakeApplication: IntakeApplication): void {
+  ngOnInit(): void {
     this.route.params.subscribe(() => {
      // this.store.dispatch(this.intakeApplicationActions.findIntake()); // find PUBLISHED intakes
-        this.router.navigate(['application/intake-applications/cps',intakeApplication.referenceNo]);
+        this.router.navigate(['application/intake-applications/cps']);
     });
   }
 
