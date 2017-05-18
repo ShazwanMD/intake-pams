@@ -17,6 +17,7 @@ public class IntakeSession extends MetaObject{
     private String descriptionEn;
     private boolean current;
     private Integer year;
+    private Long id;
 
     public String getCode() {
         return code;
@@ -66,7 +67,15 @@ public class IntakeSession extends MetaObject{
         this.year = year;
     }
 
-    @JsonCreator
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@JsonCreator
     public static IntakeSession create(String jsonString) {
         IntakeSession o = null;
         try {
