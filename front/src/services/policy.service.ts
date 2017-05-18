@@ -45,7 +45,7 @@ export class PolicyService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.delete(environment.endpoint + '/api/policy/intake-sessions' + id.id, options)
+    return this.http.delete(environment.endpoint + '/api/policy/intake-sessions/' + id.id, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -55,7 +55,7 @@ export class PolicyService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/policy/intake-sessions' + code.code, JSON.stringify(code), options)
+    return this.http.put(environment.endpoint + '/api/policy/intake-sessions/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

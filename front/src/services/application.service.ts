@@ -10,7 +10,6 @@ import {Address} from "../app/application/intake-applications/address.interface"
 import {Intake} from "../app/policy/intakes/intake.interface";
 import { SpmResult } from "../app/application/intake-applications/spmResult.interface";
 
-
 @Injectable()
 export class ApplicationService {
 

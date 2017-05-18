@@ -6,4 +6,5 @@ export interface IntakeSession extends MetaObject{
   descriptionEn: string;
   current: boolean;
   year: number;
+  id: number;
 }

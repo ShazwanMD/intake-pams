@@ -129,7 +129,7 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public void removeIntakeSession(InIntakeSession session) {
-        intakeSessionDao.remove(session, securityService.getCurrentUser());
+        intakeSessionDao.delete(session, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
