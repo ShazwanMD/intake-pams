@@ -55,7 +55,7 @@ export class ApplicationService {
   }
 
   findIntakeApplicationByReferenceNo(referenceNo: string): Observable<IntakeApplication> {
-    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + referenceNo)
+    return this.http.get(environment.endpoint + '/api/application/intakeApplication/' + referenceNo)
       .map((res: Response) => <IntakeApplication>res.json());
   }
 

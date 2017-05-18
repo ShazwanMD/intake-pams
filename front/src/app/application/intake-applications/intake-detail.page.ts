@@ -34,4 +34,5 @@ export class IntakeDetailPage implements OnInit {
   apply(intake: Intake) {
        this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntake(intake)));
   }
+  
 }

@@ -27,7 +27,7 @@ export class IntakeApplicationActions {
     };
   }
 
-  static FIND_INTAKE_BY_REFERENCE_NO = '[Intake Application] Find Intake By Reference No';
+  static FIND_INTAKE_BY_REFERENCE_NO = '[Intake] Find Intake By Reference No';
 
   findIntakeByReferenceNo(referenceNo): Action {
     return {
@@ -36,7 +36,7 @@ export class IntakeApplicationActions {
     };
   }
 
-  static FIND_INTAKE_BY_REFERENCE_NO_SUCCESS = '[Intake Application] Find Intake By Reference No Success';
+  static FIND_INTAKE_BY_REFERENCE_NO_SUCCESS = '[Intake] Find Intake By Reference No Success';
 
   findIntakeByReferenceNoSuccess(intake): Action {
     console.log("findIntakeSuccess");
@@ -46,6 +46,12 @@ export class IntakeApplicationActions {
     };
   }
 
+  
+
+  // ====================================================================================================
+  // INTAKE APPLICATION
+  // ====================================================================================================
+  
   static APPLY_INTAKE = '[Intake Application] Apply Intake';
 
   applyIntake(intake): Action {
@@ -63,10 +69,6 @@ export class IntakeApplicationActions {
       payload: referenceNo
     };
   }
-
-  // ====================================================================================================
-  // INTAKE APPLICATION
-  // ====================================================================================================
 
   static FIND_INTAKE_APPLICATIONS = '[Intake Application] Find Intake Applications';
 
@@ -194,7 +196,7 @@ export class IntakeApplicationActions {
     };
   }
 
-  static UPDATE_INTAKE_APPLICATION_SUCCESS = '[Intake] Update Intake Success';
+  static UPDATE_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Update Intake Success';
 
   updateIntakeSuccess(application): Action {
     return {
