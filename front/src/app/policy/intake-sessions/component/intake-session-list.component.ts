@@ -28,7 +28,8 @@ export class IntakeSessionListComponent {
     {name: 'descriptionMs', label: 'Description (MS)'},
     {name: 'descriptionEn', label: 'Description (EN)'},
     {name: 'year', label: 'Year'},
-    {name: 'current', label: 'Current'},
+    {name: 'current', label: 'Current'},    
+    {name: 'id', label: 'id'},
     {name: 'action', label: ''}
   ];
 
