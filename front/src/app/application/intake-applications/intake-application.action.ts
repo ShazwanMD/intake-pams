@@ -148,6 +148,25 @@ export class IntakeApplicationActions {
     };
   }
 
+   static FIND_SPM_RESULTS = '[Intake Application] Find Spm Results';
+
+  findSpmResults(application): Action {
+    return {
+      type: IntakeApplicationActions.FIND_SPM_RESULTS,
+      payload: application
+    };
+  }
+
+  static FIND_SPM_RESULTS_SUCCESS = '[Intake Application] Find Spm Results Success';
+
+  findSpmResultsSuccess(spmResult): Action {
+    console.log("findSpmResultsSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_SPM_RESULTS_SUCCESS,
+      payload: spmResult
+    };
+  }
+
   static SUBMIT_INTAKE_APPLICATION = '[Intake Application] Submit Intake Application';
 
   submitIntakeApplication(application): Action {
@@ -309,6 +328,42 @@ export class IntakeApplicationActions {
   deleteAddressSucces(message) {
     return {
       type: IntakeApplicationActions.DELETE_ADDRESS_SUCCESS,
+      payload: message
+    };
+  }
+
+   static ADD_SPM_RESULT = '[Intake Application] Add Spm Result';
+
+  addSpmResult(intake, spmResult) {
+    return {
+      type: IntakeApplicationActions.ADD_SPM_RESULT,
+      payload: {intake: intake, spmResult: spmResult}
+    };
+  }
+
+  static ADD_SPM_RESULT_SUCCESS = '[Intake Application] Add Spm Result Success';
+
+  addSpmResultSuccess(message) {
+    return {
+      type: IntakeApplicationActions.ADD_SPM_RESULT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static DELETE_SPM_RESULT = '[Intake Application] Delete Spm Result';
+
+  deleteSpmResult(intake, spmResult) {
+    return {
+      type: IntakeApplicationActions.DELETE_SPM_RESULT,
+      payload: {intake: intake, spmResult: spmResult}
+    };
+  }
+
+  static DELETE_SPM_RESULT_SUCCESS = '[Intake Application] Delete Spm Result Success';
+
+  deleteSpmResultSucces(message) {
+    return {
+      type: IntakeApplicationActions.DELETE_SPM_RESULT_SUCCESS,
       payload: message
     };
   }

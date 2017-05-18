@@ -16,18 +16,18 @@ export class SPMResultSelectComponent implements OnInit {
   private SPM_RESULT = "applicationModuleState.spmResult".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  spmResult$: Observable<spmResult[]>;
+  spmResult$: Observable<SpmResult[]>;
 
   constructor(private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions) {
     this.spmResult$ = this.store.select(...this.SPM_RESULT);
   }
 
-  ngOnInit() {
-    this.store.dispatch(this.actions.addSPMresult());
+  ngOnInit(application) {
+   this.store.dispatch(this.actions.findSpmResults(application));
   }
 
-  selectChangeEvent(event: spmResult) {
+  selectChangeEvent(event: SpmResult) {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
-}
+} 
