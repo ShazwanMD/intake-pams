@@ -1,5 +1,5 @@
 import {MetaObject} from "../../core/meta-object.interface";
-export interface SPMresult extends MetaObject {
+export interface SpmResult extends MetaObject {
   
   year: Date;
   math: string;
