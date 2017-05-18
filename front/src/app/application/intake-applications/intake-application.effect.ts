@@ -44,7 +44,7 @@ export class IntakeApplicationEffects {
     .switchMap(intake => this.applicationService.applyIntake(intake))
     .mergeMap(referenceNo => from([referenceNo,
       this.intakeApplicationActions.applyIntakeSuccess(referenceNo),
-      this.router.navigate(['/application/intake-applications/'])
+      this.router.navigate(['/application/intake-applications-form/',referenceNo])
     ]));
 
 
