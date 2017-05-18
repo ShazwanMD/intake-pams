@@ -16,6 +16,8 @@ import {IntakeDetailPage} from "./intake-detail.page";
 import { EmploymentCreatorDialog } from "./mgseb/dialog/employment-creator.dialog";
 import { EmploymentTaskListComponent } from "./mgseb/component/employment-task-list.component";
 import { EducationCreatorDialog } from "./mgseb/dialog/education-creator.dialog";
+import { CommonModule } from "../../common/index";
+import { ProgramLevelSubModule } from "../../policy/program-levels/index";
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { EducationCreatorDialog } from "./mgseb/dialog/education-creator.dialog"
     MgsebIntakeApplicationSubModule.forRoot(),
     CpsIntakeApplicationSubModule.forRoot(),
     EffectsModule.run(IntakeApplicationEffects),
+    CommonModule.forRoot(),
+    ProgramLevelSubModule.forRoot(),
   ],
   declarations: [
     IntakeDetailPage,

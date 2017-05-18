@@ -13,6 +13,8 @@ import {intakeApplicationReducer, IntakeApplicationState} from "./intake-applica
 import {intakeApplicationListReducer,IntakeApplicationListState} from "./intake-applications/intake-application-list.reducer";
 import {intakeListReducer, IntakeListState} from "./intake-applications/intake-list.reducer";
 import {intakeReducer, IntakeState} from "./intake-applications/intake.reducer";
+import { CommonModule } from "../common/index";
+import { ProgramLevelSubModule } from "../policy/program-levels/index";
 
 export interface ApplicationModuleState {
   intakes:IntakeListState;
@@ -37,6 +39,8 @@ export const applicationModuleReducers = {
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     IntakeApplicationSubModule.forRoot(),
+    CommonModule.forRoot(),
+    ProgramLevelSubModule.forRoot(),
   ],
   declarations: [
     // page

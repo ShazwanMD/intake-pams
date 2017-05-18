@@ -32,7 +32,12 @@ export class IntakeDetailPage implements OnInit {
   }
 
   apply(intake: Intake) {
-       this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntake(intake)));
+      if (this.intake$.subscribe(intake =>intake.graduateCentre.code == 'CPS'))
+              {   {this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntakeCps(intake)));}}
+      else
+      {this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntakeMgseb(intake)));}
+   
+       
   }
   
 }

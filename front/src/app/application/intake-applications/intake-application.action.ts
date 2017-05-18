@@ -52,20 +52,38 @@ export class IntakeApplicationActions {
   // INTAKE APPLICATION
   // ====================================================================================================
   
-  static APPLY_INTAKE = '[Intake Application] Apply Intake';
+  static APPLY_INTAKE_CPS = '[Intake Application] Apply Intake Cps';
 
-  applyIntake(intake): Action {
+  applyIntakeCps(intake): Action {
     return {
-      type: IntakeApplicationActions.APPLY_INTAKE,
+      type: IntakeApplicationActions.APPLY_INTAKE_CPS,
       payload: intake
     };
   }
 
-  static APPLY_INTAKE_SUCCESS = '[Intake Application] Apply Intake Success';
+  static APPLY_INTAKE_CPS_SUCCESS = '[Intake Application] Apply Intake Cps Success ';
 
-  applyIntakeSuccess(referenceNo): Action {
+  applyIntakeCpsSuccess(referenceNo): Action {
     return {
-      type: IntakeApplicationActions.APPLY_INTAKE_SUCCESS,
+      type: IntakeApplicationActions.APPLY_INTAKE_CPS_SUCCESS,
+      payload: referenceNo
+    };
+  }
+  
+  static APPLY_INTAKE_MGSEB = '[Intake Application] Apply Intake Mgseb';
+
+  applyIntakeMgseb(intake): Action {
+    return {
+      type: IntakeApplicationActions.APPLY_INTAKE_MGSEB,
+      payload: intake
+    };
+  }
+
+  static APPLY_INTAKE_MGSEB_SUCCESS = '[Intake Application] Apply Intake Mgseb Success ';
+
+  applyIntakeMgsebSuccess(referenceNo): Action {
+    return {
+      type: IntakeApplicationActions.APPLY_INTAKE_MGSEB_SUCCESS,
       payload: referenceNo
     };
   }

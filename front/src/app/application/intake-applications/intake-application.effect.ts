@@ -21,7 +21,7 @@ export class IntakeApplicationEffects {
               private applicationService: ApplicationService,
               private router: Router,
               private store$: Store<ApplicationModuleState>) {
-      //this.intake$ = this.store$.select(...this.INTAKE);
+      this.intake$ = this.store$.select(...this.INTAKE);
   }
 
   // ====================================================================================================
@@ -47,17 +47,31 @@ export class IntakeApplicationEffects {
     .map(applications => this.intakeApplicationActions.findIntakeApplicationsSuccess(applications));
 
 
-  @Effect() applyIntake$ = this.actions$
-    .ofType(IntakeApplicationActions.APPLY_INTAKE)
+  @Effect() applyIntakeCps$ = this.actions$
+    .ofType(IntakeApplicationActions.APPLY_INTAKE_CPS)
     .map(action => action.payload)
     .switchMap(intake => this.applicationService.applyIntake(intake))
-    .withLatestFrom(this.store$.select(...this.INTAKE))
-    .map(state=>state[1])
+    //.withLatestFrom(this.store$.select(...this.INTAKE))
+   // .map(state=>state[1])
+   // .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
     //todo:uda
     .mergeMap(referenceNo => from([referenceNo,
-      this.intakeApplicationActions.applyIntakeSuccess(referenceNo),
-      this.router.navigate(['/application/intake-applications-form/',referenceNo])
+      this.intakeApplicationActions.applyIntakeCpsSuccess(referenceNo),
+      this.router.navigate(['/application/intake-applications/cps/',referenceNo])
     ]));
+  
+  @Effect() applyIntakeMgseb$ = this.actions$
+  .ofType(IntakeApplicationActions.APPLY_INTAKE_MGSEB)
+  .map(action => action.payload)
+  .switchMap(intake => this.applicationService.applyIntake(intake))
+  .withLatestFrom(this.store$.select(...this.INTAKE))
+  .map(state=>state[1])
+  .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
+  //todo:uda
+  .mergeMap(referenceNo => from([referenceNo,
+    this.intakeApplicationActions.applyIntakeMgsebSuccess(referenceNo),
+    this.router.navigate(['/application/intake-applications/mgseb/',referenceNo])
+  ]));
 
 
   // ====================================================================================================
