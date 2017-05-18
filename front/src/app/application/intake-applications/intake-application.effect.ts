@@ -4,15 +4,24 @@ import {from} from "rxjs/observable/from";
 import {IntakeApplicationActions} from "./intake-application.action";
 import {ApplicationService} from "../../../services/application.service";
 import {Router} from "@angular/router";
+import { Store } from "@ngrx/store";
+import { ApplicationModuleState } from "../index";
+import {Observable} from "rxjs";
+import { Intake } from "../../policy/intakes/intake.interface";
 
 
 @Injectable()
 export class IntakeApplicationEffects {
 
+  private INTAKE = "applicationModuleState.intake".split(".");  
+  private intake$: Observable<Intake>;
+    
   constructor(private actions$: Actions,
               private intakeApplicationActions: IntakeApplicationActions,
               private applicationService: ApplicationService,
-              private router: Router) {
+              private router: Router,
+              private store$: Store<ApplicationModuleState>) {
+      //this.intake$ = this.store$.select(...this.INTAKE);
   }
 
   // ====================================================================================================
@@ -42,9 +51,12 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map(action => action.payload)
     .switchMap(intake => this.applicationService.applyIntake(intake))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state=>state[1])
+    //todo:uda
     .mergeMap(referenceNo => from([referenceNo,
       this.intakeApplicationActions.applyIntakeSuccess(referenceNo),
-      this.router.navigate(['/application/intake-applications/'])
+      this.router.navigate(['/application/intake-applications-form/',referenceNo])
     ]));
 
 

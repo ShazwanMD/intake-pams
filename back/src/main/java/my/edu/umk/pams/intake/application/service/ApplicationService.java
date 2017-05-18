@@ -39,8 +39,12 @@ public interface ApplicationService {
     void addInvolvement(InIntakeApplication application, InInvolvement involvement);
 
     void addAddress(InIntakeApplication application, InAddress address);
+    
+    void addSpmResult(InIntakeApplication application, InSpmResult spmResult);
 
     void deleteAddress(InIntakeApplication application, InAddress address);
+    
+    void deleteSpmResult (InIntakeApplication application, InSpmResult spmResult);
 
     void addContact(InIntakeApplication application, InContact contact);
 
@@ -89,6 +93,8 @@ public interface ApplicationService {
     InGuarantor findGuarantorById(Long id);
 
     InAddress findAddressById(Long id);
+    
+    InSpmResult findSpmResultById(Long id);
 
     InContact findContactById(Long id);
 
@@ -137,6 +143,8 @@ public interface ApplicationService {
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
+    
+    List<InSpmResult> findSpmResults(InIntakeApplication application);
 
     Integer countIntakeApplication(InIntake intake);
 

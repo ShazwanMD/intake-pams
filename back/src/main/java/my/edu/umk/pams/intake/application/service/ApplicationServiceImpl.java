@@ -156,6 +156,19 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.deleteAddress(application, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+    public void addSpmResult(InIntakeApplication application, InSpmResult spmResult) {
+        intakeApplicationDao.addSpmResult(application, spmResult, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult) {
+        intakeApplicationDao.deleteSpmResult(application, spmResult, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
 
     @Override
     public void addContact(InIntakeApplication application, InContact contact) {
@@ -239,6 +252,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public InAddress findAddressById(Long id) {
         return intakeApplicationDao.findAddressById(id);
+    }
+    
+    @Override
+    public InSpmResult findSpmResultById(Long id) {
+        return intakeApplicationDao.findSpmResultById(id);
     }
 
     @Override
@@ -381,6 +399,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<InAddress> findAddresses(InIntakeApplication application) {
         return intakeApplicationDao.findAddresses(application);
     }
+    
+    @Override
+    public List<InSpmResult> findSpmResults(InIntakeApplication application) {
+        return intakeApplicationDao.findSpmResults(application);
+    }
+    
     @Override
     public Integer countIntakeApplication(InIntake intake) {
         return intakeApplicationDao.count(intake);
@@ -425,5 +449,5 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
 		 return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, verification);
 	}
-	
+
 }

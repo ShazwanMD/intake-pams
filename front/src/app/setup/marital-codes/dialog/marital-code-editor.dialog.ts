@@ -1,5 +1,4 @@
 import { MaritalCode } from './../../../common/marital-codes/marital-code.interface';
-
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -8,8 +7,6 @@ import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
-
-
 
 @Component({
   selector: 'pams-marital-code-editor',

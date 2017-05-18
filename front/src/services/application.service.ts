@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+import {Injectable} from '@angular/core';
+import {Response, Http, Headers, RequestOptions} from '@angular/http';
+import {HttpInterceptorService} from '@covalent/http';
+import {IntakeApplication} from "../app/application/intake-applications/intake-application.interface";
+import {Observable} from "rxjs/Observable";
+import {environment} from "../environments/environment";
+import {Education} from "../app/application/intake-applications/education.interface";
+import {Employment} from "../app/application/intake-applications/employment.interface";
+import {Address} from "../app/application/intake-applications/address.interface";
+import {Intake} from "../app/policy/intakes/intake.interface";
+import { SpmResult } from "../app/application/intake-applications/spmResult.interface";
+
+
+=======
 import { Employment } from './../app/application/intake-applications/employment.interface';
 import { Injectable } from '@angular/core';
 import { Response, Http, Headers, RequestOptions } from '@angular/http';
@@ -8,6 +23,7 @@ import { environment } from "../environments/environment";
 import { Education } from "../app/application/intake-applications/education.interface";
 import { Address } from "../app/application/intake-applications/address.interface";
 import { Intake } from "../app/policy/intakes/intake.interface";
+>>>>>>> 6be999f169162eda3a4f89dfeb6fceede6ee81a9
 
 @Injectable()
 export class ApplicationService {
@@ -131,4 +147,5 @@ export class ApplicationService {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
 }
