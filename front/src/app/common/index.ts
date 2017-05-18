@@ -1,3 +1,4 @@
+import { EthnicityCodeSelectComponent } from './ethnicity-codes/component/ethnicity-code-select.component';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -38,6 +39,9 @@ import { SchoolCodeSelectComponent } from "./school-codes/component/school-code-
 import { schoolCodeListReducer, SchoolCodeListState } from "./school-codes/school-code-list.reducer";
 import { StudyCenterCodeListState, studyCenterCodeListReducer } from "./study-center-codes/study-center-code-list.reducer";
 import { StudyCenterCodeSelectComponent } from "./study-center-codes/component/study-center-code-select.component";
+import { EthnicityCodeListState, ethnicityCodeListReducer } from "./ethnicity-codes/ethnicity-code-list.reducer";
+
+
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -55,6 +59,7 @@ export interface CommonModuleState {
   schoolCodes: SchoolCodeListState;
   studyCenterCodes : StudyCenterCodeListState;
   religionCodes : ReligionCodeListState;
+  ethnicityCodes : EthnicityCodeListState;
 
 }
 ;
@@ -76,6 +81,7 @@ export const commonModuleReducers = {
   schoolCodes: schoolCodeListReducer,
   studyCenterCodes : studyCenterCodeListReducer,
   religionCodes : religionCodeListReducer,
+  ethnicityCodes : ethnicityCodeListReducer,
 
 };
 
@@ -103,6 +109,7 @@ export const commonModuleReducers = {
     SchoolCodeSelectComponent,
     StudyCenterCodeSelectComponent,
     ReligionCodeSelectComponent,
+    EthnicityCodeSelectComponent,
 
 
   ],
@@ -122,6 +129,7 @@ export const commonModuleReducers = {
     SchoolCodeSelectComponent,
     StudyCenterCodeSelectComponent,
     ReligionCodeSelectComponent,
+    EthnicityCodeSelectComponent,
 
   ],
 })

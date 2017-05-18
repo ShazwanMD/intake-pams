@@ -22,9 +22,42 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
     private Integer aggregate = 0;
 
     @NotNull
-    @Column(name = "REGISTRATION_NO", nullable = false)
-    private String registrationNo;
-
+    @Column(name = "BAHASA MELAYU", nullable = false)
+    private String malay;
+    
+    @NotNull
+    @Column(name = "BAHASA INGGERIS", nullable = false)
+    private String english;
+    
+    @NotNull
+    @Column(name = "MATEMATIK", nullable = false)
+    private String math;
+    
+    @NotNull
+    @Column(name = "MATEMATIK TAMBAHAN", nullable = false)
+    private String addMath;
+    
+    @NotNull
+    @Column(name = "PENDIDIKAN ISLAM", nullable = false)
+    private String islamEduc;
+    
+    @NotNull
+    @Column(name = "KIMIA", nullable = false)
+    private String chemist;
+    
+    @NotNull
+    @Column(name = "BIOLOGI", nullable = false)
+    private String bio;
+    
+    @NotNull
+    @Column(name = "FIZIK", nullable = false)
+    private String physic;
+    
+    @NotNull
+    @Column(name = "SEJARAH", nullable = false)
+    private String history;
+    
+ 
     public InSpmResultImpl() {
         setResultType(InResultType.SPM);
     }
@@ -38,20 +71,104 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
     }
 
     @Override
-    public Integer getAggregate() {
-        return aggregate;
+    public String getMalay() {
+        return malay;
     }
+
+	@Override
+	public void SetMalay(String malay) {
+		this.malay = malay;
+		
+	}
+    
+	@Override
+	public String getEnglish() {
+	   return english;
+	}
 
     @Override
-    public void setAggregate(Integer aggregate) {
-        this.aggregate = aggregate;
-    }
+	public void SetEnglish(String english) {
+		this.english = english;		
+	}
 
-    public String getRegistrationNo() {
-        return registrationNo;
-    }
+	@Override
+	public Integer getAggregate() {
+		return aggregate;
+	}
 
-    public void setRegistrationNo(String registrationNo) {
-        this.registrationNo = registrationNo;
-    }
+	@Override
+	public void setAggregate(Integer aggregate) {
+		this.aggregate = aggregate;		
+	}	
+
+	@Override
+	public String getMath() {
+		return math;
+	}
+
+	@Override
+	public void setMath(String math) {
+		this.math = math;
+	}
+			
+	@Override
+	public String getAddMath() {
+		return addMath;
+	}
+
+	@Override
+	public void setAddmath(String addMath) {
+		this.addMath = addMath;
+	}
+
+	@Override
+	public String getIslamEduc() {
+		return islamEduc;
+	}
+
+	@Override
+	public void setIslamEduc(String islamEduc) {
+	    this.islamEduc = islamEduc;
+	}
+		
+	@Override
+	public String getChemist() {
+	return chemist;
+	}
+
+	@Override
+	public void setChemist(String chemist) {
+		this.chemist = chemist;
+	}
+				
+	@Override
+	public String getBiology() {
+		return bio;
+	}
+
+	@Override
+	public void setBiology(String bio) {
+		this.bio = bio;
+	}
+				
+	@Override
+	public String getPhysic() {
+	   return physic;
+	}
+
+	@Override
+	public void setPhysic(String physic) {
+		this.physic = physic;
+	}
+			
+	@Override
+	public String getHistory() {
+		return history;
+	}
+
+	@Override
+	public void setHistory(String history) {
+		this.history = history;
+	}
+		  
 }

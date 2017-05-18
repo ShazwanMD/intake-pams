@@ -73,15 +73,24 @@ public class ApplicationTransformer {
     public Education toEducationVo(InEducation e){
         Education vo = new Education();
         vo.setId(e.getId());
-        // todo(uda): more props
+        vo.setProvider(e.getProvider());
+        vo.setStartDate(e.getStartDate());
+        vo.setEndDate(e.getEndDate());        
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
+    }
+    
+    public List<Education> toEducationVos(List<InEducation> e) {
+        List<Education> vos = e.stream()
+                .map((e1) -> toEducationVo(e1))
+                .collect(Collectors.toList());
+        return vos;
     }
 
     public Employment toEmploymentVo(InEmployment e){
         Employment vo = new Employment();
         vo.setId(e.getId());
-  //      vo.setCurrent(true);
+  //     vo.setCurrent(true);
         vo.setEmployer(e.getEmployer());
         vo.setStartDate(e.getStartDate());
         vo.setEndDate(e.getEndDate());

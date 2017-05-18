@@ -48,6 +48,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'study-centre-codes', component: StudyCenterCodeListPage},
       {path: 'district-codes', component: DistrictCodeListPage},
       {path: 'dun-codes', component: DunCodeListPage},
+      {path: 'ethnicity-codes', component: EthnicityCodeListPage},
 
 
     ]

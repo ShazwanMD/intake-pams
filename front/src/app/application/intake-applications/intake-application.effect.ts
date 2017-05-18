@@ -75,12 +75,23 @@ export class IntakeApplicationEffects {
     .switchMap(payload => this.applicationService.submitIntakeApplication(payload.application))
     .map(referenceNo => this.intakeApplicationActions.submitIntakeApplicationSuccess(referenceNo))
 
+  @Effect() findEducations$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_EDUCATIONS)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findEducations(application))
+    .map(educations => this.intakeApplicationActions.findEducationsSuccess(educations));
 
   @Effect() addEducation = this.actions$
     .ofType(IntakeApplicationActions.ADD_EDUCATION)
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addEducation(payload.intake, payload.education))
     .map(message => this.intakeApplicationActions.addEducationSuccess(message));
+
+  @Effect() findEmployments$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_EMPLOYMENTS)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findEmployments(application))
+    .map(employments => this.intakeApplicationActions.findEmploymentsSuccess(employments));
 
   @Effect() addEmployment = this.actions$
     .ofType(IntakeApplicationActions.ADD_EMPLOYMENT)

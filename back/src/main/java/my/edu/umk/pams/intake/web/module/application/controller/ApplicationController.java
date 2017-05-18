@@ -1,6 +1,8 @@
 package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InEducation;
+import my.edu.umk.pams.intake.application.model.InEducationImpl;
 import my.edu.umk.pams.intake.application.model.InEmployment;
 import my.edu.umk.pams.intake.application.model.InEmploymentImpl;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
@@ -18,6 +20,7 @@ import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.web.module.application.vo.Education;
 import my.edu.umk.pams.intake.web.module.application.vo.Employment;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
@@ -152,22 +155,21 @@ public class ApplicationController {
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
     
-    // ====================================================================================================
-    // EMPLOYMENTS
-    // ====================================================================================================
-    
-    @RequestMapping(value = "/intakeApplication/{referenceNo}/employments", method = RequestMethod.GET)
-    public ResponseEntity<List<Employment>> findEmployments(@PathVariable String referenceNo) {
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        
-        List<InEmployment> employments = applicationService.findEmployments(application);
-    
-        return new ResponseEntity<List<Employment>>(applicationTransformer.toEmploymentVos(employments), HttpStatus.OK);
-    }
-    
-    
+	// ====================================================================================================
+	// EMPLOYMENTS
+	// ====================================================================================================
+
+	@RequestMapping(value = "/intakeApplication/{referenceNo}/employments", method = RequestMethod.GET)
+	public ResponseEntity<List<Employment>> findEmployments(@PathVariable String referenceNo) {
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+
+		List<InEmployment> employments = applicationService.findEmployments(application);
+
+		return new ResponseEntity<List<Employment>>(applicationTransformer.toEmploymentVos(employments), HttpStatus.OK);
+	}
+
 	@RequestMapping(value = "/intakeApplication/{referenceNo}/employments", method = RequestMethod.POST)
-	public ResponseEntity<String> addEmployments(@PathVariable String referenceNo, @RequestBody Employment vo) {
+	public ResponseEntity<String> addEmployment(@PathVariable String referenceNo, @RequestBody Employment vo) {
 		dummyLogin();
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
@@ -176,17 +178,43 @@ public class ApplicationController {
 		employment.setStartDate(vo.getStartDate());
 		employment.setEndDate(vo.getEndDate());
 		employment.setDesignation(vo.getDesignation());
-		//employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
+		// employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
 
-		//employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
+		// employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
 
-		//employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
+		// employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
 		employment.setCurrent(false);
 		applicationService.addEmployment(application, employment);
-		;
 
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-    
+	}
+
+	// ====================================================================================================
+	// EDUCATIONS
+	// ====================================================================================================
+
+	@RequestMapping(value = "/intakeApplication/{referenceNo}/educations", method = RequestMethod.GET)
+	public ResponseEntity<List<Education>> findEducations(@PathVariable String referenceNo) {
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+
+		List<InEducation> educations = applicationService.findEducations(application);
+
+		return new ResponseEntity<List<Education>>(applicationTransformer.toEducationVos(educations), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakeApplication/{referenceNo}/educations", method = RequestMethod.POST)
+	public ResponseEntity<String> addEducation(@PathVariable String referenceNo, @RequestBody Education vo) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InEducation education = new InEducationImpl();
+		education.setProvider(vo.getProvider());
+		education.setStartDate(vo.getStartDate());
+		education.setEndDate(vo.getEndDate());
+		education.setCurrent(false);
+		applicationService.addEducation(application, education);
+
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
 }

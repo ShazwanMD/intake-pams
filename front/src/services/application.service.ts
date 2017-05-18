@@ -1,19 +1,19 @@
-import {Injectable} from '@angular/core';
-import {Response, Http, Headers, RequestOptions} from '@angular/http';
-import {HttpInterceptorService} from '@covalent/http';
-import {IntakeApplication} from "../app/application/intake-applications/intake-application.interface";
-import {Observable} from "rxjs/Observable";
-import {environment} from "../environments/environment";
-import {Education} from "../app/application/intake-applications/education.interface";
-import {Employment} from "../app/application/intake-applications/employment.interface";
-import {Address} from "../app/application/intake-applications/address.interface";
-import {Intake} from "../app/policy/intakes/intake.interface";
+import { Employment } from './../app/application/intake-applications/employment.interface';
+import { Injectable } from '@angular/core';
+import { Response, Http, Headers, RequestOptions } from '@angular/http';
+import { HttpInterceptorService } from '@covalent/http';
+import { IntakeApplication } from "../app/application/intake-applications/intake-application.interface";
+import { Observable } from "rxjs/Observable";
+import { environment } from "../environments/environment";
+import { Education } from "../app/application/intake-applications/education.interface";
+import { Address } from "../app/application/intake-applications/address.interface";
+import { Intake } from "../app/policy/intakes/intake.interface";
 
 @Injectable()
 export class ApplicationService {
 
   constructor(private http: Http,
-              private _http: HttpInterceptorService) {
+    private _http: HttpInterceptorService) {
   }
 
   // ====================================================================================================
@@ -27,8 +27,8 @@ export class ApplicationService {
       .map((res: Response) => <Intake[]>res.json());
   }
 
-  findIntakeByReferenceNo(referenceNo:string): Observable<Intake> {
-    console.log("findIntakeByReferenceNo : "+referenceNo);
+  findIntakeByReferenceNo(referenceNo: string): Observable<Intake> {
+    console.log("findIntakeByReferenceNo : " + referenceNo);
     return this.http.get(environment.endpoint + '/api/application/intakes/' + referenceNo)
       .map((res: Response) => <Intake>res.json());
   }
@@ -39,7 +39,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/apply', options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -64,7 +64,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/'
       + application.referenceNo + '/submit', JSON.stringify(application), options)
       .flatMap((res: Response) => Observable.of(res.text()));
@@ -75,12 +75,18 @@ export class ApplicationService {
       .flatMap(data => Observable.of(true));
   }
 
+  findEducations(application: IntakeApplication): Observable<Education[]> {
+    console.log("findEducations");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/educations")
+      .map((res: Response) => <Education[]>res.json());
+  }  
+
   addEducation(application: IntakeApplication, education: Education): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/educations', JSON.stringify(education), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -90,12 +96,18 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  findEmployments(application: IntakeApplication): Observable<Employment[]> {
+    console.log("findEmployments");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/employments")
+      .map((res: Response) => <Employment[]>res.json());
+  }
+
   addEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments', JSON.stringify(employment), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -110,7 +122,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses', JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }

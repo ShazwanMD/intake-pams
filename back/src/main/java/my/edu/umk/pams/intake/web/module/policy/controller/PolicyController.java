@@ -75,11 +75,11 @@ public class PolicyController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/intake-sessions/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Boolean> updateIntakeSession(@PathVariable Long id, @RequestBody InIntakeSession vo) {
+    @RequestMapping(value = "/intake-sessions/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateIntakeSession(@PathVariable String code, @RequestBody IntakeSession vo) {
         dummyLogin();
 
-        InIntakeSession session = policyService.findIntakeSessionById(vo.getId());
+        InIntakeSession session = policyService.findIntakeSessionByCode(code);
         session.setCode(vo.getCode());
         session.setLabel(vo.getLabel());
         session.setDescriptionMs(vo.getDescriptionMs());
@@ -87,7 +87,7 @@ public class PolicyController {
         session.setCurrent(vo.isCurrent());
         session.setYear(vo.getYear());
         policyService.updateIntakeSession(session);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intake-sessions/{id}", method = RequestMethod.DELETE)
