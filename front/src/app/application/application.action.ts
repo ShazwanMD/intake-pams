@@ -22,4 +22,24 @@ export class ApplicationActions {
       payload: intakes
     };
   }
+  
+  static APPLY_INTAKE = '[Application] Apply Intake Application';
+
+  applyIntake(intakes): Action {
+    console.log("applyIntake");
+    return {
+      type: ApplicationActions.APPLY_INTAKE,
+      payload: intakes
+    };
+  }
+  
+  static APPLY_INTAKE_SUCCESS = '[Application] Apply Intake Application Success';
+
+  applyIntakeSuccess(intakes): Action {
+    console.log("applyIntake Success");
+    return {
+      type: ApplicationActions.APPLY_INTAKE_SUCCESS,
+      payload: intakes
+    };
+  }
 }

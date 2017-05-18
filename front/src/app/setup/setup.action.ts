@@ -1,3 +1,4 @@
+import { DunCode } from './../common/dun-codes/dun-code.interface';
 import {Injectable} from "@angular/core";
 import {Action} from '@ngrx/store';
 
@@ -634,7 +635,11 @@ export class SetupActions {
     };
   }
 
-  static FIND_ETHNICITY_CODES = '[Common] Find Gender Codes';
+//==========================================================================================
+//      ETHNICITY CODE
+//==========================================================================================
+  //1-------------------------------------------------------------
+  static FIND_ETHNICITY_CODES = '[Setup] Find Ethnicity Codes';
 
   findEthnicityCodes(): Action {
     console.log("findEthnicityCodes");
@@ -642,8 +647,8 @@ export class SetupActions {
       type: SetupActions.FIND_ETHNICITY_CODES,
     };
   }
-
-  static FIND_ETHNICITY_CODES_SUCCESS = '[Common] Find Ethnicity Codes Success';
+//2-------------------------------------------------------------------------------------
+  static FIND_ETHNICITY_CODES_SUCCESS = '[Setup] Find Ethnicity Codes Success';
 
   findEthnicityCodesSuccess(codes): Action {
     console.log("findEthnicityCodesSuccess");
@@ -652,7 +657,7 @@ export class SetupActions {
       payload: codes
     };
   }
-
+//3----------------------------------------------------------------
   static SAVE_ETHNICITY_CODE = '[Setup] Save Ethnicity Code';
 
   saveEthnicityCode(code): Action {
@@ -662,7 +667,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//4------------------------------------------------------------------------------
   static SAVE_ETHNICITY_CODE_SUCCESS = '[Setup] Save Ethnicity Code Success';
 
   saveEthnicityCodeSuccess(message): Action {
@@ -672,6 +677,49 @@ export class SetupActions {
       payload: message
     };
   }
+//5------------------------------------------------------------------
+  static UPDATE_ETHNICITY_CODE = '[Setup] Update Ethnicity Code';
+
+  updateEthnicityCode(code): Action {
+    console.log("updateEthnicityCode");
+    return {
+      type: SetupActions.UPDATE_ETHNICITY_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_ETHNICITY_CODE_SUCCESS = '[Setup] Update Ethnicity Code  Success';
+
+  updateEthnicityCodeSuccess(message): Action {
+    console.log("updateEthnicityCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_ETHNICITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_ETHNICITY_CODE = '[Setup] Remove Ethnicity Code';
+
+  removeEthnicityCode(code): Action {
+    console.log("removeEthnicityCode");
+    return {
+      type: SetupActions.REMOVE_ETHNICITY_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_ETHNICITY_CODE_SUCCESS = '[Setup] Remove Ethnicity Code  Success';
+
+  removeEthnicityCodeSuccess(message): Action {
+    console.log("removeEthnicityCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_ETHNICITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+//================================================================================================
+
 
   static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
 

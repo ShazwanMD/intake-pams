@@ -28,13 +28,14 @@ export class IntakeSessionEffects {
     .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]));
 
 
-  @Effect() updateIntakeSession$ = this.actions$
+ @Effect() updateIntakeSession$ = this.actions$
     .ofType(IntakeSessionActions.UPDATE_INTAKE_SESSION)
     .map(action => action.payload)
     .switchMap(payload => this.policyService.updateIntakeSession(payload))
     .map(message => this.intakeSessionActions.updateIntakeSessionSuccess(message))
     .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]));
 
+    
   @Effect() removeIntakeSession$ = this.actions$
     .ofType(IntakeSessionActions.REMOVE_INTAKE_SESSION)
     .map(action => action.payload)

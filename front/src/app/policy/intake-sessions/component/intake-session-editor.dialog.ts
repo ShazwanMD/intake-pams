@@ -1,4 +1,3 @@
-
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -50,9 +49,9 @@ export class IntakeSessionEditorDialog implements OnInit {
     if (this.edit) this.editorForm.patchValue(this._intakeSession);
   }
 
-  submit(id: IntakeSession, isValid: boolean) {
-    if (!id.id) this.store.dispatch(this.actions.saveIntakeSession(id));
-    else  this.store.dispatch(this.actions.updateIntakeSession(id));
+  submit(code: IntakeSession, isValid: boolean) {
+    if (!code.code) this.store.dispatch(this.actions.saveIntakeSession(code));
+    else  this.store.dispatch(this.actions.updateIntakeSession(code));
     this.dialog.close();
   }
 }

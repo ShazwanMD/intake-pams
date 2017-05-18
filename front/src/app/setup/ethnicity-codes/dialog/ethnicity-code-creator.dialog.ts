@@ -1,5 +1,5 @@
 import { EthnicityCode } from './../../../common/ethnicity-codes/ethnicity-code.interface';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
+import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -9,8 +9,6 @@ import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
 
 
-
-
 @Component({
   selector: 'pams-ethnicity-code-creator',
   templateUrl: './ethnicity-code-creator.dialog.html',
@@ -18,7 +16,9 @@ import {SetupActions} from "../../setup.action";
 
 export class EthnicityCodeCreatorDialog implements OnInit {
 
-  private createForm: FormGroup;
+  private creatorForm: FormGroup;
+  private edit: boolean = false;
+  private _ethnicityCode: EthnicityCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -26,24 +26,29 @@ export class EthnicityCodeCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<EthnicityCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions
-  ) {
+              private actions: SetupActions) {
+  }
+
+set ethnicityCode(value: EthnicityCode) {
+    this._ethnicityCode = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<EthnicityCode>{
+    this.creatorForm = this.formBuilder.group(<EthnicityCode>{
       id: null,
       code: '',
       descriptionMs: '',
       descriptionEn: '',
-      prefix: '',
-     
-
     });
+           
+  if (this.edit) this.creatorForm.patchValue(this._ethnicityCode);
   }
 
-  save(code: EthnicityCode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveEthnicityCode(code));
+  submit(code: EthnicityCode, isValid: boolean) {
+    if (!code.id) this.store.dispatch(this.actions.saveEthnicityCode(code));
+    else  this.store.dispatch(this.actions.updateEthnicityCode(code));
+    this.dialog.close();
   }
 }

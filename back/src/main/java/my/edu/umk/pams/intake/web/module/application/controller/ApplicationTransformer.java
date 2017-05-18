@@ -1,8 +1,12 @@
 package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.*;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.web.module.application.vo.*;
+import my.edu.umk.pams.intake.web.module.core.vo.FlowState;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
+import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -24,7 +28,6 @@ public class ApplicationTransformer {
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-
     
     public Guardian toGuardianVo(InGuardian e){
         Guardian vo = new Guardian();
@@ -132,4 +135,5 @@ public class ApplicationTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
+    
 }

@@ -89,13 +89,14 @@ public class ApplicationController {
         // user & applicant
         InUser currentUser = securityService.getCurrentUser();
         InActor actor = currentUser.getActor();
-        InApplicant applicant = null;
+        InApplicant applicant = identityService.findApplicantById(actor.getId());
         if (actor instanceof InApplicant) applicant = (InApplicant) actor;
 
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InIntakeApplication application = new InIntakeApplicationImpl();
         application.setName(applicant.getName());
         application.setEmail(applicant.getEmail());
+        application.setApplicant(applicant);
 
         // todo: applyIntake(intake);
         String refNo = applicationService.draftIntakeApplication(intake, application);
@@ -125,6 +126,12 @@ public class ApplicationController {
 
         applicationService.submitIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakeApplication/{referenceNo}", method = RequestMethod.GET)
+    public ResponseEntity<IntakeApplication> findIntakeApplicationByReferenceNo(@PathVariable String referenceNo) {
+        InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(intakeApplication), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/submit", method = RequestMethod.POST)
