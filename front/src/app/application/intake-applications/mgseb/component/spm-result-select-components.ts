@@ -27,8 +27,9 @@ export class SpmResultSelectComponent implements OnInit {
     this.spmResult$ = this.store.select(...this.SPM_RESULT);
   }
 
-  ngOnInit(application:IntakeApplication) {
-  this.store.dispatch(this.actions.findSpmResults(application));
+  ngOnInit() {
+      // this.store.dispatch(this.actions.findSpmResults(application));
+      this.spmResult$.subscribe(application => this.store.dispatch(this.actions.findSpmResults(application)));
   }
 
 
