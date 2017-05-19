@@ -1,4 +1,4 @@
-import { SpmResult } from './../spmResult.interface';
+import { SpmResult } from './../spm-result.interface';
 import { Employment } from './../employment.interface';
 import { Intake } from './../../../policy/intakes/intake.interface';
 import { Applicant } from './../../../identity/applicant.interface';

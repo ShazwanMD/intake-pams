@@ -1,3 +1,4 @@
+import { SpmResult } from './../app/application/intake-applications/spm-result.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -8,7 +9,7 @@ import {Education} from "../app/application/intake-applications/education.interf
 import {Employment} from "../app/application/intake-applications/employment.interface";
 import {Address} from "../app/application/intake-applications/address.interface";
 import {Intake} from "../app/policy/intakes/intake.interface";
-import { SpmResult } from "../app/application/intake-applications/spmResult.interface";
+
 
 @Injectable()
 export class ApplicationService {
@@ -111,6 +112,12 @@ export class ApplicationService {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments', JSON.stringify(employment), options)
       .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+    findSpmResults(application: IntakeApplication): Observable<SpmResult[]> {
+    console.log("findResults");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/employments")
+      .map((res: Response) => <SpmResult[]>res.json());
   }
 
   deleteEmployment(application: IntakeApplication, employment: Employment): Observable<String> {

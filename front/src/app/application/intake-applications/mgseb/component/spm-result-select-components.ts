@@ -1,16 +1,17 @@
-/*import { IntakeApplication } from './cps/intake-application.interface';
+import { IntakeApplicationActions } from './../../intake-application.action';
+import { SpmResult } from './../../spm-result.interface';
+import { IntakeApplication } from './../../cps/intake-application.interface';
+import { ApplicationModuleState } from './../../../index';
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
-import { IntakeApplicationActions } from "./intake-application.action";
-import { ApplicationModuleState } from "../index";
-import {SpmResult} from "./spmResult.interface";
+
 
 
 @Component({
-  selector: 'pams-spmResult-select',
-  templateUrl: './spmResult-select.component.html',
+  selector: 'pams-spm-result-select',
+  templateUrl: './spm-result-select.component.html',
 })
 export class SpmResultSelectComponent implements OnInit {
 
@@ -21,15 +22,17 @@ export class SpmResultSelectComponent implements OnInit {
   spmResult$: Observable<SpmResult[]>;
 
   constructor(private store: Store<ApplicationModuleState>,
-              private actions: IntakeApplicationActions) {
+              private actions: IntakeApplicationActions)
+{
     this.spmResult$ = this.store.select(...this.SPM_RESULT);
   }
 
-  ngOnInit(application: IntakeApplication) {
-   this.store.dispatch(this.actions.findSpmResults(application));
+  ngOnInit(application:IntakeApplication) {
+  this.store.dispatch(this.actions.findSpmResults(application));
   }
+
 
   selectChangeEvent(event: SpmResult) {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
-} */
+}
