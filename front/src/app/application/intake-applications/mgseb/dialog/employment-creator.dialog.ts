@@ -5,7 +5,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
-import { IntakeApplicationPersonal } from "../intake-application-personal.interface";
+import { IntakeApplication } from "../intake-application.interface";
 import { IntakeApplicationActions } from "../../intake-application.action";
 
 
@@ -27,7 +27,7 @@ export class EmploymentCreatorDialog implements OnInit {
               private dialog: MdDialogRef<EmploymentCreatorDialog>) {
   }
 
-  save(employement: IntakeApplicationPersonal, isValid: boolean) {
+  save(employement: IntakeApplication, isValid: boolean) {
     console.log("employement end date: " + employement.endDate);
     console.log("employement start date: " + employement.startDate);
      console.log("employement employer: " + employement.employer);
@@ -38,7 +38,7 @@ export class EmploymentCreatorDialog implements OnInit {
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<IntakeApplicationPersonal>{
+    this.createForm = this.formBuilder.group(<IntakeApplication>{
      id: null,
      startDate: null,
      endDate: null,

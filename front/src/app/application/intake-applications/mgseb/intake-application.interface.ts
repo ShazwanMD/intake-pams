@@ -1,5 +1,5 @@
 import {ProgramLevel} from "../../../policy/program-levels/program-level.interface";
-export interface IntakeApplicationPersonal{
+export interface IntakeApplication{
 
   id: number;
   startDate: Date;

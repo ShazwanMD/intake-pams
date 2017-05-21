@@ -84,9 +84,9 @@ export class IntakeApplicationEffects {
     .switchMap(referenceNo => this.applicationService.findIntakeApplicationByReferenceNo(referenceNo))
     .map(application => this.intakeApplicationActions.findIntakeApplicationByReferenceNoSuccess(application))
     .mergeMap(action => from([action,
-      this.intakeApplicationActions.findEducations(action.payload),
-      this.intakeApplicationActions.findEmployments(action.payload),
-      this.intakeApplicationActions.findAddresses(action.payload),
+      this.intakeApplicationActions.findEducationsByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findEmploymentsByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findAddressesByIntakeApplication(action.payload),
     ]));
 
   @Effect() updateIntakeApplication$ = this.actions$
@@ -101,11 +101,11 @@ export class IntakeApplicationEffects {
     .switchMap(payload => this.applicationService.submitIntakeApplication(payload.application))
     .map(referenceNo => this.intakeApplicationActions.submitIntakeApplicationSuccess(referenceNo))
 
-  @Effect() findEducations$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_EDUCATIONS)
+  @Effect() findEducationsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION)
     .map(action => action.payload)
-    .switchMap(application => this.applicationService.findEducations(application))
-    .map(educations => this.intakeApplicationActions.findEducationsSuccess(educations));
+    .switchMap(application => this.applicationService.findEducationsByIntakeApplication(application))
+    .map(educations => this.intakeApplicationActions.findEducationsByIntakeApplicationSuccess(educations));
 
   @Effect() addEducation = this.actions$
     .ofType(IntakeApplicationActions.ADD_EDUCATION)
@@ -113,11 +113,11 @@ export class IntakeApplicationEffects {
     .switchMap(payload => this.applicationService.addEducation(payload.intake, payload.education))
     .map(message => this.intakeApplicationActions.addEducationSuccess(message));
 
-  @Effect() findEmployments$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_EMPLOYMENTS)
+  @Effect() findEmploymentsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION)
     .map(action => action.payload)
-    .switchMap(application => this.applicationService.findEmployments(application))
-    .map(employments => this.intakeApplicationActions.findEmploymentsSuccess(employments));
+    .switchMap(application => this.applicationService.findEmploymentsByIntakeApplication(application))
+    .map(employments => this.intakeApplicationActions.findEmploymentsByIntakeApplicationSuccess(employments));
 
   @Effect() addEmployment = this.actions$
     .ofType(IntakeApplicationActions.ADD_EMPLOYMENT)

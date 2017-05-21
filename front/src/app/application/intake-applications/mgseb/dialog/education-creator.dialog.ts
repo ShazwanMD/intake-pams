@@ -5,7 +5,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
-import { IntakeApplicationPersonal } from "../intake-application-personal.interface";
+import { IntakeApplication } from "../intake-application.interface";
 import { IntakeApplicationActions } from "../../intake-application.action";
 import { IntakeApplicationEducation } from "../intake-application-education.interface";
 @Component({

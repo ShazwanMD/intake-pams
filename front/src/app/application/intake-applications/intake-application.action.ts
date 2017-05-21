@@ -107,80 +107,80 @@ export class IntakeApplicationActions {
   }
 
 
-  static FIND_EDUCATIONS = '[Intake Application] Find Educations';
+  static FIND_EDUCATIONS_BY_INTAKE_APPLICATION = '[Intake Application] Find Educations';
 
-  findEducations(application): Action {
+  findEducationsByIntakeApplication(application): Action {
     return {
-      type: IntakeApplicationActions.FIND_EDUCATIONS,
+      type: IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION,
       payload: application
     };
   }
 
-  static FIND_EDUCATIONS_SUCCESS = '[Intake Application] Find Educations Success';
+  static FIND_EDUCATIONS__BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Educations Success';
 
-  findEducationsSuccess(educations): Action {
+  findEducationsByIntakeApplicationSuccess(educations): Action {
     console.log("findEducationsSuccess");
     return {
-      type: IntakeApplicationActions.FIND_EDUCATIONS_SUCCESS,
+      type: IntakeApplicationActions.FIND_EDUCATIONS__BY_INTAKE_APPLICATION_SUCCESS,
       payload: educations
     };
   }
 
 
-  static FIND_EMPLOYMENTS = '[Intake Application] Find Employments';
+  static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Employments';
 
-  findEmployments(application): Action {
+  findEmploymentsByIntakeApplication(application): Action {
     return {
-      type: IntakeApplicationActions.FIND_EMPLOYMENTS,
+      type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION,
       payload: application
     };
   }
 
-  static FIND_EMPLOYMENTS_SUCCESS = '[Intake Application] Find Employments Success';
+  static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Employments Success';
 
-  findEmploymentsSuccess(employments): Action {
+  findEmploymentsByIntakeApplicationSuccess(employments): Action {
     console.log("findEmploymentsSuccess");
     return {
-      type: IntakeApplicationActions.FIND_EMPLOYMENTS_SUCCESS,
+      type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS,
       payload: employments
     };
   }
 
 
-  static FIND_ADDRESSES = '[Intake Application] Find Addresses';
+  static FIND_ADDRESSES_BY_INTAKE_APPLICATION = '[Intake Application] Find Addresses';
 
-  findAddresses(application): Action {
+  findAddressesByIntakeApplication(application): Action {
     return {
-      type: IntakeApplicationActions.FIND_ADDRESSES,
+      type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION,
       payload: application
     };
   }
 
-  static FIND_ADDRESSES_SUCCESS = '[Intake Application] Find Addresses Success';
+  static FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Addresses Success';
 
-  findAddressesSuccess(addresss): Action {
+  findAddressesSuccessByIntakeApplication(addresss): Action {
     console.log("findAddressesSuccess");
     return {
-      type: IntakeApplicationActions.FIND_ADDRESSES_SUCCESS,
+      type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS,
       payload: addresss
     };
   }
 
-   static FIND_SPM_RESULTS = '[Intake Application] Find Spm Results';
+   static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Spm Results';
 
-  findSpmResults(application): Action {
+  findSpmResultsByIntakeApplication(application): Action {
     return {
-      type: IntakeApplicationActions.FIND_SPM_RESULTS,
+      type: IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION,
       payload: application
     };
   }
 
-  static FIND_SPM_RESULTS_SUCCESS = '[Intake Application] Find Spm Results Success';
+  static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Spm Results Success';
 
-  findSpmResultsSuccess(spmResult): Action {
+  findSpmResultsByIntakeApplicationSuccess(spmResult): Action {
     console.log("findSpmResultsSuccess");
     return {
-      type: IntakeApplicationActions.FIND_SPM_RESULTS_SUCCESS,
+      type: IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
       payload: spmResult
     };
   }

@@ -77,7 +77,7 @@ export class ApplicationService {
       .flatMap(data => Observable.of(true));
   }
 
-  findEducations(application: IntakeApplication): Observable<Education[]> {
+  findEducationsByIntakeApplication(application: IntakeApplication): Observable<Education[]> {
     console.log("findEducations");
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/educations")
       .map((res: Response) => <Education[]>res.json());
@@ -98,7 +98,7 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  findEmployments(application: IntakeApplication): Observable<Employment[]> {
+  findEmploymentsByIntakeApplication(application: IntakeApplication): Observable<Employment[]> {
     console.log("findEmployments");
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/employments")
       .map((res: Response) => <Employment[]>res.json());
@@ -114,7 +114,7 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-    findSpmResults(application: IntakeApplication): Observable<SpmResult[]> {
+ findSpmResultsByIntakeApplication(application: IntakeApplication): Observable<SpmResult[]> {
     console.log("findResults");
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/employments")
       .map((res: Response) => <SpmResult[]>res.json());

@@ -18,7 +18,7 @@ import { EmploymentTaskListComponent } from "./mgseb/component/employment-task-l
 import { EducationCreatorDialog } from "./mgseb/dialog/education-creator.dialog";
 import { CommonModule } from "../../common/index";
 import { ProgramLevelSubModule } from "../../policy/program-levels/index";
-import { ProgramOfferingSelectComponent } from "./cps/component/program-offering-select.component";
+import { ProgramOfferingSelectComponent } from "../../policy/intakes/component/program-offering-select.component";
 
 
 @NgModule({

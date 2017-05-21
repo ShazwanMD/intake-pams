@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {CovalentCoreModule} from '@covalent/core';
 import {appRoutes, appRoutingProviders} from "../../../app.routes";
-import {IntakeApplicationPersonalPage} from "./intake-application-personal.page";
+import {IntakeApplicationPage} from "./intake-application.page";
 import {IntakeApplicationEducationPage} from "./intake-application-education.page";
 import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
@@ -14,7 +14,7 @@ import { IntakeApplicationActions } from "../intake-application.action";
 import { CommonActions } from "../../../common/common.action";
 import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
 import { EmploymentTaskListComponent } from "./component/employment-task-list.component";
-import { ProgramOfferingSelectComponent } from "../cps/component/program-offering-select.component";
+import { ProgramOfferingSelectComponent } from "../../../policy/intakes/component/program-offering-select.component";
 
 @NgModule({
   imports: [
@@ -26,9 +26,9 @@ import { ProgramOfferingSelectComponent } from "../cps/component/program-offerin
     ProgramLevelSubModule.forRoot(),
   ],
   declarations: [
-    IntakeApplicationPersonalPage,
+    IntakeApplicationPage,
     IntakeApplicationEducationPage,
-    
+
   ],
   exports: [],
   entryComponents: [
@@ -47,7 +47,7 @@ export class MgsebIntakeApplicationSubModule {
         CommonService,
         IntakeApplicationActions,
          CommonActions,
-         
+
       ],
     };
   }
