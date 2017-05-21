@@ -283,6 +283,24 @@ export class IntakeActions {
     };
   }
 
+  static UPDATE_PROGRAM_OFFERING = '[Intake] Update Program Offering';
+
+  updateProgramOffering(intake:Intake, programOffering: ProgramOffering) {
+    return {
+      type: IntakeActions.UPDATE_PROGRAM_OFFERING,
+      payload:{intake:intake, programOffering:programOffering}
+    };
+  }
+
+   static UPDATE_PROGRAM_OFFERING_SUCCESS = '[Intake] Update Program Offering Success';
+
+  updateProgramOfferingSuccess(message) {
+    return {
+      type: IntakeActions.UPDATE_PROGRAM_OFFERING_SUCCESS,
+      payload:message
+    };
+  }
+
   static DELETE_PROGRAM_OFFERING = '[Intake] DELETE Program Offering';
 
   deleteProgramOffering(intake:Intake, programOffering: ProgramOffering) {

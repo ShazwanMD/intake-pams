@@ -227,18 +227,19 @@ public class PolicyController {
     }
     
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Boolean> updateProgramOfferings(@PathVariable String referenceNo, @RequestBody ProgramOffering vo) {
+    public ResponseEntity<String> updateProgramOfferings(@PathVariable String referenceNo, @RequestBody ProgramOffering vo) {
         dummyLogin();
 
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
-        InProgramOffering offering = new InProgramOfferingImpl();
+        InProgramOffering offering = policyService.findProgramOfferingById(vo.getId());
+        
+        offering.setProjection(vo.getProjection());
+        offering.setInterview(vo.getInterview());
         offering.setGeneralCriteria(vo.getGeneralCriteria());
         offering.setSpecificCriteria(vo.getSpecificCriteria());
-        offering.setProgramCode(programCode);
         
         policyService.updateProgramOfferings(intake, offering);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings/{id}", method = RequestMethod.DELETE)

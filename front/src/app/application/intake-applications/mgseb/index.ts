@@ -14,6 +14,7 @@ import { IntakeApplicationActions } from "../intake-application.action";
 import { CommonActions } from "../../../common/common.action";
 import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
 import { EmploymentTaskListComponent } from "./component/employment-task-list.component";
+import { ProgramOfferingSelectComponent } from "../../../policy/intakes/component/program-offering-select.component";
 
 @NgModule({
   imports: [
@@ -27,12 +28,12 @@ import { EmploymentTaskListComponent } from "./component/employment-task-list.co
   declarations: [
     IntakeApplicationPage,
     IntakeApplicationEducationPage,
-    
+
   ],
   exports: [],
   entryComponents: [
     EmploymentTaskListComponent,
-
+    ProgramOfferingSelectComponent,
 
   ],
 })
@@ -46,7 +47,7 @@ export class MgsebIntakeApplicationSubModule {
         CommonService,
         IntakeApplicationActions,
          CommonActions,
-         
+
       ],
     };
   }
