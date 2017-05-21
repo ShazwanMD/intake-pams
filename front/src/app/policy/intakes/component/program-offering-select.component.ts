@@ -1,11 +1,12 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {MdDialogConfig, MdDialog, MdDialogRef} from "@angular/material";
-import { Observable } from "rxjs/Rx";
-import {Intake} from "../../../../policy/intakes/intake.interface";
-import {PolicyModuleState} from "../../../../policy/index";
-import { IntakeActions } from "../../../../policy/intakes/intake.action";
-import { ProgramOffering } from "../../../../policy/intakes/program-offering.interface";
+import {Observable} from "rxjs/Rx";
+import {Intake} from "../intake.interface";
+import {PolicyModuleState} from "../../index";
+import {IntakeActions} from "../intake.action";
+import {ProgramOffering} from "../program-offering.interface";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'pams-program-offering-select',
@@ -14,22 +15,25 @@ import { ProgramOffering } from "../../../../policy/intakes/program-offering.int
 })
 export class ProgramOfferingSelectComponent {
 
- // @Input() intake: Intake;
-  //@Input() programOfferings: ProgramOffering[];
-
+  @Input() intake: Intake;
   @Input() placeholder: string;
+  @Input() innerFormControl: FormControl;
   private PROGRAM_OFFERING = "policyModuleState.programOfferings".split(".");
-  private programOfferings$:Observable<ProgramOffering>
+  private programOfferings$: Observable<ProgramOffering>
 
   constructor(private store: Store<PolicyModuleState>,
               private actions: IntakeActions,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
-          this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERING);
+    this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERING);
   }
 
   ngOnInit() {
-      this.programOfferings$.take(1).subscribe(intake => this.store.dispatch(this.actions.findProgramOfferings(intake)));
-    }
+    this.programOfferings$.take(1).subscribe(intake => this.store.dispatch(this.actions.findProgramOfferings(intake)));
+  }
+
+  selectChangeEvent(event: ProgramOffering) {
+    this.innerFormControl.setValue(event, {emitEvent: false});
+  }
 
 }

@@ -32,6 +32,7 @@ import { SupervisorOfferingEditorDialog } from "./dialog/supervisor-offering-edi
 import {IntakeVerifyTaskPanel} from "./panel/intake-verify-task.panel";
 import {IntakeTaskStatusComponent} from "./component/intake-task-status.component";
 import {IntakePublishTaskPanel} from "./panel/intake-publish-task.panel";
+import {ProgramOfferingSelectComponent} from "./component/program-offering-select.component";
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import {IntakePublishTaskPanel} from "./panel/intake-publish-task.panel";
     SupervisorOfferingListComponent,
     StudyModeOfferingListComponent,
     IntakeTaskStatusComponent,
+    ProgramOfferingSelectComponent,
 
     // panels
     IntakeTaskWorkflowPanel,
@@ -69,7 +71,10 @@ import {IntakePublishTaskPanel} from "./panel/intake-publish-task.panel";
     StudyModeOfferingEditorDialog,
     SupervisorOfferingEditorDialog,
   ],
-  exports: [IntakeTaskListComponent],
+  exports: [
+    IntakeTaskListComponent,
+    ProgramOfferingSelectComponent,
+  ],
   entryComponents: [
     IntakeDraftTaskPanel,
     IntakeVerifyTaskPanel,
