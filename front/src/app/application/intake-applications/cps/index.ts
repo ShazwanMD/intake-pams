@@ -10,6 +10,7 @@ import {CommonService} from "../../../../services/common.service";
 import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
 import {CommonModule} from "../../../common/index";
 import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
+import {ProgramOfferingSelectComponent} from "./component/program-offering-select.component";
 
 
 @NgModule({
@@ -24,8 +25,11 @@ import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
   declarations: [
     IntakeApplicationPage,
     EmploymentCreatorDialog,
+    ProgramOfferingSelectComponent,
   ],
-  exports: [],
+  exports: [
+    ProgramOfferingSelectComponent,
+  ],
   entryComponents: [
     EmploymentCreatorDialog
   ],

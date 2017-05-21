@@ -17,6 +17,7 @@ export class ProgramOfferingSelectComponent {
  // @Input() intake: Intake;
   //@Input() programOfferings: ProgramOffering[];
 
+  @Input() placeholder: string;
   private PROGRAM_OFFERING = "policyModuleState.programOfferings".split(".");
   private programOfferings$:Observable<ProgramOffering>
 
@@ -26,7 +27,7 @@ export class ProgramOfferingSelectComponent {
               private dialog: MdDialog) {
           this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERING);
   }
-  
+
   ngOnInit() {
       this.programOfferings$.take(1).subscribe(intake => this.store.dispatch(this.actions.findProgramOfferings(intake)));
     }

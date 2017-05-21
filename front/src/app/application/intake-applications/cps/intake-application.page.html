@@ -1,455 +1,460 @@
 <td-layout-nav>
-<div toolbar-content layout="row" layout-align="center center" flex>
+  <div toolbar-content layout="row" layout-align="center center" flex>
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
-</div>
+  </div>
 
-<td-layout-card-over>
-<div layout="row" layout-align="start center">
-<div>
-<md-card-title>Intake Application</md-card-title>
-<md-card-subtitle>Intake Registration for Session 201720181</md-card-subtitle>
-</div>
-</div>
-<md-divider></md-divider>
-
-<md-tab-group md-stretch-tabs>
-<md-tab>
-<md-card>
-<template md-tab-label>Program Choice Information</template>
-
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          <!-- first column -->
- <div layout="column" class="pad-right" flex>
- <div layout="row" class="pad-bottom" flex>
- <pams-program-offering-select [placeholder]="'Program Offerings'"></pams-program-offering-select>
- </div>
- <div layout="row" class="pad-bottom" flex>
-<!--  <pams-faculty-code-select [placeholder]="'Faculty'"></pams-faculty-code-select> -->
- </div>
- <div layout="row" class="pad-bottom" flex>
-<!--  <pams-program-code-select [placeholder]="'Program Applied'"></pams-program-code-select> -->
- </div>
- </div>
-
-  <!-- second column -->
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<!-- <pams-study-mode-select [placeholder]="'Study Mode'"></pams-study-mode-select> -->
-</div>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Research Title"flex/>
-</md-input-container>
+  <td-layout-card-over>
+    <div layout="row" layout-align="start center">
+      <div>
+        <md-card-title>Intake Application</md-card-title>
+        <md-card-subtitle>Intake Registration for Session 201720181</md-card-subtitle>
+      </div>
     </div>
-   </div>
- </div>
-</md-card>
-</md-tab>
+    <md-divider></md-divider>
 
-<md-tab>
-<md-card>
-<template md-tab-label>Personal Information</template>
-<td-expansion-panel label="Personal Details">
-<md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-  <!-- first column -->
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Name" flex/>
-</md-input-container>
-</div>
+    <md-tab-group md-stretch-tabs>
+      <md-tab>
+        <md-card>
+          <template md-tab-label>Program Choice Information</template>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="NRIC/Passport" flex/>
-</md-input-container>
-</div>
+          <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+            <!-- first column -->
+            <div layout="column" class="pad-right" flex>
+              <div layout="row" class="pad-bottom" flex>
+                <pams-program-offering-select [placeholder]="'Program Offerings'"></pams-program-offering-select>
+              </div>
+              <div layout="row" class="pad-bottom" flex>
+                <!--  <pams-faculty-code-select [placeholder]="'Faculty'"></pams-faculty-code-select> -->
+              </div>
+              <div layout="row" class="pad-bottom" flex>
+                <!--  <pams-program-code-select [placeholder]="'Program Applied'"></pams-program-code-select> -->
+              </div>
+            </div>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput type="date"placeholder="Date of Birth"flex/>
-</md-input-container>
-</div>
+            <!-- second column -->
+            <div layout="column" class="pad-right" flex>
+              <div layout="row" class="pad-bottom" flex>
+                <!-- <pams-study-mode-select [placeholder]="'Study Mode'"></pams-study-mode-select> -->
+              </div>
+              <div layout="row" class="pad-bottom" flex>
+                <md-input-container flex>
+                  <input mdInput placeholder="Research Title" flex/>
+                </md-input-container>
+              </div>
+            </div>
+          </div>
+        </md-card>
+      </md-tab>
 
-<div layout="row" class="pad-bottom" flex>
-<md-select placeholder="Citizenship">
-<md-option>YES</md-option>
-<md-option>NO</md-option>
-</md-select>
-</div>
-</div>
+      <md-tab>
+        <md-card>
+          <template md-tab-label>Personal Information</template>
+          <td-expansion-panel label="Personal Details">
+            <md-card>
+              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                <!-- first column -->
+                <div layout="column" class="pad-right" flex>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Name" flex/>
+                    </md-input-container>
+                  </div>
 
-<!-- second column -->
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="NRIC/Passport" flex/>
+                    </md-input-container>
+                  </div>
 
-<div layout="column" class="pad-right" flex>
- <div layout="row" class="pad-bottom" flex>
-<!--  <pams-gender-code-select [placeholder]="'Select Gender'"></pams-gender-code-select> -->
- </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput type="date" placeholder="Date of Birth" flex/>
+                    </md-input-container>
+                  </div>
 
-<div layout="row" class="pad-bottom" flex>
-<!--  <pams-race-code-select [placeholder]="'Select Race'"></pams-race-code-select> -->
- </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-select placeholder="Citizenship">
+                      <md-option>YES</md-option>
+                      <md-option>NO</md-option>
+                    </md-select>
+                  </div>
+                </div>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Phone No" flex/>
-</md-input-container>
-</div>
+                <!-- second column -->
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Office No" flex/>
-</md-input-container>
-</div>
+                <div layout="column" class="pad-right" flex>
+                  <div layout="row" class="pad-bottom" flex>
+                    <!--  <pams-gender-code-select [placeholder]="'Select Gender'"></pams-gender-code-select> -->
+                  </div>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Fax No" flex/>
-</md-input-container>
-</div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <!--  <pams-race-code-select [placeholder]="'Select Race'"></pams-race-code-select> -->
+                  </div>
 
-</div>
-</div>
-</md-card>
-</td-expansion-panel>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Phone No" flex/>
+                    </md-input-container>
+                  </div>
 
-<td-expansion-panel label="Address Information">
-<md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-  <!-- first column -->
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 1" flex/>
-</md-input-container>
-</div>
- 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 2"flex/>
-</md-input-container>
-</div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Office No" flex/>
+                    </md-input-container>
+                  </div>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 3"flex/>
-</md-input-container>
-</div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Fax No" flex/>
+                    </md-input-container>
+                  </div>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Poscode" flex/>
-</md-input-container>
-</div>
+                </div>
+              </div>
+            </md-card>
+          </td-expansion-panel>
 
- <div layout="row" class="pad-bottom" flex>
-<!--  <pams-state-code-select [placeholder]="'Select State'"></pams-state-code-select> -->
- </div>
+          <td-expansion-panel label="Address Information">
+            <md-card>
+              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                <!-- first column -->
+                <div layout="column" class="pad-right" flex>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Address 1" flex/>
+                    </md-input-container>
+                  </div>
 
-<div layout="row" class="pad-bottom" flex>
-<!--  <pams-country-code-select [placeholder]="'Select Country'"></pams-country-code-select> -->
- </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Address 2" flex/>
+                    </md-input-container>
+                  </div>
 
-</div>
-</div>
-</md-card>
-</td-expansion-panel>
-<td-expansion-panel label="Working Experience">
-<md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Address 3" flex/>
+                    </md-input-container>
+                  </div>
 
-<md-card-subtitle>List of Working Experience</md-card-subtitle>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Poscode" flex/>
+                    </md-input-container>
+                  </div>
 
-<md-divider>
-   <td-data-table
-    [data]="facultyCodes$ | async"
-    [columns]="columns"
-    [sortBy]="summary"
-    [sortOrder]="ASC"
-    [sortable]="false"
-    [multiple]="false"
-    [selectable]="false"
-    (rowSelect)="view.emit($event)" dense>
-    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <span flex>{{value}}</span>
-      </div>
-    </template>
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <button md-icon-button [md-menu-trigger-for]="menu">
-          <md-icon>more_vert</md-icon>
-        </button>
-        <md-menu x-position="before" #menu="mdMenu">
-          <a md-menu-item>Edit</a>
-          <button md-menu-item (click)="delete(row)">Delete</button>
-        </md-menu>
-      </div>
-    </template>
-  </td-data-table>
-</md-divider>
-<md-card-actions>
-<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
-  <md-icon>add</md-icon>
-</a>
-</md-card-actions>
+                  <div layout="row" class="pad-bottom" flex>
+                    <!--  <pams-state-code-select [placeholder]="'Select State'"></pams-state-code-select> -->
+                  </div>
 
-</div>
-</md-card>
-</td-expansion-panel>
-</md-card>
-</md-tab>
+                  <div layout="row" class="pad-bottom" flex>
+                    <!--  <pams-country-code-select [placeholder]="'Select Country'"></pams-country-code-select> -->
+                  </div>
+
+                </div>
+              </div>
+            </md-card>
+          </td-expansion-panel>
+          <td-expansion-panel label="Working Experience">
+            <md-card>
+              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+
+                <md-card-subtitle>List of Working Experience</md-card-subtitle>
+
+                <md-divider>
+                  <td-data-table
+                    [data]="facultyCodes$ | async"
+                    [columns]="columns"
+                    [sortBy]="summary"
+                    [sortOrder]="ASC"
+                    [sortable]="false"
+                    [multiple]="false"
+                    [selectable]="false"
+                    (rowSelect)="view.emit($event)" dense>
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <span flex>{{value}}</span>
+                      </div>
+                    </template>
+                    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <button md-icon-button [md-menu-trigger-for]="menu">
+                          <md-icon>more_vert</md-icon>
+                        </button>
+                        <md-menu x-position="before" #menu="mdMenu">
+                          <a md-menu-item>Edit</a>
+                          <button md-menu-item (click)="delete(row)">Delete</button>
+                        </md-menu>
+                      </div>
+                    </template>
+                  </td-data-table>
+                </md-divider>
+                <md-card-actions>
+                  <a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+                    <md-icon>add</md-icon>
+                  </a>
+                </md-card-actions>
+
+              </div>
+            </md-card>
+          </td-expansion-panel>
+        </md-card>
+      </md-tab>
 
 
-<md-tab>
-<md-card>
-<template md-tab-label>Academic Qualification</template>
+      <md-tab>
+        <md-card>
+          <template md-tab-label>Academic Qualification</template>
 
-<td-expansion-panel label="SPM Information">
-<md-card>
-<md-divider>
-   <td-data-table
-    [data]="facultyCodes$ | async"
-    [columns]="columns"
-    [sortBy]="summary"
-    [sortOrder]="ASC"
-    [sortable]="false"
-    [multiple]="false"
-    [selectable]="false"
-    (rowSelect)="view.emit($event)" dense>
-    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <span flex>{{value}}</span>
-      </div>
-    </template>
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <button md-icon-button [md-menu-trigger-for]="menu">
-          <md-icon>more_vert</md-icon>
-        </button>
-        <md-menu x-position="before" #menu="mdMenu">
-          <a md-menu-item>Edit</a>
-          <button md-menu-item (click)="delete(row)">Delete</button>
-        </md-menu>
-      </div>
-    </template>
-  </td-data-table>
-</md-divider>
-<md-card-actions>
-<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
-  <md-icon>add</md-icon>
-</a>
-</md-card-actions>
-</md-card>
-</td-expansion-panel>
+          <td-expansion-panel label="SPM Information">
+            <md-card>
+              <md-divider>
+                <td-data-table
+                  [data]="facultyCodes$ | async"
+                  [columns]="columns"
+                  [sortBy]="summary"
+                  [sortOrder]="ASC"
+                  [sortable]="false"
+                  [multiple]="false"
+                  [selectable]="false"
+                  (rowSelect)="view.emit($event)" dense>
+                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <span flex>{{value}}</span>
+                    </div>
+                  </template>
+                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <button md-icon-button [md-menu-trigger-for]="menu">
+                        <md-icon>more_vert</md-icon>
+                      </button>
+                      <md-menu x-position="before" #menu="mdMenu">
+                        <a md-menu-item>Edit</a>
+                        <button md-menu-item (click)="delete(row)">Delete</button>
+                      </md-menu>
+                    </div>
+                  </template>
+                </td-data-table>
+              </md-divider>
+              <md-card-actions>
+                <a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+                  <md-icon>add</md-icon>
+                </a>
+              </md-card-actions>
+            </md-card>
+          </td-expansion-panel>
 
-<td-expansion-panel label="STPM / Diploma / Degree Information">
-<md-card>
-<md-divider>
-   <td-data-table
-    [data]="facultyCodes$ | async"
-    [columns]="columns"
-    [sortBy]="summary"
-    [sortOrder]="ASC"
-    [sortable]="false"
-    [multiple]="false"
-    [selectable]="false"
-    (rowSelect)="view.emit($event)" dense>
-    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <span flex>{{value}}</span>
-      </div>
-    </template>
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <button md-icon-button [md-menu-trigger-for]="menu">
-          <md-icon>more_vert</md-icon>
-        </button>
-        <md-menu x-position="before" #menu="mdMenu">
-          <a md-menu-item>Edit</a>
-          <button md-menu-item (click)="delete(row)">Delete</button>
-        </md-menu>
-      </div>
-    </template>
-  </td-data-table>
-</md-divider>
-<md-card-actions>
-<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
-  <md-icon>add</md-icon>
-</a>
-</md-card-actions>
-</md-card>
-</td-expansion-panel>
+          <td-expansion-panel label="STPM / Diploma / Degree Information">
+            <md-card>
+              <md-divider>
+                <td-data-table
+                  [data]="facultyCodes$ | async"
+                  [columns]="columns"
+                  [sortBy]="summary"
+                  [sortOrder]="ASC"
+                  [sortable]="false"
+                  [multiple]="false"
+                  [selectable]="false"
+                  (rowSelect)="view.emit($event)" dense>
+                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <span flex>{{value}}</span>
+                    </div>
+                  </template>
+                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <button md-icon-button [md-menu-trigger-for]="menu">
+                        <md-icon>more_vert</md-icon>
+                      </button>
+                      <md-menu x-position="before" #menu="mdMenu">
+                        <a md-menu-item>Edit</a>
+                        <button md-menu-item (click)="delete(row)">Delete</button>
+                      </md-menu>
+                    </div>
+                  </template>
+                </td-data-table>
+              </md-divider>
+              <md-card-actions>
+                <a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+                  <md-icon>add</md-icon>
+                </a>
+              </md-card-actions>
+            </md-card>
+          </td-expansion-panel>
 
-<td-expansion-panel label="Proficiency in Malay / English Language">
-<md-card>
-<md-divider>
-   <td-data-table
-    [data]="facultyCodes$ | async"
-    [columns]="columns"
-    [sortBy]="summary"
-    [sortOrder]="ASC"
-    [sortable]="false"
-    [multiple]="false"
-    [selectable]="false"
-    (rowSelect)="view.emit($event)" dense>
-    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <span flex>{{value}}</span>
-      </div>
-    </template>
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <button md-icon-button [md-menu-trigger-for]="menu">
-          <md-icon>more_vert</md-icon>
-        </button>
-        <md-menu x-position="before" #menu="mdMenu">
-          <a md-menu-item>Edit</a>
-          <button md-menu-item (click)="delete(row)">Delete</button>
-        </md-menu>
-      </div>
-    </template>
-  </td-data-table>
-</md-divider>
-<md-card-actions>
-<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
-  <md-icon>add</md-icon>
-</a>
-</md-card-actions>
-</md-card>
-</td-expansion-panel>
+          <td-expansion-panel label="Proficiency in Malay / English Language">
+            <md-card>
+              <md-divider>
+                <td-data-table
+                  [data]="facultyCodes$ | async"
+                  [columns]="columns"
+                  [sortBy]="summary"
+                  [sortOrder]="ASC"
+                  [sortable]="false"
+                  [multiple]="false"
+                  [selectable]="false"
+                  (rowSelect)="view.emit($event)" dense>
+                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <span flex>{{value}}</span>
+                    </div>
+                  </template>
+                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <button md-icon-button [md-menu-trigger-for]="menu">
+                        <md-icon>more_vert</md-icon>
+                      </button>
+                      <md-menu x-position="before" #menu="mdMenu">
+                        <a md-menu-item>Edit</a>
+                        <button md-menu-item (click)="delete(row)">Delete</button>
+                      </md-menu>
+                    </div>
+                  </template>
+                </td-data-table>
+              </md-divider>
+              <md-card-actions>
+                <a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+                  <md-icon>add</md-icon>
+                </a>
+              </md-card-actions>
+            </md-card>
+          </td-expansion-panel>
 
-<td-expansion-panel label="Financial Support">
-<md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-<div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-<md-checkbox>
-<div layout="column" flex>
- Sponsor by Employer / Government. Please attach letter from Sponsor.
-</div>
-</md-checkbox>
-</div>
+          <td-expansion-panel label="Financial Support">
+            <md-card>
+              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                  <md-checkbox>
+                    <div layout="column" flex>
+                      Sponsor by Employer / Government. Please attach letter from Sponsor.
+                    </div>
+                  </md-checkbox>
+                </div>
 
-<div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-<md-checkbox>
-<div layout="column" flex>
- Self Supporting . Please enclose financial guarantee or bank statement.
-</div>
-</md-checkbox>
-</div>
-</div>
-</md-card>
-</td-expansion-panel>
+                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                  <md-checkbox>
+                    <div layout="column" flex>
+                      Self Supporting . Please enclose financial guarantee or bank statement.
+                    </div>
+                  </md-checkbox>
+                </div>
+              </div>
+            </md-card>
+          </td-expansion-panel>
 
-<td-expansion-panel label="Referees">
-<md-card>
-<md-divider>
-   <td-data-table
-    [data]="facultyCodes$ | async"
-    [columns]="columns"
-    [sortBy]="summary"
-    [sortOrder]="ASC"
-    [sortable]="false"
-    [multiple]="false"
-    [selectable]="false"
-    (rowSelect)="view.emit($event)" dense>
-    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <span flex>{{value}}</span>
-      </div>
-    </template>
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <button md-icon-button [md-menu-trigger-for]="menu">
-          <md-icon>more_vert</md-icon>
-        </button>
-        <md-menu x-position="before" #menu="mdMenu">
-          <a md-menu-item>Edit</a>
-          <button md-menu-item (click)="delete(row)">Delete</button>
-        </md-menu>
-      </div>
-    </template>
-  </td-data-table>
-</md-divider>
-<md-card-actions>
-<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
-  <md-icon>add</md-icon>
-</a>
-</md-card-actions>
-</md-card>
-</td-expansion-panel>
-</md-card>
-</md-tab>
+          <td-expansion-panel label="Referees">
+            <md-card>
+              <md-divider>
+                <td-data-table
+                  [data]="facultyCodes$ | async"
+                  [columns]="columns"
+                  [sortBy]="summary"
+                  [sortOrder]="ASC"
+                  [sortable]="false"
+                  [multiple]="false"
+                  [selectable]="false"
+                  (rowSelect)="view.emit($event)" dense>
+                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <span flex>{{value}}</span>
+                    </div>
+                  </template>
+                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <button md-icon-button [md-menu-trigger-for]="menu">
+                        <md-icon>more_vert</md-icon>
+                      </button>
+                      <md-menu x-position="before" #menu="mdMenu">
+                        <a md-menu-item>Edit</a>
+                        <button md-menu-item (click)="delete(row)">Delete</button>
+                      </md-menu>
+                    </div>
+                  </template>
+                </td-data-table>
+              </md-divider>
+              <md-card-actions>
+                <a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+                  <md-icon>add</md-icon>
+                </a>
+              </md-card-actions>
+            </md-card>
+          </td-expansion-panel>
+        </md-card>
+      </md-tab>
 
-<md-tab>
-<md-card>
-<template md-tab-label>Upload Document</template>
+      <md-tab>
+        <md-card>
+          <template md-tab-label>Upload Document</template>
 
-<div layout="column" class="pad-right" flex>
+          <div layout="column" class="pad-right" flex>
 
-<md-card-title>Upload Document Checklist</md-card-title>
-<md-card>
-  <md-divider>
-   <td-data-table
-    [data]="facultyCodes$ | async"
-    [columns]="columns"
-    [sortBy]="summary"
-    [sortOrder]="ASC"
-    [sortable]="false"
-    [multiple]="false"
-    [selectable]="false"
-    (rowSelect)="view.emit($event)" dense>
-    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <span flex>{{value}}</span>
-      </div>
-    </template>
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <button md-icon-button [md-menu-trigger-for]="menu">
-          <md-icon>more_vert</md-icon>
-        </button>
-        <md-menu x-position="before" #menu="mdMenu">
-          <a md-menu-item>Edit</a>
-          <button md-menu-item (click)="delete(row)">Delete</button>
-        </md-menu>
-      </div>
-    </template>
-  </td-data-table>
-</md-divider>
-<md-card-actions>
-<a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
-  <md-icon>add</md-icon>
-</a>
-</md-card-actions>
-</md-card>
-</div>
-</md-card>
-</md-tab>
-<md-tab>
-<md-card>
-<template md-tab-label>Submit Application</template>
+            <md-card-title>Upload Document Checklist</md-card-title>
+            <md-card>
+              <md-divider>
+                <td-data-table
+                  [data]="facultyCodes$ | async"
+                  [columns]="columns"
+                  [sortBy]="summary"
+                  [sortOrder]="ASC"
+                  [sortable]="false"
+                  [multiple]="false"
+                  [selectable]="false"
+                  (rowSelect)="view.emit($event)" dense>
+                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <span flex>{{value}}</span>
+                    </div>
+                  </template>
+                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <button md-icon-button [md-menu-trigger-for]="menu">
+                        <md-icon>more_vert</md-icon>
+                      </button>
+                      <md-menu x-position="before" #menu="mdMenu">
+                        <a md-menu-item>Edit</a>
+                        <button md-menu-item (click)="delete(row)">Delete</button>
+                      </md-menu>
+                    </div>
+                  </template>
+                </td-data-table>
+              </md-divider>
+              <md-card-actions>
+                <a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
+                  <md-icon>add</md-icon>
+                </a>
+              </md-card-actions>
+            </md-card>
+          </div>
+        </md-card>
+      </md-tab>
+      <md-tab>
+        <md-card>
+          <template md-tab-label>Submit Application</template>
 
-<div layout="column" class="pad-right" flex>
+          <div layout="column" class="pad-right" flex>
 
-<div layout="column" class="pad-right" flex>
+            <div layout="column" class="pad-right" flex>
 
-<md-card-title>Declaration</md-card-title>
-<md-card-subtitle>Submit Application for Intake September 2017</md-card-subtitle>
-<div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-<md-checkbox><div layout="column" flex>
- I declare that the statements made in this application form are correct. I am fully aware that UMK reserves the right to reject my application or terminate my candidature if the information given above is incorrect or incomplete.
-</div> </md-checkbox>
-</div>
-<md-dialog-actions align="end">
- <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Submit</button>
-</md-dialog-actions>
-</div>
-</div>
-</md-card>
-</md-tab>
-</md-tab-group>
-</td-layout-card-over>
+              <md-card-title>Declaration</md-card-title>
+              <md-card-subtitle>Submit Application for Intake September 2017</md-card-subtitle>
+              <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                <md-checkbox>
+                  <div layout="column" flex>
+                    I declare that the statements made in this application form are correct. I am fully aware that UMK
+                    reserves the right to reject my application or terminate my candidature if the information given
+                    above is incorrect or incomplete.
+                  </div>
+                </md-checkbox>
+              </div>
+              <md-dialog-actions align="end">
+                <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Submit
+                </button>
+              </md-dialog-actions>
+            </div>
+          </div>
+        </md-card>
+      </md-tab>
+    </md-tab-group>
+  </td-layout-card-over>
 </td-layout-nav>
