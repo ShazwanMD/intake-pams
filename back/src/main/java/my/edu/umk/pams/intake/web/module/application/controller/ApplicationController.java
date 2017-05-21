@@ -160,7 +160,7 @@ public class ApplicationController {
 	// ====================================================================================================
 
 	@RequestMapping(value = "/intakeApplication/{referenceNo}/employments", method = RequestMethod.GET)
-	public ResponseEntity<List<Employment>> findEmployments(@PathVariable String referenceNo) {
+	public ResponseEntity<List<Employment>> findEmploymentsByIntakeApplication(@PathVariable String referenceNo) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 
 		List<InEmployment> employments = applicationService.findEmployments(application);
@@ -194,7 +194,7 @@ public class ApplicationController {
 	// ====================================================================================================
 
 	@RequestMapping(value = "/intakeApplication/{referenceNo}/educations", method = RequestMethod.GET)
-	public ResponseEntity<List<Education>> findEducations(@PathVariable String referenceNo) {
+	public ResponseEntity<List<Education>> findEducationsByIntakeApplication(@PathVariable String referenceNo) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 
 		List<InEducation> educations = applicationService.findEducations(application);
