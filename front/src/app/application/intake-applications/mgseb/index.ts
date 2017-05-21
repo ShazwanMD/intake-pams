@@ -14,6 +14,7 @@ import { IntakeApplicationActions } from "../intake-application.action";
 import { CommonActions } from "../../../common/common.action";
 import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
 import { EmploymentTaskListComponent } from "./component/employment-task-list.component";
+import { ProgramOfferingSelectComponent } from "../cps/component/program-offering-select.component";
 
 @NgModule({
   imports: [
@@ -32,7 +33,7 @@ import { EmploymentTaskListComponent } from "./component/employment-task-list.co
   exports: [],
   entryComponents: [
     EmploymentTaskListComponent,
-
+    ProgramOfferingSelectComponent,
 
   ],
 })
