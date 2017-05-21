@@ -3,20 +3,19 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {IntakeApplication} from "../intake-application.interface";
 import {ApplicationModuleState} from "../../index";
-import {IntakeApplicationPersonal} from "./intake-application-personal.interface";
 import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import { EducationCreatorDialog } from "./dialog/education-creator.dialog";
+import { IntakeApplication } from "./intake-application.interface";
 
 
 @Component({
-  selector: 'pams-intake-application-personal',
-  templateUrl: './intake-application-personal.page.html',
+  selector: 'pams-intake-application',
+  templateUrl: './intake-application.page.html',
 })
 
-export class IntakeApplicationPersonalPage implements OnInit {
+export class IntakeApplicationPage implements OnInit {
 
   private createForm: FormGroup;
   private creatorDialogRef1: MdDialogRef<EducationCreatorDialog>;

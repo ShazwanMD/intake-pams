@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {CovalentCoreModule} from '@covalent/core';
 import {appRoutes, appRoutingProviders} from "../../../app.routes";
-import {IntakeApplicationPersonalPage} from "./intake-application-personal.page";
+import {IntakeApplicationPage} from "./intake-application.page";
 import {IntakeApplicationEducationPage} from "./intake-application-education.page";
 import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
@@ -25,7 +25,7 @@ import { EmploymentTaskListComponent } from "./component/employment-task-list.co
     ProgramLevelSubModule.forRoot(),
   ],
   declarations: [
-    IntakeApplicationPersonalPage,
+    IntakeApplicationPage,
     IntakeApplicationEducationPage,
     
   ],
