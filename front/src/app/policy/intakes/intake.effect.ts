@@ -127,6 +127,15 @@ export class IntakeEffects {
     .map(state => state[1])
     .map(intake => this.intakeActions.findProgramOfferings(intake));
 
+   @Effect() updateProgramOffering$ = this.actions$
+    .ofType(IntakeActions.UPDATE_PROGRAM_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.policyService.updateProgramOffering(payload.intake, payload.programOffering))
+    .map(message => this.intakeActions.updateProgramOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state => state[1])
+    .map(intake => this.intakeActions.findProgramOfferings(intake));
+
   @Effect() addStudyModeOffering$ = this.actions$
     .ofType(IntakeActions.ADD_STUDY_MODE_OFFERING)
     .map(action => action.payload)
