@@ -15,6 +15,9 @@ import {intakeListReducer, IntakeListState} from "./intake-applications/intake-l
 import {intakeReducer, IntakeState} from "./intake-applications/intake.reducer";
 import { CommonModule } from "../common/index";
 import { ProgramLevelSubModule } from "../policy/program-levels/index";
+import { ProgramOfferingSelectComponent } from "./intake-applications/cps/component/program-offering-select.component";
+import { EmploymentCreatorDialog } from "./intake-applications/cps/dialog/employment-creator.dialog";
+import { CpsIntakeApplicationSubModule } from "./intake-applications/cps/index";
 
 export interface ApplicationModuleState {
   intakes:IntakeListState;
@@ -41,13 +44,17 @@ export const applicationModuleReducers = {
     IntakeApplicationSubModule.forRoot(),
     CommonModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
+    CpsIntakeApplicationSubModule.forRoot(),
   ],
   declarations: [
     // page
     ApplicationPage,
-   //IntakeDetailMgsebPage,
   ],
   exports: [],
+
+  entryComponents: [
+    EmploymentCreatorDialog,
+  ],
 })
 export class ApplicationModule {
   static forRoot(): ModuleWithProviders {
