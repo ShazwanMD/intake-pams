@@ -10,7 +10,9 @@ import {CommonService} from "../../../../services/common.service";
 import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
 import {CommonModule} from "../../../common/index";
 import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
-import {ProgramOfferingSelectComponent} from "./component/program-offering-select.component";
+import { ProgramOfferingSelectComponent } from "./component/program-offering-select.component";
+import { PolicyService } from "../../../../services/policy.service";
+import { IntakeSessionActions } from "../../../policy/intake-sessions/intake-session.action";
 
 
 @NgModule({
@@ -27,12 +29,8 @@ import {ProgramOfferingSelectComponent} from "./component/program-offering-selec
     EmploymentCreatorDialog,
     ProgramOfferingSelectComponent,
   ],
-  exports: [
-    ProgramOfferingSelectComponent,
-  ],
-  entryComponents: [
-    EmploymentCreatorDialog
-  ],
+  exports: [ProgramOfferingSelectComponent],
+  entryComponents: [],
 })
 export class CpsIntakeApplicationSubModule {
   static forRoot(): ModuleWithProviders {
@@ -42,6 +40,8 @@ export class CpsIntakeApplicationSubModule {
         appRoutingProviders,
         IdentityService,
         CommonService,
+        PolicyService,
+        IntakeSessionActions,
       ],
     };
   }
