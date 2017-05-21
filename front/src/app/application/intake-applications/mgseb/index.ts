@@ -13,8 +13,9 @@ import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
 import { IntakeApplicationActions } from "../intake-application.action";
 import { CommonActions } from "../../../common/common.action";
 import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
-import { EmploymentTaskListComponent } from "./component/employment-task-list.component";
+
 import { ProgramOfferingSelectComponent } from "../../../policy/intakes/component/program-offering-select.component";
+import { EmploymentTaskListComponent } from "../component/employment-task-list.component";
 
 @NgModule({
   imports: [
