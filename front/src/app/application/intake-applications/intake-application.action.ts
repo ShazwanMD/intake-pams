@@ -46,12 +46,31 @@ export class IntakeApplicationActions {
     };
   }
 
-  
+  static FIND_PROGRAM_OFFERINGS_BY_INTAKE = '[Intake] Find Program Offerings By Intake';
+
+  findProgramOfferingsByIntake(intake): Action {
+    console.log("findProgramOfferingsByIntake");
+    return {
+      type: IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE,
+      payload: intake
+    };
+  }
+
+  static FIND_PROGRAM_OFFERINGS_BY_INTAKE_SUCCESS = '[Intake] Find Program Offerings By Intake Success';
+
+  findProgramOfferingsByIntakeSuccess(offerings): Action {
+    console.log("findProgramOfferingsByIntakeSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_SUCCESS,
+      payload: offerings
+    };
+  }
+
 
   // ====================================================================================================
   // INTAKE APPLICATION
   // ====================================================================================================
-  
+
   static APPLY_INTAKE_CPS = '[Intake Application] Apply Intake Cps';
 
   applyIntakeCps(intake): Action {
@@ -69,7 +88,7 @@ export class IntakeApplicationActions {
       payload: referenceNo
     };
   }
-  
+
   static APPLY_INTAKE_MGSEB = '[Intake Application] Apply Intake Mgseb';
 
   applyIntakeMgseb(intake): Action {
@@ -105,7 +124,6 @@ export class IntakeApplicationActions {
       payload: applcations
     };
   }
-
 
   static FIND_EDUCATIONS_BY_INTAKE_APPLICATION = '[Intake Application] Find Educations';
 
@@ -166,7 +184,7 @@ export class IntakeApplicationActions {
     };
   }
 
-   static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Spm Results';
+  static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Spm Results';
 
   findSpmResultsByIntakeApplication(application): Action {
     return {
@@ -350,7 +368,7 @@ export class IntakeApplicationActions {
     };
   }
 
-   static ADD_SPM_RESULT = '[Intake Application] Add Spm Result';
+  static ADD_SPM_RESULT = '[Intake Application] Add Spm Result';
 
   addSpmResult(intake, spmResult) {
     return {

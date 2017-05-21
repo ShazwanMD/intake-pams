@@ -1,4 +1,3 @@
-import { SpmResult } from './../app/application/intake-applications/spm-result.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -9,13 +8,15 @@ import {Education} from "../app/application/intake-applications/education.interf
 import {Employment} from "../app/application/intake-applications/employment.interface";
 import {Address} from "../app/application/intake-applications/address.interface";
 import {Intake} from "../app/policy/intakes/intake.interface";
+import {ProgramOffering} from "../app/policy/intakes/program-offering.interface";
+import {SpmResult} from './../app/application/intake-applications/spm-result.interface';
 
 
 @Injectable()
 export class ApplicationService {
 
   constructor(private http: Http,
-    private _http: HttpInterceptorService) {
+              private _http: HttpInterceptorService) {
   }
 
   // ====================================================================================================
@@ -35,13 +36,18 @@ export class ApplicationService {
       .map((res: Response) => <Intake>res.json());
   }
 
+  findProgramOfferingsByIntake(intake: Intake): Observable<ProgramOffering[]> {
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings')
+      .map((res: Response) => <ProgramOffering[]>res.json());
+  }
+
 
   applyIntake(intake: Intake): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/apply', options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -66,7 +72,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/'
       + application.referenceNo + '/submit', JSON.stringify(application), options)
       .flatMap((res: Response) => Observable.of(res.text()));
@@ -81,14 +87,14 @@ export class ApplicationService {
     console.log("findEducations");
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/educations")
       .map((res: Response) => <Education[]>res.json());
-  }  
+  }
 
   addEducation(application: IntakeApplication, education: Education): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/educations', JSON.stringify(education), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -109,12 +115,12 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments', JSON.stringify(employment), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
- findSpmResultsByIntakeApplication(application: IntakeApplication): Observable<SpmResult[]> {
+  findSpmResultsByIntakeApplication(application: IntakeApplication): Observable<SpmResult[]> {
     console.log("findResults");
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/employments")
       .map((res: Response) => <SpmResult[]>res.json());
@@ -130,7 +136,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses', JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }

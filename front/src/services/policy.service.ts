@@ -37,7 +37,7 @@ export class PolicyService {
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/policy/intake-sessions', JSON.stringify(sessions), options)
       .flatMap((res: Response) => Observable.of(res.text()));
-    } 
+    }
 
     removeIntakeSession(id: IntakeSession) {
     let headers = new Headers({
@@ -102,7 +102,7 @@ export class PolicyService {
   }
 
   findProgramOfferings(intake: Intake): Observable<ProgramOffering[]> {
-    console.log("findProgramOfferings");
+    console.log("findProgramOfferings: " + intake.referenceNo);
     return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/programOfferings")
       .map((res: Response) => <ProgramOffering[]>res.json());
   }

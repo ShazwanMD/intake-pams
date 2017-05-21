@@ -20,6 +20,7 @@ export class ApplicationPage implements OnInit {
     {name: 'referenceNo', label: 'ReferenceNo'},
     {name: 'startDate', label: 'Start Date'},
     {name: 'endDate', label: 'End Date'},
+    {name: 'endDate', label: 'End Date'},
     {name: 'action', label: ''}
   ];
 
@@ -34,11 +35,5 @@ export class ApplicationPage implements OnInit {
     this.route.params.subscribe(() => {
       this.store.dispatch(this.intakeApplicationActions.findIntakes()); // find PUBLISHED intakes
     });
-  }
-
-  apply(intake: Intake): void {
-      
-    console.log("apply");
-      this.router.navigate(['application/intake-applications/',intake.referenceNo]);
   }
 }

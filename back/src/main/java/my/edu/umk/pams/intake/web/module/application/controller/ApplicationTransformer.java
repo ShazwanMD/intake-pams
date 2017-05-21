@@ -1,12 +1,10 @@
 package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.*;
-import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.web.module.application.vo.*;
-import my.edu.umk.pams.intake.web.module.core.vo.FlowState;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
-import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
-
+import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,13 +15,17 @@ import java.util.stream.Collectors;
  */
 @Component("applicationTransformer")
 public class ApplicationTransformer {
-    
+
+    @Autowired
+    private PolicyTransformer policyTransformer;
+
     public IntakeApplication toIntakeApplicationVo(InIntakeApplication e){
         IntakeApplication vo = new IntakeApplication();
         vo.setId(e.getId());
         vo.setReferenceNo(e.getReferenceNo());
         vo.setName(e.getName());
         vo.setCredentialNo(e.getCredentialNo());
+        vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
         // todo(uda): more props
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
@@ -68,7 +70,6 @@ public class ApplicationTransformer {
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-
 
     public Education toEducationVo(InEducation e){
         Education vo = new Education();

@@ -18,8 +18,12 @@
           <p class="md-title tc-grey-600">About this intake</p>
           <p>
             {{(intake$| async)?.referenceNo}}
-            {{(intake$| async)?.startDate}}
-            {{(intake$| async)?.endDate}}
+          </p>
+          <p>
+            StartDate: {{(intake$| async)?.startDate}}
+          </p>
+          <p>
+            End Date: {{(intake$| async)?.endDate}}
           </p>
         </div>
         <div flex>
@@ -36,35 +40,30 @@
       </div>
     </div>
   </section>
+  <section class="bgc-red-600 tc-red-50" tdMediaToggle="gt-xs"
+           [mediaClasses]="['pad-top-xl', 'pad-bottom-xl']">
+    <h2 class="md-headline text-upper text-center tc-grey-50 push-bottom">Offered Programs</h2>
+    <div layout="row" layout-align-gt-xs="center center">
+      <div flex-gt-xs="80" layout="row" layout-wrap>
+        <template let-programOffering let-last="last" ngFor [ngForOf]="programOfferings$ | async">
+        <div class="text-center" flex-xs="33" flex-gt-xs="33">
+          <md-icon class="tc-grey-50 md-display-2">system_update_alt</md-icon>
+          <div class="pad-bottom-md">{{programOffering?.programCode?.descriptionEn}}</div>
+        </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
   <section class="bgc-white">
     <div layout-gt-xs="row">
       <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
         <div class="push-top-xxl" hide-xs></div>
         <h3 class="md-display-1 tc-grey-600 push-top-xs push-bottom-sm">Apply for this intake</h3>
-        
+
         <button md-raised-button color="accent" class="push-bottom" (click)="apply(row)">I'm ready to apply
         </button>
         <div class="push-top-xxl" hide-xs></div>
-      </div>
-    </div>
-  </section>
-  <section class="bgc-red-600 tc-red-50" tdMediaToggle="gt-xs"
-           [mediaClasses]="['pad-top-xl', 'pad-bottom-xl']">
-    <h2 class="md-headline text-upper text-center tc-grey-50 push-bottom">Programs</h2>
-    <div layout="row" layout-align-gt-xs="center center">
-      <div flex-gt-xs="80" layout="row" layout-wrap>
-        <div class="text-center" flex-xs="33" flex-gt-xs="33">
-          <md-icon class="tc-grey-50 md-display-2">system_update_alt</md-icon>
-          <div class="pad-bottom-md">Post Graduates Programs</div>
-        </div>
-        <div class="text-center" flex-xs="33" flex-gt-xs="33">
-          <md-icon class="tc-grey-50 md-display-2 ">dashboard</md-icon>
-          <div class="pad-bottom-md">Masters Programs</div>
-        </div>
-        <div class="text-center" flex-xs="33" flex-gt-xs="33">
-          <md-icon class="tc-grey-50 md-display-2">email</md-icon>
-          <div class="pad-bottom-md">Custom Programs</div>
-        </div>
       </div>
     </div>
   </section>

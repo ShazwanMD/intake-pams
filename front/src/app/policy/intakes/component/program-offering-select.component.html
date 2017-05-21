@@ -2,7 +2,7 @@
   [placeholder]="placeholder"
   (change)="selectChangeEvent($event.value)" flex>
 
-  <md-option *ngFor="let programOfferings of programOfferings$ | async" [value]="programOfferings">
-    {{programOfferings.code}}: {{programOfferings.descriptionMs}}
+  <md-option *ngFor="let programOffering of programOfferings$ | async" [value]="programOffering">
+    {{programOffering.code}}: {{programOffering.descriptionMs}}
   </md-option>
 </md-select>

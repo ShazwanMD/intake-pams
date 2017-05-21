@@ -17,4 +17,5 @@ export interface Intake extends MetaObject{
 
   // transient
   applied?:boolean;
+  intakeApplicationReferenceNo?:string;
 }

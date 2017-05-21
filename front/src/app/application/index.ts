@@ -10,30 +10,51 @@ import {ApplicationService} from "../../services/application.service";
 import {PolicyService} from "../../services/policy.service";
 import {IntakeApplicationSubModule} from "./intake-applications/index";
 import {intakeApplicationReducer, IntakeApplicationState} from "./intake-applications/intake-application.reducer";
-import {intakeApplicationListReducer,IntakeApplicationListState} from "./intake-applications/intake-application-list.reducer";
+import {
+  intakeApplicationListReducer,
+  IntakeApplicationListState
+} from "./intake-applications/intake-application-list.reducer";
 import {intakeListReducer, IntakeListState} from "./intake-applications/intake-list.reducer";
 import {intakeReducer, IntakeState} from "./intake-applications/intake.reducer";
-import { CommonModule } from "../common/index";
-import { ProgramLevelSubModule } from "../policy/program-levels/index";
-import { ProgramOfferingSelectComponent } from "../policy/intakes/component/program-offering-select.component";
-import { EmploymentCreatorDialog } from "./intake-applications/cps/dialog/employment-creator.dialog";
-import { CpsIntakeApplicationSubModule } from "./intake-applications/cps/index";
+import {CommonModule} from "../common/index";
+import {ProgramLevelSubModule} from "../policy/program-levels/index";
+import {EmploymentCreatorDialog} from "./intake-applications/cps/dialog/employment-creator.dialog";
+import {CpsIntakeApplicationSubModule} from "./intake-applications/cps/index";
+import {
+  intakeProgramOfferingListReducer,
+  IntakeProgramOfferingListState
+} from "./intake-applications/intake-program-offering-list.reducer";
+import {
+  intakeStudyModeOfferingListReducer,
+  IntakeStudyModeOfferingListState
+} from "./intake-applications/intake-study-mode-offering-list.reducer";
+import {IntakeSessionSubModule} from "../policy/intake-sessions/index";
+import {
+  intakeSupervisorOfferingListReducer,
+  IntakeSupervisorOfferingListState
+} from "./intake-applications/intake-supervisor-offering-list.reducer";
 
 export interface ApplicationModuleState {
-  intakes:IntakeListState;
-  intake:IntakeState;
+  intakes: IntakeListState;
+  intake: IntakeState;
+  programOfferings: IntakeProgramOfferingListState;
+  supervisorOfferings: IntakeSupervisorOfferingListState;
+  studyModeOfferings: IntakeStudyModeOfferingListState;
   intakeApplications: IntakeApplicationListState;
   intakeApplication: IntakeApplicationState;
-};
+}
+;
 
 export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationModuleState>{};
 export const applicationModuleReducers = {
-   intakes:intakeListReducer,
-   intake:intakeReducer,
-   intakeApplications:intakeApplicationListReducer,
-   intakeApplication:intakeApplicationReducer
-
- };
+  intakes: intakeListReducer,
+  intake: intakeReducer,
+  programOfferings: intakeProgramOfferingListReducer,
+  supervisorOfferings: intakeSupervisorOfferingListReducer,
+  studyModeOfferings: intakeStudyModeOfferingListReducer,
+  intakeApplications: intakeApplicationListReducer,
+  intakeApplication: intakeApplicationReducer
+};
 
 @NgModule({
   imports: [

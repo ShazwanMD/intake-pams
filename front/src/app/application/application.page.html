@@ -59,8 +59,8 @@
         </template>
         <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
           <div layout="row">
-            <a md-button color="warn" class="text-upper" (click)="apply(row)">
-              <span>View Details</span>
+            <a md-button color="warn" class="text-upper" [routerLink]="['/application/intake-detail', row?.referenceNo]">
+              <span>View</span>
             </a>
           </div>
         </template>
@@ -69,7 +69,5 @@
       <md-card-actions>
       </md-card-actions>
     </md-card>
-
-
   </td-layout-manage-list>
 </td-layout-nav>

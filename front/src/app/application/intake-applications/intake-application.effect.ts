@@ -4,24 +4,25 @@ import {from} from "rxjs/observable/from";
 import {IntakeApplicationActions} from "./intake-application.action";
 import {ApplicationService} from "../../../services/application.service";
 import {Router} from "@angular/router";
-import { Store } from "@ngrx/store";
-import { ApplicationModuleState } from "../index";
+import {Store} from "@ngrx/store";
+import {ApplicationModuleState} from "../index";
 import {Observable} from "rxjs";
-import { Intake } from "../../policy/intakes/intake.interface";
+import {Intake} from "../../policy/intakes/intake.interface";
+import {IntakeApplication} from "./intake-application.interface";
 
 
 @Injectable()
 export class IntakeApplicationEffects {
 
-  private INTAKE = "applicationModuleState.intake".split(".");  
+  private INTAKE = "applicationModuleState.intake".split(".");
   private intake$: Observable<Intake>;
-    
+
   constructor(private actions$: Actions,
               private intakeApplicationActions: IntakeApplicationActions,
               private applicationService: ApplicationService,
               private router: Router,
               private store$: Store<ApplicationModuleState>) {
-      this.intake$ = this.store$.select(...this.INTAKE);
+    this.intake$ = this.store$.select(...this.INTAKE);
   }
 
   // ====================================================================================================
@@ -38,7 +39,16 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.FIND_INTAKE_BY_REFERENCE_NO)
     .map(action => action.payload)
     .switchMap(referenceNo => this.applicationService.findIntakeByReferenceNo(referenceNo))
-    .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake));
+    .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
+    .mergeMap(action => from([action,
+      this.intakeApplicationActions.findProgramOfferingsByIntake(action.payload)
+    ]));
+
+  @Effect() findProgramOfferingsByIntake$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE)
+    .map(action => action.payload)
+    .switchMap(referenceNo => this.applicationService.findProgramOfferingsByIntake(referenceNo))
+    .map(intake => this.intakeApplicationActions.findProgramOfferingsByIntakeSuccess(intake));
 
 
   @Effect() findIntakeApplications$ = this.actions$
@@ -51,27 +61,22 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.APPLY_INTAKE_CPS)
     .map(action => action.payload)
     .switchMap(intake => this.applicationService.applyIntake(intake))
-    //.withLatestFrom(this.store$.select(...this.INTAKE))
-   // .map(state=>state[1])
-   // .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
-    //todo:uda
     .mergeMap(referenceNo => from([referenceNo,
       this.intakeApplicationActions.applyIntakeCpsSuccess(referenceNo),
-      this.router.navigate(['/application/intake-applications/cps/',referenceNo])
+      this.router.navigate(['/application/intake-applications/cps/', referenceNo])
     ]));
-  
+
   @Effect() applyIntakeMgseb$ = this.actions$
-  .ofType(IntakeApplicationActions.APPLY_INTAKE_MGSEB)
-  .map(action => action.payload)
-  .switchMap(intake => this.applicationService.applyIntake(intake))
-  .withLatestFrom(this.store$.select(...this.INTAKE))
-  .map(state=>state[1])
-  .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
-  //todo:uda
-  .mergeMap(referenceNo => from([referenceNo,
-    this.intakeApplicationActions.applyIntakeMgsebSuccess(referenceNo),
-    this.router.navigate(['/application/intake-applications/mgseb/',referenceNo])
-  ]));
+    .ofType(IntakeApplicationActions.APPLY_INTAKE_MGSEB)
+    .map(action => action.payload)
+    .switchMap(intake => this.applicationService.applyIntake(intake))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state => state[1])
+    .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
+    .mergeMap(referenceNo => from([referenceNo,
+      this.intakeApplicationActions.applyIntakeMgsebSuccess(referenceNo),
+      this.router.navigate(['/application/intake-applications/mgseb/', referenceNo])
+    ]));
 
 
   // ====================================================================================================

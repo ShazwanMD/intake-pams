@@ -6,7 +6,10 @@ import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
-import { IntakeApplication } from "./intake-application.interface";
+import {IntakeApplication} from "./intake-application.interface";
+import {IntakeApplicationActions} from "../intake-application.action";
+import {Observable} from "rxjs/Observable";
+import {Intake} from "../../../policy/intakes/intake.interface";
 
 
 @Component({
@@ -16,6 +19,14 @@ import { IntakeApplication } from "./intake-application.interface";
 
 export class CpsIntakeApplicationPage implements OnInit {
 
+  private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
+  private INTAKE: string[] = "applicationModuleState.intake".split(".");
+
+  // load both intake and intake application from store
+  // for  select component purposes
+  private intakeApplication$: Observable<IntakeApplication>;
+  private intake$: Observable<Intake>;
+
   private createForm: FormGroup;
   private creatorDialogRef: MdDialogRef<EmploymentCreatorDialog>;
 
@@ -23,8 +34,19 @@ export class CpsIntakeApplicationPage implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
+              private actions: IntakeApplicationActions,
               private store: Store<ApplicationModuleState>,
               private dialog: MdDialog) {
+    this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
+    this.intake$ = this.store.select(...this.INTAKE);
+    this.intake$.subscribe(intake => console.log("intake: " + intake.referenceNo));
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params: { referenceNo: string }) => {
+      let referenceNo: string = params.referenceNo;
+      if (null != referenceNo) this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+    });
   }
 
   showDialog(): void {
@@ -40,9 +62,6 @@ export class CpsIntakeApplicationPage implements OnInit {
       console.log("close dialog");
       // load something here
     });
-  }
-
-  ngOnInit(): void {
   }
 
   expandedEvent(): void {
