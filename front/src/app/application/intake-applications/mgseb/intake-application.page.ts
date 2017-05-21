@@ -9,13 +9,12 @@ import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import { EducationCreatorDialog } from "./dialog/education-creator.dialog";
 import { IntakeApplication } from "./intake-application.interface";
 
-
 @Component({
   selector: 'pams-intake-application',
   templateUrl: './intake-application.page.html',
 })
 
-export class IntakeApplicationPage implements OnInit {
+export class MgsebIntakeApplicationPage implements OnInit {
 
   private createForm: FormGroup;
   private creatorDialogRef1: MdDialogRef<EducationCreatorDialog>;

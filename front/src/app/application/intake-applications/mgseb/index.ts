@@ -4,7 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 import {CovalentCoreModule} from '@covalent/core';
 import {appRoutes, appRoutingProviders} from "../../../app.routes";
-import {IntakeApplicationPage} from "./intake-application.page";
+import {MgsebIntakeApplicationPage} from "./intake-application.page";
 import {IntakeApplicationEducationPage} from "./intake-application-education.page";
 import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
@@ -26,7 +26,7 @@ import { ProgramOfferingSelectComponent } from "../../../policy/intakes/componen
     ProgramLevelSubModule.forRoot(),
   ],
   declarations: [
-    IntakeApplicationPage,
+    MgsebIntakeApplicationPage,
     IntakeApplicationEducationPage,
 
   ],

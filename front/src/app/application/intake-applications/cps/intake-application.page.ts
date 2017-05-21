@@ -14,7 +14,7 @@ import { IntakeApplication } from "./intake-application.interface";
   templateUrl: './intake-application.page.html',
 })
 
-export class IntakeApplicationPage implements OnInit {
+export class CpsIntakeApplicationPage implements OnInit {
 
   private createForm: FormGroup;
   private creatorDialogRef: MdDialogRef<EmploymentCreatorDialog>;
