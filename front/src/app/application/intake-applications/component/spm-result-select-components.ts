@@ -1,11 +1,10 @@
-import { IntakeApplicationActions } from './../../intake-application.action';
-import { SpmResult } from './../../spm-result.interface';
-import { IntakeApplication } from './../../cps/intake-application.interface';
-import { ApplicationModuleState } from './../../../index';
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
+import { IntakeApplicationModuleState } from "../index";
+import { IntakeApplicationActions } from "../intake-application.action";
+import { SpmResult } from "../spm-result.interface";
 
 
 
@@ -21,7 +20,7 @@ export class SpmResultSelectComponent implements OnInit {
 
   spmResult$: Observable<SpmResult[]>;
 
-  constructor(private store: Store<ApplicationModuleState>,
+  constructor(private store: Store<IntakeApplicationModuleState>,
               private actions: IntakeApplicationActions)
 {
     this.spmResult$ = this.store.select(...this.SPM_RESULT);

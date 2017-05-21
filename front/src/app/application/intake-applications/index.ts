@@ -14,12 +14,28 @@ import {IntakeApplicationEffects} from "./intake-application.effect";
 import {IntakeApplicationActions} from "./intake-application.action";
 import {IntakeDetailPage} from "./intake-detail.page";
 import { EmploymentCreatorDialog } from "./mgseb/dialog/employment-creator.dialog";
-import { EmploymentTaskListComponent } from "./mgseb/component/employment-task-list.component";
 import { EducationCreatorDialog } from "./mgseb/dialog/education-creator.dialog";
 import { CommonModule } from "../../common/index";
 import { ProgramLevelSubModule } from "../../policy/program-levels/index";
 import { ProgramOfferingSelectComponent } from "../../policy/intakes/component/program-offering-select.component";
+import { EmploymentTaskListComponent } from "./component/employment-task-list.component";
+import { EmploymentListState, employmentListReducer } from "./component/employment-task-list.reducer";
+import { Employment } from "./employment.interface";
 
+export interface IntakeApplicationModuleState{
+ employments:EmploymentListState;
+};
+
+export const INITIAL_INTAKE_APPLICATION_STATE: IntakeApplicationModuleState =
+  <IntakeApplicationModuleState>{
+     employments:<Employment[]>[],
+  };
+  
+
+export const intakeApplicationModuleReducers = {
+   
+   employments : employmentListReducer,
+}
 
 @NgModule({
   imports: [
