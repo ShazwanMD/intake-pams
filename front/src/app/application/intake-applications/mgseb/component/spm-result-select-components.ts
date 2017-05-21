@@ -29,7 +29,7 @@ export class SpmResultSelectComponent implements OnInit {
 
   ngOnInit() {
       // this.store.dispatch(this.actions.findSpmResults(application));
-      this.spmResult$.subscribe(application => this.store.dispatch(this.actions.findSpmResults(application)));
+      this.spmResult$.subscribe(application => this.store.dispatch(this.actions.findSpmResultsByIntakeApplication(application)));
   }
 
 
