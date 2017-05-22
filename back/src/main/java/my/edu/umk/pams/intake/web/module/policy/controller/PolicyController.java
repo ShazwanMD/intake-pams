@@ -201,6 +201,11 @@ public class PolicyController {
         return new ResponseEntity<List<ProgramOffering>>(policyTransformer
                 .toProgramOfferingVos(policyService.findProgramOfferings(intake)), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/programOfferings/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ProgramOffering> findProgramOfferingsById(@PathVariable Long id) {
+        return new ResponseEntity<ProgramOffering>(policyTransformer.toProgramOfferingVo(policyService.findProgramOfferingById(id)), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.POST)
     public ResponseEntity<Boolean> addProgramOfferings(@PathVariable String referenceNo,
