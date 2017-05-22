@@ -181,7 +181,7 @@ export class PolicyService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings', JSON.stringify(offering), options)
+    return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings', JSON.stringify(offering.id), options)
       .flatMap((res:Response) => Observable.of(res.text()));
   }
 
