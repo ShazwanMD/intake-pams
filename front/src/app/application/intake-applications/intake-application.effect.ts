@@ -67,9 +67,6 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.APPLY_INTAKE_MGSEB)
     .map(action => action.payload)
     .switchMap(intake => this.applicationService.applyIntake(intake))
-    .withLatestFrom(this.store$.select(...this.INTAKE))
-    .map(state => state[1])
-    .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
     .mergeMap(referenceNo => from([referenceNo,
       this.intakeApplicationActions.applyIntakeMgsebSuccess(referenceNo),
       this.router.navigate(['/application/intake-applications/mgseb/', referenceNo])
