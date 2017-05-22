@@ -1,3 +1,4 @@
+import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list-page';
 import { DistrictCodeListPage } from './district-codes/district-code-list-page';
 import { SchoolCodeListPage } from './school-codes/school-code-list-page';
 import { SchoolCode } from './../common/school-codes/school-code.interface';
@@ -49,6 +50,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'district-codes', component: DistrictCodeListPage},
       {path: 'dun-codes', component: DunCodeListPage},
       {path: 'ethnicity-codes', component: EthnicityCodeListPage},
+      {path: 'parliament-codes', component: ParliamentCodeListPage},
 
 
     ]
