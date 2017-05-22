@@ -39,14 +39,12 @@ export class CpsIntakeApplicationPage implements OnInit {
               private dialog: MdDialog) {
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.intake$ = this.store.select(...this.INTAKE);
-    this.intake$.subscribe(intake => console.log("intake: " + intake.referenceNo));
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { referenceNo: string }) => {
       let referenceNo: string = params.referenceNo;
-      console.log("loading application");
-      if (null != referenceNo) this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+      this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
     });
   }
 

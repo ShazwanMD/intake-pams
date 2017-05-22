@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy, OnInit} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy, OnInit, OnChanges, SimpleChange} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs/Rx";
 import {FormControl} from "@angular/forms";
@@ -12,7 +12,7 @@ import {IntakeApplicationActions} from "../intake-application.action";
   templateUrl: './intake-program-offering-select.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IntakeProgramOfferingSelectComponent implements OnInit {
+export class IntakeProgramOfferingSelectComponent implements OnChanges {
 
   @Input() intakeApplication: IntakeApplication;
   @Input() placeholder: string;
@@ -25,12 +25,14 @@ export class IntakeProgramOfferingSelectComponent implements OnInit {
     this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERING);
   }
 
-  ngOnInit(): void {
-    this.store.dispatch(this.actions.findProgramOfferingsByIntakeApplication(this.intakeApplication));
+  ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
+    if (changes['intakeApplication'] && this.intakeApplication.referenceNo) {
+      console.log("intake app: " + this.intakeApplication.referenceNo);
+      this.store.dispatch(this.actions.findProgramOfferingsByIntakeApplication(this.intakeApplication));
+    }
   }
 
   selectChangeEvent(event: ProgramOffering) {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
-
 }

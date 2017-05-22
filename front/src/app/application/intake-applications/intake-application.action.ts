@@ -59,7 +59,7 @@ export class IntakeApplicationActions {
   static FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake] Find Program Offerings By Intake Application Success';
 
   findProgramOfferingsByIntakeApplicationSuccess(offerings): Action {
-    console.log("findProgramOfferingsByIntakeSuccess");
+    console.log("findProgramOfferingsByIntakeApplicationSuccess");
     return {
       type: IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION_SUCCESS,
       payload: offerings
