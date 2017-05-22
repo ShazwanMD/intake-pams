@@ -1250,4 +1250,89 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
   }
 
 //-------------------------------------------------------------------------------------
+
+//=================================================================================//
+//  PARLIAMENT_CODES                                                                      //
+//=================================================================================//
+//1-------------------------------------------------------------
+  static FIND_PARLIAMENT_CODES = '[Setup] Find Parliament Codes';
+
+  findParliamentCodes(): Action {
+    console.log("findParliamentCodes");
+    return {
+      type: SetupActions.FIND_PARLIAMENT_CODES,
+    };
+  }
+//2-------------------------------------------------------------------------------------
+  static FIND_PARLIAMENT_CODES_SUCCESS = '[Setup] Find Parliament Codes Success';
+
+  findParliamentCodesSuccess(codes): Action {
+    console.log("findParliamentCodesSuccess");
+    return {
+      type: SetupActions.FIND_PARLIAMENT_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+//3----------------------------------------------------------------
+  static SAVE_PARLIAMENT_CODE = '[Setup] Save Parliament Code';
+
+  saveParliamentCode(code): Action {
+    console.log("saveParliamentCode");
+    return {
+      type: SetupActions.SAVE_PARLIAMENT_CODE,
+      payload: code
+    };
+  }
+//4------------------------------------------------------------------------------
+  static SAVE_PARLIAMENT_CODE_SUCCESS = '[Setup] Save Parliament Code Success';
+
+  saveParliamentCodeSuccess(message): Action {
+    console.log("saveParliamentCodeSuccess");
+    return {
+      type: SetupActions.SAVE_PARLIAMENT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_PARLIAMENT_CODE = '[Setup] Update Parliament Code';
+
+  updateParliamentCode(code): Action {
+    console.log("updateParliamentCode");
+    return {
+      type: SetupActions.UPDATE_PARLIAMENT_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_PARLIAMENT_CODE_SUCCESS = '[Setup] Update Parliament Code  Success';
+
+  updateParliamentCodeSuccess(message): Action {
+    console.log("updateParliamentCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_PARLIAMENT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_PARLIAMENT_CODE = '[Setup] Remove Parliament Code';
+
+  removeParliamentCode(code): Action {
+    console.log("removeParliamentCode");
+    return {
+      type: SetupActions.REMOVE_PARLIAMENT_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_PARLIAMENT_CODE_SUCCESS = '[Setup] Remove Parliament Code  Success';
+
+  removeParliamentCodeSuccess(message): Action {
+    console.log("removeParliamentCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_PARLIAMENT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+//-------------------------------------------------------------------------------------
 }
