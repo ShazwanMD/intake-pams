@@ -42,8 +42,7 @@ export class ProgramOfferingListComponent {
   }
 
   ngOnInit(): void {
-    //this.store.dispatch(this.actions.findProgramOfferings(intake));
-      this.programOfferings$.subscribe(intake => this.store.dispatch(this.actions.findProgramOfferings(intake)));
+    this.store.dispatch(this.actions.findProgramOfferings(this.intake));
   }
   
 
