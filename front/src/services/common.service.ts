@@ -147,8 +147,8 @@ export class CommonService {
   // PARLIAMENT CODES
   // ====================================================================================================
 
-  findParliamentCodes(): Observable<ParliamentCode[]> {
-    console.log("findParliamentCodes()");
+    findParliamentCodes(): Observable<ParliamentCode[]> {
+    console.log("findParliamentCodes");
     return this.http.get(environment.endpoint + '/api/common/parliamentCodes')
       .map((res: Response) => <ParliamentCode[]>res.json());
   }
@@ -159,6 +159,35 @@ export class CommonService {
       .map((res: Response) => <ParliamentCode>res.json());
   }
 
+  saveParliamentCode(code: ParliamentCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/parliamentCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateParliamentCode(code: ParliamentCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/parliamentCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeParliamentCode(code: ParliamentCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/parliamentCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
   // ====================================================================================================
   // GENDER CODES
   // ====================================================================================================
