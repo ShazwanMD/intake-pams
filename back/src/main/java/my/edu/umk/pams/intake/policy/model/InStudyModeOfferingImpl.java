@@ -16,8 +16,8 @@ public class InStudyModeOfferingImpl implements InStudyModeOffering {
     @SequenceGenerator(name = "SQ_IN_STDY_MODE_OFRG", sequenceName = "SQ_IN_STDY_MODE_OFRG", allocationSize = 1)
     private Long id;
 
-    @ManyToOne(targetEntity = InStudyModeImpl.class)
-    @JoinColumn(name = "STUDY_MODE_ID")
+    @ManyToOne(targetEntity = InStudyModeImpl.class )
+    @JoinColumn(name = "STUDY_MODE_ID", nullable = false)
     private InStudyMode studyMode;
 
     @ManyToOne(targetEntity = InIntakeImpl.class)

@@ -37,12 +37,12 @@ export class IntakeDetailPage implements OnInit {
   }
 
   apply(intake: Intake) {
-    if (this.intake$.subscribe(intake => intake.graduateCentre.code == 'CPS')) {
-      this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntakeCps(intake)));
-    }
-    else {
+    if (this.intake$.subscribe(intake => intake.graduateCentre.code == 'MGSEB')) {
       this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntakeMgseb(intake)));
     }
+    if (this.intake$.subscribe(intake => intake.graduateCentre.code == 'CPS')) 
+      this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntakeCps(intake)));
+    
   }
 
 }
