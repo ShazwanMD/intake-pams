@@ -18,7 +18,6 @@ import {intakeListReducer, IntakeListState} from "./intake-applications/intake-l
 import {intakeReducer, IntakeState} from "./intake-applications/intake.reducer";
 import {CommonModule} from "../common/index";
 import {ProgramLevelSubModule} from "../policy/program-levels/index";
-import {EmploymentCreatorDialog} from "./intake-applications/cps/dialog/employment-creator.dialog";
 import {CpsIntakeApplicationSubModule} from "./intake-applications/cps/index";
 import {
   intakeProgramOfferingListReducer,
@@ -74,7 +73,7 @@ export const applicationModuleReducers = {
   exports: [],
 
   entryComponents: [
-    EmploymentCreatorDialog,
+  
   ],
 })
 export class ApplicationModule {

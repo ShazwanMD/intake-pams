@@ -5,11 +5,12 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
-import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Observable} from "rxjs/Observable";
 import {Intake} from "../../../policy/intakes/intake.interface";
 import {IntakeApplication} from "../intake-application.interface";
+import { EmploymentCreatorDialog } from "../component/dialog/employment-creator.dialog";
+
 
 
 @Component({

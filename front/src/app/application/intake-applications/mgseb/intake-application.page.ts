@@ -4,10 +4,10 @@ import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
-import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
-import {EducationCreatorDialog} from "./dialog/education-creator.dialog";
 import {IntakeApplication} from "../intake-application.interface";
+import { EducationCreatorDialog } from "../component/dialog/education-creator.dialog";
+import { EmploymentCreatorDialog } from "../component/dialog/employment-creator.dialog";
 
 @Component({
   selector: 'pams-intake-application',
