@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.application.service;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 
 import java.util.List;
 
@@ -145,6 +146,8 @@ public interface ApplicationService {
     List<InAddress> findAddresses(InIntakeApplication application);
     
     List<InSpmResult> findSpmResults(InIntakeApplication application);
+
+    List<InProgramOffering> findProgramOfferings(InIntakeApplication application);
 
     Integer countIntakeApplication(InIntake intake);
 

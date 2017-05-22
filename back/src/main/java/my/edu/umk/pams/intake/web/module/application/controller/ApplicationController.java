@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -16,6 +17,7 @@ import my.edu.umk.pams.intake.web.module.application.vo.Employment;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -147,17 +149,15 @@ public class ApplicationController {
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
-    // ====================================================================================================
-    // PRIVATE METHODS
-    // ====================================================================================================
-
-    private void dummyLogin() {
-        InAutoLoginToken token = new InAutoLoginToken("applicant1");
-        Authentication authed = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(authed);
+    // PROGRAM OFFERINGS BY INTAKE APPLICATION
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/programOfferings", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramOffering>> findProgramOfferingsByIntakeApplication(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InProgramOffering>  offerings = applicationService.findProgramOfferings(application);
+        return new ResponseEntity<List<ProgramOffering>>(policyTransformer.toProgramOfferingVos(offerings), HttpStatus.OK);
     }
-    
-	// ====================================================================================================
+
+    // ====================================================================================================
 	// EMPLOYMENTS
 	// ====================================================================================================
 
@@ -216,5 +216,17 @@ public class ApplicationController {
 
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+
+
+    // ====================================================================================================
+    // PRIVATE METHODS
+    // ====================================================================================================
+
+    private void dummyLogin() {
+        InAutoLoginToken token = new InAutoLoginToken("applicant1");
+        Authentication authed = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authed);
+    }
+
 
 }

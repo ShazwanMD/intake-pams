@@ -5,7 +5,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
-import { IntakeApplication } from "../../cps/intake-application.interface";
+import {Employment} from "../../employment.interface";
+import {IntakeApplication} from "../../intake-application.interface";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class SpmCreatorDialog implements OnInit {
               private dialog: MdDialogRef<SpmCreatorDialog>) {
   }
 
-  save(employement: IntakeApplication, isValid: boolean) {
+  save(employement: Employment, isValid: boolean) {
     //console.log("employement end date: " + employement.endDate);
     //console.log("employement start date: " + employement.startDate);
     //this.store.dispatch(this.actions.startIntakeTask(intake));
@@ -34,13 +35,13 @@ export class SpmCreatorDialog implements OnInit {
 
   ngOnInit(): void {
 
-   this.createForm = this.formBuilder.group(<IntakeApplication>{
+   // this.createForm = this.formBuilder.group(<Employment>{
     //  id: null,
     //  startDate: null,
     //  endDate: null,
     //  employer:'',
     //  current:false
-   });
+   // });
   }
 
   expandedEvent(): void {

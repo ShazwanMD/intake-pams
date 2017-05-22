@@ -1,4 +1,5 @@
-import {ProgramLevel} from "../../../policy/program-levels/program-level.interface";
+
+// deprecated, use education.interface
 export interface IntakeApplicationEducation{
 
   id: number;

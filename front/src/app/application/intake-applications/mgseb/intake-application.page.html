@@ -1,299 +1,301 @@
 <td-layout-nav>
-<div toolbar-content layout="row" layout-align="center center" flex>
+  <div toolbar-content layout="row" layout-align="center center" flex>
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
   <td-layout-card-over>
-  <div layout="row" layout-align="start center">
-        <div>
-          <md-card-title>Intake Application</md-card-title>
-          <md-card-subtitle>Intake Registration for Session 201720181</md-card-subtitle>
-        </div>
+    <div layout="row" layout-align="start center">
+      <div>
+        <md-card-title>Intake Application</md-card-title>
+        <md-card-subtitle>Intake Registration for Session 201720181</md-card-subtitle>
       </div>
-      <md-divider></md-divider>
-      
-<md-tab-group md-stretch-tabs>
-
-  <md-tab>
-  <md-card>
-    <template md-tab-label>Detail of Candidate</template>
-
-     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          <!-- first column -->
-     <div layout="column" class="pad-right" flex>
-     <div layout="row" class="pad-bottom" flex>
-     <pams-study-mode-select [placeholder]="'Select Study Mode'"></pams-study-mode-select>
-     </div>
-     </div>
-
-      </div>
-
-    <td-expansion-panel label="Personal Details">
-    <md-card>
-    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-          <!-- first column -->
-    <div layout="column" class="pad-right" flex>
-      
-    <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-    <input mdInput placeholder="Name"flex/>
-    </md-input-container>
     </div>
+    <md-divider></md-divider>
 
-   <div layout="row" class="pad-bottom" flex>
-   <pams-gender-code-select [placeholder]="'Select Gender'"></pams-gender-code-select>
-   </div>
-           
-    <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-    <input mdInput type="date" placeholder="Date Of Birth"flex/>
-    </md-input-container>
-    </div>
+    <md-tab-group md-stretch-tabs>
+      <md-tab flex>
+        <!-- -->
+        <md-card style="height:100%">
+            <template md-tab-label>Detail of Candidate</template>
 
-    <div layout="row" class="pad-bottom" flex>
-    <pams-state-code-select [placeholder]="'Select State Of Birth'"></pams-state-code-select>
-    </div>
+            <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+              <!-- first column -->
+              <div layout="column" class="pad-right" flex>
+                <div layout="row" class="pad-bottom" flex>
+                  <pams-study-mode-select [placeholder]="'Select Study Mode'"></pams-study-mode-select>
+                </div>
+              </div>
 
-    <div layout="row" class="pad-bottom" flex>
-    <pams-marital-code-select [placeholder]="'Marital Status'"></pams-marital-code-select>
-    </div>
-    </div>
-      
-    <!-- second column -->
-     <div layout="column" class="pad-right" flex>
-    <div layout="row" class="pad-bottom" flex>
-    <md-input-container flex>
-    <input mdInput placeholder="NRIC/Passport"flex/>
-    </md-input-container>
-    </div>
+            </div>
 
-   <div layout="row" class="pad-bottom" flex>
-   <pams-race-code-select [placeholder]="'Select Race'"></pams-race-code-select>
-   </div>
+            <td-expansion-panel label="Personal Details">
+              <md-card>
+                <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                  <!-- first column -->
+                  <div layout="column" class="pad-right" flex>
 
-   <div layout="row" class="pad-bottom" flex>
-   <pams-religion-code-select [placeholder]="'Select Religion'"></pams-religion-code-select>
-   </div>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="Name" flex/>
+                      </md-input-container>
+                    </div>
 
-   <div layout="row" class="pad-bottom" flex>
-   <md-select placeholder="Citizenship">
-   <md-option>YES</md-option>
-   <md-option>NO</md-option>
-   </md-select>
-   </div>
-     </div>
+                    <div layout="row" class="pad-bottom" flex>
+                      <pams-gender-code-select [placeholder]="'Select Gender'"></pams-gender-code-select>
+                    </div>
 
-    </div>
-    </md-card>
-    </td-expansion-panel>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput type="date" placeholder="Date Of Birth" flex/>
+                      </md-input-container>
+                    </div>
 
-<td-expansion-panel label="Address Information">
-<md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-  <!-- first column -->
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 1" flex/>
-</md-input-container>
-</div>
- 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 2"flex/>
-</md-input-container>
-</div>
+                    <div layout="row" class="pad-bottom" flex>
+                      <pams-state-code-select [placeholder]="'Select State Of Birth'"></pams-state-code-select>
+                    </div>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Address 3"flex/>
-</md-input-container>
-</div>
+                    <div layout="row" class="pad-bottom" flex>
+                      <pams-marital-code-select [placeholder]="'Marital Status'"></pams-marital-code-select>
+                    </div>
+                  </div>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Poscode" flex/>
-</md-input-container>
-</div>
+                  <!-- second column -->
+                  <div layout="column" class="pad-right" flex>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="NRIC/Passport" flex/>
+                      </md-input-container>
+                    </div>
 
- <div layout="row" class="pad-bottom" flex>
- <pams-state-code-select [placeholder]="'Select State'"></pams-state-code-select>
- </div>
+                    <div layout="row" class="pad-bottom" flex>
+                      <pams-race-code-select [placeholder]="'Select Race'"></pams-race-code-select>
+                    </div>
 
-<div layout="row" class="pad-bottom" flex>
- <pams-country-code-select [placeholder]="'Select Country'"></pams-country-code-select>
- </div>
+                    <div layout="row" class="pad-bottom" flex>
+                      <pams-religion-code-select [placeholder]="'Select Religion'"></pams-religion-code-select>
+                    </div>
 
-</div>
-</div>
-</md-card>
-</td-expansion-panel>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-select placeholder="Citizenship">
+                        <md-option>YES</md-option>
+                        <md-option>NO</md-option>
+                      </md-select>
+                    </div>
+                  </div>
 
-<td-expansion-panel label="Contact Information">
-<md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-  <!-- first column -->
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Phone No" flex/>
-</md-input-container>
-</div>
- 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Office No"flex/>
-</md-input-container>
-</div>
+                </div>
+              </md-card>
+            </td-expansion-panel>
 
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput placeholder="Email"flex/>
-</md-input-container>
-</div>
+            <td-expansion-panel label="Address Information">
+              <md-card>
+                <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                  <!-- first column -->
+                  <div layout="column" class="pad-right" flex>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="Address 1" flex/>
+                      </md-input-container>
+                    </div>
 
-</div>
-</div>
-</md-card>
-</td-expansion-panel>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="Address 2" flex/>
+                      </md-input-container>
+                    </div>
 
-<td-expansion-panel label="Working Experience">
-<md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="Address 3" flex/>
+                      </md-input-container>
+                    </div>
 
-<md-card-subtitle>List of Working Experience</md-card-subtitle>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="Poscode" flex/>
+                      </md-input-container>
+                    </div>
 
-<md-divider></md-divider>
-<md-card-actions>
-<md-nav-list list-items>
-<a md-list-item (click)="showDialog2()">
-<md-icon>add</md-icon>Add More</a>
- <md-divider></md-divider>
-</md-nav-list>
-</md-card-actions>
+                    <div layout="row" class="pad-bottom" flex>
+                      <pams-state-code-select [placeholder]="'Select State'"></pams-state-code-select>
+                    </div>
 
-</div>
-</md-card>
-</td-expansion-panel>
+                    <div layout="row" class="pad-bottom" flex>
+                      <pams-country-code-select [placeholder]="'Select Country'"></pams-country-code-select>
+                    </div>
 
-  </md-card>
-  </md-tab>
- <md-tab>
-<md-card>
-<template md-tab-label>Academic Qualification</template>
+                  </div>
+                </div>
+              </md-card>
+            </td-expansion-panel>
 
-<td-expansion-panel label="SPM / Bachelor Degree / Master Information">
+            <td-expansion-panel label="Contact Information">
+              <md-card>
+                <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                  <!-- first column -->
+                  <div layout="column" class="pad-right" flex>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="Phone No" flex/>
+                      </md-input-container>
+                    </div>
 
-<md-card-subtitle>List of SPM / Bachelor Degree / Master Information</md-card-subtitle>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="Office No" flex/>
+                      </md-input-container>
+                    </div>
 
-<md-divider></md-divider>
-<md-card-actions>
-<md-nav-list list-items>
-<a md-list-item (click)="showDialog1()">
-<md-icon>add</md-icon>Add More</a>
- <md-divider></md-divider>
-</md-nav-list>
-</md-card-actions>
+                    <div layout="row" class="pad-bottom" flex>
+                      <md-input-container flex>
+                        <input mdInput placeholder="Email" flex/>
+                      </md-input-container>
+                    </div>
+
+                  </div>
+                </div>
+              </md-card>
+            </td-expansion-panel>
+
+            <td-expansion-panel label="Working Experience">
+              <md-card>
+                <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+
+                  <md-card-subtitle>List of Working Experience</md-card-subtitle>
+
+                  <md-divider></md-divider>
+                  <md-card-actions>
+                    <md-nav-list list-items>
+                      <a md-list-item (click)="showDialog2()">
+                        <md-icon>add</md-icon>
+                        Add More</a>
+                      <md-divider></md-divider>
+                    </md-nav-list>
+                  </md-card-actions>
+
+                </div>
+              </md-card>
+            </td-expansion-panel>
+        </md-card>
+      </md-tab>
+      <md-tab>
+        <md-card>
+          <template md-tab-label>Academic Qualification</template>
+
+          <td-expansion-panel label="SPM / Bachelor Degree / Master Information">
+
+            <md-card-subtitle>List of SPM / Bachelor Degree / Master Information</md-card-subtitle>
+
+            <md-divider></md-divider>
+            <md-card-actions>
+              <md-nav-list list-items>
+                <a md-list-item (click)="showDialog1()">
+                  <md-icon>add</md-icon>
+                  Add More</a>
+                <md-divider></md-divider>
+              </md-nav-list>
+            </md-card-actions>
 
 
-</td-expansion-panel>
+          </td-expansion-panel>
 
-<td-expansion-panel label="Proficiency in Malay / English Language">
-<md-card>
-<div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+          <td-expansion-panel label="Proficiency in Malay / English Language">
+            <md-card>
+              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
 
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
-<md-input-container flex>
-<input mdInput type="date" placeholder="Malay Language (SPM)"flex/>
-</md-input-container>
-</div>
- 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="English Language (SPM)"flex/>
- </md-input-container>
- </div>
+                <div layout="column" class="pad-right" flex>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput type="date" placeholder="Malay Language (SPM)" flex/>
+                    </md-input-container>
+                  </div>
 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="English MUET"flex/>
- </md-input-container>
- </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput type="date" placeholder="English Language (SPM)" flex/>
+                    </md-input-container>
+                  </div>
 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="TOEFL"flex/>
- </md-input-container>
- </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput type="date" placeholder="English MUET" flex/>
+                    </md-input-container>
+                  </div>
 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput type="date" placeholder="IELTS"flex/>
- </md-input-container>
- </div>
- </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput type="date" placeholder="TOEFL" flex/>
+                    </md-input-container>
+                  </div>
 
-<!-- second column -->
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput type="date" placeholder="IELTS" flex/>
+                    </md-input-container>
+                  </div>
+                </div>
 
-<div layout="column" class="pad-right" flex>
-<div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
+                <!-- second column -->
 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
+                <div layout="column" class="pad-right" flex>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Grade" flex/>
+                    </md-input-container>
+                  </div>
 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Grade" flex/>
+                    </md-input-container>
+                  </div>
 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Grade" flex/>
+                    </md-input-container>
+                  </div>
 
- <div layout="row" class="pad-bottom" flex>
- <md-input-container flex>
- <input mdInput  placeholder="Grade"flex/>
- </md-input-container>
- </div>
-</div>
-</div>
-</md-card>
-</td-expansion-panel>
-</md-card>
-</md-tab>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Grade" flex/>
+                    </md-input-container>
+                  </div>
 
-  <md-tab>
-  <md-card>
-    <template md-tab-label>Declaration</template>
-   
-   <div layout="column" class="pad-right" flex>
-<md-card class="">
-<md-card-title>Declaration</md-card-title>
-<md-card-subtitle>Submit Application for Intake September 2017</md-card-subtitle>
-<div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-<md-checkbox><div layout="column" flex>
-I declare that the statements made in this application form are correct. 
-I am fully aware that UMK reserves the right to reject my application or terminate my candidature
-if the information given above is incorrect or incomplete.
-</div> </md-checkbox>
-</div>
-<button md-button>Submit</button>
-</md-card>
-</div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Grade" flex/>
+                    </md-input-container>
+                  </div>
+                </div>
+              </div>
+            </md-card>
+          </td-expansion-panel>
+        </md-card>
+      </md-tab>
 
-  </md-card>
-  </md-tab>
-</md-tab-group>
-</td-layout-card-over>
+      <md-tab>
+        <md-card>
+          <template md-tab-label>Declaration</template>
+
+          <div layout="column" class="pad-right" flex>
+            <md-card class="">
+              <md-card-title>Declaration</md-card-title>
+              <md-card-subtitle>Submit Application for Intake September 2017</md-card-subtitle>
+              <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                <md-checkbox>
+                  <div layout="column" flex>
+                    I declare that the statements made in this application form are correct.
+                    I am fully aware that UMK reserves the right to reject my application or terminate my candidature
+                    if the information given above is incorrect or incomplete.
+                  </div>
+                </md-checkbox>
+              </div>
+              <button md-button>Submit</button>
+            </md-card>
+          </div>
+        </md-card>
+      </md-tab>
+    </md-tab-group>
+  </td-layout-card-over>
 </td-layout-nav>

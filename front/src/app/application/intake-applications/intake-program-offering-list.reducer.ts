@@ -8,7 +8,7 @@ const initialState: IntakeProgramOfferingListState = <ProgramOffering[]>[];
 
 export function intakeProgramOfferingListReducer(state = initialState, action: Action): IntakeProgramOfferingListState {
   switch (action.type) {
-    case IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_SUCCESS: {
+    case IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION_SUCCESS: {
       return action.payload;
     }
     default: {

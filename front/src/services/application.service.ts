@@ -146,4 +146,9 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  findProgramOfferingsByIntakeApplication(application:IntakeApplication): Observable<ProgramOffering[]> {
+    console.log("findProgramOfferingsByIntakeApplication");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/programOfferings')
+      .map((res: Response) => <ProgramOffering[]>res.json());
+  }
 }

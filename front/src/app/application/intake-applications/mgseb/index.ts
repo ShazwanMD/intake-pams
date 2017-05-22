@@ -10,12 +10,12 @@ import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
 import {CommonModule} from "../../../common/index";
 import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
-import { IntakeApplicationActions } from "../intake-application.action";
-import { CommonActions } from "../../../common/common.action";
-import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
+import {IntakeApplicationActions} from "../intake-application.action";
+import {CommonActions} from "../../../common/common.action";
+import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
 
-import { ProgramOfferingSelectComponent } from "../../../policy/intakes/component/program-offering-select.component";
-import { EmploymentTaskListComponent } from "../component/employment-task-list.component";
+import {ProgramOfferingSelectComponent} from "../../../policy/intakes/component/program-offering-select.component";
+import {EmploymentTaskListComponent} from "../component/employment-task-list.component";
 
 @NgModule({
   imports: [
@@ -47,8 +47,7 @@ export class MgsebIntakeApplicationSubModule {
         IdentityService,
         CommonService,
         IntakeApplicationActions,
-         CommonActions,
-
+        CommonActions,
       ],
     };
   }

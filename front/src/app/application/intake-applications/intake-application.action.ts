@@ -46,22 +46,22 @@ export class IntakeApplicationActions {
     };
   }
 
-  static FIND_PROGRAM_OFFERINGS_BY_INTAKE = '[Intake] Find Program Offerings By Intake';
+  static FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION = '[Intake] Find Program Offerings By Intake Application';
 
-  findProgramOfferingsByIntake(intake): Action {
-    console.log("findProgramOfferingsByIntake");
+  findProgramOfferingsByIntakeApplication(application): Action {
+    console.log("findProgramOfferingsByIntakeApplication");
     return {
-      type: IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE,
-      payload: intake
+      type: IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION,
+      payload: application
     };
   }
 
-  static FIND_PROGRAM_OFFERINGS_BY_INTAKE_SUCCESS = '[Intake] Find Program Offerings By Intake Success';
+  static FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake] Find Program Offerings By Intake Application Success';
 
-  findProgramOfferingsByIntakeSuccess(offerings): Action {
+  findProgramOfferingsByIntakeApplicationSuccess(offerings): Action {
     console.log("findProgramOfferingsByIntakeSuccess");
     return {
-      type: IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_SUCCESS,
+      type: IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION_SUCCESS,
       payload: offerings
     };
   }

@@ -22,10 +22,10 @@
             <!-- first column -->
             <div layout="column" class="pad-right" flex>
               <div layout="row" class="pad-bottom" flex>
-                <pams-program-offering-select
+                <pams-intake-program-offering-select
                   [placeholder]="'Program Offerings'"
-                  [intake]="intake$ | async">
-                </pams-program-offering-select>
+                  [intakeApplication]="intakeApplication$ | async">
+                </pams-intake-program-offering-select>
               </div>
               <div layout="row" class="pad-bottom" flex>
                 <!--  <pams-faculty-code-select [placeholder]="'Faculty'"></pams-faculty-code-select> -->

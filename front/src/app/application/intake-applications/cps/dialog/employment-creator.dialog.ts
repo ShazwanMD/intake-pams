@@ -1,6 +1,3 @@
-import { IntakeActions } from './../../../../policy/intakes/intake.action';
-import { IntakeApplication } from './../intake-application.interface';
-import { Employment } from './../../employment.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -8,10 +5,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
-
-
-
-
+import {IntakeApplication} from "../../intake-application.interface";
+import {Employment} from "../../employment.interface";
 
 @Component({
   selector: 'pams-employment-creator',
@@ -30,7 +25,7 @@ export class EmploymentCreatorDialog implements OnInit {
               private dialog: MdDialogRef<EmploymentCreatorDialog>) {
   }
 
-  save(employement: IntakeApplication, isValid: boolean) {
+  save(employement: Employment, isValid: boolean) {
     console.log("employement end date: " + employement.endDate);
     console.log("employement start date: " + employement.startDate);
     //this.store.dispatch(this.actions.startIntakeTask(intake));
@@ -38,16 +33,15 @@ export class EmploymentCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
+    // todo(asyraf): employment
+    // this.createForm = this.formBuilder.group(<Employment>{
+    //   id: null,
+    //   startDate: null,
+    //   endDate: null,
+      // employer:'',
+      // current:false
 
-    this.createForm = this.formBuilder.group(<IntakeApplication>{
-
-     id: null,
-     startDate: null,
-     endDate: null,
-  // employer:'',
-  // current:false
-
-   });
+    // });
   }
 
   expandedEvent(): void {

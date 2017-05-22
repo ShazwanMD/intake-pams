@@ -20,6 +20,7 @@ import {EmploymentTaskListComponent} from "./component/employment-task-list.comp
 import {EmploymentListState, employmentListReducer} from "./component/employment-task-list.reducer";
 import {Employment} from "./employment.interface";
 import {MyIntakeApplicationPage} from "./my-intake-application.page";
+import {IntakeProgramOfferingSelectComponent} from "./component/intake-program-offering-select.component";
 
 export interface IntakeApplicationModuleState {
   employments: EmploymentListState;
@@ -59,7 +60,8 @@ export const intakeApplicationModuleReducers = {
     EmploymentCreatorDialog,
     EducationCreatorDialog,
   ],
-  exports: [],
+  exports: [
+  ],
   entryComponents: [
     EmploymentCreatorDialog,
     EducationCreatorDialog,

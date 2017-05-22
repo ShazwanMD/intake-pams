@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
@@ -404,7 +405,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<InSpmResult> findSpmResults(InIntakeApplication application) {
         return intakeApplicationDao.findSpmResults(application);
     }
-    
+
+    @Override
+    public List<InProgramOffering> findProgramOfferings(InIntakeApplication application) {
+        return policyService.findProgramOfferings(application.getIntake());
+    }
+
     @Override
     public Integer countIntakeApplication(InIntake intake) {
         return intakeApplicationDao.count(intake);

@@ -5,9 +5,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
-import { IntakeApplication } from "../intake-application.interface";
-import { IntakeApplicationActions } from "../../intake-application.action";
-import { IntakeApplicationEducation } from "../intake-application-education.interface";
+import {IntakeApplicationActions} from "../../intake-application.action";
+import {Education} from "../../education.interface";
 @Component({
   selector: 'pams-education-creator',
   templateUrl: './education-creator.dialog.html',
@@ -22,11 +21,11 @@ export class EducationCreatorDialog implements OnInit {
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
-              private actions : IntakeApplicationActions,
+              private actions: IntakeApplicationActions,
               private dialog: MdDialogRef<EducationCreatorDialog>) {
   }
 
-  save(education: IntakeApplicationEducation, isValid: boolean) {
+  save(education: Education, isValid: boolean) {
     console.log("education school name : " + education.schoolName);
     console.log("education course name : " + education.courseName);
     console.log("education Entry Year : " + education.entryDate);
@@ -36,16 +35,15 @@ export class EducationCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.createForm = this.formBuilder.group(<IntakeApplicationEducation>{
-     id: null,
-     grade:'',
-     schoolName: '',
-     courseName: '',
-     entryDate: null,
-     graduationDate: null,
-     current:false
-   });
+    // this.createForm = this.formBuilder.group(<Education>{
+    //   id: null,
+    //   grade: '',
+    //   schoolName: '',
+    //   courseName: '',
+    //   entryDate: null,
+    //   graduationDate: null,
+    //   current: false
+    // });
   }
 
   expandedEvent(): void {

@@ -13,6 +13,7 @@ import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
 import {PolicyService} from "../../../../services/policy.service";
 import {IntakeSessionActions} from "../../../policy/intake-sessions/intake-session.action";
 import {IntakeSubModule} from "../../../policy/intakes/index";
+import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import {IntakeSubModule} from "../../../policy/intakes/index";
   declarations: [
     CpsIntakeApplicationPage,
     EmploymentCreatorDialog,
+    IntakeProgramOfferingSelectComponent,
   ],
   exports: [],
   entryComponents: [],

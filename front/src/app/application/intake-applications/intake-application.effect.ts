@@ -41,14 +41,14 @@ export class IntakeApplicationEffects {
     .switchMap(referenceNo => this.applicationService.findIntakeByReferenceNo(referenceNo))
     .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
     .mergeMap(action => from([action,
-      this.intakeApplicationActions.findProgramOfferingsByIntake(action.payload)
+      this.intakeApplicationActions.findProgramOfferingsByIntakeApplication(action.payload)
     ]));
 
-  @Effect() findProgramOfferingsByIntake$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE)
+  @Effect() findProgramOfferingsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION)
     .map(action => action.payload)
-    .switchMap(referenceNo => this.applicationService.findProgramOfferingsByIntake(referenceNo))
-    .map(intake => this.intakeApplicationActions.findProgramOfferingsByIntakeSuccess(intake));
+    .switchMap(referenceNo => this.applicationService.findProgramOfferingsByIntakeApplication(referenceNo))
+    .map(intake => this.intakeApplicationActions.findProgramOfferingsByIntakeApplicationSuccess(intake));
 
 
   @Effect() findIntakeApplications$ = this.actions$
