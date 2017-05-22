@@ -14,5 +14,4 @@ export interface IntakeApplication {
   applicant:Applicant;
   intake:Intake;
   programOffering: ProgramOffering;
-
 }

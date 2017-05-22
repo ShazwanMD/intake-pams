@@ -1,12 +1,6 @@
 package my.edu.umk.pams.intake.web.module.application.controller;
 
-import my.edu.umk.pams.intake.application.model.InBidStatus;
-import my.edu.umk.pams.intake.application.model.InEducation;
-import my.edu.umk.pams.intake.application.model.InEducationImpl;
-import my.edu.umk.pams.intake.application.model.InEmployment;
-import my.edu.umk.pams.intake.application.model.InEmploymentImpl;
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
+import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InActor;
@@ -14,9 +8,6 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeSession;
-import my.edu.umk.pams.intake.policy.model.InIntakeSessionImpl;
-import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -25,9 +16,6 @@ import my.edu.umk.pams.intake.web.module.application.vo.Employment;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
-import my.edu.umk.pams.intake.web.module.policy.vo.IntakeSession;
-import my.edu.umk.pams.intake.web.module.policy.vo.ProgramLevel;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -117,6 +105,20 @@ public class ApplicationController {
     // INTAKE APPLICATION
     // ====================================================================================================
 
+    @RequestMapping(value = "/intakeApplications", method = RequestMethod.GET)
+    public ResponseEntity<List<IntakeApplication>> findIntakeApplications() {
+        dummyLogin();
+
+        // user & applicant
+        InUser currentUser = securityService.getCurrentUser();
+        InActor actor = currentUser.getActor();
+        InApplicant applicant = identityService.findApplicantById(actor.getId());
+        if (actor instanceof InApplicant) applicant = (InApplicant) actor;
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant, InBidStatus.DRAFTED);
+        List<IntakeApplication> applicationVos = applicationTransformer.toIntakeApplicationVos(applications);
+        return new ResponseEntity<List<IntakeApplication>>(applicationVos, HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/intakeApplications/{referenceNo}", method = RequestMethod.POST)
     public ResponseEntity<String> updateIntakeApplication(@PathVariable String referenceNo, @RequestBody IntakeApplication vo) {
         dummyLogin();
@@ -127,7 +129,7 @@ public class ApplicationController {
         applicationService.submitIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakeApplication/{referenceNo}", method = RequestMethod.GET)
     public ResponseEntity<IntakeApplication> findIntakeApplicationByReferenceNo(@PathVariable String referenceNo) {
         InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
@@ -159,7 +161,7 @@ public class ApplicationController {
 	// EMPLOYMENTS
 	// ====================================================================================================
 
-	@RequestMapping(value = "/intakeApplication/{referenceNo}/employments", method = RequestMethod.GET)
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/employments", method = RequestMethod.GET)
 	public ResponseEntity<List<Employment>> findEmploymentsByIntakeApplication(@PathVariable String referenceNo) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 
@@ -168,7 +170,7 @@ public class ApplicationController {
 		return new ResponseEntity<List<Employment>>(applicationTransformer.toEmploymentVos(employments), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/intakeApplication/{referenceNo}/employments", method = RequestMethod.POST)
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/employments", method = RequestMethod.POST)
 	public ResponseEntity<String> addEmployment(@PathVariable String referenceNo, @RequestBody Employment vo) {
 		dummyLogin();
 
@@ -193,16 +195,14 @@ public class ApplicationController {
 	// EDUCATIONS
 	// ====================================================================================================
 
-	@RequestMapping(value = "/intakeApplication/{referenceNo}/educations", method = RequestMethod.GET)
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/educations", method = RequestMethod.GET)
 	public ResponseEntity<List<Education>> findEducationsByIntakeApplication(@PathVariable String referenceNo) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-
 		List<InEducation> educations = applicationService.findEducations(application);
-
 		return new ResponseEntity<List<Education>>(applicationTransformer.toEducationVos(educations), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/intakeApplication/{referenceNo}/educations", method = RequestMethod.POST)
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/educations", method = RequestMethod.POST)
 	public ResponseEntity<String> addEducation(@PathVariable String referenceNo, @RequestBody Education vo) {
 		dummyLogin();
 

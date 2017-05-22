@@ -19,6 +19,7 @@ import {ProgramLevelSubModule} from "../../policy/program-levels/index";
 import {EmploymentTaskListComponent} from "./component/employment-task-list.component";
 import {EmploymentListState, employmentListReducer} from "./component/employment-task-list.reducer";
 import {Employment} from "./employment.interface";
+import {MyIntakeApplicationPage} from "./my-intake-application.page";
 
 export interface IntakeApplicationModuleState {
   employments: EmploymentListState;
@@ -50,6 +51,7 @@ export const intakeApplicationModuleReducers = {
   ],
   declarations: [
     IntakeDetailPage,
+    MyIntakeApplicationPage,
 
     //components
     EmploymentTaskListComponent,

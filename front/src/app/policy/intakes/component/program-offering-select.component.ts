@@ -1,9 +1,5 @@
-import {
-  Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit,
-  AfterViewInit, AfterContentInit
-} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
-import {MdDialogConfig, MdDialog, MdDialogRef} from "@angular/material";
 import {Observable} from "rxjs/Rx";
 import {Intake} from "../intake.interface";
 import {PolicyModuleState} from "../../index";
@@ -16,11 +12,7 @@ import {FormControl} from "@angular/forms";
   templateUrl: './program-offering-select.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProgramOfferingSelectComponent implements AfterContentInit {
-  ngAfterContentInit(): void {
-    console.log("intake: " + this.intake.referenceNo);
-    this.store.dispatch(this.actions.findProgramOfferings(this.intake));
-  }
+export class ProgramOfferingSelectComponent implements OnInit {
 
   @Input() intake: Intake;
   @Input() placeholder: string;
@@ -33,10 +25,8 @@ export class ProgramOfferingSelectComponent implements AfterContentInit {
     this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERING);
   }
 
-  ngAfterViewInit(): void {
-  }
-
-  ngOnInit():void {
+  ngOnInit(): void {
+    this.store.dispatch(this.actions.findProgramOfferings(this.intake));
   }
 
   selectChangeEvent(event: ProgramOffering) {

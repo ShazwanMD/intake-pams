@@ -4,10 +4,10 @@ import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
-import { EmploymentCreatorDialog } from "./dialog/employment-creator.dialog";
+import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
-import { EducationCreatorDialog } from "./dialog/education-creator.dialog";
-import { IntakeApplication } from "./intake-application.interface";
+import {EducationCreatorDialog} from "./dialog/education-creator.dialog";
+import {IntakeApplication} from "../intake-application.interface";
 
 @Component({
   selector: 'pams-intake-application',
@@ -19,6 +19,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
   private createForm: FormGroup;
   private creatorDialogRef1: MdDialogRef<EducationCreatorDialog>;
   private creatorDialogRef2: MdDialogRef<EmploymentCreatorDialog>;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -28,7 +29,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
               private store: Store<ApplicationModuleState>) {
   }
 
- showDialog1(): void {
+  showDialog1(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -43,7 +44,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
     });
   }
 
-   showDialog2(): void {
+  showDialog2(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -59,9 +60,9 @@ export class MgsebIntakeApplicationPage implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
-  next(application:IntakeApplication , isValid: boolean) {
+  next(application: IntakeApplication, isValid: boolean) {
   }
 }

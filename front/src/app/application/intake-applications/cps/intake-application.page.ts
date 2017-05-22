@@ -6,10 +6,10 @@ import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
-import {IntakeApplication} from "./intake-application.interface";
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Observable} from "rxjs/Observable";
 import {Intake} from "../../../policy/intakes/intake.interface";
+import {IntakeApplication} from "../intake-application.interface";
 
 
 @Component({
@@ -45,6 +45,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: { referenceNo: string }) => {
       let referenceNo: string = params.referenceNo;
+      console.log("loading application");
       if (null != referenceNo) this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
     });
   }
