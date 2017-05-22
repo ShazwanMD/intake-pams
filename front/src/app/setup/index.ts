@@ -2,6 +2,8 @@ import { DistrictCodeEditorDialog } from './district-codes/dialog/district-code-
 import { DistrictCodeListPage } from './district-codes/district-code-list-page';
 import { DunCodeEditorDialog } from './dun-codes/dialog/dun-code-editor.dialog';
 import { DunCodeListPage } from './dun-codes/dun-code-list-page';
+import { ParliamentCodeEditorDialog } from './parliament-codes/dialog/parliament-code-editor.dialog';
+import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list-page';
 import { StudyCenterCodeEditorDialog } from './study-center-codes/dialogs/study-center-code-editor.dialog';
 import { StudyCenterCode } from './../common/study-center-codes/study-center-code.interface';
 import { StudyCenterCodeListPage } from './study-center-codes/study-center-code-list.page';
@@ -92,6 +94,8 @@ import {districtCodeListReducer, DistrictCodeListState} from "./district-codes/d
 import { DistrictCode } from './../common/district-codes/district-code.interface';
 import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.reducer";
 import { DunCode } from './../common/dun-codes/dun-code.interface';
+import {parliamentCodeListReducer, ParliamentCodeListState} from "./parliament-codes/parliament-code-list.reducer";
+import { ParliamentCode } from './../common/parliament-codes/parliament-code.interface';
 
 
 export interface SetupModuleState {
@@ -115,6 +119,7 @@ export interface SetupModuleState {
   studyCenterCodes: StudyCenterCodeListState;
   districtCodes: DistrictCodeListState;
   dunCodes: DunCodeListState;
+  parliamentCodes: ParliamentCodeListState;
 
 };
 
@@ -140,6 +145,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     studyCenterCodes: <StudyCenterCode[]>[],
     districtCodes: <DistrictCode[]>[],
     dunCodes: <DunCode[]>[],
+    parliamentCodes: <ParliamentCode[]>[],
 
   };
 
@@ -165,6 +171,7 @@ export const setupModuleReducers = {
   studyCenterCodes: studyCenterCodeListReducer,
   districtCodes: districtCodeListReducer,
   dunCodes: dunCodeListReducer,
+  parliamentCodes: parliamentCodeListReducer,
 
 }
 
@@ -202,6 +209,7 @@ export const setupModuleReducers = {
     StudyCenterCodeListPage,
     DistrictCodeListPage,
     DunCodeListPage,
+    ParliamentCodeListPage,
   
     // dialog
     MaritalCodeEditorDialog,
@@ -223,6 +231,7 @@ export const setupModuleReducers = {
     StudyCenterCodeEditorDialog,
     DistrictCodeEditorDialog,
     DunCodeEditorDialog,
+    ParliamentCodeEditorDialog,
   ],
   exports: [],
   entryComponents: [
@@ -244,6 +253,7 @@ export const setupModuleReducers = {
     StudyCenterCodeEditorDialog,
     DistrictCodeEditorDialog,
     DunCodeEditorDialog,
+    ParliamentCodeEditorDialog,
   ],
 
 })
