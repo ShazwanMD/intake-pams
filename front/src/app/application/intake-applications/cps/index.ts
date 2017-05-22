@@ -9,11 +9,12 @@ import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
 import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
 import {CommonModule} from "../../../common/index";
-import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
+
 import {PolicyService} from "../../../../services/policy.service";
 import {IntakeSessionActions} from "../../../policy/intake-sessions/intake-session.action";
 import {IntakeSubModule} from "../../../policy/intakes/index";
 import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
+
 
 
 @NgModule({
@@ -28,7 +29,6 @@ import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-
   ],
   declarations: [
     CpsIntakeApplicationPage,
-    EmploymentCreatorDialog,
     IntakeProgramOfferingSelectComponent,
   ],
   exports: [],

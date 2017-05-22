@@ -28,14 +28,14 @@ export class EmploymentCreatorDialog implements OnInit {
               private dialog: MdDialogRef<EmploymentCreatorDialog>) {
   }
 
-  save(employement: Employment, isValid: boolean) {
-    console.log("employement end date: " + employement.endDate);
-    console.log("employement start date: " + employement.startDate);
-     console.log("employement employer: " + employement.employer);
-      console.log("employement designation: " + employement.designation);
-    //this.store.dispatch(this.actions.startIntakeTask(intake));
-    this.dialog.close();
-  }
+  // save(employement: Employment, isValid: boolean) {
+  //   console.log("employement end date: " + employement.endDate);
+  //   console.log("employement start date: " + employement.startDate);
+  //    console.log("employement employer: " + employement.employer);
+  //     console.log("employement designation: " + employement.designation);
+  //   //this.store.dispatch(this.actions.startIntakeTask(intake));
+  //   this.dialog.close();
+  // }
 
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Employment>{
@@ -53,6 +53,11 @@ export class EmploymentCreatorDialog implements OnInit {
   }
 
   collapsedEvent(): void {
+
+  }
+
+  save(employement:Employment, isValid:boolean){
+   this.store.dispatch(this.actions.saveEmployment(employement));
 
   }
 

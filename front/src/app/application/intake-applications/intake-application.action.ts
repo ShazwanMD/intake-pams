@@ -314,6 +314,26 @@ export class IntakeApplicationActions {
     };
   }
 
+ static SAVE_EMPLOYMENT = '[Intake Application] Save Employment';
+
+ saveEmployment(employment):Action{
+   console.log("saveEmployment");
+   return {
+     type:IntakeApplicationActions.SAVE_EMPLOYMENT,
+     payload:employment
+  };
+}
+
+static SAVE_EMPLOYMENT_SUCCESS = '[Intake Application] Save Employment Success';
+
+saveEmploymentSuccess(message):Action{
+  console.log("saveEmployment");
+  return{
+    type: IntakeApplicationActions.SAVE_EMPLOYMENT_SUCCESS,
+    payload:message
+  };
+}
+
   static DELETE_EMPLOYMENT = '[Intake Application] Delete Employment';
 
   deleteEmployment(intake, employment) {
