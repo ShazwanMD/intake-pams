@@ -1,3 +1,4 @@
+import { OnInit } from '@angular/core';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {IntakeTask} from "../intake-task.interface";
 import {ProgramOffering} from "../program-offering.interface";
@@ -16,7 +17,7 @@ import { Observable } from "rxjs/Rx";
   templateUrl: './program-offering-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProgramOfferingListComponent {
+export class ProgramOfferingListComponent implements OnInit{
   
 
   @Input() intake: Intake;
@@ -42,21 +43,22 @@ export class ProgramOfferingListComponent {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+    //this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+    this.programOfferings$.take(1).subscribe(intake => this.actions.findProgramOfferings(this.intake));
   }
   
 
-   createDialog2(): void {
-    this.showDialog();
+  createDialog2(): void {
+    this.showDialog2(null);
   }
 
-  editDialog2(intake:Intake,id:ProgramOffering): void {
-  //  this.showDialog(intake,id);
+  editDialog(id: ProgramOffering): void {
+    this.showDialog2(id);
   }
 
-  delete(intake:Intake, id:ProgramOffering): void {
-    this.store.dispatch(this.actions.deleteProgramOffering(intake,id))
-  }
+  // delete(intake:Intake, id:ProgramOffering): void {
+  //   this.store.dispatch(this.actions.deleteProgramOffering(intake,id))
+  // }
 
   filter(): void {
   }
@@ -79,8 +81,8 @@ export class ProgramOfferingListComponent {
     });
   }
   
-    showDialog2(): void {
-    console.log("showDialog");
+    showDialog2(id: ProgramOffering): void {
+    
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -88,12 +90,12 @@ export class ProgramOfferingListComponent {
     config.height = '60%';
     config.position = {top: '0px'};
     this.editorDialogRef2 = this.dialog.open(ProgramOfferingListEditorDialog, config);
-   // this.editorDialogRef2.componentInstance.programOffering = (this.intake);
-
+    this.editorDialogRef2.componentInstance.programOffering = id;
+    
     this.editorDialogRef2.afterClosed().subscribe(res => {
       console.log("closeDialog");
       // reload program offerings
-      this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+      //this.store.dispatch(this.actions.findProgramOfferings(this.intake));
     });
   }
 
