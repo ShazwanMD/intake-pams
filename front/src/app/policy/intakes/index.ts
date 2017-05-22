@@ -22,6 +22,7 @@ import {ProgramOfferingListComponent} from "./component/program-offering-list.co
 import {SupervisorOfferingListComponent} from "./component/supervisor-offering-list.component";
 import {StudyModeOfferingListComponent} from "./component/study-mode-offering-list.component";
 import {ProgramOfferingEditorDialog} from "./dialog/program-offering-editor.dialog";
+import {ProgramOfferingListEditorDialog} from "./component/program-offering-list-editor.dialog";
 import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
 import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
@@ -68,6 +69,7 @@ import {ProgramOfferingSelectComponent} from "./component/program-offering-selec
     // dialogs
     IntakeTaskCreatorDialog,
     ProgramOfferingEditorDialog,
+    ProgramOfferingListEditorDialog,
     StudyModeOfferingEditorDialog,
     SupervisorOfferingEditorDialog,
   ],
@@ -81,6 +83,7 @@ import {ProgramOfferingSelectComponent} from "./component/program-offering-selec
     IntakePublishTaskPanel,
     IntakeTaskCreatorDialog,
     ProgramOfferingEditorDialog,
+    ProgramOfferingListEditorDialog,
     StudyModeOfferingEditorDialog,
     SupervisorOfferingEditorDialog,
   ],
