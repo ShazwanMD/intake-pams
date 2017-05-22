@@ -13,6 +13,7 @@ public class StateCode extends MetaObject {
     private String code;
     private String descriptionMs;
     private String descriptionEn;
+    private CountryCode countryCode;
 
     public String getCode() {
         return code;
@@ -36,6 +37,14 @@ public class StateCode extends MetaObject {
 
     public void setDescriptionEn(String descriptionEn) {
         this.descriptionEn = descriptionEn;
+    }
+    
+    public CountryCode getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(CountryCode countryCode) {
+        this.countryCode = countryCode;
     }
     
     

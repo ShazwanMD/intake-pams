@@ -223,6 +223,8 @@ public class CommonTransformer {
 		vo.setCode(e.getCode());
 		vo.setDescriptionMs(e.getDescriptionMs());
 		vo.setDescriptionEn(e.getDescriptionEn());
+
+		vo.setCountryCode(toCountryCodeVo(e.getCountryCode()));
 		return vo;
 	}
 

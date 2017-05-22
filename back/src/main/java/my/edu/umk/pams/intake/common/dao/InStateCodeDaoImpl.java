@@ -41,9 +41,9 @@ public class InStateCodeDaoImpl extends GenericDaoSupport<Long, InStateCode> imp
         Query query = session.createQuery("select s from InStateCode s where " +
                 "(upper(s.code) like upper(:filter) " +
                 "or upper(s.descriptionEn) like upper(:filter) " +
-                "or upper(s.descriptionMs) like upper(:filter)) " +
+                "or upper(s.descriptionMs) like upper(:filter) " +
                 "or upper(s.countryCode.code) like upper(:filter) " +
-                "or upper(s.countryCode.descriptionMs) like upper(:filter)) " +
+                "or upper(s.countryCode.descriptionMs) like upper(:filter) " +
                 "or upper(s.countryCode.descriptionEn) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
