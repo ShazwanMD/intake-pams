@@ -454,5 +454,36 @@ export class SetupEffects {
     .switchMap(payload => this.commonService.removeDunCode(payload))
     .map(message => this.setupActions.removeDunCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findDunCodes()]));
+
+  // ====================================================================================================
+  // PARLIAMENT CODE
+  // ====================================================================================================
+
+  @Effect() findParliamentCode$ = this.actions$
+    .ofType(SetupActions.FIND_PARLIAMENT_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findParliamentCodes())
+    .map(codes => this.setupActions.findParliamentCodesSuccess(codes));
+
+  @Effect() saveParliamentCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_PARLIAMENT_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveParliamentCode(payload))
+    .map(message => this.setupActions.saveParliamentCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findParliamentCodes()]));
+
+  @Effect() updateParliamentCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_PARLIAMENT_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateParliamentCode(payload))
+    .map(message => this.setupActions.updateParliamentCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findParliamentCodes()]));
+
+  @Effect() removeParliamentCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_PARLIAMENT_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeParliamentCode(payload))
+    .map(message => this.setupActions.removeParliamentCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findParliamentCodes()]));
     
 }
