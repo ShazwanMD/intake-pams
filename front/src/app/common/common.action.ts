@@ -333,7 +333,7 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
   findEthnicityCodes(): Action {
     console.log("findEthnicityCodes");
     return {
-      type: CommonActions.FIND_COUNTRY_CODES,
+      type: CommonActions.FIND_ETHNICITY_CODES,
     };
   }
 
@@ -347,4 +347,22 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
+static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
+
+  findNationalityCodes(): Action {
+    console.log("findNationalityCodes");
+    return {
+      type: CommonActions.FIND_NATIONALITY_CODES,
+    };
+  }
+
+  static FIND_NATIONALITY_CODES_SUCCESS = '[Common] Find Nationality Codes Success';
+
+  findNationalityCodesSuccess(codes): Action {
+    console.log("findNationalityCodesSuccess");
+    return {
+      type: CommonActions.FIND_NATIONALITY_CODES_SUCCESS,
+      payload: codes
+    };
+  }
 }
