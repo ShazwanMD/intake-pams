@@ -718,10 +718,11 @@ export class SetupActions {
     };
   }
 
-//================================================================================================
-
-
-  static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
+//==========================================================================================
+//      NATIONALITY CODE
+//==========================================================================================
+  //1-------------------------------------------------------------
+  static FIND_NATIONALITY_CODES = '[Setup] Find Nationality Codes';
 
   findNationalityCodes(): Action {
     console.log("findNationalityCodes");
@@ -729,8 +730,8 @@ export class SetupActions {
       type: SetupActions.FIND_NATIONALITY_CODES,
     };
   }
-
-  static FIND_NATIONALITY_CODES_SUCCESS = '[Common] Find Nationality Codes Success';
+//2-------------------------------------------------------------------------------------
+  static FIND_NATIONALITY_CODES_SUCCESS = '[Setup] Find Nationality Codes Success';
 
   findNationalityCodesSuccess(codes): Action {
     console.log("findNationalityCodesSuccess");
@@ -739,7 +740,7 @@ export class SetupActions {
       payload: codes
     };
   }
-
+//3----------------------------------------------------------------
   static SAVE_NATIONALITY_CODE = '[Setup] Save Nationality Code';
 
   saveNationalityCode(code): Action {
@@ -749,7 +750,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//4------------------------------------------------------------------------------
   static SAVE_NATIONALITY_CODE_SUCCESS = '[Setup] Save Nationality Code Success';
 
   saveNationalityCodeSuccess(message): Action {
@@ -759,6 +760,48 @@ export class SetupActions {
       payload: message
     };
   }
+//5------------------------------------------------------------------
+  static UPDATE_NATIONALITY_CODE = '[Setup] Update Nationality Code';
+
+  updateNationalityCode(code): Action {
+    console.log("updateNationalityCode");
+    return {
+      type: SetupActions.UPDATE_NATIONALITY_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_NATIONALITY_CODE_SUCCESS = '[Setup] Update Nationality Code  Success';
+
+  updateNationalityCodeSuccess(message): Action {
+    console.log("updateNationalityCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_NATIONALITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_NATIONALITY_CODE = '[Setup] Remove Nationality Code';
+
+  removeNationalityCode(code): Action {
+    console.log("removeNationalityCode");
+    return {
+      type: SetupActions.REMOVE_NATIONALITY_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_NATIONALITY_CODE_SUCCESS = '[Setup] Remove Nationality Code  Success';
+
+  removeNationalityCodeSuccess(message): Action {
+    console.log("removeNationalityCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_NATIONALITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+//==========================================================================================
 
   static SAVE_FACULTY_CODE = '[Setup] Save Faculty Code';
 
