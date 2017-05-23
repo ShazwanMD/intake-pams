@@ -16,7 +16,9 @@ import {SetupActions} from "../../setup.action";
 
 export class NationalityCodeCreatorDialog implements OnInit {
 
-  private createForm: FormGroup;
+  private creatorForm: FormGroup;
+  private edit: boolean = false;
+  private _nationalityCode: NationalityCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -24,24 +26,29 @@ export class NationalityCodeCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<NationalityCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions
-  ) {
+              private actions: SetupActions) {
+  }
+
+set nationalityCode(value: NationalityCode) {
+    this._nationalityCode = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<NationalityCode>{
+    this.creatorForm = this.formBuilder.group(<NationalityCode>{
       id: null,
       code: '',
       descriptionMs: '',
       descriptionEn: '',
-      prefix: '',
-     
-
     });
-  }
 
-  save(code: NationalityCode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveNationalityCode(code));
+if (this.edit) this.creatorForm.patchValue(this._nationalityCode);
+}
+
+   submit(code: NationalityCode, isValid: boolean) {
+    if (!code.id) this.store.dispatch(this.actions.saveNationalityCode(code));
+    else  this.store.dispatch(this.actions.updateNationalityCode(code));
+    this.dialog.close();
   }
 }
