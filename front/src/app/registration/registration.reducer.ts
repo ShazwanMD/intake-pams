@@ -2,7 +2,6 @@ import {Action} from '@ngrx/store';
 import {RegistrationActions} from "./registration.action";
 
 export type RegistrationState = '';
-
 const initialState: RegistrationState = '';
 
 export function registrationReducer(state = initialState, action: Action): RegistrationState {
