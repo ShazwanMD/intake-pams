@@ -25,8 +25,6 @@ import {SchoolCode} from "../app/common/school-codes/school-code.interface";
 import {DistrictCode} from "../app/common/district-codes/district-code.interface";
 
 
-
-
 @Injectable()
 export class CommonService {
 
@@ -553,13 +551,13 @@ export class CommonService {
 
 findEthnicityCodes(): Observable<EthnicityCode[]> {
     console.log("findEthnicityCodes");
-    return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
+    return this.http.get(environment.endpoint + '/api/common/nationalityCodes')
       .map((res: Response) => <EthnicityCode[]>res.json());
   }
 
   findEthnicityCodeByCode(code: string): Observable<EthnicityCode> {
     console.log("findEthnicityCodeByCode");
-    return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
+    return this.http.get(environment.endpoint + '/api/common/nationalityCodes/' + code)
       .map((res: Response) => <EthnicityCode>res.json());
   }
 
@@ -569,7 +567,7 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/common/ethnicityCodes', JSON.stringify(code), options)
+    return this.http.post(environment.endpoint + '/api/common/nationalityCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -579,7 +577,7 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/common/ethnicityCodes/' + code.code, JSON.stringify(code), options)
+    return this.http.put(environment.endpoint + '/api/common/nationalityCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -589,7 +587,7 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.delete(environment.endpoint + '/api/common/ethnicityCodes/' + code.code, options)
+    return this.http.delete(environment.endpoint + '/api/common/nationalityCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 // ====================================================================================================
@@ -597,9 +595,9 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
 // ====================================================================================================
 
   findNationalityCodes(): Observable<NationalityCode[]> {
-    console.log("findNationalityCodes()");
+    console.log("findNationalityCodes");
     return this.http.get(environment.endpoint + '/api/common/nationalityCodes')
-      .map((res: Response) => <RaceCode[]>res.json());
+      .map((res: Response) => <NationalityCode[]>res.json());
   }
 
   findNationalityCodeByCode(code: string): Observable<NationalityCode> {
@@ -608,6 +606,35 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
       .map((res: Response) => <NationalityCode>res.json());
   }
 
+  saveNationalityCode(code: NationalityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/nationalityCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateNationalityCode(code: NationalityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/nationalityCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeNationalityCode(code: NationalityCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/nationalityCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
   // ====================================================================================================
   // DISABILITY CODES
   // ====================================================================================================
