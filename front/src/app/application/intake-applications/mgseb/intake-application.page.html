@@ -36,43 +36,44 @@
 
                     <div layout="row" class="pad-bottom" flex>
                       <md-input-container flex>
-                        <input mdInput placeholder="Name" flex/>
+                        <input mdInput formControlName="name" placeholder="Name" flex/>
                       </md-input-container>
                     </div>
 
                     <div layout="row" class="pad-bottom" flex>
-                      <pams-gender-code-select [placeholder]="'Select Gender'"></pams-gender-code-select>
+                      <pams-gender-code-select formControlName="gender" [placeholder]="'Select Gender'"></pams-gender-code-select>
                     </div>
 
                     <div layout="row" class="pad-bottom" flex>
                       <md-input-container flex>
-                        <input mdInput type="date" placeholder="Date Of Birth" flex/>
+                        <input mdInput type="date" formControlName="dob" placeholder="Date Of Birth" flex/>
                       </md-input-container>
-                    </div>
+                    </div>-->
 
                     <div layout="row" class="pad-bottom" flex>
                       <pams-state-code-select [placeholder]="'Select State Of Birth'"></pams-state-code-select>
                     </div>
 
                     <div layout="row" class="pad-bottom" flex>
-                      <pams-marital-code-select [placeholder]="'Marital Status'"></pams-marital-code-select>
+                      <pams-marital-code-select formControlName="marital" [placeholder]="'Marital Status'"></pams-marital-code-select>
                     </div>
                   </div>
 
                   <!-- second column -->
+
                   <div layout="column" class="pad-right" flex>
                     <div layout="row" class="pad-bottom" flex>
                       <md-input-container flex>
-                        <input mdInput placeholder="NRIC/Passport" flex/>
+                        <input mdInput formControlName="identityNo" placeholder="NRIC/Passport" flex/>
                       </md-input-container>
                     </div>
 
                     <div layout="row" class="pad-bottom" flex>
-                      <pams-race-code-select [placeholder]="'Select Race'"></pams-race-code-select>
+                      <pams-race-code-select formControlName="race" [placeholder]="'Select Race'"></pams-race-code-select>
                     </div>
 
                     <div layout="row" class="pad-bottom" flex>
-                      <pams-religion-code-select [placeholder]="'Select Religion'"></pams-religion-code-select>
+                      <pams-religion-code-select formControlName="religion" [placeholder]="'Select Religion'"></pams-religion-code-select>
                     </div>
 
                     <div layout="row" class="pad-bottom" flex>
@@ -90,6 +91,7 @@
             <td-expansion-panel label="Address Information">
               <md-card>
                 <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                  
                   <!-- first column -->
                   <div layout="column" class="pad-right" flex>
                     <div layout="row" class="pad-bottom" flex>
