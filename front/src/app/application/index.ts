@@ -32,6 +32,10 @@ import {
   IntakeSupervisorOfferingListState
 } from "./intake-applications/intake-supervisor-offering-list.reducer";
 import {employmentListReducer, EmploymentListState} from "./intake-applications/employment-list.reducer";
+import {Employment} from "./intake-applications/employment.interface";
+import {Intake} from "../policy/intakes/intake.interface";
+import {ProgramOffering} from "../policy/intakes/program-offering.interface";
+import {IntakeApplication} from "./intake-applications/intake-application.interface";
 
 export interface ApplicationModuleState {
   intakes: IntakeListState;
@@ -46,15 +50,16 @@ export interface ApplicationModuleState {
 ;
 
 export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationModuleState>{
-  intakes:[],
-  intake:{},
-  employments:[],
-  programOfferings:[],
+  intakes:<Intake[]>[],
+  intake:<Intake>{},
+  employments:<Employment[]>[],
+  programOfferings:<ProgramOffering[]>[],
   supervisorOfferings:[],
   studyModeOfferings:[],
   intakeApplications:[],
-  intakeApplication:{}
+  intakeApplication:<IntakeApplication>{}
 };
+
 export const applicationModuleReducers = {
   intakes: intakeListReducer,
   intake: intakeReducer,
