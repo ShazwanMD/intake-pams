@@ -1,18 +1,22 @@
+import { Employment } from './../employment.interface';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { IntakeApplicationActions } from "../intake-application.action";
 import { Store } from "@ngrx/store";
-import { Employment } from "../employment.interface";
+
 import { IntakeApplicationModuleState } from "../index";
 
 @Component({
   selector: 'pams-employment-task-list',
   templateUrl: './employment-task-list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
  
 })
 
+
+
 export class EmploymentTaskListComponent implements OnInit {
-  
+  @Input() employments: Employment[];
 
   private EMPLOYMENTS = "IntakeApplicationModuleState.employments".split(".");
  

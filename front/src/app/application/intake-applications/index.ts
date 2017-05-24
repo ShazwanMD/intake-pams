@@ -22,21 +22,7 @@ import {Employment} from "./employment.interface";
 import {MyIntakeApplicationPage} from "./my-intake-application.page";
 import {IntakeProgramOfferingSelectComponent} from "./component/intake-program-offering-select.component";
 
-export interface IntakeApplicationModuleState {
-  employments: EmploymentListState;
-}
-;
 
-export const INITIAL_INTAKE_APPLICATION_STATE: IntakeApplicationModuleState =
-  <IntakeApplicationModuleState>{
-    employments: <Employment[]>[],
-  };
-
-
-export const intakeApplicationModuleReducers = {
-
-  employments: employmentListReducer,
-}
 
 @NgModule({
   imports: [
@@ -55,15 +41,15 @@ export const intakeApplicationModuleReducers = {
     MyIntakeApplicationPage,
 
     //components
-    EmploymentTaskListComponent,
+
     //dialogs
-    EmploymentCreatorDialog,
+
     EducationCreatorDialog,
   ],
   exports: [
   ],
   entryComponents: [
-    EmploymentCreatorDialog,
+
     EducationCreatorDialog,
   ],
 })

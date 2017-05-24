@@ -1,3 +1,4 @@
+import { Employment } from './../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -10,6 +11,8 @@ import {Observable} from "rxjs/Observable";
 import {Intake} from "../../../policy/intakes/intake.interface";
 import {IntakeApplication} from "../intake-application.interface";
 import { EmploymentCreatorDialog } from "../component/dialog/employment-creator.dialog";
+import {IntakeApplicationSubModule} from "../../intake-applications/index";
+
 
 
 
@@ -22,11 +25,13 @@ export class CpsIntakeApplicationPage implements OnInit {
 
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
   private INTAKE: string[] = "applicationModuleState.intake".split(".");
+  private EMPLOYMENT = "intakeApplicationSubModule.employments".split(".");
 
   // load both intake and intake application from store
   // for  select component purposes
   private intakeApplication$: Observable<IntakeApplication>;
   private intake$: Observable<Intake>;
+  private employments$: Observable<Employment>;
 
   private createForm: FormGroup;
   private creatorDialogRef: MdDialogRef<EmploymentCreatorDialog>;
@@ -40,6 +45,7 @@ export class CpsIntakeApplicationPage implements OnInit {
               private dialog: MdDialog) {
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.intake$ = this.store.select(...this.INTAKE);
+    this.employments$ = this.store.select(...this.INTAKE_APPLICATION);
   }
 
   ngOnInit(): void {

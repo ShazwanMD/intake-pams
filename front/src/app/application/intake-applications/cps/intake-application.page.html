@@ -165,6 +165,8 @@
 
                 <md-card-subtitle>List of Working Experience</md-card-subtitle>
 
+                 <pams-employment-task-list [employments]="employments$   | async"></pams-employment-task-list>
+
                 <md-divider>
                   <td-data-table
                     [data]="facultyCodes$ | async"
