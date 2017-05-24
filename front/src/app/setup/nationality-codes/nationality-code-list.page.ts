@@ -13,7 +13,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 })
 export class NationalityCodeListPage implements OnInit {
 
-  private ETHNICITY_CODES = "setupModuleState.nationalityCodes".split(".");
+  private NATIONALITY_CODES = "setupModuleState.nationalityCodes".split(".");
   private nationalityCodes$: Observable<NationalityCode>;
   private creatorDialogRef: MdDialogRef<NationalityCodeCreatorDialog>;
   private columns: any[] = [
@@ -27,7 +27,7 @@ export class NationalityCodeListPage implements OnInit {
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
-    this.nationalityCodes$ = this.store.select(...this.ETHNICITY_CODES);
+    this.nationalityCodes$ = this.store.select(...this.NATIONALITY_CODES);
   }
 
   ngOnInit(): void {

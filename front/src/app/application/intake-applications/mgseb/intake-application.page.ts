@@ -8,6 +8,10 @@ import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import {IntakeApplication} from "../intake-application.interface";
 import { EducationCreatorDialog } from "../component/dialog/education-creator.dialog";
 import { EmploymentCreatorDialog } from "../component/dialog/employment-creator.dialog";
+import { IntakeApplicationActions } from "../intake-application.action";
+import { Observable } from "rxjs/Observable";
+import { Intake } from "../../../policy/intakes/intake.interface";
+
 
 @Component({
   selector: 'pams-intake-application',
@@ -16,7 +20,13 @@ import { EmploymentCreatorDialog } from "../component/dialog/employment-creator.
 
 export class MgsebIntakeApplicationPage implements OnInit {
 
-  private createForm: FormGroup;
+  private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
+  private INTAKE: string[] = "applicationModuleState.intake".split(".");
+
+  private intakeApplication$: Observable<IntakeApplication>;
+  private intake$: Observable<Intake>;
+  
+  private creatorForm: FormGroup;
   private creatorDialogRef1: MdDialogRef<EducationCreatorDialog>;
   private creatorDialogRef2: MdDialogRef<EmploymentCreatorDialog>;
 
@@ -26,7 +36,10 @@ export class MgsebIntakeApplicationPage implements OnInit {
               private vcf: ViewContainerRef,
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialog,
+              private actions : IntakeApplicationActions,
               private store: Store<ApplicationModuleState>) {
+    this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
+    this.intake$ = this.store.select(...this.INTAKE);
   }
 
   showDialog1(): void {
@@ -60,6 +73,10 @@ export class MgsebIntakeApplicationPage implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: { referenceNo: string }) => {
+      let referenceNo: string = params.referenceNo;
+      this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+    });
 
   }
 
