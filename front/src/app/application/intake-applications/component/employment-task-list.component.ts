@@ -1,10 +1,12 @@
+import { IntakeApplicationModuleState } from './../cps/index';
+
 import { Employment } from './../employment.interface';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { IntakeApplicationActions } from "../intake-application.action";
 import { Store } from "@ngrx/store";
 
-import { IntakeApplicationModuleState } from "../index";
+
 
 @Component({
   selector: 'pams-employment-task-list',
