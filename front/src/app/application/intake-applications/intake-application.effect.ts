@@ -121,7 +121,7 @@ export class IntakeApplicationEffects {
   @Effect() addEmployment = this.actions$
     .ofType(IntakeApplicationActions.ADD_EMPLOYMENT)
     .map(action => action.payload)
-    .switchMap(payload => this.applicationService.addEmployment(payload.intake, payload.employment))
+    .switchMap(payload => this.applicationService.addEmployment(payload.application, payload.employment))
     .map(message => this.intakeApplicationActions.addEmploymentSuccess(message));
 
   @Effect() addAddress = this.actions$

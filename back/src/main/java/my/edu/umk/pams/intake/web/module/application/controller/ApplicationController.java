@@ -177,13 +177,11 @@ public class ApplicationController {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InEmployment employment = new InEmploymentImpl();
 		employment.setEmployer(vo.getEmployer());
+        employment.setDesignation(vo.getDesignation());
 		employment.setStartDate(vo.getStartDate());
 		employment.setEndDate(vo.getEndDate());
-		employment.setDesignation(vo.getDesignation());
 		// employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
-
 		// employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
-
 		// employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
 		employment.setCurrent(false);
 		applicationService.addEmployment(application, employment);

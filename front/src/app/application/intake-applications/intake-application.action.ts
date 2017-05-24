@@ -300,43 +300,25 @@ export class IntakeApplicationActions {
     };
   }
 
-  static ADD_EMPLOYMENT = '[Intake Application] Add Employment';
+  static ADD_EMPLOYMENT = '[Intake Application] Save Employment';
 
-  addEmployment(intake, employment) {
+  addEmployment(application, employment): Action {
+    console.log("addEmployment");
     return {
       type: IntakeApplicationActions.ADD_EMPLOYMENT,
-      payload: {intake: intake, employment: employment}
+      payload: {application: application, employment: employment}
     };
   }
 
   static ADD_EMPLOYMENT_SUCCESS = '[Intake Application] Add Employment Success';
 
-  addEmploymentSuccess(message) {
+  addEmploymentSuccess(message): Action {
+    console.log("addEmploymentSuccess");
     return {
       type: IntakeApplicationActions.ADD_EMPLOYMENT_SUCCESS,
       payload: message
     };
   }
-
- static SAVE_EMPLOYMENT = '[Intake Application] Save Employment';
-
- saveEmployment(employment):Action{
-   console.log("saveEmployment");
-   return {
-     type:IntakeApplicationActions.SAVE_EMPLOYMENT,
-     payload:employment
-  };
-}
-
-static SAVE_EMPLOYMENT_SUCCESS = '[Intake Application] Save Employment Success';
-
-saveEmploymentSuccess(message):Action{
-  console.log("saveEmployment");
-  return{
-    type: IntakeApplicationActions.SAVE_EMPLOYMENT_SUCCESS,
-    payload:message
-  };
-}
 
   static DELETE_EMPLOYMENT = '[Intake Application] Delete Employment';
 

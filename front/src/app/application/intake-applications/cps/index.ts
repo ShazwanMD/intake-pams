@@ -16,6 +16,7 @@ import {IntakeSessionActions} from "../../../policy/intake-sessions/intake-sessi
 import {IntakeSubModule} from "../../../policy/intakes/index";
 import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
+import {EmploymentTabComponent} from "../component/employment-tab.component";
 
 @NgModule({
   imports: [
@@ -33,6 +34,8 @@ import {EmploymentListComponent} from "../component/employment-list.component";
 
     //components
     EmploymentListComponent,
+    EmploymentTabComponent,
+
     //dialogs
     EmploymentCreatorDialog,
   ],
