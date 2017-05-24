@@ -2,10 +2,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
-import { IntakeApplicationModuleState } from "../index";
-import { IntakeApplicationActions } from "../intake-application.action";
-import { SpmResult } from "../spm-result.interface";
-
+import {IntakeApplicationActions} from "../intake-application.action";
+import {SpmResult} from "../spm-result.interface";
+import {ApplicationModuleState} from "../../index";
 
 
 @Component({
@@ -20,15 +19,13 @@ export class SpmResultSelectComponent implements OnInit {
 
   spmResult$: Observable<SpmResult[]>;
 
-  constructor(private store: Store<IntakeApplicationModuleState>,
-              private actions: IntakeApplicationActions)
-{
+  constructor(private store: Store<ApplicationModuleState>,
+              private actions: IntakeApplicationActions) {
     this.spmResult$ = this.store.select(...this.SPM_RESULT);
   }
 
   ngOnInit() {
-      // this.store.dispatch(this.actions.findSpmResults(application));
-      this.spmResult$.subscribe(application => this.store.dispatch(this.actions.findSpmResultsByIntakeApplication(application)));
+    this.spmResult$.subscribe(application => this.store.dispatch(this.actions.findSpmResultsByIntakeApplication(application)));
   }
 
 

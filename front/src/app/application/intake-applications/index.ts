@@ -12,16 +12,10 @@ import {EffectsModule} from "@ngrx/effects";
 import {IntakeApplicationEffects} from "./intake-application.effect";
 import {IntakeApplicationActions} from "./intake-application.action";
 import {IntakeDetailPage} from "./intake-detail.page";
-import {EmploymentCreatorDialog} from "./component/dialog/employment-creator.dialog";
 import {EducationCreatorDialog} from "./component/dialog/education-creator.dialog";
 import {CommonModule} from "../../common/index";
 import {ProgramLevelSubModule} from "../../policy/program-levels/index";
-import {EmploymentTaskListComponent} from "./component/employment-task-list.component";
-import {EmploymentListState, employmentListReducer} from "./component/employment-task-list.reducer";
-import {Employment} from "./employment.interface";
 import {MyIntakeApplicationPage} from "./my-intake-application.page";
-import {IntakeProgramOfferingSelectComponent} from "./component/intake-program-offering-select.component";
-
 
 
 @NgModule({

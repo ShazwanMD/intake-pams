@@ -1,6 +1,4 @@
-import { EmploymentCreatorDialog } from './../component/dialog/employment-creator.dialog';
-import { EmploymentTaskListComponent } from './../component/employment-task-list.component';
-import { Employment } from './../employment.interface';
+import {EmploymentCreatorDialog} from './../component/dialog/employment-creator.dialog';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -17,23 +15,7 @@ import {PolicyService} from "../../../../services/policy.service";
 import {IntakeSessionActions} from "../../../policy/intake-sessions/intake-session.action";
 import {IntakeSubModule} from "../../../policy/intakes/index";
 import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
-import {EmploymentListState, employmentListReducer} from "./../component/employment-task-list.reducer";
-
-export interface IntakeApplicationModuleState {
-  employments: EmploymentListState;
-}
-;
-
-export const INITIAL_INTAKE_APPLICATION_STATE: IntakeApplicationModuleState =
-  <IntakeApplicationModuleState>{
-    employments: <Employment[]>[],
-  };
-
-
-export const intakeApplicationModuleReducers = {
-
-  employments: employmentListReducer,
-}
+import {EmploymentListComponent} from "../component/employment-list.component";
 
 @NgModule({
   imports: [
@@ -48,15 +30,16 @@ export const intakeApplicationModuleReducers = {
   declarations: [
     CpsIntakeApplicationPage,
     IntakeProgramOfferingSelectComponent,
-        //components
-    EmploymentTaskListComponent,
+
+    //components
+    EmploymentListComponent,
     //dialogs
     EmploymentCreatorDialog,
   ],
   exports: [],
   entryComponents: [
     EmploymentCreatorDialog,
-   
+
   ],
 })
 export class CpsIntakeApplicationSubModule {

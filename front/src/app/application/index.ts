@@ -32,10 +32,12 @@ import {
   intakeSupervisorOfferingListReducer,
   IntakeSupervisorOfferingListState
 } from "./intake-applications/intake-supervisor-offering-list.reducer";
+import {employmentListReducer, EmploymentListState} from "./intake-applications/component/employment-list.reducer";
 
 export interface ApplicationModuleState {
   intakes: IntakeListState;
   intake: IntakeState;
+  employements:EmploymentListState;
   programOfferings: IntakeProgramOfferingListState;
   supervisorOfferings: IntakeSupervisorOfferingListState;
   studyModeOfferings: IntakeStudyModeOfferingListState;
@@ -48,6 +50,7 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
 export const applicationModuleReducers = {
   intakes: intakeListReducer,
   intake: intakeReducer,
+  employments: employmentListReducer,
   programOfferings: intakeProgramOfferingListReducer,
   supervisorOfferings: intakeSupervisorOfferingListReducer,
   studyModeOfferings: intakeStudyModeOfferingListReducer,
@@ -73,7 +76,7 @@ export const applicationModuleReducers = {
   exports: [],
 
   entryComponents: [
-  
+
   ],
 })
 export class ApplicationModule {
