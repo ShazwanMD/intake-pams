@@ -122,12 +122,25 @@ public class ApplicationTransformer {
         return vo;
     }
 
-    public Result toResultVo(InResult e){
-        Result vo = new Result();
+    public SpmResult toSpmResultVo(InSpmResult e){
+        SpmResult vo = new SpmResult();
         vo.setId(e.getId());
-        // todo(uda): more props
+        vo.setMalay(e.getMalay());
+        vo.setMath(e.getMath());
+        vo.setEnglish(e.getEnglish());
+        vo.setIslamEduc(e.getIslamEduc());
+        vo.setSejarah(e.getHistory());
+        vo.setYear(e.getYear());
+        vo.setAggregate(e.getAggregate());
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
+    }
+    
+    public List<SpmResult> toSpmResultVos(List<InSpmResult> e) {
+        List<SpmResult> vos = e.stream()
+                .map((e1) -> toSpmResultVo(e1))
+                .collect(Collectors.toList());
+        return vos;
     }
 
     public List<IntakeApplication> toIntakeApplicationVos(List<InIntakeApplication> e) {
@@ -136,5 +149,10 @@ public class ApplicationTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
+    
+
+
+
+    
     
 }

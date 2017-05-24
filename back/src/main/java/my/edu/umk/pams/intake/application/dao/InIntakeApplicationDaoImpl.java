@@ -381,12 +381,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (List<InAddress>) query.list();
     }
+
     
     @Override
     public List<InSpmResult> findSpmResults(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("select p from InSpmResult where " +
-                "p.application = :application");
+        Query query = currentSession.createQuery("select p from InSpmResult p where " +
+                "p.application = :application " +
+        		"and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());		
         query.setEntity("application", application);
         return (List<InSpmResult>) query.list();
     }

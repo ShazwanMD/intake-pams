@@ -15,6 +15,7 @@ import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.web.module.application.vo.Education;
 import my.edu.umk.pams.intake.web.module.application.vo.Employment;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
+import my.edu.umk.pams.intake.web.module.application.vo.SpmResult;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
@@ -215,7 +216,38 @@ public class ApplicationController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
+    // ====================================================================================================
+	// SPM RESULTS
+	// ====================================================================================================
 
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/spmResults", method = RequestMethod.GET)
+	public ResponseEntity<List<SpmResult>> findSpmResultsByIntakeApplication(@PathVariable String referenceNo) {
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+
+		List<InSpmResult> spmResults = applicationService.findSpmResults(application);
+
+		return new ResponseEntity<List<SpmResult>>(applicationTransformer.toSpmResultVos(spmResults), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/spmResults", method = RequestMethod.POST)
+	public ResponseEntity<String> addSpmResult(@PathVariable String referenceNo, @RequestBody SpmResult vo) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InSpmResult spmResult = new InSpmResultImpl();
+		spmResult.SetMalay(vo.getMalay());
+		spmResult.SetEnglish(vo.getEnglish());
+		spmResult.setIslamEduc(vo.getIslamEduc());
+		spmResult.setHistory(vo.getSejarah());
+		spmResult.setMath(vo.getMath());
+		spmResult.setYear(vo.getYear());
+		spmResult.setAggregate(vo.getAggregate());
+
+		applicationService.addSpmResult(application, spmResult);
+
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+	
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================

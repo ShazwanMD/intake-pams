@@ -36,7 +36,7 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
     private String math;
     
     @NotNull
-    @Column(name = "MATEMATIK TAMBAHAN", nullable = false)
+    @Column(name = "MATEMATIK TAMBAHAN", nullable = true)
     private String addMath;
     
     @NotNull
@@ -44,15 +44,15 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
     private String islamEduc;
     
     @NotNull
-    @Column(name = "KIMIA", nullable = false)
+    @Column(name = "KIMIA", nullable = true)
     private String chemist;
     
     @NotNull
-    @Column(name = "BIOLOGI", nullable = false)
+    @Column(name = "BIOLOGI", nullable = true)
     private String bio;
     
     @NotNull
-    @Column(name = "FIZIK", nullable = false)
+    @Column(name = "FIZIK", nullable = true)
     private String physic;
     
     @NotNull
