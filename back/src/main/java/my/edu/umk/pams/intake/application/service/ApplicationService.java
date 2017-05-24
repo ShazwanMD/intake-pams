@@ -134,6 +134,8 @@ public interface ApplicationService {
     List<InEducation> findEducations(InIntakeApplication application);
 
     List<InEmployment> findEmployments(InIntakeApplication application);
+    
+    List<InReferee> findReferees(InIntakeApplication application);
 
     List<InInvolvement> findInvolvements(InIntakeApplication application);
 
@@ -162,6 +164,8 @@ public interface ApplicationService {
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
+    
+    boolean hasReferee(InIntakeApplication application);
 
     void addReferee(InIntakeApplication application, InReferee referee);
 

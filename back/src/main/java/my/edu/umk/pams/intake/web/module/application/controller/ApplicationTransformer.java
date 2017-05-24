@@ -117,9 +117,19 @@ public class ApplicationTransformer {
     public Referee toRefereeVo(InReferee e){
         Referee vo = new Referee();
         vo.setId(e.getId());
-        // todo(uda): more props
+        vo.setName(e.getName());
+        vo.setOfficeAddrs(e.getOfficeAddrs());
+        vo.setOccupation(e.getOccupation());
+        vo.setPhoneNo(e.getPhoneNo());
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
+    }
+    
+    public List<Referee> toRefereeVos(List<InReferee> e) {
+        List<Referee> vos = e.stream()
+                .map((e1) -> toRefereeVo(e1))
+                .collect(Collectors.toList());
+        return vos;
     }
 
     public SpmResult toSpmResultVo(InSpmResult e){

@@ -327,6 +327,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (List<InEmployment>) query.list();
     }
+    
+    @Override
+    public List<InReferee> findReferees(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InReferee p where " +
+                "p.application = :application " +
+        		"and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());		
+        query.setEntity("application", application);
+        return (List<InReferee>) query.list();
+    }
 
     @Override
     public List<InInvolvement> findInvolvements(InIntakeApplication application) {
@@ -461,6 +472,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     public boolean hasInvolvement(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InEmployment p " +
+                "where p.application = :application");
+        query.setEntity("application", application);
+        return (Integer) query.uniqueResult() > 0;
+    }
+    
+    @Override
+    public boolean hasReferee(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InReferee p " +
                 "where p.application = :application");
         query.setEntity("application", application);
         return (Integer) query.uniqueResult() > 0;

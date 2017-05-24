@@ -375,6 +375,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<InEmployment> findEmployments(InIntakeApplication application) {
         return intakeApplicationDao.findEmployments(application);
     }
+    
+    @Override
+    public List<InReferee> findReferees(InIntakeApplication application) {
+        return intakeApplicationDao.findReferees(application);
+    }
 
     @Override
     public List<InInvolvement> findInvolvements(InIntakeApplication application) {
@@ -434,6 +439,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public boolean hasEmployment(InIntakeApplication application) {
         return intakeApplicationDao.hasEmployment(application);
+    }
+    
+    @Override
+    public boolean hasReferee(InIntakeApplication application) {
+        return intakeApplicationDao.hasReferee(application);
     }
 
     @Override

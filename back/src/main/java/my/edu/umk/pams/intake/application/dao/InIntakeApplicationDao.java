@@ -76,6 +76,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InEducation> findEducations(InIntakeApplication application);
 
     List<InEmployment> findEmployments(InIntakeApplication application);
+    
+    List<InReferee> findReferees(InIntakeApplication application);
 
     List<InInvolvement> findInvolvements(InIntakeApplication application);
 
@@ -108,6 +110,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     boolean hasEmployment(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
+    
+    boolean hasReferee(InIntakeApplication application);
 
     // ====================================================================================================
     // CRUD

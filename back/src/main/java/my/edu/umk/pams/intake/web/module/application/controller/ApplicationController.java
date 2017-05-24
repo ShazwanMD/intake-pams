@@ -15,6 +15,7 @@ import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.web.module.application.vo.Education;
 import my.edu.umk.pams.intake.web.module.application.vo.Employment;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
+import my.edu.umk.pams.intake.web.module.application.vo.Referee;
 import my.edu.umk.pams.intake.web.module.application.vo.SpmResult;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
@@ -244,6 +245,32 @@ public class ApplicationController {
 		spmResult.setAggregate(vo.getAggregate());
 
 		applicationService.addSpmResult(application, spmResult);
+
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+	
+	// ====================================================================================================
+	// REFERESS
+	// ====================================================================================================
+
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/referees", method = RequestMethod.GET)
+	public ResponseEntity<List<Referee>> findRefereesByIntakeApplication(@PathVariable String referenceNo) {
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		List<InReferee> referees = applicationService.findReferees(application);
+		return new ResponseEntity<List<Referee>>(applicationTransformer.toRefereeVos(referees), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/referees", method = RequestMethod.POST)
+	public ResponseEntity<String> addReferee(@PathVariable String referenceNo, @RequestBody Referee vo) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InReferee referee = new InRefereeImpl();
+		referee.setName(vo.getName());
+		referee.setOfficeAddrs(vo.getOfficeAddrs());
+		referee.setOccupation(vo.getOccupation());
+		referee.setPhoneNo(vo.getPhoneNo());
+		applicationService.addReferee(application, referee);
 
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
