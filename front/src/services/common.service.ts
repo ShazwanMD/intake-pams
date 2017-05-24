@@ -551,13 +551,13 @@ export class CommonService {
 
 findEthnicityCodes(): Observable<EthnicityCode[]> {
     console.log("findEthnicityCodes");
-    return this.http.get(environment.endpoint + '/api/common/nationalityCodes')
+    return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
       .map((res: Response) => <EthnicityCode[]>res.json());
   }
 
   findEthnicityCodeByCode(code: string): Observable<EthnicityCode> {
     console.log("findEthnicityCodeByCode");
-    return this.http.get(environment.endpoint + '/api/common/nationalityCodes/' + code)
+    return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
       .map((res: Response) => <EthnicityCode>res.json());
   }
 
@@ -567,7 +567,7 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/common/nationalityCodes', JSON.stringify(code), options)
+    return this.http.post(environment.endpoint + '/api/common/ethnicityCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -577,7 +577,7 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/common/nationalityCodes/' + code.code, JSON.stringify(code), options)
+    return this.http.put(environment.endpoint + '/api/common/ethnicityCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -587,7 +587,7 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.delete(environment.endpoint + '/api/common/nationalityCodes/' + code.code, options)
+    return this.http.delete(environment.endpoint + '/api/common/ethnicityCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 // ====================================================================================================
