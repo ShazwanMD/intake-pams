@@ -83,8 +83,8 @@ export class IntakeApplicationEffects {
     .switchMap(referenceNo => this.applicationService.findIntakeApplicationByReferenceNo(referenceNo))
     .map(application => this.intakeApplicationActions.findIntakeApplicationByReferenceNoSuccess(application))
     .mergeMap(action => from([action,
-      this.intakeApplicationActions.findEducationsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findEmploymentsByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findEducationsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findAddressesByIntakeApplication(action.payload),
     ]));
 

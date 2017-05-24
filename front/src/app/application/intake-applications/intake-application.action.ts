@@ -30,6 +30,7 @@ export class IntakeApplicationActions {
   static FIND_INTAKE_BY_REFERENCE_NO = '[Intake] Find Intake By Reference No';
 
   findIntakeByReferenceNo(referenceNo): Action {
+    console.log("findIntakeByReferenceNo");
     return {
       type: IntakeApplicationActions.FIND_INTAKE_BY_REFERENCE_NO,
       payload: referenceNo
@@ -39,7 +40,7 @@ export class IntakeApplicationActions {
   static FIND_INTAKE_BY_REFERENCE_NO_SUCCESS = '[Intake] Find Intake By Reference No Success';
 
   findIntakeByReferenceNoSuccess(intake): Action {
-    console.log("findIntakeSuccess");
+    console.log("findIntakeByReferenceNoSuccess");
     return {
       type: IntakeApplicationActions.FIND_INTAKE_BY_REFERENCE_NO_SUCCESS,
       payload: intake
@@ -134,12 +135,12 @@ export class IntakeApplicationActions {
     };
   }
 
-  static FIND_EDUCATIONS__BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Educations Success';
+  static FIND_EDUCATIONS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Educations Success';
 
   findEducationsByIntakeApplicationSuccess(educations): Action {
-    console.log("findEducationsSuccess");
+    console.log("findEducationsByIntakeApplicationSuccess");
     return {
-      type: IntakeApplicationActions.FIND_EDUCATIONS__BY_INTAKE_APPLICATION_SUCCESS,
+      type: IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION_SUCCESS,
       payload: educations
     };
   }
@@ -148,6 +149,7 @@ export class IntakeApplicationActions {
   static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Employments';
 
   findEmploymentsByIntakeApplication(application): Action {
+    console.log("findEmploymentsByIntakeApplication");
     return {
       type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION,
       payload: application
@@ -157,7 +159,7 @@ export class IntakeApplicationActions {
   static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Employments Success';
 
   findEmploymentsByIntakeApplicationSuccess(employments): Action {
-    console.log("findEmploymentsSuccess");
+    console.log("findEmploymentsByIntakeApplicationSuccess");
     return {
       type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS,
       payload: employments
@@ -224,6 +226,7 @@ export class IntakeApplicationActions {
   static FIND_INTAKE_APPLICATION_BY_REFERENCE_NO = '[Intake Application] Find Intake By Reference No';
 
   findIntakeApplicationByReferenceNo(referenceNo): Action {
+    console.log("findIntakeApplicationByReferenceNo");
     return {
       type: IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_REFERENCE_NO,
       payload: referenceNo
@@ -233,6 +236,7 @@ export class IntakeApplicationActions {
   static FIND_INTAKE_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[Intake Application] Find Intake Application By Reference No Success';
 
   findIntakeApplicationByReferenceNoSuccess(application): Action {
+    console.log("findIntakeApplicationByReferenceNoSuccess");
     return {
       type: IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_REFERENCE_NO_SUCCESS,
       payload: application

@@ -26,9 +26,9 @@ import {MyIntakeApplicationPage} from "./my-intake-application.page";
     CovalentCoreModule.forRoot(),
     MgsebIntakeApplicationSubModule.forRoot(),
     CpsIntakeApplicationSubModule.forRoot(),
-    EffectsModule.run(IntakeApplicationEffects),
     CommonModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
+    EffectsModule.run(IntakeApplicationEffects),
   ],
   declarations: [
     IntakeDetailPage,
