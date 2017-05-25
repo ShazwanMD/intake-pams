@@ -19,10 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
 import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
 
 @JGivenStage
@@ -68,7 +64,7 @@ public class WhenIFillInIntakeApplication extends Stage<WhenIFillInIntakeApplica
         intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setBidStatus(InBidStatus.PROCESSING);
         intakeApplication.setPaymentSourceNo("PETRONAS");
-        applicationService.draftIntakeApplication(intake, intakeApplication);
+        applicationService.applyIntake(intake, intakeApplication);
         //
 
         return self();

@@ -49,7 +49,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     private SessionFactory sessionFactory;
 
     @Override
-    public String draftIntakeApplication(InIntake intake, InIntakeApplication application) {
+    public String applyIntake(InIntake intake, InIntakeApplication application) {
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("intakeSession", intake.getSession());
         map.put("programLevel", intake.getProgramLevel());

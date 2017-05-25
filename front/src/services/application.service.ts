@@ -43,14 +43,14 @@ export class ApplicationService {
   }
 
 
-  applyIntake(intake: Intake): Observable<String> {
+  applyIntake(intake: Intake): Observable<IntakeApplication> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/apply', options)
-      .flatMap((res: Response) => Observable.of(res.text()));
+      .map((res: Response) => <IntakeApplication>res.json());
   }
 
   // ====================================================================================================

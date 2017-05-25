@@ -13,7 +13,7 @@ public interface ApplicationService {
     // INTAKE APPLICATION
     //====================================================================================================
 
-    String draftIntakeApplication(InIntake intake, InIntakeApplication application);
+    String applyIntake(InIntake intake, InIntakeApplication application);
 
     void updateIntakeApplication(InIntakeApplication application);
 

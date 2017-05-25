@@ -123,7 +123,7 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
 		 application1.setApplicant(applicant1);
 		 LOG.debug("intake status : {} ", application1.getBidStatus());
 		 
-		 applicationService.draftIntakeApplication(intake, application1);
+		 applicationService.applyIntake(intake, application1);
 		 Assert.notNull(application1, "application 1 is not drafted");
 		 LOG.debug("intake status : {} ", application1.getBidStatus());
         

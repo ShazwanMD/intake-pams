@@ -121,7 +121,7 @@ public class WhenCompleteApplication extends Stage<WhenCompleteApplication> {
 		 application.setApplicant(applicant);
 		 LOG.debug("intake status : {} ", application.getBidStatus());
 		 
-		 applicationService.draftIntakeApplication(intake, application);
+		 applicationService.applyIntake(intake, application);
 		 Assert.notNull(application, "application 1 is not drafted");
 		 LOG.debug("intake status : {} ", application.getBidStatus());
          

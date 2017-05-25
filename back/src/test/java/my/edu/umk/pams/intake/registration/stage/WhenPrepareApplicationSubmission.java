@@ -152,7 +152,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
 		 application1.setApplicant(applicant1);
 		 LOG.debug("intake status : {} ", application1.getBidStatus());
 		 
-		 applicationService.draftIntakeApplication(intake, application1);
+		 applicationService.applyIntake(intake, application1);
 		 Assert.notNull(application1, "application 1 is not drafted");
 		 LOG.debug("intake status : {} ", application1.getBidStatus());
          
@@ -192,7 +192,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application2.setProgramSelection(offering);
           LOG.debug("intake status : {} ", application2.getBidStatus());
           
-          applicationService.draftIntakeApplication(intake, application2);
+          applicationService.applyIntake(intake, application2);
           Assert.notNull(application2, "applicantion2 is not drafted");
           LOG.debug("intake status : {} ", application2.getBidStatus());
           
@@ -229,7 +229,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application3.setProgramSelection(offering);
           LOG.debug("intake status : {} ", application3.getBidStatus());
           
-          applicationService.draftIntakeApplication(intake, application3);
+          applicationService.applyIntake(intake, application3);
           Assert.notNull(application3, "applicantion3 is not drafted");
           LOG.debug("intake status : {} ", application3.getBidStatus());
          

@@ -71,7 +71,7 @@ public class WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation
         intakeApplication.setSchoolCode(commonService.findSchoolCodeByCode("SMA"));
         intakeApplication.setSchoolName("Sekolah Agama Berasrama Penuh Ceruk Tok Kun");
         intakeApplication.setSchoolBatch(2001);
-        applicationService.draftIntakeApplication(intake, intakeApplication);
+        applicationService.applyIntake(intake, intakeApplication);
 		
 		return self();
 	}

@@ -64,7 +64,7 @@ public class WhenIFillProcessingApplication extends Stage<WhenIFillProcessingApp
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setBidStatus(InBidStatus.PROCESSING);  
-        applicationService.draftIntakeApplication(intake, intakeApplication);
+        applicationService.applyIntake(intake, intakeApplication);
 
         return self();
     }

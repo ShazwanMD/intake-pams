@@ -81,7 +81,7 @@ public class GivenIFillIncompleteApplication extends Stage<GivenIFillIncompleteA
         application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
         application.setApplicant(applicant);
 
-        applicationService.draftIntakeApplication(intake, application);
+        applicationService.applyIntake(intake, application);
         return self();
     }
 

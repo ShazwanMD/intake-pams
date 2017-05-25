@@ -15,6 +15,7 @@ import {IntakeApplication} from "./intake-application.interface";
 export class IntakeApplicationEffects {
 
   private INTAKE = "applicationModuleState.intake".split(".");
+  private INTAKE_APPLICATION = "applicationModuleState.intakeApplication".split(".");
   private intake$: Observable<Intake>;
 
   constructor(private actions$: Actions,
@@ -54,24 +55,16 @@ export class IntakeApplicationEffects {
     .map(applications => this.intakeApplicationActions.findIntakeApplicationsSuccess(applications));
 
 
-  @Effect() applyIntakeCps$ = this.actions$
-    .ofType(IntakeApplicationActions.APPLY_INTAKE_CPS)
+  @Effect() applyIntake$ = this.actions$
+    .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map(action => action.payload)
     .switchMap(intake => this.applicationService.applyIntake(intake))
-    .mergeMap(referenceNo => from([referenceNo,
-      this.intakeApplicationActions.applyIntakeCpsSuccess(referenceNo),
-      this.router.navigate(['/application/intake-applications/cps/', referenceNo])
-    ]));
+    .do(application =>
+      this.router.navigate(['/application/intake-applications/',
+        application.intake.graduateCentre.code.toLocaleLowerCase(),
+        application.referenceNo])
 
-  @Effect() applyIntakeMgseb$ = this.actions$
-    .ofType(IntakeApplicationActions.APPLY_INTAKE_MGSEB)
-    .map(action => action.payload)
-    .switchMap(intake => this.applicationService.applyIntake(intake))
-    .mergeMap(referenceNo => from([referenceNo,
-      this.intakeApplicationActions.applyIntakeMgsebSuccess(referenceNo),
-      this.router.navigate(['/application/intake-applications/mgseb/', referenceNo])
-    ]));
-
+    ).ignoreElements();
 
   // ====================================================================================================
   // INTAKE APPLICATION
@@ -93,7 +86,6 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.UPDATE_INTAKE_APPLICATION)
     .map(action => action.payload)
     .switchMap(application => this.applicationService.updateIntakeApplication(application));
-  // .map(message => this.intakeApplicationActions.updateIntakeSuccess(todo));
 
   @Effect() submitIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.SUBMIT_INTAKE_APPLICATION)

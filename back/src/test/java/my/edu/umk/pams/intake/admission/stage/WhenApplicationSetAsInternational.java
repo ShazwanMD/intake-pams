@@ -3,8 +3,6 @@ package my.edu.umk.pams.intake.admission.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.intake.application.model.InFranchise;
-import my.edu.umk.pams.intake.application.model.InFranchiseImpl;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.model.InVisaType;
@@ -59,7 +57,7 @@ public class WhenApplicationSetAsInternational extends Stage<WhenApplicationSetA
         intakeApplication.setPassportNo("A1234567890");
         intakeApplication.setPassportExpDate(Date.valueOf(LocalDate.of(2020, 12, 31)));
         intakeApplication.setVisaType(InVisaType.STUDENT);
-        applicationService.draftIntakeApplication(intake, intakeApplication);
+        applicationService.applyIntake(intake, intakeApplication);
               
         return self();
     }

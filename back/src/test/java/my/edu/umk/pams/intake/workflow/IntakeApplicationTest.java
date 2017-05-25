@@ -86,6 +86,6 @@ public class IntakeApplicationTest {
         InIntakeApplication application = new InIntakeApplicationImpl();
         application.setName(applicant.getName());
         application.setEmail(applicant.getEmail());
-        applicationService.draftIntakeApplication(intake, application);
+        applicationService.applyIntake(intake, application);
     }
 }

@@ -12,14 +12,12 @@ import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.service.SecurityService;
-import my.edu.umk.pams.intake.web.module.application.vo.Education;
-import my.edu.umk.pams.intake.web.module.application.vo.Employment;
-import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
-import my.edu.umk.pams.intake.web.module.application.vo.Referee;
-import my.edu.umk.pams.intake.web.module.application.vo.SpmResult;
+import my.edu.umk.pams.intake.web.module.application.vo.*;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +31,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/application")
 public class ApplicationController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ApplicationController.class);
 
     @Autowired
     private ApplicationService applicationService;
@@ -75,7 +75,7 @@ public class ApplicationController {
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/apply", method = RequestMethod.POST)
-    public ResponseEntity<String> applyIntake(@PathVariable String referenceNo) {
+    public ResponseEntity<IntakeApplication> applyIntake(@PathVariable String referenceNo) {
         dummyLogin();
 
         // user & applicant
@@ -90,9 +90,10 @@ public class ApplicationController {
         application.setEmail(applicant.getEmail());
         application.setApplicant(applicant);
 
-        // todo: applyIntake(intake);
-        String refNo = applicationService.draftIntakeApplication(intake, application);
-        return new ResponseEntity<String>(refNo, HttpStatus.OK);
+        String intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
+        LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
+        InIntakeApplication generatedApplication = applicationService.findIntakeApplicationByReferenceNo(intakeApplicationReferenceNo);
+        return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(generatedApplication), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications", method = RequestMethod.POST)
@@ -284,6 +285,4 @@ public class ApplicationController {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
-
-
 }

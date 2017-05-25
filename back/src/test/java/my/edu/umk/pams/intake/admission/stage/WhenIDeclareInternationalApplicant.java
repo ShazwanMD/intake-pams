@@ -4,8 +4,6 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.intake.application.model.InFranchise;
-import my.edu.umk.pams.intake.application.model.InFranchiseImpl;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.model.InVisaType;
@@ -61,7 +59,7 @@ public class WhenIDeclareInternationalApplicant extends Stage<WhenIDeclareIntern
         intakeApplication.setPassportNo("A1234561240");
         intakeApplication.setPassportExpDate(Date.valueOf(LocalDate.of(2022, 10, 30)));
         intakeApplication.setVisaType(InVisaType.STUDENT);
-        applicationService.draftIntakeApplication(intake, intakeApplication);
+        applicationService.applyIntake(intake, intakeApplication);
               
         return self();
     }
