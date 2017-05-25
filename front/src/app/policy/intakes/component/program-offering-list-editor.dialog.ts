@@ -24,7 +24,7 @@ export class ProgramOfferingListEditorDialog {
   private edit: boolean = false;
   private _programOffering: ProgramOffering;
   private _intake: Intake;
- // private intake$:Observable<Intake>;
+  private intake$:Observable<Intake>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
