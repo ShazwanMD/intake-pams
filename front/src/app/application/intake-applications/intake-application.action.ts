@@ -364,7 +364,7 @@ export class IntakeApplicationActions {
     console.log("addReferee");
     return {
       type: IntakeApplicationActions.ADD_REFEREE,
-      payload: {application: application, employment: referee}
+      payload: {application: application, referee: referee}
     };
   }
 
