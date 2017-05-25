@@ -1,4 +1,13 @@
-<md-card class="">
+<div toolbar-buttons layout="row" layout-align="start center" flex>
+  <span flex></span>
+  <button md-button class="md-icon-button" (click)="showDialog()">
+    <md-icon class="md-24 tc-grey-700">add</md-icon>
+  </button>
+  <button md-button class="md-icon-button" (click)="delete(selectedRows)">
+    <md-icon class="md-24 tc-grey-700">delete</md-icon>
+  </button>
+</div>
+<md-divider></md-divider>
 <td-data-table
   [data]="employments"
   [columns]="columns"
@@ -13,25 +22,5 @@
       <span flex>{{value}}</span>
     </div>
   </template>
-  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <button md-icon-button [md-menu-trigger-for]="menu">
-          <md-icon>more_vert</md-icon>
-        </button>
-        <!--<md-menu x-position="before" #menu="mdMenu">
-          <a md-menu-item>Edit</a>
-          <button md-menu-item (click)="delete(row)">Delete</button>
-        </md-menu>-->
-      </div>
-    </template>
-
-  </td-data-table>
-
-  <md-divider></md-divider>
-  <md-card-actions>
-  </md-card-actions>
-</md-card>
-<a md-fab color="accent" class="mat-fab-bottom-right" [routerLink]="['add']">
-  <md-icon>add</md-icon>
-</a>
+</td-data-table>
 

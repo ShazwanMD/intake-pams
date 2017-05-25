@@ -63,7 +63,6 @@ export class IntakeApplicationEffects {
       this.router.navigate(['/application/intake-applications/',
         application.intake.graduateCentre.code.toLocaleLowerCase(),
         application.referenceNo])
-
     ).ignoreElements();
 
   // ====================================================================================================
@@ -99,11 +98,11 @@ export class IntakeApplicationEffects {
     .switchMap(application => this.applicationService.findEducationsByIntakeApplication(application))
     .map(educations => this.intakeApplicationActions.findEducationsByIntakeApplicationSuccess(educations));
 
-  @Effect() addEducation = this.actions$
-    .ofType(IntakeApplicationActions.ADD_EDUCATION)
+  @Effect() findRefereesByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION)
     .map(action => action.payload)
-    .switchMap(payload => this.applicationService.addEducation(payload.intake, payload.education))
-    .map(message => this.intakeApplicationActions.addEducationSuccess(message));
+    .switchMap(application => this.applicationService.findRefereesByIntakeApplication(application))
+    .map(referees => this.intakeApplicationActions.findRefereesByIntakeApplicationSuccess(referees));
 
   @Effect() findEmploymentsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION)
@@ -111,28 +110,37 @@ export class IntakeApplicationEffects {
     .switchMap(application => this.applicationService.findEmploymentsByIntakeApplication(application))
     .map(employments => this.intakeApplicationActions.findEmploymentsByIntakeApplicationSuccess(employments));
 
+  @Effect() addEducation = this.actions$
+    .ofType(IntakeApplicationActions.ADD_EDUCATION)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addEducation(payload.intake, payload.education))
+    .map(message => this.intakeApplicationActions.addEducationSuccess(message));
+
   @Effect() addEmployment = this.actions$
     .ofType(IntakeApplicationActions.ADD_EMPLOYMENT)
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addEmployment(payload.application, payload.employment))
-    .map(message => this.intakeApplicationActions.addEmploymentSuccess(message));
+    .map(message => this.intakeApplicationActions.addEmploymentSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
   @Effect() addAddress = this.actions$
     .ofType(IntakeApplicationActions.ADD_ADDRESS)
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addAddress(payload.intake, payload.address))
-    .map(message => this.intakeApplicationActions.addAddressSuccess(message));
-
-  @Effect() findRefereesByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findRefereesByIntakeApplication(application))
-    .map(referees => this.intakeApplicationActions.findRefereesByIntakeApplicationSuccess(referees));
+    .map(message => this.intakeApplicationActions.addAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
   @Effect() addReferee = this.actions$
     .ofType(IntakeApplicationActions.ADD_REFEREE)
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addReferee(payload.application, payload.referee))
-    .map(message => this.intakeApplicationActions.addRefereeSuccess(message));
+    .map(message => this.intakeApplicationActions.addRefereeSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
 }

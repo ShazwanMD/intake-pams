@@ -17,9 +17,8 @@ import {Employment} from "../../employment.interface";
 
 export class EmploymentCreatorDialog implements OnInit {
 
-  @Input() private _intakeApplication: IntakeApplication;
-  private
-  createForm: FormGroup;
+  private _intakeApplication: IntakeApplication;
+  private createForm: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,

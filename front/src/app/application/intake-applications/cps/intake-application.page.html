@@ -15,39 +15,21 @@
 
     <md-tab-group md-stretch-tabs>
       <md-tab>
-        <md-card>
-          <template md-tab-label>Program Choice Information</template>
-
-          <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-            <!-- first column -->
-            <div layout="column" class="pad-right" flex>
-              <div layout="row" class="pad-bottom" flex>
-                <pams-intake-program-offering-select
-                  [placeholder]="'Program Offerings'"
-                  [intakeApplication]="intakeApplication$ | async">
-                </pams-intake-program-offering-select>
-              </div>
-              <div layout="row" class="pad-bottom" flex>
-                <!--  <pams-faculty-code-select [placeholder]="'Faculty'"></pams-faculty-code-select> -->
-              </div>
-              <div layout="row" class="pad-bottom" flex>
-                <!--  <pams-program-code-select [placeholder]="'Program Applied'"></pams-program-code-select> -->
-              </div>
-            </div>
-
-            <!-- second column -->
-            <div layout="column" class="pad-right" flex>
-              <div layout="row" class="pad-bottom" flex>
-                <!-- <pams-study-mode-select [placeholder]="'Study Mode'"></pams-study-mode-select> -->
-              </div>
-              <div layout="row" class="pad-bottom" flex>
-                <md-input-container flex>
-                  <input mdInput placeholder="Research Title" flex/>
-                </md-input-container>
-              </div>
-            </div>
-          </div>
-        </md-card>
+        <template md-tab-label>Program Choice Information</template>
+        <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
+          <div class="push-top-sm"></div>
+          <p class="md-title tc-grey-600">Choose your program: </p>
+          <button md-raised-button color="accent" class="push-bottom">Choose</button>
+          <div class="push-top-sm"></div>
+          <p class="md-title tc-grey-600">Choose your study mode: </p>
+          <button md-raised-button color="accent" class="push-bottom">Choose</button>
+          <div class="push-top-sm"></div>
+          <p class="md-title tc-grey-600">Your research title</p>
+          <md-input-container flex>
+            <input mdInput placeholder="Research Title" flex/>
+          </md-input-container>
+          <div class="push-top-sm"></div>
+        </div>
       </md-tab>
 
       <md-tab>
@@ -160,10 +142,9 @@
             </md-card>
           </td-expansion-panel>
           <td-expansion-panel label="Working Experience">
-            <pams-employment-tab
+            <pams-employment-list
               [intakeApplication]="intakeApplication$ | async"
-              [employments]="employments$ | async"
-            ></pams-employment-tab>
+              [employments]="employments$ | async"></pams-employment-list>
           </td-expansion-panel>
         </md-card>
       </md-tab>
@@ -249,7 +230,7 @@
             </md-card>
           </td-expansion-panel>
 
-          <td-expansion-panel label="Proficiency in Malay / English Language">
+          <td-expansion-panel label="Language Proficiencies">
             <md-card>
               <md-divider>
                 <td-data-table
@@ -288,36 +269,32 @@
           </td-expansion-panel>
 
           <td-expansion-panel label="Financial Support">
-            <md-card>
-              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox>
-                    <div layout="column" flex>
-                      Sponsor by Employer / Government. Please attach letter from Sponsor.
-                    </div>
-                  </md-checkbox>
-                </div>
-
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox>
-                    <div layout="column" flex>
-                      Self Supporting . Please enclose financial guarantee or bank statement.
-                    </div>
-                  </md-checkbox>
-                </div>
+            <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+              <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                <md-checkbox>
+                  <div layout="column" flex>
+                    Sponsor by Employer / Government. Please attach letter from Sponsor.
+                  </div>
+                </md-checkbox>
               </div>
-            </md-card>
+
+              <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                <md-checkbox>
+                  <div layout="column" flex>
+                    Self Supporting . Please enclose financial guarantee or bank statement.
+                  </div>
+                </md-checkbox>
+              </div>
+            </div>
           </td-expansion-panel>
 
 
           <td-expansion-panel label="Referees">
-            <pams-referee-tab
+            <pams-referee-list
               [intakeApplication]="intakeApplication$ | async"
-              [referees]="referees$ | async"
-            ></pams-referee-tab>
+              [referees]="referees$ | async">
+            </pams-referee-list>
           </td-expansion-panel>
-
-
         </md-card>
       </md-tab>
 

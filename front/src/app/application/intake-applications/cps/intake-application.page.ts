@@ -21,8 +21,6 @@ export class CpsIntakeApplicationPage implements OnInit {
   private EMPLOYMENTS = "applicationModuleState.employments".split(".");
   private REFEREES = "applicationModuleState.referees".split(".");
 
-  // load both intake and intake application from store
-  // for  select component purposes
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private referees$: Observable<Referee>;

@@ -18,9 +18,8 @@ import {IntakeApplication} from "../../intake-application.interface";
 
 export class RefereeCreatorDialog implements OnInit {
 
-  @Input() private _intakeApplication: IntakeApplication;
-  private
-  createForm: FormGroup;
+  private _intakeApplication: IntakeApplication;
+  private createForm: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -43,7 +42,6 @@ export class RefereeCreatorDialog implements OnInit {
       officeAddrs: '',
       occupation: '',
       phoneNo: ''
-
     });
   }
 

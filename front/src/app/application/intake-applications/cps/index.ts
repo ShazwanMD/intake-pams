@@ -1,6 +1,5 @@
-import { RefereeCreatorDialog } from './../component/dialog/referee-creator.dialog';
-import { RefereeTabComponent } from './../component/referee-tab.component';
-import { RefereeListComponent } from './../component/referee-list.component';
+import {RefereeCreatorDialog} from './../component/dialog/referee-creator.dialog';
+import {RefereeListComponent} from './../component/referee-list.component';
 import {EmploymentCreatorDialog} from './../component/dialog/employment-creator.dialog';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -19,8 +18,6 @@ import {IntakeSessionActions} from "../../../policy/intake-sessions/intake-sessi
 import {IntakeSubModule} from "../../../policy/intakes/index";
 import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
-import {EmploymentTabComponent} from "../component/employment-tab.component";
-
 
 
 @NgModule({
@@ -39,9 +36,7 @@ import {EmploymentTabComponent} from "../component/employment-tab.component";
 
     //components
     EmploymentListComponent,
-    EmploymentTabComponent,
     RefereeListComponent,
-    RefereeTabComponent,
 
     //dialogs
     EmploymentCreatorDialog,
