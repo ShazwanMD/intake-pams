@@ -25,6 +25,11 @@ public class ApplicationTransformer {
         vo.setReferenceNo(e.getReferenceNo());
         vo.setName(e.getName());
         vo.setCredentialNo(e.getCredentialNo());
+        vo.setVerified(e.isVerified());
+        vo.setPaid(e.isPaid());
+        vo.setSponsored(e.isSponsored());
+        vo.setSelfSponsored(e.isSelfSponsored());
+
         vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
         // todo(uda): more props
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));

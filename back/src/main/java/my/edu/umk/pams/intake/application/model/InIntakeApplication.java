@@ -81,6 +81,18 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setPaid(Boolean paid);
 
+    Boolean isSponsored();
+
+    void setSponsored(Boolean sponsored);
+
+    Boolean isSelfSponsored();
+
+    void setSelfSponsored(Boolean selfSponsored);
+
+    Boolean isVerified();
+
+    void setVerified(Boolean verified);
+
     InStudyMode getStudyMode();
 
     void setStudyMode(InStudyMode studyMode);
@@ -143,19 +155,19 @@ public interface InIntakeApplication extends InMetaObject {
 
     // NOTE: optional, international student
     String getPassportNo();
-    
+
     void setPassportNo(String passportNo);
 
     // NOTE: optional, international student
     Date getPassportExpDate();
-    
+
     void setPassportExpDate(Date passExpDate);
 
     // NOTE: international student
     InVisaType getVisaType();
-    
+
     void setVisaType(InVisaType visaType);
-    
+
     InIntake getIntake();
 
     void setIntake(InIntake intake);
@@ -175,7 +187,7 @@ public interface InIntakeApplication extends InMetaObject {
     List<InGuarantor> getGuarantors();
 
     void setGuarantors(List<InGuarantor> guarantors);
-    
+
     List<InResult> getResults();
 
     void setResults(List<InResult> documents);
@@ -195,18 +207,14 @@ public interface InIntakeApplication extends InMetaObject {
     List<InEmployment> getEmployments();
 
     void setEmployments(List<InEmployment> employments);
-    
+
     List<InSpmResult> getSpmResults();
 
     void setSpmResults(List<InSpmResult> spmResults);
 
-	void setReferees(List<InReferee> referees);
+    void setReferees(List<InReferee> referees);
 
-	List<InReferee> getReferees();
-
-	boolean getVerification();
-
-	void setVerification(boolean verification);
+    List<InReferee> getReferees();
 
 
 }

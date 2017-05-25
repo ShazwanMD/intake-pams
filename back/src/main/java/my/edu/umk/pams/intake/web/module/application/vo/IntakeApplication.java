@@ -2,7 +2,6 @@ package my.edu.umk.pams.intake.web.module.application.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
@@ -12,7 +11,7 @@ import java.io.IOException;
 /**
  * @author PAMS
  */
-public class IntakeApplication extends MetaObject{
+public class IntakeApplication extends MetaObject {
 
     private String referenceNo;
     private Integer rank;
@@ -23,8 +22,21 @@ public class IntakeApplication extends MetaObject{
     private String phone;
     private String fax;
     private Integer age;
+
+    private Boolean paid;
+    private Boolean sponsored;
+    private Boolean selfSponsored;
+    private Boolean verified;
     private Applicant applicant;
     private Intake intake;
+
+    public String getReferenceNo() {
+        return referenceNo;
+    }
+
+    public void setReferenceNo(String referenceNo) {
+        this.referenceNo = referenceNo;
+    }
 
     public Integer getRank() {
         return rank;
@@ -90,12 +102,36 @@ public class IntakeApplication extends MetaObject{
         this.age = age;
     }
 
-    public String getReferenceNo() {
-        return referenceNo;
+    public Boolean getPaid() {
+        return paid;
     }
 
-    public void setReferenceNo(String referenceNo) {
-        this.referenceNo = referenceNo;
+    public void setPaid(Boolean paid) {
+        this.paid = paid;
+    }
+
+    public Boolean getSponsored() {
+        return sponsored;
+    }
+
+    public void setSponsored(Boolean sponsored) {
+        this.sponsored = sponsored;
+    }
+
+    public Boolean getSelfSponsored() {
+        return selfSponsored;
+    }
+
+    public void setSelfSponsored(Boolean selfSponsored) {
+        this.selfSponsored = selfSponsored;
+    }
+
+    public Boolean getVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 
     public Applicant getApplicant() {

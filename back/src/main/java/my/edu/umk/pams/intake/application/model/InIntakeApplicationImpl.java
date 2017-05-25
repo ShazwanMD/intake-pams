@@ -52,7 +52,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "CREDENTIAL_NO")
     private String credentialNo;
 
-
     @Column(name = "OKU_NO")
     private String okuNo;
 
@@ -64,7 +63,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "AGE")
     private Integer age = 0;
 
-    
     @NotNull
     @Column(name = "SCHOOL_NAME")
     private String schoolName;
@@ -89,6 +87,15 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "PAID")
     private Boolean paid = false;
 
+    @Column(name = "SPONSORED")
+    private Boolean sponsored = false;
+
+    @Column(name = "SELF_SPONSORED")
+    private Boolean selfSponsored = false;
+
+    @Column(name = "VERIFIED", nullable = false)
+    private Boolean verified = false;
+
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_TYPE", nullable = false)
@@ -100,10 +107,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "BID_STATUS")
     private InBidStatus bidStatus = InBidStatus.NEW;
 
-    @Column(name = "VERIFICATION_STATUS", nullable = false)
-    private boolean verification = false;
-    
-    
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_RESPONSE")
@@ -161,15 +164,15 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @ManyToOne(targetEntity = InProgramOfferingImpl.class)
     @JoinColumn(name = "PROGRAM_SELECTION_ID", nullable = true)
     private InProgramOffering programSelection;
-    
-    @ManyToOne(targetEntity = InStudyCenterCodeImpl.class)
-    @JoinColumn(name = "STUDY_CENTER_CODE_ID")
-    private InStudyCenterCode studyCenterCode;
 
     // note: can draft without choosing
     @ManyToOne(targetEntity = InSupervisorOfferingImpl.class)
     @JoinColumn(name = "SUPERVISOR_SELECTION_ID", nullable = true)
     private InSupervisorOffering supervisorSelection;
+
+    @ManyToOne(targetEntity = InStudyCenterCodeImpl.class)
+    @JoinColumn(name = "STUDY_CENTER_CODE_ID")
+    private InStudyCenterCode studyCenterCode;
 
     @ManyToOne(targetEntity = InIntakeImpl.class)
     @JoinColumn(name = "INTAKE_ID")
@@ -331,6 +334,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.reason = reason;
     }
 
+
     @Override
     public Boolean isPaid() {
         return paid;
@@ -339,6 +343,34 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setPaid(Boolean paid) {
         this.paid = paid;
+    }
+
+    @Override
+    public Boolean isSponsored() {
+        return sponsored;
+    }
+
+    @Override
+    public void setSponsored(Boolean sponsored) {
+        this.sponsored = sponsored;
+    }
+
+    @Override
+    public Boolean isSelfSponsored() {
+        return selfSponsored;
+    }
+
+    @Override
+    public void setSelfSponsored(Boolean selfSponsored) {
+        this.selfSponsored = selfSponsored;
+    }
+
+    public Boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 
     @Override
@@ -490,7 +522,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setSchoolCode(InSchoolCode schoolType) {
         this.schoolCode = schoolType;
     }
-    
 
     @Override
     public String getSchoolName() {
@@ -691,17 +722,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.attachments = attachments;
     }
 
-    @Override
-    public boolean getVerification() {
-		return verification;
-	}
-
-    @Override
-	public void setVerification(boolean verification) {
-		this.verification = verification;
-	}
-
-    
     @Override
     public InMetadata getMetadata() {
         return metadata;
