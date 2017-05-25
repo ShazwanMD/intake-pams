@@ -86,6 +86,7 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findEmploymentsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findEducationsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findAddressesByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findRefereesByIntakeApplication(action.payload),
     ]));
 
   @Effect() updateIntakeApplication$ = this.actions$
