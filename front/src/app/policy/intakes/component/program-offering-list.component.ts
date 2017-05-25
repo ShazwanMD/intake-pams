@@ -11,17 +11,19 @@ import {ProgramOfferingEditorDialog} from "../dialog/program-offering-editor.dia
 import {ProgramOfferingListEditorDialog} from "./program-offering-list-editor.dialog";
 
 import { Observable } from "rxjs/Rx";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'pams-program-offering-list',
   templateUrl: './program-offering-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProgramOfferingListComponent implements OnInit{
+export class ProgramOfferingListComponent {
+//implements OnInit{
   
 
   @Input() intake: Intake;
-  @Input() programOfferings: ProgramOffering[];
+  @Input() programOfferings: ProgramOffering;
 
   programOfferings$: Observable<ProgramOffering[]>;
 
@@ -33,6 +35,7 @@ export class ProgramOfferingListComponent implements OnInit{
  
 
   constructor(private store: Store<PolicyModuleState>,
+              private route: ActivatedRoute,
               private actions: IntakeActions,
               private vcf: ViewContainerRef,
               private viewContainerRef: ViewContainerRef,
@@ -43,22 +46,24 @@ export class ProgramOfferingListComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    //this.store.dispatch(this.actions.findProgramOfferings(this.intake));
-    this.programOfferings$.take(1).subscribe(intake => this.actions.findProgramOfferings(this.intake));
-  }
-  
 
-  createDialog2(): void {
-    this.showDialog2(null);
-  }
+    // this.route.params.subscribe((params: { referenceNo: string }) => {
+    //   let referenceNo: string = params.referenceNo;
+    //   this.store.dispatch(this.actions.findIntakeByReferenceNo(referenceNo));
 
-  editDialog(id: ProgramOffering): void {
-    this.showDialog2(id);
+    // });
+     this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+   // this.programOfferings$.take(1).subscribe(intake => this.actions.findProgramOfferings(this.actions.findIntakeByReferenceNo(this.intake$)));
   }
 
-  // delete(intake:Intake, id:ProgramOffering): void {
-  //   this.store.dispatch(this.actions.deleteProgramOffering(intake,id))
-  // }
+  editDialog(): void {
+    console.log("programOfferings$ :"+this.programOfferings);
+    this.showDialog2(this.programOfferings);
+  }
+
+  delete(intake:Intake, id:ProgramOffering): void {
+    this.store.dispatch(this.actions.deleteProgramOffering(intake,id))
+  }
 
   filter(): void {
   }
@@ -81,22 +86,38 @@ export class ProgramOfferingListComponent implements OnInit{
     });
   }
   
-    showDialog2(id: ProgramOffering): void {
+    // showDialog2(): void {   
+    // let config = new MdDialogConfig();
+    // config.viewContainerRef = this.vcf;
+    // config.role = 'dialog';
+    // config.width = '50%';
+    // config.height = '60%';
+    // config.position = {top: '0px'};
+    // this.editorDialogRef2 = this.dialog.open(ProgramOfferingListEditorDialog, config);
+    // this.editorDialogRef2.componentInstance.intake=(this.intake,id);
     
+    // this.editorDialogRef2.afterClosed().subscribe(res => {
+    //   console.log("closeDialog");
+    //   // reload program offerings
+    //   this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+    // });
+  //}
+
+    private showDialog2(programOffering:ProgramOffering): void {
+    console.log("showDialog2 "+programOffering.id);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
+    config.width = '70%';
+    config.height = '65%';
     config.position = {top: '0px'};
     this.editorDialogRef2 = this.dialog.open(ProgramOfferingListEditorDialog, config);
-    this.editorDialogRef2.componentInstance.programOffering = id;
-    
+    if(programOffering) this.editorDialogRef2.componentInstance.programOffering = this.programOfferings; // set
     this.editorDialogRef2.afterClosed().subscribe(res => {
-      console.log("closeDialog");
-      // reload program offerings
-      //this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+    console.log("close dialog");
+     // reload program offerings
+    this.store.dispatch(this.actions.findProgramOfferings(this.intake));
     });
-  }
+   }
 
 }
