@@ -1,3 +1,4 @@
+import { Referee } from './../referee.interface';
 import {Employment} from './../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
@@ -18,11 +19,13 @@ export class CpsIntakeApplicationPage implements OnInit {
 
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
   private EMPLOYMENTS = "applicationModuleState.employments".split(".");
+  private REFEREES = "applicationModuleState.referees".split(".");
 
   // load both intake and intake application from store
   // for  select component purposes
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
+  private referees$: Observable<Referee>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -33,6 +36,7 @@ export class CpsIntakeApplicationPage implements OnInit {
 
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
+    this.referees$ = this.store.select(...this.REFEREES);
   }
 
   ngOnInit(): void {

@@ -166,6 +166,26 @@ export class IntakeApplicationActions {
     };
   }
 
+    static FIND_REFEREES_BY_INTAKE_APPLICATION = '[Intake Application] Find Referees';
+
+  findRefereesByIntakeApplication(application): Action {
+    console.log("findRefereesByIntakeApplication");
+    return {
+      type: IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_REFEREES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Referees Success';
+
+  findRefereesByIntakeApplicationSuccess(referees): Action {
+    console.log("findRefereesByIntakeApplicationSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: referees
+    };
+  }
+
 
   static FIND_ADDRESSES_BY_INTAKE_APPLICATION = '[Intake Application] Find Addresses';
 
@@ -334,6 +354,44 @@ export class IntakeApplicationActions {
   deleteEmploymentSucces(message) {
     return {
       type: IntakeApplicationActions.DELETE_EMPLOYMENT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static ADD_REFEREE = '[Intake Application] Save Referee';
+
+    addReferee(application, referee): Action {
+    console.log("addReferee");
+    return {
+      type: IntakeApplicationActions.ADD_REFEREE,
+      payload: {application: application, employment: referee}
+    };
+  }
+
+  static ADD_REFEREE_SUCCESS = '[Intake Application] Add Referee Success';
+
+  addRefereeSuccess(message): Action {
+    console.log("addRefereeSuccess");
+    return {
+      type: IntakeApplicationActions.ADD_REFEREE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static DELETE_REFEREE = '[Intake Application] Delete Referee';
+
+  deleteReferee(intake, referee) {
+    return {
+      type: IntakeApplicationActions.DELETE_REFEREE,
+      payload: {intake: intake, referee: referee}
+    };
+  }
+
+  static DELETE_REFEREE_SUCCESS = '[Intake Application] Delete Referee Success';
+
+  deleteRefereeSucces(message) {
+    return {
+      type: IntakeApplicationActions.DELETE_REFEREE_SUCCESS,
       payload: message
     };
   }

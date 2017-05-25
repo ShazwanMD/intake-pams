@@ -1,3 +1,4 @@
+import { Referee } from './intake-applications/referee.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -36,11 +37,14 @@ import {Employment} from "./intake-applications/employment.interface";
 import {Intake} from "../policy/intakes/intake.interface";
 import {ProgramOffering} from "../policy/intakes/program-offering.interface";
 import {IntakeApplication} from "./intake-applications/intake-application.interface";
+import {refereeListReducer, RefereeListState} from "./intake-applications/referee-list.reducer";
+
 
 export interface ApplicationModuleState {
   intakes: IntakeListState;
   intake: IntakeState;
   employments:EmploymentListState;
+  referees:RefereeListState;
   programOfferings: IntakeProgramOfferingListState;
   supervisorOfferings: IntakeSupervisorOfferingListState;
   studyModeOfferings: IntakeStudyModeOfferingListState;
@@ -53,6 +57,7 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   intakes:<Intake[]>[],
   intake:<Intake>{},
   employments:<Employment[]>[],
+  referees:<Referee[]>[],
   programOfferings:<ProgramOffering[]>[],
   supervisorOfferings:[],
   studyModeOfferings:[],
@@ -64,6 +69,7 @@ export const applicationModuleReducers = {
   intakes: intakeListReducer,
   intake: intakeReducer,
   employments: employmentListReducer,
+  referees: refereeListReducer,
   programOfferings: intakeProgramOfferingListReducer,
   supervisorOfferings: intakeSupervisorOfferingListReducer,
   studyModeOfferings: intakeStudyModeOfferingListReducer,

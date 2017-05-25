@@ -1,3 +1,4 @@
+import { Referee } from './../app/application/intake-applications/referee.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -117,6 +118,22 @@ export class ApplicationService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments', JSON.stringify(employment), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  findRefereesByIntakeApplication(application: IntakeApplication): Observable<Referee[]> {
+    console.log("findReferees");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/referees")
+      .map((res: Response) => <Referee[]>res.json());
+  }
+
+  addReferee(application: IntakeApplication, referee: Referee): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees', JSON.stringify(referee), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

@@ -129,4 +129,17 @@ export class IntakeApplicationEffects {
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addAddress(payload.intake, payload.address))
     .map(message => this.intakeApplicationActions.addAddressSuccess(message));
+
+  @Effect() findRefereesByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findRefereesByIntakeApplication(application))
+    .map(referees => this.intakeApplicationActions.findRefereesByIntakeApplicationSuccess(referees));
+
+  @Effect() addReferee = this.actions$
+    .ofType(IntakeApplicationActions.ADD_REFEREE)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addReferee(payload.application, payload.referee))
+    .map(message => this.intakeApplicationActions.addRefereeSuccess(message));
+
 }
