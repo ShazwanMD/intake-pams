@@ -175,6 +175,7 @@ export class IntakeActions {
   static FIND_PROGRAM_OFFERINGS = '[Intake] Find Program Offerings';
 
   findProgramOfferings(intake): Action {
+    console.log("findProgramOfferings :"+intake.referenceNo);
     return {
       type: IntakeActions.FIND_PROGRAM_OFFERINGS,
       payload: intake
