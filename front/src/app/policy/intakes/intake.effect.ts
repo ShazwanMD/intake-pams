@@ -109,9 +109,6 @@ export class IntakeEffects {
     ));
 
 
-
-
-
   @Effect() updateIntake$ = this.actions$
     .ofType(IntakeActions.UPDATE_INTAKE)
     .map(action => action.payload)
