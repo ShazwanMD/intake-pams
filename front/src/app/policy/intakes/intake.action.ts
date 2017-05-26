@@ -230,6 +230,26 @@ export class IntakeActions {
     };
   }
 
+
+  static FIND_INTAKE_APPLICATIONS = '[Intake] Find INTAKE APPLICATION Offerings';
+
+  findIntakeApplications(intake): Action {
+    return {
+      type: IntakeActions.FIND_INTAKE_APPLICATIONS,
+      payload: intake
+    };
+  }
+
+  static FIND_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find Intake Application Success';
+
+  findIntakeApplicationsSuccess(applications): Action {
+    console.log("findIntakeApplicationsSuccess");
+    return {
+      type: IntakeActions.FIND_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applications
+    };
+  }
+
   static UPDATE_INTAKE = '[Intake] Update Intake';
 
   updateIntake(intake): Action {

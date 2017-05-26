@@ -17,14 +17,13 @@ export class SupervisorOfferingListComponent {
 
   @Input() intake: Intake;
   @Input() supervisorOfferings: SupervisorOffering[];
- private editorDialogRef: MdDialogRef<SupervisorOfferingEditorDialog>;
+  private editorDialogRef: MdDialogRef<SupervisorOfferingEditorDialog>;
 
   constructor(private store: Store<PolicyModuleState>,
-              private actions: IntakeActions,  
+              private actions: IntakeActions,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
   }
-
 
   showDialog(): void {
     console.log("showDialog");
@@ -36,23 +35,9 @@ export class SupervisorOfferingListComponent {
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(SupervisorOfferingEditorDialog, config);
     this.editorDialogRef.componentInstance.intake = this.intake;
-
-
- this.editorDialogRef.afterClosed().subscribe(res => {
+    this.editorDialogRef.afterClosed().subscribe(res => {
       console.log("closeDialog");
-      // reload studyMode offerings
       this.store.dispatch(this.actions.findStudyModeOfferings(this.intake));
     });
   }
-
 }
-
-
-//   add(supervisorOffering: SupervisorOffering) {
-//     this.store.dispatch(this.actions.addSupervisorOffering(this.intake, supervisorOffering));
-//   }
-
-//   delete(supervisorOffering: SupervisorOffering) {
-//     this.store.dispatch(this.actions.deleteSupervisorOffering(this.intake, supervisorOffering));
-//   }
-// }

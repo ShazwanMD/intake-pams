@@ -38,7 +38,21 @@ public class ApplicationTransformer {
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-    
+
+    public IntakeApplication toSimpleIntakeApplicationVo(InIntakeApplication e){
+        IntakeApplication vo = new IntakeApplication();
+        vo.setId(e.getId());
+        vo.setReferenceNo(e.getReferenceNo());
+        vo.setName(e.getName());
+        vo.setCredentialNo(e.getCredentialNo());
+        vo.setEmail(e.getEmail());
+        vo.setPhone(e.getPhone());
+        vo.setFax(e.getFax());
+        vo.setVerified(e.isVerified());
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
     public Guardian toGuardianVo(InGuardian e){
         Guardian vo = new Guardian();
         vo.setId(e.getId());
@@ -178,6 +192,14 @@ public class ApplicationTransformer {
         return vos;
     }
     
+
+    public List<IntakeApplication> toSimpleIntakeApplicationVos(List<InIntakeApplication> e) {
+        List<IntakeApplication> vos = e.stream()
+                .map((e1) -> toSimpleIntakeApplicationVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+
 
 
 

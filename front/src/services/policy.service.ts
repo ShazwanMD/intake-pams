@@ -10,6 +10,7 @@ import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.inte
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 import {IntakeSession} from "../app/policy/intake-sessions/intake-session.interface";
 import {ProgramLevel} from "../app/policy/program-levels/program-level.interface";
+import {IntakeApplication} from "../app/application/intake-applications/intake-application.interface";
 
 @Injectable()
 export class PolicyService {
@@ -29,7 +30,7 @@ export class PolicyService {
   }
 
 
-    saveIntakeSession(sessions: IntakeSession) {
+  saveIntakeSession(sessions: IntakeSession) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -37,9 +38,9 @@ export class PolicyService {
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/policy/intake-sessions', JSON.stringify(sessions), options)
       .flatMap((res: Response) => Observable.of(res.text()));
-    }
+  }
 
-    removeIntakeSession(id: IntakeSession) {
+  removeIntakeSession(id: IntakeSession) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -49,7 +50,7 @@ export class PolicyService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-   updateIntakeSession(code: IntakeSession) {
+  updateIntakeSession(code: IntakeSession) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -119,6 +120,12 @@ export class PolicyService {
       .map((res: Response) => <StudyModeOffering[]>res.json());
   }
 
+  findIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+    console.log("findIntakeApplications");
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/intakeApplications")
+      .map((res: Response) => <IntakeApplication[]>res.json());
+  }
+
   startIntakeTask(intake: Intake): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
@@ -172,22 +179,22 @@ export class PolicyService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings', JSON.stringify(offering), options)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-    updateProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
+  updateProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings', JSON.stringify(offering.id), options)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
     return this.http.delete(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings/' + offering.id)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<String> {
@@ -199,13 +206,13 @@ export class PolicyService {
     let encoded = intake.referenceNo.replace(/\//g, '%252F');
     return this.http.post(environment.endpoint + '/api/policy/intakes/' + encoded + '/supervisorOfferings',
       JSON.stringify(offering), options)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<String> {
     let encoded = intake.referenceNo.replace(/\//g, '%252F');
     return this.http.delete(environment.endpoint + '/api/policy/intakes/' + encoded + '/supervisorOfferings/' + offering.id)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<String> {
@@ -216,11 +223,12 @@ export class PolicyService {
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/studyModeOfferings',
       JSON.stringify(offering), options)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<String> {
     return this.http.delete(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/studyModeOfferings/' + offering.id)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
+
 }

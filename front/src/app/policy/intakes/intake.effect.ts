@@ -43,7 +43,8 @@ export class IntakeEffects {
     .mergeMap(action => from([action,
       this.intakeActions.findProgramOfferings(action.payload),
       this.intakeActions.findSupervisorOfferings(action.payload),
-      this.intakeActions.findStudyModeOfferings(action.payload)
+      this.intakeActions.findStudyModeOfferings(action.payload),
+      this.intakeActions.findIntakeApplications(action.payload)
     ]));
 
   @Effect() findProgramOfferings$ = this.actions$
@@ -63,6 +64,12 @@ export class IntakeEffects {
     .map(action => action.payload)
     .switchMap(intake => this.policyService.findStudyModeOfferings(intake))
     .map(items => this.intakeActions.findStudyModeOfferingsSuccess(items));
+
+  @Effect() findIntakeApplications = this.actions$
+    .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
+    .map(action => action.payload)
+    .switchMap(intake => this.policyService.findIntakeApplications(intake))
+    .map(applications => this.intakeActions.findIntakeApplicationsSuccess(applications));
 
   @Effect() startIntakeTask$ = this.actions$
     .ofType(IntakeActions.START_INTAKE_TASK)

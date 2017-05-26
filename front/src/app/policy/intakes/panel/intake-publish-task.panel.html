@@ -55,12 +55,6 @@
       </md-card>
 
       <md-card>
-        <md-card-title>Applications</md-card-title>
-        <md-card-subtitle>Applications</md-card-subtitle>
-        <md-divider></md-divider>
-      </md-card>
-
-      <md-card>
         <md-card-title>Offerings</md-card-title>
         <md-card-subtitle>Offered programs, modes and supervisors</md-card-subtitle>
         <md-divider></md-divider>
@@ -82,6 +76,16 @@
           </md-tab>
         </md-tab-group>
       </md-card>
+
+      <md-card>
+        <md-card-title>Applications</md-card-title>
+        <md-card-subtitle>Applications</md-card-subtitle>
+        <md-divider></md-divider>
+        <pams-intake-application-list
+          [intake]="intakeTask.intake"
+          [intakeApplications]="intakeApplications$ | async"></pams-intake-application-list>
+      </md-card>
+
     </div>
     <div flex-gt-md="30">
       <pams-intake-task-status [intakeTask]="intakeTask"></pams-intake-task-status>

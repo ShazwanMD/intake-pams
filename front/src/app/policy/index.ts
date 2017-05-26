@@ -31,6 +31,8 @@ import {
   pooledIntakeTaskListReducer
 } from "./intakes/intake-task-list.reducer";
 import {intakeSessionListReducer, IntakeSessionListState} from "./intake-sessions/intake-session-list.reducer";
+import {IntakeApplication} from "../application/intake-applications/intake-application.interface";
+import {intakeApplicationListReducer, IntakeApplicationListState} from "./intakes/intake-application-list.reducer";
 
 export interface PolicyModuleState {
   intakeSessions: IntakeSessionListState;
@@ -42,6 +44,7 @@ export interface PolicyModuleState {
   programOfferings: ProgramOfferingListState;
   supervisorOfferings: SupervisorOfferingListState;
   studyModeOfferings: StudyModeOfferingListState;
+  intakeApplications: IntakeApplicationListState;
 };
 
 export const INITIAL_POLICY_STATE: PolicyModuleState =
@@ -56,6 +59,7 @@ export const INITIAL_POLICY_STATE: PolicyModuleState =
     programOfferings: <ProgramOffering[]>[],
     supervisorOfferings: <SupervisorOffering[]>[],
     studyModeOfferings: <StudyModeOffering[]>[],
+    intakeApplications: <IntakeApplication[]>[],
   };
 
 export const policyModuleReducers = {
@@ -68,6 +72,7 @@ export const policyModuleReducers = {
   programOfferings: programOfferingListReducer,
   supervisorOfferings: supervisorOfferingListReducer,
   studyModeOfferings: studyModeOfferingListReducer,
+  intakeApplications: intakeApplicationListReducer,
 };
 
 @NgModule({

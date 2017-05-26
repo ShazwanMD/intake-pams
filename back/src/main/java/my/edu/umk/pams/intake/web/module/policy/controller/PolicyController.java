@@ -1,10 +1,13 @@
 package my.edu.umk.pams.intake.web.module.policy.controller;
 
+import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
+import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
+import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
 import my.edu.umk.pams.intake.web.module.common.vo.SupervisorCode;
@@ -37,10 +40,16 @@ public class PolicyController {
     private CommonService commonService;
 
     @Autowired
+    private ApplicationService applicationService;
+
+    @Autowired
     private WorkflowService workflowService;
 
     @Autowired
     private PolicyTransformer policyTransformer;
+
+    @Autowired
+    private ApplicationTransformer applicationTransformer;
 
     @Autowired
     private CommonTransformer commonTransformer;
@@ -323,6 +332,14 @@ public class PolicyController {
         policyService.deleteStudyModeOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications", method = RequestMethod.GET)
+    public ResponseEntity<List<IntakeApplication>> findIntakeApplications(@PathVariable String referenceNo) {
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        return new ResponseEntity<List<IntakeApplication>>(applicationTransformer
+                .toSimpleIntakeApplicationVos(applicationService.findIntakeApplications(intake)), HttpStatus.OK);
+    }
+
     // ==================================================================================================== //
     //  GRADUATE CENTRE
     // ==================================================================================================== //

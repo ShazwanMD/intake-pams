@@ -9,6 +9,7 @@ import {PolicyModuleState} from "../../index";
 import {ProgramOffering} from "../program-offering.interface";
 import {StudyModeOffering} from "../study-mode-offering.interface";
 import {SupervisorOffering} from "../supervisor-offering.interface";
+import {IntakeApplication} from "../../../application/intake-applications/intake-application.interface";
 
 
 @Component({
@@ -18,14 +19,16 @@ import {SupervisorOffering} from "../supervisor-offering.interface";
 
 export class IntakePublishTaskPanel implements OnInit {
 
-  private PROGRAM_OFFERINGS = "policyModuleState.programOfferings".split(".");
-  private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
-  private STUDY_MODE_OFFERINGS = "policyModuleState.studyModeOfferings".split(".");
+  private PROGRAM_OFFERINGS: string[] = "policyModuleState.programOfferings".split(".");
+  private SUPERVISOR_OFFERINGS: string[] = "policyModuleState.supervisorOfferings".split(".");
+  private STUDY_MODE_OFFERINGS: string[] = "policyModuleState.studyModeOfferings".split(".");
+  private INTAKE_APPLICATIONS: string[] = "policyModuleState.intakeApplications".split(".");
 
   @Input() intakeTask: IntakeTask;
   programOfferings$: Observable<ProgramOffering[]>;
   supervisorOfferings$: Observable<SupervisorOffering[]>;
   studyModeOfferings$: Observable<StudyModeOffering[]>;
+  intakeApplications$: Observable<IntakeApplication[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -37,6 +40,7 @@ export class IntakePublishTaskPanel implements OnInit {
     this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERINGS);
     this.supervisorOfferings$ = this.store.select(...this.SUPERVISOR_OFFERINGS);
     this.studyModeOfferings$ = this.store.select(...this.STUDY_MODE_OFFERINGS);
+    this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
   }
 
   ngOnInit(): void {

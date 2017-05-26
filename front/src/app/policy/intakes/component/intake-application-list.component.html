@@ -1,0 +1,14 @@
+<div layout="row"
+     layout-align="start center"
+     layout-wrap>
+  <md-nav-list dense flex>
+
+    <template let-intakeApplication let-last="last" ngFor [ngForOf]="intakeApplications">
+      <a md-list-item>
+        <md-icon md-list-avatar>label</md-icon>
+        <h3 md-line> {{intakeApplication.name}} </h3>
+        <p md-line> {{intakeApplication.referenceNo}} </p>
+      </a>
+    </template>
+  </md-nav-list>
+</div>

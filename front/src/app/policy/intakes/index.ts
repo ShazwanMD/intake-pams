@@ -29,11 +29,12 @@ import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
 import {ProgramLevelSubModule} from "../program-levels/index";
 import {IntakeSessionSubModule} from "../intake-sessions/index";
 import {StudyModeOfferingEditorDialog} from "./dialog/study-mode-offering-editor.dialog";
-import { SupervisorOfferingEditorDialog } from "./dialog/supervisor-offering-editor.dialog";
+import {SupervisorOfferingEditorDialog} from "./dialog/supervisor-offering-editor.dialog";
 import {IntakeVerifyTaskPanel} from "./panel/intake-verify-task.panel";
 import {IntakeTaskStatusComponent} from "./component/intake-task-status.component";
 import {IntakePublishTaskPanel} from "./panel/intake-publish-task.panel";
 import {ProgramOfferingSelectComponent} from "./component/program-offering-select.component";
+import {IntakeApplicationListComponent} from "./component/intake-application-list.component";
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import {ProgramOfferingSelectComponent} from "./component/program-offering-selec
     StudyModeOfferingListComponent,
     IntakeTaskStatusComponent,
     ProgramOfferingSelectComponent,
+    IntakeApplicationListComponent,
 
     // panels
     IntakeTaskWorkflowPanel,
