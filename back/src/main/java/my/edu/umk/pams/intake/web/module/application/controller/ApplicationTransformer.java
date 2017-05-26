@@ -55,9 +55,19 @@ public class ApplicationTransformer {
     public Address toAddressVo(InAddress e){
         Address vo = new Address();
         vo.setId(e.getId());
-        // todo(uda): more props
+        vo.setAddress1(e.getAddress1());
+        vo.setAddress2(e.getAddress2());
+        vo.setAddress3(e.getAddress3());
+        vo.setPostcode(e.getPostCode());
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
+    }
+    
+    public List<Address> toAddressVos(List<InAddress> e) {
+        List<Address> vos = e.stream()
+                .map((e1) -> toAddressVo(e1))
+                .collect(Collectors.toList());
+        return vos;
     }
 
     public Contact toContactVo(InContact e){

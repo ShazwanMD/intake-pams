@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InBankCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InActor;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -196,6 +197,8 @@ public class ApplicationController {
 
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	
 
 	// ====================================================================================================
 	// EDUCATIONS
@@ -277,9 +280,45 @@ public class ApplicationController {
 		referee.setOccupation(vo.getOccupation());
 		referee.setPhoneNo(vo.getPhoneNo());
 		applicationService.addReferee(application, referee);
-
+		
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	// ====================================================================================================
+	// ADDRESS
+	// ====================================================================================================
+
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/address", method = RequestMethod.GET)
+	public ResponseEntity<List<Address>> findAddressesByIntakeApplication(@PathVariable String referenceNo) {
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		List<InAddress> address = applicationService.findAddresses(application);
+		return new ResponseEntity<List<Address>>(applicationTransformer.toAddressVos(address), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/address", method = RequestMethod.POST)
+	public ResponseEntity<String> addAddress(@PathVariable String referenceNo, @RequestBody Address vo) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InAddress address = new InAddressImpl();
+		address.setAddress1(vo.getAddress1());
+		address.setAddress2(vo.getAddress2());
+		address.setAddress3(vo.getAddress3());
+		address.setPostCode(vo.getPostcode());
+		applicationService.addAddress(application, address);
+
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}	
+	
+	/*@RequestMapping(value = "/intakeApplications/{referenceNo}/address", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeAddress(@PathVariable String referenceNo, @PathVariable Address vo) {
+        dummyLogin();
+        
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InAddress address = applicationService.findAddressById(vo.getId());
+        applicationService.deleteAddress(application, address);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }*/
 	
     // ====================================================================================================
     // PRIVATE METHODS
