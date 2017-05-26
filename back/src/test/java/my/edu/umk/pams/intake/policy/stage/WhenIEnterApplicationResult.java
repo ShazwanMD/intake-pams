@@ -111,7 +111,8 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         application1.setBidResponse(InBidResponse.NEW);
         application1.setOkuNo("S12223214");
         application1.setProgramSelection(offering);
-        application1.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
+        // todo study mode selection
+        // application1.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
 		 application1.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
 		 application1.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
 		 application1.setNationalityCode(commonService.findNationalityCodeByCode("1")); // Warganegara

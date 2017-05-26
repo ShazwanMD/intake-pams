@@ -20,7 +20,7 @@ public class InSupervisorCodeImpl implements InSupervisorCode {
     private String code;
     
     @NotNull
-    @Column(name = "NAME", unique = true, nullable = false)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     @NotNull

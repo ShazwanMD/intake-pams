@@ -105,7 +105,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     
     @Override
     public void verifyInternationalApplications(InIntake intake, InIntakeApplication application) {
-        application.setVerification(true);
+        application.setVerified(true);
         updateIntakeApplication(application);
     }
     

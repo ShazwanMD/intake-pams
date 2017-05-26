@@ -110,6 +110,12 @@ public class ApplicationController {
     // INTAKE APPLICATION
     // ====================================================================================================
 
+    @RequestMapping(value = "/intakeApplication/{referenceNo}", method = RequestMethod.GET)
+    public ResponseEntity<IntakeApplication> findIntakeApplicationByReferenceNo(@PathVariable String referenceNo) {
+        InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(intakeApplication), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/intakeApplications", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplications() {
         dummyLogin();
@@ -124,21 +130,22 @@ public class ApplicationController {
         return new ResponseEntity<List<IntakeApplication>>(applicationVos, HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/intakeApplications/{referenceNo}", method = RequestMethod.POST)
+    @RequestMapping(value = "/intakeApplications/{referenceNo}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateIntakeApplication(@PathVariable String referenceNo, @RequestBody IntakeApplication vo) {
         dummyLogin();
 
         InIntake intake = policyService.findIntakeById(vo.getIntake().getId());
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+        // todo: more properties
+        application.setName(vo.getName());
+        application.setPhone(vo.getPhone());
+        application.setFax(vo.getFax());
+        application.setEmail(vo.getEmail());
+        application.setSelfSponsored(vo.getSelfSponsored());
+        application.setSponsored(vo.getSponsored());
 
-        applicationService.submitIntakeApplication(intake, application);
+        applicationService.updateIntakeApplication(application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplication/{referenceNo}", method = RequestMethod.GET)
-    public ResponseEntity<IntakeApplication> findIntakeApplicationByReferenceNo(@PathVariable String referenceNo) {
-        InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(intakeApplication), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/submit", method = RequestMethod.POST)
@@ -167,9 +174,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/employments", method = RequestMethod.GET)
 	public ResponseEntity<List<Employment>> findEmploymentsByIntakeApplication(@PathVariable String referenceNo) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-
 		List<InEmployment> employments = applicationService.findEmployments(application);
-
 		return new ResponseEntity<List<Employment>>(applicationTransformer.toEmploymentVos(employments), HttpStatus.OK);
 	}
 

@@ -8,6 +8,10 @@ public interface InSupervisorCode extends InMetaObject {
 
     void setCode(String code);
 
+    String getName();
+
+    void setName(String name);
+
     String getDescriptionMs();
 
     void setDescriptionMs(String descriptionMs);
@@ -16,7 +20,4 @@ public interface InSupervisorCode extends InMetaObject {
 
 	void setDescriptionEn(String descriptionEn);
 
-	String getName();
-
-	void setName(String name);
 }

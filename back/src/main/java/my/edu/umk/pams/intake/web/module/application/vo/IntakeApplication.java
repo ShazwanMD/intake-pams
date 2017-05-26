@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
+import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
+import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
 
 import java.io.IOException;
 
@@ -20,6 +23,7 @@ public class IntakeApplication extends MetaObject {
     private String credentialNo;
     private String okuNo;
     private String phone;
+    private String email;
     private String fax;
     private Integer age;
 
@@ -27,6 +31,11 @@ public class IntakeApplication extends MetaObject {
     private Boolean sponsored;
     private Boolean selfSponsored;
     private Boolean verified;
+
+    private ProgramOffering programSelection;
+    private SupervisorOffering supervisorSelection;
+    private StudyModeOffering studyModeSelection;
+
     private Applicant applicant;
     private Intake intake;
 
@@ -86,6 +95,14 @@ public class IntakeApplication extends MetaObject {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFax() {
         return fax;
     }
@@ -134,6 +151,30 @@ public class IntakeApplication extends MetaObject {
         this.verified = verified;
     }
 
+    public ProgramOffering getProgramSelection() {
+        return programSelection;
+    }
+
+    public void setProgramSelection(ProgramOffering programSelection) {
+        this.programSelection = programSelection;
+    }
+
+    public SupervisorOffering getSupervisorSelection() {
+        return supervisorSelection;
+    }
+
+    public void setSupervisorSelection(SupervisorOffering supervisorSelection) {
+        this.supervisorSelection = supervisorSelection;
+    }
+
+    public StudyModeOffering getStudyModeSelection() {
+        return studyModeSelection;
+    }
+
+    public void setStudyModeSelection(StudyModeOffering studyModeSelection) {
+        this.studyModeSelection = studyModeSelection;
+    }
+
     public Applicant getApplicant() {
         return applicant;
     }
@@ -149,7 +190,6 @@ public class IntakeApplication extends MetaObject {
     public void setIntake(Intake intake) {
         this.intake = intake;
     }
-
 
     @JsonCreator
     public static IntakeApplication create(String jsonString) {

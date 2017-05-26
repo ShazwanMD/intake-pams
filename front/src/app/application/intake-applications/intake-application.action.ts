@@ -261,10 +261,10 @@ export class IntakeApplicationActions {
 
   static UPDATE_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Update Intake Success';
 
-  updateIntakeSuccess(application): Action {
+  updateIntakeSuccess(message): Action {
     return {
       type: IntakeApplicationActions.UPDATE_INTAKE_APPLICATION_SUCCESS,
-      payload: application
+      payload: message
     };
   }
 

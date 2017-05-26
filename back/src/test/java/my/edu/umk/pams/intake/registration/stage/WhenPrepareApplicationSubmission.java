@@ -130,7 +130,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
          application1.setAge(26);
          application1.setRank(3);
          application1.setPaid(true);
-         application1.setVerification(false);
+         application1.setVerified(false);
          application1.setMerit(new BigDecimal("2.85"));
          application1.setPaymentSourceNo("0024188");
          application1.setSchoolBatch(2006/2010);
@@ -140,7 +140,8 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
          application1.setBidResponse(InBidResponse.NEW);
          application1.setOkuNo("S12223214");
          application1.setProgramSelection(offering);
-         application1.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
+         // todo: change to study mode
+         // application1.setStudyModeSelection(commonService.findStudyModeByCode("1")); //Full time
 		 application1.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
 		 application1.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
 		 application1.setNationalityCode(commonService.findNationalityCodeByCode("1")); // Warganegara
@@ -170,7 +171,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application2.setAge(25);
           application2.setRank(2);
           application2.setPaid(false);
-          application1.setVerification(true);
+          application1.setVerified(true);
           application2.setMerit(new BigDecimal("2.80"));
           application2.setPaymentSourceNo("002268sd");
           application2.setSchoolBatch(2006/2012);
@@ -179,7 +180,8 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application2.setBidStatus(InBidStatus.NEW);
           application2.setBidResponse(InBidResponse.NEW);
           application2.setOkuNo("S17453214");
-          application2.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
+          // todo: studymodeselection
+          // application2.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
           application2.setGenderCode(commonService.findGenderCodeByCode("1")); //Male
           application2.setReligionCode(commonService.findReligionCodeByCode("1")); //Islam    
           application2.setNationalityCode(commonService.findNationalityCodeByCode("1")); //Warganegara  
@@ -205,7 +207,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application3.setEmail(applicant3.getEmail());
           application3.setPhone(applicant3.getPhone());
           application3.setPaid(true);
-          application1.setVerification(true);
+          application1.setVerified(true);
           application3.setAge(30);
           application3.setRank(1);
           application3.setMerit(new BigDecimal("3.80"));
@@ -216,7 +218,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application3.setBidStatus(InBidStatus.NEW);
           application3.setBidResponse(InBidResponse.NEW);
           application3.setOkuNo("S17453217874");  
-          application3.setStudyMode(commonService.findStudyModeByCode("2")); //Part time  
+          // application3.setStudyMode(commonService.findStudyModeByCode("2")); //Part time
           application3.setGenderCode(commonService.findGenderCodeByCode("2")); //Female
           application3.setReligionCode(commonService.findReligionCodeByCode("1")); //Islam  
           application3.setNationalityCode(commonService.findNationalityCodeByCode("1")); //Warganegara                

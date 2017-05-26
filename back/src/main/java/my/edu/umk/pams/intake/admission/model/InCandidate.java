@@ -34,6 +34,7 @@ public interface InCandidate extends InMetaObject {
 
     void setRegistration(boolean registration);
 
+    // todo: study mode selection
     InStudyMode getStudyMode();
 
     void setStudyMode(InStudyMode studyMode);

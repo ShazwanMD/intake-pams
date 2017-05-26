@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 
 import java.math.BigDecimal;
@@ -93,10 +94,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setVerified(Boolean verified);
 
-    InStudyMode getStudyMode();
-
-    void setStudyMode(InStudyMode studyMode);
-
     InBidType getBidType();
 
     void setBidType(InBidType bidType);
@@ -152,6 +149,10 @@ public interface InIntakeApplication extends InMetaObject {
     InSupervisorOffering getSupervisorSelection();
 
     void setSupervisorSelection(InSupervisorOffering SupervisorSelection);
+
+    InStudyModeOffering getStudyModeSelection();
+
+    void setStudyModeSelection(InStudyModeOffering studyModeSelection);
 
     // NOTE: optional, international student
     String getPassportNo();

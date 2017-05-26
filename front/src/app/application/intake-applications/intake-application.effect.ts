@@ -84,7 +84,11 @@ export class IntakeApplicationEffects {
   @Effect() updateIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.UPDATE_INTAKE_APPLICATION)
     .map(action => action.payload)
-    .switchMap(application => this.applicationService.updateIntakeApplication(application));
+    .switchMap(application => this.applicationService.updateIntakeApplication(application))
+    .map(message => this.intakeApplicationActions.updateIntakeSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
   @Effect() submitIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.SUBMIT_INTAKE_APPLICATION)

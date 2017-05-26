@@ -5,12 +5,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
-import my.edu.umk.pams.intake.application.model.InBidResponse;
-import my.edu.umk.pams.intake.application.model.InBidStatus;
-import my.edu.umk.pams.intake.application.model.InBidType;
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
+import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InResidencyCodeImpl;
@@ -22,12 +17,12 @@ import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
-import java.math.BigDecimal;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+
+import java.math.BigDecimal;
 
 /**
  * @author PAMS
@@ -99,7 +94,7 @@ public class WhenCompleteApplication extends Stage<WhenCompleteApplication> {
          application.setAge(26);
          application.setRank(3);
          application.setPaid(true);
-         application.setVerification(true);
+         application.setVerified(true);
          application.setMerit(new BigDecimal("2.85"));
          application.setPaymentSourceNo("0024188");
          application.setSchoolBatch(2006/2010);
@@ -109,7 +104,8 @@ public class WhenCompleteApplication extends Stage<WhenCompleteApplication> {
          application.setBidResponse(InBidResponse.NEW);
          application.setOkuNo("S12223214");
          application.setProgramSelection(offering);
-         application.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
+         // todo: change to study mode selection
+         // application.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
 		 application.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
 		 application.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
 		 application.setNationalityCode(commonService.findNationalityCodeByCode("1")); // Warganegara

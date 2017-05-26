@@ -88,7 +88,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setName(application.getName());
         candidate.setIdentityNo(application.getCredentialNo());
         candidate.setEmail(application.getEmail());
-        candidate.setStudyMode(application.getStudyMode());
+        candidate.setStudyMode(application.getStudyModeSelection().getStudyMode());
         candidate.setStatus(InCandidateStatus.SELECTED);
         candidate.setApplicant(application.getApplicant());
         candidate.setProgramSelection(application.getProgramSelection());

@@ -108,7 +108,8 @@ public class WhenEnterRequiredInformation extends Stage<WhenEnterRequiredInforma
         intakeApplication.setBidType(InBidType.FIRST);
         intakeApplication.setBidResponse(InBidResponse.NEW);
         intakeApplication.setFax("0945666");
-        intakeApplication.setStudyMode(commonService.findStudyModeByCode("1"));
+        // todo: change to studymodeselection
+        // intakeApplication.setStudyMode(commonService.findStudyModeByCode("1"));
 
 //        applicant.setApplicantApplication(Collections.singletonList(intakeApplication));
 //        intakeApplication.setApplicant(applicant);

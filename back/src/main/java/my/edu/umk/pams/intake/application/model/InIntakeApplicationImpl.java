@@ -111,14 +111,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_RESPONSE")
     private InBidResponse bidResponse = InBidResponse.NEW;
-    
+
     @ManyToOne(targetEntity = InSchoolCodeImpl.class)
     @JoinColumn(name = "SCHOOL_CODE_ID")
     private InSchoolCode schoolCode;
-
-    @ManyToOne(targetEntity = InStudyModeImpl.class)
-    @JoinColumn(name = "STUDY_MODE_ID")
-    private InStudyMode studyMode;
 
     @ManyToOne(targetEntity = InDisabilityCodeImpl.class)
     @JoinColumn(name = "DISABILITY_CODE_ID")
@@ -170,9 +166,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @JoinColumn(name = "SUPERVISOR_SELECTION_ID", nullable = true)
     private InSupervisorOffering supervisorSelection;
 
-    @ManyToOne(targetEntity = InStudyCenterCodeImpl.class)
-    @JoinColumn(name = "STUDY_CENTER_CODE_ID")
-    private InStudyCenterCode studyCenterCode;
+    // note: can draft without choosing
+    @ManyToOne(targetEntity = InStudyModeImpl.class)
+    @JoinColumn(name = "STUDY_MODE_SELECTION_ID", nullable = true)
+    private InStudyModeOffering studyModeSelection;
 
     @ManyToOne(targetEntity = InIntakeImpl.class)
     @JoinColumn(name = "INTAKE_ID")
@@ -196,7 +193,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @OneToMany(targetEntity = InAddressImpl.class, mappedBy = "application")
     private List<InAddress> addresses;
-    
+
     @OneToMany(targetEntity = InSpmResultImpl.class, mappedBy = "application")
     private List<InSpmResult> spmResults;
 
@@ -371,16 +368,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     public void setVerified(Boolean verified) {
         this.verified = verified;
-    }
-
-    @Override
-    public InStudyMode getStudyMode() {
-        return studyMode;
-    }
-
-    @Override
-    public void setStudyMode(InStudyMode studyMode) {
-        this.studyMode = studyMode;
     }
 
     @Override
@@ -592,6 +579,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     }
 
     @Override
+    public InStudyModeOffering getStudyModeSelection() {
+        return studyModeSelection;
+    }
+
+    @Override
+    public void setStudyModeSelection(InStudyModeOffering studyModeSelection) {
+        this.studyModeSelection = studyModeSelection;
+    }
+
+    @Override
     public Integer getAge() {
         return age;
     }
@@ -650,7 +647,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setEmployments(List<InEmployment> employments) {
         this.employments = employments;
     }
-    
+
     @Override
     public List<InSpmResult> getSpmResults() {
         return spmResults;

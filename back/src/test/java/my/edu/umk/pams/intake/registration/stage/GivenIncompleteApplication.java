@@ -57,7 +57,8 @@ public class GivenIncompleteApplication extends Stage<GivenIncompleteApplication
         application.setCredentialNo("910607145581");
         application.setEmail("ibnu_khaldun@gmail.com");
         application.setAge(21);
-        application.setStudyMode(commonService.findStudyModeByCode("P")); // parttime
+        // todo: change to study mode selection
+        // application.setStudyMode(commonService.findStudyModeByCode("P")); // parttime
         application.setGenderCode(commonService.findGenderCodeByCode("M"));
         application.setReligionCode(commonService.findReligionCodeByCode("ISLAM"));
         application.setNationalityCode(commonService.findNationalityCodeByCode("MALAYSIA"));

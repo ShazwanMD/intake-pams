@@ -10,17 +10,19 @@ export interface IntakeApplication {
   name: string;
   credentialNo: string;
   okuNo: string;
+  email: string;
   phone: string;
   fax: string;
   age: number;
-  
+
   paid: boolean;
   verified: boolean;
   sponsored: boolean;
   selfSponsored: boolean;
   applicant: Applicant;
   intake: Intake;
-  programOffering: ProgramOffering;
-  supervisorOffering: SupervisorOffering;
-  studyModeOffering: StudyModeOffering;
+
+  programSelection?: ProgramOffering;
+  supervisorSelection?: SupervisorOffering;
+  studyModeSelection?: StudyModeOffering;
 }

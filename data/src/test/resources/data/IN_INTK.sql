@@ -21,13 +21,12 @@ VALUES
 
 
 -- add study mode offering FULLTIME and PARTIME
-
 INSERT INTO IN_STDY_MODE_OFRG (ID, INTAKE_ID, STUDY_MODE_ID, C_ID, C_TS, M_ST)
     VALUES (nextval('SQ_IN_STDY_MODE_OFRG'), currval('SQ_IN_INTK'),
-            (select ID from IN_STDY_MODE where code = 'P'),
+            (select ID from IN_STDY_MODE where code = '1'),
             1, CURRENT_TIMESTAMP, 1 );
 
 INSERT INTO IN_STDY_MODE_OFRG (ID, INTAKE_ID, STUDY_MODE_ID, C_ID, C_TS, M_ST)
     VALUES (nextval('SQ_IN_STDY_MODE_OFRG'), currval('SQ_IN_INTK'),
-            (select ID from IN_STDY_MODE where code = 'F'),
+            (select ID from IN_STDY_MODE where code = '2'),
             1, CURRENT_TIMESTAMP, 1 );

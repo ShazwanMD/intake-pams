@@ -80,7 +80,12 @@ export class ApplicationService {
   }
 
   updateIntakeApplication(application: IntakeApplication): Observable<Boolean> {
-    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo, JSON.stringify(application))
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo, JSON.stringify(application), options)
       .flatMap(data => Observable.of(true));
   }
 

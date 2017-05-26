@@ -1,7 +1,7 @@
-import { Referee } from './../referee.interface';
+import {Referee} from './../referee.interface';
 import {Employment} from './../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
@@ -24,6 +24,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private referees$: Observable<Referee>;
+  private applicationForm: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -42,8 +43,23 @@ export class CpsIntakeApplicationPage implements OnInit {
       let referenceNo: string = params.referenceNo;
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
     });
+
+    this.applicationForm = this.formBuilder.group(<IntakeApplication>{
+      name: '',
+      verified: false,
+      sponsored: false,
+      selfSponsored: false,
+      email: '',
+      phone: '',
+      fax: '',
+    });
+    this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }
 
-  next(application: IntakeApplication, isValid: boolean) {
+  onTabChange(): void {
+    console.log("tab change");
+    this.intakeApplication$.take(1)
+      .subscribe(intakeApplication => this.store.dispatch(this.actions.updateIntakeApplication(intakeApplication)));
+
   }
 }

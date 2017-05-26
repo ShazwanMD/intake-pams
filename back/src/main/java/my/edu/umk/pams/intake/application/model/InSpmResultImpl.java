@@ -24,11 +24,11 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
     private Integer aggregate = 0;
 
     @NotNull
-    @Column(name = "BAHASA MELAYU", nullable = false)
+    @Column(name = "BAHASA_MELAYU", nullable = false)
     private String malay;
     
     @NotNull
-    @Column(name = "BAHASA INGGERIS", nullable = false)
+    @Column(name = "BAHASA_INGGERIS", nullable = false)
     private String english;
     
     @NotNull
@@ -36,11 +36,11 @@ public class InSpmResultImpl extends InResultImpl implements InSpmResult {
     private String math;
     
     @NotNull
-    @Column(name = "MATEMATIK TAMBAHAN", nullable = true)
+    @Column(name = "MATEMATIK_TAMBAHAN", nullable = true)
     private String addMath;
     
     @NotNull
-    @Column(name = "PENDIDIKAN ISLAM", nullable = false)
+    @Column(name = "PENDIDIKAN_ISLAM", nullable = false)
     private String islamEduc;
     
     @NotNull
