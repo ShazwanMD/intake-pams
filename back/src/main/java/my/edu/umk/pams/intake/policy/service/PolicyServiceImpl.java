@@ -372,7 +372,7 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public List<InIntake> findIntakes(InFlowState flowState) {
+    public List<InIntake> findIntakesByFlowState(InFlowState flowState) {
         return intakeDao.find(flowState);
     }
 

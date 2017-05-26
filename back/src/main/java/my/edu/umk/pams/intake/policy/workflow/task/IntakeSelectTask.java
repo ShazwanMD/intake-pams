@@ -14,13 +14,13 @@ import org.springframework.stereotype.Component;
 import java.sql.Timestamp;
 
 import static java.lang.System.currentTimeMillis;
-import static my.edu.umk.pams.intake.core.InFlowState.PUBLISHED;
+import static my.edu.umk.pams.intake.core.InFlowState.SELECTED;
 
-@Component("intake_publish_ST")
-public class IntakePublishTask extends BpmnActivityBehavior
+@Component("intake_select_ST")
+public class IntakeSelectTask extends BpmnActivityBehavior
         implements ActivityBehavior {
 
-    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(IntakePublishTask.class);
+    private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(IntakeSelectTask.class);
 
     @Autowired
     private SecurityService securityService;
@@ -33,16 +33,16 @@ public class IntakePublishTask extends BpmnActivityBehavior
      * @throws Exception
      */
     public void execute(ActivityExecution execution) throws Exception {
-        LOG.debug("publishing intake");
+        LOG.debug("selecting intake");
 
         // retrieve intake from variable
         Long intakeId = (Long) execution.getVariable(IntakeConstants.INTAKE_ID);
         InIntake intake = policyService.findIntakeById(intakeId);
 
         // update flow state
-        intake.getFlowdata().setState(PUBLISHED);
-        intake.getFlowdata().setPublishedDate(new Timestamp(currentTimeMillis()));
-        intake.getFlowdata().setPublisherId(securityService.getCurrentUser().getId());
+        intake.getFlowdata().setState(SELECTED);
+        intake.getFlowdata().setSelectedDate(new Timestamp(currentTimeMillis()));
+        intake.getFlowdata().setSelectorId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);
     }
 }

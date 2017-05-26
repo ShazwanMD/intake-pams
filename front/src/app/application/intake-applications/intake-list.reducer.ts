@@ -11,6 +11,9 @@ export function intakeListReducer(state = initialState, action: Action): IntakeL
     case IntakeApplicationActions.FIND_INTAKES_SUCCESS: {
       return action.payload;
     }
+    case IntakeApplicationActions.FIND_PUBLISHED_INTAKES_SUCCESS: {
+      return action.payload;
+    }
     default: {
       return state;
     }

@@ -35,6 +35,11 @@ export class IntakeApplicationEffects {
     .switchMap(() => this.applicationService.findIntakes())
     .map(intakes => this.intakeApplicationActions.findIntakesSuccess(intakes));
 
+  @Effect() findPublishedIntake$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_PUBLISHED_INTAKES)
+    .switchMap(() => this.applicationService.findPublishedIntakes())
+    .map(intakes => this.intakeApplicationActions.findPublishedIntakesSuccess(intakes));
+
 
   @Effect() findIntakeByReferenceNo$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_INTAKE_BY_REFERENCE_NO)

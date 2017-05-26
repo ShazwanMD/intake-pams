@@ -27,6 +27,24 @@ export class IntakeApplicationActions {
     };
   }
 
+  static FIND_PUBLISHED_INTAKES = '[Intake Application] Find Published Intakes';
+
+  findPublishedIntakes(): Action {
+    return {
+      type: IntakeApplicationActions.FIND_PUBLISHED_INTAKES
+    };
+  }
+
+  static FIND_PUBLISHED_INTAKES_SUCCESS = '[Intake Application] Find Published Intakes Success';
+
+  findPublishedIntakesSuccess(intakes): Action {
+    console.log("findPublishedIntakesSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_PUBLISHED_INTAKES_SUCCESS,
+      payload: intakes
+    };
+  }
+
   static FIND_INTAKE_BY_REFERENCE_NO = '[Intake] Find Intake By Reference No';
 
   findIntakeByReferenceNo(referenceNo): Action {

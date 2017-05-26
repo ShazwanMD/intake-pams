@@ -111,7 +111,7 @@ public interface PolicyService {
 
     List<InIntake> findIntakes();
 
-    List<InIntake> findIntakes(InFlowState flowState);
+    List<InIntake> findIntakesByFlowState(InFlowState flowState);
 
     List<InIntake> findIntakes(InGraduateCentre graduateCentre);
 
@@ -172,5 +172,5 @@ public interface PolicyService {
 
     // todo(uda): ni utk apa?
     String specificCriteria();
-	
+
 }

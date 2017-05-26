@@ -24,7 +24,12 @@ export class ApplicationService {
   // INTAKE
   // ====================================================================================================
 
-  // published intake
+  findPublishedIntakes(): Observable<Intake[]> {
+    console.log("findPublishedIntakes");
+    return this.http.get(environment.endpoint + '/api/application/intakes/state/PUBLISHED')
+      .map((res: Response) => <Intake[]>res.json());
+  }
+
   findIntakes(): Observable<Intake[]> {
     console.log("findIntakes");
     return this.http.get(environment.endpoint + '/api/application/intakes')

@@ -33,7 +33,7 @@ export class ApplicationPage implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(() => {
-      this.store.dispatch(this.intakeApplicationActions.findIntakes()); // find PUBLISHED intakes
+      this.store.dispatch(this.intakeApplicationActions.findPublishedIntakes());
     });
   }
 }

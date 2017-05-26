@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InActor;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -64,7 +65,13 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakes", method = RequestMethod.GET)
     public ResponseEntity<List<Intake>> findIntakes() {
-        List<InIntake> intakes = policyService.findIntakes();//(InFlowState.PUBLISHED);
+        List<InIntake> intakes = policyService.findIntakes();
+        return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/state/{state}", method = RequestMethod.GET)
+    public ResponseEntity<List<Intake>> findIntakesByState(@PathVariable String state) {
+        List<InIntake> intakes = policyService.findIntakesByFlowState(InFlowState.valueOf(state));
         return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
     }
 
