@@ -16,7 +16,7 @@ import {EducationCreatorDialog} from "./component/dialog/education-creator.dialo
 import {CommonModule} from "../../common/index";
 import {ProgramLevelSubModule} from "../../policy/program-levels/index";
 import {MyIntakeApplicationPage} from "./my-intake-application.page";
-import {EmploymentTabComponent} from "./component/employment-tab.component";
+
 
 
 @NgModule({
