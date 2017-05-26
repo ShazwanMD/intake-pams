@@ -20,7 +20,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
   private EMPLOYMENTS = "applicationModuleState.employments".split(".");
   private REFEREES = "applicationModuleState.referees".split(".");
- 
+
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
@@ -46,21 +46,26 @@ export class CpsIntakeApplicationPage implements OnInit {
     });
 
     this.applicationForm = this.formBuilder.group(<IntakeApplication>{
+      id: null,
+      referenceNo: '',
+      rank: 0,
+      merit: 0,
       name: '',
-      verified: false,
-      sponsored: false,
-      selfSponsored: false,
+      credentialNo: '',
+      okuNo: '',
       email: '',
       phone: '',
       fax: '',
+      age: 0,
+      verified: false,
+      sponsored: false,
+      selfSponsored: false,
     });
     this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }
 
   onTabChange(): void {
     console.log("tab change");
-    this.intakeApplication$.take(1)
-      .subscribe(intakeApplication => this.store.dispatch(this.actions.updateIntakeApplication(intakeApplication)));
-
+    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 }

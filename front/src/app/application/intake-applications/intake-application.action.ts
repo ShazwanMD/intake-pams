@@ -150,7 +150,7 @@ export class IntakeApplicationActions {
     };
   }
 
-    static FIND_REFEREES_BY_INTAKE_APPLICATION = '[Intake Application] Find Referees';
+  static FIND_REFEREES_BY_INTAKE_APPLICATION = '[Intake Application] Find Referees';
 
   findRefereesByIntakeApplication(application): Action {
     console.log("findRefereesByIntakeApplication");
@@ -170,10 +170,10 @@ export class IntakeApplicationActions {
     };
   }
 
-
   static FIND_ADDRESSES_BY_INTAKE_APPLICATION = '[Intake Application] Find Addresses';
 
   findAddressesByIntakeApplication(application): Action {
+    console.log("findAddressesByIntakeApplication");
     return {
       type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION,
       payload: application
@@ -183,8 +183,7 @@ export class IntakeApplicationActions {
   static FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Addresses Success';
 
   findAddressesByIntakeApplicationSuccess(addresses): Action {
- 
-    console.log("findAddressesSuccess");
+    console.log("findAddressesByIntakeApplicationSuccess");
     return {
       type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS,
       payload: addresses
@@ -345,7 +344,7 @@ export class IntakeApplicationActions {
 
   static ADD_REFEREE = '[Intake Application] Save Referee';
 
-    addReferee(application, referee): Action {
+  addReferee(application, referee): Action {
     console.log("addReferee");
     return {
       type: IntakeApplicationActions.ADD_REFEREE,

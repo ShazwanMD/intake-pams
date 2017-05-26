@@ -2,7 +2,6 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.common.model.InBankCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InActor;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -106,16 +105,9 @@ public class ApplicationController {
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications), HttpStatus.OK);
     }
 
-
     // ====================================================================================================
     // INTAKE APPLICATION
     // ====================================================================================================
-
-    @RequestMapping(value = "/intakeApplication/{referenceNo}", method = RequestMethod.GET)
-    public ResponseEntity<IntakeApplication> findIntakeApplicationByReferenceNo(@PathVariable String referenceNo) {
-        InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(intakeApplication), HttpStatus.OK);
-    }
 
     @RequestMapping(value = "/intakeApplications", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplications() {
@@ -130,13 +122,18 @@ public class ApplicationController {
         List<IntakeApplication> applicationVos = applicationTransformer.toIntakeApplicationVos(applications);
         return new ResponseEntity<List<IntakeApplication>>(applicationVos, HttpStatus.OK);
     }
-    
+
+    @RequestMapping(value = "/intakeApplication/{referenceNo}", method = RequestMethod.GET)
+    public ResponseEntity<IntakeApplication> findIntakeApplicationByReferenceNo(@PathVariable String referenceNo) {
+        InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(intakeApplication), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/intakeApplications/{referenceNo}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateIntakeApplication(@PathVariable String referenceNo, @RequestBody IntakeApplication vo) {
         dummyLogin();
 
-        InIntake intake = policyService.findIntakeById(vo.getIntake().getId());
-        InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         // todo: more properties
         application.setName(vo.getName());
         application.setPhone(vo.getPhone());
@@ -288,14 +285,14 @@ public class ApplicationController {
 	// ADDRESS
 	// ====================================================================================================
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/address", method = RequestMethod.GET)
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/addresses", method = RequestMethod.GET)
 	public ResponseEntity<List<Address>> findAddressesByIntakeApplication(@PathVariable String referenceNo) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		List<InAddress> address = applicationService.findAddresses(application);
 		return new ResponseEntity<List<Address>>(applicationTransformer.toAddressVos(address), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/address", method = RequestMethod.POST)
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/addresses", method = RequestMethod.POST)
 	public ResponseEntity<String> addAddress(@PathVariable String referenceNo, @RequestBody Address vo) {
 		dummyLogin();
 
@@ -309,16 +306,6 @@ public class ApplicationController {
 
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}	
-	
-	/*@RequestMapping(value = "/intakeApplications/{referenceNo}/address", method = RequestMethod.DELETE)
-    public ResponseEntity<String> removeAddress(@PathVariable String referenceNo, @PathVariable Address vo) {
-        dummyLogin();
-        
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InAddress address = applicationService.findAddressById(vo.getId());
-        applicationService.deleteAddress(application, address);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }*/
 	
     // ====================================================================================================
     // PRIVATE METHODS

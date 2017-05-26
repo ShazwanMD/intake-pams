@@ -1,4 +1,4 @@
-import { Referee } from './../app/application/intake-applications/referee.interface';
+import {Referee} from './../app/application/intake-applications/referee.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -79,14 +79,16 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  updateIntakeApplication(application: IntakeApplication): Observable<Boolean> {
+  updateIntakeApplication(application: IntakeApplication): Observable<String> {
+    console.log("updateIntakeApplication ");
+    console.log("email: " + application.email);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo, JSON.stringify(application), options)
-      .flatMap(data => Observable.of(true));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   findEducationsByIntakeApplication(application: IntakeApplication): Observable<Education[]> {
@@ -154,7 +156,7 @@ export class ApplicationService {
   }
 
   findAddressesByIntakeApplication(application: IntakeApplication): Observable<Address[]> {
-    console.log("findAddresses");
+    console.log("findAddressesByIntakeApplication");
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/addresses")
       .map((res: Response) => <Address[]>res.json());
   }
@@ -174,7 +176,7 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  findProgramOfferingsByIntakeApplication(application:IntakeApplication): Observable<ProgramOffering[]> {
+  findProgramOfferingsByIntakeApplication(application: IntakeApplication): Observable<ProgramOffering[]> {
     console.log("findProgramOfferingsByIntakeApplication " + application.referenceNo);
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/programOfferings')
       .map((res: Response) => <ProgramOffering[]>res.json());

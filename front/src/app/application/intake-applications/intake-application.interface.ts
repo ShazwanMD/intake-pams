@@ -3,7 +3,8 @@ import {Applicant} from "../../identity/applicant.interface";
 import {ProgramOffering} from "../../policy/intakes/program-offering.interface";
 import {SupervisorOffering} from "../../policy/intakes/supervisor-offering.interface";
 import {StudyModeOffering} from "../../policy/intakes/study-mode-offering.interface";
-export interface IntakeApplication {
+import {MetaObject} from "../../core/meta-object.interface";
+export interface IntakeApplication extends MetaObject{
   referenceNo: string;
   rank: number;
   merit: number;
