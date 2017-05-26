@@ -153,6 +153,12 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  findAddressesByIntakeApplication(application: IntakeApplication): Observable<Address[]> {
+    console.log("findAddresses");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/addresses")
+      .map((res: Response) => <Address[]>res.json());
+  }
+
   addAddress(application: IntakeApplication, address: Address): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',

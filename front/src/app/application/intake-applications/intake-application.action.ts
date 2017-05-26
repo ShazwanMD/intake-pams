@@ -182,11 +182,12 @@ export class IntakeApplicationActions {
 
   static FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Addresses Success';
 
-  findAddressesSuccessByIntakeApplication(addresss): Action {
+  findAddressesByIntakeApplicationSuccess(addresses): Action {
+ 
     console.log("findAddressesSuccess");
     return {
       type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: addresss
+      payload: addresses
     };
   }
 

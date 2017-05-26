@@ -20,6 +20,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
   private EMPLOYMENTS = "applicationModuleState.employments".split(".");
   private REFEREES = "applicationModuleState.referees".split(".");
+ 
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;

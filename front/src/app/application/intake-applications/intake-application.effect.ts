@@ -128,6 +128,12 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+s
+  @Effect() findAddressesByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findAddressesByIntakeApplication(application))
+    .map(addresses => this.intakeApplicationActions.findAddressesByIntakeApplicationSuccess(addresses));
 
   @Effect() addAddress = this.actions$
     .ofType(IntakeApplicationActions.ADD_ADDRESS)
