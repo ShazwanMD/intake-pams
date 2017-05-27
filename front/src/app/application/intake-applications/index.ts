@@ -16,7 +16,7 @@ import {EducationCreatorDialog} from "./component/dialog/education-creator.dialo
 import {CommonModule} from "../../common/index";
 import {ProgramLevelSubModule} from "../../policy/program-levels/index";
 import {MyIntakeApplicationPage} from "./my-intake-application.page";
-
+import {AddressTypeSelectComponent} from "./component/address-type-select.component";
 
 
 @NgModule({
@@ -36,6 +36,7 @@ import {MyIntakeApplicationPage} from "./my-intake-application.page";
     MyIntakeApplicationPage,
 
     //components
+    AddressTypeSelectComponent,
 
     //dialogs
     EducationCreatorDialog,

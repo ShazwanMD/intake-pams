@@ -41,7 +41,6 @@ public interface InEmployment extends InMetaObject {
 
     void setApplication(InIntakeApplication application);
     
-
 	String getDesignation();
 
 	void setDesignation(String designation);

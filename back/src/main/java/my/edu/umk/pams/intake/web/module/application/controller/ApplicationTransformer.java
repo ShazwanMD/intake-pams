@@ -19,7 +19,7 @@ public class ApplicationTransformer {
     @Autowired
     private PolicyTransformer policyTransformer;
 
-    public IntakeApplication toIntakeApplicationVo(InIntakeApplication e){
+    public IntakeApplication toIntakeApplicationVo(InIntakeApplication e) {
         IntakeApplication vo = new IntakeApplication();
         vo.setId(e.getId());
         vo.setReferenceNo(e.getReferenceNo());
@@ -39,7 +39,7 @@ public class ApplicationTransformer {
         return vo;
     }
 
-    public IntakeApplication toSimpleIntakeApplicationVo(InIntakeApplication e){
+    public IntakeApplication toSimpleIntakeApplicationVo(InIntakeApplication e) {
         IntakeApplication vo = new IntakeApplication();
         vo.setId(e.getId());
         vo.setReferenceNo(e.getReferenceNo());
@@ -53,33 +53,34 @@ public class ApplicationTransformer {
         return vo;
     }
 
-    public Guardian toGuardianVo(InGuardian e){
+    public Guardian toGuardianVo(InGuardian e) {
         Guardian vo = new Guardian();
         vo.setId(e.getId());
         // todo(uda): more props
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-    
-    public Guarantor toGuarantorVo(InGuarantor e){
+
+    public Guarantor toGuarantorVo(InGuarantor e) {
         Guarantor vo = new Guarantor();
         vo.setId(e.getId());
         // todo(uda): more props
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-    
-    public Address toAddressVo(InAddress e){
+
+    public Address toAddressVo(InAddress e) {
         Address vo = new Address();
         vo.setId(e.getId());
         vo.setAddress1(e.getAddress1());
         vo.setAddress2(e.getAddress2());
         vo.setAddress3(e.getAddress3());
         vo.setPostcode(e.getPostCode());
+        vo.setAddressType(AddressType.get(e.getType().ordinal()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-    
+
     public List<Address> toAddressVos(List<InAddress> e) {
         List<Address> vos = e.stream()
                 .map((e1) -> toAddressVo(e1))
@@ -87,7 +88,7 @@ public class ApplicationTransformer {
         return vos;
     }
 
-    public Contact toContactVo(InContact e){
+    public Contact toContactVo(InContact e) {
         Contact vo = new Contact();
         vo.setId(e.getId());
         // todo(uda): more props
@@ -95,7 +96,7 @@ public class ApplicationTransformer {
         return vo;
     }
 
-    public Attachment toAttachmentVo(InAttachment e){
+    public Attachment toAttachmentVo(InAttachment e) {
         Attachment vo = new Attachment();
         vo.setId(e.getId());
         // todo(uda): more props
@@ -103,16 +104,16 @@ public class ApplicationTransformer {
         return vo;
     }
 
-    public Education toEducationVo(InEducation e){
+    public Education toEducationVo(InEducation e) {
         Education vo = new Education();
         vo.setId(e.getId());
         vo.setProvider(e.getProvider());
         vo.setStartDate(e.getStartDate());
-        vo.setEndDate(e.getEndDate());        
+        vo.setEndDate(e.getEndDate());
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-    
+
     public List<Education> toEducationVos(List<InEducation> e) {
         List<Education> vos = e.stream()
                 .map((e1) -> toEducationVo(e1))
@@ -120,11 +121,12 @@ public class ApplicationTransformer {
         return vos;
     }
 
-    public Employment toEmploymentVo(InEmployment e){
+    public Employment toEmploymentVo(InEmployment e) {
         Employment vo = new Employment();
         vo.setId(e.getId());
-  //     vo.setCurrent(true);
+        vo.setCurrent(e.isCurrent());
         vo.setEmployer(e.getEmployer());
+        vo.setDesignation(e.getDesignation());
         vo.setStartDate(e.getStartDate());
         vo.setEndDate(e.getEndDate());
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
@@ -137,8 +139,8 @@ public class ApplicationTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
-    
-    public Involvement toInvolvementVo(InInvolvement e){
+
+    public Involvement toInvolvementVo(InInvolvement e) {
         Involvement vo = new Involvement();
         vo.setId(e.getId());
         // todo(uda): more props
@@ -146,7 +148,7 @@ public class ApplicationTransformer {
         return vo;
     }
 
-    public Referee toRefereeVo(InReferee e){
+    public Referee toRefereeVo(InReferee e) {
         Referee vo = new Referee();
         vo.setId(e.getId());
         vo.setName(e.getName());
@@ -156,7 +158,7 @@ public class ApplicationTransformer {
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-    
+
     public List<Referee> toRefereeVos(List<InReferee> e) {
         List<Referee> vos = e.stream()
                 .map((e1) -> toRefereeVo(e1))
@@ -164,7 +166,7 @@ public class ApplicationTransformer {
         return vos;
     }
 
-    public SpmResult toSpmResultVo(InSpmResult e){
+    public SpmResult toSpmResultVo(InSpmResult e) {
         SpmResult vo = new SpmResult();
         vo.setId(e.getId());
         vo.setMalay(e.getMalay());
@@ -177,7 +179,7 @@ public class ApplicationTransformer {
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
-    
+
     public List<SpmResult> toSpmResultVos(List<InSpmResult> e) {
         List<SpmResult> vos = e.stream()
                 .map((e1) -> toSpmResultVo(e1))
@@ -191,7 +193,7 @@ public class ApplicationTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
-    
+
 
     public List<IntakeApplication> toSimpleIntakeApplicationVos(List<InIntakeApplication> e) {
         List<IntakeApplication> vos = e.stream()
@@ -201,8 +203,4 @@ public class ApplicationTransformer {
     }
 
 
-
-
-    
-    
 }

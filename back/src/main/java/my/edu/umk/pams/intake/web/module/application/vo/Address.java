@@ -1,12 +1,10 @@
 package my.edu.umk.pams.intake.web.module.application.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 
 import java.io.IOException;
-import java.util.Date;
 
 /**
  * @author PAMS
@@ -16,6 +14,7 @@ public class Address extends MetaObject {
 	private String address2;
 	private String address3;
 	private String postcode;
+	private AddressType addressType;
 
 	public String getAddress1() {
 		return address1;
@@ -47,6 +46,14 @@ public class Address extends MetaObject {
 
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
+	}
+
+	public AddressType getAddressType() {
+		return addressType;
+	}
+
+	public void setAddressType(AddressType addressType) {
+		this.addressType = addressType;
 	}
 
 	@JsonCreator
