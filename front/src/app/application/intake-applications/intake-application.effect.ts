@@ -143,7 +143,7 @@ s
   @Effect() addAddress = this.actions$
     .ofType(IntakeApplicationActions.ADD_ADDRESS)
     .map(action => action.payload)
-    .switchMap(payload => this.applicationService.addAddress(payload.intake, payload.address))
+    .switchMap(payload => this.applicationService.addAddress(payload.application, payload.address))
     .map(message => this.intakeApplicationActions.addAddressSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])

@@ -400,10 +400,10 @@ export class IntakeApplicationActions {
 
   static ADD_ADDRESS = '[Intake Application] Add Address';
 
-  addAddress(intake, address) {
+  addAddress(application, address) {
     return {
       type: IntakeApplicationActions.ADD_ADDRESS,
-      payload: {intake: intake, address: address}
+      payload: {application: application, address: address}
     };
   }
 
