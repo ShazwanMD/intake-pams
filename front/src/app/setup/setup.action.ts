@@ -377,7 +377,16 @@ export class SetupActions {
     };
   }
 
-  static SAVE_STATE_CODE = '[Setup] Save State Code';
+  static FIND_STATE_CODES = '[Common] Find StateCodes';
+
+  findStateCodes(): Action {
+    console.log("findStateCodes");
+    return {
+      type: SetupActions.FIND_STATE_CODES,
+    };
+  }
+
+   static SAVE_STATE_CODE = '[Setup] Save State Code';
 
   saveStateCode(code): Action {
     console.log("saveStateCode");
@@ -387,14 +396,56 @@ export class SetupActions {
     };
   }
 
-  static FIND_STATE_CODES = '[Common] Find StateCodes';
+  static SAVE_STATE_CODE_SUCCESS = '[Setup] Save State Code Success';
 
-  findStateCodes(): Action {
-    console.log("findStateCodes");
+  saveStateCodeSuccess(message): Action {
+    console.log("saveStateCodeSuccess");
     return {
-      type: SetupActions.FIND_STATE_CODES,
+      type: SetupActions.SAVE_STATE_CODE_SUCCESS,
+      payload: message
     };
   }
+
+  static UPDATE_STATE_CODE = '[Setup] Update State Code';
+
+  updateStateCode(code): Action {
+    console.log("updateStateCode");
+    return {
+      type: SetupActions.UPDATE_STATE_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_STATE_CODE_SUCCESS = '[Setup] Update State Code  Success';
+
+  updateStateCodeSuccess(message): Action {
+    console.log("updateStateCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_STATE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_STATE_CODE = '[Setup] Remove State Code';
+
+  removeStateCode(code): Action {
+    console.log("removeStateCode");
+    return {
+      type: SetupActions.REMOVE_STATE_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_STATE_CODE_SUCCESS = '[Setup] Remove State Code  Success';
+
+  removeStateCodeSuccess(message): Action {
+    console.log("removeStateCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_STATE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
 
   static FIND_PROGRAM_CODES = '[Common] Find ProgramCodes';
 
