@@ -1,3 +1,4 @@
+import { StateCodeEditorDialog } from './state-codes/dialog/state-code-editor.dialog';
 import {DistrictCodeEditorDialog} from './district-codes/dialog/district-code-editor.dialog';
 import {DistrictCodeListPage} from './district-codes/district-code-list-page';
 import {DunCodeEditorDialog} from './dun-codes/dialog/dun-code-editor.dialog';
@@ -38,7 +39,6 @@ import {ReligionCodeCreatorDialog} from './religion-codes/dialog/religion-code-c
 import {ProgramCodeCreatorDialog} from './program-codes/dialog/program-code-creator.dialog';
 import {ProgramCodeListPage} from './program-codes/program-code-list.page';
 import {ProgramCode} from './../common/program-codes/program-code.interface';
-import {StateCodeCreatorDialog} from './state-codes/dialog/state-code-creator.dialog';
 import {StateCodeListPage} from './state-codes/state-code-list.page';
 import {StateCode} from './../common/state-codes/state-code.interface';
 import {CountryCodeCreatorDialog} from './country-codes/dialog/country-code-creator.dialog';
@@ -216,7 +216,7 @@ export const setupModuleReducers = {
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
     CountryCodeCreatorDialog,
-    StateCodeCreatorDialog,
+    StateCodeEditorDialog,
     ProgramCodeCreatorDialog,
     ReligionCodeCreatorDialog,
     SupervisorCodeEditorDialog,
@@ -241,7 +241,7 @@ export const setupModuleReducers = {
     GraduateCentreCreatorDialog,
     ReligionCodeCreatorDialog,
     CountryCodeCreatorDialog,
-    StateCodeCreatorDialog,
+    StateCodeEditorDialog,
     ProgramCodeCreatorDialog,
     SupervisorCodeEditorDialog,
     GenderCodeCreatorDialog,

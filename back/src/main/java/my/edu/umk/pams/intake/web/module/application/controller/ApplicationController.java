@@ -314,6 +314,9 @@ public class ApplicationController {
         address.setAddress2(vo.getAddress2());
         address.setAddress3(vo.getAddress3());
         address.setPostCode(vo.getPostcode());
+        address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
+        address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
+        
         applicationService.addAddress(application, address);
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
