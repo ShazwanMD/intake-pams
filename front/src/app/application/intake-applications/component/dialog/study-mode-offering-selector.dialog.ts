@@ -8,20 +8,21 @@ import {IntakeApplication} from "../../intake-application.interface";
 import {Intake} from "../../../../policy/intakes/intake.interface";
 import {ProgramOffering} from "../../../../policy/intakes/program-offering.interface";
 import {Observable} from "rxjs/Observable";
+import {StudyMode} from "../../../../common/study-modes/study-mode.interface";
 
 
 
 @Component({
-  selector: 'pams-program-offering-selector',
-  templateUrl: './program-offering-selector.dialog.html',
+  selector: 'pams-study-mode-offering-selector',
+  templateUrl: './study-mode-offering-selector.dialog.html',
 })
 
-export class ProgramOfferingSelectorDialog implements OnInit {
+export class StudyModeOfferingSelectorDialog implements OnInit {
 
-  private PROGRAM_OFFERINGS: string[] = "applicationModuleState.programOfferings".split(".");
+  private STUDY_MODE_OFFERINGS: string[] = "applicationModuleState.studyModeOfferings".split(".");
   private _intake: Intake;
   private _intakeApplication: IntakeApplication;
-  private programOfferings$: Observable<ProgramOffering[]>;
+  private studyModeOfferings$: Observable<StudyMode[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -29,7 +30,7 @@ export class ProgramOfferingSelectorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private actions: IntakeApplicationActions,
               private store: Store<ApplicationModuleState>) {
-    this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERINGS);
+    this.studyModeOfferings$ = this.store.select(...this.STUDY_MODE_OFFERINGS);
   }
 
   set intake(value: Intake) {
@@ -41,7 +42,7 @@ export class ProgramOfferingSelectorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findProgramOfferingsByIntake(this._intake));
+    this.store.dispatch(this.actions.findStudyModeOfferingsByIntake(this._intake));
   }
 
   select(offering: ProgramOffering) {

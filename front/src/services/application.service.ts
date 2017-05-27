@@ -11,6 +11,7 @@ import {Address} from "../app/application/intake-applications/address.interface"
 import {Intake} from "../app/policy/intakes/intake.interface";
 import {ProgramOffering} from "../app/policy/intakes/program-offering.interface";
 import {SpmResult} from './../app/application/intake-applications/spm-result.interface';
+import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 
 
 @Injectable()
@@ -45,6 +46,11 @@ export class ApplicationService {
   findProgramOfferingsByIntake(intake: Intake): Observable<ProgramOffering[]> {
     return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/programOfferings')
       .map((res: Response) => <ProgramOffering[]>res.json());
+  }
+
+  findStudyModeOfferingsByIntake(intake: Intake): Observable<StudyModeOffering[]> {
+    return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/studyModeOfferings')
+      .map((res: Response) => <StudyModeOffering[]>res.json());
   }
 
   applyIntake(intake: Intake): Observable<IntakeApplication> {

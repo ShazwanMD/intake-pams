@@ -86,6 +86,27 @@ export class IntakeApplicationActions {
   }
 
 
+  static FIND_STUDY_MODE_OFFERINGS_BY_INTAKE = '[Intake] Find StudyMode Offerings By Intake';
+
+  findStudyModeOfferingsByIntake(intake): Action {
+    console.log("findStudyModeOfferingsByIntake");
+    return {
+      type: IntakeApplicationActions.FIND_STUDY_MODE_OFFERINGS_BY_INTAKE,
+      payload: intake
+    };
+  }
+
+  static FIND_STUDY_MODE_OFFERINGS_BY_INTAKE_SUCCESS = '[Intake] Find StudyMode Offerings By Intake Success';
+
+  findStudyModeOfferingsByIntakeSuccess(offerings): Action {
+    console.log("findStudyModeOfferingsByIntakeSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_STUDY_MODE_OFFERINGS_BY_INTAKE_SUCCESS,
+      payload: offerings
+    };
+  }
+
+
   // ====================================================================================================
   // INTAKE APPLICATION
   // ====================================================================================================
