@@ -28,7 +28,7 @@ export class IntakeProgramOfferingSelectComponent implements OnChanges {
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
     if (changes['intakeApplication'] && this.intakeApplication.referenceNo) {
       console.log("intake app: " + this.intakeApplication.referenceNo);
-      this.store.dispatch(this.actions.findProgramOfferingsByIntakeApplication(this.intakeApplication));
+      this.store.dispatch(this.actions.findProgramOfferingsByIntake(this.intakeApplication));
     }
   }
 

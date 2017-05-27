@@ -17,6 +17,7 @@ import {CommonModule} from "../../common/index";
 import {ProgramLevelSubModule} from "../../policy/program-levels/index";
 import {MyIntakeApplicationPage} from "./my-intake-application.page";
 import {AddressTypeSelectComponent} from "./component/address-type-select.component";
+import {ProgramOfferingSelectorDialog} from "./component/dialog/program-offering-selector.dialog";
 
 
 @NgModule({
@@ -40,11 +41,13 @@ import {AddressTypeSelectComponent} from "./component/address-type-select.compon
 
     //dialogs
     EducationCreatorDialog,
+    ProgramOfferingSelectorDialog,
   ],
   exports: [
   ],
   entryComponents: [
     EducationCreatorDialog,
+    ProgramOfferingSelectorDialog,
   ],
 })
 export class IntakeApplicationSubModule {

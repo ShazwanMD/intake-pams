@@ -18,8 +18,8 @@ import {IntakeApplication} from "../intake-application.interface";
 export class CpsIntakeApplicationPage implements OnInit {
 
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
-  private EMPLOYMENTS = "applicationModuleState.employments".split(".");
-  private REFEREES = "applicationModuleState.referees".split(".");
+  private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
+  private REFEREES: string[] = "applicationModuleState.referees".split(".");
 
 
   private intakeApplication$: Observable<IntakeApplication>;
@@ -58,7 +58,7 @@ export class CpsIntakeApplicationPage implements OnInit {
       mobile: '',
       fax: '',
       age: 0,
-      birthDate:null,
+      birthDate: null,
       verified: false,
       sponsored: false,
       selfSponsored: false,
@@ -71,7 +71,7 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
-  save(application:IntakeApplication, valid:boolean):void {
+  save(application: IntakeApplication, valid: boolean): void {
     console.log("submitting");
   }
 }

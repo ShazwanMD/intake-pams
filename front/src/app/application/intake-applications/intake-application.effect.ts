@@ -48,10 +48,10 @@ export class IntakeApplicationEffects {
     .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake));
 
   @Effect() findProgramOfferingsByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE_APPLICATION)
+    .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE)
     .map(action => action.payload)
     .switchMap(application => this.applicationService.findProgramOfferingsByIntakeApplication(application))
-    .map(offerings => this.intakeApplicationActions.findProgramOfferingsByIntakeApplicationSuccess(offerings));
+    .map(offerings => this.intakeApplicationActions.findProgramOfferingsByIntakeSuccess(offerings));
 
 
   @Effect() findIntakeApplications$ = this.actions$
