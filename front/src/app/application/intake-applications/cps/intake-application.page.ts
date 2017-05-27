@@ -57,6 +57,8 @@ export class CpsIntakeApplicationPage implements OnInit {
       merit: 0,
       name: '',
       credentialNo: '',
+      birthDate: null,
+      mobile: '',
       okuNo: '',
       email: '',
       phone: '',
