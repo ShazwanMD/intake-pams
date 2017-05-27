@@ -21,7 +21,8 @@
             <p class="md-title tc-grey-600">Choose your program: {{(intakeApplication$ | async).programSelection}}</p>
             <button md-raised-button color="accent" class="push-bottom">Choose</button>
             <div class="push-top-sm"></div>
-            <p class="md-title tc-grey-600">Choose your study mode: {{(intakeApplication$ | async).programSelection}}</p>
+            <p class="md-title tc-grey-600">Choose your study mode: {{(intakeApplication$ |
+              async).programSelection}}</p>
             <button md-raised-button color="accent" class="push-bottom">Choose</button>
             <div class="push-top-sm"></div>
             <p class="md-title tc-grey-600">Your research title</p>
@@ -36,7 +37,6 @@
           <md-card>
             <template md-tab-label>Personal Information</template>
             <td-expansion-panel label="Personal Details">
-              <md-card>
                 <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
                   <!-- first column -->
                   <div layout="column" class="pad-right" flex>
@@ -94,40 +94,37 @@
 
                   </div>
                 </div>
-              </md-card>
             </td-expansion-panel>
 
             <td-expansion-panel label="Address Information">
-              <md-card>
-                <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-                  <!-- first column -->
-                  <div layout="column" class="pad-right" flex>
-                    <div layout="row" class="pad-bottom" flex>
-                      <md-input-container flex>
-                        <input mdInput placeholder="Address 1" flex/>
-                      </md-input-container>
-                    </div>
+              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                <!-- first column -->
+                <div layout="column" class="pad-right" flex>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Address 1" flex/>
+                    </md-input-container>
+                  </div>
 
-                    <div layout="row" class="pad-bottom" flex>
-                      <md-input-container flex>
-                        <input mdInput placeholder="Address 2" flex/>
-                      </md-input-container>
-                    </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Address 2" flex/>
+                    </md-input-container>
+                  </div>
 
-                    <div layout="row" class="pad-bottom" flex>
-                      <md-input-container flex>
-                        <input mdInput placeholder="Address 3" flex/>
-                      </md-input-container>
-                    </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Address 3" flex/>
+                    </md-input-container>
+                  </div>
 
-                    <div layout="row" class="pad-bottom" flex>
-                      <md-input-container flex>
-                        <input mdInput placeholder="Poscode" flex/>
-                      </md-input-container>
-                    </div>
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Poscode" flex/>
+                    </md-input-container>
                   </div>
                 </div>
-              </md-card>
+              </div>
             </td-expansion-panel>
             <td-expansion-panel label="Working Experience">
               <pams-employment-list
@@ -295,30 +292,30 @@
               <md-card>
                 <md-divider>
                   <!--<td-data-table-->
-                    <!--[data]="facultyCodes$ | async"-->
-                    <!--[columns]="columns"-->
-                    <!--[sortBy]="summary"-->
-                    <!--[sortOrder]="ASC"-->
-                    <!--[sortable]="false"-->
-                    <!--[multiple]="false"-->
-                    <!--[selectable]="false"-->
-                    <!--(rowSelect)="view.emit($event)" dense>-->
-                    <!--<template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">-->
-                      <!--<div layout="row">-->
-                        <!--<span flex>{{value}}</span>-->
-                      <!--</div>-->
-                    <!--</template>-->
-                    <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">-->
-                      <!--<div layout="row">-->
-                        <!--<button md-icon-button [md-menu-trigger-for]="menu">-->
-                          <!--<md-icon>more_vert</md-icon>-->
-                        <!--</button>-->
-                        <!--<md-menu x-position="before" #menu="mdMenu">-->
-                          <!--<a md-menu-item>Edit</a>-->
-                          <!--<button md-menu-item (click)="delete(row)">Delete</button>-->
-                        <!--</md-menu>-->
-                      <!--</div>-->
-                    <!--</template>-->
+                  <!--[data]="facultyCodes$ | async"-->
+                  <!--[columns]="columns"-->
+                  <!--[sortBy]="summary"-->
+                  <!--[sortOrder]="ASC"-->
+                  <!--[sortable]="false"-->
+                  <!--[multiple]="false"-->
+                  <!--[selectable]="false"-->
+                  <!--(rowSelect)="view.emit($event)" dense>-->
+                  <!--<template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">-->
+                  <!--<div layout="row">-->
+                  <!--<span flex>{{value}}</span>-->
+                  <!--</div>-->
+                  <!--</template>-->
+                  <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">-->
+                  <!--<div layout="row">-->
+                  <!--<button md-icon-button [md-menu-trigger-for]="menu">-->
+                  <!--<md-icon>more_vert</md-icon>-->
+                  <!--</button>-->
+                  <!--<md-menu x-position="before" #menu="mdMenu">-->
+                  <!--<a md-menu-item>Edit</a>-->
+                  <!--<button md-menu-item (click)="delete(row)">Delete</button>-->
+                  <!--</md-menu>-->
+                  <!--</div>-->
+                  <!--</template>-->
                   <!--</td-data-table>-->
                 </md-divider>
                 <md-card-actions>

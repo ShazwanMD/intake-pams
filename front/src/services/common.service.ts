@@ -1,5 +1,5 @@
-import { ParliamentCode } from './../app/common/parliament-codes/parliament-code.interface';
-import { StudyCenterCode } from './../app/common/study-center-codes/study-center-code.interface';
+import {ParliamentCode} from './../app/common/parliament-codes/parliament-code.interface';
+import {StudyCenterCode} from './../app/common/study-center-codes/study-center-code.interface';
 import {StudyMode} from './../app/common/study-modes/study-mode.interface';
 import {NationalityCode} from './../app/common/nationality-codes/nationality-code.interface';
 import {EthnicityCode} from './../app/common/ethnicity-codes/ethnicity-code.interface';
@@ -23,11 +23,11 @@ import {BankCode} from "../app/common/bank-codes/bank-code.interface";
 import {DisabilityCode} from "../app/common/disability-codes/disability-code.interface";
 import {SchoolCode} from "../app/common/school-codes/school-code.interface";
 import {DistrictCode} from "../app/common/district-codes/district-code.interface";
+import {ResidencyCode} from "../app/common/residency-codes/residency-code.interface";
 
 
 @Injectable()
 export class CommonService {
-
 
   constructor(private http: Http,
               private _http: HttpInterceptorService) {
@@ -145,7 +145,7 @@ export class CommonService {
   // PARLIAMENT CODES
   // ====================================================================================================
 
-    findParliamentCodes(): Observable<ParliamentCode[]> {
+  findParliamentCodes(): Observable<ParliamentCode[]> {
     console.log("findParliamentCodes");
     return this.http.get(environment.endpoint + '/api/common/parliamentCodes')
       .map((res: Response) => <ParliamentCode[]>res.json());
@@ -186,6 +186,7 @@ export class CommonService {
     return this.http.delete(environment.endpoint + '/api/common/parliamentCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
   // ====================================================================================================
   // GENDER CODES
   // ====================================================================================================
@@ -408,7 +409,7 @@ export class CommonService {
 // COUNTRY CODES
 // ====================================================================================================
 
-   findCountryCodes(): Observable<CountryCode[]> {
+  findCountryCodes(): Observable<CountryCode[]> {
     console.log("findCountryCodes");
     return this.http.get(environment.endpoint + '/api/common/countryCodes')
       .map((res: Response) => <CountryCode[]>res.json());
@@ -492,7 +493,7 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
- updateSupervisorCode(code: SupervisorCode) {
+  updateSupervisorCode(code: SupervisorCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -549,7 +550,7 @@ export class CommonService {
 // ETHNICITY CODES
 // ====================================================================================================
 
-findEthnicityCodes(): Observable<EthnicityCode[]> {
+  findEthnicityCodes(): Observable<EthnicityCode[]> {
     console.log("findEthnicityCodes");
     return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
       .map((res: Response) => <EthnicityCode[]>res.json());
@@ -590,9 +591,10 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
     return this.http.delete(environment.endpoint + '/api/common/ethnicityCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-// ====================================================================================================
-// NATIONALITY CODES
-// ====================================================================================================
+
+  // ====================================================================================================
+  // NATIONALITY CODES
+  // ====================================================================================================
 
   findNationalityCodes(): Observable<NationalityCode[]> {
     console.log("findNationalityCodes");
@@ -635,6 +637,53 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
     return this.http.delete(environment.endpoint + '/api/common/nationalityCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  // ====================================================================================================
+  // RESIDENCY CODES
+  // ====================================================================================================
+
+  findResidencyCodes(): Observable<ResidencyCode[]> {
+    console.log("findResidencyCodes");
+    return this.http.get(environment.endpoint + '/api/common/residencyCodes')
+      .map((res: Response) => <ResidencyCode[]>res.json());
+  }
+
+  findResidencyCodeByCode(code: string): Observable<ResidencyCode> {
+    console.log("findResidencyCodeByCode");
+    return this.http.get(environment.endpoint + '/api/common/residencyCodes/' + code)
+      .map((res: Response) => <ResidencyCode>res.json());
+  }
+
+  saveResidencyCode(code: ResidencyCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/residencyCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateResidencyCode(code: ResidencyCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/residencyCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeResidencyCode(code: ResidencyCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/residencyCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // DISABILITY CODES
   // ====================================================================================================
@@ -763,7 +812,7 @@ findEthnicityCodes(): Observable<EthnicityCode[]> {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  removeStudyCenterCode(code:StudyCenterCode) {
+  removeStudyCenterCode(code: StudyCenterCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token

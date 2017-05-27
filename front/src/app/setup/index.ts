@@ -1,61 +1,56 @@
-import { DistrictCodeEditorDialog } from './district-codes/dialog/district-code-editor.dialog';
-import { DistrictCodeListPage } from './district-codes/district-code-list-page';
-import { DunCodeEditorDialog } from './dun-codes/dialog/dun-code-editor.dialog';
-import { DunCodeListPage } from './dun-codes/dun-code-list-page';
-import { ParliamentCodeEditorDialog } from './parliament-codes/dialog/parliament-code-editor.dialog';
-import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list-page';
-import { StudyCenterCodeEditorDialog } from './study-center-codes/dialogs/study-center-code-editor.dialog';
-import { StudyCenterCode } from './../common/study-center-codes/study-center-code.interface';
-import { StudyCenterCodeListPage } from './study-center-codes/study-center-code-list.page';
-import { SchoolCodeEditorDialog } from './school-codes/dialog/school-code-editor.dialog';
-import { SchoolCodeListPage } from './school-codes/school-code-list-page';
-import { DisabilityCode } from './../common/disability-codes/disability-code.interface';
-import { DisabilityCodeEditorDialog } from './disability-codes/dialog/disability-code-editor.dialog';
-import { IntakeSessionSubModule } from './../policy/intake-sessions/index';
-import { ProgramLevelSubModule } from './../policy/program-levels/index';
-import { FacultyCodeSelectComponent } from './../common/faculty-codes/component/faculty-code-select.component';
-import { ProgramCodeSelectComponent } from './../common/program-codes/component/program-code-select.component';
-import { StudyModeSelectComponent } from './../common/study-modes/component/study-mode-select.component';
-import { ProgramLevelSelectComponent } from './../policy/program-levels/component/program-level-select.component';
-import { GraduateCentreSelectComponent } from './../common/graduate-centres/component/graduate-centre-select.component';
-import { SupervisorCodeEditorDialog } from './supervisor-codes/dialog/supervisor-code-editor.dialog';
-import { StudyMode } from './../common/study-modes/study-mode.interface';
-import { StudyModeListPage } from './study-modes/study-mode-list.page';
-import { StudyModeCreatorDialog } from './study-modes/dialog/study-mode-creator.dialog';
-import { FacultyCodeCreatorDialog } from './faculty-codes/dialog/faculty-code-creator.dialog';
-import { FacultyCodeListPage } from './faculty-codes/faculty-code-list.page';
-import { FacultyCode } from './../common/faculty-codes/faculty-code.interface';
-import { NationalityCodeCreatorDialog } from './nationality-codes/dialog/nationality-code-creator.dialog';
-import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
-import { NationalityCode } from './../common/nationality-codes/nationality-code.interface';
-import { EthnicityCodeCreatorDialog } from './ethnicity-codes/dialog/ethnicity-code-creator.dialog';
-import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
-import { EthnicityCode } from './../common/ethnicity-codes/ethnicity-code.interface';
-import { GenderCodeCreatorDialog } from './gender-codes/dialog/gender-code-creator.dialog';
-import { GenderCodeListPage } from './gender-codes/gender-code-list.page';
-import { GenderCode } from './../common/gender-codes/gender-code.interface';
-import { RaceCodeCreatorDialog } from './race-codes/dialog/race-code-creator.dialog';
-import { RaceCodeListPage } from './race-codes/race-code-list.page';
-import { RaceCode } from './../common/race-codes/race-code.interface';
-import { SupervisorCodeListPage } from './supervisor-codes/supervisor-code-list.page';
-import { SupervisorCode } from './../common/supervisor-codes/supervisor-code.interface';
-import { ReligionCodeCreatorDialog } from './religion-codes/dialog/religion-code-creator.dialog';
-import { ProgramCodeCreatorDialog } from './program-codes/dialog/program-code-creator.dialog';
-import { ProgramCodeListPage } from './program-codes/program-code-list.page';
-import { ProgramCode } from './../common/program-codes/program-code.interface';
-import { StateCodeCreatorDialog } from './state-codes/dialog/state-code-creator.dialog';
-import { StateCodeListPage } from './state-codes/state-code-list.page';
-import { StateCode } from './../common/state-codes/state-code.interface';
-import { CountryCodeCreatorDialog } from './country-codes/dialog/country-code-creator.dialog';
-import { CountryCodeListPage } from './country-codes/country-code-list.page';
-import { CountryCode } from './../common/country-codes/country-code.interface';
-import { MaritalCodeListPage } from './marital-codes/marital-code-list-page';
-import { BankCode } from './../common/bank-codes/bank-code.interface';
-import { MaritalCode } from './../common/marital-codes/marital-code.interface';
-import { ReligionCode } from './../common/religion-codes/religion-code.interface';
-import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
-import { SetupPage } from './setup.page';
-import { DisabilityCodeListPage } from './disability-codes/disability-code-list-page';
+import {DistrictCodeEditorDialog} from './district-codes/dialog/district-code-editor.dialog';
+import {DistrictCodeListPage} from './district-codes/district-code-list-page';
+import {DunCodeEditorDialog} from './dun-codes/dialog/dun-code-editor.dialog';
+import {DunCodeListPage} from './dun-codes/dun-code-list-page';
+import {ParliamentCodeEditorDialog} from './parliament-codes/dialog/parliament-code-editor.dialog';
+import {ParliamentCodeListPage} from './parliament-codes/parliament-code-list-page';
+import {StudyCenterCodeEditorDialog} from './study-center-codes/dialogs/study-center-code-editor.dialog';
+import {StudyCenterCode} from './../common/study-center-codes/study-center-code.interface';
+import {StudyCenterCodeListPage} from './study-center-codes/study-center-code-list.page';
+import {SchoolCodeEditorDialog} from './school-codes/dialog/school-code-editor.dialog';
+import {SchoolCodeListPage} from './school-codes/school-code-list-page';
+import {DisabilityCode} from './../common/disability-codes/disability-code.interface';
+import {DisabilityCodeEditorDialog} from './disability-codes/dialog/disability-code-editor.dialog';
+import {IntakeSessionSubModule} from './../policy/intake-sessions/index';
+import {ProgramLevelSubModule} from './../policy/program-levels/index';
+import {SupervisorCodeEditorDialog} from './supervisor-codes/dialog/supervisor-code-editor.dialog';
+import {StudyMode} from './../common/study-modes/study-mode.interface';
+import {StudyModeListPage} from './study-modes/study-mode-list.page';
+import {StudyModeCreatorDialog} from './study-modes/dialog/study-mode-creator.dialog';
+import {FacultyCodeCreatorDialog} from './faculty-codes/dialog/faculty-code-creator.dialog';
+import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
+import {FacultyCode} from './../common/faculty-codes/faculty-code.interface';
+import {NationalityCodeCreatorDialog} from './nationality-codes/dialog/nationality-code-creator.dialog';
+import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
+import {NationalityCode} from './../common/nationality-codes/nationality-code.interface';
+import {EthnicityCodeCreatorDialog} from './ethnicity-codes/dialog/ethnicity-code-creator.dialog';
+import {EthnicityCodeListPage} from './ethnicity-codes/ethnicity-code-list.page';
+import {EthnicityCode} from './../common/ethnicity-codes/ethnicity-code.interface';
+import {GenderCodeCreatorDialog} from './gender-codes/dialog/gender-code-creator.dialog';
+import {GenderCodeListPage} from './gender-codes/gender-code-list.page';
+import {GenderCode} from './../common/gender-codes/gender-code.interface';
+import {RaceCodeCreatorDialog} from './race-codes/dialog/race-code-creator.dialog';
+import {RaceCodeListPage} from './race-codes/race-code-list.page';
+import {RaceCode} from './../common/race-codes/race-code.interface';
+import {SupervisorCodeListPage} from './supervisor-codes/supervisor-code-list.page';
+import {SupervisorCode} from './../common/supervisor-codes/supervisor-code.interface';
+import {ReligionCodeCreatorDialog} from './religion-codes/dialog/religion-code-creator.dialog';
+import {ProgramCodeCreatorDialog} from './program-codes/dialog/program-code-creator.dialog';
+import {ProgramCodeListPage} from './program-codes/program-code-list.page';
+import {ProgramCode} from './../common/program-codes/program-code.interface';
+import {StateCodeCreatorDialog} from './state-codes/dialog/state-code-creator.dialog';
+import {StateCodeListPage} from './state-codes/state-code-list.page';
+import {StateCode} from './../common/state-codes/state-code.interface';
+import {CountryCodeCreatorDialog} from './country-codes/dialog/country-code-creator.dialog';
+import {CountryCodeListPage} from './country-codes/country-code-list.page';
+import {CountryCode} from './../common/country-codes/country-code.interface';
+import {MaritalCodeListPage} from './marital-codes/marital-code-list-page';
+import {BankCode} from './../common/bank-codes/bank-code.interface';
+import {MaritalCode} from './../common/marital-codes/marital-code.interface';
+import {ReligionCode} from './../common/religion-codes/religion-code.interface';
+import {ReligionCodeListPage} from './religion-codes/religion-code-list.page';
+import {SetupPage} from './setup.page';
+import {DisabilityCodeListPage} from './disability-codes/disability-code-list-page';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
@@ -88,32 +83,36 @@ import {titleReducer, TitleState} from "./title.reducer";
 import {MaritalCodeEditorDialog} from "./marital-codes/dialog/marital-code-editor.dialog";
 import {disabilityCodeListReducer, DisabilityCodeListState} from "./disability-codes/disability-code-list.reducer";
 import {schoolCodeListReducer, SchoolCodeListState} from "./school-codes/school-code-list.reducer";
-import { SchoolCode } from './../common/school-codes/school-code.interface';
-import {studyCenterCodeListReducer, StudyCenterCodeListState} from "./study-center-codes/study-center-code-list.reducer";
+import {SchoolCode} from './../common/school-codes/school-code.interface';
+import {
+  studyCenterCodeListReducer,
+  StudyCenterCodeListState
+} from "./study-center-codes/study-center-code-list.reducer";
 import {districtCodeListReducer, DistrictCodeListState} from "./district-codes/district-code-list.reducer";
-import { DistrictCode } from './../common/district-codes/district-code.interface';
+import {DistrictCode} from './../common/district-codes/district-code.interface';
 import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.reducer";
-import { DunCode } from './../common/dun-codes/dun-code.interface';
+import {DunCode} from './../common/dun-codes/dun-code.interface';
 import {parliamentCodeListReducer, ParliamentCodeListState} from "./parliament-codes/parliament-code-list.reducer";
-import { ParliamentCode } from './../common/parliament-codes/parliament-code.interface';
+import {ParliamentCode} from './../common/parliament-codes/parliament-code.interface';
+import {ResidencyCodeSelectComponent} from "../common/residency-codes/component/residency-code-select.component";
 
 
 export interface SetupModuleState {
-  title:TitleState;
+  title: TitleState;
   maritalCodes: MaritalCodeListState;
   bankCodes: BankCodeListState;
   graduateCentres: GraduateCentreListState;
-  religionCodes : ReligionCodeListState;
-  countryCodes : CountryCodeListState;
-  stateCodes : StateCodeListState;
-  programCodes : ProgramCodeListState;
-  supervisorCodes : SupervisorCodeListState;
-  raceCodes : RaceCodeListState;
-  genderCodes : GenderCodeListState;
-  ethnicityCodes : EthnicityCodeListState;
-  nationalityCodes : NationalityCodeListState;
-  facultyCodes : FacultyCodeListState;
-  studyModes : StudyModeListState;
+  religionCodes: ReligionCodeListState;
+  countryCodes: CountryCodeListState;
+  stateCodes: StateCodeListState;
+  programCodes: ProgramCodeListState;
+  supervisorCodes: SupervisorCodeListState;
+  raceCodes: RaceCodeListState;
+  genderCodes: GenderCodeListState;
+  ethnicityCodes: EthnicityCodeListState;
+  nationalityCodes: NationalityCodeListState;
+  facultyCodes: FacultyCodeListState;
+  studyModes: StudyModeListState;
   disabilityCodes: DisabilityCodeListState;
   schoolCodes: SchoolCodeListState;
   studyCenterCodes: StudyCenterCodeListState;
@@ -121,11 +120,12 @@ export interface SetupModuleState {
   dunCodes: DunCodeListState;
   parliamentCodes: ParliamentCodeListState;
 
-};
+}
+;
 
 export const INITIAL_SETUP_STATE: SetupModuleState =
   <SetupModuleState>{
-    title:'Setup Codes',
+    title: 'Setup Codes',
     bankCodes: <BankCode[]>[],
     graduateCentres: <GraduateCentre[]>[],
     religionCodes: <ReligionCode[]>[],
@@ -151,7 +151,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
 
 
 export const setupModuleReducers = {
-  title:titleReducer,
+  title: titleReducer,
   bankCodes: bankCodeListReducer,
   graduateCentres: graduateCentreListReducer,
   religionCodes: religionCodeListReducer,
@@ -210,7 +210,7 @@ export const setupModuleReducers = {
     DistrictCodeListPage,
     DunCodeListPage,
     ParliamentCodeListPage,
-  
+
     // dialog
     MaritalCodeEditorDialog,
     BankCodeCreatorDialog,
@@ -232,6 +232,7 @@ export const setupModuleReducers = {
     DistrictCodeEditorDialog,
     DunCodeEditorDialog,
     ParliamentCodeEditorDialog,
+
   ],
   exports: [],
   entryComponents: [

@@ -7,7 +7,8 @@ import {CommonActions} from "./common.action";
 export class CommonEffects {
   constructor(private actions$: Actions,
               private commonActions: CommonActions,
-              private commonService: CommonService) {}
+              private commonService: CommonService) {
+  }
 
   @Effect() findDunCodes$ = this.actions$
     .ofType(CommonActions.FIND_DUN_CODES)
@@ -33,13 +34,13 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findMaritalCodes())
     .map(codes => this.commonActions.findMaritalCodesSuccess(codes));
 
-     @Effect() findDisabilityCodes$ = this.actions$
+  @Effect() findDisabilityCodes$ = this.actions$
     .ofType(CommonActions.FIND_DISABILITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findDisabilityCodes())
     .map(codes => this.commonActions.findDisabilityCodesSuccess(codes));
 
- @Effect() findSchoolCodes$ = this.actions$
+  @Effect() findSchoolCodes$ = this.actions$
     .ofType(CommonActions.FIND_SCHOOL_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findSchoolCodes())
@@ -63,59 +64,66 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findProgramCodes())
     .map(codes => this.commonActions.findProgramCodesSuccess(codes));
 
-   @Effect() findStudyMode$ = this.actions$
-     .ofType(CommonActions.FIND_STUDY_MODES)
-     .map(action => action.payload)
-     .switchMap(() => this.commonService.findStudyModes())
-     .map(codes => this.commonActions.findStudyModeSuccess(codes));
+  @Effect() findStudyMode$ = this.actions$
+    .ofType(CommonActions.FIND_STUDY_MODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findStudyModes())
+    .map(codes => this.commonActions.findStudyModeSuccess(codes));
 
-     @Effect() findSupervisorCodes$ = this.actions$
+  @Effect() findSupervisorCodes$ = this.actions$
     .ofType(CommonActions.FIND_SUPERVISOR_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findSupervisorCodes())
     .map(codes => this.commonActions.findSupervisorCodesSuccess(codes));
 
-@Effect() findRaceCodes$ = this.actions$
+  @Effect() findRaceCodes$ = this.actions$
     .ofType(CommonActions.FIND_RACE_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findRaceCodes())
     .map(codes => this.commonActions.findRaceCodesSuccess(codes));
 
-    @Effect() findStateCodes$ = this.actions$
+  @Effect() findStateCodes$ = this.actions$
     .ofType(CommonActions.FIND_STATE_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findStateCodes())
     .map(codes => this.commonActions.findStateCodesSuccess(codes));
 
-     @Effect() findCountryCodes$ = this.actions$
+  @Effect() findCountryCodes$ = this.actions$
     .ofType(CommonActions.FIND_COUNTRY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findCountryCodes())
     .map(codes => this.commonActions.findCountryCodesSuccess(codes));
 
-     @Effect() findReligionCodes$ = this.actions$
+  @Effect() findReligionCodes$ = this.actions$
     .ofType(CommonActions.FIND_RELIGION_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findReligionCodes())
     .map(codes => this.commonActions.findReligionCodesSuccess(codes));
 
-     @Effect() findStudyCenterCodes$ = this.actions$
+  @Effect() findStudyCenterCodes$ = this.actions$
     .ofType(CommonActions.FIND_STUDY_CENTER_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findStudyCenterCodes())
     .map(codes => this.commonActions.findStudyCenterCodesSuccess(codes));
 
- @Effect() findEthnicityCodes$ = this.actions$
+  @Effect() findEthnicityCodes$ = this.actions$
     .ofType(CommonActions.FIND_ETHNICITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findEthnicityCodes())
     .map(codes => this.commonActions.findEthnicityCodesSuccess(codes));
-    
-@Effect() findNationalityCodes$ = this.actions$
+
+  @Effect() findNationalityCodes$ = this.actions$
     .ofType(CommonActions.FIND_NATIONALITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findNationalityCodes())
     .map(codes => this.commonActions.findNationalityCodesSuccess(codes));
-    
+
+
+  @Effect() findResidencyCodes$ = this.actions$
+    .ofType(CommonActions.FIND_RESIDENCY_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findResidencyCodes())
+    .map(codes => this.commonActions.findResidencyCodesSuccess(codes));
+
 
 }

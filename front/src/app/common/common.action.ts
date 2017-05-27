@@ -10,7 +10,7 @@ export class CommonActions {
     console.log("findDunCodes");
     return {
       type: CommonActions.FIND_DUN_CODES
-  };
+    };
   }
 
   static FIND_DUN_CODES_SUCCESS = '[Common] Find DunCodes Success';
@@ -29,7 +29,7 @@ export class CommonActions {
     console.log("findParliamentCodes");
     return {
       type: CommonActions.FIND_PARLIAMENT_CODES
-  };
+    };
   }
 
   static FIND_PARLIAMENT_CODES_SUCCESS = '[Common] Find ParliamentCodes Success';
@@ -100,7 +100,7 @@ export class CommonActions {
     };
   }
 
-static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
+  static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
 
   findDisabilityCodes(): Action {
     console.log("findDisabilityCodes");
@@ -233,7 +233,7 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
-   static FIND_RACE_CODES = '[Common] Find Race Codes';
+  static FIND_RACE_CODES = '[Common] Find Race Codes';
 
   findRaceCodes(): Action {
     console.log("findRaceCodes");
@@ -252,7 +252,7 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
-   static FIND_STATE_CODES = '[Common] Find State Codes';
+  static FIND_STATE_CODES = '[Common] Find State Codes';
 
   findStateCodes(): Action {
     console.log("findStateCodes");
@@ -271,7 +271,7 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
-   static FIND_COUNTRY_CODES = '[Common] Find Country Codes';
+  static FIND_COUNTRY_CODES = '[Common] Find Country Codes';
 
   findCountryCodes(): Action {
     console.log("findCountryCodes");
@@ -290,7 +290,7 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
-   static FIND_STUDY_CENTER_CODES = '[Common] Find Study Center Codes';
+  static FIND_STUDY_CENTER_CODES = '[Common] Find Study Center Codes';
 
   findStudyCenterCodes(): Action {
     console.log("findStudyCenterCodes");
@@ -309,7 +309,7 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
-   static FIND_RELIGION_CODES = '[Common] Find Religion Codes';
+  static FIND_RELIGION_CODES = '[Common] Find Religion Codes';
 
   findReligionCodes(): Action {
     console.log("findReligionCodes");
@@ -347,7 +347,7 @@ static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
     };
   }
 
-static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
+  static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
 
   findNationalityCodes(): Action {
     console.log("findNationalityCodes");
@@ -362,6 +362,25 @@ static FIND_NATIONALITY_CODES = '[Common] Find Nationality Codes';
     console.log("findNationalityCodesSuccess");
     return {
       type: CommonActions.FIND_NATIONALITY_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static FIND_RESIDENCY_CODES = '[Common] Find Residency Codes';
+
+  findResidencyCodes(): Action {
+    console.log("findResidencyCodes");
+    return {
+      type: CommonActions.FIND_RESIDENCY_CODES,
+    };
+  }
+
+  static FIND_RESIDENCY_CODES_SUCCESS = '[Common] Find Residency Codes Success';
+
+  findResidencyCodesSuccess(codes): Action {
+    console.log("findResidencyCodesSuccess");
+    return {
+      type: CommonActions.FIND_RESIDENCY_CODES_SUCCESS,
       payload: codes
     };
   }
