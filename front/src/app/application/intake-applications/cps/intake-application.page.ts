@@ -55,8 +55,10 @@ export class CpsIntakeApplicationPage implements OnInit {
       okuNo: '',
       email: '',
       phone: '',
+      mobile: '',
       fax: '',
       age: 0,
+      birthDate:null,
       verified: false,
       sponsored: false,
       selfSponsored: false,
@@ -67,5 +69,9 @@ export class CpsIntakeApplicationPage implements OnInit {
   onTabChange(): void {
     console.log("tab change");
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  }
+
+  save(application:IntakeApplication, valid:boolean):void {
+    console.log("submitting");
   }
 }

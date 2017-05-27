@@ -140,12 +140,17 @@ public class ApplicationController {
     public ResponseEntity<String> updateIntakeApplication(@PathVariable String referenceNo, @RequestBody IntakeApplication vo) {
         dummyLogin();
 
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         // todo: more properties
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         application.setName(vo.getName());
         application.setPhone(vo.getPhone());
+        application.setMobile(vo.getMobile());
         application.setFax(vo.getFax());
         application.setEmail(vo.getEmail());
+        application.setAge(vo.getAge());
+
+        application.setCredentialNo(vo.getCredentialNo());
+        application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
 

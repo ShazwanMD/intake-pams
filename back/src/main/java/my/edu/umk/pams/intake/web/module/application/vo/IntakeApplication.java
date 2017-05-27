@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.web.module.application.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
@@ -10,6 +11,7 @@ import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
 
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * @author PAMS
@@ -23,9 +25,12 @@ public class IntakeApplication extends MetaObject {
     private String credentialNo;
     private String okuNo;
     private String phone;
+    private String mobile;
     private String email;
     private String fax;
     private Integer age;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date birthDate;
 
     private Boolean paid;
     private Boolean sponsored;
@@ -95,6 +100,14 @@ public class IntakeApplication extends MetaObject {
         this.phone = phone;
     }
 
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -117,6 +130,14 @@ public class IntakeApplication extends MetaObject {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public Boolean getPaid() {
@@ -202,7 +223,5 @@ public class IntakeApplication extends MetaObject {
         }
         return o;
     }
-
 }
-
 

@@ -42,9 +42,17 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setPhone(String phone);
 
+    String getMobile();
+
+    void setMobile(String mobile);
+
     String getFax();
 
     void setFax(String fax);
+
+    Date getBirthDate();
+
+    void setBirthDate(Date birthDate);
 
     Integer getAge();
 

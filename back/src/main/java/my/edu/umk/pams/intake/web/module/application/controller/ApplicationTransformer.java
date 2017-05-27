@@ -27,7 +27,10 @@ public class ApplicationTransformer {
         vo.setCredentialNo(e.getCredentialNo());
         vo.setEmail(e.getEmail());
         vo.setPhone(e.getPhone());
+        vo.setMobile(e.getMobile());
         vo.setFax(e.getFax());
+        vo.setAge(e.getAge());
+        vo.setBirthDate(e.getBirthDate());
         vo.setVerified(e.isVerified());
         vo.setPaid(e.isPaid());
         vo.setSponsored(e.isSponsored());

@@ -13,8 +13,10 @@ export interface IntakeApplication extends MetaObject{
   okuNo: string;
   email: string;
   phone: string;
+  mobile: string;
   fax: string;
   age: number;
+  birthDate: Date;
 
   paid: boolean;
   verified: boolean;

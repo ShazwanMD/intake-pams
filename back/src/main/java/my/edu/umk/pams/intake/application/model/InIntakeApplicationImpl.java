@@ -45,6 +45,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "PHONE")
     private String phone;
 
+    @Column(name = "MOBILE")
+    private String mobile;
+
     @Column(name = "FAX")
     private String fax;
 
@@ -58,6 +61,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @NotNull
     @Column(name = "PAYMENT_SOURCE_NO")
     private String paymentSourceNo;
+
+    @Column(name = "BIRTH_DATE")
+    private Date birthDate;
 
     @NotNull
     @Column(name = "AGE")
@@ -282,6 +288,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     }
 
     @Override
+    public String getMobile() {
+        return mobile;
+    }
+
+    @Override
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    @Override
     public String getFax() {
         return fax;
     }
@@ -289,6 +305,26 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setFax(String fax) {
         this.fax = fax;
+    }
+
+    @Override
+    public Integer getAge() {
+        return age;
+    }
+
+    @Override
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    @Override
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    @Override
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     @Override
@@ -331,7 +367,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.reason = reason;
     }
 
-
     @Override
     public Boolean isPaid() {
         return paid;
@@ -362,10 +397,12 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.selfSponsored = selfSponsored;
     }
 
+    @Override
     public Boolean isVerified() {
         return verified;
     }
 
+    @Override
     public void setVerified(Boolean verified) {
         this.verified = verified;
     }
@@ -586,16 +623,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setStudyModeSelection(InStudyModeOffering studyModeSelection) {
         this.studyModeSelection = studyModeSelection;
-    }
-
-    @Override
-    public Integer getAge() {
-        return age;
-    }
-
-    @Override
-    public void setAge(Integer age) {
-        this.age = age;
     }
 
     @Override
