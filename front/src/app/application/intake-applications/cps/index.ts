@@ -1,3 +1,6 @@
+import { AddressCreatorDialog } from './../component/dialog/address-creator.dialog';
+import { Address } from './../address.interface';
+import { AddressListComponent } from './../component/address-list.component';
 import {RefereeCreatorDialog} from './../component/dialog/referee-creator.dialog';
 import {RefereeListComponent} from './../component/referee-list.component';
 import {EmploymentCreatorDialog} from './../component/dialog/employment-creator.dialog';
@@ -20,6 +23,7 @@ import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-
 import {EmploymentListComponent} from "../component/employment-list.component";
 
 
+
 @NgModule({
   imports: [
     appRoutes,
@@ -37,15 +41,18 @@ import {EmploymentListComponent} from "../component/employment-list.component";
     //components
     EmploymentListComponent,
     RefereeListComponent,
+    AddressListComponent,
 
     //dialogs
     EmploymentCreatorDialog,
     RefereeCreatorDialog,
+    AddressCreatorDialog,
   ],
   exports: [],
   entryComponents: [
     EmploymentCreatorDialog,
     RefereeCreatorDialog,
+    AddressCreatorDialog,
 
   ],
 })

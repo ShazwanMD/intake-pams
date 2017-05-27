@@ -97,35 +97,11 @@
             </td-expansion-panel>
 
             <td-expansion-panel label="Address Information">
-              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-                <!-- first column -->
-                <div layout="column" class="pad-right" flex>
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Address 1" flex/>
-                    </md-input-container>
-                  </div>
-
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Address 2" flex/>
-                    </md-input-container>
-                  </div>
-
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Address 3" flex/>
-                    </md-input-container>
-                  </div>
-
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Poscode" flex/>
-                    </md-input-container>
-                  </div>
-                </div>
-              </div>
+              <pams-address-list
+                [intakeApplication]="intakeApplication$ | async"
+                [addresses]="addresses$ | async"></pams-address-list>
             </td-expansion-panel>
+
             <td-expansion-panel label="Working Experience">
               <pams-employment-list
                 [intakeApplication]="intakeApplication$ | async"

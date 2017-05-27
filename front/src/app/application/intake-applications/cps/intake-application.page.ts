@@ -1,3 +1,4 @@
+import { Address } from './../address.interface';
 import {Referee} from './../referee.interface';
 import {Employment} from './../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
@@ -10,6 +11,7 @@ import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 
 
+
 @Component({
   selector: 'pams-intake-application',
   templateUrl: './intake-application.page.html',
@@ -18,13 +20,15 @@ import {IntakeApplication} from "../intake-application.interface";
 export class CpsIntakeApplicationPage implements OnInit {
 
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
-  private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
-  private REFEREES: string[] = "applicationModuleState.referees".split(".");
+  private EMPLOYMENTS = "applicationModuleState.employments".split(".");
+  private REFEREES = "applicationModuleState.referees".split(".");
+  private ADDRESSES = "applicationModuleState.addresses".split(".");
 
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private referees$: Observable<Referee>;
+  private addresses$: Observable<Address>;
   private applicationForm: FormGroup;
 
   constructor(private router: Router,
@@ -37,6 +41,7 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.referees$ = this.store.select(...this.REFEREES);
+    this.addresses$ = this.store.select(...this.ADDRESSES);
   }
 
   ngOnInit(): void {
@@ -55,10 +60,8 @@ export class CpsIntakeApplicationPage implements OnInit {
       okuNo: '',
       email: '',
       phone: '',
-      mobile: '',
       fax: '',
       age: 0,
-      birthDate: null,
       verified: false,
       sponsored: false,
       selfSponsored: false,
@@ -69,9 +72,5 @@ export class CpsIntakeApplicationPage implements OnInit {
   onTabChange(): void {
     console.log("tab change");
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
-  }
-
-  save(application: IntakeApplication, valid: boolean): void {
-    console.log("submitting");
   }
 }
