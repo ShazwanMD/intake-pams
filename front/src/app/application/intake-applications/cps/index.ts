@@ -1,3 +1,4 @@
+import { AddressTypeSelectComponent } from './../component/address-type-select.component';
 import { AddressCreatorDialog } from './../component/dialog/address-creator.dialog';
 import { Address } from './../address.interface';
 import { AddressListComponent } from './../component/address-list.component';
@@ -25,6 +26,7 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
 
 
 
+
 @NgModule({
   imports: [
     appRoutes,
@@ -44,6 +46,7 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
     RefereeListComponent,
     ProgramChoiceComponent,
     AddressListComponent,
+    AddressTypeSelectComponent,
 
     //dialogs
     EmploymentCreatorDialog,

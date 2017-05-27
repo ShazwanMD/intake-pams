@@ -10,6 +10,7 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
+import { AddressType } from "../../address-type.enum";
 
 
 
@@ -46,7 +47,7 @@ export class AddressCreatorDialog implements OnInit {
       postcode: '',
       stateCode: <StateCode>{},
       countryCode: <CountryCode>{},
-      addressType: null,   
+      addressType: AddressType.MAILING,
     });
   }
 

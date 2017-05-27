@@ -38,7 +38,7 @@ import {ProgramChoiceComponent} from "./component/program-choice.component";
     MyIntakeApplicationPage,
 
     //components
-    AddressTypeSelectComponent,
+    //AddressTypeSelectComponent,
 
     //dialogs
     EducationCreatorDialog,
