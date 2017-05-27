@@ -43,7 +43,7 @@ public class ApplicationController {
 
     @Autowired
     private CommonService commonService;
-    
+
     @Autowired
     private PolicyTransformer policyTransformer;
 
@@ -108,8 +108,17 @@ public class ApplicationController {
         dummyLogin();
 
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-       List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramOffering>> findProgramOfferings(@PathVariable String referenceNo) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        List<InProgramOffering> programOfferings = policyService.findProgramOfferings(intake);
+        return new ResponseEntity<List<ProgramOffering>>(policyTransformer.toProgramOfferingVos(programOfferings), HttpStatus.OK);
     }
 
     // ====================================================================================================
@@ -169,156 +178,147 @@ public class ApplicationController {
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
-    // PROGRAM OFFERINGS BY INTAKE APPLICATION
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/programOfferings", method = RequestMethod.GET)
-    public ResponseEntity<List<ProgramOffering>> findProgramOfferingsByIntakeApplication(@PathVariable String referenceNo) {
+    // ====================================================================================================
+    // EMPLOYMENTS
+    // ====================================================================================================
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/employments", method = RequestMethod.GET)
+    public ResponseEntity<List<Employment>> findEmploymentsByIntakeApplication(@PathVariable String referenceNo) {
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        List<InProgramOffering>  offerings = applicationService.findProgramOfferings(application);
-        return new ResponseEntity<List<ProgramOffering>>(policyTransformer.toProgramOfferingVos(offerings), HttpStatus.OK);
+        List<InEmployment> employments = applicationService.findEmployments(application);
+        return new ResponseEntity<List<Employment>>(applicationTransformer.toEmploymentVos(employments), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/employments", method = RequestMethod.POST)
+    public ResponseEntity<String> addEmployment(@PathVariable String referenceNo, @RequestBody Employment vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InEmployment employment = new InEmploymentImpl();
+        employment.setEmployer(vo.getEmployer());
+        employment.setDesignation(vo.getDesignation());
+        employment.setStartDate(vo.getStartDate());
+        employment.setEndDate(vo.getEndDate());
+        // employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
+        // employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
+        // employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
+        employment.setCurrent(false);
+        applicationService.addEmployment(application, employment);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+
+    // ====================================================================================================
+    // EDUCATIONS
+    // ====================================================================================================
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/educations", method = RequestMethod.GET)
+    public ResponseEntity<List<Education>> findEducationsByIntakeApplication(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InEducation> educations = applicationService.findEducations(application);
+        return new ResponseEntity<List<Education>>(applicationTransformer.toEducationVos(educations), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/educations", method = RequestMethod.POST)
+    public ResponseEntity<String> addEducation(@PathVariable String referenceNo, @RequestBody Education vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InEducation education = new InEducationImpl();
+        education.setProvider(vo.getProvider());
+        education.setStartDate(vo.getStartDate());
+        education.setEndDate(vo.getEndDate());
+        education.setCurrent(false);
+        applicationService.addEducation(application, education);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     // ====================================================================================================
-	// EMPLOYMENTS
-	// ====================================================================================================
+    // SPM RESULTS
+    // ====================================================================================================
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/employments", method = RequestMethod.GET)
-	public ResponseEntity<List<Employment>> findEmploymentsByIntakeApplication(@PathVariable String referenceNo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		List<InEmployment> employments = applicationService.findEmployments(application);
-		return new ResponseEntity<List<Employment>>(applicationTransformer.toEmploymentVos(employments), HttpStatus.OK);
-	}
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/spmResults", method = RequestMethod.GET)
+    public ResponseEntity<List<SpmResult>> findSpmResultsByIntakeApplication(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/employments", method = RequestMethod.POST)
-	public ResponseEntity<String> addEmployment(@PathVariable String referenceNo, @RequestBody Employment vo) {
-		dummyLogin();
+        List<InSpmResult> spmResults = applicationService.findSpmResults(application);
 
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		InEmployment employment = new InEmploymentImpl();
-		employment.setEmployer(vo.getEmployer());
-        employment.setDesignation(vo.getDesignation());
-		employment.setStartDate(vo.getStartDate());
-		employment.setEndDate(vo.getEndDate());
-		// employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
-		// employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
-		// employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
-		employment.setCurrent(false);
-		applicationService.addEmployment(application, employment);
+        return new ResponseEntity<List<SpmResult>>(applicationTransformer.toSpmResultVos(spmResults), HttpStatus.OK);
+    }
 
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
-	
-	
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/spmResults", method = RequestMethod.POST)
+    public ResponseEntity<String> addSpmResult(@PathVariable String referenceNo, @RequestBody SpmResult vo) {
+        dummyLogin();
 
-	// ====================================================================================================
-	// EDUCATIONS
-	// ====================================================================================================
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InSpmResult spmResult = new InSpmResultImpl();
+        spmResult.SetMalay(vo.getMalay());
+        spmResult.SetEnglish(vo.getEnglish());
+        spmResult.setIslamEduc(vo.getIslamEduc());
+        spmResult.setHistory(vo.getSejarah());
+        spmResult.setMath(vo.getMath());
+        spmResult.setYear(vo.getYear());
+        spmResult.setAggregate(vo.getAggregate());
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/educations", method = RequestMethod.GET)
-	public ResponseEntity<List<Education>> findEducationsByIntakeApplication(@PathVariable String referenceNo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		List<InEducation> educations = applicationService.findEducations(application);
-		return new ResponseEntity<List<Education>>(applicationTransformer.toEducationVos(educations), HttpStatus.OK);
-	}
+        applicationService.addSpmResult(application, spmResult);
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/educations", method = RequestMethod.POST)
-	public ResponseEntity<String> addEducation(@PathVariable String referenceNo, @RequestBody Education vo) {
-		dummyLogin();
-
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		InEducation education = new InEducationImpl();
-		education.setProvider(vo.getProvider());
-		education.setStartDate(vo.getStartDate());
-		education.setEndDate(vo.getEndDate());
-		education.setCurrent(false);
-		applicationService.addEducation(application, education);
-
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     // ====================================================================================================
-	// SPM RESULTS
-	// ====================================================================================================
+    // REFERESS
+    // ====================================================================================================
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/spmResults", method = RequestMethod.GET)
-	public ResponseEntity<List<SpmResult>> findSpmResultsByIntakeApplication(@PathVariable String referenceNo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/referees", method = RequestMethod.GET)
+    public ResponseEntity<List<Referee>> findRefereesByIntakeApplication(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InReferee> referees = applicationService.findReferees(application);
+        return new ResponseEntity<List<Referee>>(applicationTransformer.toRefereeVos(referees), HttpStatus.OK);
+    }
 
-		List<InSpmResult> spmResults = applicationService.findSpmResults(application);
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/referees", method = RequestMethod.POST)
+    public ResponseEntity<String> addReferee(@PathVariable String referenceNo, @RequestBody Referee vo) {
+        dummyLogin();
 
-		return new ResponseEntity<List<SpmResult>>(applicationTransformer.toSpmResultVos(spmResults), HttpStatus.OK);
-	}
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InReferee referee = new InRefereeImpl();
+        referee.setName(vo.getName());
+        referee.setOfficeAddrs(vo.getOfficeAddrs());
+        referee.setOccupation(vo.getOccupation());
+        referee.setPhoneNo(vo.getPhoneNo());
+        applicationService.addReferee(application, referee);
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/spmResults", method = RequestMethod.POST)
-	public ResponseEntity<String> addSpmResult(@PathVariable String referenceNo, @RequestBody SpmResult vo) {
-		dummyLogin();
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		InSpmResult spmResult = new InSpmResultImpl();
-		spmResult.SetMalay(vo.getMalay());
-		spmResult.SetEnglish(vo.getEnglish());
-		spmResult.setIslamEduc(vo.getIslamEduc());
-		spmResult.setHistory(vo.getSejarah());
-		spmResult.setMath(vo.getMath());
-		spmResult.setYear(vo.getYear());
-		spmResult.setAggregate(vo.getAggregate());
+    // ====================================================================================================
+    // ADDRESS
+    // ====================================================================================================
 
-		applicationService.addSpmResult(application, spmResult);
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses", method = RequestMethod.GET)
+    public ResponseEntity<List<Address>> findAddressesByIntakeApplication(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InAddress> address = applicationService.findAddresses(application);
+        return new ResponseEntity<List<Address>>(applicationTransformer.toAddressVos(address), HttpStatus.OK);
+    }
 
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
-	
-	// ====================================================================================================
-	// REFERESS
-	// ====================================================================================================
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses", method = RequestMethod.POST)
+    public ResponseEntity<String> addAddress(@PathVariable String referenceNo, @RequestBody Address vo) {
+        dummyLogin();
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/referees", method = RequestMethod.GET)
-	public ResponseEntity<List<Referee>> findRefereesByIntakeApplication(@PathVariable String referenceNo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		List<InReferee> referees = applicationService.findReferees(application);
-		return new ResponseEntity<List<Referee>>(applicationTransformer.toRefereeVos(referees), HttpStatus.OK);
-	}
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InAddress address = new InAddressImpl();
+        address.setAddress1(vo.getAddress1());
+        address.setAddress2(vo.getAddress2());
+        address.setAddress3(vo.getAddress3());
+        address.setPostCode(vo.getPostcode());
+        applicationService.addAddress(application, address);
 
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/referees", method = RequestMethod.POST)
-	public ResponseEntity<String> addReferee(@PathVariable String referenceNo, @RequestBody Referee vo) {
-		dummyLogin();
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		InReferee referee = new InRefereeImpl();
-		referee.setName(vo.getName());
-		referee.setOfficeAddrs(vo.getOfficeAddrs());
-		referee.setOccupation(vo.getOccupation());
-		referee.setPhoneNo(vo.getPhoneNo());
-		applicationService.addReferee(application, referee);
-		
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
-	
-	// ====================================================================================================
-	// ADDRESS
-	// ====================================================================================================
-
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/addresses", method = RequestMethod.GET)
-	public ResponseEntity<List<Address>> findAddressesByIntakeApplication(@PathVariable String referenceNo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		List<InAddress> address = applicationService.findAddresses(application);
-		return new ResponseEntity<List<Address>>(applicationTransformer.toAddressVos(address), HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/addresses", method = RequestMethod.POST)
-	public ResponseEntity<String> addAddress(@PathVariable String referenceNo, @RequestBody Address vo) {
-		dummyLogin();
-
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		InAddress address = new InAddressImpl();
-		address.setAddress1(vo.getAddress1());
-		address.setAddress2(vo.getAddress2());
-		address.setAddress3(vo.getAddress3());
-		address.setPostCode(vo.getPostcode());
-		applicationService.addAddress(application, address);
-
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}	
-	
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================

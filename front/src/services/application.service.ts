@@ -43,10 +43,9 @@ export class ApplicationService {
   }
 
   findProgramOfferingsByIntake(intake: Intake): Observable<ProgramOffering[]> {
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings')
+    return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/programOfferings')
       .map((res: Response) => <ProgramOffering[]>res.json());
   }
-
 
   applyIntake(intake: Intake): Observable<IntakeApplication> {
     let headers = new Headers({
@@ -179,11 +178,5 @@ export class ApplicationService {
   deleteAddress(application: IntakeApplication, address: Address): Observable<String> {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id)
       .flatMap((res: Response) => Observable.of(res.text()));
-  }
-
-  findProgramOfferingsByIntakeApplication(application: IntakeApplication): Observable<ProgramOffering[]> {
-    console.log("findProgramOfferingsByIntakeApplication " + application.referenceNo);
-    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/programOfferings')
-      .map((res: Response) => <ProgramOffering[]>res.json());
   }
 }

@@ -47,10 +47,10 @@ export class IntakeApplicationEffects {
     .switchMap(referenceNo => this.applicationService.findIntakeByReferenceNo(referenceNo))
     .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake));
 
-  @Effect() findProgramOfferingsByIntakeApplication$ = this.actions$
+  @Effect() findProgramOfferingsByIntake$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE)
     .map(action => action.payload)
-    .switchMap(application => this.applicationService.findProgramOfferingsByIntakeApplication(application))
+    .switchMap(intake => this.applicationService.findProgramOfferingsByIntake(intake))
     .map(offerings => this.intakeApplicationActions.findProgramOfferingsByIntakeSuccess(offerings));
 
 

@@ -18,6 +18,7 @@ import {IntakeSessionActions} from "../../../policy/intake-sessions/intake-sessi
 import {IntakeSubModule} from "../../../policy/intakes/index";
 import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
+import {ProgramChoiceComponent} from "../component/program-choice.component";
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import {EmploymentListComponent} from "../component/employment-list.component";
     //components
     EmploymentListComponent,
     RefereeListComponent,
+    ProgramChoiceComponent,
 
     //dialogs
     EmploymentCreatorDialog,

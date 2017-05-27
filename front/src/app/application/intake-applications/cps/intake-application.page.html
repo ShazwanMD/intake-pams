@@ -16,21 +16,9 @@
       <md-tab-group (selectChange)="onTabChange($event)" md-stretch-tabs>
         <md-tab>
           <template md-tab-label>Program Choice Information</template>
-          <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
-            <div class="push-top-sm"></div>
-            <p class="md-title tc-grey-600">Choose your program: {{(intakeApplication$ | async).programSelection}}</p>
-            <button md-raised-button color="accent" class="push-bottom">Choose</button>
-            <div class="push-top-sm"></div>
-            <p class="md-title tc-grey-600">Choose your study mode: {{(intakeApplication$ |
-              async).programSelection}}</p>
-            <button md-raised-button color="accent" class="push-bottom">Choose</button>
-            <div class="push-top-sm"></div>
-            <p class="md-title tc-grey-600">Your research title</p>
-            <md-input-container flex>
-              <input mdInput placeholder="Research Title" flex/>
-            </md-input-container>
-            <div class="push-top-sm"></div>
-          </div>
+          <pams-program-choice
+            [intakeApplication]="intakeApplication$ | async">
+          </pams-program-choice>
         </md-tab>
 
         <md-tab>
@@ -305,7 +293,8 @@
               </md-checkbox>
             </div>
             <div layout="row" layout-align="start center">
-              <button md-raised-button color="accent" (click)="save(applicationForm.value, applicationForm.valid)">Submit
+              <button md-raised-button color="accent" (click)="save(applicationForm.value, applicationForm.valid)">
+                Submit
               </button>
             </div>
           </div>
