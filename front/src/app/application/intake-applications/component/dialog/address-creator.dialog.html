@@ -28,6 +28,21 @@
               <input mdInput placeholder="PostCode" formControlName="postcode"flex/>
             </md-input-container>
           </div>
+
+      <div layout="row" class="pad-top">
+      <pams-state-code-select
+        [placeholder]="'StateCode'"
+        [innerFormControl]="createForm.controls.stateCode">
+      </pams-state-code-select>
+    </div>
+
+    <div layout="row" class="pad-top">
+      <pams-country-code-select
+        [placeholder]="'CountryCode'"
+        [innerFormControl]="createForm.controls.countryCode">
+      </pams-country-code-select>
+    </div>
+
         </div>
       </div>
     </md-card>

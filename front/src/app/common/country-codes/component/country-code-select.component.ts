@@ -9,6 +9,7 @@ import { CountryCode } from "../country-code.interface";
 @Component({
   selector: 'pams-country-code-select',
   templateUrl: './country-code-select.component.html',
+ // styleUrls: ['./country-code.select.scss'],
 })
 export class CountryCodeSelectComponent implements OnInit {
 

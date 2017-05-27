@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.web.module.application.vo.*;
+import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public class ApplicationTransformer {
 
     @Autowired
     private PolicyTransformer policyTransformer;
+    
+    @Autowired
+    private CommonTransformer commonTransformer;
 
     public IntakeApplication toIntakeApplicationVo(InIntakeApplication e) {
         IntakeApplication vo = new IntakeApplication();
@@ -79,6 +83,8 @@ public class ApplicationTransformer {
         vo.setAddress2(e.getAddress2());
         vo.setAddress3(e.getAddress3());
         vo.setPostcode(e.getPostCode());
+        vo.setCountryCode(commonTransformer.toCountryCodeVo(e.getCountryCode()));
+        vo.setStateCode(commonTransformer.toStateCodeVo(e.getStateCode()));     
         vo.setAddressType(AddressType.get(e.getType().ordinal()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;

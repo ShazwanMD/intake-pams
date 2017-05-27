@@ -1,3 +1,5 @@
+import { CountryCode } from './../../../../common/country-codes/country-code.interface';
+import { StateCode } from './../../../../common/state-codes/state-code.interface';
 import { Address } from './../../address.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -41,7 +43,10 @@ export class AddressCreatorDialog implements OnInit {
       address1: '',
       address2: '',
       address3: '',
-      postcode: ''
+      postcode: '',
+      stateCode: <StateCode>{},
+      countryCode: <CountryCode>{},
+      addressType: null,   
     });
   }
 

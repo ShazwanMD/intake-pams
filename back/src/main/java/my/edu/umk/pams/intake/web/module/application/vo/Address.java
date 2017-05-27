@@ -2,7 +2,12 @@ package my.edu.umk.pams.intake.web.module.application.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.intake.web.module.common.vo.CountryCode;
+import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
+import my.edu.umk.pams.intake.web.module.common.vo.StateCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramLevel;
 
 import java.io.IOException;
 
@@ -14,6 +19,8 @@ public class Address extends MetaObject {
 	private String address2;
 	private String address3;
 	private String postcode;
+    private CountryCode countryCode;
+    private StateCode stateCode;
 	private AddressType addressType;
 
 	public String getAddress1() {
@@ -54,6 +61,23 @@ public class Address extends MetaObject {
 
 	public void setAddressType(AddressType addressType) {
 		this.addressType = addressType;
+	}
+	
+
+	public CountryCode getCountryCode() {
+		return countryCode;
+	}
+
+	public void setCountryCode(CountryCode countryCode) {
+		this.countryCode = countryCode;
+	}
+
+	public StateCode getStateCode() {
+		return stateCode;
+	}
+
+	public void setStateCode(StateCode stateCode) {
+		this.stateCode = stateCode;
 	}
 
 	@JsonCreator
