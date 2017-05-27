@@ -10,6 +10,7 @@ import { StateCode } from "../state-code.interface";
 @Component({
   selector: 'pams-state-code-select',
   templateUrl: './state-code-select.component.html',
+ // styleUrls: ['./state-code.select.scss'],
 })
 export class StateCodeSelectComponent implements OnInit {
 

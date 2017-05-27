@@ -85,7 +85,7 @@ public class ApplicationTransformer {
         vo.setPostcode(e.getPostCode());
         vo.setCountryCode(commonTransformer.toCountryCodeVo(e.getCountryCode()));
         vo.setStateCode(commonTransformer.toStateCodeVo(e.getStateCode()));     
-      //  vo.setAddressType(AddressType.get(e.getType().ordinal()));
+        vo.setAddressType(AddressType.get(e.getType().ordinal()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
