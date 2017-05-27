@@ -46,7 +46,7 @@ export class AddressListComponent implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AddressCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
+    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here

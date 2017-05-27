@@ -125,5 +125,4 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findResidencyCodes())
     .map(codes => this.commonActions.findResidencyCodesSuccess(codes));
 
-
 }

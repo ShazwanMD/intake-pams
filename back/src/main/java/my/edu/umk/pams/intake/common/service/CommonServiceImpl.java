@@ -119,7 +119,7 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private InSupervisorCodeDao supervisorCodeDao;
-    
+
     @Autowired
     private SecurityService securityService;
 
@@ -193,7 +193,7 @@ public class CommonServiceImpl implements CommonService {
     public List<InCountryCode> findCountryCodes() {
         return countryCodeDao.find();
     }
-    
+
     @Override
     public List<InCountryCode> findCountryCodes(String filter, Integer offset, Integer limit) {
         return countryCodeDao.find(filter, offset, limit);
@@ -236,10 +236,10 @@ public class CommonServiceImpl implements CommonService {
     public InStateCode findStateCodeByCode(String code) {
         return stateCodeDao.findByCode(code);
     }
-    
+
     @Override
     public List<InStateCode> findStateCodes() {
-        return stateCodeDao.find();
+        return stateCodeDao.find(0, Integer.MAX_VALUE);
     }
 
     @Override
@@ -325,16 +325,17 @@ public class CommonServiceImpl implements CommonService {
     public List<InDistrictCode> findDistrictCodes(String filter, Integer offset, Integer limit) {
         return districtCodeDao.find(filter, offset, limit);
     }
+
     @Override
     public List<InDistrictCode> findDistrictCodes(String filter, InStateCode stateCode, Integer offset, Integer limit) {
         return districtCodeDao.find(filter, offset, limit);
     }
 
     @Override
-	public List<InDistrictCode> findDistrictCodes() {
-    	return districtCodeDao.find();
-	}
-    
+    public List<InDistrictCode> findDistrictCodes() {
+        return districtCodeDao.find();
+    }
+
     @Override
     public Integer countDistrictCode(InStateCode stateCode) {
         return districtCodeDao.count();
@@ -1969,7 +1970,7 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
-  //====================================================================================================
+    //====================================================================================================
     // SUPERVISOR CODE
     //====================================================================================================
 
@@ -2032,6 +2033,5 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
-	
-    
+
 }
