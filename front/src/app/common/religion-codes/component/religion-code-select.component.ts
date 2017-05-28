@@ -6,8 +6,6 @@ import {CommonActions} from "../../common.action";
 import { CommonModuleState } from "../../index";
 import { ReligionCode } from "../religion-code.interface";
 
-
-
 @Component({
   selector: 'pams-religion-code-select',
   templateUrl: './religion-code-select.component.html',
