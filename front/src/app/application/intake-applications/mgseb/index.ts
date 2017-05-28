@@ -14,6 +14,7 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {CommonActions} from "../../../common/common.action";
 import {ProgramOfferingSelectComponent} from "../../../policy/intakes/component/program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
+import { CpsIntakeApplicationSubModule } from "../cps/index";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {EmploymentListComponent} from "../component/employment-list.component";
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
+    CpsIntakeApplicationSubModule.forRoot(),
   ],
   declarations: [
     MgsebIntakeApplicationPage,
