@@ -49,11 +49,32 @@ export class SetupEffects {
   // RELIGION CODE
   // ====================================================================================================
 
-  @Effect() findReligionCode$ = this.actions$
+   @Effect() findReligionCode$ = this.actions$
     .ofType(SetupActions.FIND_RELIGION_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findReligionCodes())
     .map(codes => this.setupActions.findReligionCodesSuccess(codes));
+
+  @Effect() saveReligionCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_RELIGION_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveReligionCode(payload))
+    .map(message => this.setupActions.saveReligionCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findReligionCodes()]));
+
+  @Effect() updateReligionCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_RELIGION_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateReligionCode(payload))
+    .map(message => this.setupActions.updateReligionCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findReligionCodes()]));
+
+  @Effect() removeReligionCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_RELIGION_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeReligionCode(payload))
+    .map(message => this.setupActions.removeReligionCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findReligionCodes()]));
 
   // ====================================================================================================
   // MARITAL CODE
