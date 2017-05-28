@@ -8,6 +8,7 @@ import {IntakeApplication} from "../../intake-application.interface";
 import {Intake} from "../../../../policy/intakes/intake.interface";
 import {ProgramOffering} from "../../../../policy/intakes/program-offering.interface";
 import {Observable} from "rxjs/Observable";
+import {MdDialogRef} from "@angular/material";
 
 
 
@@ -28,7 +29,8 @@ export class ProgramOfferingSelectorDialog implements OnInit {
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
               private actions: IntakeApplicationActions,
-              private store: Store<ApplicationModuleState>) {
+              private store: Store<ApplicationModuleState>,
+              private dialog: MdDialogRef<ProgramOfferingSelectorDialog>) {
     this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERINGS);
   }
 
@@ -46,5 +48,7 @@ export class ProgramOfferingSelectorDialog implements OnInit {
 
   select(offering: ProgramOffering) {
     console.log("selecting " + offering.programCode.code);
+    this.store.dispatch(this.actions.selectProgramOffering(this._intakeApplication, offering));
+    this.dialog.close();
   }
 }

@@ -168,7 +168,5 @@ public interface ApplicationService {
     boolean hasReferee(InIntakeApplication application);
 
     void addReferee(InIntakeApplication application, InReferee referee);
-
-
 }
 

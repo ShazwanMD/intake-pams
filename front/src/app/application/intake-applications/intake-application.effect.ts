@@ -45,7 +45,11 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.FIND_INTAKE_BY_REFERENCE_NO)
     .map(action => action.payload)
     .switchMap(referenceNo => this.applicationService.findIntakeByReferenceNo(referenceNo))
-    .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake));
+    .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
+    .mergeMap(action => from([action,
+      this.intakeApplicationActions.findProgramOfferingsByIntake(action.payload),
+      this.intakeApplicationActions.findStudyModeOfferingsByIntake(action.payload)
+    ]));
 
   @Effect() findProgramOfferingsByIntake$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE)
@@ -181,4 +185,12 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
+  @Effect() selectProgramOffering = this.actions$
+    .ofType(IntakeApplicationActions.SELECT_PROGRAM_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.selectProgramOffering(payload.application, payload.offering))
+    .map(message => this.intakeApplicationActions.selectProgramOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 }

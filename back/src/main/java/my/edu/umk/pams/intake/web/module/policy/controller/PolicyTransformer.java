@@ -106,6 +106,7 @@ public class PolicyTransformer {
     }
 
 	public ProgramOffering toProgramOfferingVo(InProgramOffering e) {
+        if(null == e) return null;
         ProgramOffering vo = new ProgramOffering();
         vo.setId(e.getId());
         vo.setGeneralCriteria(e.getGeneralCriteria());
@@ -114,6 +115,7 @@ public class PolicyTransformer {
         return vo;
     }
     public SupervisorOffering toSupervisorOfferingVo(InSupervisorOffering e) {
+        if(null == e) return null;
         SupervisorOffering vo = new SupervisorOffering();
         vo.setId(e.getId());
         vo.setSupervisorCode(commonTransformer.toSupervisorCodeVo(e.getSupervisorCode()));
@@ -121,6 +123,7 @@ public class PolicyTransformer {
     }
 
     public StudyModeOffering toStudyModeOfferingVo(InStudyModeOffering e) {
+        if(null == e) return null;
         StudyModeOffering vo = new StudyModeOffering();
         vo.setId(e.getId());
         vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));

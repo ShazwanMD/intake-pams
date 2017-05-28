@@ -41,7 +41,8 @@ public class ApplicationTransformer {
         vo.setSelfSponsored(e.isSelfSponsored());
 
         vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
-        // todo(uda): more props
+        vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
+        vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }

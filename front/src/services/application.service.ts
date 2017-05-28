@@ -195,4 +195,23 @@ export class ApplicationService {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  selectProgramOffering(application, offering):Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/programOfferingSelection', JSON.stringify(offering), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+  selectStudyModeOffering(application, offering):Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/studyModeOfferingSelection', JSON.stringify(offering), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 }
