@@ -91,6 +91,7 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findEducationsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findAddressesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findRefereesByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),
     ]));
 
   @Effect() updateIntakeApplication$ = this.actions$
@@ -140,7 +141,7 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-s
+
   @Effect() findAddressesByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION)
     .map(action => action.payload)
@@ -161,6 +162,21 @@ s
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addReferee(payload.application, payload.referee))
     .map(message => this.intakeApplicationActions.addRefereeSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() findSpmResultsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findSpmResultsByIntakeApplication(application))
+    .map(spmResults => this.intakeApplicationActions.findSpmResultsByIntakeApplicationSuccess(spmResults));
+
+  @Effect() addSpmResult = this.actions$
+    .ofType(IntakeApplicationActions.ADD_SPM_RESULT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addSpmResult(payload.application, payload.spmResult))
+    .map(message => this.intakeApplicationActions.addSpmResultSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));

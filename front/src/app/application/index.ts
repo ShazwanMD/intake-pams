@@ -1,3 +1,4 @@
+import { SpmResult } from './intake-applications/spm-result.interface';
 import { Address } from './intake-applications/address.interface';
 import { Referee } from './intake-applications/referee.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -40,6 +41,7 @@ import {ProgramOffering} from "../policy/intakes/program-offering.interface";
 import {IntakeApplication} from "./intake-applications/intake-application.interface";
 import {refereeListReducer, RefereeListState} from "./intake-applications/referee-list.reducer";
 import {addressListReducer, AddressListState} from "./intake-applications/address-list.reducer";
+import {spmResultListReducer, SpmResultListState} from "./intake-applications/spm-result-list.reducer";
 
 
 
@@ -54,6 +56,7 @@ export interface ApplicationModuleState {
   studyModeOfferings: IntakeStudyModeOfferingListState;
   intakeApplications: IntakeApplicationListState;
   intakeApplication: IntakeApplicationState;
+  spmResults:SpmResultListState;
 }
 ;
 
@@ -63,11 +66,13 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   employments:<Employment[]>[],
   referees:<Referee[]>[],
   addresses:<Address[]>[],
+  spmResults:<SpmResult[]>[],
   programOfferings:<ProgramOffering[]>[],
   supervisorOfferings:[],
   studyModeOfferings:[],
   intakeApplications:[],
-  intakeApplication:<IntakeApplication>{}
+  intakeApplication:<IntakeApplication>{},
+  
 };
 
 export const applicationModuleReducers = {
@@ -76,6 +81,7 @@ export const applicationModuleReducers = {
   employments: employmentListReducer,
   referees: refereeListReducer,
   addresses: addressListReducer,
+  spmResults: spmResultListReducer,
   programOfferings: intakeProgramOfferingListReducer,
   supervisorOfferings: intakeSupervisorOfferingListReducer,
   studyModeOfferings: intakeStudyModeOfferingListReducer,

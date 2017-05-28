@@ -3,10 +3,10 @@ export interface SpmResult extends MetaObject {
   
   year: Date;
   math: string;
-  addMath :String;
-  physic:String;
-  chemist:String;
-  bio:String;
+ // addMath :String;
+ // physic:String;
+ // chemist:String;
+ // bio:String;
   islamicEduc:String;
   history:String;
   malay:String;

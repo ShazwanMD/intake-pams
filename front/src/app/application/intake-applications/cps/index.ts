@@ -1,3 +1,6 @@
+import { SpmResultCreatorDialog } from './../component/dialog/spm-result-creator.dialog';
+import { SpmResultListComponent } from './../component/spm-result-list.component';
+import { SpmResult } from './../spm-result.interface';
 import { AddressTypeSelectComponent } from './../component/address-type-select.component';
 import { AddressCreatorDialog } from './../component/dialog/address-creator.dialog';
 import { Address } from './../address.interface';
@@ -27,6 +30,7 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
 
 
 
+
 @NgModule({
   imports: [
     appRoutes,
@@ -47,17 +51,20 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
     ProgramChoiceComponent,
     AddressListComponent,
     AddressTypeSelectComponent,
+    SpmResultListComponent,
 
     //dialogs
     EmploymentCreatorDialog,
     RefereeCreatorDialog,
     AddressCreatorDialog,
+    SpmResultCreatorDialog,
   ],
   exports: [],
   entryComponents: [
     EmploymentCreatorDialog,
     RefereeCreatorDialog,
     AddressCreatorDialog,
+    SpmResultCreatorDialog,
 
   ],
 })

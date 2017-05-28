@@ -1,3 +1,4 @@
+import { SpmResult } from './../spm-result.interface';
 import { Address } from './../address.interface';
 import {Referee} from './../referee.interface';
 import {Employment} from './../employment.interface';
@@ -23,12 +24,14 @@ export class CpsIntakeApplicationPage implements OnInit {
   private EMPLOYMENTS = "applicationModuleState.employments".split(".");
   private REFEREES = "applicationModuleState.referees".split(".");
   private ADDRESSES = "applicationModuleState.addresses".split(".");
+  private SPM_RESULTS = "applicationModuleState.spmResults".split(".");
 
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private referees$: Observable<Referee>;
   private addresses$: Observable<Address>;
+  private spmResults$: Observable<SpmResult>;
   private applicationForm: FormGroup;
 
   constructor(private router: Router,
@@ -42,6 +45,7 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.referees$ = this.store.select(...this.REFEREES);
     this.addresses$ = this.store.select(...this.ADDRESSES);
+    this.spmResults$ = this.store.select(...this.SPM_RESULTS);
   }
 
   ngOnInit(): void {
