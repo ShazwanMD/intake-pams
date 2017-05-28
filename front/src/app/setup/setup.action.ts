@@ -144,6 +144,10 @@ export class SetupActions {
     };
   }
 
+//=================================================================================//
+//  RELIGION_CODES                                                                 //
+//=================================================================================//
+ //1-------------------------------------------------------------
   static FIND_RELIGION_CODES = '[Setup] Find Religion Codes';
 
   findReligionCodes(): Action {
@@ -152,7 +156,7 @@ export class SetupActions {
       type: SetupActions.FIND_RELIGION_CODES,
     };
   }
-
+//2-------------------------------------------------------------------------------------
   static FIND_RELIGION_CODES_SUCCESS = '[Setup] Find Religion Codes Success';
 
   findReligionCodesSuccess(codes): Action {
@@ -162,7 +166,7 @@ export class SetupActions {
       payload: codes
     };
   }
-
+//3----------------------------------------------------------------
   static SAVE_RELIGION_CODE = '[Setup] Save Religion Code';
 
   saveReligionCode(code): Action {
@@ -172,7 +176,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//4------------------------------------------------------------------------------
   static SAVE_RELIGION_CODE_SUCCESS = '[Setup] Save Religion Code Success';
 
   saveReligionCodeSuccess(message): Action {
@@ -182,7 +186,7 @@ export class SetupActions {
       payload: message
     };
   }
-
+//5------------------------------------------------------------------
   static UPDATE_RELIGION_CODE = '[Setup] Update Religion Code';
 
   updateReligionCode(code): Action {
@@ -192,7 +196,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//6----------------------------------------------------------------------------------
   static UPDATE_RELIGION_CODE_SUCCESS = '[Setup] Update Religion Code  Success';
 
   updateReligionCodeSuccess(message): Action {
@@ -202,6 +206,28 @@ export class SetupActions {
       payload: message
     };
   }
+//7------------------------------------------------------------------
+  static REMOVE_RELIGION_CODE = '[Setup] Remove Religion Code';
+
+  removeReligionCode(code): Action {
+    console.log("removeReligionCode");
+    return {
+      type: SetupActions.REMOVE_RELIGION_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_RELIGION_CODE_SUCCESS = '[Setup] Remove Religion Code  Success';
+
+  removeReligionCodeSuccess(message): Action {
+    console.log("removeReligionCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_RELIGION_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+//---------------------------------------------------------------------------
 
   static FIND_MARITAL_CODES = '[Setup] Find Marital Codes';
 
