@@ -1,16 +1,16 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import { SpmResult } from './../spm-result.interface';
+import { Address } from './../address.interface';
+import {Referee} from './../referee.interface';
+import {Employment} from './../employment.interface';
+import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
-import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
+import {IntakeApplicationActions} from "../intake-application.action";
+import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
-import { EducationCreatorDialog } from "../component/dialog/education-creator.dialog";
-import { EmploymentCreatorDialog } from "../component/dialog/employment-creator.dialog";
-import { IntakeApplicationActions } from "../intake-application.action";
-import { Observable } from "rxjs/Observable";
-import { Intake } from "../../../policy/intakes/intake.interface";
+
 
 
 @Component({
@@ -21,55 +21,31 @@ import { Intake } from "../../../policy/intakes/intake.interface";
 export class MgsebIntakeApplicationPage implements OnInit {
 
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
-  private INTAKE: string[] = "applicationModuleState.intake".split(".");
+  private EMPLOYMENTS = "applicationModuleState.employments".split(".");
+  private REFEREES = "applicationModuleState.referees".split(".");
+  private ADDRESSES = "applicationModuleState.addresses".split(".");
+  private SPM_RESULTS = "applicationModuleState.spmResults".split(".");
+
 
   private intakeApplication$: Observable<IntakeApplication>;
-  private intake$: Observable<Intake>;
-  
-  private creatorForm: FormGroup;
-  private creatorDialogRef1: MdDialogRef<EducationCreatorDialog>;
-  private creatorDialogRef2: MdDialogRef<EmploymentCreatorDialog>;
+  private employments$: Observable<Employment>;
+  private referees$: Observable<Referee>;
+  private addresses$: Observable<Address>;
+  private spmResults$: Observable<SpmResult>;
+  private applicationForm: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
-              private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialog,
-              private actions : IntakeApplicationActions,
+              private actions: IntakeApplicationActions,
               private store: Store<ApplicationModuleState>) {
+
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
-    this.intake$ = this.store.select(...this.INTAKE);
-  }
-
-  showDialog1(): void {
-    console.log("showDialog");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef1 = this.dialog.open(EducationCreatorDialog, config);
-    this.creatorDialogRef1.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
-    });
-  }
-
-  showDialog2(): void {
-    console.log("showDialog");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef2 = this.dialog.open(EmploymentCreatorDialog, config);
-    this.creatorDialogRef2.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
-    });
+    this.employments$ = this.store.select(...this.EMPLOYMENTS);
+    this.referees$ = this.store.select(...this.REFEREES);
+    this.addresses$ = this.store.select(...this.ADDRESSES);
+    this.spmResults$ = this.store.select(...this.SPM_RESULTS);
   }
 
   ngOnInit(): void {
@@ -78,8 +54,29 @@ export class MgsebIntakeApplicationPage implements OnInit {
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
     });
 
+    this.applicationForm = this.formBuilder.group(<IntakeApplication>{
+      id: null,
+      referenceNo: '',
+      rank: 0,
+      merit: 0,
+      name: '',
+      credentialNo: '',
+      birthDate: null,
+      mobile: '',
+      okuNo: '',
+      email: '',
+      phone: '',
+      fax: '',
+      age: 0,
+      verified: false,
+      sponsored: false,
+      selfSponsored: false,
+    });
+    this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }
 
-  next(application: IntakeApplication, isValid: boolean) {
+  onTabChange(): void {
+    console.log("tab change");
+    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 }

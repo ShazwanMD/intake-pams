@@ -1,3 +1,4 @@
+import { CpsIntakeApplicationSubModule } from './../cps/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -14,7 +15,6 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {CommonActions} from "../../../common/common.action";
 import {ProgramOfferingSelectComponent} from "../../../policy/intakes/component/program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
-import { CpsIntakeApplicationSubModule } from "../cps/index";
 
 
 @NgModule({
