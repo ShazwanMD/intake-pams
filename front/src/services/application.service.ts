@@ -154,9 +154,19 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  addSpmResult(application: IntakeApplication, spmResult: SpmResult): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/spmResults', JSON.stringify(spmResult), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   findSpmResultsByIntakeApplication(application: IntakeApplication): Observable<SpmResult[]> {
-    console.log("findResults");
-    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/employments")
+    console.log("findSpmResults");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/spmResults")
       .map((res: Response) => <SpmResult[]>res.json());
   }
 

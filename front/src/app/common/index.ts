@@ -38,10 +38,7 @@ import {disabilityCodeListReducer, DisabilityCodeListState} from "./disability-c
 import {DisabilityCodeSelectComponent} from "./disability-codes/component/disability-code-select.component";
 import {SchoolCodeSelectComponent} from "./school-codes/component/school-code-select.component";
 import {schoolCodeListReducer, SchoolCodeListState} from "./school-codes/school-code-list.reducer";
-import {
-  StudyCenterCodeListState,
-  studyCenterCodeListReducer
-} from "./study-center-codes/study-center-code-list.reducer";
+import {StudyCenterCodeListState, studyCenterCodeListReducer} from "./study-center-codes/study-center-code-list.reducer";
 import {StudyCenterCodeSelectComponent} from "./study-center-codes/component/study-center-code-select.component";
 import {EthnicityCodeListState, ethnicityCodeListReducer} from "./ethnicity-codes/ethnicity-code-list.reducer";
 import {NationalityCodeListState, nationalityCodeListReducer} from "./nationality-codes/nationality-code-list.reducer";

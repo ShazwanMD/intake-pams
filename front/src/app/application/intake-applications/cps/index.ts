@@ -1,3 +1,5 @@
+import { SpmResultCreatorDialog } from './../component/dialog/spm-result-creator.dialog';
+import { SpmResultListComponent } from './../component/spm-result-list.component';
 import { SpmResult } from './../spm-result.interface';
 import { AddressTypeSelectComponent } from './../component/address-type-select.component';
 import { AddressCreatorDialog } from './../component/dialog/address-creator.dialog';
@@ -22,6 +24,7 @@ import {IntakeSubModule} from "../../../policy/intakes/index";
 import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
 import {ProgramChoiceComponent} from "../component/program-choice.component";
+
 @NgModule({
   imports: [
     appRoutes,
@@ -41,11 +44,12 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
     ProgramChoiceComponent,
     AddressListComponent,
     AddressTypeSelectComponent,
-  
+    // SpmResultListComponent,
     //dialogs
     EmploymentCreatorDialog,
    
     AddressCreatorDialog,
+
   
   ],
   exports: [
@@ -54,12 +58,12 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
     ProgramChoiceComponent,
     AddressListComponent,
     AddressTypeSelectComponent,
-   
+
+
   ],
   entryComponents: [
     EmploymentCreatorDialog,
     AddressCreatorDialog,
-  
   ],
 })
 export class CpsIntakeApplicationSubModule {

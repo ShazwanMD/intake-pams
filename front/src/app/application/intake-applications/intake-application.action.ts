@@ -457,10 +457,10 @@ export class IntakeApplicationActions {
 
   static ADD_SPM_RESULT = '[Intake Application] Add Spm Result';
 
-  addSpmResult(intake, spmResult) {
+  addSpmResult(application, spmResult) {
     return {
       type: IntakeApplicationActions.ADD_SPM_RESULT,
-      payload: {intake: intake, spmResult: spmResult}
+      payload: {application: application, spmResult: spmResult}
     };
   }
 

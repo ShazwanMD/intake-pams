@@ -256,8 +256,8 @@ public class ApplicationController {
         InSpmResult spmResult = new InSpmResultImpl();
         spmResult.SetMalay(vo.getMalay());
         spmResult.SetEnglish(vo.getEnglish());
-        spmResult.setIslamEduc(vo.getIslamEduc());
-        spmResult.setHistory(vo.getSejarah());
+        spmResult.setIslamEduc(vo.getIslamicEduc());
+        spmResult.setHistory(vo.getHistory());
         spmResult.setMath(vo.getMath());
         spmResult.setYear(vo.getYear());
         spmResult.setAggregate(vo.getAggregate());
