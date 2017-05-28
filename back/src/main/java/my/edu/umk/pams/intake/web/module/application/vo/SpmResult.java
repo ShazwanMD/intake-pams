@@ -16,15 +16,23 @@ public class SpmResult extends MetaObject {
     private String malay;
     private String english;
     private String math;
-    private String islamEduc;
-    private String sejarah;
+    private String history;
+    private String islamicEduc;
     private Integer year;
     private Integer aggregate;
 
 
-    public String getMalay() {
+
+
+
+
+	public String getMalay() {
 		return malay;
 	}
+
+
+
+
 
 
 	public void setMalay(String malay) {
@@ -32,9 +40,17 @@ public class SpmResult extends MetaObject {
 	}
 
 
+
+
+
+
 	public String getEnglish() {
 		return english;
 	}
+
+
+
+
 
 
 	public void setEnglish(String english) {
@@ -42,9 +58,17 @@ public class SpmResult extends MetaObject {
 	}
 
 
+
+
+
+
 	public String getMath() {
 		return math;
 	}
+
+
+
+
 
 
 	public void setMath(String math) {
@@ -52,24 +76,44 @@ public class SpmResult extends MetaObject {
 	}
 
 
-	public String getIslamEduc() {
-		return islamEduc;
+
+
+
+
+	public String getHistory() {
+		return history;
 	}
 
 
-	public void setIslamEduc(String islamEduc) {
-		this.islamEduc = islamEduc;
+
+
+
+
+	public void setHistory(String history) {
+		this.history = history;
 	}
 
 
-	public String getSejarah() {
-		return sejarah;
+
+
+
+
+	public String getIslamicEduc() {
+		return islamicEduc;
 	}
 
 
-	public void setSejarah(String sejarah) {
-		this.sejarah = sejarah;
+
+
+
+
+	public void setIslamicEduc(String islamicEduc) {
+		this.islamicEduc = islamicEduc;
 	}
+
+
+
+
 
 
 	public Integer getYear() {
@@ -77,9 +121,17 @@ public class SpmResult extends MetaObject {
 	}
 
 
+
+
+
+
 	public void setYear(Integer year) {
 		this.year = year;
 	}
+
+
+
+
 
 
 	public Integer getAggregate() {
@@ -87,9 +139,17 @@ public class SpmResult extends MetaObject {
 	}
 
 
+
+
+
+
 	public void setAggregate(Integer aggregate) {
 		this.aggregate = aggregate;
 	}
+
+
+
+
 
 
 	@JsonCreator

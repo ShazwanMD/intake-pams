@@ -43,8 +43,8 @@ export class SpmResultCreatorDialog implements OnInit {
       math: '',
       history: '',
       islamicEduc: '',
-      year: null,
-      aggregate: null
+      year: 0,
+      aggregate: 0
 
 
     });

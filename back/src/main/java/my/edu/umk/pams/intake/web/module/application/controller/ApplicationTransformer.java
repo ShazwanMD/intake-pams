@@ -181,8 +181,8 @@ public class ApplicationTransformer {
         vo.setMalay(e.getMalay());
         vo.setMath(e.getMath());
         vo.setEnglish(e.getEnglish());
-        vo.setIslamEduc(e.getIslamEduc());
-        vo.setSejarah(e.getHistory());
+        vo.setIslamicEduc(e.getIslamEduc());
+        vo.setHistory(e.getHistory());
         vo.setYear(e.getYear());
         vo.setAggregate(e.getAggregate());
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
