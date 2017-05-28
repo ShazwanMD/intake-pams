@@ -27,6 +27,9 @@ export class AddressListComponent implements OnInit {
     {name: 'address2', label: 'Address2'},
     {name: 'address2', label: 'Address2'},
     {name: 'postcode', label: 'PostCode'},
+    {name: 'stateCode.descriptionMs', label: 'State'},
+    {name: 'countryCode.descriptionMs', label: 'Country'},
+    {name: 'addressType', label: 'Address Type'},
   ];
 
   constructor(private actions: IntakeApplicationActions,
