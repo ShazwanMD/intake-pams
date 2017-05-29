@@ -396,5 +396,23 @@ public class CommonTransformer {
         List<ParliamentCode> vos = e.stream().map((e1) -> toParliamentCodeVo(e1)).collect(Collectors.toList());
         return vos;
     }
+    
+    // ====================================================================================================
+    // LANGUAGE CODE
+    // ====================================================================================================
+
+    public LanguageCode toLanguageCodeVo(InLanguageCode e) {
+        LanguageCode vo = new LanguageCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        return vo;
+    }
+
+    public List<LanguageCode> toLanguageCodeVos(List<InLanguageCode> e) {
+        List<LanguageCode> vos = e.stream().map((e1) -> toLanguageCodeVo(e1)).collect(Collectors.toList());
+        return vos;
+    }
 
 }

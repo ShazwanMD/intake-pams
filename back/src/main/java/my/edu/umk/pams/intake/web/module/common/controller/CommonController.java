@@ -1097,6 +1097,57 @@ public class CommonController {
         commonService.removeParliamentCode(parliamentCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+  //====================================================================================================
+    // LANGUAGE_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/languageCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<LanguageCode>> findLanguageCodes() {
+        return new ResponseEntity<List<LanguageCode>>(commonTransformer.toLanguageCodeVos(
+        		commonService.findLanguageCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/languageCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<LanguageCode> findLanguageCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<LanguageCode>(commonTransformer.toLanguageCodeVo(
+                commonService.findLanguageCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/languageCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveLanguageCode(@RequestBody LanguageCode vo) {
+        dummyLogin();
+
+        InLanguageCode languageCode = new InLanguageCodeImpl();
+        languageCode.setCode(vo.getCode());
+        languageCode.setDescriptionEn(vo.getDescriptionEn());
+        languageCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveLanguageCode(languageCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/languageCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateLanguageCode(@PathVariable String code, @RequestBody LanguageCode vo) {
+        dummyLogin();
+
+        InLanguageCode languageCode = commonService.findLanguageCodeById(vo.getId());
+        languageCode.setCode(vo.getCode());
+        languageCode.setDescriptionEn(vo.getDescriptionEn());
+        languageCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateLanguageCode(languageCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/languageCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeLanguageCode(@PathVariable String code) {
+        dummyLogin();
+
+        InLanguageCode languageCode = commonService.findLanguageCodeByCode(code);
+        commonService.removeLanguageCode(languageCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    
 }
 
 	
