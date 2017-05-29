@@ -21,7 +21,7 @@ export class BachelorResultListComponent implements OnInit {
 
   private creatorDialogRef: MdDialogRef<BachelorResultCreatorDialog>;
   private columns: any[] = [
-    {name: 'matricNo', label: 'MatricNo'},
+    {name: 'name', label: 'Name'},
     {name: 'cgpa', label: 'Cgpa'},
     {name: 'year', label: 'Year'},
     {name: 'resultType', label: 'Result Type'},

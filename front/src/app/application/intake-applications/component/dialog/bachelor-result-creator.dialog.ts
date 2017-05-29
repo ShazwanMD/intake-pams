@@ -40,7 +40,7 @@ export class BachelorResultCreatorDialog implements OnInit {
     this.createForm = this.formBuilder.group(<BachelorResult>{
       id: null,
       year: 0,
-      matricNo: '',
+      name: '',
       cgpa: 0,
       resultType: ResultType.BACHELOR,
 
