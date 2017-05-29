@@ -148,7 +148,7 @@ public class ApplicationTransformer {
         vo.setId(e.getId());
         vo.setOral(e.getOral());
         vo.setWritten(e.getWritten());
-        // vo.setLanguageCode(commonTransformer.toLanguageCodeVo(e.getLanguageCode()));
+        vo.setLanguageCode(commonTransformer.toLanguageCodeVo(e.getLanguageCode()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
     }
