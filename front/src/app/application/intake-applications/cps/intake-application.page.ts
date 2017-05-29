@@ -1,3 +1,4 @@
+import { BachelorResult } from './../bachelor-result-interface';
 import { SpmResult } from './../spm-result.interface';
 import { Address } from './../address.interface';
 import {Referee} from './../referee.interface';
@@ -13,6 +14,7 @@ import {IntakeApplication} from "../intake-application.interface";
 
 
 
+
 @Component({
   selector: 'pams-intake-application',
   templateUrl: './intake-application.page.html',
@@ -25,6 +27,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private REFEREES = "applicationModuleState.referees".split(".");
   private ADDRESSES = "applicationModuleState.addresses".split(".");
   private SPM_RESULTS = "applicationModuleState.spmResults".split(".");
+  private BACHELOR_RESULTS = "applicationModuleState.bachelorResults".split(".");
 
 
   private intakeApplication$: Observable<IntakeApplication>;
@@ -32,6 +35,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private referees$: Observable<Referee>;
   private addresses$: Observable<Address>;
   private spmResults$: Observable<SpmResult>;
+  private bachelorResults$: Observable<BachelorResult>;
   private applicationForm: FormGroup;
 
   constructor(private router: Router,
@@ -46,6 +50,7 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.referees$ = this.store.select(...this.REFEREES);
     this.addresses$ = this.store.select(...this.ADDRESSES);
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
+    this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);
   }
 
   ngOnInit(): void {

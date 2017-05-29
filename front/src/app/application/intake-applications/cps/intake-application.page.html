@@ -109,6 +109,14 @@
                 [spmResults]="spmResults$ | async"></pams-spm-result-list>
             </td-expansion-panel>
 
+           <template md-tab-label>Bachelor Results</template>
+
+            <td-expansion-panel label="Bachelor Results">
+              <pams-bachelor-result-list
+                [intakeApplication]="intakeApplication$ | async"
+                [bachelorResults]="bachelorResults$ | async"></pams-bachelor-result-list>
+            </td-expansion-panel>
+
 
 
             <td-expansion-panel label="STPM / Diploma / Degree Information">
