@@ -124,6 +124,15 @@ public class ApplicationController {
         List<InProgramOffering> programOfferings = policyService.findProgramOfferings(intake);
         return new ResponseEntity<List<ProgramOffering>>(policyTransformer.toProgramOfferingVos(programOfferings), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.GET)
+    public ResponseEntity<List<StudyModeOffering>> findStudyModeOfferings(@PathVariable String referenceNo) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        List<InStudyModeOffering> studyModeOfferings = policyService.findStudyModeOfferings(intake);
+        return new ResponseEntity<List<StudyModeOffering>>(policyTransformer.toStudyModeOfferingVos(studyModeOfferings), HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // INTAKE APPLICATION

@@ -34,7 +34,6 @@ export class IntakeDetailPage implements OnInit {
       let referenceNo: string = params.referenceNo;
       if (null != referenceNo) 
           this.store.dispatch(this.actions.findIntakeByReferenceNo(referenceNo));
-          this.store.dispatch(this.actions.findProgramOfferingsByIntake(referenceNo));
     });
   }
 
