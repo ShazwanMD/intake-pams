@@ -55,8 +55,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application);
     
     InApplicant findApplicant(InIntakeApplication application);
-    
-    
 
 
     List<InIntakeApplication> find(InIntake intake);
@@ -84,6 +82,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InEducation> findEducations(InIntakeApplication application);
 
     List<InEmployment> findEmployments(InIntakeApplication application);
+    
+    List<InLanguage> findLanguages(InIntakeApplication application);
     
     List<InReferee> findReferees(InIntakeApplication application);
 
@@ -121,6 +121,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     boolean hasEmployment(InIntakeApplication application);
 
+    boolean hasLanguage(InIntakeApplication application);
+
     boolean hasInvolvement(InIntakeApplication application);
     
     boolean hasReferee(InIntakeApplication application);
@@ -144,6 +146,10 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void addEmployment(InIntakeApplication application, InEmployment employment, InUser user);
 
     void deleteEmployment(InIntakeApplication application, InEmployment employment, InUser user);
+
+    void addLanguage(InIntakeApplication application, InLanguage language, InUser user);
+
+    void deleteLanguage(InIntakeApplication application, InLanguage language, InUser user);
 
     void addInvolvement(InIntakeApplication application, InInvolvement involvement, InUser user);
 

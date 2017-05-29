@@ -363,6 +363,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
     
     @Override
+    public List<InLanguage> findLanguages(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InLanguage p where " +
+                "p.application = :application " +
+        		"and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());		
+        query.setEntity("application", application);
+        return (List<InLanguage>) query.list();
+    }
+    
+    @Override
     public List<InReferee> findReferees(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InReferee p where " +
@@ -521,6 +532,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public boolean hasLanguage(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InLanguage p " +
+                "where p.application = :application");
+        query.setEntity("application", application);
+        return (Integer) query.uniqueResult() > 0;
+    }
+
+    @Override
     public boolean hasInvolvement(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InEmployment p " +
@@ -649,6 +669,34 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(employment);
+    }
+
+
+    @Override
+    public void addLanguage(InIntakeApplication application, InLanguage language, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(language, "Language cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        language.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        language.setMetadata(metadata);
+        session.save(language);
+    }
+
+    @Override
+    public void deleteLanguage(InIntakeApplication application, InLanguage language, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(language, "Language cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(language);
     }
 
     @Override

@@ -2087,6 +2087,4 @@ public class CommonServiceImpl implements CommonService {
         supervisorCodeDao.remove(supervisorCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-
-
 }
