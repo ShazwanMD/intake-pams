@@ -24,6 +24,7 @@ import {DisabilityCode} from "../app/common/disability-codes/disability-code.int
 import {SchoolCode} from "../app/common/school-codes/school-code.interface";
 import {DistrictCode} from "../app/common/district-codes/district-code.interface";
 import {ResidencyCode} from "../app/common/residency-codes/residency-code.interface";
+import {LanguageCode} from "../app/common/language-codes/language-code.interface";
 
 
 @Injectable()
