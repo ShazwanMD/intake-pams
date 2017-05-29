@@ -377,8 +377,8 @@ public class ApplicationController {
     @RequestMapping(value = "/intakeApplications/{referenceNo}/bachelorResults", method = RequestMethod.GET)
     public ResponseEntity<List<BachelorResult>> findBachelorResultsByIntakeApplication(@PathVariable String referenceNo) {
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        List<InBachelorResult> address = applicationService.findBachelorResults(application);
-        return new ResponseEntity<List<BachelorResult>>(applicationTransformer.toBachelorResultVos(address), HttpStatus.OK);
+        List<InBachelorResult> bachelorResults = applicationService.findBachelorResults(application);
+        return new ResponseEntity<List<BachelorResult>>(applicationTransformer.toBachelorResultVos(bachelorResults), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/bachelorResults", method = RequestMethod.POST)
@@ -395,6 +395,32 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     } 
+    
+    // ====================================================================================================
+    // DIPLOMA RESULT
+    // ====================================================================================================
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/diplomaResults", method = RequestMethod.GET)
+    public ResponseEntity<List<DiplomaResult>> findDiplomaResultsByIntakeApplication(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InDiplomaResult> diplomaResults = applicationService.findDiplomaResults(application);
+        return new ResponseEntity<List<DiplomaResult>>(applicationTransformer.toDiplomaResultVos(diplomaResults), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/diplomaResults", method = RequestMethod.POST)
+    public ResponseEntity<String> addDiplomaResult(@PathVariable String referenceNo, @RequestBody DiplomaResult vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InDiplomaResult diplomaResult = new InDiplomaResultImpl();
+        diplomaResult.setName(vo.getName());
+        diplomaResult.setCgpa(vo.getCgpa());
+        diplomaResult.setYear(vo.getYear());
+        diplomaResult.setResultType(InResultType.get(vo.getResultType().ordinal()));
+        applicationService.addDiplomaResult(application, diplomaResult);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
     
     // ====================================================================================================
     // PRIVATE METHODS

@@ -133,7 +133,7 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         InBachelorResult result = new InBachelorResultImpl();
         result.setYear(2017);
         result.setCgpa(new BigDecimal( (long)3.3));
-        result.setMatricNo("11111111");
+        result.setName("11111111");
         result.setApplication(application1);
         applicationService.addResult(application1, result);
         LOG.debug("results year:{}, cgpa:{}", result.getYear(), result.getCgpa());

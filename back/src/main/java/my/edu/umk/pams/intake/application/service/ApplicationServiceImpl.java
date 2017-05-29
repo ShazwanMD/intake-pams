@@ -157,6 +157,12 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.addBachelorResult(application, bachelorResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+    public void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult) {
+        intakeApplicationDao.addDiplomaResult(application, diplomaResult, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
     @Override
     public void deleteAddress(InIntakeApplication application, InAddress address) {
@@ -167,6 +173,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
         intakeApplicationDao.deleteBachelorResult(application, bachelorResult, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    @Override
+    public void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult) {
+        intakeApplicationDao.deleteDiplomaResult(application, diplomaResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
     
@@ -273,6 +285,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     
     @Override
+    public InDiplomaResult findDiplomaResultById(Long id) {
+        return intakeApplicationDao.findDiplomaResultById(id);
+    }
+    
+
+    @Override
     public InSpmResult findSpmResultById(Long id) {
         return intakeApplicationDao.findSpmResultById(id);
     }
@@ -290,6 +308,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application) {
         return intakeApplicationDao.findBachelorResultByResultType(resultType, application);
+    }
+    
+    @Override
+    public InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application) {
+        return intakeApplicationDao.findDiplomaResultByResultType(resultType, application);
     }
 
     @Override
@@ -431,6 +454,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
         return intakeApplicationDao.findBachelorResults(application);
+    }
+    
+    @Override
+    public List<InDiplomaResult> findDiplomaResults(InIntakeApplication application) {
+        return intakeApplicationDao.findDiplomaResults(application);
     }
     
     @Override

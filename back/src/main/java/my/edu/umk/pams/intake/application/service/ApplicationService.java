@@ -43,11 +43,15 @@ public interface ApplicationService {
     
     void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
     
+    void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);
+    
     void addSpmResult(InIntakeApplication application, InSpmResult spmResult);
 
     void deleteAddress(InIntakeApplication application, InAddress address);
     
     void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
+    
+    void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);
     
     void deleteSpmResult (InIntakeApplication application, InSpmResult spmResult);
 
@@ -101,6 +105,8 @@ public interface ApplicationService {
     
     InBachelorResult findBachelorResultById(Long id);
     
+    InDiplomaResult findDiplomaResultById(Long id);
+    
     InSpmResult findSpmResultById(Long id);
 
     InContact findContactById(Long id);
@@ -113,6 +119,8 @@ public interface ApplicationService {
     
     InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
 
+    InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application);
+    
     InContact findContactByType(InContactType contactType, InIntakeApplication application);
 
     List<InIntakeApplication> findIntakeApplications(InApplicant applicant, InBidStatus bidStatus);
@@ -156,6 +164,8 @@ public interface ApplicationService {
     List<InAddress> findAddresses(InIntakeApplication application);
     
     List<InBachelorResult> findBachelorResults(InIntakeApplication application);
+    
+    List<InDiplomaResult> findDiplomaResults(InIntakeApplication application);
     
     List<InSpmResult> findSpmResults(InIntakeApplication application);
 

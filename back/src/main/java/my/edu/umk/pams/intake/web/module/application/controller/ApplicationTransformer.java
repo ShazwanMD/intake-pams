@@ -231,4 +231,22 @@ public class ApplicationTransformer {
         return vos;
     }
     
+    public DiplomaResult toDiplomaResultVo(InDiplomaResult e) {
+    	DiplomaResult vo = new DiplomaResult();
+        vo.setId(e.getId());
+        vo.setName(e.getName());
+        vo.setYear(e.getYear());
+        vo.setCgpa(e.getCgpa());
+        vo.setResultType(ResultType.get(e.getResultType().ordinal()));
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public List<DiplomaResult> toDiplomaResultVos(List<InDiplomaResult> e) {
+        List<DiplomaResult> vos = e.stream()
+                .map((e1) -> toDiplomaResultVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+    
 }

@@ -38,6 +38,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     
     InBachelorResult findBachelorResultById(Long id);
     
+    InDiplomaResult findDiplomaResultById(Long id);
+    
     InSpmResult findSpmResultById(Long id);
 
     InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application);
@@ -50,6 +52,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     
     InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
 
+    InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application);
+    
     InApplicant findApplicant(InIntakeApplication application);
     
     
@@ -96,6 +100,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InAddress> findAddresses(InIntakeApplication application);
     
     List<InBachelorResult> findBachelorResults(InIntakeApplication application);
+    
+    List<InDiplomaResult> findDiplomaResults(InIntakeApplication application);
     
     List<InSpmResult> findSpmResults (InIntakeApplication application);
 
@@ -158,10 +164,14 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void addAddress(InIntakeApplication application, InAddress address, InUser user);
     
     void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user);
+    
+    void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user);
 
     void deleteAddress(InIntakeApplication application, InAddress address, InUser user);
     
     void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user);
+    
+    void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user);
     
     void addSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user);
     

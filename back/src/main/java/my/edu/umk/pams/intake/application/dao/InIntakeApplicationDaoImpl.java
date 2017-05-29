@@ -110,6 +110,12 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         return (InBachelorResult) currentSession.get(InBachelorResultImpl.class, id);
     }
+    
+    @Override
+    public InDiplomaResult findDiplomaResultById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InDiplomaResult) currentSession.get(InDiplomaResultImpl.class, id);
+    }
 
     @Override
     public InSpmResult findSpmResultById(Long id) {
@@ -176,6 +182,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setInteger("resultType", resultType.ordinal());
         query.setEntity("application", application);
         return (InBachelorResult) query.uniqueResult();
+    }
+    
+    @Override
+    public InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select a from InDiplomaResult a where " +
+                "a.application = :application " +
+                "and a.resultType = :resultType ");
+        query.setInteger("resultType", resultType.ordinal());
+        query.setEntity("application", application);
+        return (InDiplomaResult) query.uniqueResult();
     }
 
     @Override
@@ -417,6 +434,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
                 "p.application = :application");
         query.setEntity("application", application);
         return (List<InBachelorResult>) query.list();
+    }
+    
+    @Override
+    public List<InDiplomaResult> findDiplomaResults(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InDiplomaResult p where " +
+                "p.application = :application");
+        query.setEntity("application", application);
+        return (List<InDiplomaResult>) query.list();
     }
 
     
@@ -783,6 +809,23 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         bachelorResult.setMetadata(metadata);
         session.save(bachelorResult);
     }
+    
+    @Override
+    public void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(diplomaResult, "DiplomaResult cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        diplomaResult.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        diplomaResult.setMetadata(metadata);
+        session.save(diplomaResult);
+    }
 
     @Override
     public void deleteAddress(InIntakeApplication application, InAddress address, InUser user) {
@@ -802,6 +845,16 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(bachelorResult);
+    }
+    
+    @Override
+    public void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(diplomaResult, "DiplomaResult cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(diplomaResult);
     }
     
     @Override
