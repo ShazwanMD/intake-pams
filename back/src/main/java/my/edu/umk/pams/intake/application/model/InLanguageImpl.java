@@ -70,6 +70,11 @@ public class InLanguageImpl implements InLanguage {
     }
 
     @Override
+    public void setLanguageCode(InLanguageCode languageCode) {
+        this.languageCode = languageCode;
+    }
+
+    @Override
     public InIntakeApplication getApplication() {
         return application;
     }
@@ -79,10 +84,12 @@ public class InLanguageImpl implements InLanguage {
         this.application = application;
     }
 
+    @Override
     public InMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }
@@ -91,11 +98,4 @@ public class InLanguageImpl implements InLanguage {
     public Class<?> getInterfaceClass() {
         return InLanguage.class;
     }
-
-	@Override
-	public void setLanguageCode(InLanguageCode languageCode) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
