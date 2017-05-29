@@ -1,3 +1,4 @@
+import { BachelorResult } from './intake-applications/bachelor-result-interface';
 import { SpmResult } from './intake-applications/spm-result.interface';
 import { Address } from './intake-applications/address.interface';
 import { Referee } from './intake-applications/referee.interface';
@@ -42,7 +43,7 @@ import {IntakeApplication} from "./intake-applications/intake-application.interf
 import {refereeListReducer, RefereeListState} from "./intake-applications/referee-list.reducer";
 import {addressListReducer, AddressListState} from "./intake-applications/address-list.reducer";
 import {spmResultListReducer, SpmResultListState} from "./intake-applications/spm-result-list.reducer";
-
+import {bachelorResultListReducer, BachelorResultListState} from "./intake-applications/bachelor-result-list.reducer";
 
 
 export interface ApplicationModuleState {
@@ -57,6 +58,7 @@ export interface ApplicationModuleState {
   intakeApplications: IntakeApplicationListState;
   intakeApplication: IntakeApplicationState;
   spmResults:SpmResultListState;
+  bachelorResults:BachelorResultListState;
 }
 ;
 
@@ -67,6 +69,7 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   referees:<Referee[]>[],
   addresses:<Address[]>[],
   spmResults:<SpmResult[]>[],
+  bachelorResults:<BachelorResult[]>[],
   programOfferings:<ProgramOffering[]>[],
   supervisorOfferings:[],
   studyModeOfferings:[],
@@ -82,6 +85,7 @@ export const applicationModuleReducers = {
   referees: refereeListReducer,
   addresses: addressListReducer,
   spmResults: spmResultListReducer,
+  bachelorResults: bachelorResultListReducer,
   programOfferings: intakeProgramOfferingListReducer,
   supervisorOfferings: intakeSupervisorOfferingListReducer,
   studyModeOfferings: intakeStudyModeOfferingListReducer,
