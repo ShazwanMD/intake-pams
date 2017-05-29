@@ -846,30 +846,6 @@
         ID int8 not null,
         primary key (ID)
     );
-    
-    create table IN_IELTS_RSLT (
-        POINT int4 not null,
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
-        primary key (ID)
-    );
-    
-    create table IN_MLY_PRFCNCY_RSLT (
-        GRADE varchar(255) not null,
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
-        primary key (ID)
-    );
-    
-    create table IN_ENGLSH_PRFCNCY_RSLT (
-        GRADE varchar(255) not null,
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
-        primary key (ID)
-    );
 
     create table IN_NTLY_CODE (
         ID int8 not null,
