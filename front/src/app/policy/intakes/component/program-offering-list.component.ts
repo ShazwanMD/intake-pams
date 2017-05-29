@@ -32,12 +32,12 @@ export class ProgramOfferingListComponent {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+   // this.store.dispatch(this.actions.findProgramOfferings(this.intake));
   }
 
-  editDialog(): void {
-    console.log("programOfferings$ :" + this.programOfferings);
-    this.showDialog2(this.programOfferings);
+  editDialog(programOffering): void {
+    console.log("programOffering :" + programOffering);
+    this.showDialog2(programOffering);
   }
 
   delete(intake: Intake, id: ProgramOffering): void {
