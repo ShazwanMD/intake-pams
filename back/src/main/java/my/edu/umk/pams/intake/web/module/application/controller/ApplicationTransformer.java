@@ -19,7 +19,7 @@ public class ApplicationTransformer {
 
     @Autowired
     private PolicyTransformer policyTransformer;
-    
+
     @Autowired
     private CommonTransformer commonTransformer;
 
@@ -85,7 +85,7 @@ public class ApplicationTransformer {
         vo.setAddress3(e.getAddress3());
         vo.setPostcode(e.getPostCode());
         vo.setCountryCode(commonTransformer.toCountryCodeVo(e.getCountryCode()));
-        vo.setStateCode(commonTransformer.toStateCodeVo(e.getStateCode()));     
+        vo.setStateCode(commonTransformer.toStateCodeVo(e.getStateCode()));
         vo.setAddressType(AddressType.get(e.getType().ordinal()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;
@@ -143,9 +143,26 @@ public class ApplicationTransformer {
         return vo;
     }
 
+    public Language toLanguageVo(InLanguage e) {
+        Language vo = new Language();
+        vo.setId(e.getId());
+        vo.setOral(e.getOral());
+        vo.setWritten(e.getWritten());
+        // vo.setLanguageCode(commonTransformer.toLanguageCodeVo(e.getLanguageCode()));
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
     public List<Employment> toEmploymentVos(List<InEmployment> e) {
         List<Employment> vos = e.stream()
                 .map((e1) -> toEmploymentVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+
+    public List<Language> toLanguageVos(List<InLanguage> e) {
+        List<Language> vos = e.stream()
+                .map((e1) -> toLanguageVo(e1))
                 .collect(Collectors.toList());
         return vos;
     }
@@ -214,7 +231,7 @@ public class ApplicationTransformer {
 
 
     public BachelorResult toBachelorResultVo(InBachelorResult e) {
-    	BachelorResult vo = new BachelorResult();
+        BachelorResult vo = new BachelorResult();
         vo.setId(e.getId());
         vo.setName(e.getName());
         vo.setYear(e.getYear());
@@ -230,9 +247,9 @@ public class ApplicationTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
-    
+
     public DiplomaResult toDiplomaResultVo(InDiplomaResult e) {
-    	DiplomaResult vo = new DiplomaResult();
+        DiplomaResult vo = new DiplomaResult();
         vo.setId(e.getId());
         vo.setName(e.getName());
         vo.setYear(e.getYear());
@@ -248,5 +265,5 @@ public class ApplicationTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
-    
+
 }

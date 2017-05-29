@@ -96,7 +96,14 @@
 
     create table IN_BCLR_RSLT (
         CGPA numeric(19, 2) not null,
-        NAME varchar(255) not null,
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        Name varchar(255) not null,
         YEAR int4 not null,
         ID int8 not null,
         APPLICATION_ID int8,
@@ -281,7 +288,14 @@
 
     create table IN_DPLM_RSLT (
         CGPA numeric(19, 2) not null,
-        NAME varchar(255) not null,
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        Name varchar(255) not null,
         YEAR int4 not null,
         ID int8 not null,
         APPLICATION_ID int8,
@@ -466,6 +480,14 @@
         primary key (ID)
     );
 
+    create table IN_ENGLSH_PRFCNCY_RSLT (
+        GRADE varchar(255) not null,
+        REGISTRATION_NO varchar(255) not null,
+        YEAR int4 not null,
+        ID int8 not null,
+        primary key (ID)
+    );
+
     create table IN_ETNY_CODE (
         ID int8 not null,
         CODE varchar(255),
@@ -620,6 +642,14 @@
         NAME varchar(255) not null,
         GUARANTOR_TYPE int4,
         APPLICATION_ID int8,
+        primary key (ID)
+    );
+
+    create table IN_IELTS_RSLT (
+        POINT int4 not null,
+        REGISTRATION_NO varchar(255) not null,
+        YEAR int4 not null,
+        ID int8 not null,
         primary key (ID)
     );
 
@@ -806,6 +836,45 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        primary key (ID)
+    );
+
+    create table IN_LNGE (
+        ID int8 not null,
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        ORAL int4 not null,
+        WRITTEN int4 not null,
+        APPLICATION_ID int8,
+        LANGUAGE_CODE_ID int8,
+        primary key (ID)
+    );
+
+    create table IN_LNGE_CODE (
+        ID int8 not null,
+        CODE varchar(255) not null,
+        DESCRIPTION_EN varchar(255),
+        DESCRIPTION_MS varchar(255),
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        primary key (ID)
+    );
+
+    create table IN_MLY_PRFCNCY_RSLT (
+        GRADE varchar(255) not null,
+        REGISTRATION_NO varchar(255) not null,
+        YEAR int4 not null,
+        ID int8 not null,
         primary key (ID)
     );
 
@@ -1334,12 +1403,12 @@
 
     alter table IN_BANK_CODE
         add constraint uc_IN_BANK_CODE_3 unique (SWIFT_CODE);
-        
+
     alter table IN_BCLR_RSLT
-        add constraint FKA01A82CB37A6AAA6
+        add constraint FKE5D330A737A6AAA6
         foreign key (APPLICATION_ID)
         references IN_INTK_APLN;
-        
+
     alter table IN_BCLR_RSLT
         add constraint FKE5D330A7D81680
         foreign key (ID)
@@ -1405,15 +1474,14 @@
         add constraint uc_IN_DPCY_CODE_1 unique (CODE);
 
     alter table IN_DPLM_RSLT
+        add constraint FK4C431AE137A6AAA6
+        foreign key (APPLICATION_ID)
+        references IN_INTK_APLN;
+
+    alter table IN_DPLM_RSLT
         add constraint FK4C431AE1D81680
         foreign key (ID)
         references IN_RSLT;
-        
-    alter table IN_DPLM_RSLT
-        add constraint FKA01A82CB37A6AAA6
-        foreign key (APPLICATION_ID)
-        references IN_INTK_APLN;
-        
 
     alter table IN_DSCT_CODE
         add constraint uc_IN_DSCT_CODE_1 unique (CODE);
@@ -1477,6 +1545,11 @@
     alter table IN_EMPT_SCTR_CODE
         add constraint uc_IN_EMPT_SCTR_CODE_1 unique (CODE);
 
+    alter table IN_ENGLSH_PRFCNCY_RSLT
+        add constraint FKCB997B65D81680
+        foreign key (ID)
+        references IN_RSLT;
+
     alter table IN_ETNY_CODE
         add constraint uc_IN_ETNY_CODE_1 unique (CODE);
 
@@ -1522,6 +1595,11 @@
         add constraint FKA01D238337A6AAA6
         foreign key (APPLICATION_ID)
         references IN_INTK_APLN;
+
+    alter table IN_IELTS_RSLT
+        add constraint FK126FFF3D81680
+        foreign key (ID)
+        references IN_RSLT;
 
     alter table IN_INTK
         add constraint uc_IN_INTK_1 unique (AUDIT_NO);
@@ -1669,6 +1747,24 @@
 
     alter table IN_INVT_TYPE_CODE
         add constraint uc_IN_INVT_TYPE_CODE_1 unique (CODE);
+
+    alter table IN_LNGE
+        add constraint FKA01F58BA37A6AAA6
+        foreign key (APPLICATION_ID)
+        references IN_INTK_APLN;
+
+    alter table IN_LNGE
+        add constraint FKA01F58BA17F01278
+        foreign key (LANGUAGE_CODE_ID)
+        references IN_LNGE_CODE;
+
+    alter table IN_LNGE_CODE
+        add constraint uc_IN_LNGE_CODE_1 unique (CODE);
+
+    alter table IN_MLY_PRFCNCY_RSLT
+        add constraint FKD6B09A42D81680
+        foreign key (ID)
+        references IN_RSLT;
 
     alter table IN_MODL
         add constraint uc_IN_MODL_1 unique (CANONICAL_CODE);
@@ -1952,6 +2048,10 @@
     create sequence SQ_IN_INVT_TTLE_CODE;
 
     create sequence SQ_IN_INVT_TYPE_CODE;
+
+    create sequence SQ_IN_LNGE;
+
+    create sequence SQ_IN_LNGE_CODE;
 
     create sequence SQ_IN_MODL;
 

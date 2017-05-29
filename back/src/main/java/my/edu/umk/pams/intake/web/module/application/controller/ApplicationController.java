@@ -124,7 +124,7 @@ public class ApplicationController {
         List<InProgramOffering> programOfferings = policyService.findProgramOfferings(intake);
         return new ResponseEntity<List<ProgramOffering>>(policyTransformer.toProgramOfferingVos(programOfferings), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<StudyModeOffering>> findStudyModeOfferings(@PathVariable String referenceNo) {
         dummyLogin();
@@ -255,6 +255,31 @@ public class ApplicationController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
+    // ====================================================================================================
+    // LANGUAGES
+    // ====================================================================================================
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/languages", method = RequestMethod.GET)
+    public ResponseEntity<List<Language>> findLanguagesByIntakeApplication(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InLanguage> languages = applicationService.findLanguages(application);
+        return new ResponseEntity<List<Language>>(applicationTransformer.toLanguageVos(languages), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/languages", method = RequestMethod.POST)
+    public ResponseEntity<String> addLanguage(@PathVariable String referenceNo, @RequestBody Language vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InLanguage language = new InLanguageImpl();
+        language.setOral(vo.getOral());
+        language.setWritten(vo.getWritten());
+        language.setLanguageCode(commonService.findLanguageCodeById(vo.getLanguageCode().getId()));
+        applicationService.addLanguage(application, language);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
 
     // ====================================================================================================
     // EDUCATIONS
@@ -369,7 +394,7 @@ public class ApplicationController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    
+
     // ====================================================================================================
     // BACHELOR RESULT
     // ====================================================================================================
@@ -394,8 +419,8 @@ public class ApplicationController {
         applicationService.addBachelorResult(application, bachelorResult);
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
-    } 
-    
+    }
+
     // ====================================================================================================
     // DIPLOMA RESULT
     // ====================================================================================================
@@ -421,7 +446,7 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
+
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================
