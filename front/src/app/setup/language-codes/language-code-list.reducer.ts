@@ -1,14 +1,14 @@
-import { MaritalCode } from './../../common/marital-codes/marital-code.interface';
+import { LanguageCode } from './../../common/language-codes/language-code.interface';
 import {Action} from '@ngrx/store';
 import {SetupActions} from "../setup.action";
 
-export type MaritalCodeListState = MaritalCode[];
+export type LanguageCodeListState = LanguageCode[];
 
-const initialState: MaritalCodeListState = <MaritalCode[]>[];
+const initialState: LanguageCodeListState = <LanguageCode[]>[];
 
-export function maritalCodeListReducer(state = initialState, action: Action): MaritalCodeListState {
+export function languageCodeListReducer(state = initialState, action: Action): LanguageCodeListState {
   switch (action.type) {
-    case SetupActions.FIND_MARITAL_CODES_SUCCESS: {
+    case SetupActions.FIND_LANGUAGE_CODES_SUCCESS: {
       return action.payload;
     }
     default: {

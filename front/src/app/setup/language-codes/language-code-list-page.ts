@@ -1,5 +1,5 @@
-import { MaritalCodeEditorDialog } from './dialog/marital-code-editor.dialog';
-import { MaritalCode } from './../../common/marital-codes/marital-code.interface';
+import { LanguageCodeEditorDialog } from './dialog/language-code-editor.dialog';
+import { LanguageCode } from './../../common/language-codes/language-code.interface';
 
 import {Component, OnInit, ViewContainerRef} from "@angular/core";
 import {Store} from "@ngrx/store";
@@ -10,14 +10,14 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 
 @Component({
-  selector: 'pams-marital-list-page',
-  templateUrl: './marital-code-list.page.html',
+  selector: 'pams-language-list-page',
+  templateUrl: './language-code-list.page.html',
 })
-export class MaritalCodeListPage implements OnInit {
+export class LanguageCodeListPage implements OnInit {
 
-  private MARITAL_CODES = "setupModuleState.maritalCodes".split(".");
-  private maritalCodes$: Observable<MaritalCode>;
-  private creatorDialogRef: MdDialogRef<MaritalCodeEditorDialog>;
+  private LANGUAGE_CODES = "setupModuleState.languageCodes".split(".");
+  private languageCodes$: Observable<LanguageCode>;
+  private creatorDialogRef: MdDialogRef<LanguageCodeEditorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
@@ -30,30 +30,30 @@ export class MaritalCodeListPage implements OnInit {
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
-    this.maritalCodes$ = this.store.select(...this.MARITAL_CODES);
+    this.languageCodes$ = this.store.select(...this.LANGUAGE_CODES);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findMaritalCodes());
-    this.store.dispatch(this.actions.changeTitle("Marital Codes"))
+    this.store.dispatch(this.actions.findLanguageCodes());
+    this.store.dispatch(this.actions.changeTitle("Language Codes"))
   }
 
   createDialog(): void {
     this.showDialog(null);
   }
 
-  editDialog(code:MaritalCode): void {
+  editDialog(code:LanguageCode): void {
     this.showDialog(code);
   }
 
-  delete(code: MaritalCode): void {
-    this.store.dispatch(this.actions.removeMaritalCode(code))
+  delete(code: LanguageCode): void {
+    this.store.dispatch(this.actions.removeLanguageCode(code))
   }
 
   filter(): void {
   }
 
-  private showDialog(code:MaritalCode): void {
+  private showDialog(code:LanguageCode): void {
     console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -61,8 +61,8 @@ export class MaritalCodeListPage implements OnInit {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(MaritalCodeEditorDialog, config);
-    if(code) this.creatorDialogRef.componentInstance.maritalCode = code; // set
+    this.creatorDialogRef = this.dialog.open(LanguageCodeEditorDialog, config);
+    if(code) this.creatorDialogRef.componentInstance.languageCode = code; // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
