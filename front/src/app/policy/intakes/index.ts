@@ -17,7 +17,6 @@ import {IntakeTaskListComponent} from "./component/intake-task-list.component";
 import {IntakeDraftTaskPanel} from "./panel/intake-draft-task.panel";
 import {IntakeTaskWorkflowPanel} from "./panel/intake-task-workflow.panel";
 import {IntakeTaskCreatorDialog} from "./dialog/intake-task-creator.dialog";
-import {IntakeTaskViewPage} from "./intake-task-view.page";
 import {ProgramOfferingListComponent} from "./component/program-offering-list.component";
 import {SupervisorOfferingListComponent} from "./component/supervisor-offering-list.component";
 import {StudyModeOfferingListComponent} from "./component/study-mode-offering-list.component";
@@ -35,6 +34,7 @@ import {IntakeTaskStatusComponent} from "./component/intake-task-status.componen
 import {IntakePublishTaskPanel} from "./panel/intake-publish-task.panel";
 import {ProgramOfferingSelectComponent} from "./component/program-offering-select.component";
 import {IntakeApplicationListComponent} from "./component/intake-application-list.component";
+import {IntakeTaskDetailPage} from "./intake-task-detail.page";
 
 
 @NgModule({
@@ -51,7 +51,7 @@ import {IntakeApplicationListComponent} from "./component/intake-application-lis
   declarations: [
     // page
     IntakeCenterPage,
-    IntakeTaskViewPage,
+    IntakeTaskDetailPage,
 
     // components
     IntakeTaskListComponent,

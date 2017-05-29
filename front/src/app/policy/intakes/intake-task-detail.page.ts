@@ -1,7 +1,4 @@
-import {
-  Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef
-} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {IntakeTask} from "./intake-task.interface";
 import {IntakeActions} from "./intake.action";
@@ -11,10 +8,10 @@ import {Store} from "@ngrx/store";
 
 
 @Component({
-  selector: 'pams-intake-task-view',
-  templateUrl: './intake-task-view.page.html',
+  selector: 'pams-intake-task-detail',
+  templateUrl: './intake-task-detail.page.html',
 })
-export class IntakeTaskViewPage implements OnInit {
+export class IntakeTaskDetailPage implements OnInit {
 
   private INTAKE_TASK = "policyModuleState.intakeTask".split(".");
   private intakeTask$: Observable<IntakeTask>;
@@ -27,7 +24,7 @@ export class IntakeTaskViewPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: {taskId: string}) => {
+    this.route.params.subscribe((params: { taskId: string }) => {
       let taskId: string = params.taskId;
       this.store.dispatch(this.actions.findIntakeTaskByTaskId(taskId));
     });
