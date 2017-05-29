@@ -8,18 +8,22 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity(name = "InLanguage")
-@Table(name = "IN_LNGG")
+@Table(name = "IN_LNGE")
 public class InLanguageImpl implements InLanguage {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SQ_IN_LNGG")
-    @SequenceGenerator(name = "SQ_IN_LNGG", sequenceName = "SQ_IN_LNGG", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_IN_LNGE")
+    @SequenceGenerator(name = "SQ_IN_LNGE", sequenceName = "SQ_IN_LNGE", allocationSize = 1)
     private Long id;
     
     @NotNull
     @Column(name = "ORAL", nullable = false)
     private Integer oral;
+
+    @NotNull
+    @Column(name = "WRITTEN", nullable = false)
+    private Integer written;
 
     @ManyToOne(targetEntity = InLanguageCodeImpl.class)
     @JoinColumn(name = "LANGUAGE_CODE_ID")
@@ -40,7 +44,6 @@ public class InLanguageImpl implements InLanguage {
         this.id = id;
     }
 
-    
     @Override
     public Integer getOral() {
         return oral;
@@ -50,7 +53,16 @@ public class InLanguageImpl implements InLanguage {
     public void setOral(Integer oral) {
         this.oral = oral;
     }
-    
+
+    @Override
+    public Integer getWritten() {
+        return written;
+    }
+
+    @Override
+    public void setWritten(Integer written) {
+        this.written = written;
+    }
 
     @Override
     public InLanguageCode getLanguageCode() {

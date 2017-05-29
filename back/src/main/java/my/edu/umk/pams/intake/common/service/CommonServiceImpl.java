@@ -46,6 +46,9 @@ public class CommonServiceImpl implements CommonService {
     private InMaritalCodeDao maritalCodeDao;
 
     @Autowired
+    private InLanguageCodeDao languageCodeDao;
+
+    @Autowired
     private InDependencyCodeDao dependencyCodeDao;
 
     @Autowired
@@ -1462,6 +1465,58 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public void removeMaritalCode(InMaritalCode MaritalCode) {
         maritalCodeDao.remove(MaritalCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    //====================================================================================================
+    // LANGUAGE CODE
+    //====================================================================================================
+
+    @Override
+    public InLanguageCode findLanguageCodeById(Long id) {
+        return languageCodeDao.findById(id);
+    }
+
+    @Override
+    public InLanguageCode findLanguageCodeByCode(String code) {
+        return languageCodeDao.findByCode(code);
+    }
+
+    @Override
+    public List<InLanguageCode> findLanguageCodes() {
+        return languageCodeDao.find();
+    }
+
+    @Override
+    public List<InLanguageCode> findLanguageCodes(String filter, Integer offset, Integer limit) {
+        return languageCodeDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countLanguageCode() {
+        return languageCodeDao.count();
+    }
+
+    @Override
+    public Integer countLanguageCode(String filter) {
+        return languageCodeDao.count(filter);
+    }
+
+    @Override
+    public void saveLanguageCode(InLanguageCode LanguageCode) {
+        languageCodeDao.save(LanguageCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateLanguageCode(InLanguageCode LanguageCode) {
+        languageCodeDao.update(LanguageCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeLanguageCode(InLanguageCode LanguageCode) {
+        languageCodeDao.remove(LanguageCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

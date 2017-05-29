@@ -6,13 +6,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity(name = "InLanguageCode")
-@Table(name = "IN_LNGG_CODE")
+@Table(name = "IN_LNGE_CODE")
 public class InLanguageCodeImpl implements InLanguageCode {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SQ_IN_LNGG_CODE")
-    @SequenceGenerator(name = "SQ_IN_LNGG_CODE", sequenceName = "SQ_IN_LNGG_CODE", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_IN_LNGE_CODE")
+    @SequenceGenerator(name = "SQ_IN_LNGE_CODE", sequenceName = "SQ_IN_LNGE_CODE", allocationSize = 1)
     private Long id;
 
     @NotNull
@@ -78,7 +78,6 @@ public class InLanguageCodeImpl implements InLanguageCode {
 	public void setMetadata(InMetadata metadata) {
 		this.metadata = metadata;
 	}
-
 
 	@Override
 	public Class<?> getInterfaceClass() {

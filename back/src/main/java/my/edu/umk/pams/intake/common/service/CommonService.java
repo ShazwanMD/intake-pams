@@ -458,6 +458,28 @@ public interface CommonService {
 	void removeMaritalCode(InMaritalCode maritalCode);
 
 	// ====================================================================================================
+	// LANGUAGE CODE
+	// ====================================================================================================
+
+	InLanguageCode findLanguageCodeById(Long id);
+
+	InLanguageCode findLanguageCodeByCode(String code);
+
+	List<InLanguageCode> findLanguageCodes();
+
+	List<InLanguageCode> findLanguageCodes(String filter, Integer offset, Integer limit);
+
+	Integer countLanguageCode();
+
+	Integer countLanguageCode(String filter);
+
+	void saveLanguageCode(InLanguageCode languageCode);
+
+	void updateLanguageCode(InLanguageCode languageCode);
+
+	void removeLanguageCode(InLanguageCode languageCode);
+
+	// ====================================================================================================
 	// DEPENDENCY CODE
 	// ====================================================================================================
 
