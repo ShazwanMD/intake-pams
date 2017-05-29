@@ -13,6 +13,7 @@ import {Intake} from "../app/policy/intakes/intake.interface";
 import {ProgramOffering} from "../app/policy/intakes/program-offering.interface";
 import {SpmResult} from './../app/application/intake-applications/spm-result.interface';
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
+import {Language} from "../app/application/intake-applications/language.interface";
 
 
 @Injectable()
@@ -136,6 +137,22 @@ export class ApplicationService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments', JSON.stringify(employment), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  findLanguagesByIntakeApplication(application: IntakeApplication): Observable<Language[]> {
+    console.log("findLanguages");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/languages")
+      .map((res: Response) => <Language[]>res.json());
+  }
+
+  addLanguage(application: IntakeApplication, language: Language): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages', JSON.stringify(language), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

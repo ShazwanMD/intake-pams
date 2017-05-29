@@ -1,7 +1,7 @@
-import { BachelorResult } from './intake-applications/bachelor-result-interface';
-import { SpmResult } from './intake-applications/spm-result.interface';
-import { Address } from './intake-applications/address.interface';
-import { Referee } from './intake-applications/referee.interface';
+import {BachelorResult} from './intake-applications/bachelor-result-interface';
+import {SpmResult} from './intake-applications/spm-result.interface';
+import {Address} from './intake-applications/address.interface';
+import {Referee} from './intake-applications/referee.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -43,46 +43,51 @@ import {IntakeApplication} from "./intake-applications/intake-application.interf
 import {refereeListReducer, RefereeListState} from "./intake-applications/referee-list.reducer";
 import {addressListReducer, AddressListState} from "./intake-applications/address-list.reducer";
 import {spmResultListReducer, SpmResultListState} from "./intake-applications/spm-result-list.reducer";
-import { StudyModeOffering } from "../policy/intakes/study-mode-offering.interface";
+import {StudyModeOffering} from "../policy/intakes/study-mode-offering.interface";
 import {bachelorResultListReducer, BachelorResultListState} from "./intake-applications/bachelor-result-list.reducer";
+import {Language} from "./intake-applications/language.interface";
+import {languageListReducer, LanguageListState} from "./intake-applications/language-list.reducer";
 
 
 export interface ApplicationModuleState {
   intakes: IntakeListState;
   intake: IntakeState;
-  employments:EmploymentListState;
-  addresses:AddressListState;
-  referees:RefereeListState;
+  employments: EmploymentListState;
+  languages: LanguageListState;
+  addresses: AddressListState;
+  referees: RefereeListState;
   programOfferings: IntakeProgramOfferingListState;
   supervisorOfferings: IntakeSupervisorOfferingListState;
   studyModeOfferings: IntakeStudyModeOfferingListState;
   intakeApplications: IntakeApplicationListState;
   intakeApplication: IntakeApplicationState;
-  spmResults:SpmResultListState;
-  bachelorResults:BachelorResultListState;
+  spmResults: SpmResultListState;
+  bachelorResults: BachelorResultListState;
 }
 ;
 
 export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationModuleState>{
-  intakes:<Intake[]>[],
-  intake:<Intake>{},
-  employments:<Employment[]>[],
-  referees:<Referee[]>[],
-  addresses:<Address[]>[],
-  spmResults:<SpmResult[]>[],
-  bachelorResults:<BachelorResult[]>[],
-  programOfferings:<ProgramOffering[]>[],
-  supervisorOfferings:[],
-  studyModeOfferings:<StudyModeOffering[]>[],
-  intakeApplications:[],
-  intakeApplication:<IntakeApplication>{},
-  
+  intakes: <Intake[]>[],
+  intake: <Intake>{},
+  employments: <Employment[]>[],
+  languages: <Language[]>[],
+  referees: <Referee[]>[],
+  addresses: <Address[]>[],
+  spmResults: <SpmResult[]>[],
+  bachelorResults: <BachelorResult[]>[],
+  programOfferings: <ProgramOffering[]>[],
+  supervisorOfferings: [],
+  studyModeOfferings: <StudyModeOffering[]>[],
+  intakeApplications: [],
+  intakeApplication: <IntakeApplication>{},
+
 };
 
 export const applicationModuleReducers = {
   intakes: intakeListReducer,
   intake: intakeReducer,
   employments: employmentListReducer,
+  languages: languageListReducer,
   referees: refereeListReducer,
   addresses: addressListReducer,
   spmResults: spmResultListReducer,
@@ -111,9 +116,7 @@ export const applicationModuleReducers = {
   ],
   exports: [],
 
-  entryComponents: [
-
-  ],
+  entryComponents: [],
 })
 export class ApplicationModule {
   static forRoot(): ModuleWithProviders {

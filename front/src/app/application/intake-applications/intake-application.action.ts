@@ -170,7 +170,6 @@ export class IntakeApplicationActions {
     };
   }
 
-
   static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Employments';
 
   findEmploymentsByIntakeApplication(application): Action {
@@ -188,6 +187,26 @@ export class IntakeApplicationActions {
     return {
       type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS,
       payload: employments
+    };
+  }
+
+  static FIND_LANGUAGES_BY_INTAKE_APPLICATION = '[Intake Application] Find Languages';
+
+  findLanguagesByIntakeApplication(application): Action {
+    console.log("findLanguagesByIntakeApplication");
+    return {
+      type: IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_LANGUAGES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Languages Success';
+
+  findLanguagesByIntakeApplicationSuccess(languages): Action {
+    console.log("findLanguagesByIntakeApplicationSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: languages
     };
   }
 
@@ -361,6 +380,26 @@ export class IntakeApplicationActions {
     console.log("addEmploymentSuccess");
     return {
       type: IntakeApplicationActions.ADD_EMPLOYMENT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static ADD_LANGUAGE = '[Intake Application] Save Language';
+
+  addLanguage(application, language): Action {
+    console.log("addLanguage");
+    return {
+      type: IntakeApplicationActions.ADD_LANGUAGE,
+      payload: {application: application, language: language}
+    };
+  }
+
+  static ADD_LANGUAGE_SUCCESS = '[Intake Application] Add Language Success';
+
+  addLanguageSuccess(message): Action {
+    console.log("addLanguageSuccess");
+    return {
+      type: IntakeApplicationActions.ADD_LANGUAGE_SUCCESS,
       payload: message
     };
   }

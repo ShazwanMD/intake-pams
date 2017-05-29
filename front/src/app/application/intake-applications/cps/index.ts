@@ -28,6 +28,7 @@ import {IntakeSubModule} from "../../../policy/intakes/index";
 import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
 import {ProgramChoiceComponent} from "../component/program-choice.component";
+import {LanguageListComponent} from "../component/language-list.component";
 
 
 
@@ -48,6 +49,7 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
 
     //components
     EmploymentListComponent,
+    LanguageListComponent,
     RefereeListComponent,
     ProgramChoiceComponent,
     BachelorResultListComponent,
@@ -62,10 +64,11 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
     AddressCreatorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
- 
+
   ],
   exports: [
     EmploymentListComponent,
+    LanguageListComponent,
     RefereeListComponent,
     ProgramChoiceComponent,
     AddressListComponent,
@@ -81,7 +84,7 @@ import {ProgramChoiceComponent} from "../component/program-choice.component";
     AddressCreatorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
-   
+
   ],
 })
 export class CpsIntakeApplicationSubModule {

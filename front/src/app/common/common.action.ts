@@ -100,6 +100,25 @@ export class CommonActions {
     };
   }
 
+  static FIND_LANGUAGE_CODES = '[Common] Find Language Codes';
+
+  findLanguageCodes(): Action {
+    console.log("findLanguageCodes");
+    return {
+      type: CommonActions.FIND_LANGUAGE_CODES,
+    };
+  }
+
+  static FIND_LANGUAGE_CODES_SUCCESS = '[Common] Find Language Codes Success';
+
+  findLanguageCodesSuccess(codes): Action {
+    console.log("findLanguageCodesSuccess");
+    return {
+      type: CommonActions.FIND_LANGUAGE_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
   static FIND_DISABILITY_CODES = '[Common] Find Disability Codes';
 
   findDisabilityCodes(): Action {

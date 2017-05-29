@@ -95,6 +95,7 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findEducationsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findAddressesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findRefereesByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findLanguagesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findBachelorResultsByIntakeApplication(action.payload),
 
@@ -133,11 +134,27 @@ export class IntakeApplicationEffects {
     .switchMap(application => this.applicationService.findEmploymentsByIntakeApplication(application))
     .map(employments => this.intakeApplicationActions.findEmploymentsByIntakeApplicationSuccess(employments));
 
+  @Effect() findLanguagesByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findLanguagesByIntakeApplication(application))
+    .map(languages => this.intakeApplicationActions.findLanguagesByIntakeApplicationSuccess(languages));
+
+
+  @Effect() findAddressesByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findAddressesByIntakeApplication(application))
+    .map(addresses => this.intakeApplicationActions.findAddressesByIntakeApplicationSuccess(addresses));
+
   @Effect() addEducation = this.actions$
     .ofType(IntakeApplicationActions.ADD_EDUCATION)
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addEducation(payload.intake, payload.education))
-    .map(message => this.intakeApplicationActions.addEducationSuccess(message));
+    .map(message => this.intakeApplicationActions.addEducationSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
   @Effect() addEmployment = this.actions$
     .ofType(IntakeApplicationActions.ADD_EMPLOYMENT)
@@ -148,11 +165,14 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
-  @Effect() findAddressesByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION)
+  @Effect() addLanguage = this.actions$
+    .ofType(IntakeApplicationActions.ADD_LANGUAGE)
     .map(action => action.payload)
-    .switchMap(application => this.applicationService.findAddressesByIntakeApplication(application))
-    .map(addresses => this.intakeApplicationActions.findAddressesByIntakeApplicationSuccess(addresses));
+    .switchMap(payload => this.applicationService.addLanguage(payload.application, payload.language))
+    .map(message => this.intakeApplicationActions.addLanguageSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
   @Effect() addAddress = this.actions$
     .ofType(IntakeApplicationActions.ADD_ADDRESS)

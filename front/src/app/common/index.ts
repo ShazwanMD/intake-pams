@@ -45,6 +45,7 @@ import {NationalityCodeListState, nationalityCodeListReducer} from "./nationalit
 import {residencyCodeListReducer, ResidencyCodeListState} from "./residency-codes/residency-code-list.reducer";
 import {ResidencyCodeSelectComponent} from "./residency-codes/component/residency-code-select.component";
 import {languageCodeListReducer, LanguageCodeListState} from "./language-codes/language-code-list.reducer";
+import {LanguageCodeSelectComponent} from "./language-codes/component/language-code-select.component";
 
 
 export interface CommonModuleState {
