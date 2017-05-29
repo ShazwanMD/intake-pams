@@ -4,23 +4,19 @@ package my.edu.umk.pams.intake.application.model;
  * @author PAMS
  */
 public enum InResultType {
-    SPM("SPM"),
-    STAM("STAM"),
-    STPM("STPM"),
-    MUET("MUET"),
-    TOEFL("TOEFL"),
-    DIPLOMA("Diploma"),
-    DIPLOMA_EQUIVALENT("DiplomaEquivalent"),
-    BACHELOR("Bachelor"),
-    BACHELOR_EQUIVALENT("BachelorEquivalent");
+    SPM,
+    STAM,
+    STPM,
+    MUET,
+    TOEFL,
+    DIPLOMA,
+    DIPLOMA_EQUIVALENT,
+    BACHELOR,
+    BACHELOR_EQUIVALENT;
 
     private String code;
 
-    InResultType(String code) {
-        this.code = code;
-    }
-
-    public String getCode() {
-        return code;
+    public static InResultType get(int index) {
+        return values()[index];
     }
 }
