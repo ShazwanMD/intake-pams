@@ -188,6 +188,10 @@ public interface InIntakeApplication extends InMetaObject {
     List<InAddress> getAddresses();
 
     void setAddresses(List<InAddress> addresses);
+    
+    List<InBachelorResult> getBachelorResults();
+
+    void setBachelorResults(List<InBachelorResult> bachelorResults);
 
     List<InGuardian> getGuardians();
 

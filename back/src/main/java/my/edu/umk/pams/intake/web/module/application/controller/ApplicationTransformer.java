@@ -216,7 +216,7 @@ public class ApplicationTransformer {
     public BachelorResult toBachelorResultVo(InBachelorResult e) {
     	BachelorResult vo = new BachelorResult();
         vo.setId(e.getId());
-        vo.setMatricNo(e.getMatricNo());
+        vo.setName(e.getName());
         vo.setYear(e.getYear());
         vo.setCgpa(e.getCgpa());
         vo.setResultType(ResultType.get(e.getResultType().ordinal()));

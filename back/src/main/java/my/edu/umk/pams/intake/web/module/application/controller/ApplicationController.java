@@ -387,10 +387,9 @@ public class ApplicationController {
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InBachelorResult bachelorResult = new InBachelorResultImpl();
-        bachelorResult.setMatricNo(vo.getMatricNo());
+        bachelorResult.setName(vo.getName());
         bachelorResult.setCgpa(vo.getCgpa());
         bachelorResult.setYear(vo.getYear());
-        bachelorResult.setResultType(InResultType.get(vo.getResultType().ordinal()));
         bachelorResult.setResultType(InResultType.get(vo.getResultType().ordinal()));
         applicationService.addBachelorResult(application, bachelorResult);
 

@@ -96,9 +96,10 @@
 
     create table IN_BCLR_RSLT (
         CGPA numeric(19, 2) not null,
-        MATRIC_NO varchar(255) not null,
+        NAME varchar(255) not null,
         YEAR int4 not null,
         ID int8 not null,
+        APPLICATION_ID int8,
         primary key (ID)
     );
 
@@ -1332,7 +1333,12 @@
 
     alter table IN_BANK_CODE
         add constraint uc_IN_BANK_CODE_3 unique (SWIFT_CODE);
-
+        
+    alter table IN_BCLR_RSLT
+        add constraint FKA01A82CB37A6AAA6
+        foreign key (APPLICATION_ID)
+        references IN_INTK_APLN;
+        
     alter table IN_BCLR_RSLT
         add constraint FKE5D330A7D81680
         foreign key (ID)

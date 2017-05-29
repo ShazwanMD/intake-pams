@@ -14,21 +14,24 @@ import java.util.Date;
  */
 public class BachelorResult extends MetaObject {
 
-    private String matricNo;
+    private String name;
     private Integer year;
     private BigDecimal cgpa = BigDecimal.ZERO;
     private ResultType resultType;
 
 
     
-	public String getMatricNo() {
-		return matricNo;
+
+
+
+	public String getName() {
+		return name;
 	}
 
 
 
-	public void setMatricNo(String matricNo) {
-		this.matricNo = matricNo;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 

@@ -15,7 +15,11 @@ public interface InBachelorResult extends InResult {
 
     void setCgpa(BigDecimal cgpa);
 
-    String getMatricNo();
+    String getName();
 
-    void setMatricNo(String matricNo);
+    void setName(String name);
+    
+    InIntakeApplication getApplication();
+
+    void setApplication(InIntakeApplication application);
 }
