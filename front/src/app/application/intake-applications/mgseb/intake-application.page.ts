@@ -10,7 +10,7 @@ import {ApplicationModuleState} from "../../index";
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
-
+import { StudyMode } from "./../study-mode.interface";
 
 
 @Component({
@@ -25,13 +25,14 @@ export class MgsebIntakeApplicationPage implements OnInit {
   private REFEREES = "applicationModuleState.referees".split(".");
   private ADDRESSES = "applicationModuleState.addresses".split(".");
   private SPM_RESULTS = "applicationModuleState.spmResults".split(".");
-
+  private STUDY_MODES = "applicationModulState.studyModes".split(".");
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private referees$: Observable<Referee>;
   private addresses$: Observable<Address>;
   private spmResults$: Observable<SpmResult>;
+  private studyModes$:Observable<StudyMode>;
   private applicationForm: FormGroup;
 
   constructor(private router: Router,
@@ -46,6 +47,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.referees$ = this.store.select(...this.REFEREES);
     this.addresses$ = this.store.select(...this.ADDRESSES);
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
+    this.studyModes$ = this.store.select(...this.STUDY_MODES);
   }
 
   ngOnInit(): void {
