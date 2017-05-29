@@ -37,6 +37,8 @@ public interface ApplicationService {
 
     void addEmployment(InIntakeApplication application, InEmployment employment);
 
+    void addLanguage(InIntakeApplication application, InLanguage language);
+
     void addInvolvement(InIntakeApplication application, InInvolvement involvement);
 
     void addAddress(InIntakeApplication application, InAddress address);
@@ -150,6 +152,8 @@ public interface ApplicationService {
     List<InEducation> findEducations(InIntakeApplication application);
 
     List<InEmployment> findEmployments(InIntakeApplication application);
+
+    List<InLanguage> findLanguages(InIntakeApplication application);
     
     List<InReferee> findReferees(InIntakeApplication application);
 
@@ -182,6 +186,8 @@ public interface ApplicationService {
     boolean hasEducation(InIntakeApplication application);
 
     boolean hasEmployment(InIntakeApplication application);
+
+    boolean hasLanguage(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
     

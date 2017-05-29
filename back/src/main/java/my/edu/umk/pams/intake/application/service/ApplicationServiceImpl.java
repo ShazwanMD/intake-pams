@@ -50,14 +50,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public String applyIntake(InIntake intake, InIntakeApplication application) {
-        Map<String,Object> map = new HashMap<String,Object>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intake.getSession());
         map.put("programLevel", intake.getProgramLevel());
         String generatedReferenceNo = systemService.generateFormattedReferenceNo(IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO, map);
 
         application.setReferenceNo(generatedReferenceNo);
-    	application.setBidStatus(InBidStatus.DRAFTED);
-    	application.setIntake(intake);
+        application.setBidStatus(InBidStatus.DRAFTED);
+        application.setIntake(intake);
         intakeApplicationDao.save(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         return generatedReferenceNo;
@@ -78,7 +78,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         application.setBidStatus(InBidStatus.WITHDRAWN);
         updateIntakeApplication(application);
     }
-    
+
     @Override
     public void draftedIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
@@ -86,7 +86,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         application.setBidStatus(InBidStatus.DRAFTED);
         updateIntakeApplication(application);
     }
-    
+
     @Override
     public void rejectIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
@@ -94,7 +94,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         application.setBidStatus(InBidStatus.REJECTED);
         updateIntakeApplication(application);
     }
-    
+
     @Override
     public void processIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
@@ -102,13 +102,13 @@ public class ApplicationServiceImpl implements ApplicationService {
         application.setBidStatus(InBidStatus.PROCESSING);
         updateIntakeApplication(application);
     }
-    
+
     @Override
     public void verifyInternationalApplications(InIntake intake, InIntakeApplication application) {
         application.setVerified(true);
         updateIntakeApplication(application);
     }
-    
+
     @Override
     public void addResult(InIntakeApplication application, InResult result) {
         intakeApplicationDao.addResult(application, result, securityService.getCurrentUser());
@@ -141,6 +141,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public void addLanguage(InIntakeApplication application, InLanguage language) {
+        intakeApplicationDao.addLanguage(application, language, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
     public void addInvolvement(InIntakeApplication application, InInvolvement involvement) {
         intakeApplicationDao.addInvolvement(application, involvement, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -151,13 +157,13 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.addAddress(application, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
         intakeApplicationDao.addBachelorResult(application, bachelorResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult) {
         intakeApplicationDao.addDiplomaResult(application, diplomaResult, securityService.getCurrentUser());
@@ -169,19 +175,19 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.deleteAddress(application, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
         intakeApplicationDao.deleteBachelorResult(application, bachelorResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult) {
         intakeApplicationDao.deleteDiplomaResult(application, diplomaResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void addSpmResult(InIntakeApplication application, InSpmResult spmResult) {
         intakeApplicationDao.addSpmResult(application, spmResult, securityService.getCurrentUser());
@@ -193,7 +199,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.deleteSpmResult(application, spmResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
 
     @Override
     public void addContact(InIntakeApplication application, InContact contact) {
@@ -230,10 +236,10 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.deleteGuardian(application, guardian, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
-    public void addReferee (InIntakeApplication application, InReferee  referee ) {
-        intakeApplicationDao.addReferee(application, referee , securityService.getCurrentUser());
+    public void addReferee(InIntakeApplication application, InReferee referee) {
+        intakeApplicationDao.addReferee(application, referee, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -243,11 +249,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 //        franchiseDao.save()
 //        sessionFactory.getCurrentSession().flush();
     }
-    
-	@Override
-	public void addAttachment(InIntakeApplication application, InAttachment attachment) {
-		intakeApplicationDao.addAttachment(application, attachment, securityService.getCurrentUser());
-	}
+
+    @Override
+    public void addAttachment(InIntakeApplication application, InAttachment attachment) {
+        intakeApplicationDao.addAttachment(application, attachment, securityService.getCurrentUser());
+    }
 
     @Override
     public InApplicant findApplicant(InIntakeApplication application) {
@@ -278,17 +284,17 @@ public class ApplicationServiceImpl implements ApplicationService {
     public InAddress findAddressById(Long id) {
         return intakeApplicationDao.findAddressById(id);
     }
-    
+
     @Override
     public InBachelorResult findBachelorResultById(Long id) {
         return intakeApplicationDao.findBachelorResultById(id);
     }
-    
+
     @Override
     public InDiplomaResult findDiplomaResultById(Long id) {
         return intakeApplicationDao.findDiplomaResultById(id);
     }
-    
+
 
     @Override
     public InSpmResult findSpmResultById(Long id) {
@@ -304,12 +310,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     public InAddress findAddressByType(InAddressType addressType, InIntakeApplication application) {
         return intakeApplicationDao.findAddressByType(addressType, application);
     }
-    
+
     @Override
     public InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application) {
         return intakeApplicationDao.findBachelorResultByResultType(resultType, application);
     }
-    
+
     @Override
     public InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application) {
         return intakeApplicationDao.findDiplomaResultByResultType(resultType, application);
@@ -420,7 +426,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<InEmployment> findEmployments(InIntakeApplication application) {
         return intakeApplicationDao.findEmployments(application);
     }
-    
+
+    @Override
+    public List<InLanguage> findLanguages(InIntakeApplication application) {
+        return intakeApplicationDao.findLanguages(application);
+    }
+
     @Override
     public List<InReferee> findReferees(InIntakeApplication application) {
         return intakeApplicationDao.findReferees(application);
@@ -450,17 +461,17 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<InAddress> findAddresses(InIntakeApplication application) {
         return intakeApplicationDao.findAddresses(application);
     }
-    
+
     @Override
     public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
         return intakeApplicationDao.findBachelorResults(application);
     }
-    
+
     @Override
     public List<InDiplomaResult> findDiplomaResults(InIntakeApplication application) {
         return intakeApplicationDao.findDiplomaResults(application);
     }
-    
+
     @Override
     public List<InSpmResult> findSpmResults(InIntakeApplication application) {
         return intakeApplicationDao.findSpmResults(application);
@@ -495,7 +506,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     public boolean hasEmployment(InIntakeApplication application) {
         return intakeApplicationDao.hasEmployment(application);
     }
-    
+
+    @Override
+    public boolean hasLanguage(InIntakeApplication application) {
+        return intakeApplicationDao.hasLanguage(application);
+    }
+
     @Override
     public boolean hasReferee(InIntakeApplication application) {
         return intakeApplicationDao.hasReferee(application);
@@ -511,14 +527,14 @@ public class ApplicationServiceImpl implements ApplicationService {
         return intakeApplicationDao.hasResult(application, resultType);
     }
 
-	@Override
-	public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid) {
-		 return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, paid);
-	}
-	
-	@Override
-	public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
-		 return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, verification);
-	}
+    @Override
+    public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid) {
+        return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, paid);
+    }
+
+    @Override
+    public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
+        return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, verification);
+    }
 
 }
