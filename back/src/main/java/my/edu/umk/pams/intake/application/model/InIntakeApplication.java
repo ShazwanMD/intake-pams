@@ -225,6 +225,26 @@ public interface InIntakeApplication extends InMetaObject {
 
     List<InReferee> getReferees();
 
+	List<InMuetResult> getMuetResults();
+
+	void setMuetResults(List<InMuetResult> muetResults);
+
+	List<InToeflResult> getToeflResults();
+
+	void setToeflResults(List<InToeflResult> toeflResults);
+
+	List<InIeltsResult> getIeltsResults();
+
+	void setIeltsResults(List<InIeltsResult> ieltsResults);
+
+	List<InEnglishProficiencyResult> getEnglishPrfcncyResults();
+
+	void setEnglishPrfcncyResults(List<InEnglishProficiencyResult> englishPrfcncyResults);
+
+	List<InMalayProficiencyResult> getMalayPrfcncyResults();
+
+	void setMalayPrfcncyResults(List<InMalayProficiencyResult> malayPrfcncyResults);
+
 
 }
 
