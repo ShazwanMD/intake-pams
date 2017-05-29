@@ -41,9 +41,13 @@ public interface ApplicationService {
 
     void addAddress(InIntakeApplication application, InAddress address);
     
+    void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
+    
     void addSpmResult(InIntakeApplication application, InSpmResult spmResult);
 
     void deleteAddress(InIntakeApplication application, InAddress address);
+    
+    void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
     
     void deleteSpmResult (InIntakeApplication application, InSpmResult spmResult);
 
@@ -95,6 +99,8 @@ public interface ApplicationService {
 
     InAddress findAddressById(Long id);
     
+    InBachelorResult findBachelorResultById(Long id);
+    
     InSpmResult findSpmResultById(Long id);
 
     InContact findContactById(Long id);
@@ -104,6 +110,8 @@ public interface ApplicationService {
     InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application);
 
     InAddress findAddressByType(InAddressType addressType, InIntakeApplication application);
+    
+    InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
 
     InContact findContactByType(InContactType contactType, InIntakeApplication application);
 
@@ -146,6 +154,8 @@ public interface ApplicationService {
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
+    
+    List<InBachelorResult> findBachelorResults(InIntakeApplication application);
     
     List<InSpmResult> findSpmResults(InIntakeApplication application);
 
