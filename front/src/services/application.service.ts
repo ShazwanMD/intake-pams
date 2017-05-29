@@ -43,8 +43,9 @@ export class ApplicationService {
       .map((res: Response) => <Intake>res.json());
   }
 
-  findProgramOfferingsByIntake(intake: Intake): Observable<ProgramOffering[]> {
-    return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/programOfferings')
+  findProgramOfferingsByIntake(referenceNo: string): Observable<ProgramOffering[]> {
+      console.log("intake.referenceNo : "+referenceNo);
+    return this.http.get(environment.endpoint + '/api/application/intakes/' + referenceNo + '/programOfferings')
       .map((res: Response) => <ProgramOffering[]>res.json());
   }
 
