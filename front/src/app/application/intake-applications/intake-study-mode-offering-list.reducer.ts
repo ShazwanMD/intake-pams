@@ -8,9 +8,9 @@ const initialState: IntakeStudyModeOfferingListState = <StudyModeOffering[]>[];
 
 export function intakeStudyModeOfferingListReducer(state = initialState, action: Action): IntakeStudyModeOfferingListState {
   switch (action.type) {
-    // case IntakeApplicationActions.FIND_StudyMode_OFFERINGS_BY_INTAKE_SUCCESS: {
-    //   return action.payload;
-    // }
+    case IntakeApplicationActions.FIND_STUDY_MODE_OFFERINGS_BY_INTAKE_SUCCESS: {
+      return action.payload;
+    }
     default: {
       return state;
     }

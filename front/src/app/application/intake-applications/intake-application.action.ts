@@ -510,4 +510,22 @@ export class IntakeApplicationActions {
       payload: message
     };
   }
+
+   static SELECT_STUDY_MODE_OFFERING = '[Intake Application] Select Study Mode Offering';
+
+  selectStudyModeOffering(application, offering) {
+    return {
+      type: IntakeApplicationActions.SELECT_STUDY_MODE_OFFERING,
+      payload: {application: application, offering: offering}
+    };
+  }
+
+  static SELECT_STUDY_MODE_OFFERING_SUCCESS = '[Intake Application] Select Study Mode Offering Success';
+
+  selectStudyModeOfferingSuccess(message) {
+    return {
+      type: IntakeApplicationActions.SELECT_STUDY_MODE_OFFERING_SUCCESS,
+      payload: message
+    };
+  }
 }
