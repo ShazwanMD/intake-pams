@@ -15,7 +15,11 @@ public interface InDiplomaResult extends InResult {
 
     void setCgpa(BigDecimal cgpa);
 
-    String getRegistrationNo();
+    String getName();
 
-    void setRegistrationNo(String registrationNo);
+    void setName(String name);
+    
+    InIntakeApplication getApplication();
+
+    void setApplication(InIntakeApplication application);
 }

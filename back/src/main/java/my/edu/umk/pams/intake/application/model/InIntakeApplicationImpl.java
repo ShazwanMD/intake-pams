@@ -202,6 +202,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     
     @OneToMany(targetEntity = InBachelorResultImpl.class, mappedBy = "application")
     private List<InBachelorResult> bachelorResults;
+    
+    @OneToMany(targetEntity = InDiplomaResultImpl.class, mappedBy = "application")
+    private List<InDiplomaResult> diplomaResults;
 
     @OneToMany(targetEntity = InSpmResultImpl.class, mappedBy = "application")
     private List<InSpmResult> spmResults;
@@ -738,9 +741,17 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setBachelorResults(List<InBachelorResult> bachelorResults) {
         this.bachelorResults = bachelorResults;
     }
+    
 
+    public List<InDiplomaResult> getDiplomaResults() {
+		return diplomaResults;
+	}
 
-    @Override
+	public void setDiplomaResults(List<InDiplomaResult> diplomaResults) {
+		this.diplomaResults = diplomaResults;
+	}
+
+	@Override
     public List<InResult> getResults() {
         return results;
     }

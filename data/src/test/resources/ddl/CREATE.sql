@@ -281,9 +281,10 @@
 
     create table IN_DPLM_RSLT (
         CGPA numeric(19, 2) not null,
-        REGISTRATION_NO varchar(255) not null,
+        NAME varchar(255) not null,
         YEAR int4 not null,
         ID int8 not null,
+        APPLICATION_ID int8,
         primary key (ID)
     );
 
@@ -1407,6 +1408,12 @@
         add constraint FK4C431AE1D81680
         foreign key (ID)
         references IN_RSLT;
+        
+    alter table IN_DPLM_RSLT
+        add constraint FKA01A82CB37A6AAA6
+        foreign key (APPLICATION_ID)
+        references IN_INTK_APLN;
+        
 
     alter table IN_DSCT_CODE
         add constraint uc_IN_DSCT_CODE_1 unique (CODE);

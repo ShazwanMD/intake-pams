@@ -192,6 +192,10 @@ public interface InIntakeApplication extends InMetaObject {
     List<InBachelorResult> getBachelorResults();
 
     void setBachelorResults(List<InBachelorResult> bachelorResults);
+    
+    List<InDiplomaResult> getDiplomaResults();
+
+    void setDiplomaResults(List<InDiplomaResult> diplomaResults);
 
     List<InGuardian> getGuardians();
 

@@ -1,9 +1,15 @@
 package my.edu.umk.pams.intake.application.model;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import my.edu.umk.pams.intake.core.InMetadata;
+
 import java.math.BigDecimal;
 
 /**
@@ -22,12 +28,19 @@ public class InDiplomaResultImpl extends InResultImpl implements InDiplomaResult
     private BigDecimal cgpa = BigDecimal.ZERO;
 
     @NotNull
-    @Column(name = "REGISTRATION_NO", nullable = false)
-    private String registrationNo;
+    @Column(name = "Name", nullable = false)
+    private String name;
 
     public InDiplomaResultImpl() {
         setResultType(InResultType.DIPLOMA);
     }
+    
+    @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
+    @JoinColumn(name = "APPLICATION_ID")
+    private InIntakeApplication application;
+    
+    @Embedded
+    private InMetadata metadata;
 
     @Override
     public Integer getYear() {
@@ -49,13 +62,29 @@ public class InDiplomaResultImpl extends InResultImpl implements InDiplomaResult
         this.cgpa = cgpa;
     }
 
-    @Override
-    public String getRegistrationNo() {
-        return registrationNo;
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public void setRegistrationNo(String registrationNo) {
-        this.registrationNo = registrationNo;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public InIntakeApplication getApplication() {
+		return application;
+	}
+
+	public void setApplication(InIntakeApplication application) {
+		this.application = application;
+	}
+
+	public InMetadata getMetadata() {
+		return metadata;
+	}
+
+	public void setMetadata(InMetadata metadata) {
+		this.metadata = metadata;
+	}
+
+
 }
