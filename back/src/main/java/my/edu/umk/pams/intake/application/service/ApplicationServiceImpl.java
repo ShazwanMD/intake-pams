@@ -151,10 +151,22 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.addAddress(application, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+    public void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
+        intakeApplicationDao.addBachelorResult(application, bachelorResult, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
     @Override
     public void deleteAddress(InIntakeApplication application, InAddress address) {
         intakeApplicationDao.deleteAddress(application, address, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    @Override
+    public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
+        intakeApplicationDao.deleteBachelorResult(application, bachelorResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
     
@@ -256,6 +268,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     
     @Override
+    public InBachelorResult findBachelorResultById(Long id) {
+        return intakeApplicationDao.findBachelorResultById(id);
+    }
+    
+    @Override
     public InSpmResult findSpmResultById(Long id) {
         return intakeApplicationDao.findSpmResultById(id);
     }
@@ -268,6 +285,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public InAddress findAddressByType(InAddressType addressType, InIntakeApplication application) {
         return intakeApplicationDao.findAddressByType(addressType, application);
+    }
+    
+    @Override
+    public InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application) {
+        return intakeApplicationDao.findBachelorResultByResultType(resultType, application);
     }
 
     @Override
@@ -404,6 +426,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<InAddress> findAddresses(InIntakeApplication application) {
         return intakeApplicationDao.findAddresses(application);
+    }
+    
+    @Override
+    public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
+        return intakeApplicationDao.findBachelorResults(application);
     }
     
     @Override

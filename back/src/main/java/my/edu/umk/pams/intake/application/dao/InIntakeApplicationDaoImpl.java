@@ -104,6 +104,12 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         return (InAddress) currentSession.get(InAddressImpl.class, id);
     }
+    
+    @Override
+    public InBachelorResult findBachelorResultById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InBachelorResult) currentSession.get(InBachelorResultImpl.class, id);
+    }
 
     @Override
     public InSpmResult findSpmResultById(Long id) {
@@ -159,6 +165,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setInteger("type", type.ordinal());
         query.setEntity("application", application);
         return (InAddress) query.uniqueResult();
+    }
+    
+    @Override
+    public InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select a from InBachelorResult a where " +
+                "a.application = :application " +
+                "and a.resultType = :resultType ");
+        query.setInteger("resultType", resultType.ordinal());
+        query.setEntity("application", application);
+        return (InBachelorResult) query.uniqueResult();
     }
 
     @Override
@@ -391,6 +408,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
                 "p.application = :application");
         query.setEntity("application", application);
         return (List<InAddress>) query.list();
+    }
+    
+    @Override
+    public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InBachelorResult p where " +
+                "p.application = :application");
+        query.setEntity("application", application);
+        return (List<InBachelorResult>) query.list();
     }
 
     
@@ -740,6 +766,23 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         address.setMetadata(metadata);
         session.save(address);
     }
+    
+    @Override
+    public void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(bachelorResult, "BachelorResult cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        bachelorResult.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        bachelorResult.setMetadata(metadata);
+        session.save(bachelorResult);
+    }
 
     @Override
     public void deleteAddress(InIntakeApplication application, InAddress address, InUser user) {
@@ -751,6 +794,16 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         session.delete(address);
     }
 
+    @Override
+    public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(bachelorResult, "BachelorResult cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(bachelorResult);
+    }
+    
     @Override
     public void addSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user) {
         Validate.notNull(application, "Application cannot be null");

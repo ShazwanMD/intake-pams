@@ -213,4 +213,22 @@ public class ApplicationTransformer {
     }
 
 
+    public BachelorResult toBachelorResultVo(InBachelorResult e) {
+    	BachelorResult vo = new BachelorResult();
+        vo.setId(e.getId());
+        vo.setMatricNo(e.getMatricNo());
+        vo.setYear(e.getYear());
+        vo.setCgpa(e.getCgpa());
+        vo.setResultType(ResultType.get(e.getResultType().ordinal()));
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public List<BachelorResult> toBachelorResultVos(List<InBachelorResult> e) {
+        List<BachelorResult> vos = e.stream()
+                .map((e1) -> toBachelorResultVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+    
 }

@@ -1,0 +1,43 @@
+<h2 md-dialog-title>Address Information Creator</h2>
+<md-dialog-content>
+  <form [formGroup]="createForm">
+    <md-card>
+      <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+
+        <div layout="column" class="pad-right" flex>
+
+          <div layout="row">
+            <md-input-container flex>
+              <input mdInput placeholder="Year" formControlName="year" flex/>
+            </md-input-container>
+          </div>
+
+          <div layout="row">
+            <md-input-container flex>
+              <input mdInput placeholder="MatricNo" formControlName="matricNo" flex/>
+            </md-input-container>
+          </div>
+
+          <div layout="row">
+            <md-input-container flex>
+              <input mdInput type="number" placeholder="Cgpa" formControlName="cgpa" flex/>
+            </md-input-container>
+          </div>
+
+
+        <div layout="row" class="pad-top">
+      <pams-result-type-select
+        [placeholder]="'ResultType'"
+        [innerFormControl]="createForm.controls.resultType">
+      </pams-result-type-select>
+    </div>
+
+        </div>
+      </div>
+    </md-card>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+</md-dialog-actions>
+

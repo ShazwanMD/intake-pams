@@ -549,4 +549,35 @@ export class SetupEffects {
     .map(message => this.setupActions.removeParliamentCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findParliamentCodes()]));
     
+  // ====================================================================================================
+  // RESIDENCY CODE
+  // ====================================================================================================
+
+  @Effect() findResidencyCode$ = this.actions$
+    .ofType(SetupActions.FIND_RESIDENCY_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findResidencyCodes())
+    .map(codes => this.setupActions.findResidencyCodesSuccess(codes));
+
+  @Effect() saveResidencyCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_RESIDENCY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveResidencyCode(payload))
+    .map(message => this.setupActions.saveResidencyCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findResidencyCodes()]));
+
+  @Effect() updateResidencyCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_RESIDENCY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateResidencyCode(payload))
+    .map(message => this.setupActions.updateResidencyCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findResidencyCodes()]));
+
+  @Effect() removeResidencyCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_RESIDENCY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeResidencyCode(payload))
+    .map(message => this.setupActions.removeResidencyCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findResidencyCodes()]));
+
 }

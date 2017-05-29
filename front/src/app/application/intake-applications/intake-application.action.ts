@@ -528,4 +528,61 @@ export class IntakeApplicationActions {
       payload: message
     };
   }
+
+  static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Bachelor Results';
+
+  findBachelorResultsByIntakeApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Bachelor Results Success';
+
+  findBachelorResultsByIntakeApplicationSuccess(bachelorResult): Action {
+    console.log("findBachelorResultsSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: bachelorResult
+    };
+  }
+
+ static ADD_BACHELOR_RESULT = '[Intake Application] Add Bachelor Result';
+
+  addBachelorResult(application, bachelorResult) {
+    return {
+      type: IntakeApplicationActions.ADD_BACHELOR_RESULT,
+      payload: {application: application, bachelorResult: bachelorResult}
+    };
+  }
+
+  static ADD_BACHELOR_RESULT_SUCCESS = '[Intake Application] Add Bachelor Result Success';
+
+  addBachelorResultSuccess(message) {
+    return {
+      type: IntakeApplicationActions.ADD_BACHELOR_RESULT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static DELETE_BACHELOR_RESULT = '[Intake Application] Delete Bachelor Result';
+
+  deleteBachelorResult(intake, bachelorResult) {
+    return {
+      type: IntakeApplicationActions.DELETE_BACHELOR_RESULT,
+      payload: {intake: intake, bachelorResult: bachelorResult}
+    };
+  }
+
+  static DELETE_BACHELOR_RESULT_SUCCESS = '[Intake Application] Delete Bachelor Result Success';
+
+  deleteBachelorResultSucces(message) {
+    return {
+      type: IntakeApplicationActions.DELETE_BACHELOR_RESULT_SUCCESS,
+      payload: message
+    };
+  }
+
+
 }

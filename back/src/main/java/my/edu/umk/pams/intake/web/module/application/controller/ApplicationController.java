@@ -369,6 +369,34 @@ public class ApplicationController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
+    
+    // ====================================================================================================
+    // BACHELOR RESULT
+    // ====================================================================================================
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/bachelorResults", method = RequestMethod.GET)
+    public ResponseEntity<List<BachelorResult>> findBachelorResultsByIntakeApplication(@PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InBachelorResult> address = applicationService.findBachelorResults(application);
+        return new ResponseEntity<List<BachelorResult>>(applicationTransformer.toBachelorResultVos(address), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/bachelorResults", method = RequestMethod.POST)
+    public ResponseEntity<String> addBachelorResult(@PathVariable String referenceNo, @RequestBody BachelorResult vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InBachelorResult bachelorResult = new InBachelorResultImpl();
+        bachelorResult.setMatricNo(vo.getMatricNo());
+        bachelorResult.setCgpa(vo.getCgpa());
+        bachelorResult.setYear(vo.getYear());
+        bachelorResult.setResultType(InResultType.get(vo.getResultType().ordinal()));
+        bachelorResult.setResultType(InResultType.get(vo.getResultType().ordinal()));
+        applicationService.addBachelorResult(application, bachelorResult);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    } 
+    
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================

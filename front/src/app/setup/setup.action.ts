@@ -1455,4 +1455,89 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
   }
 
 //-------------------------------------------------------------------------------------
+
+//=================================================================================//
+//  RESIDENCY_CODES                                                                      //
+//=================================================================================//
+//1-------------------------------------------------------------
+  static FIND_RESIDENCY_CODES = '[Setup] Find Residency Codes';
+
+  findResidencyCodes(): Action {
+    console.log("findResidencyCodes");
+    return {
+      type: SetupActions.FIND_RESIDENCY_CODES,
+    };
+  }
+//2-------------------------------------------------------------------------------------
+  static FIND_RESIDENCY_CODES_SUCCESS = '[Setup] Find Residency Codes Success';
+
+  findResidencyCodesSuccess(codes): Action {
+    console.log("findResidencyCodesSuccess");
+    return {
+      type: SetupActions.FIND_RESIDENCY_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+//3----------------------------------------------------------------
+  static SAVE_RESIDENCY_CODE = '[Setup] Save Residency Code';
+
+  saveResidencyCode(code): Action {
+    console.log("saveResidencyCode");
+    return {
+      type: SetupActions.SAVE_RESIDENCY_CODE,
+      payload: code
+    };
+  }
+//4------------------------------------------------------------------------------
+  static SAVE_RESIDENCY_CODE_SUCCESS = '[Setup] Save Residency Code Success';
+
+  saveResidencyCodeSuccess(message): Action {
+    console.log("saveResidencyCodeSuccess");
+    return {
+      type: SetupActions.SAVE_RESIDENCY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_RESIDENCY_CODE = '[Setup] Update Residency Code';
+
+  updateResidencyCode(code): Action {
+    console.log("updateResidencyCode");
+    return {
+      type: SetupActions.UPDATE_RESIDENCY_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_RESIDENCY_CODE_SUCCESS = '[Setup] Update Residency Code  Success';
+
+  updateResidencyCodeSuccess(message): Action {
+    console.log("updateResidencyCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_RESIDENCY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_RESIDENCY_CODE = '[Setup] Remove Residency Code';
+
+  removeResidencyCode(code): Action {
+    console.log("removeResidencyCode");
+    return {
+      type: SetupActions.REMOVE_RESIDENCY_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_RESIDENCY_CODE_SUCCESS = '[Setup] Remove Residency Code  Success';
+
+  removeResidencyCodeSuccess(message): Action {
+    console.log("removeResidencyCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_RESIDENCY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+//------------------------------------------------------------------------------------------
 }

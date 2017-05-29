@@ -1,3 +1,4 @@
+import { BachelorResult } from './../app/application/intake-applications/bachelor-result-interface';
 import {Referee} from './../app/application/intake-applications/referee.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
@@ -214,4 +215,23 @@ export class ApplicationService {
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/studyModeOfferingSelection', JSON.stringify(offering), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  findBachelorResultsByIntakeApplication(application: IntakeApplication): Observable<BachelorResult[]> {
+    console.log("findBachelorResultsByIntakeApplication");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/bachelorResults")
+      .map((res: Response) => <BachelorResult[]>res.json());
+  }
+
+  addBachelorResult(application: IntakeApplication, bachelorResult: BachelorResult): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/bachelorResults', JSON.stringify(bachelorResult), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+
+
 }

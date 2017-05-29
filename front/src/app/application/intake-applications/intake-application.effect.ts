@@ -96,6 +96,8 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findAddressesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findRefereesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findBachelorResultsByIntakeApplication(action.payload),
+
     ]));
 
   @Effect() updateIntakeApplication$ = this.actions$
@@ -193,4 +195,20 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() findBachelorResultsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findBachelorResultsByIntakeApplication(application))
+    .map(bachelorResults => this.intakeApplicationActions.findBachelorResultsByIntakeApplicationSuccess(bachelorResults));
+
+  @Effect() addBachelorResult = this.actions$
+    .ofType(IntakeApplicationActions.ADD_BACHELOR_RESULT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addBachelorResult(payload.application, payload.bachelorResult))
+    .map(message => this.intakeApplicationActions.addBachelorResultSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
 }
