@@ -15,10 +15,15 @@
       <md-divider></md-divider>
       <md-tab-group (selectChange)="onTabChange($event)" md-stretch-tabs>
         <md-tab>
-          <template md-tab-label>Program Choice Information</template>
+          <template md-tab-label>Study Center Information</template>
           <pams-program-choice
             [intakeApplication]="intakeApplication$ | async">
           </pams-program-choice>
+
+         <!--<div layout="row" class="pad-bottom" flex>
+         <pams-study-center-code-select formControlName="studyMode" [placeholder]="'Select Study Center'">  
+         </pams-study-center-code-select>
+         </div>-->
         </md-tab>
 
         <md-tab>

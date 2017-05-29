@@ -2,7 +2,7 @@ import { CpsIntakeApplicationSubModule } from './../cps/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
-
+import {StudyMode} from './../study-mode.interface';
 import {CovalentCoreModule} from '@covalent/core';
 import {appRoutes, appRoutingProviders} from "../../../app.routes";
 import {MgsebIntakeApplicationPage} from "./intake-application.page";
@@ -15,6 +15,8 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {CommonActions} from "../../../common/common.action";
 import {ProgramOfferingSelectComponent} from "../../../policy/intakes/component/program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
+import { StudyModeOfferingSelectorDialog } from "../component/dialog/study-mode-offering-selector.dialog";
+import { StudyModeChoiceComponent } from "../component/study-mode-choice.component";
 
 
 @NgModule({
@@ -30,12 +32,26 @@ import {EmploymentListComponent} from "../component/employment-list.component";
   declarations: [
     MgsebIntakeApplicationPage,
     IntakeApplicationEducationPage,
+   
+   //components
+   StudyModeChoiceComponent,
+
+
+    //dialogs
+    StudyModeOfferingSelectorDialog,
 
   ],
-  exports: [],
+  exports: [
+    StudyModeChoiceComponent,
+
+  ],
   entryComponents: [
     EmploymentListComponent,
     ProgramOfferingSelectComponent,
+    StudyModeOfferingSelectorDialog,
+    
+  
+  
 
   ],
 })
