@@ -197,6 +197,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @OneToMany(targetEntity = InEmploymentImpl.class, mappedBy = "application")
     private List<InEmployment> employments;
 
+    @OneToMany(targetEntity = InLanguageImpl.class, mappedBy = "application")
+    private List<InLanguage> languages;
+    
     @OneToMany(targetEntity = InAddressImpl.class, mappedBy = "application")
     private List<InAddress> addresses;
     
@@ -679,6 +682,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setEmployments(List<InEmployment> employments) {
         this.employments = employments;
+    }
+    
+    @Override
+    public List<InLanguage> getLanguages() {
+        return languages;
+    }
+
+    @Override
+    public void setLanguages(List<InLanguage> languages) {
+        this.languages = languages;
     }
 
     @Override
