@@ -1,3 +1,5 @@
+import { ResidencyCodeEditorDialog } from './residency-codes/dialog/residency-code-editor.dialog';
+import { ResidencyCodeListPage } from './residency-codes/residency-code-list-page';
 import { StateCodeEditorDialog } from './state-codes/dialog/state-code-editor.dialog';
 import {DistrictCodeEditorDialog} from './district-codes/dialog/district-code-editor.dialog';
 import {DistrictCodeListPage} from './district-codes/district-code-list-page';
@@ -84,10 +86,7 @@ import {MaritalCodeEditorDialog} from "./marital-codes/dialog/marital-code-edito
 import {disabilityCodeListReducer, DisabilityCodeListState} from "./disability-codes/disability-code-list.reducer";
 import {schoolCodeListReducer, SchoolCodeListState} from "./school-codes/school-code-list.reducer";
 import {SchoolCode} from './../common/school-codes/school-code.interface';
-import {
-  studyCenterCodeListReducer,
-  StudyCenterCodeListState
-} from "./study-center-codes/study-center-code-list.reducer";
+import {studyCenterCodeListReducer,StudyCenterCodeListState} from "./study-center-codes/study-center-code-list.reducer";
 import {districtCodeListReducer, DistrictCodeListState} from "./district-codes/district-code-list.reducer";
 import {DistrictCode} from './../common/district-codes/district-code.interface';
 import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.reducer";
@@ -95,7 +94,8 @@ import {DunCode} from './../common/dun-codes/dun-code.interface';
 import {parliamentCodeListReducer, ParliamentCodeListState} from "./parliament-codes/parliament-code-list.reducer";
 import {ParliamentCode} from './../common/parliament-codes/parliament-code.interface';
 import {ResidencyCodeSelectComponent} from "../common/residency-codes/component/residency-code-select.component";
-
+import {residencyCodeListReducer, ResidencyCodeListState} from "./residency-codes/residency-code-list.reducer";
+import {ResidencyCode} from './../common/residency-codes/residency-code.interface';
 
 export interface SetupModuleState {
   title: TitleState;
@@ -119,6 +119,7 @@ export interface SetupModuleState {
   districtCodes: DistrictCodeListState;
   dunCodes: DunCodeListState;
   parliamentCodes: ParliamentCodeListState;
+  residencyCodes: ResidencyCodeListState;
 
 }
 ;
@@ -146,6 +147,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     districtCodes: <DistrictCode[]>[],
     dunCodes: <DunCode[]>[],
     parliamentCodes: <ParliamentCode[]>[],
+    residencyCodes: <ResidencyCode[]>[],
 
   };
 
@@ -172,6 +174,7 @@ export const setupModuleReducers = {
   districtCodes: districtCodeListReducer,
   dunCodes: dunCodeListReducer,
   parliamentCodes: parliamentCodeListReducer,
+  residencyCodes: residencyCodeListReducer,
 
 }
 
@@ -210,6 +213,7 @@ export const setupModuleReducers = {
     DistrictCodeListPage,
     DunCodeListPage,
     ParliamentCodeListPage,
+    ResidencyCodeListPage,
 
     // dialog
     MaritalCodeEditorDialog,
@@ -232,6 +236,7 @@ export const setupModuleReducers = {
     DistrictCodeEditorDialog,
     DunCodeEditorDialog,
     ParliamentCodeEditorDialog,
+    ResidencyCodeEditorDialog,
 
   ],
   exports: [],
@@ -255,6 +260,8 @@ export const setupModuleReducers = {
     DistrictCodeEditorDialog,
     DunCodeEditorDialog,
     ParliamentCodeEditorDialog,
+    ResidencyCodeEditorDialog,
+
   ],
 
 })
