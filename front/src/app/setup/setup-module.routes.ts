@@ -1,3 +1,5 @@
+import { ResidencyCodeListPage } from './residency-codes/residency-code-list-page';
+import { ResidencyCode } from './../common/residency-codes/residency-code.interface';
 import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list-page';
 import { DistrictCodeListPage } from './district-codes/district-code-list-page';
 import { SchoolCodeListPage } from './school-codes/school-code-list-page';
@@ -51,6 +53,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'dun-codes', component: DunCodeListPage},
       {path: 'ethnicity-codes', component: EthnicityCodeListPage},
       {path: 'parliament-codes', component: ParliamentCodeListPage},
+      {path: 'residency-codes', component: ResidencyCodeListPage},
 
 
     ]
