@@ -96,6 +96,8 @@ import {ParliamentCode} from './../common/parliament-codes/parliament-code.inter
 import {ResidencyCodeSelectComponent} from "../common/residency-codes/component/residency-code-select.component";
 import {residencyCodeListReducer, ResidencyCodeListState} from "./residency-codes/residency-code-list.reducer";
 import {ResidencyCode} from './../common/residency-codes/residency-code.interface';
+import {LanguageCodeListPage} from "./language-codes/language-code-list-page";
+import {LanguageCodeEditorDialog} from "./language-codes/dialog/language-code-editor.dialog";
 
 export interface SetupModuleState {
   title: TitleState;
@@ -197,6 +199,7 @@ export const setupModuleReducers = {
     GraduateCentreListPage,
     ReligionCodeListPage,
     MaritalCodeListPage,
+    LanguageCodeListPage,
     CountryCodeListPage,
     StateCodeListPage,
     ProgramCodeListPage,
@@ -217,6 +220,7 @@ export const setupModuleReducers = {
 
     // dialog
     MaritalCodeEditorDialog,
+    LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
     CountryCodeCreatorDialog,
@@ -242,6 +246,7 @@ export const setupModuleReducers = {
   exports: [],
   entryComponents: [
     MaritalCodeEditorDialog,
+    LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
     GraduateCentreCreatorDialog,
     ReligionCodeCreatorDialog,
@@ -261,9 +266,7 @@ export const setupModuleReducers = {
     DunCodeEditorDialog,
     ParliamentCodeEditorDialog,
     ResidencyCodeEditorDialog,
-
   ],
-
 })
 export class SetupModule {
   static forRoot(): ModuleWithProviders {
