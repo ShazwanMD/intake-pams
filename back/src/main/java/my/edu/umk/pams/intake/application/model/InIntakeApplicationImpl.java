@@ -202,6 +202,21 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @OneToMany(targetEntity = InSpmResultImpl.class, mappedBy = "application")
     private List<InSpmResult> spmResults;
+    
+    @OneToMany(targetEntity = InMuetResultImpl.class, mappedBy = "application")
+    private List<InMuetResult> muetResults;
+    
+    @OneToMany(targetEntity = InToeflResultImpl.class, mappedBy = "application")
+    private List<InToeflResult> toeflResults;
+    
+    @OneToMany(targetEntity = InIeltsResultImpl.class, mappedBy = "application")
+    private List<InIeltsResult> ieltsResults;
+    
+    @OneToMany(targetEntity = InEnglishProficiencyResultImpl.class, mappedBy = "application")
+    private List<InEnglishProficiencyResult> englishPrfcncyResults;
+    
+    @OneToMany(targetEntity = InMalayProficiencyResultImpl.class, mappedBy = "application")
+    private List<InMalayProficiencyResult> malayPrfcncyResults;
 
     @OneToMany(targetEntity = InGuardianImpl.class, mappedBy = "application")
     private List<InGuardian> guardians;
@@ -685,6 +700,56 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.spmResults = spmResults;
     }
 
+    @Override
+    public List<InMuetResult> getMuetResults() {
+        return muetResults;
+    }
+
+    @Override
+    public void setMuetResults(List<InMuetResult> muetResults) {
+        this.muetResults = muetResults;
+    }
+    
+    @Override
+    public List<InToeflResult> getToeflResults() {
+        return toeflResults;
+    }
+
+    @Override
+    public void setToeflResults(List<InToeflResult> toeflResults) {
+        this.toeflResults = toeflResults;
+    }
+    
+    @Override
+    public List<InIeltsResult> getIeltsResults() {
+        return ieltsResults;
+    }
+
+    @Override
+    public void setIeltsResults(List<InIeltsResult> ieltsResults) {
+        this.ieltsResults = ieltsResults;
+    }
+
+    @Override
+    public List<InEnglishProficiencyResult> getEnglishPrfcncyResults() {
+        return englishPrfcncyResults;
+    }
+
+    @Override
+    public void setEnglishPrfcncyResults(List<InEnglishProficiencyResult> englishPrfcncyResults) {
+        this.englishPrfcncyResults = englishPrfcncyResults;
+    }
+    
+    @Override
+    public List<InMalayProficiencyResult> getMalayPrfcncyResults() {
+        return malayPrfcncyResults;
+    }
+
+    @Override
+    public void setMalayPrfcncyResults(List<InMalayProficiencyResult> malayPrfcncyResults) {
+        this.malayPrfcncyResults = malayPrfcncyResults;
+    }
+    
     @Override
     public List<InGuardian> getGuardians() {
         return guardians;
