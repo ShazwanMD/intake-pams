@@ -44,6 +44,7 @@ import {EthnicityCodeListState, ethnicityCodeListReducer} from "./ethnicity-code
 import {NationalityCodeListState, nationalityCodeListReducer} from "./nationality-codes/nationality-code-list.reducer";
 import {residencyCodeListReducer, ResidencyCodeListState} from "./residency-codes/residency-code-list.reducer";
 import {ResidencyCodeSelectComponent} from "./residency-codes/component/residency-code-select.component";
+import {languageCodeListReducer, LanguageCodeListState} from "./language-codes/language-code-list.reducer";
 
 
 export interface CommonModuleState {
@@ -54,6 +55,7 @@ export interface CommonModuleState {
   facultyCodes: FacultyCodeListState;
   genderCodes: GenderCodeListState;
   maritalCodes: MaritalCodeListState;
+  languageCodes: LanguageCodeListState;
   bankCodes: BankCodeListState;
   raceCodes: RaceCodeListState;
   stateCodes: StateCodeListState;
@@ -77,6 +79,7 @@ export const commonModuleReducers = {
   facultyCodes: facultyCodeListReducer,
   genderCodes: genderCodeListReducer,
   maritalCodes: maritalCodeListReducer,
+  languageCodes: languageCodeListReducer,
   bankCodes: bankCodeListReducer,
   raceCodes: raceCodeListReducer,
   stateCodes: stateCodeListReducer,
@@ -105,6 +108,7 @@ export const commonModuleReducers = {
     FacultyCodeSelectComponent,
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
+    LanguageCodeSelectComponent,
     BankCodeSelectComponent,
     SupervisorCodeSelectComponent,
     RaceCodeSelectComponent,
@@ -127,6 +131,7 @@ export const commonModuleReducers = {
     FacultyCodeSelectComponent,
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
+    LanguageCodeSelectComponent,
     BankCodeSelectComponent,
     SupervisorCodeSelectComponent,
     RaceCodeSelectComponent,

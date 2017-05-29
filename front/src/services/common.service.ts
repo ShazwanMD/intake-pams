@@ -213,7 +213,6 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-
   // ====================================================================================================
   // MARITAL CODES
   // ====================================================================================================
@@ -257,6 +256,52 @@ export class CommonService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/maritalCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  // ====================================================================================================
+  // LANGUAGE CODES
+  // ====================================================================================================
+
+  findLanguageCodes(): Observable<LanguageCode[]> {
+    console.log("findLanguageCodes");
+    return this.http.get(environment.endpoint + '/api/common/languageCodes')
+      .map((res: Response) => <LanguageCode[]>res.json());
+  }
+
+  findLanguageCodeByCode(code: string): Observable<LanguageCode> {
+    console.log("findLanguageCodeByCode");
+    return this.http.get(environment.endpoint + '/api/common/languageCodes/' + code)
+      .map((res: Response) => <LanguageCode>res.json());
+  }
+
+  saveLanguageCode(code: LanguageCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/languageCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateLanguageCode(code: LanguageCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/languageCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeLanguageCode(code: LanguageCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/languageCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
