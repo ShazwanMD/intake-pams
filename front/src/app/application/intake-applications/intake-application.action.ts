@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
+import {ProgramOffering} from "../../policy/intakes/program-offering.interface";
+import {IntakeApplication} from "./intake-application.interface";
 
 @Injectable()
 export class IntakeApplicationActions {
@@ -487,6 +489,24 @@ export class IntakeApplicationActions {
   deleteSpmResultSucces(message) {
     return {
       type: IntakeApplicationActions.DELETE_SPM_RESULT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static SELECT_PROGRAM_OFFERING = '[Intake Application] Select Program Offering';
+
+  selectProgramOffering(application, offering) {
+    return {
+      type: IntakeApplicationActions.SELECT_PROGRAM_OFFERING,
+      payload: {application: application, offering: offering}
+    };
+  }
+
+  static SELECT_PROGRAM_OFFERING_SUCCESS = '[Intake Application] Select Program Offering Success';
+
+  selectProgramOfferingSuccess(message) {
+    return {
+      type: IntakeApplicationActions.SELECT_PROGRAM_OFFERING_SUCCESS,
       payload: message
     };
   }

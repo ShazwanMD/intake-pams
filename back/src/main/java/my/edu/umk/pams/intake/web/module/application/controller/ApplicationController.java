@@ -10,6 +10,8 @@ import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -17,6 +19,8 @@ import my.edu.umk.pams.intake.web.module.application.vo.*;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
+import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
+import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -177,6 +181,40 @@ public class ApplicationController {
         applicationService.submitIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/programOfferingSelection", method = RequestMethod.POST)
+    public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo, @RequestBody ProgramOffering vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InProgramOffering programOffering = policyService.findProgramOfferingById(vo.getId());
+        application.setProgramSelection(programOffering);
+        applicationService.updateIntakeApplication(application);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/studyModeSelection", method = RequestMethod.POST)
+    public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo, @RequestBody StudyModeOffering vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InStudyModeOffering studyModeOffering = policyService.findStudyModeOfferingById(vo.getId());
+        application.setStudyModeSelection(studyModeOffering);
+        applicationService.updateIntakeApplication(application);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/supervisorSelection", method = RequestMethod.POST)
+    public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo, @RequestBody SupervisorOffering vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InSupervisorOffering supervisorOffering = policyService.findSupervisorOfferingById(vo.getId());
+        application.setSupervisorSelection(supervisorOffering);
+        applicationService.updateIntakeApplication(application);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+
 
     // ====================================================================================================
     // EMPLOYMENTS

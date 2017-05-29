@@ -7,6 +7,7 @@ import {RefereeCreatorDialog} from "./dialog/referee-creator.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {IntakeApplication} from "../intake-application.interface";
 import {ProgramOfferingSelectorDialog} from "./dialog/program-offering-selector.dialog";
+import {StudyModeOfferingSelectorDialog} from "./dialog/study-mode-offering-selector.dialog";
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ProgramChoiceComponent implements OnInit {
 
   @Input() intakeApplication: IntakeApplication;
 
-  private selectorDialogRef: MdDialogRef<ProgramOfferingSelectorDialog>;
+  private programSelectorDialogRef: MdDialogRef<ProgramOfferingSelectorDialog>;
+  private studyModeSelectorDialogRef: MdDialogRef<StudyModeOfferingSelectorDialog>;
 
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
@@ -30,7 +32,7 @@ export class ProgramChoiceComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showDialog(): void {
+  showProgramSelectionDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -38,10 +40,27 @@ export class ProgramChoiceComponent implements OnInit {
     config.width = '70%';
     config.height = '100%';
     config.position = {top: '0px'};
-    this.selectorDialogRef = this.dialog.open(ProgramOfferingSelectorDialog, config);
-    this.selectorDialogRef.componentInstance.intake = this.intakeApplication.intake;
-    this.selectorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    this.selectorDialogRef.afterClosed().subscribe(res => {
+    this.programSelectorDialogRef = this.dialog.open(ProgramOfferingSelectorDialog, config);
+    this.programSelectorDialogRef.componentInstance.intake = this.intakeApplication.intake;
+    this.programSelectorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.programSelectorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
+
+  showStudyModeSelectionDialog(): void {
+    console.log("showDialog");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '100%';
+    config.position = {top: '0px'};
+    this.studyModeSelectorDialogRef = this.dialog.open(StudyModeOfferingSelectorDialog, config);
+    this.studyModeSelectorDialogRef.componentInstance.intake = this.intakeApplication.intake;
+    this.studyModeSelectorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.studyModeSelectorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here
     });
