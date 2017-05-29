@@ -16,7 +16,8 @@ import {CommonActions} from "../../../common/common.action";
 import {ProgramOfferingSelectComponent} from "../../../policy/intakes/component/program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
 import { StudyModeOfferingSelectorDialog } from "../component/dialog/study-mode-offering-selector.dialog";
-import { StudyModeChoiceComponent } from "../component/study-mode-choice.component";
+import { StudyCenterChoiceComponent } from "../component/study-center-choice.component";
+
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { StudyModeChoiceComponent } from "../component/study-mode-choice.compone
     IntakeApplicationEducationPage,
    
    //components
-   StudyModeChoiceComponent,
+   StudyCenterChoiceComponent,
 
 
     //dialogs
@@ -42,7 +43,7 @@ import { StudyModeChoiceComponent } from "../component/study-mode-choice.compone
 
   ],
   exports: [
-    StudyModeChoiceComponent,
+    StudyCenterChoiceComponent,
 
   ],
   entryComponents: [

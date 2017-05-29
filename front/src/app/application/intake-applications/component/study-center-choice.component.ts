@@ -10,12 +10,12 @@ import { StudyModeOfferingSelectorDialog } from "./dialog/study-mode-offering-se
 
 
 @Component({
-  selector: 'pams-study-mode-choice',
-  templateUrl: './study-mode-choice.component.html',
+  selector: 'pams-study-center-choice',
+  templateUrl: './study-center-choice.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class StudyModeChoiceComponent implements OnInit {
+export class StudyCenterChoiceComponent implements OnInit {
 
   @Input() intakeApplication: IntakeApplication;
 

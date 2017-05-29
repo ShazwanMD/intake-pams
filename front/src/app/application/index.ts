@@ -42,6 +42,7 @@ import {IntakeApplication} from "./intake-applications/intake-application.interf
 import {refereeListReducer, RefereeListState} from "./intake-applications/referee-list.reducer";
 import {addressListReducer, AddressListState} from "./intake-applications/address-list.reducer";
 import {spmResultListReducer, SpmResultListState} from "./intake-applications/spm-result-list.reducer";
+import { StudyModeOffering } from "../policy/intakes/study-mode-offering.interface";
 
 
 
@@ -69,7 +70,7 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   spmResults:<SpmResult[]>[],
   programOfferings:<ProgramOffering[]>[],
   supervisorOfferings:[],
-  studyModeOfferings:[],
+  studyModeOfferings:<StudyModeOffering[]>[],
   intakeApplications:[],
   intakeApplication:<IntakeApplication>{},
   

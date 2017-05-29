@@ -19,6 +19,7 @@ import {MyIntakeApplicationPage} from "./my-intake-application.page";
 import {AddressTypeSelectComponent} from "./component/address-type-select.component";
 import {ProgramOfferingSelectorDialog} from "./component/dialog/program-offering-selector.dialog";
 import {ProgramChoiceComponent} from "./component/program-choice.component";
+import {StudyCenterChoiceComponent} from "./component/study-center-choice.component";
 
 
 @NgModule({
