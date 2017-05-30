@@ -14,9 +14,9 @@
 
     <properties>
         <spring.version>4.3.7.RELEASE</spring.version>
-        <spring-batch.version>3.0.0.RC2</spring-batch.version>
+        <spring-batch.version>3.0.0.RELEASE</spring-batch.version>
         <spring-security.version>3.2.3.RELEASE</spring-security.version>
-        <spring-integration.version>4.3.0.RC1</spring-integration.version>
+        <spring-integration.version>4.3.0.RELEASE</spring-integration.version>
         <spring-test-mvc.version>1.0.0.M1</spring-test-mvc.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <hibernate.version>4.2.0.Final</hibernate.version>
