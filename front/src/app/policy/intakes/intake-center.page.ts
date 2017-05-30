@@ -38,7 +38,7 @@ export class IntakeCenterPage implements OnInit {
 
   view(intake: IntakeTask) {
     console.log("intake: " + intake.taskId);
-    this.router.navigate(['/view-task', intake.taskId]);
+    this.router.navigate(['/intake-task-detail', intake.taskId]);
   }
 
   showDialog(): void {

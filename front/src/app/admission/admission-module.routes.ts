@@ -5,5 +5,5 @@ import {IntakeTaskViewPage} from "./intake-task-view.page";
 
 export const AdmissionModuleRoutes: Routes = [
   {path: 'admission', component: AdmissionPage},
-  {path: 'admission/view-task/:taskId', component: IntakeTaskViewPage},
+  {path: 'admission/intake-task-detail/:taskId', component: IntakeTaskViewPage},
 ];
