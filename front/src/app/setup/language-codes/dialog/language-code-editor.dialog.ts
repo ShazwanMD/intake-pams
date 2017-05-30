@@ -47,7 +47,7 @@ export class LanguageCodeEditorDialog implements OnInit {
   }
 
   submit(code: LanguageCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to update supervisor code?", "Yes");
+    let snackBarRef = this.snackBar.open("Confirm to update language code?", "Yes");
     snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveLanguageCode(code));
     else  this.store.dispatch(this.actions.updateLanguageCode(code));
