@@ -35,9 +35,9 @@ export class ProgramOfferingListComponent {
    // this.store.dispatch(this.actions.findProgramOfferings(this.intake));
   }
 
-  editDialog(programOffering): void {
-    console.log("programOffering :" + programOffering);
-    this.showDialog2(programOffering);
+  editDialog(programOfferings) {
+    console.log("programOffering :" + programOfferings);
+    this.showDialog2(programOfferings);
   }
 
   delete(intake: Intake, id: ProgramOffering): void {
@@ -66,7 +66,7 @@ export class ProgramOfferingListComponent {
   }
 
   private showDialog2(programOffering: ProgramOffering): void {
-    console.log("showDialog2 " + programOffering.id);
+    console.log("showDialog2 code :" + programOffering.programCode.id);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -74,7 +74,7 @@ export class ProgramOfferingListComponent {
     config.height = '65%';
     config.position = {top: '0px'};
     this.editorDialogRef2 = this.dialog.open(ProgramOfferingListEditorDialog, config);
-    if (programOffering) this.editorDialogRef2.componentInstance.programOffering = this.programOfferings; // set
+    if (programOffering) this.editorDialogRef2.componentInstance.programOffering = programOffering; // set
     this.editorDialogRef2.afterClosed().subscribe(res => {
       console.log("close dialog");
       // reload program offerings

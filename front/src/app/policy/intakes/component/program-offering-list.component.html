@@ -10,19 +10,19 @@
      layout-wrap>
   <md-nav-list dense flex>
 
-    <template  let-last="last" ngFor let-programOffering [ngForOf]="programOfferings" let-row="row">
+    <template ngFor let-programOfferings [ngForOf]="programOfferings">
       <a md-list-item>
         <md-icon md-list-avatar>label</md-icon>
-        <h3 md-line> {{programOffering.programCode?.descriptionMs}} </h3>
-        <p md-line> {{programOffering.programCode?.code}} </p>
+        <h3 md-line> {{programOfferings.programCode?.descriptionMs}} </h3>
+        <p md-line> {{programOfferings.programCode?.code}} </p>
 
         <button md-icon-button [md-menu-trigger-for]="menu">
           <md-icon>more_vert</md-icon>
         </button>
 
         <md-menu x-position="before" #menu="mdMenu">
-          <button md-menu-item (click)="editDialog(row)">Edit</button>
-          <button md-menu-item (click)="delete(row)">Delete</button>
+          <button md-menu-item (click)="editDialog(programOfferings)">Edit</button>
+          <button md-menu-item (click)="delete(programOfferings)">Delete</button>
         </md-menu>
       </a>
     </template>

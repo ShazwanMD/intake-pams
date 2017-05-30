@@ -35,9 +35,9 @@ export class ProgramOfferingListEditorDialog {
               private actions: IntakeActions) {
   }
 
-  set programOffering(value: ProgramOffering) {
-    console.log("value.id :" + value.id);
-    this._programOffering = value;
+  set programOffering(programOffering) {
+    console.log("programOffering.id :" + programOffering.programCode.id);
+    this._programOffering = programOffering;
     this.edit = true;
   }
 
