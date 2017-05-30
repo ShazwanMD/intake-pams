@@ -1,6 +1,5 @@
 import { LanguageCodeEditorDialog } from './dialog/language-code-editor.dialog';
 import { LanguageCode } from './../../common/language-codes/language-code.interface';
-
 import {Component, OnInit, ViewContainerRef} from "@angular/core";
 import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
@@ -22,7 +21,7 @@ export class LanguageCodeListPage implements OnInit {
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
-    {name: 'name', label: 'Name'},
+    //{name: 'name', label: 'Name'},
     {name: 'action', label: ''}
   ];
 
