@@ -45,11 +45,17 @@ export class SupervisorCodeListPage implements OnInit {
   }
 
   editDialog(code:SupervisorCode): void {
+    let snackBarRef = this.snackBar.open("Do you want to edit this supervisor code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+    });
   }
 
   delete(code: SupervisorCode): void {
+    let snackBarRef = this.snackBar.open("Delete this supervisor code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeSupervisorCode(code))
+    });
   }
 
   filter(): void {
