@@ -311,89 +311,6 @@ export class SetupActions {
   //=================================================================================//
   //  COUNTRY_CODES                                                               //
   //=================================================================================//
-
-  static FIND_LANGUAGE_CODES = '[Setup] Find Language Codes';
-
-  findLanguageCodes(): Action {
-    console.log("findLanguageCodes");
-    return {
-      type: SetupActions.FIND_LANGUAGE_CODES,
-    };
-  }
-
-  static FIND_LANGUAGE_CODES_SUCCESS = '[Setup] Find Language Codes Success';
-
-  findLanguageCodesSuccess(codes): Action {
-    console.log("findLanguageCodesSuccess");
-    return {
-      type: SetupActions.FIND_LANGUAGE_CODES_SUCCESS,
-      payload: codes
-    };
-  }
-
-  static SAVE_LANGUAGE_CODE = '[Setup] Save Language Code';
-
-  saveLanguageCode(code): Action {
-    console.log("saveLanguageCode");
-    return {
-      type: SetupActions.SAVE_LANGUAGE_CODE,
-      payload: code
-    };
-  }
-
-  static SAVE_LANGUAGE_CODE_SUCCESS = '[Setup] Save Language Code Success';
-
-  saveLanguageCodeSuccess(message): Action {
-    console.log("saveLanguageCodeSuccess");
-    return {
-      type: SetupActions.SAVE_LANGUAGE_CODE_SUCCESS,
-      payload: message
-    };
-  }
-
-  static UPDATE_LANGUAGE_CODE = '[Setup] Update Language Code';
-
-  updateLanguageCode(code): Action {
-    console.log("updateLanguageCode");
-    return {
-      type: SetupActions.UPDATE_LANGUAGE_CODE,
-      payload: code
-    };
-  }
-
-  static UPDATE_LANGUAGE_CODE_SUCCESS = '[Setup] Update Language Code  Success';
-
-  updateLanguageCodeSuccess(message): Action {
-    console.log("updateLanguageCodeSuccess");
-    return {
-      type: SetupActions.UPDATE_LANGUAGE_CODE_SUCCESS,
-      payload: message
-    };
-  }
-
-  static REMOVE_LANGUAGE_CODE = '[Setup] Remove Language Code';
-
-  removeLanguageCode(code): Action {
-    console.log("removeLanguageCode");
-    return {
-      type: SetupActions.REMOVE_LANGUAGE_CODE,
-      payload: code
-    };
-  }
-
-  static REMOVE_LANGUAGE_CODE_SUCCESS = '[Setup] Remove Language Code  Success';
-
-  removeLanguageCodeSuccess(message): Action {
-    console.log("removeLanguageCodeSuccess");
-    return {
-      type: SetupActions.REMOVE_LANGUAGE_CODE_SUCCESS,
-      payload: message
-    };
-  }
-
-  //=================================================================================//
-  //  COUNTRY_CODES                                                               //
-  //=================================================================================//
   static FIND_COUNTRY_CODES = '[Setup] Find Country Codes';
 
   findCountryCodes(): Action {
@@ -1451,8 +1368,6 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
     };
   }
 
-//-------------------------------------------------------------------------------------
-
 //=================================================================================//
 //  PARLIAMENT_CODES                                                                      //
 //=================================================================================//
@@ -1536,10 +1451,8 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
     };
   }
 
-//-------------------------------------------------------------------------------------
-
 //=================================================================================//
-//  RESIDENCY_CODES                                                                      //
+//  RESIDENCY_CODES                                                               
 //=================================================================================//
 //1-------------------------------------------------------------
   static FIND_RESIDENCY_CODES = '[Setup] Find Residency Codes';
@@ -1621,5 +1534,87 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
     };
   }
 
+//=================================================================================//
+//  LANGUAGE_CODES                                                               
+//=================================================================================//
+//1-------------------------------------------------------------
+  static FIND_LANGUAGE_CODES = '[Setup] Find Language Codes';
+
+  findLanguageCodes(): Action {
+    console.log("findLanguageCodes");
+    return {
+      type: SetupActions.FIND_LANGUAGE_CODES,
+    };
+  }
+//2-------------------------------------------------------------------------------------
+  static FIND_LANGUAGE_CODES_SUCCESS = '[Setup] Find Language Codes Success';
+
+  findLanguageCodesSuccess(codes): Action {
+    console.log("findLanguageCodesSuccess");
+    return {
+      type: SetupActions.FIND_LANGUAGE_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+//3----------------------------------------------------------------
+  static SAVE_LANGUAGE_CODE = '[Setup] Save Language Code';
+
+  saveLanguageCode(code): Action {
+    console.log("saveLanguageCode");
+    return {
+      type: SetupActions.SAVE_LANGUAGE_CODE,
+      payload: code
+    };
+  }
+//4------------------------------------------------------------------------------
+  static SAVE_LANGUAGE_CODE_SUCCESS = '[Setup] Save Language Code Success';
+
+  saveLanguageCodeSuccess(message): Action {
+    console.log("saveLanguageCodeSuccess");
+    return {
+      type: SetupActions.SAVE_LANGUAGE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_LANGUAGE_CODE = '[Setup] Update Language Code';
+
+  updateLanguageCode(code): Action {
+    console.log("updateLanguageCode");
+    return {
+      type: SetupActions.UPDATE_LANGUAGE_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_LANGUAGE_CODE_SUCCESS = '[Setup] Update Language Code  Success';
+
+  updateLanguageCodeSuccess(message): Action {
+    console.log("updateLanguageCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_LANGUAGE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_LANGUAGE_CODE = '[Setup] Remove Language Code';
+
+  removeLanguageCode(code): Action {
+    console.log("removeLanguageCode");
+    return {
+      type: SetupActions.REMOVE_LANGUAGE_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_LANGUAGE_CODE_SUCCESS = '[Setup] Remove Language Code  Success';
+
+  removeLanguageCodeSuccess(message): Action {
+    console.log("removeLanguageCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_LANGUAGE_CODE_SUCCESS,
+      payload: message
+    };
+  }
 //------------------------------------------------------------------------------------------
 }

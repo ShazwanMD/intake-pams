@@ -1,3 +1,4 @@
+import { StudyCenterCode } from './../../common/study-center-codes/study-center-code.interface';
 import {Intake} from "../../policy/intakes/intake.interface";
 import {Applicant} from "../../identity/applicant.interface";
 import {ProgramOffering} from "../../policy/intakes/program-offering.interface";
@@ -17,13 +18,18 @@ export interface IntakeApplication extends MetaObject{
   fax: string;
   age: number;
   birthDate: Date;
-
+  gender: string;
+  religion:string;
+  race:string;
+  marital:string;
+  
   paid: boolean;
   verified: boolean;
   sponsored: boolean;
   selfSponsored: boolean;
   applicant: Applicant;
   intake: Intake;
+  studyCenterCode: StudyCenterCode;
 
   programSelection?: ProgramOffering;
   supervisorSelection?: SupervisorOffering;

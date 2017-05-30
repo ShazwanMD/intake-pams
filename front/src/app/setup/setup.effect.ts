@@ -580,4 +580,35 @@ export class SetupEffects {
     .map(message => this.setupActions.removeResidencyCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findResidencyCodes()]));
 
+  // ====================================================================================================
+  // LANGUAGE CODE
+  // ====================================================================================================
+
+  @Effect() findLanguageCode$ = this.actions$
+    .ofType(SetupActions.FIND_LANGUAGE_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findLanguageCodes())
+    .map(codes => this.setupActions.findLanguageCodesSuccess(codes));
+
+  @Effect() saveLanguageCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_LANGUAGE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveLanguageCode(payload))
+    .map(message => this.setupActions.saveLanguageCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findLanguageCodes()]));
+
+  @Effect() updateLanguageCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_LANGUAGE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateLanguageCode(payload))
+    .map(message => this.setupActions.updateLanguageCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findLanguageCodes()]));
+
+  @Effect() removeLanguageCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_LANGUAGE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeLanguageCode(payload))
+    .map(message => this.setupActions.removeLanguageCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findLanguageCodes()]));
+
 }

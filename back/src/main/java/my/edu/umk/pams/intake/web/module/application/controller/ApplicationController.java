@@ -202,7 +202,7 @@ public class ApplicationController {
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/studyModeSelection", method = RequestMethod.POST)
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/studyModeOfferingSelection", method = RequestMethod.POST)
     public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo, @RequestBody StudyModeOffering vo) {
         dummyLogin();
 
@@ -213,7 +213,7 @@ public class ApplicationController {
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/supervisorSelection", method = RequestMethod.POST)
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/supervisorOfferingSelection", method = RequestMethod.POST)
     public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo, @RequestBody SupervisorOffering vo) {
         dummyLogin();
 

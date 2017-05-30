@@ -1,3 +1,4 @@
+import { LanguageCode } from './../common/language-codes/language-code.interface';
 import { ResidencyCodeEditorDialog } from './residency-codes/dialog/residency-code-editor.dialog';
 import { ResidencyCodeListPage } from './residency-codes/residency-code-list-page';
 import { StateCodeEditorDialog } from './state-codes/dialog/state-code-editor.dialog';
@@ -98,6 +99,9 @@ import {residencyCodeListReducer, ResidencyCodeListState} from "./residency-code
 import {ResidencyCode} from './../common/residency-codes/residency-code.interface';
 import {LanguageCodeListPage} from "./language-codes/language-code-list-page";
 import {LanguageCodeEditorDialog} from "./language-codes/dialog/language-code-editor.dialog";
+import {LanguageCodeSelectComponent} from "../common/language-codes/component/language-code-select.component";
+import {languageCodeListReducer, LanguageCodeListState} from "./language-codes/language-code-list.reducer";
+
 
 export interface SetupModuleState {
   title: TitleState;
@@ -122,6 +126,8 @@ export interface SetupModuleState {
   dunCodes: DunCodeListState;
   parliamentCodes: ParliamentCodeListState;
   residencyCodes: ResidencyCodeListState;
+  languageCodes: LanguageCodeListState;
+
 
 }
 ;
@@ -150,6 +156,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     dunCodes: <DunCode[]>[],
     parliamentCodes: <ParliamentCode[]>[],
     residencyCodes: <ResidencyCode[]>[],
+    languageCodes: <LanguageCode[]>[],
 
   };
 
@@ -177,6 +184,7 @@ export const setupModuleReducers = {
   dunCodes: dunCodeListReducer,
   parliamentCodes: parliamentCodeListReducer,
   residencyCodes: residencyCodeListReducer,
+  languageCodes: languageCodeListReducer,
 
 }
 

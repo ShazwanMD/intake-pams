@@ -480,14 +480,6 @@
         primary key (ID)
     );
 
-    create table IN_ENGLSH_PRFCNCY_RSLT (
-        GRADE varchar(255) not null,
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
-        primary key (ID)
-    );
-
     create table IN_ETNY_CODE (
         ID int8 not null,
         CODE varchar(255),
@@ -642,14 +634,6 @@
         NAME varchar(255) not null,
         GUARANTOR_TYPE int4,
         APPLICATION_ID int8,
-        primary key (ID)
-    );
-
-    create table IN_IELTS_RSLT (
-        POINT int4 not null,
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
         primary key (ID)
     );
 
@@ -867,14 +851,6 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        primary key (ID)
-    );
-
-    create table IN_MLY_PRFCNCY_RSLT (
-        GRADE varchar(255) not null,
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
         primary key (ID)
     );
 
@@ -1545,11 +1521,6 @@
     alter table IN_EMPT_SCTR_CODE
         add constraint uc_IN_EMPT_SCTR_CODE_1 unique (CODE);
 
-    alter table IN_ENGLSH_PRFCNCY_RSLT
-        add constraint FKCB997B65D81680
-        foreign key (ID)
-        references IN_RSLT;
-
     alter table IN_ETNY_CODE
         add constraint uc_IN_ETNY_CODE_1 unique (CODE);
 
@@ -1595,11 +1566,6 @@
         add constraint FKA01D238337A6AAA6
         foreign key (APPLICATION_ID)
         references IN_INTK_APLN;
-
-    alter table IN_IELTS_RSLT
-        add constraint FK126FFF3D81680
-        foreign key (ID)
-        references IN_RSLT;
 
     alter table IN_INTK
         add constraint uc_IN_INTK_1 unique (AUDIT_NO);
@@ -1702,9 +1668,9 @@
         references IN_SCHL_CODE;
 
     alter table IN_INTK_APLN
-        add constraint FK5974F5AD6BA34B3
+        add constraint FK5974F5A55B7DBE0
         foreign key (STUDY_MODE_SELECTION_ID)
-        references IN_STDY_MODE;
+        references IN_STDY_MODE_OFRG;
 
     alter table IN_INTK_APLN
         add constraint FK5974F5ABAF48B99
@@ -1760,11 +1726,6 @@
 
     alter table IN_LNGE_CODE
         add constraint uc_IN_LNGE_CODE_1 unique (CODE);
-
-    alter table IN_MLY_PRFCNCY_RSLT
-        add constraint FKD6B09A42D81680
-        foreign key (ID)
-        references IN_RSLT;
 
     alter table IN_MODL
         add constraint uc_IN_MODL_1 unique (CANONICAL_CODE);

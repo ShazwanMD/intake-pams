@@ -27,6 +27,7 @@
             <template md-tab-label>Personal Information</template>
             <td-expansion-panel label="Personal Details">
               <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+               
                 <!-- first column -->
                 <div layout="column" class="pad-right" flex>
                   <div layout="row" class="pad-bottom" flex>
@@ -55,7 +56,6 @@
 
                   <div layout="row" class="pad-bottom" flex>
                     <md-select placeholder="Citizenship">
-                    
                       <md-option>YES</md-option>
                       <md-option>NO</md-option>
                     </md-select>
@@ -69,8 +69,45 @@
                   <pams-race-code-select
                   [races]="races$ | async"></pams-race-code-select>
                  </div>-->
+
+                 <!--<div layout="row" class="pad-bottom" flex>
+                  <pams-religion-code-select
+                  [races]="races$ | async"></pams-religion-code-select>
+                 </div>-->
                  
+                 <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Gender" formControlName="gender" flex/>
+                    </md-input-container>
+                  </div>
+
+                   <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Religion" formControlName="religion" flex/>
+                    </md-input-container>
+                  </div>
+
                   <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Race" formControlName="race" flex/>
+                    </md-input-container>
+                  </div>
+
+                  <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput placeholder="Marital Status" formControlName="marital" flex/>
+                    </md-input-container>
+                  </div>
+                </div>
+              </div>
+            </td-expansion-panel>
+
+             <td-expansion-panel label="Contact Information">
+             <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+               
+                <!-- first column -->
+                <div layout="column" class="pad-right" flex>
+                <div layout="row" class="pad-bottom" flex>
                     <md-input-container flex>
                       <input mdInput placeholder="Phone No" formControlName="mobile" flex/>
                     </md-input-container>
@@ -87,10 +124,10 @@
                       <input mdInput placeholder="Fax No" formControlName="fax" flex/>
                     </md-input-container>
                   </div>
+            </div>
+            </div>
 
-                </div>
-              </div>
-            </td-expansion-panel>
+             </td-expansion-panel>
 
             <td-expansion-panel label="Address Information">
               <pams-address-list
@@ -117,7 +154,11 @@
                 [spmResults]="spmResults$ | async"></pams-spm-result-list>
             </td-expansion-panel>
 
-
+            <td-expansion-panel label="Bachelor Results">
+              <pams-bachelor-result-list
+                [intakeApplication]="intakeApplication$ | async"
+                [bachelorResults]="bachelorResults$ | async"></pams-bachelor-result-list>
+            </td-expansion-panel>
 
             <td-expansion-panel label="STPM / Diploma / Degree Information">
               <md-card>
@@ -157,24 +198,7 @@
               </md-card>
             </td-expansion-panel>
 
-            <td-expansion-panel label="Financial Support">
-              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox formControlName="sponsored">
-                    <div layout="column" flex>
-                      Sponsor by Employer / Government. Please attach letter from Sponsor.
-                    </div>
-                  </md-checkbox>
-                </div>
-
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox formControlName="selfSponsored">
-                    <div layout="column" flex>
-                      Self Supporting . Please enclose financial guarantee or bank statement.
-                    </div>
-                  </md-checkbox>
-                </div>
-              </div>
+            <td-expansion-panel label="Proficiency in Malay/English Language">
             </td-expansion-panel>
           </md-card>
         </md-tab>
