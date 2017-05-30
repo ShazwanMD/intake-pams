@@ -173,7 +173,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     private InSupervisorOffering supervisorSelection;
 
     // note: can draft without choosing
-    @ManyToOne(targetEntity = InStudyModeImpl.class)
+    @ManyToOne(targetEntity = InStudyModeOfferingImpl.class)
     @JoinColumn(name = "STUDY_MODE_SELECTION_ID", nullable = true)
     private InStudyModeOffering studyModeSelection;
 

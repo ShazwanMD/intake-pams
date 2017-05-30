@@ -216,6 +216,15 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
+  @Effect() selectStudyModeOffering = this.actions$
+    .ofType(IntakeApplicationActions.SELECT_STUDY_MODE_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.selectStudyModeOffering(payload.application, payload.offering))
+    .map(message => this.intakeApplicationActions.selectStudyModeOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
   @Effect() findBachelorResultsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION)
     .map(action => action.payload)

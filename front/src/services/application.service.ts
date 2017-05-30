@@ -223,6 +223,7 @@ export class ApplicationService {
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/programOfferingSelection', JSON.stringify(offering), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
   selectStudyModeOffering(application, offering):Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',

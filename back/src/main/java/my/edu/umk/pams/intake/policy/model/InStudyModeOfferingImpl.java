@@ -68,6 +68,6 @@ public class InStudyModeOfferingImpl implements InStudyModeOffering {
 
     @Override
     public Class<?> getInterfaceClass() {
-        return InProgramOffering.class;
+        return InStudyModeOffering.class;
     }
 }
