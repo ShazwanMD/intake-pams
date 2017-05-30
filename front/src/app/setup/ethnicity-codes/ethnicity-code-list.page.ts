@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {EthnicityCodeCreatorDialog} from "./dialog/ethnicity-code-creator.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-ethnicity-list-page',
@@ -26,7 +26,8 @@ export class EthnicityCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.ethnicityCodes$ = this.store.select(...this.ETHNICITY_CODES);
   }
 
@@ -36,15 +37,24 @@ export class EthnicityCodeListPage implements OnInit {
   }
 
   createDialog(): void {
+    let snackBarRef = this.snackBar.open("Do you want to add new ethnicity code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
+    });
   }
 
   editDialog(code:EthnicityCode): void {
+    let snackBarRef = this.snackBar.open("Do you want to edit this ethnicity code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+    });
   }
 
   delete(code: EthnicityCode): void {
+    let snackBarRef = this.snackBar.open("Delete this ethnicity code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeEthnicityCode(code))
+    });
   }
 
   filter(): void {
