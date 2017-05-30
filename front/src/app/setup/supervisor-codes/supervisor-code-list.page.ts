@@ -5,7 +5,7 @@ import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-supervisor-list-page',
@@ -27,7 +27,8 @@ export class SupervisorCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.supervisorCodes$ = this.store.select(...this.SUPERVISOR_CODES);
   }
 
@@ -37,7 +38,10 @@ export class SupervisorCodeListPage implements OnInit {
   }
 
   createDialog(): void {
+    let snackBarRef = this.snackBar.open("Do you want to add new supervisor code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
+    });
   }
 
   editDialog(code:SupervisorCode): void {
