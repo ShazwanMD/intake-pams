@@ -4,7 +4,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
 
@@ -25,7 +25,8 @@ export class MaritalCodeEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<MaritalCodeEditorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions) {
+              private actions: SetupActions,
+              private snackBar: MdSnackBar) {
   }
 
   set maritalCode(value: MaritalCode) {
@@ -46,8 +47,11 @@ export class MaritalCodeEditorDialog implements OnInit {
   }
 
   submit(code: MaritalCode, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to update marital code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveMaritalCode(code));
     else  this.store.dispatch(this.actions.updateMaritalCode(code));
     this.dialog.close();
+    });
   }
 }

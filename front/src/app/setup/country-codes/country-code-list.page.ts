@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {CountryCodeCreatorDialog} from "./dialog/country-code-creator.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-country-list-page',
@@ -26,7 +26,8 @@ export class CountryCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.countryCodes$ = this.store.select(...this.COUNTRY_CODES);
   }
 
@@ -36,15 +37,24 @@ export class CountryCodeListPage implements OnInit {
   }
 
 createDialog(): void {
+    let snackBarRef = this.snackBar.open("Do you want to add new country code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
+    });
   }
 
   editDialog(code:CountryCode): void {
+    let snackBarRef = this.snackBar.open("Do you want to edit this country code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+  });
   }
 
   delete(code: CountryCode): void {
+    let snackBarRef = this.snackBar.open("Delete this country code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeCountryCode(code))
+    });
   }
 
   filter(): void {

@@ -4,7 +4,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
 
@@ -26,7 +26,8 @@ export class EthnicityCodeCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<EthnicityCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions) {
+              private actions: SetupActions,
+              private snackBar: MdSnackBar) {
   }
 
 set ethnicityCode(value: EthnicityCode) {
@@ -47,8 +48,11 @@ set ethnicityCode(value: EthnicityCode) {
   }
 
   submit(code: EthnicityCode, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to update ethnicity code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveEthnicityCode(code));
     else  this.store.dispatch(this.actions.updateEthnicityCode(code));
     this.dialog.close();
+    });
   }
 }
