@@ -53,50 +53,44 @@
                       <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate" flex/>
                     </md-input-container>
                   </div>
-
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-select placeholder="Citizenship">
-                      <md-option>YES</md-option>
-                      <md-option>NO</md-option>
-                    </md-select>
-                  </div>
                 </div>
 
                 <!-- second column -->
                 <div layout="column" class="pad-right" flex>
                  
-                 <!--<div layout="row" class="pad-bottom" flex>
-                  <pams-race-code-select
-                  [races]="races$ | async"></pams-race-code-select>
-                 </div>-->
+                 <div layout="row" class="pad-top">
+                 <pams-gender-code-select
+                 [placeholder]="'GenderCode'"
+                 [innerFormControl]="applicationForm.controls.genderCode">
+                 </pams-gender-code-select>
+                 </div>
 
-                 <!--<div layout="row" class="pad-bottom" flex>
-                  <pams-religion-code-select
-                  [races]="races$ | async"></pams-religion-code-select>
-                 </div>-->
-                 
-                 <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Gender" formControlName="gender" flex/>
-                    </md-input-container>
-                  </div>
+                 <div layout="row" class="pad-top">
+                 <pams-religion-code-select
+                 [placeholder]="'ReligionCode'"
+                 [innerFormControl]="applicationForm.controls.religionCode">
+                 </pams-religion-code-select>
+                 </div>
 
-                   <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Religion" formControlName="religion" flex/>
-                    </md-input-container>
-                  </div>
+                <div layout="row" class="pad-top">
+                 <pams-race-code-select
+                 [placeholder]="'RaceCode'"
+                 [innerFormControl]="applicationForm.controls.raceCode">
+                 </pams-race-code-select>
+                 </div>
 
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Race" formControlName="race" flex/>
-                    </md-input-container>
-                  </div>
+                 <div layout="row" class="pad-top">
+                 <pams-marital-code-select
+                 [placeholder]="'MaritalCode'"
+                 [innerFormControl]="applicationForm.controls.maritalCode">
+                 </pams-marital-code-select>
+                 </div>
 
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Marital Status" formControlName="marital" flex/>
-                    </md-input-container>
+                 <div layout="row" class="pad-top">
+                  <md-select placeholder="Citizenship">
+                  <md-option>YES</md-option>
+                  <md-option>NO</md-option>
+                  </md-select>
                   </div>
                 </div>
               </div>

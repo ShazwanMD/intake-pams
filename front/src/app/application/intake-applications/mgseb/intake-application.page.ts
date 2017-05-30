@@ -1,3 +1,6 @@
+import { RaceCode } from './../../../common/race-codes/race-code.interface';
+import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
+import { ReligionCode } from './../../../common/religion-codes/religion-code.interface';
 import { SpmResult } from './../spm-result.interface';
 import { Address } from './../address.interface';
 import {Referee} from './../referee.interface';
@@ -11,7 +14,6 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 import { StudyMode } from "./../study-mode.interface";
-
 
 @Component({
   selector: 'pams-intake-application',
@@ -74,6 +76,9 @@ export class MgsebIntakeApplicationPage implements OnInit {
       race:'',
       marital:'',
       age: 0,
+      religionCode: <ReligionCode>{},
+      genderCode: <GenderCode>{},
+      raceCode:<RaceCode>{},
       verified: false,
       sponsored: false,
       selfSponsored: false,
