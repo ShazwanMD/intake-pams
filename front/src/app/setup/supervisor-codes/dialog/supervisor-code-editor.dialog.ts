@@ -4,7 +4,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
 
@@ -26,7 +26,8 @@ export class SupervisorCodeEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<SupervisorCodeEditorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions) {
+              private actions: SetupActions,
+              private snackBar: MdSnackBar) {
   }
 
   set supervisorCode(value: SupervisorCode) {
@@ -35,6 +36,7 @@ export class SupervisorCodeEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.editorForm = this.formBuilder.group(<SupervisorCode>{
       id: null,
       code: '',
@@ -42,13 +44,18 @@ export class SupervisorCodeEditorDialog implements OnInit {
       descriptionEn: '',
       descriptionMs: '',
     });
+  
 
     if (this.edit) this.editorForm.patchValue(this._supervisorCode);
   }
 
   submit(code: SupervisorCode, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to update supervisor code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveSupervisorCode(code));
     else  this.store.dispatch(this.actions.updateSupervisorCode(code));
     this.dialog.close();
+    });
   }
+  
 }
