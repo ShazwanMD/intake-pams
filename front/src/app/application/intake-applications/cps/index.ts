@@ -29,6 +29,7 @@ import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-
 import {EmploymentListComponent} from "../component/employment-list.component";
 import {ProgramChoiceComponent} from "../component/program-choice.component";
 import {LanguageListComponent} from "../component/language-list.component";
+import { StudyCenterCodeSelectComponent } from "../../../common/study-center-codes/component/study-center-code-select.component";
 
 
 
@@ -57,6 +58,7 @@ import {LanguageListComponent} from "../component/language-list.component";
     AddressTypeSelectComponent,
     SpmResultListComponent,
     ResultTypeSelectComponent,
+    
 
     //dialogs
     EmploymentCreatorDialog,
@@ -76,6 +78,7 @@ import {LanguageListComponent} from "../component/language-list.component";
     SpmResultListComponent,
     BachelorResultListComponent,
     ResultTypeSelectComponent,
+    
   ],
 
   entryComponents: [

@@ -19,7 +19,6 @@ import { StudyModeOfferingSelectorDialog } from "../component/dialog/study-mode-
 import { StudyCenterChoiceComponent } from "../component/study-center-choice.component";
 
 
-
 @NgModule({
   imports: [
     appRoutes,
@@ -36,6 +35,7 @@ import { StudyCenterChoiceComponent } from "../component/study-center-choice.com
    
    //components
    StudyCenterChoiceComponent,
+ 
 
 
     //dialogs

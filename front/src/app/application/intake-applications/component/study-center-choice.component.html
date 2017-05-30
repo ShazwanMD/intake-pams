@@ -1,4 +1,4 @@
-<form [formGroup]="createForm">
+<form [formGroup]="applicationForm">
 <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
   <div class="push-top-sm"></div>
   <p class="md-title tc-grey-600">Choose your program: {{intakeApplication?.programSelection}}</p>
@@ -8,23 +8,13 @@
   <button md-raised-button color="accent" class="push-bottom" (click)="showStudyModeSelectionDialog()">Choose</button>
   <div class="push-top-sm"></div>
   <p class="md-title tc-grey-600">Your study Center</p>
-  <md-input-container flex>
-    <input mdInput placeholder="Study Center" flex/>
-  </md-input-container>
-  <!--<div class="push-top-sm"></div>
-</div>
-  <div layout="row" class="pad-top">
-    <md-select-value class="md-select-value" id="studyCenter">
-    <label>Your study Center</label>
-    <pams-study-center-code-select
-        [placeholder]="'studyCenter'"
-        [innerFormControl]="createForm.controls.studyCenter">
-    </pams-study-center-code-select>
-    
-    </md-select-value>
-    </div>-->
+  <div layout="row" class="pad-bottom" flex>
+  <pams-study-center-code-select   
+   [placeholder]="'studyCenterCode'"
+   [innerFormControl]="applicationForm.controls.studyCenterCode">
+   </pams-study-center-code-select>
+  </div> 
 </div>
 </form>
  
-
  

@@ -77,6 +77,7 @@ export class CpsIntakeApplicationPage implements OnInit {
       phone: '',
       fax: '',
       age: 0,
+     
       verified: false,
       sponsored: false,
       selfSponsored: false,
