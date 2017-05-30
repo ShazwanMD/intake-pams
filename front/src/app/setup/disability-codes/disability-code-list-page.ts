@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {DisabilityCodeEditorDialog} from "./dialog/disability-code-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-disability-list-page',
@@ -26,7 +26,8 @@ export class DisabilityCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.disabilityCodes$ = this.store.select(...this.DISABILITY_CODES);
   }
 
@@ -36,15 +37,24 @@ export class DisabilityCodeListPage implements OnInit {
   }
 
   createDialog(): void {
+    let snackBarRef = this.snackBar.open("Do you want to add new disability code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-  }
+  });
+}
 
   editDialog(code:DisabilityCode): void {
+    let snackBarRef = this.snackBar.open("Do you want to edit this disability code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+    });
   }
 
   delete(code: DisabilityCode): void {
+    let snackBarRef = this.snackBar.open("Delete this disability code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeDisabilityCode(code))
+    });
   }
 
   filter(): void {
