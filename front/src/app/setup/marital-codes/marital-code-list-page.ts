@@ -47,11 +47,17 @@ export class MaritalCodeListPage implements OnInit {
   }
 
   editDialog(code:MaritalCode): void {
+    let snackBarRef = this.snackBar.open("Do you want to edit this marital code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+    });
   }
 
   delete(code: MaritalCode): void {
+    let snackBarRef = this.snackBar.open("Delete this marital code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeMaritalCode(code))
+    });
   }
 
   filter(): void {
