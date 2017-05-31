@@ -75,6 +75,7 @@ export class ProgramOfferingListComponent {
     config.position = {top: '0px'};
     this.editorDialogRef2 = this.dialog.open(ProgramOfferingListEditorDialog, config);
     if (programOffering) this.editorDialogRef2.componentInstance.programOffering = programOffering; // set
+    if (this.intake) this.editorDialogRef2.componentInstance.intake = this.intake;
     this.editorDialogRef2.afterClosed().subscribe(res => {
       console.log("close dialog");
       // reload program offerings

@@ -51,19 +51,18 @@ export class ProgramOfferingListEditorDialog {
     this.editorForm = this.formBuilder.group(<ProgramOffering>{
       id:null,
       projection:0,
-      interview:false,
+      interview:true,
       generalCriteria:'',
-      specificCriteria:'',   
+      specificCriteria:'',
       programCode: <ProgramCode>{},
     });
     console.log("this._programOffering :"+this._programOffering.programCode);
+    console.log("this._intake :"+this._intake.id);
     if (this.edit) this.editorForm.patchValue(this._programOffering);
   }
 
-  submit(intake :Intake,id: ProgramOffering, isValid: boolean) {
-    // if (!intake.id) intake =>this.store.dispatch(this.actions.addProgramOffering(intake,id));
-    // else  
-    this.store.dispatch(this.actions.updateProgramOffering(this._intake, id));
+  submit() {
+    if (this._programOffering.id)this.store.dispatch(this.actions.updateProgramOffering(this._intake, this._programOffering));
     this.dialog.close();
   }
 }

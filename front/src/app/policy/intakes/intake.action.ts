@@ -307,6 +307,9 @@ export class IntakeActions {
   static UPDATE_PROGRAM_OFFERING = '[Intake] Update Program Offering';
 
   updateProgramOffering(intake:Intake, programOffering: ProgramOffering) {
+      console.log("updateProgramOffering");
+      console.log("intake id :"+intake.id);
+      console.log("programOffering programCode id :"+programOffering.programCode.id);
     return {
       type: IntakeActions.UPDATE_PROGRAM_OFFERING,
       payload:{intake:intake, programOffering:programOffering}
@@ -316,6 +319,7 @@ export class IntakeActions {
    static UPDATE_PROGRAM_OFFERING_SUCCESS = '[Intake] Update Program Offering Success';
 
   updateProgramOfferingSuccess(message) {
+      console.log("updateProgramOfferingSuccess");
     return {
       type: IntakeActions.UPDATE_PROGRAM_OFFERING_SUCCESS,
       payload:message

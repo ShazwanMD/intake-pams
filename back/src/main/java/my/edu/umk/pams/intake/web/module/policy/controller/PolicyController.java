@@ -246,11 +246,13 @@ public class PolicyController {
 
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InProgramOffering offering = policyService.findProgramOfferingById(vo.getId());
-        
+        InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
+        System.out.println("vo.getInterview() :"+vo.getInterview());
         offering.setProjection(vo.getProjection());
         offering.setInterview(vo.getInterview());
         offering.setGeneralCriteria(vo.getGeneralCriteria());
         offering.setSpecificCriteria(vo.getSpecificCriteria());
+        offering.setProgramCode(programCode);
         
         policyService.updateProgramOfferings(intake, offering);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
