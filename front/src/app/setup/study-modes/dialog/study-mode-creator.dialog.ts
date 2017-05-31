@@ -9,7 +9,6 @@ import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
 
 
-
 @Component({
   selector: 'pams-study-mode-creator',
   templateUrl: './study-mode-creator.dialog.html',
@@ -17,7 +16,9 @@ import {SetupActions} from "../../setup.action";
 
 export class StudyModeCreatorDialog implements OnInit {
 
-  private createForm: FormGroup;
+  private creatorForm: FormGroup;
+  private edit: boolean = false;
+  private _studyMode: StudyMode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -25,28 +26,30 @@ export class StudyModeCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<StudyModeCreatorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions
-  ) {
+              private actions: SetupActions) {
+  }
+
+  set studyMode(value: StudyMode) {
+    this._studyMode = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<StudyMode>{
+    this.creatorForm = this.formBuilder.group(<StudyMode>{
       id: null,
       code: '',
       descriptionMs: '',
       descriptionEn: '',
       prefix: '',
-      
-     
+     });
 
-    });
+    if (this.edit) this.creatorForm.patchValue(this._studyMode);
   }
 
     save(code: StudyMode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveStudyMode(code));
+    if (!code.id) this.store.dispatch(this.actions.saveStudyMode(code));
+    else  this.store.dispatch(this.actions.updateStudyMode(code));
     this.dialog.close();
   }
 }
-    
-    
