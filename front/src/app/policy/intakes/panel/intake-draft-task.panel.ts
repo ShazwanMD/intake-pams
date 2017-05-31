@@ -44,8 +44,11 @@ export class IntakeDraftTaskPanel implements OnInit {
   }
 
   verify() {
+    let snackBarRef = this.snackBar.open("Verify this intake?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
     this.goBack();
+    });
   }
 
   goBack(): void {
