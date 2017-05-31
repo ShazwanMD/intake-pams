@@ -1,3 +1,4 @@
+import { LanguageCreatorDialog } from './../component/dialog/language-creator.dialog';
 import { ResultTypeSelectComponent } from './../component/result-type-select.component';
 import { BachelorResultListComponent } from './../component/bachelor-result-list.component';
 import { BachelorResultCreatorDialog } from './../component/dialog/bachelor-result-creator.dialog';
@@ -66,6 +67,7 @@ import { StudyCenterCodeSelectComponent } from "../../../common/study-center-cod
     AddressCreatorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
+    LanguageCreatorDialog,
 
   ],
   exports: [
@@ -87,6 +89,7 @@ import { StudyCenterCodeSelectComponent } from "../../../common/study-center-cod
     AddressCreatorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
+    LanguageCreatorDialog,
 
   ],
 })

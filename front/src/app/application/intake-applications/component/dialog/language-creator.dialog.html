@@ -1,26 +1,45 @@
-<h2 md-dialog-title>Working Experience Creator</h2>
+<h2 md-dialog-title>Language Creator</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
     <md-card>
       <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
 
         <div layout="column" class="pad-right" flex>
-          <div layout="row">
+          <div layout="row"  class="pad-top">
             <pams-language-code-select
               [placeholder]="'Language'"
-              [innerFormControl]="createForm.controls['languageCOde']">
+              [innerFormControl]="createForm.controls.languageCode">
             </pams-language-code-select>
           </div>
 
-          <div layout="row">
-            <md-input-container flex>
-              <input mdInput placeholder="Oral" formControlName="oral" type="number" flex/>
-            </md-input-container>
+          <div layout="row"  class="pad-top">
+           <md-select placeholder="Oral">
+              <md-option>1</md-option>
+              <md-option>2</md-option>
+              <md-option>3</md-option>
+              <md-option>4</md-option>
+              <md-option>5</md-option>
+              <md-option>6</md-option>
+              <md-option>7</md-option>
+              <md-option>8</md-option>
+              <md-option>9</md-option>
+              <md-option>10</md-option>
+             </md-select>
           </div>
-          <div layout="row">
-            <md-input-container flex>
-              <input mdInput placeholder="Written" formControlName="written" type="number" flex/>
-            </md-input-container>
+          <div layout="row"  class="pad-top">
+             <md-select placeholder="Written">
+              <md-option>1</md-option>
+              <md-option>2</md-option>
+              <md-option>3</md-option>
+              <md-option>4</md-option>
+              <md-option>5</md-option>
+              <md-option>6</md-option>
+              <md-option>7</md-option>
+              <md-option>8</md-option>
+              <md-option>9</md-option>
+              <md-option>10</md-option>
+             </md-select>
+           
           </div>
         </div>
       </div>

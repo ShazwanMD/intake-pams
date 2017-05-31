@@ -22,7 +22,7 @@ export class LanguageListComponent implements OnInit {
   private columns: any[] = [
     {name: 'languageCode', label: 'Language'},
     {name: 'oral', label: 'Oral'},
-    {name: 'writter', label: 'Written'},
+    {name: 'written', label: 'Written'},
   ];
 
   constructor(private actions: IntakeApplicationActions,
