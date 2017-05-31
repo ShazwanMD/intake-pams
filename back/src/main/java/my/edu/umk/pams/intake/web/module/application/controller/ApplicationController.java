@@ -258,7 +258,7 @@ public class ApplicationController {
     
     
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/employments/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> removeEmployment(@PathVariable String referenceNo, @PathVariable Long id) {
+	public ResponseEntity<Boolean> deleteEmployment(@PathVariable String referenceNo, @PathVariable Long id) {
 		dummyLogin();
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
@@ -293,7 +293,7 @@ public class ApplicationController {
     }
     
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/language/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> removeLanguage(@PathVariable String referenceNo, @PathVariable Long id) {
+	public ResponseEntity<Boolean> deleteLanguage(@PathVariable String referenceNo, @PathVariable Long id) {
 		dummyLogin();
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
@@ -390,7 +390,7 @@ public class ApplicationController {
     }
     
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/referees/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> removeReferee(@PathVariable String referenceNo, @PathVariable Long id) {
+	public ResponseEntity<Boolean> deleteReferee(@PathVariable String referenceNo, @PathVariable Long id) {
 		dummyLogin();
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
@@ -429,7 +429,7 @@ public class ApplicationController {
     }
     
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/addresses/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> removeAddress(@PathVariable String referenceNo, @PathVariable Long id) {
+	public ResponseEntity<Boolean> deleteAddress(@PathVariable String referenceNo, @PathVariable Long id) {
 		dummyLogin();
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
@@ -502,7 +502,7 @@ public class ApplicationController {
     }
     
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/diplomaResults/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Boolean> removeDiplomaResult(@PathVariable String referenceNo, @PathVariable Long id) {
+	public ResponseEntity<Boolean> deleteDiplomaResult(@PathVariable String referenceNo, @PathVariable Long id) {
 		dummyLogin();
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
