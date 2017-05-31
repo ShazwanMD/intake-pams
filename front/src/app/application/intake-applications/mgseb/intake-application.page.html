@@ -148,13 +148,14 @@
                 [spmResults]="spmResults$ | async"></pams-spm-result-list>
             </td-expansion-panel>
 
-            <td-expansion-panel label="Bachelor Results">
+            <template md-tab-label>STPM / Diploma / Degree Information</template>
+            <td-expansion-panel label="STPM / Diploma / Degree Information">
               <pams-bachelor-result-list
                 [intakeApplication]="intakeApplication$ | async"
                 [bachelorResults]="bachelorResults$ | async"></pams-bachelor-result-list>
             </td-expansion-panel>
 
-            <td-expansion-panel label="STPM / Diploma / Degree Information">
+            <!--<td-expansion-panel label="STPM / Diploma / Degree Information">
               <md-card>
                 <md-divider>
                   <td-data-table
@@ -190,7 +191,7 @@
                   </a>
                 </md-card-actions>
               </md-card>
-            </td-expansion-panel>
+            </td-expansion-panel>-->
 
             <td-expansion-panel label="Proficiency in Malay/English Language">
             </td-expansion-panel>

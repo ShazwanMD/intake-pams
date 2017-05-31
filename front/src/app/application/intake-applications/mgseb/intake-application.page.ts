@@ -1,7 +1,4 @@
-import { MaritalCode } from './../../../common/marital-codes/marital-code.interface';
-import { RaceCode } from './../../../common/race-codes/race-code.interface';
-import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
-import { ReligionCode } from './../../../common/religion-codes/religion-code.interface';
+import { BachelorResult } from './../bachelor-result-interface';
 import { SpmResult } from './../spm-result.interface';
 import { Address } from './../address.interface';
 import {Referee} from './../referee.interface';
@@ -14,7 +11,11 @@ import {ApplicationModuleState} from "../../index";
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
-import { StudyMode } from "./../study-mode.interface";
+import {Language} from "../language.interface";
+import { NationalityCode } from "../../../common/nationality-codes/nationality-code.interface";
+
+
+
 
 @Component({
   selector: 'pams-intake-application',
@@ -24,18 +25,21 @@ import { StudyMode } from "./../study-mode.interface";
 export class MgsebIntakeApplicationPage implements OnInit {
 
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
-  private EMPLOYMENTS = "applicationModuleState.employments".split(".");
-  private REFEREES = "applicationModuleState.referees".split(".");
-  private ADDRESSES = "applicationModuleState.addresses".split(".");
-  private SPM_RESULTS = "applicationModuleState.spmResults".split(".");
-  private STUDY_MODES = "applicationModulState.studyModes".split(".");
+  private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
+  private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
+  private REFEREES: string[] = "applicationModuleState.referees".split(".");
+  private ADDRESSES: string[] = "applicationModuleState.addresses".split(".");
+  private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
+  private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
+
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
+  private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private addresses$: Observable<Address>;
   private spmResults$: Observable<SpmResult>;
-  private studyModes$:Observable<StudyMode>;
+  private bachelorResults$: Observable<BachelorResult>;
   private applicationForm: FormGroup;
 
   constructor(private router: Router,
@@ -47,10 +51,11 @@ export class MgsebIntakeApplicationPage implements OnInit {
 
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
+    this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.addresses$ = this.store.select(...this.ADDRESSES);
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
-    this.studyModes$ = this.store.select(...this.STUDY_MODES);
+    this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);
   }
 
   ngOnInit(): void {
@@ -73,12 +78,8 @@ export class MgsebIntakeApplicationPage implements OnInit {
       phone: '',
       fax: '',
       age: 0,
-
-
-      maritalCode: <MaritalCode>{},
-      religionCode: <ReligionCode>{},
-      genderCode: <GenderCode>{},
-      raceCode:<RaceCode>{},
+     
+      nationalityCode: <NationalityCode>{},
       verified: false,
       sponsored: false,
       selfSponsored: false,
