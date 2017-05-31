@@ -22,6 +22,9 @@ public class ApplicationTransformer {
 
     @Autowired
     private CommonTransformer commonTransformer;
+    
+    @Autowired
+    private ApplicationTransformer applicationTransformer;
 
     public IntakeApplication toIntakeApplicationVo(InIntakeApplication e) {
         IntakeApplication vo = new IntakeApplication();
@@ -262,6 +265,39 @@ public class ApplicationTransformer {
     public List<DiplomaResult> toDiplomaResultVos(List<InDiplomaResult> e) {
         List<DiplomaResult> vos = e.stream()
                 .map((e1) -> toDiplomaResultVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+    
+    public Result toResultVo(InResult e) {
+        Result vo = new Result();
+        vo.setId(e.getId());
+        vo.setResultItem(applicationTransformer.toResultItemVos(e.getItems()));
+        vo.setResultType(ResultType.get(e.getResultType().ordinal()));
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public List<Result> toResultVos(List<InResult> e) {
+        List<Result> vos = e.stream()
+                .map((e1) -> toResultVo(e1))
+                .collect(Collectors.toList());
+        return vos;
+    }
+    
+    public ResultItem toResultItemVo(InResultItem e) {
+        ResultItem vo = new ResultItem();
+        vo.setId(e.getId());
+        vo.setGradeCode(commonTransformer.toGradeCodeVo(e.getGradeCode()));
+        vo.setSubjectCode(commonTransformer.toSubjectCodeVo(e.getSubjectCode()));
+        vo.setResult(applicationTransformer.toResultVo(e.getResult()));
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
+    public List<ResultItem> toResultItemVos(List<InResultItem> e) {
+        List<ResultItem> vos = e.stream()
+                .map((e1) -> toResultItemVo(e1))
                 .collect(Collectors.toList());
         return vos;
     }

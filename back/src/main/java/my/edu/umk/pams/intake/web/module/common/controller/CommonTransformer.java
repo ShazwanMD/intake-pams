@@ -414,5 +414,40 @@ public class CommonTransformer {
         List<LanguageCode> vos = e.stream().map((e1) -> toLanguageCodeVo(e1)).collect(Collectors.toList());
         return vos;
     }
+    
+    // ====================================================================================================
+    // SUBJECT CODE
+    // ====================================================================================================
+
+    public SubjectCode toSubjectCodeVo(InSubjectCode e) {
+        SubjectCode vo = new SubjectCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescription(e.getDescription());
+        return vo;
+    }
+
+    public List<SubjectCode> toSubjectCodeVos(List<InSubjectCode> e) {
+        List<SubjectCode> vos = e.stream().map((e1) -> toSubjectCodeVo(e1)).collect(Collectors.toList());
+        return vos;
+    }
+    
+    // ====================================================================================================
+    // Grade CODE
+    // ====================================================================================================
+
+    public GradeCode toGradeCodeVo(InGradeCode e) {
+        GradeCode vo = new GradeCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescription(e.getDescription());
+        vo.setOrdinal(e.getOrdinal());
+        return vo;
+    }
+
+    public List<GradeCode> toGradeCodeVos(List<InGradeCode> e) {
+        List<GradeCode> vos = e.stream().map((e1) -> toGradeCodeVo(e1)).collect(Collectors.toList());
+        return vos;
+    }
 
 }

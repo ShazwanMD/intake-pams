@@ -446,6 +446,34 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    // ====================================================================================================
+    // RESULT ITEM
+    // ====================================================================================================
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/resultItems", method = RequestMethod.GET)
+    public ResponseEntity<List<ResultItem>> findResultItemsByIntakeApplication(@PathVariable String referenceNo, @PathVariable InResultType resultType) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InResult result = applicationService.findResult(application, resultType);
+        List<InResultItem> resultItems = applicationService.findResultItems(result);
+        return new ResponseEntity<List<ResultItem>>(applicationTransformer.toResultItemVos(resultItems), HttpStatus.OK);
+    }
+
+   /* @RequestMapping(value = "/intakeApplications/{referenceNo}/resultItems", method = RequestMethod.POST)
+    public ResponseEntity<String> addResultItems(@PathVariable String referenceNo, @RequestBody ResultItem vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InResultItem resultItem = new InResultItemImpl();
+        InResult result = applicationService.findResult(application, resultType);
+        resultItem.setResult(applicationService.findResult(application, resultType);
+        resultItem.setGradeCode(commonService.findGradeCodeById(vo.getGradeCode().getId()));
+        resultItem.setSubjectCode(commonService.findSubjectCodeById(vo.getSubjectCode().getId()));
+
+        applicationService.addResultItem(application, result, resultItem);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }*/
 
     // ====================================================================================================
     // PRIVATE METHODS
