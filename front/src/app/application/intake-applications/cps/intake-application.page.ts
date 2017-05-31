@@ -1,3 +1,4 @@
+import { DiplomaResult } from './../diploma-result-interface';
 import { ReligionCode } from './../../../common/religion-codes/religion-code.interface';
 import { MaritalCode } from './../../../common/marital-codes/marital-code.interface';
 import { RaceCode } from './../../../common/race-codes/race-code.interface';
@@ -35,6 +36,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private ADDRESSES: string[] = "applicationModuleState.addresses".split(".");
   private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split("."); 
   private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
+  private DIPLOMA_RESULTS: string[] = "applicationModuleState.diplomaResults".split(".");
 
 
   private intakeApplication$: Observable<IntakeApplication>;
@@ -44,6 +46,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private addresses$: Observable<Address>;
   private spmResults$: Observable<SpmResult>;
   private bachelorResults$: Observable<BachelorResult>;
+  private diplomaResults$: Observable<DiplomaResult>;
   private applicationForm: FormGroup;
 
   constructor(private router: Router,
@@ -60,6 +63,7 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.addresses$ = this.store.select(...this.ADDRESSES);
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
     this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);
+    this.diplomaResults$ = this.store.select(...this.DIPLOMA_RESULTS);
   }
 
   ngOnInit(): void {

@@ -98,6 +98,7 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findLanguagesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findBachelorResultsByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findDiplomaResultsByIntakeApplication(action.payload),
 
     ]));
 
@@ -236,6 +237,21 @@ export class IntakeApplicationEffects {
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addBachelorResult(payload.application, payload.bachelorResult))
     .map(message => this.intakeApplicationActions.addBachelorResultSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() findDiplomaResultsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findDiplomaResultsByIntakeApplication(application))
+    .map(diplomaResults => this.intakeApplicationActions.findDiplomaResultsByIntakeApplicationSuccess(diplomaResults));
+
+  @Effect() addDiplomaResult = this.actions$
+    .ofType(IntakeApplicationActions.ADD_DIPLOMA_RESULT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addDiplomaResult(payload.application, payload.diplomaResult))
+    .map(message => this.intakeApplicationActions.addDiplomaResultSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));

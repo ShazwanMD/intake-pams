@@ -623,5 +623,42 @@ export class IntakeApplicationActions {
     };
   }
 
+   static FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Diploma Results';
+
+  findDiplomaResultsByIntakeApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Diploma Results Success';
+
+  findDiplomaResultsByIntakeApplicationSuccess(diplomaResult): Action {
+    console.log("findDiplomaResultsSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: diplomaResult
+    };
+  }
+
+   static ADD_DIPLOMA_RESULT = '[Intake Application] Add Diploma Result';
+
+  addDiplomaResult(application, diplomaResult) {
+    return {
+      type: IntakeApplicationActions.ADD_DIPLOMA_RESULT,
+      payload: {application: application, diplomaResult: diplomaResult}
+    };
+  }
+
+  static ADD_DIPLOMA_RESULT_SUCCESS = '[Intake Application] Add Diploma Result Success';
+
+  addDiplomaResultSuccess(message) {
+    return {
+      type: IntakeApplicationActions.ADD_DIPLOMA_RESULT_SUCCESS,
+      payload: message
+    };
+  } 
+
 
 }
