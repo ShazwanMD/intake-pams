@@ -287,8 +287,6 @@ public class PolicyServiceImpl implements PolicyService {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(programOffering, "Offering cannot be null");
         Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
-        programOffering.setGeneralCriteria(programOffering.getGeneralCriteria());
-        programOffering.setSpecificCriteria(programOffering.getSpecificCriteria());
         intakeDao.updateProgramOfferings(intake, programOffering, securityService.getCurrentUser());
     }
 
