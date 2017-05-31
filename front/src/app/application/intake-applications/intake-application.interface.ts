@@ -1,3 +1,4 @@
+import { NationalityCode } from './../../common/nationality-codes/nationality-code.interface';
 import { MaritalCode } from './../../common/marital-codes/marital-code.interface';
 import { RaceCode } from './../../common/race-codes/race-code.interface';
 import { ReligionCode } from './../../common/religion-codes/religion-code.interface';
@@ -35,6 +36,7 @@ export interface IntakeApplication extends MetaObject {
   selfSponsored: boolean;
   applicant: Applicant;
   intake: Intake;
+  nationalityCode: NationalityCode;
   maritalCode: MaritalCode;
   studyCenterCode: StudyCenterCode;
   religionCode : ReligionCode;
