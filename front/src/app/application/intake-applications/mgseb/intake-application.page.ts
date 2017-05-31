@@ -13,6 +13,10 @@ import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 import {Language} from "../language.interface";
 import { NationalityCode } from "../../../common/nationality-codes/nationality-code.interface";
+import { GenderCode } from "../../../common/gender-codes/gender-code.interface";
+import { MaritalCode } from "../../../common/marital-codes/marital-code.interface";
+import { RaceCode } from "../../../common/race-codes/race-code.interface";
+import { ReligionCode } from "../../../common/religion-codes/religion-code.interface";
 
 
 
@@ -78,7 +82,10 @@ export class MgsebIntakeApplicationPage implements OnInit {
       phone: '',
       fax: '',
       age: 0,
-     
+      genderCode: <GenderCode>{},
+      maritalCode: <MaritalCode>{},
+      raceCode: <RaceCode>{},
+      religionCode: <ReligionCode>{},
       nationalityCode: <NationalityCode>{},
       verified: false,
       sponsored: false,
