@@ -918,6 +918,10 @@ export class SetupActions {
     };
   }
 
+//==========================================================================================
+//     STUDY MODE
+//==========================================================================================
+  //1-------------------------------------------------------------
   static SAVE_STUDY_MODE = '[Setup] Save Study Mode';
 
   saveStudyMode(code): Action {
@@ -927,7 +931,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//2-----------------------------------------------
   static SAVE_STUDY_MODE_SUCCESS = '[Setup] Save Study Mode Success';
 
   saveStudyModeSuccess(message): Action {
@@ -937,7 +941,7 @@ export class SetupActions {
       payload: message
     };
   }
-
+//3-----------------------------------------------------
   static FIND_STUDY_MODES = '[Common] Find Study Modes';
 
   findStudyModes(): Action {
@@ -946,7 +950,7 @@ export class SetupActions {
       type: SetupActions.FIND_STUDY_MODES,
     };
   }
-
+//4-----------------------------------------------------------------
   static FIND_STUDY_MODES_SUCCESS = '[Common] Find Study Modes Success';
 
   findStudyModesSuccess(codes): Action {
@@ -954,6 +958,46 @@ export class SetupActions {
     return {
       type: SetupActions.FIND_STUDY_MODES_SUCCESS,
       payload: codes
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_STUDY_MODE = '[Setup] Update Study Mode';
+
+  updateStudyMode(code): Action {
+    console.log("updateStudyMode");
+    return {
+      type: SetupActions.UPDATE_STUDY_MODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_STUDY_MODE_SUCCESS = '[Setup] Update Study Mode  Success';
+
+  updateStudyModeSuccess(message): Action {
+    console.log("updateStudyModeSuccess");
+    return {
+      type: SetupActions.UPDATE_STUDY_MODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_STUDY_MODE = '[Setup] Remove Study Mode';
+
+  removeStudyMode(code): Action {
+    console.log("removeStudyModeCode");
+    return {
+      type: SetupActions.REMOVE_STUDY_MODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_STUDY_MODE_SUCCESS = '[Setup] Remove Study Mode  Success';
+
+  removeStudyModeSuccess(message): Action {
+    console.log("removeStudyModeSuccess");
+    return {
+      type: SetupActions.REMOVE_STUDY_MODE_SUCCESS,
+      payload: message
     };
   }
 
