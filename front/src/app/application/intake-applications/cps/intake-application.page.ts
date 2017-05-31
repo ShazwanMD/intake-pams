@@ -12,6 +12,7 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 import {Language} from "../language.interface";
+import { NationalityCode } from "../../../common/nationality-codes/nationality-code.interface";
 
 
 
@@ -78,6 +79,7 @@ export class CpsIntakeApplicationPage implements OnInit {
       fax: '',
       age: 0,
      
+      nationalityCode: <NationalityCode>{},
       verified: false,
       sponsored: false,
       selfSponsored: false,

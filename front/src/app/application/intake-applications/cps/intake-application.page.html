@@ -52,12 +52,12 @@
                     </md-input-container>
                   </div>
 
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-select placeholder="Citizenship">
-                      <md-option>YES</md-option>
-                      <md-option>NO</md-option>
-                    </md-select>
-                  </div>
+                <div layout="row" class="pad-top">
+                 <pams-nationality-code-select
+                 [placeholder]="'Nationality'"
+                 [innerFormControl]="applicationForm.controls.nationalityCode">
+                 </pams-nationality-code-select>
+                 </div>
                 </div>
 
                 <!-- second column -->
