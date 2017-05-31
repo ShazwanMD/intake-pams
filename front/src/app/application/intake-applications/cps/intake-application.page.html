@@ -73,7 +73,7 @@
                  [innerFormControl]="applicationForm.controls.maritalCode">
                  </pams-marital-code-select>
                  </div>
-                 
+
                 </div>
 
                 <!-- second column -->
@@ -134,10 +134,11 @@
           <md-card>
             <template md-tab-label>Academic Qualification</template>
 
-            <td-expansion-panel label="Language Proficiencies">
-              <pams-spm-result-list
+            <td-expansion-panel label="Proficiency in Malay/English Language">
+            <pams-language-list
                 [intakeApplication]="intakeApplication$ | async"
-                [spmResults]="spmResults$ | async"></pams-spm-result-list>
+                [languages]="languages$ | async">
+            </pams-language-list>
             </td-expansion-panel>
 
             <td-expansion-panel label="SPM Qualifications">
