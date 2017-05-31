@@ -58,6 +58,22 @@
                  [innerFormControl]="applicationForm.controls.nationalityCode">
                  </pams-nationality-code-select>
                  </div>
+
+                 
+                <div layout="row" class="pad-top">
+                 <pams-race-code-select
+                 [placeholder]="'Race'"
+                 [innerFormControl]="applicationForm.controls.raceCode">
+                 </pams-race-code-select>
+                 </div>
+
+                 <div layout="row" class="pad-top">
+                 <pams-marital-code-select
+                 [placeholder]="'Marital'"
+                 [innerFormControl]="applicationForm.controls.maritalCode">
+                 </pams-marital-code-select>
+                 </div>
+                 
                 </div>
 
                 <!-- second column -->
@@ -85,6 +101,13 @@
                  [placeholder]="'Gender'"
                  [innerFormControl]="applicationForm.controls.genderCode">
                  </pams-gender-code-select>
+                 </div>
+
+                <div layout="row" class="pad-top">
+                 <pams-religion-code-select
+                 [placeholder]="'Religion'"
+                 [innerFormControl]="applicationForm.controls.religionCode">
+                 </pams-religion-code-select>
                  </div>
                 
 
