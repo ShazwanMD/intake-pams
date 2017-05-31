@@ -24,6 +24,11 @@ export class StudyModeOfferingListComponent {
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
   }
+  
+  delete(studyModeOffering: StudyModeOffering): void {
+      console.log("delete program offering :"+studyModeOffering.id);
+    this.store.dispatch(this.actions.deleteStudyModeOffering(this.intake, studyModeOffering))
+  }
 
   showDialog(): void {
     console.log("showDialog");

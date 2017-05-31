@@ -139,6 +139,15 @@ export class IntakeEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map(state => state[1])
     .map(intake => this.intakeActions.findProgramOfferings(intake));
+   
+   @Effect() deleteProgramOfferin$ = this.actions$
+   .ofType(IntakeActions.DELETE_PROGRAM_OFFERING)
+   .map(action => action.payload)
+   .switchMap(payload => this.policyService.deleteProgramOffering(payload.intake, payload.programOffering))
+   .map(message => this.intakeActions.deleteProgramOfferingSuccess(message))
+   .withLatestFrom(this.store$.select(...this.INTAKE))
+   .map(state => state[1])
+   .map(intake => this.intakeActions.findProgramOfferings(intake));
 
   @Effect() addStudyModeOffering$ = this.actions$
     .ofType(IntakeActions.ADD_STUDY_MODE_OFFERING)
@@ -148,6 +157,15 @@ export class IntakeEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map(state => state[1])
     .map(intake => this.intakeActions.findStudyModeOfferings(intake));
+  
+  @Effect() deleteStudyModeOffering$ = this.actions$
+  .ofType(IntakeActions.DELETE_STUDY_MODE_OFFERING)
+  .map(action => action.payload)
+  .switchMap(payload => this.policyService.deleteStudyModeOffering(payload.intake, payload.studyModeOffering))
+  .map(message => this.intakeActions.deleteStudyModeOfferingSuccess(message))
+  .withLatestFrom(this.store$.select(...this.INTAKE))
+  .map(state => state[1])
+  .map(intake => this.intakeActions.findStudyModeOfferings(intake));
 
   @Effect() addSupervisorOffering$ = this.actions$
     .ofType(IntakeActions.ADD_SUPERVISOR_OFFERING)
@@ -157,4 +175,13 @@ export class IntakeEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map(state => state[1])
     .map(intake => this.intakeActions.findSupervisorOfferings(intake));
+  
+  @Effect() deleteSupervisorOffering$ = this.actions$
+  .ofType(IntakeActions.DELETE_SUPERVISOR_OFFERING)
+  .map(action => action.payload)
+  .switchMap(payload => this.policyService.deleteSupervisorOffering(payload.intake, payload.supervisorOffering))
+  .map(message => this.intakeActions.deleteSupervisorOfferingSuccess(message))
+  .withLatestFrom(this.store$.select(...this.INTAKE))
+  .map(state => state[1])
+  .map(intake => this.intakeActions.findSupervisorOfferings(intake));
 }

@@ -4,11 +4,11 @@ import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
+import {Observable} from "rxjs/Observable";
 import {PolicyModuleState} from "../../index";
-import { ProgramOffering } from "../program-offering.interface";
 import { IntakeActions } from "../intake.action";
 import { Intake } from "../intake.interface";
-import {Observable} from "rxjs/Observable";
+import { ProgramOffering } from "../program-offering.interface";
 import { ProgramCode } from "../../../common/program-codes/program-code.interface";
 
 @Component({
@@ -61,8 +61,8 @@ export class ProgramOfferingListEditorDialog {
     if (this.edit) this.editorForm.patchValue(this._programOffering);
   }
 
-  submit() {
-    if (this._programOffering.id)this.store.dispatch(this.actions.updateProgramOffering(this._intake, this._programOffering));
+  submit(programOffering: ProgramOffering, isValid: boolean) {
+    if (programOffering.id)this.store.dispatch(this.actions.updateProgramOffering(this._intake, programOffering));
     this.dialog.close();
   }
 }

@@ -248,6 +248,8 @@ public class PolicyController {
         InProgramOffering offering = policyService.findProgramOfferingById(vo.getId());
         InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
         System.out.println("vo.getInterview() :"+vo.getInterview());
+        System.out.println("vo.getGeneralCriteria() :"+vo.getGeneralCriteria());
+        System.out.println("vo.getSpecificCriteria() :"+vo.getSpecificCriteria());
         offering.setProjection(vo.getProjection());
         offering.setInterview(vo.getInterview());
         offering.setGeneralCriteria(vo.getGeneralCriteria());
@@ -266,39 +268,6 @@ public class PolicyController {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InProgramOffering offering = policyService.findProgramOfferingById(id);
         policyService.deleteProgramOffering(intake, offering);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
-    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
-        dummyLogin();
-
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        return new ResponseEntity<List<SupervisorOffering>>(policyTransformer
-                .toSupervisorOfferingVos(policyService.findSupervisorOfferings(intake)), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> addSupervisorOfferings(@PathVariable String referenceNo,
-                                                          @RequestBody SupervisorOffering vo) {
-        dummyLogin();
-
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        InSupervisorCode supervisorCode = commonService.findSupervisorCodeById(vo.getSupervisorCode().getId());
-        InSupervisorOffering offering = new InSupervisorOfferingImpl();
-        offering.setSupervisorCode(supervisorCode);
-        policyService.addSupervisorOffering(intake, offering);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> deleteSupervisorOfferings(@PathVariable String referenceNo,
-                                                             @PathVariable Long id) {
-        dummyLogin();
-
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        InSupervisorOffering offering = policyService.findSupervisorOfferingById(id);
-        policyService.deleteSupervisorOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
@@ -381,6 +350,39 @@ public class PolicyController {
         InFacultyCode facultyCode = commonService.findFacultyCodeByCode(code);
         return new ResponseEntity<List<SupervisorCode>>(commonTransformer
                 .toSupervisorCodeVos(commonService.findSupervisorCodes(facultyCode)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        return new ResponseEntity<List<SupervisorOffering>>(policyTransformer
+                .toSupervisorOfferingVos(policyService.findSupervisorOfferings(intake)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> addSupervisorOfferings(@PathVariable String referenceNo,
+                                                          @RequestBody SupervisorOffering vo) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        InSupervisorCode supervisorCode = commonService.findSupervisorCodeById(vo.getSupervisorCode().getId());
+        InSupervisorOffering offering = new InSupervisorOfferingImpl();
+        offering.setSupervisorCode(supervisorCode);
+        policyService.addSupervisorOffering(intake, offering);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> deleteSupervisorOfferings(@PathVariable String referenceNo,
+                                                             @PathVariable Long id) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        InSupervisorOffering offering = policyService.findSupervisorOfferingById(id);
+        policyService.deleteSupervisorOffering(intake, offering);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
     // ====================================================================================================

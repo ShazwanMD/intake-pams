@@ -16,6 +16,12 @@
         <p md-line> {{supervisorOffering.supervisorCode?.descriptionEn}} </p>
         <span flex></span>
         <span flex="20">{{supervisorOffering.supervisorCode?.code}}</span>
+         <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu="mdMenu">
+          <button md-menu-item (click)="delete(supervisorOffering)">Delete</button>
+        </md-menu>
       </a>
     </template>
   </md-nav-list>

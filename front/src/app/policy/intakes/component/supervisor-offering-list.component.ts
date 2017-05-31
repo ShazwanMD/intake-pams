@@ -24,6 +24,11 @@ export class SupervisorOfferingListComponent {
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
   }
+  
+  delete(supervisorOffering: SupervisorOffering): void {
+    this.store.dispatch(this.actions.deleteSupervisorOffering(this.intake, supervisorOffering))
+  }
+
 
   showDialog(): void {
     console.log("showDialog");

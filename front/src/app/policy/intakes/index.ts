@@ -21,7 +21,6 @@ import {ProgramOfferingListComponent} from "./component/program-offering-list.co
 import {SupervisorOfferingListComponent} from "./component/supervisor-offering-list.component";
 import {StudyModeOfferingListComponent} from "./component/study-mode-offering-list.component";
 import {ProgramOfferingEditorDialog} from "./dialog/program-offering-editor.dialog";
-import {ProgramOfferingListEditorDialog} from "./component/program-offering-list-editor.dialog";
 import {CommonModule} from "../../common/index";
 import {CommonActions} from "../../common/common.action";
 import {IntakeSessionActions} from "../intake-sessions/intake-session.action";
@@ -35,6 +34,7 @@ import {IntakePublishTaskPanel} from "./panel/intake-publish-task.panel";
 import {ProgramOfferingSelectComponent} from "./component/program-offering-select.component";
 import {IntakeApplicationListComponent} from "./component/intake-application-list.component";
 import {IntakeTaskDetailPage} from "./intake-task-detail.page";
+import { ProgramOfferingListEditorDialog } from "./dialog/program-offering-list-editor.dialog";
 
 
 @NgModule({
