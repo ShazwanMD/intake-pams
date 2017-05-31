@@ -1,3 +1,7 @@
+import { ReligionCode } from './../../../common/religion-codes/religion-code.interface';
+import { MaritalCode } from './../../../common/marital-codes/marital-code.interface';
+import { RaceCode } from './../../../common/race-codes/race-code.interface';
+import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
 import { BachelorResult } from './../bachelor-result-interface';
 import { SpmResult } from './../spm-result.interface';
 import { Address } from './../address.interface';
@@ -29,7 +33,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
   private REFEREES: string[] = "applicationModuleState.referees".split(".");
   private ADDRESSES: string[] = "applicationModuleState.addresses".split(".");
-  private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
+  private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split("."); 
   private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
 
 
@@ -79,6 +83,10 @@ export class CpsIntakeApplicationPage implements OnInit {
       fax: '',
       age: 0,
      
+      genderCode: <GenderCode>{},
+      maritalCode: <MaritalCode>{},
+      raceCode: <RaceCode>{},
+      religionCode: <ReligionCode>{},
       nationalityCode: <NationalityCode>{},
       verified: false,
       sponsored: false,

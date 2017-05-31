@@ -1,3 +1,5 @@
+import { Language } from './../../language.interface';
+import { LanguageCode } from './../../../../common/language-codes/language-code.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -7,8 +9,8 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
-import {Language} from "../../language.interface";
-import {LanguageCode} from "../../../../common/language-codes/language-code.interface";
+
+
 
 
 @Component({
@@ -38,9 +40,9 @@ export class LanguageCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Language>{
       id: null,
+      languageCode: <LanguageCode>{},
       oral: 0,
       written: 0,
-      languageCode: <LanguageCode>{},
     });
   }
 
