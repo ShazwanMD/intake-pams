@@ -7,7 +7,6 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 
-
 @Component({
   selector: 'pams-study-list-page',
   templateUrl: './study-mode-list.page.html',
@@ -32,8 +31,28 @@ export class StudyModeListPage implements OnInit {
     this.studyModes$ = this.store.select(...this.STUDY_MODES);
   }
 
-    showDialog(): void {
-    console.log("showDialog");
+   ngOnInit(): void {
+    this.store.dispatch(this.actions.findStudyModes());
+    this.store.dispatch(this.actions.changeTitle("Study Modes"))
+  }
+
+  createDialog(): void {
+    this.showDialog(null);
+  }
+
+  editDialog(code:StudyMode): void {
+    this.showDialog(code);
+  }
+
+  delete(code: StudyMode): void {
+    this.store.dispatch(this.actions.removeStudyMode(code))
+  }
+
+  filter(): void {
+  }
+
+  private showDialog(code:StudyMode): void {
+    console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -41,17 +60,9 @@ export class StudyModeListPage implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(StudyModeCreatorDialog, config);
+    if(code) this.creatorDialogRef.componentInstance.studyMode = code; // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
-      // load something here
     });
   }
-
-  ngOnInit(): void {
-    this.store.dispatch(this.actions.findStudyModes())
-    this.store.dispatch(this.actions.changeTitle("Study Mode Codes"))
-  }
-
-  filter():void {}
-
 }
