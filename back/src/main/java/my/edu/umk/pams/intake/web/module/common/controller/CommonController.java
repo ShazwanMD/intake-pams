@@ -1146,6 +1146,105 @@ public class CommonController {
         commonService.removeLanguageCode(languageCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    //====================================================================================================
+    // Grade_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/gradeCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<GradeCode>> findGradeCodes() {
+        return new ResponseEntity<List<GradeCode>>(commonTransformer.toGradeCodeVos(
+        		commonService.findGradeCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/gradeCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<GradeCode> findGradeCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<GradeCode>(commonTransformer.toGradeCodeVo(
+                commonService.findGradeCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/gradeCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveGradeCode(@RequestBody GradeCode vo) {
+        dummyLogin();
+
+        InGradeCode gradeCode = new InGradeCodeImpl();
+        gradeCode.setCode(vo.getCode());
+        gradeCode.setDescription(vo.getDescription());
+
+        commonService.saveGradeCode(gradeCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/gradeCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateGradeCode(@PathVariable String code, @RequestBody GradeCode vo) {
+        dummyLogin();
+
+        InGradeCode gradeCode = commonService.findGradeCodeById(vo.getId());
+        gradeCode.setCode(vo.getCode());
+        gradeCode.setDescription(vo.getDescription());
+
+        commonService.updateGradeCode(gradeCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/gradeCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeGradeCode(@PathVariable String code) {
+        dummyLogin();
+
+        InGradeCode gradeCode = commonService.findGradeCodeByCode(code);
+        commonService.removeGradeCode(gradeCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    //====================================================================================================
+    // Subject_CODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/subjectCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<SubjectCode>> findSubjectCodes() {
+        return new ResponseEntity<List<SubjectCode>>(commonTransformer.toSubjectCodeVos(
+        		commonService.findSubjectCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/subjectCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<SubjectCode> findSubjectCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<SubjectCode>(commonTransformer.toSubjectCodeVo(
+                commonService.findSubjectCodeByCode(code)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/subjectCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveSubjectCode(@RequestBody SubjectCode vo) {
+        dummyLogin();
+
+        InSubjectCode subjectCode = new InSubjectCodeImpl();
+        subjectCode.setCode(vo.getCode());
+        subjectCode.setDescription(vo.getDescription());
+
+        commonService.saveSubjectCode(subjectCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/subjectCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateSubjectCode(@PathVariable String code, @RequestBody SubjectCode vo) {
+        dummyLogin();
+
+        InSubjectCode subjectCode = commonService.findSubjectCodeById(vo.getId());
+        subjectCode.setCode(vo.getCode());
+        subjectCode.setDescription(vo.getDescription());
+
+        commonService.updateSubjectCode(subjectCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/subjectCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeSubjectCode(@PathVariable String code) {
+        dummyLogin();
+
+        InSubjectCode subjectCode = commonService.findSubjectCodeByCode(code);
+        commonService.removeSubjectCode(subjectCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
 
     
 }
