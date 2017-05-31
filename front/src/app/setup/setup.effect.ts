@@ -346,20 +346,35 @@ export class SetupEffects {
     .mergeMap(action => from([action, this.setupActions.findFacultyCodes()]));
 
   // ====================================================================================================
-  // STUDY CODE
+  // STUDY MODE
   // ====================================================================================================
 
-  @Effect() findStudyModes$ = this.actions$
+  @Effect() findStudyMode$ = this.actions$
     .ofType(SetupActions.FIND_STUDY_MODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findStudyModes())
     .map(codes => this.setupActions.findStudyModesSuccess(codes));
+
 
   @Effect() saveStudyModes$ = this.actions$
     .ofType(SetupActions.SAVE_STUDY_MODE)
     .map(action => action.payload)
     .switchMap(payload => this.commonService.saveStudyMode(payload))
     .map(message => this.setupActions.saveStudyModeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStudyModes()]));
+
+    @Effect() updateStudyModes$ = this.actions$
+    .ofType(SetupActions.UPDATE_STUDY_MODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateStudyMode(payload))
+    .map(message => this.setupActions.updateStudyModeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStudyModes()]));
+
+  @Effect() removeStudyMode$ = this.actions$
+    .ofType(SetupActions.REMOVE_STUDY_MODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeStudyMode(payload))
+    .map(message => this.setupActions.removeStudyModeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findStudyModes()]));
 
   // ====================================================================================================
