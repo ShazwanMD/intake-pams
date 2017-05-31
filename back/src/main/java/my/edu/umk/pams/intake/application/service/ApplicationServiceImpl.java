@@ -175,6 +175,24 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.deleteAddress(application, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+    public void deleteLanguage(InIntakeApplication application, InLanguage language) {
+        intakeApplicationDao.deleteLanguage(application, language, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    @Override
+    public void deleteEmployment(InIntakeApplication application, InEmployment employment) {
+        intakeApplicationDao.deleteEmployment(application, employment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    @Override
+    public void deleteReferee(InIntakeApplication application, InReferee referee) {
+        intakeApplicationDao.deleteReferee(application, referee, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
     @Override
     public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
@@ -283,6 +301,21 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public InAddress findAddressById(Long id) {
         return intakeApplicationDao.findAddressById(id);
+    }
+    
+    @Override
+    public  InEmployment findEmploymentById(Long id) {
+        return intakeApplicationDao.findEmploymentById(id);
+    }
+    
+    @Override
+    public InReferee findRefereeById(Long id) {
+        return intakeApplicationDao.findRefereeById(id);
+    }
+    
+    @Override
+    public InLanguage findLanguageById(Long id) {
+        return intakeApplicationDao.findLanguageById(id);
     }
 
     @Override

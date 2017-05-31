@@ -124,6 +124,24 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
     
     @Override
+    public InEmployment findEmploymentById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InEmployment) currentSession.get(InEmploymentImpl.class, id);
+    }
+    
+    @Override
+    public InReferee findRefereeById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InReferee) currentSession.get(InRefereeImpl.class, id);
+    }
+    
+    @Override
+    public InLanguage findLanguageById(Long id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (InLanguage) currentSession.get(InLanguageImpl.class, id);
+    }
+    
+    @Override
     public InFranchise findFranchiseById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (InFranchise) currentSession.get(InFranchiseImpl.class, id);
@@ -883,6 +901,16 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(address);
+    }
+    
+    @Override
+    public void deleteReferee(InIntakeApplication application, InReferee referee, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(referee, "Refereecannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(referee);
     }
 
     @Override

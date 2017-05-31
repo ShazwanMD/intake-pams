@@ -51,6 +51,12 @@ public interface ApplicationService {
 
     void deleteAddress(InIntakeApplication application, InAddress address);
     
+    void deleteLanguage(InIntakeApplication application, InLanguage language);
+    
+    void deleteEmployment(InIntakeApplication application, InEmployment employment);
+    
+    void deleteReferee(InIntakeApplication application, InReferee referee);
+    
     void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
     
     void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);
@@ -104,6 +110,12 @@ public interface ApplicationService {
     InGuarantor findGuarantorById(Long id);
 
     InAddress findAddressById(Long id);
+    
+    InEmployment findEmploymentById(Long id);
+    
+    InReferee findRefereeById(Long id);
+    
+    InLanguage findLanguageById(Long id);
     
     InBachelorResult findBachelorResultById(Long id);
     

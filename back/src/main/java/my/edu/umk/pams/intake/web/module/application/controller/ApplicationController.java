@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InSubjectCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InActor;
@@ -254,6 +255,17 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/employments/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> removeEmployment(@PathVariable String referenceNo, @PathVariable Long id) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InEmployment employment = (InEmployment) applicationService.findEmploymentById(id);
+		applicationService.deleteEmployment(application, employment);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
 
     // ====================================================================================================
     // LANGUAGES
@@ -279,6 +291,16 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/language/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> removeLanguage(@PathVariable String referenceNo, @PathVariable Long id) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InLanguage language = (InLanguage) applicationService.findLanguageById(id);
+		applicationService.deleteLanguage(application, language);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
 
 
     // ====================================================================================================
@@ -338,6 +360,8 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    
 
     // ====================================================================================================
     // REFERESS
@@ -364,6 +388,16 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/referees/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> removeReferee(@PathVariable String referenceNo, @PathVariable Long id) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InReferee referee = (InReferee) applicationService.findAddressById(id);
+		applicationService.deleteReferee(application, referee);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
 
     // ====================================================================================================
     // ADDRESS
@@ -393,6 +427,16 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/addresses/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> removeAddress(@PathVariable String referenceNo, @PathVariable Long id) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InAddress address = (InAddress) applicationService.findAddressById(id);
+		applicationService.deleteAddress(application, address);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
 
 
     // ====================================================================================================
@@ -420,6 +464,16 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/bachelorResults/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> removeBachelorResult(@PathVariable String referenceNo, @PathVariable Long id) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InBachelorResult bachelorResult = (InBachelorResult) applicationService.findBachelorResultById(id);
+		applicationService.deleteBachelorResult(application, bachelorResult);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
 
     // ====================================================================================================
     // DIPLOMA RESULT
@@ -446,6 +500,16 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/diplomaResults/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> removeDiplomaResult(@PathVariable String referenceNo, @PathVariable Long id) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InDiplomaResult diplomaResult = (InDiplomaResult) applicationService.findDiplomaResultById(id);
+		applicationService.deleteDiplomaResult(application, diplomaResult);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
     
     // ====================================================================================================
     // RESULT ITEM

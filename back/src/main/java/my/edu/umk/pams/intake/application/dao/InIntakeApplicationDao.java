@@ -41,6 +41,12 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InDiplomaResult findDiplomaResultById(Long id);
     
     InSpmResult findSpmResultById(Long id);
+    
+    InEmployment findEmploymentById(Long id);
+    
+    InReferee findRefereeById(Long id);
+    
+    InLanguage findLanguageById(Long id);
 
     InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application);
 
@@ -186,6 +192,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 	void addAttachment(InIntakeApplication application,InAttachment attachment, InUser currentUser);
 
 	void addReferee(InIntakeApplication application, InReferee referee, InUser currentUser);
+	
+	void deleteReferee(InIntakeApplication application, InReferee referee, InUser user);
 
 	List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
 	
