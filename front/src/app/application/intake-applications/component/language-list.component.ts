@@ -21,8 +21,8 @@ export class LanguageListComponent implements OnInit {
   private creatorDialogRef: MdDialogRef<LanguageCreatorDialog>;
   private columns: any[] = [
     {name: 'languageCode.descriptionMs', label: 'Language'},
-    {name: 'oral', label: 'Oral'},
-    {name: 'written', label: 'Written'},
+    {name: 'oral', label: 'Oral Proficiency'},
+    {name: 'written', label: 'Written Proficiency'},
   ];
 
   constructor(private actions: IntakeApplicationActions,
