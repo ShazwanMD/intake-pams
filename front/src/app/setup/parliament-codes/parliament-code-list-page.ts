@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {ParliamentCodeEditorDialog} from "./dialog/parliament-code-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-parliament-list-page',
@@ -25,7 +25,8 @@ export class ParliamentCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.parliamentCodes$ = this.store.select(...this.PARLIAMENT_CODES);
   }
 
@@ -35,15 +36,24 @@ export class ParliamentCodeListPage implements OnInit {
   }
 
   createDialog(): void {
+    let snackBarRef = this.snackBar.open("Do you want to add new parliament code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
+    });
   }
 
   editDialog(code:ParliamentCode): void {
+    let snackBarRef = this.snackBar.open("Do you want to edit this parliament code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+    });
   }
 
   delete(code: ParliamentCode): void {
+    let snackBarRef = this.snackBar.open("Delete this parliament code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeParliamentCode(code))
+    });
   }
 
   filter(): void {
