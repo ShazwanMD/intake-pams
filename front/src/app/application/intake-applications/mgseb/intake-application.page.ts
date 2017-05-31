@@ -1,3 +1,4 @@
+import { MaritalCode } from './../../../common/marital-codes/marital-code.interface';
 import { RaceCode } from './../../../common/race-codes/race-code.interface';
 import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
 import { ReligionCode } from './../../../common/religion-codes/religion-code.interface';
@@ -71,11 +72,10 @@ export class MgsebIntakeApplicationPage implements OnInit {
       email: '',
       phone: '',
       fax: '',
-      gender:'',
-      religion:'',
-      race:'',
-      marital:'',
       age: 0,
+
+
+      maritalCode: <MaritalCode>{},
       religionCode: <ReligionCode>{},
       genderCode: <GenderCode>{},
       raceCode:<RaceCode>{},

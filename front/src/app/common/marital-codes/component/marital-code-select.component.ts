@@ -6,6 +6,7 @@ import {CommonActions} from "../../common.action";
 import { CommonModuleState } from "../../index";
 import { MaritalCode } from "../marital-code.interface";
 
+
 @Component({
   selector: 'pams-marital-code-select',
   templateUrl: './marital-code-select.component.html',

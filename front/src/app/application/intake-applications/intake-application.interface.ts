@@ -1,3 +1,4 @@
+import { MaritalCode } from './../../common/marital-codes/marital-code.interface';
 import { RaceCode } from './../../common/race-codes/race-code.interface';
 import { ReligionCode } from './../../common/religion-codes/religion-code.interface';
 import { StudyCenterCode } from './../../common/study-center-codes/study-center-code.interface';
@@ -8,6 +9,7 @@ import {SupervisorOffering} from "../../policy/intakes/supervisor-offering.inter
 import {StudyModeOffering} from "../../policy/intakes/study-mode-offering.interface";
 import {MetaObject} from "../../core/meta-object.interface";
 import { GenderCode } from "../../common/gender-codes/gender-code.interface";
+
 export interface IntakeApplication extends MetaObject {
   referenceNo: string;
   rank: number;
@@ -25,6 +27,7 @@ export interface IntakeApplication extends MetaObject {
   religion:string;
   race:string;
   marital:string;
+
   
   paid: boolean;
   verified: boolean;
@@ -32,6 +35,7 @@ export interface IntakeApplication extends MetaObject {
   selfSponsored: boolean;
   applicant: Applicant;
   intake: Intake;
+  maritalCode: MaritalCode;
   studyCenterCode: StudyCenterCode;
   religionCode : ReligionCode;
   genderCode : GenderCode;
