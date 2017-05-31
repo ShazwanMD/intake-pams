@@ -2,7 +2,7 @@ import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
@@ -24,7 +24,8 @@ export class IntakeTaskCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<PolicyModuleState>,
               private actions: IntakeActions,
-              private dialog: MdDialogRef<IntakeTaskCreatorDialog>) {
+              private dialog: MdDialogRef<IntakeTaskCreatorDialog>,
+              private snackBar: MdSnackBar) {
   }
 
   ngOnInit(): void {
@@ -44,6 +45,8 @@ export class IntakeTaskCreatorDialog implements OnInit {
   }
 
   save(intake: Intake, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to create new intake?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     console.log("intake: " + intake.description);
     console.log("program level: " + intake.programLevel.code);
     console.log("session " + intake.intakeSession.code);
@@ -51,5 +54,6 @@ export class IntakeTaskCreatorDialog implements OnInit {
     console.log("endDate " + intake.endDate);
     this.store.dispatch(this.actions.startIntakeTask(intake));
     this.dialog.close();
+    });
   }
 }
