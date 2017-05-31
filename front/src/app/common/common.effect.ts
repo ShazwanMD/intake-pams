@@ -125,4 +125,10 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findResidencyCodes())
     .map(codes => this.commonActions.findResidencyCodesSuccess(codes));
 
+  @Effect() findLanguageCodes$ = this.actions$
+    .ofType(CommonActions.FIND_LANGUAGE_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findLanguageCodes())
+    .map(codes => this.commonActions.findLanguageCodesSuccess(codes));
+
 }
