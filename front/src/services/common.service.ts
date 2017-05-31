@@ -433,6 +433,25 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+updateStudyMode(code: StudyMode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/studyModes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeStudyMode(code: StudyMode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/studyModes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   // ====================================================================================================
   // RELIGION CODES
