@@ -3,7 +3,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {Observable} from "rxjs/Observable";
 import {PolicyModuleState} from "../../index";
 import { IntakeActions } from "../intake.action";
@@ -32,7 +32,8 @@ export class ProgramOfferingListEditorDialog {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<ProgramOfferingListEditorDialog>,
               private store: Store<PolicyModuleState>,
-              private actions: IntakeActions) {
+              private actions: IntakeActions,
+              private snackBar: MdSnackBar) {
   }
 
   set programOffering(programOffering) {
@@ -62,7 +63,10 @@ export class ProgramOfferingListEditorDialog {
   }
 
   submit(programOffering: ProgramOffering, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Update this program offering?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     if (programOffering.id)this.store.dispatch(this.actions.updateProgramOffering(this._intake, programOffering));
     this.dialog.close();
+    });
   }
 }

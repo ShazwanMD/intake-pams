@@ -4,7 +4,7 @@ import {Intake} from "../intake.interface";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
-import {MdDialogConfig, MdDialog, MdDialogRef} from "@angular/material";
+import { MdDialogConfig, MdDialog, MdDialogRef, MdSnackBar } from "@angular/material";
 import {ProgramOfferingEditorDialog} from "../dialog/program-offering-editor.dialog";
 
 import {ActivatedRoute} from "@angular/router";
@@ -28,7 +28,8 @@ export class ProgramOfferingListComponent {
               private actions: IntakeActions,
               private vcf: ViewContainerRef,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
   }
 
   ngOnInit(): void {
@@ -36,19 +37,27 @@ export class ProgramOfferingListComponent {
   }
 
   editDialog(programOfferings) {
+    let snackBarRef = this.snackBar.open("Edit this program offering?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     console.log("programOffering :" + programOfferings);
     this.showDialog2(programOfferings);
+    });
   }
 
   delete(programOffering: ProgramOffering): void {
-      console.log("delete program offering :"+programOffering.id);
+    let snackBarRef = this.snackBar.open("Confirm to delete this program offering?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
+    console.log("delete program offering :"+programOffering.id);
     this.store.dispatch(this.actions.deleteProgramOffering(this.intake, programOffering))
+    });
   }
 
   filter(): void {
   }
 
   showDialog(): void {
+    let snackBarRef = this.snackBar.open("Add new program offering in this intake?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -63,6 +72,7 @@ export class ProgramOfferingListComponent {
       console.log("closeDialog");
       // reload program offerings
       this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+    });
     });
   }
 
@@ -82,6 +92,7 @@ export class ProgramOfferingListComponent {
       // reload program offerings
       this.store.dispatch(this.actions.findProgramOfferings(this.intake));
     });
+    
   }
 
 }

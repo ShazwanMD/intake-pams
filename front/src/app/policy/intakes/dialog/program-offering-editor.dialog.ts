@@ -3,7 +3,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
@@ -30,7 +30,8 @@ export class ProgramOfferingEditorDialog implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private store: Store<PolicyModuleState>,
               private actions: IntakeActions,
-              private dialog: MdDialogRef<ProgramOfferingEditorDialog>) {
+              private dialog: MdDialogRef<ProgramOfferingEditorDialog>,
+              private snackBar: MdSnackBar) {
   }
 
   ngOnInit(): void {
@@ -45,8 +46,11 @@ export class ProgramOfferingEditorDialog implements OnInit {
   }
 
   add(offering: ProgramOffering, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to add new program offering?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     console.log("add program offering");
     this.store.dispatch(this.actions.addProgramOffering(this.intake, offering));
     this.dialog.close();
+    });
   }
 }
