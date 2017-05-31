@@ -5,7 +5,7 @@ import {Intake} from "../intake.interface";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
-import {MdDialogConfig, MdDialog, MdDialogRef} from "@angular/material";
+import { MdDialogConfig, MdDialog, MdDialogRef, MdSnackBar } from "@angular/material";
 import {StudyModeOfferingEditorDialog} from "../dialog/study-mode-offering-editor.dialog";
 
 @Component({
@@ -22,15 +22,21 @@ export class StudyModeOfferingListComponent {
   constructor(private store: Store<PolicyModuleState>,
               private actions: IntakeActions,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
   }
   
   delete(studyModeOffering: StudyModeOffering): void {
-      console.log("delete program offering :"+studyModeOffering.id);
+    let snackBarRef = this.snackBar.open("Confirm to delete this studymode offering?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
+    console.log("delete program offering :"+studyModeOffering.id);
     this.store.dispatch(this.actions.deleteStudyModeOffering(this.intake, studyModeOffering))
+    });
   }
 
   showDialog(): void {
+    let snackBarRef = this.snackBar.open("Add new study mode offering?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -45,6 +51,7 @@ export class StudyModeOfferingListComponent {
       console.log("closeDialog");
       // reload studyMode offerings
       this.store.dispatch(this.actions.findStudyModeOfferings(this.intake));
+    });
     });
   }
 
