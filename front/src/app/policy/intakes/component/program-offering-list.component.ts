@@ -6,9 +6,9 @@ import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
 import {MdDialogConfig, MdDialog, MdDialogRef} from "@angular/material";
 import {ProgramOfferingEditorDialog} from "../dialog/program-offering-editor.dialog";
-import {ProgramOfferingListEditorDialog} from "./program-offering-list-editor.dialog";
 
 import {ActivatedRoute} from "@angular/router";
+import { ProgramOfferingListEditorDialog } from "../dialog/program-offering-list-editor.dialog";
 
 @Component({
   selector: 'pams-program-offering-list',
@@ -40,8 +40,9 @@ export class ProgramOfferingListComponent {
     this.showDialog2(programOfferings);
   }
 
-  delete(intake: Intake, id: ProgramOffering): void {
-    this.store.dispatch(this.actions.deleteProgramOffering(intake, id))
+  delete(programOffering: ProgramOffering): void {
+      console.log("delete program offering :"+programOffering.id);
+    this.store.dispatch(this.actions.deleteProgramOffering(this.intake, programOffering))
   }
 
   filter(): void {

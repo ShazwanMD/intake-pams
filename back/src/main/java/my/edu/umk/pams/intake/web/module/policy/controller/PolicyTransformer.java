@@ -109,6 +109,7 @@ public class PolicyTransformer {
         if(null == e) return null;
         ProgramOffering vo = new ProgramOffering();
         vo.setId(e.getId());
+        vo.setInterview(e.isInterview());
         vo.setGeneralCriteria(e.getGeneralCriteria());
         vo.setSpecificCriteria(e.getSpecificCriteria());
         vo.setProgramCode(commonTransformer.toProgramCodeVo(e.getProgramCode()));

@@ -337,10 +337,10 @@ export class IntakeActions {
 
   static DELETE_PROGRAM_OFFERING_SUCCESS = '[Intake] Delete Program Offering Success';
 
-  deleteProgramOfferingSuccess(intake:Intake, programOffering: ProgramOffering) {
+  deleteProgramOfferingSuccess(message) {
     return {
       type: IntakeActions.DELETE_PROGRAM_OFFERING_SUCCESS,
-      payload:intake
+      payload:message
     };
   }
 
@@ -373,10 +373,10 @@ export class IntakeActions {
 
   static DELETE_SUPERVISOR_OFFERING_SUCCESS = '[Intake] Delete Supervisor Offering Success';
 
-  deleteSupervisorOfferingSuccess(intake:Intake, supervisorOffering: SupervisorOffering) {
+  deleteSupervisorOfferingSuccess(message) {
     return {
       type: IntakeActions.DELETE_SUPERVISOR_OFFERING_SUCCESS,
-      payload:intake
+      payload:message
     };
   }
   static ADD_STUDY_MODE_OFFERING = '[Intake] Add StudyMode Offering';
@@ -408,10 +408,10 @@ export class IntakeActions {
 
   static DELETE_STUDY_MODE_OFFERING_SUCCESS = '[Intake] Delete Study Mode Offering Success';
 
-  deleteStudyModeOfferingSuccess(intake:Intake, studyModeOffering: StudyModeOffering) {
+  deleteStudyModeOfferingSuccess(message) {
     return {
       type: IntakeActions.DELETE_STUDY_MODE_OFFERING_SUCCESS,
-      payload:intake
+      payload:message
     };
   }
 }
