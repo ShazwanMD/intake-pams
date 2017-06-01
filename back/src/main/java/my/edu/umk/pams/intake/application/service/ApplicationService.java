@@ -79,6 +79,8 @@ public interface ApplicationService {
 
     void addAttachment(InIntakeApplication application, InAttachment attachment);
 
+    void deleteAttachment(InIntakeApplication application, InAttachment attachment);
+
     //====================================================================================================
     // APPLICANT
     //====================================================================================================
@@ -116,6 +118,8 @@ public interface ApplicationService {
     InReferee findRefereeById(Long id);
     
     InLanguage findLanguageById(Long id);
+
+    InAttachment findAttachmentById(Long id);
     
     InBachelorResult findBachelorResultById(Long id);
     
@@ -166,6 +170,8 @@ public interface ApplicationService {
     List<InEmployment> findEmployments(InIntakeApplication application);
 
     List<InLanguage> findLanguages(InIntakeApplication application);
+
+    List<InAttachment> findAttachments(InIntakeApplication application);
     
     List<InReferee> findReferees(InIntakeApplication application);
 

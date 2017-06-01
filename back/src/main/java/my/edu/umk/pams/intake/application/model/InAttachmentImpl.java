@@ -22,14 +22,14 @@ public class InAttachmentImpl implements InAttachment {
     @NotNull
     @Column(name = "DATA", nullable = false)
     private byte[] bytes;
-    
+
     @NotNull
     @Column(name = "MIME_TYPE", nullable = false)
     private String mimeType;
-    
+
     @NotNull
     @Column(name = "SIZE", nullable = false)
-    private int size;
+    private Long size;
 
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
@@ -56,38 +56,38 @@ public class InAttachmentImpl implements InAttachment {
     public void setName(String name) {
         this.name = name;
     }
- 
+
     @Override
     public byte[] getBytes() {
-		return bytes;
-	}
+        return bytes;
+    }
 
     @Override
     public String getMimeType() {
-		return mimeType;
-	}
+        return mimeType;
+    }
 
     @Override
-	public void setMimeType(String mimeType) {
-		this.mimeType = mimeType;
-	}
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
 
     @Override
-	public int getSize() {
-		return size;
-	}
+    public Long getSize() {
+        return size;
+    }
 
     @Override
-	public void setSize(int size) {
-		this.size = size;
-	}
+    public void setSize(Long size) {
+        this.size = size;
+    }
 
-	@Override
-	public void setBytes(byte[] bytes) {
-		this.bytes = bytes;
-	}
+    @Override
+    public void setBytes(byte[] bytes) {
+        this.bytes = bytes;
+    }
 
-	public InIntakeApplication getApplication() {
+    public InIntakeApplication getApplication() {
         return application;
     }
 

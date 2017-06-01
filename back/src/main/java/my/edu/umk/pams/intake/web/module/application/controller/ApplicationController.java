@@ -30,7 +30,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -341,6 +343,48 @@ public class ApplicationController {
 	}
 
 	// ====================================================================================================
+	// ATTACHMENTS
+	// ====================================================================================================
+
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachments", method = RequestMethod.GET)
+	public ResponseEntity<List<Attachment>> findAttachmentsByIntakeApplication(@PathVariable String referenceNo) {
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		List<InAttachment> attachments = applicationService.findAttachments(application);
+		return new ResponseEntity<List<Attachment>>(applicationTransformer.toAttachmentVos(attachments), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachments", method = RequestMethod.POST)
+	public ResponseEntity<String> addAttachment(@PathVariable String referenceNo, @RequestParam MultipartFile file) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		try {
+			if (!file.isEmpty()) {
+                InAttachment attachment = new InAttachmentImpl();
+                attachment.setMimeType("application/pdf"); // todo(switch)
+                attachment.setName(file.getOriginalFilename());
+                attachment.setSize(file.getSize());
+                attachment.setBytes(file.getBytes());
+                applicationService.addAttachment(application, attachment);
+            }
+		} catch (IOException e) {
+			return new ResponseEntity<String>("Failed", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachment/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Boolean> deleteAttachment(@PathVariable String referenceNo, @PathVariable Long id) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InAttachment attachment = (InAttachment) applicationService.findAttachmentById(id);
+		applicationService.deleteAttachment(application, attachment);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
+
+
+	// ====================================================================================================
 	// SPM RESULTS
 	// ====================================================================================================
 
@@ -418,8 +462,6 @@ public class ApplicationController {
 		applicationService.deleteReferee(application, referee);
 		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
-	
-
 
 	// ====================================================================================================
 	// ADDRESS
@@ -547,28 +589,6 @@ public class ApplicationController {
 		List<InResultItem> resultItems = applicationService.findResultItems(result);
 		return new ResponseEntity<List<ResultItem>>(applicationTransformer.toResultItemVos(resultItems), HttpStatus.OK);
 	}
-
-	/*
-	 * @RequestMapping(value = "/intakeApplications/{referenceNo}/resultItems",
-	 * method = RequestMethod.POST) public ResponseEntity<String>
-	 * addResultItems(@PathVariable String referenceNo, @RequestBody ResultItem
-	 * vo) { dummyLogin();
-	 * 
-	 * InIntakeApplication application =
-	 * applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-	 * InResultItem resultItem = new InResultItemImpl(); InResult result =
-	 * applicationService.findResult(application, resultType);
-	 * resultItem.setResult(applicationService.findResult(application,
-	 * resultType);
-	 * resultItem.setGradeCode(commonService.findGradeCodeById(vo.getGradeCode()
-	 * .getId()));
-	 * resultItem.setSubjectCode(commonService.findSubjectCodeById(vo.
-	 * getSubjectCode().getId()));
-	 * 
-	 * applicationService.addResultItem(application, result, resultItem);
-	 * 
-	 * return new ResponseEntity<String>("Success", HttpStatus.OK); }
-	 */
 
 	// ====================================================================================================
 	// PRIVATE METHODS

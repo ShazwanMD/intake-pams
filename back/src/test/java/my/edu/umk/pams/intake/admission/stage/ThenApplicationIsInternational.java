@@ -6,7 +6,6 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.application.model.InBidStatus;
-import my.edu.umk.pams.intake.application.model.InFranchise;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -21,9 +20,7 @@ public class ThenApplicationIsInternational extends Stage<ThenApplicationIsInter
 
     private static final Logger LOG = LoggerFactory.getLogger(ThenApplicationIsInternational.class);
 
-    @ExpectedScenarioState
-    private InFranchise franchise;
-    
+
     @Autowired
     private ApplicationService applicationService;
 

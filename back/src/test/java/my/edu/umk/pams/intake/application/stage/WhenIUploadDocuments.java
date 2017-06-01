@@ -63,7 +63,7 @@ public class WhenIUploadDocuments extends Stage<WhenIUploadDocuments>{
 		attachment.setBytes(bytes);
 		attachment.setMimeType(mimeType);
 		attachment.setName(name);
-		attachment.setSize(20314);
+		attachment.setSize(20314L);
 		applicationService.addAttachment(application, attachment);
 		return self();
 	}

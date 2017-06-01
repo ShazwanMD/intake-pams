@@ -10,6 +10,35 @@ import java.io.IOException;
  * @author PAMS
  */
 public class Attachment extends MetaObject {
+
+    private String name;
+    private Long size;
+    private String mimeType;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
+    public void setSize(Long size) {
+        this.size = size;
+    }
+
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
+
     @JsonCreator
     public static Attachment create(String jsonString) {
         Attachment o = null;

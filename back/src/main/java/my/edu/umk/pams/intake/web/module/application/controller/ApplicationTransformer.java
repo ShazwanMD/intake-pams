@@ -111,7 +111,9 @@ public class ApplicationTransformer {
 	public Attachment toAttachmentVo(InAttachment e) {
 		Attachment vo = new Attachment();
 		vo.setId(e.getId());
-		// todo(uda): more props
+		vo.setName(e.getName());
+		vo.setSize(e.getSize());
+		vo.setMimeType(e.getMimeType());
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}
@@ -160,6 +162,11 @@ public class ApplicationTransformer {
 
 	public List<Language> toLanguageVos(List<InLanguage> e) {
 		List<Language> vos = e.stream().map((e1) -> toLanguageVo(e1)).collect(Collectors.toList());
+		return vos;
+	}
+
+	public List<Attachment> toAttachmentVos(List<InAttachment> e) {
+		List<Attachment> vos = e.stream().map((e1) -> toAttachmentVo(e1)).collect(Collectors.toList());
 		return vos;
 	}
 

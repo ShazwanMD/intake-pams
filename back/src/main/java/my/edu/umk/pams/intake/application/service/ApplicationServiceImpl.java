@@ -270,15 +270,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void addFranchise(InFranchise franchise) {
-        LOG.debug("TODO: or NOT"); // todo the Dao maybe. Maybe not because franchise still has ambiguity
-//        franchiseDao.save()
-//        sessionFactory.getCurrentSession().flush();
+    public void addAttachment(InIntakeApplication application, InAttachment attachment) {
+        intakeApplicationDao.addAttachment(application, attachment, securityService.getCurrentUser());
     }
 
     @Override
-    public void addAttachment(InIntakeApplication application, InAttachment attachment) {
-        intakeApplicationDao.addAttachment(application, attachment, securityService.getCurrentUser());
+    public void deleteAttachment(InIntakeApplication application, InAttachment attachment) {
+        intakeApplicationDao.deleteAttachment(application, attachment, securityService.getCurrentUser());
     }
 
     @Override
@@ -324,6 +322,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public InLanguage findLanguageById(Long id) {
         return intakeApplicationDao.findLanguageById(id);
+    }
+
+    @Override
+    public InAttachment findAttachmentById(Long id) {
+        return intakeApplicationDao.findAttachmentById(id);
     }
 
     @Override
@@ -471,6 +474,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<InLanguage> findLanguages(InIntakeApplication application) {
         return intakeApplicationDao.findLanguages(application);
+    }
+
+    @Override
+    public List<InAttachment> findAttachments(InIntakeApplication application) {
+        return intakeApplicationDao.findAttachments(application);
     }
 
     @Override
