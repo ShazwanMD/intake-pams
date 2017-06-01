@@ -13,144 +13,45 @@ import java.util.Date;
  */
 public class SpmResult extends MetaObject {
 
-    private String malay;
-    private String english;
-    private String math;
-    private String history;
-    private String islamicEduc;
+    private String grade;
+    private String name;
     private Integer year;
     private Integer aggregate;
 
 
-
-
-
-
-	public String getMalay() {
-		return malay;
+	public String getGrade() {
+		return grade;
 	}
 
 
-
-
-
-
-	public void setMalay(String malay) {
-		this.malay = malay;
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 
-
-
-
-
-
-	public String getEnglish() {
-		return english;
+	public String getName() {
+		return name;
 	}
 
-
-
-
-
-
-	public void setEnglish(String english) {
-		this.english = english;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-
-
-
-
-
-	public String getMath() {
-		return math;
-	}
-
-
-
-
-
-
-	public void setMath(String math) {
-		this.math = math;
-	}
-
-
-
-
-
-
-	public String getHistory() {
-		return history;
-	}
-
-
-
-
-
-
-	public void setHistory(String history) {
-		this.history = history;
-	}
-
-
-
-
-
-
-	public String getIslamicEduc() {
-		return islamicEduc;
-	}
-
-
-
-
-
-
-	public void setIslamicEduc(String islamicEduc) {
-		this.islamicEduc = islamicEduc;
-	}
-
-
-
-
-
 
 	public Integer getYear() {
 		return year;
 	}
-
-
-
-
-
 
 	public void setYear(Integer year) {
 		this.year = year;
 	}
 
 
-
-
-
-
 	public Integer getAggregate() {
 		return aggregate;
 	}
 
-
-
-
-
-
 	public void setAggregate(Integer aggregate) {
 		this.aggregate = aggregate;
 	}
-
-
-
-
-
 
 	@JsonCreator
     public static SpmResult create(String jsonString) {

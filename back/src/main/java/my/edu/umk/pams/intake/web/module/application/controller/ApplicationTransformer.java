@@ -189,11 +189,8 @@ public class ApplicationTransformer {
 	public SpmResult toSpmResultVo(InSpmResult e) {
 		SpmResult vo = new SpmResult();
 		vo.setId(e.getId());
-		vo.setMalay(e.getMalay());
-		vo.setMath(e.getMath());
-		vo.setEnglish(e.getEnglish());
-		vo.setIslamicEduc(e.getIslamEduc());
-		vo.setHistory(e.getHistory());
+		vo.setName(e.getName());
+		vo.setGrade(e.getGrade());
 		vo.setYear(e.getYear());
 		vo.setAggregate(e.getAggregate());
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));

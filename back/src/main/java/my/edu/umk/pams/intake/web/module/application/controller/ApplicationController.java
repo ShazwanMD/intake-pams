@@ -359,11 +359,8 @@ public class ApplicationController {
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InSpmResult spmResult = new InSpmResultImpl();
-		spmResult.SetMalay(vo.getMalay());
-		spmResult.SetEnglish(vo.getEnglish());
-		spmResult.setIslamEduc(vo.getIslamicEduc());
-		spmResult.setHistory(vo.getHistory());
-		spmResult.setMath(vo.getMath());
+		spmResult.setGrade(vo.getGrade());
+		spmResult.setName(vo.getName());
 		spmResult.setYear(vo.getYear());
 		spmResult.setAggregate(vo.getAggregate());
 
