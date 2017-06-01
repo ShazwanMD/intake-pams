@@ -4,11 +4,11 @@ import {Intake} from "../intake.interface";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
-import { MdDialogConfig, MdDialog, MdDialogRef, MdSnackBar } from "@angular/material";
+import {MdDialogConfig, MdDialog, MdDialogRef, MdSnackBar} from "@angular/material";
 import {ProgramOfferingEditorDialog} from "../dialog/program-offering-editor.dialog";
 
 import {ActivatedRoute} from "@angular/router";
-import { ProgramOfferingListEditorDialog } from "../dialog/program-offering-list-editor.dialog";
+import {ProgramOfferingListEditorDialog} from "../dialog/program-offering-list-editor.dialog";
 
 @Component({
   selector: 'pams-program-offering-list',
@@ -33,22 +33,21 @@ export class ProgramOfferingListComponent {
   }
 
   ngOnInit(): void {
-   // this.store.dispatch(this.actions.findProgramOfferings(this.intake));
   }
 
   editDialog(programOfferings) {
     let snackBarRef = this.snackBar.open("Edit this program offering?", "Yes");
     snackBarRef.afterDismissed().subscribe(() => {
-    console.log("programOffering :" + programOfferings);
-    this.showDialog2(programOfferings);
+      console.log("programOffering :" + programOfferings);
+      this.showDialog2(programOfferings);
     });
   }
 
   delete(programOffering: ProgramOffering): void {
     let snackBarRef = this.snackBar.open("Confirm to delete this program offering?", "Yes");
     snackBarRef.afterDismissed().subscribe(() => {
-    console.log("delete program offering :"+programOffering.id);
-    this.store.dispatch(this.actions.deleteProgramOffering(this.intake, programOffering))
+      console.log("delete program offering :" + programOffering.id);
+      this.store.dispatch(this.actions.deleteProgramOffering(this.intake, programOffering))
     });
   }
 
@@ -58,21 +57,21 @@ export class ProgramOfferingListComponent {
   showDialog(): void {
     let snackBarRef = this.snackBar.open("Add new program offering in this intake?", "Yes");
     snackBarRef.afterDismissed().subscribe(() => {
-    console.log("showDialog");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
-    config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(ProgramOfferingEditorDialog, config);
-    this.editorDialogRef.componentInstance.intake = this.intake;
+      console.log("showDialog");
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '50%';
+      config.height = '60%';
+      config.position = {top: '0px'};
+      this.editorDialogRef = this.dialog.open(ProgramOfferingEditorDialog, config);
+      this.editorDialogRef.componentInstance.intake = this.intake;
 
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("closeDialog");
-      // reload program offerings
-      this.store.dispatch(this.actions.findProgramOfferings(this.intake));
-    });
+      this.editorDialogRef.afterClosed().subscribe(res => {
+        console.log("closeDialog");
+        // reload program offerings
+        this.store.dispatch(this.actions.findProgramOfferings(this.intake));
+      });
     });
   }
 
@@ -92,7 +91,6 @@ export class ProgramOfferingListComponent {
       // reload program offerings
       this.store.dispatch(this.actions.findProgramOfferings(this.intake));
     });
-    
-  }
 
+  }
 }

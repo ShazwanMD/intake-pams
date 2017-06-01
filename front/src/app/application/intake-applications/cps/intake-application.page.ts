@@ -34,7 +34,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
   private REFEREES: string[] = "applicationModuleState.referees".split(".");
   private ADDRESSES: string[] = "applicationModuleState.addresses".split(".");
-  private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split("."); 
+  private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
   private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
   private DIPLOMA_RESULTS: string[] = "applicationModuleState.diplomaResults".split(".");
 
@@ -47,7 +47,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private spmResults$: Observable<SpmResult>;
   private bachelorResults$: Observable<BachelorResult>;
   private diplomaResults$: Observable<DiplomaResult>;
-  private applicationForm: FormGroup;
+  private  applicationForm: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -86,7 +86,7 @@ export class CpsIntakeApplicationPage implements OnInit {
       phone: '',
       fax: '',
       age: 0,
-     
+
       genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},
       raceCode: <RaceCode>{},
