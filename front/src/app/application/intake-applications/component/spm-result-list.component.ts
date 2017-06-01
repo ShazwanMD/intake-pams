@@ -22,11 +22,8 @@ export class SpmResultListComponent implements OnInit {
 
   private creatorDialogRef: MdDialogRef<SpmResultCreatorDialog>;
   private columns: any[] = [
-    {name: 'malay', label: 'Malay'},
-    {name: 'english', label: 'English'},
-    {name: 'math', label: 'Math'},
-    {name: 'islamicEduc', label: 'IslamicEduc'},
-    {name: 'history', label: 'History'},
+    {name: 'name', label: 'Subject Name'},
+    {name: 'grade', label: 'Grade'},
     {name: 'year', label: 'Year'},
     {name: 'aggregate', label: 'Aggregate'},
   ];

@@ -1161,16 +1161,10 @@
     );
 
     create table IN_SPM_RSLT (
-        MATEMATIK_TAMBAHAN varchar(255),
+        
         AGGREGATE int4 not null,
-        BIOLOGI varchar(255),
-        KIMIA varchar(255),
-        BAHASA_INGGERIS varchar(255) not null,
-        SEJARAH varchar(255) not null,
-        PENDIDIKAN_ISLAM varchar(255) not null,
-        BAHASA_MELAYU varchar(255) not null,
-        MATEMATIK varchar(255) not null,
-        FIZIK varchar(255),
+        GRADE varchar(255) not null,
+        NAME varchar(255),
         YEAR int4 not null,
         ID int8 not null,
         APPLICATION_ID int8,
