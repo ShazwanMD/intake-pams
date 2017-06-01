@@ -230,6 +230,26 @@ export class IntakeApplicationActions {
     };
   }
 
+  static FIND_ATTACHMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Attachments';
+
+  findAttachmentsByIntakeApplication(application): Action {
+    console.log("findAttachmentsByIntakeApplication");
+    return {
+      type: IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_ATTACHMENTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Attachments Success';
+
+  findAttachmentsByIntakeApplicationSuccess(attachments): Action {
+    console.log("findAttachmentsByIntakeApplicationSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: attachments
+    };
+  }
+
   static FIND_ADDRESSES_BY_INTAKE_APPLICATION = '[Intake Application] Find Addresses';
 
   findAddressesByIntakeApplication(application): Action {
@@ -384,6 +404,24 @@ export class IntakeApplicationActions {
     };
   }
 
+  static DELETE_EMPLOYMENT = '[Intake Application] Delete Employment';
+
+  deleteEmployment(application, employment) {
+    return {
+      type: IntakeApplicationActions.DELETE_EMPLOYMENT,
+      payload: {application: application, employment: employment}
+    };
+  }
+
+  static DELETE_EMPLOYMENT_SUCCESS = '[Intake Application] Delete Employment Success';
+
+  deleteEmploymentSucces(message) {
+    return {
+      type: IntakeApplicationActions.DELETE_EMPLOYMENT_SUCCESS,
+      payload: message
+    };
+  }
+
   static ADD_LANGUAGE = '[Intake Application] Save Language';
 
   addLanguage(application, language): Action {
@@ -404,23 +442,62 @@ export class IntakeApplicationActions {
     };
   }
 
-  static DELETE_EMPLOYMENT = '[Intake Application] Delete Employment';
+  static DELETE_LANGUAGE = '[Intake Application] Delete Language';
 
-  deleteEmployment(application, employment) {
+  deleteLanguage(application, language) {
     return {
-      type: IntakeApplicationActions.DELETE_EMPLOYMENT,
-      payload: {application: application, employment: employment}
+      type: IntakeApplicationActions.DELETE_LANGUAGE,
+      payload: {application: application, language: language}
     };
   }
 
-  static DELETE_EMPLOYMENT_SUCCESS = '[Intake Application] Delete Employment Success';
+  static DELETE_LANGUAGE_SUCCESS = '[Intake Application] Delete Language Success';
 
-  deleteEmploymentSucces(message) {
+  deleteLanguageSucces(message) {
     return {
-      type: IntakeApplicationActions.DELETE_EMPLOYMENT_SUCCESS,
+      type: IntakeApplicationActions.DELETE_LANGUAGE_SUCCESS,
       payload: message
     };
   }
+
+  static ADD_ATTACHMENT = '[Intake Application] Add Attachment';
+
+  addAttachment(application, file): Action {
+    console.log("addAttachment");
+    return {
+      type: IntakeApplicationActions.ADD_ATTACHMENT,
+      payload: {application: application, file: file}
+    };
+  }
+
+  static ADD_ATTACHMENT_SUCCESS = '[Intake Application] Add Attachment Success';
+
+  addAttachmentSuccess(message): Action {
+    console.log("addAttachmentSuccess");
+    return {
+      type: IntakeApplicationActions.ADD_ATTACHMENT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static DELETE_ATTACHMENT = '[Intake Application] Delete Attachment';
+
+  deleteAttachment(application, attachment) {
+    return {
+      type: IntakeApplicationActions.DELETE_ATTACHMENT,
+      payload: {application: application, attachment: attachment}
+    };
+  }
+
+  static DELETE_ATTACHMENT_SUCCESS = '[Intake Application] Delete Attachment Success';
+
+  deleteAttachmentSucces(message) {
+    return {
+      type: IntakeApplicationActions.DELETE_ATTACHMENT_SUCCESS,
+      payload: message
+    };
+  }
+
 
   static ADD_REFEREE = '[Intake Application] Save Referee';
 
@@ -458,7 +535,7 @@ export class IntakeApplicationActions {
       type: IntakeApplicationActions.UPDATE_REFEREE_SUCCESS,
       payload: message
     };
-  }  
+  }
 
   static DELETE_REFEREE = '[Intake Application] Delete Referee';
 

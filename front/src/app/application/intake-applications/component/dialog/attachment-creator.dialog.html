@@ -1,0 +1,13 @@
+<h2 md-dialog-title>Attachment Creator</h2>
+<md-dialog-content>
+  <form>
+    <div layout="column" class="pad-right" flex>
+      <div layout="row">
+        <td-file-upload (upload)="upload($event)" defaultColor="accent" activeColor="warn"
+                         cancelColor="primary" multiple>
+        </td-file-upload>
+      </div>
+    </div>
+  </form>
+</md-dialog-content>
+

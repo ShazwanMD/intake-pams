@@ -2,7 +2,7 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
-import {CovalentCoreModule} from '@covalent/core';
+import {CovalentCoreModule, CovalentFileModule} from '@covalent/core';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 import {PolicyService} from "../../../services/policy.service";
@@ -16,10 +16,7 @@ import {EducationCreatorDialog} from "./component/dialog/education-creator.dialo
 import {CommonModule} from "../../common/index";
 import {ProgramLevelSubModule} from "../../policy/program-levels/index";
 import {MyIntakeApplicationPage} from "./my-intake-application.page";
-import {AddressTypeSelectComponent} from "./component/address-type-select.component";
 import {ProgramOfferingSelectorDialog} from "./component/dialog/program-offering-selector.dialog";
-import {ProgramChoiceComponent} from "./component/program-choice.component";
-import {StudyCenterChoiceComponent} from "./component/study-center-choice.component";
 
 
 @NgModule({
@@ -28,6 +25,7 @@ import {StudyCenterChoiceComponent} from "./component/study-center-choice.compon
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    CovalentFileModule.forRoot(),
     MgsebIntakeApplicationSubModule.forRoot(),
     CpsIntakeApplicationSubModule.forRoot(),
     CommonModule.forRoot(),

@@ -1,7 +1,7 @@
 import {NgModule, Type} from '@angular/core';
 import {BrowserModule, Title}  from '@angular/platform-browser';
 
-import {CovalentCoreModule} from '@covalent/core';
+import {CovalentCoreModule, CovalentFileModule} from '@covalent/core';
 import {CovalentExpansionPanelModule} from '@covalent/core';
 import {CovalentHttpModule, IHttpInterceptor} from '@covalent/http';
 import {CovalentHighlightModule} from '@covalent/highlight';
@@ -101,6 +101,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     CovalentExpansionPanelModule,
     CovalentCoreModule.forRoot(),
     CovalentChartsModule.forRoot(),
+    CovalentFileModule.forRoot(),
     CovalentHttpModule.forRoot({
       interceptors: [{
         interceptor: RequestInterceptor, paths: ['**'],

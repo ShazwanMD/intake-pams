@@ -15,6 +15,7 @@ import {ProgramOffering} from "../app/policy/intakes/program-offering.interface"
 import {SpmResult} from './../app/application/intake-applications/spm-result.interface';
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 import {Language} from "../app/application/intake-applications/language.interface";
+import {Attachment} from "../app/application/intake-applications/attachment.interface";
 
 
 @Injectable()
@@ -155,6 +156,24 @@ export class ApplicationService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages', JSON.stringify(language), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  findAttachmentsByIntakeApplication(application: IntakeApplication): Observable<Attachment[]> {
+    console.log("findAttachments");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/attachments")
+      .map((res: Response) => <Attachment[]>res.json());
+  }
+
+  addAttachment(application: IntakeApplication, file:File): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    let formData = new FormData();
+    formData.append("file", file);
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/attachments', formData)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

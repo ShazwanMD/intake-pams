@@ -201,10 +201,11 @@
         </md-tab>
 
         <md-tab>
-          <pams-referee-list
+          <template md-tab-label>Attachments</template>
+          <pams-attachment-list
             [intakeApplication]="intakeApplication$ | async"
-            [referees]="referees$ | async">
-          </pams-referee-list>
+            [attachments]="attachments$ | async">
+          </pams-attachment-list>
         </md-tab>
 
         <md-tab>

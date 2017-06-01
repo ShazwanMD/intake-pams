@@ -49,6 +49,8 @@ import {bachelorResultListReducer, BachelorResultListState} from "./intake-appli
 import {Language} from "./intake-applications/language.interface";
 import {languageListReducer, LanguageListState} from "./intake-applications/language-list.reducer";
 import { diplomaResultListReducer, DiplomaResultListState } from "./intake-applications/diploma-result-list-reducer";
+import {attachmentListReducer, AttachmentListState} from "./intake-applications/attachment-list.reducer";
+import {Attachment} from "./intake-applications/attachment.interface";
 
 
 
@@ -59,6 +61,7 @@ export interface ApplicationModuleState {
   languages: LanguageListState;
   addresses: AddressListState;
   referees: RefereeListState;
+  attachments: AttachmentListState;
   programOfferings: IntakeProgramOfferingListState;
   supervisorOfferings: IntakeSupervisorOfferingListState;
   studyModeOfferings: IntakeStudyModeOfferingListState;
@@ -76,6 +79,7 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   employments: <Employment[]>[],
   languages: <Language[]>[],
   referees: <Referee[]>[],
+  attachments: <Attachment[]>[],
   addresses: <Address[]>[],
   spmResults: <SpmResult[]>[],
   bachelorResults: <BachelorResult[]>[],
@@ -94,6 +98,7 @@ export const applicationModuleReducers = {
   employments: employmentListReducer,
   languages: languageListReducer,
   referees: refereeListReducer,
+  attachments: attachmentListReducer,
   addresses: addressListReducer,
   spmResults: spmResultListReducer,
   bachelorResults: bachelorResultListReducer,

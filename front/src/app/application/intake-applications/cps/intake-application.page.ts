@@ -33,16 +33,17 @@ export class CpsIntakeApplicationPage implements OnInit {
   private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
   private REFEREES: string[] = "applicationModuleState.referees".split(".");
+  private ATTACHMENTS: string[] = "applicationModuleState.attachments".split(".");
   private ADDRESSES: string[] = "applicationModuleState.addresses".split(".");
   private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
   private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
   private DIPLOMA_RESULTS: string[] = "applicationModuleState.diplomaResults".split(".");
 
-
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
+  private attachments$: Observable<Referee>;
   private addresses$: Observable<Address>;
   private spmResults$: Observable<SpmResult>;
   private bachelorResults$: Observable<BachelorResult>;
@@ -60,6 +61,7 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
+    this.attachments$ = this.store.select(...this.ATTACHMENTS);
     this.addresses$ = this.store.select(...this.ADDRESSES);
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
     this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);
