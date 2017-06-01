@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {ReligionCodeCreatorDialog} from "./dialog/religion-code-creator.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-religion-list-page',
@@ -26,7 +26,8 @@ export class ReligionCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.religionCodes$ = this.store.select(...this.RELIGION_CODES);
   }
 
@@ -40,11 +41,17 @@ export class ReligionCodeListPage implements OnInit {
   }
 
   editDialog(code:ReligionCode): void {
+    let snackBarRef = this.snackBar.open("Edit this religion code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+    });
   }
 
   delete(code: ReligionCode): void {
+    let snackBarRef = this.snackBar.open("Delete this religion code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeReligionCode(code))
+    });
   }
 
   filter(): void {
