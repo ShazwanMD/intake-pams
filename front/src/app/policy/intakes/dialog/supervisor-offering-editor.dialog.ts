@@ -2,7 +2,7 @@ import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
@@ -23,7 +23,8 @@ export class SupervisorOfferingEditorDialog implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private store: Store<PolicyModuleState>,
               private actions: IntakeActions,
-              private dialog: MdDialogRef<SupervisorOfferingEditorDialog>) {
+              private dialog: MdDialogRef<SupervisorOfferingEditorDialog>,
+              private snackBar: MdSnackBar) {
   }
 
   ngOnInit(): void {
@@ -34,8 +35,12 @@ export class SupervisorOfferingEditorDialog implements OnInit {
   }
 
   add(supervisor: SupervisorOffering, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to add new supervisor offering in this intake?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     console.log("add supervisor offering");
     this.store.dispatch(this.actions.addSupervisorOffering(this.intake, supervisor));
     this.dialog.close();
+    });
   }
+  
 }

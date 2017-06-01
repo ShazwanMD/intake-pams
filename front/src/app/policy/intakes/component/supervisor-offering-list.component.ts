@@ -5,7 +5,7 @@ import {Intake} from "../intake.interface";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
-import {MdDialogConfig, MdDialog, MdDialogRef} from "@angular/material";
+import { MdDialogConfig, MdDialog, MdDialogRef, MdSnackBar } from "@angular/material";
 import {SupervisorOfferingEditorDialog} from "../dialog/supervisor-offering-editor.dialog";
 
 @Component({
@@ -22,15 +22,21 @@ export class SupervisorOfferingListComponent {
   constructor(private store: Store<PolicyModuleState>,
               private actions: IntakeActions,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
   }
   
   delete(supervisorOffering: SupervisorOffering): void {
+    let snackBarRef = this.snackBar.open("Delete this supervisor offering?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.deleteSupervisorOffering(this.intake, supervisorOffering))
+    });
   }
 
 
   showDialog(): void {
+    let snackBarRef = this.snackBar.open("Add new supervisor offering?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -43,6 +49,7 @@ export class SupervisorOfferingListComponent {
     this.editorDialogRef.afterClosed().subscribe(res => {
       console.log("closeDialog");
       this.store.dispatch(this.actions.findStudyModeOfferings(this.intake));
+    });
     });
   }
 }
