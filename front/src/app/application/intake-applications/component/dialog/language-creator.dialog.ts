@@ -40,13 +40,14 @@ export class LanguageCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Language>{
       id: null,
-      languageCode: <LanguageCode>{},
       oral: 0,
       written: 0,
+      languageCode: <LanguageCode>{},
     });
   }
 
   save(language: Language, isValid: boolean) {
+    console.log("language: " + JSON.stringify(language));
     this.store.dispatch(this.actions.addLanguage(this._intakeApplication, language));
     this.dialog.close();
   }
