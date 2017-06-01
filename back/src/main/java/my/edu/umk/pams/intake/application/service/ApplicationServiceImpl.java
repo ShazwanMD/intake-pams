@@ -193,6 +193,14 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.deleteReferee(application, referee, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+    public void updateReferee(InIntakeApplication application, InReferee referee) {
+        intakeApplicationDao.updateReferee(application, referee, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+
 
     @Override
     public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {

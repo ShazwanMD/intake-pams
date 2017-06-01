@@ -57,6 +57,8 @@ public interface ApplicationService {
     
     void deleteReferee(InIntakeApplication application, InReferee referee);
     
+    void updateReferee(InIntakeApplication application, InReferee referee);
+    
     void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
     
     void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);

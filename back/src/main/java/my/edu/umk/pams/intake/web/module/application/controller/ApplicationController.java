@@ -395,6 +395,20 @@ public class ApplicationController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/referees/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Boolean> updateReferee(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Referee vo) {
+		dummyLogin();
+
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InReferee referee = (InReferee) applicationService.findRefereeById(id);
+		referee.setName(vo.getName());
+		referee.setOfficeAddrs(vo.getOfficeAddrs());
+		referee.setOccupation(vo.getOccupation());
+		referee.setPhoneNo(vo.getPhoneNo());
+		applicationService.updateReferee(application, referee);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/referees/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteReferee(@PathVariable String referenceNo, @PathVariable Long id) {
 		dummyLogin();
@@ -404,6 +418,8 @@ public class ApplicationController {
 		applicationService.deleteReferee(application, referee);
 		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
+	
+
 
 	// ====================================================================================================
 	// ADDRESS

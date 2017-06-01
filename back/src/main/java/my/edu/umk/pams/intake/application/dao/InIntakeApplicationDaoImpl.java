@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
@@ -912,6 +913,18 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(referee);
     }
+    
+    @Override
+    public void updateReferee(InIntakeApplication application, InReferee referee, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(referee, "Referee cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.update(referee);
+    }
+    
+
 
     @Override
     public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user) {
