@@ -4,7 +4,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
 
@@ -26,7 +26,8 @@ export class NationalityCodeCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<NationalityCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions) {
+              private actions: SetupActions,
+              private snackBar: MdSnackBar) {
   }
 
 set nationalityCode(value: NationalityCode) {
@@ -47,8 +48,11 @@ if (this.edit) this.creatorForm.patchValue(this._nationalityCode);
 }
 
    submit(code: NationalityCode, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to update nationality code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveNationalityCode(code));
     else  this.store.dispatch(this.actions.updateNationalityCode(code));
     this.dialog.close();
+    });
   }
 }

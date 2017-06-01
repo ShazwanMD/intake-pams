@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {NationalityCodeCreatorDialog} from "./dialog/nationality-code-creator.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-nationality-list-page',
@@ -26,7 +26,8 @@ export class NationalityCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.nationalityCodes$ = this.store.select(...this.NATIONALITY_CODES);
   }
 
@@ -40,11 +41,17 @@ export class NationalityCodeListPage implements OnInit {
   }
 
   editDialog(code:NationalityCode): void {
+    let snackBarRef = this.snackBar.open("Do you want to edit this nationality code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+    });
   }
 
   delete(code: NationalityCode): void {
+    let snackBarRef = this.snackBar.open("Delete this nationality code?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeNationalityCode(code))
+    });
   }
 
   filter(): void {
