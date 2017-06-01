@@ -166,6 +166,8 @@ export class ApplicationService {
   }
 
   addAttachment(application: IntakeApplication, file:File): Observable<String> {
+    console.log("addAttachment");
+    console.log("file: " + file.name);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token

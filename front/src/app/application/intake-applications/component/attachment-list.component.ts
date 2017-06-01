@@ -23,9 +23,6 @@ export class AttachmentListComponent implements OnInit {
   private creatorDialogRef: MdDialogRef<AttachmentCreatorDialog>;
   private columns: any[] = [
     {name: 'name', label: 'Name'},
-    {name: 'officeAddrs', label: 'OfficeAddrs'},
-    {name: 'occupation', label: 'Occupation'},
-    {name: 'phoneNo', label: 'PhoneNo'},
   ];
 
   constructor(private actions: IntakeApplicationActions,
@@ -65,7 +62,7 @@ export class AttachmentListComponent implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '70%';
-    config.height = '65%';
+    config.height = '30%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AttachmentCreatorDialog, config);
     this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;

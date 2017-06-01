@@ -355,7 +355,7 @@ public class ApplicationController {
 
 	// note: http://www.codejava.net/coding/upload-files-to-database-with-spring-mvc-and-hibernate
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachments", method = RequestMethod.POST)
-	public ResponseEntity<String> addAttachment(@PathVariable String referenceNo, @RequestParam MultipartFile file) {
+	public ResponseEntity<String> addAttachment(@PathVariable String referenceNo, @RequestParam("file") MultipartFile file) {
 		dummyLogin();
 
 		LOG.debug("files is empty? : {}", file.isEmpty());
