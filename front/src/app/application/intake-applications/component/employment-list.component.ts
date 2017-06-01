@@ -19,6 +19,7 @@ export class EmploymentListComponent implements OnInit {
   @Input() employments: Employment[];
   @Input() intakeApplication: IntakeApplication;
 
+  private selectedRows: Employment[];
   private creatorDialogRef: MdDialogRef<EmploymentCreatorDialog>;
   private columns: any[] = [
     {name: 'employer', label: 'Employer'},
@@ -30,12 +31,31 @@ export class EmploymentListComponent implements OnInit {
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
-              private dialog: MdDialog) {}
-
-  ngOnInit(): void {
+              private dialog: MdDialog) {
   }
 
-  showDialog(): void {
+  ngOnInit(): void {
+    this.selectedRows = this.employments.filter(value => value.selected);
+  }
+
+  edit(employment:Employment){
+    // todo: use editor instead of creator
+  }
+
+  delete(employment:Employment): void {
+    this.store.dispatch(this.actions.deleteEmployment(this.intakeApplication, employment));
+  }
+
+  filter(): void {
+  }
+
+  selectRow(employment: Employment): void {
+  }
+
+  selectAllRows(employments: Employment[]): void {
+  }
+
+  createDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;

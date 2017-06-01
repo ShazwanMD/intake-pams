@@ -406,10 +406,10 @@ export class IntakeApplicationActions {
 
   static DELETE_EMPLOYMENT = '[Intake Application] Delete Employment';
 
-  deleteEmployment(intake, employment) {
+  deleteEmployment(application, employment) {
     return {
       type: IntakeApplicationActions.DELETE_EMPLOYMENT,
-      payload: {intake: intake, employment: employment}
+      payload: {application: application, employment: employment}
     };
   }
 
@@ -658,7 +658,7 @@ export class IntakeApplicationActions {
       type: IntakeApplicationActions.ADD_DIPLOMA_RESULT_SUCCESS,
       payload: message
     };
-  } 
+  }
 
 
 }

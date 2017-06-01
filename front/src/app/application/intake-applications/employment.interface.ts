@@ -8,4 +8,7 @@ export interface Employment extends MetaObject {
   // levelCode:EmploymentLevelCode;
   // sectorCode:EmploymentSectorCode;
 // } fieldCode:EmploymentFieldCode;
+
+  // transient
+  selected?:boolean;
 }
