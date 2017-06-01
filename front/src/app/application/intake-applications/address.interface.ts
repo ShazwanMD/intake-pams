@@ -10,4 +10,6 @@ export interface Address extends MetaObject {
   stateCode: StateCode;
   countryCode: CountryCode;
   addressType:AddressType;
+  
+  selected?:boolean;
 }

@@ -21,6 +21,7 @@ export class AddressListComponent implements OnInit {
   @Input() addresses: Address[];
   @Input() intakeApplication: IntakeApplication;
 
+  private selectedRows: Address[];
   private creatorDialogRef: MdDialogRef<AddressCreatorDialog>;
   private columns: any[] = [
     {name: 'address1', label: 'Address1'},
@@ -38,9 +39,27 @@ export class AddressListComponent implements OnInit {
               private dialog: MdDialog) {}
 
   ngOnInit(): void {
+    this.selectedRows = this.addresses.filter(value => value.selected);
   }
 
-  showDialog(): void {
+  edit(addresses:Address){
+    // todo: use editor instead of creator
+  }
+
+  delete(address:Address): void {
+    this.store.dispatch(this.actions.deleteAddress(this.intakeApplication, address));
+  }
+
+  filter(): void {
+  }
+
+  selectRow(address: Address): void {
+  }
+
+  selectAllRows(addresses: Address[]): void {
+  }
+
+  createDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -49,7 +68,7 @@ export class AddressListComponent implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AddressCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here

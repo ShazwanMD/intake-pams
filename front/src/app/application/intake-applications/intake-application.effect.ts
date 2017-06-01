@@ -263,6 +263,15 @@ export class IntakeApplicationEffects {
    .map(message => this.intakeApplicationActions.deleteEmploymentSucces(message))
    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
    .map(state => state[1])
-   .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));   
+   .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() deleteAddress$ = this.actions$
+   .ofType(IntakeApplicationActions.DELETE_ADDRESS)
+   .map(action => action.payload)
+   .switchMap(payload => this.applicationService.deleteAddress(payload.application, payload.employment))
+   .map(message => this.intakeApplicationActions.deleteAddressSucces(message))
+   .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+   .map(state => state[1])
+   .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));       
 
 }

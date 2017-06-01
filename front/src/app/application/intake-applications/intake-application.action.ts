@@ -480,10 +480,10 @@ export class IntakeApplicationActions {
 
   static DELETE_ADDRESS = '[Intake Application] Delete Address';
 
-  deleteAddress(intake, address) {
+  deleteAddress(application, address) {
     return {
       type: IntakeApplicationActions.DELETE_ADDRESS,
-      payload: {intake: intake, address: address}
+      payload: {application: application, address: address}
     };
   }
 
