@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.common.dao;
 
 import my.edu.umk.pams.intake.common.model.InSubjectCode;
+import my.edu.umk.pams.intake.common.model.InSubjectCodeImpl;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import org.hibernate.Query;
@@ -11,20 +12,21 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("InSubjectCodeDao")
+@Repository("inSubjectCodeDao")
 public class InSubjectCodeDaoImpl extends GenericDaoSupport<Long, InSubjectCode> implements InSubjectCodeDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(InSubjectCodeDaoImpl.class);
 
     public InSubjectCodeDaoImpl() {
-        super(InSubjectCodeDaoImpl.class);
+        super(InSubjectCodeImpl.class);
     }
 
     @Override
     public InSubjectCode findByCode(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from InSubjectCode s where s.code = :code and  " +
-                " s.metadata.state = :state");
+        Query query = session.createQuery("select s from InSubjectCode s where "
+        		+ "s.code = :code " +
+                "and s.metadata.state = :state");
         query.setString("code", code);
         query.setCacheable(true);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
