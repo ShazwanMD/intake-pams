@@ -268,7 +268,7 @@ export class IntakeApplicationEffects {
   @Effect() deleteAddress$ = this.actions$
    .ofType(IntakeApplicationActions.DELETE_ADDRESS)
    .map(action => action.payload)
-   .switchMap(payload => this.applicationService.deleteAddress(payload.application, payload.employment))
+   .switchMap(payload => this.applicationService.deleteAddress(payload.application, payload.address))
    .map(message => this.intakeApplicationActions.deleteAddressSucces(message))
    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
    .map(state => state[1])
