@@ -38,7 +38,7 @@ export class SubjectCodeEditorDialog implements OnInit {
     this.editorForm = this.formBuilder.group(<SubjectCode>{
       id: null,
       code: '',
-      name: '',
+      // name: '',
       description: '',
     });
 
