@@ -5,4 +5,6 @@ export interface Referee extends MetaObject {
   occupation: string;
   phoneNo: string;
 
+
+  selected?:boolean;
 }

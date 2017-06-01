@@ -274,4 +274,13 @@ export class IntakeApplicationEffects {
    .map(state => state[1])
    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));       
 
+  @Effect() deleteReferee$ = this.actions$
+   .ofType(IntakeApplicationActions.DELETE_REFEREE)
+   .map(action => action.payload)
+   .switchMap(payload => this.applicationService.deleteReferee(payload.application, payload.referee))
+   .map(message => this.intakeApplicationActions.deleteRefereeSucces(message))
+   .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+   .map(state => state[1])
+   .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));  
+
 }

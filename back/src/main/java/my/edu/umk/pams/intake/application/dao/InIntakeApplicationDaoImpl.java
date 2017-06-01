@@ -906,7 +906,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     @Override
     public void deleteReferee(InIntakeApplication application, InReferee referee, InUser user) {
         Validate.notNull(application, "Application cannot be null");
-        Validate.notNull(referee, "Refereecannot be null");
+        Validate.notNull(referee, "Referee cannot be null");
         Validate.notNull(user, "User cannot be null");
 
         Session session = sessionFactory.getCurrentSession();

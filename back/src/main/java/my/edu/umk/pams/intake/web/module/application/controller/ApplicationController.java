@@ -400,7 +400,7 @@ public class ApplicationController {
 		dummyLogin();
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		InReferee referee = (InReferee) applicationService.findAddressById(id);
+		InReferee referee = (InReferee) applicationService.findRefereeById(id);
 		applicationService.deleteReferee(application, referee);
 		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}

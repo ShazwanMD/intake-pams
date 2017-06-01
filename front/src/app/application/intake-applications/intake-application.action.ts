@@ -444,10 +444,10 @@ export class IntakeApplicationActions {
 
   static DELETE_REFEREE = '[Intake Application] Delete Referee';
 
-  deleteReferee(intake, referee) {
+  deleteReferee(application, referee) {
     return {
       type: IntakeApplicationActions.DELETE_REFEREE,
-      payload: {intake: intake, referee: referee}
+      payload: {application: application, referee: referee}
     };
   }
 

@@ -19,6 +19,7 @@ export class RefereeListComponent implements OnInit {
   @Input() referees: Referee[];
   @Input() intakeApplication: IntakeApplication;
 
+  private selectedRows: Referee[];
   private creatorDialogRef: MdDialogRef<RefereeCreatorDialog>;
   private columns: any[] = [
     {name: 'name', label: 'Name'},
@@ -34,9 +35,27 @@ export class RefereeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.selectedRows = this.referees.filter(value => value.selected);
   }
 
-  showDialog(): void {
+  edit(referees:Referee){
+    // todo: use editor instead of creator
+  }
+
+  delete(referee:Referee): void {
+    this.store.dispatch(this.actions.deleteReferee(this.intakeApplication, referee));
+  }
+
+  filter(): void {
+  }
+
+  selectRow(referee: Referee): void {
+  }
+
+  selectAllRows(referees: Referee[]): void {
+  }
+
+  createDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -45,10 +64,11 @@ export class RefereeListComponent implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(RefereeCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here
     });
   }
+
 }

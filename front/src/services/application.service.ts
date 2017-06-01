@@ -173,6 +173,11 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+ deleteReferee(application: IntakeApplication, referee: Referee): Observable<String> {
+    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees/' + referee.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   addSpmResult(application: IntakeApplication, spmResult: SpmResult): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
