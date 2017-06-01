@@ -626,4 +626,35 @@ export class SetupEffects {
     .map(message => this.setupActions.removeLanguageCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findLanguageCodes()]));
 
+ // ====================================================================================================
+  // SUBJECT CODE
+  // ====================================================================================================
+
+  @Effect() findSubjectCode$ = this.actions$
+    .ofType(SetupActions.FIND_SUBJECT_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findSubjectCodes())
+    .map(codes => this.setupActions.findSubjectCodesSuccess(codes));
+
+  @Effect() saveSubjectCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_SUBJECT_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveSubjectCode(payload))
+    .map(message => this.setupActions.saveSubjectCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSubjectCodes()]));
+
+  @Effect() updateSubjectCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_SUBJECT_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateSubjectCode(payload))
+    .map(message => this.setupActions.updateSubjectCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSubjectCodes()]));
+
+  @Effect() removeSubjectCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_SUBJECT_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeSubjectCode(payload))
+    .map(message => this.setupActions.removeSubjectCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findSubjectCodes()]));
+
 }

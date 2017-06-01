@@ -403,4 +403,23 @@ export class CommonActions {
       payload: codes
     };
   }
+
+  static FIND_SUBJECT_CODES = '[Common] Find Subject Codes';
+
+  findSubjectCodes(): Action {
+    console.log("findSubjectCodes");
+    return {
+      type: CommonActions.FIND_SUBJECT_CODES,
+    };
+  }
+
+  static FIND_SUBJECT_CODES_SUCCESS = '[Common] Find Subject Codes Success';
+
+  findSubjectCodesSuccess(codes): Action {
+    console.log("findSubjectCodesSuccess");
+    return {
+      type: CommonActions.FIND_SUBJECT_CODES_SUCCESS,
+      payload: codes
+    };
+  }
 }

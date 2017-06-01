@@ -1661,4 +1661,88 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
     };
   }
 //------------------------------------------------------------------------------------------
+
+//=================================================================================//
+//  SUBJECT_CODES                                                                   //
+//=================================================================================//
+
+  static FIND_SUBJECT_CODES = '[Setup] Find Subject Codes';
+
+  findSubjectCodes(): Action {
+    console.log("findSubjectCodes");
+    return {
+      type: SetupActions.FIND_SUBJECT_CODES,
+    };
+  }
+
+  static FIND_SUBJECT_CODES_SUCCESS = '[Setup] Find Subject Codes Success';
+
+  findSubjectCodesSuccess(codes): Action {
+    console.log("findSubjectCodesSuccess");
+    return {
+      type: SetupActions.FIND_SUBJECT_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static SAVE_SUBJECT_CODE = '[Setup] Save Subject Code';
+
+  saveSubjectCode(code): Action {
+    console.log("saveSubjectCode");
+    return {
+      type: SetupActions.SAVE_SUBJECT_CODE,
+      payload: code
+    };
+  }
+
+  static SAVE_SUBJECT_CODE_SUCCESS = '[Setup] Save Subject Code Success';
+
+  saveSubjectCodeSuccess(message): Action {
+    console.log("saveSubjectCodeSuccess");
+    return {
+      type: SetupActions.SAVE_SUBJECT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_SUBJECT_CODE = '[Setup] Update Subject Code';
+
+  updateSubjectCode(code): Action {
+    console.log("updateSubjectCode");
+    return {
+      type: SetupActions.UPDATE_SUBJECT_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_SUBJECT_CODE_SUCCESS = '[Setup] Update Subject Code  Success';
+
+  updateSubjectCodeSuccess(message): Action {
+    console.log("updateSubjectCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_SUBJECT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_SUBJECT_CODE = '[Setup] Remove Subject Code';
+
+  removeSubjectCode(code): Action {
+    console.log("removeSubjectCode");
+    return {
+      type: SetupActions.REMOVE_SUBJECT_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_SUBJECT_CODE_SUCCESS = '[Setup] Remove Subject Code  Success';
+
+  removeSubjectCodeSuccess(message): Action {
+    console.log("removeSubjectCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_SUBJECT_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
 }

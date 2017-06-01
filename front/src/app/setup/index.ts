@@ -1,3 +1,5 @@
+import { SubjectCodeEditorDialog } from './subject-codes/dialog/subject-code-editor.dialog';
+import { SubjectCodeListPage } from './subject-codes/subject-code-list-page';
 import { LanguageCode } from './../common/language-codes/language-code.interface';
 import { ResidencyCodeEditorDialog } from './residency-codes/dialog/residency-code-editor.dialog';
 import { ResidencyCodeListPage } from './residency-codes/residency-code-list-page';
@@ -101,7 +103,8 @@ import {LanguageCodeListPage} from "./language-codes/language-code-list-page";
 import {LanguageCodeEditorDialog} from "./language-codes/dialog/language-code-editor.dialog";
 import {LanguageCodeSelectComponent} from "../common/language-codes/component/language-code-select.component";
 import {languageCodeListReducer, LanguageCodeListState} from "./language-codes/language-code-list.reducer";
-
+import {subjectCodeListReducer, SubjectCodeListState} from "./subject-codes/subject-code-list.reducer";
+import {SubjectCode} from './../common/subject-codes/subject-code.interface';
 
 export interface SetupModuleState {
   title: TitleState;
@@ -127,6 +130,7 @@ export interface SetupModuleState {
   parliamentCodes: ParliamentCodeListState;
   residencyCodes: ResidencyCodeListState;
   languageCodes: LanguageCodeListState;
+  subjectCodes: SubjectCodeListState;
 
 
 }
@@ -157,6 +161,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     parliamentCodes: <ParliamentCode[]>[],
     residencyCodes: <ResidencyCode[]>[],
     languageCodes: <LanguageCode[]>[],
+    subjectCodes: <SubjectCode[]>[],
 
   };
 
@@ -185,6 +190,7 @@ export const setupModuleReducers = {
   parliamentCodes: parliamentCodeListReducer,
   residencyCodes: residencyCodeListReducer,
   languageCodes: languageCodeListReducer,
+  subjectCodes: subjectCodeListReducer,
 
 }
 
@@ -225,6 +231,7 @@ export const setupModuleReducers = {
     DunCodeListPage,
     ParliamentCodeListPage,
     ResidencyCodeListPage,
+    SubjectCodeListPage,
 
     // dialog
     MaritalCodeEditorDialog,
@@ -249,6 +256,7 @@ export const setupModuleReducers = {
     DunCodeEditorDialog,
     ParliamentCodeEditorDialog,
     ResidencyCodeEditorDialog,
+    SubjectCodeEditorDialog,
 
   ],
   exports: [],
@@ -274,6 +282,7 @@ export const setupModuleReducers = {
     DunCodeEditorDialog,
     ParliamentCodeEditorDialog,
     ResidencyCodeEditorDialog,
+    SubjectCodeEditorDialog,
   ],
 })
 export class SetupModule {

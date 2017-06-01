@@ -131,4 +131,10 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findLanguageCodes())
     .map(codes => this.commonActions.findLanguageCodesSuccess(codes));
 
+     @Effect() findSubjectCodes$ = this.actions$
+    .ofType(CommonActions.FIND_SUBJECT_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findSubjectCodes())
+    .map(codes => this.commonActions.findSubjectCodesSuccess(codes));
+
 }

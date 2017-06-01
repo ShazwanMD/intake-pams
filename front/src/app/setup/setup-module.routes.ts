@@ -22,7 +22,7 @@ import {CountryCodeListPage} from './country-codes/country-code-list.page';
 import {StudyCenterCodeListPage} from './study-center-codes/study-center-code-list.page';
 import {DunCodeListPage} from './dun-codes/dun-code-list-page';
 import {LanguageCodeListPage} from "./language-codes/language-code-list-page";
-
+import {SubjectCodeListPage} from './subject-codes/subject-code-list-page';
 
 export const SetupModuleRoutes: Routes = [
   {
@@ -51,6 +51,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'ethnicity-codes', component: EthnicityCodeListPage},
       {path: 'parliament-codes', component: ParliamentCodeListPage},
       {path: 'residency-codes', component: ResidencyCodeListPage},
+      {path: 'subject-codes', component: SubjectCodeListPage},     
 
 
     ]

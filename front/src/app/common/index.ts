@@ -1,3 +1,5 @@
+import {SubjectCodeSelectComponent} from './subject-codes/component/subject-code-select.component';
+import {subjectCodeListReducer, SubjectCodeListState} from "./subject-codes/subject-code-list.reducer";
 import {EthnicityCodeSelectComponent} from './ethnicity-codes/component/ethnicity-code-select.component';
 import {NationalityCodeSelectComponent} from './nationality-codes/component/nationality-code-select.component';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -68,6 +70,7 @@ export interface CommonModuleState {
   ethnicityCodes: EthnicityCodeListState;
   nationalityCodes: NationalityCodeListState;
   residencyCodes: ResidencyCodeListState;
+  subjectCodes: SubjectCodeListState;
 }
 ;
 
@@ -92,6 +95,7 @@ export const commonModuleReducers = {
   ethnicityCodes: ethnicityCodeListReducer,
   nationalityCodes: nationalityCodeListReducer,
   residencyCodes: residencyCodeListReducer,
+  subjectCodes: subjectCodeListReducer,
 };
 
 @NgModule({
@@ -122,6 +126,7 @@ export const commonModuleReducers = {
     EthnicityCodeSelectComponent,
     NationalityCodeSelectComponent,
     ResidencyCodeSelectComponent,
+    SubjectCodeSelectComponent,
 
 
   ],
@@ -145,6 +150,7 @@ export const commonModuleReducers = {
     EthnicityCodeSelectComponent,
     NationalityCodeSelectComponent,
     ResidencyCodeSelectComponent,
+    SubjectCodeSelectComponent,
 
   ],
 })
