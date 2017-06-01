@@ -4,7 +4,7 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {RefereeCreatorDialog} from "./dialog/referee-creator.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from "@angular/material";
 import {IntakeApplication} from "../intake-application.interface";
 
 
@@ -30,6 +30,7 @@ export class RefereeListComponent implements OnInit {
 
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
+              private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>,
               private dialog: MdDialog) {
   }
@@ -38,8 +39,10 @@ export class RefereeListComponent implements OnInit {
     this.selectedRows = this.referees.filter(value => value.selected);
   }
 
-  edit(referees:Referee){
+  edit(referee:Referee){
     // todo: use editor instead of creator
+    this.store.dispatch(this.actions.updateReferee(this.intakeApplication, referee));
+    this.showDialog(referee);
   }
 
   delete(referee:Referee): void {
@@ -56,6 +59,13 @@ export class RefereeListComponent implements OnInit {
   }
 
   createDialog(): void {
+    let snackBarRef = this.snackBar.open("Do you want to add new referee?", "Yes");
+    snackBarRef.afterDismissed().subscribe(() => {
+    this.showDialog(null);
+    });
+  }
+
+   private showDialog(referee:Referee): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -70,5 +80,4 @@ export class RefereeListComponent implements OnInit {
       // load something here
     });
   }
-
 }

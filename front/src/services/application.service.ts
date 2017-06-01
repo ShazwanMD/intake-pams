@@ -173,6 +173,16 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  updateReferee(application: IntakeApplication, referee: Referee): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees' + referee.id, JSON.stringify(referee), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
  deleteReferee(application: IntakeApplication, referee: Referee): Observable<String> {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees/' + referee.id)
       .flatMap((res: Response) => Observable.of(res.text()));

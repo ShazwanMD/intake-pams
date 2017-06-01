@@ -442,6 +442,24 @@ export class IntakeApplicationActions {
     };
   }
 
+ static UPDATE_REFEREE = '[Intake Application] Update Referee Application';
+
+  updateReferee(application, referee): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_REFEREE,
+      payload: {application: application, referee: referee}
+    };
+  }
+
+  static UPDATE_REFEREE_SUCCESS = '[Intake Application] Update Referee Success';
+
+  updateRefereeSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_REFEREE_SUCCESS,
+      payload: message
+    };
+  }  
+
   static DELETE_REFEREE = '[Intake Application] Delete Referee';
 
   deleteReferee(application, referee) {
