@@ -48,7 +48,7 @@ export class CountryCodeCreatorDialog implements OnInit {
   }
 
   save(code: CountryCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to update supervisor code?", "Yes");
+    let snackBarRef = this.snackBar.open("Update country code?", "Yes");
     snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveCountryCode(code));
     else  this.store.dispatch(this.actions.updateCountryCode(code));

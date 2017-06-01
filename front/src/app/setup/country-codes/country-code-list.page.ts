@@ -37,14 +37,14 @@ export class CountryCodeListPage implements OnInit {
   }
 
 createDialog(): void {
-    let snackBarRef = this.snackBar.open("Do you want to add new country code?", "Yes");
+    let snackBarRef = this.snackBar.open("Add new country code?", "Yes");
     snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
     });
   }
 
   editDialog(code:CountryCode): void {
-    let snackBarRef = this.snackBar.open("Do you want to edit this country code?", "Yes");
+    let snackBarRef = this.snackBar.open("Edit this country code?", "Yes");
     snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
   });
