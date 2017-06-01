@@ -5,8 +5,6 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import com.google.common.primitives.Bytes;
-
 @Entity(name = "InAttachment")
 @Table(name = "IN_ATMT")
 public class InAttachmentImpl implements InAttachment {
@@ -21,10 +19,6 @@ public class InAttachmentImpl implements InAttachment {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
-    @JoinColumn(name = "APPLICATION_ID")
-    private InIntakeApplication application;
-    
     @NotNull
     @Column(name = "DATA", nullable = false)
     private byte[] bytes;
@@ -36,6 +30,10 @@ public class InAttachmentImpl implements InAttachment {
     @NotNull
     @Column(name = "SIZE", nullable = false)
     private int size;
+
+    @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
+    @JoinColumn(name = "APPLICATION_ID")
+    private InIntakeApplication application;
 
     @Embedded
     private InMetadata metadata;

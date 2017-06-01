@@ -201,17 +201,12 @@
         </md-tab>
 
         <md-tab>
-          <md-card>
-            <template md-tab-label>Upload Document</template>
-
-            <div layout="column" class="pad-right" flex>
-
-              <md-card-title>Upload Document Checklist</md-card-title>
-              <md-card>
-              </md-card>
-            </div>
-          </md-card>
+          <pams-referee-list
+            [intakeApplication]="intakeApplication$ | async"
+            [referees]="referees$ | async">
+          </pams-referee-list>
         </md-tab>
+
         <md-tab>
           <template md-tab-label>Submit Application</template>
           <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">

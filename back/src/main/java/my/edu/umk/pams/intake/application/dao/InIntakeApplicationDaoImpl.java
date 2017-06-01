@@ -1,15 +1,12 @@
 package my.edu.umk.pams.intake.application.dao;
 
 import my.edu.umk.pams.intake.application.model.*;
-import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -105,13 +102,13 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         return (InAddress) currentSession.get(InAddressImpl.class, id);
     }
-    
+
     @Override
     public InBachelorResult findBachelorResultById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (InBachelorResult) currentSession.get(InBachelorResultImpl.class, id);
     }
-    
+
     @Override
     public InDiplomaResult findDiplomaResultById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -123,29 +120,29 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         return (InSpmResult) currentSession.get(InSpmResultImpl.class, id);
     }
-    
+
     @Override
     public InEmployment findEmploymentById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (InEmployment) currentSession.get(InEmploymentImpl.class, id);
     }
-    
+
     @Override
     public InReferee findRefereeById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (InReferee) currentSession.get(InRefereeImpl.class, id);
     }
-    
+
     @Override
     public InLanguage findLanguageById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (InLanguage) currentSession.get(InLanguageImpl.class, id);
     }
-    
+
     @Override
-    public InFranchise findFranchiseById(Long id) {
+    public InAttachment findAttachmentById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
-        return (InFranchise) currentSession.get(InFranchiseImpl.class, id);
+        return (InAttachment) currentSession.get(InAttachmentImpl.class, id);
     }
 
     @Override
@@ -191,7 +188,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (InAddress) query.uniqueResult();
     }
-    
+
     @Override
     public InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -202,7 +199,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (InBachelorResult) query.uniqueResult();
     }
-    
+
     @Override
     public InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -289,8 +286,8 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("intake", intake);
         query.setBoolean("paid", paid);
         return (List<InIntakeApplication>) query.list();
-    }  
-    
+    }
+
     @Override
     public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -300,7 +297,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("intake", intake);
         query.setBoolean("verification", verification);
         return (List<InIntakeApplication>) query.list();
-    } 
+    }
 
     @Override
     public List<InIntakeApplication> findByOrderedRank(InIntake intake) {
@@ -311,7 +308,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("intake", intake);
         return (List<InIntakeApplication>) query.list();
     }
-    
+
     @Override
     public List<InIntakeApplication> findByOrderedMerit(InIntake intake) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -375,30 +372,41 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InEmployment p where " +
                 "p.application = :application " +
-        		"and p.metadata.state = :state");
-        query.setInteger("state", InMetaState.ACTIVE.ordinal());		
+                "and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
         query.setEntity("application", application);
         return (List<InEmployment>) query.list();
     }
-    
+
     @Override
     public List<InLanguage> findLanguages(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InLanguage p where " +
                 "p.application = :application " +
-        		"and p.metadata.state = :state");
-        query.setInteger("state", InMetaState.ACTIVE.ordinal());		
+                "and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
         query.setEntity("application", application);
         return (List<InLanguage>) query.list();
     }
-    
+
+    @Override
+    public List<InAttachment> findAttachments(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InAttachment p where " +
+                "p.application = :application " +
+                "and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        query.setEntity("application", application);
+        return (List<InAttachment>) query.list();
+    }
+
     @Override
     public List<InReferee> findReferees(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InReferee p where " +
                 "p.application = :application " +
-        		"and p.metadata.state = :state");
-        query.setInteger("state", InMetaState.ACTIVE.ordinal());		
+                "and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
         query.setEntity("application", application);
         return (List<InReferee>) query.list();
     }
@@ -431,15 +439,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
-    public List<InFranchise> findFranchises(InIntakeApplication application) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("select p from InFranchise p where " +
-                "p.application = :application");
-        query.setEntity("application", application);
-        return (List<InFranchise>) query.list();
-    }
-
-    @Override
     public List<InContact> findContacts(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InContact p where " +
@@ -456,7 +455,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (List<InAddress>) query.list();
     }
-    
+
     @Override
     public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -465,7 +464,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (List<InBachelorResult>) query.list();
     }
-    
+
     @Override
     public List<InDiplomaResult> findDiplomaResults(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
@@ -475,14 +474,14 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         return (List<InDiplomaResult>) query.list();
     }
 
-    
+
     @Override
     public List<InSpmResult> findSpmResults(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InSpmResult p where " +
                 "p.application = :application " +
-        		"and p.metadata.state = :state");
-        query.setInteger("state", InMetaState.ACTIVE.ordinal());		
+                "and p.metadata.state = :state");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
         query.setEntity("application", application);
         return (List<InSpmResult>) query.list();
     }
@@ -567,11 +566,20 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("application", application);
         return (Integer) query.uniqueResult() > 0;
     }
-    
+
     @Override
     public boolean hasReferee(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InReferee p " +
+                "where p.application = :application");
+        query.setEntity("application", application);
+        return (Integer) query.uniqueResult() > 0;
+    }
+
+    @Override
+    public boolean hasAttachment(InIntakeApplication application) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InAttachment p " +
                 "where p.application = :application");
         query.setEntity("application", application);
         return (Integer) query.uniqueResult() > 0;
@@ -689,7 +697,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(employment);
     }
-
 
     @Override
     public void addLanguage(InIntakeApplication application, InLanguage language, InUser user) {
@@ -859,7 +866,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         address.setMetadata(metadata);
         session.save(address);
     }
-    
+
     @Override
     public void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user) {
         Validate.notNull(application, "Application cannot be null");
@@ -876,7 +883,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         bachelorResult.setMetadata(metadata);
         session.save(bachelorResult);
     }
-    
+
     @Override
     public void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user) {
         Validate.notNull(application, "Application cannot be null");
@@ -903,17 +910,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(address);
     }
-    
-    @Override
-    public void deleteReferee(InIntakeApplication application, InReferee referee, InUser user) {
-        Validate.notNull(application, "Application cannot be null");
-        Validate.notNull(referee, "Referee cannot be null");
-        Validate.notNull(user, "User cannot be null");
 
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(referee);
-    }
-    
     @Override
     public void updateReferee(InIntakeApplication application, InReferee referee, InUser user) {
         Validate.notNull(application, "Application cannot be null");
@@ -923,8 +920,38 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.update(referee);
     }
-    
 
+    @Override
+    public void deleteReferee(InIntakeApplication application, InReferee referee, InUser user) {
+    }
+
+    @Override
+    public void addAttachment(InIntakeApplication application, InAttachment attachment, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(attachment, "Attachment cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        attachment.setApplication(application);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        attachment.setMetadata(metadata);
+        session.save(attachment);
+
+    }
+
+    @Override
+    public void deleteAttachment(InIntakeApplication application, InAttachment attachment, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(attachment, "Attachment cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(attachment);
+    }
 
     @Override
     public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user) {
@@ -935,7 +962,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(bachelorResult);
     }
-    
+
     @Override
     public void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user) {
         Validate.notNull(application, "Application cannot be null");
@@ -945,7 +972,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.delete(diplomaResult);
     }
-    
+
     @Override
     public void addSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user) {
         Validate.notNull(application, "Application cannot be null");
@@ -971,23 +998,5 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(spmResult);
-    }
-    
-    @Override
-    public void addAttachment(InIntakeApplication application, InAttachment attachment, InUser user) {
-        Validate.notNull(application, "Application cannot be null");
-        Validate.notNull(attachment, "Attachment cannot be null");
-        Validate.notNull(user, "User cannot be null");
-
-        Session session = sessionFactory.getCurrentSession();
-        attachment.setApplication(application);
-
-        InMetadata metadata = new InMetadata();
-        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        metadata.setModifierId(user.getId());
-        metadata.setState(InMetaState.ACTIVE);
-        attachment.setMetadata(metadata);
-        session.save(attachment);
-
     }
 }

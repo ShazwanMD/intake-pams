@@ -77,8 +77,6 @@ public interface ApplicationService {
 
     void deleteGuardian(InIntakeApplication application, InGuardian guardian);
 
-    void addFranchise(InFranchise franchise);
-
     void addAttachment(InIntakeApplication application, InAttachment attachment);
 
     //====================================================================================================

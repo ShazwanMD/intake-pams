@@ -13,10 +13,6 @@ public interface InAttachment extends InMetaObject {
 
     void setName(String name);
 
-    InIntakeApplication getApplication();
-
-    void setApplication(InIntakeApplication application);
-    
     byte[] getBytes();
 
     void setBytes(byte[] bytes);
@@ -28,4 +24,8 @@ public interface InAttachment extends InMetaObject {
 	int getSize();
 
 	void setSize(int size);
+
+    InIntakeApplication getApplication();
+
+    void setApplication(InIntakeApplication application);
 }

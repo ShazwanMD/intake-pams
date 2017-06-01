@@ -30,8 +30,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     InGuardian findGuardianById(Long id);
     
-    InFranchise findFranchiseById(Long id);
-
     InContact findContactById(Long id);
 
     InAddress findAddressById(Long id);
@@ -48,6 +46,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     
     InLanguage findLanguageById(Long id);
 
+    InAttachment findAttachmentById(Long id);
+
     InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application);
 
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
@@ -61,7 +61,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application);
     
     InApplicant findApplicant(InIntakeApplication application);
-
 
     List<InIntakeApplication> find(InIntake intake);
 
@@ -90,6 +89,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InEmployment> findEmployments(InIntakeApplication application);
     
     List<InLanguage> findLanguages(InIntakeApplication application);
+
+    List<InAttachment> findAttachments(InIntakeApplication application);
     
     List<InReferee> findReferees(InIntakeApplication application);
 
@@ -99,8 +100,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InGuardian> findGuardians(InIntakeApplication application);
 
-    List<InFranchise> findFranchises(InIntakeApplication application);
-    
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
@@ -132,6 +131,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     boolean hasInvolvement(InIntakeApplication application);
     
     boolean hasReferee(InIntakeApplication application);
+
+    boolean hasAttachment(InIntakeApplication application);
 
     // ====================================================================================================
     // CRUD
@@ -190,6 +191,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user);
 
 	void addAttachment(InIntakeApplication application,InAttachment attachment, InUser currentUser);
+
+    void deleteAttachment(InIntakeApplication application, InAttachment attachment, InUser user);
 
 	void addReferee(InIntakeApplication application, InReferee referee, InUser currentUser);
 	
