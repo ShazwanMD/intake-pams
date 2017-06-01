@@ -26,6 +26,10 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setReferenceNo(String referenceNo);
 
+    String getResearchTitle();
+
+    void setResearchTitle(String researchTitle);
+
     String getName();
 
     void setName(String name);

@@ -719,6 +719,7 @@
         RANK int4 not null,
         REASON varchar(255),
         REFERENCE_NO varchar(255) not null,
+        RESEARCH_TITLE varchar(255) not null,
         SCHOOL_BATCH int4,
         SCHOOL_NAME varchar(255),
         SELF_SPONSORED boolean,
@@ -1161,10 +1162,16 @@
     );
 
     create table IN_SPM_RSLT (
-        
         AGGREGATE int4 not null,
-        GRADE varchar(255) not null,
-        NAME varchar(255),
+        Grade varchar(255) not null,
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        Name varchar(255) not null,
         YEAR int4 not null,
         ID int8 not null,
         APPLICATION_ID int8,

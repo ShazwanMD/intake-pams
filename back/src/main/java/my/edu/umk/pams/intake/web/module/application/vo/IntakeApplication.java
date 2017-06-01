@@ -21,6 +21,7 @@ public class IntakeApplication extends MetaObject {
     private String referenceNo;
     private Integer rank;
     private Integer merit;
+    private String researchTitle;
     private String name;
     private String credentialNo;
     private String okuNo;
@@ -66,6 +67,14 @@ public class IntakeApplication extends MetaObject {
 
     public void setMerit(Integer merit) {
         this.merit = merit;
+    }
+
+    public String getResearchTitle() {
+        return researchTitle;
+    }
+
+    public void setResearchTitle(String researchTitle) {
+        this.researchTitle = researchTitle;
     }
 
     public String getName() {

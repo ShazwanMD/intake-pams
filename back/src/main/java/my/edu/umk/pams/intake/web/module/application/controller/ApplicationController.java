@@ -2,7 +2,6 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.common.model.InSubjectCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InActor;
@@ -175,6 +174,7 @@ public class ApplicationController {
 
 		// todo: more properties
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		application.setResearchTitle(vo.getResearchTitle());
 		application.setName(vo.getName());
 		application.setPhone(vo.getPhone());
 		application.setMobile(vo.getMobile());

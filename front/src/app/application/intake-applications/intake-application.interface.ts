@@ -13,6 +13,7 @@ import { GenderCode } from "../../common/gender-codes/gender-code.interface";
 
 export interface IntakeApplication extends MetaObject {
   referenceNo: string;
+  researchTitle?: string;
   rank: number;
   merit: number;
   name: string;
@@ -29,7 +30,6 @@ export interface IntakeApplication extends MetaObject {
   race:string;
   marital:string;
 
-  
   paid: boolean;
   verified: boolean;
   sponsored: boolean;

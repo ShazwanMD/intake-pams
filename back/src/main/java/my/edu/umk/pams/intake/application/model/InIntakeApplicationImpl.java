@@ -35,6 +35,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     private String referenceNo;
 
     @NotNull
+    @Column(name = "RESEARCH_TITLE", nullable = false)
+    private String researchTitle = "N/A";
+
+    @NotNull
     @Column(name = "NAME", nullable = false)
     private String name;
 
@@ -199,13 +203,13 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @OneToMany(targetEntity = InLanguageImpl.class, mappedBy = "application")
     private List<InLanguage> languages;
-    
+
     @OneToMany(targetEntity = InAddressImpl.class, mappedBy = "application")
     private List<InAddress> addresses;
-    
+
     @OneToMany(targetEntity = InBachelorResultImpl.class, mappedBy = "application")
     private List<InBachelorResult> bachelorResults;
-    
+
     @OneToMany(targetEntity = InDiplomaResultImpl.class, mappedBy = "application")
     private List<InDiplomaResult> diplomaResults;
 
@@ -264,6 +268,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setReferenceNo(String referenceNo) {
         this.referenceNo = referenceNo;
+    }
+
+    @Override
+    public String getResearchTitle() {
+        return researchTitle;
+    }
+
+    @Override
+    public void setResearchTitle(String researchTitle) {
+        this.researchTitle = researchTitle;
     }
 
     @Override
@@ -683,7 +697,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setEmployments(List<InEmployment> employments) {
         this.employments = employments;
     }
-    
+
     @Override
     public List<InLanguage> getLanguages() {
         return languages;
@@ -744,7 +758,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setAddresses(List<InAddress> addresses) {
         this.addresses = addresses;
     }
-    
+
     @Override
     public List<InBachelorResult> getBachelorResults() {
         return bachelorResults;
@@ -754,17 +768,17 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setBachelorResults(List<InBachelorResult> bachelorResults) {
         this.bachelorResults = bachelorResults;
     }
-    
+
 
     public List<InDiplomaResult> getDiplomaResults() {
-		return diplomaResults;
-	}
+        return diplomaResults;
+    }
 
-	public void setDiplomaResults(List<InDiplomaResult> diplomaResults) {
-		this.diplomaResults = diplomaResults;
-	}
+    public void setDiplomaResults(List<InDiplomaResult> diplomaResults) {
+        this.diplomaResults = diplomaResults;
+    }
 
-	@Override
+    @Override
     public List<InResult> getResults() {
         return results;
     }

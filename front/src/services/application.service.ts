@@ -95,6 +95,7 @@ export class ApplicationService {
   updateIntakeApplication(application: IntakeApplication): Observable<String> {
     console.log("updateIntakeApplication ");
     console.log("email: " + application.email);
+    console.log("researchTitle: " + application.researchTitle);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
