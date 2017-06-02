@@ -1,11 +1,11 @@
-import { DiplomaResult } from './../diploma-result-interface';
-import { ReligionCode } from './../../../common/religion-codes/religion-code.interface';
-import { MaritalCode } from './../../../common/marital-codes/marital-code.interface';
-import { RaceCode } from './../../../common/race-codes/race-code.interface';
-import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
-import { BachelorResult } from './../bachelor-result-interface';
-import { SpmResult } from './../spm-result.interface';
-import { Address } from './../address.interface';
+import {DiplomaResult} from './../diploma-result-interface';
+import {ReligionCode} from './../../../common/religion-codes/religion-code.interface';
+import {MaritalCode} from './../../../common/marital-codes/marital-code.interface';
+import {RaceCode} from './../../../common/race-codes/race-code.interface';
+import {GenderCode} from './../../../common/gender-codes/gender-code.interface';
+import {BachelorResult} from './../bachelor-result-interface';
+import {SpmResult} from './../spm-result.interface';
+import {Address} from './../address.interface';
 import {Referee} from './../referee.interface';
 import {Employment} from './../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
@@ -17,9 +17,7 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 import {Language} from "../language.interface";
-import { NationalityCode } from "../../../common/nationality-codes/nationality-code.interface";
-
-
+import {NationalityCode} from "../../../common/nationality-codes/nationality-code.interface";
 
 
 @Component({
@@ -48,7 +46,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private spmResults$: Observable<SpmResult>;
   private bachelorResults$: Observable<BachelorResult>;
   private diplomaResults$: Observable<DiplomaResult>;
-  private  applicationForm: FormGroup;
+  private applicationForm: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -77,7 +75,7 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.applicationForm = this.formBuilder.group(<IntakeApplication>{
       id: null,
       referenceNo: '',
-      researchTitle:'',
+      researchTitle: '',
       rank: 0,
       merit: 0,
       name: '',
@@ -105,5 +103,15 @@ export class CpsIntakeApplicationPage implements OnInit {
   onTabChange(): void {
     console.log("tab change");
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  }
+
+  submit(application: IntakeApplication, isValid: boolean) {
+    console.log("submitting application");
+    this.store.dispatch(this.actions.submitIntakeApplication(application));
+    this.goBack();
+  }
+
+  goBack(): void {
+    this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
 }

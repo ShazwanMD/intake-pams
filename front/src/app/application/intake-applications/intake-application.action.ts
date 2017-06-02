@@ -300,10 +300,10 @@ export class IntakeApplicationActions {
 
   static SUBMIT_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Submit Intake Application Success';
 
-  submitIntakeApplicationSuccess(referenceNo): Action {
+  submitIntakeApplicationSuccess(message): Action {
     return {
       type: IntakeApplicationActions.SUBMIT_INTAKE_APPLICATION_SUCCESS,
-      payload: referenceNo
+      payload: message
     };
   }
 

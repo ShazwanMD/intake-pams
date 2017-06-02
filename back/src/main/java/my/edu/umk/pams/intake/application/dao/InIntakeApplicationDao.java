@@ -29,21 +29,21 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InGuarantor findGuarantorById(Long id);
 
     InGuardian findGuardianById(Long id);
-    
+
     InContact findContactById(Long id);
 
     InAddress findAddressById(Long id);
-    
+
     InBachelorResult findBachelorResultById(Long id);
-    
+
     InDiplomaResult findDiplomaResultById(Long id);
-    
+
     InSpmResult findSpmResultById(Long id);
-    
+
     InEmployment findEmploymentById(Long id);
-    
+
     InReferee findRefereeById(Long id);
-    
+
     InLanguage findLanguageById(Long id);
 
     InAttachment findAttachmentById(Long id);
@@ -55,11 +55,11 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InContact findContactByType(InContactType type, InIntakeApplication application);
 
     InAddress findAddressByType(InAddressType type, InIntakeApplication application);
-    
+
     InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
 
     InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application);
-    
+
     InApplicant findApplicant(InIntakeApplication application);
 
     List<InIntakeApplication> find(InIntake intake);
@@ -69,6 +69,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InIntakeApplication> find(String filter, InIntake intake, Integer offset, Integer limit);
 
     List<InIntakeApplication> find(String filter, InBidType bidType, InIntake intake, Integer offset, Integer limit);
+
+    List<InIntakeApplication> find(InApplicant applicant);
 
     List<InIntakeApplication> find(InApplicant applicant, InBidStatus bidStatus);
 
@@ -87,11 +89,11 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InEducation> findEducations(InIntakeApplication application);
 
     List<InEmployment> findEmployments(InIntakeApplication application);
-    
+
     List<InLanguage> findLanguages(InIntakeApplication application);
 
     List<InAttachment> findAttachments(InIntakeApplication application);
-    
+
     List<InReferee> findReferees(InIntakeApplication application);
 
     List<InInvolvement> findInvolvements(InIntakeApplication application);
@@ -103,12 +105,12 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
-    
+
     List<InBachelorResult> findBachelorResults(InIntakeApplication application);
-    
+
     List<InDiplomaResult> findDiplomaResults(InIntakeApplication application);
-    
-    List<InSpmResult> findSpmResults (InIntakeApplication application);
+
+    List<InSpmResult> findSpmResults(InIntakeApplication application);
 
     // ====================================================================================================
     // HELPER
@@ -129,7 +131,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     boolean hasLanguage(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
-    
+
     boolean hasReferee(InIntakeApplication application);
 
     boolean hasAttachment(InIntakeApplication application);
@@ -175,33 +177,33 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void deleteContact(InIntakeApplication application, InContact contact, InUser user);
 
     void addAddress(InIntakeApplication application, InAddress address, InUser user);
-    
+
     void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user);
-    
+
     void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user);
 
     void deleteAddress(InIntakeApplication application, InAddress address, InUser user);
-    
+
     void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user);
-    
+
     void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user);
-    
+
     void addSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user);
-    
+
     void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user);
 
-	void addAttachment(InIntakeApplication application,InAttachment attachment, InUser currentUser);
+    void addAttachment(InIntakeApplication application, InAttachment attachment, InUser currentUser);
 
     void deleteAttachment(InIntakeApplication application, InAttachment attachment, InUser user);
 
-	void addReferee(InIntakeApplication application, InReferee referee, InUser currentUser);
-	
-	void deleteReferee(InIntakeApplication application, InReferee referee, InUser user);
-	
-	void updateReferee(InIntakeApplication application, InReferee referee, InUser user);
+    void addReferee(InIntakeApplication application, InReferee referee, InUser currentUser);
 
-	List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
-	
-	List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification);
+    void deleteReferee(InIntakeApplication application, InReferee referee, InUser user);
+
+    void updateReferee(InIntakeApplication application, InReferee referee, InUser user);
+
+    List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
+
+    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification);
 
 }

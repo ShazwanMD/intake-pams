@@ -115,8 +115,8 @@ export class IntakeApplicationEffects {
   @Effect() submitIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.SUBMIT_INTAKE_APPLICATION)
     .map(action => action.payload)
-    .switchMap(payload => this.applicationService.submitIntakeApplication(payload.application))
-    .map(referenceNo => this.intakeApplicationActions.submitIntakeApplicationSuccess(referenceNo))
+    .switchMap(application => this.applicationService.submitIntakeApplication(application))
+    .map(message => this.intakeApplicationActions.submitIntakeApplicationSuccess(message))
 
   @Effect() findEducationsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION)

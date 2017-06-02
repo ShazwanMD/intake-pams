@@ -42,28 +42,28 @@ public interface ApplicationService {
     void addInvolvement(InIntakeApplication application, InInvolvement involvement);
 
     void addAddress(InIntakeApplication application, InAddress address);
-    
+
     void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
-    
+
     void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);
-    
+
     void addSpmResult(InIntakeApplication application, InSpmResult spmResult);
 
     void deleteAddress(InIntakeApplication application, InAddress address);
-    
+
     void deleteLanguage(InIntakeApplication application, InLanguage language);
-    
+
     void deleteEmployment(InIntakeApplication application, InEmployment employment);
-    
+
     void deleteReferee(InIntakeApplication application, InReferee referee);
-    
+
     void updateReferee(InIntakeApplication application, InReferee referee);
-    
+
     void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
-    
+
     void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);
-    
-    void deleteSpmResult (InIntakeApplication application, InSpmResult spmResult);
+
+    void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult);
 
     void addContact(InIntakeApplication application, InContact contact);
 
@@ -112,19 +112,19 @@ public interface ApplicationService {
     InGuarantor findGuarantorById(Long id);
 
     InAddress findAddressById(Long id);
-    
+
     InEmployment findEmploymentById(Long id);
-    
+
     InReferee findRefereeById(Long id);
-    
+
     InLanguage findLanguageById(Long id);
 
     InAttachment findAttachmentById(Long id);
-    
+
     InBachelorResult findBachelorResultById(Long id);
-    
+
     InDiplomaResult findDiplomaResultById(Long id);
-    
+
     InSpmResult findSpmResultById(Long id);
 
     InContact findContactById(Long id);
@@ -134,12 +134,14 @@ public interface ApplicationService {
     InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application);
 
     InAddress findAddressByType(InAddressType addressType, InIntakeApplication application);
-    
+
     InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
 
     InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application);
-    
+
     InContact findContactByType(InContactType contactType, InIntakeApplication application);
+
+    List<InIntakeApplication> findIntakeApplications(InApplicant applicant);
 
     List<InIntakeApplication> findIntakeApplications(InApplicant applicant, InBidStatus bidStatus);
 
@@ -172,7 +174,7 @@ public interface ApplicationService {
     List<InLanguage> findLanguages(InIntakeApplication application);
 
     List<InAttachment> findAttachments(InIntakeApplication application);
-    
+
     List<InReferee> findReferees(InIntakeApplication application);
 
     List<InInvolvement> findInvolvements(InIntakeApplication application);
@@ -184,11 +186,11 @@ public interface ApplicationService {
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
-    
+
     List<InBachelorResult> findBachelorResults(InIntakeApplication application);
-    
+
     List<InDiplomaResult> findDiplomaResults(InIntakeApplication application);
-    
+
     List<InSpmResult> findSpmResults(InIntakeApplication application);
 
     List<InProgramOffering> findProgramOfferings(InIntakeApplication application);
@@ -208,7 +210,7 @@ public interface ApplicationService {
     boolean hasLanguage(InIntakeApplication application);
 
     boolean hasInvolvement(InIntakeApplication application);
-    
+
     boolean hasReferee(InIntakeApplication application);
 
     void addReferee(InIntakeApplication application, InReferee referee);

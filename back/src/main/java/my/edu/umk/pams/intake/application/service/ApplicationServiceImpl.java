@@ -412,6 +412,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public List<InIntakeApplication> findIntakeApplications(InApplicant applicant) {
+        return intakeApplicationDao.find(applicant);
+    }
+
+    @Override
     public List<InIntakeApplication> findIntakeApplications(InApplicant applicant, InBidStatus bidStatus) {
         return intakeApplicationDao.find(applicant, bidStatus);
     }
