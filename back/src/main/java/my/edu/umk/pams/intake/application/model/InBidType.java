@@ -4,7 +4,7 @@ public enum InBidType {
 
     FIRST, // first bid
     APPEAL, // rayuan
-    ADHOC; // adhoc/langit
+    ADHOC; // adhoc
 
     public static InBidType get(int index) {
         return values()[index];

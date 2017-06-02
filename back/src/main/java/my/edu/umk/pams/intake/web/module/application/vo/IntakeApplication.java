@@ -42,6 +42,9 @@ public class IntakeApplication extends MetaObject {
     private SupervisorOffering supervisorSelection;
     private StudyModeOffering studyModeSelection;
 
+    private BidType bidType;
+    private BidStatus bidStatus;
+
     private Applicant applicant;
     private Intake intake;
 
@@ -179,6 +182,22 @@ public class IntakeApplication extends MetaObject {
 
     public void setVerified(Boolean verified) {
         this.verified = verified;
+    }
+
+    public BidType getBidType() {
+        return bidType;
+    }
+
+    public void setBidType(BidType bidType) {
+        this.bidType = bidType;
+    }
+
+    public BidStatus getBidStatus() {
+        return bidStatus;
+    }
+
+    public void setBidStatus(BidStatus bidStatus) {
+        this.bidStatus = bidStatus;
     }
 
     public ProgramOffering getProgramSelection() {

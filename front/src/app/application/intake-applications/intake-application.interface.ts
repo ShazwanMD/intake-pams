@@ -10,6 +10,8 @@ import {SupervisorOffering} from "../../policy/intakes/supervisor-offering.inter
 import {StudyModeOffering} from "../../policy/intakes/study-mode-offering.interface";
 import {MetaObject} from "../../core/meta-object.interface";
 import { GenderCode } from "../../common/gender-codes/gender-code.interface";
+import {BidStatus} from "./bid-status.enum";
+import {BidType} from "./bid-type.enum";
 
 export interface IntakeApplication extends MetaObject {
   referenceNo: string;
@@ -34,6 +36,10 @@ export interface IntakeApplication extends MetaObject {
   verified: boolean;
   sponsored: boolean;
   selfSponsored: boolean;
+
+  bidType:BidType;
+  bidStatus:BidStatus;
+
   applicant: Applicant;
   intake: Intake;
   nationalityCode: NationalityCode;

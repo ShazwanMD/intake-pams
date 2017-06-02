@@ -44,6 +44,9 @@ public class ApplicationTransformer {
 		vo.setSponsored(e.isSponsored());
 		vo.setSelfSponsored(e.isSelfSponsored());
 
+		vo.setBidType(BidType.get(e.getBidType().ordinal()));
+		vo.setBidStatus(BidStatus.get(e.getBidStatus().ordinal()));
+
 		vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
 		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
 		vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));

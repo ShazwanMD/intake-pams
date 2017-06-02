@@ -19,6 +19,7 @@ export class MyIntakeApplicationPage implements OnInit {
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
     {name: 'intake.referenceNo', label: 'Intake'},
+    {name: 'bidStatus', label: 'Status'},
     {name: 'action', label: ''}
   ];
 

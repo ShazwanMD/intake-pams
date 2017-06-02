@@ -240,7 +240,5 @@ public interface InIntakeApplication extends InMetaObject {
     void setReferees(List<InReferee> referees);
 
     List<InReferee> getReferees();
-
-
 }
 

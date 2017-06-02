@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
@@ -36,7 +35,7 @@ public class WhenIWantToSelectSuitableAppealedApplicants extends Stage<WhenIWant
 
     public WhenIWantToSelectSuitableAppealedApplicants I_want_to_select_suitable_appealed_applicants() {
 
-    	   	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
+    	   	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEALED);
     		for (InIntakeApplication intakeApplication : applications) {
     			intakeApplication.getName();
     			LOG.debug(intakeApplication.getName());
