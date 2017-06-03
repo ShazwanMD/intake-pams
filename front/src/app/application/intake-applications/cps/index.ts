@@ -1,6 +1,6 @@
 import {DiplomaResultListComponent} from '../component/diploma-result-list.component';
 import {DiplomaResultCreatorDialog} from '../component/dialog/diploma-result-creator.dialog';
-import {LanguageCreatorDialog} from '../component/dialog/language-creator.dialog';
+import {LanguageEditorDialog} from '../component/dialog/language-editor.dialog';
 import {ResultTypeSelectComponent} from '../component/result-type-select.component';
 import {BachelorResultListComponent} from '../component/bachelor-result-list.component';
 import {BachelorResultCreatorDialog} from '../component/dialog/bachelor-result-creator.dialog';
@@ -68,7 +68,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
     DiplomaResultCreatorDialog,
-    LanguageCreatorDialog,
+    LanguageEditorDialog,
     AttachmentCreatorDialog,
 
   ],
@@ -95,7 +95,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
     DiplomaResultCreatorDialog,
-    LanguageCreatorDialog,
+    LanguageEditorDialog,
     AttachmentCreatorDialog,
   ],
 })

@@ -4,4 +4,6 @@ export interface Language extends MetaObject {
   languageCode: LanguageCode;
   oral: number,
   written: number,
+
+  selected?:boolean;
 }

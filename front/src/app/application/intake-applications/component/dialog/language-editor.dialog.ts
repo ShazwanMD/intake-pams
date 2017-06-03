@@ -11,17 +11,18 @@ import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
 
 
-
-
 @Component({
-  selector: 'pams-language-creator',
-  templateUrl: './language-creator.dialog.html',
+  selector: 'pams-language-editor',
+  templateUrl: './language-editor.dialog.html',
 })
 
-export class LanguageCreatorDialog implements OnInit {
+export class LanguageEditorDialog implements OnInit {
 
   private _intakeApplication: IntakeApplication;
-  private createForm: FormGroup;
+  private _language: Language;
+  private editForm: FormGroup;
+  private edit: boolean = false;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -29,26 +30,31 @@ export class LanguageCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions,
-              private dialog: MdDialogRef<LanguageCreatorDialog>) {
+              private dialog: MdDialogRef<LanguageEditorDialog>) {
   }
 
+  set language(value: Language) {
+    this._language  = value;
+    this.edit = true;
+  }
 
   set intakeApplication(value: IntakeApplication) {
     this._intakeApplication = value;
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Language>{
+    this.editForm = this.formBuilder.group(<Language>{
       id: null,
       oral: 0,
       written: 0,
       languageCode: <LanguageCode>{},
     });
+    if (this.edit) this.editForm.patchValue(this._language);
   }
 
-  save(language: Language, isValid: boolean) {
-    console.log("language: " + JSON.stringify(language));
-    this.store.dispatch(this.actions.addLanguage(this._intakeApplication, language));
+  submit(language: Language, isValid: boolean) {
+    if (this.edit) this.store.dispatch(this.actions.updateLanguage(this._intakeApplication, language));
+    else  this.store.dispatch(this.actions.addLanguage(this._intakeApplication, language));
     this.dialog.close();
   }
 }

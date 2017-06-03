@@ -1,3 +1,4 @@
+import { LanguageEditorDialog } from './dialog/language-editor.dialog';
 import {Language} from './../language.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
@@ -5,7 +6,7 @@ import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {IntakeApplication} from "../intake-application.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {LanguageCreatorDialog} from "./dialog/language-creator.dialog";
+
 
 @Component({
   selector: 'pams-language-list',
@@ -15,10 +16,12 @@ import {LanguageCreatorDialog} from "./dialog/language-creator.dialog";
 
 export class LanguageListComponent implements OnInit {
 
+  
   @Input() languages: Language[];
   @Input() intakeApplication: IntakeApplication;
 
-  private creatorDialogRef: MdDialogRef<LanguageCreatorDialog>;
+  private selectedRows: Language[];
+  private editorDialogRef: MdDialogRef<LanguageEditorDialog>;
   private columns: any[] = [
     {name: 'languageCode.descriptionMs', label: 'Language'},
     {name: 'oral', label: 'Oral Proficiency'},
@@ -31,22 +34,42 @@ export class LanguageListComponent implements OnInit {
               private dialog: MdDialog) {}
 
   ngOnInit(): void {
+    this.selectedRows = this.languages.filter(value => value.selected);
   }
 
-  showDialog(): void {
-    console.log("showDialog");
+  create(): void {
+     this.showDialog(null);
+  }
+
+  edit(language: Language): void {
+     this.showDialog(language);
+  }
+
+  delete(language:Language): void {
+    this.store.dispatch(this.actions.deleteLanguage(this.intakeApplication, language));
+  }
+
+  filter(): void {
+  }
+
+  selectRow(language: Language): void {
+  }
+
+  selectAllRows(languages: Language[]): void {
+  }
+
+  showDialog(language: Language): void {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(LanguageCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.editorDialogRef = this.dialog.open(LanguageEditorDialog, config);
+    this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    if (language) this.editorDialogRef.componentInstance.language = language;
+    this.editorDialogRef.afterClosed().subscribe(res => {
+        this.selectedRows = [];
     });
   }
-
 }

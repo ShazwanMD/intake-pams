@@ -7,7 +7,7 @@ import {Component, Input, ChangeDetectionStrategy, OnInit, ViewContainerRef} fro
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
-import {RefereeCreatorDialog} from "./dialog/referee-creator.dialog";
+import {RefereeEditorDialog} from "./dialog/referee-editor.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {IntakeApplication} from "../intake-application.interface";
 import { StudyModeOfferingSelectorDialog } from "./dialog/study-mode-offering-selector.dialog";

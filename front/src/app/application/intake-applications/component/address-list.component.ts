@@ -8,8 +8,6 @@ import {IntakeApplication} from "../intake-application.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 
-
-
 @Component({
   selector: 'pams-address-list',
   templateUrl: './address-list.component.html',

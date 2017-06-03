@@ -1,11 +1,11 @@
-<h2 md-dialog-title>Language Creator</h2>
+<h2 md-dialog-title>Language Editor</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <form [formGroup]="editForm">
     <div layout="column" class="pad-right" flex>
       <div layout="row" class="pad-top">
         <pams-language-code-select
           [placeholder]="'LanguageCode'"
-          [innerFormControl]="createForm.controls.languageCode">
+          [innerFormControl]="editForm.controls.languageCode">
         </pams-language-code-select>
       </div>
 
@@ -41,6 +41,8 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+<button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
 </md-dialog-actions>
 
