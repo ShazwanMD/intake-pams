@@ -8,7 +8,7 @@ const initialState: IntakeSupervisorOfferingListState = <SupervisorOffering[]>[]
 
 export function intakeSupervisorOfferingListReducer(state = initialState, action: Action): IntakeSupervisorOfferingListState {
   switch (action.type) {
-    case IntakeApplicationActions.FIND_STUDY_MODE_OFFERINGS_BY_INTAKE_SUCCESS: {
+    case IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_INTAKE_SUCCESS: {
       return action.payload;
     }
     default: {
