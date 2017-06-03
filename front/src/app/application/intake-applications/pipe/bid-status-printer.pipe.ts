@@ -6,8 +6,9 @@ import {BidStatus} from "../bid-status.enum";
   name: 'bidStatusPrinter'
 })
 export class BidStatusPrinter implements PipeTransform {
-  transform(val) {
-    switch (BidStatus[val.toString()]) {
+
+  transform(val:BidStatus) {
+    switch (val) {
       case BidStatus.DRAFTED:
         return "Drafted";
       case BidStatus.SUBMITTED:
