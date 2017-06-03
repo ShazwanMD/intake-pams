@@ -185,7 +185,16 @@
                 [diplomaResults]="diplomaResults$ | async"></pams-diploma-result-list>
             </td-expansion-panel>
 
-            <td-expansion-panel label="Financial Support">
+         
+          </md-card>
+        </md-tab>
+
+        
+
+        <md-tab>
+          <template md-tab-label>Documents</template>
+
+   <td-expansion-panel label="Financial Support">
               <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
                 <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
                   <md-checkbox formControlName="sponsored">
@@ -211,15 +220,13 @@
                 [referees]="referees$ | async">
               </pams-referee-list>
             </td-expansion-panel>
-          </md-card>
-        </md-tab>
 
-        <md-tab>
-          <template md-tab-label>Attachments</template>
+          <td-expansion-panel label="Attachments">
           <pams-attachment-list
             [intakeApplication]="intakeApplication$ | async"
             [attachments]="attachments$ | async">
           </pams-attachment-list>
+          </td-expansion-panel>
         </md-tab>
 
         <md-tab>
