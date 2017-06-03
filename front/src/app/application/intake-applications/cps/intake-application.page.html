@@ -82,6 +82,13 @@
                     </pams-marital-code-select>
                   </div>
 
+                   <div layout="row" class="pad-top">
+                    <pams-disability-code-select
+                      [placeholder]="'Disability'"
+                      [innerFormControl]="applicationForm.controls.disabilityCode">
+                    </pams-disability-code-select>
+                  </div>
+
                 </div>
 
                 <!-- second column -->
@@ -102,6 +109,13 @@
                     <md-input-container flex>
                       <input mdInput placeholder="Fax No" formControlName="fax" flex/>
                     </md-input-container>
+                  </div>
+
+                  <div layout="row" class="pad-top">
+                    <pams-ethnicity-code-select
+                      [placeholder]="'Ethnicity'"
+                      [innerFormControl]="applicationForm.controls.ethnicityCode">
+                    </pams-ethnicity-code-select>
                   </div>
 
                   <div layout="row" class="pad-top">

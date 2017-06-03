@@ -1,3 +1,5 @@
+import { EthnicityCode } from './../../../common/ethnicity-codes/ethnicity-code.interface';
+import { DisabilityCode } from './../../../common/disability-codes/disability-code.interface';
 import { DiplomaResult } from './../diploma-result-interface';
 import { BachelorResult } from './../bachelor-result-interface';
 import { SpmResult } from './../spm-result.interface';
@@ -18,6 +20,7 @@ import { GenderCode } from "../../../common/gender-codes/gender-code.interface";
 import { MaritalCode } from "../../../common/marital-codes/marital-code.interface";
 import { RaceCode } from "../../../common/race-codes/race-code.interface";
 import { ReligionCode } from "../../../common/religion-codes/religion-code.interface";
+
 
 
 
@@ -90,6 +93,8 @@ export class MgsebIntakeApplicationPage implements OnInit {
       genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},
       raceCode: <RaceCode>{},
+      disabilityCode: <DisabilityCode>{},
+      ethnicityCode: <EthnicityCode>{},
       religionCode: <ReligionCode>{},
       nationalityCode: <NationalityCode>{},
       verified: false,

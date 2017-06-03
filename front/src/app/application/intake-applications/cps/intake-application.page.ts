@@ -18,6 +18,8 @@ import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 import {Language} from "../language.interface";
 import {NationalityCode} from "../../../common/nationality-codes/nationality-code.interface";
+import { DisabilityCode } from "../../../common/disability-codes/disability-code.interface";
+import { EthnicityCode } from "../../../common/ethnicity-codes/ethnicity-code.interface";
 
 
 @Component({
@@ -90,6 +92,8 @@ export class CpsIntakeApplicationPage implements OnInit {
 
       genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},
+      disabilityCode: <DisabilityCode>{},
+      ethnicityCode: <EthnicityCode>{},
       raceCode: <RaceCode>{},
       religionCode: <ReligionCode>{},
       nationalityCode: <NationalityCode>{},

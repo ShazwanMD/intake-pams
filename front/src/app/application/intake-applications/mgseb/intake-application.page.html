@@ -78,6 +78,20 @@
                  </pams-religion-code-select>
                  </div>
 
+                 <div layout="row" class="pad-top">
+                 <pams-disability-code-select
+                 [placeholder]="'Disability'"
+                 [innerFormControl]="applicationForm.controls.disabilityCode">
+                 </pams-disability-code-select>
+                 </div>
+
+                  <div layout="row" class="pad-top">
+                  <pams-ethnicity-code-select
+                  [placeholder]="'Ethnicity'"
+                  [innerFormControl]="applicationForm.controls.ethnicityCode">
+                  </pams-ethnicity-code-select>
+                  </div>                
+
                 <div layout="row" class="pad-top">
                  <pams-race-code-select
                  [placeholder]="'Race'"

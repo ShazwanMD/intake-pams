@@ -1,3 +1,5 @@
+import { EthnicityCode } from './../../common/ethnicity-codes/ethnicity-code.interface';
+import { DisabilityCode } from './../../common/disability-codes/disability-code.interface';
 import { NationalityCode } from './../../common/nationality-codes/nationality-code.interface';
 import { MaritalCode } from './../../common/marital-codes/marital-code.interface';
 import { RaceCode } from './../../common/race-codes/race-code.interface';
@@ -45,6 +47,8 @@ export interface IntakeApplication extends MetaObject {
   nationalityCode: NationalityCode;
   maritalCode: MaritalCode;
   studyCenterCode: StudyCenterCode;
+  disabilityCode: DisabilityCode;
+  ethnicityCode: EthnicityCode;
   religionCode : ReligionCode;
   genderCode : GenderCode;
   raceCode : RaceCode;
