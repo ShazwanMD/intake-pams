@@ -1,3 +1,5 @@
+import { SupervisorOfferingSelectorDialog } from './../component/dialog/supervisor-offering-selector.dialog';
+import { SupervisorCodeSelectComponent } from './../../../common/supervisor-codes/component/supervisor-code-select.component';
 import { CpsIntakeApplicationSubModule } from './../cps/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -40,6 +42,7 @@ import { StudyCenterChoiceComponent } from "../component/study-center-choice.com
 
     //dialogs
     StudyModeOfferingSelectorDialog,
+    SupervisorOfferingSelectorDialog,
 
   ],
   exports: [
@@ -50,6 +53,7 @@ import { StudyCenterChoiceComponent } from "../component/study-center-choice.com
     EmploymentListComponent,
     ProgramOfferingSelectComponent,
     StudyModeOfferingSelectorDialog,
+    SupervisorOfferingSelectorDialog,
     
   
   
