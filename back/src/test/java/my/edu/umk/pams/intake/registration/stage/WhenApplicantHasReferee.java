@@ -60,7 +60,7 @@ public class WhenApplicantHasReferee extends Stage<WhenApplicantHasReferee>{
 		 referee.setOccupation("Lecturer");
 		 referee.setOfficeAddrs("UMK Pengkalan Chepa, Kota Bharu");
 		 referee.setPhoneNo("0123433303");
-		 referee.setType(InRefereeType.NONACADEMICIAN);
+		 referee.setType(InRefereeType.NON_ACADEMICIAN);
 		 applicationService.addReferee(application, referee);
 		
 		 Assert.notNull(referee, "referee cannot be null");
