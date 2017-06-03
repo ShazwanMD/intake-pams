@@ -318,7 +318,7 @@ export class IntakeApplicationEffects {
   @Effect() deleteLanguage$ = this.actions$
    .ofType(IntakeApplicationActions.DELETE_LANGUAGE)
    .map(action => action.payload)
-   .switchMap(payload => this.applicationService.deleteLanguage(payload.application, payload.referee))
+   .switchMap(payload => this.applicationService.deleteLanguage(payload.application, payload.language))
    .map(message => this.intakeApplicationActions.deleteLanguageSucces(message))
    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
    .map(state => state[1])

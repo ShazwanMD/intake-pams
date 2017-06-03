@@ -347,7 +347,7 @@ public class ApplicationController {
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/language/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/languages/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteLanguage(@PathVariable String referenceNo, @PathVariable Long id) {
         dummyLogin();
 
