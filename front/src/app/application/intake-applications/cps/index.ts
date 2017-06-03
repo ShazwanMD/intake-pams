@@ -9,7 +9,7 @@ import {SpmResultListComponent} from '../component/spm-result-list.component';
 import {AddressTypeSelectComponent} from '../component/address-type-select.component';
 import {AddressEditorDialog} from '../component/dialog/address-editor.dialog';
 import {AddressListComponent} from '../component/address-list.component';
-import {RefereeCreatorDialog} from '../component/dialog/referee-creator.dialog';
+import {RefereeEditorDialog} from '../component/dialog/referee-editor.dialog';
 import {RefereeListComponent} from '../component/referee-list.component';
 import {EmploymentEditorDialog} from '../component/dialog/employment-editor.dialog';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -63,7 +63,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
 
     //dialogs
     EmploymentEditorDialog,
-    RefereeCreatorDialog,
+    RefereeEditorDialog,
     AddressEditorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
@@ -90,7 +90,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
 
   entryComponents: [
     EmploymentEditorDialog,
-    RefereeCreatorDialog,
+    RefereeEditorDialog,
     AddressEditorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,

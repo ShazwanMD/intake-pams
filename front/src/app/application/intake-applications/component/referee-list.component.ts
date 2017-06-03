@@ -1,5 +1,5 @@
 import { Referee } from './../referee.interface';
-import { RefereeCreatorDialog } from './dialog/referee-creator.dialog';
+import { RefereeEditorDialog } from './dialog/referee-editor.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
@@ -18,11 +18,12 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 export class RefereeListComponent implements OnInit {
 
+  
   @Input() referees: Referee[];
   @Input() intakeApplication: IntakeApplication;
 
   private selectedRows: Referee[];
-  private creatorDialogRef: MdDialogRef<RefereeCreatorDialog>;
+  private editorDialogRef: MdDialogRef<RefereeEditorDialog>;
   private columns: any[] = [
     {name: 'name', label: 'Name'},
     {name: 'officeAddrs', label: 'OfficeAddrs'},
@@ -39,8 +40,12 @@ export class RefereeListComponent implements OnInit {
     this.selectedRows = this.referees.filter(value => value.selected);
   }
 
-  edit(referees:Referee){
-    // todo: use editor instead of creator
+  create(): void {
+     this.showDialog(null);
+  }
+
+  edit(referee: Referee): void {
+     this.showDialog(referee);
   }
 
   delete(referee:Referee): void {
@@ -56,20 +61,18 @@ export class RefereeListComponent implements OnInit {
   selectAllRows(referees: Referee[]): void {
   }
 
-  createDialog(): void {
-    console.log("showDialog");
+  showDialog(referee: Referee): void {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(RefereeCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.editorDialogRef = this.dialog.open(RefereeEditorDialog, config);
+    this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    if (referee) this.editorDialogRef.componentInstance.referee = referee;
+    this.editorDialogRef.afterClosed().subscribe(res => {
+        this.selectedRows = [];
     });
   }
-
 }
