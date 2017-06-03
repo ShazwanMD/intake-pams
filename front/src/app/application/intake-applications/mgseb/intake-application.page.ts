@@ -75,6 +75,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.applicationForm = this.formBuilder.group(<IntakeApplication>{
       id: null,
       referenceNo: '',
+      researchTitle: '',
       rank: 0,
       merit: 0,
       name: '',

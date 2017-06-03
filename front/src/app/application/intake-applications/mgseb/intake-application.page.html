@@ -19,8 +19,14 @@
           <pams-study-center-choice
             [intakeApplication]="intakeApplication$ | async">
           </pams-study-center-choice>
-
         </md-tab>
+
+          <div flex class="pad inset" flex>
+            <p class="md-title tc-grey-600">Your research title</p>
+            <md-input-container flex>
+              <input mdInput placeholder="Research Title" formControlName="researchTitle" flex/>
+            </md-input-container>
+          </div>
 
         <md-tab>
           <md-card>
