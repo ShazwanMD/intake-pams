@@ -189,6 +189,13 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     
     @Override
+    public void updateEmployment(InIntakeApplication application, InEmployment employment) {
+        intakeApplicationDao.updateEmployment(application, employment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    
+    @Override
     public void deleteReferee(InIntakeApplication application, InReferee referee) {
         intakeApplicationDao.deleteReferee(application, referee, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();

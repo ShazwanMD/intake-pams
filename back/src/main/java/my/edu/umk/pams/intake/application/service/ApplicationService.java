@@ -36,6 +36,8 @@ public interface ApplicationService {
     void addEducation(InIntakeApplication application, InEducation education);
 
     void addEmployment(InIntakeApplication application, InEmployment employment);
+    
+    void updateEmployment(InIntakeApplication application, InEmployment employment);
 
     void addLanguage(InIntakeApplication application, InLanguage language);
 

@@ -280,6 +280,23 @@ public class ApplicationController {
         applicationService.deleteEmployment(application, employment);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/employments/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Boolean> updateEmployment(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Employment vo) {
+        dummyLogin();
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InEmployment employment = (InEmployment) applicationService.findEmploymentById(id);
+        employment.setEmployer(vo.getEmployer());
+        employment.setDesignation(vo.getDesignation());
+        employment.setStartDate(vo.getStartDate());
+        employment.setEndDate(vo.getEndDate());
+        // employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
+        // employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
+        // employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
+        employment.setCurrent(false);
+        applicationService.updateEmployment(application, employment);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // LANGUAGES
