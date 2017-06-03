@@ -149,7 +149,7 @@ export class ApplicationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments' + employment.id, JSON.stringify(employment), options)
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments/' + employment.id, JSON.stringify(employment), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -211,7 +211,7 @@ export class ApplicationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees' + referee.id, JSON.stringify(referee), options)
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees/' + referee.id, JSON.stringify(referee), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -314,6 +314,25 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+   updateAddress(application: IntakeApplication, address: Address): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id, JSON.stringify(address), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateLanguage(application: IntakeApplication, language: Language): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages/' + language.id, JSON.stringify(language), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
 
 }

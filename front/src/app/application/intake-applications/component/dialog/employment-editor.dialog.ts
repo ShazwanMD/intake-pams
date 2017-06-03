@@ -20,6 +20,7 @@ export class EmploymentEditorDialog implements OnInit {
   private _intakeApplication: IntakeApplication;
   private _employment: Employment;
   private editForm: FormGroup;
+  private edit: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -31,12 +32,13 @@ export class EmploymentEditorDialog implements OnInit {
   }
 
 
-  set intakeApplication(value: IntakeApplication) {
-    this._intakeApplication = value;
+  set employment(value: Employment) {
+    this._employment  = value;
+    this.edit = true;
   }
 
-  set employment(value: Employment) {
-  this._employment = value;
+    set intakeApplication(value: IntakeApplication) {
+    this._intakeApplication = value;
   }
 
   ngOnInit(): void {
@@ -46,13 +48,15 @@ export class EmploymentEditorDialog implements OnInit {
       endDate: null,
       employer: '',
       designation: '',
-      current: false
+      current: false,
     });
+    if (this.edit) this.editForm.patchValue(this._employment);
   }
 
-  save(employment: Employment, isValid: boolean) {
-      if (!employment.id) this.store.dispatch(this.actions.addEmployment(this._intakeApplication, employment));
-      else  this.store.dispatch(this.actions.updateEmployment(this._intakeApplication, employment));
-      this.dialog.close();
+  submit(employment: Employment, isValid: boolean) {
+    if (this.edit) this.store.dispatch(this.actions.updateEmployment(this._intakeApplication, employment));
+    else  this.store.dispatch(this.actions.addEmployment(this._intakeApplication, employment));
+    this.dialog.close();
   }
 }
+

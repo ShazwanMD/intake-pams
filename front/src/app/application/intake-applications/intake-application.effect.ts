@@ -301,7 +301,7 @@ export class IntakeApplicationEffects {
  @Effect() updateReferee$ = this.actions$
     .ofType(IntakeApplicationActions.UPDATE_REFEREE)
     .map(action => action.payload)
-    .switchMap(payload => this.applicationService.deleteReferee(payload.application, payload.referee))
+    .switchMap(payload => this.applicationService.updateReferee(payload.application, payload.referee))
     .map(message => this.intakeApplicationActions.updateRefereeSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
@@ -310,10 +310,27 @@ export class IntakeApplicationEffects {
 @Effect() updateEmployment$ = this.actions$
     .ofType(IntakeApplicationActions.UPDATE_EMPLOYMENT)
     .map(action => action.payload)
-    .switchMap(payload => this.applicationService.deleteEmployment(payload.application, payload.employment))
+    .switchMap(payload => this.applicationService.updateEmployment(payload.application, payload.employment))
     .map(message => this.intakeApplicationActions.updateEmploymentSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
+@Effect() updateLanguage$ = this.actions$
+    .ofType(IntakeApplicationActions.UPDATE_LANGUAGE)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.updateLanguage(payload.application, payload.language))
+    .map(message => this.intakeApplicationActions.updateLanguageSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+@Effect() updateAddress$ = this.actions$
+    .ofType(IntakeApplicationActions.UPDATE_ADDRESS)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.updateAddress(payload.application, payload.address))
+    .map(message => this.intakeApplicationActions.updateAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 }

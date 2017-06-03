@@ -68,7 +68,7 @@ export class EmploymentListComponent implements OnInit {
     config.position = {top: '65px'};
     this.editorDialogRef = this.dialog.open(EmploymentEditorDialog, config);
     this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    this.editorDialogRef.componentInstance.employment = employment;
+    if (employment) this.editorDialogRef.componentInstance.employment = employment;
     this.editorDialogRef.afterClosed().subscribe(res => {
         this.selectedRows = [];
     });

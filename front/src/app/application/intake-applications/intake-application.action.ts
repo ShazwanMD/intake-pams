@@ -773,5 +773,41 @@ export class IntakeApplicationActions {
     };
   }
 
+  static UPDATE_LANGUAGE = '[Intake Application] Update Language Application';
+
+  updateLanguage(application, language): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_LANGUAGE,
+      payload: {application: application, language: language}
+    };
+  }
+
+  static UPDATE_LANGUAGE_SUCCESS = '[Intake Application] Update Language Success';
+
+  updateLanguageSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_LANGUAGE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_ADDRESS = '[Intake Application] Update Address Application';
+
+  updateAddress(application, address): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_ADDRESS,
+      payload: {application: application, address: address}
+    };
+  }
+
+  static UPDATE_ADDRESS_SUCCESS = '[Intake Application] Update Address Success';
+
+  updateAddressSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_ADDRESS_SUCCESS,
+      payload: message
+    };
+  }
+
 
 }
