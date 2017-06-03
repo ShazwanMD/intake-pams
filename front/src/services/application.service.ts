@@ -143,6 +143,16 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+ updateEmplpoyment(application: IntakeApplication, employment: Employment): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments' + employment.id, JSON.stringify(employment), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   findLanguagesByIntakeApplication(application: IntakeApplication): Observable<Language[]> {
     console.log("findLanguages");
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/languages")
