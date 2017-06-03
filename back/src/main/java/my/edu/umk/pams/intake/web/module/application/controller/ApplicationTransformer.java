@@ -50,6 +50,7 @@ public class ApplicationTransformer {
 		vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
 		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
 		vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));
+		vo.setSupervisorSelection(policyTransformer.toSupervisorOfferingVo(e.getSupervisorSelection()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}
