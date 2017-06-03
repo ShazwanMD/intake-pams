@@ -226,6 +226,11 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  deleteLanguage(application: IntakeApplication, language: Language): Observable<String> {
+    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages/' + language.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }  
+
   addSpmResult(application: IntakeApplication, spmResult: SpmResult): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',

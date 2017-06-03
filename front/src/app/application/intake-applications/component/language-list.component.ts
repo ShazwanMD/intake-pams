@@ -45,7 +45,7 @@ export class LanguageListComponent implements OnInit {
      this.showDialog(language);
   }
 
-  delete(language:Language): void {
+  delete(language: Language): void {
     this.store.dispatch(this.actions.deleteLanguage(this.intakeApplication, language));
   }
 
