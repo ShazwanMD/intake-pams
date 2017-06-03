@@ -1,3 +1,4 @@
+import { SupervisorOfferingSelectorDialog } from './dialog/supervisor-offering-selector.dialog';
 import {Referee} from './../referee.interface';
 import {Component, Input, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
@@ -22,6 +23,7 @@ export class ProgramChoiceComponent implements OnInit {
 
   private programSelectorDialogRef: MdDialogRef<ProgramOfferingSelectorDialog>;
   private studyModeSelectorDialogRef: MdDialogRef<StudyModeOfferingSelectorDialog>;
+  private supervisorSelectorDialogRef: MdDialogRef<SupervisorOfferingSelectorDialog>;
 
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
@@ -65,4 +67,22 @@ export class ProgramChoiceComponent implements OnInit {
       // load something here
     });
   }
+
+  showSupervisorSelectionDialog(): void {
+    console.log("showDialog");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '100%';
+    config.position = {top: '0px'};
+    this.supervisorSelectorDialogRef = this.dialog.open(SupervisorOfferingSelectorDialog, config);
+    this.supervisorSelectorDialogRef.componentInstance.intake = this.intakeApplication.intake;
+    this.supervisorSelectorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.supervisorSelectorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
+
 }
