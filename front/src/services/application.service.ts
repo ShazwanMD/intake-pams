@@ -16,6 +16,7 @@ import {SpmResult} from './../app/application/intake-applications/spm-result.int
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 import {Language} from "../app/application/intake-applications/language.interface";
 import {Attachment} from "../app/application/intake-applications/attachment.interface";
+import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.interface";
 
 
 @Injectable()
@@ -50,6 +51,11 @@ export class ApplicationService {
   findProgramOfferingsByIntake(intake: Intake): Observable<ProgramOffering[]> {
     return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/programOfferings')
       .map((res: Response) => <ProgramOffering[]>res.json());
+  }
+
+  findSupervisorOfferingsByIntake(intake: Intake): Observable<SupervisorOffering[]> {
+    return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/supervisorOfferings')
+      .map((res: Response) => <SupervisorOffering[]>res.json());
   }
 
   findStudyModeOfferingsByIntake(intake: Intake): Observable<StudyModeOffering[]> {
@@ -269,6 +275,16 @@ export class ApplicationService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/programOfferingSelection', JSON.stringify(offering), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  selectSupervisorOffering(application, offering):Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/supervisorOfferingSelection', JSON.stringify(offering), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

@@ -132,6 +132,17 @@ public class ApplicationController {
                 HttpStatus.OK);
     }
 
+
+    @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        List<InSupervisorOffering> supervisorOfferings = policyService.findSupervisorOfferings(intake);
+        return new ResponseEntity<List<SupervisorOffering>>(policyTransformer.toSupervisorOfferingVos(supervisorOfferings),
+                HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<StudyModeOffering>> findStudyModeOfferings(@PathVariable String referenceNo) {
         dummyLogin();

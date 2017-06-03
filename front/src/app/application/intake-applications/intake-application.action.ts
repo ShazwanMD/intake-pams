@@ -88,6 +88,27 @@ export class IntakeApplicationActions {
   }
 
 
+  static FIND_SUPERVISOR_OFFERINGS_BY_INTAKE = '[Intake] Find Supervisor Offerings By Intake';
+
+  findSupervisorOfferingsByIntake(intake): Action {
+    console.log("findSupervisorOfferingsByIntake");
+    return {
+      type: IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_INTAKE,
+      payload: intake
+    };
+  }
+
+  static FIND_SUPERVISOR_OFFERINGS_BY_INTAKE_SUCCESS = '[Intake] Find Supervisor Offerings By Intake Success';
+
+  findSupervisorOfferingsByIntakeSuccess(offerings): Action {
+    console.log("findSupervisorOfferingsByIntakeSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_INTAKE_SUCCESS,
+      payload: offerings
+    };
+  }
+
+
   static FIND_STUDY_MODE_OFFERINGS_BY_INTAKE = '[Intake] Find StudyMode Offerings By Intake';
 
   findStudyModeOfferingsByIntake(intake): Action {
@@ -422,7 +443,7 @@ export class IntakeApplicationActions {
     };
   }
 
-   static UPDATE_EMPLOYMENT = '[Intake Application] Update Employment Application';
+  static UPDATE_EMPLOYMENT = '[Intake Application] Update Employment Application';
 
   updateEmployment(application, employment): Action {
     return {
@@ -537,7 +558,7 @@ export class IntakeApplicationActions {
     };
   }
 
- static UPDATE_REFEREE = '[Intake Application] Update Referee Application';
+  static UPDATE_REFEREE = '[Intake Application] Update Referee Application';
 
   updateReferee(application, referee): Action {
     return {
@@ -663,7 +684,26 @@ export class IntakeApplicationActions {
     };
   }
 
-   static SELECT_STUDY_MODE_OFFERING = '[Intake Application] Select Study Mode Offering';
+  static SELECT_SUPERVISOR_OFFERING = '[Intake Application] Select Supervisor Offering';
+
+  selectSupervisorOffering(application, offering) {
+    return {
+      type: IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING,
+      payload: {application: application, offering: offering}
+    };
+  }
+
+  static SELECT_SUPERVISOR_OFFERING_SUCCESS = '[Intake Application] Select Supervisor Offering Success';
+
+  selectSupervisorOfferingSuccess(message) {
+    return {
+      type: IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING_SUCCESS,
+      payload: message
+    };
+  }
+
+
+  static SELECT_STUDY_MODE_OFFERING = '[Intake Application] Select Study Mode Offering';
 
   selectStudyModeOffering(application, offering) {
     return {
@@ -700,7 +740,7 @@ export class IntakeApplicationActions {
     };
   }
 
- static ADD_BACHELOR_RESULT = '[Intake Application] Add Bachelor Result';
+  static ADD_BACHELOR_RESULT = '[Intake Application] Add Bachelor Result';
 
   addBachelorResult(application, bachelorResult) {
     return {
@@ -736,7 +776,7 @@ export class IntakeApplicationActions {
     };
   }
 
-   static FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Diploma Results';
+  static FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Diploma Results';
 
   findDiplomaResultsByIntakeApplication(application): Action {
     return {
@@ -755,7 +795,7 @@ export class IntakeApplicationActions {
     };
   }
 
-   static ADD_DIPLOMA_RESULT = '[Intake Application] Add Diploma Result';
+  static ADD_DIPLOMA_RESULT = '[Intake Application] Add Diploma Result';
 
   addDiplomaResult(application, diplomaResult) {
     return {

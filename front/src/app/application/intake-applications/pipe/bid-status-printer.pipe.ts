@@ -12,7 +12,7 @@ export class BidStatusPrinter implements PipeTransform {
       case BidStatus.DRAFTED:
         return "Drafted";
       case BidStatus.SUBMITTED:
-        return "Drafted";
+        return "Submitted";
     }
   }
 }

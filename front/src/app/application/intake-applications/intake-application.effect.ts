@@ -48,7 +48,8 @@ export class IntakeApplicationEffects {
     .map(intake => this.intakeApplicationActions.findIntakeByReferenceNoSuccess(intake))
     .mergeMap(action => from([action,
       this.intakeApplicationActions.findProgramOfferingsByIntake(action.payload),
-      this.intakeApplicationActions.findStudyModeOfferingsByIntake(action.payload)
+      this.intakeApplicationActions.findStudyModeOfferingsByIntake(action.payload),
+      this.intakeApplicationActions.findSupervisorOfferingsByIntake(action.payload)
     ]));
 
   @Effect() findProgramOfferingsByIntake$ = this.actions$
@@ -56,6 +57,13 @@ export class IntakeApplicationEffects {
     .map(action => action.payload)
     .switchMap(intake => this.applicationService.findProgramOfferingsByIntake(intake))
     .map(offerings => this.intakeApplicationActions.findProgramOfferingsByIntakeSuccess(offerings));
+
+
+  @Effect() findSupervisorOfferingsByIntake$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_INTAKE)
+    .map(action => action.payload)
+    .switchMap(intake => this.applicationService.findSupervisorOfferingsByIntake(intake))
+    .map(offerings => this.intakeApplicationActions.findSupervisorOfferingsByIntakeSuccess(offerings));
 
 
   @Effect() findStudyModeOfferingsByIntake$ = this.actions$
@@ -228,6 +236,15 @@ export class IntakeApplicationEffects {
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.selectProgramOffering(payload.application, payload.offering))
     .map(message => this.intakeApplicationActions.selectProgramOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() selectSupervisorOffering = this.actions$
+    .ofType(IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.selectSupervisorOffering(payload.application, payload.offering))
+    .map(message => this.intakeApplicationActions.selectSupervisorOfferingSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
