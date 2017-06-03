@@ -157,6 +157,12 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.addAddress(application, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+    public void updateAddress(InIntakeApplication application, InAddress address) {
+        intakeApplicationDao.updateAddress(application, address, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
     @Override
     public void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
@@ -179,6 +185,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void deleteLanguage(InIntakeApplication application, InLanguage language) {
         intakeApplicationDao.deleteLanguage(application, language, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    @Override
+    public void updateLanguage(InIntakeApplication application, InLanguage language) {
+        intakeApplicationDao.updateLanguage(application, language, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
     

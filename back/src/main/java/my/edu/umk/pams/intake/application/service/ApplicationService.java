@@ -38,6 +38,10 @@ public interface ApplicationService {
     void addEmployment(InIntakeApplication application, InEmployment employment);
     
     void updateEmployment(InIntakeApplication application, InEmployment employment);
+    
+    void updateAddress(InIntakeApplication application, InAddress address);
+    
+    void updateLanguage(InIntakeApplication application, InLanguage language);
 
     void addLanguage(InIntakeApplication application, InLanguage language);
 

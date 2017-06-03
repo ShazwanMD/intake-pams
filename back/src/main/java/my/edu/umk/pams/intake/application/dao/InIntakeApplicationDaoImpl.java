@@ -939,6 +939,26 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.update(employment);
     }
+    
+    @Override
+    public void updateAddress(InIntakeApplication application, InAddress address, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(address, "Address cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.update(address);
+    }
+    
+    @Override
+    public void updateLanguage(InIntakeApplication application, InLanguage language, InUser user) {
+        Validate.notNull(application, "Application cannot be null");
+        Validate.notNull(language, "Language cannot be null");
+        Validate.notNull(user, "User cannot be null");
+
+        Session session = sessionFactory.getCurrentSession();
+        session.update(language);
+    }
 
     @Override
     public void deleteReferee(InIntakeApplication application, InReferee referee, InUser user) {

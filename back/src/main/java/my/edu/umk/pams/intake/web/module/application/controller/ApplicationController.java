@@ -322,6 +322,19 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/languages/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Boolean> updateLanguage(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Language vo) {
+        dummyLogin();
+        
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InLanguage language = (InLanguage) applicationService.findLanguageById(id);
+        language.setOral(vo.getOral());
+        language.setWritten(vo.getWritten());
+        language.setLanguageCode(commonService.findLanguageCodeById(vo.getLanguageCode().getId()));
+        applicationService.updateLanguage(application, language);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/language/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteLanguage(@PathVariable String referenceNo, @PathVariable Long id) {
@@ -513,6 +526,23 @@ public class ApplicationController {
         applicationService.addAddress(application, address);
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Boolean> updateAddress(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Address vo) {
+        dummyLogin();
+        
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InAddress address = (InAddress) applicationService.findAddressById(id);
+        address.setAddress1(vo.getAddress1());
+        address.setAddress2(vo.getAddress2());
+        address.setAddress3(vo.getAddress3());
+        address.setPostCode(vo.getPostcode());
+        address.setType(InAddressType.get(vo.getAddressType().ordinal()));
+        address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
+        address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
+        applicationService.updateAddress(application, address);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses/{id}", method = RequestMethod.DELETE)
