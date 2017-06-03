@@ -1,3 +1,4 @@
+import { SupervisorOffering } from './../policy/intakes/supervisor-offering.interface';
 import { DiplomaResult } from './intake-applications/diploma-result-interface';
 import {BachelorResult} from './intake-applications/bachelor-result-interface';
 import {SpmResult} from './intake-applications/spm-result.interface';
@@ -85,7 +86,7 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   bachelorResults: <BachelorResult[]>[],
   diplomaResults: <DiplomaResult[]>[],
   programOfferings: <ProgramOffering[]>[],
-  supervisorOfferings: [],
+  supervisorOfferings: <SupervisorOffering[]>[],
   studyModeOfferings: <StudyModeOffering[]>[],
   intakeApplications: [],
   intakeApplication: <IntakeApplication>{},
