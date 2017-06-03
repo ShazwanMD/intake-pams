@@ -143,7 +143,7 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
- updateEmplpoyment(application: IntakeApplication, employment: Employment): Observable<String> {
+ updateEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
