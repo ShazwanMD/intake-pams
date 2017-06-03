@@ -1,4 +1,4 @@
-import { AddressCreatorDialog } from './dialog/address-creator.dialog';
+import { AddressEditorDialog } from './dialog/address-editor.dialog';
 import { Address } from './../address.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
@@ -22,7 +22,7 @@ export class AddressListComponent implements OnInit {
   @Input() intakeApplication: IntakeApplication;
 
   private selectedRows: Address[];
-  private creatorDialogRef: MdDialogRef<AddressCreatorDialog>;
+  private editorDialogRef: MdDialogRef<AddressEditorDialog>;
   private columns: any[] = [
     {name: 'address1', label: 'Address1'},
     {name: 'address2', label: 'Address2'},
@@ -42,8 +42,12 @@ export class AddressListComponent implements OnInit {
     this.selectedRows = this.addresses.filter(value => value.selected);
   }
 
-  edit(addresses:Address){
-    // todo: use editor instead of creator
+  create(): void {
+     this.showDialog(null);
+  }
+
+  edit(address: Address): void {
+     this.showDialog(address);
   }
 
   delete(address:Address): void {
@@ -59,20 +63,18 @@ export class AddressListComponent implements OnInit {
   selectAllRows(addresses: Address[]): void {
   }
 
-  createDialog(): void {
-    console.log("showDialog");
+  showDialog(address: Address): void {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(AddressCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.editorDialogRef = this.dialog.open(AddressEditorDialog, config);
+    this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    if (address) this.editorDialogRef.componentInstance.address = address;
+    this.editorDialogRef.afterClosed().subscribe(res => {
+        this.selectedRows = [];
     });
   }
-
 }

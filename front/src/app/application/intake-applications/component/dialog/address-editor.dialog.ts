@@ -15,14 +15,16 @@ import { AddressType } from "../../address-type.enum";
 
 
 @Component({
-  selector: 'pams-address-creator',
-  templateUrl: './address-creator.dialog.html',
+  selector: 'pams-address-editor',
+  templateUrl: './address-editor.dialog.html',
 })
 
-export class AddressCreatorDialog implements OnInit {
+export class AddressEditorDialog implements OnInit {
 
   private _intakeApplication: IntakeApplication;
-  private createForm: FormGroup;
+  private editForm: FormGroup;
+  private _address: Address;
+    private edit: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -30,7 +32,7 @@ export class AddressCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions,
-              private dialog: MdDialogRef<AddressCreatorDialog>) {
+              private dialog: MdDialogRef<AddressEditorDialog>) {
   }
 
 
@@ -38,8 +40,14 @@ export class AddressCreatorDialog implements OnInit {
     this._intakeApplication = value;
   }
 
+   set address(value: Address) {
+    this._address  = value;
+    this.edit = true;
+  }
+
+
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Address>{
+    this.editForm = this.formBuilder.group(<Address>{
       id: null,
       address1: '',
       address2: '',
@@ -49,10 +57,12 @@ export class AddressCreatorDialog implements OnInit {
       countryCode: <CountryCode>{},
       addressType: AddressType.MAILING,
     });
+    if (this.edit) this.editForm.patchValue(this._address);
   }
 
-  save(address: Address, isValid: boolean) {
-    this.store.dispatch(this.actions.addAddress(this._intakeApplication, address));
+  submit(address: Address, isValid: boolean) {
+    if (this.edit) this.store.dispatch(this.actions.updateAddress(this._intakeApplication, address));
+    else  this.store.dispatch(this.actions.addAddress(this._intakeApplication, address));
     this.dialog.close();
   }
 }

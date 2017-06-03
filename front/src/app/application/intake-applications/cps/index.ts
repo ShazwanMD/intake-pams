@@ -7,7 +7,7 @@ import {BachelorResultCreatorDialog} from '../component/dialog/bachelor-result-c
 import {SpmResultCreatorDialog} from '../component/dialog/spm-result-creator.dialog';
 import {SpmResultListComponent} from '../component/spm-result-list.component';
 import {AddressTypeSelectComponent} from '../component/address-type-select.component';
-import {AddressCreatorDialog} from '../component/dialog/address-creator.dialog';
+import {AddressEditorDialog} from '../component/dialog/address-editor.dialog';
 import {AddressListComponent} from '../component/address-list.component';
 import {RefereeCreatorDialog} from '../component/dialog/referee-creator.dialog';
 import {RefereeListComponent} from '../component/referee-list.component';
@@ -64,7 +64,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     //dialogs
     EmploymentEditorDialog,
     RefereeCreatorDialog,
-    AddressCreatorDialog,
+    AddressEditorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
     DiplomaResultCreatorDialog,
@@ -91,7 +91,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
   entryComponents: [
     EmploymentEditorDialog,
     RefereeCreatorDialog,
-    AddressCreatorDialog,
+    AddressEditorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
     DiplomaResultCreatorDialog,
