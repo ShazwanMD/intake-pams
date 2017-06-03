@@ -8,6 +8,7 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
+import { RefereeType } from "../../referee-type.enum";
 
 
 
@@ -50,7 +51,8 @@ export class RefereeEditorDialog implements OnInit {
       name: '',
       officeAddrs: '',
       occupation: '',
-      phoneNo: ''
+      phoneNo: '',
+      refereeType: RefereeType.ACADEMICIAN,
     });
     if (this.edit) this.editForm.patchValue(this._referee);
   }

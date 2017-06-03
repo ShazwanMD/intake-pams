@@ -1,0 +1,8 @@
+<md-select
+  [placeholder]="placeholder"
+  (change)="selectChangeEvent($event.value)" flex>
+
+  <md-option *ngFor="let refereeType of refereeTypes" [value]="refereeType">
+    {{refereeType}}
+  </md-option>
+</md-select>

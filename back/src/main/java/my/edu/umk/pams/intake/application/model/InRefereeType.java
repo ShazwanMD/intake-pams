@@ -2,5 +2,10 @@ package my.edu.umk.pams.intake.application.model;
 
 public enum InRefereeType {
     ACADEMICIAN,
-    NONACADEMICIAN;
+    NON_ACADEMICIAN;
+	
+   public static InRefereeType get(int index) {
+        return values()[index];
+    }
+   
 }

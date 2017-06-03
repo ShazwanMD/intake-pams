@@ -28,6 +28,14 @@
               <input mdInput placeholder="PhoneNo" formControlName="phoneNo"flex/>
             </md-input-container>
           </div>
+
+        <div layout="row" class="pad-top">
+      <pams-referee-type-select
+        [placeholder]="'RefereeType'"
+        [innerFormControl]="editForm.controls.refereeType">
+      </pams-referee-type-select>
+    </div>
+
         </div>
       </div>
     </md-card>

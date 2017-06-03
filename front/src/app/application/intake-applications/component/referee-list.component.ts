@@ -29,6 +29,7 @@ export class RefereeListComponent implements OnInit {
     {name: 'officeAddrs', label: 'OfficeAddrs'},
     {name: 'occupation', label: 'Occupation'},
     {name: 'phoneNo', label: 'PhoneNo'},
+    {name: 'refereeType', label: 'Referee Type'},
   ];
 
  constructor(private actions: IntakeApplicationActions,

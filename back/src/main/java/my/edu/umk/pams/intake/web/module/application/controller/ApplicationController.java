@@ -481,6 +481,7 @@ public class ApplicationController {
         referee.setOfficeAddrs(vo.getOfficeAddrs());
         referee.setOccupation(vo.getOccupation());
         referee.setPhoneNo(vo.getPhoneNo());
+        referee.setType(InRefereeType.get(vo.getRefereeType().ordinal()));
         applicationService.addReferee(application, referee);
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -496,6 +497,7 @@ public class ApplicationController {
         referee.setOfficeAddrs(vo.getOfficeAddrs());
         referee.setOccupation(vo.getOccupation());
         referee.setPhoneNo(vo.getPhoneNo());
+        referee.setType(InRefereeType.get(vo.getRefereeType().ordinal()));
         applicationService.updateReferee(application, referee);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }

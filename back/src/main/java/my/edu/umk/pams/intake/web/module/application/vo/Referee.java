@@ -16,6 +16,7 @@ public class Referee extends MetaObject {
     private String officeAddrs;
     private String occupation;
     private String phoneNo;
+    private RefereeType refereeType;
     
     
    
@@ -63,6 +64,15 @@ public class Referee extends MetaObject {
 
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
+	}
+
+
+	public RefereeType getRefereeType() {
+		return refereeType;
+	}
+
+	public void setRefereeType(RefereeType refereeType) {
+		this.refereeType = refereeType;
 	}
 
 

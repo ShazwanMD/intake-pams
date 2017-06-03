@@ -189,6 +189,7 @@ public class ApplicationTransformer {
 		vo.setOfficeAddrs(e.getOfficeAddrs());
 		vo.setOccupation(e.getOccupation());
 		vo.setPhoneNo(e.getPhoneNo());
+		vo.setRefereeType(RefereeType.get(e.getType().ordinal()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}
