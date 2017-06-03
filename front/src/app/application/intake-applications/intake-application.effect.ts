@@ -307,4 +307,13 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
+@Effect() updateEmployment$ = this.actions$
+    .ofType(IntakeApplicationActions.UPDATE_EMPLOYMENT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.deleteEmployment(payload.application, payload.employment))
+    .map(message => this.intakeApplicationActions.updateEmploymentSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
 }

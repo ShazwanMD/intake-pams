@@ -11,7 +11,7 @@ import {AddressCreatorDialog} from '../component/dialog/address-creator.dialog';
 import {AddressListComponent} from '../component/address-list.component';
 import {RefereeCreatorDialog} from '../component/dialog/referee-creator.dialog';
 import {RefereeListComponent} from '../component/referee-list.component';
-import {EmploymentCreatorDialog} from '../component/dialog/employment-creator.dialog';
+import {EmploymentEditorDialog} from '../component/dialog/employment-editor.dialog';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -62,7 +62,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
 
 
     //dialogs
-    EmploymentCreatorDialog,
+    EmploymentEditorDialog,
     RefereeCreatorDialog,
     AddressCreatorDialog,
     SpmResultCreatorDialog,
@@ -89,7 +89,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
   ],
 
   entryComponents: [
-    EmploymentCreatorDialog,
+    EmploymentEditorDialog,
     RefereeCreatorDialog,
     AddressCreatorDialog,
     SpmResultCreatorDialog,

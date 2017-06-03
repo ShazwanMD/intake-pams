@@ -1,6 +1,6 @@
-<h2 md-dialog-title>Working Experience Creator</h2>
+<h2 md-dialog-title>Working Experience Editor</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <form [formGroup]="editForm">
     <md-card>
       <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
 
@@ -34,6 +34,6 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="save(editForm.value, editForm.valid)">Save</button>
 </md-dialog-actions>
 

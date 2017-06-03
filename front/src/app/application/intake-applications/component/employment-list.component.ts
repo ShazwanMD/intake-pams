@@ -5,7 +5,7 @@ import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {IntakeApplication} from "../intake-application.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {EmploymentCreatorDialog} from "./dialog/employment-creator.dialog";
+import {EmploymentEditorDialog} from "./dialog/employment-editor.dialog";
 
 
 @Component({
@@ -20,7 +20,7 @@ export class EmploymentListComponent implements OnInit {
   @Input() intakeApplication: IntakeApplication;
 
   private selectedRows: Employment[];
-  private creatorDialogRef: MdDialogRef<EmploymentCreatorDialog>;
+  private editorDialogRef: MdDialogRef<EmploymentEditorDialog>;
   private columns: any[] = [
     {name: 'employer', label: 'Employer'},
     {name: 'designation', label: 'Designation'},
@@ -38,9 +38,13 @@ export class EmploymentListComponent implements OnInit {
     this.selectedRows = this.employments.filter(value => value.selected);
   }
 
-  edit(employment:Employment){
-    // todo: use editor instead of creator
-  }
+  create(): void {
+      this.showDialog(null);
+    }
+
+  edit(employment: Employment): void {
+      this.showDialog(employment);
+    }
 
   delete(employment:Employment): void {
     this.store.dispatch(this.actions.deleteEmployment(this.intakeApplication, employment));
@@ -55,20 +59,18 @@ export class EmploymentListComponent implements OnInit {
   selectAllRows(employments: Employment[]): void {
   }
 
-  createDialog(): void {
-    console.log("showDialog");
+  showDialog(employment: Employment): void {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(EmploymentCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.editorDialogRef = this.dialog.open(EmploymentEditorDialog, config);
+    this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.editorDialogRef.componentInstance.employment = employment;
+    this.editorDialogRef.afterClosed().subscribe(res => {
+        this.selectedRows = [];
     });
   }
-
 }

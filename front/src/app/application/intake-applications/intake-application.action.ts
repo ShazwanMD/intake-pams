@@ -422,6 +422,24 @@ export class IntakeApplicationActions {
     };
   }
 
+   static UPDATE_EMPLOYMENT = '[Intake Application] Update Employment Application';
+
+  updateEmployment(application, employment): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_EMPLOYMENT,
+      payload: {application: application, employment: employment}
+    };
+  }
+
+  static UPDATE_EMPLOYMENT_SUCCESS = '[Intake Application] Update Employment Success';
+
+  updateEmploymentSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_EMPLOYMENT_SUCCESS,
+      payload: message
+    };
+  }
+
   static ADD_LANGUAGE = '[Intake Application] Save Language';
 
   addLanguage(application, language): Action {

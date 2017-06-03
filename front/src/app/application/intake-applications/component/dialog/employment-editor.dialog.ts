@@ -11,14 +11,15 @@ import {Employment} from "../../employment.interface";
 
 
 @Component({
-  selector: 'pams-employment-creator',
-  templateUrl: './employment-creator.dialog.html',
+  selector: 'pams-employment-editor',
+  templateUrl: './employment-editor.dialog.html',
 })
 
-export class EmploymentCreatorDialog implements OnInit {
+export class EmploymentEditorDialog implements OnInit {
 
   private _intakeApplication: IntakeApplication;
-  private createForm: FormGroup;
+  private _employment: Employment;
+  private editForm: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -26,7 +27,7 @@ export class EmploymentCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions,
-              private dialog: MdDialogRef<EmploymentCreatorDialog>) {
+              private dialog: MdDialogRef<EmploymentEditorDialog>) {
   }
 
 
@@ -34,8 +35,12 @@ export class EmploymentCreatorDialog implements OnInit {
     this._intakeApplication = value;
   }
 
+  set employment(value: Employment) {
+  this._employment = value;
+  }
+
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Employment>{
+    this.editForm = this.formBuilder.group(<Employment>{
       id: null,
       startDate: null,
       endDate: null,
@@ -46,7 +51,8 @@ export class EmploymentCreatorDialog implements OnInit {
   }
 
   save(employment: Employment, isValid: boolean) {
-    this.store.dispatch(this.actions.addEmployment(this._intakeApplication, employment));
-    this.dialog.close();
+      if (!employment.id) this.store.dispatch(this.actions.addEmployment(this._intakeApplication, employment));
+      else  this.store.dispatch(this.actions.updateEmployment(this._intakeApplication, employment));
+      this.dialog.close();
   }
 }
