@@ -37,21 +37,15 @@ export class EthnicityCodeListPage implements OnInit {
   }
 
   createDialog(): void {
-    let snackBarRef = this.snackBar.open("Do you want to add new ethnicity code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-    });
   }
 
   editDialog(code:EthnicityCode): void {
-    let snackBarRef = this.snackBar.open("Do you want to edit this ethnicity code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: EthnicityCode): void {
-    let snackBarRef = this.snackBar.open("Delete this ethnicity code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this ethnicity code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeEthnicityCode(code))
     });

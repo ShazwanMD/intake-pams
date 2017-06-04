@@ -39,21 +39,15 @@ export class LanguageCodeListPage implements OnInit {
   }
 
   createDialog(): void {
-    let snackBarRef = this.snackBar.open("Do you want to add new language code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-    });
   }
 
   editDialog(code:LanguageCode): void {
-    let snackBarRef = this.snackBar.open("Do you want to edit this language code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: LanguageCode): void {
-    let snackBarRef = this.snackBar.open("Delete this language code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this language code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeLanguageCode(code))
     });
