@@ -20,11 +20,9 @@
             [intakeApplication]="intakeApplication$ | async">
           </pams-study-center-choice>
 
-          <md-card>
             <template md-tab-label>Personal Information</template>
             <td-expansion-panel label="Personal Details">
               <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-               
                 <!-- first column -->
                 <div layout="column" class="pad-right" flex>
                   <div layout="row" class="pad-bottom" flex>
@@ -51,6 +49,39 @@
                     </md-input-container>
                   </div>
 
+                  <div layout="row" class="pad-top">
+                    <pams-nationality-code-select
+                      [placeholder]="'Nationality'"
+                      [innerFormControl]="applicationForm.controls.nationalityCode">
+                    </pams-nationality-code-select>
+                  </div>
+
+
+                  <div layout="row" class="pad-top">
+                    <pams-race-code-select
+                      [placeholder]="'Race'"
+                      [innerFormControl]="applicationForm.controls.raceCode">
+                    </pams-race-code-select>
+                  </div>
+
+                  <div layout="row" class="pad-top">
+                    <pams-marital-code-select
+                      [placeholder]="'Marital'"
+                      [innerFormControl]="applicationForm.controls.maritalCode">
+                    </pams-marital-code-select>
+                  </div>
+
+                   <div layout="row" class="pad-top">
+                    <pams-disability-code-select
+                      [placeholder]="'Disability'"
+                      [innerFormControl]="applicationForm.controls.disabilityCode">
+                    </pams-disability-code-select>
+                  </div>
+
+                </div>
+
+                <!-- second column -->
+                <div layout="column" class="pad-right" flex>
                   <div layout="row" class="pad-bottom" flex>
                     <md-input-container flex>
                       <input mdInput placeholder="Phone No" formControlName="mobile" flex/>
@@ -69,64 +100,31 @@
                     </md-input-container>
                   </div>
 
-                </div>
+                  <div layout="row" class="pad-top">
+                    <pams-ethnicity-code-select
+                      [placeholder]="'Ethnicity'"
+                      [innerFormControl]="applicationForm.controls.ethnicityCode">
+                    </pams-ethnicity-code-select>
+                  </div>
 
-                <!-- second column -->
-                <div layout="column" class="pad-right" flex>
-                 
-                 <div layout="row" class="pad-bottom" flex>
-                 <pams-gender-code-select
-                 [placeholder]="'Gender'"
-                 [innerFormControl]="applicationForm.controls.genderCode">
-                 </pams-gender-code-select>
-                 </div>
+                  <div layout="row" class="pad-top">
+                    <pams-gender-code-select
+                      [placeholder]="'Gender'"
+                      [innerFormControl]="applicationForm.controls.genderCode">
+                    </pams-gender-code-select>
+                  </div>
 
-                  <div layout="row" class="pad-bottom" flex>
-                 <pams-religion-code-select
-                 [placeholder]="'Religion'"
-                 [innerFormControl]="applicationForm.controls.religionCode">
-                 </pams-religion-code-select>
-                 </div>
-
-                 <div layout="row" class="pad-bottom" flex>
-                 <pams-disability-code-select
-                 [placeholder]="'Disability'"
-                 [innerFormControl]="applicationForm.controls.disabilityCode">
-                 </pams-disability-code-select>
-                 </div>
-
-                  <div layout="row" class="pad-bottom" flex>
-                  <pams-ethnicity-code-select
-                  [placeholder]="'Ethnicity'"
-                  [innerFormControl]="applicationForm.controls.ethnicityCode">
-                  </pams-ethnicity-code-select>
-                  </div>                
-
-                 <div layout="row" class="pad-bottom" flex>
-                 <pams-race-code-select
-                 [placeholder]="'Race'"
-                 [innerFormControl]="applicationForm.controls.raceCode">
-                 </pams-race-code-select>
-                 </div>
-
-                   <div layout="row" class="pad-bottom" flex>
-                 <pams-marital-code-select
-                 [placeholder]="'Marital'"
-                 [innerFormControl]="applicationForm.controls.maritalCode">
-                 </pams-marital-code-select>
-                 </div>
-
-                   <div layout="row" class="pad-bottom" flex>
-                 <pams-nationality-code-select
-                 [placeholder]="'Nationality'"
-                 [innerFormControl]="applicationForm.controls.nationalityCode">
-                 </pams-nationality-code-select>
-                 </div>
+                  <div layout="row" class="pad-top">
+                    <pams-religion-code-select
+                      [placeholder]="'Religion'"
+                      [innerFormControl]="applicationForm.controls.religionCode">
+                    </pams-religion-code-select>
+                  </div>
                 </div>
               </div>
-             </td-expansion-panel>
-          </md-card>
-          </md-tab>
+            </td-expansion-panel>
+        </md-tab>
+         
 
             <md-tab>
               <md-card>
