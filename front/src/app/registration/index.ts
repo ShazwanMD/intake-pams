@@ -14,6 +14,7 @@ import {RegistrationService} from "../../services/registration.service";
 import {RegistrationState, registrationReducer} from "./registration.reducer";
 import {RegistrationActions} from "./registration.action";
 import {RegistrationEffects} from "./registration.effect";
+import { ValidationPage } from "./validation.page";
 
 export interface RegistrationModuleState {
   registration: RegistrationState
@@ -40,6 +41,7 @@ export const registrationModuleReducers = {
   declarations: [
     // page
     RegistrationPage,
+    ValidationPage,
   ],
   exports: [],
 })
