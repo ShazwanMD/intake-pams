@@ -50,7 +50,7 @@ export class SupervisorCodeEditorDialog implements OnInit {
   }
 
   submit(code: SupervisorCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to update supervisor code?", "Yes");
+    let snackBarRef = this.snackBar.open("Confirm to update supervisor code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveSupervisorCode(code));
     else  this.store.dispatch(this.actions.updateSupervisorCode(code));

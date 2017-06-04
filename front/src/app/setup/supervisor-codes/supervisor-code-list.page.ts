@@ -38,21 +38,15 @@ export class SupervisorCodeListPage implements OnInit {
   }
 
   createDialog(): void {
-    let snackBarRef = this.snackBar.open("Do you want to add new supervisor code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-    });
   }
 
   editDialog(code:SupervisorCode): void {
-    let snackBarRef = this.snackBar.open("Do you want to edit this supervisor code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: SupervisorCode): void {
-    let snackBarRef = this.snackBar.open("Delete this supervisor code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this supervisor code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeSupervisorCode(code))
     });
