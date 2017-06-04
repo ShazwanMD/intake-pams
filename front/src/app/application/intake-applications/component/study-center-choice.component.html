@@ -9,13 +9,13 @@
   ({{intakeApplication?.studyModeSelection?.studyMode.code}}) </p>
  <button md-raised-button color="accent" class="push-bottom" (click)="showStudyModeSelectionDialog()">Choose</button>
   <div class="push-top-sm"></div>
-  <p class="md-title tc-grey-600">Your study Center</p>
-  <div layout="row" class="pad-bottom" flex>
+  <p class="md-title tc-grey-600">Your study Center</p> 
+  
   <pams-study-center-code-select   
    [placeholder]="'Study Center'"
    [innerFormControl]="applicationForm.controls.studyCenterCode">
    </pams-study-center-code-select>
-  </div> 
+  
 </div>
 </form>
  

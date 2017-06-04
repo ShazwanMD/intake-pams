@@ -23,7 +23,8 @@ export class AttachmentListComponent implements OnInit {
   private creatorDialogRef: MdDialogRef<AttachmentCreatorDialog>;
   private columns: any[] = [
     {name: 'name', label: 'Name'},
-    {name: 'size', label: 'Size'}
+    {name: 'size', label: 'Size'},
+    {name: 'resultType', label: 'Result Type'}
   ];
 
   constructor(private actions: IntakeApplicationActions,

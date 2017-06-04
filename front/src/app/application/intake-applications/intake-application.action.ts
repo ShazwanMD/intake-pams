@@ -501,11 +501,11 @@ export class IntakeApplicationActions {
 
   static ADD_ATTACHMENT = '[Intake Application] Add Attachment';
 
-  addAttachment(application, file): Action {
+  addAttachment(application, file, attachmentType): Action {
     console.log("addAttachment");
     return {
       type: IntakeApplicationActions.ADD_ATTACHMENT,
-      payload: {application: application, file: file}
+      payload: {application: application, file: file, attachmentType: attachmentType}
     };
   }
 

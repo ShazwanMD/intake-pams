@@ -3,13 +3,14 @@
   <template let-programOffering let-last="last" ngFor [ngForOf]="programOfferings$ | async">
     <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
       <div class="push-top-sm"></div>
-      <p class="md-title tc-grey-600">{{programOffering.programCode.descriptionEn}}</p>
-      <p class="mat-2-line tc-grey-600">Courses: 15 Courses</p>
-      <p class="mat-2-line tc-grey-600">Centre for Postgraduates Studies is dedicated to educating leaders who can
+      <p class="md-title tc-grey-600">{{programOffering.programCode.code}} : 
+        ({{programOffering.programCode.descriptionEn}})</p>
+      <!--<p class="mat-2-line tc-grey-600">Courses: 15 Courses</p>-->
+      <!--<p class="mat-2-line tc-grey-600">Centre for Postgraduates Studies is dedicated to educating leaders who can
         think transformatively and create lasting value in the workplace and society.
         CPS offers a broad array of interdisciplinary technical graduate degrees, professional certificates, short
         courses, and custom programs that are taught by outstanding faculty from across campus along with professors
-        of practice and experts from industry.</p>
+        of practice and experts from industry.</p>-->
 
       <button md-raised-button color="accent" class="push-bottom" (click)="select(programOffering)">Choose
         {{programOffering.programCode.code}}
