@@ -41,14 +41,11 @@ export class ReligionCodeListPage implements OnInit {
   }
 
   editDialog(code:ReligionCode): void {
-    let snackBarRef = this.snackBar.open("Edit this religion code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: ReligionCode): void {
-    let snackBarRef = this.snackBar.open("Delete this religion code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this religion code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeReligionCode(code))
     });

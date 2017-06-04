@@ -48,7 +48,7 @@ if (this.edit) this.creatorForm.patchValue(this._religionCode);
 }
 
    submit(code: ReligionCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to update religion code?", "Yes");
+    let snackBarRef = this.snackBar.open("Confirm to update religion code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveReligionCode(code));
     else  this.store.dispatch(this.actions.updateReligionCode(code));
