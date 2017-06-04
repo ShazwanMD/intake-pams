@@ -1,19 +1,18 @@
 <h2 md-dialog-title>Attachment Creator</h2>
 <md-dialog-content>
-  <form>
+  <form [formGroup]="createForm">
     <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
       <div class="push-top-sm"></div>
-
-              <div layout="row" class="pad-top">
-      <pams-attachment-type-select
-        [placeholder]="'AttachmentType'"
-        [innerFormControl]="createForm.controls.attachmentType">
-      </pams-attachment-type-select>
-    </div>
+      <div layout="row" class="pad-top">
+        <pams-attachment-type-select
+          [placeholder]="'AttachmentType'"
+          [innerFormControl]="createForm.controls.attachmentType">
+        </pams-attachment-type-select>
+      </div>
 
       <div layout="column" class="pad-right" flex>
         <div layout="row">
-          <td-file-upload #fileUpload (upload)="upload($event)" defaultColor="accent" activeColor="warn"
+          <td-file-upload #fileUpload (upload)="upload(createForm.value, $event)"  defaultColor="accent" activeColor="warn"
                           cancelColor="primary">
             <md-icon>file_upload</md-icon>
             <span>{{ fileUpload.files?.name }}</span>

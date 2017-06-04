@@ -186,6 +186,7 @@ export class ApplicationService {
   addAttachment(application: IntakeApplication, file:File, attachmentType : AttachmentType): Observable<String> {
     console.log("addAttachment");
     console.log("file: " + file.name);
+    console.log("attachmentType: " + attachmentType);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -193,6 +194,7 @@ export class ApplicationService {
     let options = new RequestOptions({headers: headers});
     let formData = new FormData();
     formData.append("attachmentType", attachmentType.toString())
+    formData.append("file", file)
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/attachments', formData)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -231,7 +233,7 @@ export class ApplicationService {
   deleteLanguage(application: IntakeApplication, language: Language): Observable<String> {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages/' + language.id)
       .flatMap((res: Response) => Observable.of(res.text()));
-  }  
+  }
 
   addSpmResult(application: IntakeApplication, spmResult: SpmResult): Observable<String> {
     let headers = new Headers({
