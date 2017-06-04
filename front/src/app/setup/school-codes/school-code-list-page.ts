@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {SchoolCodeEditorDialog} from "./dialog/school-code-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-school-list-page',
@@ -25,7 +25,8 @@ export class SchoolCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.schoolCodes$ = this.store.select(...this.SCHOOL_CODES);
   }
 
@@ -43,7 +44,10 @@ export class SchoolCodeListPage implements OnInit {
   }
 
   delete(code: SchoolCode): void {
+    let snackBarRef = this.snackBar.open("Delete this school code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeSchoolCode(code))
+    });
   }
 
   filter(): void {

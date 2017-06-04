@@ -5,7 +5,7 @@ import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 
 @Component({
@@ -27,7 +27,8 @@ export class StudyCenterCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.studyCenterCodes$ = this.store.select(...this.STUDY_CENTER_CODES);
   }
 
@@ -45,7 +46,10 @@ export class StudyCenterCodeListPage implements OnInit {
   }
 
   delete(code: StudyCenterCode): void {
+    let snackBarRef = this.snackBar.open("Delete this study center code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeStudyCenterCode(code))
+    });
   }
 
   filter(): void {
