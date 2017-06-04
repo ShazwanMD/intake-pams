@@ -192,7 +192,7 @@ export class IntakeApplicationEffects {
   @Effect() addAttachment = this.actions$
     .ofType(IntakeApplicationActions.ADD_ATTACHMENT)
     .map(action => action.payload)
-    .switchMap(payload => this.applicationService.addAttachment(payload.application, payload.file))
+    .switchMap(payload => this.applicationService.addAttachment(payload.application, payload.file, payload.attachmentType))
     .map(message => this.intakeApplicationActions.addAttachmentSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])

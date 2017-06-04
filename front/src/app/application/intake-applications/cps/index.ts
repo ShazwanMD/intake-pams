@@ -7,6 +7,7 @@ import {BachelorResultCreatorDialog} from '../component/dialog/bachelor-result-c
 import {SpmResultCreatorDialog} from '../component/dialog/spm-result-creator.dialog';
 import {SpmResultListComponent} from '../component/spm-result-list.component';
 import {AddressTypeSelectComponent} from '../component/address-type-select.component';
+import {AttachmentTypeSelectComponent} from '../component/attachment-type-select.component';
 import {RefereeTypeSelectComponent} from '../component/referee-type-select.component';
 import {AddressEditorDialog} from '../component/dialog/address-editor.dialog';
 import {AddressListComponent} from '../component/address-list.component';
@@ -58,6 +59,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     DiplomaResultListComponent,
     AddressListComponent,
     AddressTypeSelectComponent,
+    AttachmentTypeSelectComponent,
     RefereeTypeSelectComponent,
     SpmResultListComponent,
     ResultTypeSelectComponent,
@@ -84,6 +86,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     AddressListComponent,
     AddressTypeSelectComponent,
     RefereeTypeSelectComponent,
+    AttachmentTypeSelectComponent,
     SpmResultListComponent,
     BachelorResultListComponent,
     DiplomaResultListComponent,

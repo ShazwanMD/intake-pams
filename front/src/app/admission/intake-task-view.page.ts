@@ -11,7 +11,7 @@ import {Candidate} from "./candidate.interface";
 
 
 @Component({
-  selector: 'pams-intake-task-iew',
+  selector: 'pams-intake-task-view',
   templateUrl: './intake-task-view.page.html',
 })
 export class IntakeTaskViewPage implements OnInit {
