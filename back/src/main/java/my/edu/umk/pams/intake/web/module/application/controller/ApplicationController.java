@@ -412,6 +412,7 @@ public class ApplicationController {
                 attachment.setName(file.getOriginalFilename());
                 attachment.setSize(file.getSize());
                 attachment.setBytes(file.getBytes());
+                attachment.setAttachmentType(InAttachmentType.valueOf(attachmentType));
                 applicationService.addAttachment(application, attachment);
             }
         } catch (IOException e) {
