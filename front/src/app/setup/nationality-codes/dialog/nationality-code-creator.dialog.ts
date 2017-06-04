@@ -36,7 +36,6 @@ set nationalityCode(value: NationalityCode) {
   }
 
   ngOnInit(): void {
-
     this.creatorForm = this.formBuilder.group(<NationalityCode>{
       id: null,
       code: '',
@@ -48,7 +47,7 @@ if (this.edit) this.creatorForm.patchValue(this._nationalityCode);
 }
 
    submit(code: NationalityCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to update nationality code?", "Yes");
+    let snackBarRef = this.snackBar.open("Confirm to update nationality code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveNationalityCode(code));
     else  this.store.dispatch(this.actions.updateNationalityCode(code));

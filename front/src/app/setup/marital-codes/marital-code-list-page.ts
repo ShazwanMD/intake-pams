@@ -40,21 +40,15 @@ export class MaritalCodeListPage implements OnInit {
   }
 
   createDialog(): void {
-    let snackBarRef = this.snackBar.open("Do you want to add new marital code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-    });
   }
 
   editDialog(code:MaritalCode): void {
-    let snackBarRef = this.snackBar.open("Do you want to edit this marital code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: MaritalCode): void {
-    let snackBarRef = this.snackBar.open("Delete this marital code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this marital code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeMaritalCode(code))
     });

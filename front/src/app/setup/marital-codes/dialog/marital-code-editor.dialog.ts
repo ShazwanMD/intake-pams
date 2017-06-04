@@ -47,7 +47,7 @@ export class MaritalCodeEditorDialog implements OnInit {
   }
 
   submit(code: MaritalCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to update marital code?", "Yes");
+    let snackBarRef = this.snackBar.open("Confirm to update marital code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveMaritalCode(code));
     else  this.store.dispatch(this.actions.updateMaritalCode(code));

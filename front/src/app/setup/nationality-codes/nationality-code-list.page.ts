@@ -41,14 +41,11 @@ export class NationalityCodeListPage implements OnInit {
   }
 
   editDialog(code:NationalityCode): void {
-    let snackBarRef = this.snackBar.open("Do you want to edit this nationality code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: NationalityCode): void {
-    let snackBarRef = this.snackBar.open("Delete this nationality code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this nationality code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeNationalityCode(code))
     });
