@@ -37,21 +37,15 @@ export class CountryCodeListPage implements OnInit {
   }
 
 createDialog(): void {
-    let snackBarRef = this.snackBar.open("Add new country code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-    });
   }
 
   editDialog(code:CountryCode): void {
-    let snackBarRef = this.snackBar.open("Edit this country code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-  });
   }
 
   delete(code: CountryCode): void {
-    let snackBarRef = this.snackBar.open("Delete this country code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this country code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeCountryCode(code))
     });

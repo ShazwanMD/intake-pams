@@ -37,21 +37,15 @@ export class DisabilityCodeListPage implements OnInit {
   }
 
   createDialog(): void {
-    let snackBarRef = this.snackBar.open("Do you want to add new disability code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-  });
 }
 
   editDialog(code:DisabilityCode): void {
-    let snackBarRef = this.snackBar.open("Do you want to edit this disability code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: DisabilityCode): void {
-    let snackBarRef = this.snackBar.open("Delete this disability code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this disability code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeDisabilityCode(code))
     });

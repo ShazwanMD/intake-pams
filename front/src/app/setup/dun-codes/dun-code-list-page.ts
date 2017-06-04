@@ -36,21 +36,15 @@ export class DunCodeListPage implements OnInit {
   }
 
   createDialog(): void {
-    let snackBarRef = this.snackBar.open("Do you want to add new dun code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-    });
   }
 
   editDialog(code:DunCode): void {
-    let snackBarRef = this.snackBar.open("Do you want to edit this dun code?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: DunCode): void {
-    let snackBarRef = this.snackBar.open("Delete this dun code?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this dun code?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeDunCode(code))
     });

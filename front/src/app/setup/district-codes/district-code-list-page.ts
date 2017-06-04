@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {DistrictCodeEditorDialog} from "./dialog/district-code-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-district-list-page',
@@ -25,7 +25,8 @@ export class DistrictCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.districtCodes$ = this.store.select(...this.DISTRICT_CODES);
   }
 
@@ -43,7 +44,10 @@ export class DistrictCodeListPage implements OnInit {
   }
 
   delete(code: DistrictCode): void {
+    let snackBarRef = this.snackBar.open("Delete this district code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeDistrictCode(code))
+    });  
   }
 
   filter(): void {
