@@ -161,7 +161,10 @@
         <md-tab>
           <md-card>
             <template md-tab-label>Academic Qualification</template>
-
+              <md-card-subtitle>Kindly attached all related documents with Certified True Copy as below;
+• Original copy of academic certificates
+• Original copy of Scholarship Offer Letter (If Any)</md-card-subtitle>
+             <md-card-subtitle>Please upload related documents at the upload document page</md-card-subtitle>
             <td-expansion-panel label="SPM Qualifications">
               <pams-spm-result-list
                 [intakeApplication]="intakeApplication$ | async"
@@ -226,6 +229,7 @@
                 [intakeApplication]="intakeApplication$ | async"
                 [languages]="languages$ | async">
             </pams-language-list>
+           <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form</md-card-subtitle> 
             </td-expansion-panel>
           </md-card>
         </md-tab>
