@@ -236,44 +236,13 @@
 
             <div layout="column" class="pad-right" flex>
 
-              <md-card-title>Upload Document Checklist</md-card-title>
-              <md-card>
-                <md-divider>
-                  <!--<td-data-table-->
-                  <!--[data]="facultyCodes$ | async"-->
-                  <!--[columns]="columns"-->
-                  <!--[sortBy]="summary"-->
-                  <!--[sortOrder]="ASC"-->
-                  <!--[sortable]="false"-->
-                  <!--[multiple]="false"-->
-                  <!--[selectable]="false"-->
-                  <!--(rowSelect)="view.emit($event)" dense>-->
-                  <!--<template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">-->
-                  <!--<div layout="row">-->
-                  <!--<span flex>{{value}}</span>-->
-                  <!--</div>-->
-                  <!--</template>-->
-                  <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">-->
-                  <!--<div layout="row">-->
-                  <!--<button md-icon-button [md-menu-trigger-for]="menu">-->
-                  <!--<md-icon>more_vert</md-icon>-->
-                  <!--</button>-->
-                  <!--<md-menu x-position="before" #menu="mdMenu">-->
-                  <!--<a md-menu-item>Edit</a>-->
-                  <!--<button md-menu-item (click)="delete(row)">Delete</button>-->
-                  <!--</md-menu>-->
-                  <!--</div>-->
-                  <!--</template>-->
-                  <!--</td-data-table>-->
-
-                  
-                </md-divider>
-                <md-card-actions>
-                  <a md-fab color="accent" class="mat-fab-top-right" (click)="showDialog()">
-                    <md-icon>add</md-icon>
-                  </a>
-                </md-card-actions>
-              </md-card>
+             <md-card-title>Upload Document Checklist</md-card-title>
+             <td-expansion-panel label="Attachments">
+             <pams-attachment-list
+            [intakeApplication]="intakeApplication$ | async"
+            [attachments]="attachments$ | async">
+           </pams-attachment-list>
+           </td-expansion-panel>
             </div>
           </md-card>
         </md-tab>
