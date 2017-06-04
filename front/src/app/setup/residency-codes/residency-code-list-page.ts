@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {ResidencyCodeEditorDialog} from "./dialog/residency-code-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-residency-list-page',
@@ -25,7 +25,8 @@ export class ResidencyCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.residencyCodes$ = this.store.select(...this.RESIDENCY_CODES);
   }
 
@@ -35,15 +36,24 @@ export class ResidencyCodeListPage implements OnInit {
   }
 
   createDialog(): void {
+    let snackBarRef = this.snackBar.open("Add new residency code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
+    });
   }
 
   editDialog(code:ResidencyCode): void {
+    let snackBarRef = this.snackBar.open("Edit this residency code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
+    });
   }
 
   delete(code: ResidencyCode): void {
+    let snackBarRef = this.snackBar.open("Delete this residency code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeResidencyCode(code))
+    });
   }
 
   filter(): void {
