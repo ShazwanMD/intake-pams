@@ -56,6 +56,7 @@
         M_ID int8,
         M_ST int4,
         MIME_TYPE varchar(255) not null,
+        ADDRESS_TYPE int4,
         NAME varchar(255) not null,
         SIZE int4 not null,
         APPLICATION_ID int8,

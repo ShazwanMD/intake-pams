@@ -35,6 +35,11 @@ public class InAttachmentImpl implements InAttachment {
     @JoinColumn(name = "APPLICATION_ID")
     private InIntakeApplication application;
 
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "ATTACHMENT_TYPE")
+    private InAttachmentType attachmentType;
+    
     @Embedded
     private InMetadata metadata;
 
@@ -94,8 +99,17 @@ public class InAttachmentImpl implements InAttachment {
     public void setApplication(InIntakeApplication application) {
         this.application = application;
     }
-
+    
     @Override
+    public InAttachmentType getAttachmentType() {
+		return attachmentType;
+	}
+
+	public void setAttachmentType(InAttachmentType attachmentType) {
+		this.attachmentType = attachmentType;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }
