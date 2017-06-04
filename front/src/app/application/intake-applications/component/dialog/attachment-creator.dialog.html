@@ -4,6 +4,13 @@
     <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
       <div class="push-top-sm"></div>
 
+              <div layout="row" class="pad-top">
+      <pams-attachment-type-select
+        [placeholder]="'AttachmentType'"
+        [innerFormControl]="createForm.controls.attachmentType">
+      </pams-attachment-type-select>
+    </div>
+
       <div layout="column" class="pad-right" flex>
         <div layout="row">
           <td-file-upload #fileUpload (upload)="upload($event)" defaultColor="accent" activeColor="warn"

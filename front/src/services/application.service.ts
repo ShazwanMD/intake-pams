@@ -1,3 +1,4 @@
+import { Attachment } from './../app/application/intake-applications/attachment.interface';
 import { DiplomaResult } from './../app/application/intake-applications/diploma-result-interface';
 import { BachelorResult } from './../app/application/intake-applications/bachelor-result-interface';
 import {Referee} from './../app/application/intake-applications/referee.interface';
@@ -15,8 +16,9 @@ import {ProgramOffering} from "../app/policy/intakes/program-offering.interface"
 import {SpmResult} from './../app/application/intake-applications/spm-result.interface';
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 import {Language} from "../app/application/intake-applications/language.interface";
-import {Attachment} from "../app/application/intake-applications/attachment.interface";
 import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.interface";
+import { AttachmentType } from "../app/application/intake-applications/attachment-type.enum";
+
 
 
 @Injectable()
@@ -181,7 +183,7 @@ export class ApplicationService {
       .map((res: Response) => <Attachment[]>res.json());
   }
 
-  addAttachment(application: IntakeApplication, file:File): Observable<String> {
+  addAttachment(application: IntakeApplication, file:File, attachmentType : AttachmentType): Observable<String> {
     console.log("addAttachment");
     console.log("file: " + file.name);
     let headers = new Headers({
@@ -190,7 +192,7 @@ export class ApplicationService {
     });
     let options = new RequestOptions({headers: headers});
     let formData = new FormData();
-    formData.append("file", file);
+    formData.append("attachmentType", attachmentType.toString())
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/attachments', formData)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
