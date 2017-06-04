@@ -35,6 +35,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
   private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
+  private ATTACHMENTS: string[] = "applicationModuleState.attachments".split(".");
   private REFEREES: string[] = "applicationModuleState.referees".split(".");
   private ADDRESSES: string[] = "applicationModuleState.addresses".split(".");
   private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
@@ -47,6 +48,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private addresses$: Observable<Address>;
+  private attachments$: Observable<Referee>;
   private spmResults$: Observable<SpmResult>;
   private bachelorResults$: Observable<BachelorResult>;
   private diplomaResults$: Observable<DiplomaResult>;
@@ -67,6 +69,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
     this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);
     this.diplomaResults$ = this.store.select(...this.DIPLOMA_RESULTS);
+    this.attachments$ = this.store.select(...this.ATTACHMENTS);
   }
 
   ngOnInit(): void {
@@ -108,4 +111,16 @@ export class MgsebIntakeApplicationPage implements OnInit {
     console.log("tab change");
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
+
+   submit(application: IntakeApplication, isValid: boolean) {
+    console.log("submitting application");
+    this.store.dispatch(this.actions.submitIntakeApplication(application));
+    this.goBack();
+  }
+
+  goBack(): void {
+    this.router.navigate(['/application/intake-applications/my-intake-application']);
+  }
 }
+
+
