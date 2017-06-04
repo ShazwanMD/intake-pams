@@ -36,17 +36,11 @@ export class ResidencyCodeListPage implements OnInit {
   }
 
   createDialog(): void {
-    let snackBarRef = this.snackBar.open("Add new residency code?", "Ok");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(null);
-    });
   }
 
   editDialog(code:ResidencyCode): void {
-    let snackBarRef = this.snackBar.open("Edit this residency code?", "Ok");
-    snackBarRef.afterDismissed().subscribe(() => {
     this.showDialog(code);
-    });
   }
 
   delete(code: ResidencyCode): void {
