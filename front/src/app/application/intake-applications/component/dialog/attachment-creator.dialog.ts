@@ -38,13 +38,12 @@ export class AttachmentCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<AttachmentHelper>{
       attachmentType: AttachmentType.BACHELOR,
-      file: null
     })
     ;
   }
 
-  upload(attachmentHelper: AttachmentHelper) {
-    this.store.dispatch(this.actions.addAttachment(this._intakeApplication, attachmentHelper.file, attachmentHelper.attachmentType));
+  upload(attachmentHelper: AttachmentHelper, file:File) {
+    this.store.dispatch(this.actions.addAttachment(this._intakeApplication, file, attachmentHelper.attachmentType));
     this.dialog.close();
   }
 }
