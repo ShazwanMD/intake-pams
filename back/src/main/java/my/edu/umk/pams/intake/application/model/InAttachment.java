@@ -26,4 +26,8 @@ public interface InAttachment extends InMetaObject {
     InIntakeApplication getApplication();
 
     void setApplication(InIntakeApplication application);
+    
+    InAttachmentType getAttachmentType();
+
+    void setAttachmentType(InAttachmentType attachmentType);
 }

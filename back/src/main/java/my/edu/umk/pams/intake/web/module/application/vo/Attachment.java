@@ -14,6 +14,7 @@ public class Attachment extends MetaObject {
     private String name;
     private Long size;
     private String mimeType;
+    private AttachmentType attachmentType;
 
     public String getName() {
         return name;
@@ -38,8 +39,18 @@ public class Attachment extends MetaObject {
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
     }
+    
+    
 
-    @JsonCreator
+    public AttachmentType getAttachmentType() {
+		return attachmentType;
+	}
+
+	public void setAttachmentType(AttachmentType attachmentType) {
+		this.attachmentType = attachmentType;
+	}
+
+	@JsonCreator
     public static Attachment create(String jsonString) {
         Attachment o = null;
         try {

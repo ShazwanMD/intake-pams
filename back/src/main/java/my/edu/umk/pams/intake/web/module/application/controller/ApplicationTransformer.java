@@ -118,7 +118,10 @@ public class ApplicationTransformer {
 		vo.setName(e.getName());
 		vo.setSize(e.getSize());
 		vo.setMimeType(e.getMimeType());
+		vo.setAttachmentType(AttachmentType.get(e.getAttachmentType().ordinal()));
+
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+		
 		return vo;
 	}
 
