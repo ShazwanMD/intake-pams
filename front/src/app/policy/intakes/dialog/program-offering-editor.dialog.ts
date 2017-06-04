@@ -46,11 +46,8 @@ export class ProgramOfferingEditorDialog implements OnInit {
   }
 
   add(offering: ProgramOffering, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to add new program offering?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     console.log("add program offering");
     this.store.dispatch(this.actions.addProgramOffering(this.intake, offering));
     this.dialog.close();
-    });
   }
 }

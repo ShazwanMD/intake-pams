@@ -27,7 +27,7 @@ export class SupervisorOfferingListComponent {
   }
   
   delete(supervisorOffering: SupervisorOffering): void {
-    let snackBarRef = this.snackBar.open("Delete this supervisor offering?", "Yes");
+    let snackBarRef = this.snackBar.open("Delete this supervisor offering?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.deleteSupervisorOffering(this.intake, supervisorOffering))
     });
@@ -35,8 +35,6 @@ export class SupervisorOfferingListComponent {
 
 
   showDialog(): void {
-    let snackBarRef = this.snackBar.open("Add new supervisor offering?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -49,7 +47,6 @@ export class SupervisorOfferingListComponent {
     this.editorDialogRef.afterClosed().subscribe(res => {
       console.log("closeDialog");
       this.store.dispatch(this.actions.findStudyModeOfferings(this.intake));
-    });
     });
   }
 }

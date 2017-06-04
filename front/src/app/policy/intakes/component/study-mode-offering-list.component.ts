@@ -27,7 +27,7 @@ export class StudyModeOfferingListComponent {
   }
   
   delete(studyModeOffering: StudyModeOffering): void {
-    let snackBarRef = this.snackBar.open("Confirm to delete this studymode offering?", "Yes");
+    let snackBarRef = this.snackBar.open("Confirm to delete this studymode offering?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
     console.log("delete program offering :"+studyModeOffering.id);
     this.store.dispatch(this.actions.deleteStudyModeOffering(this.intake, studyModeOffering))
@@ -35,8 +35,6 @@ export class StudyModeOfferingListComponent {
   }
 
   showDialog(): void {
-    let snackBarRef = this.snackBar.open("Add new study mode offering?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -51,7 +49,6 @@ export class StudyModeOfferingListComponent {
       console.log("closeDialog");
       // reload studyMode offerings
       this.store.dispatch(this.actions.findStudyModeOfferings(this.intake));
-    });
     });
   }
 

@@ -36,15 +36,12 @@ export class ProgramOfferingListComponent {
   }
 
   editDialog(programOfferings) {
-    let snackBarRef = this.snackBar.open("Edit this program offering?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
       console.log("programOffering :" + programOfferings);
       this.showDialog2(programOfferings);
-    });
   }
 
   delete(programOffering: ProgramOffering): void {
-    let snackBarRef = this.snackBar.open("Confirm to delete this program offering?", "Yes");
+    let snackBarRef = this.snackBar.open("Confirm to delete this program offering?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
       console.log("delete program offering :" + programOffering.id);
       this.store.dispatch(this.actions.deleteProgramOffering(this.intake, programOffering))
@@ -55,8 +52,6 @@ export class ProgramOfferingListComponent {
   }
 
   showDialog(): void {
-    let snackBarRef = this.snackBar.open("Add new program offering in this intake?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
       console.log("showDialog");
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
@@ -71,7 +66,6 @@ export class ProgramOfferingListComponent {
         console.log("closeDialog");
         // reload program offerings
         this.store.dispatch(this.actions.findProgramOfferings(this.intake));
-      });
     });
   }
 

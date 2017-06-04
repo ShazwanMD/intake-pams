@@ -63,10 +63,7 @@ export class ProgramOfferingListEditorDialog {
   }
 
   submit(programOffering: ProgramOffering, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Update this program offering?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     if (programOffering.id)this.store.dispatch(this.actions.updateProgramOffering(this._intake, programOffering));
     this.dialog.close();
-    });
   }
 }

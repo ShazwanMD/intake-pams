@@ -35,12 +35,9 @@ export class SupervisorOfferingEditorDialog implements OnInit {
   }
 
   add(supervisor: SupervisorOffering, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to add new supervisor offering in this intake?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     console.log("add supervisor offering");
     this.store.dispatch(this.actions.addSupervisorOffering(this.intake, supervisor));
     this.dialog.close();
-    });
   }
   
 }

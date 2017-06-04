@@ -35,11 +35,8 @@ export class StudyModeOfferingEditorDialog implements OnInit {
   }
 
   add(offering: StudyModeOffering, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Add new studymode offering?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
     console.log("add studyMode offering");
     this.store.dispatch(this.actions.addStudyModeOffering(this.intake, offering));
     this.dialog.close();
-    });
   }
 }
