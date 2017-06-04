@@ -4,7 +4,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { MdDialogRef, MdSnackBar } from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
 
@@ -26,7 +26,8 @@ export class ResidencyCodeEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<ResidencyCodeEditorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions) {
+              private actions: SetupActions,
+              private snackBar: MdSnackBar) {
   }
 
   set residencyCode(value: ResidencyCode) {
@@ -45,8 +46,11 @@ export class ResidencyCodeEditorDialog implements OnInit {
   }
 
   submit(code: ResidencyCode, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to update residency code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
     if (!code.id) this.store.dispatch(this.actions.saveResidencyCode(code));
     else  this.store.dispatch(this.actions.updateResidencyCode(code));
     this.dialog.close();
+    });
   }
 }
