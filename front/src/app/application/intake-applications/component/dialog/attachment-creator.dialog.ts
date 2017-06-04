@@ -8,7 +8,8 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
-import { AttachmentType } from "../../attachment-type.enum";
+import {AttachmentType} from "../../attachment-type.enum";
+import {AttachmentHelper} from "./attachment-helper.interface";
 
 @Component({
   selector: 'pams-attachment-creator',
@@ -35,13 +36,15 @@ export class AttachmentCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Attachment>{
-       attachmentType: AttachmentType.BACHELOR,
-    });
+    this.createForm = this.formBuilder.group(<AttachmentHelper>{
+      attachmentType: AttachmentType.BACHELOR,
+      file: null
+    })
+    ;
   }
 
-  upload(file: File, attachmentType: AttachmentType) {
-    this.store.dispatch(this.actions.addAttachment(this._intakeApplication, file, attachmentType));
+  upload(attachmentHelper: AttachmentHelper) {
+    this.store.dispatch(this.actions.addAttachment(this._intakeApplication, attachmentHelper.file, attachmentHelper.attachmentType));
     this.dialog.close();
   }
 }
