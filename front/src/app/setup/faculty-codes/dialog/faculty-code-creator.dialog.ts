@@ -1,14 +1,12 @@
 import { FacultyCode } from './../../../common/faculty-codes/faculty-code.interface';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
+import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import {MdDialogRef, MdSnackBar } from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
-
-
 
 
 @Component({
@@ -18,7 +16,9 @@ import {SetupActions} from "../../setup.action";
 
 export class FacultyCodeCreatorDialog implements OnInit {
 
-  private createForm: FormGroup;
+  private creatorForm: FormGroup;
+  private edit: boolean = false;
+  private _facultyCode: FacultyCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -26,26 +26,32 @@ export class FacultyCodeCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<FacultyCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
-              private actions: SetupActions
-  ) {
+              private actions: SetupActions,
+              private snackBar: MdSnackBar) {
+  }
+
+  set facultyCode(value: FacultyCode) {
+    this._facultyCode = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<FacultyCode>{
+    this.creatorForm = this.formBuilder.group(<FacultyCode>{
       id: null,
       code: '',
       description: '',
-      prefix: '',
-     
+   });
 
+  if (this.edit) this.creatorForm.patchValue(this._facultyCode);
+  }
+
+  submit(code: FacultyCode, isValid: boolean) {
+    let snackBarRef = this.snackBar.open("Confirm to update V code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
+    if (!code.id) this.store.dispatch(this.actions.saveFacultyCode(code));
+    else  this.store.dispatch(this.actions.updateFacultyCode(code));
+    this.dialog.close();
     });
   }
-
-    save(code: FacultyCode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveFacultyCode(code));
-    this.dialog.close();
-  }
-
 }
-    
