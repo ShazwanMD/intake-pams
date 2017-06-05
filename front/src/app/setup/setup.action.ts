@@ -878,7 +878,28 @@ export class SetupActions {
   }
 
 //==========================================================================================
+//      FACULTY CODE
+//==========================================================================================
+  //1-------------------------------------------------------------
+  static FIND_FACULTY_CODES = '[Setup] Find Faculty Codes';
 
+  findFacultyCodes(): Action {
+    console.log("findFacultyCodes");
+    return {
+      type: SetupActions.FIND_FACULTY_CODES,
+    };
+  }
+//2-------------------------------------------------------------------------------------
+  static FIND_FACULTY_CODES_SUCCESS = '[Setup] Find Faculty Codes Success';
+
+  findFacultyCodesSuccess(codes): Action {
+    console.log("findFacultyCodesSuccess");
+    return {
+      type: SetupActions.FIND_FACULTY_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+//3----------------------------------------------------------------
   static SAVE_FACULTY_CODE = '[Setup] Save Faculty Code';
 
   saveFacultyCode(code): Action {
@@ -888,7 +909,7 @@ export class SetupActions {
       payload: code
     };
   }
-
+//4------------------------------------------------------------------------------
   static SAVE_FACULTY_CODE_SUCCESS = '[Setup] Save Faculty Code Success';
 
   saveFacultyCodeSuccess(message): Action {
@@ -898,23 +919,44 @@ export class SetupActions {
       payload: message
     };
   }
+//5------------------------------------------------------------------
+  static UPDATE_FACULTY_CODE = '[Setup] Update Faculty Code';
 
-  static FIND_FACULTY_CODES = '[Common] Find Faculty Codes';
-
-  findFacultyCodes(): Action {
-    console.log("findFacultyCodes");
+  updateFacultyCode(code): Action {
+    console.log("updateFacultyCode");
     return {
-      type: SetupActions.FIND_FACULTY_CODES,
+      type: SetupActions.UPDATE_FACULTY_CODE,
+      payload: code
     };
   }
+//6----------------------------------------------------------------------------------
+  static UPDATE_FACULTY_CODE_SUCCESS = '[Setup] Update Faculty Code  Success';
 
-  static FIND_FACULTY_CODES_SUCCESS = '[Common] Find SupervisorCodes Success';
-
-  findFacultyCodesSuccess(codes): Action {
-    console.log("findFacultyCodesSuccess");
+  updateFacultyCodeSuccess(message): Action {
+    console.log("updateFacultyCodeSuccess");
     return {
-      type: SetupActions.FIND_FACULTY_CODES_SUCCESS,
-      payload: codes
+      type: SetupActions.UPDATE_FACULTY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_FACULTY_CODE = '[Setup] Remove Faculty Code';
+
+  removeFacultyCode(code): Action {
+    console.log("removeFacultyCode");
+    return {
+      type: SetupActions.REMOVE_FACULTY_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_FACULTY_CODE_SUCCESS = '[Setup] Remove Faculty Code  Success';
+
+  removeFacultyCodeSuccess(message): Action {
+    console.log("removeFacultyCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_FACULTY_CODE_SUCCESS,
+      payload: message
     };
   }
 
