@@ -16,6 +16,12 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findDunCodes())
     .map(codes => this.commonActions.findDunCodesSuccess(codes));
 
+     @Effect() findGradeCodes$ = this.actions$
+    .ofType(CommonActions.FIND_GRADE_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findGradeCodes())
+    .map(codes => this.commonActions.findGradeCodesSuccess(codes));
+
   @Effect() findParliamentCodes$ = this.actions$
     .ofType(CommonActions.FIND_PARLIAMENT_CODES)
     .map(action => action.payload)
