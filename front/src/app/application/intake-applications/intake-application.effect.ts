@@ -125,6 +125,11 @@ export class IntakeApplicationEffects {
     .map(action => action.payload)
     .switchMap(application => this.applicationService.submitIntakeApplication(application))
     .map(message => this.intakeApplicationActions.submitIntakeApplicationSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((applications) => this.intakeApplicationActions.findIntakeApplications());
+
+     
 
   @Effect() findEducationsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION)
@@ -239,6 +244,7 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+   
 
   @Effect() selectSupervisorOffering = this.actions$
     .ofType(IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING)
