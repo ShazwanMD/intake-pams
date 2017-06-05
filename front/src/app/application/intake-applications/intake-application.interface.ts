@@ -42,6 +42,10 @@ export interface IntakeApplication extends MetaObject {
   foreignResult:boolean;
   educationResult:boolean;
   academic:boolean;
+  refereeForm:boolean;
+  bankStatement:boolean;
+  researchProposal:boolean;
+  sponsorLetter:boolean;
   bidType:BidType;
   bidStatus:BidStatus;
 
