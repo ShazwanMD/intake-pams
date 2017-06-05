@@ -531,6 +531,25 @@ export class SetupActions {
     };
   }
 
+  static UPDATE_PROGRAM_CODE = '[Setup] Update Program Code';
+
+  updateProgramCode(code): Action {
+    console.log("updateProgramCode");
+    return {
+      type: SetupActions.UPDATE_PROGRAM_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_PROGRAM_CODE_SUCCESS = '[Setup] Update Program Code  Success';
+
+  updateProgramCodeSuccess(message): Action {
+    console.log("updateProgramCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_PROGRAM_CODE_SUCCESS,
+      payload: message
+    };
+  }
 
   static SAVE_SUPERVISOR_CODE = '[Setup] Save Supervisor Code';
 

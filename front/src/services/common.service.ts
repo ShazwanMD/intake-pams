@@ -339,6 +339,17 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+    updateProgramCode(code: ProgramCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/programCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+
   // ====================================================================================================
   // FACULTY CODES
   // ====================================================================================================

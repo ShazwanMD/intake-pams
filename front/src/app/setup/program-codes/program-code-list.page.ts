@@ -2,7 +2,7 @@ import { PolicyModule } from './../../policy/index';
 import { FacultyCode } from './../../common/faculty-codes/faculty-code.interface';
 import { ProgramLevel } from './../../policy/program-levels/program-level.interface';
 import { GraduateCentre } from './../../common/graduate-centres/graduate-centre.interface';
-import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
+import {MdDialogConfig, MdDialogRef, MdSnackBar, MdDialog} from "@angular/material";
 import {ProgramCodeCreatorDialog} from './dialog/program-code-creator.dialog';
 import {ProgramCode} from './../../common/program-codes/program-code.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
@@ -25,6 +25,7 @@ export class ProgramCodeListPage implements OnInit {
   private GRADUATE_CENTRE = "setupModuleState.graduateCentres".split(".");
   private PROGRAM_CODES = "setupModuleState.programCodes".split(".");
   private creatorDialogRef: MdDialogRef<ProgramCodeCreatorDialog>;
+  
   private programCodes$: Observable<ProgramCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
@@ -36,12 +37,36 @@ export class ProgramCodeListPage implements OnInit {
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.programCodes$ = this.store.select(...this.PROGRAM_CODES);
   }
 
-  showDialog(): void {
-    console.log("showDialog");
+  ngOnInit(): void {
+    this.store.dispatch(this.actions.findProgramCodes());
+    this.store.dispatch(this.actions.changeTitle("Program Codes"))
+  }
+
+  createDialog(): void {
+    this.showDialog(null);
+  }
+
+  editDialog(code:ProgramCode): void {
+    this.showDialog(code);
+  }
+
+  delete(code: ProgramCode): void {
+    let snackBarRef = this.snackBar.open("Delete this program code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
+    this.store.dispatch(this.actions.removeProgramCode(code))
+    });
+  }
+
+  filter(): void {
+  }
+
+  private showDialog(code:ProgramCode): void {
+    console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -49,24 +74,9 @@ export class ProgramCodeListPage implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(ProgramCodeCreatorDialog, config);
+    if(code) this.creatorDialogRef.componentInstance.programCode = code; // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
-      // load something here
     });
-  }
-
-  ngOnInit(): void {
-    this.store.dispatch(this.actions.findProgramCodes())
-    this.store.dispatch(this.actions.changeTitle("Program Codes"))
-  }
-
-  filter(filter: string): void {
-    console.log("filter");
-  }
-
-  delete(code: ProgramCode): void {
-    console.log("deleting code: " + code.code);
-    console.log("deleting code: " + code.descriptionEn);
-    this.store.dispatch(this.actions.removeProgramCode(code))
   }
 }

@@ -310,7 +310,7 @@ public class CommonController {
 
     @RequestMapping(value = "/programCodes", method = RequestMethod.GET)
     public ResponseEntity<List<ProgramCode>> findProgramCodes() {
-        return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(commonService.findProgramCodes()), HttpStatus.OK);
+        return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(commonService.findProgramCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/programCodes/{code}", method = RequestMethod.GET)

@@ -1,6 +1,6 @@
 <h2 md-dialog-title>Program Code</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <form [formGroup]="editorForm">
     <div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput
@@ -30,23 +30,25 @@
       <div layout="row" class="pad-top">
       <pams-program-level-select
         [placeholder]="'Program Level'"
-        [innerFormControl]="createForm.controls.programLevel">
+        [innerFormControl]="editorForm.controls.programLevel">
       </pams-program-level-select>
     </div>
     <div layout="row" class="pad-top">
       <pams-graduate-centre-select
         [placeholder]="'Graduate Centre'"
-        [innerFormControl]="createForm.controls.graduateCentre">
+        [innerFormControl]="editorForm.controls.graduateCentre">
       </pams-graduate-centre-select>
     </div>
     <div layout="row" class="pad-top">
       <pams-intake-session-select
         [placeholder]="'Faculty Code'"
-        [innerFormControl]="createForm.controls.facultyCode">
+        [innerFormControl]="editorForm.controls.facultyCode">
       </pams-intake-session-select>
     </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+   <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
 </md-dialog-actions>
