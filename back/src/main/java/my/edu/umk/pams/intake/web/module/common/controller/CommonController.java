@@ -249,7 +249,7 @@ public class CommonController {
     @RequestMapping(value = "/facultyCodes", method = RequestMethod.GET)
     public ResponseEntity<List<FacultyCode>> findFacultyCodes() {
         return new ResponseEntity<List<FacultyCode>>(commonTransformer.toFacultyCodeVos(
-                commonService.findFacultyCodes()), HttpStatus.OK);
+                commonService.findFacultyCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/facultyCodes/{code}", method = RequestMethod.GET)
