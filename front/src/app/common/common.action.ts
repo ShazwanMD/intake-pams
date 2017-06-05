@@ -23,6 +23,25 @@ export class CommonActions {
     };
   }
 
+  static FIND_GRADE_CODES = '[Common] Find GradeCodes';
+
+  findGradeCodes(): Action {
+    console.log("findGradeCodes");
+    return {
+      type: CommonActions.FIND_GRADE_CODES
+    };
+  }
+
+  static FIND_GRADE_CODES_SUCCESS = '[Common] Find GradeCodes Success';
+
+  findGradeCodesSuccess(codes): Action {
+    console.log("findGradeCodesSuccess");
+    return {
+      type: CommonActions.FIND_GRADE_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
   static FIND_PARLIAMENT_CODES = '[Common] Find ParliamentCodes';
 
   findParliamentCodes(): Action {
