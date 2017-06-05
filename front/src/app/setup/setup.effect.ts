@@ -657,4 +657,36 @@ export class SetupEffects {
     .map(message => this.setupActions.removeSubjectCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findSubjectCodes()]));
 
+  // ====================================================================================================
+  // GRADE CODE
+  // ====================================================================================================
+
+  @Effect() findGradeCode$ = this.actions$
+    .ofType(SetupActions.FIND_GRADE_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findGradeCodes())
+    .map(codes => this.setupActions.findGradeCodesSuccess(codes));
+
+  @Effect() saveGradeCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_GRADE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveGradeCode(payload))
+    .map(message => this.setupActions.saveGradeCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findGradeCodes()]));
+
+  @Effect() updateGradeCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_GRADE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateGradeCode(payload))
+    .map(message => this.setupActions.updateGradeCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findGradeCodes()]));
+
+  @Effect() removeGradeCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_GRADE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeGradeCode(payload))
+    .map(message => this.setupActions.removeGradeCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findGradeCodes()]));
+
+
 }
