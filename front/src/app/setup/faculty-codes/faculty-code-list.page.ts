@@ -1,13 +1,11 @@
 import { FacultyCode } from './../../common/faculty-codes/faculty-code.interface';
 import { FacultyCodeCreatorDialog } from './dialog/faculty-code-creator.dialog';
-import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
-
-
 
 @Component({
   selector: 'pams-faculty-list-page',
@@ -20,18 +18,42 @@ export class FacultyCodeListPage implements OnInit {
   private facultyCodes$:Observable<FacultyCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'description', label: 'DescriptionEn'},
+    {name: 'description', label: 'Description'},
     {name: 'action', label: ''}
   ];
 
   constructor(private actions: SetupActions,
+              private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog,
-              private store: Store<SetupModuleState>){
+              private snackBar: MdSnackBar) {
     this.facultyCodes$ = this.store.select(...this.FACULTY_CODES);
   }
 
-    showDialog(): void {
+   ngOnInit(): void {
+    this.store.dispatch(this.actions.findFacultyCodes());
+    this.store.dispatch(this.actions.changeTitle("Faculty Codes"))
+  }
+
+  createDialog(): void {
+    this.showDialog(null);
+  }
+
+   editDialog(code:FacultyCode): void {
+    this.showDialog(code);
+  }
+
+  delete(code: FacultyCode): void {
+    let snackBarRef = this.snackBar.open("Delete this faculty code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
+    this.store.dispatch(this.actions.removeFacultyCode(code))
+    });
+  }
+
+  filter(): void {
+  }
+
+    private showDialog(code:FacultyCode): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -39,18 +61,11 @@ export class FacultyCodeListPage implements OnInit {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(FacultyCodeCreatorDialog, config);
-    this.creatorDialogRef.afterClosed().subscribe(res =>{
-
+   this.creatorDialogRef = this.dialog.open(FacultyCodeCreatorDialog, config);
+    if(code) this.creatorDialogRef.componentInstance.facultyCode = code; // set
+    this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
-      // load something here
     });
-  }
-
-
-  ngOnInit(): void {
-    this.store.dispatch(this.actions.findFacultyCodes())
-    this.store.dispatch(this.actions.changeTitle("Faculty Codes"))
   }
 
 }
