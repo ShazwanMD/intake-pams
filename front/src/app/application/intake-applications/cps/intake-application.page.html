@@ -15,10 +15,13 @@
       <md-divider></md-divider>
       <md-tab-group (selectChange)="onTabChange($event)" md-stretch-tabs>
         <md-tab>
+           
           <template md-tab-label>Detail Of Candidate</template>
+          <td-expansion-panel label="Program Choices">
           <pams-program-choice
             [intakeApplication]="intakeApplication$ | async">
           </pams-program-choice>
+     
 
           <div flex class="pad inset" flex>
             <p class="md-title tc-grey-600">Your research title :</p>
@@ -26,6 +29,7 @@
               <input mdInput placeholder="Research Title" formControlName="researchTitle" flex/>
             </md-input-container>
           </div>
+         </td-expansion-panel>
          
             <td-expansion-panel label="Personal Details">
               <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
