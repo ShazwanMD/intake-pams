@@ -1,3 +1,4 @@
+import { GradeCodeListPage } from './grade-codes/grade-code-list-page';
 import { SubjectCodeEditorDialog } from './subject-codes/dialog/subject-code-editor.dialog';
 import { SubjectCodeListPage } from './subject-codes/subject-code-list-page';
 import { LanguageCode } from './../common/language-codes/language-code.interface';
@@ -8,6 +9,7 @@ import {DistrictCodeEditorDialog} from './district-codes/dialog/district-code-ed
 import {DistrictCodeListPage} from './district-codes/district-code-list-page';
 import {DunCodeEditorDialog} from './dun-codes/dialog/dun-code-editor.dialog';
 import {DunCodeListPage} from './dun-codes/dun-code-list-page';
+import {GradeCodeEditorDialog} from './grade-codes/dialog/grade-code-editor.dialog';
 import {ParliamentCodeEditorDialog} from './parliament-codes/dialog/parliament-code-editor.dialog';
 import {ParliamentCodeListPage} from './parliament-codes/parliament-code-list-page';
 import {StudyCenterCodeEditorDialog} from './study-center-codes/dialogs/study-center-code-editor.dialog';
@@ -105,6 +107,8 @@ import {LanguageCodeSelectComponent} from "../common/language-codes/component/la
 import {languageCodeListReducer, LanguageCodeListState} from "./language-codes/language-code-list.reducer";
 import {subjectCodeListReducer, SubjectCodeListState} from "./subject-codes/subject-code-list.reducer";
 import {SubjectCode} from './../common/subject-codes/subject-code.interface';
+import {gradeCodeListReducer, GradeCodeListState} from "./grade-codes/grade-code-list.reducer";
+import {GradeCode} from './../common/grade-codes/grade-code.interface';
 
 export interface SetupModuleState {
   title: TitleState;
@@ -131,6 +135,7 @@ export interface SetupModuleState {
   residencyCodes: ResidencyCodeListState;
   languageCodes: LanguageCodeListState;
   subjectCodes: SubjectCodeListState;
+  gradeCodes: GradeCodeListState;
 
 
 }
@@ -162,6 +167,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     residencyCodes: <ResidencyCode[]>[],
     languageCodes: <LanguageCode[]>[],
     subjectCodes: <SubjectCode[]>[],
+    gradeCodes: <GradeCode[]>[],
 
   };
 
@@ -191,6 +197,7 @@ export const setupModuleReducers = {
   residencyCodes: residencyCodeListReducer,
   languageCodes: languageCodeListReducer,
   subjectCodes: subjectCodeListReducer,
+  gradeCodes: gradeCodeListReducer,
 
 }
 
@@ -232,6 +239,7 @@ export const setupModuleReducers = {
     ParliamentCodeListPage,
     ResidencyCodeListPage,
     SubjectCodeListPage,
+    GradeCodeListPage,
 
     // dialog
     MaritalCodeEditorDialog,
@@ -257,6 +265,7 @@ export const setupModuleReducers = {
     ParliamentCodeEditorDialog,
     ResidencyCodeEditorDialog,
     SubjectCodeEditorDialog,
+    GradeCodeEditorDialog,
 
   ],
   exports: [],
@@ -283,6 +292,8 @@ export const setupModuleReducers = {
     ParliamentCodeEditorDialog,
     ResidencyCodeEditorDialog,
     SubjectCodeEditorDialog,
+    GradeCodeEditorDialog,
+
   ],
 })
 export class SetupModule {
