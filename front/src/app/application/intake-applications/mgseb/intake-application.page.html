@@ -16,9 +16,11 @@
       <md-tab-group (selectChange)="onTabChange($event)" md-stretch-tabs>
         <md-tab>
           <template md-tab-label>Detail Of Candidate</template>
+           <td-expansion-panel label="Program Choices">
           <pams-study-center-choice
             [intakeApplication]="intakeApplication$ | async">
           </pams-study-center-choice>
+           </td-expansion-panel>
 
             <template md-tab-label>Personal Information</template>
             <td-expansion-panel label="Personal Details">
@@ -154,7 +156,7 @@
               <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
               <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form</md-card-subtitle>
           
-            <td-expansion-panel label="SPM Qualifications">
+            <!--<td-expansion-panel label="SPM Qualifications">
               <pams-spm-result-list
                 [intakeApplication]="intakeApplication$ | async"
                 [spmResults]="spmResults$ | async"></pams-spm-result-list>
@@ -173,7 +175,91 @@
               <pams-diploma-result-list
                 [intakeApplication]="intakeApplication$ | async"
                 [diplomaResults]="diplomaResults$ | async"></pams-diploma-result-list>
+            </td-expansion-panel>-->
+
+             <td-expansion-panel label="SPM Qualification">
+              <div layout="column" class="inset">
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">School</span>
+                  <span>Sekolah Datuk Abdul Razak</span>
+                </div>
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">School Type</span>
+                  <span>Sekolah Berasrama Penuh</span>
+                </div>
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">Graduation Year</span>
+                  <span>1993</span>
+                </div>
+              </div>
+              <md-divider></md-divider>
+              <div toolbar-buttons layout="row" layout-align="start center" flex>
+                <span flex></span>
+                <button md-button class="md-icon-button" click="create()">
+                  <md-icon class="md-24 tc-grey-700">add</md-icon>
+                </button>
+                <button md-button class="md-icon-button" (click)="edit(selectedRows[0])">
+                 <md-icon class="md-24 tc-grey-300">edit</md-icon>
+                </button>
+                <button md-button class="md-icon-button" (click)="delete(selectedRows[0])">
+                <md-icon class="md-24 tc-grey-300">delete</md-icon>
+                </button>
+
+              </div>
+              <md-divider></md-divider>
+              <div class="inset">
+                <td-data-table
+                  [data]="dummyData"
+                  [columns]="dummyColumns"
+                  [sortBy]="summary"
+                  [sortOrder]="ASC"
+                  [sortable]="false"
+                  [multiple]="false"
+                  [selectable]="false"
+                  (rowSelect)="view.emit($event)" dense>
+                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                    <div layout="row">
+                      <span flex>{{value}}</span>
+                    </div>
+                  </template>
+                </td-data-table>
+              </div>
             </td-expansion-panel>
+
+            <td-expansion-panel label="Diploma Qualification">
+              <div layout="column" class="inset">
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">University/College</span>
+                  <span>Kolej Keusahawanan MARA</span>
+                </div>
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">Graduation Year</span>
+                  <span>2011</span>
+                </div>
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">CGPA</span>
+                  <span>3.44</span>
+                </div>
+              </div>
+            </td-expansion-panel>
+
+            <td-expansion-panel label="Bachelor Qualification">
+              <div layout="column" class="inset">
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">University/College</span>
+                  <span>Universiti Malaysia Kelantan</span>
+                </div>
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">Graduation Year</span>
+                  <span>2015</span>
+                </div>
+                <div layout="row" class="pad-bottom">
+                  <span flex="20">CGPA</span>
+                  <span>3.44</span>
+                </div>
+              </div>
+            </td-expansion-panel>
+
 
             <td-expansion-panel label="Proficiency in Malay/English Language">
             <pams-language-list
@@ -182,28 +268,61 @@
             </pams-language-list>
           
             </td-expansion-panel>
-            <div>
-              
-            </div>
+           
            </md-card>
            </md-tab>
 
           <md-tab>
            <md-card>
             <template md-tab-label>Upload Document</template>
-
             <div layout="column" class="pad-right" flex>
 
-             <md-card-title>Upload Document Checklist</md-card-title>
+              <td-expansion-panel label="Upload Document Checklist">
+              <div layout="column" class="pad-right" flex>
+                  <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="processingReceipt">
+                    <div layout="column" flex>
+                     Processing fees Receipt
+                    </div>
+                  </md-checkbox>
+                </div>
+
+                 <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="academic">
+                    <div layout="column" flex>
+                     Academic Qualification
+                    </div>
+                  </md-checkbox>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="foreignResult">
+                    <div layout="column" flex>
+                     TOEFL/IELTS Result (Foreign Only)
+                    </div>
+                  </md-checkbox>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="educationResult">
+                    <div layout="column" flex>
+                    Spm / Stpm / Diploma /Bachelor / Master Result
+                    </div>
+                  </md-checkbox>
+                </div>
+              </div>
+            </td-expansion-panel>
+
              <td-expansion-panel label="Attachments">
              <pams-attachment-list
             [intakeApplication]="intakeApplication$ | async"
             [attachments]="attachments$ | async">
            </pams-attachment-list>
            </td-expansion-panel>
-            </div>
-          </md-card>
+        </div>
+        </md-card>
         </md-tab>
+
         <md-tab>
           <template md-tab-label>Submit Application</template>
           <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">

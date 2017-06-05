@@ -20,6 +20,7 @@ import { GenderCode } from "../../../common/gender-codes/gender-code.interface";
 import { MaritalCode } from "../../../common/marital-codes/marital-code.interface";
 import { RaceCode } from "../../../common/race-codes/race-code.interface";
 import { ReligionCode } from "../../../common/religion-codes/religion-code.interface";
+import { MdDialogRef, MdDialogConfig } from "@angular/material";
 
 
 
@@ -31,7 +32,26 @@ import { ReligionCode } from "../../../common/religion-codes/religion-code.inter
 })
 
 export class MgsebIntakeApplicationPage implements OnInit {
+  intakeApplication: any;
+  dialog: any;
 
+private dummyData: any[]=[
+   {"subject":"Bahasa Malaysia", "grade":"A+"},
+   {"subject":"Bahasa Inggeris", "grade":"B"},
+   {"subject":"Geografi", "grade":"C+"},
+   {"subject":"Sejarah", "grade":"D+"},
+   {"subject":"Matematik", "grade":"A+"},
+   {"subject":"Matematik Tambahan", "grade":"A+"},
+   {"subject":"Fizik", "grade":"A+"},
+   {"subject":"Biologi", "grade":"B+"},
+   {"subject":"Kimia", "grade":"B+"},
+ ];
+
+  private dummyColumns: any[] = [
+    {name: 'subject', label: 'Subject'},
+    {name: 'grade', label: 'Grade'},
+  ];
+  
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
   private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
@@ -103,6 +123,10 @@ export class MgsebIntakeApplicationPage implements OnInit {
       verified: false,
       sponsored: false,
       selfSponsored: false,
+      processingReceipt:false,
+      foreignResult:false,
+      educationResult:false,
+      academic:false,
     });
     this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }
@@ -121,6 +145,26 @@ export class MgsebIntakeApplicationPage implements OnInit {
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
+
+  //  create(): void {
+  //    this.showDialog(null);
+  // }
+
+    // showDialog(spmResult:SpmResult): void {
+    // console.log("showDialog");
+    // let config = new MdDialogConfig();
+    // config.viewContainerRef = this.vcf;
+    // config.role = 'dialog';
+    // config.width = '70%';
+    // config.height = '65%';
+    // config.position = {top: '0px'};
+    // this.creatorDialogRef = this.dialog.open(SpmDummyCreatorDialog, config);
+    // this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    // this.creatorDialogRef.afterClosed().subscribe(res => {
+    //   console.log("close dialog");
+    //   // load something here
+    // });
+  
 }
 
 
