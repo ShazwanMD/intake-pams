@@ -1170,7 +1170,7 @@ public class CommonController {
         InGradeCode gradeCode = new InGradeCodeImpl();
         gradeCode.setCode(vo.getCode());
         gradeCode.setDescription(vo.getDescription());
-
+        gradeCode.setOrdinal(vo.getOrdinal());
         commonService.saveGradeCode(gradeCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -1182,7 +1182,7 @@ public class CommonController {
         InGradeCode gradeCode = commonService.findGradeCodeById(vo.getId());
         gradeCode.setCode(vo.getCode());
         gradeCode.setDescription(vo.getDescription());
-
+        gradeCode.setOrdinal(vo.getOrdinal());
         commonService.updateGradeCode(gradeCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

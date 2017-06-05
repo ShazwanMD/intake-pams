@@ -19,6 +19,7 @@ export class GradeCodeListPage implements OnInit {
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'description', label: 'Description'},
+    {name: 'ordinal', label: 'Ordinal'},
     {name: 'action', label: ''}
   ];
 

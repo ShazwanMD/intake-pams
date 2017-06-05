@@ -12,8 +12,14 @@ public enum AttachmentType {
     DIPLOMA,
     DIPLOMA_EQUIVALENT,
     BACHELOR,
-    BACHELOR_EQUIVALENT;
-	
+    BACHELOR_EQUIVALENT,
+    FEE,
+    SPONSER,
+    BANK_STATEMENT,
+    REFEREE_FORM,
+    RESEARCH_PROPOSAL,
+    VISA;
+
 
     public static AttachmentType get(int index) {
         return values()[index];

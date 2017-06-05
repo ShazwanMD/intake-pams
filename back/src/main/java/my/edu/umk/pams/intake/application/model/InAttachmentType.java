@@ -12,7 +12,13 @@ public enum InAttachmentType {
     DIPLOMA("Diploma"),
     DIPLOMA_EQUIVALENT("DiplomaEquivalent"),
     BACHELOR("Bachelor"),
-    BACHELOR_EQUIVALENT("BachelorEquivalent");
+    BACHELOR_EQUIVALENT("BachelorEquivalent"),
+    FEE("Fee"),
+    SPONSER("Sponser"),
+    BANK_STATEMENT("BankStatement"),
+    REFEREE_FORM("RefereeForm"),
+    RESEARCH_PROPOSAL("ResearchProposal"),
+    VISA("Visa");
 
     private String code;
 
