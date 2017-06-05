@@ -345,6 +345,20 @@ export class SetupEffects {
     .map(message => this.setupActions.saveFacultyCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findFacultyCodes()]));
 
+    @Effect() updateFacultyCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_FACULTY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateFacultyCode(payload))
+    .map(message => this.setupActions.updateFacultyCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findFacultyCodes()]));
+
+  @Effect() removeFacultyCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_FACULTY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeFacultyCode(payload))
+    .map(message => this.setupActions.removeFacultyCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findFacultyCodes()]));
+
   // ====================================================================================================
   // STUDY MODE
   // ====================================================================================================
