@@ -1,6 +1,6 @@
-<h2 md-dialog-title>Supervisor Code</h2>
+<h2 md-dialog-title>Faculty Code Creator</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <form [formGroup]="creatorForm">
     <div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput
@@ -10,7 +10,7 @@
       </md-input-container>
     </div>
 
-  <div layout="row" class="inset" flex>
+    <div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput
                placeholder="Description"
@@ -18,11 +18,11 @@
                flex/>
       </md-input-container>
     </div>
-
-
-
-  </form>
+  
+    </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="submit(creatorForm.value, creatorForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
 </md-dialog-actions>
