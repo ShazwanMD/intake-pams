@@ -1745,4 +1745,87 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
     };
   }
 
+//=================================================================================//
+//  GRADE_CODES                                                                      //
+//=================================================================================//
+//1-------------------------------------------------------------
+  static FIND_GRADE_CODES = '[Setup] Find Grade Codes';
+
+  findGradeCodes(): Action {
+    console.log("findGradeCodes");
+    return {
+      type: SetupActions.FIND_GRADE_CODES,
+    };
+  }
+//2-------------------------------------------------------------------------------------
+  static FIND_GRADE_CODES_SUCCESS = '[Setup] Find Grade Codes Success';
+
+  findGradeCodesSuccess(codes): Action {
+    console.log("findGradeCodesSuccess");
+    return {
+      type: SetupActions.FIND_GRADE_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+//3----------------------------------------------------------------
+  static SAVE_GRADE_CODE = '[Setup] Save Grade Code';
+
+  saveGradeCode(code): Action {
+    console.log("saveGradeCode");
+    return {
+      type: SetupActions.SAVE_GRADE_CODE,
+      payload: code
+    };
+  }
+//4------------------------------------------------------------------------------
+  static SAVE_GRADE_CODE_SUCCESS = '[Setup] Save Grade Code Success';
+
+  saveGradeCodeSuccess(message): Action {
+    console.log("saveGradeCodeSuccess");
+    return {
+      type: SetupActions.SAVE_GRADE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_GRADE_CODE = '[Setup] Update Grade Code';
+
+  updateGradeCode(code): Action {
+    console.log("updateGradeCode");
+    return {
+      type: SetupActions.UPDATE_GRADE_CODE,
+      payload: code
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_GRADE_CODE_SUCCESS = '[Setup] Update Grade Code  Success';
+
+  updateGradeCodeSuccess(message): Action {
+    console.log("updateGradeCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_GRADE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_GRADE_CODE = '[Setup] Remove Grade Code';
+
+  removeGradeCode(code): Action {
+    console.log("removeGradeCode");
+    return {
+      type: SetupActions.REMOVE_GRADE_CODE,
+      payload: code
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_GRADE_CODE_SUCCESS = '[Setup] Remove Grade Code  Success';
+
+  removeGradeCodeSuccess(message): Action {
+    console.log("removeGradeCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_GRADE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
 }
