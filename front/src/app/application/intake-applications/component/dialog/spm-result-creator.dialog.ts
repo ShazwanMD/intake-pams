@@ -1,3 +1,4 @@
+import { SubjectCode } from './../../../../common/subject-codes/subject-code.interface';
 import { BachelorResult } from './../../bachelor-result-interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -44,6 +45,8 @@ export class SpmResultCreatorDialog implements OnInit {
       name: '',
       grade: '',
       aggregate:0,
+       subjectCode: <SubjectCode>{},
+
       // resultType: ResultType.BACHELOR,
 
     });

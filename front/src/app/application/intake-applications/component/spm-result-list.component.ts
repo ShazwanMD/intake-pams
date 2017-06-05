@@ -20,14 +20,15 @@ export class SpmResultListComponent implements OnInit {
   @Input() spmResults: SpmResult[];
   @Input() intakeApplication: IntakeApplication;
 
+  private selectedRows: SpmResult[];
   private creatorDialogRef: MdDialogRef<SpmResultCreatorDialog>;
   private columns: any[] = [
-    {name: 'name', label: 'Subject Name'},
+    {name: 'subjectCode.description', label: 'Subject Name'},
     {name: 'grade', label: 'Grade'},
     {name: 'year', label: 'Year'},
-    {name: 'aggregate', label: 'Aggregate'},
+    // {name: 'aggregate', label: 'Aggregate'},
   ];
-
+  
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
@@ -35,6 +36,11 @@ export class SpmResultListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  
+  }
+
+  delete(spmResult:SpmResult): void {
+    this.store.dispatch(this.actions.deleteAddress(this.intakeApplication, spmResult));
   }
 
   showDialog(): void {
