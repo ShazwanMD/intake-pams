@@ -48,6 +48,10 @@ import {residencyCodeListReducer, ResidencyCodeListState} from "./residency-code
 import {ResidencyCodeSelectComponent} from "./residency-codes/component/residency-code-select.component";
 import {languageCodeListReducer, LanguageCodeListState} from "./language-codes/language-code-list.reducer";
 import {LanguageCodeSelectComponent} from "./language-codes/component/language-code-select.component";
+import {gradeCodeListReducer, GradeCodeListState} from "./grade-codes/grade-code-list.reducer";
+import {GradeCodeSelectComponent} from "./grade-codes/component/grade-code-select.component";
+import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.reducer";
+import {DunCodeSelectComponent} from "./dun-codes/component/dun-code-select.component";
 
 
 export interface CommonModuleState {
@@ -71,6 +75,8 @@ export interface CommonModuleState {
   nationalityCodes: NationalityCodeListState;
   residencyCodes: ResidencyCodeListState;
   subjectCodes: SubjectCodeListState;
+  gradeCodes: GradeCodeListState;
+  dunCodes: DunCodeListState;
 }
 ;
 
@@ -96,6 +102,8 @@ export const commonModuleReducers = {
   nationalityCodes: nationalityCodeListReducer,
   residencyCodes: residencyCodeListReducer,
   subjectCodes: subjectCodeListReducer,
+  gradeCodes: gradeCodeListReducer,
+  dunCodes: dunCodeListReducer,
 };
 
 @NgModule({
@@ -127,6 +135,8 @@ export const commonModuleReducers = {
     NationalityCodeSelectComponent,
     ResidencyCodeSelectComponent,
     SubjectCodeSelectComponent,
+    GradeCodeSelectComponent,
+    DunCodeSelectComponent,
 
 
   ],
@@ -151,6 +161,10 @@ export const commonModuleReducers = {
     NationalityCodeSelectComponent,
     ResidencyCodeSelectComponent,
     SubjectCodeSelectComponent,
+    GradeCodeSelectComponent,
+    DunCodeSelectComponent,
+
+
 
   ],
 })
