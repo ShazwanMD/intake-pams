@@ -187,3 +187,20 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
 ---------------------------------------------------------
 -- GROUP END
 ---------------------------------------------------------
+
+
+---------------------------------------------------------
+-- MODUL
+---------------------------------------------------------
+INSERT INTO IN_MODL (ID, CODE, CANONICAL_CODE, DESCRIPTION, ORDINAL, ENABLED, M_ST, C_ID, C_TS)
+VALUES (NEXTVAL('SQ_IN_MODL'), 'M001', 'M001', 'POLICY', 1, TRUE, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_MODL (ID, CODE, CANONICAL_CODE, DESCRIPTION, ORDINAL, ENABLED, M_ST, C_ID, C_TS)
+VALUES (NEXTVAL('SQ_IN_MODL'), 'M002', 'M002', 'APPLICATION', 2, TRUE, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_MODL (ID, CODE, CANONICAL_CODE, DESCRIPTION, ORDINAL, ENABLED, M_ST, C_ID, C_TS)
+VALUES (NEXTVAL('SQ_IN_MODL'), 'M003', 'M003', 'ADMISSION', 3, TRUE, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_MODL (ID, CODE, CANONICAL_CODE, DESCRIPTION, ORDINAL, ENABLED, M_ST, C_ID, C_TS)
+VALUES (NEXTVAL('SQ_IN_MODL'), 'M004', 'M004', 'REGISTRATION', 3, TRUE, 1, 1, CURRENT_TIMESTAMP);
+
+---------------------------------------------------------
+-- MODUL END
+---------------------------------------------------------
