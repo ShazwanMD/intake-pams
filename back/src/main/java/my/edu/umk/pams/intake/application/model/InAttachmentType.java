@@ -14,7 +14,7 @@ public enum InAttachmentType {
     BACHELOR("Bachelor"),
     BACHELOR_EQUIVALENT("BachelorEquivalent"),
     FEE("Fee"),
-    SPONSER("Sponser"),
+    SPONSOR("Sponsor"),
     BANK_STATEMENT("BankStatement"),
     REFEREE_FORM("RefereeForm"),
     RESEARCH_PROPOSAL("ResearchProposal"),

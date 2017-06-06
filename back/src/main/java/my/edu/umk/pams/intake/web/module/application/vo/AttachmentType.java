@@ -14,7 +14,7 @@ public enum AttachmentType {
     BACHELOR,
     BACHELOR_EQUIVALENT,
     FEE,
-    SPONSER,
+    SPONSOR,
     BANK_STATEMENT,
     REFEREE_FORM,
     RESEARCH_PROPOSAL,
