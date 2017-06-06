@@ -135,6 +135,8 @@ public interface PolicyService {
 
     Integer countIntake(String filter, InIntakeSession session, InGraduateCentre graduateCentre);
 
+    String copyIntake(InIntake intake);
+
     //====================================================================================================
     // SUPERVISOR OFFERING
     //====================================================================================================

@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.common.model.InGraduateCentre;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
+import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.dao.InIntakeDao;
@@ -28,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_REFERENCE_NO;
 import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
@@ -52,6 +54,9 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Autowired
     private SystemService systemService;
+
+    @Autowired
+    private CommonService commonService;
 
     @Autowired
     private SecurityService securityService;
@@ -218,7 +223,7 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public String startIntakeTask(InIntake intake) {
-        HashMap<String,Object> map = new HashMap<>();
+        HashMap<String, Object> map = new HashMap<>();
         map.put("intakeSession", intake.getSession());
         map.put("programLevel", intake.getProgramLevel());
         map.put("graduateCentre", intake.getGraduateCentre());
@@ -281,7 +286,7 @@ public class PolicyServiceImpl implements PolicyService {
         intakeDao.addProgramOffering(intake, programOffering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void updateProgramOfferings(InIntake intake, InProgramOffering programOffering) {
         Validate.notNull(intake, "Intake cannot be null");
@@ -429,6 +434,50 @@ public class PolicyServiceImpl implements PolicyService {
         return intakeDao.count(filter, session, graduateCentre);
     }
 
+    @Override
+    public String copyIntake(InIntake oldIntake) {
+        InIntake intake = new InIntakeImpl();
+        intake.setSourceNo(UUID.randomUUID().toString());
+        intake.setAuditNo(UUID.randomUUID().toString());
+        intake.setDescription(oldIntake.getDescription());
+        intake.setStartDate(oldIntake.getStartDate());
+        intake.setEndDate(oldIntake.getEndDate());
+        intake.setProjection(oldIntake.getProjection());
+        intake.setProgramLevel(oldIntake.getProgramLevel());
+        intake.setSession(oldIntake.getSession());
+        intake.setGraduateCentre(oldIntake.getGraduateCentre());
+
+        // start intake
+        String referenceNo = startIntakeTask(intake);
+        InIntake copied = findIntakeByReferenceNo(referenceNo);
+
+        // add programOffering, supervisOffering, studyModeOffering
+        List<InStudyModeOffering> modeOfferings = intake.getModeOfferings();
+        for (InStudyModeOffering o : modeOfferings) {
+            InStudyModeOffering offering = new InStudyModeOfferingImpl();
+            offering.setStudyMode(o.getStudyMode());
+            addStudyModeOffering(copied, offering);
+        }
+        List<InProgramOffering> programOfferings = intake.getProgramOfferings();
+        for (InProgramOffering o : programOfferings) {
+            InProgramOffering offering = new InProgramOfferingImpl();
+            offering.setProgramCode(o.getProgramCode());
+            offering.setProjection(o.getProjection());
+            offering.setSpecificCriteria(o.getSpecificCriteria());
+            offering.setGeneralCriteria(o.getGeneralCriteria());
+            offering.setStudyCenterCode(o.getStudyCenterCode());
+            offering.setInterview(o.isInterview());
+            addProgramOffering(copied, offering);
+        }
+        List<InSupervisorOffering> supervisorOfferings = intake.getSupervisorOfferings();
+        for (InSupervisorOffering o : supervisorOfferings) {
+            InSupervisorOffering offering = new InSupervisorOfferingImpl();
+            offering.setSupervisorCode(o.getSupervisorCode());
+            addSupervisorOffering(copied, offering);
+        }
+        return referenceNo;
+    }
+
     //====================================================================================================
     // SUPERVISOR OFFERING
     //====================================================================================================
@@ -487,7 +536,7 @@ public class PolicyServiceImpl implements PolicyService {
     public List<InStudyModeOffering> findStudyModeOfferings(InIntake intake) {
         return intakeDao.findModeOfferings(intake);
     }
-    
+
     //====================================================================================================
     // PRIVATE METHODS
     //====================================================================================================

@@ -66,13 +66,13 @@ public class PolicyController {
         List<InIntakeSession> sessions = policyService.findIntakeSessions(0, 100);
         return new ResponseEntity<List<IntakeSession>>(policyTransformer.toIntakeSessionVos(sessions), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intake-sessions", method = RequestMethod.POST)
     public ResponseEntity<String> saveIntakeSession(@RequestBody IntakeSession vo) {
         dummyLogin();
 
         InIntakeSession session = new InIntakeSessionImpl();
-       
+
         session.setCode(vo.getCode());
         session.setLabel(vo.getLabel());
         session.setDescriptionMs(vo.getDescriptionMs());
@@ -83,7 +83,7 @@ public class PolicyController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intake-sessions/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateIntakeSession(@PathVariable String code, @RequestBody IntakeSession vo) {
         dummyLogin();
@@ -136,14 +136,21 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}", method = RequestMethod.GET)
     public ResponseEntity<Intake> findIntakeByReferenceNo(@PathVariable String referenceNo) {
-        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}", method = RequestMethod.PUT)
     public ResponseEntity<Intake> updateIntake(@PathVariable String referenceNo, @RequestBody Intake vo) {
-        InIntake intake = (InIntake) policyService.findIntakeByReferenceNo(referenceNo);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakes/{referenceNo}/copy", method = RequestMethod.POST)
+    public ResponseEntity<String> copyIntake(@PathVariable String referenceNo) {
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        String generatedReferenceNo = policyService.copyIntake(intake);
+        return new ResponseEntity<String>(generatedReferenceNo, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/assignedTasks", method = RequestMethod.GET)
@@ -210,7 +217,7 @@ public class PolicyController {
         return new ResponseEntity<List<ProgramOffering>>(policyTransformer
                 .toProgramOfferingVos(policyService.findProgramOfferings(intake)), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/programOfferings/{id}", method = RequestMethod.GET)
     public ResponseEntity<ProgramOffering> findProgramOfferingsById(@PathVariable Long id) {
         return new ResponseEntity<ProgramOffering>(policyTransformer.toProgramOfferingVo(policyService.findProgramOfferingById(id)), HttpStatus.OK);
@@ -239,7 +246,7 @@ public class PolicyController {
 
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateProgramOfferings(@PathVariable String referenceNo, @RequestBody ProgramOffering vo) {
         dummyLogin();
@@ -247,15 +254,15 @@ public class PolicyController {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InProgramOffering offering = policyService.findProgramOfferingById(vo.getId());
         InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
-        System.out.println("vo.getInterview() :"+vo.getInterview());
-        System.out.println("vo.getGeneralCriteria() :"+vo.getGeneralCriteria());
-        System.out.println("vo.getSpecificCriteria() :"+vo.getSpecificCriteria());
+        System.out.println("vo.getInterview() :" + vo.getInterview());
+        System.out.println("vo.getGeneralCriteria() :" + vo.getGeneralCriteria());
+        System.out.println("vo.getSpecificCriteria() :" + vo.getSpecificCriteria());
         offering.setProjection(vo.getProjection());
         offering.setInterview(vo.getInterview());
         offering.setGeneralCriteria(vo.getGeneralCriteria());
         offering.setSpecificCriteria(vo.getSpecificCriteria());
         offering.setProgramCode(programCode);
-        
+
         policyService.updateProgramOfferings(intake, offering);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -351,7 +358,7 @@ public class PolicyController {
         return new ResponseEntity<List<SupervisorCode>>(commonTransformer
                 .toSupervisorCodeVos(commonService.findSupervisorCodes(facultyCode)), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
         dummyLogin();
