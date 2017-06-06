@@ -136,7 +136,7 @@ private dummyData: any[]=[
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
-   submit(application: IntakeApplication, isValid: boolean) {
+  submit(application: IntakeApplication, isValid: boolean) {
     console.log("submitting application");
     this.store.dispatch(this.actions.submitIntakeApplication(application));
     this.goBack();
@@ -145,26 +145,6 @@ private dummyData: any[]=[
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
-
-  //  create(): void {
-  //    this.showDialog(null);
-  // }
-
-    // showDialog(spmResult:SpmResult): void {
-    // console.log("showDialog");
-    // let config = new MdDialogConfig();
-    // config.viewContainerRef = this.vcf;
-    // config.role = 'dialog';
-    // config.width = '70%';
-    // config.height = '65%';
-    // config.position = {top: '0px'};
-    // this.creatorDialogRef = this.dialog.open(SpmDummyCreatorDialog, config);
-    // this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    // this.creatorDialogRef.afterClosed().subscribe(res => {
-    //   console.log("close dialog");
-    //   // load something here
-    // });
-  
 }
 
 
