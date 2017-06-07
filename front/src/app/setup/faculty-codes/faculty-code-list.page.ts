@@ -14,13 +14,12 @@ import {Observable} from "rxjs/Observable";
 export class FacultyCodeListPage implements OnInit {
 
   private FACULTY_CODES = "setupModuleState.facultyCodes".split(".");
+  private facultyCodes$: Observable<FacultyCode>;
   private creatorDialogRef: MdDialogRef<FacultyCodeCreatorDialog>;
-  private facultyCodes$:Observable<FacultyCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
-    {name: 'prefix', label: 'Prefix'},
     {name: 'action', label: ''}
   ];
 
@@ -32,7 +31,7 @@ export class FacultyCodeListPage implements OnInit {
     this.facultyCodes$ = this.store.select(...this.FACULTY_CODES);
   }
 
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.store.dispatch(this.actions.findFacultyCodes());
     this.store.dispatch(this.actions.changeTitle("Faculty Codes"))
   }
@@ -41,7 +40,7 @@ export class FacultyCodeListPage implements OnInit {
     this.showDialog(null);
   }
 
-   editDialog(code:FacultyCode): void {
+  editDialog(code:FacultyCode): void {
     this.showDialog(code);
   }
 
@@ -55,15 +54,15 @@ export class FacultyCodeListPage implements OnInit {
   filter(): void {
   }
 
-    private showDialog(code:FacultyCode): void {
-    console.log("showDialog");
+  private showDialog(code:FacultyCode): void {
+    console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-   this.creatorDialogRef = this.dialog.open(FacultyCodeCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(FacultyCodeCreatorDialog, config);
     if(code) this.creatorDialogRef.componentInstance.facultyCode = code; // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
