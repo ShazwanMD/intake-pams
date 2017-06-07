@@ -99,6 +99,24 @@ export class IntakeActions {
       payload: task
     };
   }
+  
+  static COPY_INTAKE_TASK = '[Intake] Copy Intake Task';
+
+  copyIntakeTask(intake): Action {
+    return {
+      type: IntakeActions.COPY_INTAKE_TASK,
+      payload: intake
+    };
+  }
+
+  static COPY_INTAKE_TASK_SUCCESS = '[Intake] Copy Intake Task Success';
+
+  copyIntakeTaskSuccess(task): Action {
+    return {
+      type: IntakeActions.COPY_INTAKE_TASK_SUCCESS,
+      payload: task
+    };
+  }
 
   static CLAIM_INTAKE_TASK = '[Intake] Assign Intake Task';
 
