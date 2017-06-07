@@ -379,7 +379,8 @@ public class CommonController {
 
         InResidencyCode residencyCode = new InResidencyCodeImpl();
         residencyCode.setCode(vo.getCode());
-        residencyCode.setDescription(vo.getDescription());
+        residencyCode.setDescriptionEn(vo.getDescriptionEn());
+        residencyCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.saveResidencyCode(residencyCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -390,7 +391,8 @@ public class CommonController {
 
         InResidencyCode residencyCode = commonService.findResidencyCodeById(vo.getId());
         residencyCode.setCode(vo.getCode());
-        residencyCode.setDescription(vo.getDescription());
+        residencyCode.setDescriptionEn(vo.getDescriptionEn());
+        residencyCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.updateResidencyCode(residencyCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

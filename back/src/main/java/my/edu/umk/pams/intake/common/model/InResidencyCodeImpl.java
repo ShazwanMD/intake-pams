@@ -20,8 +20,12 @@ public class InResidencyCodeImpl implements InResidencyCode {
     private String code;
 
     @NotNull
-    @Column(name = "DESCRIPTION")
-    private String description;
+    @Column(name = "DESCRIPTION_MS")
+    private String descriptionMs;
+
+    @NotNull
+    @Column(name = "DESCRIPTION_EN")
+    private String descriptionEn;
 
     @Embedded
     private InMetadata metadata;
@@ -46,16 +50,26 @@ public class InResidencyCodeImpl implements InResidencyCode {
     }
 
     @Override
-    public String getDescription() {
-        return description;
-    }
+    public String getDescriptionMs() {
+		return descriptionMs;
+	}
+    
+    @Override
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+    
+    @Override
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
 
     @Override
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
 
-    @Override
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }

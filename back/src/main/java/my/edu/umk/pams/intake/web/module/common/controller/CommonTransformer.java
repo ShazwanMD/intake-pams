@@ -353,8 +353,8 @@ public class CommonTransformer {
         ResidencyCode vo = new ResidencyCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
-        //vo.setDescriptionEn(e.getDescriptionEn());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
     }
 
