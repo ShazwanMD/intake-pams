@@ -52,7 +52,7 @@ public class ThenStartIntakeApplication extends Stage<ThenStartIntakeApplication
 		 
 		 applicationService.updateIntakeApplication(intakeApplication);
 		
-	     Assert.notNull(InBidStatus.ENTRY, "drafted application is null");
+	     Assert.notNull(InBidStatus.DRAFTED, "drafted application is null");
 	     LOG.debug("intake status {}", intakeApplication.getBidStatus());
 		
 		 return self();

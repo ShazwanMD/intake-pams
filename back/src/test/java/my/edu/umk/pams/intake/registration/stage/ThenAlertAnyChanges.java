@@ -48,7 +48,7 @@ private InIntake intake;
 	public ThenAlertAnyChanges alert_any_changes() {	
 	
 		applicationService.submitIntakeApplication(intake, intakeApplication);
-        Assert.notNull(InBidStatus.APPLY, "withdraw application is null");
+        Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
         LOG.debug("email status {}", intakeApplication.getBidStatus());
         
 		return self();

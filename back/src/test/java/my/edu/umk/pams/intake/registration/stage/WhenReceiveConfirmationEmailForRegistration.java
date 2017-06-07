@@ -57,7 +57,7 @@ public class WhenReceiveConfirmationEmailForRegistration extends Stage<WhenRecei
     	         
     	
     	LOG.debug("intake is : {}", intake);
-        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, InBidStatus.APPLY); 
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED); 
         
     	
     	for (InIntakeApplication intakeApplication : applications) {
