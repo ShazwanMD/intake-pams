@@ -148,6 +148,7 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/copy", method = RequestMethod.POST)
     public ResponseEntity<String> copyIntake(@PathVariable String referenceNo) {
+    	dummyLogin();
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         String generatedReferenceNo = policyService.copyIntake(intake);
         return new ResponseEntity<String>(generatedReferenceNo, HttpStatus.OK);

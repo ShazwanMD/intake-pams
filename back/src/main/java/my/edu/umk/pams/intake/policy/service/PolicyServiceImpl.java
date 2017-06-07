@@ -228,7 +228,7 @@ public class PolicyServiceImpl implements PolicyService {
         map.put("programLevel", intake.getProgramLevel());
         map.put("graduateCentre", intake.getGraduateCentre());
         String refNo = systemService.generateFormattedReferenceNo(INTAKE_REFERENCE_NO, map);
-
+        LOG.debug("User copy cannot be null " +securityService.getCurrentUser());
         // save and process
         intake.setReferenceNo(refNo);
         intakeDao.saveOrUpdate(intake, securityService.getCurrentUser());
@@ -450,15 +450,14 @@ public class PolicyServiceImpl implements PolicyService {
         // start intake
         String referenceNo = startIntakeTask(intake);
         InIntake copied = findIntakeByReferenceNo(referenceNo);
-
         // add programOffering, supervisOffering, studyModeOffering
-        List<InStudyModeOffering> modeOfferings = intake.getModeOfferings();
+        List<InStudyModeOffering> modeOfferings = intakeDao.findModeOfferings(oldIntake);
         for (InStudyModeOffering o : modeOfferings) {
             InStudyModeOffering offering = new InStudyModeOfferingImpl();
             offering.setStudyMode(o.getStudyMode());
             addStudyModeOffering(copied, offering);
         }
-        List<InProgramOffering> programOfferings = intake.getProgramOfferings();
+        List<InProgramOffering> programOfferings = intakeDao.findProgramOfferings(oldIntake);
         for (InProgramOffering o : programOfferings) {
             InProgramOffering offering = new InProgramOfferingImpl();
             offering.setProgramCode(o.getProgramCode());
@@ -469,7 +468,7 @@ public class PolicyServiceImpl implements PolicyService {
             offering.setInterview(o.isInterview());
             addProgramOffering(copied, offering);
         }
-        List<InSupervisorOffering> supervisorOfferings = intake.getSupervisorOfferings();
+        List<InSupervisorOffering> supervisorOfferings = intakeDao.findSupervisorOfferings(oldIntake);
         for (InSupervisorOffering o : supervisorOfferings) {
             InSupervisorOffering offering = new InSupervisorOfferingImpl();
             offering.setSupervisorCode(o.getSupervisorCode());
