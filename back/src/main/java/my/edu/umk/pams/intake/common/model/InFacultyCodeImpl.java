@@ -24,8 +24,12 @@ public class InFacultyCodeImpl implements InFacultyCode {
     private String prefix;
 
     @NotNull
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
+    @Column(name = "DESCRIPTION_MS")
+    private String descriptionMs;
+
+    @NotNull
+    @Column(name = "DESCRIPTION_EN")
+    private String descriptionEn;
     
     @Embedded
     private InMetadata metadata;
@@ -59,17 +63,28 @@ public class InFacultyCodeImpl implements InFacultyCode {
         this.prefix = prefix;
     }
 
-    @Override
-    public String getDescription() {
-        return description;
-    }
 
     @Override
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getDescriptionMs() {
+		return descriptionMs;
+	}
 
     @Override
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+    @Override
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+    @Override
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }

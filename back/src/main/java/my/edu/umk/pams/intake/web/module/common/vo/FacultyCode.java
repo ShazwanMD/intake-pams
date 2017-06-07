@@ -11,7 +11,9 @@ import java.io.IOException;
  */
 public class FacultyCode extends MetaObject {
     private String code;
-    private String description;
+    private String descriptionMs;
+    private String descriptionEn;
+    
 
     public String getCode() {
         return code;
@@ -21,15 +23,25 @@ public class FacultyCode extends MetaObject {
         this.code = code;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
-    @JsonCreator
+    public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+
+	@JsonCreator
     public static FacultyCode create(String jsonString) {
         FacultyCode o = null;
         try {

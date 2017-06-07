@@ -114,7 +114,8 @@ public class CommonTransformer {
         FacultyCode vo = new FacultyCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
     }
 

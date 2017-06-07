@@ -279,7 +279,8 @@ public class CommonController {
 
         InFacultyCode facultyCode = new InFacultyCodeImpl();
         facultyCode.setCode(vo.getCode());
-        facultyCode.setDescription(vo.getDescription());
+        facultyCode.setDescriptionMs(vo.getDescriptionMs());
+        facultyCode.setDescriptionEn(vo.getDescriptionEn());
         commonService.saveFacultyCode(facultyCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -290,7 +291,8 @@ public class CommonController {
 
         InFacultyCode facultyCode = commonService.findFacultyCodeById(vo.getId());
         facultyCode.setCode(vo.getCode());
-        facultyCode.setDescription(vo.getDescription());
+        facultyCode.setDescriptionMs(vo.getDescriptionMs());
+        facultyCode.setDescriptionEn(vo.getDescriptionEn());
         commonService.updateFacultyCode(facultyCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
