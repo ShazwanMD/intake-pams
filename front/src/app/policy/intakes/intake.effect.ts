@@ -92,6 +92,17 @@ export class IntakeEffects {
         this.intakeActions.findPooledIntakeTasks()
       ]
     ));
+  
+  @Effect() copyIntakeTask$ = this.actions$
+  .ofType(IntakeActions.COPY_INTAKE_TASK)
+  .map(action => action.payload)
+  .switchMap(intakeTask => this.policyService.copyIntakeTask(intakeTask))
+  .map(message => this.intakeActions.copyIntakeTaskSuccess(message))
+  .mergeMap(action => from([action,
+      this.intakeActions.findAssignedIntakeTasks(),
+      this.intakeActions.findPooledIntakeTasks()
+    ]
+  ));
 
   @Effect() claimIntakeTask$ = this.actions$
     .ofType(IntakeActions.CLAIM_INTAKE_TASK)

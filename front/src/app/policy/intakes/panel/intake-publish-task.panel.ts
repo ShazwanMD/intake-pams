@@ -54,7 +54,17 @@ export class IntakePublishTaskPanel implements OnInit {
     this.goBack();
     });
   }
+ 
 
+  copy() {
+      let snackBarRef = this.snackBar.open("Copy this intake?", "Yes");
+      snackBarRef.afterDismissed().subscribe(() => {
+      this.store.dispatch(this.actions.copyIntakeTask(this.intakeTask));
+      
+      this.goBack();
+      });
+    }
+  
   goBack(): void {
     this.router.navigate(['/policy/intakes']);
   }
