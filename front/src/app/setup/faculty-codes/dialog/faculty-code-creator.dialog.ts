@@ -40,8 +40,10 @@ export class FacultyCodeCreatorDialog implements OnInit {
     this.creatorForm = this.formBuilder.group(<FacultyCode>{
       id: null,
       code: '',
-      description: '',
-   });
+      descriptionMs: '',
+      descriptionEn: '',
+      prefix: '',
+    });
 
   if (this.edit) this.creatorForm.patchValue(this._facultyCode);
   }

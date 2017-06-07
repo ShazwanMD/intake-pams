@@ -18,7 +18,9 @@ export class FacultyCodeListPage implements OnInit {
   private facultyCodes$:Observable<FacultyCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'description', label: 'Description'},
+    {name: 'descriptionMs', label: 'DescriptionMs'},
+    {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'prefix', label: 'Prefix'},
     {name: 'action', label: ''}
   ];
 
