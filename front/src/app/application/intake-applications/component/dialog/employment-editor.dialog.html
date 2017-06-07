@@ -28,6 +28,14 @@
               <input mdInput type="date" placeholder="End Date" formControlName="endDate"flex/>
             </md-input-container>
           </div>
+
+        <div layout="row" class="pad-top">
+      <pams-employment-type-select
+        [placeholder]="'EmploymentType'"
+        [innerFormControl]="editForm.controls.employmentType">
+      </pams-employment-type-select>
+    </div>
+
         </div>
       </div>
     </md-card>

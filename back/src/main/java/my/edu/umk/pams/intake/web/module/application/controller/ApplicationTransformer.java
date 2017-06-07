@@ -148,6 +148,7 @@ public class ApplicationTransformer {
 		vo.setDesignation(e.getDesignation());
 		vo.setStartDate(e.getStartDate());
 		vo.setEndDate(e.getEndDate());
+		vo.setEmploymentType(EmploymentType.get(e.getEmploymentType().ordinal()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}

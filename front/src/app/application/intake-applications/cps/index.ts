@@ -1,3 +1,4 @@
+import { EmploymentTypeSelectComponent } from './../component/employment-type-select.component';
 import {DiplomaResultListComponent} from '../component/diploma-result-list.component';
 import {DiplomaResultCreatorDialog} from '../component/dialog/diploma-result-creator.dialog';
 import {LanguageEditorDialog} from '../component/dialog/language-editor.dialog';
@@ -59,6 +60,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     DiplomaResultListComponent,
     AddressListComponent,
     AddressTypeSelectComponent,
+    EmploymentTypeSelectComponent,
     AttachmentTypeSelectComponent,
     RefereeTypeSelectComponent,
     SpmResultListComponent,
@@ -85,6 +87,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     ProgramChoiceComponent,
     AddressListComponent,
     AddressTypeSelectComponent,
+    EmploymentTypeSelectComponent,
     RefereeTypeSelectComponent,
     AttachmentTypeSelectComponent,
     SpmResultListComponent,

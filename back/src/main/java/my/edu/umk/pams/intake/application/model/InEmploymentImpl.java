@@ -34,6 +34,13 @@ public class InEmploymentImpl implements InEmployment {
     @NotNull
     @Column(name = "EMPLOYER", nullable = false)
     private String employer;
+    
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "EMPLOYMENY_TYPE")
+    private InEmploymentType employmentType;
+    
+    
 
     @NotNull
     @Column(name = "ACTIVE", nullable = false)
@@ -147,8 +154,18 @@ public class InEmploymentImpl implements InEmployment {
     public void setLevelCode(InEmploymentLevelCode levelCode) {
         this.levelCode = levelCode;
     }
-
+    
+    
     @Override
+    public InEmploymentType getEmploymentType() {
+		return employmentType;
+	}
+
+	public void setEmploymentType(InEmploymentType employmentType) {
+		this.employmentType = employmentType;
+	}
+
+	@Override
     public InIntakeApplication getApplication() {
         return application;
     }

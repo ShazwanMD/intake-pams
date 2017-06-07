@@ -8,6 +8,7 @@ import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
 import {Employment} from "../../employment.interface";
+import { EmploymentType } from "../../employment-type.enum";
 
 
 @Component({
@@ -49,6 +50,7 @@ export class EmploymentEditorDialog implements OnInit {
       employer: '',
       designation: '',
       current: false,
+      employmentType: EmploymentType.CURRENTLY_EMPLOYED,
     });
     if (this.edit) this.editForm.patchValue(this._employment);
   }

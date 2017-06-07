@@ -273,6 +273,7 @@ public class ApplicationController {
         employment.setDesignation(vo.getDesignation());
         employment.setStartDate(vo.getStartDate());
         employment.setEndDate(vo.getEndDate());
+        employment.setEmploymentType(InEmploymentType.get(vo.getEmploymentType().ordinal()));
         // employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
         // employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
         // employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));

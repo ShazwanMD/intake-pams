@@ -26,6 +26,7 @@ export class EmploymentListComponent implements OnInit {
     {name: 'designation', label: 'Designation'},
     {name: 'startDate', label: 'Start Date'},
     {name: 'endDate', label: 'End Date'},
+    {name: 'employmentType', label: 'Employment Type'},
   ];
 
   constructor(private actions: IntakeApplicationActions,

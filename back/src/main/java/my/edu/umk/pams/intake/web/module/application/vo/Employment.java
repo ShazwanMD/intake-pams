@@ -19,6 +19,7 @@ public class Employment extends MetaObject {
     private Date startDate;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date endDate;
+    private EmploymentType employmentType;
     private FieldCode fieldCode;
     private LevelCode levelCode;
     private SectorCode sectorCode;
@@ -86,9 +87,17 @@ public class Employment extends MetaObject {
 
     public void setSectorCode(SectorCode sectorCode) {
         this.sectorCode = sectorCode;
-    }       
+    }   
    
-    @JsonCreator
+    public EmploymentType getEmploymentType() {
+		return employmentType;
+	}
+
+	public void setEmploymentType(EmploymentType employmentType) {
+		this.employmentType = employmentType;
+	}
+
+	@JsonCreator
     public static Employment create(String jsonString) {
         Employment o = null;
         try {
