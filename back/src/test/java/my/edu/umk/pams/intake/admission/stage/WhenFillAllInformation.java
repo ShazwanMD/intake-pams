@@ -61,7 +61,7 @@ public class WhenFillAllInformation extends Stage<WhenFillAllInformation> {
         intakeApplication.setPhone("011102020");
         intakeApplication.setOkuNo("S1222321");
         intakeApplication.setSchoolName("SMKZ1");
-        intakeApplication.setBidStatus(InBidStatus.ENTRY);
+        intakeApplication.setBidStatus(InBidStatus.DRAFTED);
         applicationService.applyIntake(intake, intakeApplication);
         Assert.notNull(intakeApplication, "intake application is empty");
         LOG.debug("intake appliaction {} :" , intakeApplication);

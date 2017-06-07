@@ -1,7 +1,7 @@
 export enum BidStatus{
   NEW,
-  ENTRY,
-  APPLY,
+  DRAFTED,
+  SUBMITTED,
   EVALUATE,
   PROCESSING,
   PRE_SELECT,

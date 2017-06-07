@@ -252,7 +252,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
             applicationService.submitIntakeApplication(intake, application);
             Assert.notNull(application, refNo + " application is null");
 
-            InBidStatus expected = InBidStatus.APPLY;
+            InBidStatus expected = InBidStatus.SUBMITTED;
             InBidStatus found = application.getBidStatus();
             String message = refNo + "application expected " + expected + ", found " + found;
             Assert.isTrue(expected.equals(found), message);

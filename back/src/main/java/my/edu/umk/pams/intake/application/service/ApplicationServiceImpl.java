@@ -56,7 +56,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         String generatedReferenceNo = systemService.generateFormattedReferenceNo(IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO, map);
 
         application.setReferenceNo(generatedReferenceNo);
-        application.setBidStatus(InBidStatus.ENTRY);
+        application.setBidStatus(InBidStatus.DRAFTED);
         application.setIntake(intake);
         intakeApplicationDao.save(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -67,7 +67,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void submitIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
         LOG.debug("intake application: {}", application.getReferenceNo());
-        application.setBidStatus(InBidStatus.APPLY);
+        application.setBidStatus(InBidStatus.SUBMITTED);
         updateIntakeApplication(application);
     }
 
@@ -83,7 +83,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void draftedIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
         LOG.debug("intake application: {}", application.getReferenceNo());
-        application.setBidStatus(InBidStatus.ENTRY);
+        application.setBidStatus(InBidStatus.DRAFTED);
         updateIntakeApplication(application);
     }
 
