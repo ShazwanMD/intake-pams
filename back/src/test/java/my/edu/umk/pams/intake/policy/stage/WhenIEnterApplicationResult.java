@@ -77,7 +77,8 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         //create a residency code
     	InResidencyCode resident = new InResidencyCodeImpl();
     	resident.setCode("101");
-    	resident.setDescription("test resident");
+    	resident.setDescriptionMs("test resident");
+    	resident.setDescriptionEn("test resident");
     	commonService.saveResidencyCode(resident);
     	Assert.notNull(resident, "resident does not exists");
     	
