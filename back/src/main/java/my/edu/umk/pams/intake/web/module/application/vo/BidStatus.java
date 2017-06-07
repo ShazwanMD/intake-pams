@@ -5,15 +5,16 @@ package my.edu.umk.pams.intake.web.module.application.vo;
  */
 public enum BidStatus {
     NEW,
-    DRAFTED,
-    SUBMITTED,
+    ENTRY,
+    APPLY,
+    EVALUATE,
     PROCESSING,
-    PRE_SELECTED,
-    SELECTED,
-    REJECTED,
+    PRE_SELECT,
+    OFFER,
+    REJECT,
     WITHDRAWN,
-    APPEALED,
-    APPROVED;
+    APPEAL,
+    APPROVE;
 
     public static BidStatus get(int index) {
         return values()[index];

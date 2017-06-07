@@ -54,7 +54,7 @@
         </template>
         <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
           <div layout="row">
-            <a *ngIf="row.bidStatus === 'DRAFTED'" md-button color="warn" class="text-upper"
+            <a *ngIf="row.bidStatus === 'ENTRY'" md-button color="warn" class="text-upper"
                [routerLink]="['/application', 'intake-applications', row.intake?.graduateCentre?.code.toLowerCase(), row?.referenceNo]">
               <span>View</span>
             </a>
