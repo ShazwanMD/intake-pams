@@ -54,7 +54,7 @@ private InIntakeApplication application;
 	public WhenReceiveConfirmationPaymentOfProcessingFee Receive_Confirmation_Payment_Of_Processing_Fee() {
 		//TODO waiting process from processing fee
 		
-		applicationService.findIntakeApplications(intake, InBidStatus.DRAFTED);
+		applicationService.findIntakeApplications(intake, InBidStatus.ENTRY);
 		
 		InEmailQueue emailQueue = new InEmailQueueImpl();
 		

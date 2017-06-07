@@ -36,7 +36,7 @@ public class ThenTheApplicationIsWithdrawn extends Stage<ThenTheApplicationIsWit
 	
 	public ThenTheApplicationIsWithdrawn The_Application_Is_Withdrawn() {
 	
-		Assert.notNull(InBidStatus.WITHDRAWN, "withdraw application is null");
+		Assert.notNull(InBidStatus.WITHDRAW, "withdraw application is null");
 		Assert.notNull(InCandidateStatus.WITHDRAWN, "withdraw application is null");
 		return self();
 	}

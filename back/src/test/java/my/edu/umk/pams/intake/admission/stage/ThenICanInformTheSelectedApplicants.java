@@ -39,7 +39,7 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenICanSubmitTheAppli
     public ThenICanInformTheSelectedApplicants I_can_inform_the_selected_applicants() {
     	
     	applicationService.submitIntakeApplication(intake, intakeApplication);
-        Assert.notNull(InBidStatus.SUBMITTED,"withdraw application is null");
+        Assert.notNull(InBidStatus.APPLY,"withdraw application is null");
         LOG.debug("intake status : {}", intakeApplication.getBidStatus());
         return self();
 		

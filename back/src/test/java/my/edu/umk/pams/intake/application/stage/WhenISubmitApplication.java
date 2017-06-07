@@ -42,7 +42,7 @@ public class WhenISubmitApplication extends Stage<WhenISubmitApplication> {
         Assert.notNull(application, "application is null");
 
         InBidStatus bidStatus = application.getBidStatus();
-        Assert.isTrue(InBidStatus.SUBMITTED.equals(bidStatus), "application is not submitted");
+        Assert.isTrue(InBidStatus.APPLY.equals(bidStatus), "application is not submitted");
 
         return self();
     }

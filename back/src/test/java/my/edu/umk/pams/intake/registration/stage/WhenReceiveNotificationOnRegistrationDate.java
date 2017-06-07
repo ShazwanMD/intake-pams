@@ -37,7 +37,7 @@ public class WhenReceiveNotificationOnRegistrationDate  extends Stage<WhenReceiv
 		  intake = policyService.findIntakeByReferenceNo(intake.getReferenceNo());
 		 
 		 LOG.debug("intake is : {}", intake);
-	     List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED); 
+	     List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, InBidStatus.APPLY); 
 	      
 	     intake.getEndDate();
 	     LOG.debug("intake end Date : {}", intake.getEndDate());

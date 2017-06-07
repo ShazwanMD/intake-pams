@@ -27,8 +27,8 @@ public class InEmploymentImpl implements InEmployment {
     @Column(name = "START_DATE", nullable = false)
     private Date startDate;
 
-    @NotNull
-    @Column(name = "END_DATE", nullable = false)
+    
+    @Column(name = "END_DATE")
     private Date endDate;
 
     @NotNull

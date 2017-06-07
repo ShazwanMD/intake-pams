@@ -45,7 +45,7 @@ public class ThenSubmitResultOfSelection extends Stage<ThenSubmitResultOfSelecti
 
 			for (InCandidate candidate : candidates) {
 				
-				Assert.notNull(InBidStatus.SELECTED, "candidate is not selected");
+				Assert.notNull(InBidStatus.SELECT, "candidate is not selected");
 			 
 				
 			}

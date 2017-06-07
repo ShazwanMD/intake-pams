@@ -27,11 +27,11 @@ public class ThenICanPreferredTheirApplicationt extends Stage<ThenICanPreferredT
     public ThenICanPreferredTheirApplicationt I_can_preferred_their_application() {
 
     	 //From the last selected, now we set the status.
-    	preselectApplication.setBidStatus(InBidStatus.PRE_SELECTED);
+    	preselectApplication.setBidStatus(InBidStatus.PRE_SELECT);
        	
        	//Let Compare if it equals or not
        	status = preselectApplication.getBidStatus();
-       	assertEquals(InBidStatus.PRE_SELECTED,status);
+       	assertEquals(InBidStatus.PRE_SELECT,status);
         return self();
 
     }

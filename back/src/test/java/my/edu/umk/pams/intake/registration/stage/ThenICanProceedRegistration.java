@@ -50,7 +50,7 @@ public class ThenICanProceedRegistration extends Stage<ThenICanProceedRegistrati
     	List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByPaidStatus(intake, true);
         Assert.notEmpty(applications, "applications cannot be empty");
 
-        InBidStatus expected = InBidStatus.SUBMITTED;
+        InBidStatus expected = InBidStatus.APPLY;
         for (InIntakeApplication intakeApplication : applications) {
             InBidStatus found = intakeApplication.getBidStatus();
             String message = "Bid Status does not equal " + expected;

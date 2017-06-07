@@ -50,7 +50,7 @@ public class ThenApplicationIsSubmitted extends Stage<ThenApplicationIsSubmitted
     
 	public ThenApplicationIsSubmitted application_is_submitted(){
 		applicationService.submitIntakeApplication(intake, application);
-        Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
+        Assert.notNull(InBidStatus.APPLY, "withdraw application is null");
         LOG.debug("intake status {}", application.getBidStatus());
 		
 		return self();

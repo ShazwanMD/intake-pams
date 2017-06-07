@@ -54,7 +54,7 @@ package my.edu.umk.pams.intake.registration.stage;
 		public WhenAcademicAdministratorPreselectApplicant academic_admin_preselect_applicant_in_intake_session_$(String identityNo, String intakeSession) {
 			intake = policyService.findIntakeByReferenceNo(intakeSession);
 			
-			applications = applicationService.findIntakeApplications(intake, InBidStatus.SUBMITTED);
+			applications = applicationService.findIntakeApplications(intake, InBidStatus.APPLY);
 			
 			Assert.notEmpty(applications, "applications cannot be empty");
 

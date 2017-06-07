@@ -29,11 +29,11 @@ public class ThenICanApprovedTheirApplication extends Stage<ThenICanApprovedThei
     public ThenICanApprovedTheirApplication I_can_approved_their_application() {
 
         //From the last selected, now we set the status.
-       	selectedApplication.setBidStatus(InBidStatus.APPROVED);
+       	selectedApplication.setBidStatus(InBidStatus.APPROVE);
        	
        	//Let Compare if it equals or not
        	status = selectedApplication.getBidStatus();
-       	assertEquals(InBidStatus.APPROVED,status);
+       	assertEquals(InBidStatus.APPROVE,status);
         return self();
 
     }

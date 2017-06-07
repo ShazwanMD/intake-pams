@@ -62,7 +62,7 @@ public class WhenFillInApplication extends Stage<WhenFillInApplication> {
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
-        intakeApplication.setBidStatus(InBidStatus.SELECTED);
+        intakeApplication.setBidStatus(InBidStatus.SELECT);
         applicationService.submitIntakeApplication(intake, intakeApplication);
 
         return self();

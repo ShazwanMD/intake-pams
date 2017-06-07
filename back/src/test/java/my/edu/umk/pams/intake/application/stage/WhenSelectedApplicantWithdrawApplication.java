@@ -46,7 +46,7 @@ public class WhenSelectedApplicantWithdrawApplication extends Stage<WhenSelected
 	public WhenSelectedApplicantWithdrawApplication Withdraw_Application_in_current_intake_session_$(String intakeSession) {
 
 		 applicationService.withdrawIntakeApplication(intake, intakeApplication);
-		 Assert.notNull(InBidStatus.WITHDRAWN, "withdraw application is null");
+		 Assert.notNull(InBidStatus.WITHDRAW, "withdraw application is null");
 		 LOG.debug("intake application status: {} ", intakeApplication.getBidStatus());
 		
 		 return self();

@@ -42,7 +42,7 @@ private List<InCandidate> candidates;
 		  
 		  for (InCandidate candidate : candidates) {
 				
-				 Assert.notNull(InBidStatus.SELECTED, "candidate is not selected");
+				 Assert.notNull(InBidStatus.SELECT, "candidate is not selected");
 			     LOG.debug("intake application status is {}", candidate.getStatus());
 				
 			}

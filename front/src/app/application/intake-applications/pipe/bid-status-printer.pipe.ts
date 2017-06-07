@@ -9,10 +9,10 @@ export class BidStatusPrinter implements PipeTransform {
 
   transform(val:BidStatus) {
     switch (val) {
-      case BidStatus.DRAFTED:
-        return "Drafted";
-      case BidStatus.SUBMITTED:
-        return "Submitted";
+           case BidStatus.ENTRY:
+        return "Entry";
+      case BidStatus.APPLY:
+        return "Apply"
     }
   }
 }
