@@ -10,6 +10,7 @@ import {ProgramOffering} from "../program-offering.interface";
 import {StudyModeOffering} from "../study-mode-offering.interface";
 import {SupervisorOffering} from "../supervisor-offering.interface";
 import { IntakeTaskCreatorDialog } from "../dialog/intake-task-creator.dialog";
+import { IntakeUpdaterDialog } from "../dialog/intake-updater.dialog";
 
 
 @Component({
@@ -17,7 +18,7 @@ import { IntakeTaskCreatorDialog } from "../dialog/intake-task-creator.dialog";
   templateUrl: './intake-draft-task.panel.html',
 })
 
-export class IntakeDraftTaskPanel implements OnInit {editorDialogRef: MdDialogRef<IntakeTaskCreatorDialog>;
+export class IntakeDraftTaskPanel implements OnInit {editorDialogRef: MdDialogRef<IntakeUpdaterDialog>;
 
   private PROGRAM_OFFERINGS = "policyModuleState.programOfferings".split(".");
   private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
@@ -64,7 +65,7 @@ export class IntakeDraftTaskPanel implements OnInit {editorDialogRef: MdDialogRe
       config.width = '50%';
       config.height = '60%';
       config.position = {top: '0px'};
-      this.editorDialogRef = this.dialog.open(IntakeTaskCreatorDialog, config);
+      this.editorDialogRef = this.dialog.open(IntakeUpdaterDialog, config);
       this.editorDialogRef.componentInstance.intakeTask = this.intakeTask;
 
       this.editorDialogRef.afterClosed().subscribe(res => {

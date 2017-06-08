@@ -35,6 +35,7 @@ import {ProgramOfferingSelectComponent} from "./component/program-offering-selec
 import {IntakeApplicationListComponent} from "./component/intake-application-list.component";
 import {IntakeTaskDetailPage} from "./intake-task-detail.page";
 import { ProgramOfferingListEditorDialog } from "./dialog/program-offering-list-editor.dialog";
+import { IntakeUpdaterDialog } from "./dialog/intake-updater.dialog";
 
 
 @NgModule({
@@ -70,10 +71,12 @@ import { ProgramOfferingListEditorDialog } from "./dialog/program-offering-list-
 
     // dialogs
     IntakeTaskCreatorDialog,
+    IntakeUpdaterDialog,
     ProgramOfferingEditorDialog,
     ProgramOfferingListEditorDialog,
     StudyModeOfferingEditorDialog,
     SupervisorOfferingEditorDialog,
+    IntakeUpdaterDialog,
   ],
   exports: [
     IntakeTaskListComponent,
@@ -81,6 +84,7 @@ import { ProgramOfferingListEditorDialog } from "./dialog/program-offering-list-
   ],
   entryComponents: [
     IntakeDraftTaskPanel,
+    IntakeUpdaterDialog,
     IntakeVerifyTaskPanel,
     IntakePublishTaskPanel,
     IntakeTaskCreatorDialog,
