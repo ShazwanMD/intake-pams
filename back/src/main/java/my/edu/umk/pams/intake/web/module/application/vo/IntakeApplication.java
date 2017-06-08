@@ -28,6 +28,7 @@ public class IntakeApplication extends MetaObject {
     private String phone;
     private String mobile;
     private String email;
+    private Date passExpDate;
     private String fax;
     private Integer age;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -119,8 +120,9 @@ public class IntakeApplication extends MetaObject {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
+      
 
-    public String getEmail() {
+	public String getEmail() {
         return email;
     }
 
@@ -151,8 +153,17 @@ public class IntakeApplication extends MetaObject {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
+    
 
-    public Boolean getPaid() {
+    public Date getPassExpDate() {
+		return passExpDate;
+	}
+
+	public void setPassExpDate(Date passExpDate) {
+		this.passExpDate = passExpDate;
+	}
+
+	public Boolean getPaid() {
         return paid;
     }
 

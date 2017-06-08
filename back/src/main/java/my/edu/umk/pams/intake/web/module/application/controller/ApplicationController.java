@@ -193,7 +193,7 @@ public class ApplicationController {
         application.setFax(vo.getFax());
         application.setEmail(vo.getEmail());
         application.setAge(vo.getAge());
-
+        application.setPassportExpDate(vo.getPassExpDate());
         application.setCredentialNo(vo.getCredentialNo());
         application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
