@@ -47,6 +47,7 @@
 
     create table IN_ATMT (
         ID int8 not null,
+        ATTACHMENT_TYPE int4,
         DATA bytea not null,
         C_TS timestamp,
         C_ID int8,
@@ -56,9 +57,8 @@
         M_ID int8,
         M_ST int4,
         MIME_TYPE varchar(255) not null,
-        ADDRESS_TYPE int4,
         NAME varchar(255) not null,
-        SIZE int4 not null,
+        SIZE int8 not null,
         APPLICATION_ID int8,
         primary key (ID)
     );
@@ -423,7 +423,7 @@
         ACTIVE boolean not null,
         DESIGNATION varchar(255) not null,
         EMPLOYER varchar(255) not null,
-        EMPLOYMENT_TYPE int4,
+        EMPLOYMENY_TYPE int4,
         END_DATE timestamp,
         C_TS timestamp,
         C_ID int8,
@@ -500,8 +500,8 @@
     create table IN_FCTY_CODE (
         ID int8 not null,
         CODE varchar(255) not null,
-        DESCRIPTION_EN varchar(255) not null,
-        DESCRIPTION_MS varchar(255) not null,
+        DESCRIPTION_EN varchar(255),
+        DESCRIPTION_MS varchar(255),
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -524,22 +524,6 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        primary key (ID)
-    );
-
-    create table IN_FRNSE (
-        ID int8 not null,
-        ENTRY_PASS_TYPE varchar(255) not null,
-        C_TS timestamp,
-        C_ID int8,
-        D_TS timestamp,
-        D_ID int8,
-        M_TS timestamp,
-        M_ID int8,
-        M_ST int4,
-        NATIONALITY varchar(255),
-        PASSPORT_EXPIRY timestamp not null,
-        PASSPORT_NO varchar(255) not null,
         primary key (ID)
     );
 
@@ -1123,8 +1107,8 @@
     create table IN_SBJT_CODE (
         ID int8 not null,
         CODE varchar(255) not null,
-        DESCRIPTION_EN varchar(255) not null,
-        DESCRIPTION_MS varchar(255) not null,
+        DESCRIPTION_EN varchar(255),
+        DESCRIPTION_MS varchar(255),
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -1307,6 +1291,21 @@
         REAL_NAME varchar(255) not null,
         ID int8 not null,
         ACTOR_ID int8,
+        primary key (ID)
+    );
+
+    create table IN_USER_VRFN (
+        ID int8 not null,
+        EXPIRY_DATE timestamp not null,
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        TOKEN varchar(255) not null,
+        USER_ID int8 not null,
         primary key (ID)
     );
 
@@ -1925,6 +1924,17 @@
         foreign key (ID)
         references IN_PCPL;
 
+    alter table IN_USER_VRFN
+        add constraint uc_IN_USER_VRFN_1 unique (EXPIRY_DATE);
+
+    alter table IN_USER_VRFN
+        add constraint uc_IN_USER_VRFN_2 unique (TOKEN);
+
+    alter table IN_USER_VRFN
+        add constraint FKF2B069DE25F10BB4
+        foreign key (USER_ID)
+        references IN_USER;
+
     alter table IN_VENU_CODE
         add constraint uc_IN_VENU_CODE_1 unique (CODE);
 
@@ -1987,8 +1997,6 @@
     create sequence SQ_IN_FCTY_CODE;
 
     create sequence SQ_IN_FILD_CODE;
-
-    create sequence SQ_IN_FRNSE;
 
     create sequence SQ_IN_GNDR_CODE;
 
@@ -2069,6 +2077,8 @@
     create sequence SQ_IN_STDY_MODE_OFRG;
 
     create sequence SQ_IN_STTE_CODE;
+
+    create sequence SQ_IN_USER_VRFN;
 
     create sequence SQ_IN_VENU_CODE;
 
