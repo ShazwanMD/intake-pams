@@ -9,6 +9,7 @@ import {PolicyModuleState} from "../../index";
 import {ProgramOffering} from "../program-offering.interface";
 import {StudyModeOffering} from "../study-mode-offering.interface";
 import {SupervisorOffering} from "../supervisor-offering.interface";
+import { IntakeTaskCreatorDialog } from "../dialog/intake-task-creator.dialog";
 
 
 @Component({
@@ -16,7 +17,7 @@ import {SupervisorOffering} from "../supervisor-offering.interface";
   templateUrl: './intake-draft-task.panel.html',
 })
 
-export class IntakeDraftTaskPanel implements OnInit {
+export class IntakeDraftTaskPanel implements OnInit {editorDialogRef: MdDialogRef<IntakeTaskCreatorDialog>;
 
   private PROGRAM_OFFERINGS = "policyModuleState.programOfferings".split(".");
   private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
@@ -49,6 +50,27 @@ export class IntakeDraftTaskPanel implements OnInit {
     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
     this.goBack();
     });
+  }
+  
+  edit() {
+      this.showDialog(this.intakeTask);
+  }
+  
+  showDialog(intake : IntakeTask): void {
+      console.log("showDialog");
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.viewContainerRef;
+      config.role = 'dialog';
+      config.width = '50%';
+      config.height = '60%';
+      config.position = {top: '0px'};
+      this.editorDialogRef = this.dialog.open(IntakeTaskCreatorDialog, config);
+      this.editorDialogRef.componentInstance.intakeTask = this.intakeTask;
+
+      this.editorDialogRef.afterClosed().subscribe(res => {
+          console.log("close dialog");
+          
+        });
   }
 
   goBack(): void {

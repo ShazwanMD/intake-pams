@@ -9,6 +9,7 @@ import {Intake} from "../intake.interface";
 import {IntakeSession} from "../../intake-sessions/intake-session.interface";
 import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
 import {ProgramLevel} from "../../program-levels/program-level.interface";
+import { IntakeTask } from "../intake-task.interface";
 
 
 @Component({
@@ -19,6 +20,8 @@ import {ProgramLevel} from "../../program-levels/program-level.interface";
 export class IntakeTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+    private edit: boolean = false;
+    private _intakeTask: IntakeTask;
 
   constructor(private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
@@ -42,18 +45,21 @@ export class IntakeTaskCreatorDialog implements OnInit {
       intakeSession: <IntakeSession>{},
       graduateCentre: <GraduateCentre>{}
     });
+    
+    if (this.edit) this.createForm.patchValue(this._intakeTask);
   }
-
-  save(intake: Intake, isValid: boolean) {
-    let snackBarRef = this.snackBar.open("Confirm to create new intake?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
-    console.log("intake: " + intake.description);
-    console.log("program level: " + intake.programLevel.code);
-    console.log("session " + intake.intakeSession.code);
-    console.log("startDate " + intake.startDate);
-    console.log("endDate " + intake.endDate);
-    this.store.dispatch(this.actions.startIntakeTask(intake));
-    this.dialog.close();
-    });
+  
+  set intakeTask(intakeTask : IntakeTask) {
+      this._intakeTask = intakeTask;
+      this.edit = true;
+    }
+    
+    submit(intake: Intake, isValid: boolean) {
+        let snackBarRef = this.snackBar.open("Confirm to submt?", "Ok");
+        snackBarRef.afterDismissed().subscribe(() => {
+        if (!intake.id) this.store.dispatch(this.actions.startIntakeTask(intake));
+        else  this.store.dispatch(this.actions.updateIntake(intake));
+        this.dialog.close();
+        });
+      }
   }
-}

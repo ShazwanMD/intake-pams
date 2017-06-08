@@ -55,6 +55,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public GenderCode toGenderCodeVo(InGenderCode e) {
+    	if(null == e) return null;
         GenderCode vo = new GenderCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -165,6 +166,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public MaritalCode toMaritalCodeVo(InMaritalCode e) {
+    	if(null == e) return null;
         MaritalCode vo = new MaritalCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -183,6 +185,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public ReligionCode toReligionCodeVo(InReligionCode e) {
+    	if(null == e) return null;
         ReligionCode vo = new ReligionCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -241,6 +244,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public RaceCode toRaceCodeVo(InRaceCode e) {
+    	if(null == e) return null;
         RaceCode vo = new RaceCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -259,6 +263,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public EthnicityCode toEthnicityCodeVo(InEthnicityCode e) {
+    	if(null == e) return null;
         EthnicityCode vo = new EthnicityCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -277,6 +282,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public NationalityCode toNationalityCodeVo(InNationalityCode e) {
+    	if(null == e) return null;
         NationalityCode vo = new NationalityCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());

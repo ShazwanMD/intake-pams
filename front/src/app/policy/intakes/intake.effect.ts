@@ -131,7 +131,12 @@ export class IntakeEffects {
     .ofType(IntakeActions.UPDATE_INTAKE)
     .map(action => action.payload)
     .switchMap(intake => this.policyService.updateIntake(intake))
-    .map(intake => this.intakeActions.updateIntakeSuccess(intake));
+    .map(message => this.intakeActions.updateIntakeSuccess(message))
+    .mergeMap(action => from([action,
+        this.intakeActions.findAssignedIntakeTasks(),
+        this.intakeActions.findPooledIntakeTasks()
+      ]
+    ));
 
   @Effect() addProgramOffering$ = this.actions$
     .ofType(IntakeActions.ADD_PROGRAM_OFFERING)
