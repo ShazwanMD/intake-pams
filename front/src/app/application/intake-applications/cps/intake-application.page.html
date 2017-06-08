@@ -53,6 +53,7 @@
                     </md-input-container>
                   </div>
 
+
                   <div layout="row" class="pad-bottom" flex>
                     <md-input-container flex>
                       <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate" flex/>
@@ -285,6 +286,7 @@
           <template md-tab-label>Documents</template>
 
    <td-expansion-panel label="Financial Support">
+      <md-card-subtitle>Please choose either one of the following financial Support</md-card-subtitle>
               <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
                 <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
                   <md-checkbox formControlName="sponsored">
@@ -319,8 +321,8 @@
           </td-expansion-panel>
 
           <td-expansion-panel label="Upload Document Checklist">
-              <div layout="column" class="pad-right" flex>
-                  <div layout="row" class="pad-bottom" flex>
+              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
                   <md-checkbox formControlName="processingReceipt">
                     <div layout="column" flex>
                      Processing fees Receipt
@@ -328,15 +330,15 @@
                   </md-checkbox>
                 </div>
 
-                 <div layout="row" class="pad-bottom" flex>
+                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
                   <md-checkbox formControlName="academic">
                     <div layout="column" flex>
-                     Academic Qualification
+                     Language Result 
                     </div>
                   </md-checkbox>
                 </div>
 
-                <div layout="row" class="pad-bottom" flex>
+                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
                   <md-checkbox formControlName="foreignResult">
                     <div layout="column" flex>
                      TOEFL/IELTS Result (Foreign Only)
@@ -344,7 +346,7 @@
                   </md-checkbox>
                 </div>
 
-                <div layout="row" class="pad-bottom" flex>
+                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
                   <md-checkbox formControlName="educationResult">
                     <div layout="column" flex>
                     Spm / Stpm / Diploma /Bachelor / Master Result
@@ -352,32 +354,24 @@
                   </md-checkbox>
                 </div>
 
-                <div layout="row" class="pad-bottom" flex>
-                  <md-checkbox formControlName="educationResult">
+               <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                  <md-checkbox formControlName="financialLetter">
                     <div layout="column" flex>
-                    Letter From Sponsor
+                    Letter From Sponsor / Bank Statement
                     </div>
                   </md-checkbox>
                 </div>
 
-                <div layout="row" class="pad-bottom" flex>
-                  <md-checkbox formControlName="educationResult">
-                    <div layout="column" flex>
-                    Financial guarantee or bank statement
-                    </div>
-                  </md-checkbox>
-                </div>
-
-                 <div layout="row" class="pad-bottom" flex>
-                  <md-checkbox formControlName="educationResult">
+                 <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                  <md-checkbox formControlName="refereeForm">
                     <div layout="column" flex>
                     Referee Form
                     </div>
                   </md-checkbox>
                 </div>
 
-                <div layout="row" class="pad-bottom" flex>
-                  <md-checkbox formControlName="educationResult">
+                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                  <md-checkbox formControlName="researchProposal">
                     <div layout="column" flex>
                    Research Proposal
                     </div>
