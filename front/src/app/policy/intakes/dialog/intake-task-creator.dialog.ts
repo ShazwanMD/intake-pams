@@ -55,7 +55,7 @@ export class IntakeTaskCreatorDialog implements OnInit {
     }
     
     submit(intake: Intake, isValid: boolean) {
-        let snackBarRef = this.snackBar.open("Confirm to create new intake?", "Ok");
+        let snackBarRef = this.snackBar.open("Confirm to submt?", "Ok");
         snackBarRef.afterDismissed().subscribe(() => {
         if (!intake.id) this.store.dispatch(this.actions.startIntakeTask(intake));
         else  this.store.dispatch(this.actions.updateIntake(intake));

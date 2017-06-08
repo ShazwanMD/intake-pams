@@ -65,13 +65,12 @@ export class IntakeVerifyTaskPanel implements OnInit {editorDialogRef: MdDialogR
       config.height = '60%';
       config.position = {top: '0px'};
       this.editorDialogRef = this.dialog.open(IntakeTaskCreatorDialog, config);
-     // this.editorDialogRef.componentInstance.intakeTask;
+      this.editorDialogRef.componentInstance.intakeTask = this.intakeTask;
 
       this.editorDialogRef.afterClosed().subscribe(res => {
-        console.log("closeDialog");
-        // reload program offerings
-        this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
-    });
+          console.log("close dialog");
+          
+        });
   }
 
 
