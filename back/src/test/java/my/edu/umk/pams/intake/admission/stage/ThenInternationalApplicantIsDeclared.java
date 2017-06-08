@@ -32,7 +32,7 @@ public class ThenInternationalApplicantIsDeclared extends Stage<ThenInternationa
     public ThenInternationalApplicantIsDeclared international_applicant_is_declared() {
     
     	 applicationService.submitIntakeApplication(intake, intakeApplication);   	 
-         Assert.notNull(InBidStatus.APPLY, "submitted application is null");
+         Assert.notNull(InBidStatus.SUBMITTED, "submitted application is null");
          LOG.debug("intake status : {} ", intakeApplication.getBidStatus());
          
          Assert.notNull(intakeApplication.getPassportNo(), "not an international student");

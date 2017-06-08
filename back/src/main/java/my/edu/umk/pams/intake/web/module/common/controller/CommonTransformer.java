@@ -55,6 +55,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public GenderCode toGenderCodeVo(InGenderCode e) {
+    	if(null == e) return null;
         GenderCode vo = new GenderCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -353,8 +354,8 @@ public class CommonTransformer {
         ResidencyCode vo = new ResidencyCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
-        //vo.setDescriptionEn(e.getDescriptionEn());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
     }
 
@@ -424,7 +425,8 @@ public class CommonTransformer {
         SubjectCode vo = new SubjectCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
     }
 

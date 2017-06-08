@@ -29,7 +29,7 @@ public class ThenApplicationComplete extends Stage<ThenApplicationComplete> {
     public ThenApplicationComplete the_application_is_submitted() {
 
         String message = "application is not submitted";
-        Assert.isTrue(InBidStatus.APPLY.equals(application.getBidStatus()), message);
+        Assert.isTrue(InBidStatus.SUBMITTED.equals(application.getBidStatus()), message);
         LOG.debug("intake status : {} ", application.getBidStatus());
 
         return self();

@@ -45,6 +45,7 @@
                     </md-input-container>
                   </div>
 
+                   
                   <div layout="row" class="pad-bottom" flex>
                     <md-input-container flex>
                       <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate" flex/>
@@ -73,17 +74,17 @@
                     </pams-marital-code-select>
                   </div>
 
-                   <div layout="row" class="pad-top">
-                    <pams-disability-code-select
-                      [placeholder]="'Disability'"
-                      [innerFormControl]="applicationForm.controls.disabilityCode">
-                    </pams-disability-code-select>
-                  </div>
 
                 </div>
 
                 <!-- second column -->
                 <div layout="column" class="pad-right" flex>
+
+                   <div layout="row" class="pad-bottom" flex>
+                    <md-input-container flex>
+                      <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>
+                    </md-input-container>
+                  </div>
                   <div layout="row" class="pad-bottom" flex>
                     <md-input-container flex>
                       <input mdInput placeholder="Phone No" formControlName="mobile" flex/>

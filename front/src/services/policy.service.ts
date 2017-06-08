@@ -136,6 +136,16 @@ export class PolicyService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  copyIntakeTask(intake: Intake): Observable<String> {
+      let headers = new Headers({
+        'Content-Type': 'application/json',
+        //'Authorization': 'Bearer ' + this.authService.token
+      });
+      let options = new RequestOptions({headers: headers});
+      return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/copy', JSON.stringify(intake), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
+  
   completeIntakeTask(intakeTask: IntakeTask): Observable<String> {
     console.log("TaskId: " + intakeTask.taskId);
     let headers = new Headers({

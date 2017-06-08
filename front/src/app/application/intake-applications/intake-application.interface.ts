@@ -22,6 +22,7 @@ export interface IntakeApplication extends MetaObject {
   merit: number;
   name: string;
   credentialNo: string;
+  passExpDate: Date;
   okuNo: string;
   email: string;
   phone: string;

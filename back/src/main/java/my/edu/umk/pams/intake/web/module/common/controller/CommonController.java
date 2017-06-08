@@ -379,7 +379,8 @@ public class CommonController {
 
         InResidencyCode residencyCode = new InResidencyCodeImpl();
         residencyCode.setCode(vo.getCode());
-        residencyCode.setDescription(vo.getDescription());
+        residencyCode.setDescriptionEn(vo.getDescriptionEn());
+        residencyCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.saveResidencyCode(residencyCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -390,7 +391,8 @@ public class CommonController {
 
         InResidencyCode residencyCode = commonService.findResidencyCodeById(vo.getId());
         residencyCode.setCode(vo.getCode());
-        residencyCode.setDescription(vo.getDescription());
+        residencyCode.setDescriptionEn(vo.getDescriptionEn());
+        residencyCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.updateResidencyCode(residencyCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -1220,8 +1222,8 @@ public class CommonController {
 
         InSubjectCode subjectCode = new InSubjectCodeImpl();
         subjectCode.setCode(vo.getCode());
-        subjectCode.setDescription(vo.getDescription());
-
+        subjectCode.setDescriptionEn(vo.getDescriptionEn());
+        subjectCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.saveSubjectCode(subjectCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -1232,8 +1234,8 @@ public class CommonController {
 
         InSubjectCode subjectCode = commonService.findSubjectCodeById(vo.getId());
         subjectCode.setCode(vo.getCode());
-        subjectCode.setDescription(vo.getDescription());
-
+        subjectCode.setDescriptionEn(vo.getDescriptionEn());
+        subjectCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.updateSubjectCode(subjectCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

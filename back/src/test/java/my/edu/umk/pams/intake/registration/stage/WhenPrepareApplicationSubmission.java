@@ -91,7 +91,8 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
         //create a residency code
     	InResidencyCode resident = new InResidencyCodeImpl();
     	resident.setCode("101");
-    	resident.setDescription("test resident");
+    	resident.setDescriptionEn("test resident");
+    	resident.setDescriptionMs("test resident");
     	commonService.saveResidencyCode(resident);
     	Assert.notNull(resident, "resident does not exists");
     	
@@ -251,7 +252,7 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
             applicationService.submitIntakeApplication(intake, application);
             Assert.notNull(application, refNo + " application is null");
 
-            InBidStatus expected = InBidStatus.APPLY;
+            InBidStatus expected = InBidStatus.SUBMITTED;
             InBidStatus found = application.getBidStatus();
             String message = refNo + "application expected " + expected + ", found " + found;
             Assert.isTrue(expected.equals(found), message);
