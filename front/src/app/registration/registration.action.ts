@@ -22,4 +22,24 @@ export class RegistrationActions {
       payload: message
     };
   }
+
+  static VERIFY_USER = '[Registration] Verify User';
+
+  verifyUser(token): Action {
+    console.log("verifyUser");
+    return {
+      type: RegistrationActions.VERIFY_USER,
+      payload: token
+    };
+  }
+
+  static VERIFY_USER_SUCCESS = '[Registration] Verify User Success';
+
+  verifyUserSuccess(verified): Action {
+    console.log("verifyUserSuccess");
+    return {
+      type: RegistrationActions.VERIFY_USER_SUCCESS,
+      payload: verified
+    };
+  }
 }

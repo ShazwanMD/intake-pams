@@ -15,4 +15,10 @@ export class RegistrationEffects {
     .map(action => action.payload)
     .switchMap(registration => this.registrationService.registerUser(registration))
     .map(message => this.registrationActions.registerUserSuccess(message));
+
+  @Effect() verifyUser$ = this.actions$
+    .ofType(RegistrationActions.VERIFY_USER)
+    .map(action => action.payload)
+    .switchMap(token => this.registrationService.verifyUser(token))
+    .map(verified => this.registrationActions.verifyUserSuccess(verified));
 }

@@ -102,7 +102,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         // create candidate
         candidates = this.findCandidatesByStatus(intake,InCandidateStatus.ACCEPTED); // note: accepted
         for (InCandidate candidate : candidates) {
-            // activate candidate status to true
+            // verifyUser candidate status to true
             candidate.setRegistration(true);
             candidateDao.save(candidate, Util.getCurrentUser());
         }

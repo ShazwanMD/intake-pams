@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Registration")
 @Issue("PAMI-70")
-@As("As an anonymous, I want to register, so that I can login as an applicant")
+@As("As an anonymous, I want to registerUser, so that I can login as an applicant")
 public class US_IN_RGN_1000 extends SpringScenarioTest<GivenIAmAnonymous, WhenIRegister, ThenICanLogIn> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_IN_PLC_1001.class);

@@ -1,12 +1,12 @@
 import {Action} from '@ngrx/store';
 import {RegistrationActions} from "./registration.action";
 
-export type RegistrationState = '';
-const initialState: RegistrationState = '';
+export type VerificationState = boolean;
+const initialState: VerificationState = false;
 
-export function registrationReducer(state = initialState, action: Action): RegistrationState {
+export function registrationReducer(state = initialState, action: Action): VerificationState {
   switch (action.type) {
-    case RegistrationActions.REGISTER_USER_SUCCESS: {
+    case RegistrationActions.VERIFY_USER_SUCCESS: {
       return action.payload;
     }
     default: {

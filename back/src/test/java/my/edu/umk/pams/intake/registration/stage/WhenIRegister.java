@@ -38,7 +38,7 @@ public class WhenIRegister extends Stage<WhenIRegister> {
         applicant.setPhone("123456789");
         applicant.setFax("123456789");
 
-        registrationService.register(user, applicant);
+        registrationService.registerUser(user, applicant);
 
         return self();
     }

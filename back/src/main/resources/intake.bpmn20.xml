@@ -27,7 +27,7 @@
         ====================================================================================================
         -->
 
-        <serviceTask id="intake_draft_ST"
+         <serviceTask id="intake_draft_ST"
                      activiti:expression="#{intake_draft_ST.execute(execution)}"/>
 
         <sequenceFlow id="flow2.1" sourceRef="intake_draft_ST"

@@ -28,7 +28,7 @@ import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGS
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Registration")
 @As("As a PPS academic administrator, "
-		+ "I want to activate students admission during registration day, "
+		+ "I want to verifyUser students admission during registration day, "
 		+ "so that the student status will be activated")
 
 public class US_IN_RGN_3006 extends  SpringScenarioTest<GivenIAmCPSAdministrator, WhenPrepareApplicationSubmission, ThenActivateStudentStatus> {

@@ -28,7 +28,7 @@ public class RegistrationController {
         user.setEmail(registration.getEmail());
         user.setRealName(registration.getName());
         user.setPassword(registration.getPassword());
-        user.setEnabled(true);
+        user.setEnabled(false);
         user.setLocked(true);
 
         InApplicant applicant = new InApplicantImpl();
@@ -36,12 +36,14 @@ public class RegistrationController {
         applicant.setName(registration.getName());
         applicant.setEmail(registration.getEmail());
 
-        registrationService.register(user,applicant);
-        return new ResponseEntity<String>("Successful", HttpStatus.OK);
+        registrationService.registerUser(user, applicant);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/activateUser/{token}", method = RequestMethod.GET)
-    public ResponseEntity<String> activateUser(@PathVariable String token) {
-        return new ResponseEntity<String>("Activated", HttpStatus.OK);
+    @RequestMapping(value = "/verifyUser/{token}", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> verifyUser(@PathVariable String token) {
+        registrationService.verifyUser(token);
+        return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
     }
 }

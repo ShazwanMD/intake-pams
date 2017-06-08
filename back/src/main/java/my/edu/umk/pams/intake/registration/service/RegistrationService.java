@@ -8,10 +8,9 @@ import my.edu.umk.pams.intake.identity.model.InUser;
  */
 public interface RegistrationService {
 
-    void register(InUser user, InApplicant applicant);
+    void registerUser(InUser user, InApplicant applicant);
 
-    void activate(InUser user);
-   
+    void verifyUser(String token);
 
-    boolean isExists(String username);
+    boolean isUserExists(String username);
 }

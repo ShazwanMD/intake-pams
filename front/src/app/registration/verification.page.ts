@@ -8,11 +8,11 @@ import {RegistrationModuleState} from "./index";
 import {RegistrationActions} from "./registration.action";
 
 @Component({
-  selector: 'pams-verify-page',
-  templateUrl: './verify.page.html',
+  selector: 'pams-verification',
+  templateUrl: './verification.page.html',
 })
 
-export class VerifyPage implements OnInit {
+export class VerificationPage implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,

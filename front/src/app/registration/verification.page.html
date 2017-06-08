@@ -4,7 +4,7 @@
     <span flex></span>
   </div>
 
-    <td-layout-card-over>
+  <td-layout-card-over>
     <div layout="row" layout-align="start center">
       <div>
         <md-card-title>Applicant Registration</md-card-title>
@@ -12,8 +12,8 @@
       </div>
     </div>
 
-      <md-card-actions>
-      <button md-button color="accent" [routerLink]="['/login']" (click)="login(loginForm.value, loginForm.valid)">Login</button>
-
-  <!--<button md-button color="accent" [routerLink]="['/register']" (click)="validate(validationForm.value, validationForm.valid)">Validate</button>-->
-      </md-card-actions>    
+    <md-card-actions>
+      <button md-button color="accent" [routerLink]="['/login']">
+        Please Log In
+      </button>
+    </md-card-actions>

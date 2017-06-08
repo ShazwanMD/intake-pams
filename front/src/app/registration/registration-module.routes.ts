@@ -1,9 +1,9 @@
-import {Routes, RouterModule} from '@angular/router';
+import {Routes} from '@angular/router';
 import {RegistrationPage} from "./registration.page";
-import { ValidationPage } from "./validation.page";
+import {VerificationPage} from "./verification.page";
 
 
 export const RegistrationModuleRoutes: Routes = [
   {path: 'registration', component: RegistrationPage},
-  {path: 'validation', component: ValidationPage},
+  {path: 'verification/:token', component: VerificationPage},
 ];
