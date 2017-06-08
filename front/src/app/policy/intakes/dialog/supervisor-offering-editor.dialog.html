@@ -1,14 +1,13 @@
 <h2 md-dialog-title>Supervisor Offering Editor for {{intake?.referenceNo}}</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <div layout="row" class="pad-top">
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
       <pams-supervisor-code-select
         [placeholder]="'Supervisor Code'"
-        [innerFormControl]="editorForm.controls['supervisorCode']">
+        [innerFormControl]="editorForm.controls['supervisorCode']" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-supervisor-code-select>
     </div>
   </form>
-
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="add(editorForm.value, editorForm.valid)">Save</button>

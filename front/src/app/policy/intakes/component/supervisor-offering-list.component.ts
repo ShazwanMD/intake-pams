@@ -1,11 +1,10 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {IntakeTask} from "../intake-task.interface";
+import {Component, Input, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {SupervisorOffering} from "../supervisor-offering.interface";
 import {Intake} from "../intake.interface";
 import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
-import { MdDialogConfig, MdDialog, MdDialogRef, MdSnackBar } from "@angular/material";
+import {MdDialogConfig, MdDialog, MdDialogRef, MdSnackBar} from "@angular/material";
 import {SupervisorOfferingEditorDialog} from "../dialog/supervisor-offering-editor.dialog";
 
 @Component({
@@ -25,11 +24,11 @@ export class SupervisorOfferingListComponent {
               private dialog: MdDialog,
               private snackBar: MdSnackBar) {
   }
-  
+
   delete(supervisorOffering: SupervisorOffering): void {
     let snackBarRef = this.snackBar.open("Delete this supervisor offering?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
-    this.store.dispatch(this.actions.deleteSupervisorOffering(this.intake, supervisorOffering))
+      this.store.dispatch(this.actions.deleteSupervisorOffering(this.intake, supervisorOffering))
     });
   }
 
@@ -40,7 +39,7 @@ export class SupervisorOfferingListComponent {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
-    config.height = '60%';
+    config.height = '30%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(SupervisorOfferingEditorDialog, config);
     this.editorDialogRef.componentInstance.intake = this.intake;

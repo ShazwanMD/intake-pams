@@ -10,6 +10,7 @@ import {StudyMode} from "../study-mode.interface";
 @Component({
   selector: 'pams-study-mode-select',
   templateUrl: './study-mode-select.component.html',
+  styleUrls: ['./study-mode-select.scss'],
 })
 export class StudyModeSelectComponent implements OnInit {
 

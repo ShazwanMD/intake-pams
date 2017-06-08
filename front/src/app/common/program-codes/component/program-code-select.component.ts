@@ -10,6 +10,7 @@ import {ProgramCode} from "../program-code.interface";
 @Component({
   selector: 'pams-program-code-select',
   templateUrl: './program-code-select.component.html',
+  styleUrls: ['./program-code-select.scss'],
 })
 export class ProgramCodeSelectComponent implements OnInit {
 

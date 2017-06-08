@@ -1,12 +1,10 @@
 <h2 md-dialog-title>Study Mode Offering Editor for {{intake?.referenceNo}}</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <div layout="row" class="pad-bottom">
-    </div>
-    <div layout="row" class="pad-bottom pad-top">
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
       <pams-study-mode-select
         [placeholder]="'Study Mode'"
-        [innerFormControl]="editorForm.controls['studyMode']" flex>
+        [innerFormControl]="editorForm.controls['studyMode']" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-study-mode-select>
     </div>
   </form>

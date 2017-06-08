@@ -4,13 +4,13 @@ import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
 import {CommonActions} from "../../common.action";
 import {CommonModuleState} from "../../index";
-//import {ProgramCode} from "../program-code.interface";
-import { SupervisorCode } from "../supervisor-code.interface";
+import {SupervisorCode} from "../supervisor-code.interface";
 
 
 @Component({
   selector: 'pams-supervisor-code-select',
   templateUrl: './supervisor-code-select.component.html',
+  styleUrls: ['./supervisor-code-select.scss'],
 })
 export class SupervisorCodeSelectComponent implements OnInit {
 

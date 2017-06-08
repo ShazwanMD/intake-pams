@@ -10,6 +10,7 @@ import {CommonModuleState} from "../../index";
 @Component({
   selector: 'pams-graduate-centre-select',
   templateUrl: './graduate-centre-select.component.html',
+  styleUrls: ['./graduate-centre-select.scss'],
 })
 export class GraduateCentreSelectComponent implements OnInit {
 

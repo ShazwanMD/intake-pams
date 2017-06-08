@@ -25,7 +25,7 @@ export class StudyModeOfferingListComponent {
               private dialog: MdDialog,
               private snackBar: MdSnackBar) {
   }
-  
+
   delete(studyModeOffering: StudyModeOffering): void {
     let snackBarRef = this.snackBar.open("Confirm to delete this studymode offering?", "Ok");
     snackBarRef.afterDismissed().subscribe(() => {
@@ -40,7 +40,7 @@ export class StudyModeOfferingListComponent {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
-    config.height = '60%';
+    config.height = '30%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(StudyModeOfferingEditorDialog, config);
     this.editorDialogRef.componentInstance.intake = this.intake;

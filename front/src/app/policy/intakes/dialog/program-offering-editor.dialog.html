@@ -1,22 +1,17 @@
 <h2 md-dialog-title>Program Offering Editor for {{intake?.referenceNo}}</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <div layout="row" class="pad-bottom">
-    </div>
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput type="number"
-               placeholder="Projection"
-               formControlName="projection"
-               value="Projection"
-               flex/>
-      </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom pad-top">
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
       <pams-program-code-select
         [placeholder]="'Program Codes'"
-        [innerFormControl]="editorForm.controls['programCode']" flex>
+        [innerFormControl]="editorForm.controls['programCode']" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-program-code-select>
+      <md-input-container fxFlex="calc(50%-25px)">
+        <input mdInput
+               type="number"
+               placeholder="Projection"
+               formControlName="projection"/>
+      </md-input-container>
     </div>
   </form>
 </md-dialog-content>
