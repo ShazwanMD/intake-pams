@@ -3,6 +3,14 @@ package my.edu.umk.pams.intake.web.module.application.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.intake.web.module.common.vo.CountryCode;
+import my.edu.umk.pams.intake.web.module.common.vo.EthnicityCode;
+import my.edu.umk.pams.intake.web.module.common.vo.GenderCode;
+import my.edu.umk.pams.intake.web.module.common.vo.MaritalCode;
+import my.edu.umk.pams.intake.web.module.common.vo.NationalityCode;
+import my.edu.umk.pams.intake.web.module.common.vo.RaceCode;
+import my.edu.umk.pams.intake.web.module.common.vo.ReligionCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
@@ -28,6 +36,8 @@ public class IntakeApplication extends MetaObject {
     private String phone;
     private String mobile;
     private String email;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date passExpDate;
     private String fax;
     private Integer age;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -41,6 +51,13 @@ public class IntakeApplication extends MetaObject {
     private ProgramOffering programSelection;
     private SupervisorOffering supervisorSelection;
     private StudyModeOffering studyModeSelection;
+    
+    private GenderCode genderCode;
+    private NationalityCode nationalityCode;
+    private RaceCode raceCode;
+    private EthnicityCode ethnicityCode;
+    private MaritalCode maritalCode;
+    private ReligionCode religionCode;
 
     private BidType bidType;
     private BidStatus bidStatus;
@@ -119,8 +136,9 @@ public class IntakeApplication extends MetaObject {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
+      
 
-    public String getEmail() {
+	public String getEmail() {
         return email;
     }
 
@@ -151,8 +169,17 @@ public class IntakeApplication extends MetaObject {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
+    
 
-    public Boolean getPaid() {
+    public Date getPassExpDate() {
+		return passExpDate;
+	}
+
+	public void setPassExpDate(Date passExpDate) {
+		this.passExpDate = passExpDate;
+	}
+
+	public Boolean getPaid() {
         return paid;
     }
 
@@ -239,8 +266,57 @@ public class IntakeApplication extends MetaObject {
     public void setIntake(Intake intake) {
         this.intake = intake;
     }
+    
+	public GenderCode getGenderCode() {
+		return genderCode;
+	}
 
-    @JsonCreator
+	public void setGenderCode(GenderCode genderCode) {
+		this.genderCode = genderCode;
+	}
+	
+
+    public NationalityCode getNationalityCode() {
+		return nationalityCode;
+	}
+
+	public void setNationalityCode(NationalityCode nationalityCode) {
+		this.nationalityCode = nationalityCode;
+	}
+
+	public RaceCode getRaceCode() {
+		return raceCode;
+	}
+
+	public void setRaceCode(RaceCode raceCode) {
+		this.raceCode = raceCode;
+	}
+
+	public EthnicityCode getEthnicityCode() {
+		return ethnicityCode;
+	}
+
+	public void setEthnicityCode(EthnicityCode ethnicityCode) {
+		this.ethnicityCode = ethnicityCode;
+	}
+
+	public MaritalCode getMaritalCode() {
+		return maritalCode;
+	}
+
+	public void setMaritalCode(MaritalCode maritalCode) {
+		this.maritalCode = maritalCode;
+	}
+
+	public ReligionCode getReligionCode() {
+		return religionCode;
+	}
+
+	public void setReligionCode(ReligionCode religionCode) {
+		this.religionCode = religionCode;
+	}
+
+	@JsonCreator
     public static IntakeApplication create(String jsonString) {
         IntakeApplication o = null;
         try {

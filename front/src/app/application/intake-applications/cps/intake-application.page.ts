@@ -106,6 +106,7 @@ export class CpsIntakeApplicationPage implements OnInit {
       phone: '',
       fax: '',
       age: 0,
+      passExpDate: null,
 
       genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},

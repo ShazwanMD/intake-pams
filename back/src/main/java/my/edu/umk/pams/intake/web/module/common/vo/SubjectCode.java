@@ -11,7 +11,8 @@ import java.io.IOException;
  */
 public class SubjectCode extends MetaObject {
     private String code;
-    private String description;
+    private String descriptionMs;
+    private String descriptionEn;
   
 
     public String getCode() {
@@ -25,15 +26,26 @@ public class SubjectCode extends MetaObject {
 	}
 
 
-
-	public String getDescription() {
-		return description;
+	public String getDescriptionMs() {
+		return descriptionMs;
 	}
 
 
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+
+
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+
+
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
 	}
 
 

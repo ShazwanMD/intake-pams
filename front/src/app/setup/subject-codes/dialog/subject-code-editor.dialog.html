@@ -9,15 +9,24 @@
                flex/>
       </md-input-container>
     </div>
+    
     <div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput
-               placeholder="Description"
-               formControlName="description"
+               placeholder="Description (MS)"
+               formControlName="descriptionMs"
                flex/>
       </md-input-container>
     </div>
-  </form>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Description (EN)"
+               formControlName="descriptionEn"
+               flex/>
+      </md-input-container>
+    </div>
+    </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">

@@ -193,11 +193,18 @@ public class ApplicationController {
         application.setFax(vo.getFax());
         application.setEmail(vo.getEmail());
         application.setAge(vo.getAge());
-
+        application.setPassportExpDate(vo.getPassExpDate());
         application.setCredentialNo(vo.getCredentialNo());
         application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
+        
+        application.setGenderCode(commonService.findGenderCodeById(vo.getGenderCode().getId()));
+        application.setReligionCode(commonService.findReligionCodeById(vo.getReligionCode().getId()));
+        application.setEthnicityCode(commonService.findEthnicityCodeById(vo.getEthnicityCode().getId()));
+        application.setMaritalCode(commonService.findMaritalCodeById(vo.getMaritalCode().getId()));
+        application.setRaceCode(commonService.findRaceCodeById(vo.getRaceCode().getId()));
+        application.setNationalityCode(commonService.findNationalityCodeById(vo.getNationalityCode().getId()));
 
         applicationService.updateIntakeApplication(application);
         return new ResponseEntity<String>("success", HttpStatus.OK);

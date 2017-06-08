@@ -150,7 +150,9 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         //adding subject code
         InSubjectCode subject = new InSubjectCodeImpl();
         subject.setCode("subject123");
-        subject.setDescription("test subject description");
+        subject.setDescriptionEn("test subject description");
+        subject.setDescriptionMs("test subject description");
+        
         
         commonService.saveSubjectCode(subject);
         

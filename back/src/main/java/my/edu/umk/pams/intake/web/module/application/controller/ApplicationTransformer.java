@@ -26,8 +26,10 @@ public class ApplicationTransformer {
 	@Autowired
 	private ApplicationTransformer applicationTransformer;
 
-	public IntakeApplication toIntakeApplicationVo(InIntakeApplication e) {
-		IntakeApplication vo = new IntakeApplication();
+	
+	public IntakeApplication toIntakeApplicationVo(InIntakeApplication e)
+	{
+		IntakeApplication vo = new IntakeApplication();	
 		vo.setId(e.getId());
 		vo.setReferenceNo(e.getReferenceNo());
 		vo.setResearchTitle(e.getResearchTitle());
@@ -38,6 +40,7 @@ public class ApplicationTransformer {
 		vo.setMobile(e.getMobile());
 		vo.setFax(e.getFax());
 		vo.setAge(e.getAge());
+		vo.setPassExpDate(e.getPassportExpDate());
 		vo.setBirthDate(e.getBirthDate());
 		vo.setVerified(e.isVerified());
 		vo.setPaid(e.isPaid());
@@ -46,7 +49,14 @@ public class ApplicationTransformer {
 
 		vo.setBidType(BidType.get(e.getBidType().ordinal()));
 		vo.setBidStatus(BidStatus.get(e.getBidStatus().ordinal()));
-
+				
+		vo.setGenderCode(commonTransformer.toGenderCodeVo(e.getGenderCode()));
+		vo.setRaceCode(commonTransformer.toRaceCodeVo(e.getRaceCode()));
+		vo.setReligionCode(commonTransformer.toReligionCodeVo(e.getReligionCode()));
+		vo.setEthnicityCode(commonTransformer.toEthnicityCodeVo(e.getEthnicityCode()));
+		vo.setMaritalCode(commonTransformer.toMaritalCodeVo(e.getMaritalCode()));
+		vo.setNationalityCode(commonTransformer.toNationalityCodeVo(e.getNationalityCode()));
+		
 		vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
 		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
 		vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));
