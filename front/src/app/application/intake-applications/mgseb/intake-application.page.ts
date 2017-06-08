@@ -128,6 +128,11 @@ private dummyData: any[]=[
       foreignResult:false,
       educationResult:false,
       academic:false,
+      financialLetter:false,
+      researchProposal:false,
+      bankStatement:false,
+      refereeForm:false,
+      
     });
     this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }
