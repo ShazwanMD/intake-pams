@@ -5,7 +5,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import my.edu.umk.pams.intake.web.module.common.vo.CountryCode;
+import my.edu.umk.pams.intake.web.module.common.vo.EthnicityCode;
 import my.edu.umk.pams.intake.web.module.common.vo.GenderCode;
+import my.edu.umk.pams.intake.web.module.common.vo.MaritalCode;
+import my.edu.umk.pams.intake.web.module.common.vo.NationalityCode;
+import my.edu.umk.pams.intake.web.module.common.vo.RaceCode;
+import my.edu.umk.pams.intake.web.module.common.vo.ReligionCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
@@ -48,6 +53,11 @@ public class IntakeApplication extends MetaObject {
     private StudyModeOffering studyModeSelection;
     
     private GenderCode genderCode;
+    private NationalityCode nationalityCode;
+    private RaceCode raceCode;
+    private EthnicityCode ethnicityCode;
+    private MaritalCode maritalCode;
+    private ReligionCode religionCode;
 
     private BidType bidType;
     private BidStatus bidStatus;
@@ -264,8 +274,49 @@ public class IntakeApplication extends MetaObject {
 	public void setGenderCode(GenderCode genderCode) {
 		this.genderCode = genderCode;
 	}
+	
 
-    @JsonCreator
+    public NationalityCode getNationalityCode() {
+		return nationalityCode;
+	}
+
+	public void setNationalityCode(NationalityCode nationalityCode) {
+		this.nationalityCode = nationalityCode;
+	}
+
+	public RaceCode getRaceCode() {
+		return raceCode;
+	}
+
+	public void setRaceCode(RaceCode raceCode) {
+		this.raceCode = raceCode;
+	}
+
+	public EthnicityCode getEthnicityCode() {
+		return ethnicityCode;
+	}
+
+	public void setEthnicityCode(EthnicityCode ethnicityCode) {
+		this.ethnicityCode = ethnicityCode;
+	}
+
+	public MaritalCode getMaritalCode() {
+		return maritalCode;
+	}
+
+	public void setMaritalCode(MaritalCode maritalCode) {
+		this.maritalCode = maritalCode;
+	}
+
+	public ReligionCode getReligionCode() {
+		return religionCode;
+	}
+
+	public void setReligionCode(ReligionCode religionCode) {
+		this.religionCode = religionCode;
+	}
+
+	@JsonCreator
     public static IntakeApplication create(String jsonString) {
         IntakeApplication o = null;
         try {

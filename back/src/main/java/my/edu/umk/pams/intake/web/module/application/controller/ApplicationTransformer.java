@@ -51,6 +51,11 @@ public class ApplicationTransformer {
 		vo.setBidStatus(BidStatus.get(e.getBidStatus().ordinal()));
 				
 		vo.setGenderCode(commonTransformer.toGenderCodeVo(e.getGenderCode()));
+		vo.setRaceCode(commonTransformer.toRaceCodeVo(e.getRaceCode()));
+		vo.setReligionCode(commonTransformer.toReligionCodeVo(e.getReligionCode()));
+		vo.setEthnicityCode(commonTransformer.toEthnicityCodeVo(e.getEthnicityCode()));
+		vo.setMaritalCode(commonTransformer.toMaritalCodeVo(e.getMaritalCode()));
+		vo.setNationalityCode(commonTransformer.toNationalityCodeVo(e.getNationalityCode()));
 		
 		vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
 		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
