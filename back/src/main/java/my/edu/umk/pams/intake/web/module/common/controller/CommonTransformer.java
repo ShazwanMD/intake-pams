@@ -424,7 +424,8 @@ public class CommonTransformer {
         SubjectCode vo = new SubjectCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
     }
 
