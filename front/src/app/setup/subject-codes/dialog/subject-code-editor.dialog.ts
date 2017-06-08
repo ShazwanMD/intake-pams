@@ -35,11 +35,13 @@ export class SubjectCodeEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.editorForm = this.formBuilder.group(<SubjectCode>{
       id: null,
       code: '',
-      // name: '',
-      description: '',
+      
+      descriptionMs: '',
+      descriptionEn: '',
     });
 
     if (this.edit) this.editorForm.patchValue(this._subjectCode);
