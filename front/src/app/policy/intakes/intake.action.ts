@@ -279,10 +279,11 @@ export class IntakeActions {
 
   static UPDATE_INTAKE_SUCCESS = '[Intake] Update Intake Success';
 
-  updateIntakeSuccess(intake): Action {
+  updateIntakeSuccess(message): Action {
+      console.log("updateIntakeSuccess");
     return {
       type: IntakeActions.UPDATE_INTAKE_SUCCESS,
-      payload: intake
+      payload: message
     };
   }
 

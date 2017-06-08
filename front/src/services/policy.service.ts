@@ -177,9 +177,19 @@ export class PolicyService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  updateIntake(intake: Intake): Observable<Boolean> {
-    return this.http.put(environment.endpoint + '/api/policy/intakes', JSON.stringify(intake))
-      .flatMap(data => Observable.of(true));
+  updateIntake(intake: Intake): Observable<String> {
+
+      console.log("referenceNo :"+intake.referenceNo);
+      console.log("description :"+intake.description);
+      console.log("description :"+intake.startDate);
+      console.log("description :"+intake.endDate);
+    let headers = new Headers({
+         'Content-Type': 'application/json',
+          //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/policy/intakes/'+ intake.referenceNo, JSON.stringify(intake), options)
+    .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
