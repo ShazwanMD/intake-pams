@@ -28,6 +28,7 @@ public class IntakeApplication extends MetaObject {
     private String phone;
     private String mobile;
     private String email;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date passExpDate;
     private String fax;
     private Integer age;
