@@ -5,12 +5,15 @@ import {from} from "rxjs/observable/from";
 import {PolicyService} from "../../../services/policy.service";
 import {PolicyModuleState} from "../index";
 import {Store} from "@ngrx/store";
+import { Intake } from "./intake.interface";
+import { IntakeTask } from "./intake-task.interface";
 
 
 @Injectable()
 export class IntakeEffects {
 
   private INTAKE = "policyModuleState.intake".split(".");
+  private INTAKE_TASK:string[] = "policyModuleState.intakeTask".split(".");
 
   constructor(private actions$: Actions,
               private intakeActions: IntakeActions,
@@ -131,7 +134,10 @@ export class IntakeEffects {
     .ofType(IntakeActions.UPDATE_INTAKE)
     .map(action => action.payload)
     .switchMap(intake => this.policyService.updateIntake(intake))
-    .map(intake => this.intakeActions.updateIntakeSuccess(intake));
+    .map(message => this.intakeActions.updateIntakeSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_TASK))
+    .map(state => state[1])
+    .map((intakeTask : IntakeTask) => this.intakeActions.findIntakeTaskByTaskId(intakeTask.taskId));
 
   @Effect() addProgramOffering$ = this.actions$
     .ofType(IntakeActions.ADD_PROGRAM_OFFERING)

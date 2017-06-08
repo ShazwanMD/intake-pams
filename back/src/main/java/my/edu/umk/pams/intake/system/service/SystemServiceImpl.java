@@ -279,7 +279,7 @@ public class SystemServiceImpl implements SystemService {
             // get old and new value
             Integer oldValue = referenceNo.getCurrentValue();
             Integer newValue = referenceNo.getCurrentValue() + referenceNo.getIncrementValue();
-
+            LOG.debug("referenceNo, Util.getCurrentUser() :"+Util.getCurrentUser());
             // update
             referenceNo.setCurrentValue(newValue);
             referenceNoDao.save(referenceNo, Util.getCurrentUser());

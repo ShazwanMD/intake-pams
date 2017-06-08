@@ -123,10 +123,11 @@ export class CpsIntakeApplicationPage implements OnInit {
       foreignResult:false,
       educationResult:false,
       academic:false,
-      sponsorLetter:false,
+      financialLetter:false,
       researchProposal:false,
       bankStatement:false,
       refereeForm:false,
+     
     });
     this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }

@@ -141,13 +141,23 @@ public class PolicyController {
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}", method = RequestMethod.PUT)
-    public ResponseEntity<Intake> updateIntake(@PathVariable String referenceNo, @RequestBody Intake vo) {
+    public ResponseEntity<String> updateIntake(@PathVariable String referenceNo, @RequestBody Intake vo) {
+    	dummyLogin();
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
+        intake.setDescription(vo.getDescription());
+        intake.setStartDate(vo.getStartDate());
+        intake.setEndDate(vo.getEndDate());
+        intake.setProjection(vo.getProjection());
+        intake.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
+        intake.setSession(policyService.findIntakeSessionById(vo.getIntakeSession().getId()));
+        intake.setGraduateCentre(commonService.findGraduateCentreById(vo.getGraduateCentre().getId()));
+        policyService.updateIntake(intake);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/copy", method = RequestMethod.POST)
     public ResponseEntity<String> copyIntake(@PathVariable String referenceNo) {
+    	dummyLogin();
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         String generatedReferenceNo = policyService.copyIntake(intake);
         return new ResponseEntity<String>(generatedReferenceNo, HttpStatus.OK);

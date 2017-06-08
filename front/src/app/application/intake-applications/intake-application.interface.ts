@@ -17,7 +17,7 @@ import {BidType} from "./bid-type.enum";
 
 export interface IntakeApplication extends MetaObject {
   referenceNo: string;
-  researchTitle?: string;
+  researchTitle: string;
   rank: number;
   merit: number;
   name: string;
@@ -46,7 +46,8 @@ export interface IntakeApplication extends MetaObject {
   refereeForm:boolean;
   bankStatement:boolean;
   researchProposal:boolean;
-  sponsorLetter:boolean;
+  financialLetter:boolean;
+
   bidType:BidType;
   bidStatus:BidStatus;
 
