@@ -38,6 +38,7 @@ public class ApplicationTransformer {
 		vo.setMobile(e.getMobile());
 		vo.setFax(e.getFax());
 		vo.setAge(e.getAge());
+		vo.setPassExpDate(e.getPassportExpDate());
 		vo.setBirthDate(e.getBirthDate());
 		vo.setVerified(e.isVerified());
 		vo.setPaid(e.isPaid());

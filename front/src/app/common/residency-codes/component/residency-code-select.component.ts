@@ -6,8 +6,6 @@ import {CommonActions} from "../../common.action";
 import { CommonModuleState } from "../../index";
 import { ResidencyCode } from "../residency-code.interface";
 
-
-
 @Component({
   selector: 'pams-residency-code-select',
   templateUrl: './residency-code-select.component.html',

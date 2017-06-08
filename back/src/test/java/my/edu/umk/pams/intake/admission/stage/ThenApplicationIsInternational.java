@@ -39,7 +39,7 @@ public class ThenApplicationIsInternational extends Stage<ThenApplicationIsInter
     	LOG.debug("intake status {} :", intake);
     	
     	 applicationService.submitIntakeApplication(intake, intakeApplication);   	 
-         Assert.notNull(InBidStatus.APPLY, "withdraw application is null");
+         Assert.notNull(InBidStatus.SUBMITTED, "withdraw application is null");
          LOG.debug("intake status {} :", intakeApplication.getBidStatus());
          
          

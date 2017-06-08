@@ -36,10 +36,12 @@ export class ResidencyCodeEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.editorForm = this.formBuilder.group(<ResidencyCode>{
       id: null,
       code: '',
-      description: '',
+      descriptionMs: '',
+      descriptionEn: '',
      });
 
     if (this.edit) this.editorForm.patchValue(this._residencyCode);

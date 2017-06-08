@@ -1222,8 +1222,8 @@ public class CommonController {
 
         InSubjectCode subjectCode = new InSubjectCodeImpl();
         subjectCode.setCode(vo.getCode());
-        subjectCode.setDescription(vo.getDescription());
-
+        subjectCode.setDescriptionEn(vo.getDescriptionEn());
+        subjectCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.saveSubjectCode(subjectCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -1234,8 +1234,8 @@ public class CommonController {
 
         InSubjectCode subjectCode = commonService.findSubjectCodeById(vo.getId());
         subjectCode.setCode(vo.getCode());
-        subjectCode.setDescription(vo.getDescription());
-
+        subjectCode.setDescriptionEn(vo.getDescriptionEn());
+        subjectCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.updateSubjectCode(subjectCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

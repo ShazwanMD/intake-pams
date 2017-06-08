@@ -42,7 +42,7 @@ public class ThenICanSubmitMyApplication extends Stage<ThenICanSubmitMyApplicati
     	
     	
         applicationService.submitIntakeApplication(intake, application);
-        Assert.notNull(InBidStatus.APPLY, "application is not submitted");
+        Assert.notNull(InBidStatus.SUBMITTED, "application is not submitted");
         LOG.debug("intake status {}", application.getBidStatus());
         return self();
     }
