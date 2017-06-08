@@ -13,11 +13,11 @@ import { IntakeTask } from "../intake-task.interface";
 
 
 @Component({
-  selector: 'pams-intake-task-creator',
-  templateUrl: './intake-task-creator.dialog.html',
+  selector: 'pams-intake-updater',
+  templateUrl: './intake-updater.dialog.html',
 })
 
-export class IntakeTaskCreatorDialog implements OnInit {
+export class IntakeUpdaterDialog implements OnInit {
 
   private createForm: FormGroup;
     private edit: boolean = false;
@@ -27,7 +27,7 @@ export class IntakeTaskCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<PolicyModuleState>,
               private actions: IntakeActions,
-              private dialog: MdDialogRef<IntakeTaskCreatorDialog>,
+              private dialog: MdDialogRef<IntakeUpdaterDialog>,
               private snackBar: MdSnackBar) {
   }
 
@@ -45,12 +45,20 @@ export class IntakeTaskCreatorDialog implements OnInit {
       intakeSession: <IntakeSession>{},
       graduateCentre: <GraduateCentre>{}
     });
+    
+    if (this.edit) this.createForm.patchValue(this._intakeTask);
   }
   
+  set intakeTask(intakeTask : IntakeTask) {
+      this._intakeTask = intakeTask;
+      this.edit = true;
+    }
+    
     submit(intake: Intake, isValid: boolean) {
-        let snackBarRef = this.snackBar.open("Confirm to create intake?", "Ok");
+        let snackBarRef = this.snackBar.open("Confirm to submit?", "Ok");
         snackBarRef.afterDismissed().subscribe(() => {
-        this.store.dispatch(this.actions.startIntakeTask(intake));
+        if (!intake.id) this.store.dispatch(this.actions.startIntakeTask(intake));
+        else  this.store.dispatch(this.actions.updateIntake(intake));
         this.dialog.close();
         });
       }

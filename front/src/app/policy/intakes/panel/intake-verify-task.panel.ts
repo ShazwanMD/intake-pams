@@ -10,6 +10,7 @@ import {ProgramOffering} from "../program-offering.interface";
 import {StudyModeOffering} from "../study-mode-offering.interface";
 import {SupervisorOffering} from "../supervisor-offering.interface";
 import { IntakeTaskCreatorDialog } from "../dialog/intake-task-creator.dialog";
+import { IntakeUpdaterDialog } from "../dialog/intake-updater.dialog";
 
 
 @Component({
@@ -17,7 +18,7 @@ import { IntakeTaskCreatorDialog } from "../dialog/intake-task-creator.dialog";
   templateUrl: './intake-verify-task.panel.html',
 })
 
-export class IntakeVerifyTaskPanel implements OnInit {editorDialogRef: MdDialogRef<IntakeTaskCreatorDialog>;
+export class IntakeVerifyTaskPanel implements OnInit {editorDialogRef: MdDialogRef<IntakeUpdaterDialog>;
 
   private PROGRAM_OFFERINGS = "policyModuleState.programOfferings".split(".");
   private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
@@ -64,12 +65,12 @@ export class IntakeVerifyTaskPanel implements OnInit {editorDialogRef: MdDialogR
       config.width = '50%';
       config.height = '60%';
       config.position = {top: '0px'};
-      this.editorDialogRef = this.dialog.open(IntakeTaskCreatorDialog, config);
+      this.editorDialogRef = this.dialog.open(IntakeUpdaterDialog, config);
       this.editorDialogRef.componentInstance.intakeTask = this.intakeTask;
 
       this.editorDialogRef.afterClosed().subscribe(res => {
           console.log("close dialog");
-          
+          this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
         });
   }
 
