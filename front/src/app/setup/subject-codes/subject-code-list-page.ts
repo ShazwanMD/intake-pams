@@ -5,7 +5,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {SubjectCodeEditorDialog} from "./dialog/subject-code-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-subject-list-page',
@@ -18,14 +18,16 @@ export class SubjectCodeListPage implements OnInit {
   private creatorDialogRef: MdDialogRef<SubjectCodeEditorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'description', label: 'Description'},
+    {name: 'descriptionMs', label: 'DescriptionMs'},
+    {name: 'descriptionEn', label: 'DescriptionEn'},
     {name: 'action', label: ''}
   ];
 
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
     this.subjectCodes$ = this.store.select(...this.SUBJECT_CODES);
   }
 
@@ -43,9 +45,11 @@ export class SubjectCodeListPage implements OnInit {
   }
 
   delete(code: SubjectCode): void {
+    let snackBarRef = this.snackBar.open("Delete this subject code?", "Ok");
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.removeSubjectCode(code))
+    });
   }
-
   filter(): void {
   }
 
