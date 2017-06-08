@@ -198,6 +198,7 @@ public class ApplicationController {
         application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
+        application.setGenderCode(commonService.findGenderCodeById(vo.getGenderCode().getId()));
 
         applicationService.updateIntakeApplication(application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
