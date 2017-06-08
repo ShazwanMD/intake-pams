@@ -1,6 +1,6 @@
 import {
   Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, Input, AfterViewInit
+  ComponentFactoryResolver, ComponentRef, Input
 } from '@angular/core';
 import {Observable} from "rxjs";
 import {IntakeTask} from "../intake-task.interface";

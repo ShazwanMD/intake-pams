@@ -9,8 +9,7 @@ import {PolicyModuleState} from "../../index";
 import {ProgramOffering} from "../program-offering.interface";
 import {StudyModeOffering} from "../study-mode-offering.interface";
 import {SupervisorOffering} from "../supervisor-offering.interface";
-import { IntakeTaskCreatorDialog } from "../dialog/intake-task-creator.dialog";
-import { IntakeUpdaterDialog } from "../dialog/intake-updater.dialog";
+import {IntakeUpdaterDialog} from "../dialog/intake-updater.dialog";
 
 
 @Component({
@@ -18,7 +17,8 @@ import { IntakeUpdaterDialog } from "../dialog/intake-updater.dialog";
   templateUrl: './intake-verify-task.panel.html',
 })
 
-export class IntakeVerifyTaskPanel implements OnInit {editorDialogRef: MdDialogRef<IntakeUpdaterDialog>;
+export class IntakeVerifyTaskPanel implements OnInit {
+  editorDialogRef: MdDialogRef<IntakeUpdaterDialog>;
 
   private PROGRAM_OFFERINGS = "policyModuleState.programOfferings".split(".");
   private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
@@ -48,32 +48,25 @@ export class IntakeVerifyTaskPanel implements OnInit {editorDialogRef: MdDialogR
   publish() {
     let snackBarRef = this.snackBar.open("Publish this intake?", "Yes");
     snackBarRef.afterDismissed().subscribe(() => {
-    this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
-    this.goBack();
+      this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
+      this.goBack();
     });
   }
-  
-  edit() {
-      this.showDialog(this.intakeTask);
-  }
-  
-  showDialog(intake : IntakeTask): void {
-      console.log("showDialog");
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.viewContainerRef;
-      config.role = 'dialog';
-      config.width = '50%';
-      config.height = '60%';
-      config.position = {top: '0px'};
-      this.editorDialogRef = this.dialog.open(IntakeUpdaterDialog, config);
-      this.editorDialogRef.componentInstance.intakeTask = this.intakeTask;
 
-      this.editorDialogRef.afterClosed().subscribe(res => {
-          console.log("close dialog");
-          this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
-        });
+  edit(): void {
+    console.log("edit");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.viewContainerRef;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '0px'};
+    this.editorDialogRef = this.dialog.open(IntakeUpdaterDialog, config);
+    this.editorDialogRef.componentInstance.intake = this.intakeTask.intake;
+    this.editorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+    });
   }
-
 
   goBack(): void {
     this.router.navigate(['/policy/intakes']);

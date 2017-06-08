@@ -1,6 +1,6 @@
-<h2 md-dialog-title>Intake Task Creator</h2>
+<h2 md-dialog-title>Update Intake</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <form [formGroup]="updateForm">
     <div layout="column" class="pad-right" flex>
       <div layout="row">
         <md-input-container flex>
@@ -42,28 +42,25 @@
       <div layout="row" class="pad-top">
         <pams-program-level-select
           [placeholder]="'Program Level'"
-          [innerFormControl]="createForm.controls.programLevel">
+          [innerFormControl]="updateForm.controls.programLevel">
         </pams-program-level-select>
       </div>
       <div layout="row" class="pad-top">
         <pams-graduate-centre-select
           [placeholder]="'Graduate Centre'"
-          [innerFormControl]="createForm.controls.graduateCentre">
+          [innerFormControl]="updateForm.controls.graduateCentre">
         </pams-graduate-centre-select>
       </div>
       <div layout="row" class="pad-top">
         <pams-intake-session-select
           [placeholder]="'Intake Session'"
-          [innerFormControl]="createForm.controls.intakeSession">
+          [innerFormControl]="updateForm.controls.intakeSession">
         </pams-intake-session-select>
       </div>
     </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
- <!--  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button> -->
-  <button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)">
-    {{edit ? 'Update' : 'Save'}}
-  </button>
+  <button md-raised-button color="accent" (click)="submit(updateForm.value, updateForm.valid)">Update</button>
 </md-dialog-actions>
 

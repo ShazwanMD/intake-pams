@@ -5,15 +5,13 @@ import {from} from "rxjs/observable/from";
 import {PolicyService} from "../../../services/policy.service";
 import {PolicyModuleState} from "../index";
 import {Store} from "@ngrx/store";
-import { Intake } from "./intake.interface";
-import { IntakeTask } from "./intake-task.interface";
-
+import {IntakeTask} from "./intake-task.interface";
 
 @Injectable()
 export class IntakeEffects {
 
   private INTAKE = "policyModuleState.intake".split(".");
-  private INTAKE_TASK:string[] = "policyModuleState.intakeTask".split(".");
+  private INTAKE_TASK: string[] = "policyModuleState.intakeTask".split(".");
 
   constructor(private actions$: Actions,
               private intakeActions: IntakeActions,
@@ -95,17 +93,17 @@ export class IntakeEffects {
         this.intakeActions.findPooledIntakeTasks()
       ]
     ));
-  
+
   @Effect() copyIntakeTask$ = this.actions$
-  .ofType(IntakeActions.COPY_INTAKE_TASK)
-  .map(action => action.payload)
-  .switchMap(intakeTask => this.policyService.copyIntakeTask(intakeTask))
-  .map(message => this.intakeActions.copyIntakeTaskSuccess(message))
-  .mergeMap(action => from([action,
-      this.intakeActions.findAssignedIntakeTasks(),
-      this.intakeActions.findPooledIntakeTasks()
-    ]
-  ));
+    .ofType(IntakeActions.COPY_INTAKE_TASK)
+    .map(action => action.payload)
+    .switchMap(intakeTask => this.policyService.copyIntakeTask(intakeTask))
+    .map(message => this.intakeActions.copyIntakeTaskSuccess(message))
+    .mergeMap(action => from([action,
+        this.intakeActions.findAssignedIntakeTasks(),
+        this.intakeActions.findPooledIntakeTasks()
+      ]
+    ));
 
   @Effect() claimIntakeTask$ = this.actions$
     .ofType(IntakeActions.CLAIM_INTAKE_TASK)
@@ -137,7 +135,7 @@ export class IntakeEffects {
     .map(message => this.intakeActions.updateIntakeSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_TASK))
     .map(state => state[1])
-    .map((intakeTask : IntakeTask) => this.intakeActions.findIntakeTaskByTaskId(intakeTask.taskId));
+    .map((intakeTask: IntakeTask) => this.intakeActions.findIntakeTaskByTaskId(intakeTask.taskId));
 
   @Effect() addProgramOffering$ = this.actions$
     .ofType(IntakeActions.ADD_PROGRAM_OFFERING)
@@ -148,7 +146,7 @@ export class IntakeEffects {
     .map(state => state[1])
     .map(intake => this.intakeActions.findProgramOfferings(intake));
 
-   @Effect() updateProgramOffering$ = this.actions$
+  @Effect() updateProgramOffering$ = this.actions$
     .ofType(IntakeActions.UPDATE_PROGRAM_OFFERING)
     .map(action => action.payload)
     .switchMap(payload => this.policyService.updateProgramOffering(payload.intake, payload.programOffering))
@@ -156,15 +154,15 @@ export class IntakeEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map(state => state[1])
     .map(intake => this.intakeActions.findProgramOfferings(intake));
-   
-   @Effect() deleteProgramOfferin$ = this.actions$
-   .ofType(IntakeActions.DELETE_PROGRAM_OFFERING)
-   .map(action => action.payload)
-   .switchMap(payload => this.policyService.deleteProgramOffering(payload.intake, payload.programOffering))
-   .map(message => this.intakeActions.deleteProgramOfferingSuccess(message))
-   .withLatestFrom(this.store$.select(...this.INTAKE))
-   .map(state => state[1])
-   .map(intake => this.intakeActions.findProgramOfferings(intake));
+
+  @Effect() deleteProgramOfferin$ = this.actions$
+    .ofType(IntakeActions.DELETE_PROGRAM_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.policyService.deleteProgramOffering(payload.intake, payload.programOffering))
+    .map(message => this.intakeActions.deleteProgramOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state => state[1])
+    .map(intake => this.intakeActions.findProgramOfferings(intake));
 
   @Effect() addStudyModeOffering$ = this.actions$
     .ofType(IntakeActions.ADD_STUDY_MODE_OFFERING)
@@ -174,15 +172,15 @@ export class IntakeEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map(state => state[1])
     .map(intake => this.intakeActions.findStudyModeOfferings(intake));
-  
+
   @Effect() deleteStudyModeOffering$ = this.actions$
-  .ofType(IntakeActions.DELETE_STUDY_MODE_OFFERING)
-  .map(action => action.payload)
-  .switchMap(payload => this.policyService.deleteStudyModeOffering(payload.intake, payload.studyModeOffering))
-  .map(message => this.intakeActions.deleteStudyModeOfferingSuccess(message))
-  .withLatestFrom(this.store$.select(...this.INTAKE))
-  .map(state => state[1])
-  .map(intake => this.intakeActions.findStudyModeOfferings(intake));
+    .ofType(IntakeActions.DELETE_STUDY_MODE_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.policyService.deleteStudyModeOffering(payload.intake, payload.studyModeOffering))
+    .map(message => this.intakeActions.deleteStudyModeOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state => state[1])
+    .map(intake => this.intakeActions.findStudyModeOfferings(intake));
 
   @Effect() addSupervisorOffering$ = this.actions$
     .ofType(IntakeActions.ADD_SUPERVISOR_OFFERING)
@@ -192,13 +190,13 @@ export class IntakeEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map(state => state[1])
     .map(intake => this.intakeActions.findSupervisorOfferings(intake));
-  
+
   @Effect() deleteSupervisorOffering$ = this.actions$
-  .ofType(IntakeActions.DELETE_SUPERVISOR_OFFERING)
-  .map(action => action.payload)
-  .switchMap(payload => this.policyService.deleteSupervisorOffering(payload.intake, payload.supervisorOffering))
-  .map(message => this.intakeActions.deleteSupervisorOfferingSuccess(message))
-  .withLatestFrom(this.store$.select(...this.INTAKE))
-  .map(state => state[1])
-  .map(intake => this.intakeActions.findSupervisorOfferings(intake));
+    .ofType(IntakeActions.DELETE_SUPERVISOR_OFFERING)
+    .map(action => action.payload)
+    .switchMap(payload => this.policyService.deleteSupervisorOffering(payload.intake, payload.supervisorOffering))
+    .map(message => this.intakeActions.deleteSupervisorOfferingSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE))
+    .map(state => state[1])
+    .map(intake => this.intakeActions.findSupervisorOfferings(intake));
 }
