@@ -25,18 +25,18 @@ import {RegistrationActions} from "./registration.action";
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { email: string }) => {
+  //   this.route.params.subscribe((params: { email: string }) => {
 
 
-       let email: string = params.email;
+  //      let email: string = params.email;
 
-      //trigger validation wording to email
+  //     //trigger validation wording to email
 
-     // if (null != email) 
-       //   this.store.dispatch(this.actions.(email));
-   });
+  //    // if (null != email) 
+  //      //   this.store.dispatch(this.actions.(email));
+  //  });
   }
 
-      validation() {
+      validation2() {
   }
-  }
+}
