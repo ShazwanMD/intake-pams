@@ -3,6 +3,9 @@ package my.edu.umk.pams.intake.web.module.application.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.intake.web.module.common.vo.CountryCode;
+import my.edu.umk.pams.intake.web.module.common.vo.GenderCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
@@ -43,6 +46,8 @@ public class IntakeApplication extends MetaObject {
     private ProgramOffering programSelection;
     private SupervisorOffering supervisorSelection;
     private StudyModeOffering studyModeSelection;
+    
+    private GenderCode genderCode;
 
     private BidType bidType;
     private BidStatus bidStatus;
@@ -251,6 +256,14 @@ public class IntakeApplication extends MetaObject {
     public void setIntake(Intake intake) {
         this.intake = intake;
     }
+    
+	public GenderCode getGenderCode() {
+		return genderCode;
+	}
+
+	public void setGenderCode(GenderCode genderCode) {
+		this.genderCode = genderCode;
+	}
 
     @JsonCreator
     public static IntakeApplication create(String jsonString) {

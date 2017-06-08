@@ -26,8 +26,10 @@ public class ApplicationTransformer {
 	@Autowired
 	private ApplicationTransformer applicationTransformer;
 
-	public IntakeApplication toIntakeApplicationVo(InIntakeApplication e) {
-		IntakeApplication vo = new IntakeApplication();
+	
+	public IntakeApplication toIntakeApplicationVo(InIntakeApplication e)
+	{
+		IntakeApplication vo = new IntakeApplication();	
 		vo.setId(e.getId());
 		vo.setReferenceNo(e.getReferenceNo());
 		vo.setResearchTitle(e.getResearchTitle());
@@ -47,7 +49,9 @@ public class ApplicationTransformer {
 
 		vo.setBidType(BidType.get(e.getBidType().ordinal()));
 		vo.setBidStatus(BidStatus.get(e.getBidStatus().ordinal()));
-
+				
+		vo.setGenderCode(commonTransformer.toGenderCodeVo(e.getGenderCode()));
+		
 		vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
 		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
 		vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));

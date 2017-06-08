@@ -55,6 +55,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public GenderCode toGenderCodeVo(InGenderCode e) {
+    	if(null == e) return null;
         GenderCode vo = new GenderCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
