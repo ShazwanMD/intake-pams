@@ -1,6 +1,6 @@
 package my.edu.umk.pams.intake.workflow;
 
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -66,7 +66,7 @@ public class IntakeDraftWorkflowTest {
     public void testDraftWorkflow() {
         InProgramLevel level = policyService.findProgramLevelByCode("MASTER");
         InIntakeSession session = policyService.findIntakeSessionByCode("20171");
-        InGraduateCentre centre = commonService.findGraduateCentreByCode("MGSEB");
+        InGraduateCenter center = commonService.findGraduateCenterByCode("MGSEB");
 
         // start a new intake
         InIntake intake = new InIntakeImpl();
@@ -78,7 +78,7 @@ public class IntakeDraftWorkflowTest {
         intake.setEndDate(new Date());
         intake.setProgramLevel(level);
         intake.setSession(session);
-        intake.setGraduateCentre(centre);
+        intake.setGraduateCenter(center);
         String referenceNo = policyService.startIntakeTask(intake);
 
         // search again

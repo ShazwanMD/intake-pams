@@ -5,7 +5,7 @@ import my.edu.umk.pams.intake.core.InMetaObject;
 /**
  * @author PAMS
  */
-public interface InGraduateCentre extends InMetaObject {
+public interface InGraduateCenter extends InMetaObject {
 
     String getCode();
 

@@ -17,8 +17,8 @@ public class CommonTransformer {
     // GRADUATE CENTER
     // ====================================================================================================
 
-    public GraduateCentre toGraduateCentreVo(InGraduateCentre e) {
-        GraduateCentre vo = new GraduateCentre();
+    public GraduateCenter toGraduateCenterVo(InGraduateCenter e) {
+        GraduateCenter vo = new GraduateCenter();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
         vo.setDescriptionMs(e.getDescriptionMs());
@@ -26,8 +26,8 @@ public class CommonTransformer {
         return vo;
     }
 
-    public List<GraduateCentre> toGraduateCentreVos(List<InGraduateCentre> e) {
-        List<GraduateCentre> vos = e.stream().map((e1) -> toGraduateCentreVo(e1)).collect(Collectors.toList());
+    public List<GraduateCenter> toGraduateCenterVos(List<InGraduateCenter> e) {
+        List<GraduateCenter> vos = e.stream().map((e1) -> toGraduateCenterVo(e1)).collect(Collectors.toList());
         return vos;
     }
 
@@ -98,7 +98,7 @@ public class CommonTransformer {
         vo.setDescriptionMs(e.getDescriptionMs());
         vo.setDescriptionEn(e.getDescriptionEn());
         vo.setFacultyCode(toFacultyCodeVo(e.getFacultyCode()));
-        vo.setGraduateCentre(toGraduateCentreVo(e.getGraduateCentre()));
+        vo.setGraduateCenter(toGraduateCenterVo(e.getGraduateCenter()));
         return vo;
     }
 

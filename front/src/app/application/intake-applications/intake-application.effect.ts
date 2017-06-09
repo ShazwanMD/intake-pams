@@ -85,7 +85,7 @@ export class IntakeApplicationEffects {
     .switchMap(intake => this.applicationService.applyIntake(intake))
     .do(application =>
       this.router.navigate(['/application/intake-applications/',
-        application.intake.graduateCentre.code.toLocaleLowerCase(),
+        application.intake.graduateCenter.code.toLocaleLowerCase(),
         application.referenceNo])
     ).ignoreElements();
 
@@ -129,7 +129,7 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((applications) => this.intakeApplicationActions.findIntakeApplications());
 
-     
+
 
   @Effect() findEducationsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION)
@@ -244,7 +244,7 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-   
+
 
   @Effect() selectSupervisorOffering = this.actions$
     .ofType(IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING)

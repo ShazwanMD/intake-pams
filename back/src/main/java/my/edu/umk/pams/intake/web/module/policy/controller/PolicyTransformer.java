@@ -1,11 +1,11 @@
 package my.edu.umk.pams.intake.web.module.policy.controller;
 
 import my.edu.umk.pams.intake.IntakeConstants;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
-import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
+import my.edu.umk.pams.intake.web.module.common.vo.GraduateCenter;
 import my.edu.umk.pams.intake.web.module.core.vo.FlowState;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
 import my.edu.umk.pams.intake.web.module.policy.vo.*;
@@ -79,8 +79,8 @@ public class PolicyTransformer {
         return vo;
     }
     
-    public GraduateCentre toGraduateCentreVo(InGraduateCentre e) {
-    	GraduateCentre vo = new GraduateCentre();
+    public GraduateCenter toGraduateCenterVo(InGraduateCenter e) {
+    	GraduateCenter vo = new GraduateCenter();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
         vo.setDescriptionMs(e.getDescriptionMs());
@@ -101,7 +101,7 @@ public class PolicyTransformer {
         vo.setProgramLevel(toProgramLevelVo(e.getProgramLevel()));
         vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
-        vo.setGraduateCentre(toGraduateCentreVo(e.getGraduateCentre()));
+        vo.setGraduateCenter(toGraduateCenterVo(e.getGraduateCenter()));
         return vo;
     }
 
@@ -158,9 +158,9 @@ public class PolicyTransformer {
         return vos;
     }
     
-    public List<GraduateCentre> toGraduateCentreVos(List<InGraduateCentre> e) {
-        List<GraduateCentre> vos = e.stream()
-                .map((e1) -> toGraduateCentreVo(e1))
+    public List<GraduateCenter> toGraduateCenterVos(List<InGraduateCenter> e) {
+        List<GraduateCenter> vos = e.stream()
+                .map((e1) -> toGraduateCenterVo(e1))
                 .collect(Collectors.toList());
         return vos;
     }

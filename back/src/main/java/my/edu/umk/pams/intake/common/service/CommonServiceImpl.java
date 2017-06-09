@@ -16,7 +16,7 @@ import java.util.List;
 public class CommonServiceImpl implements CommonService {
 
     @Autowired
-    private InGraduateCentreDao graduateCentreDao;
+    private InGraduateCenterDao graduateCenterDao;
 
     @Autowired
     private InCountryCodeDao countryCodeDao;
@@ -130,50 +130,50 @@ public class CommonServiceImpl implements CommonService {
     private SessionFactory sessionFactory;
 
     //====================================================================================================
-    // GRADUATE CENTRE
+    // GRADUATE CENTER
     //====================================================================================================
 
     @Override
-    public InGraduateCentre findGraduateCentreById(Long id) {
-        return graduateCentreDao.findById(id);
+    public InGraduateCenter findGraduateCenterById(Long id) {
+        return graduateCenterDao.findById(id);
     }
 
     @Override
-    public InGraduateCentre findGraduateCentreByCode(String code) {
-        return graduateCentreDao.findByCode(code);
+    public InGraduateCenter findGraduateCenterByCode(String code) {
+        return graduateCenterDao.findByCode(code);
     }
 
     @Override
-    public List<InGraduateCentre> findGraduateCentres() {
-        return graduateCentreDao.find();
+    public List<InGraduateCenter> findGraduateCenters() {
+        return graduateCenterDao.find();
     }
 
     @Override
-    public List<InGraduateCentre> findGraduateCentres(String filter, Integer offset, Integer limit) {
-        return graduateCentreDao.find(filter, offset, limit);
+    public List<InGraduateCenter> findGraduateCenters(String filter, Integer offset, Integer limit) {
+        return graduateCenterDao.find(filter, offset, limit);
     }
 
     @Override
-    public Integer countGraduateCentre(String filter) {
-        return graduateCentreDao.count(filter);
+    public Integer countGraduateCenter(String filter) {
+        return graduateCenterDao.count(filter);
     }
 
 
     @Override
-    public void saveGraduateCentre(InGraduateCentre graduateCentre) {
-        graduateCentreDao.save(graduateCentre, securityService.getCurrentUser());
+    public void saveGraduateCenter(InGraduateCenter graduateCenter) {
+        graduateCenterDao.save(graduateCenter, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void updateGraduateCentre(InGraduateCentre graduateCentre) {
-        graduateCentreDao.update(graduateCentre, securityService.getCurrentUser());
+    public void updateGraduateCenter(InGraduateCenter graduateCenter) {
+        graduateCenterDao.update(graduateCenter, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void removeGraduateCentre(InGraduateCentre graduateCentre) {
-        graduateCentreDao.remove(graduateCentre, securityService.getCurrentUser());
+    public void removeGraduateCenter(InGraduateCenter graduateCenter) {
+        graduateCenterDao.remove(graduateCenter, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -556,8 +556,8 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre) {
-        return programCodeDao.find(graduateCentre);
+    public List<InProgramCode> findProgramCodes(InGraduateCenter graduateCenter) {
+        return programCodeDao.find(graduateCenter);
     }
 
     @Override
@@ -566,7 +566,7 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre, InProgramLevel programLevel) {
+    public List<InProgramCode> findProgramCodes(InGraduateCenter graduateCenter, InProgramLevel programLevel) {
         return null;
     }
 
@@ -596,8 +596,8 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public Integer countProgramCode(InGraduateCentre graduateCentre) {
-        return programCodeDao.count(graduateCentre);
+    public Integer countProgramCode(InGraduateCenter graduateCenter) {
+        return programCodeDao.count(graduateCenter);
     }
 
     @Override
@@ -606,7 +606,7 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public Integer countProgramCode(InGraduateCentre graduateCentre, InProgramLevel programLevel) {
+    public Integer countProgramCode(InGraduateCenter graduateCenter, InProgramLevel programLevel) {
         return null;
     }
 

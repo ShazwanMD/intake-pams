@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.common.dao;
 
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
-import my.edu.umk.pams.intake.common.model.InGraduateCentreImpl;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
+import my.edu.umk.pams.intake.common.model.InGraduateCenterImpl;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import org.hibernate.Query;
@@ -15,30 +15,30 @@ import java.util.List;
 /**
  * @author PAMS
  */
-@Repository("graduateCentreDao")
-public class InGraduateCentreDaoImpl extends GenericDaoSupport<Long, InGraduateCentre> implements InGraduateCentreDao {
+@Repository("graduateCenterDao")
+public class InGraduateCenterDaoImpl extends GenericDaoSupport<Long, InGraduateCenter> implements InGraduateCenterDao {
 
-    private static final Logger LOG = LoggerFactory.getLogger(InGraduateCentreDaoImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(InGraduateCenterDaoImpl.class);
 
-    public InGraduateCentreDaoImpl() {
-        super(InGraduateCentreImpl.class);
+    public InGraduateCenterDaoImpl() {
+        super(InGraduateCenterImpl.class);
     }
 
     @Override
-    public InGraduateCentre findByCode(String code) {
+    public InGraduateCenter findByCode(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from InGraduateCentre s where s.code = :code and  " +
+        Query query = session.createQuery("select s from InGraduateCenter s where s.code = :code and  " +
                 " s.metadata.state = :state");
         query.setString("code", code);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
         query.setCacheable(true);
-        return (InGraduateCentre) query.uniqueResult();
+        return (InGraduateCenter) query.uniqueResult();
     }
 
     @Override
-    public List<InGraduateCentre> find(String filter, Integer offset, Integer limit) {
+    public List<InGraduateCenter> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from InGraduateCentre s where " +
+        Query query = session.createQuery("select s from InGraduateCenter s where " +
                 "(upper(s.code) like upper(:filter) " +
                 "or upper(s.description) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
@@ -47,13 +47,13 @@ public class InGraduateCentreDaoImpl extends GenericDaoSupport<Long, InGraduateC
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         query.setCacheable(true);
-        return (List<InGraduateCentre>) query.list();
+        return (List<InGraduateCenter>) query.list();
     }
 
     @Override
     public Integer count(String filter) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(s) from InGraduateCentre s where " +
+        Query query = session.createQuery("select count(s) from InGraduateCenter s where " +
                 "(upper(s.code) like upper(:filter) " +
                 "or upper(s.description) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
@@ -65,7 +65,7 @@ public class InGraduateCentreDaoImpl extends GenericDaoSupport<Long, InGraduateC
     @Override
     public boolean isExists(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(*) from InGraduateCentre s where " +
+        Query query = session.createQuery("select count(*) from InGraduateCenter s where " +
                 "s.code = :code " +
                 "and s.metadata.state = :state ");
         query.setString("code", code);

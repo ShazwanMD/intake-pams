@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.policy.dao;
 
 
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
@@ -36,19 +36,19 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
 
     List<InIntake> find(InFlowState flowState);
 
-    List<InIntake> find(InGraduateCentre graduateCentre);
+    List<InIntake> find(InGraduateCenter graduateCenter);
 
     List<InIntake> find(InIntakeSession session);
 
-    List<InIntake> find(InIntakeSession session, InGraduateCentre graduateCentre);
+    List<InIntake> find(InIntakeSession session, InGraduateCenter graduateCenter);
 
     List<InIntake> find(InIntakeSession session, Integer offset, Integer limit);
 
-    List<InIntake> find(InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit);
+    List<InIntake> find(InIntakeSession session, InGraduateCenter graduateCenter, Integer offset, Integer limit);
 
     List<InIntake> find(String filter, InIntakeSession session, Integer offset, Integer limit);
 
-    List<InIntake> find(String filter, InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit);
+    List<InIntake> find(String filter, InIntakeSession session, InGraduateCenter graduateCenter, Integer offset, Integer limit);
 
     List<InProgramOffering> findProgramOfferings(InIntake intake);
 
@@ -62,11 +62,11 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
 
     Integer count(InIntakeSession session);
 
-    Integer count(InIntakeSession session, InGraduateCentre graduateCentre);
+    Integer count(InIntakeSession session, InGraduateCenter graduateCenter);
 
     Integer count(String filter, InIntakeSession session);
 
-    Integer count(String filter, InIntakeSession session, InGraduateCentre graduateCentre);
+    Integer count(String filter, InIntakeSession session, InGraduateCenter graduateCenter);
 
     Integer countProgramOffering(InIntake intake);
 

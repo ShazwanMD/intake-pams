@@ -1,5 +1,5 @@
 import { ProgramLevel } from './../../policy/program-levels/program-level.interface';
-import { GraduateCentre } from './../graduate-centres/graduate-centre.interface';
+import { GraduateCenter } from '../graduate-centers/graduate-center.interface';
 import { FacultyCode } from './../faculty-codes/faculty-code.interface';
 import { MetaObject } from "../../core/meta-object.interface";
 export interface ProgramCode extends MetaObject {
@@ -8,5 +8,5 @@ export interface ProgramCode extends MetaObject {
   descriptionMs: string;
   programLevel: ProgramLevel;
   facultyCode: FacultyCode;
-  graduateCentre: GraduateCentre;
+  graduateCenter: GraduateCenter;
 }

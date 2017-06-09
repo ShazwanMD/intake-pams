@@ -5,7 +5,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -51,15 +51,15 @@ public class WhenIOfferCPSProgramsInIntake extends Stage<WhenIOfferCPSProgramsIn
         
         intake = policyService.findIntakeByReferenceNo(referenceNo);
         Assert.notNull(intake, "intake is null");
-    	InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode("CPS");
+    	InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode("CPS");
     	
-    	programCodes = commonService.findProgramCodes(graduateCentre);
+    	programCodes = commonService.findProgramCodes(graduateCenter);
     	
     	for (InProgramCode programCode : programCodes) {
     		
     		Assert.notNull(programCode, "There are no program codes in CPS");
-    		LOG.debug("Programs under {} are : {}",programCode.getGraduateCentre().getCode(), programCode.getDescriptionEn()); 
-    		LOG.debug("Programs under {} are : {}",programCode.getGraduateCentre().getCode(), programCode.getDescriptionMs());
+    		LOG.debug("Programs under {} are : {}",programCode.getGraduateCenter().getCode(), programCode.getDescriptionEn());
+    		LOG.debug("Programs under {} are : {}",programCode.getGraduateCenter().getCode(), programCode.getDescriptionMs());
        	 
         	 offerings = new ArrayList<>();
 

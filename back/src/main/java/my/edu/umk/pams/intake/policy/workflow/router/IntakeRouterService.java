@@ -2,7 +2,7 @@ package my.edu.umk.pams.intake.policy.workflow.router;
 
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.router.RouterServiceSupport;
 import my.edu.umk.pams.intake.common.router.RouterStrategy;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -42,8 +42,8 @@ public class IntakeRouterService extends RouterServiceSupport {
 
         InIntakeApplication application = applicationService.findIntakeApplicationById(applicationId);
         InIntake intake = application.getIntake();
-        InGraduateCentre centre = intake.getGraduateCentre();
-        RouterStrategy strategy = strategies.get(centre.getCode());
+        InGraduateCenter center = intake.getGraduateCenter();
+        RouterStrategy strategy = strategies.get(center.getCode());
         String candidate = strategy.findRegistererCandidate();
 
         // todo(uda): permission publishing

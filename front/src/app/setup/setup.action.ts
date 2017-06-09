@@ -85,61 +85,61 @@ export class SetupActions {
     };
   }
 
-  static FIND_GRADUATE_CENTRES = '[Setup] Find Graduate Centres';
+  static FIND_GRADUATE_CENTERS = '[Setup] Find Graduate Centers';
 
-  findGraduateCentres(): Action {
-    console.log("findGraduateCentres");
+  findGraduateCenters(): Action {
+    console.log("findGraduateCenters");
     return {
-      type: SetupActions.FIND_GRADUATE_CENTRES,
+      type: SetupActions.FIND_GRADUATE_CENTERS,
     };
   }
 
-  static FIND_GRADUATE_CENTRES_SUCCESS = '[Setup] Find Graduate Centres Success';
+  static FIND_GRADUATE_CENTERS_SUCCESS = '[Setup] Find Graduate Centers Success';
 
-  findGraduateCentresSuccess(codes): Action {
-    console.log("findGraduateCentresSuccess");
+  findGraduateCentersSuccess(codes): Action {
+    console.log("findGraduateCentersSuccess");
     return {
-      type: SetupActions.FIND_GRADUATE_CENTRES_SUCCESS,
+      type: SetupActions.FIND_GRADUATE_CENTERS_SUCCESS,
       payload: codes
     };
   }
 
-  static SAVE_GRADUATE_CENTRE = '[Setup] Save Graduate Centre';
+  static SAVE_GRADUATE_CENTER = '[Setup] Save Graduate Center';
 
-  saveGraduateCentre(code): Action {
-    console.log("saveGraduateCentre");
+  saveGraduateCenter(code): Action {
+    console.log("saveGraduateCenter");
     return {
-      type: SetupActions.SAVE_GRADUATE_CENTRE,
+      type: SetupActions.SAVE_GRADUATE_CENTER,
       payload: code
     };
   }
 
-  static SAVE_GRADUATE_CENTRE_SUCCESS = '[Setup] Save Graduate Centre  Success';
+  static SAVE_GRADUATE_CENTER_SUCCESS = '[Setup] Save Graduate Center  Success';
 
-  saveGraduateCentreSuccess(message): Action {
-    console.log("saveGraduateCentreSuccess");
+  saveGraduateCenterSuccess(message): Action {
+    console.log("saveGraduateCenterSuccess");
     return {
-      type: SetupActions.SAVE_GRADUATE_CENTRE_SUCCESS,
+      type: SetupActions.SAVE_GRADUATE_CENTER_SUCCESS,
       payload: message
     };
   }
 
-  static UPDATE_GRADUATE_CENTRE = '[Setup] Update Graduate Centre';
+  static UPDATE_GRADUATE_CENTER = '[Setup] Update Graduate Center';
 
-  updateGraduateCentre(code): Action {
-    console.log("updateGraduateCentre");
+  updateGraduateCenter(code): Action {
+    console.log("updateGraduateCenter");
     return {
-      type: SetupActions.UPDATE_GRADUATE_CENTRE,
+      type: SetupActions.UPDATE_GRADUATE_CENTER,
       payload: code
     };
   }
 
-  static UPDATE_GRADUATE_CENTRE_SUCCESS = '[Setup] Update Graduate Centre  Success';
+  static UPDATE_GRADUATE_CENTER_SUCCESS = '[Setup] Update Graduate Center  Success';
 
-  updateGraduateCentreSuccess(message): Action {
-    console.log("updateGraduateCentreSuccess");
+  updateGraduateCenterSuccess(message): Action {
+    console.log("updateGraduateCenterSuccess");
     return {
-      type: SetupActions.UPDATE_GRADUATE_CENTRE_SUCCESS,
+      type: SetupActions.UPDATE_GRADUATE_CENTER_SUCCESS,
       payload: message
     };
   }
@@ -1557,7 +1557,7 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
   }
 
 //=================================================================================//
-//  RESIDENCY_CODES                                                               
+//  RESIDENCY_CODES
 //=================================================================================//
 //1-------------------------------------------------------------
   static FIND_RESIDENCY_CODES = '[Setup] Find Residency Codes';
@@ -1640,7 +1640,7 @@ static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Succ
   }
 
 //=================================================================================//
-//  LANGUAGE_CODES                                                               
+//  LANGUAGE_CODES
 //=================================================================================//
 //1-------------------------------------------------------------
   static FIND_LANGUAGE_CODES = '[Setup] Find Language Codes';

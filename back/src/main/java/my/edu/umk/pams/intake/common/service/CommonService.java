@@ -8,24 +8,24 @@ import java.util.List;
 public interface CommonService {
 
 	// ====================================================================================================
-	// GRADUATE CENTRE
+	// GRADUATE CENTER
 	// ====================================================================================================
 
-	InGraduateCentre findGraduateCentreById(Long id);
+	InGraduateCenter findGraduateCenterById(Long id);
 
-	InGraduateCentre findGraduateCentreByCode(String code);
+	InGraduateCenter findGraduateCenterByCode(String code);
 
-	List<InGraduateCentre> findGraduateCentres();
+	List<InGraduateCenter> findGraduateCenters();
 
-	List<InGraduateCentre> findGraduateCentres(String filter, Integer offset, Integer limit);
+	List<InGraduateCenter> findGraduateCenters(String filter, Integer offset, Integer limit);
 
-	Integer countGraduateCentre(String filter);
+	Integer countGraduateCenter(String filter);
 
-	void saveGraduateCentre(InGraduateCentre graduateCentre);
+	void saveGraduateCenter(InGraduateCenter graduateCenter);
 
-	void updateGraduateCentre(InGraduateCentre graduateCentre);
+	void updateGraduateCenter(InGraduateCenter graduateCenter);
 
-	void removeGraduateCentre(InGraduateCentre graduateCentre);
+	void removeGraduateCenter(InGraduateCenter graduateCenter);
 
 	// ====================================================================================================
 	// COUNTRY CODE
@@ -227,11 +227,11 @@ public interface CommonService {
 
 	List<InProgramCode> findProgramCodes(InFacultyCode facultyCode);
 
-	List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre);
+	List<InProgramCode> findProgramCodes(InGraduateCenter graduateCenter);
 
 	List<InProgramCode> findProgramCodes(InFacultyCode facultyCode, InProgramLevel programLevel);
 
-	List<InProgramCode> findProgramCodes(InGraduateCentre graduateCentre, InProgramLevel programLevel);
+	List<InProgramCode> findProgramCodes(InGraduateCenter graduateCenter, InProgramLevel programLevel);
 
 	List<InProgramCode> findProgramCodes(String filter, Integer offset, Integer limit);
 
@@ -241,11 +241,11 @@ public interface CommonService {
 
 	Integer countProgramCode(InFacultyCode facultyCode);
 
-	Integer countProgramCode(InGraduateCentre graduateCentre);
+	Integer countProgramCode(InGraduateCenter graduateCenter);
 
 	Integer countProgramCode(InFacultyCode facultyCode, InProgramLevel programLevel);
 
-	Integer countProgramCode(InGraduateCentre graduateCentre, InProgramLevel programLevel);
+	Integer countProgramCode(InGraduateCenter graduateCenter, InProgramLevel programLevel);
 
 	void saveProgramCode(InProgramCode programCode);
 

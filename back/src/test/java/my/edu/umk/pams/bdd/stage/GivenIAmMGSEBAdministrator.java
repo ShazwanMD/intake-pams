@@ -4,7 +4,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
@@ -21,7 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator> {
 
     private static final Logger LOG = LoggerFactory.getLogger(GivenIAmMGSEBAdministrator.class);
-    public static final String GRADUATE_CENTRE = "MGSEB";
+    public static final String GRADUATE_CENTER = "MGSEB";
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -39,7 +39,7 @@ public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator
     InIntake intake;
     
     @ProvidedScenarioState
-    InGraduateCentre graduateCentre;
+    InGraduateCenter graduateCenter;
 
     public void I_am_a_MGSEB_administrator_in_$_academic_session(String academicSessionCode){
         loginAsMGSEB();
@@ -63,6 +63,6 @@ public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
 
-        graduateCentre = commonService.findGraduateCentreByCode(GRADUATE_CENTRE);
+        graduateCenter = commonService.findGraduateCenterByCode(GRADUATE_CENTER);
     }
 }

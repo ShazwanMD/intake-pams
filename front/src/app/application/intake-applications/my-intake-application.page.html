@@ -1,6 +1,6 @@
 <td-layout-nav>
   <div td-toolbar-content layout="row" layout-align="start center" flex>
-    <span hide-xs>Centre for Postgraduate Studies Univesiti Malaysia Kelantan</span>
+    <span hide-xs>Center for Postgraduate Studies Univesiti Malaysia Kelantan</span>
     <span flex></span>
   </div>
 
@@ -55,7 +55,7 @@
         <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
           <div layout="row">
             <a *ngIf="row.bidStatus === 'DRAFTED'" md-button color="warn" class="text-upper"
-               [routerLink]="['/application', 'intake-applications', row.intake?.graduateCentre?.code.toLowerCase(), row?.referenceNo]">
+               [routerLink]="['/application', 'intake-applications', row.intake?.graduateCenter?.code.toLowerCase(), row?.referenceNo]">
               <span>View</span>
             </a>
           </div>

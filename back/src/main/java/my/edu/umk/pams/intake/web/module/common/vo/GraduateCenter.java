@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * @author PAMS
  */
-public class GraduateCentre extends MetaObject{
+public class GraduateCenter extends MetaObject{
 
     private String code;
     private String descriptionMs;
@@ -40,11 +40,11 @@ public class GraduateCentre extends MetaObject{
     }
 
     @JsonCreator
-    public static GraduateCentre create(String jsonString) {
-        GraduateCentre o = null;
+    public static GraduateCenter create(String jsonString) {
+        GraduateCenter o = null;
         try {
             ObjectMapper mapper = new ObjectMapper();
-            o = mapper.readValue(jsonString, GraduateCentre.class);
+            o = mapper.readValue(jsonString, GraduateCenter.class);
         } catch (IOException e) {
             // handle
         }

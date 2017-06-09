@@ -5,7 +5,7 @@ import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
 import {PolicyModuleState} from "../../index";
 import {IntakeSession} from "../../intake-sessions/intake-session.interface";
-import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
+import {GraduateCenter} from "../../../common/graduate-centers/graduate-center.interface";
 import {ProgramLevel} from "../../program-levels/program-level.interface";
 import {IntakeSessionActions} from "../intake-session.action";
 
@@ -16,7 +16,7 @@ import {IntakeSessionActions} from "../intake-session.action";
 })
 
 export class IntakeSessionCreatorDialog implements OnInit {
-  
+
 
   private createForm: FormGroup;
 
@@ -25,8 +25,8 @@ export class IntakeSessionCreatorDialog implements OnInit {
               private store: Store<PolicyModuleState>,
               private actions: IntakeSessionActions,
               private dialog: MdDialogRef<IntakeSessionCreatorDialog>) {
-       
-          
+
+
   }
 
   ngOnInit(): void {

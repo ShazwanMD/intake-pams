@@ -671,7 +671,7 @@
         REMOVE_COMMENT varchar(255),
         SOURCE_NO varchar(255) not null,
         START_DATE timestamp not null,
-        GRADUATE_CENTRE_ID int8 not null,
+        GRADUATE_CENTER_ID int8 not null,
         PROGRAM_LEVEL_ID int8 not null,
         SESSION_ID int8 not null,
         primary key (ID)
@@ -954,7 +954,7 @@
         M_ID int8,
         M_ST int4,
         FACULTY_CODE_ID int8 not null,
-        GRADUATE_CENTRE_ID int8 not null,
+        GRADUATE_CENTER_ID int8 not null,
         PROGRAM_LEVEL_ID int8 not null,
         primary key (ID)
     );
@@ -1586,7 +1586,7 @@
 
     alter table IN_INTK
         add constraint FKA01DFD36690E199E
-        foreign key (GRADUATE_CENTRE_ID)
+        foreign key (GRADUATE_CENTER_ID)
         references IN_GRDT_CNTR;
 
     alter table IN_INTK
@@ -1770,7 +1770,7 @@
 
     alter table IN_PRGM_CODE
         add constraint FK6B49ECA690E199E
-        foreign key (GRADUATE_CENTRE_ID)
+        foreign key (GRADUATE_CENTER_ID)
         references IN_GRDT_CNTR;
 
     alter table IN_PRGM_CODE

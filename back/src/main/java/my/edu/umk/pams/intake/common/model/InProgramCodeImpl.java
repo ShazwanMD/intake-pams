@@ -33,9 +33,9 @@ public class InProgramCodeImpl implements InProgramCode {
     @JoinColumn(name = "FACULTY_CODE_ID", nullable = false)
     private InFacultyCode facultyCode;
     
-    @OneToOne(targetEntity = InGraduateCentreImpl.class)
-    @JoinColumn(name = "GRADUATE_CENTRE_ID", nullable = false)
-    private InGraduateCentre graduateCentre;
+    @OneToOne(targetEntity = InGraduateCenterImpl.class)
+    @JoinColumn(name = "GRADUATE_CENTER_ID", nullable = false)
+    private InGraduateCenter graduateCenter;
     
     @OneToOne(targetEntity = InProgramLevelImpl.class)
     @JoinColumn(name = "PROGRAM_LEVEL_ID", nullable = false)
@@ -84,13 +84,13 @@ public class InProgramCodeImpl implements InProgramCode {
     }
 
     @Override
-    public InGraduateCentre getGraduateCentre() {
-        return graduateCentre;
+    public InGraduateCenter getGraduateCenter() {
+        return graduateCenter;
     }
 
     @Override
-    public void setGraduateCentre(InGraduateCentre graduateCentre) {
-        this.graduateCentre = graduateCentre;
+    public void setGraduateCenter(InGraduateCenter graduateCenter) {
+        this.graduateCenter = graduateCenter;
     }
 
     @Override

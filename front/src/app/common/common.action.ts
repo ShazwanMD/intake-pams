@@ -195,22 +195,22 @@ export class CommonActions {
     };
   }
 
-  static FIND_GRADUATE_CENTRES = '[Common] Find Graduate Centres';
+  static FIND_GRADUATE_CENTERS = '[Common] Find Graduate Centers';
 
-  findGraduateCentres(): Action {
-    console.log("findGraduateCentres");
+  findGraduateCenters(): Action {
+    console.log("findGraduateCenters");
     return {
-      type: CommonActions.FIND_GRADUATE_CENTRES,
+      type: CommonActions.FIND_GRADUATE_CENTERS,
     };
   }
 
-  static FIND_GRADUATE_CENTRES_SUCCESS = '[Common] Find Graduate Centres Success';
+  static FIND_GRADUATE_CENTERS_SUCCESS = '[Common] Find Graduate Centers Success';
 
-  findGraduateCentresSuccess(centres): Action {
-    console.log("findGraduateCentresSuccess");
+  findGraduateCentersSuccess(centers): Action {
+    console.log("findGraduateCentersSuccess");
     return {
-      type: CommonActions.FIND_GRADUATE_CENTRES_SUCCESS,
-      payload: centres
+      type: CommonActions.FIND_GRADUATE_CENTERS_SUCCESS,
+      payload: centers
     };
   }
 

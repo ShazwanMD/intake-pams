@@ -2,8 +2,8 @@ package my.edu.umk.pams.intake.policy.model;
 
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
-import my.edu.umk.pams.intake.common.model.InGraduateCentreImpl;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
+import my.edu.umk.pams.intake.common.model.InGraduateCenterImpl;
 import my.edu.umk.pams.intake.core.InFlowdata;
 import my.edu.umk.pams.intake.core.InMetadata;
 
@@ -62,9 +62,9 @@ public class InIntakeImpl implements InIntake {
     @JoinColumn(name = "PROGRAM_LEVEL_ID", nullable = false)
     private InProgramLevel programLevel;
 
-    @OneToOne(targetEntity = InGraduateCentreImpl.class)
-    @JoinColumn(name = "GRADUATE_CENTRE_ID", nullable = false)
-    private InGraduateCentre graduateCentre;
+    @OneToOne(targetEntity = InGraduateCenterImpl.class)
+    @JoinColumn(name = "GRADUATE_CENTER_ID", nullable = false)
+    private InGraduateCenter graduateCenter;
 
     @OneToMany(targetEntity = InStudyModeOfferingImpl.class, mappedBy = "intake")
     private List<InStudyModeOffering> modeOfferings;
@@ -204,13 +204,13 @@ public class InIntakeImpl implements InIntake {
     }
 
     @Override
-    public InGraduateCentre getGraduateCentre() {
-        return graduateCentre;
+    public InGraduateCenter getGraduateCenter() {
+        return graduateCenter;
     }
 
     @Override
-    public void setGraduateCentre(InGraduateCentre graduateCentre) {
-        this.graduateCentre = graduateCentre;
+    public void setGraduateCenter(InGraduateCenter graduateCenter) {
+        this.graduateCenter = graduateCenter;
     }
 
     @Override

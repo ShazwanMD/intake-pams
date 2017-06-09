@@ -4,7 +4,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -22,7 +22,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     private static final Logger LOG = LoggerFactory.getLogger(GivenIAmCPSAdministrator.class);
-    public static final String GRADUATE_CENTRE = "CPS";
+    public static final String GRADUATE_CENTER = "CPS";
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -46,7 +46,7 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     private InApplicant applicant;
 
     @ProvidedScenarioState
-    InGraduateCentre graduateCentre;
+    InGraduateCenter graduateCenter;
 
     public GivenIAmCPSAdministrator I_am_a_CPS_administrator_in_$_academic_session(String academicSessionCode){
         loginAsCPS();
@@ -70,7 +70,7 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
 
-        graduateCentre = commonService.findGraduateCentreByCode(GRADUATE_CENTRE);
+        graduateCenter = commonService.findGraduateCenterByCode(GRADUATE_CENTER);
     }
 
 }

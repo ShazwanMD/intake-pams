@@ -1,6 +1,6 @@
 package my.edu.umk.pams.intake.policy.dao;
 
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
@@ -8,7 +8,6 @@ import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.core.InMetadata;
-import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.*;
 import org.apache.commons.lang.Validate;
@@ -108,11 +107,11 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public List<InIntake> find(InGraduateCentre graduateCentre) {
+    public List<InIntake> find(InGraduateCenter graduateCenter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntake p where " +
-                "p.graduateCentre = :graduateCentre ");
-        query.setEntity("graduateCentre", graduateCentre);
+                "p.graduateCenter = :graduateCenter ");
+        query.setEntity("graduateCenter", graduateCenter);
         return (List<InIntake>) query.list();
     }
 
@@ -126,13 +125,13 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public List<InIntake> find(InIntakeSession session, InGraduateCentre graduateCentre) {
+    public List<InIntake> find(InIntakeSession session, InGraduateCenter graduateCenter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntake p where " +
                 "p.session = :session " +
-                "and p.graduateCentre = :graduateCentre");
+                "and p.graduateCenter = :graduateCenter");
         query.setEntity("session", session);
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         return (List<InIntake>) query.list();
     }
 
@@ -148,13 +147,13 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public List<InIntake> find(InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit) {
+    public List<InIntake> find(InIntakeSession session, InGraduateCenter graduateCenter, Integer offset, Integer limit) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntake p where " +
                 "p.session = :session " +
-                "and p.graduateCentre = :graduateCentre");
+                "and p.graduateCenter = :graduateCenter");
         query.setEntity("session", session);
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         return (List<InIntake>) query.list();
@@ -175,15 +174,15 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public List<InIntake> find(String filter, InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit) {
+    public List<InIntake> find(String filter, InIntakeSession session, InGraduateCenter graduateCenter, Integer offset, Integer limit) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntake p where " +
                 "(upper(p.referenceNo) like upper(:filter) or " +
                 "upper(p.description) like upper(:filter)) " +
                 "and p.session = :session " +
-                "and p.graduateCentre = :graduateCentre");
+                "and p.graduateCenter = :graduateCenter");
         query.setEntity("session", session);
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         return (List<InIntake>) query.list();
@@ -226,13 +225,13 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public Integer count(InIntakeSession session, InGraduateCentre graduateCentre) {
+    public Integer count(InIntakeSession session, InGraduateCenter graduateCenter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InIntake p " +
                 "where p.session = :session " +
-                "and p.graduateCentre = :graduateCentre");
+                "and p.graduateCenter = :graduateCenter");
         query.setEntity("session", session);
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         return (Integer) query.uniqueResult();
     }
 
@@ -250,17 +249,17 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public Integer count(String filter, InIntakeSession session, InGraduateCentre graduateCentre) {
+    public Integer count(String filter, InIntakeSession session, InGraduateCenter graduateCenter) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select count(p) from InIntake p " +
                 "where " +
                 "(upper(p.referenceNo) like upper(:filter) or " +
                 "upper(p.description) like upper(:filter)) " +
                 "and p.session = :session " +
-                "and p.graduateCentre = :graduateCentre");
+                "and p.graduateCenter = :graduateCenter");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setEntity("session", session);
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         return ((Long) query.uniqueResult()).intValue();
     }
 

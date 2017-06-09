@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import my.edu.umk.pams.intake.web.module.common.vo.CountryCode;
-import my.edu.umk.pams.intake.web.module.common.vo.GraduateCentre;
 import my.edu.umk.pams.intake.web.module.common.vo.StateCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
-import my.edu.umk.pams.intake.web.module.policy.vo.ProgramLevel;
 
 import java.io.IOException;
 

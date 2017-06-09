@@ -2,20 +2,20 @@ import {Component, OnInit, ViewContainerRef} from "@angular/core";
 import {Store} from "@ngrx/store";
 import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
-import {GraduateCentre} from "../../common/graduate-centres/graduate-centre.interface";
+import {GraduateCenter} from "../../common/graduate-centers/graduate-center.interface";
 import {Observable} from "rxjs/Observable";
-import {GraduateCentreCreatorDialog} from "./dialog/graduate-centre-creator.dialog";
+import {GraduateCenterCreatorDialog} from "./dialog/graduate-center-creator.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 @Component({
-  selector: 'pams-graduate-centre-list-page',
-  templateUrl: './graduate-centre-list.page.html',
+  selector: 'pams-graduate-center-list-page',
+  templateUrl: './graduate-center-list.page.html',
 })
-export class GraduateCentreListPage implements OnInit {
+export class GraduateCenterListPage implements OnInit {
 
-  private GRADUATE_CENTRES = "setupModuleState.graduateCentres".split(".");
-  private graduateCentres$: Observable<GraduateCentre>;
-  private creatorDialogRef: MdDialogRef<GraduateCentreCreatorDialog>;
+  private GRADUATE_CENTERS = "setupModuleState.graduateCenters".split(".");
+  private graduateCenters$: Observable<GraduateCenter>;
+  private creatorDialogRef: MdDialogRef<GraduateCenterCreatorDialog>;
 
   private columns: any[] = [
     {name: 'code', label: 'Code'},
@@ -28,11 +28,11 @@ export class GraduateCentreListPage implements OnInit {
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
-    this.graduateCentres$ = this.store.select(...this.GRADUATE_CENTRES);
+    this.graduateCenters$ = this.store.select(...this.GRADUATE_CENTERS);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findGraduateCentres())
+    this.store.dispatch(this.actions.findGraduateCenters())
     this.store.dispatch(this.actions.changeTitle("Graduate Codes"))
   }
 
@@ -44,7 +44,7 @@ export class GraduateCentreListPage implements OnInit {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(GraduateCentreCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(GraduateCenterCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here
@@ -56,7 +56,7 @@ export class GraduateCentreListPage implements OnInit {
   }
 
   deactivate(event): void {
-    // this.store.dispatch(this.actions.removeGraduateCentre())
+    // this.store.dispatch(this.actions.removeGraduateCenter())
     console.log("event" + event);
   }
 

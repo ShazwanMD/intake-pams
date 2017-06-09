@@ -58,11 +58,11 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findFacultyCodes())
     .map(codes => this.commonActions.findFacultyCodesSuccess(codes));
 
-  @Effect() findGraduateCentres$ = this.actions$
-    .ofType(CommonActions.FIND_GRADUATE_CENTRES)
+  @Effect() findGraduateCenters$ = this.actions$
+    .ofType(CommonActions.FIND_GRADUATE_CENTERS)
     .map(action => action.payload)
-    .switchMap(() => this.commonService.findGraduateCentres())
-    .map(centres => this.commonActions.findGraduateCentresSuccess(centres));
+    .switchMap(() => this.commonService.findGraduateCenters())
+    .map(centers => this.commonActions.findGraduateCentersSuccess(centers));
 
   @Effect() findProgramCodes$ = this.actions$
     .ofType(CommonActions.FIND_PROGRAM_CODES)

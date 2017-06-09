@@ -150,7 +150,7 @@ public class PolicyController {
         intake.setProjection(vo.getProjection());
         intake.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
         intake.setSession(policyService.findIntakeSessionById(vo.getIntakeSession().getId()));
-        intake.setGraduateCentre(commonService.findGraduateCentreById(vo.getGraduateCentre().getId()));
+        intake.setGraduateCenter(commonService.findGraduateCenterById(vo.getGraduateCenter().getId()));
         policyService.updateIntake(intake);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -190,7 +190,7 @@ public class PolicyController {
         intake.setProjection(vo.getProjection());
         intake.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
         intake.setSession(policyService.findIntakeSessionById(vo.getIntakeSession().getId()));
-        intake.setGraduateCentre(commonService.findGraduateCentreById(vo.getGraduateCentre().getId()));
+        intake.setGraduateCenter(commonService.findGraduateCenterById(vo.getGraduateCenter().getId()));
         return new ResponseEntity<String>(policyService.startIntakeTask(intake), HttpStatus.OK);
     }
 
@@ -329,21 +329,21 @@ public class PolicyController {
     }
 
     // ==================================================================================================== //
-    //  GRADUATE CENTRE
+    //  GRADUATE CENTER
     // ==================================================================================================== //
 
-    @RequestMapping(value = "/graduateCentre/{code}/intakes", method = RequestMethod.GET)
-    public ResponseEntity<List<Intake>> findIntakesByGraduateCentre(@PathVariable String code) {
-        InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
-        List<InIntake> intakes = policyService.findIntakes(graduateCentre); // todo(uda): pagination
+    @RequestMapping(value = "/graduateCenter/{code}/intakes", method = RequestMethod.GET)
+    public ResponseEntity<List<Intake>> findIntakesByGraduateCenter(@PathVariable String code) {
+        InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode(code);
+        List<InIntake> intakes = policyService.findIntakes(graduateCenter); // todo(uda): pagination
         return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/graduateCentre/{code}/intakes/current", method = RequestMethod.GET)
-    public ResponseEntity<List<Intake>> findCurrentIntakesByGraduateCentre(@PathVariable String code) {
-        InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
+    @RequestMapping(value = "/graduateCenter/{code}/intakes/current", method = RequestMethod.GET)
+    public ResponseEntity<List<Intake>> findCurrentIntakesByGraduateCenter(@PathVariable String code) {
+        InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode(code);
         InIntakeSession intakeSession = policyService.findCurrentIntakeSession();
-        List<InIntake> intakes = policyService.findIntakes(intakeSession, graduateCentre); // todo(uda): pagination
+        List<InIntake> intakes = policyService.findIntakes(intakeSession, graduateCenter); // todo(uda): pagination
         return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
     }
 

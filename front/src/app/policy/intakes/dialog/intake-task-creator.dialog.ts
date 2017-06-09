@@ -7,7 +7,7 @@ import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
 import {IntakeSession} from "../../intake-sessions/intake-session.interface";
-import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
+import {GraduateCenter} from "../../../common/graduate-centers/graduate-center.interface";
 import {ProgramLevel} from "../../program-levels/program-level.interface";
 import { IntakeTask } from "../intake-task.interface";
 
@@ -43,10 +43,10 @@ export class IntakeTaskCreatorDialog implements OnInit {
       endDate: null,
       programLevel: <ProgramLevel>{},
       intakeSession: <IntakeSession>{},
-      graduateCentre: <GraduateCentre>{}
+      graduateCenter: <GraduateCenter>{}
     });
   }
-  
+
     submit(intake: Intake, isValid: boolean) {
         let snackBarRef = this.snackBar.open("Confirm to create intake?", "Ok");
         snackBarRef.afterDismissed().subscribe(() => {

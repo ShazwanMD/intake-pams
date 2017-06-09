@@ -4,7 +4,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
@@ -32,7 +32,7 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
     private InIntakeSession session;
 
     @ExpectedScenarioState
-    private InGraduateCentre graduateCentre;
+    private InGraduateCenter graduateCenter;
 
     @ProvidedScenarioState
     private InProgramLevel level;
@@ -56,7 +56,7 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
         intake.setSourceNo("MASTER/201720182");
         intake.setProgramLevel(level);
         intake.setSession(session);
-        intake.setGraduateCentre(graduateCentre);
+        intake.setGraduateCenter(graduateCenter);
         referenceNo = policyService.startIntakeTask(intake);
         return self();
     }

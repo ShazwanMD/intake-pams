@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'pams-centre-page',
-  templateUrl: './centre.page.html',
+  selector: 'pams-center-page',
+  templateUrl: './center.page.html',
 })
 
-export class CentrePage implements OnInit {
+export class CenterPage implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute) {

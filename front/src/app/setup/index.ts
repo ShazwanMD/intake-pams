@@ -71,10 +71,10 @@ import {SetupEffects} from "./setup.effect";
 import {EffectsModule} from "@ngrx/effects";
 import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
 import {SetupActions} from "./setup.action";
-import {graduateCentreListReducer, GraduateCentreListState} from "./graduate-centres/graduate-centre-list.reducer";
-import {GraduateCentre} from "../common/graduate-centres/graduate-centre.interface";
-import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.page";
-import {GraduateCentreCreatorDialog} from "./graduate-centres/dialog/graduate-centre-creator.dialog";
+import {graduateCenterListReducer, GraduateCenterListState} from "./graduate-centers/graduate-center-list.reducer";
+import {GraduateCenter} from "../common/graduate-centers/graduate-center.interface";
+import {GraduateCenterListPage} from "./graduate-centers/graduate-center-list.page";
+import {GraduateCenterCreatorDialog} from "./graduate-centers/dialog/graduate-center-creator.dialog";
 import {BankCodeCreatorDialog} from "./bank-codes/dialog/bank-code-creator.dialog";
 import {countryCodeListReducer, CountryCodeListState} from "./country-codes/country-code-list.reducer";
 import {stateCodeListReducer, StateCodeListState} from "./state-codes/state-code-list.reducer";
@@ -114,7 +114,7 @@ export interface SetupModuleState {
   title: TitleState;
   maritalCodes: MaritalCodeListState;
   bankCodes: BankCodeListState;
-  graduateCentres: GraduateCentreListState;
+  graduateCenters: GraduateCenterListState;
   religionCodes: ReligionCodeListState;
   countryCodes: CountryCodeListState;
   stateCodes: StateCodeListState;
@@ -145,7 +145,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
   <SetupModuleState>{
     title: 'Setup Codes',
     bankCodes: <BankCode[]>[],
-    graduateCentres: <GraduateCentre[]>[],
+    graduateCenters: <GraduateCenter[]>[],
     religionCodes: <ReligionCode[]>[],
     supervisorCodes: <SupervisorCode[]>[],
     programCodes: <ProgramCode[]>[],
@@ -175,7 +175,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
 export const setupModuleReducers = {
   title: titleReducer,
   bankCodes: bankCodeListReducer,
-  graduateCentres: graduateCentreListReducer,
+  graduateCenters: graduateCenterListReducer,
   religionCodes: religionCodeListReducer,
   maritalCodes: maritalCodeListReducer,
   countryCodes: countryCodeListReducer,
@@ -217,7 +217,7 @@ export const setupModuleReducers = {
     // page
     SetupPage,
     BankCodeListPage,
-    GraduateCentreListPage,
+    GraduateCenterListPage,
     ReligionCodeListPage,
     MaritalCodeListPage,
     LanguageCodeListPage,
@@ -245,7 +245,7 @@ export const setupModuleReducers = {
     MaritalCodeEditorDialog,
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
-    GraduateCentreCreatorDialog,
+    GraduateCenterCreatorDialog,
     CountryCodeCreatorDialog,
     StateCodeEditorDialog,
     ProgramCodeCreatorDialog,
@@ -273,7 +273,7 @@ export const setupModuleReducers = {
     MaritalCodeEditorDialog,
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
-    GraduateCentreCreatorDialog,
+    GraduateCenterCreatorDialog,
     ReligionCodeCreatorDialog,
     CountryCodeCreatorDialog,
     StateCodeEditorDialog,

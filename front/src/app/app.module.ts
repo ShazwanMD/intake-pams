@@ -35,7 +35,7 @@ import {
   RegistrationModule, registrationModuleReducers, RegistrationModuleState,
   INITIAL_REGISTRATION_STATE
 } from "./registration/index";
-import {centreModuleReducers, INITIAL_CENTRE_STATE, CentreModuleState, CentreModule} from "./centre/index";
+import {centerModuleReducers, INITIAL_CENTER_STATE, CenterModuleState, CenterModule} from "./center/index";
 import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
 import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./setup/index";
@@ -53,7 +53,7 @@ interface ApplicationState {
   applicationModuleState: ApplicationModuleState;
   admissionModuleState: AdmissionModuleState;
   registrationModuleState: RegistrationModuleState;
-  centreModuleState: CentreModuleState;
+  centerModuleState: CenterModuleState;
   setupModuleState: SetupModuleState;
 }
 ;
@@ -66,7 +66,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     applicationModuleState: INITIAL_APPLICATION_STATE,
     admissionModuleState: INITIAL_ADMISSION_STATE,
     registrationModuleState: INITIAL_REGISTRATION_STATE,
-    centreModuleState: INITIAL_CENTRE_STATE,
+    centerModuleState: INITIAL_CENTER_STATE,
     setupModuleState: INITIAL_SETUP_STATE,
   };
 
@@ -77,7 +77,7 @@ export const applicationReducers = {
   applicationModuleState: combineReducers({...applicationModuleReducers}),
   admissionModuleState: combineReducers({...admissionModuleReducers,}),
   registrationModuleState: combineReducers({...registrationModuleReducers,}),
-  centreModuleState: combineReducers({...centreModuleReducers}),
+  centerModuleState: combineReducers({...centerModuleReducers}),
   setupModuleState: combineReducers({...setupModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
@@ -115,7 +115,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 
     DashboardModule.forRoot(),
     CommonModule.forRoot(),
-    CentreModule.forRoot(),
+    CenterModule.forRoot(),
     PolicyModule.forRoot(),
     ApplicationModule.forRoot(),
     AdmissionModule.forRoot(),

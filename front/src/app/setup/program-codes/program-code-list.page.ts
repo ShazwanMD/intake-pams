@@ -1,7 +1,7 @@
 import { PolicyModule } from './../../policy/index';
 import { FacultyCode } from './../../common/faculty-codes/faculty-code.interface';
 import { ProgramLevel } from './../../policy/program-levels/program-level.interface';
-import { GraduateCentre } from './../../common/graduate-centres/graduate-centre.interface';
+import { GraduateCenter } from '../../common/graduate-centers/graduate-center.interface';
 import {MdDialogConfig, MdDialogRef, MdSnackBar, MdDialog} from "@angular/material";
 import {ProgramCodeCreatorDialog} from './dialog/program-code-creator.dialog';
 import {ProgramCode} from './../../common/program-codes/program-code.interface';
@@ -22,10 +22,10 @@ export class ProgramCodeListPage implements OnInit {
 
   private FACULTY_CODES = "setupModuleState.facultyCodes".split(".");
   private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
-  private GRADUATE_CENTRE = "setupModuleState.graduateCentres".split(".");
+  private GRADUATE_CENTER = "setupModuleState.graduateCenters".split(".");
   private PROGRAM_CODES = "setupModuleState.programCodes".split(".");
   private creatorDialogRef: MdDialogRef<ProgramCodeCreatorDialog>;
-  
+
   private programCodes$: Observable<ProgramCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},

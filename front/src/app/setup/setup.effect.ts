@@ -33,17 +33,17 @@ export class SetupEffects {
   // GRADUATE CENTER
   // ====================================================================================================
 
-  @Effect() findGraduateCentres$ = this.actions$
-    .ofType(SetupActions.FIND_GRADUATE_CENTRES)
+  @Effect() findGraduateCenters$ = this.actions$
+    .ofType(SetupActions.FIND_GRADUATE_CENTERS)
     .map(action => action.payload)
-    .switchMap(() => this.commonService.findGraduateCentres())
-    .map(codes => this.setupActions.findGraduateCentresSuccess(codes));
+    .switchMap(() => this.commonService.findGraduateCenters())
+    .map(codes => this.setupActions.findGraduateCentersSuccess(codes));
 
-  @Effect() saveGraduateCentre$ = this.actions$
-    .ofType(SetupActions.SAVE_GRADUATE_CENTRE)
+  @Effect() saveGraduateCenter$ = this.actions$
+    .ofType(SetupActions.SAVE_GRADUATE_CENTER)
     .map(action => action.payload)
-    .switchMap(payload => this.commonService.saveGraduateCentre(payload))
-    .map(message => this.setupActions.saveGraduateCentreSuccess(message));
+    .switchMap(payload => this.commonService.saveGraduateCenter(payload))
+    .map(message => this.setupActions.saveGraduateCenterSuccess(message));
 
   // ====================================================================================================
   // RELIGION CODE
@@ -167,7 +167,7 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(payload => this.commonService.removeStateCode(payload))
     .map(message => this.setupActions.removeStateCodeSuccess(message))
-    .mergeMap(action => from([action, this.setupActions.findStateCodes()]));    
+    .mergeMap(action => from([action, this.setupActions.findStateCodes()]));
 
   // ====================================================================================================
   // PROGRAM CODE
@@ -490,7 +490,7 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(payload => this.commonService.removeStudyCenterCode(payload))
     .map(message => this.setupActions.removeStudyCenterCodeSuccess(message))
-    .mergeMap(action => from([action, this.setupActions.findStudyCenterCodes()]));    
+    .mergeMap(action => from([action, this.setupActions.findStudyCenterCodes()]));
 
   // ====================================================================================================
   // DISTRICT CODE
@@ -584,7 +584,7 @@ export class SetupEffects {
     .switchMap(payload => this.commonService.removeParliamentCode(payload))
     .map(message => this.setupActions.removeParliamentCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findParliamentCodes()]));
-    
+
   // ====================================================================================================
   // RESIDENCY CODE
   // ====================================================================================================

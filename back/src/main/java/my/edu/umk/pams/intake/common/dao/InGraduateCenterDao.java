@@ -1,6 +1,6 @@
 package my.edu.umk.pams.intake.common.dao;
 
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.core.GenericDao;
 
 import java.util.List;
@@ -8,16 +8,16 @@ import java.util.List;
 /**
  * @author PAMS
  */
-public interface InGraduateCentreDao extends GenericDao<Long, InGraduateCentre> {
+public interface InGraduateCenterDao extends GenericDao<Long, InGraduateCenter> {
 
     // ====================================================================================================
     // FINDER
     // ====================================================================================================
-    InGraduateCentre findByCode(String code);
+    InGraduateCenter findByCode(String code);
 
-    List<InGraduateCentre> find();
+    List<InGraduateCenter> find();
 
-    List<InGraduateCentre> find(String filter, Integer offset, Integer limit);
+    List<InGraduateCenter> find(String filter, Integer offset, Integer limit);
 
     // ====================================================================================================
     // HELPER

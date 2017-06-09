@@ -56,7 +56,7 @@ public class ThenICanViewTheStudyCenter extends Stage<ThenICanViewTheStudyCenter
 		 
 		// InStudyCenterCode studyCenterCode = commonService.findStudyCenterCodeByCode("SC_003");
 	        intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
-	        Assert.isNull(commonService.findStudyCenterCodeByCode("SC_003"), "study centre is null");
+	        Assert.isNull(commonService.findStudyCenterCodeByCode("SC_003"), "study center is null");
 
 	       // InProgramOffering offering = policyService.findProgramOfferingByIntakeAndProgramCode(intake, studyCenterCode);
 	        return self();

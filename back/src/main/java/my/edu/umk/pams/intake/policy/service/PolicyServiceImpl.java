@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.policy.service;
 
 import my.edu.umk.pams.intake.IntakeConstants;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
@@ -226,7 +226,7 @@ public class PolicyServiceImpl implements PolicyService {
         HashMap<String, Object> map = new HashMap<>();
         map.put("intakeSession", intake.getSession());
         map.put("programLevel", intake.getProgramLevel());
-        map.put("graduateCentre", intake.getGraduateCentre());
+        map.put("graduateCenter", intake.getGraduateCenter());
         String refNo = systemService.generateFormattedReferenceNo(INTAKE_REFERENCE_NO, map);
         LOG.debug("User copy cannot be null " +securityService.getCurrentUser());
         // save and process
@@ -380,8 +380,8 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public List<InIntake> findIntakes(InGraduateCentre graduateCentre) {
-        return intakeDao.find(graduateCentre);
+    public List<InIntake> findIntakes(InGraduateCenter graduateCenter) {
+        return intakeDao.find(graduateCenter);
     }
 
     @Override
@@ -390,8 +390,8 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public List<InIntake> findIntakes(InIntakeSession session, InGraduateCentre graduateCentre) {
-        return intakeDao.find(session, graduateCentre);
+    public List<InIntake> findIntakes(InIntakeSession session, InGraduateCenter graduateCenter) {
+        return intakeDao.find(session, graduateCenter);
     }
 
     @Override
@@ -400,8 +400,8 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public List<InIntake> findIntakes(InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit) {
-        return intakeDao.find(session, graduateCentre, offset, limit);
+    public List<InIntake> findIntakes(InIntakeSession session, InGraduateCenter graduateCenter, Integer offset, Integer limit) {
+        return intakeDao.find(session, graduateCenter, offset, limit);
     }
 
     @Override
@@ -410,8 +410,8 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public List<InIntake> findIntakes(String filter, InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit) {
-        return intakeDao.find(filter, session, graduateCentre, offset, limit);
+    public List<InIntake> findIntakes(String filter, InIntakeSession session, InGraduateCenter graduateCenter, Integer offset, Integer limit) {
+        return intakeDao.find(filter, session, graduateCenter, offset, limit);
     }
 
     @Override
@@ -420,8 +420,8 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public Integer countIntake(InIntakeSession session, InGraduateCentre graduateCentre) {
-        return intakeDao.count(session, graduateCentre);
+    public Integer countIntake(InIntakeSession session, InGraduateCenter graduateCenter) {
+        return intakeDao.count(session, graduateCenter);
     }
 
     @Override
@@ -430,8 +430,8 @@ public class PolicyServiceImpl implements PolicyService {
     }
 
     @Override
-    public Integer countIntake(String filter, InIntakeSession session, InGraduateCentre graduateCentre) {
-        return intakeDao.count(filter, session, graduateCentre);
+    public Integer countIntake(String filter, InIntakeSession session, InGraduateCenter graduateCenter) {
+        return intakeDao.count(filter, session, graduateCenter);
     }
 
     @Override
@@ -445,7 +445,7 @@ public class PolicyServiceImpl implements PolicyService {
         intake.setProjection(oldIntake.getProjection());
         intake.setProgramLevel(oldIntake.getProgramLevel());
         intake.setSession(oldIntake.getSession());
-        intake.setGraduateCentre(oldIntake.getGraduateCentre());
+        intake.setGraduateCenter(oldIntake.getGraduateCenter());
 
         // start intake
         String referenceNo = startIntakeTask(intake);

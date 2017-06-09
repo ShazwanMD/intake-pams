@@ -6,7 +6,7 @@ import {RegistrationModuleRoutes} from "./registration/registration-module.route
 import {PolicyModuleRoutes} from "./policy/policy-module.routes";
 import {ApplicationModuleRoutes} from "./application/application-module.routes";
 import {AdmissionModuleRoutes} from "./admission/admission-module.routes";
-import {CentreModuleRoutes} from "./centre/centre-module.routes";
+import {CenterModuleRoutes} from "./center/center-module.routes";
 import { DashboardModuleRoutes } from "./dashboard/dashboard-module.routes";
 import { ForgetPasswordComponent } from "./login/forget-password.component";
 import {SetupModuleRoutes} from "./setup/setup-module.routes";
@@ -21,7 +21,7 @@ const routes: Routes = [
       ...RegistrationModuleRoutes,
       ...PolicyModuleRoutes,
       ...AdmissionModuleRoutes,
-      ...CentreModuleRoutes,
+      ...CenterModuleRoutes,
       ...ApplicationModuleRoutes,
       ...SetupModuleRoutes,
     ]

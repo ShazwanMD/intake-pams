@@ -1,14 +1,14 @@
-import {ParliamentCode} from './../app/common/parliament-codes/parliament-code.interface';
-import {StudyCenterCode} from './../app/common/study-center-codes/study-center-code.interface';
-import {StudyMode} from './../app/common/study-modes/study-mode.interface';
-import {NationalityCode} from './../app/common/nationality-codes/nationality-code.interface';
-import {EthnicityCode} from './../app/common/ethnicity-codes/ethnicity-code.interface';
-import {RaceCode} from './../app/common/race-codes/race-code.interface';
-import {StateCode} from './../app/common/state-codes/state-code.interface';
-import {SupervisorCode} from './../app/common/supervisor-codes/supervisor-code.interface';
-import {CountryCode} from './../app/common/country-codes/country-code.interface';
-import {ReligionCode} from './../app/common/religion-codes/religion-code.interface';
-import {GenderCode} from './../app/common/gender-codes/gender-code.interface';
+import {ParliamentCode} from '../app/common/parliament-codes/parliament-code.interface';
+import {StudyCenterCode} from '../app/common/study-center-codes/study-center-code.interface';
+import {StudyMode} from '../app/common/study-modes/study-mode.interface';
+import {NationalityCode} from '../app/common/nationality-codes/nationality-code.interface';
+import {EthnicityCode} from '../app/common/ethnicity-codes/ethnicity-code.interface';
+import {RaceCode} from '../app/common/race-codes/race-code.interface';
+import {StateCode} from '../app/common/state-codes/state-code.interface';
+import {SupervisorCode} from '../app/common/supervisor-codes/supervisor-code.interface';
+import {CountryCode} from '../app/common/country-codes/country-code.interface';
+import {ReligionCode} from '../app/common/religion-codes/religion-code.interface';
+import {GenderCode} from '../app/common/gender-codes/gender-code.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -16,7 +16,7 @@ import {Observable} from "rxjs";
 import {FacultyCode} from "../app/common/faculty-codes/faculty-code.interface";
 import {environment} from "../environments/environment";
 import {ProgramCode} from "../app/common/program-codes/program-code.interface";
-import {GraduateCentre} from "../app/common/graduate-centres/graduate-centre.interface";
+import {GraduateCenter} from "../app/common/graduate-centers/graduate-center.interface";
 import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
 import {DunCode} from "../app/common/dun-codes/dun-code.interface";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
@@ -308,38 +308,38 @@ export class CommonService {
   }
 
   // ====================================================================================================
-  // GRADUATE CENTRE
+  // GRADUATE CENTER
   // ====================================================================================================
 
-  findGraduateCentres(): Observable<GraduateCentre[]> {
-    console.log("findGraduateCentres");
-    return this.http.get(environment.endpoint + '/api/common/graduateCentres')
-      .map((res: Response) => <GraduateCentre[]>res.json());
+  findGraduateCenters(): Observable<GraduateCenter[]> {
+    console.log("findGraduateCenters");
+    return this.http.get(environment.endpoint + '/api/common/graduateCenters')
+      .map((res: Response) => <GraduateCenter[]>res.json());
   }
 
-  findGraduateCentreByCode(code: string): Observable<GraduateCentre> {
-    console.log("findGraduateCentreByCode");
-    return this.http.get(environment.endpoint + '/api/common/graduateCentres/' + code)
-      .map((res: Response) => <GraduateCentre>res.json());
+  findGraduateCenterByCode(code: string): Observable<GraduateCenter> {
+    console.log("findGraduateCenterByCode");
+    return this.http.get(environment.endpoint + '/api/common/graduateCenters/' + code)
+      .map((res: Response) => <GraduateCenter>res.json());
   }
 
-  findProgramCodesByGraduateCentre(graduateCentre: GraduateCentre): Observable<ProgramCode[]> {
-    console.log("findProgramCodesByGraduateCentre");
-    return this.http.get(environment.endpoint + '/api/common/graduateCentres/' + graduateCentre.code + '/programCodes')
+  findProgramCodesByGraduateCenter(graduateCenter: GraduateCenter): Observable<ProgramCode[]> {
+    console.log("findProgramCodesByGraduateCenter");
+    return this.http.get(environment.endpoint + '/api/common/graduateCenters/' + graduateCenter.code + '/programCodes')
       .map((res: Response) => <ProgramCode[]>res.json());
   }
 
-  saveGraduateCentre(code: GraduateCentre) {
+  saveGraduateCenter(code: GraduateCenter) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/common/graduateCentres', JSON.stringify(code), options)
+    return this.http.post(environment.endpoint + '/api/common/graduateCenters', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-    updateProgramCode(code: ProgramCode) {
+  updateProgramCode(code: ProgramCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -459,7 +459,7 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-updateStudyMode(code: StudyMode) {
+  updateStudyMode(code: StudyMode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token

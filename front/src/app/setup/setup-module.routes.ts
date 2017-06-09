@@ -17,7 +17,7 @@ import {ReligionCodeListPage} from './religion-codes/religion-code-list.page';
 import {Routes, RouterModule} from '@angular/router';
 import {SetupPage} from "./setup.page";
 import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
-import {GraduateCentreListPage} from "./graduate-centres/graduate-centre-list.page";
+import {GraduateCenterListPage} from "./graduate-centers/graduate-center-list.page";
 import {CountryCodeListPage} from './country-codes/country-code-list.page';
 import {StudyCenterCodeListPage} from './study-center-codes/study-center-code-list.page';
 import {DunCodeListPage} from './dun-codes/dun-code-list-page';
@@ -30,7 +30,7 @@ export const SetupModuleRoutes: Routes = [
     path: 'setup', component: SetupPage,
     children: [
       {path: 'bank-codes', component: BankCodeListPage},
-      {path: 'graduate-centres', component: GraduateCentreListPage},
+      {path: 'graduate-centers', component: GraduateCenterListPage},
       {path: 'religion-codes', component: ReligionCodeListPage},
       {path: 'marital-codes', component: MaritalCodeListPage},
       {path: 'language-codes', component: LanguageCodeListPage},
@@ -46,14 +46,14 @@ export const SetupModuleRoutes: Routes = [
       {path: 'study-modes', component: StudyModeListPage},
       {path: 'disability-codes', component: DisabilityCodeListPage},
       {path: 'school-codes', component: SchoolCodeListPage},
-      {path: 'study-centre-codes', component: StudyCenterCodeListPage},
+      {path: 'study-center-codes', component: StudyCenterCodeListPage},
       {path: 'district-codes', component: DistrictCodeListPage},
       {path: 'dun-codes', component: DunCodeListPage},
       {path: 'ethnicity-codes', component: EthnicityCodeListPage},
       {path: 'parliament-codes', component: ParliamentCodeListPage},
       {path: 'residency-codes', component: ResidencyCodeListPage},
-      {path: 'subject-codes', component: SubjectCodeListPage},    
-      {path: 'grade-codes', component: GradeCodeListPage}, 
+      {path: 'subject-codes', component: SubjectCodeListPage},
+      {path: 'grade-codes', component: GradeCodeListPage},
 
 
     ]

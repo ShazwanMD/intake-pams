@@ -59,7 +59,7 @@ public class WhenIAddPrograms extends Stage<WhenIAddPrograms> {
             code.setDescriptionMs(data.descriptionMs);
             code.setFacultyCode(commonService.findFacultyCodeByCode("A09"));
             code.setProgramLevel(policyService.findProgramLevelByCode("MASTER"));
-            code.setGraduateCentre(commonService.findGraduateCentreByCode("CPS"));
+            code.setGraduateCenter(commonService.findGraduateCenterByCode("CPS"));
             commonService.saveProgramCode(code);
             
             

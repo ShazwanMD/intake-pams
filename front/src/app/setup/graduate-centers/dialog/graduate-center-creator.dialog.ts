@@ -6,15 +6,15 @@ import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
 import {SetupModuleState} from "../../index";
 import {SetupActions} from "../../setup.action";
-import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
+import {GraduateCenter} from "../../../common/graduate-centers/graduate-center.interface";
 
 
 @Component({
-  selector: 'pams-graduate-centre-creator',
-  templateUrl: './graduate-centre-creator.dialog.html',
+  selector: 'pams-graduate-center-creator',
+  templateUrl: './graduate-center-creator.dialog.html',
 })
 
-export class GraduateCentreCreatorDialog implements OnInit {
+export class GraduateCenterCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
 
@@ -22,7 +22,7 @@ export class GraduateCentreCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<GraduateCentreCreatorDialog>,
+              private dialog: MdDialogRef<GraduateCenterCreatorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions
   ) {
@@ -30,7 +30,7 @@ export class GraduateCentreCreatorDialog implements OnInit {
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<GraduateCentre>{
+    this.createForm = this.formBuilder.group(<GraduateCenter>{
       id: null,
       code: '',
       descriptionMs: '',
@@ -38,8 +38,8 @@ export class GraduateCentreCreatorDialog implements OnInit {
     });
   }
 
-  save(code: GraduateCentre, isValid: boolean) {
-    this.store.dispatch(this.actions.saveGraduateCentre(code));
+  save(code: GraduateCenter, isValid: boolean) {
+    this.store.dispatch(this.actions.saveGraduateCenter(code));
     this.dialog.close();
   }
 }

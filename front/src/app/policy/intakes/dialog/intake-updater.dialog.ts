@@ -7,7 +7,7 @@ import {IntakeActions} from "../intake.action";
 import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
 import {IntakeSession} from "../../intake-sessions/intake-session.interface";
-import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
+import {GraduateCenter} from "../../../common/graduate-centers/graduate-center.interface";
 import {ProgramLevel} from "../../program-levels/program-level.interface";
 import {IntakeTask} from "../intake-task.interface";
 
@@ -45,7 +45,7 @@ export class IntakeUpdaterDialog implements OnInit {
       endDate: null,
       programLevel: <ProgramLevel>{},
       intakeSession: <IntakeSession>{},
-      graduateCentre: <GraduateCentre>{}
+      graduateCenter: <GraduateCenter>{}
     });
     this.updateForm.patchValue(this._intake);
   }

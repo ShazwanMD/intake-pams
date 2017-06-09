@@ -9,7 +9,7 @@ import {PolicyModuleState} from "../../index";
 import {Intake} from "../intake.interface";
 import {PolicyService} from "../../../../services/policy.service";
 import {IntakeSession} from "../../intake-sessions/intake-session.interface";
-import {GraduateCentre} from "../../../common/graduate-centres/graduate-centre.interface";
+import {GraduateCenter} from "../../../common/graduate-centers/graduate-center.interface";
 import {ProgramCode} from "../../../common/program-codes/program-code.interface";
 import {ProgramOffering} from "../program-offering.interface";
 import {CommonModuleState} from "../../../common/index";

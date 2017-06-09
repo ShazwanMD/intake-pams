@@ -1,7 +1,7 @@
 package my.edu.umk.pams.intake.common.dao;
 
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
@@ -48,12 +48,12 @@ public class InProgramCodeDaoImpl extends GenericDaoSupport<Long, InProgramCode>
     }
 
     @Override
-    public List<InProgramCode> find(InGraduateCentre graduateCentre) {
+    public List<InProgramCode> find(InGraduateCenter graduateCenter) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from InProgramCode s where " +
-                "s.graduateCentre = :graduateCentre " +
+                "s.graduateCenter = :graduateCenter " +
                 "and s.metadata.state = :state ");
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
         query.setCacheable(true);
         return (List<InProgramCode>) query.list();
@@ -74,13 +74,13 @@ public class InProgramCodeDaoImpl extends GenericDaoSupport<Long, InProgramCode>
     }
 
     @Override
-    public List<InProgramCode> find(InGraduateCentre graduateCentre, InProgramLevel programLevel) {
+    public List<InProgramCode> find(InGraduateCenter graduateCenter, InProgramLevel programLevel) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from InProgramCode s where " +
-                "s.graduateCentre = :graduateCentre " +
+                "s.graduateCenter = :graduateCenter " +
                 "and s.programLevel = :programLevel " +
                 "and s.metadata.state = :state ");
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         query.setEntity("programLevel", programLevel);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
         query.setCacheable(true);
@@ -127,12 +127,12 @@ public class InProgramCodeDaoImpl extends GenericDaoSupport<Long, InProgramCode>
     }
 
     @Override
-    public Integer count(InGraduateCentre graduateCentre) {
+    public Integer count(InGraduateCenter graduateCenter) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from InProgramCode s where " +
-                "s.graduateCentre = :graduateCentre " +
+                "s.graduateCenter = :graduateCenter " +
                 "and s.metadata.state = :state ");
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();
     }
@@ -151,13 +151,13 @@ public class InProgramCodeDaoImpl extends GenericDaoSupport<Long, InProgramCode>
     }
 
     @Override
-    public Integer count(InGraduateCentre graduateCentre, InProgramLevel programLevel) {
+    public Integer count(InGraduateCenter graduateCenter, InProgramLevel programLevel) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from InProgramCode s where " +
-                "s.graduateCentre = :graduateCentre " +
+                "s.graduateCenter = :graduateCenter " +
                 "and s.programLevel = :programLevel " +
                 "and s.metadata.state = :state ");
-        query.setEntity("graduateCentre", graduateCentre);
+        query.setEntity("graduateCenter", graduateCenter);
         query.setEntity("programLevel", programLevel);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();

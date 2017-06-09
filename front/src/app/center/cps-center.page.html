@@ -1,6 +1,6 @@
 <td-layout-nav>
   <div td-toolbar-content layout="row" layout-align="start center" flex>
-    <span hide-xs>Centre for Postgraduate Studies Univesiti Malaysia Kelantan</span>
+    <span hide-xs>Center for Postgraduate Studies Univesiti Malaysia Kelantan</span>
     <span flex></span>
   </div>
 
@@ -33,7 +33,7 @@
       <div flex class="pad" tdMediaToggle="gt-xs" [mediaClasses]="['pad-xxl']">
         <div class="push-top-xxl" hide-xs></div>
         <h3 class="md-display-1 tc-grey-600 push-top-xs push-bottom-sm">Register Our Programs</h3>
-        <p class="md-title tc-grey-600">{{(graduateCentre$ | async)?.descriptionEn}}</p>
+        <p class="md-title tc-grey-600">{{(graduateCenter$ | async)?.descriptionEn}}</p>
         <p class="md-title tc-grey-600">Ready to make dive ? Get started today and register!</p>
         <button md-raised-button color="accent" class="push-bottom" [routerLink]="['/registration']">Register or Login
         </button>
@@ -100,7 +100,7 @@
         </div>
         <div flex layout="column" flex-gt-xs="30" layout-align="right right">
           <md-icon push-right-xl svgIcon="assets:covalent" class="md-icon-logo"></md-icon>
-          <p class="text-sm">Copyright © 2017 Centre for Postgraduate Studies Universiti Malaysia Kelantan</p>
+          <p class="text-sm">Copyright © 2017 Center for Postgraduate Studies Universiti Malaysia Kelantan</p>
         </div>
       </div>
     </div>

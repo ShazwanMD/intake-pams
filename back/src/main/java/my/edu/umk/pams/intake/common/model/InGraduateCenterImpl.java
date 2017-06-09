@@ -8,9 +8,9 @@ import javax.validation.constraints.NotNull;
 /**
  * @author PAMS
  */
-@Entity(name = "InGraduateCentre")
+@Entity(name = "InGraduateCenter")
 @Table(name = "IN_GRDT_CNTR")
-public class InGraduateCentreImpl implements InGraduateCentre {
+public class InGraduateCenterImpl implements InGraduateCenter {
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -84,6 +84,6 @@ public class InGraduateCentreImpl implements InGraduateCentre {
 
     @Override
     public Class<?> getInterfaceClass() {
-        return InGraduateCentre.class;
+        return InGraduateCenter.class;
     }
 }

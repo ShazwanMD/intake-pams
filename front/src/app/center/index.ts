@@ -13,27 +13,27 @@ import {IdentityService} from '../../services';
 
 import {ProgramCodeListComponent} from "./component/program-code-list.component";
 import {ProgramCodeListState, programCodeListReducer} from "./program-code-list.reducer";
-import {GraduateCentreState, graduateCentreReducer} from "./graduate-centre.reducer";
-import {GraduateCentre} from "../common/graduate-centres/graduate-centre.interface";
-import {MgsebCentrePage} from "./mgseb-centre.page";
-import {CpsCentrePage} from "./cps-centre.page";
-import {CentrePage} from "./centre.page";
-import {CentreEffects} from "./centre.effect";
-import {CentreActions} from "./centre.action";
+import {GraduateCenterState, graduateCenterReducer} from "./graduate-center.reducer";
+import {GraduateCenter} from "../common/graduate-centers/graduate-center.interface";
+import {MgsebCenterPage} from "./mgseb-center.page";
+import {CpsCenterPage} from "./cps-center.page";
+import {CenterPage} from "./center.page";
+import {CenterEffects} from "./center.effect";
+import {CenterActions} from "./center.action";
 
-export interface CentreModuleState {
-  graduateCentre:GraduateCentreState,
+export interface CenterModuleState {
+  graduateCenter:GraduateCenterState,
   programCodes:ProgramCodeListState,
 };
 
-export const INITIAL_CENTRE_STATE: CentreModuleState =
-  <CentreModuleState>{
-    graduateCentre:<GraduateCentre>{},
+export const INITIAL_CENTER_STATE: CenterModuleState =
+  <CenterModuleState>{
+    graduateCenter:<GraduateCenter>{},
     programCodes:[]
   };
 
-export const centreModuleReducers = {
-  graduateCentre:graduateCentreReducer,
+export const centerModuleReducers = {
+  graduateCenter:graduateCenterReducer,
   programCodes:programCodeListReducer
  };
 
@@ -43,29 +43,29 @@ export const centreModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(CentreEffects),
+    EffectsModule.run(CenterEffects),
 
   ],
   declarations: [
     // page
-    CentrePage,
-    CpsCentrePage,
-    MgsebCentrePage,
+    CenterPage,
+    CpsCenterPage,
+    MgsebCenterPage,
 
     // component
     ProgramCodeListComponent,
   ],
   exports: [],
 })
-export class CentreModule {
+export class CenterModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: CentreModule,
+      ngModule: CenterModule,
       providers: [
         appRoutingProviders,
         IdentityService,
         CommonService,
-        CentreActions,
+        CenterActions,
       ],
     };
   }

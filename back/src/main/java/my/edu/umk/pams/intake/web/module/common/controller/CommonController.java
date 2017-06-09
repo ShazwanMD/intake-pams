@@ -178,67 +178,67 @@ public class CommonController {
     }
     
     //====================================================================================================
-    // GRADUATE CENTRE
+    // GRADUATE CENTER
     //====================================================================================================
 
-    @RequestMapping(value = "/graduateCentres", method = RequestMethod.GET)
-    public ResponseEntity<List<GraduateCentre>> findGraduateCentres() {
-        return new ResponseEntity<List<GraduateCentre>>(commonTransformer.toGraduateCentreVos(
-                commonService.findGraduateCentres()), HttpStatus.OK);
+    @RequestMapping(value = "/graduateCenters", method = RequestMethod.GET)
+    public ResponseEntity<List<GraduateCenter>> findGraduateCenters() {
+        return new ResponseEntity<List<GraduateCenter>>(commonTransformer.toGraduateCenterVos(
+                commonService.findGraduateCenters()), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/graduateCentres/{code}", method = RequestMethod.GET)
-    public ResponseEntity<GraduateCentre> findGraduateCentreByCode(@PathVariable String code) {
-        return new ResponseEntity<GraduateCentre>(commonTransformer.toGraduateCentreVo(
-                commonService.findGraduateCentreByCode(code)), HttpStatus.OK);
+    @RequestMapping(value = "/graduateCenters/{code}", method = RequestMethod.GET)
+    public ResponseEntity<GraduateCenter> findGraduateCenterByCode(@PathVariable String code) {
+        return new ResponseEntity<GraduateCenter>(commonTransformer.toGraduateCenterVo(
+                commonService.findGraduateCenterByCode(code)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/graduateCentres/{code}/programCodes", method = RequestMethod.GET)
-    public ResponseEntity<List<ProgramCode>> findProgramCodesByGraduateCentreCode(@PathVariable String code) {
-        InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
+    @RequestMapping(value = "/graduateCenters/{code}/programCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramCode>> findProgramCodesByGraduateCenterCode(@PathVariable String code) {
+        InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode(code);
         return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(
-                commonService.findProgramCodes(graduateCentre)), HttpStatus.OK);
+                commonService.findProgramCodes(graduateCenter)), HttpStatus.OK);
     }
 
-    // localhost:8080/api/common/graduateCentres/MGSEB/programCodes/PHD
-    @RequestMapping(value = "/graduateCentres/{code}/programCodes/{levelCode}", method = RequestMethod.GET)
-    public ResponseEntity<List<ProgramCode>> findProgramCodesByGraduateCentreCode(@PathVariable String code, @PathVariable String levelCode) {
-        InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
+    // localhost:8080/api/common/graduateCenters/MGSEB/programCodes/PHD
+    @RequestMapping(value = "/graduateCenters/{code}/programCodes/{levelCode}", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramCode>> findProgramCodesByGraduateCenterCode(@PathVariable String code, @PathVariable String levelCode) {
+        InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode(code);
         InProgramLevel programLevel = policyService.findProgramLevelByCode(levelCode);
         return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(
-                commonService.findProgramCodes(graduateCentre, programLevel)), HttpStatus.OK);
+                commonService.findProgramCodes(graduateCenter, programLevel)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/graduateCentres", method = RequestMethod.POST)
-    public ResponseEntity<String> saveGraduateCentre(@RequestBody GraduateCentre vo) {
+    @RequestMapping(value = "/graduateCenters", method = RequestMethod.POST)
+    public ResponseEntity<String> saveGraduateCenter(@RequestBody GraduateCenter vo) {
         dummyLogin();
 
-        InGraduateCentre graduateCentre = new InGraduateCentreImpl();
-        graduateCentre.setCode(vo.getCode());
-        graduateCentre.setDescriptionEn(vo.getDescriptionEn());
-        graduateCentre.setDescriptionMs(vo.getDescriptionMs());
-        commonService.saveGraduateCentre(graduateCentre);
+        InGraduateCenter graduateCenter = new InGraduateCenterImpl();
+        graduateCenter.setCode(vo.getCode());
+        graduateCenter.setDescriptionEn(vo.getDescriptionEn());
+        graduateCenter.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveGraduateCenter(graduateCenter);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/graduateCentres/{centre}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateGraduateCentre(@PathVariable String centre, @RequestBody GraduateCentre vo) {
+    @RequestMapping(value = "/graduateCenters/{center}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateGraduateCenter(@PathVariable String center, @RequestBody GraduateCenter vo) {
         dummyLogin();
 
-        InGraduateCentre graduateCentre = commonService.findGraduateCentreById(vo.getId());
-        graduateCentre.setCode(vo.getCode());
-        graduateCentre.setDescriptionEn(vo.getDescriptionEn());
-        graduateCentre.setDescriptionMs(vo.getDescriptionMs());
-        commonService.updateGraduateCentre(graduateCentre);
+        InGraduateCenter graduateCenter = commonService.findGraduateCenterById(vo.getId());
+        graduateCenter.setCode(vo.getCode());
+        graduateCenter.setDescriptionEn(vo.getDescriptionEn());
+        graduateCenter.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateGraduateCenter(graduateCenter);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/graduateCentres/{code}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> removeGraduateCentre(@PathVariable String code) {
+    @RequestMapping(value = "/graduateCenters/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeGraduateCenter(@PathVariable String code) {
         dummyLogin();
 
-        InGraduateCentre graduateCentre = commonService.findGraduateCentreByCode(code);
-        commonService.removeGraduateCentre(graduateCentre);
+        InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode(code);
+        commonService.removeGraduateCenter(graduateCenter);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
@@ -330,7 +330,7 @@ public class CommonController {
         programCode.setDescriptionEn(vo.getDescriptionEn());
         programCode.setDescriptionMs(vo.getDescriptionMs());
         programCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
-        programCode.setGraduateCentre(commonService.findGraduateCentreById(vo.getGraduateCentre().getId()));
+        programCode.setGraduateCenter(commonService.findGraduateCenterById(vo.getGraduateCenter().getId()));
         programCode.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
         commonService.saveProgramCode(programCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);

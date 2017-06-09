@@ -1,6 +1,6 @@
 package my.edu.umk.pams.intake.policy.service;
 
-import my.edu.umk.pams.intake.common.model.InGraduateCentre;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
@@ -113,27 +113,27 @@ public interface PolicyService {
 
     List<InIntake> findIntakesByFlowState(InFlowState flowState);
 
-    List<InIntake> findIntakes(InGraduateCentre graduateCentre);
+    List<InIntake> findIntakes(InGraduateCenter graduateCenter);
 
     List<InIntake> findIntakes(InIntakeSession session);
 
-    List<InIntake> findIntakes(InIntakeSession session, InGraduateCentre graduateCentre);
+    List<InIntake> findIntakes(InIntakeSession session, InGraduateCenter graduateCenter);
 
     List<InIntake> findIntakes(InIntakeSession session, Integer offset, Integer limit);
 
-    List<InIntake> findIntakes(InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit);
+    List<InIntake> findIntakes(InIntakeSession session, InGraduateCenter graduateCenter, Integer offset, Integer limit);
 
     List<InIntake> findIntakes(String filter, InIntakeSession session, Integer offset, Integer limit);
 
-    List<InIntake> findIntakes(String filter, InIntakeSession session, InGraduateCentre graduateCentre, Integer offset, Integer limit);
+    List<InIntake> findIntakes(String filter, InIntakeSession session, InGraduateCenter graduateCenter, Integer offset, Integer limit);
 
     Integer countIntake(InIntakeSession session);
 
-    Integer countIntake(InIntakeSession session, InGraduateCentre graduateCentre);
+    Integer countIntake(InIntakeSession session, InGraduateCenter graduateCenter);
 
     Integer countIntake(String filter, InIntakeSession session);
 
-    Integer countIntake(String filter, InIntakeSession session, InGraduateCentre graduateCentre);
+    Integer countIntake(String filter, InIntakeSession session, InGraduateCenter graduateCenter);
 
     String copyIntake(InIntake intake);
 
