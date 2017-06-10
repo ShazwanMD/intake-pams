@@ -4,6 +4,7 @@ import my.edu.umk.pams.intake.security.integration.InAclPermissionEvaluator;
 import my.edu.umk.pams.intake.security.integration.InMutableAclService;
 import my.edu.umk.pams.intake.security.integration.InPermissionFactory;
 import my.edu.umk.pams.intake.security.integration.InSidRetrievalStrategy;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +21,7 @@ import javax.sql.DataSource;
  * @author canang technologies
  * @since 1/13/14
  */
-@Configuration
+@TestConfiguration
 public class TestAccessConfig {
 
     @Bean

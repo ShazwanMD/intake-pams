@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.config;
 
 import com.google.common.collect.Lists;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurer;
 import org.springframework.cache.annotation.EnableCaching;
@@ -18,7 +19,7 @@ import java.util.List;
  * @author canang technologies
  * @since 4/1/2015
  */
-@Configuration
+@TestConfiguration
 @EnableCaching
 public class TestCacheConfig implements CachingConfigurer {
 
