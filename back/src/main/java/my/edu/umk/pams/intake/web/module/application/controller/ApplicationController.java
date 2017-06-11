@@ -198,7 +198,9 @@ public class ApplicationController {
         application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
+        application.setSpmResultAttached(vo.getSpmResultAttached());
         
+        if(null != vo.getGenderCode());
         application.setGenderCode(commonService.findGenderCodeById(vo.getGenderCode().getId()));
         application.setReligionCode(commonService.findReligionCodeById(vo.getReligionCode().getId()));
         application.setEthnicityCode(commonService.findEthnicityCodeById(vo.getEthnicityCode().getId()));

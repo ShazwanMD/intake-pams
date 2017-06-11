@@ -102,6 +102,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "SELF_SPONSORED")
     private Boolean selfSponsored = false;
+    
+    @Column(name = "SPM_RESULT_ATTACHED")
+    private Boolean spmResultAttached = false;
 
     @Column(name = "VERIFIED", nullable = false)
     private Boolean verified = false;
@@ -418,6 +421,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setSelfSponsored(Boolean selfSponsored) {
         this.selfSponsored = selfSponsored;
+    }
+    
+    @Override
+    public Boolean isSpmResultAttached() {
+        return spmResultAttached;
+    }
+
+    @Override
+    public void setSpmResultAttached(Boolean spmResultAttached) {
+        this.spmResultAttached = spmResultAttached;
     }
 
     @Override

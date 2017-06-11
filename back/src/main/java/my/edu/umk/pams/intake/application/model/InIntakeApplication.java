@@ -101,6 +101,10 @@ public interface InIntakeApplication extends InMetaObject {
     Boolean isSelfSponsored();
 
     void setSelfSponsored(Boolean selfSponsored);
+    
+    Boolean isSpmResultAttached();
+
+    void setSpmResultAttached(Boolean spmResultAttached);
 
     Boolean isVerified();
 

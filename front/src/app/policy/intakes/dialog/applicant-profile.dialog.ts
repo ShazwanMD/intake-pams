@@ -118,6 +118,7 @@ export class ApplicantProfileDialog implements OnInit {
       verified: false,
       sponsored: false,
       selfSponsored: false,
+      spmResultAttached: false,
 
       processingReceipt:false,
       foreignResult:false,

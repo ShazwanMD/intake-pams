@@ -46,6 +46,7 @@ public class IntakeApplication extends MetaObject {
     private Boolean paid;
     private Boolean sponsored;
     private Boolean selfSponsored;
+    private Boolean spmResultAttached;
     private Boolean verified;
 
     private ProgramOffering programSelection;
@@ -203,7 +204,15 @@ public class IntakeApplication extends MetaObject {
         this.selfSponsored = selfSponsored;
     }
 
-    public Boolean getVerified() {
+    public Boolean getSpmResultAttached() {
+		return spmResultAttached;
+	}
+
+	public void setSpmResultAttached(Boolean spmResultAttached) {
+		this.spmResultAttached = spmResultAttached;
+	}
+
+	public Boolean getVerified() {
         return verified;
     }
 

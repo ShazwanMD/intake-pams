@@ -39,6 +39,7 @@ export interface IntakeApplication extends MetaObject {
   verified: boolean;
   sponsored: boolean;
   selfSponsored: boolean;
+  spmResultAttached: boolean;
   processingReceipt:boolean;
   foreignResult:boolean;
   educationResult:boolean;

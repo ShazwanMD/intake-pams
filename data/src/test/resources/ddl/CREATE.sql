@@ -711,6 +711,7 @@
         SCHOOL_NAME varchar(255),
         SELF_SPONSORED boolean,
         SPONSORED boolean,
+        SPM_RESULT_ATTACHED boolean,
         VERIFIED boolean not null,
         VISA_TYPE int4 not null,
         APPLICANT_ID int8,

@@ -46,6 +46,7 @@ public class ApplicationTransformer {
 		vo.setPaid(e.isPaid());
 		vo.setSponsored(e.isSponsored());
 		vo.setSelfSponsored(e.isSelfSponsored());
+		vo.setSpmResultAttached(e.isSpmResultAttached());
 
 		vo.setBidType(BidType.get(e.getBidType().ordinal()));
 		vo.setBidStatus(BidStatus.get(e.getBidStatus().ordinal()));
