@@ -1,28 +1,21 @@
 package my.edu.umk.pams.intake.admission.stage;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.integration.leader.Candidate;
-
-import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
-import my.edu.umk.pams.intake.admission.service.AdmissionService;
-import my.edu.umk.pams.intake.application.model.InBidStatus;
-import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.identity.model.InApplicant;
-import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.service.PolicyService;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @JGivenStage
 public class ThenICanGenerateAnOfferLetter extends
@@ -50,7 +43,7 @@ public class ThenICanGenerateAnOfferLetter extends
 		
 		InIntake intake = policyService.findIntakeByReferenceNo(intakeSession);
 		LOG.debug("intake {}", intake);
-		List<InIntakeApplication> applicants = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+		List<InIntakeApplication> applicants = applicationService.findIntakeApplications(intake,InBidStatus.SELECTED);
 		LOG.debug("applicants_then {}", applicants);
 		for (InIntakeApplication inIntakeApplication : applicants) {
 			LOG.debug("inIntakeApplication {}", inIntakeApplication);

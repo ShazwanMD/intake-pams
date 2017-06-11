@@ -38,7 +38,7 @@ public class WhenIWantToReviewApplicationsFlaggedAsAppeal extends Stage <WhenIWa
 
     public WhenIWantToReviewApplicationsFlaggedAsAppeal I_want_to_review_applications_flagged_as_appeal() {
     	
-    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
+    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEALED);
 		for (InIntakeApplication intakeApplication : applications) {
 			intakeApplication.getName();
 			LOG.debug(intakeApplication.getName());

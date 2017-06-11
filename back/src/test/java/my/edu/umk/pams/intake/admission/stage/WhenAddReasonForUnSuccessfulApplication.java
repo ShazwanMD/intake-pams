@@ -43,7 +43,7 @@ public class WhenAddReasonForUnSuccessfulApplication  extends Stage<WhenAddReaso
 	     Assert.notNull(intakeApplication, "application is null");
 
 	     InBidStatus bidStatus = intakeApplication.getBidStatus();
-	     Assert.isTrue(InBidStatus.REJECT.equals(bidStatus), "application is not submitted");
+	     Assert.isTrue(InBidStatus.REJECTED.equals(bidStatus), "application is not submitted");
 	     LOG.debug("intake status : {} ", intakeApplication.getBidStatus());
 	     
 	     

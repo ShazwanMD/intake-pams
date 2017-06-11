@@ -36,7 +36,7 @@ public class ThenMyApplicationIsUpdated extends Stage<ThenMyApplicationIsUpdated
 	 
 	 public ThenMyApplicationIsUpdated my_application_is_updated(){
 		 applicationService.updateIntakeApplication(intakeApplication);
-		 Assert.notNull(InBidStatus.PROCESSING, "application is not updated");
+		 Assert.notNull(InBidStatus.SELECTED, "application is not updated");
 		 LOG.debug("intake status {}", intakeApplication.getBidStatus());
 
 		 return self();

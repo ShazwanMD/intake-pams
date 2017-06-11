@@ -35,7 +35,7 @@ public class StandardSelectionStrategy extends SelectionStrategySupport {
                 boolean evalSpecific = evaluate(application, offering.getSpecificCriteria());
                 LOG.debug("specific criteria: {}", evalSpecific);
                 if (evalSpecific) {
-                    application.setBidStatus(InBidStatus.SELECT);
+                    application.setBidStatus(InBidStatus.SELECTED);
                 } else {
                     continue;
                 }

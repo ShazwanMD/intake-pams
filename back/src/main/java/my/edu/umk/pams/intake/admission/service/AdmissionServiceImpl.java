@@ -6,6 +6,7 @@ import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.selection.SelectionStrategyHelper;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
@@ -68,6 +69,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     // INTAKE, INTAKE APPLICATION
     // ====================================================================================================
 
+    @Deprecated
     @Override
     public void processIntake(InIntake intake) {
         // preselect
@@ -80,6 +82,8 @@ public class AdmissionServiceImpl implements AdmissionService {
         }
     }
 
+
+    @Deprecated
     @Override
     public void preselectIntakeApplication(InIntakeApplication application) {
         // create candidate
@@ -98,9 +102,17 @@ public class AdmissionServiceImpl implements AdmissionService {
     }
 
     @Override
+    public void processIntakeSelection(InIntake intake) {
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, InBidStatus.SELECTED);
+        for (InIntakeApplication application : applications) {
+            postToCandidate(application);
+        }
+    }
+
+    @Override
     public void registerCandidates(InIntake intake, List<InCandidate> candidates) {
         // create candidate
-        candidates = this.findCandidatesByStatus(intake,InCandidateStatus.ACCEPTED); // note: accepted
+        candidates = this.findCandidatesByStatus(intake, InCandidateStatus.ACCEPTED); // note: accepted
         for (InCandidate candidate : candidates) {
             // verifyUser candidate status to true
             candidate.setRegistration(true);
@@ -134,7 +146,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     public InCandidate findCandidateByIdentityNo(String identityNo) {
         return candidateDao.findByIdentityNo(identityNo);
     }
-    
+
     @Override
     public InCandidate findCandidateByMatricNo(String matricNo) {
         return candidateDao.findCandidateByMatricNo(matricNo);
@@ -200,19 +212,34 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setStatus(InCandidateStatus.SELECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
-    
-	@Override
-	public void broadcastResult(InIntake intake) {
-		List<InCandidate> candidates = this.findCandidatesByStatus(intake, InCandidateStatus.SELECTED);
-		for (InCandidate candidate : candidates) {
-			
-	        // notify candidate
-	        InEmailQueue emailQueue = new InEmailQueueImpl();
-	        emailQueue.setCode("EQ/" + System.currentTimeMillis()); 
-	        emailQueue.setTo(candidate.getEmail());
-	        emailQueue.setSubject("in process");
-	        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-	        systemService.saveEmailQueue(emailQueue);
-		}
+
+    @Override
+    public void broadcastResult(InIntake intake) {
+        List<InCandidate> candidates = this.findCandidatesByStatus(intake, InCandidateStatus.SELECTED);
+        for (InCandidate candidate : candidates) {
+
+            // notify candidate
+            InEmailQueue emailQueue = new InEmailQueueImpl();
+            emailQueue.setCode("EQ/" + System.currentTimeMillis());
+            emailQueue.setTo(candidate.getEmail());
+            emailQueue.setSubject("in process");
+            emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+            systemService.saveEmailQueue(emailQueue);
+        }
+    }
+
+    private void postToCandidate(InIntakeApplication application) {
+        InCandidate candidate = new InCandidateImpl();
+        candidate.setIntake(application.getIntake());
+        candidate.setName(application.getName());
+        candidate.setIdentityNo(application.getCredentialNo());
+        candidate.setEmail(application.getEmail());
+        candidate.setStudyMode(application.getStudyModeSelection().getStudyMode());
+        candidate.setStatus(InCandidateStatus.SELECTED);
+        candidate.setApplicant(application.getApplicant());
+        candidate.setProgramSelection(application.getProgramSelection());
+        candidate.setSupervisorSelection(application.getSupervisorSelection());
+        candidate.setRegistration(false);
+        candidateDao.save(candidate, Util.getCurrentUser());
     }
 }

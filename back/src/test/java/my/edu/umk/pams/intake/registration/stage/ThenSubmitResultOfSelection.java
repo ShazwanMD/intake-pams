@@ -9,14 +9,12 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.stage.ThenICanSubmitMyApplication;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 
@@ -45,7 +43,7 @@ public class ThenSubmitResultOfSelection extends Stage<ThenSubmitResultOfSelecti
 
 			for (InCandidate candidate : candidates) {
 				
-				Assert.notNull(InBidStatus.SELECT, "candidate is not selected");
+				Assert.notNull(InBidStatus.SELECTED, "candidate is not selected");
 			 
 				
 			}

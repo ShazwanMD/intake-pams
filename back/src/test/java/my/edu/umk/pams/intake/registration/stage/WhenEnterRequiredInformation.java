@@ -98,7 +98,7 @@ public class WhenEnterRequiredInformation extends Stage<WhenEnterRequiredInforma
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
-        intakeApplication.setBidStatus(InBidStatus.PROCESSING);
+        intakeApplication.setBidStatus(InBidStatus.SELECTED);
         intakeApplication.setRank(12);
         //intakeApplication.setMerit();
         intakeApplication.setCredentialNo("248674");

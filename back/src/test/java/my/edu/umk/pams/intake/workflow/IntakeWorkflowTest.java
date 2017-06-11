@@ -120,7 +120,7 @@ public class IntakeWorkflowTest {
         // transition to PUBLISHED (COMPLETED)
         List<Task> assignedVerifiedIntakes = policyService.findAssignedIntakeTasks(0, 100);
         Assert.notEmpty(assignedVerifiedIntakes, "Tasks should not be empty");
-        workflowService.completeTask(assignedVerifiedIntakes.get(0)); // TO APPROVE
+        workflowService.completeTask(assignedVerifiedIntakes.get(0)); // TO APPROVED
 
         // apply here
 
@@ -135,7 +135,7 @@ public class IntakeWorkflowTest {
         // transition to EVALUATED (COMPLETED)
         List<Task> assignedPublishedIntakes = policyService.findAssignedIntakeTasks(0, 100);
         Assert.notEmpty(assignedPublishedIntakes, "Tasks should not be empty");
-        workflowService.completeTask(assignedPublishedIntakes.get(0)); // TO APPROVE
+        workflowService.completeTask(assignedPublishedIntakes.get(0)); // TO APPROVED
         
 
         // find and pick pooled evaluated intake
@@ -149,7 +149,7 @@ public class IntakeWorkflowTest {
         // transition to SELECTED (COMPLETED)
         List<Task> assignedEvaluatedIntakes = policyService.findAssignedIntakeTasks(0, 100);
         Assert.notEmpty(assignedEvaluatedIntakes, "Tasks should not be empty");
-        workflowService.completeTask(assignedEvaluatedIntakes.get(0)); // TO APPROVE
+        workflowService.completeTask(assignedEvaluatedIntakes.get(0)); // TO APPROVED
 
         // find and pick pooled selected intake
         // assuming there is exactly one
@@ -162,7 +162,7 @@ public class IntakeWorkflowTest {
         // transition to APPROVED (COMPLETED)
         List<Task> assignedSelectedIntakes = policyService.findAssignedIntakeTasks(0, 100);
         Assert.notEmpty(assignedSelectedIntakes, "Tasks should not be empty");
-        workflowService.completeTask(assignedSelectedIntakes.get(0)); // TO APPROVE
+        workflowService.completeTask(assignedSelectedIntakes.get(0)); // TO APPROVED
 
     }
 }

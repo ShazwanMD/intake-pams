@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.workflow.task;
 
 import my.edu.umk.pams.intake.IntakeConstants;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -28,6 +29,9 @@ public class IntakeSelectTask extends BpmnActivityBehavior
     @Autowired
     private PolicyService policyService;
 
+    @Autowired
+    private AdmissionService admissionService;
+
     /**
      * @param execution
      * @throws Exception
@@ -44,5 +48,8 @@ public class IntakeSelectTask extends BpmnActivityBehavior
         intake.getFlowdata().setSelectedDate(new Timestamp(currentTimeMillis()));
         intake.getFlowdata().setSelectorId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);
+
+        // application -> candidate
+        admissionService.processIntakeSelection(intake);
     }
 }

@@ -91,7 +91,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void rejectIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
         LOG.debug("intake application: {}", application.getReferenceNo());
-        application.setBidStatus(InBidStatus.REJECT);
+        application.setBidStatus(InBidStatus.REJECTED);
         updateIntakeApplication(application);
     }
 
@@ -99,7 +99,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void processIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
         LOG.debug("intake application: {}", application.getReferenceNo());
-        application.setBidStatus(InBidStatus.PROCESSING);
+        application.setBidStatus(InBidStatus.SELECTED);
         updateIntakeApplication(application);
     }
 

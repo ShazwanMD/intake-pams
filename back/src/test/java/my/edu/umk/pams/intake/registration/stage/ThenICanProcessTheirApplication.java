@@ -45,7 +45,7 @@ public class ThenICanProcessTheirApplication extends Stage<ThenICanProcessTheirA
     	//prosses application 
     
     	applicationService.processIntakeApplication(intake, application);
-    	Assert.notNull(InBidStatus.PROCESSING, "is not processing");
+    	Assert.notNull(InBidStatus.SELECTED, "is not processing");
         LOG.debug("intake status : {} ", application.getBidStatus());
         return self();
     }

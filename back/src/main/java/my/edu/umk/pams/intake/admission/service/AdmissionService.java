@@ -16,9 +16,13 @@ public interface AdmissionService {
     // INTAKE, INTAKE APPLICATION
     //====================================================================================================
 
+    @Deprecated
     void processIntake(InIntake intake);
 
+    @Deprecated
     void preselectIntakeApplication(InIntakeApplication application);
+
+    void processIntakeSelection(InIntake intake);
 
     void rejectIntakeApplication(InIntakeApplication application);
 

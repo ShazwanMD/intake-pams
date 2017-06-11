@@ -1,18 +1,9 @@
 package my.edu.umk.pams.intake.application.stage;
 
-import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
-import java.util.HashMap;
-import java.util.Map;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
-
-
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
@@ -21,6 +12,14 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.system.service.SystemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
 
 @JGivenStage
 public class WhenIFillProcessingApplication extends Stage<WhenIFillProcessingApplication> {
@@ -63,7 +62,7 @@ public class WhenIFillProcessingApplication extends Stage<WhenIFillProcessingApp
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setSchoolName("SMKZA");
-        intakeApplication.setBidStatus(InBidStatus.PROCESSING);  
+        intakeApplication.setBidStatus(InBidStatus.SELECTED);
         applicationService.applyIntake(intake, intakeApplication);
 
         return self();

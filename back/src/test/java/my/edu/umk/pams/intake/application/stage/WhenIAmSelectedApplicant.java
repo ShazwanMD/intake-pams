@@ -1,10 +1,5 @@
 package my.edu.umk.pams.intake.application.stage;
 
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -17,6 +12,12 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
+import java.util.List;
 
 @JGivenStage
 public class WhenIAmSelectedApplicant extends Stage<WhenIAmSelectedApplicant>{
@@ -51,7 +52,7 @@ public class WhenIAmSelectedApplicant extends Stage<WhenIAmSelectedApplicant>{
 		
 		InIntake intake = policyService.findIntakeByReferenceNo(intakeSession);
 		LOG.debug("intake {}", intake);
-		 applicants = applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+		 applicants = applicationService.findIntakeApplications(intake,InBidStatus.SELECTED);
 		LOG.debug("applicants {}", applicants);
 		for (InIntakeApplication inIntakeApplication : applicants) {
 			Assert.notNull(inIntakeApplication, "list is null");

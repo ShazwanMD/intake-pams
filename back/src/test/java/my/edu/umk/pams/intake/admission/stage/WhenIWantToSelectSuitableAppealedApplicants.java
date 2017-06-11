@@ -35,7 +35,7 @@ public class WhenIWantToSelectSuitableAppealedApplicants extends Stage<WhenIWant
 
     public WhenIWantToSelectSuitableAppealedApplicants I_want_to_select_suitable_appealed_applicants() {
 
-    	   	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEAL);
+    	   	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.APPEALED);
     		for (InIntakeApplication intakeApplication : applications) {
     			intakeApplication.getName();
     			LOG.debug(intakeApplication.getName());

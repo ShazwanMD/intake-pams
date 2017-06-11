@@ -10,10 +10,9 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author PAMS
@@ -38,7 +37,7 @@ public class WhenIPreapproveCandidate extends Stage<WhenIPreapproveCandidate> {
     
     public WhenIPreapproveCandidate I_preapprove_candidate() {
 
-    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.PROCESSING);
+    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplications(intake,InBidStatus.SELECTED);
 		
 		 for (InIntakeApplication application : applications) {
         	

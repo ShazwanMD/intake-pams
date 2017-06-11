@@ -2,14 +2,11 @@ package my.edu.umk.pams.intake.application.model;
 
 public enum InBidStatus {
     NEW,
-    DRAFTED,
-    SUBMITTED,
-    EVALUATE,
-    PROCESSING,
-    PRE_SELECT,
-    SELECT,
-    REJECT,
-    WITHDRAW,
-    APPEAL,
-    APPROVE;
+    DRAFTED, // new, incomplete
+    SUBMITTED, // after submit
+    SELECTED,  // selected in intake evaluation flow
+    REJECTED,  // rejected in intake evaluation flow
+    WITHDRAW,  // ??
+    APPEALED, // ??
+    APPROVED; // ??
 }
