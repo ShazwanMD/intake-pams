@@ -67,6 +67,10 @@ export class IntakeApplicationActions {
     };
   }
 
+  // ====================================================================================================
+  // PROGRAM_OFFERING
+  // ====================================================================================================  
+
   static FIND_PROGRAM_OFFERINGS_BY_INTAKE = '[Intake] Find Program Offerings By Intake';
 
   findProgramOfferingsByIntake(intake): Action {
@@ -87,6 +91,9 @@ export class IntakeApplicationActions {
     };
   }
 
+  // ====================================================================================================
+  // SUPERVISOR_OFFERING
+  // ====================================================================================================
 
   static FIND_SUPERVISOR_OFFERINGS_BY_INTAKE = '[Intake] Find Supervisor Offerings By Intake';
 
@@ -108,6 +115,9 @@ export class IntakeApplicationActions {
     };
   }
 
+  // ====================================================================================================
+  // STUDY_MODE_OFFERING
+  // ====================================================================================================
 
   static FIND_STUDY_MODE_OFFERINGS_BY_INTAKE = '[Intake] Find StudyMode Offerings By Intake';
 
@@ -172,144 +182,6 @@ export class IntakeApplicationActions {
     };
   }
 
-  static FIND_EDUCATIONS_BY_INTAKE_APPLICATION = '[Intake Application] Find Educations';
-
-  findEducationsByIntakeApplication(application): Action {
-    return {
-      type: IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_EDUCATIONS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Educations Success';
-
-  findEducationsByIntakeApplicationSuccess(educations): Action {
-    console.log("findEducationsByIntakeApplicationSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: educations
-    };
-  }
-
-  static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Employments';
-
-  findEmploymentsByIntakeApplication(application): Action {
-    console.log("findEmploymentsByIntakeApplication");
-    return {
-      type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Employments Success';
-
-  findEmploymentsByIntakeApplicationSuccess(employments): Action {
-    console.log("findEmploymentsByIntakeApplicationSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: employments
-    };
-  }
-
-  static FIND_LANGUAGES_BY_INTAKE_APPLICATION = '[Intake Application] Find Languages';
-
-  findLanguagesByIntakeApplication(application): Action {
-    console.log("findLanguagesByIntakeApplication");
-    return {
-      type: IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_LANGUAGES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Languages Success';
-
-  findLanguagesByIntakeApplicationSuccess(languages): Action {
-    console.log("findLanguagesByIntakeApplicationSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: languages
-    };
-  }
-
-  static FIND_REFEREES_BY_INTAKE_APPLICATION = '[Intake Application] Find Referees';
-
-  findRefereesByIntakeApplication(application): Action {
-    console.log("findRefereesByIntakeApplication");
-    return {
-      type: IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_REFEREES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Referees Success';
-
-  findRefereesByIntakeApplicationSuccess(referees): Action {
-    console.log("findRefereesByIntakeApplicationSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: referees
-    };
-  }
-
-  static FIND_ATTACHMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Attachments';
-
-  findAttachmentsByIntakeApplication(application): Action {
-    console.log("findAttachmentsByIntakeApplication");
-    return {
-      type: IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_ATTACHMENTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Attachments Success';
-
-  findAttachmentsByIntakeApplicationSuccess(attachments): Action {
-    console.log("findAttachmentsByIntakeApplicationSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: attachments
-    };
-  }
-
-  static FIND_ADDRESSES_BY_INTAKE_APPLICATION = '[Intake Application] Find Addresses';
-
-  findAddressesByIntakeApplication(application): Action {
-    console.log("findAddressesByIntakeApplication");
-    return {
-      type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Addresses Success';
-
-  findAddressesByIntakeApplicationSuccess(addresses): Action {
-    console.log("findAddressesByIntakeApplicationSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: addresses
-    };
-  }
-
-  static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Spm Results';
-
-  findSpmResultsByIntakeApplication(application): Action {
-    return {
-      type: IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Spm Results Success';
-
-  findSpmResultsByIntakeApplicationSuccess(spmResult): Action {
-    console.log("findSpmResultsSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: spmResult
-    };
-  }
-
   static SUBMIT_INTAKE_APPLICATION = '[Intake Application] Submit Intake Application';
 
   submitIntakeApplication(application): Action {
@@ -348,9 +220,6 @@ export class IntakeApplicationActions {
     };
   }
 
-  // todo: find employment, education, address
-
-
   static UPDATE_INTAKE_APPLICATION = '[Intake Application] Update Intake Application';
 
   updateIntakeApplication(application): Action {
@@ -369,39 +238,50 @@ export class IntakeApplicationActions {
     };
   }
 
-  static ADD_EDUCATION = '[Intake Application] Add Education';
+  // ====================================================================================================
+  // EDUCATION
+  // ====================================================================================================  
 
-  addEducation(intake, education) {
+  static FIND_EDUCATIONS_BY_INTAKE_APPLICATION = '[Intake Application] Find Educations';
+
+  findEducationsByIntakeApplication(application): Action {
     return {
-      type: IntakeApplicationActions.ADD_EDUCATION,
-      payload: {intake: intake, education: education}
+      type: IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION,
+      payload: application
     };
   }
 
-  static ADD_EDUCATION_SUCCESS = '[Intake Application] Add Education Success';
+  static FIND_EDUCATIONS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Educations Success';
 
-  addEducationSuccess(message) {
+  findEducationsByIntakeApplicationSuccess(educations): Action {
+    console.log("findEducationsByIntakeApplicationSuccess");
     return {
-      type: IntakeApplicationActions.ADD_EDUCATION_SUCCESS,
-      payload: message
+      type: IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: educations
     };
   }
 
-  static DELETE_EDUCATION = '[Intake Application] Delete Education';
+  // ====================================================================================================
+  // EMPLOYMENT
+  // ====================================================================================================  
 
-  deleteEducation(intake, education) {
+  static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Employments';
+
+  findEmploymentsByIntakeApplication(application): Action {
+    console.log("findEmploymentsByIntakeApplication");
     return {
-      type: IntakeApplicationActions.DELETE_EDUCATION,
-      payload: {intake: intake, education: education}
+      type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION,
+      payload: application
     };
   }
 
-  static DELETE_EDUCATION_SUCCESS = '[Intake Application] Delete Education Success';
+  static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Employments Success';
 
-  deleteEducationSucces(message) {
+  findEmploymentsByIntakeApplicationSuccess(employments): Action {
+    console.log("findEmploymentsByIntakeApplicationSuccess");
     return {
-      type: IntakeApplicationActions.DELETE_EDUCATION_SUCCESS,
-      payload: message
+      type: IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: employments
     };
   }
 
@@ -411,7 +291,7 @@ export class IntakeApplicationActions {
     console.log("addEmployment");
     return {
       type: IntakeApplicationActions.ADD_EMPLOYMENT,
-      payload: {application: application, employment: employment}
+      payload: { application: application, employment: employment }
     };
   }
 
@@ -430,7 +310,7 @@ export class IntakeApplicationActions {
   deleteEmployment(application, employment) {
     return {
       type: IntakeApplicationActions.DELETE_EMPLOYMENT,
-      payload: {application: application, employment: employment}
+      payload: { application: application, employment: employment }
     };
   }
 
@@ -448,7 +328,7 @@ export class IntakeApplicationActions {
   updateEmployment(application, employment): Action {
     return {
       type: IntakeApplicationActions.UPDATE_EMPLOYMENT,
-      payload: {application: application, employment: employment}
+      payload: { application: application, employment: employment }
     };
   }
 
@@ -461,13 +341,37 @@ export class IntakeApplicationActions {
     };
   }
 
+  // ====================================================================================================
+  // LANGUAGE
+  // ====================================================================================================
+
+  static FIND_LANGUAGES_BY_INTAKE_APPLICATION = '[Intake Application] Find Languages';
+
+  findLanguagesByIntakeApplication(application): Action {
+    console.log("findLanguagesByIntakeApplication");
+    return {
+      type: IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_LANGUAGES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Languages Success';
+
+  findLanguagesByIntakeApplicationSuccess(languages): Action {
+    console.log("findLanguagesByIntakeApplicationSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: languages
+    };
+  }
+
   static ADD_LANGUAGE = '[Intake Application] Save Language';
 
   addLanguage(application, language): Action {
     console.log("addLanguage");
     return {
       type: IntakeApplicationActions.ADD_LANGUAGE,
-      payload: {application: application, language: language}
+      payload: { application: application, language: language }
     };
   }
 
@@ -486,7 +390,7 @@ export class IntakeApplicationActions {
   deleteLanguage(application, language) {
     return {
       type: IntakeApplicationActions.DELETE_LANGUAGE,
-      payload: {application: application, language: language}
+      payload: { application: application, language: language }
     };
   }
 
@@ -499,44 +403,47 @@ export class IntakeApplicationActions {
     };
   }
 
-  static ADD_ATTACHMENT = '[Intake Application] Add Attachment';
+  static UPDATE_LANGUAGE = '[Intake Application] Update Language Application';
 
-  addAttachment(application, file, attachmentType): Action {
-    console.log("addAttachment");
+  updateLanguage(application, language): Action {
     return {
-      type: IntakeApplicationActions.ADD_ATTACHMENT,
-      payload: {application: application, file: file, attachmentType: attachmentType}
+      type: IntakeApplicationActions.UPDATE_LANGUAGE,
+      payload: { application: application, language: language }
     };
   }
 
-  static ADD_ATTACHMENT_SUCCESS = '[Intake Application] Add Attachment Success';
+  static UPDATE_LANGUAGE_SUCCESS = '[Intake Application] Update Language Success';
 
-  addAttachmentSuccess(message): Action {
-    console.log("addAttachmentSuccess");
+  updateLanguageSuccess(message): Action {
     return {
-      type: IntakeApplicationActions.ADD_ATTACHMENT_SUCCESS,
+      type: IntakeApplicationActions.UPDATE_LANGUAGE_SUCCESS,
       payload: message
     };
   }
 
-  static DELETE_ATTACHMENT = '[Intake Application] Delete Attachment';
+  // ====================================================================================================
+  // REFEREE
+  // ====================================================================================================  
 
-  deleteAttachment(application, attachment) {
+  static FIND_REFEREES_BY_INTAKE_APPLICATION = '[Intake Application] Find Referees';
+
+  findRefereesByIntakeApplication(application): Action {
+    console.log("findRefereesByIntakeApplication");
     return {
-      type: IntakeApplicationActions.DELETE_ATTACHMENT,
-      payload: {application: application, attachment: attachment}
+      type: IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION,
+      payload: application
     };
   }
 
-  static DELETE_ATTACHMENT_SUCCESS = '[Intake Application] Delete Attachment Success';
+  static FIND_REFEREES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Referees Success';
 
-  deleteAttachmentSucces(message) {
+  findRefereesByIntakeApplicationSuccess(referees): Action {
+    console.log("findRefereesByIntakeApplicationSuccess");
     return {
-      type: IntakeApplicationActions.DELETE_ATTACHMENT_SUCCESS,
-      payload: message
+      type: IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: referees
     };
   }
-
 
   static ADD_REFEREE = '[Intake Application] Save Referee';
 
@@ -544,7 +451,7 @@ export class IntakeApplicationActions {
     console.log("addReferee");
     return {
       type: IntakeApplicationActions.ADD_REFEREE,
-      payload: {application: application, referee: referee}
+      payload: { application: application, referee: referee }
     };
   }
 
@@ -563,7 +470,7 @@ export class IntakeApplicationActions {
   updateReferee(application, referee): Action {
     return {
       type: IntakeApplicationActions.UPDATE_REFEREE,
-      payload: {application: application, referee: referee}
+      payload: { application: application, referee: referee }
     };
   }
 
@@ -581,7 +488,7 @@ export class IntakeApplicationActions {
   deleteReferee(application, referee) {
     return {
       type: IntakeApplicationActions.DELETE_REFEREE,
-      payload: {application: application, referee: referee}
+      payload: { application: application, referee: referee }
     };
   }
 
@@ -594,12 +501,100 @@ export class IntakeApplicationActions {
     };
   }
 
+
+  // ====================================================================================================
+  // ATTACHMENT
+  // ====================================================================================================  
+
+  static FIND_ATTACHMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Attachments';
+
+  findAttachmentsByIntakeApplication(application): Action {
+    console.log("findAttachmentsByIntakeApplication");
+    return {
+      type: IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_ATTACHMENTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Attachments Success';
+
+  findAttachmentsByIntakeApplicationSuccess(attachments): Action {
+    console.log("findAttachmentsByIntakeApplicationSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: attachments
+    };
+  }
+
+  static ADD_ATTACHMENT = '[Intake Application] Add Attachment';
+
+  addAttachment(application, file, attachmentType): Action {
+    console.log("addAttachment");
+    return {
+      type: IntakeApplicationActions.ADD_ATTACHMENT,
+      payload: { application: application, file: file, attachmentType: attachmentType }
+    };
+  }
+
+  static ADD_ATTACHMENT_SUCCESS = '[Intake Application] Add Attachment Success';
+
+  addAttachmentSuccess(message): Action {
+    console.log("addAttachmentSuccess");
+    return {
+      type: IntakeApplicationActions.ADD_ATTACHMENT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static DELETE_ATTACHMENT = '[Intake Application] Delete Attachment';
+
+  deleteAttachment(application, attachment) {
+    return {
+      type: IntakeApplicationActions.DELETE_ATTACHMENT,
+      payload: { application: application, attachment: attachment }
+    };
+  }
+
+  static DELETE_ATTACHMENT_SUCCESS = '[Intake Application] Delete Attachment Success';
+
+  deleteAttachmentSucces(message) {
+    return {
+      type: IntakeApplicationActions.DELETE_ATTACHMENT_SUCCESS,
+      payload: message
+    };
+  }
+
+
+  // ====================================================================================================
+  // ADDRESS
+  // ====================================================================================================  
+
+  static FIND_ADDRESSES_BY_INTAKE_APPLICATION = '[Intake Application] Find Addresses';
+
+  findAddressesByIntakeApplication(application): Action {
+    console.log("findAddressesByIntakeApplication");
+    return {
+      type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Addresses Success';
+
+  findAddressesByIntakeApplicationSuccess(addresses): Action {
+    console.log("findAddressesByIntakeApplicationSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: addresses
+    };
+  }
+
   static ADD_ADDRESS = '[Intake Application] Add Address';
 
   addAddress(application, address) {
     return {
       type: IntakeApplicationActions.ADD_ADDRESS,
-      payload: {application: application, address: address}
+      payload: { application: application, address: address }
     };
   }
 
@@ -617,7 +612,7 @@ export class IntakeApplicationActions {
   deleteAddress(application, address) {
     return {
       type: IntakeApplicationActions.DELETE_ADDRESS,
-      payload: {application: application, address: address}
+      payload: { application: application, address: address }
     };
   }
 
@@ -630,12 +625,54 @@ export class IntakeApplicationActions {
     };
   }
 
+  static UPDATE_ADDRESS = '[Intake Application] Update Address Application';
+
+  updateAddress(application, address): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_ADDRESS,
+      payload: { application: application, address: address }
+    };
+  }
+
+  static UPDATE_ADDRESS_SUCCESS = '[Intake Application] Update Address Success';
+
+  updateAddressSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_ADDRESS_SUCCESS,
+      payload: message
+    };
+  }
+
+
+  // ====================================================================================================
+  // SPM_RESULT
+  // ====================================================================================================
+
+  static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Spm Results';
+
+  findSpmResultsByIntakeApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Spm Results Success';
+
+  findSpmResultsByIntakeApplicationSuccess(spmResult): Action {
+    console.log("findSpmResultsSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: spmResult
+    };
+  }
+
   static ADD_SPM_RESULT = '[Intake Application] Add Spm Result';
 
   addSpmResult(application, spmResult) {
     return {
       type: IntakeApplicationActions.ADD_SPM_RESULT,
-      payload: {application: application, spmResult: spmResult}
+      payload: { application: application, spmResult: spmResult }
     };
   }
 
@@ -653,7 +690,7 @@ export class IntakeApplicationActions {
   deleteSpmResult(intake, spmResult) {
     return {
       type: IntakeApplicationActions.DELETE_SPM_RESULT,
-      payload: {intake: intake, spmResult: spmResult}
+      payload: { intake: intake, spmResult: spmResult }
     };
   }
 
@@ -666,115 +703,9 @@ export class IntakeApplicationActions {
     };
   }
 
-  static SELECT_PROGRAM_OFFERING = '[Intake Application] Select Program Offering';
-
-  selectProgramOffering(application, offering) {
-    return {
-      type: IntakeApplicationActions.SELECT_PROGRAM_OFFERING,
-      payload: {application: application, offering: offering}
-    };
-  }
-
-  static SELECT_PROGRAM_OFFERING_SUCCESS = '[Intake Application] Select Program Offering Success';
-
-  selectProgramOfferingSuccess(message) {
-    return {
-      type: IntakeApplicationActions.SELECT_PROGRAM_OFFERING_SUCCESS,
-      payload: message
-    };
-  }
-
-  static SELECT_SUPERVISOR_OFFERING = '[Intake Application] Select Supervisor Offering';
-
-  selectSupervisorOffering(application, offering) {
-    return {
-      type: IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING,
-      payload: {application: application, offering: offering}
-    };
-  }
-
-  static SELECT_SUPERVISOR_OFFERING_SUCCESS = '[Intake Application] Select Supervisor Offering Success';
-
-  selectSupervisorOfferingSuccess(message) {
-    return {
-      type: IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING_SUCCESS,
-      payload: message
-    };
-  }
-
-
-  static SELECT_STUDY_MODE_OFFERING = '[Intake Application] Select Study Mode Offering';
-
-  selectStudyModeOffering(application, offering) {
-    return {
-      type: IntakeApplicationActions.SELECT_STUDY_MODE_OFFERING,
-      payload: {application: application, offering: offering}
-    };
-  }
-
-  static SELECT_STUDY_MODE_OFFERING_SUCCESS = '[Intake Application] Select Study Mode Offering Success';
-
-  selectStudyModeOfferingSuccess(message) {
-    return {
-      type: IntakeApplicationActions.SELECT_STUDY_MODE_OFFERING_SUCCESS,
-      payload: message
-    };
-  }
-
-  static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Bachelor Results';
-
-  findBachelorResultsByIntakeApplication(application): Action {
-    return {
-      type: IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Bachelor Results Success';
-
-  findBachelorResultsByIntakeApplicationSuccess(bachelorResult): Action {
-    console.log("findBachelorResultsSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: bachelorResult
-    };
-  }
-
-  static ADD_BACHELOR_RESULT = '[Intake Application] Add Bachelor Result';
-
-  addBachelorResult(application, bachelorResult) {
-    return {
-      type: IntakeApplicationActions.ADD_BACHELOR_RESULT,
-      payload: {application: application, bachelorResult: bachelorResult}
-    };
-  }
-
-  static ADD_BACHELOR_RESULT_SUCCESS = '[Intake Application] Add Bachelor Result Success';
-
-  addBachelorResultSuccess(message) {
-    return {
-      type: IntakeApplicationActions.ADD_BACHELOR_RESULT_SUCCESS,
-      payload: message
-    };
-  }
-
-  static DELETE_BACHELOR_RESULT = '[Intake Application] Delete Bachelor Result';
-
-  deleteBachelorResult(intake, bachelorResult) {
-    return {
-      type: IntakeApplicationActions.DELETE_BACHELOR_RESULT,
-      payload: {intake: intake, bachelorResult: bachelorResult}
-    };
-  }
-
-  static DELETE_BACHELOR_RESULT_SUCCESS = '[Intake Application] Delete Bachelor Result Success';
-
-  deleteBachelorResultSucces(message) {
-    return {
-      type: IntakeApplicationActions.DELETE_BACHELOR_RESULT_SUCCESS,
-      payload: message
-    };
-  }
+  // ====================================================================================================
+  // DIPLOMA_RESULT
+  // ====================================================================================================  
 
   static FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Diploma Results';
 
@@ -800,7 +731,7 @@ export class IntakeApplicationActions {
   addDiplomaResult(application, diplomaResult) {
     return {
       type: IntakeApplicationActions.ADD_DIPLOMA_RESULT,
-      payload: {application: application, diplomaResult: diplomaResult}
+      payload: { application: application, diplomaResult: diplomaResult }
     };
   }
 
@@ -813,41 +744,164 @@ export class IntakeApplicationActions {
     };
   }
 
-  static UPDATE_LANGUAGE = '[Intake Application] Update Language Application';
+  // ====================================================================================================
+  // BACHELOR_RESULT
+  // ====================================================================================================  
 
-  updateLanguage(application, language): Action {
+  static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Bachelor Results';
+
+  findBachelorResultsByIntakeApplication(application): Action {
     return {
-      type: IntakeApplicationActions.UPDATE_LANGUAGE,
-      payload: {application: application, language: language}
+      type: IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION,
+      payload: application
     };
   }
 
-  static UPDATE_LANGUAGE_SUCCESS = '[Intake Application] Update Language Success';
+  static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Bachelor Results Success';
 
-  updateLanguageSuccess(message): Action {
+  findBachelorResultsByIntakeApplicationSuccess(bachelorResult): Action {
+    console.log("findBachelorResultsSuccess");
     return {
-      type: IntakeApplicationActions.UPDATE_LANGUAGE_SUCCESS,
+      type: IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: bachelorResult
+    };
+  }
+
+  static ADD_BACHELOR_RESULT = '[Intake Application] Add Bachelor Result';
+
+  addBachelorResult(application, bachelorResult) {
+    return {
+      type: IntakeApplicationActions.ADD_BACHELOR_RESULT,
+      payload: { application: application, bachelorResult: bachelorResult }
+    };
+  }
+
+  static ADD_BACHELOR_RESULT_SUCCESS = '[Intake Application] Add Bachelor Result Success';
+
+  addBachelorResultSuccess(message) {
+    return {
+      type: IntakeApplicationActions.ADD_BACHELOR_RESULT_SUCCESS,
       payload: message
     };
   }
 
-  static UPDATE_ADDRESS = '[Intake Application] Update Address Application';
+  static DELETE_BACHELOR_RESULT = '[Intake Application] Delete Bachelor Result';
 
-  updateAddress(application, address): Action {
+  deleteBachelorResult(intake, bachelorResult) {
     return {
-      type: IntakeApplicationActions.UPDATE_ADDRESS,
-      payload: {application: application, address: address}
+      type: IntakeApplicationActions.DELETE_BACHELOR_RESULT,
+      payload: { intake: intake, bachelorResult: bachelorResult }
     };
   }
 
-  static UPDATE_ADDRESS_SUCCESS = '[Intake Application] Update Address Success';
+  static DELETE_BACHELOR_RESULT_SUCCESS = '[Intake Application] Delete Bachelor Result Success';
 
-  updateAddressSuccess(message): Action {
+  deleteBachelorResultSucces(message) {
     return {
-      type: IntakeApplicationActions.UPDATE_ADDRESS_SUCCESS,
+      type: IntakeApplicationActions.DELETE_BACHELOR_RESULT_SUCCESS,
       payload: message
     };
   }
 
+  // ====================================================================================================
+  // EDUCATION
+  // ====================================================================================================
+
+
+  static ADD_EDUCATION = '[Intake Application] Add Education';
+
+  addEducation(intake, education) {
+    return {
+      type: IntakeApplicationActions.ADD_EDUCATION,
+      payload: { intake: intake, education: education }
+    };
+  }
+
+  static ADD_EDUCATION_SUCCESS = '[Intake Application] Add Education Success';
+
+  addEducationSuccess(message) {
+    return {
+      type: IntakeApplicationActions.ADD_EDUCATION_SUCCESS,
+      payload: message
+    };
+  }
+
+  static DELETE_EDUCATION = '[Intake Application] Delete Education';
+
+  deleteEducation(intake, education) {
+    return {
+      type: IntakeApplicationActions.DELETE_EDUCATION,
+      payload: { intake: intake, education: education }
+    };
+  }
+
+  static DELETE_EDUCATION_SUCCESS = '[Intake Application] Delete Education Success';
+
+  deleteEducationSucces(message) {
+    return {
+      type: IntakeApplicationActions.DELETE_EDUCATION_SUCCESS,
+      payload: message
+    };
+  }
+
+
+  // ====================================================================================================
+  // SELECT
+  // ====================================================================================================
+
+
+  static SELECT_PROGRAM_OFFERING = '[Intake Application] Select Program Offering';
+
+  selectProgramOffering(application, offering) {
+    return {
+      type: IntakeApplicationActions.SELECT_PROGRAM_OFFERING,
+      payload: { application: application, offering: offering }
+    };
+  }
+
+  static SELECT_PROGRAM_OFFERING_SUCCESS = '[Intake Application] Select Program Offering Success';
+
+  selectProgramOfferingSuccess(message) {
+    return {
+      type: IntakeApplicationActions.SELECT_PROGRAM_OFFERING_SUCCESS,
+      payload: message
+    };
+  }
+
+  static SELECT_SUPERVISOR_OFFERING = '[Intake Application] Select Supervisor Offering';
+
+  selectSupervisorOffering(application, offering) {
+    return {
+      type: IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING,
+      payload: { application: application, offering: offering }
+    };
+  }
+
+  static SELECT_SUPERVISOR_OFFERING_SUCCESS = '[Intake Application] Select Supervisor Offering Success';
+
+  selectSupervisorOfferingSuccess(message) {
+    return {
+      type: IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING_SUCCESS,
+      payload: message
+    };
+  }
+
+  static SELECT_STUDY_MODE_OFFERING = '[Intake Application] Select Study Mode Offering';
+
+  selectStudyModeOffering(application, offering) {
+    return {
+      type: IntakeApplicationActions.SELECT_STUDY_MODE_OFFERING,
+      payload: { application: application, offering: offering }
+    };
+  }
+
+  static SELECT_STUDY_MODE_OFFERING_SUCCESS = '[Intake Application] Select Study Mode Offering Success';
+
+  selectStudyModeOfferingSuccess(message) {
+    return {
+      type: IntakeApplicationActions.SELECT_STUDY_MODE_OFFERING_SUCCESS,
+      payload: message
+    };
+  }
 
 }

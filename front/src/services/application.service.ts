@@ -1,6 +1,6 @@
-import { Attachment } from './../app/application/intake-applications/attachment.interface';
-import { DiplomaResult } from './../app/application/intake-applications/diploma-result-interface';
-import { BachelorResult } from './../app/application/intake-applications/bachelor-result-interface';
+import {Attachment} from './../app/application/intake-applications/attachment.interface';
+import {DiplomaResult} from './../app/application/intake-applications/diploma-result-interface';
+import {BachelorResult} from './../app/application/intake-applications/bachelor-result-interface';
 import {Referee} from './../app/application/intake-applications/referee.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
@@ -17,7 +17,7 @@ import {SpmResult} from './../app/application/intake-applications/spm-result.int
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 import {Language} from "../app/application/intake-applications/language.interface";
 import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.interface";
-import { AttachmentType } from "../app/application/intake-applications/attachment-type.enum";
+import {AttachmentType} from "../app/application/intake-applications/attachment-type.enum";
 
 
 
@@ -25,7 +25,7 @@ import { AttachmentType } from "../app/application/intake-applications/attachmen
 export class ApplicationService {
 
   constructor(private http: Http,
-              private _http: HttpInterceptorService) {
+    private _http: HttpInterceptorService) {
   }
 
   // ====================================================================================================
@@ -70,7 +70,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + '/apply', options)
       .map((res: Response) => <IntakeApplication>res.json());
   }
@@ -95,7 +95,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/'
       + application.referenceNo + '/submit', JSON.stringify(application), options)
       .flatMap((res: Response) => Observable.of(res.text()));
@@ -109,10 +109,14 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo, JSON.stringify(application), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  // ====================================================================================================
+  // EDUCATION
+  // ==================================================================================================== 
 
   findEducationsByIntakeApplication(application: IntakeApplication): Observable<Education[]> {
     console.log("findEducations");
@@ -125,7 +129,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/educations', JSON.stringify(education), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -134,6 +138,10 @@ export class ApplicationService {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/educations/' + education.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  // ====================================================================================================
+  // EMPLOYMENT
+  // ====================================================================================================   
 
   findEmploymentsByIntakeApplication(application: IntakeApplication): Observable<Employment[]> {
     console.log("findEmployments");
@@ -146,20 +154,29 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments', JSON.stringify(employment), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
- updateEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
+  updateEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments/' + employment.id, JSON.stringify(employment), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  deleteEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
+    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments/' + employment.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  // ====================================================================================================
+  // LANGUAGE
+  // ====================================================================================================   
 
   findLanguagesByIntakeApplication(application: IntakeApplication): Observable<Language[]> {
     console.log("findLanguages");
@@ -172,10 +189,29 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages', JSON.stringify(language), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  updateLanguage(application: IntakeApplication, language: Language): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages/' + language.id, JSON.stringify(language), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deleteLanguage(application: IntakeApplication, language: Language): Observable<String> {
+    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages/' + language.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  // ====================================================================================================
+  // ATTACHMENT
+  // ====================================================================================================   
 
   findAttachmentsByIntakeApplication(application: IntakeApplication): Observable<Attachment[]> {
     console.log("findAttachments");
@@ -183,7 +219,7 @@ export class ApplicationService {
       .map((res: Response) => <Attachment[]>res.json());
   }
 
-  addAttachment(application: IntakeApplication, file:File, attachmentType : AttachmentType): Observable<String> {
+  addAttachment(application: IntakeApplication, file: File, attachmentType: AttachmentType): Observable<String> {
     console.log("addAttachment");
     console.log("file: " + file.name);
     console.log("attachmentType: " + attachmentType);
@@ -191,13 +227,17 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     let formData = new FormData();
     formData.append("attachmentType", attachmentType.toString())
     formData.append("file", file)
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/attachments', formData)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  // ====================================================================================================
+  // REFEREE
+  // ====================================================================================================   
 
   findRefereesByIntakeApplication(application: IntakeApplication): Observable<Referee[]> {
     console.log("findReferees");
@@ -210,7 +250,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees', JSON.stringify(referee), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -220,7 +260,7 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees/' + referee.id, JSON.stringify(referee), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -230,17 +270,17 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  deleteLanguage(application: IntakeApplication, language: Language): Observable<String> {
-    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages/' + language.id)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
+
+  // ====================================================================================================
+  // SPM_RESULT
+  // ====================================================================================================   
 
   addSpmResult(application: IntakeApplication, spmResult: SpmResult): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/spmResults', JSON.stringify(spmResult), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -251,10 +291,9 @@ export class ApplicationService {
       .map((res: Response) => <SpmResult[]>res.json());
   }
 
-  deleteEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
-    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/employments/' + employment.id)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
+  // ====================================================================================================
+  // ADDRESS
+  // ====================================================================================================
 
   findAddressesByIntakeApplication(application: IntakeApplication): Observable<Address[]> {
     console.log("findAddressesByIntakeApplication");
@@ -267,45 +306,31 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses', JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  updateAddress(application: IntakeApplication, address: Address): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id, JSON.stringify(address), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
   deleteAddress(application: IntakeApplication, address: Address): Observable<String> {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  selectProgramOffering(application, offering):Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/programOfferingSelection', JSON.stringify(offering), options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
 
-  selectSupervisorOffering(application, offering):Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/supervisorOfferingSelection', JSON.stringify(offering), options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
-
-  selectStudyModeOffering(application, offering):Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/studyModeOfferingSelection', JSON.stringify(offering), options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
+  // ====================================================================================================
+  // BACHELOR_RESULT
+  // ====================================================================================================  
 
   findBachelorResultsByIntakeApplication(application: IntakeApplication): Observable<BachelorResult[]> {
     console.log("findBachelorResultsByIntakeApplication");
@@ -318,10 +343,14 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/bachelorResults', JSON.stringify(bachelorResult), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  // ====================================================================================================
+  // DIPLOMA_RESULT
+  // ====================================================================================================  
 
   findDiplomaResultsByIntakeApplication(application: IntakeApplication): Observable<DiplomaResult[]> {
     console.log("findDiplomaResultsByIntakeApplication");
@@ -334,28 +363,42 @@ export class ApplicationService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
+    let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/diplomaResults', JSON.stringify(diplomaResult), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-   updateAddress(application: IntakeApplication, address: Address): Observable<String> {
+  // ====================================================================================================
+  // SELECT
+  // ==================================================================================================== 
+
+  selectProgramOffering(application, offering): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id, JSON.stringify(address), options)
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/programOfferingSelection', JSON.stringify(offering), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  updateLanguage(application: IntakeApplication, language: Language): Observable<String> {
+  selectSupervisorOffering(application, offering): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/languages/' + language.id, JSON.stringify(language), options)
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/supervisorOfferingSelection', JSON.stringify(offering), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  selectStudyModeOffering(application, offering): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/studyModeOfferingSelection', JSON.stringify(offering), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

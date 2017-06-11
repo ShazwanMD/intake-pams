@@ -19,10 +19,10 @@ export class IntakeApplicationEffects {
   private intake$: Observable<Intake>;
 
   constructor(private actions$: Actions,
-              private intakeApplicationActions: IntakeApplicationActions,
-              private applicationService: ApplicationService,
-              private router: Router,
-              private store$: Store<ApplicationModuleState>) {
+    private intakeApplicationActions: IntakeApplicationActions,
+    private applicationService: ApplicationService,
+    private router: Router,
+    private store$: Store<ApplicationModuleState>) {
     this.intake$ = this.store$.select(...this.INTAKE);
   }
 
@@ -40,7 +40,6 @@ export class IntakeApplicationEffects {
     .switchMap(() => this.applicationService.findPublishedIntakes())
     .map(intakes => this.intakeApplicationActions.findPublishedIntakesSuccess(intakes));
 
-
   @Effect() findIntakeByReferenceNo$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_INTAKE_BY_REFERENCE_NO)
     .map(action => action.payload)
@@ -52,33 +51,6 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findSupervisorOfferingsByIntake(action.payload)
     ]));
 
-  @Effect() findProgramOfferingsByIntake$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE)
-    .map(action => action.payload)
-    .switchMap(intake => this.applicationService.findProgramOfferingsByIntake(intake))
-    .map(offerings => this.intakeApplicationActions.findProgramOfferingsByIntakeSuccess(offerings));
-
-
-  @Effect() findSupervisorOfferingsByIntake$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_INTAKE)
-    .map(action => action.payload)
-    .switchMap(intake => this.applicationService.findSupervisorOfferingsByIntake(intake))
-    .map(offerings => this.intakeApplicationActions.findSupervisorOfferingsByIntakeSuccess(offerings));
-
-
-  @Effect() findStudyModeOfferingsByIntake$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_STUDY_MODE_OFFERINGS_BY_INTAKE)
-    .map(action => action.payload)
-    .switchMap(intake => this.applicationService.findStudyModeOfferingsByIntake(intake))
-    .map(offerings => this.intakeApplicationActions.findStudyModeOfferingsByIntakeSuccess(offerings));
-
-
-  @Effect() findIntakeApplications$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_INTAKE_APPLICATIONS)
-    .switchMap(() => this.applicationService.findIntakeApplications())
-    .map(applications => this.intakeApplicationActions.findIntakeApplicationsSuccess(applications));
-
-
   @Effect() applyIntake$ = this.actions$
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map(action => action.payload)
@@ -89,9 +61,48 @@ export class IntakeApplicationEffects {
         application.referenceNo])
     ).ignoreElements();
 
+
   // ====================================================================================================
-  // INTAKE APPLICATION
+  // PROGRAM_OFFERING
+  // ====================================================================================================    
+
+  @Effect() findProgramOfferingsByIntake$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE)
+    .map(action => action.payload)
+    .switchMap(intake => this.applicationService.findProgramOfferingsByIntake(intake))
+    .map(offerings => this.intakeApplicationActions.findProgramOfferingsByIntakeSuccess(offerings));
+
+
   // ====================================================================================================
+  // SUPERVISOR_OFFERING
+  // ====================================================================================================    
+
+  @Effect() findSupervisorOfferingsByIntake$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_INTAKE)
+    .map(action => action.payload)
+    .switchMap(intake => this.applicationService.findSupervisorOfferingsByIntake(intake))
+    .map(offerings => this.intakeApplicationActions.findSupervisorOfferingsByIntakeSuccess(offerings));
+
+
+  // ====================================================================================================
+  // STUDY_MODE_OFFERING
+  // ====================================================================================================
+
+  @Effect() findStudyModeOfferingsByIntake$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_STUDY_MODE_OFFERINGS_BY_INTAKE)
+    .map(action => action.payload)
+    .switchMap(intake => this.applicationService.findStudyModeOfferingsByIntake(intake))
+    .map(offerings => this.intakeApplicationActions.findStudyModeOfferingsByIntakeSuccess(offerings));
+
+
+  // ====================================================================================================
+  // INTAKE_APPLICATION
+  // ====================================================================================================
+
+  @Effect() findIntakeApplications$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_INTAKE_APPLICATIONS)
+    .switchMap(() => this.applicationService.findIntakeApplications())
+    .map(applications => this.intakeApplicationActions.findIntakeApplicationsSuccess(applications));
 
   @Effect() findIntakeApplicationByReferenceNo$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_REFERENCE_NO)
@@ -108,7 +119,6 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findBachelorResultsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findDiplomaResultsByIntakeApplication(action.payload),
-
     ]));
 
   @Effect() updateIntakeApplication$ = this.actions$
@@ -130,42 +140,15 @@ export class IntakeApplicationEffects {
     .map((applications) => this.intakeApplicationActions.findIntakeApplications());
 
 
+  // ====================================================================================================
+  // EDUCATION
+  // ====================================================================================================
 
   @Effect() findEducationsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_EDUCATIONS_BY_INTAKE_APPLICATION)
     .map(action => action.payload)
     .switchMap(application => this.applicationService.findEducationsByIntakeApplication(application))
     .map(educations => this.intakeApplicationActions.findEducationsByIntakeApplicationSuccess(educations));
-
-  @Effect() findRefereesByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findRefereesByIntakeApplication(application))
-    .map(referees => this.intakeApplicationActions.findRefereesByIntakeApplicationSuccess(referees));
-
-  @Effect() findEmploymentsByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findEmploymentsByIntakeApplication(application))
-    .map(employments => this.intakeApplicationActions.findEmploymentsByIntakeApplicationSuccess(employments));
-
-  @Effect() findLanguagesByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findLanguagesByIntakeApplication(application))
-    .map(languages => this.intakeApplicationActions.findLanguagesByIntakeApplicationSuccess(languages));
-
-  @Effect() findAttachmentsByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findAttachmentsByIntakeApplication(application))
-    .map(attachments => this.intakeApplicationActions.findAttachmentsByIntakeApplicationSuccess(attachments));
-
-  @Effect() findAddressesByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findAddressesByIntakeApplication(application))
-    .map(addresses => this.intakeApplicationActions.findAddressesByIntakeApplicationSuccess(addresses));
 
   @Effect() addEducation = this.actions$
     .ofType(IntakeApplicationActions.ADD_EDUCATION)
@@ -176,6 +159,55 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
+
+  // ====================================================================================================
+  // REFEREE
+  // ====================================================================================================   
+
+  @Effect() findRefereesByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findRefereesByIntakeApplication(application))
+    .map(referees => this.intakeApplicationActions.findRefereesByIntakeApplicationSuccess(referees));
+
+  @Effect() addReferee = this.actions$
+    .ofType(IntakeApplicationActions.ADD_REFEREE)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addReferee(payload.application, payload.referee))
+    .map(message => this.intakeApplicationActions.addRefereeSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() deleteReferee$ = this.actions$
+    .ofType(IntakeApplicationActions.DELETE_REFEREE)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.deleteReferee(payload.application, payload.referee))
+    .map(message => this.intakeApplicationActions.deleteRefereeSucces(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() updateReferee$ = this.actions$
+    .ofType(IntakeApplicationActions.UPDATE_REFEREE)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.updateReferee(payload.application, payload.referee))
+    .map(message => this.intakeApplicationActions.updateRefereeSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
+  // ====================================================================================================
+  // EMPLOYMENT
+  // ====================================================================================================      
+
+  @Effect() findEmploymentsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findEmploymentsByIntakeApplication(application))
+    .map(employments => this.intakeApplicationActions.findEmploymentsByIntakeApplicationSuccess(employments));
+
   @Effect() addEmployment = this.actions$
     .ofType(IntakeApplicationActions.ADD_EMPLOYMENT)
     .map(action => action.payload)
@@ -184,6 +216,35 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() deleteEmployment$ = this.actions$
+    .ofType(IntakeApplicationActions.DELETE_EMPLOYMENT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.deleteEmployment(payload.application, payload.employment))
+    .map(message => this.intakeApplicationActions.deleteEmploymentSucces(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() updateEmployment$ = this.actions$
+    .ofType(IntakeApplicationActions.UPDATE_EMPLOYMENT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.updateEmployment(payload.application, payload.employment))
+    .map(message => this.intakeApplicationActions.updateEmploymentSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
+  // ====================================================================================================
+  // LANGUAGE
+  // ====================================================================================================      
+
+  @Effect() findLanguagesByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findLanguagesByIntakeApplication(application))
+    .map(languages => this.intakeApplicationActions.findLanguagesByIntakeApplicationSuccess(languages));
 
   @Effect() addLanguage = this.actions$
     .ofType(IntakeApplicationActions.ADD_LANGUAGE)
@@ -194,6 +255,35 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
+  @Effect() deleteLanguage$ = this.actions$
+    .ofType(IntakeApplicationActions.DELETE_LANGUAGE)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.deleteLanguage(payload.application, payload.language))
+    .map(message => this.intakeApplicationActions.deleteLanguageSucces(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() updateLanguage$ = this.actions$
+    .ofType(IntakeApplicationActions.UPDATE_LANGUAGE)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.updateLanguage(payload.application, payload.language))
+    .map(message => this.intakeApplicationActions.updateLanguageSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
+  // ====================================================================================================
+  // ATTACHMENT
+  // ====================================================================================================      
+
+  @Effect() findAttachmentsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findAttachmentsByIntakeApplication(application))
+    .map(attachments => this.intakeApplicationActions.findAttachmentsByIntakeApplicationSuccess(attachments));
+
   @Effect() addAttachment = this.actions$
     .ofType(IntakeApplicationActions.ADD_ATTACHMENT)
     .map(action => action.payload)
@@ -202,6 +292,17 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
+  // ====================================================================================================
+  // ADDRESS
+  // ====================================================================================================       
+
+  @Effect() findAddressesByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findAddressesByIntakeApplication(application))
+    .map(addresses => this.intakeApplicationActions.findAddressesByIntakeApplicationSuccess(addresses));
 
   @Effect() addAddress = this.actions$
     .ofType(IntakeApplicationActions.ADD_ADDRESS)
@@ -212,14 +313,28 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
-  @Effect() addReferee = this.actions$
-    .ofType(IntakeApplicationActions.ADD_REFEREE)
+  @Effect() deleteAddress$ = this.actions$
+    .ofType(IntakeApplicationActions.DELETE_ADDRESS)
     .map(action => action.payload)
-    .switchMap(payload => this.applicationService.addReferee(payload.application, payload.referee))
-    .map(message => this.intakeApplicationActions.addRefereeSuccess(message))
+    .switchMap(payload => this.applicationService.deleteAddress(payload.application, payload.address))
+    .map(message => this.intakeApplicationActions.deleteAddressSucces(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() updateAddress$ = this.actions$
+    .ofType(IntakeApplicationActions.UPDATE_ADDRESS)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.updateAddress(payload.application, payload.address))
+    .map(message => this.intakeApplicationActions.updateAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
+  // ====================================================================================================
+  // SPM_RESULT
+  // ====================================================================================================       
 
   @Effect() findSpmResultsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION)
@@ -235,6 +350,51 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
+  // ====================================================================================================
+  // DIPLOMA_RESULT
+  // ==================================================================================================== 
+
+  @Effect() findDiplomaResultsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findDiplomaResultsByIntakeApplication(application))
+    .map(diplomaResults => this.intakeApplicationActions.findDiplomaResultsByIntakeApplicationSuccess(diplomaResults));
+
+  @Effect() addDiplomaResult = this.actions$
+    .ofType(IntakeApplicationActions.ADD_DIPLOMA_RESULT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addDiplomaResult(payload.application, payload.diplomaResult))
+    .map(message => this.intakeApplicationActions.addDiplomaResultSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
+  // ====================================================================================================
+  // BACHELOR_RESULT
+  // ====================================================================================================   
+
+  @Effect() findBachelorResultsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findBachelorResultsByIntakeApplication(application))
+    .map(bachelorResults => this.intakeApplicationActions.findBachelorResultsByIntakeApplicationSuccess(bachelorResults));
+
+  @Effect() addBachelorResult = this.actions$
+    .ofType(IntakeApplicationActions.ADD_BACHELOR_RESULT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addBachelorResult(payload.application, payload.bachelorResult))
+    .map(message => this.intakeApplicationActions.addBachelorResultSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
+  // ====================================================================================================
+  // SELECT
+  // ====================================================================================================  
 
   @Effect() selectProgramOffering = this.actions$
     .ofType(IntakeApplicationActions.SELECT_PROGRAM_OFFERING)
@@ -264,105 +424,13 @@ export class IntakeApplicationEffects {
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
-  @Effect() findBachelorResultsByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findBachelorResultsByIntakeApplication(application))
-    .map(bachelorResults => this.intakeApplicationActions.findBachelorResultsByIntakeApplicationSuccess(bachelorResults));
 
-  @Effect() addBachelorResult = this.actions$
-    .ofType(IntakeApplicationActions.ADD_BACHELOR_RESULT)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.addBachelorResult(payload.application, payload.bachelorResult))
-    .map(message => this.intakeApplicationActions.addBachelorResultSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-  @Effect() findDiplomaResultsByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findDiplomaResultsByIntakeApplication(application))
-    .map(diplomaResults => this.intakeApplicationActions.findDiplomaResultsByIntakeApplicationSuccess(diplomaResults));
-
-  @Effect() addDiplomaResult = this.actions$
-    .ofType(IntakeApplicationActions.ADD_DIPLOMA_RESULT)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.addDiplomaResult(payload.application, payload.diplomaResult))
-    .map(message => this.intakeApplicationActions.addDiplomaResultSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-  @Effect() deleteEmployment$ = this.actions$
-   .ofType(IntakeApplicationActions.DELETE_EMPLOYMENT)
-   .map(action => action.payload)
-   .switchMap(payload => this.applicationService.deleteEmployment(payload.application, payload.employment))
-   .map(message => this.intakeApplicationActions.deleteEmploymentSucces(message))
-   .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-   .map(state => state[1])
-   .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-  @Effect() deleteAddress$ = this.actions$
-   .ofType(IntakeApplicationActions.DELETE_ADDRESS)
-   .map(action => action.payload)
-   .switchMap(payload => this.applicationService.deleteAddress(payload.application, payload.address))
-   .map(message => this.intakeApplicationActions.deleteAddressSucces(message))
-   .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-   .map(state => state[1])
-   .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-  @Effect() deleteReferee$ = this.actions$
-   .ofType(IntakeApplicationActions.DELETE_REFEREE)
-   .map(action => action.payload)
-   .switchMap(payload => this.applicationService.deleteReferee(payload.application, payload.referee))
-   .map(message => this.intakeApplicationActions.deleteRefereeSucces(message))
-   .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-   .map(state => state[1])
-   .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-  @Effect() deleteLanguage$ = this.actions$
-   .ofType(IntakeApplicationActions.DELETE_LANGUAGE)
-   .map(action => action.payload)
-   .switchMap(payload => this.applicationService.deleteLanguage(payload.application, payload.language))
-   .map(message => this.intakeApplicationActions.deleteLanguageSucces(message))
-   .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-   .map(state => state[1])
-   .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
- @Effect() updateReferee$ = this.actions$
-    .ofType(IntakeApplicationActions.UPDATE_REFEREE)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.updateReferee(payload.application, payload.referee))
-    .map(message => this.intakeApplicationActions.updateRefereeSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-@Effect() updateEmployment$ = this.actions$
-    .ofType(IntakeApplicationActions.UPDATE_EMPLOYMENT)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.updateEmployment(payload.application, payload.employment))
-    .map(message => this.intakeApplicationActions.updateEmploymentSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-@Effect() updateLanguage$ = this.actions$
-    .ofType(IntakeApplicationActions.UPDATE_LANGUAGE)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.updateLanguage(payload.application, payload.language))
-    .map(message => this.intakeApplicationActions.updateLanguageSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-@Effect() updateAddress$ = this.actions$
-    .ofType(IntakeApplicationActions.UPDATE_ADDRESS)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.updateAddress(payload.application, payload.address))
-    .map(message => this.intakeApplicationActions.updateAddressSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 }
+
+
+
+
+
+
+
+
