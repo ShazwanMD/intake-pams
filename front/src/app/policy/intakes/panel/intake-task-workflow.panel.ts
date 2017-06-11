@@ -8,6 +8,7 @@ import {FlowState} from "../../../core/flow-state.enum";
 import {IntakeDraftTaskPanel} from "./intake-draft-task.panel";
 import {IntakeVerifyTaskPanel} from "./intake-verify-task.panel";
 import {IntakePublishTaskPanel} from "./intake-publish-task.panel";
+import { IntakeEvaluateTaskPanel } from "./intake-evaluate-task.panel";
 
 
 @Component({
@@ -42,6 +43,9 @@ export class IntakeTaskWorkflowPanel implements OnInit {
           case FlowState.PUBLISHED:
             componentFactory = this.cfr.resolveComponentFactory(IntakePublishTaskPanel);
             break;
+          case FlowState.EVALUATED:
+              componentFactory = this.cfr.resolveComponentFactory(IntakeEvaluateTaskPanel);
+              break;
           default:
             componentFactory = this.cfr.resolveComponentFactory(IntakeDraftTaskPanel);
             break;
