@@ -78,16 +78,14 @@ public class AdmissionController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/candidates", method = RequestMethod.GET)
     public ResponseEntity<List<Candidate>> findCandidates(@PathVariable String referenceNo) {
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<List<Candidate>>(
                 admissionTransformer.toCandidateVos(admissionService.findCandidates(intake)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/candidates/selected", method = RequestMethod.GET)
     public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo) {
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<List<Candidate>>(
                 admissionTransformer.toCandidateVos(
                         admissionService.findCandidatesByStatus(intake, InCandidateStatus.SELECTED)), HttpStatus.OK);
@@ -95,8 +93,7 @@ public class AdmissionController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/candidates/rejected", method = RequestMethod.GET)
     public ResponseEntity<List<Candidate>> findRejectedCandidates(@PathVariable String referenceNo) {
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<List<Candidate>>(
                 admissionTransformer.toCandidateVos(
                         admissionService.findCandidatesByStatus(intake, InCandidateStatus.REJECTED)), HttpStatus.OK);
@@ -104,8 +101,7 @@ public class AdmissionController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/candidates/accepted", method = RequestMethod.GET)
     public ResponseEntity<List<Candidate>> findAcceptedCandidates(@PathVariable String referenceNo) {
-        String decode = URLDecoder.decode(referenceNo);
-        InIntake intake = policyService.findIntakeByReferenceNo(decode);
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<List<Candidate>>(
                 admissionTransformer.toCandidateVos(
                         admissionService.findCandidatesByStatus(intake, InCandidateStatus.ACCEPTED)), HttpStatus.OK);

@@ -32,7 +32,8 @@ export const INITIAL_ADMISSION_STATE: AdmissionModuleState =
   <AdmissionModuleState>{
     intakeTasks: <IntakeTask[]>[],
     intakeTask: <IntakeTask>{},
-    candidates: <Candidate[]>[]
+    candidates: <Candidate[]>[],
+    candidate: <Candidate>{},
   };
 export const admissionModuleReducers = {
   intakeTasks: intakeTaskListReducer,

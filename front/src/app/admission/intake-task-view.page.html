@@ -23,12 +23,12 @@
               <md-list dense>
                 <md-list-item>
                   <md-icon md-list-icon>local_offer</md-icon>
-                  <h4 md-line>{{intakeTask?.referenceNo}}</h4>
+                  <h4 md-line>{{(intakeTask$|async).referenceNo}}</h4>
                   <p md-line>Reference No</p>
                 </md-list-item>
                 <md-list-item>
                   <md-icon md-list-icon>local_offer</md-icon>
-                  <h4 md-line>{{intakeTask?.projection}}</h4>
+                  <h4 md-line>{{(intakeTask$|async).projection}}</h4>
                   <p md-line>Projection</p>
                 </md-list-item>
               </md-list>
@@ -37,12 +37,12 @@
               <md-list dense>
                 <md-list-item a>
                   <md-icon md-list-icon>local_offer</md-icon>
-                  <h4 md-line>{{intakeTask?.startDate| date :'longDate'}}</h4>
+                  <h4 md-line>{{(intakeTask$|async).startDate| date :'longDate'}}</h4>
                   <p md-line>Start Date</p>
                 </md-list-item>
                 <md-list-item>
                   <md-icon md-list-icon>local_offer</md-icon>
-                  <h4 md-line>{{intakeTask?.endDate | date :'longDate'}}</h4>
+                  <h4 md-line>{{(intakeTask$|async).endDate | date :'longDate'}}</h4>
                   <p md-line>End Date</p>
                 </md-list-item>
               </md-list>
@@ -51,12 +51,12 @@
               <md-list dense>
                 <md-list-item a>
                   <md-icon md-list-icon>local_offer</md-icon>
-                  <h4 md-line>{{intakeTask?.startDate| date :'longDate'}}</h4>
+                  <h4 md-line>{{(intakeTask$|async).startDate| date :'longDate'}}</h4>
                   <p md-line>Start Date</p>
                 </md-list-item>
                 <md-list-item>
                   <md-icon md-list-icon>local_offer</md-icon>
-                  <h4 md-line>{{intakeTask?.endDate | date :'longDate'}}</h4>
+                  <h4 md-line>{{(intakeTask$|async).endDate | date :'longDate'}}</h4>
                   <p md-line>End Date</p>
                 </md-list-item>
               </md-list>

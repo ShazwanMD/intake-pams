@@ -42,6 +42,7 @@ export class AdmissionService {
 
   findCandidates(intake:Intake): Observable<Candidate[]> {
     console.log("findCandidates");
+    console.log("findCandidates intake.referenceNo: "+ intake.referenceNo );
     return this.http.get(environment.endpoint + '/api/admission/intakes/' + intake.referenceNo + '/candidates' )
       .map((res: Response) => <Candidate[]>res.json());
   }

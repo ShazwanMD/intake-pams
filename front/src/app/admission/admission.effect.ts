@@ -8,6 +8,10 @@ import {AdmissionService} from "../../services/admission.service";
 
 @Injectable()
 export class AdmissionEffects {
+    
+    private INTAKE_TASKS: string[] = "admissionModuleState.intakeTasks".split(".");
+    private CANDIDATES: string[] = "admissionModuleState.candidates".split(".");
+    
   constructor(private actions$: Actions,
               private admissionActions: AdmissionActions,
               private admissionService: AdmissionService) {
@@ -29,4 +33,10 @@ export class AdmissionEffects {
     .map(action => action.payload)
     .switchMap(taskId => this.admissionService.findIntakeTaskByTaskId(taskId))
     .map(task => this.admissionActions.findIntakeTaskByTaskIdSuccess(task));
+  
+  /*@Effect() findCandidates = this.actions$
+  .ofType(AdmissionActions.FIND_CANDIDATES)
+  .map(action => action.payload)
+  .switchMap(intake => this.admissionService.findCandidates(intake))
+  .map(candidates => this.admissionActions.findCandidatesSuccess(candidates));*/
 }
