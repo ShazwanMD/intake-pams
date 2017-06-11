@@ -47,6 +47,17 @@ public class IntakeApplication extends MetaObject {
     private Boolean sponsored;
     private Boolean selfSponsored;
     private Boolean spmResultAttached;
+    private Boolean stpmResultAttached;
+    private Boolean diplomaResultAttached;
+    private Boolean bachelorResultAttached;
+    private Boolean toeflResultAttached;
+    private Boolean ieltsResultAttached;
+    private Boolean languageResultAttached;
+    private Boolean processingFeeAttached;
+    private Boolean researchProposalAttached;
+    private Boolean bankStatementAttached;
+    private Boolean refereeFormAttached;
+    private Boolean sponsorLetterAttached;
     private Boolean verified;
 
     private ProgramOffering programSelection;
@@ -210,6 +221,94 @@ public class IntakeApplication extends MetaObject {
 
 	public void setSpmResultAttached(Boolean spmResultAttached) {
 		this.spmResultAttached = spmResultAttached;
+	}
+	
+	public Boolean getStpmResultAttached() {
+		return stpmResultAttached;
+	}
+
+	public void setStpmResultAttached(Boolean stpmResultAttached) {
+		this.stpmResultAttached = stpmResultAttached;
+	}
+
+	public Boolean getDiplomaResultAttached() {
+		return diplomaResultAttached;
+	}
+
+	public void setDiplomaResultAttached(Boolean diplomaResultAttached) {
+		this.diplomaResultAttached = diplomaResultAttached;
+	}
+
+	public Boolean getBachelorResultAttached() {
+		return bachelorResultAttached;
+	}
+
+	public void setBachelorResultAttached(Boolean bachelorResultAttached) {
+		this.bachelorResultAttached = bachelorResultAttached;
+	}
+
+	public Boolean getToeflResultAttached() {
+		return toeflResultAttached;
+	}
+
+	public void setToeflResultAttached(Boolean toeflResultAttached) {
+		this.toeflResultAttached = toeflResultAttached;
+	}
+
+	public Boolean getIeltsResultAttached() {
+		return ieltsResultAttached;
+	}
+
+	public void setIeltsResultAttached(Boolean ieltsResultAttached) {
+		this.ieltsResultAttached = ieltsResultAttached;
+	}
+
+	public Boolean getLanguageResultAttached() {
+		return languageResultAttached;
+	}
+
+	public void setLanguageResultAttached(Boolean languageResultAttached) {
+		this.languageResultAttached = languageResultAttached;
+	}
+
+	public Boolean getProcessingFeeAttached() {
+		return processingFeeAttached;
+	}
+
+	public void setProcessingFeeAttached(Boolean processingFeeAttached) {
+		this.processingFeeAttached = processingFeeAttached;
+	}
+
+	public Boolean getResearchProposalAttached() {
+		return researchProposalAttached;
+	}
+
+	public void setResearchProposalAttached(Boolean researchProposalAttached) {
+		this.researchProposalAttached = researchProposalAttached;
+	}
+
+	public Boolean getBankStatementAttached() {
+		return bankStatementAttached;
+	}
+
+	public void setBankStatementAttached(Boolean bankStatementAttached) {
+		this.bankStatementAttached = bankStatementAttached;
+	}
+
+	public Boolean getRefereeFormAttached() {
+		return refereeFormAttached;
+	}
+
+	public void setRefereeFormAttached(Boolean refereeFormAttached) {
+		this.refereeFormAttached = refereeFormAttached;
+	}
+
+	public Boolean getSponsorLetterAttached() {
+		return sponsorLetterAttached;
+	}
+
+	public void setSponsorLetterAttached(Boolean sponsorLetterAttached) {
+		this.sponsorLetterAttached = sponsorLetterAttached;
 	}
 
 	public Boolean getVerified() {

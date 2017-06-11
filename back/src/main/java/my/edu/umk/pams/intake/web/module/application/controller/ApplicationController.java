@@ -184,6 +184,7 @@ public class ApplicationController {
                                                           @RequestBody IntakeApplication vo) {
         dummyLogin();
 
+        
         // todo: more properties
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         application.setResearchTitle(vo.getResearchTitle());
@@ -198,14 +199,31 @@ public class ApplicationController {
         application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
+        
         application.setSpmResultAttached(vo.getSpmResultAttached());
+        application.setStpmResultAttached(vo.getStpmResultAttached());
+        application.setDiplomaResultAttached(vo.getDiplomaResultAttached());
+        application.setBachelorResultAttached(vo.getBachelorResultAttached());
+        application.setToeflResultAttached(vo.getToeflResultAttached());
+        application.setIeltsResultAttached(vo.getIeltsResultAttached());
+        application.setLanguageResultAttached(vo.getLanguageResultAttached());
+        application.setProcessingFeeAttached(vo.getProcessingFeeAttached());
+        application.setBankStatementAttached(vo.getBankStatementAttached());
+        application.setRefereeFormAttached(vo.getRefereeFormAttached());
+        application.setResearchProposalAttached(vo.getResearchProposalAttached());
+        application.setSponsorLetterAttached(vo.getSponsorLetterAttached());
         
         if(null != vo.getGenderCode());
         application.setGenderCode(commonService.findGenderCodeById(vo.getGenderCode().getId()));
+        if(null != vo.getReligionCode());
         application.setReligionCode(commonService.findReligionCodeById(vo.getReligionCode().getId()));
+        if(null != vo.getEthnicityCode());
         application.setEthnicityCode(commonService.findEthnicityCodeById(vo.getEthnicityCode().getId()));
+        if(null != vo.getMaritalCode());
         application.setMaritalCode(commonService.findMaritalCodeById(vo.getMaritalCode().getId()));
+        if(null != vo.getRaceCode());
         application.setRaceCode(commonService.findRaceCodeById(vo.getRaceCode().getId()));
+        if(null != vo.getNationalityCode());
         application.setNationalityCode(commonService.findNationalityCodeById(vo.getNationalityCode().getId()));
 
         applicationService.updateIntakeApplication(application);

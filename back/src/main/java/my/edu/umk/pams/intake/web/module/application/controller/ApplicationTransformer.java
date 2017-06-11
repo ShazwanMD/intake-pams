@@ -42,11 +42,24 @@ public class ApplicationTransformer {
 		vo.setAge(e.getAge());
 		vo.setPassExpDate(e.getPassportExpDate());
 		vo.setBirthDate(e.getBirthDate());
+		
 		vo.setVerified(e.isVerified());
 		vo.setPaid(e.isPaid());
 		vo.setSponsored(e.isSponsored());
 		vo.setSelfSponsored(e.isSelfSponsored());
+		
 		vo.setSpmResultAttached(e.isSpmResultAttached());
+		vo.setStpmResultAttached(e.isStpmResultAttached());
+		vo.setDiplomaResultAttached(e.isDiplomaResultAttached());
+		vo.setBachelorResultAttached(e.isBachelorResultAttached());
+		vo.setToeflResultAttached(e.isToeflResultAttached());
+		vo.setIeltsResultAttached(e.isIeltsResultAttached());
+		vo.setLanguageResultAttached(e.isLanguageResultAttached());
+		vo.setResearchProposalAttached(e.isResearchProposalAttached());
+		vo.setSponsorLetterAttached(e.isSponsorLetterAttached());
+		vo.setRefereeFormAttached(e.isRefereeFormAttached());
+		vo.setProcessingFeeAttached(e.isProcessingFeeAttached());
+		vo.setBankStatementAttached(e.isBankStatementAttached());
 
 		vo.setBidType(BidType.get(e.getBidType().ordinal()));
 		vo.setBidStatus(BidStatus.get(e.getBidStatus().ordinal()));

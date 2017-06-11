@@ -105,6 +105,39 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     
     @Column(name = "SPM_RESULT_ATTACHED")
     private Boolean spmResultAttached = false;
+    
+    @Column(name = "PROCESSING_FEE_ATTACHED")
+    private Boolean processingFeeAttached = false;
+    
+    @Column(name = "LANGUAGE_RESULT_ATTACHED")
+    private Boolean languageResultAttached = false;
+    
+    @Column(name = "TOEFL_RESULT_ATTACHED")
+    private Boolean toeflResultAttached = false;
+    
+    @Column(name = "IELTS_RESULT_ATTACHED")
+    private Boolean ieltsResultAttached = false;
+    
+    @Column(name = "STPM_RESULT_ATTACHED")
+    private Boolean stpmResultAttached = false;
+    
+    @Column(name = "DIPLOMA_RESULT_ATTACHED")
+    private Boolean diplomaResultAttached = false;
+    
+    @Column(name = "BACHELOR_RESULT_ATTACHED")
+    private Boolean bachelorResultAttached = false;
+    
+    @Column(name = "RESEARCH_PROPOSAL_ATTACHED")
+    private Boolean researchProposalAttached = false;
+    
+    @Column(name = "SPONSOR_LETTER_ATTACHED")
+    private Boolean sponsorLetterAttached = false;
+    
+    @Column(name = "REFEREE_FORM_ATTACHED")
+    private Boolean refereeFormAttached = false;
+    
+    @Column(name = "BANK_STATEMENT_ATTACHED")
+    private Boolean bankStatementAttached = false;
 
     @Column(name = "VERIFIED", nullable = false)
     private Boolean verified = false;
@@ -308,132 +341,242 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         return phone;
     }
 
-    @Override
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	@Override
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    @Override
-    public String getMobile() {
-        return mobile;
-    }
+	@Override
+	public String getMobile() {
+		return mobile;
+	}
 
-    @Override
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
+	@Override
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
 
-    @Override
-    public String getFax() {
-        return fax;
-    }
+	@Override
+	public String getFax() {
+		return fax;
+	}
 
-    @Override
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
+	@Override
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
 
-    @Override
-    public Integer getAge() {
-        return age;
-    }
+	@Override
+	public Integer getAge() {
+		return age;
+	}
 
-    @Override
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+	@Override
+	public void setAge(Integer age) {
+		this.age = age;
+	}
 
-    @Override
-    public Date getBirthDate() {
-        return birthDate;
-    }
+	@Override
+	public Date getBirthDate() {
+		return birthDate;
+	}
 
-    @Override
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
+	@Override
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
 
-    @Override
-    public String getCredentialNo() {
-        return credentialNo;
-    }
+	@Override
+	public String getCredentialNo() {
+		return credentialNo;
+	}
 
-    @Override
-    public void setCredentialNo(String credentialNo) {
-        this.credentialNo = credentialNo;
-    }
+	@Override
+	public void setCredentialNo(String credentialNo) {
+		this.credentialNo = credentialNo;
+	}
 
-    @Override
-    public String getOkuNo() {
-        return okuNo;
-    }
+	@Override
+	public String getOkuNo() {
+		return okuNo;
+	}
 
-    @Override
-    public void setOkuNo(String okuNo) {
-        this.okuNo = okuNo;
-    }
+	@Override
+	public void setOkuNo(String okuNo) {
+		this.okuNo = okuNo;
+	}
 
-    @Override
-    public String getPaymentSourceNo() {
-        return paymentSourceNo;
-    }
+	@Override
+	public String getPaymentSourceNo() {
+		return paymentSourceNo;
+	}
 
-    @Override
-    public void setPaymentSourceNo(String paymentSourceNo) {
-        this.paymentSourceNo = paymentSourceNo;
-    }
+	@Override
+	public void setPaymentSourceNo(String paymentSourceNo) {
+		this.paymentSourceNo = paymentSourceNo;
+	}
 
-    @Override
-    public String getReason() {
-        return reason;
-    }
+	@Override
+	public String getReason() {
+		return reason;
+	}
 
-    @Override
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
+	@Override
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
 
-    @Override
-    public Boolean isPaid() {
-        return paid;
-    }
+	@Override
+	public Boolean isPaid() {
+		return paid;
+	}
 
-    @Override
-    public void setPaid(Boolean paid) {
-        this.paid = paid;
-    }
+	@Override
+	public void setPaid(Boolean paid) {
+		this.paid = paid;
+	}
 
-    @Override
-    public Boolean isSponsored() {
-        return sponsored;
-    }
+	@Override
+	public Boolean isSponsored() {
+		return sponsored;
+	}
 
-    @Override
-    public void setSponsored(Boolean sponsored) {
-        this.sponsored = sponsored;
-    }
+	@Override
+	public void setSponsored(Boolean sponsored) {
+		this.sponsored = sponsored;
+	}
 
-    @Override
-    public Boolean isSelfSponsored() {
-        return selfSponsored;
-    }
+	@Override
+	public Boolean isSelfSponsored() {
+		return selfSponsored;
+	}
 
-    @Override
-    public void setSelfSponsored(Boolean selfSponsored) {
-        this.selfSponsored = selfSponsored;
-    }
-    
-    @Override
-    public Boolean isSpmResultAttached() {
-        return spmResultAttached;
-    }
+	@Override
+	public void setSelfSponsored(Boolean selfSponsored) {
+		this.selfSponsored = selfSponsored;
+	}
 
-    @Override
-    public void setSpmResultAttached(Boolean spmResultAttached) {
-        this.spmResultAttached = spmResultAttached;
-    }
+	@Override
+	public Boolean isSpmResultAttached() {
+		return spmResultAttached;
+	}
 
-    @Override
+	@Override
+	public void setSpmResultAttached(Boolean spmResultAttached) {
+		this.spmResultAttached = spmResultAttached;
+	}
+
+	@Override
+	public Boolean isProcessingFeeAttached() {
+		return processingFeeAttached;
+	}
+
+	@Override
+	public void setProcessingFeeAttached(Boolean processingFeeAttached) {
+		this.processingFeeAttached = processingFeeAttached;
+	}
+
+	@Override
+	public Boolean isLanguageResultAttached() {
+		return languageResultAttached;
+	}
+
+	@Override
+	public void setLanguageResultAttached(Boolean languageResultAttached) {
+		this.languageResultAttached = languageResultAttached;
+	}
+
+	@Override
+	public Boolean isToeflResultAttached() {
+		return toeflResultAttached;
+	}
+
+	@Override
+	public void setToeflResultAttached(Boolean toeflResultAttached) {
+		this.toeflResultAttached = toeflResultAttached;
+	}
+
+	@Override
+	public Boolean isIeltsResultAttached() {
+		return ieltsResultAttached;
+	}
+
+	@Override
+	public void setIeltsResultAttached(Boolean ieltsResultAttached) {
+		this.ieltsResultAttached = ieltsResultAttached;
+	}
+
+	@Override
+	public Boolean isStpmResultAttached() {
+		return stpmResultAttached;
+	}
+
+	@Override
+	public void setStpmResultAttached(Boolean stpmResultAttached) {
+		this.stpmResultAttached = stpmResultAttached;
+	}
+
+	@Override
+	public Boolean isDiplomaResultAttached() {
+		return diplomaResultAttached;
+	}
+
+	@Override
+	public void setDiplomaResultAttached(Boolean diplomaResultAttached) {
+		this.diplomaResultAttached = diplomaResultAttached;
+	}
+
+	@Override
+	public Boolean isBachelorResultAttached() {
+		return bachelorResultAttached;
+	}
+
+	@Override
+	public void setBachelorResultAttached(Boolean bachelorResultAttached) {
+		this.bachelorResultAttached = bachelorResultAttached;
+	}
+
+	@Override
+	public Boolean isResearchProposalAttached() {
+		return researchProposalAttached;
+	}
+
+	@Override
+	public void setResearchProposalAttached(Boolean researchProposalAttached) {
+		this.researchProposalAttached = researchProposalAttached;
+	}
+
+	@Override
+	public Boolean isSponsorLetterAttached() {
+		return sponsorLetterAttached;
+	}
+
+	@Override
+	public void setSponsorLetterAttached(Boolean sponsorLetterAttached) {
+		this.sponsorLetterAttached = sponsorLetterAttached;
+	}
+
+	@Override
+	public Boolean isBankStatementAttached() {
+		return bankStatementAttached;
+	}
+
+	@Override
+	public void setBankStatementAttached(Boolean bankStatementAttached) {
+		this.bankStatementAttached = bankStatementAttached;
+	}
+
+	@Override
+	public Boolean isRefereeFormAttached() {
+		return refereeFormAttached;
+	}
+
+	@Override
+	public void setRefereeFormAttached(Boolean refereeFormAttached) {
+		this.refereeFormAttached = refereeFormAttached;
+	}
+
+	@Override
     public Boolean isVerified() {
         return verified;
     }

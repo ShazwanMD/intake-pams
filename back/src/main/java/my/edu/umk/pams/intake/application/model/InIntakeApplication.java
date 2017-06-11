@@ -102,6 +102,50 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setSelfSponsored(Boolean selfSponsored);
     
+    Boolean isProcessingFeeAttached();
+
+    void setProcessingFeeAttached(Boolean processingFeeAttached);
+    
+    Boolean isLanguageResultAttached();
+
+    void setLanguageResultAttached(Boolean languageResultAttached);
+    
+    Boolean isToeflResultAttached();
+
+    void setToeflResultAttached(Boolean toeflResultAttached);
+    
+    Boolean isIeltsResultAttached();
+
+    void setIeltsResultAttached(Boolean ieltsResultAttached);
+    
+    Boolean isStpmResultAttached();
+
+    void setStpmResultAttached(Boolean stpmResultAttached);
+    
+    Boolean isDiplomaResultAttached();
+
+    void setDiplomaResultAttached(Boolean diplomaResultAttached);
+    
+    Boolean isBachelorResultAttached();
+
+    void setBachelorResultAttached(Boolean bachelorResultAttached);
+    
+    Boolean isResearchProposalAttached();
+
+    void setResearchProposalAttached(Boolean researchProposalAttached);
+    
+    Boolean isSponsorLetterAttached();
+
+    void setSponsorLetterAttached(Boolean sponsorLetterAttached);
+    
+    Boolean isBankStatementAttached();
+
+    void setBankStatementAttached(Boolean bankStatementAttached);
+    
+    Boolean isRefereeFormAttached();
+
+    void setRefereeFormAttached(Boolean refereeFormAttached);
+    
     Boolean isSpmResultAttached();
 
     void setSpmResultAttached(Boolean spmResultAttached);
