@@ -76,6 +76,7 @@ public class ApplicationTransformer {
 		vo.setFax(e.getFax());
 		vo.setVerified(e.isVerified());
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+		vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
 		return vo;
 	}
 
