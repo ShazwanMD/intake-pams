@@ -274,14 +274,9 @@
                   <span>3.44</span>
                 </div>
               </div>
-            </td-expansion-panel>
-
-
-         
+            </td-expansion-panel>       
           </md-card>
         </md-tab>
-
-        
 
         <md-tab>
           <template md-tab-label>Documents</template>
@@ -321,33 +316,42 @@
           </pams-attachment-list>
           </td-expansion-panel>
 
+          <md-card>
           <td-expansion-panel label="Upload Document Checklist">
-              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox formControlName="processingReceipt">
+              <md-card-subtitle>Please check all the uploaded attachments below</md-card-subtitle>
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="processingFeeAttached">
                     <div layout="column" flex>
                      Processing fees Receipt
                     </div>
                   </md-checkbox>
                 </div>
 
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox formControlName="academic">
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="languageResultAttached">
                    <div layout="column" class="pad-bottom" flex>
                      Language Result 
                     </div>
                   </md-checkbox>
                 </div>
 
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox formControlName="foreignResult">
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="toeflResultAttached">
                    <div layout="row" class="pad-bottom" flex>
-                     TOEFL / IELTS Result (Foreign Only)
+                     TOEFL (Foreign Only)
                     </div>
                   </md-checkbox>
                 </div>
 
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="ieltsResultAttached">
+                   <div layout="row" class="pad-bottom" flex>
+                     IELTS Result (Foreign Only)
+                    </div>
+                  </md-checkbox>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="spmResultAttached">
                     <div layout="column" flex>
                     Spm Result
@@ -355,32 +359,63 @@
                   </md-checkbox>
                 </div>
 
-               <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox formControlName="financialLetter">
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="stpmResultAttached">
                     <div layout="column" flex>
-                    Letter From Sponsor / Bank Statement
+                    Stpm Result
                     </div>
                   </md-checkbox>
                 </div>
 
-                 <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox formControlName="refereeForm">
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="diplomaResultAttached">
+                    <div layout="column" flex>
+                    Diploma Result
+                    </div>
+                  </md-checkbox>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="bachelorResultAttached">
+                    <div layout="column" flex>
+                    Bachelor Result
+                    </div>
+                  </md-checkbox>
+                </div>
+
+               <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="sponsorLetterAttached">
+                    <div layout="column" flex>
+                    Letter From Sponsor
+                    </div>
+                  </md-checkbox>
+                </div>
+
+               <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="bankStatementAttached">
+                    <div layout="column" flex>
+                    Bank Statement
+                    </div>
+                  </md-checkbox>
+                </div>               
+
+                 <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="refereeFormAttached">
                     <div layout="column" flex>
                     Referee Form
                     </div>
                   </md-checkbox>
                 </div>
 
-                <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                  <md-checkbox formControlName="researchProposal">
+                <div layout="row" class="pad-bottom" flex>
+                  <md-checkbox formControlName="researchProposalAttached">
                     <div layout="column" flex>
                    Research Proposal
                     </div>
                   </md-checkbox>
-                </div>
-
-              </div>
+                </div>             
             </td-expansion-panel>
+            </md-card>
         </md-tab>
 
         <md-tab>

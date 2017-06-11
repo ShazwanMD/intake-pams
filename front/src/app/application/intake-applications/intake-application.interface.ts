@@ -39,7 +39,6 @@ export interface IntakeApplication extends MetaObject {
   verified: boolean;
   sponsored: boolean;
   selfSponsored: boolean;
-  spmResultAttached: boolean;
   processingReceipt:boolean;
   foreignResult:boolean;
   educationResult:boolean;
@@ -48,6 +47,19 @@ export interface IntakeApplication extends MetaObject {
   bankStatement:boolean;
   researchProposal:boolean;
   financialLetter:boolean;
+
+  spmResultAttached: boolean;
+  stpmResultAttached: boolean;
+  diplomaResultAttached: boolean;
+  bachelorResultAttached: boolean;
+  toeflResultAttached: boolean;
+  ieltsResultAttached: boolean;
+  languageResultAttached: boolean;
+  processingFeeAttached: boolean;
+  bankStatementAttached: boolean;
+  refereeFormAttached: boolean;
+  researchProposalAttached: boolean;
+  sponsorLetterAttached: boolean;
 
   bidType:BidType;
   bidStatus:BidStatus;

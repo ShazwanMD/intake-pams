@@ -118,7 +118,20 @@ export class CpsIntakeApplicationPage implements OnInit {
       verified: false,
       sponsored: false,
       selfSponsored: false,
+
       spmResultAttached: false,
+      stpmResultAttached: false,
+      diplomaResultAttached: false,
+      bachelorResultAttached: false,
+      toeflResultAttached: false,
+      ieltsResultAttached: false,
+      languageResultAttached: false,
+      processingFeeAttached: false,
+      bankStatementAttached: false,
+      refereeFormAttached: false,
+      researchProposalAttached: false,
+      sponsorLetterAttached: false,
+
 
       processingReceipt:false,
       foreignResult:false,
