@@ -7,11 +7,8 @@ import {BachelorResultListComponent} from '../component/bachelor-result-list.com
 import {BachelorResultCreatorDialog} from '../component/dialog/bachelor-result-creator.dialog';
 import {SpmResultCreatorDialog} from '../component/dialog/spm-result-creator.dialog';
 import {SpmResultListComponent} from '../component/spm-result-list.component';
-import {AddressTypeSelectComponent} from '../component/address-type-select.component';
 import {AttachmentTypeSelectComponent} from '../component/attachment-type-select.component';
 import {RefereeTypeSelectComponent} from '../component/referee-type-select.component';
-import {AddressEditorDialog} from '../component/dialog/address-editor.dialog';
-import {AddressListComponent} from '../component/address-list.component';
 import {RefereeEditorDialog} from '../component/dialog/referee-editor.dialog';
 import {RefereeListComponent} from '../component/referee-list.component';
 import {EmploymentEditorDialog} from '../component/dialog/employment-editor.dialog';
@@ -58,8 +55,6 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     ProgramChoiceComponent,
     BachelorResultListComponent,
     DiplomaResultListComponent,
-    AddressListComponent,
-    AddressTypeSelectComponent,
     EmploymentTypeSelectComponent,
     AttachmentTypeSelectComponent,
     RefereeTypeSelectComponent,
@@ -70,7 +65,6 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     //dialogs
     EmploymentEditorDialog,
     RefereeEditorDialog,
-    AddressEditorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
     DiplomaResultCreatorDialog,
@@ -85,8 +79,6 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     RefereeListComponent,
     AttachmentListComponent,
     ProgramChoiceComponent,
-    AddressListComponent,
-    AddressTypeSelectComponent,
     EmploymentTypeSelectComponent,
     RefereeTypeSelectComponent,
     AttachmentTypeSelectComponent,
@@ -100,7 +92,6 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
   entryComponents: [
     EmploymentEditorDialog,
     RefereeEditorDialog,
-    AddressEditorDialog,
     SpmResultCreatorDialog,
     BachelorResultCreatorDialog,
     DiplomaResultCreatorDialog,

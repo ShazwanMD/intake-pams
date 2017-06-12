@@ -112,7 +112,6 @@ export class IntakeApplicationEffects {
     .mergeMap(action => from([action,
       this.intakeApplicationActions.findEmploymentsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findEducationsByIntakeApplication(action.payload),
-      this.intakeApplicationActions.findAddressesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findRefereesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findLanguagesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findAttachmentsByIntakeApplication(action.payload),
@@ -289,44 +288,6 @@ export class IntakeApplicationEffects {
     .map(action => action.payload)
     .switchMap(payload => this.applicationService.addAttachment(payload.application, payload.file, payload.attachmentType))
     .map(message => this.intakeApplicationActions.addAttachmentSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-
-  // ====================================================================================================
-  // ADDRESS
-  // ====================================================================================================
-
-  @Effect() findAddressesByIntakeApplication$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION)
-    .map(action => action.payload)
-    .switchMap(application => this.applicationService.findAddressesByIntakeApplication(application))
-    .map(addresses => this.intakeApplicationActions.findAddressesByIntakeApplicationSuccess(addresses));
-
-  @Effect() addAddress = this.actions$
-    .ofType(IntakeApplicationActions.ADD_ADDRESS)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.addAddress(payload.application, payload.address))
-    .map(message => this.intakeApplicationActions.addAddressSuccess(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-  @Effect() deleteAddress$ = this.actions$
-    .ofType(IntakeApplicationActions.DELETE_ADDRESS)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.deleteAddress(payload.application, payload.address))
-    .map(message => this.intakeApplicationActions.deleteAddressSucces(message))
-    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-    .map(state => state[1])
-    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
-
-  @Effect() updateAddress$ = this.actions$
-    .ofType(IntakeApplicationActions.UPDATE_ADDRESS)
-    .map(action => action.payload)
-    .switchMap(payload => this.applicationService.updateAddress(payload.application, payload.address))
-    .map(message => this.intakeApplicationActions.updateAddressSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
