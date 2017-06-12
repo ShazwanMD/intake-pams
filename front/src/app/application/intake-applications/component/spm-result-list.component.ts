@@ -38,9 +38,7 @@ export class SpmResultListComponent implements OnInit {
 
   }
 
-  delete(spmResult: SpmResult): void {
-    this.store.dispatch(this.actions.deleteAddress(this.intakeApplication, spmResult));
-  }
+
 
   showDialog(): void {
     console.log("showDialog");

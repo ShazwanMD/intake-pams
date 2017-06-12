@@ -14,7 +14,6 @@ import { IntakeApplication } from "../../../application/intake-applications/inta
 import { Employment } from "../../../application/intake-applications/employment.interface";
 import { Language } from "../../../application/intake-applications/language.interface";
 import { Referee } from "../../../application/intake-applications/referee.interface";
-import { Address } from "../../../application/intake-applications/address.interface";
 import { SpmResult } from "../../../application/intake-applications/spm-result.interface";
 import { BachelorResult } from "../../../application/intake-applications/bachelor-result-interface";
 import { DiplomaResult } from "../../../application/intake-applications/diploma-result-interface";
@@ -51,7 +50,6 @@ export class ApplicantProfileDialog implements OnInit {
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
   private REFEREES: string[] = "applicationModuleState.referees".split(".");
   private ATTACHMENTS: string[] = "applicationModuleState.attachments".split(".");
-  private ADDRESSES: string[] = "applicationModuleState.addresses".split(".");
   private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
   private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
   private DIPLOMA_RESULTS: string[] = "applicationModuleState.diplomaResults".split(".");
@@ -61,7 +59,6 @@ export class ApplicantProfileDialog implements OnInit {
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private attachments$: Observable<Referee>;
-  private addresses$: Observable<Address>;
   private spmResults$: Observable<SpmResult>;
   private bachelorResults$: Observable<BachelorResult>;
   private diplomaResults$: Observable<DiplomaResult>;
@@ -79,7 +76,6 @@ export class ApplicantProfileDialog implements OnInit {
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
-    this.addresses$ = this.store.select(...this.ADDRESSES);
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
     this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);
     this.diplomaResults$ = this.store.select(...this.DIPLOMA_RESULTS);

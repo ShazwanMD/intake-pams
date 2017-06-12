@@ -3,7 +3,6 @@ import {DisabilityCode} from '../../../common/disability-codes/disability-code.i
 import {DiplomaResult} from '../diploma-result-interface';
 import {BachelorResult} from '../bachelor-result-interface';
 import {SpmResult} from '../spm-result.interface';
-import {Address} from '../address.interface';
 import {Referee} from '../referee.interface';
 import {Employment} from '../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
@@ -54,7 +53,6 @@ export class MgsebIntakeApplicationPage implements OnInit {
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
   private ATTACHMENTS: string[] = "applicationModuleState.attachments".split(".");
   private REFEREES: string[] = "applicationModuleState.referees".split(".");
-  private ADDRESSES: string[] = "applicationModuleState.addresses".split(".");
   private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
   private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
   private DIPLOMA_RESULTS: string[] = "applicationModuleState.diplomaResults".split(".");
@@ -64,7 +62,6 @@ export class MgsebIntakeApplicationPage implements OnInit {
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
-  private addresses$: Observable<Address>;
   private attachments$: Observable<Referee>;
   private spmResults$: Observable<SpmResult>;
   private bachelorResults$: Observable<BachelorResult>;
@@ -82,7 +79,6 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
-    this.addresses$ = this.store.select(...this.ADDRESSES);
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
     this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);
     this.diplomaResults$ = this.store.select(...this.DIPLOMA_RESULTS);
