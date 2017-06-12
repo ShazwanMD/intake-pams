@@ -68,9 +68,6 @@ public class WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation
         intakeApplication.setName("whatever");
         intakeApplication.setEmail("msyahrul@umk.edu.my");
         intakeApplication.setReferenceNo(referenceNo);
-        intakeApplication.setSchoolCode(commonService.findSchoolCodeByCode("SMA"));
-        intakeApplication.setSchoolName("Sekolah Agama Berasrama Penuh Ceruk Tok Kun");
-        intakeApplication.setSchoolBatch(2001);
         applicationService.applyIntake(intake, intakeApplication);
 		
 		return self();

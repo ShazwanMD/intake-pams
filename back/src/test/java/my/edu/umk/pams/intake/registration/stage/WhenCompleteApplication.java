@@ -98,8 +98,6 @@ public class WhenCompleteApplication extends Stage<WhenCompleteApplication> {
          application.setVerified(true);
          application.setMerit(new BigDecimal("2.85"));
          application.setPaymentSourceNo("0024188");
-         application.setSchoolBatch(2006/2010);
-         application.setSchoolName("SMK Sultan Ismail");
          application.setBidType(InBidType.FIRST);
          application.setBidStatus(InBidStatus.NEW);
          application.setBidResponse(InBidResponse.NEW);

@@ -61,7 +61,6 @@ public class WhenIDraftMyIntake extends Stage<WhenIDraftMyIntake> {
         intakeApplication.setEmail("johnpause@gmail.com");
         intakeApplication.setPhone("0111024502");
         intakeApplication.setOkuNo("S1224564");
-        intakeApplication.setSchoolName("SMKJ");
         applicationService.applyIntake(intake, intakeApplication);
 
         return self();

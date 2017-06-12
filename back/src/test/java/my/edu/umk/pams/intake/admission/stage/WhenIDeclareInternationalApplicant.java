@@ -53,8 +53,7 @@ public class WhenIDeclareInternationalApplicant extends Stage<WhenIDeclareIntern
         intakeApplication.setEmail("foreigntest@gmail.com");
         intakeApplication.setPhone("0111020206");
         intakeApplication.setOkuNo("S12223217");
-        intakeApplication.setSchoolName("SchoolOfCalgary");
-        
+
         //international Applicant record //
         intakeApplication.setPassportNo("A1234561240");
         intakeApplication.setPassportExpDate(Date.valueOf(LocalDate.of(2022, 10, 30)));

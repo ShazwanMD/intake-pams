@@ -59,9 +59,11 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "CREDENTIAL_NO")
     private String credentialNo;
 
+    // todo(ashraf): do we need this?
     @Column(name = "OKU_NO")
     private String okuNo;
 
+    // todo(ashraf): do we need this?
     @NotNull
     @Column(name = "PAYMENT_SOURCE_NO")
     private String paymentSourceNo;
@@ -69,17 +71,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
+    // todo(ashraf): do we need this?
     @NotNull
     @Column(name = "AGE")
     private Integer age = 0;
-
-    @NotNull
-    @Column(name = "SCHOOL_NAME")
-    private String schoolName;
-
-    @NotNull
-    @Column(name = "SCHOOL_BATCH")
-    private Integer schoolBatch;
 
     @Column(name = "REASON")
     private String reason;
@@ -147,7 +142,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "BID_TYPE", nullable = false)
     private InBidType bidType = InBidType.FIRST;
 
-    // todo(uda): remove because we have candidate domain
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_STATUS")
@@ -157,10 +151,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "BID_RESPONSE")
     private InBidResponse bidResponse = InBidResponse.NEW;
-
-    @ManyToOne(targetEntity = InSchoolCodeImpl.class)
-    @JoinColumn(name = "SCHOOL_CODE_ID")
-    private InSchoolCode schoolCode;
 
     @ManyToOne(targetEntity = InDisabilityCodeImpl.class)
     @JoinColumn(name = "DISABILITY_CODE_ID")
@@ -182,6 +172,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @JoinColumn(name = "RELIGION_CODE_ID")
     private InReligionCode religionCode;
 
+    // todo(ashraf): do we need this?
     @ManyToOne(targetEntity = InBankCodeImpl.class)
     @JoinColumn(name = "BANK_CODE_ID")
     private InBankCode bankCode;
@@ -194,6 +185,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @JoinColumn(name = "MARITAL_CODE_ID")
     private InMaritalCode maritalCode;
 
+    // todo(ashraf): do we need this?
     @ManyToOne(targetEntity = InDependencyCodeImpl.class)
     @JoinColumn(name = "DEPENDENCY_CODE_ID")
     private InDependencyCode dependencyCode;
@@ -243,12 +235,15 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @OneToMany(targetEntity = InAddressImpl.class, mappedBy = "application")
     private List<InAddress> addresses;
 
+    @Deprecated // use result
     @OneToMany(targetEntity = InBachelorResultImpl.class, mappedBy = "application")
     private List<InBachelorResult> bachelorResults;
 
+    @Deprecated // use result
     @OneToMany(targetEntity = InDiplomaResultImpl.class, mappedBy = "application")
     private List<InDiplomaResult> diplomaResults;
 
+    @Deprecated // use result
     @OneToMany(targetEntity = InSpmResultImpl.class, mappedBy = "application")
     private List<InSpmResult> spmResults;
 
@@ -714,36 +709,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setReligionCode(InReligionCode religionCode) {
         this.religionCode = religionCode;
-    }
-
-    @Override
-    public InSchoolCode getSchoolCode() {
-        return schoolCode;
-    }
-
-    @Override
-    public void setSchoolCode(InSchoolCode schoolType) {
-        this.schoolCode = schoolType;
-    }
-
-    @Override
-    public String getSchoolName() {
-        return schoolName;
-    }
-
-    @Override
-    public void setSchoolName(String schoolName) {
-        this.schoolName = schoolName;
-    }
-
-    @Override
-    public Integer getSchoolBatch() {
-        return schoolBatch;
-    }
-
-    @Override
-    public void setSchoolBatch(Integer schoolBatch) {
-        this.schoolBatch = schoolBatch;
     }
 
     @Override

@@ -41,7 +41,6 @@ public class ThenIFillInInformationAgain extends Stage<ThenIFillInInformationAga
         intakeApplication.setEmail("dummyjohn@gmail.com");
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
-        intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setBidStatus(InBidStatus.DRAFTED);
         applicationService.applyIntake(intake, intakeApplication);
                

@@ -134,8 +134,6 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
          application1.setVerified(false);
          application1.setMerit(new BigDecimal("2.85"));
          application1.setPaymentSourceNo("0024188");
-         application1.setSchoolBatch(2006/2010);
-         application1.setSchoolName("SMK Sultan Ismail");
          application1.setBidType(InBidType.FIRST);
          application1.setBidStatus(InBidStatus.NEW);
          application1.setBidResponse(InBidResponse.NEW);
@@ -175,8 +173,6 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application1.setVerified(true);
           application2.setMerit(new BigDecimal("2.80"));
           application2.setPaymentSourceNo("002268sd");
-          application2.setSchoolBatch(2006/2012);
-          application2.setSchoolName("SMK Sultan Ismail Hash");
           application2.setBidType(InBidType.FIRST);
           application2.setBidStatus(InBidStatus.NEW);
           application2.setBidResponse(InBidResponse.NEW);
@@ -213,8 +209,6 @@ public class WhenPrepareApplicationSubmission extends Stage<WhenPrepareApplicati
           application3.setRank(1);
           application3.setMerit(new BigDecimal("3.80"));
           application3.setPaymentSourceNo("767268sd");
-          application3.setSchoolBatch(2003/2009);
-          application3.setSchoolName("SMK Sultanah Asma");
           application3.setBidType(InBidType.FIRST);
           application3.setBidStatus(InBidStatus.NEW);
           application3.setBidResponse(InBidResponse.NEW);

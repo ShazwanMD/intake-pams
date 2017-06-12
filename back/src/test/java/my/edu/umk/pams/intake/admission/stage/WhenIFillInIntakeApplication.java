@@ -61,7 +61,6 @@ public class WhenIFillInIntakeApplication extends Stage<WhenIFillInIntakeApplica
         intakeApplication.setEmail("dummyjohn@gmail.com");
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
-        intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setBidStatus(InBidStatus.SELECTED);
         intakeApplication.setPaymentSourceNo("PETRONAS");
         applicationService.applyIntake(intake, intakeApplication);

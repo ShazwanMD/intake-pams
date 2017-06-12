@@ -105,8 +105,6 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         application1.setPaid(true);
         application1.setMerit(new BigDecimal("2.85"));
         application1.setPaymentSourceNo("0024188");
-        application1.setSchoolBatch(2006/2010);
-        application1.setSchoolName("SMK Sultan Ismail");
         application1.setBidType(InBidType.FIRST);
         application1.setBidStatus(InBidStatus.NEW);
         application1.setBidResponse(InBidResponse.NEW);

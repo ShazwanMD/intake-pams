@@ -6,7 +6,7 @@ public enum InBidStatus {
     SUBMITTED, // after submit
     SELECTED,  // selected in intake evaluation flow
     REJECTED,  // rejected in intake evaluation flow
-    WITHDRAW,  // ??
-    APPEALED, // ??
-    APPROVED; // ??
+    WITHDRAW,  // ?? we have cancidate
+    APPEALED, // ?? we have candidate
+    APPROVED; // ?? we have candidate
 }

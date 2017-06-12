@@ -97,14 +97,12 @@ public class WhenEnterRequiredInformation extends Stage<WhenEnterRequiredInforma
         intakeApplication.setEmail("dummyjohn@gmail.com");
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
-        intakeApplication.setSchoolName("SMKZA");
         intakeApplication.setBidStatus(InBidStatus.SELECTED);
         intakeApplication.setRank(12);
         //intakeApplication.setMerit();
         intakeApplication.setCredentialNo("248674");
         intakeApplication.setPaymentSourceNo("56468");
         intakeApplication.setAge(26);
-        intakeApplication.setSchoolBatch(001);
         intakeApplication.setBidType(InBidType.FIRST);
         intakeApplication.setBidResponse(InBidResponse.NEW);
         intakeApplication.setFax("0945666");

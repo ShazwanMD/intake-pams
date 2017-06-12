@@ -680,13 +680,18 @@
     create table IN_INTK_APLN (
         ID int8 not null,
         AGE int4,
+        BACHELOR_RESULT_ATTACHED boolean,
+        BANK_STATEMENT_ATTACHED boolean,
         BID_RESPONSE int4,
         BID_STATUS int4,
         BID_TYPE int4 not null,
         BIRTH_DATE timestamp,
         CREDENTIAL_NO varchar(255),
+        DIPLOMA_RESULT_ATTACHED boolean,
         EMAIL varchar(255) not null,
         FAX varchar(255),
+        IELTS_RESULT_ATTACHED boolean,
+        LANGUAGE_RESULT_ATTACHED boolean,
         MERIT numeric(19, 2) not null,
         C_TS timestamp,
         C_ID int8,
@@ -703,26 +708,19 @@
         PASSPORT_NO varchar(255),
         PAYMENT_SOURCE_NO varchar(255),
         PHONE varchar(255),
+        PROCESSING_FEE_ATTACHED boolean,
         RANK int4 not null,
         REASON varchar(255),
+        REFEREE_FORM_ATTACHED boolean,
         REFERENCE_NO varchar(255) not null,
+        RESEARCH_PROPOSAL_ATTACHED boolean,
         RESEARCH_TITLE varchar(255) not null,
-        SCHOOL_BATCH int4,
-        SCHOOL_NAME varchar(255),
         SELF_SPONSORED boolean,
-        SPONSORED boolean,
         SPM_RESULT_ATTACHED boolean,
+        SPONSOR_LETTER_ATTACHED boolean,
+        SPONSORED boolean,
         STPM_RESULT_ATTACHED boolean,
-        DIPLOMA_RESULT_ATTACHED boolean,
-        BACHELOR_RESULT_ATTACHED boolean,
         TOEFL_RESULT_ATTACHED boolean,
-        IELTS_RESULT_ATTACHED boolean,
-        LANGUAGE_RESULT_ATTACHED boolean,
-        PROCESSING_FEE_ATTACHED boolean,	
-		RESEARCH_PROPOSAL_ATTACHED boolean,
-		SPONSOR_LETTER_ATTACHED boolean,
-		BANK_STATEMENT_ATTACHED boolean,
-		REFEREE_FORM_ATTACHED boolean,
         VERIFIED boolean not null,
         VISA_TYPE int4 not null,
         APPLICANT_ID int8,
@@ -738,7 +736,6 @@
         RACE_CODE_ID int8,
         RELIGION_CODE_ID int8,
         RESIDENCY_CODE_ID int8,
-        SCHOOL_CODE_ID int8,
         STUDY_MODE_SELECTION_ID int8,
         SUPERVISOR_SELECTION_ID int8,
         primary key (ID)
@@ -1597,7 +1594,7 @@
         add constraint uc_IN_INTK_4 unique (REMOVE_COMMENT);
 
     alter table IN_INTK
-        add constraint FKA01DFD36690E199E
+        add constraint FKA01DFD3652E5025E
         foreign key (GRADUATE_CENTER_ID)
         references IN_GRDT_CNTR;
 
@@ -1678,11 +1675,6 @@
         add constraint FK5974F5A60E65A82
         foreign key (RESIDENCY_CODE_ID)
         references IN_RSCY_CODE;
-
-    alter table IN_INTK_APLN
-        add constraint FK5974F5A4CB929F0
-        foreign key (SCHOOL_CODE_ID)
-        references IN_SCHL_CODE;
 
     alter table IN_INTK_APLN
         add constraint FK5974F5A55B7DBE0
@@ -1781,7 +1773,7 @@
         references IN_FCTY_CODE;
 
     alter table IN_PRGM_CODE
-        add constraint FK6B49ECA690E199E
+        add constraint FK6B49ECA52E5025E
         foreign key (GRADUATE_CENTER_ID)
         references IN_GRDT_CNTR;
 

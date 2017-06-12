@@ -60,7 +60,6 @@ public class WhenFillAllInformation extends Stage<WhenFillAllInformation> {
         intakeApplication.setEmail("dummy@gmail.com");
         intakeApplication.setPhone("011102020");
         intakeApplication.setOkuNo("S1222321");
-        intakeApplication.setSchoolName("SMKZ1");
         intakeApplication.setBidStatus(InBidStatus.DRAFTED);
         applicationService.applyIntake(intake, intakeApplication);
         Assert.notNull(intakeApplication, "intake application is empty");

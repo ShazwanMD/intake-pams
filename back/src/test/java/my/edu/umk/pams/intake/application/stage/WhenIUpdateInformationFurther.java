@@ -35,7 +35,6 @@ public class WhenIUpdateInformationFurther extends Stage<WhenIUpdateInformationF
         intakeApplication.setEmail("updatejohn@gmail.com");
         intakeApplication.setPhone("34443334");
         intakeApplication.setOkuNo("5675676EEF");
-        intakeApplication.setSchoolName("SMKWQ");
         intakeApplication.setBidStatus(InBidStatus.SELECTED);
        
         applicationService.updateIntakeApplication(intakeApplication);
