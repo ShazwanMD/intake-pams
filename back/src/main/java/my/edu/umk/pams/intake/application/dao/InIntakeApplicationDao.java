@@ -106,6 +106,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InAddress> findAddresses(InIntakeApplication application);
 
+    List<InAddress> findAddresses(InIntakeApplication application, InAddressType addressType);
+
     List<InBachelorResult> findBachelorResults(InIntakeApplication application);
 
     List<InDiplomaResult> findDiplomaResults(InIntakeApplication application);
@@ -201,11 +203,11 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void deleteReferee(InIntakeApplication application, InReferee referee, InUser user);
 
     void updateReferee(InIntakeApplication application, InReferee referee, InUser user);
-    
+
     void updateEmployment(InIntakeApplication application, InEmployment employment, InUser user);
-    
+
     void updateAddress(InIntakeApplication application, InAddress address, InUser user);
-    
+
     void updateLanguage(InIntakeApplication application, InLanguage language, InUser user);
 
     List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);

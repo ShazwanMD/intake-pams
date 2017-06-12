@@ -466,6 +466,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
+    public List<InAddress> findAddresses(InIntakeApplication application, InAddressType addressType) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InAddress p where " +
+                "p.application = :application " +
+                "and p.type = :addressType");
+        query.setEntity("application", application);
+        query.setInteger("addressType", addressType.ordinal());
+        return (List<InAddress>) query.list();
+    }
+
+    @Override
     public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InBachelorResult p where " +
@@ -929,7 +940,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.update(referee);
     }
-    
+
     @Override
     public void updateEmployment(InIntakeApplication application, InEmployment employment, InUser user) {
         Validate.notNull(application, "Application cannot be null");
@@ -939,7 +950,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.update(employment);
     }
-    
+
     @Override
     public void updateAddress(InIntakeApplication application, InAddress address, InUser user) {
         Validate.notNull(application, "Application cannot be null");
@@ -949,7 +960,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.update(address);
     }
-    
+
     @Override
     public void updateLanguage(InIntakeApplication application, InLanguage language, InUser user) {
         Validate.notNull(application, "Application cannot be null");

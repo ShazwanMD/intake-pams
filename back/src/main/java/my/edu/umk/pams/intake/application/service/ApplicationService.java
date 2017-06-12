@@ -36,11 +36,11 @@ public interface ApplicationService {
     void addEducation(InIntakeApplication application, InEducation education);
 
     void addEmployment(InIntakeApplication application, InEmployment employment);
-    
+
     void updateEmployment(InIntakeApplication application, InEmployment employment);
-    
+
     void updateAddress(InIntakeApplication application, InAddress address);
-    
+
     void updateLanguage(InIntakeApplication application, InLanguage language);
 
     void addLanguage(InIntakeApplication application, InLanguage language);
@@ -192,6 +192,8 @@ public interface ApplicationService {
     List<InContact> findContacts(InIntakeApplication application);
 
     List<InAddress> findAddresses(InIntakeApplication application);
+
+    List<InAddress> findAddresses(InIntakeApplication application, InAddressType addressType);
 
     List<InBachelorResult> findBachelorResults(InIntakeApplication application);
 

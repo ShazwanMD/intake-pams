@@ -536,6 +536,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public List<InAddress> findAddresses(InIntakeApplication application, InAddressType addressType) {
+        return intakeApplicationDao.findAddresses(application, addressType);
+    }
+
+    @Override
     public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
         return intakeApplicationDao.findBachelorResults(application);
     }
