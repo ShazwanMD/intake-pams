@@ -18,28 +18,6 @@
         primary key (ID)
     );
 
-    create table IN_ADDR (
-        ID int8 not null,
-        ADDRESS1 varchar(255) not null,
-        ADDRESS2 varchar(255),
-        ADDRESS3 varchar(255),
-        C_TS timestamp,
-        C_ID int8,
-        D_TS timestamp,
-        D_ID int8,
-        M_TS timestamp,
-        M_ID int8,
-        M_ST int4,
-        POSTCODE varchar(255),
-        ADDRESS_TYPE int4,
-        APPLICATION_ID int8,
-        COUNTRY_CODE_ID int8,
-        DUN_CODE_ID int8,
-        PARLIAMENT_CODE_ID int8,
-        STATE_CODE_ID int8,
-        primary key (ID)
-    );
-
     create table IN_APCN (
         ID int8 not null,
         primary key (ID)
@@ -692,6 +670,9 @@
         FAX varchar(255),
         IELTS_RESULT_ATTACHED boolean,
         LANGUAGE_RESULT_ATTACHED boolean,
+        MAILING_ADDRESS1 varchar(255),
+        MAILING_ADDRESS2 varchar(255),
+        MAILING_ADDRESS3 varchar(255),
         MERIT numeric(19, 2) not null,
         C_TS timestamp,
         C_ID int8,
@@ -702,6 +683,9 @@
         M_ST int4,
         MOBILE varchar(255),
         NAME varchar(255) not null,
+        OFFICIAL_ADDRESS1 varchar(255),
+        OFFICIAL_ADDRESS2 varchar(255),
+        OFFICIAL_ADDRESS3 varchar(255),
         OKU_NO varchar(255),
         PAID boolean,
         PASSPORT_EXPDATE timestamp,
@@ -725,15 +709,16 @@
         VISA_TYPE int4 not null,
         APPLICANT_ID int8,
         BANK_CODE_ID int8,
-        DEPENDENCY_CODE_ID int8,
         DISABILITY_CODE_ID int8,
         ETHNICITY_CODE_ID int8,
         GENDER_CODE_ID int8,
         INTAKE_ID int8,
+        MAILING_COUNTRY_CODE_ID int8,
+        MAILING_STATE_CODE_ID int8,
         MARITAL_CODE_ID int8,
-        STATE_CODE_ID int8,
-        COUNTRY_CODE_ID int8,
         NATIONALITY_CODE_ID int8,
+        OFFICIAL_COUNTRY_CODE_ID int8,
+        OFFICIAL_STATE_CODE_ID int8,
         PROGRAM_SELECTION_ID int8,
         RACE_CODE_ID int8,
         RELIGION_CODE_ID int8,
@@ -1352,31 +1337,6 @@
     alter table IN_ACTR
         add constraint uc_IN_ACTR_1 unique (IDENTITY_NO);
 
-    alter table IN_ADDR
-        add constraint FKA01A32CB37A6AAA6
-        foreign key (APPLICATION_ID)
-        references IN_INTK_APLN;
-
-    alter table IN_ADDR
-        add constraint FKA01A32CB62D8843A
-        foreign key (COUNTRY_CODE_ID)
-        references IN_CNTY_CODE;
-
-    alter table IN_ADDR
-        add constraint FKA01A32CB6AB11488
-        foreign key (DUN_CODE_ID)
-        references IN_DUN_CODE;
-
-    alter table IN_ADDR
-        add constraint FKA01A32CBED786CA
-        foreign key (PARLIAMENT_CODE_ID)
-        references IN_PLMT_CODE;
-
-    alter table IN_ADDR
-        add constraint FKA01A32CBAA50E0F0
-        foreign key (STATE_CODE_ID)
-        references IN_STTE_CODE;
-
     alter table IN_APCN
         add constraint FKA01A5FB4AB3274F6
         foreign key (ID)
@@ -1624,11 +1584,6 @@
         references IN_BANK_CODE;
 
     alter table IN_INTK_APLN
-        add constraint FK5974F5AE944DD1E
-        foreign key (DEPENDENCY_CODE_ID)
-        references IN_DPCY_CODE;
-
-    alter table IN_INTK_APLN
         add constraint FK5974F5A1A001E40
         foreign key (DISABILITY_CODE_ID)
         references IN_DBLY_CODE;
@@ -1649,24 +1604,34 @@
         references IN_INTK;
 
     alter table IN_INTK_APLN
+        add constraint FK5974F5AD0B086C6
+        foreign key (MAILING_COUNTRY_CODE_ID)
+        references IN_CNTY_CODE;
+
+    alter table IN_INTK_APLN
+        add constraint FK5974F5AF20167C
+        foreign key (MAILING_STATE_CODE_ID)
+        references IN_STTE_CODE;
+
+    alter table IN_INTK_APLN
         add constraint FK5974F5A4F03DAF6
         foreign key (MARITAL_CODE_ID)
         references IN_MRTL_CODE;
-        
-    alter table IN_INTK_APLN
-        add constraint FK5974F5A4F03BBF3
-        foreign key (COUNTRY_CODE_ID)
-        references IN_CNTY_CODE;
-        
-    alter table IN_INTK_APLN
-        add constraint FK5974F5A4F03BAC6
-        foreign key (STATE_CODE_ID)
-        references IN_STTE_CODE;        
 
     alter table IN_INTK_APLN
         add constraint FK5974F5AACBE2306
         foreign key (NATIONALITY_CODE_ID)
         references IN_NTLY_CODE;
+
+    alter table IN_INTK_APLN
+        add constraint FK5974F5A21D73EE6
+        foreign key (OFFICIAL_COUNTRY_CODE_ID)
+        references IN_CNTY_CODE;
+
+    alter table IN_INTK_APLN
+        add constraint FK5974F5AF4D6569C
+        foreign key (OFFICIAL_STATE_CODE_ID)
+        references IN_STTE_CODE;
 
     alter table IN_INTK_APLN
         add constraint FK5974F5A54B90F8D
@@ -1955,8 +1920,6 @@
         add constraint uc_IN_VENU_CODE_1 unique (CODE);
 
     create sequence SQ_IN_ACTR;
-
-    create sequence SQ_IN_ADDR;
 
     create sequence SQ_IN_ATMT;
 
