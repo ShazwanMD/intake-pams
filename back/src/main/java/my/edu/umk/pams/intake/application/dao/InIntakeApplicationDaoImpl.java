@@ -35,7 +35,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         return (InIntakeApplication) query.uniqueResult();
     }
 
-    // TODO: OR passport no
+    // TODO(ashraf): OR passport no  where (p.x = :n or p.y = :n)
     @Override
     public InIntakeApplication findByNricNoOrPassportNo(String identityNo) {
         Session session = sessionFactory.getCurrentSession();
@@ -95,12 +95,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     public InContact findContactById(Long id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (InContact) currentSession.get(InContactImpl.class, id);
-    }
-
-    @Override
-    public InAddress findAddressById(Long id) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        return (InAddress) currentSession.get(InAddressImpl.class, id);
     }
 
     @Override
@@ -891,16 +885,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.update(employment);
-    }
-
-    @Override
-    public void updateAddress(InIntakeApplication application, InAddress address, InUser user) {
-        Validate.notNull(application, "Application cannot be null");
-        Validate.notNull(address, "Address cannot be null");
-        Validate.notNull(user, "User cannot be null");
-
-        Session session = sessionFactory.getCurrentSession();
-        session.update(address);
     }
 
     @Override

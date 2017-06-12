@@ -114,8 +114,6 @@ public interface ApplicationService {
 
     InGuarantor findGuarantorById(Long id);
 
-    InAddress findAddressById(Long id);
-
     InEmployment findEmploymentById(Long id);
 
     InReferee findRefereeById(Long id);
@@ -135,8 +133,6 @@ public interface ApplicationService {
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
 
     InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application);
-
-    InAddress findAddressByType(InAddressType addressType, InIntakeApplication application);
 
     InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
 

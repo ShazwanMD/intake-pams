@@ -32,8 +32,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     InContact findContactById(Long id);
 
-    InAddress findAddressById(Long id);
-
     InBachelorResult findBachelorResultById(Long id);
 
     InDiplomaResult findDiplomaResultById(Long id);
@@ -53,8 +51,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
 
     InContact findContactByType(InContactType type, InIntakeApplication application);
-
-    InAddress findAddressByType(InAddressType type, InIntakeApplication application);
 
     InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
 
@@ -201,8 +197,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void updateReferee(InIntakeApplication application, InReferee referee, InUser user);
 
     void updateEmployment(InIntakeApplication application, InEmployment employment, InUser user);
-
-    void updateAddress(InIntakeApplication application, InAddress address, InUser user);
 
     void updateLanguage(InIntakeApplication application, InLanguage language, InUser user);
 

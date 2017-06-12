@@ -306,11 +306,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public InAddress findAddressById(Long id) {
-        return intakeApplicationDao.findAddressById(id);
-    }
-    
-    @Override
     public  InEmployment findEmploymentById(Long id) {
         return intakeApplicationDao.findEmploymentById(id);
     }
@@ -349,11 +344,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public InContact findContactById(Long id) {
         return intakeApplicationDao.findContactById(id);
-    }
-
-    @Override
-    public InAddress findAddressByType(InAddressType addressType, InIntakeApplication application) {
-        return intakeApplicationDao.findAddressByType(addressType, application);
     }
 
     @Override
