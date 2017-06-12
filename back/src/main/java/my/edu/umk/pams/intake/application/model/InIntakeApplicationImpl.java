@@ -232,9 +232,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @OneToMany(targetEntity = InLanguageImpl.class, mappedBy = "application")
     private List<InLanguage> languages;
 
-    @OneToMany(targetEntity = InAddressImpl.class, mappedBy = "application")
-    private List<InAddress> addresses;
-
     @Deprecated // use result
     @OneToMany(targetEntity = InBachelorResultImpl.class, mappedBy = "application")
     private List<InBachelorResult> bachelorResults;
@@ -868,16 +865,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setReferees(List<InReferee> referees) {
         this.referees = referees;
-    }
-
-    @Override
-    public List<InAddress> getAddresses() {
-        return addresses;
-    }
-
-    @Override
-    public void setAddresses(List<InAddress> addresses) {
-        this.addresses = addresses;
     }
 
     @Override

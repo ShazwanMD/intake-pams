@@ -39,23 +39,19 @@ public interface ApplicationService {
 
     void updateEmployment(InIntakeApplication application, InEmployment employment);
 
-    void updateAddress(InIntakeApplication application, InAddress address);
-
     void updateLanguage(InIntakeApplication application, InLanguage language);
+
+    void addReferee(InIntakeApplication application, InReferee referee);
 
     void addLanguage(InIntakeApplication application, InLanguage language);
 
     void addInvolvement(InIntakeApplication application, InInvolvement involvement);
-
-    void addAddress(InIntakeApplication application, InAddress address);
 
     void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
 
     void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);
 
     void addSpmResult(InIntakeApplication application, InSpmResult spmResult);
-
-    void deleteAddress(InIntakeApplication application, InAddress address);
 
     void deleteLanguage(InIntakeApplication application, InLanguage language);
 
@@ -86,6 +82,7 @@ public interface ApplicationService {
     void addAttachment(InIntakeApplication application, InAttachment attachment);
 
     void deleteAttachment(InIntakeApplication application, InAttachment attachment);
+
 
     //====================================================================================================
     // APPLICANT
@@ -191,10 +188,6 @@ public interface ApplicationService {
 
     List<InContact> findContacts(InIntakeApplication application);
 
-    List<InAddress> findAddresses(InIntakeApplication application);
-
-    List<InAddress> findAddresses(InIntakeApplication application, InAddressType addressType);
-
     List<InBachelorResult> findBachelorResults(InIntakeApplication application);
 
     List<InDiplomaResult> findDiplomaResults(InIntakeApplication application);
@@ -221,6 +214,5 @@ public interface ApplicationService {
 
     boolean hasReferee(InIntakeApplication application);
 
-    void addReferee(InIntakeApplication application, InReferee referee);
 }
 

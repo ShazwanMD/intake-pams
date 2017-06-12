@@ -80,6 +80,10 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InIntakeApplication> find(InIntake intake, InBidStatus bidStatus);
 
+    List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
+
+    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification);
+
     List<InApplicant> findApplicants(InIntake intake);
 
     List<InResult> findResults(InIntakeApplication application);
@@ -103,10 +107,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InGuardian> findGuardians(InIntakeApplication application);
 
     List<InContact> findContacts(InIntakeApplication application);
-
-    List<InAddress> findAddresses(InIntakeApplication application);
-
-    List<InAddress> findAddresses(InIntakeApplication application, InAddressType addressType);
 
     List<InBachelorResult> findBachelorResults(InIntakeApplication application);
 
@@ -178,13 +178,9 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     void deleteContact(InIntakeApplication application, InContact contact, InUser user);
 
-    void addAddress(InIntakeApplication application, InAddress address, InUser user);
-
     void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user);
 
     void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user);
-
-    void deleteAddress(InIntakeApplication application, InAddress address, InUser user);
 
     void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user);
 
@@ -209,9 +205,5 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void updateAddress(InIntakeApplication application, InAddress address, InUser user);
 
     void updateLanguage(InIntakeApplication application, InLanguage language, InUser user);
-
-    List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
-
-    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification);
 
 }

@@ -153,18 +153,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void addAddress(InIntakeApplication application, InAddress address) {
-        intakeApplicationDao.addAddress(application, address, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-    
-    @Override
-    public void updateAddress(InIntakeApplication application, InAddress address) {
-        intakeApplicationDao.updateAddress(application, address, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
     public void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
         intakeApplicationDao.addBachelorResult(application, bachelorResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -176,12 +164,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    @Override
-    public void deleteAddress(InIntakeApplication application, InAddress address) {
-        intakeApplicationDao.deleteAddress(application, address, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-    
     @Override
     public void deleteLanguage(InIntakeApplication application, InLanguage language) {
         intakeApplicationDao.deleteLanguage(application, language, securityService.getCurrentUser());
@@ -431,6 +413,16 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid) {
+        return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, paid);
+    }
+
+    @Override
+    public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
+        return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, verification);
+    }
+
+    @Override
     public List<InIntakeApplication> findIntakeApplications(InApplicant applicant) {
         return intakeApplicationDao.find(applicant);
     }
@@ -531,16 +523,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<InAddress> findAddresses(InIntakeApplication application) {
-        return intakeApplicationDao.findAddresses(application);
-    }
-
-    @Override
-    public List<InAddress> findAddresses(InIntakeApplication application, InAddressType addressType) {
-        return intakeApplicationDao.findAddresses(application, addressType);
-    }
-
-    @Override
     public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
         return intakeApplicationDao.findBachelorResults(application);
     }
@@ -603,16 +585,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public boolean hasResult(InIntakeApplication application, InResultType resultType) {
         return intakeApplicationDao.hasResult(application, resultType);
-    }
-
-    @Override
-    public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid) {
-        return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, paid);
-    }
-
-    @Override
-    public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
-        return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, verification);
     }
 
 }

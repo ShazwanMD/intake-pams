@@ -179,17 +179,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
-    public InAddress findAddressByType(InAddressType type, InIntakeApplication application) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("select a from InAddress a where " +
-                "a.application = :application " +
-                "and a.type = :type ");
-        query.setInteger("type", type.ordinal());
-        query.setEntity("application", application);
-        return (InAddress) query.uniqueResult();
-    }
-
-    @Override
     public InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select a from InBachelorResult a where " +
@@ -454,26 +443,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
                 "p.application = :application ");
         query.setEntity("application", application);
         return (List<InContact>) query.list();
-    }
-
-    @Override
-    public List<InAddress> findAddresses(InIntakeApplication application) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("select p from InAddress p where " +
-                "p.application = :application");
-        query.setEntity("application", application);
-        return (List<InAddress>) query.list();
-    }
-
-    @Override
-    public List<InAddress> findAddresses(InIntakeApplication application, InAddressType addressType) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("select p from InAddress p where " +
-                "p.application = :application " +
-                "and p.type = :addressType");
-        query.setEntity("application", application);
-        query.setInteger("addressType", addressType.ordinal());
-        return (List<InAddress>) query.list();
     }
 
     @Override
@@ -871,23 +840,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
-    public void addAddress(InIntakeApplication application, InAddress address, InUser user) {
-        Validate.notNull(application, "Application cannot be null");
-        Validate.notNull(address, "Address cannot be null");
-        Validate.notNull(user, "User cannot be null");
-
-        Session session = sessionFactory.getCurrentSession();
-        address.setApplication(application);
-
-        InMetadata metadata = new InMetadata();
-        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        metadata.setModifierId(user.getId());
-        metadata.setState(InMetaState.ACTIVE);
-        address.setMetadata(metadata);
-        session.save(address);
-    }
-
-    @Override
     public void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user) {
         Validate.notNull(application, "Application cannot be null");
         Validate.notNull(bachelorResult, "BachelorResult cannot be null");
@@ -919,16 +871,6 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         metadata.setState(InMetaState.ACTIVE);
         diplomaResult.setMetadata(metadata);
         session.save(diplomaResult);
-    }
-
-    @Override
-    public void deleteAddress(InIntakeApplication application, InAddress address, InUser user) {
-        Validate.notNull(application, "Application cannot be null");
-        Validate.notNull(address, "Address cannot be null");
-        Validate.notNull(user, "User cannot be null");
-
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(address);
     }
 
     @Override

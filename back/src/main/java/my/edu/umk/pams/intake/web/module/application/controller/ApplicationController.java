@@ -315,7 +315,7 @@ public class ApplicationController {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InEmployment employment = (InEmployment) applicationService.findEmploymentById(id);
+        InEmployment employment = applicationService.findEmploymentById(id);
         applicationService.deleteEmployment(application, employment);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
@@ -324,7 +324,7 @@ public class ApplicationController {
     public ResponseEntity<Boolean> updateEmployment(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Employment vo) {
         dummyLogin();
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InEmployment employment = (InEmployment) applicationService.findEmploymentById(id);
+        InEmployment employment = applicationService.findEmploymentById(id);
         employment.setEmployer(vo.getEmployer());
         employment.setDesignation(vo.getDesignation());
         employment.setStartDate(vo.getStartDate());
@@ -367,7 +367,7 @@ public class ApplicationController {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InLanguage language = (InLanguage) applicationService.findLanguageById(id);
+        InLanguage language = applicationService.findLanguageById(id);
         language.setOral(vo.getOral());
         language.setWritten(vo.getWritten());
         language.setLanguageCode(commonService.findLanguageCodeById(vo.getLanguageCode().getId()));
@@ -380,7 +380,7 @@ public class ApplicationController {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InLanguage language = (InLanguage) applicationService.findLanguageById(id);
+        InLanguage language = applicationService.findLanguageById(id);
         applicationService.deleteLanguage(application, language);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
@@ -454,7 +454,7 @@ public class ApplicationController {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InAttachment attachment = (InAttachment) applicationService.findAttachmentById(id);
+        InAttachment attachment = applicationService.findAttachmentById(id);
         applicationService.deleteAttachment(application, attachment);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
@@ -521,7 +521,7 @@ public class ApplicationController {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InReferee referee = (InReferee) applicationService.findRefereeById(id);
+        InReferee referee = applicationService.findRefereeById(id);
         referee.setName(vo.getName());
         referee.setOfficeAddrs(vo.getOfficeAddrs());
         referee.setOccupation(vo.getOccupation());
@@ -536,66 +536,19 @@ public class ApplicationController {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InReferee referee = (InReferee) applicationService.findRefereeById(id);
+        InReferee referee = applicationService.findRefereeById(id);
         applicationService.deleteReferee(application, referee);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
-    // ====================================================================================================
-    // ADDRESS
-    // ====================================================================================================
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses", method = RequestMethod.GET)
-    public ResponseEntity<List<Address>> findAddressesByIntakeApplication(@PathVariable String referenceNo) {
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        List<InAddress> address = applicationService.findAddresses(application);
-        return new ResponseEntity<List<Address>>(applicationTransformer.toAddressVos(address), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses", method = RequestMethod.POST)
-    public ResponseEntity<String> addAddress(@PathVariable String referenceNo, @RequestBody Address vo) {
-        dummyLogin();
-
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InAddress address = new InAddressImpl();
-        address.setAddress1(vo.getAddress1());
-        address.setAddress2(vo.getAddress2());
-        address.setAddress3(vo.getAddress3());
-        address.setPostCode(vo.getPostcode());
-        address.setType(InAddressType.get(vo.getAddressType().ordinal()));
-        address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
-        address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
-        applicationService.addAddress(application, address);
-
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Boolean> updateAddress(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Address vo) {
-        dummyLogin();
-
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InAddress address = (InAddress) applicationService.findAddressById(id);
-        address.setAddress1(vo.getAddress1());
-        address.setAddress2(vo.getAddress2());
-        address.setAddress3(vo.getAddress3());
-        address.setPostCode(vo.getPostcode());
-        address.setType(InAddressType.get(vo.getAddressType().ordinal()));
-        address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
-        address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
-        applicationService.updateAddress(application, address);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Boolean> deleteAddress(@PathVariable String referenceNo, @PathVariable Long id) {
-        dummyLogin();
-
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InAddress address = (InAddress) applicationService.findAddressById(id);
-        applicationService.deleteAddress(application, address);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-    }
+//        InAddress address = (InAddress) applicationService.findAddressById(id);
+//        address.setAddress1(vo.getAddress1());
+//        address.setAddress2(vo.getAddress2());
+//        address.setAddress3(vo.getAddress3());
+//        address.setPostCode(vo.getPostcode());
+//        address.setType(InAddressType.get(vo.getAddressType().ordinal()));
+//        address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
+//        address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
 
     // ====================================================================================================
     // BACHELOR RESULT
@@ -630,7 +583,7 @@ public class ApplicationController {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InBachelorResult bachelorResult = (InBachelorResult) applicationService.findBachelorResultById(id);
+        InBachelorResult bachelorResult = applicationService.findBachelorResultById(id);
         applicationService.deleteBachelorResult(application, bachelorResult);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
@@ -667,7 +620,7 @@ public class ApplicationController {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InDiplomaResult diplomaResult = (InDiplomaResult) applicationService.findDiplomaResultById(id);
+        InDiplomaResult diplomaResult = applicationService.findDiplomaResultById(id);
         applicationService.deleteDiplomaResult(application, diplomaResult);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }

@@ -225,10 +225,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setApplicant(InApplicant applicant);
 
-    List<InAddress> getAddresses();
-
-    void setAddresses(List<InAddress> addresses);
-
     @Deprecated
         // use result
     List<InSpmResult> getSpmResults();
