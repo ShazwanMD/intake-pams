@@ -37,6 +37,15 @@ export interface IntakeApplication extends MetaObject {
   race: string;
   marital: string;
 
+  mailingAddress1: string;
+  mailingAddress2: string;
+  mailingAddress3: string;
+  mailingPostcode: string;
+  officialAddress1: string;
+  officialAddress2: string;
+  officialAddress3: string;
+  officialPostcode: string;
+
   paid: boolean;
   verified: boolean;
   sponsored: boolean;
