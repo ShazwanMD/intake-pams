@@ -20,6 +20,8 @@ import {Language} from "../language.interface";
 import {NationalityCode} from "../../../common/nationality-codes/nationality-code.interface";
 import {DisabilityCode} from "../../../common/disability-codes/disability-code.interface";
 import {EthnicityCode} from "../../../common/ethnicity-codes/ethnicity-code.interface";
+import { CountryCode } from "../../../common/country-codes/country-code.interface";
+import { StateCode } from "../../../common/state-codes/state-code.interface";
 
 
 @Component({
@@ -115,6 +117,8 @@ export class CpsIntakeApplicationPage implements OnInit {
       raceCode: <RaceCode>{},
       religionCode: <ReligionCode>{},
       nationalityCode: <NationalityCode>{},
+      stateCode: <StateCode>{},
+      countryCode: <CountryCode>{},
       verified: false,
       sponsored: false,
       selfSponsored: false,
