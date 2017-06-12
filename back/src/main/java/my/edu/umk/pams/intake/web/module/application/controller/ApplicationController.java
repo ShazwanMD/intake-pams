@@ -216,6 +216,7 @@ public class ApplicationController {
         application.setMailingAddress1(vo.getMailingAddress1());
         application.setMailingAddress2(vo.getMailingAddress2());
         application.setMailingAddress3(vo.getMailingAddress3());
+        application.setMailingPostcode(vo.getMailingPostcode());
         if (null != vo.getMailingStateCode())
             application.setMailingStateCode(commonService.findStateCodeById(vo.getMailingStateCode().getId()));
         if (null != vo.getMailingCountryCode())
@@ -225,6 +226,7 @@ public class ApplicationController {
         application.setOfficialAddress1(vo.getOfficialAddress1());
         application.setOfficialAddress2(vo.getOfficialAddress2());
         application.setOfficialAddress3(vo.getOfficialAddress3());
+        application.setOfficialPostcode(vo.getOfficialPostcode());
         if (null != vo.getOfficialStateCode())
             application.setOfficialStateCode(commonService.findStateCodeById(vo.getOfficialStateCode().getId()));
         if (null != vo.getOfficialCountryCode())

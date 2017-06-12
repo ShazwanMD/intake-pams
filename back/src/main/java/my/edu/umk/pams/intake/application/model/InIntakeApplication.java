@@ -186,6 +186,14 @@ public interface InIntakeApplication extends InMetaObject {
     String getOfficialAddress3();
 
     void setOfficialAddress3(String officialAddresss3);
+    
+    String getOfficialPostcode();
+
+    void setOfficialPostcode(String officialPostcode);
+    
+    String getMailingPostcode();
+
+    void setMailingPostcode(String mailingPostcode);
 
     InCountryCode getOfficialCountryCode();
 

@@ -65,11 +65,13 @@ public class ApplicationTransformer {
 		vo.setMailingAddress1(e.getMailingAddress1());
 		vo.setMailingAddress2(e.getMailingAddress2());
 		vo.setMailingAddress3(e.getMailingAddress3());
+		vo.setMailingPostcode(e.getMailingPostcode());
 		vo.setMailingStateCode(commonTransformer.toStateCodeVo(e.getMailingStateCode()));
 		vo.setMailingCountryCode(commonTransformer.toCountryCodeVo(e.getMailingCountryCode()));
 		vo.setOfficialAddress1(e.getOfficialAddress1());
 		vo.setOfficialAddress2(e.getOfficialAddress2());
 		vo.setOfficialAddress3(e.getOfficialAddress3());
+		vo.setOfficialPostcode(e.getOfficialPostcode());
 		vo.setOfficialStateCode(commonTransformer.toStateCodeVo(e.getOfficialStateCode()));
 		vo.setOfficialCountryCode(commonTransformer.toCountryCodeVo(e.getOfficialCountryCode()));
 		
