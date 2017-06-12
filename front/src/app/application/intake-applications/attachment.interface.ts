@@ -1,12 +1,12 @@
 import {MetaObject} from "../../core/meta-object.interface";
-import { AttachmentType } from "./attachment-type.enum";
+import {AttachmentType} from "./attachment-type.enum";
 export interface Attachment extends MetaObject {
-  id:number;
+  id: number;
   name: string;
   mimeType: string;
   size: number;
-  attachmentType:AttachmentType;
+  attachmentType: AttachmentType;
 
   // transient
-  selected?:boolean;
+  selected?: boolean;
 }

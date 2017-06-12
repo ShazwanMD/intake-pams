@@ -43,8 +43,7 @@ import {ProgramOfferingSelectorDialog} from "./component/dialog/program-offering
     EducationCreatorDialog,
     ProgramOfferingSelectorDialog,
   ],
-  exports: [
-  ],
+  exports: [],
   entryComponents: [
     EducationCreatorDialog,
     ProgramOfferingSelectorDialog,

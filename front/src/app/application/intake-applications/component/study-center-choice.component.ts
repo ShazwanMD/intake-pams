@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs/Observable';
-import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { StudyCenterCode } from './../../../common/study-center-codes/study-center-code.interface';
-import {Referee} from './../referee.interface';
+import {Observable} from 'rxjs/Observable';
+import {ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {StudyCenterCode} from '../../../common/study-center-codes/study-center-code.interface';
+import {Referee} from '../referee.interface';
 import {Component, Input, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
@@ -10,9 +10,8 @@ import {ApplicationModuleState} from "../../index";
 import {RefereeEditorDialog} from "./dialog/referee-editor.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {IntakeApplication} from "../intake-application.interface";
-import { StudyModeOfferingSelectorDialog } from "./dialog/study-mode-offering-selector.dialog";
-import { ProgramOfferingSelectorDialog } from "./dialog/program-offering-selector.dialog";
-
+import {StudyModeOfferingSelectorDialog} from "./dialog/study-mode-offering-selector.dialog";
+import {ProgramOfferingSelectorDialog} from "./dialog/program-offering-selector.dialog";
 
 
 @Component({
@@ -27,11 +26,11 @@ export class StudyCenterChoiceComponent implements OnInit {
 
   private programSelectorDialogRef: MdDialogRef<ProgramOfferingSelectorDialog>;
   private studyModeSelectorDialogRef: MdDialogRef<StudyModeOfferingSelectorDialog>;
-  
-    private applicationForm: FormGroup;
-    private intakeApplication$: Observable<IntakeApplication>;
 
-   constructor(private actions: IntakeApplicationActions,
+  private applicationForm: FormGroup;
+  private intakeApplication$: Observable<IntakeApplication>;
+
+  constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private formBuilder: FormBuilder,
@@ -40,9 +39,9 @@ export class StudyCenterChoiceComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+
     this.applicationForm = this.formBuilder.group(<IntakeApplication>{
-    studyCenterCode:  <StudyCenterCode>{},
+      studyCenterCode: <StudyCenterCode>{},
 
     });
   }

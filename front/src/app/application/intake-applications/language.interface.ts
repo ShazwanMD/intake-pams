@@ -5,5 +5,5 @@ export interface Language extends MetaObject {
   oral: number,
   written: number,
 
-  selected?:boolean;
+  selected?: boolean;
 }

@@ -16,122 +16,122 @@
       <md-tab-group (selectChange)="onTabChange($event)" md-stretch-tabs>
         <md-tab>
           <template md-tab-label>Detail Of Candidate</template>
-           <td-expansion-panel label="Program Choices">
-          <pams-study-center-choice
-            [intakeApplication]="intakeApplication$ | async">
-          </pams-study-center-choice>
-           </td-expansion-panel>
+          <td-expansion-panel label="Program Choices">
+            <pams-study-center-choice
+              [intakeApplication]="intakeApplication$ | async">
+            </pams-study-center-choice>
+          </td-expansion-panel>
 
-            <template md-tab-label>Personal Information</template>
-            <td-expansion-panel label="Personal Details">
-              <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-                <!-- first column -->
-                <div layout="column" class="pad-right" flex>
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Name" formControlName="name" flex/>
-                    </md-input-container>
-                  </div>
-
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Email" formControlName="email" flex/>
-                    </md-input-container>
-                  </div>
-
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo" flex/>
-                    </md-input-container>
-                  </div>
-
-                   
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate" flex/>
-                    </md-input-container>
-                  </div>
-
-                  <div layout="row" class="pad-top">
-                    <pams-nationality-code-select
-                      [placeholder]="'Nationality'"
-                      [innerFormControl]="applicationForm.controls.nationalityCode">
-                    </pams-nationality-code-select>
-                  </div>
-
-
-                  <div layout="row" class="pad-top">
-                    <pams-race-code-select
-                      [placeholder]="'Race'"
-                      [innerFormControl]="applicationForm.controls.raceCode">
-                    </pams-race-code-select>
-                  </div>
-
-                  <div layout="row" class="pad-top">
-                    <pams-marital-code-select
-                      [placeholder]="'Marital'"
-                      [innerFormControl]="applicationForm.controls.maritalCode">
-                    </pams-marital-code-select>
-                  </div>
-
-
+          <template md-tab-label>Personal Information</template>
+          <td-expansion-panel label="Personal Details">
+            <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+              <!-- first column -->
+              <div layout="column" class="pad-right" flex>
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Name" formControlName="name" flex/>
+                  </md-input-container>
                 </div>
 
-                <!-- second column -->
-                <div layout="column" class="pad-right" flex>
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Email" formControlName="email" flex/>
+                  </md-input-container>
+                </div>
 
-                   <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>
-                    </md-input-container>
-                  </div>
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Phone No" formControlName="mobile" flex/>
-                    </md-input-container>
-                  </div>
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo" flex/>
+                  </md-input-container>
+                </div>
 
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Office No" formControlName="phone" flex/>
-                    </md-input-container>
-                  </div>
 
-                  <div layout="row" class="pad-bottom" flex>
-                    <md-input-container flex>
-                      <input mdInput placeholder="Fax No" formControlName="fax" flex/>
-                    </md-input-container>
-                  </div>
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate" flex/>
+                  </md-input-container>
+                </div>
 
-                  <div layout="row" class="pad-top">
-                    <pams-ethnicity-code-select
-                      [placeholder]="'Ethnicity'"
-                      [innerFormControl]="applicationForm.controls.ethnicityCode">
-                    </pams-ethnicity-code-select>
-                  </div>
+                <div layout="row" class="pad-top">
+                  <pams-nationality-code-select
+                    [placeholder]="'Nationality'"
+                    [innerFormControl]="applicationForm.controls.nationalityCode">
+                  </pams-nationality-code-select>
+                </div>
 
-                  <div layout="row" class="pad-top">
-                    <pams-gender-code-select
-                      [placeholder]="'Gender'"
-                      [innerFormControl]="applicationForm.controls.genderCode">
-                    </pams-gender-code-select>
-                  </div>
 
-                  <div layout="row" class="pad-top">
-                    <pams-religion-code-select
-                      [placeholder]="'Religion'"
-                      [innerFormControl]="applicationForm.controls.religionCode">
-                    </pams-religion-code-select>
-                  </div>
+                <div layout="row" class="pad-top">
+                  <pams-race-code-select
+                    [placeholder]="'Race'"
+                    [innerFormControl]="applicationForm.controls.raceCode">
+                  </pams-race-code-select>
+                </div>
+
+                <div layout="row" class="pad-top">
+                  <pams-marital-code-select
+                    [placeholder]="'Marital'"
+                    [innerFormControl]="applicationForm.controls.maritalCode">
+                  </pams-marital-code-select>
+                </div>
+
+
+              </div>
+
+              <!-- second column -->
+              <div layout="column" class="pad-right" flex>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>
+                  </md-input-container>
+                </div>
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Phone No" formControlName="mobile" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Office No" formControlName="phone" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Fax No" formControlName="fax" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-top">
+                  <pams-ethnicity-code-select
+                    [placeholder]="'Ethnicity'"
+                    [innerFormControl]="applicationForm.controls.ethnicityCode">
+                  </pams-ethnicity-code-select>
+                </div>
+
+                <div layout="row" class="pad-top">
+                  <pams-gender-code-select
+                    [placeholder]="'Gender'"
+                    [innerFormControl]="applicationForm.controls.genderCode">
+                  </pams-gender-code-select>
+                </div>
+
+                <div layout="row" class="pad-top">
+                  <pams-religion-code-select
+                    [placeholder]="'Religion'"
+                    [innerFormControl]="applicationForm.controls.religionCode">
+                  </pams-religion-code-select>
                 </div>
               </div>
-            </td-expansion-panel>
+            </div>
+          </td-expansion-panel>
         </md-tab>
-         
 
-            <md-tab>
-              <md-card>
-                 <template md-tab-label>Address Information</template>
+
+        <md-tab>
+          <md-card>
+            <template md-tab-label>Address Information</template>
             <td-expansion-panel label="Address Information">
               <pams-address-list
                 [intakeApplication]="intakeApplication$ | async"
@@ -140,9 +140,9 @@
           </md-card>
         </md-tab>
 
-         <md-tab>
-           <md-card>
-             <template md-tab-label>Working Experience</template>
+        <md-tab>
+          <md-card>
+            <template md-tab-label>Working Experience</template>
             <td-expansion-panel label="Working Experience">
               <pams-employment-list
                 [intakeApplication]="intakeApplication$ | async"
@@ -154,9 +154,10 @@
         <md-tab>
           <md-card>
             <template md-tab-label>Academic Qualification</template>
-              <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
-              <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form</md-card-subtitle>
-          
+            <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
+            <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form
+            </md-card-subtitle>
+
             <!--<td-expansion-panel label="SPM Qualifications">
               <pams-spm-result-list
                 [intakeApplication]="intakeApplication$ | async"
@@ -178,7 +179,7 @@
                 [diplomaResults]="diplomaResults$ | async"></pams-diploma-result-list>
             </td-expansion-panel>-->
 
-             <td-expansion-panel label="SPM Qualification">
+            <td-expansion-panel label="SPM Qualification">
               <div layout="column" class="inset">
                 <div layout="row" class="pad-bottom">
                   <span flex="20">School</span>
@@ -200,10 +201,10 @@
                   <md-icon class="md-24 tc-grey-700">add</md-icon>
                 </button>
                 <button md-button class="md-icon-button" (click)="edit(selectedRows[0])">
-                 <md-icon class="md-24 tc-grey-300">edit</md-icon>
+                  <md-icon class="md-24 tc-grey-300">edit</md-icon>
                 </button>
                 <button md-button class="md-icon-button" (click)="delete(selectedRows[0])">
-                <md-icon class="md-24 tc-grey-300">delete</md-icon>
+                  <md-icon class="md-24 tc-grey-300">delete</md-icon>
                 </button>
 
               </div>
@@ -263,87 +264,87 @@
 
 
             <td-expansion-panel label="Proficiency in Malay/English Language">
-            <pams-language-list
+              <pams-language-list
                 [intakeApplication]="intakeApplication$ | async"
                 [languages]="languages$ | async">
-            </pams-language-list>
-          
-            </td-expansion-panel>
-           
-           </md-card>
-           </md-tab>
+              </pams-language-list>
 
-          <md-tab>
-           <md-card>
+            </td-expansion-panel>
+
+          </md-card>
+        </md-tab>
+
+        <md-tab>
+          <md-card>
             <template md-tab-label>Upload Document</template>
             <div layout="column" class="pad-right" flex>
 
-             <!-- <td-expansion-panel label="Upload Document Checklist">
-              <div layout="column" class="pad-right" flex>
+              <!-- <td-expansion-panel label="Upload Document Checklist">
+               <div layout="column" class="pad-right" flex>
+                   <div layout="row" class="pad-bottom" flex>
+                   <md-checkbox formControlName="processingReceipt">
+                     <div layout="column" flex>
+                      Processing fees Receipt
+                     </div>
+                   </md-checkbox>
+                 </div>
+
                   <div layout="row" class="pad-bottom" flex>
-                  <md-checkbox formControlName="processingReceipt">
-                    <div layout="column" flex>
-                     Processing fees Receipt
-                    </div>
-                  </md-checkbox>
-                </div>
+                   <md-checkbox formControlName="academic">
+                     <div layout="column" flex>
+                      Academic Qualification
+                     </div>
+                   </md-checkbox>
+                 </div>
 
                  <div layout="row" class="pad-bottom" flex>
-                  <md-checkbox formControlName="academic">
-                    <div layout="column" flex>
-                     Academic Qualification
-                    </div>
-                  </md-checkbox>
-                </div>
+                   <md-checkbox formControlName="foreignResult">
+                     <div layout="column" flex>
+                      TOEFL/IELTS Result (Foreign Only)
+                     </div>
+                   </md-checkbox>
+                 </div>
 
-                <div layout="row" class="pad-bottom" flex>
-                  <md-checkbox formControlName="foreignResult">
-                    <div layout="column" flex>
-                     TOEFL/IELTS Result (Foreign Only)
-                    </div>
-                  </md-checkbox>
-                </div>
+                 <div layout="row" class="pad-bottom" flex>
+                   <md-checkbox formControlName="educationResult">
+                     <div layout="column" flex>
+                     Spm / Stpm / Diploma /Bachelor / Master Result
+                     </div>
+                   </md-checkbox>
+                 </div>
+               </div>
+             </td-expansion-panel> -->
 
-                <div layout="row" class="pad-bottom" flex>
-                  <md-checkbox formControlName="educationResult">
-                    <div layout="column" flex>
-                    Spm / Stpm / Diploma /Bachelor / Master Result
-                    </div>
-                  </md-checkbox>
-                </div>
-              </div>
-            </td-expansion-panel> -->
-
-             <td-expansion-panel label="Upload Document Checklist">
-              <md-card-subtitle>Please check all the uploaded attachments below</md-card-subtitle>
+              <td-expansion-panel label="Upload Document Checklist">
+                <md-card-subtitle>Please check all the uploaded attachments below</md-card-subtitle>
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="processingFeeAttached">
                     <div layout="column" flex>
-                     Processing fees Receipt
+                      Processing fees Receipt
                     </div>
                   </md-checkbox>
                 </div>
 
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="languageResultAttached">
-                   <div layout="column" class="pad-bottom" flex>
-                     Language Result 
+                    <div layout="column" class="pad-bottom" flex>
+                      Language Result
                     </div>
                   </md-checkbox>
                 </div>
 
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="toeflResultAttached">
-                   <div layout="row" class="pad-bottom" flex>
-                     TOEFL (Foreign Only)
+                    <div layout="row" class="pad-bottom" flex>
+                      TOEFL (Foreign Only)
                     </div>
                   </md-checkbox>
                 </div>
 
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="ieltsResultAttached">
-                   <div layout="row" class="pad-bottom" flex>
-                     IELTS Result (Foreign Only)
+                    <div layout="row" class="pad-bottom" flex>
+                      IELTS Result (Foreign Only)
                     </div>
                   </md-checkbox>
                 </div>
@@ -351,7 +352,7 @@
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="spmResultAttached">
                     <div layout="column" flex>
-                    Spm Result
+                      Spm Result
                     </div>
                   </md-checkbox>
                 </div>
@@ -359,7 +360,7 @@
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="stpmResultAttached">
                     <div layout="column" flex>
-                    Stpm Result
+                      Stpm Result
                     </div>
                   </md-checkbox>
                 </div>
@@ -367,7 +368,7 @@
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="diplomaResultAttached">
                     <div layout="column" flex>
-                    Diploma Result
+                      Diploma Result
                     </div>
                   </md-checkbox>
                 </div>
@@ -375,31 +376,31 @@
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="bachelorResultAttached">
                     <div layout="column" flex>
-                    Bachelor Result
+                      Bachelor Result
                     </div>
                   </md-checkbox>
                 </div>
 
-               <div layout="row" class="pad-bottom" flex>
+                <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="sponsorLetterAttached">
                     <div layout="column" flex>
-                    Letter From Sponsor
+                      Letter From Sponsor
                     </div>
                   </md-checkbox>
                 </div>
 
-               <div layout="row" class="pad-bottom" flex>
+                <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="bankStatementAttached">
                     <div layout="column" flex>
-                    Bank Statement
+                      Bank Statement
                     </div>
                   </md-checkbox>
-                </div>               
+                </div>
 
-                 <div layout="row" class="pad-bottom" flex>
+                <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="refereeFormAttached">
                     <div layout="column" flex>
-                    Referee Form
+                      Referee Form
                     </div>
                   </md-checkbox>
                 </div>
@@ -407,20 +408,20 @@
                 <div layout="row" class="pad-bottom" flex>
                   <md-checkbox formControlName="researchProposalAttached">
                     <div layout="column" flex>
-                   Research Proposal
+                      Research Proposal
                     </div>
                   </md-checkbox>
-                </div>             
-            </td-expansion-panel>
+                </div>
+              </td-expansion-panel>
 
-             <td-expansion-panel label="Attachments">
-             <pams-attachment-list
-            [intakeApplication]="intakeApplication$ | async"
-            [attachments]="attachments$ | async">
-           </pams-attachment-list>
-           </td-expansion-panel>
-        </div>
-        </md-card>
+              <td-expansion-panel label="Attachments">
+                <pams-attachment-list
+                  [intakeApplication]="intakeApplication$ | async"
+                  [attachments]="attachments$ | async">
+                </pams-attachment-list>
+              </td-expansion-panel>
+            </div>
+          </md-card>
         </md-tab>
 
         <md-tab>

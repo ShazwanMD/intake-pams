@@ -14,7 +14,7 @@ export class RefereeTypeSelectComponent implements OnInit {
 
   constructor() {
     for (var n in RefereeType) {
-      if(typeof RefereeType[n] === 'string')
+      if (typeof RefereeType[n] === 'string')
         this.refereeTypes.push(RefereeType[n.toString()]);
     }
   }

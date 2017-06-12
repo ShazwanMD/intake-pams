@@ -8,7 +8,7 @@ import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
 import {Employment} from "../../employment.interface";
-import { EmploymentType } from "../../employment-type.enum";
+import {EmploymentType} from "../../employment-type.enum";
 
 
 @Component({
@@ -34,11 +34,11 @@ export class EmploymentEditorDialog implements OnInit {
 
 
   set employment(value: Employment) {
-    this._employment  = value;
+    this._employment = value;
     this.edit = true;
   }
 
-    set intakeApplication(value: IntakeApplication) {
+  set intakeApplication(value: IntakeApplication) {
     this._intakeApplication = value;
   }
 

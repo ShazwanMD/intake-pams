@@ -1,4 +1,4 @@
-import { Referee } from './../../referee.interface';
+import {Referee} from '../../referee.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -8,9 +8,7 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
-import { RefereeType } from "../../referee-type.enum";
-
-
+import {RefereeType} from "../../referee-type.enum";
 
 
 @Component({
@@ -37,7 +35,7 @@ export class RefereeEditorDialog implements OnInit {
 
 
   set referee(value: Referee) {
-    this._referee  = value;
+    this._referee = value;
     this.edit = true;
   }
 

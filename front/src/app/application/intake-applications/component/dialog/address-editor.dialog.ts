@@ -1,6 +1,6 @@
-import { CountryCode } from './../../../../common/country-codes/country-code.interface';
-import { StateCode } from './../../../../common/state-codes/state-code.interface';
-import { Address } from './../../address.interface';
+import {CountryCode} from '../../../../common/country-codes/country-code.interface';
+import {StateCode} from '../../../../common/state-codes/state-code.interface';
+import {Address} from '../../address.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -10,8 +10,7 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
-import { AddressType } from "../../address-type.enum";
-
+import {AddressType} from "../../address-type.enum";
 
 
 @Component({
@@ -24,7 +23,7 @@ export class AddressEditorDialog implements OnInit {
   private _intakeApplication: IntakeApplication;
   private editForm: FormGroup;
   private _address: Address;
-    private edit: boolean = false;
+  private edit: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -40,8 +39,8 @@ export class AddressEditorDialog implements OnInit {
     this._intakeApplication = value;
   }
 
-   set address(value: Address) {
-    this._address  = value;
+  set address(value: Address) {
+    this._address = value;
     this.edit = true;
   }
 

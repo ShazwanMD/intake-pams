@@ -1,5 +1,5 @@
-import { AddressEditorDialog } from './dialog/address-editor.dialog';
-import { Address } from './../address.interface';
+import {AddressEditorDialog} from './dialog/address-editor.dialog';
+import {Address} from '../address.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
@@ -34,21 +34,22 @@ export class AddressListComponent implements OnInit {
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
-              private dialog: MdDialog) {}
+              private dialog: MdDialog) {
+  }
 
   ngOnInit(): void {
     this.selectedRows = this.addresses.filter(value => value.selected);
   }
 
   create(): void {
-     this.showDialog(null);
+    this.showDialog(null);
   }
 
   edit(address: Address): void {
-     this.showDialog(address);
+    this.showDialog(address);
   }
 
-  delete(address:Address): void {
+  delete(address: Address): void {
     this.store.dispatch(this.actions.deleteAddress(this.intakeApplication, address));
   }
 
@@ -72,7 +73,7 @@ export class AddressListComponent implements OnInit {
     this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     if (address) this.editorDialogRef.componentInstance.address = address;
     this.editorDialogRef.afterClosed().subscribe(res => {
-        this.selectedRows = [];
+      this.selectedRows = [];
     });
   }
 }

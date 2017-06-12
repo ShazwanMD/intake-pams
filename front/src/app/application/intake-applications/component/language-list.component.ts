@@ -1,5 +1,5 @@
-import { LanguageEditorDialog } from './dialog/language-editor.dialog';
-import {Language} from './../language.interface';
+import {LanguageEditorDialog} from './dialog/language-editor.dialog';
+import {Language} from '../language.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
@@ -16,7 +16,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 export class LanguageListComponent implements OnInit {
 
-  
+
   @Input() languages: Language[];
   @Input() intakeApplication: IntakeApplication;
 
@@ -31,18 +31,19 @@ export class LanguageListComponent implements OnInit {
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
-              private dialog: MdDialog) {}
+              private dialog: MdDialog) {
+  }
 
   ngOnInit(): void {
     this.selectedRows = this.languages.filter(value => value.selected);
   }
 
   create(): void {
-     this.showDialog(null);
+    this.showDialog(null);
   }
 
   edit(language: Language): void {
-     this.showDialog(language);
+    this.showDialog(language);
   }
 
   delete(language: Language): void {
@@ -69,7 +70,7 @@ export class LanguageListComponent implements OnInit {
     this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     if (language) this.editorDialogRef.componentInstance.language = language;
     this.editorDialogRef.afterClosed().subscribe(res => {
-        this.selectedRows = [];
+      this.selectedRows = [];
     });
   }
 }

@@ -1,5 +1,5 @@
 <h2 md-dialog-title>Language</h2>
- <md-card-subtitle> Select level according to your Proficiency</md-card-subtitle>
+<md-card-subtitle> Select level according to your Proficiency</md-card-subtitle>
 <md-dialog-content>
   <form [formGroup]="editForm">
     <div layout="column" class="pad-right" flex>
@@ -34,7 +34,7 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-<button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
+  <button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
     {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>

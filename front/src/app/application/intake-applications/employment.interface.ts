@@ -10,5 +10,5 @@ export interface Employment extends MetaObject {
 // } fieldCode:EmploymentFieldCode;
 
   // transient
-  selected?:boolean;
+  selected?: boolean;
 }

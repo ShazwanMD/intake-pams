@@ -1,5 +1,5 @@
-import { DiplomaResult } from './diploma-result-interface';
-import { IntakeApplicationActions } from './intake-application.action';
+import {DiplomaResult} from './diploma-result-interface';
+import {IntakeApplicationActions} from './intake-application.action';
 import {Action} from '@ngrx/store';
 
 export type DiplomaResultListState = DiplomaResult[];

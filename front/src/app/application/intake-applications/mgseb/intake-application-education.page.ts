@@ -26,6 +26,6 @@ export class IntakeApplicationEducationPage implements OnInit {
   ngOnInit(): void {
   }
 
-  next(application:IntakeApplication , isValid: boolean) {
+  next(application: IntakeApplication, isValid: boolean) {
   }
 }

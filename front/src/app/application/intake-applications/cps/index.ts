@@ -1,4 +1,4 @@
-import { EmploymentTypeSelectComponent } from './../component/employment-type-select.component';
+import {EmploymentTypeSelectComponent} from '../component/employment-type-select.component';
 import {DiplomaResultListComponent} from '../component/diploma-result-list.component';
 import {DiplomaResultCreatorDialog} from '../component/dialog/diploma-result-creator.dialog';
 import {LanguageEditorDialog} from '../component/dialog/language-editor.dialog';

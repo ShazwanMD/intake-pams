@@ -25,16 +25,16 @@
 
           <div layout="row">
             <md-input-container flex>
-              <input mdInput placeholder="PhoneNo" formControlName="phoneNo"flex/>
+              <input mdInput placeholder="PhoneNo" formControlName="phoneNo" flex/>
             </md-input-container>
           </div>
 
-        <div layout="row" class="pad-top">
-      <pams-referee-type-select
-        [placeholder]="'RefereeType'"
-        [innerFormControl]="editForm.controls.refereeType">
-      </pams-referee-type-select>
-    </div>
+          <div layout="row" class="pad-top">
+            <pams-referee-type-select
+              [placeholder]="'RefereeType'"
+              [innerFormControl]="editForm.controls.refereeType">
+            </pams-referee-type-select>
+          </div>
 
         </div>
       </div>
@@ -42,7 +42,7 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
- <button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
+  <button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
     {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>

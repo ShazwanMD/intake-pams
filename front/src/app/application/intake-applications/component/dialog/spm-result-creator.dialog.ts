@@ -1,5 +1,5 @@
-import { SubjectCode } from './../../../../common/subject-codes/subject-code.interface';
-import { BachelorResult } from './../../bachelor-result-interface';
+import {SubjectCode} from '../../../../common/subject-codes/subject-code.interface';
+import {BachelorResult} from '../../bachelor-result-interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -9,9 +9,8 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
-import { ResultType } from "../../result-type.enum";
-import { SpmResult } from "../../spm-result.interface";
-
+import {ResultType} from "../../result-type.enum";
+import {SpmResult} from "../../spm-result.interface";
 
 
 @Component({
@@ -44,8 +43,8 @@ export class SpmResultCreatorDialog implements OnInit {
       year: 0,
       name: '',
       grade: '',
-      aggregate:0,
-       subjectCode: <SubjectCode>{},
+      aggregate: 0,
+      subjectCode: <SubjectCode>{},
 
       // resultType: ResultType.BACHELOR,
 

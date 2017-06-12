@@ -1,4 +1,4 @@
-import {Employment} from './../employment.interface';
+import {Employment} from '../employment.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
@@ -40,14 +40,14 @@ export class EmploymentListComponent implements OnInit {
   }
 
   create(): void {
-      this.showDialog(null);
-    }
+    this.showDialog(null);
+  }
 
   edit(employment: Employment): void {
-      this.showDialog(employment);
-    }
+    this.showDialog(employment);
+  }
 
-  delete(employment:Employment): void {
+  delete(employment: Employment): void {
     this.store.dispatch(this.actions.deleteEmployment(this.intakeApplication, employment));
   }
 
@@ -71,7 +71,7 @@ export class EmploymentListComponent implements OnInit {
     this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     if (employment) this.editorDialogRef.componentInstance.employment = employment;
     this.editorDialogRef.afterClosed().subscribe(res => {
-        this.selectedRows = [];
+      this.selectedRows = [];
     });
   }
 }

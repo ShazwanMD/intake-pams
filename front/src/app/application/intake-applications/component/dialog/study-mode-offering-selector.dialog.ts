@@ -8,9 +8,8 @@ import {IntakeApplication} from "../../intake-application.interface";
 import {Intake} from "../../../../policy/intakes/intake.interface";
 import {ProgramOffering} from "../../../../policy/intakes/program-offering.interface";
 import {Observable} from "rxjs/Observable";
-import { StudyModeOffering } from "../../../../policy/intakes/study-mode-offering.interface";
-import { MdDialogRef } from "@angular/material";
-
+import {StudyModeOffering} from "../../../../policy/intakes/study-mode-offering.interface";
+import {MdDialogRef} from "@angular/material";
 
 
 @Component({
@@ -47,7 +46,7 @@ export class StudyModeOfferingSelectorDialog implements OnInit {
     this.store.dispatch(this.actions.findStudyModeOfferingsByIntake(this._intake));
   }
 
- select(offering: StudyModeOffering) {
+  select(offering: StudyModeOffering) {
     console.log("selecting " + offering.studyMode.code);
     this.store.dispatch(this.actions.selectStudyModeOffering(this._intakeApplication, offering));
     this.dialog.close();

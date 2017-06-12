@@ -14,7 +14,7 @@ export class ResultTypeSelectComponent implements OnInit {
 
   constructor() {
     for (var n in ResultType) {
-      if(typeof ResultType[n] === 'string')
+      if (typeof ResultType[n] === 'string')
         this.resultTypes.push(ResultType[n.toString()]);
     }
   }

@@ -1,6 +1,6 @@
-import { Referee } from './referee.interface';
+import {Referee} from './referee.interface';
 import {Action} from '@ngrx/store';
-import { IntakeApplicationActions } from "./intake-application.action";
+import {IntakeApplicationActions} from "./intake-application.action";
 
 export type RefereeListState = Referee[];
 

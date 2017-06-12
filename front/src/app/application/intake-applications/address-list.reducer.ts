@@ -1,6 +1,6 @@
-import { Address } from './address.interface';
+import {Address} from './address.interface';
 import {Action} from '@ngrx/store';
-import { IntakeApplicationActions } from "./intake-application.action";
+import {IntakeApplicationActions} from "./intake-application.action";
 
 export type AddressListState = Address[];
 

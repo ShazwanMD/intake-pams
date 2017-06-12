@@ -11,7 +11,6 @@ import {Observable} from "rxjs/Observable";
 import {MdDialogRef} from "@angular/material";
 
 
-
 @Component({
   selector: 'pams-program-offering-selector',
   templateUrl: './program-offering-selector.dialog.html',

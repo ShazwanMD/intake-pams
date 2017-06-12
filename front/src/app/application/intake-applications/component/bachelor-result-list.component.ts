@@ -1,5 +1,5 @@
-import { BachelorResultCreatorDialog } from './dialog/bachelor-result-creator.dialog';
-import { BachelorResult } from './../bachelor-result-interface';
+import {BachelorResultCreatorDialog} from './dialog/bachelor-result-creator.dialog';
+import {BachelorResult} from '../bachelor-result-interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";

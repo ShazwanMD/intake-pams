@@ -14,7 +14,7 @@ export class EmploymentTypeSelectComponent implements OnInit {
 
   constructor() {
     for (var n in EmploymentType) {
-      if(typeof EmploymentType[n] === 'string')
+      if (typeof EmploymentType[n] === 'string')
         this.employmentTypes.push(EmploymentType[n.toString()]);
     }
   }

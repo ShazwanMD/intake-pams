@@ -1,6 +1,6 @@
-import { SpmResult } from './spm-result.interface';
+import {SpmResult} from './spm-result.interface';
 import {Action} from '@ngrx/store';
-import { IntakeApplicationActions } from "./intake-application.action";
+import {IntakeApplicationActions} from "./intake-application.action";
 
 export type SpmResultListState = SpmResult[];
 

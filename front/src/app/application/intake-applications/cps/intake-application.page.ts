@@ -1,13 +1,13 @@
-import {DiplomaResult} from './../diploma-result-interface';
-import {ReligionCode} from './../../../common/religion-codes/religion-code.interface';
-import {MaritalCode} from './../../../common/marital-codes/marital-code.interface';
-import {RaceCode} from './../../../common/race-codes/race-code.interface';
-import {GenderCode} from './../../../common/gender-codes/gender-code.interface';
-import {BachelorResult} from './../bachelor-result-interface';
-import {SpmResult} from './../spm-result.interface';
-import {Address} from './../address.interface';
-import {Referee} from './../referee.interface';
-import {Employment} from './../employment.interface';
+import {DiplomaResult} from '../diploma-result-interface';
+import {ReligionCode} from '../../../common/religion-codes/religion-code.interface';
+import {MaritalCode} from '../../../common/marital-codes/marital-code.interface';
+import {RaceCode} from '../../../common/race-codes/race-code.interface';
+import {GenderCode} from '../../../common/gender-codes/gender-code.interface';
+import {BachelorResult} from '../bachelor-result-interface';
+import {SpmResult} from '../spm-result.interface';
+import {Address} from '../address.interface';
+import {Referee} from '../referee.interface';
+import {Employment} from '../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -18,8 +18,8 @@ import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 import {Language} from "../language.interface";
 import {NationalityCode} from "../../../common/nationality-codes/nationality-code.interface";
-import { DisabilityCode } from "../../../common/disability-codes/disability-code.interface";
-import { EthnicityCode } from "../../../common/ethnicity-codes/ethnicity-code.interface";
+import {DisabilityCode} from "../../../common/disability-codes/disability-code.interface";
+import {EthnicityCode} from "../../../common/ethnicity-codes/ethnicity-code.interface";
 
 
 @Component({
@@ -29,17 +29,17 @@ import { EthnicityCode } from "../../../common/ethnicity-codes/ethnicity-code.in
 
 export class CpsIntakeApplicationPage implements OnInit {
 
-  private dummyData: any[]=[
-   {"subject":"Bahasa Malaysia", "grade":"A+"},
-   {"subject":"Bahasa Inggeris", "grade":"B"},
-   {"subject":"Geografi", "grade":"C+"},
-   {"subject":"Sejarah", "grade":"D+"},
-   {"subject":"Matematik", "grade":"A+"},
-   {"subject":"Matematik Tambahan", "grade":"A+"},
-   {"subject":"Fizik", "grade":"A+"},
-   {"subject":"Biologi", "grade":"B+"},
-   {"subject":"Kimia", "grade":"B+"},
- ];
+  private dummyData: any[] = [
+    {"subject": "Bahasa Malaysia", "grade": "A+"},
+    {"subject": "Bahasa Inggeris", "grade": "B"},
+    {"subject": "Geografi", "grade": "C+"},
+    {"subject": "Sejarah", "grade": "D+"},
+    {"subject": "Matematik", "grade": "A+"},
+    {"subject": "Matematik Tambahan", "grade": "A+"},
+    {"subject": "Fizik", "grade": "A+"},
+    {"subject": "Biologi", "grade": "B+"},
+    {"subject": "Kimia", "grade": "B+"},
+  ];
 
   private dummyColumns: any[] = [
     {name: 'subject', label: 'Subject'},
@@ -133,15 +133,15 @@ export class CpsIntakeApplicationPage implements OnInit {
       sponsorLetterAttached: false,
 
 
-      processingReceipt:false,
-      foreignResult:false,
-      educationResult:false,
-      academic:false,
-      financialLetter:false,
-      researchProposal:false,
-      bankStatement:false,
-      refereeForm:false,
-     
+      processingReceipt: false,
+      foreignResult: false,
+      educationResult: false,
+      academic: false,
+      financialLetter: false,
+      researchProposal: false,
+      bankStatement: false,
+      refereeForm: false,
+
     });
     this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }

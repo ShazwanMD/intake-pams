@@ -19,10 +19,10 @@ export class IntakeApplicationEffects {
   private intake$: Observable<Intake>;
 
   constructor(private actions$: Actions,
-    private intakeApplicationActions: IntakeApplicationActions,
-    private applicationService: ApplicationService,
-    private router: Router,
-    private store$: Store<ApplicationModuleState>) {
+              private intakeApplicationActions: IntakeApplicationActions,
+              private applicationService: ApplicationService,
+              private router: Router,
+              private store$: Store<ApplicationModuleState>) {
     this.intake$ = this.store$.select(...this.INTAKE);
   }
 
@@ -64,7 +64,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // PROGRAM_OFFERING
-  // ====================================================================================================    
+  // ====================================================================================================
 
   @Effect() findProgramOfferingsByIntake$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_PROGRAM_OFFERINGS_BY_INTAKE)
@@ -75,7 +75,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // SUPERVISOR_OFFERING
-  // ====================================================================================================    
+  // ====================================================================================================
 
   @Effect() findSupervisorOfferingsByIntake$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_INTAKE)
@@ -162,7 +162,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // REFEREE
-  // ====================================================================================================   
+  // ====================================================================================================
 
   @Effect() findRefereesByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_REFEREES_BY_INTAKE_APPLICATION)
@@ -200,7 +200,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // EMPLOYMENT
-  // ====================================================================================================      
+  // ====================================================================================================
 
   @Effect() findEmploymentsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION)
@@ -238,7 +238,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // LANGUAGE
-  // ====================================================================================================      
+  // ====================================================================================================
 
   @Effect() findLanguagesByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_LANGUAGES_BY_INTAKE_APPLICATION)
@@ -276,7 +276,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // ATTACHMENT
-  // ====================================================================================================      
+  // ====================================================================================================
 
   @Effect() findAttachmentsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_ATTACHMENTS_BY_INTAKE_APPLICATION)
@@ -296,7 +296,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // ADDRESS
-  // ====================================================================================================       
+  // ====================================================================================================
 
   @Effect() findAddressesByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_ADDRESSES_BY_INTAKE_APPLICATION)
@@ -334,7 +334,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // SPM_RESULT
-  // ====================================================================================================       
+  // ====================================================================================================
 
   @Effect() findSpmResultsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION)
@@ -354,7 +354,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // DIPLOMA_RESULT
-  // ==================================================================================================== 
+  // ====================================================================================================
 
   @Effect() findDiplomaResultsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION)
@@ -374,7 +374,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // BACHELOR_RESULT
-  // ====================================================================================================   
+  // ====================================================================================================
 
   @Effect() findBachelorResultsByIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION)
@@ -394,7 +394,7 @@ export class IntakeApplicationEffects {
 
   // ====================================================================================================
   // SELECT
-  // ====================================================================================================  
+  // ====================================================================================================
 
   @Effect() selectProgramOffering = this.actions$
     .ofType(IntakeApplicationActions.SELECT_PROGRAM_OFFERING)

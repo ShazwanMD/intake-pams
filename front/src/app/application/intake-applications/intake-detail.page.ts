@@ -32,13 +32,13 @@ export class IntakeDetailPage implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: { referenceNo: string }) => {
       let referenceNo: string = params.referenceNo;
-      if (null != referenceNo) 
-          this.store.dispatch(this.actions.findIntakeByReferenceNo(referenceNo));
+      if (null != referenceNo)
+        this.store.dispatch(this.actions.findIntakeByReferenceNo(referenceNo));
     });
   }
 
   apply(intake: Intake) {
-      this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntake(intake)));
+    this.intake$.subscribe(intake => this.store.dispatch(this.actions.applyIntake(intake)));
   }
 
 }

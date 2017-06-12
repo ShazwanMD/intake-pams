@@ -1,5 +1,5 @@
-import { BachelorResult } from './bachelor-result-interface';
-import { IntakeApplicationActions } from './intake-application.action';
+import {BachelorResult} from './bachelor-result-interface';
+import {IntakeApplicationActions} from './intake-application.action';
 import {Action} from '@ngrx/store';
 
 export type BachelorResultListState = BachelorResult[];

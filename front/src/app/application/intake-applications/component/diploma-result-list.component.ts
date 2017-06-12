@@ -1,12 +1,11 @@
-import { DiplomaResultCreatorDialog } from './dialog/diploma-result-creator.dialog';
-import { DiplomaResult } from './../diploma-result-interface';
+import {DiplomaResultCreatorDialog} from './dialog/diploma-result-creator.dialog';
+import {DiplomaResult} from '../diploma-result-interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {IntakeApplication} from "../intake-application.interface";
-
 
 
 @Component({

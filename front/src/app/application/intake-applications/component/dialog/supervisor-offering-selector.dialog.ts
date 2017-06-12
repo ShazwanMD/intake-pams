@@ -1,4 +1,4 @@
-import { SupervisorOffering } from './../../../../policy/intakes/supervisor-offering.interface';
+import {SupervisorOffering} from '../../../../policy/intakes/supervisor-offering.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -9,8 +9,7 @@ import {IntakeApplication} from "../../intake-application.interface";
 import {Intake} from "../../../../policy/intakes/intake.interface";
 import {ProgramOffering} from "../../../../policy/intakes/program-offering.interface";
 import {Observable} from "rxjs/Observable";
-import { MdDialogRef } from "@angular/material";
-
+import {MdDialogRef} from "@angular/material";
 
 
 @Component({
@@ -47,7 +46,7 @@ export class SupervisorOfferingSelectorDialog implements OnInit {
     this.store.dispatch(this.actions.findSupervisorOfferingsByIntake(this._intake));
   }
 
- select(offering: SupervisorOffering) {
+  select(offering: SupervisorOffering) {
     console.log("selecting " + offering.supervisorCode);
     this.store.dispatch(this.actions.selectSupervisorOffering(this._intakeApplication, offering));
     this.dialog.close();

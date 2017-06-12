@@ -1,4 +1,4 @@
-import { DiplomaResult } from './../../diploma-result-interface';
+import {DiplomaResult} from '../../diploma-result-interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -8,8 +8,7 @@ import {ApplicationModuleState} from "../../../index";
 import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
-import { ResultType } from "../../result-type.enum";
-
+import {ResultType} from "../../result-type.enum";
 
 
 @Component({

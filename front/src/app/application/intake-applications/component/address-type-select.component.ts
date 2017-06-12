@@ -14,7 +14,7 @@ export class AddressTypeSelectComponent implements OnInit {
 
   constructor() {
     for (var n in AddressType) {
-      if(typeof AddressType[n] === 'string')
+      if (typeof AddressType[n] === 'string')
         this.addressTypes.push(AddressType[n.toString()]);
     }
   }

@@ -5,8 +5,8 @@ export interface Education extends MetaObject {
   id: number;
   entryDate: Date;
   graduationDate: Date;
-  courseName : String;
-  schoolName : String;
+  courseName: String;
+  schoolName: String;
   current: boolean;
   startDate: Date;
   endDate: Date,

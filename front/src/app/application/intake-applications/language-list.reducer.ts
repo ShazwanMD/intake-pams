@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import { Language } from "./language.interface";
-import { IntakeApplicationActions } from "./intake-application.action";
+import {Language} from "./language.interface";
+import {IntakeApplicationActions} from "./intake-application.action";
 
 export type LanguageListState = Language[];
 

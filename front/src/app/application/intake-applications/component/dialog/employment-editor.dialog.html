@@ -25,16 +25,16 @@
 
           <div layout="row">
             <md-input-container flex>
-              <input mdInput type="date" placeholder="End Date" formControlName="endDate"flex/>
+              <input mdInput type="date" placeholder="End Date" formControlName="endDate" flex/>
             </md-input-container>
           </div>
 
-        <div layout="row" class="pad-top">
-      <pams-employment-type-select
-        [placeholder]="'Employment Status'"
-        [innerFormControl]="editForm.controls.employmentType">
-      </pams-employment-type-select>
-    </div>
+          <div layout="row" class="pad-top">
+            <pams-employment-type-select
+              [placeholder]="'Employment Status'"
+              [innerFormControl]="editForm.controls.employmentType">
+            </pams-employment-type-select>
+          </div>
 
         </div>
       </div>
@@ -42,9 +42,9 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-<button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
+  <button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
     {{edit ? 'Update' : 'Save'}}
   </button>
-  
+
 </md-dialog-actions>
 

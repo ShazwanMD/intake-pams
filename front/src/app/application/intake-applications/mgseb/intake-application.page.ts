@@ -1,11 +1,11 @@
-import { EthnicityCode } from './../../../common/ethnicity-codes/ethnicity-code.interface';
-import { DisabilityCode } from './../../../common/disability-codes/disability-code.interface';
-import { DiplomaResult } from './../diploma-result-interface';
-import { BachelorResult } from './../bachelor-result-interface';
-import { SpmResult } from './../spm-result.interface';
-import { Address } from './../address.interface';
-import {Referee} from './../referee.interface';
-import {Employment} from './../employment.interface';
+import {EthnicityCode} from '../../../common/ethnicity-codes/ethnicity-code.interface';
+import {DisabilityCode} from '../../../common/disability-codes/disability-code.interface';
+import {DiplomaResult} from '../diploma-result-interface';
+import {BachelorResult} from '../bachelor-result-interface';
+import {SpmResult} from '../spm-result.interface';
+import {Address} from '../address.interface';
+import {Referee} from '../referee.interface';
+import {Employment} from '../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -15,15 +15,12 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 import {Language} from "../language.interface";
-import { NationalityCode } from "../../../common/nationality-codes/nationality-code.interface";
-import { GenderCode } from "../../../common/gender-codes/gender-code.interface";
-import { MaritalCode } from "../../../common/marital-codes/marital-code.interface";
-import { RaceCode } from "../../../common/race-codes/race-code.interface";
-import { ReligionCode } from "../../../common/religion-codes/religion-code.interface";
-import { MdDialogRef, MdDialogConfig } from "@angular/material";
-
-
-
+import {NationalityCode} from "../../../common/nationality-codes/nationality-code.interface";
+import {GenderCode} from "../../../common/gender-codes/gender-code.interface";
+import {MaritalCode} from "../../../common/marital-codes/marital-code.interface";
+import {RaceCode} from "../../../common/race-codes/race-code.interface";
+import {ReligionCode} from "../../../common/religion-codes/religion-code.interface";
+import {MdDialogRef, MdDialogConfig} from "@angular/material";
 
 
 @Component({
@@ -35,23 +32,23 @@ export class MgsebIntakeApplicationPage implements OnInit {
   intakeApplication: any;
   dialog: any;
 
-private dummyData: any[]=[
-   {"subject":"Bahasa Malaysia", "grade":"A+"},
-   {"subject":"Bahasa Inggeris", "grade":"B"},
-   {"subject":"Geografi", "grade":"C+"},
-   {"subject":"Sejarah", "grade":"D+"},
-   {"subject":"Matematik", "grade":"A+"},
-   {"subject":"Matematik Tambahan", "grade":"A+"},
-   {"subject":"Fizik", "grade":"A+"},
-   {"subject":"Biologi", "grade":"B+"},
-   {"subject":"Kimia", "grade":"B+"},
- ];
+  private dummyData: any[] = [
+    {"subject": "Bahasa Malaysia", "grade": "A+"},
+    {"subject": "Bahasa Inggeris", "grade": "B"},
+    {"subject": "Geografi", "grade": "C+"},
+    {"subject": "Sejarah", "grade": "D+"},
+    {"subject": "Matematik", "grade": "A+"},
+    {"subject": "Matematik Tambahan", "grade": "A+"},
+    {"subject": "Fizik", "grade": "A+"},
+    {"subject": "Biologi", "grade": "B+"},
+    {"subject": "Kimia", "grade": "B+"},
+  ];
 
   private dummyColumns: any[] = [
     {name: 'subject', label: 'Subject'},
     {name: 'grade', label: 'Grade'},
   ];
-  
+
   private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
   private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
@@ -107,7 +104,7 @@ private dummyData: any[]=[
       name: '',
       credentialNo: '',
       birthDate: null,
-      passExpDate:null,
+      passExpDate: null,
       mobile: '',
       okuNo: '',
       email: '',
@@ -138,15 +135,15 @@ private dummyData: any[]=[
       verified: false,
       sponsored: false,
       selfSponsored: false,
-      processingReceipt:false,
-      foreignResult:false,
-      educationResult:false,
-      academic:false,
-      financialLetter:false,
-      researchProposal:false,
-      bankStatement:false,
-      refereeForm:false,
-      
+      processingReceipt: false,
+      foreignResult: false,
+      educationResult: false,
+      academic: false,
+      financialLetter: false,
+      researchProposal: false,
+      bankStatement: false,
+      refereeForm: false,
+
     });
     this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }

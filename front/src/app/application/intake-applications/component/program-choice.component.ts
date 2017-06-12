@@ -1,5 +1,5 @@
-import { SupervisorOfferingSelectorDialog } from './dialog/supervisor-offering-selector.dialog';
-import {Referee} from './../referee.interface';
+import {SupervisorOfferingSelectorDialog} from './dialog/supervisor-offering-selector.dialog';
+import {Referee} from '../referee.interface';
 import {Component, Input, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";

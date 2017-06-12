@@ -1,7 +1,7 @@
 import {MetaObject} from "../../core/meta-object.interface";
-import { RefereeType } from "./referee-type.enum";
+import {RefereeType} from "./referee-type.enum";
 export interface Referee extends MetaObject {
-  id:number;
+  id: number;
   name: string;
   officeAddrs: string;
   occupation: string;
@@ -9,5 +9,5 @@ export interface Referee extends MetaObject {
   refereeType: RefereeType;
 
 
-  selected?:boolean;
+  selected?: boolean;
 }

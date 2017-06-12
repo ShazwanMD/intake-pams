@@ -24,7 +24,7 @@ export class AttachmentListComponent implements OnInit {
   private columns: any[] = [
     {name: 'name', label: 'Name'},
     {name: 'size', label: 'Size'},
-    {name: 'attachmentType', label: 'Attachment Type' },
+    {name: 'attachmentType', label: 'Attachment Type'},
   ];
 
   constructor(private actions: IntakeApplicationActions,

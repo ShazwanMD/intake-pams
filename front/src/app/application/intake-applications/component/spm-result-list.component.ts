@@ -1,12 +1,11 @@
-import { SpmResultCreatorDialog } from './dialog/spm-result-creator.dialog';
-import { SpmResult } from './../spm-result.interface';
+import {SpmResultCreatorDialog} from './dialog/spm-result-creator.dialog';
+import {SpmResult} from '../spm-result.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {IntakeApplication} from "../intake-application.interface";
-
 
 
 @Component({
@@ -28,7 +27,7 @@ export class SpmResultListComponent implements OnInit {
     {name: 'year', label: 'Year'},
     // {name: 'aggregate', label: 'Aggregate'},
   ];
-  
+
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
@@ -36,10 +35,10 @@ export class SpmResultListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+
   }
 
-  delete(spmResult:SpmResult): void {
+  delete(spmResult: SpmResult): void {
     this.store.dispatch(this.actions.deleteAddress(this.intakeApplication, spmResult));
   }
 

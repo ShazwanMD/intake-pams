@@ -1,13 +1,11 @@
-import { Referee } from './../referee.interface';
-import { RefereeEditorDialog } from './dialog/referee-editor.dialog';
+import {Referee} from '../referee.interface';
+import {RefereeEditorDialog} from './dialog/referee-editor.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
 import {IntakeApplication} from "../intake-application.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-
-
 
 
 @Component({
@@ -18,7 +16,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 export class RefereeListComponent implements OnInit {
 
-  
+
   @Input() referees: Referee[];
   @Input() intakeApplication: IntakeApplication;
 
@@ -32,24 +30,25 @@ export class RefereeListComponent implements OnInit {
     {name: 'refereeType', label: 'Referee Type'},
   ];
 
- constructor(private actions: IntakeApplicationActions,
+  constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
-              private dialog: MdDialog) {}
+              private dialog: MdDialog) {
+  }
 
   ngOnInit(): void {
     this.selectedRows = this.referees.filter(value => value.selected);
   }
 
   create(): void {
-     this.showDialog(null);
+    this.showDialog(null);
   }
 
   edit(referee: Referee): void {
-     this.showDialog(referee);
+    this.showDialog(referee);
   }
 
-  delete(referee:Referee): void {
+  delete(referee: Referee): void {
     this.store.dispatch(this.actions.deleteReferee(this.intakeApplication, referee));
   }
 
@@ -73,7 +72,7 @@ export class RefereeListComponent implements OnInit {
     this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     if (referee) this.editorDialogRef.componentInstance.referee = referee;
     this.editorDialogRef.afterClosed().subscribe(res => {
-        this.selectedRows = [];
+      this.selectedRows = [];
     });
   }
 }

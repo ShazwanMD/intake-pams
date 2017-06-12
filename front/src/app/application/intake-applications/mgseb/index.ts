@@ -1,10 +1,10 @@
-import { SupervisorOfferingSelectorDialog } from './../component/dialog/supervisor-offering-selector.dialog';
-import { SupervisorCodeSelectComponent } from './../../../common/supervisor-codes/component/supervisor-code-select.component';
-import { CpsIntakeApplicationSubModule } from './../cps/index';
+import {SupervisorOfferingSelectorDialog} from '../component/dialog/supervisor-offering-selector.dialog';
+import {SupervisorCodeSelectComponent} from '../../../common/supervisor-codes/component/supervisor-code-select.component';
+import {CpsIntakeApplicationSubModule} from '../cps/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
-import {StudyMode} from './../study-mode.interface';
+import {StudyMode} from '../study-mode.interface';
 import {CovalentCoreModule} from '@covalent/core';
 import {appRoutes, appRoutingProviders} from "../../../app.routes";
 import {MgsebIntakeApplicationPage} from "./intake-application.page";
@@ -17,8 +17,8 @@ import {IntakeApplicationActions} from "../intake-application.action";
 import {CommonActions} from "../../../common/common.action";
 import {ProgramOfferingSelectComponent} from "../../../policy/intakes/component/program-offering-select.component";
 import {EmploymentListComponent} from "../component/employment-list.component";
-import { StudyModeOfferingSelectorDialog } from "../component/dialog/study-mode-offering-selector.dialog";
-import { StudyCenterChoiceComponent } from "../component/study-center-choice.component";
+import {StudyModeOfferingSelectorDialog} from "../component/dialog/study-mode-offering-selector.dialog";
+import {StudyCenterChoiceComponent} from "../component/study-center-choice.component";
 
 
 @NgModule({
@@ -34,10 +34,9 @@ import { StudyCenterChoiceComponent } from "../component/study-center-choice.com
   declarations: [
     MgsebIntakeApplicationPage,
     IntakeApplicationEducationPage,
-   
-   //components
-   StudyCenterChoiceComponent,
- 
+
+    //components
+    StudyCenterChoiceComponent,
 
 
     //dialogs
@@ -54,9 +53,7 @@ import { StudyCenterChoiceComponent } from "../component/study-center-choice.com
     ProgramOfferingSelectComponent,
     StudyModeOfferingSelectorDialog,
     SupervisorOfferingSelectorDialog,
-    
-  
-  
+
 
   ],
 })

@@ -1,4 +1,4 @@
-import {Attachment} from './../../attachment.interface';
+import {Attachment} from '../../attachment.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -42,7 +42,7 @@ export class AttachmentCreatorDialog implements OnInit {
     ;
   }
 
-  upload(attachmentHelper: AttachmentHelper, file:File) {
+  upload(attachmentHelper: AttachmentHelper, file: File) {
     this.store.dispatch(this.actions.addAttachment(this._intakeApplication, file, attachmentHelper.attachmentType));
     this.dialog.close();
   }

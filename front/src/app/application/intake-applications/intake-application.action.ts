@@ -69,7 +69,7 @@ export class IntakeApplicationActions {
 
   // ====================================================================================================
   // PROGRAM_OFFERING
-  // ====================================================================================================  
+  // ====================================================================================================
 
   static FIND_PROGRAM_OFFERINGS_BY_INTAKE = '[Intake] Find Program Offerings By Intake';
 
@@ -240,7 +240,7 @@ export class IntakeApplicationActions {
 
   // ====================================================================================================
   // EDUCATION
-  // ====================================================================================================  
+  // ====================================================================================================
 
   static FIND_EDUCATIONS_BY_INTAKE_APPLICATION = '[Intake Application] Find Educations';
 
@@ -263,7 +263,7 @@ export class IntakeApplicationActions {
 
   // ====================================================================================================
   // EMPLOYMENT
-  // ====================================================================================================  
+  // ====================================================================================================
 
   static FIND_EMPLOYMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Employments';
 
@@ -291,7 +291,7 @@ export class IntakeApplicationActions {
     console.log("addEmployment");
     return {
       type: IntakeApplicationActions.ADD_EMPLOYMENT,
-      payload: { application: application, employment: employment }
+      payload: {application: application, employment: employment}
     };
   }
 
@@ -310,7 +310,7 @@ export class IntakeApplicationActions {
   deleteEmployment(application, employment) {
     return {
       type: IntakeApplicationActions.DELETE_EMPLOYMENT,
-      payload: { application: application, employment: employment }
+      payload: {application: application, employment: employment}
     };
   }
 
@@ -328,7 +328,7 @@ export class IntakeApplicationActions {
   updateEmployment(application, employment): Action {
     return {
       type: IntakeApplicationActions.UPDATE_EMPLOYMENT,
-      payload: { application: application, employment: employment }
+      payload: {application: application, employment: employment}
     };
   }
 
@@ -371,7 +371,7 @@ export class IntakeApplicationActions {
     console.log("addLanguage");
     return {
       type: IntakeApplicationActions.ADD_LANGUAGE,
-      payload: { application: application, language: language }
+      payload: {application: application, language: language}
     };
   }
 
@@ -390,7 +390,7 @@ export class IntakeApplicationActions {
   deleteLanguage(application, language) {
     return {
       type: IntakeApplicationActions.DELETE_LANGUAGE,
-      payload: { application: application, language: language }
+      payload: {application: application, language: language}
     };
   }
 
@@ -408,7 +408,7 @@ export class IntakeApplicationActions {
   updateLanguage(application, language): Action {
     return {
       type: IntakeApplicationActions.UPDATE_LANGUAGE,
-      payload: { application: application, language: language }
+      payload: {application: application, language: language}
     };
   }
 
@@ -423,7 +423,7 @@ export class IntakeApplicationActions {
 
   // ====================================================================================================
   // REFEREE
-  // ====================================================================================================  
+  // ====================================================================================================
 
   static FIND_REFEREES_BY_INTAKE_APPLICATION = '[Intake Application] Find Referees';
 
@@ -451,7 +451,7 @@ export class IntakeApplicationActions {
     console.log("addReferee");
     return {
       type: IntakeApplicationActions.ADD_REFEREE,
-      payload: { application: application, referee: referee }
+      payload: {application: application, referee: referee}
     };
   }
 
@@ -470,7 +470,7 @@ export class IntakeApplicationActions {
   updateReferee(application, referee): Action {
     return {
       type: IntakeApplicationActions.UPDATE_REFEREE,
-      payload: { application: application, referee: referee }
+      payload: {application: application, referee: referee}
     };
   }
 
@@ -488,7 +488,7 @@ export class IntakeApplicationActions {
   deleteReferee(application, referee) {
     return {
       type: IntakeApplicationActions.DELETE_REFEREE,
-      payload: { application: application, referee: referee }
+      payload: {application: application, referee: referee}
     };
   }
 
@@ -504,7 +504,7 @@ export class IntakeApplicationActions {
 
   // ====================================================================================================
   // ATTACHMENT
-  // ====================================================================================================  
+  // ====================================================================================================
 
   static FIND_ATTACHMENTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Attachments';
 
@@ -532,7 +532,7 @@ export class IntakeApplicationActions {
     console.log("addAttachment");
     return {
       type: IntakeApplicationActions.ADD_ATTACHMENT,
-      payload: { application: application, file: file, attachmentType: attachmentType }
+      payload: {application: application, file: file, attachmentType: attachmentType}
     };
   }
 
@@ -551,7 +551,7 @@ export class IntakeApplicationActions {
   deleteAttachment(application, attachment) {
     return {
       type: IntakeApplicationActions.DELETE_ATTACHMENT,
-      payload: { application: application, attachment: attachment }
+      payload: {application: application, attachment: attachment}
     };
   }
 
@@ -567,7 +567,7 @@ export class IntakeApplicationActions {
 
   // ====================================================================================================
   // ADDRESS
-  // ====================================================================================================  
+  // ====================================================================================================
 
   static FIND_ADDRESSES_BY_INTAKE_APPLICATION = '[Intake Application] Find Addresses';
 
@@ -594,7 +594,7 @@ export class IntakeApplicationActions {
   addAddress(application, address) {
     return {
       type: IntakeApplicationActions.ADD_ADDRESS,
-      payload: { application: application, address: address }
+      payload: {application: application, address: address}
     };
   }
 
@@ -612,7 +612,7 @@ export class IntakeApplicationActions {
   deleteAddress(application, address) {
     return {
       type: IntakeApplicationActions.DELETE_ADDRESS,
-      payload: { application: application, address: address }
+      payload: {application: application, address: address}
     };
   }
 
@@ -630,7 +630,7 @@ export class IntakeApplicationActions {
   updateAddress(application, address): Action {
     return {
       type: IntakeApplicationActions.UPDATE_ADDRESS,
-      payload: { application: application, address: address }
+      payload: {application: application, address: address}
     };
   }
 
@@ -672,7 +672,7 @@ export class IntakeApplicationActions {
   addSpmResult(application, spmResult) {
     return {
       type: IntakeApplicationActions.ADD_SPM_RESULT,
-      payload: { application: application, spmResult: spmResult }
+      payload: {application: application, spmResult: spmResult}
     };
   }
 
@@ -690,7 +690,7 @@ export class IntakeApplicationActions {
   deleteSpmResult(intake, spmResult) {
     return {
       type: IntakeApplicationActions.DELETE_SPM_RESULT,
-      payload: { intake: intake, spmResult: spmResult }
+      payload: {intake: intake, spmResult: spmResult}
     };
   }
 
@@ -705,7 +705,7 @@ export class IntakeApplicationActions {
 
   // ====================================================================================================
   // DIPLOMA_RESULT
-  // ====================================================================================================  
+  // ====================================================================================================
 
   static FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Diploma Results';
 
@@ -731,7 +731,7 @@ export class IntakeApplicationActions {
   addDiplomaResult(application, diplomaResult) {
     return {
       type: IntakeApplicationActions.ADD_DIPLOMA_RESULT,
-      payload: { application: application, diplomaResult: diplomaResult }
+      payload: {application: application, diplomaResult: diplomaResult}
     };
   }
 
@@ -746,7 +746,7 @@ export class IntakeApplicationActions {
 
   // ====================================================================================================
   // BACHELOR_RESULT
-  // ====================================================================================================  
+  // ====================================================================================================
 
   static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Bachelor Results';
 
@@ -772,7 +772,7 @@ export class IntakeApplicationActions {
   addBachelorResult(application, bachelorResult) {
     return {
       type: IntakeApplicationActions.ADD_BACHELOR_RESULT,
-      payload: { application: application, bachelorResult: bachelorResult }
+      payload: {application: application, bachelorResult: bachelorResult}
     };
   }
 
@@ -790,7 +790,7 @@ export class IntakeApplicationActions {
   deleteBachelorResult(intake, bachelorResult) {
     return {
       type: IntakeApplicationActions.DELETE_BACHELOR_RESULT,
-      payload: { intake: intake, bachelorResult: bachelorResult }
+      payload: {intake: intake, bachelorResult: bachelorResult}
     };
   }
 
@@ -813,7 +813,7 @@ export class IntakeApplicationActions {
   addEducation(intake, education) {
     return {
       type: IntakeApplicationActions.ADD_EDUCATION,
-      payload: { intake: intake, education: education }
+      payload: {intake: intake, education: education}
     };
   }
 
@@ -831,7 +831,7 @@ export class IntakeApplicationActions {
   deleteEducation(intake, education) {
     return {
       type: IntakeApplicationActions.DELETE_EDUCATION,
-      payload: { intake: intake, education: education }
+      payload: {intake: intake, education: education}
     };
   }
 
@@ -855,7 +855,7 @@ export class IntakeApplicationActions {
   selectProgramOffering(application, offering) {
     return {
       type: IntakeApplicationActions.SELECT_PROGRAM_OFFERING,
-      payload: { application: application, offering: offering }
+      payload: {application: application, offering: offering}
     };
   }
 
@@ -873,7 +873,7 @@ export class IntakeApplicationActions {
   selectSupervisorOffering(application, offering) {
     return {
       type: IntakeApplicationActions.SELECT_SUPERVISOR_OFFERING,
-      payload: { application: application, offering: offering }
+      payload: {application: application, offering: offering}
     };
   }
 
@@ -891,7 +891,7 @@ export class IntakeApplicationActions {
   selectStudyModeOffering(application, offering) {
     return {
       type: IntakeApplicationActions.SELECT_STUDY_MODE_OFFERING,
-      payload: { application: application, offering: offering }
+      payload: {application: application, offering: offering}
     };
   }
 

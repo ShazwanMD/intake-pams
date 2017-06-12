@@ -14,7 +14,7 @@ export class AttachmentTypeSelectComponent implements OnInit {
 
   constructor() {
     for (var n in AttachmentType) {
-      if(typeof AttachmentType[n] === 'string')
+      if (typeof AttachmentType[n] === 'string')
         this.attachmentTypes.push(AttachmentType[n.toString()]);
     }
   }

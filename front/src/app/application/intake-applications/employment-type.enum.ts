@@ -1,5 +1,5 @@
 export enum EmploymentType {
-CURRENTLY_EMPLOYED,     //
-UNEMPLOYED, 
+  CURRENTLY_EMPLOYED,     //
+  UNEMPLOYED,
 }
 
