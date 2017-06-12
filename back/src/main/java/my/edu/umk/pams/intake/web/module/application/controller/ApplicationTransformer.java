@@ -61,6 +61,20 @@ public class ApplicationTransformer {
 		vo.setProcessingFeeAttached(e.isProcessingFeeAttached());
 		vo.setBankStatementAttached(e.isBankStatementAttached());
 
+		// address
+		vo.setMailingAddress1(e.getMailingAddress1());
+		vo.setMailingAddress2(e.getMailingAddress2());
+		vo.setMailingAddress3(e.getMailingAddress3());
+		vo.setMailingStateCode(commonTransformer.toStateCodeVo(e.getMailingStateCode()));
+		vo.setMailingCountryCode(commonTransformer.toCountryCodeVo(e.getMailingCountryCode()));
+		vo.setOfficialAddress1(e.getOfficialAddress1());
+		vo.setOfficialAddress2(e.getOfficialAddress2());
+		vo.setOfficialAddress3(e.getOfficialAddress3());
+		vo.setOfficialStateCode(commonTransformer.toStateCodeVo(e.getOfficialStateCode()));
+		vo.setOfficialCountryCode(commonTransformer.toCountryCodeVo(e.getOfficialCountryCode()));
+		
+		
+		
 		vo.setBidType(BidType.get(e.getBidType().ordinal()));
 		vo.setBidStatus(BidStatus.get(e.getBidStatus().ordinal()));
 				
@@ -108,25 +122,6 @@ public class ApplicationTransformer {
 		// todo(uda): more props
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
-	}
-
-	public Address toAddressVo(InAddress e) {
-		Address vo = new Address();
-		vo.setId(e.getId());
-		vo.setAddress1(e.getAddress1());
-		vo.setAddress2(e.getAddress2());
-		vo.setAddress3(e.getAddress3());
-		vo.setPostcode(e.getPostCode());
-		vo.setCountryCode(commonTransformer.toCountryCodeVo(e.getCountryCode()));
-		vo.setStateCode(commonTransformer.toStateCodeVo(e.getStateCode()));
-		vo.setAddressType(AddressType.get(e.getType().ordinal()));
-		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
-		return vo;
-	}
-
-	public List<Address> toAddressVos(List<InAddress> e) {
-		List<Address> vos = e.stream().map((e1) -> toAddressVo(e1)).collect(Collectors.toList());
-		return vos;
 	}
 
 	public Contact toContactVo(InContact e) {

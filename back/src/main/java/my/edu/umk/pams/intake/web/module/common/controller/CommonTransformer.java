@@ -223,6 +223,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public StateCode toStateCodeVo(InStateCode e) {
+        if(null == e) return null;
         StateCode vo = new StateCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());

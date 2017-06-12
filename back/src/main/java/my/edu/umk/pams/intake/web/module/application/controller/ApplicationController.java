@@ -184,8 +184,6 @@ public class ApplicationController {
                                                           @RequestBody IntakeApplication vo) {
         dummyLogin();
 
-
-        // todo: more properties
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         application.setResearchTitle(vo.getResearchTitle());
         application.setName(vo.getName());
@@ -200,6 +198,7 @@ public class ApplicationController {
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
 
+        // check list
         application.setSpmResultAttached(vo.getSpmResultAttached());
         application.setStpmResultAttached(vo.getStpmResultAttached());
         application.setDiplomaResultAttached(vo.getDiplomaResultAttached());
@@ -213,6 +212,26 @@ public class ApplicationController {
         application.setResearchProposalAttached(vo.getResearchProposalAttached());
         application.setSponsorLetterAttached(vo.getSponsorLetterAttached());
 
+        // mailing address
+        application.setMailingAddress1(vo.getMailingAddress1());
+        application.setMailingAddress2(vo.getMailingAddress2());
+        application.setMailingAddress3(vo.getMailingAddress3());
+        if (null != vo.getMailingStateCode())
+            application.setMailingStateCode(commonService.findStateCodeById(vo.getMailingStateCode().getId()));
+        if (null != vo.getMailingCountryCode())
+            application.setMailingCountryCode(commonService.findCountryCodeById(vo.getMailingCountryCode().getId()));
+
+        // official address
+        application.setOfficialAddress1(vo.getOfficialAddress1());
+        application.setOfficialAddress2(vo.getOfficialAddress2());
+        application.setOfficialAddress3(vo.getOfficialAddress3());
+        if (null != vo.getOfficialStateCode())
+            application.setOfficialStateCode(commonService.findStateCodeById(vo.getOfficialStateCode().getId()));
+        if (null != vo.getOfficialCountryCode())
+            application.setOfficialCountryCode(commonService.findCountryCodeById(vo.getOfficialCountryCode().getId()));
+
+
+        // one to many
         if (null != vo.getGenderCode())
             application.setGenderCode(commonService.findGenderCodeById(vo.getGenderCode().getId()));
         if (null != vo.getReligionCode())
@@ -540,15 +559,6 @@ public class ApplicationController {
         applicationService.deleteReferee(application, referee);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
-
-//        InAddress address = (InAddress) applicationService.findAddressById(id);
-//        address.setAddress1(vo.getAddress1());
-//        address.setAddress2(vo.getAddress2());
-//        address.setAddress3(vo.getAddress3());
-//        address.setPostCode(vo.getPostcode());
-//        address.setType(InAddressType.get(vo.getAddressType().ordinal()));
-//        address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
-//        address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
 
     // ====================================================================================================
     // BACHELOR RESULT

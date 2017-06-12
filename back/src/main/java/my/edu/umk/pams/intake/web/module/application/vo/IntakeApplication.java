@@ -3,14 +3,7 @@ package my.edu.umk.pams.intake.web.module.application.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import my.edu.umk.pams.intake.web.module.common.vo.CountryCode;
-import my.edu.umk.pams.intake.web.module.common.vo.EthnicityCode;
-import my.edu.umk.pams.intake.web.module.common.vo.GenderCode;
-import my.edu.umk.pams.intake.web.module.common.vo.MaritalCode;
-import my.edu.umk.pams.intake.web.module.common.vo.NationalityCode;
-import my.edu.umk.pams.intake.web.module.common.vo.RaceCode;
-import my.edu.umk.pams.intake.web.module.common.vo.ReligionCode;
+import my.edu.umk.pams.intake.web.module.common.vo.*;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
@@ -46,6 +39,9 @@ public class IntakeApplication extends MetaObject {
     private Boolean paid;
     private Boolean sponsored;
     private Boolean selfSponsored;
+    private Boolean verified;
+
+    // check list
     private Boolean spmResultAttached;
     private Boolean stpmResultAttached;
     private Boolean diplomaResultAttached;
@@ -58,12 +54,24 @@ public class IntakeApplication extends MetaObject {
     private Boolean bankStatementAttached;
     private Boolean refereeFormAttached;
     private Boolean sponsorLetterAttached;
-    private Boolean verified;
+
+    // address
+    private String mailingAddress1;
+    private String mailingAddress2;
+    private String mailingAddress3;
+    private StateCode mailingStateCode;
+    private CountryCode mailingCountryCode;
+    private String officialAddress1;
+    private String officialAddress2;
+    private String officialAddress3;
+    private StateCode officialStateCode;
+    private CountryCode officialCountryCode;
+
 
     private ProgramOffering programSelection;
     private SupervisorOffering supervisorSelection;
     private StudyModeOffering studyModeSelection;
-    
+
     private GenderCode genderCode;
     private NationalityCode nationalityCode;
     private RaceCode raceCode;
@@ -148,9 +156,9 @@ public class IntakeApplication extends MetaObject {
     public void setMobile(String mobile) {
         this.mobile = mobile;
     }
-      
 
-	public String getEmail() {
+
+    public String getEmail() {
         return email;
     }
 
@@ -181,17 +189,16 @@ public class IntakeApplication extends MetaObject {
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
-    
 
     public Date getPassExpDate() {
-		return passExpDate;
-	}
+        return passExpDate;
+    }
 
-	public void setPassExpDate(Date passExpDate) {
-		this.passExpDate = passExpDate;
-	}
+    public void setPassExpDate(Date passExpDate) {
+        this.passExpDate = passExpDate;
+    }
 
-	public Boolean getPaid() {
+    public Boolean getPaid() {
         return paid;
     }
 
@@ -216,107 +223,188 @@ public class IntakeApplication extends MetaObject {
     }
 
     public Boolean getSpmResultAttached() {
-		return spmResultAttached;
-	}
+        return spmResultAttached;
+    }
 
-	public void setSpmResultAttached(Boolean spmResultAttached) {
-		this.spmResultAttached = spmResultAttached;
-	}
-	
-	public Boolean getStpmResultAttached() {
-		return stpmResultAttached;
-	}
+    public void setSpmResultAttached(Boolean spmResultAttached) {
+        this.spmResultAttached = spmResultAttached;
+    }
 
-	public void setStpmResultAttached(Boolean stpmResultAttached) {
-		this.stpmResultAttached = stpmResultAttached;
-	}
+    public Boolean getStpmResultAttached() {
+        return stpmResultAttached;
+    }
 
-	public Boolean getDiplomaResultAttached() {
-		return diplomaResultAttached;
-	}
+    public void setStpmResultAttached(Boolean stpmResultAttached) {
+        this.stpmResultAttached = stpmResultAttached;
+    }
 
-	public void setDiplomaResultAttached(Boolean diplomaResultAttached) {
-		this.diplomaResultAttached = diplomaResultAttached;
-	}
+    public Boolean getDiplomaResultAttached() {
+        return diplomaResultAttached;
+    }
 
-	public Boolean getBachelorResultAttached() {
-		return bachelorResultAttached;
-	}
+    public void setDiplomaResultAttached(Boolean diplomaResultAttached) {
+        this.diplomaResultAttached = diplomaResultAttached;
+    }
 
-	public void setBachelorResultAttached(Boolean bachelorResultAttached) {
-		this.bachelorResultAttached = bachelorResultAttached;
-	}
+    public Boolean getBachelorResultAttached() {
+        return bachelorResultAttached;
+    }
 
-	public Boolean getToeflResultAttached() {
-		return toeflResultAttached;
-	}
+    public void setBachelorResultAttached(Boolean bachelorResultAttached) {
+        this.bachelorResultAttached = bachelorResultAttached;
+    }
 
-	public void setToeflResultAttached(Boolean toeflResultAttached) {
-		this.toeflResultAttached = toeflResultAttached;
-	}
+    public Boolean getToeflResultAttached() {
+        return toeflResultAttached;
+    }
 
-	public Boolean getIeltsResultAttached() {
-		return ieltsResultAttached;
-	}
+    public void setToeflResultAttached(Boolean toeflResultAttached) {
+        this.toeflResultAttached = toeflResultAttached;
+    }
 
-	public void setIeltsResultAttached(Boolean ieltsResultAttached) {
-		this.ieltsResultAttached = ieltsResultAttached;
-	}
+    public Boolean getIeltsResultAttached() {
+        return ieltsResultAttached;
+    }
 
-	public Boolean getLanguageResultAttached() {
-		return languageResultAttached;
-	}
+    public void setIeltsResultAttached(Boolean ieltsResultAttached) {
+        this.ieltsResultAttached = ieltsResultAttached;
+    }
 
-	public void setLanguageResultAttached(Boolean languageResultAttached) {
-		this.languageResultAttached = languageResultAttached;
-	}
+    public Boolean getLanguageResultAttached() {
+        return languageResultAttached;
+    }
 
-	public Boolean getProcessingFeeAttached() {
-		return processingFeeAttached;
-	}
+    public void setLanguageResultAttached(Boolean languageResultAttached) {
+        this.languageResultAttached = languageResultAttached;
+    }
 
-	public void setProcessingFeeAttached(Boolean processingFeeAttached) {
-		this.processingFeeAttached = processingFeeAttached;
-	}
+    public Boolean getProcessingFeeAttached() {
+        return processingFeeAttached;
+    }
 
-	public Boolean getResearchProposalAttached() {
-		return researchProposalAttached;
-	}
+    public void setProcessingFeeAttached(Boolean processingFeeAttached) {
+        this.processingFeeAttached = processingFeeAttached;
+    }
 
-	public void setResearchProposalAttached(Boolean researchProposalAttached) {
-		this.researchProposalAttached = researchProposalAttached;
-	}
+    public Boolean getResearchProposalAttached() {
+        return researchProposalAttached;
+    }
 
-	public Boolean getBankStatementAttached() {
-		return bankStatementAttached;
-	}
+    public void setResearchProposalAttached(Boolean researchProposalAttached) {
+        this.researchProposalAttached = researchProposalAttached;
+    }
 
-	public void setBankStatementAttached(Boolean bankStatementAttached) {
-		this.bankStatementAttached = bankStatementAttached;
-	}
+    public Boolean getBankStatementAttached() {
+        return bankStatementAttached;
+    }
 
-	public Boolean getRefereeFormAttached() {
-		return refereeFormAttached;
-	}
+    public void setBankStatementAttached(Boolean bankStatementAttached) {
+        this.bankStatementAttached = bankStatementAttached;
+    }
 
-	public void setRefereeFormAttached(Boolean refereeFormAttached) {
-		this.refereeFormAttached = refereeFormAttached;
-	}
+    public Boolean getRefereeFormAttached() {
+        return refereeFormAttached;
+    }
 
-	public Boolean getSponsorLetterAttached() {
-		return sponsorLetterAttached;
-	}
+    public void setRefereeFormAttached(Boolean refereeFormAttached) {
+        this.refereeFormAttached = refereeFormAttached;
+    }
 
-	public void setSponsorLetterAttached(Boolean sponsorLetterAttached) {
-		this.sponsorLetterAttached = sponsorLetterAttached;
-	}
+    public Boolean getSponsorLetterAttached() {
+        return sponsorLetterAttached;
+    }
 
-	public Boolean getVerified() {
+    public void setSponsorLetterAttached(Boolean sponsorLetterAttached) {
+        this.sponsorLetterAttached = sponsorLetterAttached;
+    }
+
+    public Boolean getVerified() {
         return verified;
     }
 
     public void setVerified(Boolean verified) {
         this.verified = verified;
+    }
+
+
+    public String getMailingAddress1() {
+        return mailingAddress1;
+    }
+
+    public void setMailingAddress1(String mailingAddress1) {
+        this.mailingAddress1 = mailingAddress1;
+    }
+
+    public String getMailingAddress2() {
+        return mailingAddress2;
+    }
+
+    public void setMailingAddress2(String mailingAddress2) {
+        this.mailingAddress2 = mailingAddress2;
+    }
+
+    public String getMailingAddress3() {
+        return mailingAddress3;
+    }
+
+    public void setMailingAddress3(String mailingAddress3) {
+        this.mailingAddress3 = mailingAddress3;
+    }
+
+    public StateCode getMailingStateCode() {
+        return mailingStateCode;
+    }
+
+    public void setMailingStateCode(StateCode mailingStateCode) {
+        this.mailingStateCode = mailingStateCode;
+    }
+
+    public CountryCode getMailingCountryCode() {
+        return mailingCountryCode;
+    }
+
+    public void setMailingCountryCode(CountryCode mailingCountryCode) {
+        this.mailingCountryCode = mailingCountryCode;
+    }
+
+    public String getOfficialAddress1() {
+        return officialAddress1;
+    }
+
+    public void setOfficialAddress1(String officialAddress1) {
+        this.officialAddress1 = officialAddress1;
+    }
+
+    public String getOfficialAddress2() {
+        return officialAddress2;
+    }
+
+    public void setOfficialAddress2(String officialAddress2) {
+        this.officialAddress2 = officialAddress2;
+    }
+
+    public String getOfficialAddress3() {
+        return officialAddress3;
+    }
+
+    public void setOfficialAddress3(String officialAddress3) {
+        this.officialAddress3 = officialAddress3;
+    }
+
+    public StateCode getOfficialStateCode() {
+        return officialStateCode;
+    }
+
+    public void setOfficialStateCode(StateCode officialStateCode) {
+        this.officialStateCode = officialStateCode;
+    }
+
+    public CountryCode getOfficialCountryCode() {
+        return officialCountryCode;
+    }
+
+    public void setOfficialCountryCode(CountryCode officialCountryCode) {
+        this.officialCountryCode = officialCountryCode;
     }
 
     public BidType getBidType() {
@@ -374,57 +462,57 @@ public class IntakeApplication extends MetaObject {
     public void setIntake(Intake intake) {
         this.intake = intake;
     }
-    
-	public GenderCode getGenderCode() {
-		return genderCode;
-	}
 
-	public void setGenderCode(GenderCode genderCode) {
-		this.genderCode = genderCode;
-	}
-	
+    public GenderCode getGenderCode() {
+        return genderCode;
+    }
+
+    public void setGenderCode(GenderCode genderCode) {
+        this.genderCode = genderCode;
+    }
+
 
     public NationalityCode getNationalityCode() {
-		return nationalityCode;
-	}
+        return nationalityCode;
+    }
 
-	public void setNationalityCode(NationalityCode nationalityCode) {
-		this.nationalityCode = nationalityCode;
-	}
+    public void setNationalityCode(NationalityCode nationalityCode) {
+        this.nationalityCode = nationalityCode;
+    }
 
-	public RaceCode getRaceCode() {
-		return raceCode;
-	}
+    public RaceCode getRaceCode() {
+        return raceCode;
+    }
 
-	public void setRaceCode(RaceCode raceCode) {
-		this.raceCode = raceCode;
-	}
+    public void setRaceCode(RaceCode raceCode) {
+        this.raceCode = raceCode;
+    }
 
-	public EthnicityCode getEthnicityCode() {
-		return ethnicityCode;
-	}
+    public EthnicityCode getEthnicityCode() {
+        return ethnicityCode;
+    }
 
-	public void setEthnicityCode(EthnicityCode ethnicityCode) {
-		this.ethnicityCode = ethnicityCode;
-	}
+    public void setEthnicityCode(EthnicityCode ethnicityCode) {
+        this.ethnicityCode = ethnicityCode;
+    }
 
-	public MaritalCode getMaritalCode() {
-		return maritalCode;
-	}
+    public MaritalCode getMaritalCode() {
+        return maritalCode;
+    }
 
-	public void setMaritalCode(MaritalCode maritalCode) {
-		this.maritalCode = maritalCode;
-	}
+    public void setMaritalCode(MaritalCode maritalCode) {
+        this.maritalCode = maritalCode;
+    }
 
-	public ReligionCode getReligionCode() {
-		return religionCode;
-	}
+    public ReligionCode getReligionCode() {
+        return religionCode;
+    }
 
-	public void setReligionCode(ReligionCode religionCode) {
-		this.religionCode = religionCode;
-	}
+    public void setReligionCode(ReligionCode religionCode) {
+        this.religionCode = religionCode;
+    }
 
-	@JsonCreator
+    @JsonCreator
     public static IntakeApplication create(String jsonString) {
         IntakeApplication o = null;
         try {

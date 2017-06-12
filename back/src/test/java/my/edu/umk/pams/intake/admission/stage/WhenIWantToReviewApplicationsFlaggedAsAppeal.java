@@ -42,8 +42,6 @@ public class WhenIWantToReviewApplicationsFlaggedAsAppeal extends Stage <WhenIWa
 		for (InIntakeApplication intakeApplication : applications) {
 			intakeApplication.getName();
 			LOG.debug(intakeApplication.getName());
-			intakeApplication.getAddresses();
-			//LOG.debug(intakeApplication.getAddresses());
 			intakeApplication.getEmail();
 			LOG.debug(intakeApplication.getEmail());
 			

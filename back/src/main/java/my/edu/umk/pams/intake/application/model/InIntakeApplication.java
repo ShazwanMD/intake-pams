@@ -69,14 +69,6 @@ public interface InIntakeApplication extends InMetaObject {
     InMaritalCode getMaritalCode();
 
     void setMaritalCode(InMaritalCode maritalCode);
-    
-    InCountryCode getCountryCode();
-
-    void setCountryCode(InCountryCode countryCode);
-    
-    InStateCode getStateCode();
-
-    void setStateCode(InStateCode stateCode);
 
     String getReason();
 
@@ -162,6 +154,47 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setBidResponse(InBidResponse response);
 
+    // address
+    String getMailingAddress1();
+
+    void setMailingAddress1(String mailingAddresss1);
+
+    String getMailingAddress2();
+
+    void setMailingAddress2(String mailingAddresss2);
+
+    String getMailingAddress3();
+
+    void setMailingAddress3(String mailingAddresss3);
+
+    InCountryCode getMailingCountryCode();
+
+    void setMailingCountryCode(InCountryCode mailingCountryCode);
+
+    InStateCode getMailingStateCode();
+
+    void setMailingStateCode(InStateCode mailingStateCode);
+
+    String getOfficialAddress1();
+
+    void setOfficialAddress1(String officialAddresss1);
+
+    String getOfficialAddress2();
+
+    void setOfficialAddress2(String officialAddresss2);
+
+    String getOfficialAddress3();
+
+    void setOfficialAddress3(String officialAddresss3);
+
+    InCountryCode getOfficialCountryCode();
+
+    void setOfficialCountryCode(InCountryCode officialCountryCode);
+
+    InStateCode getOfficialStateCode();
+
+    void setOfficialStateCode(InStateCode officialStateCode);
+
     InBankCode getBankCode();
 
     void setBankCode(InBankCode bankCode);
@@ -169,10 +202,6 @@ public interface InIntakeApplication extends InMetaObject {
     InNationalityCode getNationalityCode();
 
     void setNationalityCode(InNationalityCode nationality);
-
-    InDependencyCode getDependencyCode();
-
-    void setDependencyCode(InDependencyCode dependence);
 
     InResidencyCode getResidencyCode();
 
