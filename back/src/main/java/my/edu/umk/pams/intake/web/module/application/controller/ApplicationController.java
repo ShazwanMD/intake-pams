@@ -184,7 +184,7 @@ public class ApplicationController {
                                                           @RequestBody IntakeApplication vo) {
         dummyLogin();
 
-        
+
         // todo: more properties
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         application.setResearchTitle(vo.getResearchTitle());
@@ -199,7 +199,7 @@ public class ApplicationController {
         application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
-        
+
         application.setSpmResultAttached(vo.getSpmResultAttached());
         application.setStpmResultAttached(vo.getStpmResultAttached());
         application.setDiplomaResultAttached(vo.getDiplomaResultAttached());
@@ -212,19 +212,19 @@ public class ApplicationController {
         application.setRefereeFormAttached(vo.getRefereeFormAttached());
         application.setResearchProposalAttached(vo.getResearchProposalAttached());
         application.setSponsorLetterAttached(vo.getSponsorLetterAttached());
-        
-        if(null != vo.getGenderCode());
-        application.setGenderCode(commonService.findGenderCodeById(vo.getGenderCode().getId()));
-        if(null != vo.getReligionCode());
-        application.setReligionCode(commonService.findReligionCodeById(vo.getReligionCode().getId()));
-        if(null != vo.getEthnicityCode());
-        application.setEthnicityCode(commonService.findEthnicityCodeById(vo.getEthnicityCode().getId()));
-        if(null != vo.getMaritalCode());
-        application.setMaritalCode(commonService.findMaritalCodeById(vo.getMaritalCode().getId()));
-        if(null != vo.getRaceCode());
-        application.setRaceCode(commonService.findRaceCodeById(vo.getRaceCode().getId()));
-        if(null != vo.getNationalityCode());
-        application.setNationalityCode(commonService.findNationalityCodeById(vo.getNationalityCode().getId()));
+
+        if (null != vo.getGenderCode())
+            application.setGenderCode(commonService.findGenderCodeById(vo.getGenderCode().getId()));
+        if (null != vo.getReligionCode())
+            application.setReligionCode(commonService.findReligionCodeById(vo.getReligionCode().getId()));
+        if (null != vo.getEthnicityCode())
+            application.setEthnicityCode(commonService.findEthnicityCodeById(vo.getEthnicityCode().getId()));
+        if (null != vo.getMaritalCode())
+            application.setMaritalCode(commonService.findMaritalCodeById(vo.getMaritalCode().getId()));
+        if (null != vo.getRaceCode())
+            application.setRaceCode(commonService.findRaceCodeById(vo.getRaceCode().getId()));
+        if (null != vo.getNationalityCode())
+            application.setNationalityCode(commonService.findNationalityCodeById(vo.getNationalityCode().getId()));
 
         applicationService.updateIntakeApplication(application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -319,7 +319,7 @@ public class ApplicationController {
         applicationService.deleteEmployment(application, employment);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakeApplications/{referenceNo}/employments/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Boolean> updateEmployment(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Employment vo) {
         dummyLogin();
@@ -361,11 +361,11 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakeApplications/{referenceNo}/languages/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Boolean> updateLanguage(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Language vo) {
         dummyLogin();
-        
+
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InLanguage language = (InLanguage) applicationService.findLanguageById(id);
         language.setOral(vo.getOral());
@@ -569,11 +569,11 @@ public class ApplicationController {
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakeApplications/{referenceNo}/addresses/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Boolean> updateAddress(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Address vo) {
         dummyLogin();
-        
+
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InAddress address = (InAddress) applicationService.findAddressById(id);
         address.setAddress1(vo.getAddress1());
