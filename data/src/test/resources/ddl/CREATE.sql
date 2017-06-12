@@ -17,7 +17,7 @@
         PHONE varchar(255),
         primary key (ID)
     );
-
+  
     create table IN_APCN (
         ID int8 not null,
         primary key (ID)
