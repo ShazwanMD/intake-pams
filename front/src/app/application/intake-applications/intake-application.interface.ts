@@ -85,8 +85,10 @@ export interface IntakeApplication extends MetaObject {
   religionCode: ReligionCode;
   genderCode: GenderCode;
   raceCode: RaceCode;
-  stateCode: StateCode;
-  countryCode: CountryCode;
+  mailingStateCode: StateCode;
+  mailingCountryCode: CountryCode;
+  officialStateCode: StateCode;
+  officialCountryCode: CountryCode;
   programSelection?: ProgramOffering;
   supervisorSelection?: SupervisorOffering;
   studyModeSelection?: StudyModeOffering;

@@ -1,3 +1,5 @@
+import { CountryCode } from './../../../common/country-codes/country-code.interface';
+import { StateCode } from './../../../common/state-codes/state-code.interface';
 import {EthnicityCode} from '../../../common/ethnicity-codes/ethnicity-code.interface';
 import {DisabilityCode} from '../../../common/disability-codes/disability-code.interface';
 import {DiplomaResult} from '../diploma-result-interface';
@@ -136,6 +138,10 @@ export class MgsebIntakeApplicationPage implements OnInit {
       ethnicityCode: <EthnicityCode>{},
       religionCode: <ReligionCode>{},
       nationalityCode: <NationalityCode>{},
+      mailingStateCode: <StateCode>{},
+      mailingCountryCode: <CountryCode>{},
+      officialStateCode: <StateCode>{},
+      officialCountryCode: <CountryCode>{},
       verified: false,
       sponsored: false,
       selfSponsored: false,
