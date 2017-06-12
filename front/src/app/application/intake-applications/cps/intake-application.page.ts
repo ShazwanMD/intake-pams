@@ -109,6 +109,15 @@ export class CpsIntakeApplicationPage implements OnInit {
       fax: '',
       age: 0,
       passExpDate: null,
+      mailingAddress1: '',
+      mailingAddress2: '',
+      mailingAddress3: '',
+      mailingPostcode: '',
+      officialAddress1: '',
+      officialAddress2: '',
+      officialAddress3: '',
+      officialPostcode: '',
+      
 
       genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},
