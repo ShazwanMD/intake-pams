@@ -2,7 +2,6 @@ import { SupervisorOffering } from './../policy/intakes/supervisor-offering.inte
 import { DiplomaResult } from './intake-applications/diploma-result-interface';
 import {BachelorResult} from './intake-applications/bachelor-result-interface';
 import {SpmResult} from './intake-applications/spm-result.interface';
-import {Address} from './intake-applications/address.interface';
 import {Referee} from './intake-applications/referee.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -43,7 +42,6 @@ import {Intake} from "../policy/intakes/intake.interface";
 import {ProgramOffering} from "../policy/intakes/program-offering.interface";
 import {IntakeApplication} from "./intake-applications/intake-application.interface";
 import {refereeListReducer, RefereeListState} from "./intake-applications/referee-list.reducer";
-import {addressListReducer, AddressListState} from "./intake-applications/address-list.reducer";
 import {spmResultListReducer, SpmResultListState} from "./intake-applications/spm-result-list.reducer";
 import {StudyModeOffering} from "../policy/intakes/study-mode-offering.interface";
 import {bachelorResultListReducer, BachelorResultListState} from "./intake-applications/bachelor-result-list.reducer";
@@ -60,7 +58,6 @@ export interface ApplicationModuleState {
   intake: IntakeState;
   employments: EmploymentListState;
   languages: LanguageListState;
-  addresses: AddressListState;
   referees: RefereeListState;
   attachments: AttachmentListState;
   programOfferings: IntakeProgramOfferingListState;
@@ -81,7 +78,6 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   languages: <Language[]>[],
   referees: <Referee[]>[],
   attachments: <Attachment[]>[],
-  addresses: <Address[]>[],
   spmResults: <SpmResult[]>[],
   bachelorResults: <BachelorResult[]>[],
   diplomaResults: <DiplomaResult[]>[],
@@ -100,7 +96,6 @@ export const applicationModuleReducers = {
   languages: languageListReducer,
   referees: refereeListReducer,
   attachments: attachmentListReducer,
-  addresses: addressListReducer,
   spmResults: spmResultListReducer,
   bachelorResults: bachelorResultListReducer,
   diplomaResults: diplomaResultListReducer,

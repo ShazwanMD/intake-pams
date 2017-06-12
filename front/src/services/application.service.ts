@@ -291,42 +291,6 @@ export class ApplicationService {
       .map((res: Response) => <SpmResult[]>res.json());
   }
 
-  // ====================================================================================================
-  // ADDRESS
-  // ====================================================================================================
-
-  findAddressesByIntakeApplication(application: IntakeApplication): Observable<Address[]> {
-    console.log("findAddressesByIntakeApplication");
-    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/addresses")
-      .map((res: Response) => <Address[]>res.json());
-  }
-
-  addAddress(application: IntakeApplication, address: Address): Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses', JSON.stringify(address), options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
-
-  updateAddress(application: IntakeApplication, address: Address): Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id, JSON.stringify(address), options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
-
-
-  deleteAddress(application: IntakeApplication, address: Address): Observable<String> {
-    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/addresses/' + address.id)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
-
 
   // ====================================================================================================
   // BACHELOR_RESULT

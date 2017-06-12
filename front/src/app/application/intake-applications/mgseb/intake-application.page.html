@@ -17,8 +17,7 @@
         <md-tab>
           <template md-tab-label>Detail Of Candidate</template>
           <td-expansion-panel label="Program Choices">
-            <pams-study-center-choice
-              [intakeApplication]="intakeApplication$ | async">
+            <pams-study-center-choice [intakeApplication]="intakeApplication$ | async">
             </pams-study-center-choice>
           </td-expansion-panel>
 
@@ -53,24 +52,18 @@
                 </div>
 
                 <div layout="row" class="pad-top">
-                  <pams-nationality-code-select
-                    [placeholder]="'Nationality'"
-                    [innerFormControl]="applicationForm.controls.nationalityCode">
+                  <pams-nationality-code-select [placeholder]="'Nationality'" [innerFormControl]="applicationForm.controls.nationalityCode">
                   </pams-nationality-code-select>
                 </div>
 
 
                 <div layout="row" class="pad-top">
-                  <pams-race-code-select
-                    [placeholder]="'Race'"
-                    [innerFormControl]="applicationForm.controls.raceCode">
+                  <pams-race-code-select [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode">
                   </pams-race-code-select>
                 </div>
 
                 <div layout="row" class="pad-top">
-                  <pams-marital-code-select
-                    [placeholder]="'Marital'"
-                    [innerFormControl]="applicationForm.controls.maritalCode">
+                  <pams-marital-code-select [placeholder]="'Marital'" [innerFormControl]="applicationForm.controls.maritalCode">
                   </pams-marital-code-select>
                 </div>
 
@@ -104,23 +97,17 @@
                 </div>
 
                 <div layout="row" class="pad-top">
-                  <pams-ethnicity-code-select
-                    [placeholder]="'Ethnicity'"
-                    [innerFormControl]="applicationForm.controls.ethnicityCode">
+                  <pams-ethnicity-code-select [placeholder]="'Ethnicity'" [innerFormControl]="applicationForm.controls.ethnicityCode">
                   </pams-ethnicity-code-select>
                 </div>
 
                 <div layout="row" class="pad-top">
-                  <pams-gender-code-select
-                    [placeholder]="'Gender'"
-                    [innerFormControl]="applicationForm.controls.genderCode">
+                  <pams-gender-code-select [placeholder]="'Gender'" [innerFormControl]="applicationForm.controls.genderCode">
                   </pams-gender-code-select>
                 </div>
 
                 <div layout="row" class="pad-top">
-                  <pams-religion-code-select
-                    [placeholder]="'Religion'"
-                    [innerFormControl]="applicationForm.controls.religionCode">
+                  <pams-religion-code-select [placeholder]="'Religion'" [innerFormControl]="applicationForm.controls.religionCode">
                   </pams-religion-code-select>
                 </div>
               </div>
@@ -130,23 +117,105 @@
 
 
         <md-tab>
-          <md-card>
-            <template md-tab-label>Address Information</template>
-            <td-expansion-panel label="Address Information">
-              <pams-address-list
-                [intakeApplication]="intakeApplication$ | async"
-                [addresses]="addresses$ | async"></pams-address-list>
-            </td-expansion-panel>
-          </md-card>
+          <template md-tab-label>Address Information</template>
+          <td-expansion-panel label="Address Detail">
+            <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+              <div layout="column" class="pad-right" flex>
+
+                Mailing Address
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Address 1" formControlName="mailingAddress1" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Address 2" formControlName="mailingAddress2" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Address 3" formControlName="mailingAddress3" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Postcode" formControlName="mailingPostcode" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-top">
+                  <pams-state-code-select [placeholder]="'State'" [innerFormControl]="applicationForm.controls.stateCode">
+                  </pams-state-code-select>
+                </div>
+
+                <div layout="column" class="pad-right" flex>
+
+                  <div layout="row" class="pad-right" flex>
+                    <pams-country-code-select [placeholder]="'Country'" [innerFormControl]="applicationForm.controls.countryCode">
+                    </pams-country-code-select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+              <div layout="column" class="pad-right" flex>
+
+
+                Official Address
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Address 1" formControlName="officialAddress1" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Address 2" formControlName="officialAddress2" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Address 3" formControlName="officialAddress3" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-bottom" flex>
+                  <md-input-container flex>
+                    <input mdInput placeholder="Postcode" formControlName="officialPostcode" flex/>
+                  </md-input-container>
+                </div>
+
+                <div layout="row" class="pad-top">
+                  <pams-state-code-select [placeholder]="'State'" [innerFormControl]="applicationForm.controls.stateCode">
+                  </pams-state-code-select>
+                </div>
+
+                <div layout="column" class="pad-right" flex>
+
+                  <div layout="row" class="pad-top" flex>
+                    <pams-country-code-select [placeholder]="'Country'" [innerFormControl]="applicationForm.controls.countryCode">
+                    </pams-country-code-select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td-expansion-panel>
         </md-tab>
 
         <md-tab>
           <md-card>
             <template md-tab-label>Working Experience</template>
             <td-expansion-panel label="Working Experience">
-              <pams-employment-list
-                [intakeApplication]="intakeApplication$ | async"
-                [employments]="employments$ | async"></pams-employment-list>
+              <pams-employment-list [intakeApplication]="intakeApplication$ | async" [employments]="employments$ | async"></pams-employment-list>
             </td-expansion-panel>
           </md-card>
         </md-tab>
@@ -210,15 +279,8 @@
               </div>
               <md-divider></md-divider>
               <div class="inset">
-                <td-data-table
-                  [data]="dummyData"
-                  [columns]="dummyColumns"
-                  [sortBy]="summary"
-                  [sortOrder]="ASC"
-                  [sortable]="false"
-                  [multiple]="false"
-                  [selectable]="false"
-                  (rowSelect)="view.emit($event)" dense>
+                <td-data-table [data]="dummyData" [columns]="dummyColumns" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                  [selectable]="false" (rowSelect)="view.emit($event)" dense>
                   <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                     <div layout="row">
                       <span flex>{{value}}</span>
@@ -264,9 +326,7 @@
 
 
             <td-expansion-panel label="Proficiency in Malay/English Language">
-              <pams-language-list
-                [intakeApplication]="intakeApplication$ | async"
-                [languages]="languages$ | async">
+              <pams-language-list [intakeApplication]="intakeApplication$ | async" [languages]="languages$ | async">
               </pams-language-list>
 
             </td-expansion-panel>
@@ -415,9 +475,7 @@
               </td-expansion-panel>
 
               <td-expansion-panel label="Attachments">
-                <pams-attachment-list
-                  [intakeApplication]="intakeApplication$ | async"
-                  [attachments]="attachments$ | async">
+                <pams-attachment-list [intakeApplication]="intakeApplication$ | async" [attachments]="attachments$ | async">
                 </pams-attachment-list>
               </td-expansion-panel>
             </div>
@@ -433,9 +491,8 @@
             <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
               <md-checkbox>
                 <div layout="column" flex>
-                  I declare that the statements made in this application form are correct. I am fully aware that UMK
-                  reserves the right to reject my application or terminate my candidature if the information given
-                  above is incorrect or incomplete.
+                  I declare that the statements made in this application form are correct. I am fully aware that UMK reserves the right to
+                  reject my application or terminate my candidature if the information given above is incorrect or incomplete.
                 </div>
               </md-checkbox>
             </div>
