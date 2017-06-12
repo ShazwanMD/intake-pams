@@ -731,6 +731,8 @@
         GENDER_CODE_ID int8,
         INTAKE_ID int8,
         MARITAL_CODE_ID int8,
+        STATE_CODE_ID int8,
+        COUNTRY_CODE_ID int8,
         NATIONALITY_CODE_ID int8,
         PROGRAM_SELECTION_ID int8,
         RACE_CODE_ID int8,
@@ -1650,6 +1652,16 @@
         add constraint FK5974F5A4F03DAF6
         foreign key (MARITAL_CODE_ID)
         references IN_MRTL_CODE;
+        
+    alter table IN_INTK_APLN
+        add constraint FK5974F5A4F03BBF3
+        foreign key (COUNTRY_CODE_ID)
+        references IN_CNTY_CODE;
+        
+    alter table IN_INTK_APLN
+        add constraint FK5974F5A4F03BAC6
+        foreign key (STATE_CODE_ID)
+        references IN_STTE_CODE;        
 
     alter table IN_INTK_APLN
         add constraint FK5974F5AACBE2306

@@ -184,6 +184,14 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @ManyToOne(targetEntity = InMaritalCodeImpl.class)
     @JoinColumn(name = "MARITAL_CODE_ID")
     private InMaritalCode maritalCode;
+    
+    @ManyToOne(targetEntity = InCountryCodeImpl.class)
+    @JoinColumn(name = "COUNTRY_CODE_ID")
+    private InCountryCode countryCode;
+    
+    @ManyToOne(targetEntity = InStateCodeImpl.class)
+    @JoinColumn(name = "STATE_CODE_ID")
+    private InStateCode stateCode;
 
     // todo(ashraf): do we need this?
     @ManyToOne(targetEntity = InDependencyCodeImpl.class)
@@ -650,8 +658,28 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setMaritalCode(InMaritalCode maritalCode) {
         this.maritalCode = maritalCode;
     }
+    
+    @Override
+    public InCountryCode getCountryCode() {
+		return countryCode;
+	}
 
     @Override
+	public void setCountryCode(InCountryCode countryCode) {
+		this.countryCode = countryCode;
+	}
+
+    @Override
+	public InStateCode getStateCode() {
+		return stateCode;
+	}
+
+    @Override
+	public void setStateCode(InStateCode stateCode) {
+		this.stateCode = stateCode;
+	}
+
+	@Override
     public InNationalityCode getNationalityCode() {
         return nationalityCode;
     }

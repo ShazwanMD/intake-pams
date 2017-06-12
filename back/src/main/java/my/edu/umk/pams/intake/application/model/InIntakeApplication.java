@@ -69,6 +69,14 @@ public interface InIntakeApplication extends InMetaObject {
     InMaritalCode getMaritalCode();
 
     void setMaritalCode(InMaritalCode maritalCode);
+    
+    InCountryCode getCountryCode();
+
+    void setCountryCode(InCountryCode countryCode);
+    
+    InStateCode getStateCode();
+
+    void setStateCode(InStateCode stateCode);
 
     String getReason();
 

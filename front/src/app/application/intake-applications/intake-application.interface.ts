@@ -1,3 +1,5 @@
+import { CountryCode } from './../../common/country-codes/country-code.interface';
+import { StateCode } from './../../common/state-codes/state-code.interface';
 import {EthnicityCode} from '../../common/ethnicity-codes/ethnicity-code.interface';
 import {DisabilityCode} from '../../common/disability-codes/disability-code.interface';
 import {NationalityCode} from '../../common/nationality-codes/nationality-code.interface';
@@ -74,6 +76,8 @@ export interface IntakeApplication extends MetaObject {
   religionCode: ReligionCode;
   genderCode: GenderCode;
   raceCode: RaceCode;
+  stateCode: StateCode;
+  countryCode: CountryCode;
   programSelection?: ProgramOffering;
   supervisorSelection?: SupervisorOffering;
   studyModeSelection?: StudyModeOffering;
