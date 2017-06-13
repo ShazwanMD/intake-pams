@@ -651,6 +651,58 @@ public class ApplicationController {
         List<InResultItem> resultItems = applicationService.findResultItems(result);
         return new ResponseEntity<List<ResultItem>>(applicationTransformer.toResultItemVos(resultItems), HttpStatus.OK);
     }
+    
+
+    // ====================================================================================================
+    // RESULT
+    // ====================================================================================================
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/results", method = RequestMethod.GET)
+    public ResponseEntity<List<Result>> findResultsByIntakeApplication(
+            @PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InResult> results = applicationService.findResults(application);
+        return new ResponseEntity<List<Result>>(applicationTransformer.toResultVos(results),
+                HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/results", method = RequestMethod.POST)
+    public ResponseEntity<String> addResult(@PathVariable String referenceNo, @RequestBody Result vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InResult result = new InResultImpl();
+        result.setResultType(InResultType.get(vo.getResultType().ordinal()));
+     // result.setItems(vo.getResultItem());
+        applicationService.addResult(application, result);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/results/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Boolean> updateResult(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Result vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InResult result = applicationService.findResultById(id);
+        result.setResultType(InResultType.get(vo.getResultType().ordinal()));
+     // result.setItems(vo.getResultItem());
+        applicationService.updateResult(application, result);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/results/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> deleteResult(@PathVariable String referenceNo, @PathVariable Long id) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InResult result = applicationService.findResultById(id);
+        applicationService.deleteResult(application, result);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+    
+
+   
+    
 
     // ====================================================================================================
     // PRIVATE METHODS
