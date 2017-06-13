@@ -139,6 +139,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     // ====================================================================================================
 
     void addResult(InIntakeApplication application, InResult result, InUser user);
+    
+    void updateResult(InIntakeApplication application, InResult result, InUser user);
 
     void deleteResult(InIntakeApplication application, InResult result, InUser user);
 

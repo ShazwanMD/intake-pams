@@ -82,6 +82,10 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setPaid(Boolean paid);
 
+    Boolean isDeclared();
+
+    void setDeclared(Boolean declared);    
+    
     Boolean isSponsored();
 
     void setSponsored(Boolean sponsored);

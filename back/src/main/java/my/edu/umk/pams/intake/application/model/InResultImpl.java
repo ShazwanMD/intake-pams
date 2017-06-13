@@ -1,5 +1,9 @@
 package my.edu.umk.pams.intake.application.model;
 
+import my.edu.umk.pams.intake.common.model.InEducationSectorCode;
+import my.edu.umk.pams.intake.common.model.InEducationSectorCodeImpl;
+import my.edu.umk.pams.intake.common.model.InGradeCode;
+import my.edu.umk.pams.intake.common.model.InGradeCodeImpl;
 import my.edu.umk.pams.intake.core.InMetadata;
 
 import javax.persistence.*;
@@ -25,13 +29,25 @@ public class InResultImpl implements InResult {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "RESULT_TYPE")
     private InResultType resultType;
+    
+    @NotNull
+    @Column(name = "NAME", nullable = false)
+    private String name;
+    
+    @NotNull
+    @Column(name = "FIELD", nullable = false)
+    private String field;
+    
+    @Column(name = "GRADUATION_YEAR")
+    private String graduationYear;
+    
+    @ManyToOne(targetEntity = InGradeCodeImpl.class)
+    @JoinColumn(name = "GRADE_CODE_ID")
+    private InGradeCode gradeCode;
 
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
     private InIntakeApplication application;
-
-    @OneToMany(targetEntity = InResultItemImpl.class, mappedBy = "result")
-    private List<InResultItem> items;
 
     @Embedded
     private InMetadata metadata;
@@ -54,8 +70,49 @@ public class InResultImpl implements InResult {
     public void setResultType(InResultType resultType) {
         this.resultType = resultType;
     }
+    
+    @Override
+    public String getName() {
+		return name;
+	}
 
     @Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+    @Override
+	public String getField() {
+		return field;
+	}
+
+    @Override
+	public void setField(String field) {
+		this.field = field;
+	}
+
+    @Override
+	public String getGraduationYear() {
+		return graduationYear;
+	}
+
+    @Override
+	public void setGraduationYear(String graduationYear) {
+		this.graduationYear = graduationYear;
+	}
+
+    
+    @Override
+	public InGradeCode getGradeCode() {
+		return gradeCode;
+	}
+
+    @Override
+	public void setGradeCode(InGradeCode gradeCode) {
+		this.gradeCode = gradeCode;
+	}
+
+	@Override
     public InIntakeApplication getApplication() {
         return application;
     }
@@ -65,15 +122,6 @@ public class InResultImpl implements InResult {
         this.application = application;
     }
 
-    @Override
-    public List<InResultItem> getItems() {
-        return items;
-    }
-
-    @Override
-    public void setItems(List<InResultItem> items) {
-        this.items = items;
-    }
 
     @Override
     public InMetadata getMetadata() {

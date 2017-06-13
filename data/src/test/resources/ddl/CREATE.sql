@@ -690,6 +690,7 @@
         OFFICIAL_POSTCODE varchar(255),
         OKU_NO varchar(255),
         PAID boolean,
+        DECLARED boolean,
         PASSPORT_EXPDATE timestamp,
         PASSPORT_NO varchar(255),
         PAYMENT_SOURCE_NO varchar(255),
@@ -1083,6 +1084,7 @@
         M_ID int8,
         M_ST int4,
         RESULT_TYPE int4,
+        GRADE_CODE_ID int8,
         APPLICATION_ID int8,
         primary key (ID)
     );
@@ -1800,6 +1802,11 @@
         add constraint FKA022266337A6AAA6
         foreign key (APPLICATION_ID)
         references IN_INTK_APLN;
+        
+    alter table IN_RSLT
+        add constraint FKA022266337A6ABC4
+        foreign key (GRADE_CODE_ID)
+        references IN_GRDE_CODE;   
 
     alter table IN_RSLT_ITEM
         add constraint FKAB928B6FA6138B7C

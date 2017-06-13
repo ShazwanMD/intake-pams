@@ -91,6 +91,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "PAID")
     private Boolean paid = false;
+    
+    @Column(name = "DECLARED")
+    private Boolean declared = false;
 
     @Column(name = "SPONSORED")
     private Boolean sponsored = false;
@@ -642,8 +645,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setBidResponse(InBidResponse bidResponse) {
         this.bidResponse = bidResponse;
     }
+    
+    public Boolean isDeclared() {
+		return declared;
+	}
 
-    public String getMailingAddress1() {
+	public void setDeclared(Boolean declared) {
+		this.declared = declared;
+	}
+
+	public String getMailingAddress1() {
         return mailingAddress1;
     }
 

@@ -2,7 +2,7 @@ import {ReligionCode} from './../../../common/religion-codes/religion-code.inter
 import {MaritalCode} from './../../../common/marital-codes/marital-code.interface';
 import {RaceCode} from './../../../common/race-codes/race-code.interface';
 import {GenderCode} from './../../../common/gender-codes/gender-code.interface';
-import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef,Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
@@ -27,6 +27,9 @@ import { ApplicationModuleState } from "../../../application/index";
 })
 
 export class ApplicantProfileDialog implements OnInit {
+    
+    //private editorForm: FormGroup;
+    @Input() intakeApplication: IntakeApplication;
 
   private dummyData: any[]=[
    {"subject":"Bahasa Malaysia", "grade":"A+"},
@@ -82,50 +85,7 @@ export class ApplicantProfileDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { referenceNo: string }) => {
-      let referenceNo: string = params.referenceNo;
+      let referenceNo: string = this.intakeApplication.referenceNo;
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
-    });
-
-    this.applicationForm = this.formBuilder.group(<IntakeApplication>{
-      id: null,
-      referenceNo: '',
-      researchTitle: '',
-      rank: 0,
-      merit: 0,
-      name: '',
-      credentialNo: '',
-      birthDate: null,
-      mobile: '',
-      okuNo: '',
-      email: '',
-      phone: '',
-      fax: '',
-      age: 0,
-      passExpDate: null,
-
-      genderCode: <GenderCode>{},
-      maritalCode: <MaritalCode>{},
-      disabilityCode: <DisabilityCode>{},
-      ethnicityCode: <EthnicityCode>{},
-      raceCode: <RaceCode>{},
-      religionCode: <ReligionCode>{},
-      nationalityCode: <NationalityCode>{},
-      verified: false,
-      sponsored: false,
-      selfSponsored: false,
-      spmResultAttached: false,
-
-      processingReceipt:false,
-      foreignResult:false,
-      educationResult:false,
-      academic:false,
-      financialLetter:false,
-      researchProposal:false,
-      bankStatement:false,
-      refereeForm:false,
-     
-    });
-    this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
   }
 }

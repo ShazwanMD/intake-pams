@@ -155,6 +155,7 @@
               <div layout="column" class="pad-right" flex>
                 
                 Official Address
+                
 
                 <div layout="row" class="pad-bottom" flex>
                   <md-input-container flex>
@@ -457,9 +458,10 @@
           <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
             <div class="push-top-sm"></div>
             <md-card-title>Declaration</md-card-title>
+
             <md-card-subtitle>Submit Application for Intake September 2017</md-card-subtitle>
             <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-              <md-checkbox>
+              <md-checkbox formControlName="declared">
                 <div layout="column" flex>
                   I declare that the statements made in this application form are correct. I am fully aware that UMK reserves the right to
                   reject my application or terminate my candidature if the information given above is incorrect or incomplete.

@@ -30,6 +30,10 @@ public interface ApplicationService {
     void rejectIntakeApplication(InIntake intake, InIntakeApplication application);
 
     void addResult(InIntakeApplication application, InResult result);
+    
+    void updateResult(InIntakeApplication application, InResult result);
+    
+    void deleteResult(InIntakeApplication application, InResult result);
 
     void addResultItem(InIntakeApplication application, InResult result, InResultItem item);
 
