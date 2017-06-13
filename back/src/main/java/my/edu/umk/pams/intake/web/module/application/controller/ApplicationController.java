@@ -197,6 +197,7 @@ public class ApplicationController {
         application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
+        application.setPaid(vo.getPaid());
 
         // check list
         application.setSpmResultAttached(vo.getSpmResultAttached());
