@@ -8,7 +8,7 @@ import {RegistrationModuleState} from "./index";
 import {RegistrationActions} from "./registration.action";
 
 @Component({
-  selector: 'pams-verification',
+  selector: 'pams-verification-page',
   templateUrl: './verification.page.html',
 })
 
