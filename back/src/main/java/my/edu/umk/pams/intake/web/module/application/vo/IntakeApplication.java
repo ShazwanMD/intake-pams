@@ -37,6 +37,7 @@ public class IntakeApplication extends MetaObject {
     private Date birthDate;
 
     private Boolean paid;
+    private Boolean declared;
     private Boolean sponsored;
     private Boolean selfSponsored;
     private Boolean verified;
@@ -59,11 +60,13 @@ public class IntakeApplication extends MetaObject {
     private String mailingAddress1;
     private String mailingAddress2;
     private String mailingAddress3;
+    private String mailingPostcode;
     private StateCode mailingStateCode;
     private CountryCode mailingCountryCode;
     private String officialAddress1;
     private String officialAddress2;
     private String officialAddress3;
+    private String officialPostcode;
     private StateCode officialStateCode;
     private CountryCode officialCountryCode;
 
@@ -205,8 +208,16 @@ public class IntakeApplication extends MetaObject {
     public void setPaid(Boolean paid) {
         this.paid = paid;
     }
+    
+    public Boolean getDeclared() {
+		return declared;
+	}
 
-    public Boolean getSponsored() {
+	public void setDeclared(Boolean declared) {
+		this.declared = declared;
+	}
+
+	public Boolean getSponsored() {
         return sponsored;
     }
 
@@ -391,7 +402,23 @@ public class IntakeApplication extends MetaObject {
         this.officialAddress3 = officialAddress3;
     }
 
-    public StateCode getOfficialStateCode() {
+    public String getMailingPostcode() {
+		return mailingPostcode;
+	}
+
+	public void setMailingPostcode(String mailingPostcode) {
+		this.mailingPostcode = mailingPostcode;
+	}
+
+	public String getOfficialPostcode() {
+		return officialPostcode;
+	}
+
+	public void setOfficialPostcode(String officialPostcode) {
+		this.officialPostcode = officialPostcode;
+	}
+
+	public StateCode getOfficialStateCode() {
         return officialStateCode;
     }
 

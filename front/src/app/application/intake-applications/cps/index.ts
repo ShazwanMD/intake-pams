@@ -40,7 +40,7 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     CovalentCoreModule.forRoot(),
     CovalentFileModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
-    IntakeSubModule.forRoot(),
+    //IntakeSubModule.forRoot(),
     CommonModule.forRoot(),
   ],
   declarations: [

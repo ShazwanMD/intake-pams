@@ -10,7 +10,6 @@ import {Observable} from "rxjs/Observable";
 import {environment} from "../environments/environment";
 import {Education} from "../app/application/intake-applications/education.interface";
 import {Employment} from "../app/application/intake-applications/employment.interface";
-import {Address} from "../app/application/intake-applications/address.interface";
 import {Intake} from "../app/policy/intakes/intake.interface";
 import {ProgramOffering} from "../app/policy/intakes/program-offering.interface";
 import {SpmResult} from './../app/application/intake-applications/spm-result.interface';

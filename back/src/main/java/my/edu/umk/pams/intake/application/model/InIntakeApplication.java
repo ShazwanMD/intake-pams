@@ -82,6 +82,10 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setPaid(Boolean paid);
 
+    Boolean isDeclared();
+
+    void setDeclared(Boolean declared);    
+    
     Boolean isSponsored();
 
     void setSponsored(Boolean sponsored);
@@ -186,6 +190,14 @@ public interface InIntakeApplication extends InMetaObject {
     String getOfficialAddress3();
 
     void setOfficialAddress3(String officialAddresss3);
+    
+    String getOfficialPostcode();
+
+    void setOfficialPostcode(String officialPostcode);
+    
+    String getMailingPostcode();
+
+    void setMailingPostcode(String mailingPostcode);
 
     InCountryCode getOfficialCountryCode();
 

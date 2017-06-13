@@ -39,8 +39,6 @@ public class InEmploymentImpl implements InEmployment {
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "EMPLOYMENY_TYPE")
     private InEmploymentType employmentType;
-    
-    
 
     @NotNull
     @Column(name = "ACTIVE", nullable = false)

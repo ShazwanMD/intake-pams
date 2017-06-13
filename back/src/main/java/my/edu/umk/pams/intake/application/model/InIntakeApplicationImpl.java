@@ -91,6 +91,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "PAID")
     private Boolean paid = false;
+    
+    @Column(name = "DECLARED")
+    private Boolean declared = false;
 
     @Column(name = "SPONSORED")
     private Boolean sponsored = false;
@@ -146,7 +149,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "MAILING_ADDRESS3")
     private String mailingAddress3;
-
+    
+    @Column(name = "MAILING_POSTCODE")
+    private String mailingPostcode;
+    
     @ManyToOne(targetEntity = InCountryCodeImpl.class)
     @JoinColumn(name = "MAILING_COUNTRY_CODE_ID")
     private InCountryCode mailingCountryCode;
@@ -162,6 +168,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "OFFICIAL_ADDRESS3")
     private String officialAddress3;
+    
+    @Column(name = "OFFICIAL_POSTCODE")
+    private String officialPostcode;
 
     @ManyToOne(targetEntity = InCountryCodeImpl.class)
     @JoinColumn(name = "OFFICIAL_COUNTRY_CODE_ID")
@@ -636,8 +645,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setBidResponse(InBidResponse bidResponse) {
         this.bidResponse = bidResponse;
     }
+    
+    public Boolean isDeclared() {
+		return declared;
+	}
 
-    public String getMailingAddress1() {
+	public void setDeclared(Boolean declared) {
+		this.declared = declared;
+	}
+
+	public String getMailingAddress1() {
         return mailingAddress1;
     }
 
@@ -699,9 +716,25 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     public void setOfficialAddress3(String officialAddress3) {
         this.officialAddress3 = officialAddress3;
-    }
+    }   
 
-    public InCountryCode getOfficialCountryCode() {
+    public String getMailingPostcode() {
+		return mailingPostcode;
+	}
+
+	public void setMailingPostcode(String mailingPostcode) {
+		this.mailingPostcode = mailingPostcode;
+	}
+
+	public String getOfficialPostcode() {
+		return officialPostcode;
+	}
+
+	public void setOfficialPostcode(String officialPostcode) {
+		this.officialPostcode = officialPostcode;
+	}
+
+	public InCountryCode getOfficialCountryCode() {
         return officialCountryCode;
     }
 

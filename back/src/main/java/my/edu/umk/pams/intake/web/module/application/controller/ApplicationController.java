@@ -197,6 +197,8 @@ public class ApplicationController {
         application.setBirthDate(vo.getBirthDate());
         application.setSelfSponsored(vo.getSelfSponsored());
         application.setSponsored(vo.getSponsored());
+        application.setPaid(vo.getProcessingFeeAttached());
+        application.setDeclared(vo.getDeclared());
 
         // check list
         application.setSpmResultAttached(vo.getSpmResultAttached());
@@ -216,6 +218,7 @@ public class ApplicationController {
         application.setMailingAddress1(vo.getMailingAddress1());
         application.setMailingAddress2(vo.getMailingAddress2());
         application.setMailingAddress3(vo.getMailingAddress3());
+        application.setMailingPostcode(vo.getMailingPostcode());
         if (null != vo.getMailingStateCode())
             application.setMailingStateCode(commonService.findStateCodeById(vo.getMailingStateCode().getId()));
         if (null != vo.getMailingCountryCode())
@@ -225,6 +228,7 @@ public class ApplicationController {
         application.setOfficialAddress1(vo.getOfficialAddress1());
         application.setOfficialAddress2(vo.getOfficialAddress2());
         application.setOfficialAddress3(vo.getOfficialAddress3());
+        application.setOfficialPostcode(vo.getOfficialPostcode());
         if (null != vo.getOfficialStateCode())
             application.setOfficialStateCode(commonService.findStateCodeById(vo.getOfficialStateCode().getId()));
         if (null != vo.getOfficialCountryCode())
@@ -647,6 +651,61 @@ public class ApplicationController {
         List<InResultItem> resultItems = applicationService.findResultItems(result);
         return new ResponseEntity<List<ResultItem>>(applicationTransformer.toResultItemVos(resultItems), HttpStatus.OK);
     }
+    
+
+    // ====================================================================================================
+    // RESULT
+    // ====================================================================================================
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/results", method = RequestMethod.GET)
+    public ResponseEntity<List<Result>> findResultsByIntakeApplication(
+            @PathVariable String referenceNo) {
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        List<InResult> results = applicationService.findResults(application);
+        return new ResponseEntity<List<Result>>(applicationTransformer.toResultVos(results),
+                HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/results", method = RequestMethod.POST)
+    public ResponseEntity<String> addResult(@PathVariable String referenceNo, @RequestBody Result vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InResult result = new InResultImpl();
+        result.setResultType(InResultType.get(vo.getResultType().ordinal()));
+        result.setField(vo.getField());
+        result.setName(vo.getName());
+        result.setGraduationYear(vo.getGraduationYear());
+        result.setGradeCode(commonService.findGradeCodeById(vo.getGradeCode().getId()));
+        applicationService.addResult(application, result);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/results/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Boolean> updateResult(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Result vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InResult result = applicationService.findResultById(id);
+        result.setResultType(InResultType.get(vo.getResultType().ordinal()));
+        result.setField(vo.getField());
+        result.setName(vo.getName());
+        result.setGraduationYear(vo.getGraduationYear());
+        result.setGradeCode(commonService.findGradeCodeById(vo.getGradeCode().getId()));
+        applicationService.updateResult(application, result);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/results/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Boolean> deleteResult(@PathVariable String referenceNo, @PathVariable Long id) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InResult result = applicationService.findResultById(id);
+        applicationService.deleteResult(application, result);
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+    }
+
 
     // ====================================================================================================
     // PRIVATE METHODS
