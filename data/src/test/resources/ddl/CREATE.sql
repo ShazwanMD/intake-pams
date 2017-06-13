@@ -1083,8 +1083,12 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        NAME varchar(255),
+        FIELD varchar(255),
+        GRADUATION_YEAR varchar(255) not null,
         RESULT_TYPE int4,
-        GRADE_CODE_ID int8,
+        RESULT_ALHPANUMERIC varchar(255),
+        RESULT_NUMERIC int8,
         APPLICATION_ID int8,
         primary key (ID)
     );
@@ -1801,12 +1805,7 @@
     alter table IN_RSLT
         add constraint FKA022266337A6AAA6
         foreign key (APPLICATION_ID)
-        references IN_INTK_APLN;
-        
-    alter table IN_RSLT
-        add constraint FKA022266337A6ABC4
-        foreign key (GRADE_CODE_ID)
-        references IN_GRDE_CODE;   
+        references IN_INTK_APLN;        
 
     alter table IN_RSLT_ITEM
         add constraint FKAB928B6FA6138B7C

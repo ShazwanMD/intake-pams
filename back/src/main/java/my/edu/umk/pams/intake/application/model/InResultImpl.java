@@ -41,9 +41,11 @@ public class InResultImpl implements InResult {
     @Column(name = "GRADUATION_YEAR")
     private String graduationYear;
     
-    @ManyToOne(targetEntity = InGradeCodeImpl.class)
-    @JoinColumn(name = "GRADE_CODE_ID")
-    private InGradeCode gradeCode;
+    @Column(name = "RESULT_ALHPANUMERIC")
+    private String resultAlphanumeric;
+    
+    @Column(name = "RESULT_NUMERIC")
+    private Integer resultNumeric;
 
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
@@ -101,15 +103,24 @@ public class InResultImpl implements InResult {
 		this.graduationYear = graduationYear;
 	}
 
-    
     @Override
-	public InGradeCode getGradeCode() {
-		return gradeCode;
+	public String getResultAlphanumeric() {
+		return resultAlphanumeric;
 	}
 
     @Override
-	public void setGradeCode(InGradeCode gradeCode) {
-		this.gradeCode = gradeCode;
+	public void setResultAlphanumeric(String resultAlphanumeric) {
+		this.resultAlphanumeric = resultAlphanumeric;
+	}
+    
+    @Override
+	public Integer getResultNumeric() {
+		return resultNumeric;
+	}
+
+    @Override
+	public void setResultNumeric(Integer resultNumeric) {
+		this.resultNumeric = resultNumeric;
 	}
 
 	@Override

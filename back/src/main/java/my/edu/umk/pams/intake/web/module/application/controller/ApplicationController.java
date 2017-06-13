@@ -702,7 +702,8 @@ public class ApplicationController {
         result.setField(vo.getField());
         result.setName(vo.getName());
         result.setGraduationYear(vo.getGraduationYear());
-        result.setGradeCode(commonService.findGradeCodeById(vo.getGradeCode().getId()));
+        result.setResultAlphanumeric(vo.getResultAlphanumeric());
+        result.setResultNumeric(vo.getResultNumeric());
         applicationService.addResult(application, result);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -717,7 +718,8 @@ public class ApplicationController {
         result.setField(vo.getField());
         result.setName(vo.getName());
         result.setGraduationYear(vo.getGraduationYear());
-        result.setGradeCode(commonService.findGradeCodeById(vo.getGradeCode().getId()));
+        result.setResultAlphanumeric(vo.getResultAlphanumeric());
+        result.setResultNumeric(vo.getResultNumeric());
         applicationService.updateResult(application, result);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }

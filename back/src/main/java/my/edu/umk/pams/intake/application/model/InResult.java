@@ -26,9 +26,13 @@ public interface InResult extends InMetaObject {
 
     void setGraduationYear(String graduationYear);
     
-    InGradeCode getGradeCode();
+    String getResultAlphanumeric();
 
-    void setGradeCode(InGradeCode gradeCode);
+    void setResultAlphanumeric(String resultAlphanumeric);
+
+    Integer getResultNumeric();
+
+    void setResultNumeric(Integer resultNumeric);
 
     InIntakeApplication getApplication();
 

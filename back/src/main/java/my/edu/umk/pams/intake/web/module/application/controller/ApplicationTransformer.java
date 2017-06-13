@@ -313,7 +313,8 @@ public class ApplicationTransformer {
 		vo.setName(e.getName());
 		vo.setField(e.getField());
 		vo.setGraduationYear(e.getGraduationYear());
-		vo.setGradeCode(commonTransformer.toGradeCodeVo(e.getGradeCode()));
+		vo.setResultAlphanumeric(e.getResultAlphanumeric());
+		vo.setResultNumeric(e.getResultNumeric());
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}

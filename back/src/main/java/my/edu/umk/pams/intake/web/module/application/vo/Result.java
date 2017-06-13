@@ -21,7 +21,9 @@ public class Result extends MetaObject {
     private String name;
     private String field;
     private String graduationYear;
-    private GradeCode gradeCode;
+    private Integer resultNumeric;
+    private String resultAlphanumeric;
+
 
 
 	public ResultType getResultType() {
@@ -56,12 +58,20 @@ public class Result extends MetaObject {
 		this.graduationYear = graduationYear;
 	}
 
-	public GradeCode getGradeCode() {
-		return gradeCode;
+	public Integer getResultNumeric() {
+		return resultNumeric;
 	}
 
-	public void setGradeCode(GradeCode gradeCode) {
-		this.gradeCode = gradeCode;
+	public void setResultNumeric(Integer resultNumeric) {
+		this.resultNumeric = resultNumeric;
+	}
+
+	public String getResultAlphanumeric() {
+		return resultAlphanumeric;
+	}
+
+	public void setResultAlphanumeric(String resultAlphanumeric) {
+		this.resultAlphanumeric = resultAlphanumeric;
 	}
 
 	@JsonCreator
