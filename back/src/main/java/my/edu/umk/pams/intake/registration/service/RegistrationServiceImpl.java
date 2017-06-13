@@ -9,6 +9,11 @@ import my.edu.umk.pams.intake.registration.model.InUserVerificationImpl;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.integration.NonSerializableSecurityContext;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.system.model.InEmailQueue;
+import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
+import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
+import my.edu.umk.pams.intake.system.service.SystemService;
+
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +42,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Autowired
     private InUserVerificationDao userVerificationDao;
+    
+    @Autowired
+    private SystemService systemService;
 
     @Autowired
     private IdentityService identityService;
@@ -79,7 +87,18 @@ public class RegistrationServiceImpl implements RegistrationService {
         sessionFactory.getCurrentSession().flush();
 
         // todo(samiya): send email notification
-
+        InEmailQueue email= new InEmailQueueImpl();
+        String subject = "Email verification";
+        String body = "Please verify your email address by clicking this url : http://pams.umk.edu.my/"+ userVerificationDao.findByToken(token);
+        //verification.getToken();
+        email.setTo(user.getEmail());
+        email.setSubject(subject);
+        email.setBody(body);
+       //method send email 
+        email.setCode("EQ/" + System.currentTimeMillis());
+        email.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(email);
+        
         // logout
         logoutAsSystem(sc);
     }

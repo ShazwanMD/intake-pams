@@ -699,7 +699,10 @@ public class ApplicationController {
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InResult result = new InResultImpl();
         result.setResultType(InResultType.get(vo.getResultType().ordinal()));
-     // result.setItems(vo.getResultItem());
+        result.setField(vo.getField());
+        result.setName(vo.getName());
+        result.setGraduationYear(vo.getGraduationYear());
+        result.setGradeCode(commonService.findGradeCodeById(vo.getGradeCode().getId()));
         applicationService.addResult(application, result);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -711,7 +714,10 @@ public class ApplicationController {
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InResult result = applicationService.findResultById(id);
         result.setResultType(InResultType.get(vo.getResultType().ordinal()));
-     // result.setItems(vo.getResultItem());
+        result.setField(vo.getField());
+        result.setName(vo.getName());
+        result.setGraduationYear(vo.getGraduationYear());
+        result.setGradeCode(commonService.findGradeCodeById(vo.getGradeCode().getId()));
         applicationService.updateResult(application, result);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
@@ -725,10 +731,7 @@ public class ApplicationController {
         applicationService.deleteResult(application, result);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
-    
 
-   
-    
 
     // ====================================================================================================
     // PRIVATE METHODS

@@ -309,8 +309,11 @@ public class ApplicationTransformer {
 	public Result toResultVo(InResult e) {
 		Result vo = new Result();
 		vo.setId(e.getId());
-		vo.setResultItem(applicationTransformer.toResultItemVos(e.getItems()));
 		vo.setResultType(ResultType.get(e.getResultType().ordinal()));
+		vo.setName(e.getName());
+		vo.setField(e.getField());
+		vo.setGraduationYear(e.getGraduationYear());
+		vo.setGradeCode(commonTransformer.toGradeCodeVo(e.getGradeCode()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}
