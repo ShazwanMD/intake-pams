@@ -310,6 +310,10 @@ public class ApplicationTransformer {
 		Result vo = new Result();
 		vo.setId(e.getId());
 		vo.setResultType(ResultType.get(e.getResultType().ordinal()));
+		vo.setName(e.getName());
+		vo.setField(e.getField());
+		vo.setGraduationYear(e.getGraduationYear());
+		vo.setGradeCode(commonTransformer.toGradeCodeVo(e.getGradeCode()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}
