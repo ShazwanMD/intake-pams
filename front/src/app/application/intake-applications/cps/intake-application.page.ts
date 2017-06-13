@@ -130,6 +130,7 @@ export class CpsIntakeApplicationPage implements OnInit {
       sponsored: false,
       selfSponsored: false,
       paid: false,
+      declared: false,
 
       spmResultAttached: false,
       stpmResultAttached: false,

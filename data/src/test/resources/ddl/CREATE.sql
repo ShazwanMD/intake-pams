@@ -690,6 +690,7 @@
         OFFICIAL_POSTCODE varchar(255),
         OKU_NO varchar(255),
         PAID boolean,
+        DECLARED boolean,
         PASSPORT_EXPDATE timestamp,
         PASSPORT_NO varchar(255),
         PAYMENT_SOURCE_NO varchar(255),

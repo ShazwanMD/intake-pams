@@ -479,21 +479,9 @@
             <div class="push-top-sm"></div>
             <md-card-title>Declaration</md-card-title>
 
-       
-            <md-card-subtitle>Confirmation of payment</md-card-subtitle>
-            
-              <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-                <md-checkbox formControlName="paid">
-                  <div layout="column" flex>
-                    I have paid the processing fee for my application and attached a supported document for proof of payment
-                  </div>
-                  <p style="white-space: pre">{{text}}</p>
-                </md-checkbox>
-              </div>
-
             <md-card-subtitle>Submit Application for Intake September 2017</md-card-subtitle>
             <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-              <md-checkbox>
+              <md-checkbox formControlName="declared">
                 <div layout="column" flex>
                   I declare that the statements made in this application form are correct. I am fully aware that UMK reserves the right to
                   reject my application or terminate my candidature if the information given above is incorrect or incomplete.
