@@ -114,6 +114,18 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.addResult(application, result, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+    public void updateResult(InIntakeApplication application, InResult result) {
+        intakeApplicationDao.updateResult(application, result, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }    
+    
+    @Override
+    public void deleteResult(InIntakeApplication application, InResult result) {
+        intakeApplicationDao.deleteResult(application, result, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
     @Override
     public void addResultItem(InIntakeApplication application, InResult result, InResultItem item) {

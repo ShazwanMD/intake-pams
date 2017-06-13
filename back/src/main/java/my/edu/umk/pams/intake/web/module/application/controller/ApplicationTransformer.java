@@ -46,6 +46,7 @@ public class ApplicationTransformer {
 		
 		vo.setVerified(e.isVerified());
 		vo.setPaid(e.isPaid());
+		vo.setDeclared(e.isDeclared());
 		vo.setSponsored(e.isSponsored());
 		vo.setSelfSponsored(e.isSelfSponsored());
 		

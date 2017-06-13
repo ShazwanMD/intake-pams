@@ -47,6 +47,7 @@ export interface IntakeApplication extends MetaObject {
   officialPostcode: string;
 
   paid: boolean;
+  declared: boolean;
   verified: boolean;
   sponsored: boolean;
   selfSponsored: boolean;
