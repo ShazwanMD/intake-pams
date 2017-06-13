@@ -563,6 +563,26 @@ export class IntakeApplicationActions {
       payload: message
     };
   }
+  
+  static DOWNLOAD_ATTACHMENT = '[Intake Application] Download Attachment';
+
+  downloadAttachment(attachment) {
+      console.log("downloadAttachment");
+    return {
+      type: IntakeApplicationActions.DOWNLOAD_ATTACHMENT,
+      payload: {attachment: attachment}
+    };
+  }
+
+  static DOWNLOAD_ATTACHMENT_SUCCESS = '[Intake Application] Download Attachment Success';
+
+  downloadAttachmentSucces(message) {
+      console.log("downloadAttachmentSucces");
+    return {
+      type: IntakeApplicationActions.DOWNLOAD_ATTACHMENT_SUCCESS,
+      payload: message
+    };
+  }
 
 
   // ====================================================================================================

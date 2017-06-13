@@ -21,19 +21,31 @@ import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/application")
@@ -482,6 +494,20 @@ public class ApplicationController {
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/intakeApplications/download/attachment/{id}", method = RequestMethod.GET)
+    public ResponseEntity downloadAttachment(@PathVariable Long id) {
+        dummyLogin();
+
+        InAttachment attachment = applicationService.findAttachmentById(id);
+        ByteArrayResource resource = null;
+        //ByteArrayOutputStream outputStream = new ByteArrayOutputStream(attachment.getBytes());
+		//workbook.write(outputStream);
+		resource = new ByteArrayResource(attachment.getBytes());
+
+        return ResponseEntity.ok()
+                .header("Content-Disposition", "attachment; filename=" + attachment.getName())
+                .body(resource);
+    }
 
     // ====================================================================================================
     // SPM RESULTS

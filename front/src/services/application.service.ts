@@ -217,6 +217,12 @@ export class ApplicationService {
     return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/attachments")
       .map((res: Response) => <Attachment[]>res.json());
   }
+  
+  downloadAttachment(attachment: Attachment): Observable<Attachment> {
+      console.log("downloadAttachment :"+attachment.id);
+      return this.http.get(environment.endpoint + '/api/application/intakeApplications/download/attachment/' + attachment.id)
+        .map((res: Response) => <Attachment>res.json());
+  }
 
   addAttachment(application: IntakeApplication, file: File, attachmentType: AttachmentType): Observable<String> {
     console.log("addAttachment");

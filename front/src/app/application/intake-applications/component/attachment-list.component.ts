@@ -41,6 +41,14 @@ export class AttachmentListComponent implements OnInit {
   delete(attachment: Attachment): void {
     this.store.dispatch(this.actions.deleteAttachment(this.intakeApplication, attachment));
   }
+  
+  download(attachment: Attachment): void {
+      console.log("attachment id :"+attachment.id);
+      //this.store.dispatch(this.actions.downloadAttachment(attachment));
+      //let URL: String = "http://localhost:8080/api/application/intakeApplications/download/attachment/"+attachment.id;
+      //windows.open("http://localhost:8080/api/application/intakeApplications/download/attachment/"+attachment.id);
+      window.open("http://localhost:8080/api/application/intakeApplications/download/attachment/"+attachment.id, '_blank');
+   }
 
   filter(): void {
   }

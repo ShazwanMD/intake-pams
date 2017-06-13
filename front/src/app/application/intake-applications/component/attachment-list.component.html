@@ -10,6 +10,9 @@
   <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
   </button>
+  <button md-button class="md-icon-button" (click)="download(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">get_app</md-icon>
+  </button>
 </div>
 <md-divider></md-divider>
 <td-data-table

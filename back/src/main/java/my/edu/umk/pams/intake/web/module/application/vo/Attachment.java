@@ -13,6 +13,7 @@ public class Attachment extends MetaObject {
 
     private String name;
     private Long size;
+    private byte[] bytes;
     private String mimeType;
     private AttachmentType attachmentType;
 
@@ -48,6 +49,14 @@ public class Attachment extends MetaObject {
 
 	public void setAttachmentType(AttachmentType attachmentType) {
 		this.attachmentType = attachmentType;
+	}
+
+	public byte[] getBytes() {
+		return bytes;
+	}
+
+	public void setBytes(byte[] bytes) {
+		this.bytes = bytes;
 	}
 
 	@JsonCreator

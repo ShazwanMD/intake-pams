@@ -291,6 +291,12 @@ export class IntakeApplicationEffects {
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map(state => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+  
+  @Effect() downloadAttachment = this.actions$
+  .ofType(IntakeApplicationActions.DOWNLOAD_ATTACHMENT)
+  .map(action => action.payload)
+  .switchMap(payload => this.applicationService.downloadAttachment(payload.attachment))
+  .map(message => this.intakeApplicationActions.downloadAttachmentSucces(message));
 
 
   // ====================================================================================================
