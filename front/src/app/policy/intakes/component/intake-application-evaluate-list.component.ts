@@ -33,15 +33,21 @@ export class IntakeApplicationEvaluateListComponent {
   filter(): void {
   }
   
-  profileDialog(): void {
+  profileDialog(intakeApplication) {
+      console.log("intakeApplication :" + intakeApplication);
+      this.showDialog(intakeApplication);
+  }
+  
+  showDialog(intakeApplication : IntakeApplication): void {
       console.log("showDialog");
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
-      config.width = '50%';
-      config.height = '40%';
+      config.width = '90%';
+      config.height = '90%';
       config.position = {top: '0px'};
       this.editorDialogRef = this.dialog.open(ApplicantProfileDialog, config);
+      this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
 
       /*this.editorDialogRef.afterClosed().subscribe(res => {
         console.log("closeDialog");

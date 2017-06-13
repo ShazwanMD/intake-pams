@@ -39,6 +39,7 @@ import { IntakeUpdaterDialog } from "./dialog/intake-updater.dialog";
 import { IntakeEvaluateTaskPanel } from "./panel/intake-evaluate-task.panel";
 import { ApplicantProfileDialog } from "./dialog/applicant-profile.dialog";
 import { IntakeApplicationEvaluateListComponent } from "./component/intake-application-evaluate-list.component";
+import { CpsIntakeApplicationSubModule } from "../../application/intake-applications/cps/index";
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { IntakeApplicationEvaluateListComponent } from "./component/intake-appli
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
+    CpsIntakeApplicationSubModule,
     IntakeSessionSubModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
     EffectsModule.run(IntakeEffects),

@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.web.module.application.vo.*;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
+import my.edu.umk.pams.intake.web.module.common.vo.MaritalCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,8 +106,28 @@ public class ApplicationTransformer {
 		vo.setPhone(e.getPhone());
 		vo.setFax(e.getFax());
 		vo.setVerified(e.isVerified());
+		
+		vo.setMaritalCode(commonTransformer.toMaritalCodeVo(e.getMaritalCode()));
+		
+		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
+		vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));
+		vo.setSupervisorSelection(policyTransformer.toSupervisorOfferingVo(e.getSupervisorSelection()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
+		
+		// address
+		vo.setMailingAddress1(e.getMailingAddress1());
+		vo.setMailingAddress2(e.getMailingAddress2());
+		vo.setMailingAddress3(e.getMailingAddress3());
+		vo.setMailingPostcode(e.getMailingPostcode());
+		vo.setMailingStateCode(commonTransformer.toStateCodeVo(e.getMailingStateCode()));
+		vo.setMailingCountryCode(commonTransformer.toCountryCodeVo(e.getMailingCountryCode()));
+		vo.setOfficialAddress1(e.getOfficialAddress1());
+		vo.setOfficialAddress2(e.getOfficialAddress2());
+		vo.setOfficialAddress3(e.getOfficialAddress3());
+		vo.setOfficialPostcode(e.getOfficialPostcode());
+		vo.setOfficialStateCode(commonTransformer.toStateCodeVo(e.getOfficialStateCode()));
+		vo.setOfficialCountryCode(commonTransformer.toCountryCodeVo(e.getOfficialCountryCode()));
 		return vo;
 	}
 
