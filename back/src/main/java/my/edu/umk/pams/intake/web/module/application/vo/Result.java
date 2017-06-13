@@ -18,13 +18,10 @@ public class Result extends MetaObject {
 
     private List<ResultItem> resultItem;
     private ResultType resultType;
-
-
+    
 	public List<ResultItem> getResultItem() {
 		return resultItem;
 	}
-
-
 
 	public void setResultItem(List<ResultItem> resultItem) {
 		this.resultItem = resultItem;

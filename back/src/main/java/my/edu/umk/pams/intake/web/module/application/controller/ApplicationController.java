@@ -699,10 +699,7 @@ public class ApplicationController {
         applicationService.deleteResult(application, result);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
-    
 
-   
-    
 
     // ====================================================================================================
     // PRIVATE METHODS
