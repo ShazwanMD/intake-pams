@@ -270,18 +270,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @OneToMany(targetEntity = InLanguageImpl.class, mappedBy = "application")
     private List<InLanguage> languages;
 
-    @Deprecated // use result
-    @OneToMany(targetEntity = InBachelorResultImpl.class, mappedBy = "application")
-    private List<InBachelorResult> bachelorResults;
-
-    @Deprecated // use result
-    @OneToMany(targetEntity = InDiplomaResultImpl.class, mappedBy = "application")
-    private List<InDiplomaResult> diplomaResults;
-
-    @Deprecated // use result
-    @OneToMany(targetEntity = InSpmResultImpl.class, mappedBy = "application")
-    private List<InSpmResult> spmResults;
-
     @OneToMany(targetEntity = InGuardianImpl.class, mappedBy = "application")
     private List<InGuardian> guardians;
 
@@ -959,16 +947,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     }
 
     @Override
-    public List<InSpmResult> getSpmResults() {
-        return spmResults;
-    }
-
-    @Override
-    public void setSpmResults(List<InSpmResult> spmResults) {
-        this.spmResults = spmResults;
-    }
-
-    @Override
     public List<InGuardian> getGuardians() {
         return guardians;
     }
@@ -997,25 +975,6 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setReferees(List<InReferee> referees) {
         this.referees = referees;
-    }
-
-    @Override
-    public List<InBachelorResult> getBachelorResults() {
-        return bachelorResults;
-    }
-
-    @Override
-    public void setBachelorResults(List<InBachelorResult> bachelorResults) {
-        this.bachelorResults = bachelorResults;
-    }
-
-
-    public List<InDiplomaResult> getDiplomaResults() {
-        return diplomaResults;
-    }
-
-    public void setDiplomaResults(List<InDiplomaResult> diplomaResults) {
-        this.diplomaResults = diplomaResults;
     }
 
     @Override

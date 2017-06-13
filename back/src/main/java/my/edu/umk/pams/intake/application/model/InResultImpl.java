@@ -1,14 +1,10 @@
 package my.edu.umk.pams.intake.application.model;
 
-import my.edu.umk.pams.intake.common.model.InEducationSectorCode;
-import my.edu.umk.pams.intake.common.model.InEducationSectorCodeImpl;
-import my.edu.umk.pams.intake.common.model.InGradeCode;
-import my.edu.umk.pams.intake.common.model.InGradeCodeImpl;
 import my.edu.umk.pams.intake.core.InMetadata;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
+import java.math.BigDecimal;
 
 /**
  * @author PAMS
@@ -39,13 +35,13 @@ public class InResultImpl implements InResult {
     private String field;
     
     @Column(name = "GRADUATION_YEAR")
-    private String graduationYear;
+    private Integer graduationYear;
     
-    @Column(name = "RESULT_ALHPANUMERIC")
+    @Column(name = "RESULT_ALPAANUMERIC")
     private String resultAlphanumeric;
     
     @Column(name = "RESULT_NUMERIC")
-    private Integer resultNumeric;
+    private BigDecimal resultNumeric;
 
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
@@ -94,12 +90,12 @@ public class InResultImpl implements InResult {
 	}
 
     @Override
-	public String getGraduationYear() {
+	public Integer getGraduationYear() {
 		return graduationYear;
 	}
 
     @Override
-	public void setGraduationYear(String graduationYear) {
+	public void setGraduationYear(Integer graduationYear) {
 		this.graduationYear = graduationYear;
 	}
 
@@ -114,12 +110,12 @@ public class InResultImpl implements InResult {
 	}
     
     @Override
-	public Integer getResultNumeric() {
+	public BigDecimal getResultNumeric() {
 		return resultNumeric;
 	}
 
     @Override
-	public void setResultNumeric(Integer resultNumeric) {
+	public void setResultNumeric(BigDecimal resultNumeric) {
 		this.resultNumeric = resultNumeric;
 	}
 

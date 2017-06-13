@@ -1,16 +1,11 @@
 package my.edu.umk.pams.intake.web.module.application.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import my.edu.umk.pams.intake.web.module.common.vo.GradeCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
 
 /**
  * @author PAMS
@@ -20,63 +15,61 @@ public class Result extends MetaObject {
     private ResultType resultType;
     private String name;
     private String field;
-    private String graduationYear;
-    private Integer resultNumeric;
+    private Integer graduationYear;
+    private BigDecimal resultNumeric;
     private String resultAlphanumeric;
 
+    public ResultType getResultType() {
+        return resultType;
+    }
 
+    public void setResultType(ResultType resultType) {
+        this.resultType = resultType;
+    }
 
-	public ResultType getResultType() {
-		return resultType;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setResultType(ResultType resultType) {
-		this.resultType = resultType;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getField() {
+        return field;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setField(String field) {
+        this.field = field;
+    }
 
-	public String getField() {
-		return field;
-	}
+    public Integer getGraduationYear() {
+        return graduationYear;
+    }
 
-	public void setField(String field) {
-		this.field = field;
-	}
+    public void setGraduationYear(Integer graduationYear) {
+        this.graduationYear = graduationYear;
+    }
 
-	public String getGraduationYear() {
-		return graduationYear;
-	}
+    public BigDecimal getResultNumeric() {
+        return resultNumeric;
+    }
 
-	public void setGraduationYear(String graduationYear) {
-		this.graduationYear = graduationYear;
-	}
+    public void setResultNumeric(BigDecimal resultNumeric) {
+        this.resultNumeric = resultNumeric;
+    }
 
-	public Integer getResultNumeric() {
-		return resultNumeric;
-	}
+    public String getResultAlphanumeric() {
+        return resultAlphanumeric;
+    }
 
-	public void setResultNumeric(Integer resultNumeric) {
-		this.resultNumeric = resultNumeric;
-	}
+    public void setResultAlphanumeric(String resultAlphanumeric) {
+        this.resultAlphanumeric = resultAlphanumeric;
+    }
 
-	public String getResultAlphanumeric() {
-		return resultAlphanumeric;
-	}
-
-	public void setResultAlphanumeric(String resultAlphanumeric) {
-		this.resultAlphanumeric = resultAlphanumeric;
-	}
-
-	@JsonCreator
+    @JsonCreator
     public static Result create(String jsonString) {
-		Result o = null;
+        Result o = null;
         try {
             ObjectMapper mapper = new ObjectMapper();
             o = mapper.readValue(jsonString, Result.class);

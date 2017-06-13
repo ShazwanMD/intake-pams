@@ -24,19 +24,11 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     InResult findResult(InIntakeApplication application, InResultType resultType);
 
-    InResultItem findResultItemById(Long id);
-
     InGuarantor findGuarantorById(Long id);
 
     InGuardian findGuardianById(Long id);
 
     InContact findContactById(Long id);
-
-    InBachelorResult findBachelorResultById(Long id);
-
-    InDiplomaResult findDiplomaResultById(Long id);
-
-    InSpmResult findSpmResultById(Long id);
 
     InEmployment findEmploymentById(Long id);
 
@@ -51,10 +43,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
 
     InContact findContactByType(InContactType type, InIntakeApplication application);
-
-    InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
-
-    InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application);
 
     InApplicant findApplicant(InIntakeApplication application);
 
@@ -84,8 +72,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InResult> findResults(InIntakeApplication application);
 
-    List<InResultItem> findResultItems(InResult result);
-
     List<InEducation> findEducations(InIntakeApplication application);
 
     List<InEmployment> findEmployments(InIntakeApplication application);
@@ -103,12 +89,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     List<InGuardian> findGuardians(InIntakeApplication application);
 
     List<InContact> findContacts(InIntakeApplication application);
-
-    List<InBachelorResult> findBachelorResults(InIntakeApplication application);
-
-    List<InDiplomaResult> findDiplomaResults(InIntakeApplication application);
-
-    List<InSpmResult> findSpmResults(InIntakeApplication application);
 
     // ====================================================================================================
     // HELPER
@@ -144,10 +124,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     void deleteResult(InIntakeApplication application, InResult result, InUser user);
 
-    void addResultItem(InResult result, InResultItem item, InUser user);
-
-    void deleteResultItem(InResult result, InResultItem item, InUser user);
-
     void addEducation(InIntakeApplication application, InEducation education, InUser user);
 
     void deleteEducation(InIntakeApplication application, InEducation education, InUser user);
@@ -176,18 +152,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     void deleteContact(InIntakeApplication application, InContact contact, InUser user);
 
-    void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user);
-
-    void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user);
-
-    void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult, InUser user);
-
-    void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult, InUser user);
-
-    void addSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user);
-
-    void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult, InUser user);
-
     void addAttachment(InIntakeApplication application, InAttachment attachment, InUser currentUser);
 
     void deleteAttachment(InIntakeApplication application, InAttachment attachment, InUser user);
@@ -201,5 +165,4 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void updateEmployment(InIntakeApplication application, InEmployment employment, InUser user);
 
     void updateLanguage(InIntakeApplication application, InLanguage language, InUser user);
-
 }

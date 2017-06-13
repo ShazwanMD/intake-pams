@@ -3,7 +3,6 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.web.module.application.vo.*;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
-import my.edu.umk.pams.intake.web.module.common.vo.MaritalCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -247,22 +246,6 @@ public class ApplicationTransformer {
 		return vos;
 	}
 
-	public SpmResult toSpmResultVo(InSpmResult e) {
-		SpmResult vo = new SpmResult();
-		vo.setId(e.getId());
-		vo.setName(e.getName());
-		vo.setGrade(e.getGrade());
-		vo.setYear(e.getYear());
-		vo.setAggregate(e.getAggregate());
-		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
-		return vo;
-	}
-
-	public List<SpmResult> toSpmResultVos(List<InSpmResult> e) {
-		List<SpmResult> vos = e.stream().map((e1) -> toSpmResultVo(e1)).collect(Collectors.toList());
-		return vos;
-	}
-
 	public List<IntakeApplication> toIntakeApplicationVos(List<InIntakeApplication> e) {
 		List<IntakeApplication> vos = e.stream().map((e1) -> toIntakeApplicationVo(e1)).collect(Collectors.toList());
 		return vos;
@@ -271,38 +254,6 @@ public class ApplicationTransformer {
 	public List<IntakeApplication> toSimpleIntakeApplicationVos(List<InIntakeApplication> e) {
 		List<IntakeApplication> vos = e.stream().map((e1) -> toSimpleIntakeApplicationVo(e1))
 				.collect(Collectors.toList());
-		return vos;
-	}
-
-	public BachelorResult toBachelorResultVo(InBachelorResult e) {
-		BachelorResult vo = new BachelorResult();
-		vo.setId(e.getId());
-		vo.setName(e.getName());
-		vo.setYear(e.getYear());
-		vo.setCgpa(e.getCgpa());
-		vo.setResultType(ResultType.get(e.getResultType().ordinal()));
-		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
-		return vo;
-	}
-
-	public List<BachelorResult> toBachelorResultVos(List<InBachelorResult> e) {
-		List<BachelorResult> vos = e.stream().map((e1) -> toBachelorResultVo(e1)).collect(Collectors.toList());
-		return vos;
-	}
-
-	public DiplomaResult toDiplomaResultVo(InDiplomaResult e) {
-		DiplomaResult vo = new DiplomaResult();
-		vo.setId(e.getId());
-		vo.setName(e.getName());
-		vo.setYear(e.getYear());
-		vo.setCgpa(e.getCgpa());
-		vo.setResultType(ResultType.get(e.getResultType().ordinal()));
-		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
-		return vo;
-	}
-
-	public List<DiplomaResult> toDiplomaResultVos(List<InDiplomaResult> e) {
-		List<DiplomaResult> vos = e.stream().map((e1) -> toDiplomaResultVo(e1)).collect(Collectors.toList());
 		return vos;
 	}
 
@@ -323,20 +274,4 @@ public class ApplicationTransformer {
 		List<Result> vos = e.stream().map((e1) -> toResultVo(e1)).collect(Collectors.toList());
 		return vos;
 	}
-
-	public ResultItem toResultItemVo(InResultItem e) {
-		ResultItem vo = new ResultItem();
-		vo.setId(e.getId());
-		vo.setGradeCode(commonTransformer.toGradeCodeVo(e.getGradeCode()));
-		vo.setSubjectCode(commonTransformer.toSubjectCodeVo(e.getSubjectCode()));
-		vo.setResult(applicationTransformer.toResultVo(e.getResult()));
-		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
-		return vo;
-	}
-
-	public List<ResultItem> toResultItemVos(List<InResultItem> e) {
-		List<ResultItem> vos = e.stream().map((e1) -> toResultItemVo(e1)).collect(Collectors.toList());
-		return vos;
-	}
-
 }

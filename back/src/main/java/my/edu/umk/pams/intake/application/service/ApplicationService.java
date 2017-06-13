@@ -35,8 +35,6 @@ public interface ApplicationService {
     
     void deleteResult(InIntakeApplication application, InResult result);
 
-    void addResultItem(InIntakeApplication application, InResult result, InResultItem item);
-
     void addEducation(InIntakeApplication application, InEducation education);
 
     void addEmployment(InIntakeApplication application, InEmployment employment);
@@ -51,12 +49,6 @@ public interface ApplicationService {
 
     void addInvolvement(InIntakeApplication application, InInvolvement involvement);
 
-    void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
-
-    void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);
-
-    void addSpmResult(InIntakeApplication application, InSpmResult spmResult);
-
     void deleteLanguage(InIntakeApplication application, InLanguage language);
 
     void deleteEmployment(InIntakeApplication application, InEmployment employment);
@@ -64,12 +56,6 @@ public interface ApplicationService {
     void deleteReferee(InIntakeApplication application, InReferee referee);
 
     void updateReferee(InIntakeApplication application, InReferee referee);
-
-    void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult);
-
-    void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult);
-
-    void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult);
 
     void addContact(InIntakeApplication application, InContact contact);
 
@@ -112,8 +98,6 @@ public interface ApplicationService {
 
     InResult findResult(InIntakeApplication application, InResultType resultType);
 
-    InResultItem findResultItemById(Long id);
-
     InGuardian findGuardianById(Long id);
 
     InGuarantor findGuarantorById(Long id);
@@ -126,21 +110,11 @@ public interface ApplicationService {
 
     InAttachment findAttachmentById(Long id);
 
-    InBachelorResult findBachelorResultById(Long id);
-
-    InDiplomaResult findDiplomaResultById(Long id);
-
-    InSpmResult findSpmResultById(Long id);
-
     InContact findContactById(Long id);
 
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
 
     InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application);
-
-    InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application);
-
-    InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application);
 
     InContact findContactByType(InContactType contactType, InIntakeApplication application);
 
@@ -168,8 +142,6 @@ public interface ApplicationService {
 
     List<InResult> findResults(InIntakeApplication application);
 
-    List<InResultItem> findResultItems(InResult result);
-
     List<InEducation> findEducations(InIntakeApplication application);
 
     List<InEmployment> findEmployments(InIntakeApplication application);
@@ -187,12 +159,6 @@ public interface ApplicationService {
     List<InGuarantor> findGuarantors(InIntakeApplication application);
 
     List<InContact> findContacts(InIntakeApplication application);
-
-    List<InBachelorResult> findBachelorResults(InIntakeApplication application);
-
-    List<InDiplomaResult> findDiplomaResults(InIntakeApplication application);
-
-    List<InSpmResult> findSpmResults(InIntakeApplication application);
 
     List<InProgramOffering> findProgramOfferings(InIntakeApplication application);
 

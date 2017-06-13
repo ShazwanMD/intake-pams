@@ -127,12 +127,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    @Override
-    public void addResultItem(InIntakeApplication application, InResult result, InResultItem item) {
-        intakeApplicationDao.addResultItem(result, item, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
 
     @Override
     public void updateIntakeApplication(InIntakeApplication application) {
@@ -161,18 +155,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void addInvolvement(InIntakeApplication application, InInvolvement involvement) {
         intakeApplicationDao.addInvolvement(application, involvement, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void addBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
-        intakeApplicationDao.addBachelorResult(application, bachelorResult, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void addDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult) {
-        intakeApplicationDao.addDiplomaResult(application, diplomaResult, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -213,33 +195,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         sessionFactory.getCurrentSession().flush();
     }
     
-
-
-    @Override
-    public void deleteBachelorResult(InIntakeApplication application, InBachelorResult bachelorResult) {
-        intakeApplicationDao.deleteBachelorResult(application, bachelorResult, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void deleteDiplomaResult(InIntakeApplication application, InDiplomaResult diplomaResult) {
-        intakeApplicationDao.deleteDiplomaResult(application, diplomaResult, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void addSpmResult(InIntakeApplication application, InSpmResult spmResult) {
-        intakeApplicationDao.addSpmResult(application, spmResult, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void deleteSpmResult(InIntakeApplication application, InSpmResult spmResult) {
-        intakeApplicationDao.deleteSpmResult(application, spmResult, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-
     @Override
     public void addContact(InIntakeApplication application, InContact contact) {
         intakeApplicationDao.addContact(application, contact, securityService.getCurrentUser());
@@ -338,34 +293,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public InBachelorResult findBachelorResultById(Long id) {
-        return intakeApplicationDao.findBachelorResultById(id);
-    }
-
-    @Override
-    public InDiplomaResult findDiplomaResultById(Long id) {
-        return intakeApplicationDao.findDiplomaResultById(id);
-    }
-
-
-    @Override
-    public InSpmResult findSpmResultById(Long id) {
-        return intakeApplicationDao.findSpmResultById(id);
-    }
-
-    @Override
     public InContact findContactById(Long id) {
         return intakeApplicationDao.findContactById(id);
-    }
-
-    @Override
-    public InBachelorResult findBachelorResultByResultType(InResultType resultType, InIntakeApplication application) {
-        return intakeApplicationDao.findBachelorResultByResultType(resultType, application);
-    }
-
-    @Override
-    public InDiplomaResult findDiplomaResultByResultType(InResultType resultType, InIntakeApplication application) {
-        return intakeApplicationDao.findDiplomaResultByResultType(resultType, application);
     }
 
     @Override
@@ -409,10 +338,6 @@ public class ApplicationServiceImpl implements ApplicationService {
         return intakeApplicationDao.findResult(application, resultType);
     }
 
-    @Override
-    public InResultItem findResultItemById(Long id) {
-        return intakeApplicationDao.findResultItemById(id);
-    }
 
     @Override
     public List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid) {
@@ -475,11 +400,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<InResultItem> findResultItems(InResult result) {
-        return intakeApplicationDao.findResultItems(result);
-    }
-
-    @Override
     public List<InEducation> findEducations(InIntakeApplication application) {
         return intakeApplicationDao.findEducations(application);
     }
@@ -522,21 +442,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<InContact> findContacts(InIntakeApplication application) {
         return intakeApplicationDao.findContacts(application);
-    }
-
-    @Override
-    public List<InBachelorResult> findBachelorResults(InIntakeApplication application) {
-        return intakeApplicationDao.findBachelorResults(application);
-    }
-
-    @Override
-    public List<InDiplomaResult> findDiplomaResults(InIntakeApplication application) {
-        return intakeApplicationDao.findDiplomaResults(application);
-    }
-
-    @Override
-    public List<InSpmResult> findSpmResults(InIntakeApplication application) {
-        return intakeApplicationDao.findSpmResults(application);
     }
 
     @Override

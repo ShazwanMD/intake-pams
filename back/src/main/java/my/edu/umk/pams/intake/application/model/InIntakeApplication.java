@@ -274,30 +274,6 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setApplicant(InApplicant applicant);
 
-    @Deprecated
-        // use result
-    List<InSpmResult> getSpmResults();
-
-    @Deprecated
-        // use result
-    void setSpmResults(List<InSpmResult> spmResults);
-
-    @Deprecated
-        // use result
-    List<InBachelorResult> getBachelorResults();
-
-    @Deprecated
-        // use result
-    void setBachelorResults(List<InBachelorResult> bachelorResults);
-
-    @Deprecated
-        // use result
-    List<InDiplomaResult> getDiplomaResults();
-
-    @Deprecated
-        // use result
-    void setDiplomaResults(List<InDiplomaResult> diplomaResults);
-
     List<InGuardian> getGuardians();
 
     void setGuardians(List<InGuardian> guardians);

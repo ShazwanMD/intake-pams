@@ -17,7 +17,7 @@
         PHONE varchar(255),
         primary key (ID)
     );
-  
+
     create table IN_APCN (
         ID int8 not null,
         primary key (ID)
@@ -70,22 +70,6 @@
         M_ST int4,
         NAME varchar(255) not null,
         SWIFT_CODE varchar(255) not null,
-        primary key (ID)
-    );
-
-    create table IN_BCLR_RSLT (
-        CGPA numeric(19, 2) not null,
-        C_TS timestamp,
-        C_ID int8,
-        D_TS timestamp,
-        D_ID int8,
-        M_TS timestamp,
-        M_ID int8,
-        M_ST int4,
-        Name varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
-        APPLICATION_ID int8,
         primary key (ID)
     );
 
@@ -262,22 +246,6 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        primary key (ID)
-    );
-
-    create table IN_DPLM_RSLT (
-        CGPA numeric(19, 2) not null,
-        C_TS timestamp,
-        C_ID int8,
-        D_TS timestamp,
-        D_ID int8,
-        M_TS timestamp,
-        M_ID int8,
-        M_ST int4,
-        Name varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
-        APPLICATION_ID int8,
         primary key (ID)
     );
 
@@ -665,6 +633,7 @@
         BID_TYPE int4 not null,
         BIRTH_DATE timestamp,
         CREDENTIAL_NO varchar(255),
+        DECLARED boolean,
         DIPLOMA_RESULT_ATTACHED boolean,
         EMAIL varchar(255) not null,
         FAX varchar(255),
@@ -690,7 +659,6 @@
         OFFICIAL_POSTCODE varchar(255),
         OKU_NO varchar(255),
         PAID boolean,
-        DECLARED boolean,
         PASSPORT_EXPDATE timestamp,
         PASSPORT_NO varchar(255),
         PAYMENT_SOURCE_NO varchar(255),
@@ -870,14 +838,6 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        primary key (ID)
-    );
-
-    create table IN_MUET_RSLT (
-        BAND int4 not null,
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
         primary key (ID)
     );
 
@@ -1076,6 +1036,8 @@
 
     create table IN_RSLT (
         ID int8 not null,
+        FIELD varchar(255) not null,
+        GRADUATION_YEAR int4,
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -1083,28 +1045,11 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        NAME varchar(255),
-        FIELD varchar(255),
-        GRADUATION_YEAR varchar(255) not null,
+        NAME varchar(255) not null,
+        RESULT_ALPAANUMERIC varchar(255),
+        RESULT_NUMERIC numeric(19, 2),
         RESULT_TYPE int4,
-        RESULT_ALHPANUMERIC varchar(255),
-        RESULT_NUMERIC int8,
         APPLICATION_ID int8,
-        primary key (ID)
-    );
-
-    create table IN_RSLT_ITEM (
-        ID int8 not null,
-        C_TS timestamp,
-        C_ID int8,
-        D_TS timestamp,
-        D_ID int8,
-        M_TS timestamp,
-        M_ID int8,
-        M_ST int4,
-        GRADE_CODE_ID int8,
-        RESULT_ID int8,
-        SUBJECT_CODE_ID int8,
         primary key (ID)
     );
 
@@ -1154,23 +1099,6 @@
         primary key (ID)
     );
 
-    create table IN_SPM_RSLT (
-        AGGREGATE int4 not null,
-        Grade varchar(255) not null,
-        C_TS timestamp,
-        C_ID int8,
-        D_TS timestamp,
-        D_ID int8,
-        M_TS timestamp,
-        M_ID int8,
-        M_ST int4,
-        Name varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
-        APPLICATION_ID int8,
-        primary key (ID)
-    );
-
     create table IN_SPVR_CODE (
         ID int8 not null,
         CODE varchar(255) not null,
@@ -1202,13 +1130,6 @@
     );
 
     create table IN_STAF (
-        ID int8 not null,
-        primary key (ID)
-    );
-
-    create table IN_STAM_RSLT (
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
         ID int8 not null,
         primary key (ID)
     );
@@ -1258,13 +1179,6 @@
         primary key (ID)
     );
 
-    create table IN_STPM_RSLT (
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
-        primary key (ID)
-    );
-
     create table IN_STTE_CODE (
         ID int8 not null,
         CODE varchar(255) not null,
@@ -1278,14 +1192,6 @@
         M_ID int8,
         M_ST int4,
         COUNTRY_CODE_ID int8,
-        primary key (ID)
-    );
-
-    create table IN_TOFL_RSLT (
-        POINT int4 not null,
-        REGISTRATION_NO varchar(255) not null,
-        YEAR int4 not null,
-        ID int8 not null,
         primary key (ID)
     );
 
@@ -1364,16 +1270,6 @@
     alter table IN_BANK_CODE
         add constraint uc_IN_BANK_CODE_3 unique (SWIFT_CODE);
 
-    alter table IN_BCLR_RSLT
-        add constraint FKE5D330A737A6AAA6
-        foreign key (APPLICATION_ID)
-        references IN_INTK_APLN;
-
-    alter table IN_BCLR_RSLT
-        add constraint FKE5D330A7D81680
-        foreign key (ID)
-        references IN_RSLT;
-
     alter table IN_BUMI_CODE
         add constraint uc_IN_BUMI_CODE_1 unique (CODE);
 
@@ -1432,16 +1328,6 @@
 
     alter table IN_DPCY_CODE
         add constraint uc_IN_DPCY_CODE_1 unique (CODE);
-
-    alter table IN_DPLM_RSLT
-        add constraint FK4C431AE137A6AAA6
-        foreign key (APPLICATION_ID)
-        references IN_INTK_APLN;
-
-    alter table IN_DPLM_RSLT
-        add constraint FK4C431AE1D81680
-        foreign key (ID)
-        references IN_RSLT;
 
     alter table IN_DSCT_CODE
         add constraint uc_IN_DSCT_CODE_1 unique (CODE);
@@ -1730,11 +1616,6 @@
     alter table IN_MRTL_CODE
         add constraint uc_IN_MRTL_CODE_1 unique (CODE);
 
-    alter table IN_MUET_RSLT
-        add constraint FK23B72FD7D81680
-        foreign key (ID)
-        references IN_RSLT;
-
     alter table IN_NTLY_CODE
         add constraint uc_IN_NTLY_CODE_1 unique (CODE);
 
@@ -1805,22 +1686,7 @@
     alter table IN_RSLT
         add constraint FKA022266337A6AAA6
         foreign key (APPLICATION_ID)
-        references IN_INTK_APLN;        
-
-    alter table IN_RSLT_ITEM
-        add constraint FKAB928B6FA6138B7C
-        foreign key (GRADE_CODE_ID)
-        references IN_GRDE_CODE;
-
-    alter table IN_RSLT_ITEM
-        add constraint FKAB928B6F9463E1E2
-        foreign key (RESULT_ID)
-        references IN_RSLT;
-
-    alter table IN_RSLT_ITEM
-        add constraint FKAB928B6FB1969366
-        foreign key (SUBJECT_CODE_ID)
-        references IN_SBJT_CODE;
+        references IN_INTK_APLN;
 
     alter table IN_SBJT_CODE
         add constraint uc_IN_SBJT_CODE_1 unique (CODE);
@@ -1832,16 +1698,6 @@
         add constraint FKA022833C43EFCC03
         foreign key (MODULE_ID)
         references IN_MODL;
-
-    alter table IN_SPM_RSLT
-        add constraint FKA7B71AB237A6AAA6
-        foreign key (APPLICATION_ID)
-        references IN_INTK_APLN;
-
-    alter table IN_SPM_RSLT
-        add constraint FKA7B71AB2D81680
-        foreign key (ID)
-        references IN_RSLT;
 
     alter table IN_SPVR_CODE
         add constraint uc_IN_SPVR_CODE_1 unique (CODE);
@@ -1861,11 +1717,6 @@
         foreign key (ID)
         references IN_ACTR;
 
-    alter table IN_STAM_RSLT
-        add constraint FK55E5C3A1D81680
-        foreign key (ID)
-        references IN_RSLT;
-
     alter table IN_STDY_CNTR_CODE
         add constraint uc_IN_STDY_CNTR_CODE_1 unique (CODE);
 
@@ -1882,11 +1733,6 @@
         foreign key (STUDY_MODE_ID)
         references IN_STDY_MODE;
 
-    alter table IN_STPM_RSLT
-        add constraint FK6F633C70D81680
-        foreign key (ID)
-        references IN_RSLT;
-
     alter table IN_STTE_CODE
         add constraint uc_IN_STTE_CODE_1 unique (CODE);
 
@@ -1894,11 +1740,6 @@
         add constraint FK354E82E062D8843A
         foreign key (COUNTRY_CODE_ID)
         references IN_CNTY_CODE;
-
-    alter table IN_TOFL_RSLT
-        add constraint FKE98EA1EDD81680
-        foreign key (ID)
-        references IN_RSLT;
 
     alter table IN_USER
         add constraint uc_IN_USER_1 unique (EMAIL);
@@ -2044,8 +1885,6 @@
     create sequence SQ_IN_RSCY_CODE;
 
     create sequence SQ_IN_RSLT;
-
-    create sequence SQ_IN_RSLT_ITEM;
 
     create sequence SQ_IN_SBJT_CODE;
 

@@ -8,8 +8,6 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.application.model.InResultImpl;
-import my.edu.umk.pams.intake.application.model.InResultItem;
-import my.edu.umk.pams.intake.application.model.InResultItemImpl;
 import my.edu.umk.pams.intake.application.model.InResultType;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InGradeCode;
@@ -71,19 +69,6 @@ public class WhenIFillinMultipleAcademicQualificationInformation extends Stage<W
         subject.setDescriptionMs("test subject description");
         
         commonService.saveSubjectCode(subject);
-        
-        
-        //adding result item
-        InResultItem item = new InResultItemImpl();
-        item.setResult(result);
-        item.setGradeCode(grade);
-        item.setSubjectCode(subject);
-        
-        applicationService.addResultItem(application, result, item);
-      
-        
-    	
-    	
         return self();
 	}
 }

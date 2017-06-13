@@ -21,9 +21,6 @@ import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
-
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,19 +30,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Blob;
 import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/application")
@@ -510,35 +499,6 @@ public class ApplicationController {
     }
 
     // ====================================================================================================
-    // SPM RESULTS
-    // ====================================================================================================
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/spmResults", method = RequestMethod.GET)
-    public ResponseEntity<List<SpmResult>> findSpmResultsByIntakeApplication(@PathVariable String referenceNo) {
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-
-        List<InSpmResult> spmResults = applicationService.findSpmResults(application);
-
-        return new ResponseEntity<List<SpmResult>>(applicationTransformer.toSpmResultVos(spmResults), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/spmResults", method = RequestMethod.POST)
-    public ResponseEntity<String> addSpmResult(@PathVariable String referenceNo, @RequestBody SpmResult vo) {
-        dummyLogin();
-
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InSpmResult spmResult = new InSpmResultImpl();
-        spmResult.setGrade(vo.getGrade());
-        spmResult.setName(vo.getName());
-        spmResult.setYear(vo.getYear());
-        spmResult.setAggregate(vo.getAggregate());
-
-        applicationService.addSpmResult(application, spmResult);
-
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-
-    // ====================================================================================================
     // REFEREES
     // ====================================================================================================
 
@@ -589,95 +549,6 @@ public class ApplicationController {
         applicationService.deleteReferee(application, referee);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
-
-    // ====================================================================================================
-    // BACHELOR RESULT
-    // ====================================================================================================
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/bachelorResults", method = RequestMethod.GET)
-    public ResponseEntity<List<BachelorResult>> findBachelorResultsByIntakeApplication(
-            @PathVariable String referenceNo) {
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        List<InBachelorResult> bachelorResults = applicationService.findBachelorResults(application);
-        return new ResponseEntity<List<BachelorResult>>(applicationTransformer.toBachelorResultVos(bachelorResults),
-                HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/bachelorResults", method = RequestMethod.POST)
-    public ResponseEntity<String> addBachelorResult(@PathVariable String referenceNo, @RequestBody BachelorResult vo) {
-        dummyLogin();
-
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InBachelorResult bachelorResult = new InBachelorResultImpl();
-        bachelorResult.setName(vo.getName());
-        bachelorResult.setCgpa(vo.getCgpa());
-        bachelorResult.setYear(vo.getYear());
-        bachelorResult.setResultType(InResultType.get(vo.getResultType().ordinal()));
-        applicationService.addBachelorResult(application, bachelorResult);
-
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/bachelorResults/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Boolean> deleteBachelorResult(@PathVariable String referenceNo, @PathVariable Long id) {
-        dummyLogin();
-
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InBachelorResult bachelorResult = applicationService.findBachelorResultById(id);
-        applicationService.deleteBachelorResult(application, bachelorResult);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-    }
-
-    // ====================================================================================================
-    // DIPLOMA RESULT
-    // ====================================================================================================
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/diplomaResults", method = RequestMethod.GET)
-    public ResponseEntity<List<DiplomaResult>> findDiplomaResultsByIntakeApplication(@PathVariable String referenceNo) {
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        List<InDiplomaResult> diplomaResults = applicationService.findDiplomaResults(application);
-        return new ResponseEntity<List<DiplomaResult>>(applicationTransformer.toDiplomaResultVos(diplomaResults),
-                HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/diplomaResults", method = RequestMethod.POST)
-    public ResponseEntity<String> addDiplomaResult(@PathVariable String referenceNo, @RequestBody DiplomaResult vo) {
-        dummyLogin();
-
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InDiplomaResult diplomaResult = new InDiplomaResultImpl();
-        diplomaResult.setName(vo.getName());
-        diplomaResult.setCgpa(vo.getCgpa());
-        diplomaResult.setYear(vo.getYear());
-        diplomaResult.setResultType(InResultType.get(vo.getResultType().ordinal()));
-        applicationService.addDiplomaResult(application, diplomaResult);
-
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/diplomaResults/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Boolean> deleteDiplomaResult(@PathVariable String referenceNo, @PathVariable Long id) {
-        dummyLogin();
-
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InDiplomaResult diplomaResult = applicationService.findDiplomaResultById(id);
-        applicationService.deleteDiplomaResult(application, diplomaResult);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
-    }
-
-    // ====================================================================================================
-    // RESULT ITEM
-    // ====================================================================================================
-
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/resultItems", method = RequestMethod.GET)
-    public ResponseEntity<List<ResultItem>> findResultItemsByIntakeApplication(@PathVariable String referenceNo,
-                                                                               @PathVariable InResultType resultType) {
-        InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InResult result = applicationService.findResult(application, resultType);
-        List<InResultItem> resultItems = applicationService.findResultItems(result);
-        return new ResponseEntity<List<ResultItem>>(applicationTransformer.toResultItemVos(resultItems), HttpStatus.OK);
-    }
-    
 
     // ====================================================================================================
     // RESULT

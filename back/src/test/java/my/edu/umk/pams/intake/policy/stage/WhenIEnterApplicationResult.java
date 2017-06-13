@@ -33,22 +33,22 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
 
     @Autowired
     private PolicyService policyService;
-    
+
     @Autowired
     private CommonService commonService;
 
     @Autowired
     private ApplicationService applicationService;
-    
+
     @Autowired
     private IdentityService identityService;
-    
+
     @ProvidedScenarioState
     private InIntake intake;
 
     @ProvidedScenarioState
     private InIntakeApplication application1;
-    
+
     @ProvidedScenarioState
     private InResultType resultType;
 
@@ -62,27 +62,27 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
     private InSupervisorOffering supervisorOffering;
 
     public WhenIEnterApplicationResult I_enter_application_result() {
-    	
-    	//create offering    
+
+        //create offering
         InProgramOffering offering = new InProgramOfferingImpl();
         offering.setProjection(10);
         offering.setGeneralCriteria("2");
         offering.setSpecificCriteria("3.50");
         offering.setInterview(true);
-        offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("A")); 
-        offering.setProgramCode(commonService.findProgramCodeByCode("MCK")); 
+        offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("A"));
+        offering.setProgramCode(commonService.findProgramCodeByCode("MCK"));
         policyService.addProgramOffering(intake, offering);
-        
-        
+
+
         //create a residency code
-    	InResidencyCode resident = new InResidencyCodeImpl();
-    	resident.setCode("101");
-    	resident.setDescriptionMs("test resident");
-    	resident.setDescriptionEn("test resident");
-    	commonService.saveResidencyCode(resident);
-    	Assert.notNull(resident, "resident does not exists");
-    	
-    	//create applicant1
+        InResidencyCode resident = new InResidencyCodeImpl();
+        resident.setCode("101");
+        resident.setDescriptionMs("test resident");
+        resident.setDescriptionEn("test resident");
+        commonService.saveResidencyCode(resident);
+        Assert.notNull(resident, "resident does not exists");
+
+        //create applicant1
         InApplicant applicant1 = new InApplicantImpl();
         applicant1.setApplicationNo("9999990");
         applicant1.setName("Ahmad Kharizmi bin Khaldun");
@@ -90,7 +90,7 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         applicant1.setPhone("0111020202");
         identityService.saveApplicant(applicant1);
 
-    	intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
+        intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
         // start an intakeApplication
         //Application 1
         application1 = new InIntakeApplicationImpl();
@@ -112,30 +112,31 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         application1.setProgramSelection(offering);
         // todo study mode selection
         // application1.setStudyMode(commonService.findStudyModeByCode("1")); //Full time
-		 application1.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
-		 application1.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
-		 application1.setNationalityCode(commonService.findNationalityCodeByCode("1")); // Warganegara
-		 application1.setRaceCode(commonService.findRaceCodeByCode("0100")); // Melayu
-		 application1.setEthnicityCode(commonService.findEthnicityCodeByCode("0100")); // Melayu
-		 application1.setMaritalCode(commonService.findMaritalCodeByCode("1")); // Bujang
-		 application1.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); // Tidak
-		 application1.setResidencyCode(commonService.findResidencyCodeByCode("101")); // no data in seed, created test code for residency in unit
-		 application1.setApplicant(applicant1);
-		 LOG.debug("intake status : {} ", application1.getBidStatus());
-		 
-		 applicationService.applyIntake(intake, application1);
-		 Assert.notNull(application1, "application 1 is not drafted");
-		 LOG.debug("intake status : {} ", application1.getBidStatus());
-        
+        application1.setGenderCode(commonService.findGenderCodeByCode("1")); // Male
+        application1.setReligionCode(commonService.findReligionCodeByCode("1")); // Islam
+        application1.setNationalityCode(commonService.findNationalityCodeByCode("1")); // Warganegara
+        application1.setRaceCode(commonService.findRaceCodeByCode("0100")); // Melayu
+        application1.setEthnicityCode(commonService.findEthnicityCodeByCode("0100")); // Melayu
+        application1.setMaritalCode(commonService.findMaritalCodeByCode("1")); // Bujang
+        application1.setDisabilityCode(commonService.findDisabilityCodeByCode("12")); // Tidak
+        application1.setResidencyCode(commonService.findResidencyCodeByCode("101")); // no data in seed, created test code for residency in unit
+        application1.setApplicant(applicant1);
+        LOG.debug("intake status : {} ", application1.getBidStatus());
 
-      //adding result
-        InBachelorResult result = new InBachelorResultImpl();
-        result.setYear(2017);
-        result.setCgpa(new BigDecimal( (long)3.3));
+        applicationService.applyIntake(intake, application1);
+        Assert.notNull(application1, "application 1 is not drafted");
+        LOG.debug("intake status : {} ", application1.getBidStatus());
+
+
+        //adding result
+        InResult result = new InResultImpl();
+        result.setResultType(InResultType.BACHELOR);
+        result.setGraduationYear(2017);
+        result.setResultNumeric(new BigDecimal(3.3));
         result.setName("11111111");
         result.setApplication(application1);
         applicationService.addResult(application1, result);
-        LOG.debug("results year:{}, cgpa:{}", result.getYear(), result.getCgpa());
+        LOG.debug("results year:{}, cgpa:{}", result.getGraduationYear(), result.getName());
 
         //adding grade code
         InGradeCode grade = new InGradeCodeImpl();
@@ -144,28 +145,14 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         grade.setOrdinal(1);
         commonService.saveGradeCode(grade);
 
-        
+
         //adding subject code
         InSubjectCode subject = new InSubjectCodeImpl();
         subject.setCode("subject123");
         subject.setDescriptionEn("test subject description");
         subject.setDescriptionMs("test subject description");
-        
-        
-        commonService.saveSubjectCode(subject);
-        
-        
-        //adding result item
-        InResultItem item = new InResultItemImpl();
-        item.setResult(result);
-        item.setGradeCode(grade);
-        item.setSubjectCode(subject);
-        
-        applicationService.addResultItem(application1, result, item);
-        
 
-        
-        
+        commonService.saveSubjectCode(subject);
         return self();
     }
 }

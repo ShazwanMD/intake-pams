@@ -73,8 +73,8 @@ public abstract class SelectionStrategySupport implements SelectionStrategy {
         LOG.debug("extract muet result");
         InResultType type = InResultType.MUET;
         if (applicationService.hasResult(application, type)) {
-            InMuetResult result = (InMuetResult) applicationService.findResult(application, type);
-            evaluator.putVariable(type.getCode() + "." + "Band", result.getBand().toString());
+            InResult result =  applicationService.findResult(application, type);
+            evaluator.putVariable(type.getCode() + "." + "Band", result.getResultAlphanumeric().toString());
         }
     }
 
@@ -82,13 +82,8 @@ public abstract class SelectionStrategySupport implements SelectionStrategy {
         LOG.debug("extract diploma result");
         InResultType type = InResultType.DIPLOMA;
         if (applicationService.hasResult(application, type)) {
-            InDiplomaResult result = (InDiplomaResult) applicationService.findResult(application, type);
-            evaluator.putVariable(type.getCode() + "." + "CPA", result.getCgpa().toString());
-            List<InResultItem> items = applicationService.findResultItems(result);
-            for (InResultItem item : items) {
-                evaluator.putVariable(type.getCode() + "." + item.getSubjectCode().getCode(), item.getGradeCode().getOrdinal().toString());
-                LOG.debug("{}:{}", new Object[]{type.getCode() + "." + item.getSubjectCode().getCode(), item.getGradeCode().getOrdinal().toString()});
-            }
+            InResult result =  applicationService.findResult(application, type);
+            evaluator.putVariable(type.getCode() + "." + "CPA", result.getResultAlphanumeric().toString());
         }
     }
 
@@ -96,13 +91,8 @@ public abstract class SelectionStrategySupport implements SelectionStrategy {
         LOG.debug("extract bachelor result");
         InResultType type = InResultType.BACHELOR;
         if (applicationService.hasResult(application, type)) {
-            InBachelorResult result = (InBachelorResult) applicationService.findResult(application, type);
-            evaluator.putVariable(type.getCode() + "." + "CPA", result.getCgpa().toString());
-            List<InResultItem> items = applicationService.findResultItems(result);
-            for (InResultItem item : items) {
-                evaluator.putVariable(type.getCode() + "." + item.getSubjectCode().getCode(), item.getGradeCode().getOrdinal().toString());
-                LOG.debug("{}:{}", new Object[]{type.getCode() + "." + item.getSubjectCode().getCode(), item.getGradeCode().getOrdinal().toString()});
-            }
+            InResult result =  applicationService.findResult(application, type);
+            evaluator.putVariable(type.getCode() + "." + "CPA", result.getResultAlphanumeric().toString());
         }
     }
 }
