@@ -37,6 +37,7 @@ public class IntakeApplication extends MetaObject {
     private Date birthDate;
 
     private Boolean paid;
+    private Boolean declared;
     private Boolean sponsored;
     private Boolean selfSponsored;
     private Boolean verified;
@@ -207,8 +208,16 @@ public class IntakeApplication extends MetaObject {
     public void setPaid(Boolean paid) {
         this.paid = paid;
     }
+    
+    public Boolean getDeclared() {
+		return declared;
+	}
 
-    public Boolean getSponsored() {
+	public void setDeclared(Boolean declared) {
+		this.declared = declared;
+	}
+
+	public Boolean getSponsored() {
         return sponsored;
     }
 
