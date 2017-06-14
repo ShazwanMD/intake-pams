@@ -115,9 +115,9 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findRefereesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findLanguagesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findAttachmentsByIntakeApplication(action.payload),
-      this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),
-      this.intakeApplicationActions.findBachelorResultsByIntakeApplication(action.payload),
-      this.intakeApplicationActions.findDiplomaResultsByIntakeApplication(action.payload),
+      /*this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),*/
+      /*this.intakeApplicationActions.findBachelorResultsByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findDiplomaResultsByIntakeApplication(action.payload),*/
     ]));
 
   @Effect() updateIntakeApplication$ = this.actions$
@@ -296,7 +296,10 @@ export class IntakeApplicationEffects {
   .ofType(IntakeApplicationActions.DOWNLOAD_ATTACHMENT)
   .map(action => action.payload)
   .switchMap(payload => this.applicationService.downloadAttachment(payload.attachment))
-  .map(message => this.intakeApplicationActions.downloadAttachmentSucces(message));
+  .map(blob => {
+    let url = window.URL.createObjectURL(blob);
+    window.open(url)
+  }).ignoreElements();
 
 
   // ====================================================================================================

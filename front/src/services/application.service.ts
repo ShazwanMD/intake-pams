@@ -3,7 +3,7 @@ import {DiplomaResult} from './../app/application/intake-applications/diploma-re
 import {BachelorResult} from './../app/application/intake-applications/bachelor-result-interface';
 import {Referee} from './../app/application/intake-applications/referee.interface';
 import {Injectable} from '@angular/core';
-import {Response, Http, Headers, RequestOptions} from '@angular/http';
+import {Response, Http, Headers, RequestOptions, ResponseContentType} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {IntakeApplication} from "../app/application/intake-applications/intake-application.interface";
 import {Observable} from "rxjs/Observable";
@@ -218,11 +218,12 @@ export class ApplicationService {
       .map((res: Response) => <Attachment[]>res.json());
   }
   
-  downloadAttachment(attachment: Attachment): Observable<Attachment> {
-      console.log("downloadAttachment :"+attachment.id);
-      return this.http.get(environment.endpoint + '/api/application/intakeApplications/download/attachment/' + attachment.id)
-        .map((res: Response) => <Attachment>res.json());
-  }
+  downloadAttachment(attachment: Attachment): Observable<Blob> {
+      console.log('downloadAttachment');
+      let options = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
+      return this.http.get(environment.endpoint + '/api/application/intakeApplications/download/attachment/' + attachment.id, options)
+        .map((res: Response) => new Blob([res.arrayBuffer()], {type: 'application/pdf'}));
+    }
 
   addAttachment(application: IntakeApplication, file: File, attachmentType: AttachmentType): Observable<String> {
     console.log("addAttachment");
