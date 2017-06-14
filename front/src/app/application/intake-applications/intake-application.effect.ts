@@ -115,6 +115,7 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findRefereesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findLanguagesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findAttachmentsByIntakeApplication(action.payload),
+      this.intakeApplicationActions.findResultsByIntakeApplication(action.payload),
       /*this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),*/
       /*this.intakeApplicationActions.findBachelorResultsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findDiplomaResultsByIntakeApplication(action.payload),*/
@@ -300,6 +301,44 @@ export class IntakeApplicationEffects {
     let url = window.URL.createObjectURL(blob);
     window.open(url)
   }).ignoreElements();
+
+
+  // ====================================================================================================
+  // RESULT
+  // ====================================================================================================
+
+  @Effect() findResultsByIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_RESULTS_BY_INTAKE_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(application => this.applicationService.findResultsByIntakeApplication(application))
+    .map(results => this.intakeApplicationActions.findResultsByIntakeApplicationSuccess(results));
+
+  @Effect() addResult = this.actions$
+    .ofType(IntakeApplicationActions.ADD_RESULT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.addResult(payload.application, payload.result))
+    .map(message => this.intakeApplicationActions.addResultSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+ @Effect() deleteResult$ = this.actions$
+    .ofType(IntakeApplicationActions.DELETE_RESULT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.deleteResult(payload.application, payload.result))
+    .map(message => this.intakeApplicationActions.deleteResultSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+  @Effect() updateResult$ = this.actions$
+    .ofType(IntakeApplicationActions.UPDATE_RESULT)
+    .map(action => action.payload)
+    .switchMap(payload => this.applicationService.updateResult(payload.application, payload.result))
+    .map(message => this.intakeApplicationActions.updateResultSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map(state => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
 
   // ====================================================================================================

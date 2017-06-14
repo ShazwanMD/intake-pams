@@ -585,6 +585,83 @@ export class IntakeApplicationActions {
   }
 
 
+ // ====================================================================================================
+  // RESULT
+  // ====================================================================================================
+
+  static FIND_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Results';
+
+  findResultsByIntakeApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.FIND_RESULTS_BY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static FIND_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Results Success';
+
+  findResultsByIntakeApplicationSuccess(result): Action {
+    console.log("findResultsSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
+      payload: result
+    };
+  }
+
+  static ADD_RESULT = '[Intake Application] Add Result';
+
+  addResult(application, result) {
+    return {
+      type: IntakeApplicationActions.ADD_RESULT,
+      payload: {application: application, spmResult: result}
+    };
+  }
+
+  static ADD_RESULT_SUCCESS = '[Intake Application] Add Result Success';
+
+  addResultSuccess(message) {
+    return {
+      type: IntakeApplicationActions.ADD_RESULT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_RESULT= '[Intake Application] Update Result Application';
+
+  updateResult(application, result): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_RESULT,
+      payload: {application: application, result: result}
+    };
+  }
+
+  static UPDATE_RESULT_SUCCESS = '[Intake Application] Update Result Success';
+
+  updateResultSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.UPDATE_RESULT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static DELETE_RESULT = '[Intake Application] Delete Result';
+
+  deleteResult(intake, result) {
+    return {
+      type: IntakeApplicationActions.DELETE_RESULT,
+      payload: {intake: intake, result: result}
+    };
+  }
+
+  static DELETE_RESULT_SUCCESS = '[Intake Application] Delete Result Success';
+
+  deleteResultSuccess(message) {
+    return {
+      type: IntakeApplicationActions.DELETE_RESULT_SUCCESS,
+      payload: message
+    };
+  }
+
   // ====================================================================================================
   // SPM_RESULT
   // ====================================================================================================

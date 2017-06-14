@@ -1,3 +1,4 @@
+import { Result } from './../app/application/intake-applications/result.interface';
 import {Attachment} from './../app/application/intake-applications/attachment.interface';
 import {DiplomaResult} from './../app/application/intake-applications/diploma-result-interface';
 import {BachelorResult} from './../app/application/intake-applications/bachelor-result-interface';
@@ -273,6 +274,42 @@ export class ApplicationService {
 
   deleteReferee(application: IntakeApplication, referee: Referee): Observable<String> {
     return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/referees/' + referee.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+
+  // ====================================================================================================
+  // RESULT
+  // ====================================================================================================   
+
+  findResultsByIntakeApplication(application: IntakeApplication): Observable<Result[]> {
+    console.log("findSpmResults");
+    return this.http.get(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + "/results")
+      .map((res: Response) => <Result[]>res.json());
+  }
+
+  addResult(application: IntakeApplication, result: Result): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/results', JSON.stringify(result), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateResult(application: IntakeApplication, result: Result): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/results/' + result.id, JSON.stringify(result), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deleteResult(application: IntakeApplication, result: Result): Observable<String> {
+    return this.http.delete(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/results/' + result.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
