@@ -5,7 +5,7 @@
   </div>
 
   <td-layout-card-over>
-    <form [formGroup]="applicationForm">
+    <form [formGroup]="applicationForm" >
      <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
         <div>
           <md-card-title>Intake Application</md-card-title>
@@ -41,19 +41,30 @@
                   <md-input-container fxFlex="calc(100%-25px)">
                     <input mdInput placeholder="Name" formControlName="name">
                   </md-input-container>
+                  <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
+                     Name is required
+                  </div>  
               
                   <md-input-container fxFlex="calc(100%-25px)">
                     <input mdInput placeholder="Email" formControlName="email">
                   </md-input-container>
+                   <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
+                    Email is required
+                  </div>
                
                   <md-input-container fxFlex="calc(100%-25px)">
                     <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo">
-                   
                   </md-input-container>
+                  <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
+                     IC or Passport Number is required
+                    </div>
 
                   <md-input-container fxFlex="calc(100%-25px)">
                     <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate">
                   </md-input-container>
+                  <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
+                     Passport expired date is required once you enter passport number.
+                    </div>
             
                  <md-input-container fxFlex="calc(100%-25px)">
                     <input mdInput type="date" placeholder="Date of Birth"  formControlName="birthDate">

@@ -1,3 +1,5 @@
+import { RaceCode } from './../../../common/race-codes/race-code.interface';
+import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
 import { CountryCode } from './../../../common/country-codes/country-code.interface';
 import { StateCode } from './../../../common/state-codes/state-code.interface';
 import {EthnicityCode} from '../../../common/ethnicity-codes/ethnicity-code.interface';
@@ -8,7 +10,7 @@ import {SpmResult} from '../spm-result.interface';
 import {Referee} from '../referee.interface';
 import {Employment} from '../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {ApplicationModuleState} from "../../index";
@@ -17,9 +19,7 @@ import {Observable} from "rxjs/Observable";
 import {IntakeApplication} from "../intake-application.interface";
 import {Language} from "../language.interface";
 import {NationalityCode} from "../../../common/nationality-codes/nationality-code.interface";
-import {GenderCode} from "../../../common/gender-codes/gender-code.interface";
 import {MaritalCode} from "../../../common/marital-codes/marital-code.interface";
-import {RaceCode} from "../../../common/race-codes/race-code.interface";
 import {ReligionCode} from "../../../common/religion-codes/religion-code.interface";
 import {MdDialogRef, MdDialogConfig} from "@angular/material";
 
@@ -32,6 +32,7 @@ import {MdDialogRef, MdDialogConfig} from "@angular/material";
 export class MgsebIntakeApplicationPage implements OnInit {
   intakeApplication: any;
   dialog: any;
+
 
   private dummyData: any[] = [
     {"subject": "Bahasa Malaysia", "grade": "A+"},
@@ -88,35 +89,37 @@ export class MgsebIntakeApplicationPage implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.route.params.subscribe((params: { referenceNo: string }) => {
       let referenceNo: string = params.referenceNo;
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
     });
 
-    this.applicationForm = this.formBuilder.group(<IntakeApplication>{
+    this.applicationForm = this.formBuilder.group({
       id: null,
       referenceNo: '',
       researchTitle: '',
       rank: 0,
       merit: 0,
-      name: '',
-      credentialNo: '',
+      
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      credentialNo: ['', Validators.required],
       birthDate: null,
       passExpDate: null,
-      mobile: '',
+      mobile: ['', Validators.required],
       okuNo: '',
-      email: '',
-      phone: '',
-      fax: '',
-      age: 0,
-      mailingAddress1: '',
-      mailingAddress2: '',
-      mailingAddress3: '',
-      mailingPostcode: '',
-      officialAddress1: '',
-      officialAddress2: '',
-      officialAddress3: '',
-      officialPostcode: '',      
+      email: ['', Validators.required],
+      phone: ['', Validators.required],
+      fax: ['', Validators.required],
+      age: [ 0, Validators.required],
+      mailingAddress1: ['', Validators.required],
+      mailingAddress2: ['', Validators.required],
+      mailingAddress3: ['', Validators.required],
+      mailingPostcode: ['', Validators.required],
+      officialAddress1: ['', Validators.required],
+      officialAddress2: ['', Validators.required],
+      officialAddress3: ['', Validators.required],
+      officialPostcode: ['', Validators.required],     
 
       spmResultAttached: false,
       stpmResultAttached: false,
