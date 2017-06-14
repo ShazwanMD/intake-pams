@@ -6,6 +6,8 @@ import {AttachmentCreatorDialog} from "./dialog/attachment-creator.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from "@angular/material";
 import {IntakeApplication} from "../intake-application.interface";
 import {Attachment} from "../attachment.interface";
+import { Observable } from "rxjs/Observable";
+import { environment } from "../../../../environments/environment";
 
 
 @Component({
@@ -43,12 +45,9 @@ export class AttachmentListComponent implements OnInit {
   }
   
   download(attachment: Attachment): void {
-      console.log("attachment id :"+attachment.id);
-      //this.store.dispatch(this.actions.downloadAttachment(attachment));
-      //let URL: String = "http://localhost:8080/api/application/intakeApplications/download/attachment/"+attachment.id;
-      //windows.open("http://localhost:8080/api/application/intakeApplications/download/attachment/"+attachment.id);
-      window.open("http://localhost:8080/api/application/intakeApplications/download/attachment/"+attachment.id, '_blank');
-   }
+      console.log("attachment id "+attachment.id);
+      this.store.dispatch(this.actions.downloadAttachment(attachment));
+    }
 
   filter(): void {
   }
