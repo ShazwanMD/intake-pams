@@ -100,6 +100,28 @@ export class ApplicationService {
       + application.referenceNo + '/submit', JSON.stringify(application), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  selectIntakeApplication(application: IntakeApplication): Observable<String> {
+      let headers = new Headers({
+        'Content-Type': 'application/json',
+        //'Authorization': 'Bearer ' + this.authService.token
+      });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.post(environment.endpoint + '/api/application/intakeApplications/'
+        + application.referenceNo + '/select', JSON.stringify(application), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+  }
+  
+  rejectIntakeApplication(application: IntakeApplication): Observable<String> {
+      let headers = new Headers({
+        'Content-Type': 'application/json',
+        //'Authorization': 'Bearer ' + this.authService.token
+      });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.post(environment.endpoint + '/api/application/intakeApplications/'
+        + application.referenceNo + '/reject', JSON.stringify(application), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   updateIntakeApplication(application: IntakeApplication): Observable<String> {
     console.log("updateIntakeApplication ");

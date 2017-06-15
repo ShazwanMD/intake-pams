@@ -694,6 +694,7 @@
         RACE_CODE_ID int8,
         RELIGION_CODE_ID int8,
         RESIDENCY_CODE_ID int8,
+        STUDY_CENTER_CODE_ID int8,
         STUDY_MODE_SELECTION_ID int8,
         SUPERVISOR_SELECTION_ID int8,
         primary key (ID)
@@ -1546,6 +1547,11 @@
         add constraint FK5974F5A60E65A82
         foreign key (RESIDENCY_CODE_ID)
         references IN_RSCY_CODE;
+        
+    alter table IN_INTK_APLN
+        add constraint FK5974F5A55B7DC0A
+        foreign key (STUDY_CENTER_CODE_ID)
+        references IN_STDY_CNTR_CODE;
 
     alter table IN_INTK_APLN
         add constraint FK5974F5A55B7DBE0
