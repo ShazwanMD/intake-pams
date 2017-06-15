@@ -19,9 +19,7 @@
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
   </button> -->
 
-  <button md-button class="md-icon-button" (click)="editBachelor(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
-  </button>
+
 
   <button md-button class="md-icon-button" (click)="editSpm(selectedRows[0])" [disabled]="selectedRows.length != 1">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
@@ -35,14 +33,25 @@
 <!-- contoh -->
 <template let-result let-last="last" ngFor [ngForOf]="results">
   <td-expansion-panel label="SPM Result" *ngIf="result.resultType === 'SPM'">
+
+  <button md-button class="md-icon-button" (click)="editBachelor(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
+  </button>
+  
+  <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
+  </button>
+
     <div layout="column" class="inset">
+      
       <div layout="row" class="pad-bottom">
         <span flex="20">School</span>
         <span>{{result.name}}</span>
       </div>
       <div layout="row" class="pad-bottom">
         <span flex="20">Graduation Year</span>
-        <span>1993</span>
+        <span>{{result.graduationYear}}</span>
+ 
       </div>
       <div layout="row" class="pad-bottom">
         <span flex="20">Aggregate</span>
@@ -50,6 +59,10 @@
       </div>
     </div>
   </td-expansion-panel>
+
+
+
+
   <td-expansion-panel label="Degree Result" *ngIf="result.resultType === 'BACHELOR'">
     <div layout="column" class="inset">
       <div layout="row" class="pad-bottom">
@@ -58,7 +71,7 @@
       </div>
       <div layout="row" class="pad-bottom">
         <span flex="20">Graduation Year</span>
-        <span>1993</span>
+        <span>{{result.graduationYear}}</span>
       </div>
       <div layout="row" class="pad-bottom">
         <span flex="20">CGPA</span>
