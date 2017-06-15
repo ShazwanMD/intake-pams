@@ -10,21 +10,26 @@
     <md-icon>add</md-icon>
         </button>
     <md-menu x-position="before" #menu="mdMenu">
-      <button md-menu-item (click)="addSpmResult()">Add SPM Result</button>
-      <button md-menu-item (click)="addSpmResult()">Add STPM Result</button>
-      <button md-menu-item (click)="addDiplomaResult()">Add Diploma Result</button>
-      <button md-menu-item (click)="addBachelorResult()">Add Bachelor Result</button>
+      <button md-menu-item (click)="createSpm()">Add SPM Result </button>
+  <!--    <button md-menu-item (click)="addSpmResult()">Add STPM Result</button>
+      <button md-menu-item (click)="addDiplomaResult()">Add Diploma Result</button> -->
+      <button md-menu-item (click)="createBachelor()">Add Bachelor Result</button>
     </md-menu>
-
-  <!--<button md-button class="md-icon-button" (click)="addResult()">
+ <!-- <button md-button class="md-icon-button" (click)="addResult()">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
-  </button>
-  <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
+  </button> -->
+
+  <button md-button class="md-icon-button" (click)="editBachelor(selectedRows[0])" [disabled]="selectedRows.length != 1">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
   </button>
+
+  <button md-button class="md-icon-button" (click)="editSpm(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
+  </button>
+
   <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-  </button>-->
+  </button>
 </div>
 <md-divider></md-divider>
 <td-data-table

@@ -1,4 +1,4 @@
-import {SpmResultCreatorDialog} from './dialog/spm-result-creator.dialog';
+import { SpmResultEditorDialog } from './dialog/spm-result-editor.dialog';
 import {SpmResult} from '../spm-result.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
@@ -20,7 +20,7 @@ export class SpmResultListComponent implements OnInit {
   @Input() intakeApplication: IntakeApplication;
 
   private selectedRows: SpmResult[];
-  private creatorDialogRef: MdDialogRef<SpmResultCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<SpmResultEditorDialog>;
   private columns: any[] = [
     {name: 'subjectCode.description', label: 'Subject Name'},
     {name: 'grade', label: 'Grade'},
@@ -48,7 +48,7 @@ export class SpmResultListComponent implements OnInit {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(SpmResultCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(SpmResultEditorDialog, config);
     this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");

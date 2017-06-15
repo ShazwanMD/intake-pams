@@ -1,4 +1,4 @@
-import {BachelorResultCreatorDialog} from './dialog/bachelor-result-creator.dialog';
+import { BachelorResultEditorDialog } from './dialog/bachelor-result-editor.dialog';
 import {BachelorResult} from '../bachelor-result-interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
@@ -19,7 +19,7 @@ export class BachelorResultListComponent implements OnInit {
   @Input() bachelorResults: BachelorResult[];
   @Input() intakeApplication: IntakeApplication;
 
-  private creatorDialogRef: MdDialogRef<BachelorResultCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<BachelorResultEditorDialog>;
   private columns: any[] = [
     {name: 'name', label: 'Name'},
     {name: 'cgpa', label: 'Cgpa'},
@@ -44,7 +44,7 @@ export class BachelorResultListComponent implements OnInit {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(BachelorResultCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(BachelorResultEditorDialog, config);
     this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");

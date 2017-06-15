@@ -1,4 +1,4 @@
-import {SubjectCode} from '../../../../common/subject-codes/subject-code.interface';
+import { Result } from './../../result.interface';
 import {BachelorResult} from '../../bachelor-result-interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -10,18 +10,19 @@ import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
 import {ResultType} from "../../result-type.enum";
-import {SpmResult} from "../../spm-result.interface";
 
 
 @Component({
-  selector: 'pams-spm-result-creator',
-  templateUrl: './spm-result-creator.dialog.html',
+  selector: 'pams-bachelor-result-editor',
+  templateUrl: './bachelor-result-editor.dialog.html',
 })
 
-export class SpmResultCreatorDialog implements OnInit {
+export class BachelorResultEditorDialog implements OnInit {
 
   private _intakeApplication: IntakeApplication;
-  private createForm: FormGroup;
+  private editForm: FormGroup;
+  private edit: boolean = false;
+  private _bachelorResult: Result;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -29,30 +30,35 @@ export class SpmResultCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions,
-              private dialog: MdDialogRef<SpmResultCreatorDialog>) {
+              private dialog: MdDialogRef<BachelorResultEditorDialog>) {
   }
 
+
+  set bachelorResult(value: Result) {
+    this._bachelorResult = value;
+    this.edit = true;
+  }
 
   set intakeApplication(value: IntakeApplication) {
     this._intakeApplication = value;
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<SpmResult>{
+    this.editForm = this.formBuilder.group(<Result>{
       id: null,
-      year: 0,
       name: '',
-      grade: '',
-      aggregate: 0,
-      subjectCode: <SubjectCode>{},
-
-      // resultType: ResultType.BACHELOR,
+      field: '',
+      graduationYear: '',
+      resultNumeric: 0,
+      resultType: ResultType.BACHELOR,
 
     });
+    if (this.edit) this.editForm.patchValue(this._bachelorResult);
   }
 
-  save(spmResult: SpmResult, isValid: boolean) {
-    this.store.dispatch(this.actions.addSpmResult(this._intakeApplication, spmResult));
+  submit(bachelorResult: Result, isValid: boolean) {
+    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, bachelorResult));
+    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, bachelorResult));
     this.dialog.close();
   }
 }

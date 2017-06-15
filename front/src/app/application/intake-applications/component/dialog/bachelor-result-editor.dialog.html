@@ -1,11 +1,10 @@
 <h2 md-dialog-title>Bachelor Information</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <form [formGroup]="editForm">
     <md-card>
       <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
 
         <div layout="column" class="pad-right" flex>
-
           <div layout="row">
             <md-input-container flex>
               <input mdInput placeholder="Name" formControlName="name" flex/>
@@ -14,23 +13,29 @@
 
           <div layout="row">
             <md-input-container flex>
-              <input mdInput placeholder="Year" formControlName="year" flex/>
+              <input mdInput placeholder="Field" formControlName="field" flex/>
             </md-input-container>
           </div>
 
           <div layout="row">
             <md-input-container flex>
-              <input mdInput type="number" placeholder="Cgpa" formControlName="cgpa" flex/>
+              <input mdInput placeholder="Graduation Year" formControlName="graduationYear" flex/>
+            </md-input-container>
+          </div>
+
+          <div layout="row">
+            <md-input-container flex>
+              <input mdInput type="number" placeholder="Cgpa" formControlName="resultNumeric" flex/>
             </md-input-container>
           </div>
 
 
-          <div layout="row" class="pad-top">
+         <!-- <div layout="row" class="pad-top">
             <pams-result-type-select
               [placeholder]="'ResultType'"
               [innerFormControl]="createForm.controls.resultType">
             </pams-result-type-select>
-          </div>
+          </div> -->
 
         </div>
       </div>
@@ -38,6 +43,8 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
 </md-dialog-actions>
 

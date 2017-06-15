@@ -6,8 +6,8 @@ import {DiplomaResultCreatorDialog} from '../component/dialog/diploma-result-cre
 import {LanguageEditorDialog} from '../component/dialog/language-editor.dialog';
 import {ResultTypeSelectComponent} from '../component/result-type-select.component';
 import {BachelorResultListComponent} from '../component/bachelor-result-list.component';
-import {BachelorResultCreatorDialog} from '../component/dialog/bachelor-result-creator.dialog';
-import {SpmResultCreatorDialog} from '../component/dialog/spm-result-creator.dialog';
+import {BachelorResultEditorDialog} from '../component/dialog/bachelor-result-editor.dialog';
+import {SpmResultEditorDialog} from '../component/dialog/spm-result-editor.dialog';
 import {SpmResultListComponent} from '../component/spm-result-list.component';
 import {AttachmentTypeSelectComponent} from '../component/attachment-type-select.component';
 import {RefereeTypeSelectComponent} from '../component/referee-type-select.component';
@@ -68,8 +68,8 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     //dialogs
     EmploymentEditorDialog,
     RefereeEditorDialog,
-    SpmResultCreatorDialog,
-    BachelorResultCreatorDialog,
+    SpmResultEditorDialog,
+    BachelorResultEditorDialog,
     DiplomaResultCreatorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,
@@ -96,8 +96,8 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
   entryComponents: [
     EmploymentEditorDialog,
     RefereeEditorDialog,
-    SpmResultCreatorDialog,
-    BachelorResultCreatorDialog,
+    SpmResultEditorDialog,
+    BachelorResultEditorDialog,
     DiplomaResultCreatorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,

@@ -1,3 +1,5 @@
+import { SpmResultEditorDialog } from './dialog/spm-result-editor.dialog';
+import { BachelorResultEditorDialog } from './dialog/bachelor-result-editor.dialog';
 import { ApplicationActions } from './../../application.action';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
@@ -22,7 +24,8 @@ export class ResultListComponent implements OnInit {
   @Input() intakeApplication: IntakeApplication;
 
   private selectedRows: Result[];
-  //private editorDialogRef: MdDialogRef<ResultEditorDialog>;
+  private editorBachelorDialogRef: MdDialogRef<BachelorResultEditorDialog>;
+  private editorSpmDialogRef: MdDialogRef<SpmResultEditorDialog>;
   private columns: any[] = [
     {name: 'resultType', label: 'Result Type'},
     {name: 'name', label: 'Name'},
@@ -42,13 +45,21 @@ export class ResultListComponent implements OnInit {
     this.selectedRows = this.results.filter(value => value.selected);
   }
 
-  /*create(): void {
-    this.showDialog(null);
-  }*/
+  createBachelor(): void {
+    this.showDialog1(null);
+  }
 
-  /*edit(result: Result): void {
-    this.showDialog(result);
-  }*/
+  editBachelor(result: Result): void {
+    this.showDialog1(result);
+  }
+
+  createSpm(): void {
+    this.showDialog2(null);
+  }
+
+  editSpm(result: Result): void {
+    this.showDialog2(result);
+  } 
 
   delete(result: Result): void {
     this.store.dispatch(this.actions.deleteResult(this.intakeApplication, result));
@@ -67,18 +78,33 @@ export class ResultListComponent implements OnInit {
   selectAllRows(results: Result[]): void {
   }
 
-  /*showDialog(result: Result): void {
+   showDialog1(bachelorResult: Result): void {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
     config.height = '60%';
     config.position = {top: '65px'};
-    this.editorDialogRef = this.dialog.open(ResultEditorDialog, config);
-    this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    if (result) this.editorDialogRef.componentInstance.result = result;
-    this.editorDialogRef.afterClosed().subscribe(res => {
+    this.editorBachelorDialogRef = this.dialog.open(BachelorResultEditorDialog, config);
+    this.editorBachelorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    if (bachelorResult) this.editorBachelorDialogRef.componentInstance.bachelorResult = bachelorResult;
+    this.editorBachelorDialogRef.afterClosed().subscribe(res => {
       this.selectedRows = [];
     });
-  }*/
+  }
+
+    showDialog2(spmResult: Result): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.editorSpmDialogRef = this.dialog.open(SpmResultEditorDialog, config);
+    this.editorSpmDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    if (spmResult) this.editorSpmDialogRef.componentInstance.spmResult = spmResult;
+    this.editorSpmDialogRef.afterClosed().subscribe(res => {
+      this.selectedRows = [];
+    });
+  } 
 }
