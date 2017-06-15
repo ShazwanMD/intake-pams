@@ -682,10 +682,10 @@ export class IntakeApplicationActions {
 
   static DELETE_RESULT = '[Intake Application] Delete Result';
 
-  deleteResult(intake, result) {
+  deleteResult(application, result) {
     return {
       type: IntakeApplicationActions.DELETE_RESULT,
-      payload: {intake: intake, result: result}
+      payload: {application: application, result: result}
     };
   }
 
