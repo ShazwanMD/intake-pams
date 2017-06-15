@@ -307,6 +307,7 @@
                                 <srcFile>src/test/resources/data/IN_MRTL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_NTLY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_GNDR_CODE.sql</srcFile>
+                                 <srcFile>src/test/resources/data/IN_GRDE_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_EDCN_LEVL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_CNTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_INTK_SESN.sql</srcFile>
