@@ -96,16 +96,16 @@ export class MgsebIntakeApplicationPage implements OnInit {
     });
 
     this.applicationForm = this.formBuilder.group({
-      id: null,
+      id:[undefined],
       referenceNo: '',
-      researchTitle: '',
+      researchTitle: ['', Validators.required],
       rank: 0,
       merit: 0,
       
-      name: ['', [Validators.required, Validators.minLength(2)]],
+      name: ['', Validators.required, Validators.minLength(30)], 
       credentialNo: ['', Validators.required],
-      birthDate: null,
-      passExpDate: null,
+      birthDate: [undefined, Validators.required],
+      passExpDate: [undefined, Validators.required],
       mobile: ['', Validators.required],
       okuNo: '',
       email: ['', Validators.required],
@@ -121,41 +121,41 @@ export class MgsebIntakeApplicationPage implements OnInit {
       officialAddress3: ['', Validators.required],
       officialPostcode: ['', Validators.required],     
 
-      spmResultAttached: false,
-      stpmResultAttached: false,
-      diplomaResultAttached: false,
-      bachelorResultAttached: false,
-      toeflResultAttached: false,
-      ieltsResultAttached: false,
-      languageResultAttached: false,
-      processingFeeAttached: false,
-      bankStatementAttached: false,
-      refereeFormAttached: false,
-      researchProposalAttached: false,
-      sponsorLetterAttached: false,
-
-      genderCode: <GenderCode>{},
-      maritalCode: <MaritalCode>{},
-      raceCode: <RaceCode>{},
-      disabilityCode: <DisabilityCode>{},
-      ethnicityCode: <EthnicityCode>{},
-      religionCode: <ReligionCode>{},
-      nationalityCode: <NationalityCode>{},
-      mailingStateCode: <StateCode>{},
-      mailingCountryCode: <CountryCode>{},
-      officialStateCode: <StateCode>{},
-      officialCountryCode: <CountryCode>{},
-      verified: false,
-      sponsored: false,
-      selfSponsored: false,
-      processingReceipt: false,
-      foreignResult: false,
-      educationResult: false,
-      academic: false,
-      financialLetter: false,
-      researchProposal: false,
-      bankStatement: false,
-      refereeForm: false,
+      spmResultAttached: false,  
+      stpmResultAttached:false,  
+      diplomaResultAttached: false,  
+      bachelorResultAttached:false,   
+      toeflResultAttached: false,  
+      ieltsResultAttached:false,    
+      languageResultAttached: false,    
+      processingFeeAttached: false,  
+      bankStatementAttached: false,  
+      refereeFormAttached: false,   
+      researchProposalAttached: false,  
+      sponsorLetterAttached: false,      
+      
+      genderCode:[<GenderCode>{}, Validators.required],
+      maritalCode:[<MaritalCode>{}, Validators.required],
+      raceCode:[<RaceCode>{}, Validators.required],
+      ethnicityCode :[<EthnicityCode>{}, Validators.required],
+      disabilityCode:[<DisabilityCode>{}, Validators.required],
+      religionCode:[<ReligionCode>{}, Validators.required],
+      nationalityCode:[<NationalityCode>{}, Validators.required],
+      mailingStateCode:[<StateCode>{}, Validators.required],
+      mailingCountryCode:[<CountryCode>{}, Validators.required],
+      officialStateCode:[<StateCode>{}, Validators.required],
+      officialCountryCode:[<CountryCode>{}, Validators.required],
+      verified: false,  
+      sponsored:false,  
+      selfSponsored: false,  
+      processingReceipt:false,  
+      foreignResult: false,  
+      educationResult: false,  
+      academic:false,  
+      financialLetter:false,  
+      researchProposal: false,  
+      bankStatement: false,  
+      refereeForm: false,  
 
     });
     this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));
@@ -175,6 +175,8 @@ export class MgsebIntakeApplicationPage implements OnInit {
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
+
+
 }
 
 

@@ -5,7 +5,7 @@
   </div>
 
   <td-layout-card-over>
-    <form [formGroup]="applicationForm" auto-save>
+    <form [formGroup]="applicationForm" novalidate>
       <div layout="row" layout-align="start center">
         <div>
           <md-card-title>Intake Application</md-card-title>
@@ -30,31 +30,47 @@
                   <md-input-container flex>
                     <input mdInput placeholder="Name" formControlName="name" flex/>
                   </md-input-container>
+                  <div class="error"  class="tc-red-600" *ngIf="applicationForm.get('name').invalid && applicationForm.get('name').touched">
+                     Name should be at least {{minLength}} characters!
+                  </div>
                 </div>
 
                 <div layout="row" class="pad-bottom" flex>
                   <md-input-container flex>
                     <input mdInput placeholder="Email" formControlName="email" flex/>
                   </md-input-container>
+                   <div class="error" *ngIf="applicationForm.get('email').invalid && applicationForm.get('email').touched">
+                     email is required!
+                  </div>
                 </div>
 
                 <div layout="row" class="pad-bottom" flex>
                   <md-input-container flex>
                     <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo" flex/>
                   </md-input-container>
-                </div>
+                  <div class="error"  class="tc-red-600" *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
+                    Your Ic or Passport Number is required!
+                  </div>
+                  
+                 </div>
 
 
                 <div layout="row" class="pad-bottom" flex>
                   <md-input-container flex>
                     <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate" flex/>
                   </md-input-container>
+                  <div class="error" class="tc-red-600" *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
+                   Your Birth Date is required!
+                  </div>
                 </div>
 
                 <div layout="row" class="pad-top">
                   <pams-nationality-code-select [placeholder]="'Nationality'" [innerFormControl]="applicationForm.controls.nationalityCode">
                   </pams-nationality-code-select>
-                </div>
+                   <div class="error" class="tc-red-600" *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
+                   Please add your nationality!
+                  </div>
+               </div>
 
 
                 <div layout="row" class="pad-top">
@@ -77,6 +93,7 @@
                   <md-input-container flex>
                     <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>
                   </md-input-container>
+
                 </div>
                 <div layout="row" class="pad-bottom" flex>
                   <md-input-container flex>
@@ -180,6 +197,7 @@
                   <md-input-container flex>
                     <input mdInput placeholder="Address 2" formControlName="officialAddress2" flex/>
                   </md-input-container>
+
                 </div>
 
                 <div layout="row" class="pad-bottom" flex>
