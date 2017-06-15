@@ -126,6 +126,24 @@ export class PolicyService {
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
+  findSubmittedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+    console.log("findIntakeApplications");
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/SUBMITTED")
+      .map((res: Response) => <IntakeApplication[]>res.json());
+  }
+
+  findRejectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+    console.log("findIntakeApplications");
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/REJECTED")
+      .map((res: Response) => <IntakeApplication[]>res.json());
+  }
+
+  findSelectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+    console.log("findIntakeApplications");
+    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/SELECTED")
+      .map((res: Response) => <IntakeApplication[]>res.json());
+  }
+
   startIntakeTask(intake: Intake): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
@@ -145,7 +163,7 @@ export class PolicyService {
       return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/copy', JSON.stringify(intake), options)
         .flatMap((res: Response) => Observable.of(res.text()));
     }
-  
+
   completeIntakeTask(intakeTask: IntakeTask): Observable<String> {
     console.log("TaskId: " + intakeTask.taskId);
     let headers = new Headers({
@@ -201,7 +219,7 @@ export class PolicyService {
     return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings', JSON.stringify(offering), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-  
+
   updateProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
       let headers = new Headers({
         'Content-Type': 'application/json',
