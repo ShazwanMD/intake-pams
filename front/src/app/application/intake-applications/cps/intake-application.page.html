@@ -214,27 +214,10 @@
               </pams-language-list>
             </td-expansion-panel>
 
-            <!--<td-expansion-panel label="SPM Qualifications">
-              <pams-spm-result-list
-                [intakeApplication]="intakeApplication$ | async"
-                [spmResults]="spmResults$ | async"></pams-spm-result-list>
-            </td-expansion-panel>-->
-
-            <!--<template md-tab-label>Bachelor Information</template>
-
-            <td-expansion-panel label="Bachelor Qualification">
-              <pams-bachelor-result-list
-                [intakeApplication]="intakeApplication$ | async"
-                [bachelorResults]="bachelorResults$ | async"></pams-bachelor-result-list>
-            </td-expansion-panel>-->
-
-            <!--<template md-tab-label>Diploma Information</template>
-
-            <td-expansion-panel label="Diploma Qualification">
-              <pams-diploma-result-list
-                [intakeApplication]="intakeApplication$ | async"
-                [diplomaResults]="diplomaResults$ | async"></pams-diploma-result-list>
-            </td-expansion-panel>-->
+          <td-expansion-panel label="Results">
+            <pams-result-list [intakeApplication]="intakeApplication$ | async" [results]="results$ | async">
+            </pams-result-list>
+          </td-expansion-panel>
 
             <td-expansion-panel label="SPM Qualification">
               <div layout="column" class="inset">

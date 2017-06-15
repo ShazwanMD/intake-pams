@@ -1,11 +1,30 @@
 <div toolbar-buttons layout="row" layout-align="start center" flex>
+  <md-card-title>Result List
+  </md-card-title>
+  <md-chip-list *ngIf="results?.length > 0">
+    <md-chip color="accent">{{results?.length}}</md-chip>
+  </md-chip-list>
   <span flex></span>
-  <button md-button class="md-icon-button" (click)="showDialog()">
-    <md-icon class="md-24 tc-grey-700">add</md-icon>
+
+  <button md-icon-button [md-menu-trigger-for]="menu">
+    <md-icon>add</md-icon>
+        </button>
+    <md-menu x-position="before" #menu="mdMenu">
+      <button md-menu-item (click)="addSpmResult()">Add SPM Result</button>
+      <button md-menu-item (click)="addSpmResult()">Add STPM Result</button>
+      <button md-menu-item (click)="addDiplomaResult()">Add Diploma Result</button>
+      <button md-menu-item (click)="addBachelorResult()">Add Bachelor Result</button>
+    </md-menu>
+
+  <!--<button md-button class="md-icon-button" (click)="addResult()">
+    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
   </button>
-  <button md-button class="md-icon-button" (click)="delete(selectedRows)">
-    <md-icon class="md-24 tc-grey-700">delete</md-icon>
+  <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
   </button>
+  <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
+  </button>-->
 </div>
 <md-divider></md-divider>
 <td-data-table
@@ -14,9 +33,12 @@
   [sortBy]="summary"
   [sortOrder]="ASC"
   [sortable]="false"
-  [multiple]="false"
-  [selectable]="false"
-  (rowSelect)="view.emit($event)" dense>
+  [multiple]="true"
+  [selectable]="true"
+  [(ngModel)]="selectedRows"
+  (rowSelect)="selectRow($event)"
+  (selectAll)="selectAllRows($event)"
+  dense>
   <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
     <div layout="row">
       <span flex>{{value}}</span>
