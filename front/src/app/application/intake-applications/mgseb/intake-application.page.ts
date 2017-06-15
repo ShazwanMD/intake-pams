@@ -1,3 +1,4 @@
+import { StudyCenterCode } from './../../../common/study-center-codes/study-center-code.interface';
 import { RaceCode } from './../../../common/race-codes/race-code.interface';
 import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
 import { CountryCode } from './../../../common/country-codes/country-code.interface';
@@ -121,6 +122,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
       officialAddress3: ['', Validators.required],
       officialPostcode: ['', Validators.required],     
 
+<<<<<<< HEAD
       spmResultAttached: false,  
       stpmResultAttached:false,  
       diplomaResultAttached: false,  
@@ -156,6 +158,44 @@ export class MgsebIntakeApplicationPage implements OnInit {
       researchProposal: false,  
       bankStatement: false,  
       refereeForm: false,  
+=======
+      spmResultAttached: false,
+      stpmResultAttached: false,
+      diplomaResultAttached: false,
+      bachelorResultAttached: false,
+      toeflResultAttached: false,
+      ieltsResultAttached: false,
+      languageResultAttached: false,
+      processingFeeAttached: false,
+      bankStatementAttached: false,
+      refereeFormAttached: false,
+      researchProposalAttached: false,
+      sponsorLetterAttached: false,
+
+      studyCenterCode: <StudyCenterCode>{},
+      genderCode: <GenderCode>{},
+      maritalCode: <MaritalCode>{},
+      raceCode: <RaceCode>{},
+      disabilityCode: <DisabilityCode>{},
+      ethnicityCode: <EthnicityCode>{},
+      religionCode: <ReligionCode>{},
+      nationalityCode: <NationalityCode>{},
+      mailingStateCode: <StateCode>{},
+      mailingCountryCode: <CountryCode>{},
+      officialStateCode: <StateCode>{},
+      officialCountryCode: <CountryCode>{},
+      verified: false,
+      sponsored: false,
+      selfSponsored: false,
+      processingReceipt: false,
+      foreignResult: false,
+      educationResult: false,
+      academic: false,
+      financialLetter: false,
+      researchProposal: false,
+      bankStatement: false,
+      refereeForm: false,
+>>>>>>> 81e6ab4864e6d6358caf6612efae91f8e1cdace0
 
     });
     this.intakeApplication$.subscribe(intakeApplication => this.applicationForm.patchValue(intakeApplication));

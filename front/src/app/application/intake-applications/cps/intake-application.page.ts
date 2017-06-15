@@ -1,3 +1,4 @@
+import { Result } from './../result.interface';
 import {DiplomaResult} from '../diploma-result-interface';
 import {ReligionCode} from '../../../common/religion-codes/religion-code.interface';
 import {MaritalCode} from '../../../common/marital-codes/marital-code.interface';
@@ -51,6 +52,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
   private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
   private REFEREES: string[] = "applicationModuleState.referees".split(".");
+  private RESULTS: string[] = "applicationModuleState.results".split(".");
   private ATTACHMENTS: string[] = "applicationModuleState.attachments".split(".");
   private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
   private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
@@ -60,6 +62,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
+  private results$: Observable<Result>;
   private attachments$: Observable<Referee>;
   private spmResults$: Observable<SpmResult>;
   private bachelorResults$: Observable<BachelorResult>;
@@ -77,6 +80,7 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
+    this.results$ = this.store.select(...this.RESULTS);
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
     this.spmResults$ = this.store.select(...this.SPM_RESULTS);
     this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);

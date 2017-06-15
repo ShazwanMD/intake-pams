@@ -250,6 +250,10 @@ public interface InIntakeApplication extends InMetaObject {
     InStudyModeOffering getStudyModeSelection();
 
     void setStudyModeSelection(InStudyModeOffering studyModeSelection);
+    
+    InStudyCenterCode getStudyCenterCode();
+
+    void setStudyCenterCode(InStudyCenterCode studyCenterCode);
 
     // NOTE: optional, international student
     String getPassportNo();

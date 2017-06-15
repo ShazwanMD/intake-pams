@@ -249,6 +249,8 @@ public class ApplicationController {
             application.setRaceCode(commonService.findRaceCodeById(vo.getRaceCode().getId()));
         if (null != vo.getNationalityCode())
             application.setNationalityCode(commonService.findNationalityCodeById(vo.getNationalityCode().getId()));
+        if (null != vo.getStudyCenterCode())
+            application.setStudyCenterCode(commonService.findStudyCenterCodeById(vo.getStudyCenterCode().getId()));
 
         applicationService.updateIntakeApplication(application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -264,6 +266,28 @@ public class ApplicationController {
         InIntake intake = application.getIntake();
         updateIntakeApplication(referenceNo, vo);
         applicationService.submitIntakeApplication(intake, application);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/select", method = RequestMethod.POST)
+    public ResponseEntity<String> selectIntakeApplication(@PathVariable String referenceNo,
+                                                          @RequestBody IntakeApplication vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+        InIntake intake = application.getIntake();
+        applicationService.selectIntakeApplication(intake, application);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/reject", method = RequestMethod.POST)
+    public ResponseEntity<String> rejectIntakeApplication(@PathVariable String referenceNo,
+                                                          @RequestBody IntakeApplication vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+        InIntake intake = application.getIntake();
+        applicationService.rejectIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 

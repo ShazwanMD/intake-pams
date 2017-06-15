@@ -88,4 +88,15 @@ export class ApplicantProfileDialog implements OnInit {
       let referenceNo: string = this.intakeApplication.referenceNo;
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
+  
+  select(intakeApplication : IntakeApplication): void{
+      console.log("select :"+intakeApplication.referenceNo);
+      this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
+  }
+  
+  reject(intakeApplication : IntakeApplication): void{
+      console.log("reject :"+intakeApplication.referenceNo);
+      this.store.dispatch(this.actions.rejectIntakeApplication(intakeApplication));
+  }
+  
 }
