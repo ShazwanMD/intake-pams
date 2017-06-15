@@ -34,7 +34,7 @@ public class ThenIProcessTheApplication extends Stage<ThenIProcessTheApplication
 		// InIntakeApplication application =
 		// applicationService.findIntakeApplicationByNricNoOrPassportNo("910607145581");
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo("INTAKE/10001");
-		applicationService.processIntakeApplication(intake, application);
+		applicationService.selectIntakeApplication(intake, application);
 		LOG.debug("intake status {} :", application.getBidStatus());
 
 		return self();

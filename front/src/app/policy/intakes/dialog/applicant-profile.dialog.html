@@ -33,7 +33,7 @@
                 <b>Nationality</b> : {{intakeApplication.nationalityCode?.descriptionEn}}<br/><br/>
                 <b>Email</b> : {{intakeApplication.email}}<br/><br/>
                 <b>Phone</b> : {{intakeApplication.phone}}<br/><br/>
-                <b>Mobile</b> : {{intakeApplication.mobile}}
+                <b>Mobile</b> : {{intakeApplication.mobile}}<br/><br/>
                 <b>Status</b> : {{intakeApplication.maritalCode?.descriptionEn}}<br/><br/>
               </div>
 
@@ -133,7 +133,25 @@
                   </md-card-content>
                 </md-card>
               </md-tab>
-              
+              <md-tab label="Working Experience">
+                <!--WORKING EXPERIENCE INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Working Experience Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                   <pams-employment-list [intakeApplication]="intakeApplication$ | async" [employments]="employments$ | async">
+           			</pams-employment-list>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
               <md-tab label="Attachment">
                 <!--ATTACHMENT INFORMATION-->
                 <md-card>
@@ -156,8 +174,8 @@
             </md-tab-group>
           </md-card-content>
         </md-card>
-        	<button md-raised-button color="accent" (click)="submit(selectForm.value, selectForm.valid)">Select</button>
-        	<button md-raised-button color="accent" (click)="submit(rejectForm.value, rejectForm.valid)">Reject</button>
+        	<button md-raised-button color="accent" (click)="select(intakeApplication)">Select</button>
+        	<button md-raised-button color="accent" (click)="reject(intakeApplication)">Reject</button>
       </md-tab>
     </md-tab-group>
 

@@ -266,6 +266,28 @@ public class ApplicationController {
         applicationService.submitIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/select", method = RequestMethod.POST)
+    public ResponseEntity<String> selectIntakeApplication(@PathVariable String referenceNo,
+                                                          @RequestBody IntakeApplication vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+        InIntake intake = application.getIntake();
+        applicationService.selectIntakeApplication(intake, application);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/reject", method = RequestMethod.POST)
+    public ResponseEntity<String> rejectIntakeApplication(@PathVariable String referenceNo,
+                                                          @RequestBody IntakeApplication vo) {
+        dummyLogin();
+
+        InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+        InIntake intake = application.getIntake();
+        applicationService.rejectIntakeApplication(intake, application);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/programOfferingSelection", method = RequestMethod.POST)
     public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo,

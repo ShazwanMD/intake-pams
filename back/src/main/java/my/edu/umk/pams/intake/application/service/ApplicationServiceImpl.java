@@ -96,7 +96,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public void processIntakeApplication(InIntake intake, InIntakeApplication application) {
+    public void selectIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
         LOG.debug("intake application: {}", application.getReferenceNo());
         application.setBidStatus(InBidStatus.SELECTED);

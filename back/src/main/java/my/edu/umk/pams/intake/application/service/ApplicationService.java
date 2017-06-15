@@ -23,7 +23,7 @@ public interface ApplicationService {
 
     void draftedIntakeApplication(InIntake intake, InIntakeApplication application);
 
-    void processIntakeApplication(InIntake intake, InIntakeApplication application);
+    void selectIntakeApplication(InIntake intake, InIntakeApplication application);
 
     void verifyInternationalApplications(InIntake intake, InIntakeApplication application);
 

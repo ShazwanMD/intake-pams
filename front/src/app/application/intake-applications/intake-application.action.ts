@@ -199,6 +199,42 @@ export class IntakeApplicationActions {
       payload: message
     };
   }
+  
+  static SELECT_INTAKE_APPLICATION = '[Intake Application] Select Intake Application';
+
+  selectIntakeApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.SELECT_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static SELECT_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Select Intake Application Success';
+
+  selectIntakeApplicationSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.SELECT_INTAKE_APPLICATION_SUCCESS,
+      payload: message
+    };
+  }
+  
+  static REJECT_INTAKE_APPLICATION = '[Intake Application] Select Intake Application';
+
+  rejectIntakeApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.REJECT_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static REJECT_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Reject Intake Application Success';
+
+  rejectIntakeApplicationSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.REJECT_INTAKE_APPLICATION_SUCCESS,
+      payload: message
+    };
+  }
 
   static FIND_INTAKE_APPLICATION_BY_REFERENCE_NO = '[Intake Application] Find Intake By Reference No';
 

@@ -106,9 +106,11 @@ public class ApplicationTransformer {
 		vo.setPhone(e.getPhone());
 		vo.setFax(e.getFax());
 		vo.setVerified(e.isVerified());
+		vo.setResearchTitle(e.getResearchTitle());
+		
 		
 		vo.setMaritalCode(commonTransformer.toMaritalCodeVo(e.getMaritalCode()));
-		
+		vo.setNationalityCode(commonTransformer.toNationalityCodeVo(e.getNationalityCode()));
 		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
 		vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));
 		vo.setSupervisorSelection(policyTransformer.toSupervisorOfferingVo(e.getSupervisorSelection()));
