@@ -214,87 +214,46 @@
               </pams-language-list>
             </td-expansion-panel>
 
-          <td-expansion-panel label="Results">
-            <pams-result-list [intakeApplication]="intakeApplication$ | async" [results]="results$ | async">
-            </pams-result-list>
-          </td-expansion-panel>
-
-            <td-expansion-panel label="SPM Qualification">
-              <div layout="column" class="inset">
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">School</span>
-                  <span>Sekolah Datuk Abdul Razak</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">School Type</span>
-                  <span>Sekolah Berasrama Penuh</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">Graduation Year</span>
-                  <span>1993</span>
-                </div>
-              </div>
-              <md-divider></md-divider>
-              <div toolbar-buttons layout="row" layout-align="start center" flex>
-                <span flex></span>
-                <button md-button class="md-icon-button" click="create()">
-                  <md-icon class="md-24 tc-grey-700">add</md-icon>
-                </button>
-                <button md-button class="md-icon-button" (click)="edit(selectedRows[0])">
-                  <md-icon class="md-24 tc-grey-300">edit</md-icon>
-                </button>
-                <button md-button class="md-icon-button" (click)="delete(selectedRows[0])">
-                  <md-icon class="md-24 tc-grey-300">delete</md-icon>
-                </button>
-
-              </div>
-              <md-divider></md-divider>
-              <div class="inset">
-                <td-data-table [data]="dummyData" [columns]="dummyColumns" [sortBy]="summary" [sortOrder]="ASC"
-                               [sortable]="false" [multiple]="false"
-                               [selectable]="false" (rowSelect)="view.emit($event)" dense>
-                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <span flex>{{value}}</span>
-                    </div>
-                  </template>
-                </td-data-table>
-              </div>
+            <td-expansion-panel label="Results">
+              <pams-result-list [intakeApplication]="intakeApplication$ | async" [results]="results$ | async">
+              </pams-result-list>
             </td-expansion-panel>
 
-            <td-expansion-panel label="Diploma Qualification">
-              <div layout="column" class="inset">
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">University/College</span>
-                  <span>Kolej Keusahawanan MARA</span>
+            <!-- contoh -->
+            <template let-result let-last="last" ngFor [ngForOf]="results$ | async">
+              <td-expansion-panel label="SPM Result" *ngIf="result.resultType === 'SPM'">
+                <div layout="column" class="inset">
+                  <div layout="row" class="pad-bottom">
+                    <span flex="20">School</span>
+                    <span>{{result.name}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="20">Graduation Year</span>
+                    <span>1993</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="20">Aggregate</span>
+                    <span>{{result.resultAlphanumeric}}</span>
+                  </div>
                 </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">Graduation Year</span>
-                  <span>2011</span>
+              </td-expansion-panel>
+              <td-expansion-panel label="Degree Result" *ngIf="result.resultType === 'BACHELOR'">
+                <div layout="column" class="inset">
+                  <div layout="row" class="pad-bottom">
+                    <span flex="20">University</span>
+                    <span>{{result.name}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="20">Graduation Year</span>
+                    <span>1993</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="20">CGPA</span>
+                    <span>{{result.resultNumeric}}</span>
+                  </div>
                 </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">CGPA</span>
-                  <span>3.44</span>
-                </div>
-              </div>
-            </td-expansion-panel>
-
-            <td-expansion-panel label="Bachelor Qualification">
-              <div layout="column" class="inset">
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">University/College</span>
-                  <span>Universiti Malaysia Kelantan</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">Graduation Year</span>
-                  <span>2015</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">CGPA</span>
-                  <span>3.44</span>
-                </div>
-              </div>
-            </td-expansion-panel>
+              </td-expansion-panel>
+            </template>
           </md-card>
         </md-tab>
 

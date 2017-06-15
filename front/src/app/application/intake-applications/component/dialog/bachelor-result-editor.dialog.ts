@@ -44,8 +44,8 @@ export class BachelorResultEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editForm = this.formBuilder.group(<Result>{
-      id: null,
+    this.editForm = this.formBuilder.group({
+      id: undefined,
       name: '',
       field: '',
       graduationYear: 0,
