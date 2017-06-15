@@ -123,6 +123,17 @@ public class ApplicationController {
                 HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications/bidStatus/{bidStatus}", method = RequestMethod.POST)
+    public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByIntakeAndBidStatus(@PathVariable String referenceNo, @PathVariable String bidStatus) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        InBidStatus status = InBidStatus.valueOf(bidStatus);
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, status);
+        return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
+                HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<ProgramOffering>> findProgramOfferings(@PathVariable String referenceNo) {
         dummyLogin();
@@ -268,7 +279,7 @@ public class ApplicationController {
         applicationService.submitIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakeApplications/{referenceNo}/select", method = RequestMethod.POST)
     public ResponseEntity<String> selectIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
@@ -279,7 +290,7 @@ public class ApplicationController {
         applicationService.selectIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakeApplications/{referenceNo}/reject", method = RequestMethod.POST)
     public ResponseEntity<String> rejectIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
@@ -514,8 +525,8 @@ public class ApplicationController {
         InAttachment attachment = applicationService.findAttachmentById(id);
         ByteArrayResource resource = null;
         //ByteArrayOutputStream outputStream = new ByteArrayOutputStream(attachment.getBytes());
-		//workbook.write(outputStream);
-		resource = new ByteArrayResource(attachment.getBytes());
+        //workbook.write(outputStream);
+        resource = new ByteArrayResource(attachment.getBytes());
 
         return ResponseEntity.ok()
                 .header("Content-Disposition", "attachment; filename=" + attachment.getName())
@@ -586,7 +597,7 @@ public class ApplicationController {
         return new ResponseEntity<List<Result>>(applicationTransformer.toResultVos(results),
                 HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakeApplications/{referenceNo}/results", method = RequestMethod.POST)
     public ResponseEntity<String> addResult(@PathVariable String referenceNo, @RequestBody Result vo) {
         dummyLogin();
