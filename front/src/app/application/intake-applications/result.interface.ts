@@ -4,7 +4,7 @@ export interface Result extends MetaObject {
   id: number;
   name: string;
   field: string;
-  graduationYear: string;
+  graduationYear: number;
   resultAlphanumeric: string;
   resultNumeric: number;
   resultType: ResultType;

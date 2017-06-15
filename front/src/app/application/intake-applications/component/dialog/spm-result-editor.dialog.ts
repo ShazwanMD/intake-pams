@@ -46,7 +46,7 @@ export class SpmResultEditorDialog implements OnInit {
     this.editForm = this.formBuilder.group(<Result>{
       id: null,
       name: '',
-      graduationYear: '',
+      graduationYear: 0,
       resultAlphanumeric: '',
       resultType: ResultType.SPM,
 

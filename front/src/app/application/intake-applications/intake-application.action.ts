@@ -649,7 +649,7 @@ export class IntakeApplicationActions {
   addResult(application, result) {
     return {
       type: IntakeApplicationActions.ADD_RESULT,
-      payload: {application: application, spmResult: result}
+      payload: {application: application, result: result}
     };
   }
 

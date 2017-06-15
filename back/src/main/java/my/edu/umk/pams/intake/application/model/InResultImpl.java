@@ -30,8 +30,8 @@ public class InResultImpl implements InResult {
     @Column(name = "NAME", nullable = false)
     private String name;
     
-    @NotNull
-    @Column(name = "FIELD", nullable = false)
+    
+    @Column(name = "FIELD")
     private String field;
     
     @Column(name = "GRADUATION_YEAR")
