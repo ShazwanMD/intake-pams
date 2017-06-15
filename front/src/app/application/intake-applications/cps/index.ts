@@ -1,8 +1,9 @@
+import {StpmResultEditorDialog} from './../component/dialog/stpm-result-editor.dialog';
 import {ResultListComponent} from './../component/result-list.component';
 import {Result} from './../result.interface';
 import {EmploymentTypeSelectComponent} from '../component/employment-type-select.component';
 import {DiplomaResultListComponent} from '../component/diploma-result-list.component';
-import {DiplomaResultCreatorDialog} from '../component/dialog/diploma-result-creator.dialog';
+import {DiplomaResultEditorDialog} from '../component/dialog/diploma-result-editor.dialog';
 import {LanguageEditorDialog} from '../component/dialog/language-editor.dialog';
 import {ResultTypeSelectComponent} from '../component/result-type-select.component';
 import {BachelorResultListComponent} from '../component/bachelor-result-list.component';
@@ -69,8 +70,9 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     EmploymentEditorDialog,
     RefereeEditorDialog,
     SpmResultEditorDialog,
+    StpmResultEditorDialog,
     BachelorResultEditorDialog,
-    DiplomaResultCreatorDialog,
+    DiplomaResultEditorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,
 
@@ -97,8 +99,9 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     EmploymentEditorDialog,
     RefereeEditorDialog,
     SpmResultEditorDialog,
+    StpmResultEditorDialog,
     BachelorResultEditorDialog,
-    DiplomaResultCreatorDialog,
+    DiplomaResultEditorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,
   ],

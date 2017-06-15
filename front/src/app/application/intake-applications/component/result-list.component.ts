@@ -1,3 +1,5 @@
+import { StpmResultEditorDialog } from './dialog/stpm-result-editor.dialog';
+import { DiplomaResultEditorDialog } from './dialog/diploma-result-editor.dialog';
 import { SpmResultEditorDialog } from './dialog/spm-result-editor.dialog';
 import { BachelorResultEditorDialog } from './dialog/bachelor-result-editor.dialog';
 import { ApplicationActions } from './../../application.action';
@@ -25,6 +27,8 @@ export class ResultListComponent implements OnInit {
 
   private selectedRows: Result[];
   private editorBachelorDialogRef: MdDialogRef<BachelorResultEditorDialog>;
+  private editorDiplomaDialogRef: MdDialogRef<DiplomaResultEditorDialog>;
+  private editorStpmDialogRef: MdDialogRef<StpmResultEditorDialog>;
   private editorSpmDialogRef: MdDialogRef<SpmResultEditorDialog>;
   private columns: any[] = [
     {name: 'resultType', label: 'Result Type'},
@@ -59,6 +63,22 @@ export class ResultListComponent implements OnInit {
 
   editSpm(result: Result): void {
     this.showDialog2(result);
+  } 
+
+  createDiploma(): void {
+    this.showDialog3(null);
+  }
+
+  editDiploma(result: Result): void {
+    this.showDialog3(result);
+  }
+
+  createStpm(): void {
+    this.showDialog4(null);
+  }
+
+  editStpm(result: Result): void {
+    this.showDialog4(result);
   } 
 
   delete(result: Result): void {
@@ -107,4 +127,35 @@ export class ResultListComponent implements OnInit {
       this.selectedRows = [];
     });
   } 
+
+   showDialog3(diplomaResult: Result): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.editorDiplomaDialogRef = this.dialog.open(DiplomaResultEditorDialog, config);
+    this.editorDiplomaDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    if (diplomaResult) this.editorDiplomaDialogRef.componentInstance.diplomaResult = diplomaResult;
+    this.editorDiplomaDialogRef.afterClosed().subscribe(res => {
+      this.selectedRows = [];
+    });
+  }
+
+    showDialog4(stpmResult: Result): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.editorStpmDialogRef = this.dialog.open(StpmResultEditorDialog, config);
+    this.editorStpmDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    if (stpmResult) this.editorStpmDialogRef.componentInstance.stpmResult = stpmResult;
+    this.editorStpmDialogRef.afterClosed().subscribe(res => {
+      this.selectedRows = [];
+    });
+  } 
+
 }

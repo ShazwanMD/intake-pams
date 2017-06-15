@@ -1,4 +1,4 @@
-import {DiplomaResultCreatorDialog} from './dialog/diploma-result-creator.dialog';
+import { DiplomaResultEditorDialog } from './dialog/diploma-result-editor.dialog';
 import {DiplomaResult} from '../diploma-result-interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from "../intake-application.action";
@@ -19,7 +19,7 @@ export class DiplomaResultListComponent implements OnInit {
   @Input() diplomaResults: DiplomaResult[];
   @Input() intakeApplication: IntakeApplication;
 
-  private creatorDialogRef: MdDialogRef<DiplomaResultCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<DiplomaResultEditorDialog>;
   private columns: any[] = [
     {name: 'name', label: 'Name'},
     {name: 'cgpa', label: 'Cgpa'},
@@ -44,7 +44,7 @@ export class DiplomaResultListComponent implements OnInit {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(DiplomaResultCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(DiplomaResultEditorDialog, config);
     this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
