@@ -249,6 +249,8 @@ public class ApplicationController {
             application.setRaceCode(commonService.findRaceCodeById(vo.getRaceCode().getId()));
         if (null != vo.getNationalityCode())
             application.setNationalityCode(commonService.findNationalityCodeById(vo.getNationalityCode().getId()));
+        if (null != vo.getStudyCenterCode())
+            application.setStudyCenterCode(commonService.findStudyCenterCodeById(vo.getStudyCenterCode().getId()));
 
         applicationService.updateIntakeApplication(application);
         return new ResponseEntity<String>("success", HttpStatus.OK);

@@ -246,6 +246,11 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @ManyToOne(targetEntity = InStudyModeOfferingImpl.class)
     @JoinColumn(name = "STUDY_MODE_SELECTION_ID", nullable = true)
     private InStudyModeOffering studyModeSelection;
+    
+    // note: can draft without choosing
+    @ManyToOne(targetEntity = InStudyCenterCodeImpl.class)
+    @JoinColumn(name = "STUDY_CENTER_CODE_ID", nullable = true)
+    private InStudyCenterCode studyCenterCode;
 
     @ManyToOne(targetEntity = InIntakeImpl.class)
     @JoinColumn(name = "INTAKE_ID")
@@ -884,6 +889,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setStudyModeSelection(InStudyModeOffering studyModeSelection) {
         this.studyModeSelection = studyModeSelection;
+    }
+    
+    @Override
+    public InStudyCenterCode getStudyCenterCode() {
+        return studyCenterCode;
+    }
+
+    @Override
+    public void setStudyCenterCode(InStudyCenterCode studyCenterCode) {
+        this.studyCenterCode = studyCenterCode;
     }
 
     @Override

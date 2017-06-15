@@ -375,6 +375,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public StudyCenterCode toStudyCenterCodeVo(InStudyCenterCode e) {
+    	if(null == e) return null;
         StudyCenterCode vo = new StudyCenterCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());

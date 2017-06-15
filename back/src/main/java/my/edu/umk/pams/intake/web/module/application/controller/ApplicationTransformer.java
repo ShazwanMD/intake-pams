@@ -88,6 +88,7 @@ public class ApplicationTransformer {
 		vo.setMaritalCode(commonTransformer.toMaritalCodeVo(e.getMaritalCode()));
 		vo.setNationalityCode(commonTransformer.toNationalityCodeVo(e.getNationalityCode()));
 		
+		vo.setStudyCenterCode(commonTransformer.toStudyCenterCodeVo(e.getStudyCenterCode()));
 		vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
 		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
 		vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));

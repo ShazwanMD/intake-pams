@@ -74,6 +74,7 @@ public class IntakeApplication extends MetaObject {
     private ProgramOffering programSelection;
     private SupervisorOffering supervisorSelection;
     private StudyModeOffering studyModeSelection;
+    private StudyCenterCode studyCenterCode;
 
     private GenderCode genderCode;
     private NationalityCode nationalityCode;
@@ -539,7 +540,15 @@ public class IntakeApplication extends MetaObject {
         this.religionCode = religionCode;
     }
 
-    @JsonCreator
+    public StudyCenterCode getStudyCenterCode() {
+		return studyCenterCode;
+	}
+
+	public void setStudyCenterCode(StudyCenterCode studyCenterCode) {
+		this.studyCenterCode = studyCenterCode;
+	}
+
+	@JsonCreator
     public static IntakeApplication create(String jsonString) {
         IntakeApplication o = null;
         try {

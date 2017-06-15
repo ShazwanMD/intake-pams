@@ -1,3 +1,4 @@
+import { StudyCenterCode } from './../../../common/study-center-codes/study-center-code.interface';
 import { RaceCode } from './../../../common/race-codes/race-code.interface';
 import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
 import { CountryCode } from './../../../common/country-codes/country-code.interface';
@@ -134,6 +135,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
       researchProposalAttached: false,
       sponsorLetterAttached: false,
 
+      studyCenterCode: <StudyCenterCode>{},
       genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},
       raceCode: <RaceCode>{},
