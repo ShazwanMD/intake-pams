@@ -32,21 +32,58 @@
   </button>
 </div>
 <md-divider></md-divider>
-<td-data-table
-  [data]="results"
-  [columns]="columns"
-  [sortBy]="summary"
-  [sortOrder]="ASC"
-  [sortable]="false"
-  [multiple]="true"
-  [selectable]="true"
-  [(ngModel)]="selectedRows"
-  (rowSelect)="selectRow($event)"
-  (selectAll)="selectAllRows($event)"
-  dense>
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex>{{value}}</span>
+<!-- contoh -->
+<template let-result let-last="last" ngFor [ngForOf]="results">
+  <td-expansion-panel label="SPM Result" *ngIf="result.resultType === 'SPM'">
+    <div layout="column" class="inset">
+      <div layout="row" class="pad-bottom">
+        <span flex="20">School</span>
+        <span>{{result.name}}</span>
+      </div>
+      <div layout="row" class="pad-bottom">
+        <span flex="20">Graduation Year</span>
+        <span>1993</span>
+      </div>
+      <div layout="row" class="pad-bottom">
+        <span flex="20">Aggregate</span>
+        <span>{{result.resultAlphanumeric}}</span>
+      </div>
     </div>
-  </template>
-</td-data-table>
+  </td-expansion-panel>
+  <td-expansion-panel label="Degree Result" *ngIf="result.resultType === 'BACHELOR'">
+    <div layout="column" class="inset">
+      <div layout="row" class="pad-bottom">
+        <span flex="20">University</span>
+        <span>{{result.name}}</span>
+      </div>
+      <div layout="row" class="pad-bottom">
+        <span flex="20">Graduation Year</span>
+        <span>1993</span>
+      </div>
+      <div layout="row" class="pad-bottom">
+        <span flex="20">CGPA</span>
+        <span>{{result.resultNumeric}}</span>
+      </div>
+    </div>
+  </td-expansion-panel>
+</template>
+
+
+<!--<td-data-table-->
+  <!--[data]="results"-->
+  <!--[columns]="columns"-->
+  <!--[sortBy]="summary"-->
+  <!--[sortOrder]="ASC"-->
+  <!--[sortable]="false"-->
+  <!--[multiple]="true"-->
+  <!--[selectable]="true"-->
+  <!--[(ngModel)]="selectedRows"-->
+  <!--(rowSelect)="selectRow($event)"-->
+  <!--(selectAll)="selectAllRows($event)"-->
+  <!--dense>-->
+  <!--<template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">-->
+    <!--<div layout="row">-->
+      <!--<span flex>{{value}}</span>-->
+    <!--</div>-->
+  <!--</template>-->
+<!--</td-data-table>-->

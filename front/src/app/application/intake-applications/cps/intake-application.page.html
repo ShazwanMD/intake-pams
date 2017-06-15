@@ -219,41 +219,6 @@
               </pams-result-list>
             </td-expansion-panel>
 
-            <!-- contoh -->
-            <template let-result let-last="last" ngFor [ngForOf]="results$ | async">
-              <td-expansion-panel label="SPM Result" *ngIf="result.resultType === 'SPM'">
-                <div layout="column" class="inset">
-                  <div layout="row" class="pad-bottom">
-                    <span flex="20">School</span>
-                    <span>{{result.name}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="20">Graduation Year</span>
-                    <span>1993</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="20">Aggregate</span>
-                    <span>{{result.resultAlphanumeric}}</span>
-                  </div>
-                </div>
-              </td-expansion-panel>
-              <td-expansion-panel label="Degree Result" *ngIf="result.resultType === 'BACHELOR'">
-                <div layout="column" class="inset">
-                  <div layout="row" class="pad-bottom">
-                    <span flex="20">University</span>
-                    <span>{{result.name}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="20">Graduation Year</span>
-                    <span>1993</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="20">CGPA</span>
-                    <span>{{result.resultNumeric}}</span>
-                  </div>
-                </div>
-              </td-expansion-panel>
-            </template>
           </md-card>
         </md-tab>
 
