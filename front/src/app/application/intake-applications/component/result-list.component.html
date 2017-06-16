@@ -48,65 +48,16 @@
 
   <!-- STPM Result -->
 
-  <td-expansion-panel label="STPM Result" *ngIf="result.resultType === 'STPM'">
-
-
-    <button md-button class="md-icon-button" (click)="editStpm()">
-      <md-icon>edit</md-icon>
-    </button>
-
-    <button md-button class="md-icon-button" (click)="delete()">
-      <md-icon>delete</md-icon>
-    </button>
-
-    <div layout="column" class="inset">
-
-      <div layout="row" class="pad-bottom">
-        <span flex="20">School</span>
-        <span>{{result.name}}</span>
-      </div>
-      <div layout="row" class="pad-bottom">
-        <span flex="20">Graduation Year</span>
-        <span>{{result.graduationYear}}</span>
-
-      </div>
-      <div layout="row" class="pad-bottom">
-        <span flex="20">Aggregate</span>
-        <span>{{result.resultAlphanumeric}}</span>
-      </div>
-    </div>
-  </td-expansion-panel>
+   <pams-stpm-result
+    [intakeApplication]="intakeApplication"
+    [result]="result" *ngIf="result.resultType === 'STPM'">
+  </pams-stpm-result>
 
   <!-- Diploma Result -->
 
-  <td-expansion-panel label="Diploma Result" *ngIf="result.resultType === 'DIPLOMA'">
-
-    <button md-button class="md-icon-button" (click)="editDiploma()">
-      <md-icon>edit</md-icon>
-    </button>
-
-    <button md-button class="md-icon-button" (click)="delete()">
-      <md-icon>delete</md-icon>
-    </button>
-
-    <div layout="column" class="inset">
-      <div layout="row" class="pad-bottom">
-        <span flex="20">University</span>
-        <span>{{result.name}}</span>
-      </div>
-      <div layout="row" class="pad-bottom">
-        <span flex="20">Graduation Year</span>
-        <span>{{result.graduationYear}}</span>
-      </div>
-      <div layout="row" class="pad-bottom">
-        <span flex="20">Field</span>
-        <span>{{result.field}}</span>
-      </div>
-      <div layout="row" class="pad-bottom">
-        <span flex="20">CGPA</span>
-        <span>{{result.resultNumeric}}</span>
-      </div>
-    </div>
-  </td-expansion-panel>
+   <pams-diploma-result
+    [intakeApplication]="intakeApplication"
+    [result]="result" *ngIf="result.resultType === 'DIPLOMA'">
+  </pams-diploma-result>
 
 </template>

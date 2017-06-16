@@ -1,3 +1,5 @@
+import { DiplomaResultComponent } from './../component/diploma-result.component';
+import { StpmResultComponent } from './../component/stpm-result.component';
 import { BachelorResultComponent } from './../component/bachelor-result.component';
 import {StpmResultEditorDialog} from './../component/dialog/stpm-result-editor.dialog';
 import {ResultListComponent} from './../component/result-list.component';
@@ -65,6 +67,8 @@ import {SpmResultComponent} from '../component/spm-result.component';
     ResultListComponent,
     SpmResultListComponent,
     SpmResultComponent,
+    StpmResultComponent,
+    DiplomaResultComponent,     
     BachelorResultComponent,
     ResultTypeSelectComponent,
 
@@ -96,6 +100,8 @@ import {SpmResultComponent} from '../component/spm-result.component';
     ResultTypeSelectComponent,
     SpmResultComponent,
     BachelorResultComponent,
+    StpmResultComponent,
+    DiplomaResultComponent,   
   ],
 
   entryComponents: [
