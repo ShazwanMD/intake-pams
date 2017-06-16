@@ -21,7 +21,7 @@ export class DiplomaResultEditorDialog implements OnInit {
   private _intakeApplication: IntakeApplication;
   private editForm: FormGroup;
   private edit: boolean = false;
-  private _diplomaResult: Result;
+  private _result: Result;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -33,8 +33,8 @@ export class DiplomaResultEditorDialog implements OnInit {
   }
 
 
-  set diplomaResult(value: Result) {
-    this._diplomaResult = value;
+  set result(value: Result) {
+    this._result = value;
     this.edit = true;
   }
 
@@ -52,12 +52,12 @@ export class DiplomaResultEditorDialog implements OnInit {
       resultType: ResultType.DIPLOMA,
 
     });
-    if (this.edit) this.editForm.patchValue(this._diplomaResult);
+    if (this.edit) this.editForm.patchValue(this._result);
   }
 
-  submit(diplomaResult: Result, isValid: boolean) {
-    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, diplomaResult));
-    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, diplomaResult));
+  submit(result: Result, isValid: boolean) {
+    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, result));
+    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, result));
     this.dialog.close();
   }
 }

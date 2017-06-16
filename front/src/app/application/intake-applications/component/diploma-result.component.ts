@@ -15,7 +15,7 @@ import {Result} from '../result.interface';
 
 export class DiplomaResultComponent {
 
-  private creatorDialogRef: MdDialogRef<DiplomaResultEditorDialog>;
+  private editorDialogRef: MdDialogRef<DiplomaResultEditorDialog>;
   @Input() result: Result;
   @Input() intakeApplication: IntakeApplication;
 
@@ -37,9 +37,10 @@ export class DiplomaResultComponent {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(DiplomaResultEditorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    this.creatorDialogRef.afterClosed().subscribe((res) => {
+    this.editorDialogRef = this.dialog.open(DiplomaResultEditorDialog, config);
+    this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.editorDialogRef.componentInstance.result = this.result;
+    this.editorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
       // load something here
     });

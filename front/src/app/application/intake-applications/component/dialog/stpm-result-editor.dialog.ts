@@ -21,7 +21,7 @@ export class StpmResultEditorDialog implements OnInit {
   private _intakeApplication: IntakeApplication;
   private editForm: FormGroup;
   private edit: boolean = false;
-  private _stpmResult: Result;
+  private _result: Result;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -33,8 +33,8 @@ export class StpmResultEditorDialog implements OnInit {
   }
 
 
-  set stpmResult(value: Result) {
-    this._stpmResult = value;
+  set result(value: Result) {
+    this._result = value;
     this.edit = true;
   }
 
@@ -51,12 +51,12 @@ export class StpmResultEditorDialog implements OnInit {
       resultType: ResultType.STPM,
 
     });
-    if (this.edit) this.editForm.patchValue(this._stpmResult);
+    if (this.edit) this.editForm.patchValue(this._result);
   }
 
-  submit(stpmResult: Result, isValid: boolean) {
-    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, stpmResult));
-    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, stpmResult));
+  submit(result: Result, isValid: boolean) {
+    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, result));
+    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, result));
     this.dialog.close();
   }
 }

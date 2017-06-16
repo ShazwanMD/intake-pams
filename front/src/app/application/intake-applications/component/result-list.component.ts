@@ -107,7 +107,7 @@ export class ResultListComponent implements OnInit {
     config.position = {top: '65px'};
     this.editorBachelorDialogRef = this.dialog.open(BachelorResultEditorDialog, config);
     this.editorBachelorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    if (bachelorResult) this.editorBachelorDialogRef.componentInstance.bachelorResult = bachelorResult;
+    if (bachelorResult) this.editorBachelorDialogRef.componentInstance.result = bachelorResult;
     this.editorBachelorDialogRef.afterClosed().subscribe(res => {
       this.selectedRows = [];
     });
@@ -137,7 +137,7 @@ export class ResultListComponent implements OnInit {
     config.position = {top: '65px'};
     this.editorDiplomaDialogRef = this.dialog.open(DiplomaResultEditorDialog, config);
     this.editorDiplomaDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    if (diplomaResult) this.editorDiplomaDialogRef.componentInstance.diplomaResult = diplomaResult;
+    if (diplomaResult) this.editorDiplomaDialogRef.componentInstance.result = diplomaResult;
     this.editorDiplomaDialogRef.afterClosed().subscribe(res => {
       this.selectedRows = [];
     });
@@ -152,7 +152,7 @@ export class ResultListComponent implements OnInit {
     config.position = {top: '65px'};
     this.editorStpmDialogRef = this.dialog.open(StpmResultEditorDialog, config);
     this.editorStpmDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    if (stpmResult) this.editorStpmDialogRef.componentInstance.stpmResult = stpmResult;
+    if (stpmResult) this.editorStpmDialogRef.componentInstance.result = stpmResult;
     this.editorStpmDialogRef.afterClosed().subscribe(res => {
       this.selectedRows = [];
     });
