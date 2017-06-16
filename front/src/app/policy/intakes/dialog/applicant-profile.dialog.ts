@@ -14,9 +14,6 @@ import { IntakeApplication } from "../../../application/intake-applications/inta
 import { Employment } from "../../../application/intake-applications/employment.interface";
 import { Language } from "../../../application/intake-applications/language.interface";
 import { Referee } from "../../../application/intake-applications/referee.interface";
-import { SpmResult } from "../../../application/intake-applications/spm-result.interface";
-import { BachelorResult } from "../../../application/intake-applications/bachelor-result-interface";
-import { DiplomaResult } from "../../../application/intake-applications/diploma-result-interface";
 import { IntakeApplicationActions } from "../../../application/intake-applications/intake-application.action";
 import { ApplicationModuleState } from "../../../application/index";
 
@@ -62,9 +59,6 @@ export class ApplicantProfileDialog implements OnInit {
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private attachments$: Observable<Referee>;
-  private spmResults$: Observable<SpmResult>;
-  private bachelorResults$: Observable<BachelorResult>;
-  private diplomaResults$: Observable<DiplomaResult>;
   private applicationForm: FormGroup;
 
   constructor(private router: Router,
@@ -79,9 +73,6 @@ export class ApplicantProfileDialog implements OnInit {
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
-    this.spmResults$ = this.store.select(...this.SPM_RESULTS);
-    this.bachelorResults$ = this.store.select(...this.BACHELOR_RESULTS);
-    this.diplomaResults$ = this.store.select(...this.DIPLOMA_RESULTS);
   }
 
   ngOnInit(): void {

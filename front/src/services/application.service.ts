@@ -1,7 +1,5 @@
 import { Result } from './../app/application/intake-applications/result.interface';
 import {Attachment} from './../app/application/intake-applications/attachment.interface';
-import {DiplomaResult} from './../app/application/intake-applications/diploma-result-interface';
-import {BachelorResult} from './../app/application/intake-applications/bachelor-result-interface';
 import {Referee} from './../app/application/intake-applications/referee.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions, ResponseContentType} from '@angular/http';
@@ -13,7 +11,6 @@ import {Education} from "../app/application/intake-applications/education.interf
 import {Employment} from "../app/application/intake-applications/employment.interface";
 import {Intake} from "../app/policy/intakes/intake.interface";
 import {ProgramOffering} from "../app/policy/intakes/program-offering.interface";
-import {SpmResult} from './../app/application/intake-applications/spm-result.interface';
 import {StudyModeOffering} from "../app/policy/intakes/study-mode-offering.interface";
 import {Language} from "../app/application/intake-applications/language.interface";
 import {SupervisorOffering} from "../app/policy/intakes/supervisor-offering.interface";
