@@ -13,7 +13,7 @@ import {ApplicationModuleState} from "../../index";
 })
 export class SpmResultSelectComponent implements OnInit {
 
-  private SPM_RESULT = "applicationModuleState.spmResult".split(".");
+  private SPM_RESULT = "applicationModuleState.result".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
 

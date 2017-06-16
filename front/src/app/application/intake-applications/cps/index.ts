@@ -19,21 +19,22 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule, CovalentFileModule} from '@covalent/core';
-import {appRoutes, appRoutingProviders} from "../../../app.routes";
-import {CpsIntakeApplicationPage} from "./intake-application.page";
-import {IdentityService} from "../../../../services/identity.service";
-import {CommonService} from "../../../../services/common.service";
-import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
-import {CommonModule} from "../../../common/index";
-import {PolicyService} from "../../../../services/policy.service";
-import {IntakeSessionActions} from "../../../policy/intake-sessions/intake-session.action";
-import {IntakeSubModule} from "../../../policy/intakes/index";
-import {IntakeProgramOfferingSelectComponent} from "../component/intake-program-offering-select.component";
-import {EmploymentListComponent} from "../component/employment-list.component";
-import {ProgramChoiceComponent} from "../component/program-choice.component";
-import {LanguageListComponent} from "../component/language-list.component";
-import {AttachmentCreatorDialog} from "../component/dialog/attachment-creator.dialog";
-import {AttachmentListComponent} from "../component/attachment-list.component";
+import {appRoutes, appRoutingProviders} from '../../../app.routes';
+import {CpsIntakeApplicationPage} from './intake-application.page';
+import {IdentityService} from '../../../../services/identity.service';
+import {CommonService} from '../../../../services/common.service';
+import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
+import {CommonModule} from '../../../common/index';
+import {PolicyService} from '../../../../services/policy.service';
+import {IntakeSessionActions} from '../../../policy/intake-sessions/intake-session.action';
+import {IntakeSubModule} from '../../../policy/intakes/index';
+import {IntakeProgramOfferingSelectComponent} from '../component/intake-program-offering-select.component';
+import {EmploymentListComponent} from '../component/employment-list.component';
+import {ProgramChoiceComponent} from '../component/program-choice.component';
+import {LanguageListComponent} from '../component/language-list.component';
+import {AttachmentCreatorDialog} from '../component/dialog/attachment-creator.dialog';
+import {AttachmentListComponent} from '../component/attachment-list.component';
+import {SpmResultComponent} from '../component/spm-result.component';
 
 @NgModule({
   imports: [
@@ -43,14 +44,13 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     CovalentCoreModule.forRoot(),
     CovalentFileModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
-    //IntakeSubModule.forRoot(),
     CommonModule.forRoot(),
   ],
   declarations: [
     CpsIntakeApplicationPage,
     IntakeProgramOfferingSelectComponent,
 
-    //components
+    // components
     EmploymentListComponent,
     LanguageListComponent,
     RefereeListComponent,
@@ -63,10 +63,10 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     RefereeTypeSelectComponent,
     ResultListComponent,
     SpmResultListComponent,
+    SpmResultComponent,
     ResultTypeSelectComponent,
 
-
-    //dialogs
+    // dialogs
     EmploymentEditorDialog,
     RefereeEditorDialog,
     SpmResultEditorDialog,
@@ -92,7 +92,6 @@ import {AttachmentListComponent} from "../component/attachment-list.component";
     BachelorResultListComponent,
     DiplomaResultListComponent,
     ResultTypeSelectComponent,
-
   ],
 
   entryComponents: [

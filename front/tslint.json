@@ -64,7 +64,7 @@
     "no-conditional-assignment": true,
     "no-consecutive-blank-lines": [true],
     "no-console": [
-      true,
+      false,
       "assert",
       "count",
       "debug",
@@ -186,7 +186,7 @@
     // ANGULAR 2 Rules
     "directive-selector": [true, "attribute", "pams", "camelCase"],
     "component-selector": [true, "element", "pams", "kebab-case"],
-    "component-class-suffix": true,
+    "component-class-suffix": false,
     "directive-class-suffix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,

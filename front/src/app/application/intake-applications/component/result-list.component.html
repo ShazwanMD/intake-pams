@@ -8,17 +8,17 @@
 
   <button md-icon-button [md-menu-trigger-for]="menu">
     <md-icon>add</md-icon>
-        </button>
+  </button>
   <md-menu x-position="before" #menu="mdMenu">
     <button md-menu-item (click)="createBachelor()">Add Bachelor Result</button>
     <button md-menu-item (click)="createDiploma()">Add Diploma Result</button>
     <button md-menu-item (click)="createStpm()">Add STPM Result</button>
-    <button md-menu-item (click)="createSpm()">Add SPM Result </button>
+    <button md-menu-item (click)="createSpm()">Add SPM Result</button>
   </md-menu>
 
   <!-- <button md-button class="md-icon-button" (click)="addResult()">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
-  </button> 
+  </button>
   <button md-button class="md-icon-button" (click)="editSpm(selectedRows[0])" [disabled]="selectedRows.length != 1">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
   </button>
@@ -34,52 +34,23 @@
 <!-- contoh -->
 <template let-result let-last="last" ngFor [ngForOf]="results">
 
-  <!-- SPM Result -->
-
-  <td-expansion-panel label="SPM Result" *ngIf="result.resultType === 'SPM'">
-
-  <!--  <button md-button class="md-icon-button" (click)="editSpm(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
-  </button>
-
-    <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-  </button> -->
-
-  <button md-button class="md-icon-button" (click)="editSpm()">
-<md-icon>edit</md-icon> </button>
-
-<button md-button class="md-icon-button" (click)="delete()">
-<md-icon>delete</md-icon> </button> 
-
-    <div layout="column" class="inset">
-
-      <div layout="row" class="pad-bottom">
-        <span flex="20">School</span>
-        <span>{{result.name}}</span>
-      </div>
-      <div layout="row" class="pad-bottom">
-        <span flex="20">Graduation Year</span>
-        <span>{{result.graduationYear}}</span>
-
-      </div>
-      <div layout="row" class="pad-bottom">
-        <span flex="20">Aggregate</span>
-        <span>{{result.resultAlphanumeric}}</span>
-      </div>
-    </div>
-  </td-expansion-panel>
+  <pams-spm-result
+    [intakeApplication]="intakeApplication"
+    [result]="result" *ngIf="result.resultType === 'SPM'">
+  </pams-spm-result>
 
   <!-- Bachelor Result -->
 
   <td-expansion-panel label="Bachelor Result" *ngIf="result.resultType === 'BACHELOR'">
 
 
-<button md-button class="md-icon-button" (click)="editBachelor()">
-<md-icon>edit</md-icon> </button>
+    <button md-button class="md-icon-button" (click)="editBachelor()">
+      <md-icon>edit</md-icon>
+    </button>
 
-<button md-button class="md-icon-button" (click)="delete()">
-<md-icon>delete</md-icon> </button> 
+    <button md-button class="md-icon-button" (click)="delete()">
+      <md-icon>delete</md-icon>
+    </button>
 
 
     <div layout="column" class="inset">
@@ -107,11 +78,13 @@
   <td-expansion-panel label="STPM Result" *ngIf="result.resultType === 'STPM'">
 
 
-<button md-button class="md-icon-button" (click)="editStpm()">
-<md-icon>edit</md-icon> </button>
+    <button md-button class="md-icon-button" (click)="editStpm()">
+      <md-icon>edit</md-icon>
+    </button>
 
-<button md-button class="md-icon-button" (click)="delete()">
-<md-icon>delete</md-icon> </button> 
+    <button md-button class="md-icon-button" (click)="delete()">
+      <md-icon>delete</md-icon>
+    </button>
 
     <div layout="column" class="inset">
 
@@ -135,11 +108,13 @@
 
   <td-expansion-panel label="Diploma Result" *ngIf="result.resultType === 'DIPLOMA'">
 
-<button md-button class="md-icon-button" (click)="editDiploma()">
-<md-icon>edit</md-icon> </button>
+    <button md-button class="md-icon-button" (click)="editDiploma()">
+      <md-icon>edit</md-icon>
+    </button>
 
-<button md-button class="md-icon-button" (click)="delete()">
-<md-icon>delete</md-icon> </button> 
+    <button md-button class="md-icon-button" (click)="delete()">
+      <md-icon>delete</md-icon>
+    </button>
 
     <div layout="column" class="inset">
       <div layout="row" class="pad-bottom">
@@ -162,23 +137,3 @@
   </td-expansion-panel>
 
 </template>
-
-
-<!--<td-data-table-->
-<!--[data]="results"-->
-<!--[columns]="columns"-->
-<!--[sortBy]="summary"-->
-<!--[sortOrder]="ASC"-->
-<!--[sortable]="false"-->
-<!--[multiple]="true"-->
-<!--[selectable]="true"-->
-<!--[(ngModel)]="selectedRows"-->
-<!--(rowSelect)="selectRow($event)"-->
-<!--(selectAll)="selectAllRows($event)"-->
-<!--dense>-->
-<!--<template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">-->
-<!--<div layout="row">-->
-<!--<span flex>{{value}}</span>-->
-<!--</div>-->
-<!--</template>-->
-<!--</td-data-table>-->

@@ -21,7 +21,7 @@ export class SpmResultEditorDialog implements OnInit {
   private _intakeApplication: IntakeApplication;
   private editForm: FormGroup;
   private edit: boolean = false;
-  private _spmResult: Result;
+  private _result: Result;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -33,8 +33,8 @@ export class SpmResultEditorDialog implements OnInit {
   }
 
 
-  set spmResult(value: Result) {
-    this._spmResult = value;
+  set result(value: Result) {
+    this._result = value;
     this.edit = true;
   }
 
@@ -51,7 +51,7 @@ export class SpmResultEditorDialog implements OnInit {
       resultType: ResultType.SPM,
 
     });
-    if (this.edit) this.editForm.patchValue(this._spmResult);
+    if (this.edit) this.editForm.patchValue(this._result);
   }
 
   submit(spmResult: Result, isValid: boolean) {

@@ -63,7 +63,7 @@ export class ResultListComponent implements OnInit {
 
   editSpm(result: Result): void {
     this.showDialog2(result);
-  } 
+  }
 
   createDiploma(): void {
     this.showDialog3(null);
@@ -79,7 +79,7 @@ export class ResultListComponent implements OnInit {
 
   editStpm(result: Result): void {
     this.showDialog4(result);
-  } 
+  }
 
   delete(result: Result): void {
     this.store.dispatch(this.actions.deleteResult(this.intakeApplication, result));
@@ -122,11 +122,11 @@ export class ResultListComponent implements OnInit {
     config.position = {top: '65px'};
     this.editorSpmDialogRef = this.dialog.open(SpmResultEditorDialog, config);
     this.editorSpmDialogRef.componentInstance.intakeApplication = this.intakeApplication;
-    if (spmResult) this.editorSpmDialogRef.componentInstance.spmResult = spmResult;
+    if (spmResult) this.editorSpmDialogRef.componentInstance.result = spmResult;
     this.editorSpmDialogRef.afterClosed().subscribe(res => {
       this.selectedRows = [];
     });
-  } 
+  }
 
    showDialog3(diplomaResult: Result): void {
     let config = new MdDialogConfig();
@@ -156,6 +156,6 @@ export class ResultListComponent implements OnInit {
     this.editorStpmDialogRef.afterClosed().subscribe(res => {
       this.selectedRows = [];
     });
-  } 
+  }
 
 }
