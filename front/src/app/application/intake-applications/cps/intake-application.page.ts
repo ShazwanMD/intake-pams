@@ -27,23 +27,6 @@ import {StateCode} from '../../../common/state-codes/state-code.interface';
 
 export class CpsIntakeApplicationPage implements OnInit {
 
-  private dummyData: any[] = [
-    {'subject': 'Bahasa Malaysia', 'grade': 'A+'},
-    {'subject': 'Bahasa Inggeris', 'grade': 'B'},
-    {'subject': 'Geografi', 'grade': 'C+'},
-    {'subject': 'Sejarah', 'grade': 'D+'},
-    {'subject': 'Matematik', 'grade': 'A+'},
-    {'subject': 'Matematik Tambahan', 'grade': 'A+'},
-    {'subject': 'Fizik', 'grade': 'A+'},
-    {'subject': 'Biologi', 'grade': 'B+'},
-    {'subject': 'Kimia', 'grade': 'B+'},
-  ];
-
-  private dummyColumns: any[] = [
-    {name: 'subject', label: 'Subject'},
-    {name: 'grade', label: 'Grade'},
-  ];
-
   private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');

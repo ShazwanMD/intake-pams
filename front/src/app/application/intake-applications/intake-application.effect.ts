@@ -111,9 +111,6 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findLanguagesByIntakeApplication(action.payload),
       this.intakeApplicationActions.findAttachmentsByIntakeApplication(action.payload),
       this.intakeApplicationActions.findResultsByIntakeApplication(action.payload),
-      /*this.intakeApplicationActions.findSpmResultsByIntakeApplication(action.payload),*/
-      /*this.intakeApplicationActions.findBachelorResultsByIntakeApplication(action.payload),
-      this.intakeApplicationActions.findDiplomaResultsByIntakeApplication(action.payload),*/
     ]));
 
   @Effect() updateIntakeApplication$ = this.actions$
@@ -379,4 +376,4 @@ export class IntakeApplicationEffects {
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
 }
-
+

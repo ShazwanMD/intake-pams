@@ -1,8 +1,5 @@
 import { Result } from './intake-applications/result.interface';
 import { SupervisorOffering } from './../policy/intakes/supervisor-offering.interface';
-import { DiplomaResult } from './intake-applications/diploma-result-interface';
-import {BachelorResult} from './intake-applications/bachelor-result-interface';
-import {SpmResult} from './intake-applications/spm-result.interface';
 import {Referee} from './intake-applications/referee.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -44,12 +41,9 @@ import {ProgramOffering} from "../policy/intakes/program-offering.interface";
 import {IntakeApplication} from "./intake-applications/intake-application.interface";
 import {refereeListReducer, RefereeListState} from "./intake-applications/referee-list.reducer";
 import {resultListReducer, ResultListState} from "./intake-applications/result-list.reducer";
-import {spmResultListReducer, SpmResultListState} from "./intake-applications/spm-result-list.reducer";
 import {StudyModeOffering} from "../policy/intakes/study-mode-offering.interface";
-import {bachelorResultListReducer, BachelorResultListState} from "./intake-applications/bachelor-result-list.reducer";
 import {Language} from "./intake-applications/language.interface";
 import {languageListReducer, LanguageListState} from "./intake-applications/language-list.reducer";
-import { diplomaResultListReducer, DiplomaResultListState } from "./intake-applications/diploma-result-list-reducer";
 import {attachmentListReducer, AttachmentListState} from "./intake-applications/attachment-list.reducer";
 import {Attachment} from "./intake-applications/attachment.interface";
 
@@ -68,9 +62,6 @@ export interface ApplicationModuleState {
   intakeApplications: IntakeApplicationListState;
   intakeApplication: IntakeApplicationState;
   results: ResultListState;
-  spmResults: SpmResultListState;
-  bachelorResults: BachelorResultListState;
-  diplomaResults: DiplomaResultListState;
 }
 ;
 
@@ -82,9 +73,6 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   referees: <Referee[]>[],
   attachments: <Attachment[]>[],
   results: <Result[]>[],
-  spmResults: <SpmResult[]>[],
-  bachelorResults: <BachelorResult[]>[],
-  diplomaResults: <DiplomaResult[]>[],
   programOfferings: <ProgramOffering[]>[],
   supervisorOfferings: <SupervisorOffering[]>[],
   studyModeOfferings: <StudyModeOffering[]>[],
@@ -101,9 +89,6 @@ export const applicationModuleReducers = {
   referees: refereeListReducer,
   attachments: attachmentListReducer,
   results: resultListReducer,
-  spmResults: spmResultListReducer,
-  bachelorResults: bachelorResultListReducer,
-  diplomaResults: diplomaResultListReducer,
   programOfferings: intakeProgramOfferingListReducer,
   supervisorOfferings: intakeSupervisorOfferingListReducer,
   studyModeOfferings: intakeStudyModeOfferingListReducer,
