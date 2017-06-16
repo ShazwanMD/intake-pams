@@ -1,3 +1,4 @@
+import { BachelorResultComponent } from './../component/bachelor-result.component';
 import {StpmResultEditorDialog} from './../component/dialog/stpm-result-editor.dialog';
 import {ResultListComponent} from './../component/result-list.component';
 import {Result} from './../result.interface';
@@ -64,6 +65,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     ResultListComponent,
     SpmResultListComponent,
     SpmResultComponent,
+    BachelorResultComponent,
     ResultTypeSelectComponent,
 
     // dialogs
@@ -92,6 +94,8 @@ import {SpmResultComponent} from '../component/spm-result.component';
     BachelorResultListComponent,
     DiplomaResultListComponent,
     ResultTypeSelectComponent,
+    SpmResultComponent,
+    BachelorResultComponent,
   ],
 
   entryComponents: [
