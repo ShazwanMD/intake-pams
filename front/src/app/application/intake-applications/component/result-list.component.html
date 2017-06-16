@@ -1,5 +1,5 @@
 <div toolbar-buttons layout="row" layout-align="start center" flex>
-  <md-card-title>Result List
+  <md-card-title>Academic Results 
   </md-card-title>
   <md-chip-list *ngIf="results?.length > 0">
     <md-chip color="accent">{{results?.length}}</md-chip>
@@ -15,17 +15,6 @@
     <button md-menu-item (click)="createStpm()">Add STPM Result</button>
     <button md-menu-item (click)="createSpm()">Add SPM Result</button>
   </md-menu>
-
-  <!-- <button md-button class="md-icon-button" (click)="addResult()">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
-  </button>
-  <button md-button class="md-icon-button" (click)="editSpm(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
-  </button>
-
-  <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-  </button> -->
 
 </div>
 <md-divider></md-divider>

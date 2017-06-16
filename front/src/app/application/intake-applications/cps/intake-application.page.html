@@ -207,9 +207,9 @@
 
         <md-tab>
           <md-card>
-            <template md-tab-label>Academic Qualification</template>
+            <template md-tab-label>Academic Details</template>
 
-            <td-expansion-panel label="Proficiency in Malay/English Language">
+            <td-expansion-panel label="Level of Language Proficiency">
               <pams-language-list [intakeApplication]="intakeApplication$ | async" [languages]="languages$ | async">
               </pams-language-list>
             </td-expansion-panel>
@@ -217,7 +217,9 @@
             <td-expansion-panel label="Results">
               <pams-result-list [intakeApplication]="intakeApplication$ | async" [results]="results$ | async">
               </pams-result-list>
-            </td-expansion-panel>
+            </td-expansion-panel>  
+           
+
 
           </md-card>
         </md-tab>
