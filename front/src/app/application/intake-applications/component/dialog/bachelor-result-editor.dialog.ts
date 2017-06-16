@@ -1,5 +1,4 @@
 import { Result } from './../../result.interface';
-import {BachelorResult} from '../../bachelor-result-interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';

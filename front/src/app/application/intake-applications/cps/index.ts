@@ -1,18 +1,14 @@
-import { DiplomaResultComponent } from './../component/diploma-result.component';
-import { StpmResultComponent } from './../component/stpm-result.component';
-import { BachelorResultComponent } from './../component/bachelor-result.component';
-import {StpmResultEditorDialog} from './../component/dialog/stpm-result-editor.dialog';
-import {ResultListComponent} from './../component/result-list.component';
-import {Result} from './../result.interface';
+import {DiplomaResultComponent} from '../component/diploma-result.component';
+import {StpmResultComponent} from '../component/stpm-result.component';
+import {BachelorResultComponent} from '../component/bachelor-result.component';
+import {StpmResultEditorDialog} from '../component/dialog/stpm-result-editor.dialog';
+import {ResultListComponent} from '../component/result-list.component';
 import {EmploymentTypeSelectComponent} from '../component/employment-type-select.component';
-import {DiplomaResultListComponent} from '../component/diploma-result-list.component';
 import {DiplomaResultEditorDialog} from '../component/dialog/diploma-result-editor.dialog';
 import {LanguageEditorDialog} from '../component/dialog/language-editor.dialog';
 import {ResultTypeSelectComponent} from '../component/result-type-select.component';
-import {BachelorResultListComponent} from '../component/bachelor-result-list.component';
 import {BachelorResultEditorDialog} from '../component/dialog/bachelor-result-editor.dialog';
 import {SpmResultEditorDialog} from '../component/dialog/spm-result-editor.dialog';
-import {SpmResultListComponent} from '../component/spm-result-list.component';
 import {AttachmentTypeSelectComponent} from '../component/attachment-type-select.component';
 import {RefereeTypeSelectComponent} from '../component/referee-type-select.component';
 import {RefereeEditorDialog} from '../component/dialog/referee-editor.dialog';
@@ -30,7 +26,6 @@ import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
 import {CommonModule} from '../../../common/index';
 import {PolicyService} from '../../../../services/policy.service';
 import {IntakeSessionActions} from '../../../policy/intake-sessions/intake-session.action';
-import {IntakeSubModule} from '../../../policy/intakes/index';
 import {IntakeProgramOfferingSelectComponent} from '../component/intake-program-offering-select.component';
 import {EmploymentListComponent} from '../component/employment-list.component';
 import {ProgramChoiceComponent} from '../component/program-choice.component';
@@ -59,16 +54,13 @@ import {SpmResultComponent} from '../component/spm-result.component';
     RefereeListComponent,
     AttachmentListComponent,
     ProgramChoiceComponent,
-    BachelorResultListComponent,
-    DiplomaResultListComponent,
     EmploymentTypeSelectComponent,
     AttachmentTypeSelectComponent,
     RefereeTypeSelectComponent,
     ResultListComponent,
-    SpmResultListComponent,
     SpmResultComponent,
     StpmResultComponent,
-    DiplomaResultComponent,     
+    DiplomaResultComponent,
     BachelorResultComponent,
     ResultTypeSelectComponent,
 
@@ -94,14 +86,11 @@ import {SpmResultComponent} from '../component/spm-result.component';
     RefereeTypeSelectComponent,
     ResultListComponent,
     AttachmentTypeSelectComponent,
-    SpmResultListComponent,
-    BachelorResultListComponent,
-    DiplomaResultListComponent,
     ResultTypeSelectComponent,
     SpmResultComponent,
     BachelorResultComponent,
     StpmResultComponent,
-    DiplomaResultComponent,   
+    DiplomaResultComponent,
   ],
 
   entryComponents: [

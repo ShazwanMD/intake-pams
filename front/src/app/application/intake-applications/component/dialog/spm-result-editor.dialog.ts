@@ -1,4 +1,4 @@
-import { Result } from './../../result.interface';
+import {Result} from './../../result.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -9,7 +9,6 @@ import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
 import {ResultType} from "../../result-type.enum";
-
 
 @Component({
   selector: 'pams-spm-result-editor',
@@ -32,19 +31,21 @@ export class SpmResultEditorDialog implements OnInit {
               private dialog: MdDialogRef<SpmResultEditorDialog>) {
   }
 
-
   set result(value: Result) {
+    console.log('setting result');
     this._result = value;
+    console.log(value);
     this.edit = true;
   }
 
   set intakeApplication(value: IntakeApplication) {
+    console.log('setting application');
     this._intakeApplication = value;
   }
 
   ngOnInit(): void {
     this.editForm = this.formBuilder.group(<Result>{
-      id: null,
+      id: undefined,
       name: '',
       graduationYear: 0,
       resultAlphanumeric: '',
@@ -54,9 +55,9 @@ export class SpmResultEditorDialog implements OnInit {
     if (this.edit) this.editForm.patchValue(this._result);
   }
 
-  submit(spmResult: Result, isValid: boolean) {
-    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, spmResult));
-    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, spmResult));
+  submit(result: Result, isValid: boolean): void {
+    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, result));
+    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, result));
     this.dialog.close();
   }
 }
