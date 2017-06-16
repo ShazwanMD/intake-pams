@@ -1,3 +1,4 @@
+import { Result } from './../result.interface';
 import {RaceCode} from '../../../common/race-codes/race-code.interface';
 import {GenderCode} from '../../../common/gender-codes/gender-code.interface';
 import {CountryCode} from '../../../common/country-codes/country-code.interface';
@@ -28,33 +29,18 @@ export class MgsebIntakeApplicationPage implements OnInit {
   intakeApplication: any;
   dialog: any;
 
-  private dummyData: any[] = [
-    {'subject': 'Bahasa Malaysia', 'grade': 'A+'},
-    {'subject': 'Bahasa Inggeris', 'grade': 'B'},
-    {'subject': 'Geografi', 'grade': 'C+'},
-    {'subject': 'Sejarah', 'grade': 'D+'},
-    {'subject': 'Matematik', 'grade': 'A+'},
-    {'subject': 'Matematik Tambahan', 'grade': 'A+'},
-    {'subject': 'Fizik', 'grade': 'A+'},
-    {'subject': 'Biologi', 'grade': 'B+'},
-    {'subject': 'Kimia', 'grade': 'B+'},
-  ];
-
-  private dummyColumns: any[] = [
-    {name: 'subject', label: 'Subject'},
-    {name: 'grade', label: 'Grade'},
-  ];
-
   private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
   private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
+  private RESULTS: string[] = 'applicationModuleState.results'.split('.');
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
+  private results$: Observable<Result>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
 
@@ -69,6 +55,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
+    this.results$ = this.store.select(...this.RESULTS);
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
   }
 
