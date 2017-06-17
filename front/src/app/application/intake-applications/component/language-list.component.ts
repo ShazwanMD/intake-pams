@@ -35,7 +35,7 @@ export class LanguageListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedRows = this.languages.filter(value => value.selected);
+    this.selectedRows = this.languages.filter((value) => value.selected);
   }
 
   create(): void {
@@ -46,8 +46,12 @@ export class LanguageListComponent implements OnInit {
     this.showDialog(language);
   }
 
-  delete(language: Language): void {
-    this.store.dispatch(this.actions.deleteLanguage(this.intakeApplication, language));
+  delete(): void {
+    console.log('length: ' + this.selectedRows.length);
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+      this.store.dispatch(this.actions.deleteLanguage(this.intakeApplication, this.selectedRows[i]));
+    }
+    this.selectedRows = [];
   }
 
   filter(): void {
@@ -69,7 +73,7 @@ export class LanguageListComponent implements OnInit {
     this.editorDialogRef = this.dialog.open(LanguageEditorDialog, config);
     this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     if (language) this.editorDialogRef.componentInstance.language = language;
-    this.editorDialogRef.afterClosed().subscribe(res => {
+    this.editorDialogRef.afterClosed().subscribe((res) => {
       this.selectedRows = [];
     });
   }
