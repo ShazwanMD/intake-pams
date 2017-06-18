@@ -1,11 +1,11 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {BidStatus} from "../bid-status.enum";
+import {BidStatus} from "./bid-status.enum";
 
 
 @Pipe({
-  name: 'bidStatusPrinter'
+  name: 'bidStatusPipe'
 })
-export class BidStatusPrinter implements PipeTransform {
+export class BidStatusPipe implements PipeTransform {
 
   transform(val: BidStatus) {
     switch (val) {
