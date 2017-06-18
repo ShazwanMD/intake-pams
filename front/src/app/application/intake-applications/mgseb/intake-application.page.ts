@@ -19,6 +19,7 @@ import {Language} from '../language.interface';
 import {NationalityCode} from '../../../common/nationality-codes/nationality-code.interface';
 import {MaritalCode} from '../../../common/marital-codes/marital-code.interface';
 import {ReligionCode} from '../../../common/religion-codes/religion-code.interface';
+import { MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-intake-application',
@@ -26,6 +27,7 @@ import {ReligionCode} from '../../../common/religion-codes/religion-code.interfa
 })
 
 export class MgsebIntakeApplicationPage implements OnInit {
+
   intakeApplication: any;
   dialog: any;
 
@@ -49,6 +51,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
+              private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>) {
 
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
@@ -127,25 +130,31 @@ export class MgsebIntakeApplicationPage implements OnInit {
       researchProposal: false,
       bankStatement: false,
       refereeForm: false,
+      declared:false,
 
     });
     this.intakeApplication$.subscribe((intakeApplication) => this.applicationForm.patchValue(intakeApplication));
   }
 
-  onTabChange(): void {
+ onTabChange(): void {
     console.log('tab change');
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
-  submit(application: IntakeApplication, isValid: boolean) {
+  submit(application: IntakeApplication, isValid: boolean): void {
     console.log('submitting application');
     this.store.dispatch(this.actions.submitIntakeApplication(application));
+    this.goBack();
+  }
+
+  save(application:IntakeApplication, isValid : boolean): void {
+    console.log('saving application')
+    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
     this.goBack();
   }
 
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
-
 }
 

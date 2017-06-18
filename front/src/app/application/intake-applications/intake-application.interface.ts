@@ -72,7 +72,7 @@ export interface IntakeApplication extends MetaObject {
   refereeFormAttached: boolean;
   researchProposalAttached: boolean;
   sponsorLetterAttached: boolean;
-
+ 
   bidType: BidType;
   bidStatus: BidStatus;
 
