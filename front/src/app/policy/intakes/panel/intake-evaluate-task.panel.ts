@@ -44,15 +44,7 @@ export class IntakeEvaluateTaskPanel implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.store.dispatch(this.actions.findIntakeByReferenceNoAndBidStatus(this.intakeTask.referenceNo));
-  }
-
-  evaluate() {
-    let snackBarRef = this.snackBar.open("Evaluate this intake?", "Yes");
-    snackBarRef.afterDismissed().subscribe(() => {
-      this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
-      this.goBack();
-    });
+    this.store.dispatch(this.actions.findIntakeByReferenceNoAndBidStatus(this.intakeTask.referenceNo));
   }
 
 

@@ -9,6 +9,7 @@ import {ApplicationModuleState} from '../index';
 import {Observable} from 'rxjs';
 import {Intake} from '../../policy/intakes/intake.interface';
 import {IntakeApplication} from './intake-application.interface';
+import { IntakeActions } from "../../policy/intakes/intake.action";
 
 @Injectable()
 export class IntakeApplicationEffects {
@@ -19,6 +20,7 @@ export class IntakeApplicationEffects {
 
   constructor(private actions$: Actions,
               private intakeApplicationActions: IntakeApplicationActions,
+              private intakeActions: IntakeActions,
               private applicationService: ApplicationService,
               private router: Router,
               private store$: Store<ApplicationModuleState>) {
@@ -138,8 +140,8 @@ export class IntakeApplicationEffects {
   .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message))
   .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
   .map((state) => state[1])
-  .map((applications) => this.intakeApplicationActions.findIntakeApplications());
-
+  .map((applications) => this.intakeActions.findSubmittedIntakeApplications(applications));
+  
   @Effect() rejectIntakeApplication$ = this.actions$
   .ofType(IntakeApplicationActions.REJECT_INTAKE_APPLICATION)
   .map((action) => action.payload)
@@ -147,7 +149,13 @@ export class IntakeApplicationEffects {
   .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message))
   .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
   .map((state) => state[1])
-  .map((applications) => this.intakeApplicationActions.findIntakeApplications());
+  .map((intake) => this.intakeActions.findSubmittedIntakeApplications(intake));
+  
+  @Effect() findSubmittedIntakeApplications$ = this.actions$
+  .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
+  .map(action => action.payload)
+  .switchMap(intake => this.applicationService.findSubmittedIntakeApplications(intake))
+  .map(applications => this.intakeActions.findIntakeApplicationsSuccess(applications));
 
   // ====================================================================================================
   // EDUCATION

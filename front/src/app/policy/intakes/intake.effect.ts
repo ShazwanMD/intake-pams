@@ -11,9 +11,9 @@ import { ApplicationService } from "../../../services/application.service";
 @Injectable()
 export class IntakeEffects {
 
+  private INTAKE_APPLICATION = "applicationModuleState.intakeApplication".split(".");
   private INTAKE = "policyModuleState.intake".split(".");
   private INTAKE_TASK: string[] = "policyModuleState.intakeTask".split(".");
-  private INTAKE_APPLICATION = "applicationModuleState.intakeApplication".split(".");
 
   constructor(private actions$: Actions,
               private intakeActions: IntakeActions,
@@ -51,17 +51,17 @@ export class IntakeEffects {
       this.intakeActions.findIntakeApplications(action.payload)
     ]));
   
-  /*@Effect() findIntakeByReferenceNoAndBidStatus$ = this.actions$
-  .ofType(IntakeActions.FIND_INTAKE_BY_REFERENCE_NO)
+  @Effect() findIntakeByReferenceNoAndBidStatus$ = this.actions$
+  .ofType(IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS)
   .map(action => action.payload)
-  .switchMap(referenceNo => this.applicationService.findSubmittedIntakeApplications(referenceNo))
-  .map(intake => this.intakeActions.findIntakeByReferenceNoAndBidSuccess(intake))
+  .switchMap(referenceNo => this.applicationService.findIntakeByReferenceNo(referenceNo))
+  .map(intake => this.intakeActions.findIntakeByReferenceNoSuccess(intake))
   .mergeMap(action => from([action,
     this.intakeActions.findProgramOfferings(action.payload),
     this.intakeActions.findSupervisorOfferings(action.payload),
     this.intakeActions.findStudyModeOfferings(action.payload),
     this.intakeActions.findIntakeApplications(action.payload)
-  ]));*/
+  ]));
 
   @Effect() findProgramOfferings$ = this.actions$
     .ofType(IntakeActions.FIND_PROGRAM_OFFERINGS)
@@ -84,14 +84,14 @@ export class IntakeEffects {
   @Effect() findIntakeApplications = this.actions$
     .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
     .map(action => action.payload)
-    .switchMap(intake => this.policyService.findIntakeApplications(intake))
+    .switchMap(intake => this.applicationService.findSubmittedIntakeApplications(intake))
     .map(applications => this.intakeActions.findIntakeApplicationsSuccess(applications));
 
-  /*@Effect() findSubmittedIntakeApplications = this.actions$
+  @Effect() findSubmittedIntakeApplications = this.actions$
   .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
   .map(action => action.payload)
   .switchMap(intake => this.applicationService.findSubmittedIntakeApplications(intake))
-  .map(applications => this.intakeActions.findIntakeApplicationsSuccess(applications));*/
+  .map(applications => this.intakeActions.findIntakeApplicationsSuccess(applications));
   
   @Effect() startIntakeTask$ = this.actions$
     .ofType(IntakeActions.START_INTAKE_TASK)

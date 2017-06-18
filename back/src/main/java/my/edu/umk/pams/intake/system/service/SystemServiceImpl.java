@@ -16,9 +16,15 @@ import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.SpelParserConfiguration;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -72,6 +78,9 @@ public class SystemServiceImpl implements SystemService {
 
     @Autowired
     private SecurityService securityService;
+
+    @Autowired
+    private JavaMailSender mailSender;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -279,7 +288,7 @@ public class SystemServiceImpl implements SystemService {
             // get old and new value
             Integer oldValue = referenceNo.getCurrentValue();
             Integer newValue = referenceNo.getCurrentValue() + referenceNo.getIncrementValue();
-            LOG.debug("referenceNo, Util.getCurrentUser() :"+Util.getCurrentUser());
+            LOG.debug("referenceNo, Util.getCurrentUser() :" + Util.getCurrentUser());
             // update
             referenceNo.setCurrentValue(newValue);
             referenceNoDao.save(referenceNo, Util.getCurrentUser());
@@ -476,5 +485,23 @@ public class SystemServiceImpl implements SystemService {
     public void saveEmailQueue(InEmailQueue emailQueue) {
         emailQueueDao.save(emailQueue, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+    }
+
+    @Scheduled(cron = "0 0 1 * * *")
+    public void sendEmail() {
+        try {
+            List<InEmailQueue> queues = emailQueueDao.find(InEmailQueueStatus.QUEUED);
+            for (InEmailQueue queue : queues) {
+                MimeMessage mimeMessage = mailSender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+                helper.setFrom(queue.getTo());
+                helper.setTo(queue.getTo());
+                helper.setSubject(queue.getSubject());
+                helper.setText(queue.getBody());
+                mailSender.send(mimeMessage);
+            }
+        } catch (MessagingException e) {
+            LOG.error("error " + e);
+        }
     }
 }
