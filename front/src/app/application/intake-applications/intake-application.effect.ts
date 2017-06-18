@@ -227,7 +227,7 @@ export class IntakeApplicationEffects {
   @Effect() deleteEmployment$ = this.actions$
     .ofType(IntakeApplicationActions.DELETE_EMPLOYMENT)
     .map((action) => action.payload)
-    .switchMap((payload) => this.applicationService.deleteEmployment(payload.application, payload.employment))
+    .flatMap((payload) => this.applicationService.deleteEmployment(payload.application, payload.employment))
     .map((message) => this.intakeApplicationActions.deleteEmploymentSucces(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map((state) => state[1])
@@ -236,7 +236,7 @@ export class IntakeApplicationEffects {
   @Effect() updateEmployment$ = this.actions$
     .ofType(IntakeApplicationActions.UPDATE_EMPLOYMENT)
     .map((action) => action.payload)
-    .switchMap((payload) => this.applicationService.updateEmployment(payload.application, payload.employment))
+    .flatMap((payload) => this.applicationService.updateEmployment(payload.application, payload.employment))
     .map((message) => this.intakeApplicationActions.updateEmploymentSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map((state) => state[1])
@@ -264,7 +264,7 @@ export class IntakeApplicationEffects {
   @Effect() deleteLanguage$ = this.actions$
     .ofType(IntakeApplicationActions.DELETE_LANGUAGE)
     .map((action) => action.payload)
-    .switchMap((payload) => this.applicationService.deleteLanguage(payload.application, payload.language))
+    .flatMap((payload) => this.applicationService.deleteLanguage(payload.application, payload.language))
     .map((message) => this.intakeApplicationActions.deleteLanguageSucces(message))
     .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
     .map((state) => state[1])

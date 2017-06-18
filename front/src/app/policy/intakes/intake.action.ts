@@ -189,6 +189,24 @@ export class IntakeActions {
       payload: intake
     };
   }
+  
+  static FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS = '[Intake] Find Intake By Reference No And Bid Status';
+
+  findIntakeByReferenceNoAndBidStatus(referenceNo): Action {
+    return {
+      type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS,
+      payload: referenceNo
+    };
+  }
+
+  static FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS_SUCCESS = '[Intake] Find Intake By Reference No And Bid Status Success';
+
+  findIntakeByReferenceNoAndBidSuccess(intake): Action {
+    return {
+      type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS_SUCCESS,
+      payload: intake
+    };
+  }
 
   static FIND_PROGRAM_OFFERINGS = '[Intake] Find Program Offerings';
 
