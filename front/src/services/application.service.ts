@@ -255,11 +255,15 @@ export class ApplicationService {
       .map((res: Response) => <Attachment[]>res.json());
   }
   
-  downloadAttachment(attachment: Attachment): Observable<Blob> {
+  downloadAttachment(attachment: Attachment): Observable<File> {
       console.log('downloadAttachment');
       let options = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
       return this.http.get(environment.endpoint + '/api/application/intakeApplications/download/attachment/' + attachment.id, options)
-        .map((res: Response) => new Blob([res.arrayBuffer()], {type: 'application/pdf'}));
+        .map((res: Response) => {
+          let type = attachment.mimeType;
+          let filename = attachment.name;
+          return new File([res.arrayBuffer()], filename, {type: type});
+      });
     }
 
   addAttachment(application: IntakeApplication, file: File, attachmentType: AttachmentType): Observable<String> {

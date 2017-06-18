@@ -310,9 +310,15 @@ export class IntakeApplicationEffects {
   .ofType(IntakeApplicationActions.DOWNLOAD_ATTACHMENT)
   .map((action) => action.payload)
   .switchMap((payload) => this.applicationService.downloadAttachment(payload.attachment))
-  .map((blob) => {
-    let url = window.URL.createObjectURL(blob);
-    window.open(url);
+  .map((file) => {
+      let url = URL.createObjectURL(file);
+      let a = document.createElement('a');
+      a.href = url ;
+      a.download = file.name;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
   }).ignoreElements();
 
   // ====================================================================================================
