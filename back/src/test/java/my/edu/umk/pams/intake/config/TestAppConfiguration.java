@@ -5,7 +5,10 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -52,6 +55,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         TestWorkflowConfig.class,
         TestAccessConfig.class,
         TestCacheConfig.class,
+        EmailConfig.class,
 })
 @PropertySource("classpath:application.properties")
 public class TestAppConfiguration {
