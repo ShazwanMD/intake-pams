@@ -1,4 +1,4 @@
-import {BachelorResult} from '../../bachelor-result-interface';
+import { Result } from './../../result.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -12,14 +12,16 @@ import {ResultType} from "../../result-type.enum";
 
 
 @Component({
-  selector: 'pams-bachelor-result-creator',
-  templateUrl: './bachelor-result-creator.dialog.html',
+  selector: 'pams-bachelor-result-editor',
+  templateUrl: './bachelor-result-editor.dialog.html',
 })
 
-export class BachelorResultCreatorDialog implements OnInit {
+export class BachelorResultEditorDialog implements OnInit {
 
   private _intakeApplication: IntakeApplication;
-  private createForm: FormGroup;
+  private editForm: FormGroup;
+  private edit: boolean = false;
+  private _result: Result;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -27,27 +29,35 @@ export class BachelorResultCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions,
-              private dialog: MdDialogRef<BachelorResultCreatorDialog>) {
+              private dialog: MdDialogRef<BachelorResultEditorDialog>) {
   }
 
+
+  set result(value: Result) {
+    this._result = value;
+    this.edit = true;
+  }
 
   set intakeApplication(value: IntakeApplication) {
     this._intakeApplication = value;
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<BachelorResult>{
-      id: null,
-      year: 0,
+    this.editForm = this.formBuilder.group({
+      id: undefined,
       name: '',
-      cgpa: 0,
+      field: '',
+      graduationYear: 0,
+      resultNumeric: 0,
       resultType: ResultType.BACHELOR,
 
     });
+    if (this.edit) this.editForm.patchValue(this._result);
   }
 
-  save(bachelorResult: BachelorResult, isValid: boolean) {
-    this.store.dispatch(this.actions.addBachelorResult(this._intakeApplication, bachelorResult));
+  submit(result: Result, isValid: boolean) {
+    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, result));
+    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, result));
     this.dialog.close();
   }
 }

@@ -1,4 +1,4 @@
-import {DiplomaResult} from '../../diploma-result-interface';
+import { Result } from './../../result.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -12,14 +12,16 @@ import {ResultType} from "../../result-type.enum";
 
 
 @Component({
-  selector: 'pams-diploma-result-creator',
-  templateUrl: './diploma-result-creator.dialog.html',
+  selector: 'pams-stpm-result-editor',
+  templateUrl: './stpm-result-editor.dialog.html',
 })
 
-export class DiplomaResultCreatorDialog implements OnInit {
+export class StpmResultEditorDialog implements OnInit {
 
   private _intakeApplication: IntakeApplication;
-  private createForm: FormGroup;
+  private editForm: FormGroup;
+  private edit: boolean = false;
+  private _result: Result;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -27,27 +29,34 @@ export class DiplomaResultCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions,
-              private dialog: MdDialogRef<DiplomaResultCreatorDialog>) {
+              private dialog: MdDialogRef<StpmResultEditorDialog>) {
   }
 
+
+  set result(value: Result) {
+    this._result = value;
+    this.edit = true;
+  }
 
   set intakeApplication(value: IntakeApplication) {
     this._intakeApplication = value;
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<DiplomaResult>{
+    this.editForm = this.formBuilder.group(<Result>{
       id: null,
-      year: 0,
       name: '',
-      cgpa: 0,
-      resultType: ResultType.DIPLOMA,
+      graduationYear: 0,
+      resultAlphanumeric: '',
+      resultType: ResultType.STPM,
 
     });
+    if (this.edit) this.editForm.patchValue(this._result);
   }
 
-  save(diplomaResult: DiplomaResult, isValid: boolean) {
-    this.store.dispatch(this.actions.addDiplomaResult(this._intakeApplication, diplomaResult));
+  submit(result: Result, isValid: boolean) {
+    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, result));
+    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, result));
     this.dialog.close();
   }
 }

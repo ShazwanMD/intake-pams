@@ -1,0 +1,29 @@
+<td-expansion-panel label="SPM Result">
+
+  <md-dialog-actions align="end">
+    <button md-button class="md-icon-button" (click)="editDialog()">
+    <md-icon>edit</md-icon>
+    </button>
+    
+    <button md-button class="md-icon-button" (click)="delete()">
+    <md-icon>delete</md-icon>
+  </button>
+  </md-dialog-actions>
+
+  <div layout="column" class="inset">
+
+    <div layout="row" class="pad-bottom">
+      <span flex="20">School</span>
+      <span>{{result.name}}</span>
+    </div>
+    <div layout="row" class="pad-bottom">
+      <span flex="20">Graduation Year</span>
+      <span>{{result.graduationYear}}</span>
+
+    </div>
+    <div layout="row" class="pad-bottom">
+      <span flex="20">Aggregate</span>
+      <span>{{result.resultAlphanumeric}}</span>
+    </div>
+  </div>
+</td-expansion-panel>

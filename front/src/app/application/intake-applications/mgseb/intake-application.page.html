@@ -20,17 +20,16 @@
             <pams-study-center-choice [intakeApplication]="intakeApplication$ | async">
             </pams-study-center-choice>
 
-  <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
-    <pams-study-center-code-select
-      [placeholder]="'Study Center'"
-      [innerFormControl]="applicationForm.controls.studyCenterCode" fxFlex="calc(70%-25px)" class="push-bottom">
-    </pams-study-center-code-select>
-  </div>
+            <!--<div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+              <pams-study-center-code-select [placeholder]="'Study Center'" [innerFormControl]="applicationForm.controls.studyCenterCode"
+                fxFlex="calc(70%-25px)" class="push-bottom">
+              </pams-study-center-code-select>
+            </div>-->
 
           </td-expansion-panel>
 
 
-   
+
 
           <template md-tab-label>Personal Information</template>
           <td-expansion-panel label="Personal Details">
@@ -41,8 +40,8 @@
                   <md-input-container flex>
                     <input mdInput placeholder="Name" formControlName="name" flex/>
                   </md-input-container>
-                  <div class="error"  class="tc-red-600" *ngIf="applicationForm.get('name').invalid && applicationForm.get('name').touched">
-                     Name should be at least {{minLength}} characters!
+                  <div class="error" class="tc-red-600" *ngIf="applicationForm.get('name').invalid && applicationForm.get('name').touched">
+                    Name should be at least {{minLength}} characters!
                   </div>
                 </div>
 
@@ -50,8 +49,8 @@
                   <md-input-container flex>
                     <input mdInput placeholder="Email" formControlName="email" flex/>
                   </md-input-container>
-                   <div class="error" *ngIf="applicationForm.get('email').invalid && applicationForm.get('email').touched">
-                     email is required!
+                  <div class="error" *ngIf="applicationForm.get('email').invalid && applicationForm.get('email').touched">
+                    email is required!
                   </div>
                 </div>
 
@@ -59,11 +58,11 @@
                   <md-input-container flex>
                     <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo" flex/>
                   </md-input-container>
-                  <div class="error"  class="tc-red-600" *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
+                  <div class="error" class="tc-red-600" *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
                     Your Ic or Passport Number is required!
                   </div>
-                  
-                 </div>
+
+                </div>
 
 
                 <div layout="row" class="pad-bottom" flex>
@@ -71,17 +70,17 @@
                     <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate" flex/>
                   </md-input-container>
                   <div class="error" class="tc-red-600" *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
-                   Your Birth Date is required!
+                    Your Birth Date is required!
                   </div>
                 </div>
 
                 <div layout="row" class="pad-top">
                   <pams-nationality-code-select [placeholder]="'Nationality'" [innerFormControl]="applicationForm.controls.nationalityCode">
                   </pams-nationality-code-select>
-                   <div class="error" class="tc-red-600" *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
-                   Please add your nationality!
+                  <div class="error" class="tc-red-600" *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
+                    Please add your nationality!
                   </div>
-               </div>
+                </div>
 
 
                 <div layout="row" class="pad-top">
@@ -256,103 +255,10 @@
             <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form
             </md-card-subtitle>
 
-            <!--<td-expansion-panel label="SPM Qualifications">
-              <pams-spm-result-list
-                [intakeApplication]="intakeApplication$ | async"
-                [spmResults]="spmResults$ | async"></pams-spm-result-list>
+            <td-expansion-panel label="Results">
+              <pams-result-list [intakeApplication]="intakeApplication$ | async" [results]="results$ | async">
+              </pams-result-list>
             </td-expansion-panel>
-
-            <template md-tab-label>Bachelor Information</template>
-            <td-expansion-panel label="Bachelor Qualification">
-              <pams-bachelor-result-list
-                [intakeApplication]="intakeApplication$ | async"
-                [bachelorResults]="bachelorResults$ | async"></pams-bachelor-result-list>
-            </td-expansion-panel>
-
-          <template md-tab-label>Diploma Information</template>
-
-            <td-expansion-panel label="Diploma Qualification">
-              <pams-diploma-result-list
-                [intakeApplication]="intakeApplication$ | async"
-                [diplomaResults]="diplomaResults$ | async"></pams-diploma-result-list>
-            </td-expansion-panel>-->
-
-            <td-expansion-panel label="SPM Qualification">
-              <div layout="column" class="inset">
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">School</span>
-                  <span>Sekolah Datuk Abdul Razak</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">School Type</span>
-                  <span>Sekolah Berasrama Penuh</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">Graduation Year</span>
-                  <span>1993</span>
-                </div>
-              </div>
-              <md-divider></md-divider>
-              <div toolbar-buttons layout="row" layout-align="start center" flex>
-                <span flex></span>
-                <button md-button class="md-icon-button" click="create()">
-                  <md-icon class="md-24 tc-grey-700">add</md-icon>
-                </button>
-                <button md-button class="md-icon-button" (click)="edit(selectedRows[0])">
-                  <md-icon class="md-24 tc-grey-300">edit</md-icon>
-                </button>
-                <button md-button class="md-icon-button" (click)="delete(selectedRows[0])">
-                  <md-icon class="md-24 tc-grey-300">delete</md-icon>
-                </button>
-
-              </div>
-              <md-divider></md-divider>
-              <div class="inset">
-                <td-data-table [data]="dummyData" [columns]="dummyColumns" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                  [selectable]="false" (rowSelect)="view.emit($event)" dense>
-                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <span flex>{{value}}</span>
-                    </div>
-                  </template>
-                </td-data-table>
-              </div>
-            </td-expansion-panel>
-
-            <td-expansion-panel label="Diploma Qualification">
-              <div layout="column" class="inset">
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">University/College</span>
-                  <span>Kolej Keusahawanan MARA</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">Graduation Year</span>
-                  <span>2011</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">CGPA</span>
-                  <span>3.44</span>
-                </div>
-              </div>
-            </td-expansion-panel>
-
-            <td-expansion-panel label="Bachelor Qualification">
-              <div layout="column" class="inset">
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">University/College</span>
-                  <span>Universiti Malaysia Kelantan</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">Graduation Year</span>
-                  <span>2015</span>
-                </div>
-                <div layout="row" class="pad-bottom">
-                  <span flex="20">CGPA</span>
-                  <span>3.44</span>
-                </div>
-              </div>
-            </td-expansion-panel>
-
 
             <td-expansion-panel label="Proficiency in Malay/English Language">
               <pams-language-list [intakeApplication]="intakeApplication$ | async" [languages]="languages$ | async">

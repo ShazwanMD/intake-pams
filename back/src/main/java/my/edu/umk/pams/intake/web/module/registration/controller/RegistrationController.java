@@ -41,7 +41,7 @@ public class RegistrationController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/verifyUser/{token}", method = RequestMethod.POST)
+    @RequestMapping(value = "/verifyUser/{token}", method = RequestMethod.GET)
     public ResponseEntity<Boolean> verifyUser(@PathVariable String token) {
         registrationService.verifyUser(token);
         return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);

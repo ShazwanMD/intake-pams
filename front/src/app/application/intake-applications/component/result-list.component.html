@@ -1,5 +1,5 @@
 <div toolbar-buttons layout="row" layout-align="start center" flex>
-  <md-card-title>Result List
+  <md-card-title>Academic Results 
   </md-card-title>
   <md-chip-list *ngIf="results?.length > 0">
     <md-chip color="accent">{{results?.length}}</md-chip>
@@ -8,40 +8,45 @@
 
   <button md-icon-button [md-menu-trigger-for]="menu">
     <md-icon>add</md-icon>
-        </button>
-    <md-menu x-position="before" #menu="mdMenu">
-      <button md-menu-item (click)="addSpmResult()">Add SPM Result</button>
-      <button md-menu-item (click)="addSpmResult()">Add STPM Result</button>
-      <button md-menu-item (click)="addDiplomaResult()">Add Diploma Result</button>
-      <button md-menu-item (click)="addBachelorResult()">Add Bachelor Result</button>
-    </md-menu>
+  </button>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item (click)="createBachelor()">Add Bachelor Result</button>
+    <button md-menu-item (click)="createDiploma()">Add Diploma Result</button>
+    <button md-menu-item (click)="createStpm()">Add STPM Result</button>
+    <button md-menu-item (click)="createSpm()">Add SPM Result</button>
+  </md-menu>
 
-  <!--<button md-button class="md-icon-button" (click)="addResult()">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
-  </button>
-  <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
-  </button>
-  <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-  </button>-->
 </div>
 <md-divider></md-divider>
-<td-data-table
-  [data]="results"
-  [columns]="columns"
-  [sortBy]="summary"
-  [sortOrder]="ASC"
-  [sortable]="false"
-  [multiple]="true"
-  [selectable]="true"
-  [(ngModel)]="selectedRows"
-  (rowSelect)="selectRow($event)"
-  (selectAll)="selectAllRows($event)"
-  dense>
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex>{{value}}</span>
-    </div>
-  </template>
-</td-data-table>
+
+
+<!-- contoh -->
+<template let-result let-last="last" ngFor [ngForOf]="results">
+
+  <pams-spm-result
+    [intakeApplication]="intakeApplication"
+    [result]="result" *ngIf="result.resultType === 'SPM'">
+  </pams-spm-result>
+
+  <!-- Bachelor Result -->
+
+  <pams-bachelor-result
+    [intakeApplication]="intakeApplication"
+    [result]="result" *ngIf="result.resultType === 'BACHELOR'">
+  </pams-bachelor-result>
+
+  <!-- STPM Result -->
+
+   <pams-stpm-result
+    [intakeApplication]="intakeApplication"
+    [result]="result" *ngIf="result.resultType === 'STPM'">
+  </pams-stpm-result>
+
+  <!-- Diploma Result -->
+
+   <pams-diploma-result
+    [intakeApplication]="intakeApplication"
+    [result]="result" *ngIf="result.resultType === 'DIPLOMA'">
+  </pams-diploma-result>
+
+</template>

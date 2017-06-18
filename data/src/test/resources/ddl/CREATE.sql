@@ -1037,7 +1037,7 @@
 
     create table IN_RSLT (
         ID int8 not null,
-        FIELD varchar(255) not null,
+        FIELD varchar(255),
         GRADUATION_YEAR int4,
         C_TS timestamp,
         C_ID int8,

@@ -1,25 +1,22 @@
 import {SupervisorOfferingSelectorDialog} from '../component/dialog/supervisor-offering-selector.dialog';
-import {SupervisorCodeSelectComponent} from '../../../common/supervisor-codes/component/supervisor-code-select.component';
 import {CpsIntakeApplicationSubModule} from '../cps/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
-import {StudyMode} from '../study-mode.interface';
 import {CovalentCoreModule} from '@covalent/core';
-import {appRoutes, appRoutingProviders} from "../../../app.routes";
-import {MgsebIntakeApplicationPage} from "./intake-application.page";
-import {IntakeApplicationEducationPage} from "./intake-application-education.page";
-import {IdentityService} from "../../../../services/identity.service";
-import {CommonService} from "../../../../services/common.service";
-import {CommonModule} from "../../../common/index";
-import {ProgramLevelSubModule} from "../../../policy/program-levels/index";
-import {IntakeApplicationActions} from "../intake-application.action";
-import {CommonActions} from "../../../common/common.action";
-import {ProgramOfferingSelectComponent} from "../../../policy/intakes/component/program-offering-select.component";
-import {EmploymentListComponent} from "../component/employment-list.component";
-import {StudyModeOfferingSelectorDialog} from "../component/dialog/study-mode-offering-selector.dialog";
-import {StudyCenterChoiceComponent} from "../component/study-center-choice.component";
-
+import {appRoutes, appRoutingProviders} from '../../../app.routes';
+import {MgsebIntakeApplicationPage} from './intake-application.page';
+import {IntakeApplicationEducationPage} from './intake-application-education.page';
+import {IdentityService} from '../../../../services/identity.service';
+import {CommonService} from '../../../../services/common.service';
+import {CommonModule} from '../../../common/index';
+import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
+import {IntakeApplicationActions} from '../intake-application.action';
+import {CommonActions} from '../../../common/common.action';
+import {ProgramOfferingSelectComponent} from '../../../policy/intakes/component/program-offering-select.component';
+import {EmploymentListComponent} from '../component/employment-list.component';
+import {StudyModeOfferingSelectorDialog} from '../component/dialog/study-mode-offering-selector.dialog';
+import {StudyCenterChoiceComponent} from '../component/study-center-choice.component';
 
 @NgModule({
   imports: [
@@ -35,11 +32,10 @@ import {StudyCenterChoiceComponent} from "../component/study-center-choice.compo
     MgsebIntakeApplicationPage,
     IntakeApplicationEducationPage,
 
-    //components
+    // components
     StudyCenterChoiceComponent,
 
-
-    //dialogs
+    // dialogs
     StudyModeOfferingSelectorDialog,
     SupervisorOfferingSelectorDialog,
 
@@ -53,8 +49,6 @@ import {StudyCenterChoiceComponent} from "../component/study-center-choice.compo
     ProgramOfferingSelectComponent,
     StudyModeOfferingSelectorDialog,
     SupervisorOfferingSelectorDialog,
-
-
   ],
 })
 export class MgsebIntakeApplicationSubModule {

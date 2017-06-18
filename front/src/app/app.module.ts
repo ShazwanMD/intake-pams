@@ -111,7 +111,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     CovalentMarkdownModule.forRoot(),
     NgxChartsModule,
     StoreModule.provideStore(applicationReducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    // StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
     DashboardModule.forRoot(),
     CommonModule.forRoot(),

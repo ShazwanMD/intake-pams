@@ -36,7 +36,7 @@ export class EmploymentListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedRows = this.employments.filter(value => value.selected);
+    this.selectedRows = this.employments.filter((value) => value.selected);
   }
 
   create(): void {
@@ -47,9 +47,14 @@ export class EmploymentListComponent implements OnInit {
     this.showDialog(employment);
   }
 
-  delete(employment: Employment): void {
-    this.store.dispatch(this.actions.deleteEmployment(this.intakeApplication, employment));
+  delete(): void {
+    console.log('length: ' + this.selectedRows.length);
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+      this.store.dispatch(this.actions.deleteEmployment(this.intakeApplication, this.selectedRows[i]));
+    }
+    this.selectedRows = [];
   }
+
 
   filter(): void {
   }
@@ -70,8 +75,8 @@ export class EmploymentListComponent implements OnInit {
     this.editorDialogRef = this.dialog.open(EmploymentEditorDialog, config);
     this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     if (employment) this.editorDialogRef.componentInstance.employment = employment;
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      this.selectedRows = [];
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 }

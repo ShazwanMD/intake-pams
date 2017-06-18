@@ -22,7 +22,7 @@ export class StateCodeListPage implements OnInit {
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
-    {name: 'name', label: 'Name'},
+   // {name: 'name', label: 'Name'},
     {name: 'action', label: ''}
   ];
 

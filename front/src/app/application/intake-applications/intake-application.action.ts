@@ -649,7 +649,7 @@ export class IntakeApplicationActions {
   addResult(application, result) {
     return {
       type: IntakeApplicationActions.ADD_RESULT,
-      payload: {application: application, spmResult: result}
+      payload: {application: application, result: result}
     };
   }
 
@@ -682,10 +682,10 @@ export class IntakeApplicationActions {
 
   static DELETE_RESULT = '[Intake Application] Delete Result';
 
-  deleteResult(intake, result) {
+  deleteResult(application, result) {
     return {
       type: IntakeApplicationActions.DELETE_RESULT,
-      payload: {intake: intake, result: result}
+      payload: {application: application, result: result}
     };
   }
 
@@ -694,165 +694,6 @@ export class IntakeApplicationActions {
   deleteResultSuccess(message) {
     return {
       type: IntakeApplicationActions.DELETE_RESULT_SUCCESS,
-      payload: message
-    };
-  }
-
-  // ====================================================================================================
-  // SPM_RESULT
-  // ====================================================================================================
-
-  static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Spm Results';
-
-  findSpmResultsByIntakeApplication(application): Action {
-    return {
-      type: IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_SPM_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Spm Results Success';
-
-  findSpmResultsByIntakeApplicationSuccess(spmResult): Action {
-    console.log("findSpmResultsSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_SPM_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: spmResult
-    };
-  }
-
-  static ADD_SPM_RESULT = '[Intake Application] Add Spm Result';
-
-  addSpmResult(application, spmResult) {
-    return {
-      type: IntakeApplicationActions.ADD_SPM_RESULT,
-      payload: {application: application, spmResult: spmResult}
-    };
-  }
-
-  static ADD_SPM_RESULT_SUCCESS = '[Intake Application] Add Spm Result Success';
-
-  addSpmResultSuccess(message) {
-    return {
-      type: IntakeApplicationActions.ADD_SPM_RESULT_SUCCESS,
-      payload: message
-    };
-  }
-
-  static DELETE_SPM_RESULT = '[Intake Application] Delete Spm Result';
-
-  deleteSpmResult(intake, spmResult) {
-    return {
-      type: IntakeApplicationActions.DELETE_SPM_RESULT,
-      payload: {intake: intake, spmResult: spmResult}
-    };
-  }
-
-  static DELETE_SPM_RESULT_SUCCESS = '[Intake Application] Delete Spm Result Success';
-
-  deleteSpmResultSucces(message) {
-    return {
-      type: IntakeApplicationActions.DELETE_SPM_RESULT_SUCCESS,
-      payload: message
-    };
-  }
-
-  // ====================================================================================================
-  // DIPLOMA_RESULT
-  // ====================================================================================================
-
-  static FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Diploma Results';
-
-  findDiplomaResultsByIntakeApplication(application): Action {
-    return {
-      type: IntakeApplicationActions.FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Diploma Results Success';
-
-  findDiplomaResultsByIntakeApplicationSuccess(diplomaResult): Action {
-    console.log("findDiplomaResultsSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_DIPLOMA_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: diplomaResult
-    };
-  }
-
-  static ADD_DIPLOMA_RESULT = '[Intake Application] Add Diploma Result';
-
-  addDiplomaResult(application, diplomaResult) {
-    return {
-      type: IntakeApplicationActions.ADD_DIPLOMA_RESULT,
-      payload: {application: application, diplomaResult: diplomaResult}
-    };
-  }
-
-  static ADD_DIPLOMA_RESULT_SUCCESS = '[Intake Application] Add Diploma Result Success';
-
-  addDiplomaResultSuccess(message) {
-    return {
-      type: IntakeApplicationActions.ADD_DIPLOMA_RESULT_SUCCESS,
-      payload: message
-    };
-  }
-
-  // ====================================================================================================
-  // BACHELOR_RESULT
-  // ====================================================================================================
-
-  static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION = '[Intake Application] Find Bachelor Results';
-
-  findBachelorResultsByIntakeApplication(application): Action {
-    return {
-      type: IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION,
-      payload: application
-    };
-  }
-
-  static FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Find Bachelor Results Success';
-
-  findBachelorResultsByIntakeApplicationSuccess(bachelorResult): Action {
-    console.log("findBachelorResultsSuccess");
-    return {
-      type: IntakeApplicationActions.FIND_BACHELOR_RESULTS_BY_INTAKE_APPLICATION_SUCCESS,
-      payload: bachelorResult
-    };
-  }
-
-  static ADD_BACHELOR_RESULT = '[Intake Application] Add Bachelor Result';
-
-  addBachelorResult(application, bachelorResult) {
-    return {
-      type: IntakeApplicationActions.ADD_BACHELOR_RESULT,
-      payload: {application: application, bachelorResult: bachelorResult}
-    };
-  }
-
-  static ADD_BACHELOR_RESULT_SUCCESS = '[Intake Application] Add Bachelor Result Success';
-
-  addBachelorResultSuccess(message) {
-    return {
-      type: IntakeApplicationActions.ADD_BACHELOR_RESULT_SUCCESS,
-      payload: message
-    };
-  }
-
-  static DELETE_BACHELOR_RESULT = '[Intake Application] Delete Bachelor Result';
-
-  deleteBachelorResult(intake, bachelorResult) {
-    return {
-      type: IntakeApplicationActions.DELETE_BACHELOR_RESULT,
-      payload: {intake: intake, bachelorResult: bachelorResult}
-    };
-  }
-
-  static DELETE_BACHELOR_RESULT_SUCCESS = '[Intake Application] Delete Bachelor Result Success';
-
-  deleteBachelorResultSucces(message) {
-    return {
-      type: IntakeApplicationActions.DELETE_BACHELOR_RESULT_SUCCESS,
       payload: message
     };
   }

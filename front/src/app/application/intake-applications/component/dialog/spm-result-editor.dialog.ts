@@ -1,5 +1,4 @@
-import {SubjectCode} from '../../../../common/subject-codes/subject-code.interface';
-import {BachelorResult} from '../../bachelor-result-interface';
+import {Result} from './../../result.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -10,18 +9,18 @@ import {MdDialogRef} from "@angular/material";
 import {IntakeApplicationActions} from "../../intake-application.action";
 import {IntakeApplication} from "../../intake-application.interface";
 import {ResultType} from "../../result-type.enum";
-import {SpmResult} from "../../spm-result.interface";
-
 
 @Component({
-  selector: 'pams-spm-result-creator',
-  templateUrl: './spm-result-creator.dialog.html',
+  selector: 'pams-spm-result-editor',
+  templateUrl: './spm-result-editor.dialog.html',
 })
 
-export class SpmResultCreatorDialog implements OnInit {
+export class SpmResultEditorDialog implements OnInit {
 
   private _intakeApplication: IntakeApplication;
-  private createForm: FormGroup;
+  private editForm: FormGroup;
+  private edit: boolean = false;
+  private _result: Result;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -29,30 +28,36 @@ export class SpmResultCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions,
-              private dialog: MdDialogRef<SpmResultCreatorDialog>) {
+              private dialog: MdDialogRef<SpmResultEditorDialog>) {
   }
 
+  set result(value: Result) {
+    console.log('setting result');
+    this._result = value;
+    console.log(value);
+    this.edit = true;
+  }
 
   set intakeApplication(value: IntakeApplication) {
+    console.log('setting application');
     this._intakeApplication = value;
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<SpmResult>{
-      id: null,
-      year: 0,
+    this.editForm = this.formBuilder.group(<Result>{
+      id: undefined,
       name: '',
-      grade: '',
-      aggregate: 0,
-      subjectCode: <SubjectCode>{},
-
-      // resultType: ResultType.BACHELOR,
+      graduationYear: 0,
+      resultAlphanumeric: '',
+      resultType: ResultType.SPM,
 
     });
+    if (this.edit) this.editForm.patchValue(this._result);
   }
 
-  save(spmResult: SpmResult, isValid: boolean) {
-    this.store.dispatch(this.actions.addSpmResult(this._intakeApplication, spmResult));
+  submit(result: Result, isValid: boolean): void {
+    if (this.edit) this.store.dispatch(this.actions.updateResult(this._intakeApplication, result));
+    else  this.store.dispatch(this.actions.addResult(this._intakeApplication, result));
     this.dialog.close();
   }
 }
