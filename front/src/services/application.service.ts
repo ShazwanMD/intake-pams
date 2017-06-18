@@ -135,6 +135,22 @@ export class ApplicationService {
     return this.http.put(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo, JSON.stringify(application), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  findSubmittedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+      console.log("findIntakeApplications");
+      return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/SUBMITTED")
+        .map((res: Response) => <IntakeApplication[]>res.json());
+    }
+    findRejectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+      console.log("findIntakeApplications");
+      return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/REJECTED")
+        .map((res: Response) => <IntakeApplication[]>res.json());
+    }
+    findSelectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+      console.log("findIntakeApplications");
+      return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/SELECTED")
+        .map((res: Response) => <IntakeApplication[]>res.json());
+    }
 
   // ====================================================================================================
   // EDUCATION
