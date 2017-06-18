@@ -487,7 +487,7 @@ public class SystemServiceImpl implements SystemService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    @Scheduled(cron = "0 0 1 * * *")
+    @Scheduled(cron = "* * * * * *")
     public void sendEmail() {
         try {
             List<InEmailQueue> queues = emailQueueDao.find(InEmailQueueStatus.QUEUED);
