@@ -145,6 +145,7 @@ public interface SystemService {
     // TODO:
     void sendWithAttachment(String email, String s, String s1, String s2, String s3, HashMap<String, Object> vars);
 
+
     //====================================================================================================
     // EMAIL QUEUE
     //====================================================================================================
@@ -158,4 +159,6 @@ public interface SystemService {
     Integer countEmailQueue();
 
     void saveEmailQueue(InEmailQueue emailQueue);
+
+    void sendEmail();
 }

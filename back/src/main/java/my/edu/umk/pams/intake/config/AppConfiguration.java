@@ -47,8 +47,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         WorkflowConfig.class,
         CacheConfig.class,
         SwaggerConfig.class,
-        ReportConfig.class,
-//        EmailConfig.class,
+        ReportConfig    .class,
+        EmailConfig.class,
 //        VelocityConfig.class,
 //        ThreadingConfig.class,
 })
