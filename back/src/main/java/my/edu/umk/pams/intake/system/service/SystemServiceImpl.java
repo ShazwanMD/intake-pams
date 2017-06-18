@@ -487,7 +487,13 @@ public class SystemServiceImpl implements SystemService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    @Scheduled(cron = "* * * * * *")
+    @Override
+    public void updateEmailQueue(InEmailQueue emailQueue) {
+        emailQueueDao.update(emailQueue, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Scheduled(cron = "*/5 * * * * *")
     public void sendEmail() {
         try {
             List<InEmailQueue> queues = emailQueueDao.find(InEmailQueueStatus.QUEUED);
@@ -499,6 +505,10 @@ public class SystemServiceImpl implements SystemService {
                 helper.setSubject(queue.getSubject());
                 helper.setText(queue.getBody());
                 mailSender.send(mimeMessage);
+
+                // update queue
+                queue.setQueueStatus(InEmailQueueStatus.SENT);
+                updateEmailQueue(queue);
             }
         } catch (MessagingException e) {
             LOG.error("error " + e);
