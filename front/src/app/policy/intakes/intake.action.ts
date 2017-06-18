@@ -193,6 +193,7 @@ export class IntakeActions {
   static FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS = '[Intake] Find Intake By Reference No And Bid Status';
 
   findIntakeByReferenceNoAndBidStatus(referenceNo): Action {
+      console.log ("findIntakeByReferenceNoAndBidStatus :"+referenceNo);
     return {
       type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS,
       payload: referenceNo
@@ -201,7 +202,8 @@ export class IntakeActions {
 
   static FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS_SUCCESS = '[Intake] Find Intake By Reference No And Bid Status Success';
 
-  findIntakeByReferenceNoAndBidSuccess(intake): Action {
+  findIntakeByReferenceNoAndBidStatusSuccess(intake): Action {
+      console.log ("findIntakeByReferenceNoAndBidSuccess :"+intake);
     return {
       type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS_SUCCESS,
       payload: intake
@@ -211,7 +213,7 @@ export class IntakeActions {
   static FIND_PROGRAM_OFFERINGS = '[Intake] Find Program Offerings';
 
   findProgramOfferings(intake): Action {
-    console.log("findProgramOfferings :"+intake.referenceNo);
+    console.log("findProgramOfferings :"+intake);
     return {
       type: IntakeActions.FIND_PROGRAM_OFFERINGS,
       payload: intake
@@ -267,7 +269,7 @@ export class IntakeActions {
   }
 
 
-  static FIND_INTAKE_APPLICATIONS = '[Intake] Find INTAKE APPLICATION Offerings';
+  static FIND_INTAKE_APPLICATIONS = '[Intake] Find INTAKE APPLICATION ';
 
   findIntakeApplications(intake): Action {
     return {
@@ -282,6 +284,26 @@ export class IntakeActions {
     console.log("findIntakeApplicationsSuccess");
     return {
       type: IntakeActions.FIND_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applications
+    };
+  }
+  
+  static FIND_SUBMITTED_INTAKE_APPLICATIONS = '[Intake] Find SUBMITTED INTAKE APPLICATION ';
+
+  findSubmittedIntakeApplications(intake): Action {
+      console.log("findSubmittedIntakeApplications :"+intake);
+    return {
+      type: IntakeActions.FIND_SUBMITTED_INTAKE_APPLICATIONS,
+      payload: intake
+    };
+  }
+
+  static FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find SUBMITTED Intake Application Success';
+
+  findSubmittedIntakeApplicationsSuccess(applications): Action {
+    console.log("findSubmittedIntakeApplicationsSuccess");
+    return {
+      type: IntakeActions.FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS,
       payload: applications
     };
   }
