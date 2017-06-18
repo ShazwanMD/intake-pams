@@ -40,6 +40,7 @@ import { IntakeEvaluateTaskPanel } from "./panel/intake-evaluate-task.panel";
 import { ApplicantProfileDialog } from "./dialog/applicant-profile.dialog";
 import { IntakeApplicationEvaluateListComponent } from "./component/intake-application-evaluate-list.component";
 import { CpsIntakeApplicationSubModule } from "../../application/intake-applications/cps/index";
+import {PipeModule} from "../../app.pipe.module";
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { CpsIntakeApplicationSubModule } from "../../application/intake-applicat
     IntakeSessionSubModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
     EffectsModule.run(IntakeEffects),
+    PipeModule
   ],
   declarations: [
     // page
