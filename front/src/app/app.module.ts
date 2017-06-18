@@ -39,6 +39,7 @@ import {centerModuleReducers, INITIAL_CENTER_STATE, CenterModuleState, CenterMod
 import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
 import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./setup/index";
+import {PipeModule} from "./app.pipe.module";
 
 
 // interceptor
@@ -112,6 +113,8 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     NgxChartsModule,
     StoreModule.provideStore(applicationReducer),
     // StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
+    PipeModule,
 
     DashboardModule.forRoot(),
     CommonModule.forRoot(),
