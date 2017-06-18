@@ -122,8 +122,8 @@ public class ApplicationController {
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
     }
-
-    @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications/bidStatus/{bidStatus}", method = RequestMethod.POST)
+   
+    @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications/bidStatus/{bidStatus}", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByIntakeAndBidStatus(@PathVariable String referenceNo, @PathVariable String bidStatus) {
         dummyLogin();
 

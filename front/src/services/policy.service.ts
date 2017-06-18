@@ -121,13 +121,13 @@ export class PolicyService {
   }
 
   findIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
-    console.log("findIntakeApplications");
+    console.log("findIntakeApplications :"+intake.referenceNo );
     return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/intakeApplications")
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findSubmittedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
-    console.log("findIntakeApplications");
+    console.log("findSubmittedIntakeApplications :"+intake);
     return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/SUBMITTED")
       .map((res: Response) => <IntakeApplication[]>res.json());
   }

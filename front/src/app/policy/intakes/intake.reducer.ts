@@ -14,6 +14,9 @@ export function intakeReducer(state = initialState, action: Action): IntakeState
     case IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_SUCCESS: {
       return action.payload;
     }
+    case IntakeActions.FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS: {
+      return action.payload;
+    }
     default: {
       return state;
     }

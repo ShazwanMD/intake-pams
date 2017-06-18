@@ -181,6 +181,24 @@ export class IntakeApplicationActions {
       payload: applcations
     };
   }
+  
+  static FIND_SUBMITTED_INTAKE_APPLICATIONS = '[Intake Application] Find Submitted Intake Applications';
+
+  findSubmittedIntakeApplications(applications): Action {
+    return {
+      type: IntakeApplicationActions.FIND_SUBMITTED_INTAKE_APPLICATIONS
+    };
+  }
+
+  static FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake Application] Find Submitted Intake Applications Success';
+
+  findSubmittedIntakeApplicationsSuccess(applcations): Action {
+    console.log("findIntakeApplicationsSuccess");
+    return {
+      type: IntakeApplicationActions.FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applcations
+    };
+  }
 
   static SUBMIT_INTAKE_APPLICATION = '[Intake Application] Submit Intake Application';
 

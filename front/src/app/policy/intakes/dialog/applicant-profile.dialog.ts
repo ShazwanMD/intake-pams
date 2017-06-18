@@ -16,6 +16,7 @@ import { Language } from "../../../application/intake-applications/language.inte
 import { Referee } from "../../../application/intake-applications/referee.interface";
 import { IntakeApplicationActions } from "../../../application/intake-applications/intake-application.action";
 import { ApplicationModuleState } from "../../../application/index";
+import { MdSnackBar, MdDialogRef } from "@angular/material";
 
 
 @Component({
@@ -66,6 +67,8 @@ export class ApplicantProfileDialog implements OnInit {
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
+              private dialog: MdDialogRef<ApplicantProfileDialog>,
+              private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>) {
 
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
@@ -80,14 +83,28 @@ export class ApplicantProfileDialog implements OnInit {
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
   
-  select(intakeApplication : IntakeApplication): void{
-      console.log("select :"+intakeApplication.referenceNo);
-      this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
-  }
+
+      
+      select(intakeApplication : IntakeApplication) {
+      let snackBarRef = this.snackBar.open("Confirm to Select This Applicant?", "Ok");
+      snackBarRef.afterDismissed().subscribe(() => {
+          this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
+          this.dialog.afterClosed().subscribe(res => {
+              let referenceNo: string = this.intakeApplication.referenceNo;
+              this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
+            });
+      });
+   }   
   
-  reject(intakeApplication : IntakeApplication): void{
-      console.log("reject :"+intakeApplication.referenceNo);
-      this.store.dispatch(this.actions.rejectIntakeApplication(intakeApplication));
-  }
+  reject(intakeApplication : IntakeApplication) {
+      let snackBarRef = this.snackBar.open("Confirm to reject This Applicant?", "Ok");
+      snackBarRef.afterDismissed().subscribe(() => {
+          this.store.dispatch(this.actions.rejectIntakeApplication(intakeApplication));
+          this.dialog.afterClosed().subscribe(res => {
+              let referenceNo: string = this.intakeApplication.referenceNo;
+              this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
+            });
+      });
+   }  
   
 }
