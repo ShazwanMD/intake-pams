@@ -31,11 +31,21 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
         // modules
         "my.edu.umk.pams.intake.common",
-        "my.edu.umk.pams.intake.registration",
         "my.edu.umk.pams.intake.policy",
         "my.edu.umk.pams.intake.application",
         "my.edu.umk.pams.intake.admission",
-})
+        "my.edu.umk.pams.intake.registration",
+
+        // web modules
+        "my.edu.umk.pams.intake.web.module.identity",
+        "my.edu.umk.pams.intake.web.module.common",
+        "my.edu.umk.pams.intake.web.module.policy",
+        "my.edu.umk.pams.intake.web.module.admission",
+        "my.edu.umk.pams.intake.web.module.application",
+        "my.edu.umk.pams.intake.web.module.registration",
+
+}
+)
 @Import({
         TestDatasourceConfig.class,
         TestSecurityConfig.class,
