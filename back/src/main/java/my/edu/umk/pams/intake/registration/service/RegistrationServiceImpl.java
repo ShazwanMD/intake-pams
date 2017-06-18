@@ -89,7 +89,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         // todo(samiya): send email notification
         InEmailQueue email= new InEmailQueueImpl();
         String subject = "Email verification";
-        String body = "Please verify your email address by clicking this url : http://pams.umk.edu.my/verification/ "+ token;
+        String body = "Please verify your email address by clicking this url : http://pams.umk.edu.my/verification/"+ token;
         //verification.getToken();
         email.setTo(user.getEmail());
         email.setSubject(subject);
