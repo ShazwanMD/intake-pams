@@ -133,11 +133,11 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
   
-  findSubmittedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+  /*findSubmittedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
       console.log("findIntakeApplications");
       return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/SUBMITTED")
         .map((res: Response) => <IntakeApplication[]>res.json());
-    }
+    }*/
     findRejectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
       console.log("findIntakeApplications");
       return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/REJECTED")

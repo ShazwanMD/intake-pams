@@ -51,7 +51,7 @@ export class IntakeEffects {
       this.intakeActions.findIntakeApplications(action.payload)
     ]));
   
-  @Effect() findIntakeByReferenceNoAndBidStatus$ = this.actions$
+  /*@Effect() findIntakeByReferenceNoAndBidStatus$ = this.actions$
   .ofType(IntakeActions.FIND_INTAKE_BY_REFERENCE_NO)
   .map(action => action.payload)
   .switchMap(referenceNo => this.applicationService.findSubmittedIntakeApplications(referenceNo))
@@ -61,7 +61,7 @@ export class IntakeEffects {
     this.intakeActions.findSupervisorOfferings(action.payload),
     this.intakeActions.findStudyModeOfferings(action.payload),
     this.intakeActions.findIntakeApplications(action.payload)
-  ]));
+  ]));*/
 
   @Effect() findProgramOfferings$ = this.actions$
     .ofType(IntakeActions.FIND_PROGRAM_OFFERINGS)
@@ -87,11 +87,11 @@ export class IntakeEffects {
     .switchMap(intake => this.policyService.findIntakeApplications(intake))
     .map(applications => this.intakeActions.findIntakeApplicationsSuccess(applications));
 
-  @Effect() findSubmittedIntakeApplications = this.actions$
+  /*@Effect() findSubmittedIntakeApplications = this.actions$
   .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
   .map(action => action.payload)
   .switchMap(intake => this.applicationService.findSubmittedIntakeApplications(intake))
-  .map(applications => this.intakeActions.findIntakeApplicationsSuccess(applications));
+  .map(applications => this.intakeActions.findIntakeApplicationsSuccess(applications));*/
   
   @Effect() startIntakeTask$ = this.actions$
     .ofType(IntakeActions.START_INTAKE_TASK)
