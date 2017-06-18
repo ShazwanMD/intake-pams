@@ -17,6 +17,7 @@ import {CommonModule} from '../../common/index';
 import {ProgramLevelSubModule} from '../../policy/program-levels/index';
 import {MyIntakeApplicationPage} from './my-intake-application.page';
 import {ProgramOfferingSelectorDialog} from './component/dialog/program-offering-selector.dialog';
+import {PipeModule} from "../../app.pipe.module";
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import {ProgramOfferingSelectorDialog} from './component/dialog/program-offering
     CommonModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
     EffectsModule.run(IntakeApplicationEffects),
+    PipeModule
   ],
   declarations: [
     IntakeDetailPage,
