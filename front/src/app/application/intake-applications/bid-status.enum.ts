@@ -1,5 +1,5 @@
 export enum BidStatus{
-  NEW,
+ /* NEW,
   DRAFTED,
   SUBMITTED,
   EVALUATE,
@@ -9,5 +9,14 @@ export enum BidStatus{
   REJECT,
   WITHDRAWN,
   APPEALE,
-  APPROVE
+  APPROVE*/
+    
+    NEW,
+    DRAFTED, // new, incomplete
+    SUBMITTED, // after submit
+    SELECTED,  // selected in intake evaluation flow
+    REJECTED,  // rejected in intake evaluation flow
+    WITHDRAW,  // ?? we have cancidate
+    APPEALED, // ?? we have candidate
+    APPROVED // ?? we have candidate
 }
