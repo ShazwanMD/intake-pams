@@ -3,6 +3,7 @@
   <form [formGroup]="editorForm">
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
       <pams-program-code-select
+      	[programLevel]='intake.programLevel'
         [placeholder]="'Program Codes'"
         [innerFormControl]="editorForm.controls['programCode']" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-program-code-select>

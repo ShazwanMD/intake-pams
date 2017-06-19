@@ -314,6 +314,12 @@ public class CommonController {
     public ResponseEntity<List<ProgramCode>> findProgramCodes() {
         return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(commonService.findProgramCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/programCodes/programLevel/{levelCode}", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramCode>> findProgramCodesByProgramLevel(@PathVariable String levelCode) {
+        InProgramLevel inProgramLevel = policyService.findProgramLevelByCode(levelCode);
+        return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(commonService.findProgramCodesByProgramLevel(inProgramLevel,"%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/programCodes/{code}", method = RequestMethod.GET)
     public ResponseEntity<ProgramCode> findProgramCode(@PathVariable String code) {

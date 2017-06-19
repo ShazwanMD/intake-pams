@@ -69,6 +69,12 @@ export class CommonEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findProgramCodes())
     .map(codes => this.commonActions.findProgramCodesSuccess(codes));
+  
+  @Effect() findProgramCodesByProgramLevel$ = this.actions$
+  .ofType(CommonActions.FIND_PROGRAM_CODES_BY_PROGRAM_LEVEL)
+  .map(action => action.payload)
+  .switchMap((code) => this.commonService.findProgramCodesByProgramLevel(code))
+  .map(codes => this.commonActions.findProgramCodesByProgramLevelSuccess(codes));
 
   @Effect() findStudyMode$ = this.actions$
     .ofType(CommonActions.FIND_STUDY_MODES)

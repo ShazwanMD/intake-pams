@@ -234,6 +234,9 @@ public interface CommonService {
 	List<InProgramCode> findProgramCodes(InGraduateCenter graduateCenter, InProgramLevel programLevel);
 
 	List<InProgramCode> findProgramCodes(String filter, Integer offset, Integer limit);
+	
+	List<InProgramCode> findProgramCodesByProgramLevel(InProgramLevel inProgramLevel, String filter, Integer offset,
+			Integer limit);
 
 	Integer countProgramCode();
 
@@ -822,5 +825,6 @@ public interface CommonService {
 	void updateStudyMode(InStudyMode studyMode);
 
 	void removeStudyMode(InStudyMode studyMode);
+
 
 }

@@ -102,6 +102,24 @@ public class InProgramCodeDaoImpl extends GenericDaoSupport<Long, InProgramCode>
         query.setCacheable(true);
         return (List<InProgramCode>) query.list();
     }
+    
+    @Override
+    public List<InProgramCode> find(InProgramLevel inProgramLevel,String filter, Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from InProgramCode s where " +
+                "s.programLevel = :inProgramLevel " +
+                "and (upper(s.code) like upper(:filter) " +
+                "or upper(s.descriptionEn) like upper(:filter) " +
+                "or upper(s.descriptionMs) like upper(:filter)) " +
+                "and s.metadata.state = :state ");
+        query.setEntity("inProgramLevel", inProgramLevel);
+        query.setString("filter", WILDCARD + filter + WILDCARD);
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        query.setCacheable(true);
+        return (List<InProgramCode>) query.list();
+    }
 
     @Override
     public Integer count(String filter) {
