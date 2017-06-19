@@ -84,7 +84,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
       okuNo: '',
       email: '',
       phone: ['', Validators.required],
-      fax: '',
+      fax: [''],
       age: 0,
       mailingAddress1: '',
       mailingAddress2: '',
@@ -108,7 +108,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
       researchProposalAttached: false,
       sponsorLetterAttached: false,
       
-      genderCode: [<GenderCode>{}, Validators.required],
+      genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},
       raceCode: <RaceCode>{},
       ethnicityCode: <EthnicityCode>{},
@@ -140,12 +140,13 @@ export class MgsebIntakeApplicationPage implements OnInit {
     console.log('tab change');
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
-
-  submit(application: IntakeApplication, isValid: boolean): void {
+  
+ submit(application: IntakeApplication, isValid: boolean): void {
     console.log('submitting application');
     this.store.dispatch(this.actions.submitIntakeApplication(application));
     this.goBack();
   }
+
 
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);

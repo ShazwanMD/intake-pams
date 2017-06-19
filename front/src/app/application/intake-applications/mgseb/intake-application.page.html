@@ -5,7 +5,7 @@
   </div>
 
   <td-layout-card-over>
-    <form [formGroup]="applicationForm" ng-submit="submitForm(applicationForm.$valid)" novalidate>
+    <form [formGroup]="applicationForm">
       <div layout="row" layout-align="start center">
         <div>
           <md-card-title>Intake Application</md-card-title>
@@ -129,6 +129,7 @@
               <div layout="row" class="pad-top">
                 <pams-gender-code-select [placeholder]="'Gender'" [innerFormControl]="applicationForm.controls.genderCode">
                 </pams-gender-code-select>
+
               </div>
 
               <div layout="row" class="pad-top">
@@ -387,18 +388,15 @@
                    Please click Declaration before submit the application!
                   </div>
               </md-checkbox>
-              
             </div>
-            <div layout="row" layout-align="start center">
+               <md-card-subtitle>*Please fill all the required form before submit your application</md-card-subtitle>
+            
+              
+             <div layout="row" layout-align="start center">
               <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)"  [disabled] = "!applicationForm.valid">
                 Submit
               </button>
-             
             </div>
-
-           
-            
-            
           </div>
           <div class="push-top-sm"></div>
         </md-tab>
