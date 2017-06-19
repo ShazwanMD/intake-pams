@@ -489,6 +489,7 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void updateEmailQueue(InEmailQueue emailQueue) {
+    	LOG.debug("emailQueue :"+emailQueue.getQueueStatus());
         emailQueueDao.update(emailQueue, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
