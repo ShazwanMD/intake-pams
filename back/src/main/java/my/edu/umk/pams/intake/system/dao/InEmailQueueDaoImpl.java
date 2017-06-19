@@ -14,6 +14,7 @@ import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -22,6 +23,7 @@ import java.util.List;
  * @author canang technologies
  * @since 1/31/14
  */
+@Transactional
 @Repository("emailQueueDao")
 public class InEmailQueueDaoImpl extends GenericDaoSupport<Long, InEmailQueue> implements InEmailQueueDao {
 

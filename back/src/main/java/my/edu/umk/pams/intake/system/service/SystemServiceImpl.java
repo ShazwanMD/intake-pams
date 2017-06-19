@@ -508,7 +508,8 @@ public class SystemServiceImpl implements SystemService {
 
                 // update queue
                 queue.setQueueStatus(InEmailQueueStatus.SENT);
-                updateEmailQueue(queue);
+                emailQueueDao.update(queue, securityService.getCurrentUser());
+                sessionFactory.getCurrentSession().flush();
             }
         } catch (MessagingException e) {
             LOG.error("error " + e);
