@@ -39,7 +39,7 @@
               <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
 
                 <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="Name" formControlName="name">
+                  <input mdInput placeholder="Name" formControlName="name" required>
                 </md-input-container>
                 <div class="error"
                      *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
@@ -47,7 +47,7 @@
                 </div>
 
                 <md-input-container fxFlex="calc(50%-25px)">
-                  <input mdInput placeholder="Email" formControlName="email">
+                  <input mdInput placeholder="Email" formControlName="email" required>
                 </md-input-container>
                 <div class="error"
                      *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
@@ -55,7 +55,7 @@
                 </div>
 
                 <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo">
+                  <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo" required>
                 </md-input-container>
                 <div class="error"
                      *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
@@ -111,7 +111,7 @@
                 </pams-religion-code-select>
 
                 <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="Phone No" formControlName="mobile">
+                  <input mdInput placeholder="Phone No" formControlName="mobile" required>
                 </md-input-container>
 
                 <md-input-container fxFlex="calc(100%-25px)">
@@ -124,9 +124,7 @@
 
               </div>
             </div>
-            <md-card-actions>
-              <button md-raised-button color="primary" (click)="goBack()">Next</button>
-            </md-card-actions>
+          
 
           </td-expansion-panel>
         </md-tab>
@@ -136,11 +134,11 @@
           <td-expansion-panel label="Address Detail">
             <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
               <md-input-container fxFlex="calc(100%-25px)">
-                <input mdInput placeholder="Address 1" formControlName="mailingAddress1" flex/>
+                <input mdInput placeholder="Address 1" formControlName="mailingAddress1" required/>
               </md-input-container>
 
               <md-input-container fxFlex="calc(100%-25px)">
-                <input mdInput placeholder="Address 2" formControlName="mailingAddress2" flex/>
+                <input mdInput placeholder="Address 2" formControlName="mailingAddress2" required/>
               </md-input-container>
 
               <md-input-container fxFlex="calc(100%-25px)">
@@ -148,17 +146,17 @@
               </md-input-container>
 
               <md-input-container fxFlex="calc(100%-25px)">
-                <input mdInput placeholder="Postcode" formControlName="mailingPostcode" flex/>
+                <input mdInput placeholder="Postcode" formControlName="mailingPostcode" required/>
               </md-input-container>
 
               <pams-state-code-select [placeholder]="'State'"
                                       [innerFormControl]="applicationForm.controls.mailingStateCode"
-                                      fxFlex="calc(50%-25px)" class="pad-bottom">
+                                      fxFlex="calc(50%-25px)" class="pad-bottom" required>
               </pams-state-code-select>
 
               <pams-country-code-select [placeholder]="'Country'"
                                         [innerFormControl]="applicationForm.controls.mailingCountryCode"
-                                        fxFlex="calc(50%-25px)" class="pad-bottom">
+                                        fxFlex="calc(50%-25px)" class="pad-bottom" required> 
               </pams-country-code-select>
 
             </div>
@@ -376,7 +374,7 @@
               </md-checkbox>
             </div>
             <div layout="row" layout-align="start center">
-              <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)">
+              <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)"  [disabled] = "!applicationForm.valid">
                 Submit
               </button>
             </div>
