@@ -16,6 +16,4 @@ public interface InEmailQueueDao extends GenericDao<Long, InEmailQueue> {
     List<InEmailQueue> find(InEmailQueueStatus status);
 
     List<InEmailQueue> find(InEmailQueueStatus... statuses);
-
-	void addEmailQueue(InEmailQueue emailQueue);
 }
