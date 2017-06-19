@@ -6,7 +6,7 @@ import {GenderCode} from '../../../common/gender-codes/gender-code.interface';
 import {Referee} from '../referee.interface';
 import {Employment} from '../employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
@@ -63,19 +63,19 @@ export class CpsIntakeApplicationPage implements OnInit {
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
     });
 
-    this.applicationForm = this.formBuilder.group(<IntakeApplication>{
+    this.applicationForm = this.formBuilder.group({
       id: null,
       referenceNo: '',
       researchTitle: '',
       rank: 0,
       merit: 0,
       name: '',
-      credentialNo: '',
+      credentialNo: ['', Validators.required],
       birthDate: null,
       mobile: '',
       okuNo: '',
       email: '',
-      phone: '',
+      phone: ['', Validators.required],
       fax: '',
       age: 0,
       passExpDate: null,

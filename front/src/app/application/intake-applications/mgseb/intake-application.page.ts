@@ -7,7 +7,7 @@ import {EthnicityCode} from '../../../common/ethnicity-codes/ethnicity-code.inte
 import {DisabilityCode} from '../../../common/disability-codes/disability-code.interface';
 import {Referee} from '../referee.interface';
 import {Employment} from '../employment.interface';
-import {Component, OnInit, state, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -72,28 +72,28 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.applicationForm = this.formBuilder.group({
       id: [undefined],
       referenceNo: '',
-      researchTitle: ['', Validators.required],
+      researchTitle: '',
       rank: 0,
-      merit: 0,
+      merit:0,
 
-      name: ['', Validators.required, Validators.minLength(30)],
+      name: '',
       credentialNo: ['', Validators.required],
       birthDate: [undefined, Validators.required],
       passExpDate: [undefined, Validators.required],
       mobile: ['', Validators.required],
       okuNo: '',
-      email: ['', Validators.required],
+      email: '',
       phone: ['', Validators.required],
-      fax: ['', Validators.required],
-      age: [0, Validators.required],
-      mailingAddress1: ['', Validators.required],
-      mailingAddress2: ['', Validators.required],
-      mailingAddress3: ['', Validators.required],
-      mailingPostcode: ['', Validators.required],
-      officialAddress1: ['', Validators.required],
-      officialAddress2: ['', Validators.required],
-      officialAddress3: ['', Validators.required],
-      officialPostcode: ['', Validators.required],
+      fax: '',
+      age: 0,
+      mailingAddress1: '',
+      mailingAddress2: '',
+      mailingAddress3: '',
+      mailingPostcode: '',
+      officialAddress1:'',
+      officialAddress2: '',
+      officialAddress3: '',
+      officialPostcode: '',
 
       spmResultAttached: false,
       stpmResultAttached: false,
@@ -107,18 +107,18 @@ export class MgsebIntakeApplicationPage implements OnInit {
       refereeFormAttached: false,
       researchProposalAttached: false,
       sponsorLetterAttached: false,
-
+      
       genderCode: [<GenderCode>{}, Validators.required],
-      maritalCode: [<MaritalCode>{}, Validators.required],
-      raceCode: [<RaceCode>{}, Validators.required],
-      ethnicityCode: [<EthnicityCode>{}, Validators.required],
-      disabilityCode: [<DisabilityCode>{}, Validators.required],
-      religionCode: [<ReligionCode>{}, Validators.required],
-      nationalityCode: [<NationalityCode>{}, Validators.required],
-      mailingStateCode: [<StateCode>{}, Validators.required],
-      mailingCountryCode: [<CountryCode>{}, Validators.required],
-      officialStateCode: [<StateCode>{}, Validators.required],
-      officialCountryCode: [<CountryCode>{}, Validators.required],
+      maritalCode: <MaritalCode>{},
+      raceCode: <RaceCode>{},
+      ethnicityCode: <EthnicityCode>{},
+      disabilityCode:<DisabilityCode>{},
+      religionCode: <ReligionCode>{},
+      nationalityCode: <NationalityCode>{},
+      mailingStateCode: <StateCode>{},
+      mailingCountryCode: <CountryCode>{},
+      officialStateCode:<StateCode>{},
+      officialCountryCode:<CountryCode>{},
       verified: false,
       sponsored: false,
       selfSponsored: false,

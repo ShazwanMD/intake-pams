@@ -36,25 +36,25 @@
 
               <div layout="row" class="pad-bottom" flex>
               <md-input-container flex>
-              <input mdInput placeholder="Name" formControlName="name" required/>
+              <input mdInput placeholder="Name" formControlName="name"/>
               </md-input-container>
-              <div class="error" class="tc-red-600" *ngIf="applicationForm.get('name').invalid && applicationForm.get('name').touched">
+              <!--<div class="error" class="tc-red-600" *ngIf="applicationForm.get('name').invalid && applicationForm.get('name').touched">
                     Name should be at least {{minLength}} characters!
-              </div>
+              </div>-->
               </div>
 
               <div layout="row" class="pad-bottom" flex>
               <md-input-container flex>
-              <input mdInput placeholder="Email" formControlName="email" flex/>
+              <input mdInput placeholder="Email" formControlName="email"/>
               </md-input-container>
-              <div class="error" *ngIf="applicationForm.get('email').invalid && applicationForm.get('email').touched" class="help-block" required>
+              <!--<div class="error" *ngIf="applicationForm.get('email').invalid && applicationForm.get('email').touched" class="help-block">
                     email is required!
-              </div>
+              </div>-->
               </div>
 
               <div layout="row" class="pad-bottom" flex>
               <md-input-container flex>
-              <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo" flex/>
+              <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo"/>
               </md-input-container>
               <div class="error" class="tc-red-600" *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
                     Your Ic or Passport Number is required!
@@ -63,7 +63,7 @@
 
               <div layout="row" class="pad-bottom" flex>
               <md-input-container flex>
-              <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate" flex/>
+              <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate"/>
               </md-input-container>
               <div class="error" class="tc-red-600" *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
                     Your Birth Date is required!
@@ -102,7 +102,7 @@
 
               <div layout="row" class="pad-bottom" flex>
               <md-input-container flex>
-              <input mdInput placeholder="Phone No" formControlName="mobile" flex/>
+              <input mdInput placeholder="Phone No" formControlName="mobile"/>
               </md-input-container>
               <div class="error" class="tc-red-600" *ngIf="applicationForm.get('mobile').invalid && applicationForm.get('mobile').touched">
                 Please add your Phone number!
@@ -122,7 +122,7 @@
               </div>
 
               <div layout="row" class="pad-top">
-              <pams-ethnicity-code-select [placeholder]="'Ethnicity'" [innerFormControl]="applicationForm.controls.ethnicityCode">
+              <pams-ethnicity-code-select [placeholder]="'Ethnicity'" required md-maxlength="10" [innerFormControl]="applicationForm.controls.ethnicityCode">
               </pams-ethnicity-code-select>
               </div>
 
@@ -152,14 +152,14 @@
 
               <div layout="row" class="pad-bottom" flex>
                 <md-input-container flex>
-                <input mdInput placeholder="Address 1" formControlName="mailingAddress1" flex/>
+                <input mdInput placeholder="Address 1" formControlName="mailingAddress1"/>
                 </md-input-container>
                 <div class="error" class="tc-red-600" *ngIf="applicationForm.get('mobile').invalid && applicationForm.get('mobile').touched">
                    Please add address!
                 </div>
               </div>
 
-              <div layout="row" class="pad-bottom" flex>
+              <div layout="row" class="pad-bottom" required>
                 <md-input-container flex>
                 <input mdInput placeholder="Address 2" formControlName="mailingAddress2" flex/>
                 </md-input-container>
@@ -173,7 +173,7 @@
 
               <div layout="row" class="pad-bottom" flex>
                 <md-input-container flex>
-                <input mdInput placeholder="Postcode" formControlName="mailingPostcode" flex/>
+                <input mdInput placeholder="Postcode" formControlName="mailingPostcode"/>
                 </md-input-container>
                 <div class="error" class="tc-red-600" *ngIf="applicationForm.get('mailingPostcode').invalid && applicationForm.get('mailingPostcode').touched">
                  Please add Postcode Number!
