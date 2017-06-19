@@ -147,12 +147,6 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.goBack();
   }
 
-  save(application:IntakeApplication, isValid : boolean): void {
-    console.log('saving application')
-    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
-    this.goBack();
-  }
-
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }

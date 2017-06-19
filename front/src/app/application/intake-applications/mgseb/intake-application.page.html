@@ -36,7 +36,7 @@
 
               <div layout="row" class="pad-bottom" flex>
               <md-input-container flex>
-              <input mdInput placeholder="Name" formControlName="name" flex/>
+              <input mdInput placeholder="Name" formControlName="name" required/>
               </md-input-container>
               <div class="error" class="tc-red-600" *ngIf="applicationForm.get('name').invalid && applicationForm.get('name').touched">
                     Name should be at least {{minLength}} characters!
@@ -47,7 +47,7 @@
               <md-input-container flex>
               <input mdInput placeholder="Email" formControlName="email" flex/>
               </md-input-container>
-              <div class="error" *ngIf="applicationForm.get('email').invalid && applicationForm.get('email').touched" class="help-block">
+              <div class="error" *ngIf="applicationForm.get('email').invalid && applicationForm.get('email').touched" class="help-block" required>
                     email is required!
               </div>
               </div>
@@ -390,12 +390,10 @@
               
             </div>
             <div layout="row" layout-align="start center">
-              <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)" ng-disabled="applicationForm.$invalid">
+              <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)"  [disabled] = "!applicationForm.valid">
                 Submit
               </button>
-              <button md-raised-button color="accent" (click)="save(applicationForm.value, applicationForm.valid)" ng-disabled="applicationForm.$invalid">
-                Save 
-              </button>
+             
             </div>
 
            
