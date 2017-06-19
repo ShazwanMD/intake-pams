@@ -95,18 +95,18 @@ export class MgsebIntakeApplicationPage implements OnInit {
       officialAddress3: '',
       officialPostcode: '',
 
-      spmResultAttached: false,
-      stpmResultAttached: false,
-      diplomaResultAttached: false,
-      bachelorResultAttached: false,
-      toeflResultAttached: false,
-      ieltsResultAttached: false,
-      languageResultAttached: false,
-      processingFeeAttached: false,
-      bankStatementAttached: false,
-      refereeFormAttached: false,
-      researchProposalAttached: false,
-      sponsorLetterAttached: false,
+      spmResultAttached: true,
+      stpmResultAttached: true,
+      diplomaResultAttached: true,
+      bachelorResultAttached: true,
+      toeflResultAttached: true,
+      ieltsResultAttached: true,
+      languageResultAttached: true,
+      processingFeeAttached: true,
+      bankStatementAttached: true,
+      refereeFormAttached: true,
+      researchProposalAttached: true,
+      sponsorLetterAttached: true,
       
       genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},
@@ -119,18 +119,18 @@ export class MgsebIntakeApplicationPage implements OnInit {
       mailingCountryCode: <CountryCode>{},
       officialStateCode:<StateCode>{},
       officialCountryCode:<CountryCode>{},
-      verified: false,
-      sponsored: false,
-      selfSponsored: false,
-      processingReceipt: false,
-      foreignResult: false,
-      educationResult: false,
-      academic: false,
-      financialLetter: false,
-      researchProposal: false,
-      bankStatement: false,
-      refereeForm: false,
-      declared:false,
+      verified: true,
+      sponsored: true,
+      selfSponsored: true,
+      processingReceipt: true,
+      foreignResult: true,
+      educationResult: true,
+      academic: true,
+      financialLetter: true,
+      researchProposal: true,
+      bankStatement: true,
+      refereeForm: true,
+      declared:true,
 
     });
     this.intakeApplication$.subscribe((intakeApplication) => this.applicationForm.patchValue(intakeApplication));
@@ -140,7 +140,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
     console.log('tab change');
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
-  
+
  submit(application: IntakeApplication, isValid: boolean): void {
     console.log('submitting application');
     this.store.dispatch(this.actions.submitIntakeApplication(application));
