@@ -234,7 +234,7 @@ public class GenericDaoSupport<K, I> implements GenericDao<K, I>, InitializingBe
     public void update(I entity, InUser user) {
         Validate.notNull(user, "User cannot be null");
         Validate.notNull(entity, "Object cannot be null");
-
+        LOG.debug("user : "+user.getId());
         Session session = sessionFactory.getCurrentSession();
         prepareMetadata(entity, user, true);
         session.update(entity);

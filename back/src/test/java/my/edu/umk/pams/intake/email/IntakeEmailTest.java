@@ -79,14 +79,20 @@ public class IntakeEmailTest {
 
     @Test
     @Rollback(false)
-    public void testDraftWorkflow() {
-        InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setBody("This is a test");
-        emailQueue.setCode(((Long)System.currentTimeMillis()).toString());
-        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-        emailQueue.setRetryCount(0);
-        emailQueue.setSubject("Test");
-        emailQueue.setTo("rafizan.baharum@gmail.com");
-        systemService.saveEmailQueue(emailQueue);
-     }
+    public void testEmail() {
+//        InEmailQueue emailQueue = new InEmailQueueImpl();
+//        emailQueue.setBody("This is a test");
+//        emailQueue.setCode(((Long)System.currentTimeMillis()).toString());
+//        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+//        emailQueue.setRetryCount(0);
+//        emailQueue.setSubject("Test");
+//        emailQueue.setTo("rafizan.baharum@gmail.com");
+//        systemService.saveEmailQueue(emailQueue);
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            LOG.error("");
+        }
+    }
 }
