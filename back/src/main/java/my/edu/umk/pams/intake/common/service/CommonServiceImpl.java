@@ -579,6 +579,11 @@ public class CommonServiceImpl implements CommonService {
     public List<InProgramCode> findProgramCodes(String filter, Integer offset, Integer limit) {
         return programCodeDao.find(filter, offset, limit);
     }
+    
+    @Override
+    public List<InProgramCode> findProgramCodesByProgramLevel(InProgramLevel inProgramLevel,String filter, Integer offset, Integer limit) {
+        return programCodeDao.find(inProgramLevel,filter, offset, limit);
+    }
 
     @Override
     public Integer countProgramCode() {

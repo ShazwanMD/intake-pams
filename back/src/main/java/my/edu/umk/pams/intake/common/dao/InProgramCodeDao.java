@@ -24,6 +24,8 @@ public interface InProgramCodeDao extends GenericDao<Long, InProgramCode> {
     List<InProgramCode> find(InGraduateCenter graduateCenter, InProgramLevel programLevel);
 
     List<InProgramCode> find(String filter, Integer offset, Integer limit);
+    
+	List<InProgramCode> find(InProgramLevel inProgramLevel, String filter, Integer offset, Integer limit);
 
     // ====================================================================================================
     // HELPER

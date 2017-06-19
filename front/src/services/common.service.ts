@@ -27,6 +27,7 @@ import {ResidencyCode} from "../app/common/residency-codes/residency-code.interf
 import {LanguageCode} from "../app/common/language-codes/language-code.interface";
 import {SubjectCode} from "../app/common/subject-codes/subject-code.interface";
 import {GradeCode} from "../app/common/grade-codes/grade-code.interface";
+import { ProgramLevel } from "../app/policy/program-levels/program-level.interface";
 
 @Injectable()
 export class CommonService {
@@ -411,6 +412,12 @@ export class CommonService {
     return this.http.get(environment.endpoint + '/api/common/programCodes/' + code)
       .map((res: Response) => <ProgramCode>res.json());
   }
+  
+  findProgramCodesByProgramLevel(programLevel:ProgramLevel): Observable<ProgramCode> {
+      console.log("findProgramCodeByProgramLevel :"+programLevel.code);
+      return this.http.get(environment.endpoint + '/api/common/programCodes/programLevel/' + programLevel.code)
+        .map((res: Response) => <ProgramCode>res.json());
+    }
 
   saveProgramCode(code: ProgramCode) {
     let headers = new Headers({

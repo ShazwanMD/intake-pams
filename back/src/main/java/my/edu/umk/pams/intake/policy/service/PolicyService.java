@@ -52,7 +52,7 @@ public interface PolicyService {
 
     InProgramLevel findProgramLevelById(Long id);
 
-    InProgramLevel findProgramLevelByCode(String code);
+    InProgramLevel findProgramLevelByCode(String levelCode);
 
     List<InProgramLevel> findProgramLevels();
 

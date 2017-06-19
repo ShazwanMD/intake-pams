@@ -11,6 +11,9 @@ export function programCodeListReducer(state = initialState, action: Action): Pr
     case CommonActions.FIND_PROGRAM_CODES_SUCCESS: {
       return action.payload;
     }
+    case CommonActions.FIND_PROGRAM_CODES_BY_PROGRAM_LEVEL_SUCCESS: {
+        return action.payload;
+      }
     default: {
       return state;
     }

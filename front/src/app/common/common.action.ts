@@ -232,6 +232,26 @@ export class CommonActions {
       payload: codes
     };
   }
+  
+  static FIND_PROGRAM_CODES_BY_PROGRAM_LEVEL = '[Common] Find Program Codes By Program Level';
+
+  findProgramCodesByProgramLevel(programLevel): Action {
+    console.log("findProgramCodesByProgramLevel");
+    return {
+      type: CommonActions.FIND_PROGRAM_CODES_BY_PROGRAM_LEVEL,
+      payload: programLevel
+    };
+  }
+
+  static FIND_PROGRAM_CODES_BY_PROGRAM_LEVEL_SUCCESS = '[Common] Find Program Codes By Program Level Success';
+
+  findProgramCodesByProgramLevelSuccess(codes): Action {
+    console.log("findProgramCodesByProgramLevelSuccess");
+    return {
+      type: CommonActions.FIND_PROGRAM_CODES_BY_PROGRAM_LEVEL_SUCCESS,
+      payload: codes
+    };
+  }
 
   static FIND_SUPERVISOR_CODES = '[Common] Find Supervisor Codes';
 

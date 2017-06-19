@@ -5,6 +5,7 @@ import {FormControl} from "@angular/forms";
 import {CommonActions} from "../../common.action";
 import {CommonModuleState} from "../../index";
 import {ProgramCode} from "../program-code.interface";
+import { ProgramLevel } from "../../../policy/program-levels/program-level.interface";
 
 
 @Component({
@@ -17,6 +18,7 @@ export class ProgramCodeSelectComponent implements OnInit {
   private PROGRAM_CODES = "commonModuleState.programCodes".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
+  @Input() programLevel: ProgramLevel;
   programCodes$: Observable<ProgramCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
@@ -25,7 +27,7 @@ export class ProgramCodeSelectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.findProgramCodes());
+    this.store.dispatch(this.actions.findProgramCodesByProgramLevel(this.programLevel));
   }
 
   selectChangeEvent(event: ProgramCode) {
