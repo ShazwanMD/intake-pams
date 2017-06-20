@@ -16,7 +16,8 @@ import { Language } from "../../../application/intake-applications/language.inte
 import { Referee } from "../../../application/intake-applications/referee.interface";
 import { IntakeApplicationActions } from "../../../application/intake-applications/intake-application.action";
 import { ApplicationModuleState } from "../../../application/index";
-import { MdSnackBar, MdDialogRef } from "@angular/material";
+import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from "@angular/material";
+import { ApplicantProfileRejectDialog } from "./applicant-profile-reject.dialog";
 
 
 @Component({
@@ -61,13 +62,15 @@ export class ApplicantProfileDialog implements OnInit {
   private referees$: Observable<Referee>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
+    
+  private editorDialogRef: MdDialogRef<ApplicantProfileRejectDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
-              private dialog: MdDialogRef<ApplicantProfileDialog>,
+              private dialog: MdDialog,
               private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>) {
 
@@ -89,7 +92,7 @@ export class ApplicantProfileDialog implements OnInit {
       let snackBarRef = this.snackBar.open("Confirm to Select This Applicant?", "Ok");
       snackBarRef.afterDismissed().subscribe(() => {
           this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
-          this.dialog.afterClosed().subscribe(res => {
+          this.editorDialogRef.afterClosed().subscribe(res => {
               let referenceNo: string = this.intakeApplication.referenceNo;
               this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
             });
@@ -97,14 +100,26 @@ export class ApplicantProfileDialog implements OnInit {
    }   
   
   reject(intakeApplication : IntakeApplication) {
-      let snackBarRef = this.snackBar.open("Confirm to reject This Applicant?", "Ok");
-      snackBarRef.afterDismissed().subscribe(() => {
-          this.store.dispatch(this.actions.rejectIntakeApplication(intakeApplication));
-          this.dialog.afterClosed().subscribe(res => {
-              let referenceNo: string = this.intakeApplication.referenceNo;
-              this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
-            });
-      });
+      this.showDialog(intakeApplication);
    }  
+  
+  showDialog(intakeApplication): void {
+      console.log("showDialog");
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '50%';
+      config.height = '40%';
+      config.position = {top: '0px'};
+      this.editorDialogRef = this.dialog.open(ApplicantProfileRejectDialog, config);
+      this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
+
+      
+      this.editorDialogRef.afterClosed().subscribe(res => {
+        console.log("closeDialog");
+        //this.editorDialogRef.close();
+        this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
+    });
+  }
   
 }

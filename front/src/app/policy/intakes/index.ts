@@ -41,6 +41,7 @@ import { ApplicantProfileDialog } from "./dialog/applicant-profile.dialog";
 import { IntakeApplicationEvaluateListComponent } from "./component/intake-application-evaluate-list.component";
 import { CpsIntakeApplicationSubModule } from "../../application/intake-applications/cps/index";
 import {PipeModule} from "../../app.pipe.module";
+import { ApplicantProfileRejectDialog } from "./dialog/applicant-profile-reject.dialog";
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import {PipeModule} from "../../app.pipe.module";
     SupervisorOfferingEditorDialog,
     IntakeUpdaterDialog,
     ApplicantProfileDialog,
+    ApplicantProfileRejectDialog,
   ],
   exports: [
     IntakeTaskListComponent,
@@ -104,6 +106,7 @@ import {PipeModule} from "../../app.pipe.module";
     StudyModeOfferingEditorDialog,
     SupervisorOfferingEditorDialog,
     ApplicantProfileDialog,
+    ApplicantProfileRejectDialog,
   ],
 
 })

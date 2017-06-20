@@ -104,18 +104,19 @@ export class ApplicationService {
         //'Authorization': 'Bearer ' + this.authService.token
       });
       let options = new RequestOptions({ headers: headers });
-      return this.http.post(environment.endpoint + '/api/application/intakeApplications/'
+      return this.http.put(environment.endpoint + '/api/application/intakeApplications/'
         + application.referenceNo + '/select', JSON.stringify(application), options)
         .flatMap((res: Response) => Observable.of(res.text()));
   }
   
   rejectIntakeApplication(application: IntakeApplication): Observable<String> {
+      console.log("application {}",application)
       let headers = new Headers({
         'Content-Type': 'application/json',
         //'Authorization': 'Bearer ' + this.authService.token
       });
       let options = new RequestOptions({ headers: headers });
-      return this.http.post(environment.endpoint + '/api/application/intakeApplications/'
+      return this.http.put(environment.endpoint + '/api/application/intakeApplications/'
         + application.referenceNo + '/reject', JSON.stringify(application), options)
         .flatMap((res: Response) => Observable.of(res.text()));
   }

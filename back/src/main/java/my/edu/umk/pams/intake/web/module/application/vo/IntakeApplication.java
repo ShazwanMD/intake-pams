@@ -29,6 +29,7 @@ public class IntakeApplication extends MetaObject {
     private String phone;
     private String mobile;
     private String email;
+    private String reason;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date passExpDate;
     private String fax;
@@ -165,8 +166,16 @@ public class IntakeApplication extends MetaObject {
     public String getEmail() {
         return email;
     }
+    
+    public String getReason() {
+		return reason;
+	}
 
-    public void setEmail(String email) {
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public void setEmail(String email) {
         this.email = email;
     }
 

@@ -90,8 +90,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void rejectIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
-        LOG.debug("intake application: {}", application.getReferenceNo());
-        application.setBidStatus(InBidStatus.REJECTED);
+        LOG.debug("intake application: {}", application);
         updateIntakeApplication(application);
     }
 
@@ -99,7 +98,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     public void selectIntakeApplication(InIntake intake, InIntakeApplication application) {
         LOG.debug("intake: {}", intake.getReferenceNo());
         LOG.debug("intake application: {}", application.getReferenceNo());
-        application.setBidStatus(InBidStatus.SELECTED);
         updateIntakeApplication(application);
     }
 

@@ -42,7 +42,7 @@ public class ApplicationTransformer {
 		vo.setAge(e.getAge());
 		vo.setPassExpDate(e.getPassportExpDate());
 		vo.setBirthDate(e.getBirthDate());
-		
+		vo.setReason(e.getReason());
 		vo.setVerified(e.isVerified());
 		vo.setPaid(e.isPaid());
 		vo.setDeclared(e.isDeclared());
@@ -108,7 +108,7 @@ public class ApplicationTransformer {
 		vo.setFax(e.getFax());
 		vo.setVerified(e.isVerified());
 		vo.setResearchTitle(e.getResearchTitle());
-		
+		vo.setReason(e.getReason());
 		
 		vo.setMaritalCode(commonTransformer.toMaritalCodeVo(e.getMaritalCode()));
 		vo.setNationalityCode(commonTransformer.toNationalityCodeVo(e.getNationalityCode()));

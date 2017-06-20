@@ -27,6 +27,7 @@ export interface IntakeApplication extends MetaObject {
   passExpDate: Date;
   okuNo: string;
   email: string;
+  reason: string;
   phone: string;
   mobile: string;
   fax: string;

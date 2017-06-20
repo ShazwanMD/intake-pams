@@ -280,23 +280,27 @@ public class ApplicationController {
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/select", method = RequestMethod.POST)
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/select", method = RequestMethod.PUT)
     public ResponseEntity<String> selectIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
         InIntake intake = application.getIntake();
+        application.setBidStatus(InBidStatus.SELECTED);
         applicationService.selectIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakeApplications/{referenceNo}/reject", method = RequestMethod.POST)
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/reject", method = RequestMethod.PUT)
     public ResponseEntity<String> rejectIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
         dummyLogin();
 
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+        application.setReason(vo.getReason());
+        System.out.println("vo.getReason() :"+vo.getReason());;
+        application.setBidStatus(InBidStatus.REJECTED);
         InIntake intake = application.getIntake();
         applicationService.rejectIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
