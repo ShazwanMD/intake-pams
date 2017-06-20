@@ -15,6 +15,8 @@ public class Result extends MetaObject {
     private ResultType resultType;
     private String name;
     private String field;
+    private String malayResult;
+    private String englishResult;
     private Integer graduationYear;
     private BigDecimal resultNumeric;
     private String resultAlphanumeric;
@@ -66,8 +68,25 @@ public class Result extends MetaObject {
     public void setResultAlphanumeric(String resultAlphanumeric) {
         this.resultAlphanumeric = resultAlphanumeric;
     }
+    
 
-    @JsonCreator
+    public String getMalayResult() {
+		return malayResult;
+	}
+
+	public void setMalayResult(String malayResult) {
+		this.malayResult = malayResult;
+	}
+
+	public String getEnglishResult() {
+		return englishResult;
+	}
+
+	public void setEnglishResult(String englishResult) {
+		this.englishResult = englishResult;
+	}
+
+	@JsonCreator
     public static Result create(String jsonString) {
         Result o = null;
         try {

@@ -612,6 +612,8 @@ public class ApplicationController {
         result.setField(vo.getField());
         result.setName(vo.getName());
         result.setGraduationYear(vo.getGraduationYear());
+        result.setMalayResult(vo.getMalayResult());
+        result.setEnglishResult(vo.getEnglishResult());
         result.setResultAlphanumeric(vo.getResultAlphanumeric());
         result.setResultNumeric(vo.getResultNumeric());
         applicationService.addResult(application, result);
@@ -628,6 +630,8 @@ public class ApplicationController {
         result.setField(vo.getField());
         result.setName(vo.getName());
         result.setGraduationYear(vo.getGraduationYear());
+        result.setMalayResult(vo.getMalayResult());
+        result.setEnglishResult(vo.getEnglishResult());
         result.setResultAlphanumeric(vo.getResultAlphanumeric());
         result.setResultNumeric(vo.getResultNumeric());
         applicationService.updateResult(application, result);

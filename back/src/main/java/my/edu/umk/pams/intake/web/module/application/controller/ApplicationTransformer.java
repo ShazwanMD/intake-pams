@@ -269,6 +269,8 @@ public class ApplicationTransformer {
 		vo.setGraduationYear(e.getGraduationYear());
 		vo.setResultAlphanumeric(e.getResultAlphanumeric());
 		vo.setResultNumeric(e.getResultNumeric());
+		vo.setMalayResult(e.getMalayResult());
+		vo.setEnglishResult(e.getEnglishResult());
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}

@@ -42,6 +42,12 @@ public class InResultImpl implements InResult {
     
     @Column(name = "RESULT_NUMERIC")
     private BigDecimal resultNumeric;
+    
+    @Column(name = "MALAY_RESULT")
+    private String malayResult;
+    
+    @Column(name = "ENGLISH_RESULT")
+    private String englishResult;
 
     @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
@@ -117,6 +123,26 @@ public class InResultImpl implements InResult {
     @Override
 	public void setResultNumeric(BigDecimal resultNumeric) {
 		this.resultNumeric = resultNumeric;
+	}
+
+    @Override
+	public String getMalayResult() {
+		return malayResult;
+	}
+
+	@Override
+	public void setMalayResult(String malayResult) {
+		this.malayResult = malayResult;
+	}
+
+	@Override
+	public String getEnglishResult() {
+		return englishResult;
+	}
+
+	@Override
+	public void setEnglishResult(String englishResult) {
+		this.englishResult = englishResult;
 	}
 
 	@Override

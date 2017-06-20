@@ -13,6 +13,14 @@ public interface InResult extends InMetaObject {
 
     void setResultType(InResultType resultType);
     
+    String getMalayResult();
+
+    void setMalayResult(String malayResult);
+    
+    String getEnglishResult();
+
+    void setEnglishResult(String englishResult);
+    
     String getName();
 
     void setName(String name);

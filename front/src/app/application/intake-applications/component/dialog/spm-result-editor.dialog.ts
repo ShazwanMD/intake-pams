@@ -49,6 +49,8 @@ export class SpmResultEditorDialog implements OnInit {
       name: '',
       graduationYear: 0,
       resultAlphanumeric: '',
+      malayResult: '',
+      englishResult: '',
       resultType: ResultType.SPM,
 
     });
