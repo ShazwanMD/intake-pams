@@ -9,6 +9,7 @@ import { GenderCode } from "../gender-code.interface";
 @Component({
   selector: 'pams-gender-code-select',
   templateUrl: './gender-code-select.component.html',
+  styleUrls: ['./gender-code-select.scss'],
 })
 export class GenderCodeSelectComponent implements OnInit {
 

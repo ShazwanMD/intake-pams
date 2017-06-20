@@ -9,6 +9,7 @@ import { EthnicityCode } from "../ethnicity-code.interface";
 @Component({
   selector: 'pams-ethnicity-code-select',
   templateUrl: './ethnicity-code-select.component.html',
+  styleUrls: ['./ethnicity-code-select.scss'],
 })
 export class EthnicityCodeSelectComponent implements OnInit {
 

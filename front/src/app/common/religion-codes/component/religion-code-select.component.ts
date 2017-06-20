@@ -9,6 +9,8 @@ import { ReligionCode } from "../religion-code.interface";
 @Component({
   selector: 'pams-religion-code-select',
   templateUrl: './religion-code-select.component.html',
+  styleUrls: ['./religion-code-select.scss'],
+
 })
 export class ReligionCodeSelectComponent implements OnInit {
 

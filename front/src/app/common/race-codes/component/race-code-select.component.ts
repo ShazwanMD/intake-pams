@@ -10,6 +10,7 @@ import { RaceCode } from "../race-code.interface";
 @Component({
   selector: 'pams-race-code-select',
   templateUrl: './race-code-select.component.html',
+  styleUrls: ['./race-code-select.scss'],
 })
 export class RaceCodeSelectComponent implements OnInit {
 

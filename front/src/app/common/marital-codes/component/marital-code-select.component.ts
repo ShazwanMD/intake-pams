@@ -10,6 +10,7 @@ import { MaritalCode } from "../marital-code.interface";
 @Component({
   selector: 'pams-marital-code-select',
   templateUrl: './marital-code-select.component.html',
+  styleUrls: ['./marital-code-select.scss'],
 })
 export class MaritalCodeSelectComponent implements OnInit {
 
