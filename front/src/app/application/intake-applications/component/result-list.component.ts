@@ -35,6 +35,8 @@ export class ResultListComponent implements OnInit {
     { name: 'name', label: 'Name' },
     { name: 'field', label: 'Field' },
     { name: 'graduationYear', label: 'Graduation Year' },
+    { name: 'malayResult', label: 'Bahasa Melayu Result' },
+    { name: 'englishResult', label: 'Bahasa Inggeris Result' },
     { name: 'resultAlphanumeric', label: 'Result Alphanumeric' },
     { name: 'resultNumeric', label: 'Result Numeric' },
   ];

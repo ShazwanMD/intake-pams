@@ -7,6 +7,8 @@ export interface Result extends MetaObject {
   graduationYear: number;
   resultAlphanumeric: string;
   resultNumeric: number;
+  malayResult: string;
+  englishResult: string;
   resultType: ResultType;
 
   selected?: boolean;
