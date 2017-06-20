@@ -9,6 +9,8 @@ import { StudyCenterCode } from "../study-center-code.interface";
 @Component({
   selector: 'pams-study-center-code-select',
   templateUrl: './study-center-code-select.component.html',
+  styleUrls: ['./study-center-code-select.scss'],
+
 })
 export class StudyCenterCodeSelectComponent implements OnInit {
 
