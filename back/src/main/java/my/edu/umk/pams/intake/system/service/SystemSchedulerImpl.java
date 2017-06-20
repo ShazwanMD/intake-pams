@@ -37,7 +37,7 @@ public class SystemSchedulerImpl implements SystemScheduler {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Scheduled(cron = "*/5 * * * * *")
+    @Scheduled(cron = "*/10 * * * * *")
     public void sendEmail() {
         loginAsSystem();
         try {
