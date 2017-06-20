@@ -24,13 +24,9 @@ export class RegistrationService {
       .flatMap((res:Response) => Observable.of(res.text()));
   }
 
-  verifyUser(token: String): Observable<Boolean> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/registration/verifyUser', JSON.stringify(token), options)
-      .flatMap((res:Response) => Observable.of(Boolean(res.text())));
+ verifyUser(token: String): Observable<Boolean> {
+   console.log("token :" + token)
+    return this.http.get(environment.endpoint + '/api/registration/verifyUser/' + token)
+      .map((res: Response) => <Boolean>res.json());
   }
 }
