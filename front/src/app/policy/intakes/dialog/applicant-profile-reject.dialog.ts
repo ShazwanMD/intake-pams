@@ -56,7 +56,7 @@ export class ApplicantProfileRejectDialog implements OnInit {
     }
   
   submit(intakeApplication : IntakeApplication) {
-      let snackBarRef = this.snackBar.open("Confirm to Reject?", "Ok");
+      let snackBarRef = this.snackBar.open("Confirm to Reject This Applicant?", "Ok");
       
       snackBarRef.afterDismissed().subscribe(() => {
           this.store.dispatch(this.actions.rejectIntakeApplication(intakeApplication));

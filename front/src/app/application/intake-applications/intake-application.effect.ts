@@ -137,19 +137,13 @@ export class IntakeApplicationEffects {
   .ofType(IntakeApplicationActions.SELECT_INTAKE_APPLICATION)
   .map((action) => action.payload)
   .switchMap((application) => this.applicationService.selectIntakeApplication(application))
-  .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message))
-  .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-  .map((state) => state[1])
-  .map((applications) => this.intakeActions.findSubmittedIntakeApplications(applications));
+  .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message));
   
   @Effect() rejectIntakeApplication$ = this.actions$
   .ofType(IntakeApplicationActions.REJECT_INTAKE_APPLICATION)
   .map((action) => action.payload)
   .switchMap((application) => this.applicationService.rejectIntakeApplication(application))
-  .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message))
-  .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
-  .map((state) => state[1])
-  .map((intake) => this.intakeActions.findSubmittedIntakeApplications(intake));
+  .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message));
   
   @Effect() findSubmittedIntakeApplications$ = this.actions$
   .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)

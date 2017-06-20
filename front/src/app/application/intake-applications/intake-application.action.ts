@@ -236,7 +236,7 @@ export class IntakeApplicationActions {
     };
   }
   
-  static REJECT_INTAKE_APPLICATION = '[Intake Application] Select Intake Application';
+  static REJECT_INTAKE_APPLICATION = '[Intake Application] Reject Intake Application';
 
   rejectIntakeApplication(application): Action {
     return {

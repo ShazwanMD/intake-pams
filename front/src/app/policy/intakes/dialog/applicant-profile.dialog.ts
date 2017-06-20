@@ -62,15 +62,15 @@ export class ApplicantProfileDialog implements OnInit {
   private referees$: Observable<Referee>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
-    
-  private editorDialogRef: MdDialogRef<ApplicantProfileRejectDialog>;
-
+   
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
               private dialog: MdDialog,
+              private editorDialog: MdDialogRef<ApplicantProfileDialog>,
+              private editorDialogRef: MdDialogRef<ApplicantProfileRejectDialog>,
               private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>) {
 
@@ -86,25 +86,21 @@ export class ApplicantProfileDialog implements OnInit {
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
   
-
-      
-      select(intakeApplication : IntakeApplication) {
+  select(intakeApplication : IntakeApplication) {
       let snackBarRef = this.snackBar.open("Confirm to Select This Applicant?", "Ok");
       snackBarRef.afterDismissed().subscribe(() => {
           this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
-          this.editorDialogRef.afterClosed().subscribe(res => {
-              let referenceNo: string = this.intakeApplication.referenceNo;
+          this.editorDialog.afterClosed().subscribe(res => {
               this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
-            });
+          });
       });
-   }   
+    }
   
   reject(intakeApplication : IntakeApplication) {
       this.showDialog(intakeApplication);
    }  
   
   showDialog(intakeApplication): void {
-      console.log("showDialog");
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
@@ -115,9 +111,7 @@ export class ApplicantProfileDialog implements OnInit {
       this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
 
       
-      this.editorDialogRef.afterClosed().subscribe(res => {
-        console.log("closeDialog");
-        //this.editorDialogRef.close();
+      this.editorDialog.afterClosed().subscribe(res => {
         this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
     });
   }

@@ -87,7 +87,6 @@
                   </md-card-content>
                 </md-card>
               </md-tab>
-              
               <md-tab label="Academic">
                 <!--ACADEMIC INFORMATION-->
                 <md-card>
@@ -168,6 +167,25 @@
                   <md-card-content>
                    <pams-attachment-list [intakeApplication]="intakeApplication$ | async" [attachments]="attachments$ | async">
            			</pams-attachment-list>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Referee">
+                <!--REFEREE INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Referees Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                   <pams-referee-list [intakeApplication]="intakeApplication$ | async" [referees]="referees$ | async">
+           			</pams-referee-list>
                   </md-card-content>
                 </md-card>
               </md-tab>

@@ -284,7 +284,7 @@ public class ApplicationController {
     public ResponseEntity<String> selectIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
         dummyLogin();
-
+        System.out.println("vo.getReason() select");
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
         InIntake intake = application.getIntake();
         application.setBidStatus(InBidStatus.SELECTED);
@@ -299,7 +299,7 @@ public class ApplicationController {
 
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
         application.setReason(vo.getReason());
-        System.out.println("vo.getReason() :"+vo.getReason());;
+        System.out.println("vo.getReason() reject:"+vo.getReason());
         application.setBidStatus(InBidStatus.REJECTED);
         InIntake intake = application.getIntake();
         applicationService.rejectIntakeApplication(intake, application);
