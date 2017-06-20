@@ -20,6 +20,7 @@ export class MyIntakeApplicationPage implements OnInit {
     {name: 'referenceNo', label: 'ReferenceNo'},
     {name: 'intake.referenceNo', label: 'Intake'},
     {name: 'bidStatus', label: 'Status'},
+    {name: 'reason', label: 'Reason'},
     {name: 'action', label: ''}
   ];
 
