@@ -1,0 +1,15 @@
+<div layout="row"
+     layout-align="start center"
+     layout-wrap>
+  <md-nav-list dense flex>
+
+    <template let-intakeSubmittedApplications let-last="last" ngFor [ngForOf]="intakeSubmittedApplications">
+      <a md-list-item  (click)="profileDialog(intakeSubmittedApplications)">
+        <md-icon md-list-avatar>label</md-icon>
+        <h3 md-line> {{intakeSubmittedApplications.name}} </h3>
+        <p md-line> {{intakeSubmittedApplications.referenceNo}} </p>
+        <p md-line> {{intakeSubmittedApplications.email}} </p>
+      </a>
+    </template>
+  </md-nav-list>
+</div>
