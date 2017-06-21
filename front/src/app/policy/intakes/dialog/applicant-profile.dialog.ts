@@ -18,6 +18,7 @@ import { IntakeApplicationActions } from "../../../application/intake-applicatio
 import { ApplicationModuleState } from "../../../application/index";
 import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from "@angular/material";
 import { ApplicantProfileRejectDialog } from "./applicant-profile-reject.dialog";
+import { IntakeActions } from "../intake.action";
 
 
 @Component({
@@ -68,6 +69,7 @@ export class ApplicantProfileDialog implements OnInit {
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
+              private intakeActions: IntakeActions,
               private dialog: MdDialog,
               private editorDialog: MdDialogRef<ApplicantProfileDialog>,
               private editorDialogRef: MdDialogRef<ApplicantProfileRejectDialog>,
@@ -91,7 +93,7 @@ export class ApplicantProfileDialog implements OnInit {
       snackBarRef.afterDismissed().subscribe(() => {
           this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
           this.editorDialog.afterClosed().subscribe(res => {
-              this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
+              this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
           });
       });
     }
@@ -112,7 +114,7 @@ export class ApplicantProfileDialog implements OnInit {
 
       
       this.editorDialog.afterClosed().subscribe(res => {
-        this.store.dispatch(this.actions.findIntakeByReferenceNo(intakeApplication.intake.referenceNo));
+        this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
     });
   }
   

@@ -33,6 +33,9 @@ import {
 import {intakeSessionListReducer, IntakeSessionListState} from "./intake-sessions/intake-session-list.reducer";
 import {IntakeApplication} from "../application/intake-applications/intake-application.interface";
 import {intakeApplicationListReducer, IntakeApplicationListState} from "./intakes/intake-application-list.reducer";
+import {intakeSubmittedApplicationListReducer, IntakeSubmittedApplicationListState} from "./intakes/intake-submitted-application-list.reducer";
+import {intakeSelectedApplicationListReducer, IntakeSelectedApplicationListState} from "./intakes/intake-selected-application-list.reducer";
+import {intakeRejectedApplicationListReducer, IntakeRejectedApplicationListState} from "./intakes/intake-rejected-application-list.reducer";
 
 export interface PolicyModuleState {
   intakeSessions: IntakeSessionListState;
@@ -45,6 +48,9 @@ export interface PolicyModuleState {
   supervisorOfferings: SupervisorOfferingListState;
   studyModeOfferings: StudyModeOfferingListState;
   intakeApplications: IntakeApplicationListState;
+  intakeSubmittedApplications: IntakeSubmittedApplicationListState;
+  intakeSelectedApplications: IntakeSelectedApplicationListState;
+  intakeRejectedApplications: IntakeRejectedApplicationListState;
 };
 
 export const INITIAL_POLICY_STATE: PolicyModuleState =
@@ -60,6 +66,9 @@ export const INITIAL_POLICY_STATE: PolicyModuleState =
     supervisorOfferings: <SupervisorOffering[]>[],
     studyModeOfferings: <StudyModeOffering[]>[],
     intakeApplications: <IntakeApplication[]>[],
+    intakeSubmittedApplications: <IntakeApplication[]>[],
+    intakeSelectedApplications: <IntakeApplication[]>[],
+    intakeRejectedApplications: <IntakeApplication[]>[],
   };
 
 export const policyModuleReducers = {
@@ -73,6 +82,9 @@ export const policyModuleReducers = {
   supervisorOfferings: supervisorOfferingListReducer,
   studyModeOfferings: studyModeOfferingListReducer,
   intakeApplications: intakeApplicationListReducer,
+  intakeSubmittedApplications: intakeSubmittedApplicationListReducer,
+  intakeSelectedApplications: intakeSelectedApplicationListReducer,
+  intakeRejectedApplications: intakeRejectedApplicationListReducer,
 };
 
 @NgModule({
