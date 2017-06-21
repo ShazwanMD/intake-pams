@@ -15,6 +15,7 @@ import {RegistrationState, registrationReducer} from "./registration.reducer";
 import {RegistrationActions} from "./registration.action";
 import {RegistrationEffects} from "./registration.effect";
 import {VerificationPage} from "./verification.page";
+import {RegistrationInformationPage} from "./registration-information.page";
 
 export interface RegistrationModuleState {
   registration: RegistrationState
@@ -41,6 +42,7 @@ export const registrationModuleReducers = {
   declarations: [
     // page
     RegistrationPage,
+    RegistrationInformationPage,
     VerificationPage,
   ],
   exports: [],
