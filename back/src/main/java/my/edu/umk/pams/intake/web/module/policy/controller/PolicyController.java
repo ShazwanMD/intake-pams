@@ -403,7 +403,8 @@ public class PolicyController {
         policyService.deleteSupervisorOffering(intake, offering);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
-
+    
+    
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================

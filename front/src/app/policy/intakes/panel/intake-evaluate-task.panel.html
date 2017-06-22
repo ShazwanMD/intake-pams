@@ -73,6 +73,11 @@
           	[intake]="intakeTask.intake"
         	[intakeRejectedApplications]="intakeRejectedApplications$ | async"></pams-intake-application-rejected-list>
           </md-tab>
+          <md-tab label="Verify ({{(intakeVerifiedApplications$ | async)?.length}})">
+            <pams-intake-application-verified-list
+          	[intake]="intakeTask.intake"
+        	[intakeVerifiedApplications]="intakeVerifiedApplications$ | async"></pams-intake-application-verified-list>
+          </md-tab>
         </md-tab-group>
       </md-card>
 
@@ -108,7 +113,7 @@
         <md-card-subtitle>Actions available on current intake</md-card-subtitle>
         <md-divider></md-divider>
         <md-nav-list dense>
-          <md-list-item (click)="verify()">
+          <md-list-item (click)="process()">
             <md-icon md-list-avatar>done</md-icon>
             <h4 md-line>Process</h4>
             <p md-line>Process this intake</p>

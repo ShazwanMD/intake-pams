@@ -81,6 +81,24 @@ export class IntakeActions {
       payload: task
     };
   }
+  
+  static PROCESS_INTAKE_CANDIDATE = '[Intake] Process Intake Candidate';
+
+  processIntakeCandidate(intake): Action {
+    return {
+      type: IntakeActions.PROCESS_INTAKE_CANDIDATE,
+      payload: intake
+    };
+  }
+
+  static PROCESS_INTAKE_CANDIDATE_SUCCESS = '[Intake] Process Intake Candidate Success';
+
+  processIntakeCandidateSuccess(task): Action {
+    return {
+      type: IntakeActions.PROCESS_INTAKE_CANDIDATE_SUCCESS,
+      payload: task
+    };
+  }
 
   static COMPLETE_INTAKE_TASK = '[Intake] Complete Intake Task';
 
@@ -344,6 +362,26 @@ export class IntakeActions {
     console.log("findRejectedIntakeApplicationsSuccess");
     return {
       type: IntakeActions.FIND_REJECTED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applications
+    };
+  }
+  
+  static FIND_VERIFIED_INTAKE_APPLICATIONS = '[Intake] Find VERIFIED INTAKE APPLICATION ';
+
+  findVerifiedIntakeApplications(intake): Action {
+      console.log("findVerifieddIntakeApplications :"+intake);
+    return {
+      type: IntakeActions.FIND_VERIFIED_INTAKE_APPLICATIONS,
+      payload: intake
+    };
+  }
+
+  static FIND_VERIFIED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find VERIFIED Intake Application Success';
+
+  findVerifiedIntakeApplicationsSuccess(applications): Action {
+    console.log("findVerifieddIntakeApplications");
+    return {
+      type: IntakeActions.FIND_VERIFIED_INTAKE_APPLICATIONS_SUCCESS,
       payload: applications
     };
   }

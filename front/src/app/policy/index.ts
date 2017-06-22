@@ -36,6 +36,7 @@ import {intakeApplicationListReducer, IntakeApplicationListState} from "./intake
 import {intakeSubmittedApplicationListReducer, IntakeSubmittedApplicationListState} from "./intakes/intake-submitted-application-list.reducer";
 import {intakeSelectedApplicationListReducer, IntakeSelectedApplicationListState} from "./intakes/intake-selected-application-list.reducer";
 import {intakeRejectedApplicationListReducer, IntakeRejectedApplicationListState} from "./intakes/intake-rejected-application-list.reducer";
+import {intakeVerifiedApplicationListReducer, IntakeVerifiedApplicationListState} from "./intakes/intake-verified-application-list.reducer";
 
 export interface PolicyModuleState {
   intakeSessions: IntakeSessionListState;
@@ -51,6 +52,7 @@ export interface PolicyModuleState {
   intakeSubmittedApplications: IntakeSubmittedApplicationListState;
   intakeSelectedApplications: IntakeSelectedApplicationListState;
   intakeRejectedApplications: IntakeRejectedApplicationListState;
+  intakeVerifiedApplications: IntakeVerifiedApplicationListState;
 };
 
 export const INITIAL_POLICY_STATE: PolicyModuleState =
@@ -69,6 +71,7 @@ export const INITIAL_POLICY_STATE: PolicyModuleState =
     intakeSubmittedApplications: <IntakeApplication[]>[],
     intakeSelectedApplications: <IntakeApplication[]>[],
     intakeRejectedApplications: <IntakeApplication[]>[],
+    intakeVerifiedApplications: <IntakeApplication[]>[],
   };
 
 export const policyModuleReducers = {
@@ -85,6 +88,7 @@ export const policyModuleReducers = {
   intakeSubmittedApplications: intakeSubmittedApplicationListReducer,
   intakeSelectedApplications: intakeSelectedApplicationListReducer,
   intakeRejectedApplications: intakeRejectedApplicationListReducer,
+  intakeVerifiedApplications: intakeVerifiedApplicationListReducer,
 };
 
 @NgModule({

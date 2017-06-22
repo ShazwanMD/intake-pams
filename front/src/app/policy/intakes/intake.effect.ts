@@ -62,7 +62,8 @@ export class IntakeEffects {
     this.intakeActions.findStudyModeOfferings(action.payload),
     this.intakeActions.findSubmittedIntakeApplications(action.payload),
     this.intakeActions.findSelectedIntakeApplications(action.payload),
-    this.intakeActions.findRejectedIntakeApplications(action.payload)
+    this.intakeActions.findRejectedIntakeApplications(action.payload),
+    this.intakeActions.findVerifiedIntakeApplications(action.payload)
   ]));
 
   @Effect() findProgramOfferings$ = this.actions$
@@ -100,6 +101,12 @@ export class IntakeEffects {
   .map(action => action.payload)
   .switchMap(intake => this.applicationService.findRejectedIntakeApplications(intake))
   .map(applications => this.intakeActions.findRejectedIntakeApplicationsSuccess(applications));
+  
+  @Effect() findVerifiedIntakeApplications = this.actions$
+  .ofType(IntakeActions.FIND_VERIFIED_INTAKE_APPLICATIONS)
+  .map(action => action.payload)
+  .switchMap(intake => this.applicationService.findVerifiedInternationalIntakeApplications(intake))
+  .map(applications => this.intakeActions.findVerifiedIntakeApplicationsSuccess(applications));
 
   @Effect() findSubmittedIntakeApplications = this.actions$
   .ofType(IntakeActions.FIND_SUBMITTED_INTAKE_APPLICATIONS)
@@ -139,6 +146,17 @@ export class IntakeEffects {
         this.intakeActions.findPooledIntakeTasks()
       ]
     ));
+  
+  @Effect() processIntakeCandidate$ = this.actions$
+  .ofType(IntakeActions.COPY_INTAKE_TASK)
+  .map(action => action.payload)
+  .switchMap(intakeTask => this.applicationService.processIntakeCandidate(intakeTask))
+  .map(message => this.intakeActions.processIntakeCandidateSuccess(message))
+  .mergeMap(action => from([action,
+      this.intakeActions.findAssignedIntakeTasks(),
+      this.intakeActions.findPooledIntakeTasks()
+    ]
+  ));
 
   @Effect() claimIntakeTask$ = this.actions$
     .ofType(IntakeActions.CLAIM_INTAKE_TASK)

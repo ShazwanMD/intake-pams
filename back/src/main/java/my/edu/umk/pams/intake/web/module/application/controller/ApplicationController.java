@@ -133,6 +133,18 @@ public class ApplicationController {
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications/bidStatus/{bidStatus}/verify/false", method = RequestMethod.GET)
+    public ResponseEntity<List<IntakeApplication>> findVerifyInternationalIntakeApplicationsByIntakeAndBidStatus(@PathVariable String referenceNo, @PathVariable String bidStatus) {
+        dummyLogin();
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        InBidStatus status = InBidStatus.valueOf(bidStatus);
+        boolean verify = false;
+        List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByVerificationStatus(intake,status,verify);
+        return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
+                HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<ProgramOffering>> findProgramOfferings(@PathVariable String referenceNo) {
@@ -650,6 +662,31 @@ public class ApplicationController {
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
+    // ====================================================================================================
+    // CANDIDATE
+    // ====================================================================================================
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/processCandidate", method = RequestMethod.POST)
+    public ResponseEntity<IntakeApplication> processCandidate(@PathVariable String referenceNo) {
+    	dummyLogin();
+    	InUser currentUser = securityService.getCurrentUser();
+        InActor actor = currentUser.getActor();
+        InApplicant applicant = identityService.findApplicantById(actor.getId());
+        if (actor instanceof InApplicant)
+            applicant = (InApplicant) actor;
+
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        InIntakeApplication application = new InIntakeApplicationImpl();
+        application.setName(applicant.getName());
+        application.setEmail(applicant.getEmail());
+        application.setApplicant(applicant);
+
+        String intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
+        LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
+        InIntakeApplication generatedApplication = applicationService
+                .findIntakeApplicationByReferenceNo(intakeApplicationReferenceNo);
+        return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(generatedApplication),
+                HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // PRIVATE METHODS

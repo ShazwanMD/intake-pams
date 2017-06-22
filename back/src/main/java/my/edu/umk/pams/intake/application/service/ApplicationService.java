@@ -138,7 +138,7 @@ public interface ApplicationService {
 
     List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
 
-    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verifiction);
+    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, InBidStatus status, Boolean verifiction);
 
     List<InResult> findResults(InIntakeApplication application);
 
