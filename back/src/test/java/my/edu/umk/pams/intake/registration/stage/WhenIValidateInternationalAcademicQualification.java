@@ -3,6 +3,8 @@ package my.edu.umk.pams.intake.registration.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -28,7 +30,7 @@ public class WhenIValidateInternationalAcademicQualification
 	public WhenIValidateInternationalAcademicQualification I_validate_international_academic_qualification() {
 
 		List<InIntakeApplication> verifiedApplications = applicationService
-				.findIntakeApplicationsByVerificationStatus(intake, false);
+				.findIntakeApplicationsByVerificationStatus(intake, InBidStatus.SELECTED, false);
 		Assert.notEmpty(verifiedApplications, "paidApplications cannot be empty");
 
 		for (InIntakeApplication application : verifiedApplications) {
