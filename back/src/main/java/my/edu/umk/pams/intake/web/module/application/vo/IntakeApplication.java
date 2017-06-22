@@ -12,6 +12,7 @@ import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -21,7 +22,7 @@ public class IntakeApplication extends MetaObject {
 
     private String referenceNo;
     private Integer rank;
-    private Integer merit;
+    private BigDecimal merit = BigDecimal.ZERO;
     private String researchTitle;
     private String name;
     private String credentialNo;
@@ -106,15 +107,17 @@ public class IntakeApplication extends MetaObject {
         this.rank = rank;
     }
 
-    public Integer getMerit() {
-        return merit;
-    }
 
-    public void setMerit(Integer merit) {
-        this.merit = merit;
-    }
 
-    public String getResearchTitle() {
+    public BigDecimal getMerit() {
+		return merit;
+	}
+
+	public void setMerit(BigDecimal merit) {
+		this.merit = merit;
+	}
+
+	public String getResearchTitle() {
         return researchTitle;
     }
 

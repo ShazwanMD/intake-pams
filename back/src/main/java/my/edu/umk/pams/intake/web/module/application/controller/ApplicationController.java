@@ -216,6 +216,7 @@ public class ApplicationController {
         application.setFax(vo.getFax());
         application.setEmail(vo.getEmail());
         application.setAge(vo.getAge());
+        application.setMerit(vo.getMerit());
         application.setPassportExpDate(vo.getPassExpDate());
         application.setCredentialNo(vo.getCredentialNo());
         application.setBirthDate(vo.getBirthDate());
