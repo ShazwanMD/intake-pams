@@ -11,12 +11,15 @@ import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 import org.hibernate.SessionFactory;
+import org.joda.time.LocalDate;
+import org.joda.time.Period;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +50,28 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     private SessionFactory sessionFactory;
+    public static final BigDecimal MERIT_FACTOR = new BigDecimal(0.05);
+
+    @Override
+    public void calculateApplicantMerit(InIntake intake) {
+        List<InIntakeApplication> applications = findIntakeApplications(intake);
+        for (InIntakeApplication application : applications) {
+            BigDecimal merit = BigDecimal.ZERO;
+            List<InEmployment> employments = application.getEmployments();
+            for (InEmployment employment : employments) {
+                if (!employment.isCurrent()) { // if current, we don't have end date
+                    LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
+                    LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
+                    Period period = new Period(start, end);
+                    merit.add(BigDecimal.valueOf(period.getYears()));
+                } else {
+                    // todo(ashraf): current employment
+                }
+            }
+            application.setMerit(merit);
+            updateIntakeApplication(application);
+        }
+    }
 
     @Override
     public String applyIntake(InIntake intake, InIntakeApplication application) {
@@ -112,13 +137,13 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.addResult(application, result, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void updateResult(InIntakeApplication application, InResult result) {
         intakeApplicationDao.updateResult(application, result, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-    }    
-    
+    }
+
     @Override
     public void deleteResult(InIntakeApplication application, InResult result) {
         intakeApplicationDao.deleteResult(application, result, securityService.getCurrentUser());
@@ -161,38 +186,38 @@ public class ApplicationServiceImpl implements ApplicationService {
         intakeApplicationDao.deleteLanguage(application, language, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void updateLanguage(InIntakeApplication application, InLanguage language) {
         intakeApplicationDao.updateLanguage(application, language, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void deleteEmployment(InIntakeApplication application, InEmployment employment) {
         intakeApplicationDao.deleteEmployment(application, employment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void updateEmployment(InIntakeApplication application, InEmployment employment) {
         intakeApplicationDao.updateEmployment(application, employment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
-    
+
+
     @Override
     public void deleteReferee(InIntakeApplication application, InReferee referee) {
         intakeApplicationDao.deleteReferee(application, referee, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void updateReferee(InIntakeApplication application, InReferee referee) {
         intakeApplicationDao.updateReferee(application, referee, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void addContact(InIntakeApplication application, InContact contact) {
         intakeApplicationDao.addContact(application, contact, securityService.getCurrentUser());
@@ -271,15 +296,15 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public  InEmployment findEmploymentById(Long id) {
+    public InEmployment findEmploymentById(Long id) {
         return intakeApplicationDao.findEmploymentById(id);
     }
-    
+
     @Override
     public InReferee findRefereeById(Long id) {
         return intakeApplicationDao.findRefereeById(id);
     }
-    
+
     @Override
     public InLanguage findLanguageById(Long id) {
         return intakeApplicationDao.findLanguageById(id);

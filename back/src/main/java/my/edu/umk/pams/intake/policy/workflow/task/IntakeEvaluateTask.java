@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.workflow.task;
 
 import my.edu.umk.pams.intake.IntakeConstants;
+import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -28,6 +29,9 @@ public class IntakeEvaluateTask extends BpmnActivityBehavior
     @Autowired
     private PolicyService policyService;
 
+    @Autowired
+    private ApplicationService applicationService;
+
     /**
      * @param execution
      * @throws Exception
@@ -44,5 +48,8 @@ public class IntakeEvaluateTask extends BpmnActivityBehavior
         intake.getFlowdata().setEvaluatedDate(new Timestamp(currentTimeMillis()));
         intake.getFlowdata().setEvaluatorId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);
+
+        // calcualate merit
+        applicationService.calculateApplicantMerit(intake);
     }
 }

@@ -322,30 +322,6 @@ public class PolicyServiceImpl implements PolicyService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    @Override
-    public String generalCriteria() {
-
-        String generalCriteria =
-                "MUET.Band == 2 " +
-                        "&& SPM.History >= #{C} " +
-                        "&& (SPM.BahasaMalaysia & SPM.English >= #{C})";
-
-        return generalCriteria;
-
-    }
-
-    @Override
-    public String specificCriteria() {
-        String specificCriteria =
-
-                "(#{(2.75 < Degree.CPA <= 4.0 " +
-                        "&& #{DegreeEquivalent.CPA} >= 2.75)) " +
-                        "&& #{SPM.Mathematics} >= #{C} " +
-                        "&& MUET.Band > 2.0 " +
-                        "|| #{Diploma.Mathematics} >= #{C} ";
-
-        return specificCriteria;
-    }
     //    public InGroup getAdminGroup() {
 //        return groupDao.findByName();
 //    }
