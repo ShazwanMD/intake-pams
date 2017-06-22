@@ -4,6 +4,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -34,7 +36,7 @@ public class WhenViewApplicationWithInternationalAcademicQualification extends S
 	public WhenViewApplicationWithInternationalAcademicQualification I_view_application_with_international_academic_qualification() {
 
 		UnverifiedApplications = applicationService
-				.findIntakeApplicationsByVerificationStatus(intake, false);
+				.findIntakeApplicationsByVerificationStatus(intake, InBidStatus.SELECTED, false);
 		Assert.notEmpty(UnverifiedApplications, "paidApplications cannot be empty");
 
 		for (InIntakeApplication application : UnverifiedApplications) {
