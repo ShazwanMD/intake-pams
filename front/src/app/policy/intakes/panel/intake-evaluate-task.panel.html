@@ -56,11 +56,29 @@
 
       <md-card>
         <md-card-title>Applications</md-card-title>
-        <md-card-subtitle>Applications</md-card-subtitle>
         <md-divider></md-divider>
-        <pams-intake-application-evaluate-list
-          [intake]="intakeTask.intake"
-          [intakeApplications]="intakeApplications$ | async"></pams-intake-application-evaluate-list>
+        <md-tab-group>
+          <md-tab label="Submitted ({{(intakeSubmittedApplications$ | async)?.length}})">  
+        	<pams-intake-application-submitted-list
+          	[intake]="intakeTask.intake"
+        	[intakeSubmittedApplications]="intakeSubmittedApplications$ | async"></pams-intake-application-submitted-list>
+          </md-tab>
+          <md-tab label="Selected ({{(intakeSelectedApplications$ | async)?.length}})">
+            <pams-intake-application-selected-list
+          	[intake]="intakeTask.intake"
+        	[intakeSelectedApplications]="intakeSelectedApplications$ | async"></pams-intake-application-selected-list>
+          </md-tab>
+          <md-tab label="Rejected ({{(intakeRejectedApplications$ | async)?.length}})">
+            <pams-intake-application-rejected-list
+          	[intake]="intakeTask.intake"
+        	[intakeRejectedApplications]="intakeRejectedApplications$ | async"></pams-intake-application-rejected-list>
+          </md-tab>
+          <md-tab label="Pending Verified ({{(intakeVerifiedApplications$ | async)?.length}})">
+            <pams-intake-application-verified-list
+          	[intake]="intakeTask.intake"
+        	[intakeVerifiedApplications]="intakeVerifiedApplications$ | async"></pams-intake-application-verified-list>
+          </md-tab>
+        </md-tab-group>
       </md-card>
 
       <md-card>
@@ -95,11 +113,13 @@
         <md-card-subtitle>Actions available on current intake</md-card-subtitle>
         <md-divider></md-divider>
         <md-nav-list dense>
-          <!-- <md-list-item (click)="verify()">
+        <div *ngIf="(intakeSubmittedApplications$ | async)?.length <= 0 && (intakeVerifiedApplications$ | async)?.length <= 0">
+          <md-list-item (click)="process()">
             <md-icon md-list-avatar>done</md-icon>
-            <h4 md-line>Evaluate</h4>
-            <p md-line>Evaluate this intake</p>
-          </md-list-item> -->
+            <h4 md-line>Process</h4>
+            <p md-line>Process this intake</p>
+          </md-list-item>
+		</div>
           <md-list-item (click)="copy()">
             <md-icon md-list-avatar>content_copy</md-icon>
             <h4 md-line>Copy</h4>

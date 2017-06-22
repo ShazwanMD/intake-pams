@@ -368,8 +368,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification) {
-        return intakeApplicationDao.findIntakeApplicationsByPaidStatus(intake, verification);
+    public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, InBidStatus status, Boolean verification) {
+        return intakeApplicationDao.findIntakeApplicationsByVerificationStatus(intake,status, verification);
     }
 
     @Override

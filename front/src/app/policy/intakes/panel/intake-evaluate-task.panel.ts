@@ -23,12 +23,19 @@ export class IntakeEvaluateTaskPanel implements OnInit {
   private SUPERVISOR_OFFERINGS: string[] = "policyModuleState.supervisorOfferings".split(".");
   private STUDY_MODE_OFFERINGS: string[] = "policyModuleState.studyModeOfferings".split(".");
   private INTAKE_APPLICATIONS: string[] = "policyModuleState.intakeApplications".split(".");
+  private INTAKE_SUBMITTED_APPLICATIONS: string[] = "policyModuleState.intakeSubmittedApplications".split(".");
+  private INTAKE_SELECTED_APPLICATIONS: string[] = "policyModuleState.intakeSelectedApplications".split(".");
+  private INTAKE_REJECTED_APPLICATIONS: string[] = "policyModuleState.intakeRejectedApplications".split(".");
+  private INTAKE_VERIFIED_APPLICATIONS: string[] = "policyModuleState.intakeVerifiedApplications".split(".");
 
   @Input() intakeTask: IntakeTask;
   programOfferings$: Observable<ProgramOffering[]>;
   supervisorOfferings$: Observable<SupervisorOffering[]>;
   studyModeOfferings$: Observable<StudyModeOffering[]>;
-  intakeApplications$: Observable<IntakeApplication[]>;
+  intakeSubmittedApplications$: Observable<IntakeApplication[]>;
+  intakeSelectedApplications$: Observable<IntakeApplication[]>;
+  intakeRejectedApplications$: Observable<IntakeApplication[]>;
+  intakeVerifiedApplications$: Observable<IntakeApplication[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -40,7 +47,10 @@ export class IntakeEvaluateTaskPanel implements OnInit {
     this.programOfferings$ = this.store.select(...this.PROGRAM_OFFERINGS);
     this.supervisorOfferings$ = this.store.select(...this.SUPERVISOR_OFFERINGS);
     this.studyModeOfferings$ = this.store.select(...this.STUDY_MODE_OFFERINGS);
-    this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
+    this.intakeSubmittedApplications$ = this.store.select(...this.INTAKE_SUBMITTED_APPLICATIONS);
+    this.intakeSelectedApplications$ = this.store.select(...this.INTAKE_SELECTED_APPLICATIONS);
+    this.intakeRejectedApplications$ = this.store.select(...this.INTAKE_REJECTED_APPLICATIONS);
+    this.intakeVerifiedApplications$ = this.store.select(...this.INTAKE_VERIFIED_APPLICATIONS);
   }
 
   ngOnInit(): void {
@@ -55,6 +65,14 @@ export class IntakeEvaluateTaskPanel implements OnInit {
       this.goBack();
     });
   }
+  
+  process() {
+      let snackBarRef = this.snackBar.open("Process this intake?", "Yes");
+      snackBarRef.afterDismissed().subscribe(() => {
+        //this.store.dispatch(this.actions.startCandidateTask(this.intakeTask));
+        this.goBack();
+      });
+    }
 
   goBack(): void {
     this.router.navigate(['/policy/intakes']);

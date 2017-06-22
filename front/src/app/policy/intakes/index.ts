@@ -42,6 +42,10 @@ import { IntakeApplicationEvaluateListComponent } from "./component/intake-appli
 import { CpsIntakeApplicationSubModule } from "../../application/intake-applications/cps/index";
 import {PipeModule} from "../../app.pipe.module";
 import { ApplicantProfileRejectDialog } from "./dialog/applicant-profile-reject.dialog";
+import { IntakeApplicationSubmittedListComponent } from "./component/intake-application-submitted-list.component";
+import { IntakeApplicationSelectedListComponent } from "./component/intake-application-selected-list.component";
+import { IntakeApplicationRejectedListComponent } from "./component/intake-application-rejected-list.component";
+import { IntakeApplicationVerifiedListComponent } from "./component/intake-application-verified-list.component";
 
 
 @NgModule({
@@ -71,6 +75,10 @@ import { ApplicantProfileRejectDialog } from "./dialog/applicant-profile-reject.
     ProgramOfferingSelectComponent,
     IntakeApplicationListComponent,
     IntakeApplicationEvaluateListComponent,
+    IntakeApplicationSubmittedListComponent,
+    IntakeApplicationSelectedListComponent,
+    IntakeApplicationRejectedListComponent,
+    IntakeApplicationVerifiedListComponent,
 
     // panels
     IntakeTaskWorkflowPanel,

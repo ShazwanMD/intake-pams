@@ -140,16 +140,23 @@ export class ApplicationService {
         .map((res: Response) => <IntakeApplication[]>res.json());
     }
   
-    findRejectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+   findRejectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
       console.log("findIntakeApplications");
       return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/REJECTED")
         .map((res: Response) => <IntakeApplication[]>res.json());
     }
-    findSelectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+   
+   findSelectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
       console.log("findIntakeApplications");
       return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/SELECTED")
         .map((res: Response) => <IntakeApplication[]>res.json());
     }
+   
+   findVerifiedInternationalIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
+       console.log("findVerifiedInternationalIntakeApplications");
+       return this.http.get(environment.endpoint + '/api/application/intakes/' + intake.referenceNo + "/intakeApplications/bidStatus/SELECTED/verify/false")
+         .map((res: Response) => <IntakeApplication[]>res.json());
+     }
 
   // ====================================================================================================
   // EDUCATION
@@ -388,5 +395,16 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-
+  //====================================================================================================
+  // PROCESS CANDIDATE
+  // ====================================================================================================   
+  processIntakeCandidate(application: IntakeApplication): Observable<String> {
+      let headers = new Headers({
+        'Content-Type': 'application/json',
+        //'Authorization': 'Bearer ' + this.authService.token
+      });
+      let options = new RequestOptions({headers: headers});
+      return this.http.post(environment.endpoint + '/api/application/intakeApplications/' + application.referenceNo + '/processCandidate', JSON.stringify(application), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
 }

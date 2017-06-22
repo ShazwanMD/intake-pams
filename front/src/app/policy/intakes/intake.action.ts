@@ -81,6 +81,24 @@ export class IntakeActions {
       payload: task
     };
   }
+  
+  static PROCESS_INTAKE_CANDIDATE = '[Intake] Process Intake Candidate';
+
+  processIntakeCandidate(intake): Action {
+    return {
+      type: IntakeActions.PROCESS_INTAKE_CANDIDATE,
+      payload: intake
+    };
+  }
+
+  static PROCESS_INTAKE_CANDIDATE_SUCCESS = '[Intake] Process Intake Candidate Success';
+
+  processIntakeCandidateSuccess(task): Action {
+    return {
+      type: IntakeActions.PROCESS_INTAKE_CANDIDATE_SUCCESS,
+      payload: task
+    };
+  }
 
   static COMPLETE_INTAKE_TASK = '[Intake] Complete Intake Task';
 
@@ -288,7 +306,7 @@ export class IntakeActions {
     };
   }
   
-  static FIND_SUBMITTED_INTAKE_APPLICATIONS = '[Intake] Find SUBMITTED INTAKE APPLICATION ';
+  static FIND_SUBMITTED_INTAKE_APPLICATIONS = '[Intake] Find SUBMITTED INTAKE APPLICATIONS ';
 
   findSubmittedIntakeApplications(intake): Action {
       console.log("findSubmittedIntakeApplications :"+intake);
@@ -298,12 +316,72 @@ export class IntakeActions {
     };
   }
 
-  static FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find SUBMITTED Intake Application Success';
+  static FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find SUBMITTED Intake Applications Success';
 
   findSubmittedIntakeApplicationsSuccess(applications): Action {
     console.log("findSubmittedIntakeApplicationsSuccess");
     return {
       type: IntakeActions.FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applications
+    };
+  }
+  
+  static FIND_SELECTED_INTAKE_APPLICATIONS = '[Intake] Find SELECTED INTAKE APPLICATION ';
+
+  findSelectedIntakeApplications(intake): Action {
+      console.log("findSelectedIntakeApplications :"+intake);
+    return {
+      type: IntakeActions.FIND_SELECTED_INTAKE_APPLICATIONS,
+      payload: intake
+    };
+  }
+
+  static FIND_SELECTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find SELECTED Intake Application Success';
+
+  findSelectedIntakeApplicationsSuccess(applications): Action {
+    console.log("FIND_SELECTED_INTAKE_APPLICATIONS_SUCCESS");
+    return {
+      type: IntakeActions.FIND_SELECTED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applications
+    };
+  }
+  
+  static FIND_REJECTED_INTAKE_APPLICATIONS = '[Intake] Find REJECTED INTAKE APPLICATION ';
+
+  findRejectedIntakeApplications(intake): Action {
+      console.log("findRejectedIntakeApplications :"+intake);
+    return {
+      type: IntakeActions.FIND_REJECTED_INTAKE_APPLICATIONS,
+      payload: intake
+    };
+  }
+
+  static FIND_REJECTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find REJECTED Intake Application Success';
+
+  findRejectedIntakeApplicationsSuccess(applications): Action {
+    console.log("findRejectedIntakeApplicationsSuccess");
+    return {
+      type: IntakeActions.FIND_REJECTED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applications
+    };
+  }
+  
+  static FIND_VERIFIED_INTAKE_APPLICATIONS = '[Intake] Find VERIFIED INTAKE APPLICATION ';
+
+  findVerifiedIntakeApplications(intake): Action {
+      console.log("findVerifieddIntakeApplications :"+intake);
+    return {
+      type: IntakeActions.FIND_VERIFIED_INTAKE_APPLICATIONS,
+      payload: intake
+    };
+  }
+
+  static FIND_VERIFIED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find VERIFIED Intake Application Success';
+
+  findVerifiedIntakeApplicationsSuccess(applications): Action {
+    console.log("findVerifieddIntakeApplications");
+    return {
+      type: IntakeActions.FIND_VERIFIED_INTAKE_APPLICATIONS_SUCCESS,
       payload: applications
     };
   }

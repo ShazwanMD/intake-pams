@@ -66,7 +66,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     List<InIntakeApplication> findIntakeApplicationsByPaidStatus(InIntake intake, Boolean paid);
 
-    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, Boolean verification);
+    List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake , InBidStatus bidStatus, Boolean verification);
 
     List<InApplicant> findApplicants(InIntake intake);
 
