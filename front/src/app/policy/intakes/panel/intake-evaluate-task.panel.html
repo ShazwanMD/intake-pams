@@ -73,7 +73,7 @@
           	[intake]="intakeTask.intake"
         	[intakeRejectedApplications]="intakeRejectedApplications$ | async"></pams-intake-application-rejected-list>
           </md-tab>
-          <md-tab label="Verify ({{(intakeVerifiedApplications$ | async)?.length}})">
+          <md-tab label="Pending Verified ({{(intakeVerifiedApplications$ | async)?.length}})">
             <pams-intake-application-verified-list
           	[intake]="intakeTask.intake"
         	[intakeVerifiedApplications]="intakeVerifiedApplications$ | async"></pams-intake-application-verified-list>
@@ -113,11 +113,13 @@
         <md-card-subtitle>Actions available on current intake</md-card-subtitle>
         <md-divider></md-divider>
         <md-nav-list dense>
+        <div *ngIf="(intakeSubmittedApplications$ | async)?.length <= 0 && (intakeVerifiedApplications$ | async)?.length <= 0">
           <md-list-item (click)="process()">
             <md-icon md-list-avatar>done</md-icon>
             <h4 md-line>Process</h4>
             <p md-line>Process this intake</p>
           </md-list-item>
+		</div>
           <md-list-item (click)="copy()">
             <md-icon md-list-avatar>content_copy</md-icon>
             <h4 md-line>Copy</h4>
