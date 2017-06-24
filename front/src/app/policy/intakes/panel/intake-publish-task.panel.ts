@@ -1,16 +1,15 @@
 import {Component, OnInit, ViewContainerRef, Input} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
-import {IntakeTask} from "../intake-task.interface";
-import {IntakeActions} from "../intake.action";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {PolicyModuleState} from "../../index";
-import {ProgramOffering} from "../program-offering.interface";
-import {StudyModeOffering} from "../study-mode-offering.interface";
-import {SupervisorOffering} from "../supervisor-offering.interface";
-import {IntakeApplication} from "../../../application/intake-applications/intake-application.interface";
-
+import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {IntakeTask} from '../intake-task.interface';
+import {IntakeActions} from '../intake.action';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {PolicyModuleState} from '../../index';
+import {ProgramOffering} from '../program-offering.interface';
+import {StudyModeOffering} from '../study-mode-offering.interface';
+import {SupervisorOffering} from '../supervisor-offering.interface';
+import {IntakeApplication} from '../../../application/intake-applications/intake-application.interface';
 
 @Component({
   selector: 'pams-intake-publish-task',
@@ -19,10 +18,10 @@ import {IntakeApplication} from "../../../application/intake-applications/intake
 
 export class IntakePublishTaskPanel implements OnInit {
 
-  private PROGRAM_OFFERINGS: string[] = "policyModuleState.programOfferings".split(".");
-  private SUPERVISOR_OFFERINGS: string[] = "policyModuleState.supervisorOfferings".split(".");
-  private STUDY_MODE_OFFERINGS: string[] = "policyModuleState.studyModeOfferings".split(".");
-  private INTAKE_APPLICATIONS: string[] = "policyModuleState.intakeApplications".split(".");
+  private PROGRAM_OFFERINGS: string[] = 'policyModuleState.programOfferings'.split('.');
+  private SUPERVISOR_OFFERINGS: string[] = 'policyModuleState.supervisorOfferings'.split('.');
+  private STUDY_MODE_OFFERINGS: string[] = 'policyModuleState.studyModeOfferings'.split('.');
+  private INTAKE_APPLICATIONS: string[] = 'policyModuleState.intakeApplications'.split('.');
 
   @Input() intakeTask: IntakeTask;
   programOfferings$: Observable<ProgramOffering[]>;
@@ -48,16 +47,15 @@ export class IntakePublishTaskPanel implements OnInit {
   }
 
   evaluate() {
-    let snackBarRef = this.snackBar.open("Evaluate this intake?", "Yes");
+    let snackBarRef = this.snackBar.open('Evaluate this intake?', 'Yes');
     snackBarRef.afterDismissed().subscribe(() => {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
       this.goBack();
     });
   }
 
-
   copy() {
-    let snackBarRef = this.snackBar.open("Copy this intake?", "Yes");
+    let snackBarRef = this.snackBar.open('Copy this intake?', 'Yes');
     snackBarRef.afterDismissed().subscribe(() => {
       this.store.dispatch(this.actions.copyIntakeTask(this.intakeTask));
       this.goBack();

@@ -1,15 +1,12 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {IntakeTask} from "../../policy/intakes/intake-task.interface";
+import {IntakeTask} from '../../policy/intakes/intake-task.interface';
 
 @Component({
-  selector: 'pams-intake-task-list',
-  templateUrl: './intake-task-list.component.html',
+  selector: 'pams-admission-intake-task-list',
+  templateUrl: './admission-intake-task-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IntakeTaskListComponent {
-
-  @Input() intakeTasks: IntakeTask[];
-  @Output() view = new EventEmitter<IntakeTask>();
+export class AdmissionIntakeTaskListComponent {
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
@@ -17,6 +14,10 @@ export class IntakeTaskListComponent {
     {name: 'startDate', label: 'Start Date'},
     {name: 'endDate', label: 'End Date'},
     {name: 'flowState', label: 'Status'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
+
+  @Input() intakeTasks: IntakeTask[];
+  @Output() view = new EventEmitter<IntakeTask>();
+
 }

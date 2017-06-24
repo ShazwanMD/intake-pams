@@ -103,7 +103,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Override
     public void processIntakeSelection(InIntake intake) {
-        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, InBidStatus.SELECTED);
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake); // todo: , InBidStatus.SELECTED);
         for (InIntakeApplication application : applications) {
             postToCandidate(application);
         }

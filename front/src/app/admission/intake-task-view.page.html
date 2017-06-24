@@ -73,10 +73,55 @@
           <md-divider></md-divider>
           <md-tab-group>
             <md-tab label="All">
+              <td-data-table
+                [data]="candidates$ | async"
+                [columns]="columns"
+                [sortBy]="summary"
+                [sortOrder]="ASC"
+                [sortable]="false"
+                [multiple]="false"
+                [selectable]="false"
+                (rowSelect)="view.emit($event)" dense>
+                <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                  <div layout="row">
+                    <span flex>{{value}}</span>
+                  </div>
+                </template>
+              </td-data-table>
             </md-tab>
             <md-tab label="Selected">
+              <td-data-table
+                [data]="selectedCandidates$ | async"
+                [columns]="columns"
+                [sortBy]="summary"
+                [sortOrder]="ASC"
+                [sortable]="false"
+                [multiple]="false"
+                [selectable]="false"
+                (rowSelect)="view.emit($event)" dense>
+                <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                  <div layout="row">
+                    <span flex>{{value}}</span>
+                  </div>
+                </template>
+              </td-data-table>
             </md-tab>
             <md-tab label="Rejected">
+              <td-data-table
+                [data]="rejectedCandidates$ | async"
+                [columns]="columns"
+                [sortBy]="summary"
+                [sortOrder]="ASC"
+                [sortable]="false"
+                [multiple]="false"
+                [selectable]="false"
+                (rowSelect)="view.emit($event)" dense>
+                <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                  <div layout="row">
+                    <span flex>{{value}}</span>
+                  </div>
+                </template>
+              </td-data-table>
             </md-tab>
           </md-tab-group>
         </md-card>
@@ -87,10 +132,10 @@
           <md-card-subtitle>Actions available on current intake</md-card-subtitle>
           <md-divider></md-divider>
           <md-nav-list dense>
-            <md-list-item (click)="register()">
+            <md-list-item (click)="approve()">
               <md-icon md-list-avatar>done</md-icon>
-              <h4 md-line>Register</h4>
-              <p md-line>Register this intake</p>
+              <h4 md-line>Approve</h4>
+              <p md-line>Approve this intake</p>
             </md-list-item>
             <md-list-item (click)="broadcast()">
               <md-icon md-list-avatar>announcement</md-icon>

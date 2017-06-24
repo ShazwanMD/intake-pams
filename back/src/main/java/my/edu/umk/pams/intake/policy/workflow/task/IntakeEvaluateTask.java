@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.workflow.task;
 
 import my.edu.umk.pams.intake.IntakeConstants;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.sql.Timestamp;
 
 import static java.lang.System.currentTimeMillis;
+import static java.lang.System.in;
 import static my.edu.umk.pams.intake.core.InFlowState.EVALUATED;
 
 @Component("intake_evaluate_ST")
@@ -31,6 +33,9 @@ public class IntakeEvaluateTask extends BpmnActivityBehavior
 
     @Autowired
     private ApplicationService applicationService;
+
+    @Autowired
+    private AdmissionService admissionService;
 
     /**
      * @param execution
@@ -49,7 +54,8 @@ public class IntakeEvaluateTask extends BpmnActivityBehavior
         intake.getFlowdata().setEvaluatorId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);
 
-        // calcualate merit
+        // calculate merit
         applicationService.calculateApplicantMerit(intake);
+        admissionService.processIntakeSelection(intake);
     }
 }

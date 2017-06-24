@@ -1,16 +1,15 @@
 import {Component, OnInit, ViewContainerRef, Input} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
-import {IntakeTask} from "../intake-task.interface";
-import {IntakeActions} from "../intake.action";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {PolicyModuleState} from "../../index";
-import {ProgramOffering} from "../program-offering.interface";
-import {StudyModeOffering} from "../study-mode-offering.interface";
-import {SupervisorOffering} from "../supervisor-offering.interface";
-import {IntakeUpdaterDialog} from "../dialog/intake-updater.dialog";
-
+import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {IntakeTask} from '../intake-task.interface';
+import {IntakeActions} from '../intake.action';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {PolicyModuleState} from '../../index';
+import {ProgramOffering} from '../program-offering.interface';
+import {StudyModeOffering} from '../study-mode-offering.interface';
+import {SupervisorOffering} from '../supervisor-offering.interface';
+import {IntakeUpdaterDialog} from '../dialog/intake-updater.dialog';
 
 @Component({
   selector: 'pams-intake-verify-task',
@@ -20,9 +19,9 @@ import {IntakeUpdaterDialog} from "../dialog/intake-updater.dialog";
 export class IntakeVerifyTaskPanel implements OnInit {
   editorDialogRef: MdDialogRef<IntakeUpdaterDialog>;
 
-  private PROGRAM_OFFERINGS = "policyModuleState.programOfferings".split(".");
-  private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
-  private STUDY_MODE_OFFERINGS = "policyModuleState.studyModeOfferings".split(".");
+  private PROGRAM_OFFERINGS = 'policyModuleState.programOfferings'.split('.');
+  private SUPERVISOR_OFFERINGS = 'policyModuleState.supervisorOfferings'.split('.');
+  private STUDY_MODE_OFFERINGS = 'policyModuleState.studyModeOfferings'.split('.');
 
   @Input() intakeTask: IntakeTask;
   programOfferings$: Observable<ProgramOffering[]>;
@@ -46,7 +45,7 @@ export class IntakeVerifyTaskPanel implements OnInit {
   }
 
   publish() {
-    let snackBarRef = this.snackBar.open("Publish this intake?", "Yes");
+    let snackBarRef = this.snackBar.open('Publish this intake?', 'Yes');
     snackBarRef.afterDismissed().subscribe(() => {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
       this.goBack();
@@ -54,7 +53,7 @@ export class IntakeVerifyTaskPanel implements OnInit {
   }
 
   edit(): void {
-    console.log("edit");
+    console.log('edit');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.viewContainerRef;
     config.role = 'dialog';
@@ -63,8 +62,8 @@ export class IntakeVerifyTaskPanel implements OnInit {
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(IntakeUpdaterDialog, config);
     this.editorDialogRef.componentInstance.intake = this.intakeTask.intake;
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 

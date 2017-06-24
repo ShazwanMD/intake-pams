@@ -41,7 +41,7 @@ export class AdmissionActions {
     };
   }
 
-  static FIND_INTAKE_TASK_BY_TASK_ID = '[Intake] Find Intake Task By Task Id';
+  static FIND_INTAKE_TASK_BY_TASK_ID = '[Admission] Find Intake Task By Task Id';
 
   findIntakeTaskByTaskId(taskId): Action {
     console.log('findIntakeTaskByTaskId');
@@ -51,7 +51,7 @@ export class AdmissionActions {
     };
   }
 
-  static FIND_INTAKE_TASK_BY_TASK_ID_SUCCESS = '[Intake] Find Intake Task By Task Id Success';
+  static FIND_INTAKE_TASK_BY_TASK_ID_SUCCESS = '[Admission] Find Intake Task By Task Id Success';
 
   findIntakeTaskByTaskIdSuccess(task): Action {
     console.log('findIntakeTaskByTaskIdSuccess');

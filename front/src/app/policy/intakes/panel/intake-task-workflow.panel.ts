@@ -1,15 +1,14 @@
 import {
   Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, Input
+  ComponentFactoryResolver, ComponentRef, Input,
 } from '@angular/core';
-import {Observable} from "rxjs";
-import {IntakeTask} from "../intake-task.interface";
-import {FlowState} from "../../../core/flow-state.enum";
-import {IntakeDraftTaskPanel} from "./intake-draft-task.panel";
-import {IntakeVerifyTaskPanel} from "./intake-verify-task.panel";
-import {IntakePublishTaskPanel} from "./intake-publish-task.panel";
-import { IntakeEvaluateTaskPanel } from "./intake-evaluate-task.panel";
-
+import {Observable} from 'rxjs';
+import {IntakeTask} from '../intake-task.interface';
+import {FlowState} from '../../../core/flow-state.enum';
+import {IntakeDraftTaskPanel} from './intake-draft-task.panel';
+import {IntakeVerifyTaskPanel} from './intake-verify-task.panel';
+import {IntakePublishTaskPanel} from './intake-publish-task.panel';
+import { IntakeEvaluateTaskPanel } from './intake-evaluate-task.panel';
 
 @Component({
   selector: 'pams-intake-task-workflow',
@@ -28,10 +27,10 @@ export class IntakeTaskWorkflowPanel implements OnInit {
 
   ngOnInit(): void {
     let componentFactory;
-    this.intakeTaskObservable.subscribe(task => {
+    this.intakeTaskObservable.subscribe((task) => {
       if (task.flowState) {
 
-        console.log("task flowState: " + task.flowState);
+        console.log('task flowState: ' + task.flowState);
         if (this.componentRef) this.componentRef.destroy();
         switch (FlowState[task.flowState.toString()]) {
           case FlowState.DRAFTED:
