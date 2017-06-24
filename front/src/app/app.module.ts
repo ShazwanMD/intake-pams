@@ -40,6 +40,7 @@ import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
 import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./setup/index";
 import {PipeModule} from "./app.pipe.module";
+import {environment} from "../environments/environment";
 
 
 // interceptor
@@ -112,7 +113,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     CovalentMarkdownModule.forRoot(),
     NgxChartsModule,
     StoreModule.provideStore(applicationReducer),
-    // StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    environment.imports,
 
     PipeModule,
 
