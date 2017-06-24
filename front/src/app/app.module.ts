@@ -74,11 +74,11 @@ export const INITIAL_APP_STATE: ApplicationState =
 
 // combine reducer
 export const applicationReducers = {
-  commonModuleState: combineReducers({...commonModuleReducers,}),
+  commonModuleState: combineReducers({...commonModuleReducers}),
   policyModuleState: combineReducers({...policyModuleReducers}),
   applicationModuleState: combineReducers({...applicationModuleReducers}),
-  admissionModuleState: combineReducers({...admissionModuleReducers,}),
-  registrationModuleState: combineReducers({...registrationModuleReducers,}),
+  admissionModuleState: combineReducers({...admissionModuleReducers}),
+  registrationModuleState: combineReducers({...registrationModuleReducers}),
   centerModuleState: combineReducers({...centerModuleReducers}),
   setupModuleState: combineReducers({...setupModuleReducers}),
 };

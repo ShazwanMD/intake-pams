@@ -10,6 +10,7 @@ import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
+
 import org.hibernate.SessionFactory;
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,14 +61,19 @@ public class ApplicationServiceImpl implements ApplicationService {
             BigDecimal merit = BigDecimal.ZERO;
             List<InEmployment> employments = application.getEmployments();
             for (InEmployment employment : employments) {
+                LOG.debug("employment: {}", employment.getEmployer());
                 if (!employment.isCurrent()) { // if current, we don't have end date
                     LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
                     LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
                     Period period = new Period(start, end);
-                    merit.add(BigDecimal.valueOf(period.getYears()));
+                    merit = merit.add(BigDecimal.valueOf(period.getYears()));
                 } else {
-                    // todo(ashraf): current employment
+                    LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
+                    LocalDate end = LocalDate.fromDateFields(new Date());
+                    Period period = new Period(start, end);
+                    merit = merit.add(BigDecimal.valueOf(period.getYears()));
                 }
+                LOG.debug("merit: {}", merit);
             }
             application.setMerit(merit);
             updateIntakeApplication(application);
@@ -369,7 +376,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public List<InIntakeApplication> findIntakeApplicationsByVerificationStatus(InIntake intake, InBidStatus status, Boolean verification) {
-        return intakeApplicationDao.findIntakeApplicationsByVerificationStatus(intake,status, verification);
+        return intakeApplicationDao.findIntakeApplicationsByVerificationStatus(intake, status, verification);
     }
 
     @Override
