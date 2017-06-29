@@ -78,7 +78,6 @@ export class CpsIntakeApplicationPage implements OnInit {
       phone: ['', Validators.required],
       fax: '',
       age: 0,
-      year: 0,
       passExpDate: null,
       mailingAddress1: '',
       mailingAddress2: '',

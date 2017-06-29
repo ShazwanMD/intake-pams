@@ -58,12 +58,6 @@
                 <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
                   IC or Passport Number is required
                 </div>
-                <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="yearrr" formControlName="year" (change)="saverange()">
-                </md-input-container>
-                <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
-                  IC or Passport Number is required
-                </div>
 
                 <md-input-container fxFlex="calc(100%-25px)">
                   <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate">
@@ -192,17 +186,6 @@
             <td-expansion-panel label="Working Experience">
               <pams-employment-list [intakeApplication]="intakeApplication$ | async" [employments]="employments$ | async"></pams-employment-list>
             </td-expansion-panel>
-
-
-          </md-card>
-          <md-card>
-
-            <md-input-container fxFlex="calc(100%-25px)">
-              <input mdInput placeholder="Total Years of Working Experience" formControlName="year" (change)="saverange()">
-            </md-input-container>
-            <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
-              IC or Passport Number is required
-            </div>
           </md-card>
         </md-tab>
 
