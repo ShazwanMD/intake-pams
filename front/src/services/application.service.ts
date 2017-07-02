@@ -109,6 +109,17 @@ export class ApplicationService {
         .flatMap((res: Response) => Observable.of(res.text()));
   }
   
+  verifyIntakeApplication(application: IntakeApplication): Observable<String> {
+      let headers = new Headers({
+        'Content-Type': 'application/json',
+        //'Authorization': 'Bearer ' + this.authService.token
+      });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.put(environment.endpoint + '/api/application/intakeApplications/'
+        + application.referenceNo + '/verify', JSON.stringify(application), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+  }
+  
   rejectIntakeApplication(application: IntakeApplication): Observable<String> {
       console.log("application {}",application)
       let headers = new Headers({

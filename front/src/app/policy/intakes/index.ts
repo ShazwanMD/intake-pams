@@ -46,6 +46,7 @@ import { IntakeApplicationSubmittedListComponent } from "./component/intake-appl
 import { IntakeApplicationSelectedListComponent } from "./component/intake-application-selected-list.component";
 import { IntakeApplicationRejectedListComponent } from "./component/intake-application-rejected-list.component";
 import { IntakeApplicationVerifiedListComponent } from "./component/intake-application-verified-list.component";
+import { ApplicantProfileVerifyDialog } from "./dialog/applicant-profile-verify.dialog";
 
 
 @NgModule({
@@ -97,6 +98,7 @@ import { IntakeApplicationVerifiedListComponent } from "./component/intake-appli
     IntakeUpdaterDialog,
     ApplicantProfileDialog,
     ApplicantProfileRejectDialog,
+    ApplicantProfileVerifyDialog,
   ],
   exports: [
     IntakeTaskListComponent,
@@ -115,6 +117,7 @@ import { IntakeApplicationVerifiedListComponent } from "./component/intake-appli
     SupervisorOfferingEditorDialog,
     ApplicantProfileDialog,
     ApplicantProfileRejectDialog,
+    ApplicantProfileVerifyDialog,
   ],
 
 })

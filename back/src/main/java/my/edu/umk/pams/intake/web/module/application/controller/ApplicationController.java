@@ -306,6 +306,17 @@ public class ApplicationController {
         applicationService.selectIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intakeApplications/{referenceNo}/verify", method = RequestMethod.PUT)
+    public ResponseEntity<String> verifyIntakeApplication(@PathVariable String referenceNo,
+                                                          @RequestBody IntakeApplication vo) {
+        dummyLogin();
+        InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+        InIntake intake = application.getIntake();
+        application.setVerified(true);
+        applicationService.selectIntakeApplication(intake, application);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/reject", method = RequestMethod.PUT)
     public ResponseEntity<String> rejectIntakeApplication(@PathVariable String referenceNo,
