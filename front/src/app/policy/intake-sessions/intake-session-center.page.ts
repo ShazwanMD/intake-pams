@@ -14,18 +14,34 @@ import { IPageChangeEvent } from "@covalent/core";
   templateUrl: './intake-session-center.page.html',
 })
 
+
+//@Input() intakeSessions: IntakeSession[];
+//@Output() view = new EventEmitter<IntakeSession>();
+  // @Input() placeholder: string;
+  // @Input() innerFormControl: FormControl;
+
 export class IntakeSessionCenterPage implements OnInit {
-  page: number;
-  maxPage: number;
-  pageSize: number;
-  total: number;
-  fromRow: number;
-  toRow: number;
-  data: any[];
+  // page: number;
+  // maxPage: number;
+  // pageSize: number;
+  // total: number;
+  // fromRow: number;
+  // toRow: number;
+  // data: any[];
+  // filteredData: any[];
+  // filteredTotal: number;
+  // searchTerm: string = '';
 
   private INTAKE_SESSIONS = "policyModuleState.intakeSessions".split(".");
   private intakeSessions$: Observable<IntakeSession[]>;
   private creatorDialogRef: MdDialogRef<IntakeSessionCreatorDialog>;
+
+  
+  
+ // currentPage: number = 1;
+  
+  //sortBy: string = 'id';
+ // sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -35,6 +51,18 @@ export class IntakeSessionCenterPage implements OnInit {
               private dialog: MdDialog) {
     this.intakeSessions$ = this.store.select(...this.INTAKE_SESSIONS);
   }
+
+  // sort(sortEvent: ITdDataTableSortChangeEvent): void {
+  //   this.sortBy = sortEvent.name;
+  //   this.sortOrder = sortEvent.order;
+  //   this.filter();
+  // }
+
+  // search(searchTerm: string): void {
+  //   this.searchTerm = searchTerm;
+  //   this.filter();
+  // }
+
 
   goBack(route: string): void {
     this.router.navigate(['/intake-sessions']);
@@ -57,27 +85,32 @@ export class IntakeSessionCenterPage implements OnInit {
 
 
   filter():void {
-
+  //  let newData: any[] = this.intakeSessions;
+    // newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+    //this.filteredTotal = newData.length;
+    // newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+    // newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+   // this.filteredData = newData;
   }
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findIntakeSessions());
   }
 
-  event: IPageChangeEvent;
-  firstLast: boolean = false;
-  pageSizeAll: boolean = false;
+  // event: IPageChangeEvent;
+  // firstLast: boolean = false;
+  // pageSizeAll: boolean = false;
 
-  change(event: IPageChangeEvent): void {
-    //this.fromRow = event.fromRow;
-    this.page = event.page;
-    this.pageSize = event.pageSize;
-    this.filter();
-    //this.event = event;
-  }
+  // change(event: IPageChangeEvent): void {
+  //   //this.fromRow = event.fromRow;
+  //   this.page = event.page;
+  //   this.pageSize = event.pageSize;
+  //   this.filter();
+  //   //this.event = event;
+  // }
 
-  toggleFirstLast(): void {
-    this.firstLast = !this.firstLast;
-  }
+  // toggleFirstLast(): void {
+  //   this.firstLast = !this.firstLast;
+  // }
 }
 
