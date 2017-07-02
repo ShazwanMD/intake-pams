@@ -44,12 +44,23 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper"  mdTooltip="View intake sessions info">
+        <button md-icon-button [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu="mdMenu">
+          <button md-menu-item (click)="editDialog(row)">Edit</button>
+          <button md-menu-item (click)="delete(row)">Delete</button>
+        </md-menu>
+      </div>
+  </template>
+  <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper"  mdTooltip="View intake sessions info"[routerLink]="['/intakeSessions', row['code']]">
         <!-- [routerLink]="['/term/offerings', row['canonicalCode']]" -->
-        <span>View</span>
+       <!-- <span>View</span>
      </a>
     </div>
-  </template>
+  </template>-->
 </td-data-table>
 <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
     <h3>No results to display.</h3>
