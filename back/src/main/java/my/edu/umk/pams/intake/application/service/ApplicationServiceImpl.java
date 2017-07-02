@@ -62,7 +62,7 @@ public class ApplicationServiceImpl implements ApplicationService {
             List<InEmployment> employments = application.getEmployments();
             for (InEmployment employment : employments) {
                 LOG.debug("employment: {}", employment.getEmployer());
-                if (!employment.isCurrent()) { // if current, we don't have end date
+                if (!employment.isCurrent()==true) { // if current, we don't have end date
                     LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
                     LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
                     Period period = new Period(start, end);
@@ -172,6 +172,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void addEmployment(InIntakeApplication application, InEmployment employment) {
+    	LOG.debug("employment.getCurrent :"+employment.isCurrent());
         intakeApplicationDao.addEmployment(application, employment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }

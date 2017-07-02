@@ -8,6 +8,7 @@ import {ActivatedRoute} from "@angular/router";
 import {IntakeApplication} from "../../../application/intake-applications/intake-application.interface";
 import { MdDialogConfig, MdDialogRef, MdDialog } from "@angular/material";
 import { ApplicantProfileDialog } from "../dialog/applicant-profile.dialog";
+import { ApplicantProfileVerifyDialog } from "../dialog/applicant-profile-verify.dialog";
 
 @Component({
   selector: 'pams-intake-application-verified-list',
@@ -18,7 +19,7 @@ export class IntakeApplicationVerifiedListComponent {
 
   @Input() intake: Intake;
   @Input() intakeVerifiedApplications: IntakeApplication;
-  private editorDialogRef: MdDialogRef<ApplicantProfileDialog>;
+  private editorDialogRef: MdDialogRef<ApplicantProfileVerifyDialog>;
 
   constructor(private store: Store<PolicyModuleState>,
               private route: ActivatedRoute,
@@ -46,7 +47,7 @@ export class IntakeApplicationVerifiedListComponent {
       config.width = '90%';
       config.height = '90%';
       config.position = {top: '0px'};
-      this.editorDialogRef = this.dialog.open(ApplicantProfileDialog, config);
+      this.editorDialogRef = this.dialog.open(ApplicantProfileVerifyDialog, config);
       this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
   }
 }

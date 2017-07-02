@@ -236,6 +236,24 @@ export class IntakeApplicationActions {
     };
   }
   
+  static VERIFY_INTAKE_APPLICATION = '[Intake Application] Verify Intake Application';
+
+  verifyIntakeApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.VERIFY_INTAKE_APPLICATION,
+      payload: application
+    };
+  }
+
+  static VERIFY_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Verify Intake Application Success';
+
+  verifyIntakeApplicationSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.VERIFY_INTAKE_APPLICATION_SUCCESS,
+      payload: message
+    };
+  }
+  
   static REJECT_INTAKE_APPLICATION = '[Intake Application] Reject Intake Application';
 
   rejectIntakeApplication(application): Action {

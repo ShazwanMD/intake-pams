@@ -139,6 +139,12 @@ export class IntakeApplicationEffects {
   .switchMap((application) => this.applicationService.selectIntakeApplication(application))
   .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message));
   
+  @Effect() verifyIntakeApplication$ = this.actions$
+  .ofType(IntakeApplicationActions.VERIFY_INTAKE_APPLICATION)
+  .map((action) => action.payload)
+  .switchMap((application) => this.applicationService.verifyIntakeApplication(application))
+  .map((message) => this.intakeApplicationActions.verifyIntakeApplicationSuccess(message));
+  
   @Effect() rejectIntakeApplication$ = this.actions$
   .ofType(IntakeApplicationActions.REJECT_INTAKE_APPLICATION)
   .map((action) => action.payload)
