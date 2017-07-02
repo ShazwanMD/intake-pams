@@ -19,8 +19,8 @@ export class IntakeSessionListComponent implements AfterViewInit  {
   @Input() intakeSessions: IntakeSession[];
   @Output() view = new EventEmitter<IntakeSession>();
 
-  // private INTAKE_SESSION = "policyModuleState.intakeSession".split(".");
-  // private intakeSession$:Observable<IntakeSession>;
+  private INTAKE_SESSION = "policyModuleState.intakeSession".split(".");
+  private intakeSession$:Observable<IntakeSession>;
   private creatorDialogRef: MdDialogRef<IntakeSessionEditorDialog>;
   
   
@@ -47,8 +47,8 @@ export class IntakeSessionListComponent implements AfterViewInit  {
   searchTerm: string = '';
   fromRow: number = 1;
   currentPage: number = 1;
-  pageSize: number = 5;
-  sortBy: string = 'id';
+  pageSize: number = 15;
+  sortBy: string = 'code';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(
@@ -57,9 +57,12 @@ export class IntakeSessionListComponent implements AfterViewInit  {
   private vcf: ViewContainerRef,
   private dialog: MdDialog,
   private _dataTableService: TdDataTableService,
-  private snackBar: MdSnackBar) {}
+  private snackBar: MdSnackBar) {
+    this.intakeSession$ = this.store.select(...this.INTAKE_SESSION);
+  }
 
   ngAfterViewInit(): void {
+  this.store.dispatch(this.actions.findIntakeSessions());
   this.filteredData = this.intakeSessions;
   this.filteredTotal = this.intakeSessions.length;
   this.filter();
