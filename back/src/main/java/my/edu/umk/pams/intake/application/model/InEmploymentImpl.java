@@ -112,10 +112,12 @@ public class InEmploymentImpl implements InEmployment {
         this.employer = employer;
     }
 
+    @Override
     public Boolean isCurrent() {
         return current;
     }
 
+    @Override
     public void setCurrent(Boolean current) {
         this.current = current;
     }

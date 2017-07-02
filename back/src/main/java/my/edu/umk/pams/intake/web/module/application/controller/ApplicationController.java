@@ -382,7 +382,15 @@ public class ApplicationController {
         // employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
         // employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
         // employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
-        employment.setCurrent(false);
+        System.out.println("vo.getEmploymentType().ordinal() :"+vo.getEmploymentType().ordinal());
+        if (vo.getEmploymentType().ordinal()==0)
+        {
+        	employment.setCurrent(true);
+        }
+        else
+        {
+        	employment.setCurrent(false);	
+        }
         applicationService.addEmployment(application, employment);
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
