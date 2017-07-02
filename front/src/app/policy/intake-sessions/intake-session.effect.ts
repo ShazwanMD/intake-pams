@@ -1,3 +1,7 @@
+import { IntakeSession } from './intake-session.interface';
+import { Observable } from 'rxjs/Observable';
+import { PolicyModuleState } from './../index';
+import { Store } from '@ngrx/store';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {from} from "rxjs/observable/from";
@@ -7,11 +11,18 @@ import {IntakeSessionActions} from "./intake-session.action";
 import {ProgramLevelActions} from "../program-levels/program-level.action";
 
 
+
 @Injectable()
 export class IntakeSessionEffects {
+
+private intakeSessions$: Observable<IntakeSession[]>;
+private INTAKE_SESSIONS = "policyModuleState.intakeSessions".split(".");
+
   constructor(private actions$: Actions,
               private intakeSessionActions: IntakeSessionActions,
-              private policyService: PolicyService) {
+              private policyService: PolicyService,
+              private store: Store<PolicyModuleState>) {
+    this.intakeSessions$ = this.store.select(...this.INTAKE_SESSIONS);
   }
 
   @Effect() findIntakeSessions$ = this.actions$
@@ -25,7 +36,10 @@ export class IntakeSessionEffects {
     .map(action => action.payload)
     .switchMap(payload => this.policyService.saveIntakeSession(payload))
     .map(message => this.intakeSessionActions.saveIntakeSessionSuccess(message))
-    .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]));
+    .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]))
+    .withLatestFrom(this.store.select(...this.INTAKE_SESSIONS))
+    .map((state) => state[1])
+    .map(sessions => this.intakeSessionActions.findIntakeSessions());
 
 
  @Effect() updateIntakeSession$ = this.actions$
@@ -33,7 +47,10 @@ export class IntakeSessionEffects {
     .map(action => action.payload)
     .switchMap(payload => this.policyService.updateIntakeSession(payload))
     .map(message => this.intakeSessionActions.updateIntakeSessionSuccess(message))
-    .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]));
+    .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]))
+     .withLatestFrom(this.store.select(...this.INTAKE_SESSIONS))
+    .map((state) => state[1])
+    .map(sessions => this.intakeSessionActions.findIntakeSessions());
 
     
   @Effect() removeIntakeSession$ = this.actions$
@@ -41,7 +58,11 @@ export class IntakeSessionEffects {
     .map(action => action.payload)
     .switchMap(payload => this.policyService.removeIntakeSession(payload))
     .map(message => this.intakeSessionActions.removeIntakeSessionSuccess(message))
-    .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]));
+    .mergeMap(action => from([action, this.intakeSessionActions.findIntakeSessions()]))
+    .withLatestFrom(this.store.select(...this.INTAKE_SESSIONS))
+    .map((state) => state[1])
+    .map(sessions => this.intakeSessionActions.findIntakeSessions());
+      
 
 }
 
