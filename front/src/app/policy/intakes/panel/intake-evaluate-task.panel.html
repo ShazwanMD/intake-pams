@@ -58,12 +58,12 @@
         <md-card-title>Applications</md-card-title>
         <md-divider></md-divider>
         <md-tab-group>
-          <md-tab label="Submitted ({{(intakeSubmittedApplications$ | async)?.length}})">
+          <md-tab label="Pending Evaluated ({{(intakeSubmittedApplications$ | async)?.length}})">  
         	<pams-intake-application-submitted-list
           	[intake]="intakeTask.intake"
         	[intakeSubmittedApplications]="intakeSubmittedApplications$ | async"></pams-intake-application-submitted-list>
           </md-tab>
-          <md-tab label="Selected ({{(intakeSelectedApplications$ | async)?.length}})">
+          <md-tab label="Evaluated ({{(intakeSelectedApplications$ | async)?.length}})">
             <pams-intake-application-selected-list
           	[intake]="intakeTask.intake"
         	[intakeSelectedApplications]="intakeSelectedApplications$ | async"></pams-intake-application-selected-list>
