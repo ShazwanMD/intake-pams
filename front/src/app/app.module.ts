@@ -40,6 +40,7 @@ import {DashboardModule} from "./dashboard/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
 import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./setup/index";
 import {PipeModule} from "./app.pipe.module";
+import {environment} from "../environments/environment";
 
 
 // interceptor
@@ -73,11 +74,11 @@ export const INITIAL_APP_STATE: ApplicationState =
 
 // combine reducer
 export const applicationReducers = {
-  commonModuleState: combineReducers({...commonModuleReducers,}),
+  commonModuleState: combineReducers({...commonModuleReducers}),
   policyModuleState: combineReducers({...policyModuleReducers}),
   applicationModuleState: combineReducers({...applicationModuleReducers}),
-  admissionModuleState: combineReducers({...admissionModuleReducers,}),
-  registrationModuleState: combineReducers({...registrationModuleReducers,}),
+  admissionModuleState: combineReducers({...admissionModuleReducers}),
+  registrationModuleState: combineReducers({...registrationModuleReducers}),
   centerModuleState: combineReducers({...centerModuleReducers}),
   setupModuleState: combineReducers({...setupModuleReducers}),
 };
@@ -112,7 +113,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     CovalentMarkdownModule.forRoot(),
     NgxChartsModule,
     StoreModule.provideStore(applicationReducer),
-    // StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    environment.imports,
 
     PipeModule,
 

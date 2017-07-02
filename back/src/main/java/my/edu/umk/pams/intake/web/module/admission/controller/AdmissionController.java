@@ -83,28 +83,12 @@ public class AdmissionController {
                 admissionTransformer.toCandidateVos(admissionService.findCandidates(intake)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakes/{referenceNo}/candidates/selected", method = RequestMethod.GET)
-    public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo) {
+    @RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}", method = RequestMethod.GET)
+    public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo, @PathVariable String candidateStatus) {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         return new ResponseEntity<List<Candidate>>(
                 admissionTransformer.toCandidateVos(
-                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.SELECTED)), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakes/{referenceNo}/candidates/rejected", method = RequestMethod.GET)
-    public ResponseEntity<List<Candidate>> findRejectedCandidates(@PathVariable String referenceNo) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        return new ResponseEntity<List<Candidate>>(
-                admissionTransformer.toCandidateVos(
-                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.REJECTED)), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/intakes/{referenceNo}/candidates/accepted", method = RequestMethod.GET)
-    public ResponseEntity<List<Candidate>> findAcceptedCandidates(@PathVariable String referenceNo) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        return new ResponseEntity<List<Candidate>>(
-                admissionTransformer.toCandidateVos(
-                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.ACCEPTED)), HttpStatus.OK);
+                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
     }
 
     // ====================================================================================================

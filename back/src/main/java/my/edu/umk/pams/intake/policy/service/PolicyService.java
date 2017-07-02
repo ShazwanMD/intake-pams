@@ -168,11 +168,4 @@ public interface PolicyService {
     InStudyModeOffering findStudyModeOfferingByIntakeAndStudyMode(InIntake intake, InStudyMode studyMode);
 
     List<InStudyModeOffering> findStudyModeOfferings(InIntake intake);
-
-    // todo(uda): ni utk apa?
-    String generalCriteria();
-
-    // todo(uda): ni utk apa?
-    String specificCriteria();
-
 }

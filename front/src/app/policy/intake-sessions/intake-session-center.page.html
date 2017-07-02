@@ -24,11 +24,12 @@
     <div layout="row" layout-wrap>
     </div>
     <md-card>
-      <td-search-box class="push-left push-right"
+      <!--<td-search-box class="push-left push-right"
                      placeholder="search"
                      [alwaysVisible]="true"
-                     (searchDebounce)="filter($event)">
-      </td-search-box>
+                     (searchDebounce)="search($event)">
+      </td-search-box>-->
+       
 
       <md-divider></md-divider>
       <pams-intake-session-list
@@ -36,11 +37,11 @@
       </pams-intake-session-list>
 
       {{(intakeSessions$ | async).length}}
-      <td-paging-bar #pagingBar pageSizeAllText="All" [pageSizeAll]="true" [pageSizes]="[10,20,30,40,50]"
+      <!--<td-paging-bar #pagingBar pageSizeAllText="All" [pageSizeAll]="true" [pageSizes]="[10,20,30,40,50]"
                 [initialPage]="1" [firstLast]="firstLast" [pageSize]="10" [total]="[(intakeSessions$ | async).length]" (change)="change($event)">
   <span td-paging-bar-label hide-xs>Row per page:</span>
   {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-</td-paging-bar>
+</td-paging-bar>-->
       <md-card-actions>
         <a md-button color="accent" class="text-upper" [routerLink]="['/policy/intake-sessions']">
           <span>View More</span>

@@ -13,6 +13,8 @@ public interface ApplicationService {
     // INTAKE APPLICATION
     //====================================================================================================
 
+    void calculateApplicantMerit(InIntake intake);
+
     String applyIntake(InIntake intake, InIntakeApplication application);
 
     void updateIntakeApplication(InIntakeApplication application);

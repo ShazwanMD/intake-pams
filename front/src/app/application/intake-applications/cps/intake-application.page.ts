@@ -87,6 +87,7 @@ export class CpsIntakeApplicationPage implements OnInit {
       officialAddress2: '',
       officialAddress3: '',
       officialPostcode: '',
+      
 
       genderCode: <GenderCode>{},
       maritalCode: <MaritalCode>{},
@@ -144,5 +145,11 @@ export class CpsIntakeApplicationPage implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
+  }
+
+  saverange(): void {
+   // console.log(this.applicationForm);
+    console.log(this.applicationForm.controls['merit'].value,this.applicationForm.controls['year'].value);
+    this.applicationForm.controls['merit'].setValue(this.applicationForm.controls['year'].value*0.05);
   }
 }

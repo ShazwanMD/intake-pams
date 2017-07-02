@@ -14,7 +14,10 @@ import {IntakeTaskListComponent} from "./component/intake-task-list.component";
 import {Candidate} from "./candidate.interface";
 import {intakeTaskListReducer, IntakeTaskListState} from "./intake-task-list.reducer";
 import {intakeTaskReducer, IntakeTaskState} from "./intake-task.reducer";
-import {candidateListReducer, CandidateListState} from "./candidate-list.reducer";
+import {
+  candidateListReducer, CandidateListState, rejectedCandidateListReducer,
+  selectedCandidateListReducer
+} from "./candidate-list.reducer";
 import {IntakeTask} from "../policy/intakes/intake-task.interface";
 import {AdmissionActions} from "./admission.action";
 import {AdmissionEffects} from "./admission.effect";
@@ -25,6 +28,8 @@ export interface AdmissionModuleState {
   intakeTasks: IntakeTaskListState;
   intakeTask: IntakeTaskState;
   candidates: CandidateListState;
+  selectedCandidates: CandidateListState;
+  rejectedCandidates: CandidateListState;
 }
 ;
 
@@ -33,12 +38,15 @@ export const INITIAL_ADMISSION_STATE: AdmissionModuleState =
     intakeTasks: <IntakeTask[]>[],
     intakeTask: <IntakeTask>{},
     candidates: <Candidate[]>[],
-    candidate: <Candidate>{},
+    selectedCandidates: <Candidate[]>[],
+    rejectedCandidates: <Candidate[]>[],
   };
 export const admissionModuleReducers = {
   intakeTasks: intakeTaskListReducer,
   intakeTask: intakeTaskReducer,
   candidates: candidateListReducer,
+  selectedCandidates: selectedCandidateListReducer,
+  rejectedCandidates: rejectedCandidateListReducer,
 };
 
 @NgModule({
