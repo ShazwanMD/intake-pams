@@ -346,6 +346,26 @@ export class IntakeActions {
     };
   }
   
+  static FIND_EVALUATED_INTAKE_APPLICATIONS = '[Intake] Find EVALUATED INTAKE APPLICATION ';
+
+  findEvaluatedIntakeApplications(intake): Action {
+      console.log("findEvaluatedIntakeApplications :"+intake);
+    return {
+      type: IntakeActions.FIND_EVALUATED_INTAKE_APPLICATIONS,
+      payload: intake
+    };
+  }
+
+  static FIND_EVALUATED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find EVALUATED Intake Application Success';
+
+  findEvaluatedIntakeApplicationsSuccess(applications): Action {
+    console.log("findEvaluatedIntakeApplicationsSuccess");
+    return {
+      type: IntakeActions.FIND_EVALUATED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applications
+    };
+  }
+  
   static FIND_REJECTED_INTAKE_APPLICATIONS = '[Intake] Find REJECTED INTAKE APPLICATION ';
 
   findRejectedIntakeApplications(intake): Action {
