@@ -26,6 +26,23 @@
                flex/>
       </md-input-container>
     </div>
+    <div layout="row">
+          <md-input-container flex>
+            <input mdInput #description
+                   placeholder="label"
+                   formControlName="label"
+                   flex/>
+          </md-input-container>
+        </div>
+     <div layout="row">
+          <md-input-container flex>
+            <input mdInput
+                   type="number"
+                   placeholder="Year"
+                   formControlName="year"
+                   flex/>
+          </md-input-container>
+        </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
