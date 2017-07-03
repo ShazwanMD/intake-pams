@@ -10,6 +10,8 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
+
+import org.activiti.engine.task.Task;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,8 +26,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -81,6 +85,13 @@ public class IntakeFlowProcessTest {
         intake.setSession(session);
         intake.setGraduateCenter(center);
         String referenceNo = policyService.startIntakeTask(intake);
+        
+        // verify intake
+        
+        List<Task> draftedTasks = policyService.findAssignedIntakeTasks(0, 100);
+        Assert.notEmpty(draftedTasks, "Tasks should not be empty");
+        Task draftedTask = draftedTasks.get(0);
+        InIntake draftedIntake = policyService.findIntakeByTaskId(draftedTask.getId());
 
         // search again
         intake = policyService.findIntakeByReferenceNo(referenceNo);
@@ -121,9 +132,11 @@ public class IntakeFlowProcessTest {
         
         policyService.addSupervisorOffering(intake, supervisorOffering2);
         
-        // verify intake
+  
+        workflowService.completeTask(draftedTask);
         
         // publish intake
+
         
         //Create 4 applications and submit
 
