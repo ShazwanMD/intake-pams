@@ -136,7 +136,9 @@ public class IntakeFlowProcessTest {
         workflowService.completeTask(draftedTask);
         
         // publish intake
-
+        List<Task> assignedVerifiedIntakes = policyService.findAssignedIntakeTasks(0, 100);
+        Assert.notEmpty(assignedVerifiedIntakes, "Tasks should not be empty");
+        workflowService.completeTask(assignedVerifiedIntakes.get(0)); // TO APPROVED
         
         //Create 4 applications and submit
 
