@@ -184,6 +184,31 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'bursary'), 1, 1, CURRENT_TIMESTAMP);																					 
 		
+-- APPLICANT
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_APCN', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL_ROLE'), (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'), 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_USR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'), 1, 1, CURRENT_TIMESTAMP);		
+
+--USER APPLICANT
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant1'), 1, 1, CURRENT_TIMESTAMP);	
+
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant2'), 1, 1, CURRENT_TIMESTAMP);
+
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant3'), 1, 1, CURRENT_TIMESTAMP);
+
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant4'), 1, 1, CURRENT_TIMESTAMP);	
+																				 
 ---------------------------------------------------------
 -- GROUP END
 ---------------------------------------------------------

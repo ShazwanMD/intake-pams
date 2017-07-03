@@ -35,16 +35,16 @@ public class InMutableAclService extends InAclService implements MutableAclServi
     private String deleteClassByClassNameString = "DELETE FROM acl_class WHERE class=?";
     private String deleteEntryByObjectIdentityForeignKey = "DELETE FROM acl_entry WHERE acl_object_identity=?";
     private String deleteObjectIdentityByPrimaryKey = "DELETE FROM acl_object_identity WHERE id=?";
-    private String sidIdentityQuery = "SELECT currval('seq_acl_sid')";
-    private String classIdentityQuery = "SELECT currval('seq_acl_class')";
-    private String insertClass = "INSERT INTO acl_class (id, class) VALUES (nextval('seq_acl_class'), ?)";
+    private String sidIdentityQuery = "SELECT currval('acl_sid_id_seq')";
+    private String classIdentityQuery = "SELECT currval('acl_class_id_seq')";
+    private String insertClass = "INSERT INTO acl_class (id, class) VALUES (nextval('acl_class_id_seq'), ?)";
     private String insertEntry = "INSERT INTO acl_entry "
             + "(id, acl_object_identity, ace_order, sid, mask, granting, audit_success, audit_failure)"
-            + "VALUES (nextval('seq_acl_entry'), ?, ?, ?, ?, ?, ?, ?)";
+            + "VALUES (nextval('acl_entry_id_seq'), ?, ?, ?, ?, ?, ?, ?)";
     private String insertObjectIdentity = "INSERT INTO acl_object_identity "
             + "(id, object_id_class, object_id_identity, owner_sid, entries_inheriting) "
-            + "VALUES (nextval('seq_acl_object_identity'), ?, ?, ?, ?)";
-    private String insertSid = "INSERT INTO acl_sid (id, principal, sid) VALUES (nextval('seq_acl_sid'), ?, ?)";
+            + "VALUES (nextval('acl_object_identity_id_seq'), ?, ?, ?, ?)";
+    private String insertSid = "INSERT INTO acl_sid (id, principal, sid) VALUES (nextval('acl_sid_id_seq'), ?, ?)";
     private String selectClassPrimaryKey = "SELECT id FROM acl_class WHERE class=?";
     private String selectCountObjectIdentityRowsForParticularClassNameString = "SELECT COUNT(acl_object_identity.id) "
             + "FROM acl_object_identity, acl_class WHERE acl_class.id = acl_object_identity.object_id_class AND class=?";

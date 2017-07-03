@@ -1,6 +1,9 @@
 package my.edu.umk.pams.intake.registration.service;
 
+import my.edu.umk.pams.intake.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InGroup;
+import my.edu.umk.pams.intake.identity.model.InPrincipal;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.registration.dao.InUserVerificationDao;
@@ -29,6 +32,8 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author PAMS
@@ -67,6 +72,15 @@ public class RegistrationServiceImpl implements RegistrationService {
 
         // save user and refresh
         identityService.saveUser(user);
+        try {
+            InGroup group = identityService.findGroupByName("GRP_APCN");
+            InPrincipal principal = identityService.findPrincipalByName(user.getName());
+            System.out.println("group :"+group);
+			identityService.addGroupMember(group, principal);
+		} catch (RecursiveGroupException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         sessionFactory.getCurrentSession().refresh(user);
 
         // save applicant

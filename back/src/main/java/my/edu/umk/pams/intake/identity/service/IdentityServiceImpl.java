@@ -60,7 +60,7 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public InPrincipal findPrincipalByName(String name) {
-        return null;
+        return principalDao.findByName(name);
     }
 
     @Override
