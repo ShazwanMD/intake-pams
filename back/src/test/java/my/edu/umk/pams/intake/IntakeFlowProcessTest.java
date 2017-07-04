@@ -162,6 +162,11 @@ public class IntakeFlowProcessTest {
       InIntakeApplication  application1 = new InIntakeApplicationImpl();
         application1.setIntake(intake);
         application1.setReferenceNo(referenceNo);
+        application1.setStudyModeSelection(parttimeOffering);
+        application1.setSupervisorSelection(supervisorOffering1);
+        application1.setProgramSelection(mckOffering);
+        application1.setCredentialNo("234234");
+        application1.setResearchTitle("test1");
         application1.setName("testCitizen bin ting");
         application1.setEmail("testCitizen@email.com");
         application1.setPhone("01110202022");
@@ -173,6 +178,11 @@ public class IntakeFlowProcessTest {
       InIntakeApplication  application2 = new InIntakeApplicationImpl();
         application2.setIntake(intake);
         application2.setReferenceNo(referenceNo);
+        application2.setStudyModeSelection(fulltimeOffering);
+        application2.setSupervisorSelection(supervisorOffering2);
+        application2.setProgramSelection(mcnOffering);
+        application2.setCredentialNo("123123");
+        application2.setResearchTitle("test2");
         application2.setName("testNonCitizen bin ting");
         application2.setEmail("testNonCitizen@email.com");
         application2.setPhone("011102021221");
