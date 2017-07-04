@@ -5,7 +5,7 @@
   </div>
 
   <td-layout-card-over>
-    <form [formGroup]="applicationForm">
+    <form [formGroup]="applicationForm" novalidate>
       <div layout="row" layout-align="start center">
         <div>
           <md-card-title>Intake Application</md-card-title>
@@ -339,8 +339,8 @@
 
 
             <div layout="row" layout-align="start center">
-              {{applicationForm.valid}}
-              <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)">
+              <!--{{applicationForm.valid}}-->
+               <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)"  [disabled] = "!applicationForm.valid">
                 Submit
               </button>
             </div>

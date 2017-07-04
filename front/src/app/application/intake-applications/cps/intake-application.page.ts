@@ -72,7 +72,7 @@ export class CpsIntakeApplicationPage implements OnInit {
       name: '',
       credentialNo: ['', Validators.required],
       birthDate: null,
-      mobile: '',
+      mobile: ['', Validators.required],
       okuNo: '',
       email: '',
       phone: ['', Validators.required],
@@ -138,11 +138,21 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
-  submit(application: IntakeApplication, isValid: boolean): void {
-    console.log('submitting application');
-    this.store.dispatch(this.actions.submitIntakeApplication(application));
-    this.goBack();
-  }
+
+  submit(application: IntakeApplication, isValid: boolean){
+    if (confirm('Confirm to Submit this application?')) {
+           this.store.dispatch(this.actions.submitIntakeApplication(application));
+           this.goBack();
+       } else {
+           return false;
+       }
+    }
+  
+  // submit(application: IntakeApplication, isValid: boolean): void {
+  //   console.log('submitting application');
+  //   this.store.dispatch(this.actions.submitIntakeApplication(application));
+  //   this.goBack();
+  // }
 
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);

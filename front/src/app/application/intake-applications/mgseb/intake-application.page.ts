@@ -141,12 +141,21 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
- submit(application: IntakeApplication, isValid: boolean): void {
-    console.log('submitting application');
-    this.store.dispatch(this.actions.submitIntakeApplication(application));
-    this.goBack();
-  }
+//  submit(application: IntakeApplication, isValid: boolean): void {
+//     console.log('submitting application');
+//     this.store.dispatch(this.actions.submitIntakeApplication(application));
+//     this.goBack();
+//   }
 
+  submit(application: IntakeApplication, isValid: boolean){
+    if (confirm('Confirm to Submit this application?')) {
+           this.store.dispatch(this.actions.submitIntakeApplication(application));
+           this.goBack();
+       } else {
+           return false;
+       }
+    }
+  
 
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
