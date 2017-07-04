@@ -115,6 +115,7 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public List<InModule> findModules(boolean authorized) {
+    	System.out.println("Util.getCurrentUser() :"+Util.getCurrentUser());
         return authorized ?
                 moduleDao.findAuthorized(identityService.findSids(Util.getCurrentUser())) :
                 moduleDao.find();

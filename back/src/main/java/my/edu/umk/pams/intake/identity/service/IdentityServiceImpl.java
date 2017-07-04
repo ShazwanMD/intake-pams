@@ -4,8 +4,11 @@ import my.edu.umk.pams.intake.identity.dao.*;
 import my.edu.umk.pams.intake.identity.event.StaffCreatedEvent;
 import my.edu.umk.pams.intake.identity.event.StaffUpdatedEvent;
 import my.edu.umk.pams.intake.identity.model.*;
+import my.edu.umk.pams.intake.system.service.SystemServiceImpl;
 import my.edu.umk.pams.intake.util.Util;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -24,6 +27,7 @@ import java.util.Set;
 public class IdentityServiceImpl implements IdentityService {
 
     private static final String GROUP_ROOT = "GRP_ADMN";
+    private static final Logger LOG = LoggerFactory.getLogger(SystemServiceImpl.class);
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -55,7 +59,7 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public InPrincipal findPrincipalById(Long id) {
-        return null;
+    	return principalDao.findById(id);
     }
 
     @Override
@@ -65,12 +69,26 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public List<InPrincipal> findPrincipals(String filter, Integer offset, Integer limit) {
-        return null;
+    	return principalDao.find(filter, offset, limit);
     }
 
     @Override
     public Set<String> findSids(InPrincipal principal) {
-        return null;
+    	Set<InGroup> groups = null;
+        Set<String> principals = new HashSet<String>();
+        try {
+            groups = groupDao.findEffectiveAsNative(principal);
+        } catch (Exception e) {
+            LOG.error("Error occured loading principals", e);
+        } finally {
+            if (null != groups) {
+                for (InGroup group : groups) {
+                    principals.add(group.getName());
+                }
+            }
+            principals.add(principal.getName());
+        }
+        return principals;
     }
 
     @Override
