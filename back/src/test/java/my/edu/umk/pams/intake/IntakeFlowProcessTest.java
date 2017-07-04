@@ -1,5 +1,9 @@
 package my.edu.umk.pams.intake;
 
+import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
+import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
@@ -9,6 +13,7 @@ import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 import org.activiti.engine.task.Task;
@@ -19,6 +24,8 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,8 +35,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
+
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -52,6 +63,12 @@ public class IntakeFlowProcessTest {
 
     @Autowired
     private CommonService commonService;
+    
+    @Autowired
+    private SystemService systemService;
+    
+    @Autowired
+    private ApplicationService applicationService;
 
     @Autowired
     private WorkflowService workflowService;
@@ -140,7 +157,29 @@ public class IntakeFlowProcessTest {
         Assert.notEmpty(assignedVerifiedIntakes, "Tasks should not be empty");
         workflowService.completeTask(assignedVerifiedIntakes.get(0)); // TO APPROVED
         
-        //Create 4 applications and submit
+        //Create application samples for citizen and on citizen application
+
+      InIntakeApplication  application1 = new InIntakeApplicationImpl();
+        application1.setIntake(intake);
+        application1.setReferenceNo(referenceNo);
+        application1.setName("testCitizen bin ting");
+        application1.setEmail("testCitizen@email.com");
+        application1.setPhone("01110202022");
+        application1.setNationalityCode(commonService.findNationalityCodeByCode("1"));
+        application1.setBidStatus(InBidStatus.NEW);
+        applicationService.applyIntake(intake, application1);        
+        applicationService.submitIntakeApplication(draftedIntake, application1);
+        
+      InIntakeApplication  application2 = new InIntakeApplicationImpl();
+        application2.setIntake(intake);
+        application2.setReferenceNo(referenceNo);
+        application2.setName("testNonCitizen bin ting");
+        application2.setEmail("testNonCitizen@email.com");
+        application2.setPhone("011102021221");
+        application2.setNationalityCode(commonService.findNationalityCodeByCode("2"));
+        application2.setBidStatus(InBidStatus.NEW);
+        applicationService.applyIntake(intake, application2);        
+        applicationService.submitIntakeApplication(draftedIntake, application2);
 
     }
     
