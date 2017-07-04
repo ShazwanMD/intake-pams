@@ -147,7 +147,6 @@ export class MgsebIntakeApplicationPage implements OnInit {
     this.goBack();
   }
 
-
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }

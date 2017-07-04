@@ -5,7 +5,7 @@
   </div>
 
   <td-layout-card-over>
-    <form [formGroup]="applicationForm">
+    <form [formGroup]="applicationForm" novalidate>
       <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
         <div>
           <md-card-title>Intake Application</md-card-title>
@@ -30,89 +30,101 @@
             </div>
           </td-expansion-panel>
 
+          <template md-tab-label>Applicant Personal Information</template>
           <td-expansion-panel label="Personal Details">
             <div>
               <md-card-subtitle>Applicant Personal Information</md-card-subtitle>
             </div>
             <md-divider></md-divider>
-            <div layout="column" layout-md="row" class="inset" flex>
-              <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+           <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+              <!-- first column -->
 
-                <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="Name" formControlName="name">
-                </md-input-container>
-                <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
-                  Name is required
-                </div>
+              <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput placeholder="Name" formControlName="name"/>
+              </md-input-container>
 
-                <md-input-container fxFlex="calc(50%-25px)">
-                  <input mdInput placeholder="Email" formControlName="email">
-                </md-input-container>
-                <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
-                  Email is required
-                </div>
+              <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput placeholder="Email" formControlName="email"/>
+              </md-input-container>
 
-                <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo">
-                </md-input-container>
-                <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
-                  IC or Passport Number is required
-                </div>
-
-                <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate">
-                </md-input-container>
-                <div class="error" *ngIf="applicationForm.get('name').hasError('required') && applicationForm.get('name').touched">
-                  Passport expired date is required once you enter passport number.
-                </div>
-
-                <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate">
-                </md-input-container>
-
-                <pams-nationality-code-select fxFlex="calc(100%-25px)" [placeholder]="'Nationality'" [innerFormControl]="applicationForm.controls.nationalityCode"
-                  fxFlex="calc(100%-25px)" class="pad-bottom">
-                </pams-nationality-code-select>
-
-                <pams-race-code-select fxFlex="calc(100%-25px)" [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode"
-                  fxFlex="calc(100%-25px)" class="pad-bottom">
-                </pams-race-code-select>
-
-                <pams-marital-code-select fxFlex="calc(33%-25px)" [placeholder]="'Marital'" [innerFormControl]="applicationForm.controls.maritalCode"
-                  fxFlex="calc(100%-25px)" class="pad-bottom">
-                </pams-marital-code-select>
-
-
-                <pams-ethnicity-code-select fxFlex="calc(33%-25px)" [placeholder]="'Ethnicity'" required md-maxlength="10" [innerFormControl]="applicationForm.controls.ethnicityCode"
-                  fxFlex="calc(100%-25px)" class="pad-bottom">
-                </pams-ethnicity-code-select>
-
-                <pams-gender-code-select fxFlex="calc(33%-25px)" [placeholder]="'Gender'" [innerFormControl]="applicationForm.controls.genderCode"
-                  fxFlex="calc(100%-25px)" class="pad-bottom">
-                </pams-gender-code-select>
-
-                <pams-religion-code-select fxFlex="calc(33%-25px)" [placeholder]="'Religion'" [innerFormControl]="applicationForm.controls.religionCode"
-                  fxFlex="calc(100%-25px)" class="pad-bottom">
-                </pams-religion-code-select>
-
-                <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="Phone No" formControlName="mobile">
-                </md-input-container>
-
-                <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="Office No" formControlName="phone">
-                </md-input-container>
-                <div class="error" *ngIf="applicationForm.get('phone').hasError('required') && applicationForm.get('phone').touched">
-                  Passport expired date is required once you enter passport number.
-                </div>
-
-                <md-input-container fxFlex="calc(100%-25px)">
-                  <input mdInput placeholder="Fax No" formControlName="fax">
-                </md-input-container>
-
+              <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo"/>
+              </md-input-container>
+              <div class="error" class="tc-red-600"
+                   *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
+                Your Ic or Passport Number is required!
               </div>
-            </div>
 
+              <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate"/>
+              </md-input-container>
+              <div class="error" class="tc-red-600"
+                   *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
+                Your Birth Date is required!
+              </div>
+
+
+              <pams-nationality-code-select [placeholder]="'Nationality'"
+                                            [innerFormControl]="applicationForm.controls.nationalityCode"
+                                            fxFlex="calc(50%-25px)" class="pad-bottom">
+              </pams-nationality-code-select>
+              <div class="error" class="tc-red-600"
+                   *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
+                Please add your nationality!
+              </div>
+
+              <pams-race-code-select [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode"
+                                     fxFlex="calc(50%-25px)" class="pad-bottom">
+              </pams-race-code-select>
+
+
+              <pams-marital-code-select [placeholder]="'Marital'"
+                                        [innerFormControl]="applicationForm.controls.maritalCode"
+                                        fxFlex="calc(50%-25px)" class="pad-bottom">
+              </pams-marital-code-select>
+
+
+              <!--</div>-->
+
+              <!--second column -->
+              <!--<div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">-->
+
+              <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>
+              </md-input-container>
+
+              <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput placeholder="Phone No" formControlName="mobile"/>
+              </md-input-container>
+              <div class="error" class="tc-red-600"
+                   *ngIf="applicationForm.get('mobile').invalid && applicationForm.get('mobile').touched">
+                Please add your Phone number!
+              </div>
+
+              <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput placeholder="Office No" formControlName="phone" flex/>
+              </md-input-container>
+
+
+              <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput placeholder="Fax No" formControlName="fax" flex/>
+              </md-input-container>
+
+              <pams-ethnicity-code-select [placeholder]="'Ethnicity'" required md-maxlength="10"
+                                          [innerFormControl]="applicationForm.controls.ethnicityCode"
+                                          fxFlex="calc(50%-25px)" class="pad-bottom">
+              </pams-ethnicity-code-select>
+
+              <pams-gender-code-select [placeholder]="'Gender'"
+                                       [innerFormControl]="applicationForm.controls.genderCode"
+                                       fxFlex="calc(50%-25px)" class="pad-bottom">
+              </pams-gender-code-select>
+
+              <pams-religion-code-select [placeholder]="'Religion'"
+                                         [innerFormControl]="applicationForm.controls.religionCode"
+                                         fxFlex="calc(50%-25px)" class="pad-bottom">
+              </pams-religion-code-select>
+            </div>
 
           </td-expansion-panel>
         </md-tab>
@@ -360,9 +372,8 @@
             </div>
             <md-card-subtitle>*Please fill all the required form before submit your application</md-card-subtitle>
 
-
             <div layout="row" layout-align="start center">
-              <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)">
+              <button md-raised-button color="accent" (click)="submit(applicationForm.value, applicationForm.valid)"  [disabled] = "!applicationForm.valid">
                 Submit
               </button>
             </div>

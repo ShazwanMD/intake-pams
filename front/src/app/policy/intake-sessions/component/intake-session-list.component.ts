@@ -29,7 +29,8 @@ export class IntakeSessionListComponent implements AfterViewInit  {
     {name: 'descriptionMs', label: 'Description (MS)'},
     {name: 'descriptionEn', label: 'Description (EN)'},
     {name: 'year', label: 'Year'},
-    {name: 'current', label: 'Current'},    
+    {name: 'current', label: 'Current'}, 
+    {name: 'label', label: 'Label'},   
     {name: 'id', label: 'id'},
     {name: 'action', label: ''}
   ];
