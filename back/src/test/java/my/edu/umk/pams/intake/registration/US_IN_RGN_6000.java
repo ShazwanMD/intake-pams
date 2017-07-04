@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
@@ -21,7 +21,7 @@ import my.edu.umk.pams.intake.registration.stage.WhenViewListOfSelectedApplicant
 import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGSSEB;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Registration")

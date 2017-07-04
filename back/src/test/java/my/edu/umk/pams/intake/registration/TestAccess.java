@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
@@ -17,7 +17,7 @@ import my.edu.umk.pams.intake.security.service.AccessService;
 import my.edu.umk.pams.intake.system.model.InModule;
 import my.edu.umk.pams.intake.system.service.SystemService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class TestAccess {

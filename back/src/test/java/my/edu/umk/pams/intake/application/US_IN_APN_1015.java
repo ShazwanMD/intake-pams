@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.Pending;
@@ -23,7 +23,7 @@ import static my.edu.umk.pams.intake.IntakeTestConstants.INTAKE_REFERENCE_NO_MGS
 
 
 @Pending
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Submodule("Application")
