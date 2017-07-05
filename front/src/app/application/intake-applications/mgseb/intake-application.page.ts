@@ -130,7 +130,7 @@ export class MgsebIntakeApplicationPage implements OnInit {
       researchProposal: [true],
       bankStatement: [true],
       refereeForm: [true],
-      declared: [true, Validators.required],
+      declared: [true, Validators.requiredTrue],
 
     });
     this.intakeApplication$.subscribe((intakeApplication) => this.applicationForm.patchValue(intakeApplication));
