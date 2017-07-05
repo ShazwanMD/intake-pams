@@ -93,13 +93,15 @@ export class ApplicantProfileDialog implements OnInit {
       snackBarRef.afterDismissed().subscribe(() => {
           this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
           this.editorDialog.afterClosed().subscribe(res => {
-              this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
-          });
+          this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));       
+        })  
+        this.editorDialog.close();
       });
     }
   
   reject(intakeApplication : IntakeApplication) {
       this.showDialog(intakeApplication);
+    //  this.editorDialog.close();
    }  
   
   showDialog(intakeApplication): void {
@@ -111,10 +113,9 @@ export class ApplicantProfileDialog implements OnInit {
       config.position = {top: '0px'};
       this.editorDialogRef = this.dialog.open(ApplicantProfileRejectDialog, config);
       this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
-
-      
       this.editorDialog.afterClosed().subscribe(res => {
-        this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
+      this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
+
     });
   }
   
