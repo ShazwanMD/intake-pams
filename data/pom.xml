@@ -281,13 +281,15 @@
                                 <srcFile>src/test/resources/ddl/ACT.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/BAT.POSTGRES.sql</srcFile>
 
-                                <!--SYSTEM-->
-                                <srcFile>src/test/resources/data/IN_RFRN_NO.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_CNFG.sql</srcFile>
-
                                 <!--IDENTITY-->
                                 <srcFile>src/test/resources/data/IN_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile>
+
+                                <!--SYSTEM-->
+                                <srcFile>src/test/resources/data/IN_RFRN_NO.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_CNFG.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_MODL.sql</srcFile>
+                                <srcFile>src/test/resources/data/ACL.sql</srcFile>
 
                                 <!--COMMON-->
                                 <srcFile>src/test/resources/data/IN_GRDT_CNTR.sql</srcFile>

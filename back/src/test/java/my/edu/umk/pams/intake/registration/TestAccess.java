@@ -35,7 +35,7 @@ public class TestAccess {
 	    @Rollback(false)
 	    public void testAccess() {
 	        InGroup group = identityService.findGroupByName("GRP_APCN");
-	        InModule module = systemService.findModuleByCode("M002");
+	        InModule module = systemService.findModuleByCode("APN");
 	        accessService.grantPermission(module, group, InPermission.VIEW);
 	    }
 
