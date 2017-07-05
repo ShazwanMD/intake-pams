@@ -41,6 +41,7 @@ import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonMod
 import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./setup/index";
 import {PipeModule} from "./app.pipe.module";
 import {environment} from "../environments/environment";
+import {AuthenticationService} from "../services/authentication.service";
 
 
 // interceptor
@@ -129,8 +130,9 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   providers: [
     appRoutingProviders,
     httpInterceptorProviders,
+    AuthenticationService,
     Title,
-    {provide: UrlSerializer, useClass: CustomUrlSerializer}
+    {provide: UrlSerializer, useClass: CustomUrlSerializer},
   ], // additional providers needed for this module
   entryComponents: [],
   bootstrap: [AppComponent],
