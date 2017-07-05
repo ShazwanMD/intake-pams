@@ -355,7 +355,8 @@
           </md-card>
         </md-tab>
 
-        <md-tab>
+       
+       <md-tab>
           <template md-tab-label>Submit Application</template>
           <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
             <div class="push-top-sm"></div>
@@ -367,6 +368,10 @@
                 <div layout="column" flex>
                   I declare that the statements made in this application form are correct. I am fully aware that UMK reserves the right to
                   reject my application or terminate my candidature if the information given above is incorrect or incomplete.
+                </div>
+                <div class="error" class="tc-red-600"
+                     *ngIf="applicationForm.get('declared').invalid && applicationForm.get('declared').touched">
+                  Please click declaration before submit the application!
                 </div>
               </md-checkbox>
             </div>
@@ -380,6 +385,7 @@
           </div>
           <div class="push-top-sm"></div>
         </md-tab>
+
       </md-tab-group>
     </form>
   </td-layout-card-over>

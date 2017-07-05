@@ -64,70 +64,70 @@ export class CpsIntakeApplicationPage implements OnInit {
     });
 
     this.applicationForm = this.formBuilder.group({
-      id: null,
-      referenceNo: '',
-      researchTitle: '',
-      rank: 0,
-      merit: 0,
-      name: '',
+      id:  [undefined],
+      referenceNo:  [''],
+      researchTitle: [''],
+      rank: [0],
+      merit: [0],
+      name: [''],
       credentialNo: ['', Validators.required],
-      birthDate: null,
+      birthDate:[undefined, Validators.required],
       mobile: ['', Validators.required],
-      okuNo: '',
-      email: '',
-      phone: ['', Validators.required],
-      fax: '',
-      age: 0,
-      passExpDate: null,
-      mailingAddress1: '',
-      mailingAddress2: '',
-      mailingAddress3: '',
-      mailingPostcode: '',
-      officialAddress1: '',
-      officialAddress2: '',
-      officialAddress3: '',
-      officialPostcode: '',
+      okuNo:[''],
+      email: [''],
+      phone: [''],
+      fax:  [''],
+      age: [0],
+      passExpDate: [''],
+      mailingAddress1: [''],
+      mailingAddress2: [''],
+      mailingAddress3: [''],
+      mailingPostcode:[''],
+      officialAddress1: [''],
+      officialAddress2: [''],
+      officialAddress3: [''],
+      officialPostcode: [''],
       
 
-      genderCode: <GenderCode>{},
-      maritalCode: <MaritalCode>{},
-      disabilityCode: <DisabilityCode>{},
-      ethnicityCode: <EthnicityCode>{},
-      raceCode: <RaceCode>{},
-      religionCode: <ReligionCode>{},
-      nationalityCode: <NationalityCode>{},
-      mailingStateCode: <StateCode>{},
-      mailingCountryCode: <CountryCode>{},
-      officialStateCode: <StateCode>{},
-      officialCountryCode: <CountryCode>{},
-      verified: true,
-      sponsored: true,
-      selfSponsored: true,
-      paid: true,
-      declared: true,
+      genderCode: [<GenderCode>{}],
+      maritalCode:[<MaritalCode>{}],
+      disabilityCode: [<DisabilityCode>{}],
+      ethnicityCode: [<EthnicityCode>{}],
+      raceCode: [<RaceCode>{}],
+      religionCode:  [<ReligionCode>{}],
+      nationalityCode:  [<NationalityCode>{}],
+      mailingStateCode:  [<StateCode>{}],
+      mailingCountryCode: [<CountryCode>{}],
+      officialStateCode: [<StateCode>{}],
+      officialCountryCode: [<CountryCode>{}],
+      verified: [true],
+      sponsored: [true],
+      selfSponsored: [true],
+      paid: [true],
+     
+      spmResultAttached: [true],
+      stpmResultAttached: [true],
+      diplomaResultAttached: [true],
+      bachelorResultAttached: [true],
+      toeflResultAttached: [true],
+      ieltsResultAttached: [true],
+      languageResultAttached:[true],
+      processingFeeAttached: [true],
+      bankStatementAttached: [true],
+      refereeFormAttached: [true],
+      researchProposalAttached:[true],
+      sponsorLetterAttached:[true],
 
-      spmResultAttached: true,
-      stpmResultAttached: true,
-      diplomaResultAttached: true,
-      bachelorResultAttached: true,
-      toeflResultAttached: true,
-      ieltsResultAttached: true,
-      languageResultAttached: true,
-      processingFeeAttached: true,
-      bankStatementAttached: true,
-      refereeFormAttached: true,
-      researchProposalAttached: true,
-      sponsorLetterAttached: true,
-
-      processingReceipt: true,
-      foreignResult: true,
-      educationResult: true,
-      academic: true,
-      financialLetter: true,
-      researchProposal: true,
-      bankStatement: true,
-      refereeForm: true,
-
+      processingReceipt: [true],
+      foreignResult: [true],
+      educationResult: [true],
+      academic: [true],
+      financialLetter:[true],
+      researchProposal: [true],
+      bankStatement: [true],
+      refereeForm:[true],
+      declared: [true, Validators.requiredTrue],
+      
     });
     this.intakeApplication$.subscribe((intakeApplication) => this.applicationForm.patchValue(intakeApplication));
   }
@@ -138,7 +138,7 @@ export class CpsIntakeApplicationPage implements OnInit {
   }
 
 
-  submit(application: IntakeApplication, isValid: boolean){
+   submit(application: IntakeApplication, isValid: boolean){
     if (confirm('Confirm to Submit this application?')) {
            this.store.dispatch(this.actions.submitIntakeApplication(application));
            this.goBack();
@@ -146,6 +146,7 @@ export class CpsIntakeApplicationPage implements OnInit {
            return false;
        }
     }
+
   
   // submit(application: IntakeApplication, isValid: boolean): void {
   //   console.log('submitting application');
@@ -157,9 +158,9 @@ export class CpsIntakeApplicationPage implements OnInit {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
 
-  saverange(): void {
-   // console.log(this.applicationForm);
-    console.log(this.applicationForm.controls['merit'].value,this.applicationForm.controls['year'].value);
-    this.applicationForm.controls['merit'].setValue(this.applicationForm.controls['year'].value*0.05);
-  }
+  // saverange(): void {
+  //  // console.log(this.applicationForm);
+  //   console.log(this.applicationForm.controls['merit'].value,this.applicationForm.controls['year'].value);
+  //   this.applicationForm.controls['merit'].setValue(this.applicationForm.controls['year'].value*0.05);
+  // }
 }
