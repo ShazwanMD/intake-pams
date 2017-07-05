@@ -56,7 +56,7 @@ export class ProgramOfferingListComponent {
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
-      config.width = '50%';
+      config.width = '65%';
       config.height = '40%';
       config.position = {top: '0px'};
       this.editorDialogRef = this.dialog.open(ProgramOfferingEditorDialog, config);
