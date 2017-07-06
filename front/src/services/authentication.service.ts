@@ -16,8 +16,8 @@ export class AuthenticationService {
   constructor(private http: Http) {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
-    console.log(currentUser);
-    console.log(this.token);
+    console.log('currentUser: ' + currentUser);
+    console.log('token: ' + this.token);
   }
 
   login(username: string, password: string): Observable<boolean> {
