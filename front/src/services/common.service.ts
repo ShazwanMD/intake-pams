@@ -12,27 +12,29 @@ import {GenderCode} from '../app/common/gender-codes/gender-code.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
-import {Observable} from "rxjs";
-import {FacultyCode} from "../app/common/faculty-codes/faculty-code.interface";
-import {environment} from "../environments/environment";
-import {ProgramCode} from "../app/common/program-codes/program-code.interface";
-import {GraduateCenter} from "../app/common/graduate-centers/graduate-center.interface";
-import {MaritalCode} from "../app/common/marital-codes/marital-code.interface";
-import {DunCode} from "../app/common/dun-codes/dun-code.interface";
-import {BankCode} from "../app/common/bank-codes/bank-code.interface";
-import {DisabilityCode} from "../app/common/disability-codes/disability-code.interface";
-import {SchoolCode} from "../app/common/school-codes/school-code.interface";
-import {DistrictCode} from "../app/common/district-codes/district-code.interface";
-import {ResidencyCode} from "../app/common/residency-codes/residency-code.interface";
-import {LanguageCode} from "../app/common/language-codes/language-code.interface";
-import {SubjectCode} from "../app/common/subject-codes/subject-code.interface";
-import {GradeCode} from "../app/common/grade-codes/grade-code.interface";
-import { ProgramLevel } from "../app/policy/program-levels/program-level.interface";
+import {Observable} from 'rxjs';
+import {FacultyCode} from '../app/common/faculty-codes/faculty-code.interface';
+import {environment} from '../environments/environment';
+import {ProgramCode} from '../app/common/program-codes/program-code.interface';
+import {GraduateCenter} from '../app/common/graduate-centers/graduate-center.interface';
+import {MaritalCode} from '../app/common/marital-codes/marital-code.interface';
+import {DunCode} from '../app/common/dun-codes/dun-code.interface';
+import {BankCode} from '../app/common/bank-codes/bank-code.interface';
+import {DisabilityCode} from '../app/common/disability-codes/disability-code.interface';
+import {SchoolCode} from '../app/common/school-codes/school-code.interface';
+import {DistrictCode} from '../app/common/district-codes/district-code.interface';
+import {ResidencyCode} from '../app/common/residency-codes/residency-code.interface';
+import {LanguageCode} from '../app/common/language-codes/language-code.interface';
+import {SubjectCode} from '../app/common/subject-codes/subject-code.interface';
+import {GradeCode} from '../app/common/grade-codes/grade-code.interface';
+import {ProgramLevel} from '../app/policy/program-levels/program-level.interface';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class CommonService {
 
-  constructor(private http: Http,
+  constructor(private authService: AuthenticationService,
+              private http: Http,
               private _http: HttpInterceptorService) {
   }
 
@@ -41,13 +43,13 @@ export class CommonService {
   // ====================================================================================================
 
   findBankCodes(): Observable<BankCode[]> {
-    console.log("findBankCodes()");
+    console.log('findBankCodes()');
     return this.http.get(environment.endpoint + '/api/common/bankCodes')
       .map((res: Response) => <BankCode[]>res.json());
   }
 
   findBankCodeByCode(code: string): Observable<BankCode> {
-    console.log("findBankCodeByCode");
+    console.log('findBankCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/bankCodes/' + code)
       .map((res: Response) => <BankCode>res.json());
   }
@@ -57,13 +59,13 @@ export class CommonService {
   // ====================================================================================================
 
   findDistrictCodes(): Observable<DistrictCode[]> {
-    console.log("findDistrictCodes");
+    console.log('findDistrictCodes');
     return this.http.get(environment.endpoint + '/api/common/districtCodes')
       .map((res: Response) => <DistrictCode[]>res.json());
   }
 
   findDistrictCodeByCode(code: string): Observable<DistrictCode> {
-    console.log("findDistrictCodeByCode");
+    console.log('findDistrictCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/districtCodes/' + code)
       .map((res: Response) => <DistrictCode>res.json());
   }
@@ -91,7 +93,7 @@ export class CommonService {
   removeDistrictCode(code: DistrictCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
+      'Authorization': 'Bearer ' + this.authService.token,
     });
     let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/districtCodes/' + code.code, options)
@@ -103,13 +105,13 @@ export class CommonService {
   // ====================================================================================================
 
   findDunCodes(): Observable<DunCode[]> {
-    console.log("findDunCodes");
+    console.log('findDunCodes');
     return this.http.get(environment.endpoint + '/api/common/dunCodes')
       .map((res: Response) => <DunCode[]>res.json());
   }
 
   findDunCodeByCode(code: string): Observable<DunCode> {
-    console.log("findDunCodeByCode");
+    console.log('findDunCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/dunCodes/' + code)
       .map((res: Response) => <DunCode>res.json());
   }
@@ -149,13 +151,13 @@ export class CommonService {
   // ====================================================================================================
 
   findParliamentCodes(): Observable<ParliamentCode[]> {
-    console.log("findParliamentCodes");
+    console.log('findParliamentCodes');
     return this.http.get(environment.endpoint + '/api/common/parliamentCodes')
       .map((res: Response) => <ParliamentCode[]>res.json());
   }
 
   findParliamentCodeByCode(code: string): Observable<ParliamentCode> {
-    console.log("findParliamentCodeByCode");
+    console.log('findParliamentCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/parliamentCodes/' + code)
       .map((res: Response) => <ParliamentCode>res.json());
   }
@@ -195,13 +197,13 @@ export class CommonService {
   // ====================================================================================================
 
   findGenderCodes(): Observable<GenderCode[]> {
-    console.log("findGenderCodes");
+    console.log('findGenderCodes');
     return this.http.get(environment.endpoint + '/api/common/genderCodes')
       .map((res: Response) => <GenderCode[]>res.json());
   }
 
   findGenderCodeByCode(code: string): Observable<GenderCode> {
-    console.log("findGenderCodeByCode");
+    console.log('findGenderCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/genderCodes/' + code)
       .map((res: Response) => <GenderCode>res.json());
   }
@@ -221,13 +223,13 @@ export class CommonService {
   // ====================================================================================================
 
   findMaritalCodes(): Observable<MaritalCode[]> {
-    console.log("findMaritalCodes");
+    console.log('findMaritalCodes');
     return this.http.get(environment.endpoint + '/api/common/maritalCodes')
       .map((res: Response) => <MaritalCode[]>res.json());
   }
 
   findMaritalCodeByCode(code: string): Observable<MaritalCode> {
-    console.log("findMaritalCodeByCode");
+    console.log('findMaritalCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/maritalCodes/' + code)
       .map((res: Response) => <MaritalCode>res.json());
   }
@@ -267,13 +269,13 @@ export class CommonService {
   // ====================================================================================================
 
   findLanguageCodes(): Observable<LanguageCode[]> {
-    console.log("findLanguageCodes");
+    console.log('findLanguageCodes');
     return this.http.get(environment.endpoint + '/api/common/languageCodes')
       .map((res: Response) => <LanguageCode[]>res.json());
   }
 
   findLanguageCodeByCode(code: string): Observable<LanguageCode> {
-    console.log("findLanguageCodeByCode");
+    console.log('findLanguageCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/languageCodes/' + code)
       .map((res: Response) => <LanguageCode>res.json());
   }
@@ -313,19 +315,19 @@ export class CommonService {
   // ====================================================================================================
 
   findGraduateCenters(): Observable<GraduateCenter[]> {
-    console.log("findGraduateCenters");
+    console.log('findGraduateCenters');
     return this.http.get(environment.endpoint + '/api/common/graduateCenters')
       .map((res: Response) => <GraduateCenter[]>res.json());
   }
 
   findGraduateCenterByCode(code: string): Observable<GraduateCenter> {
-    console.log("findGraduateCenterByCode");
+    console.log('findGraduateCenterByCode');
     return this.http.get(environment.endpoint + '/api/common/graduateCenters/' + code)
       .map((res: Response) => <GraduateCenter>res.json());
   }
 
   findProgramCodesByGraduateCenter(graduateCenter: GraduateCenter): Observable<ProgramCode[]> {
-    console.log("findProgramCodesByGraduateCenter");
+    console.log('findProgramCodesByGraduateCenter');
     return this.http.get(environment.endpoint + '/api/common/graduateCenters/' + graduateCenter.code + '/programCodes')
       .map((res: Response) => <ProgramCode[]>res.json());
   }
@@ -350,19 +352,18 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-
   // ====================================================================================================
   // FACULTY CODES
   // ====================================================================================================
 
   findFacultyCodes(): Observable<FacultyCode[]> {
-    console.log("findFacultyCodes");
+    console.log('findFacultyCodes');
     return this.http.get(environment.endpoint + '/api/common/facultyCodes')
       .map((res: Response) => <FacultyCode[]>res.json());
   }
 
   findFacultyCodeByCode(code: string): Observable<FacultyCode> {
-    console.log("findFacultyCodeByCode");
+    console.log('findFacultyCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/facultyCodes/' + code)
       .map((res: Response) => <FacultyCode>res.json());
   }
@@ -402,22 +403,22 @@ export class CommonService {
   // ====================================================================================================
 
   findProgramCodes(): Observable<ProgramCode[]> {
-    console.log("findProgramCodes");
+    console.log('findProgramCodes');
     return this.http.get(environment.endpoint + '/api/common/programCodes')
       .map((res: Response) => <ProgramCode[]>res.json());
   }
 
   findProgramCodeByCode(code: string): Observable<ProgramCode> {
-    console.log("findProgramCodeByCode");
+    console.log('findProgramCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/programCodes/' + code)
       .map((res: Response) => <ProgramCode>res.json());
   }
-  
-  findProgramCodesByProgramLevel(programLevel:ProgramLevel): Observable<ProgramCode> {
-      console.log("findProgramCodeByProgramLevel :"+programLevel.code);
-      return this.http.get(environment.endpoint + '/api/common/programCodes/programLevel/' + programLevel.code)
-        .map((res: Response) => <ProgramCode>res.json());
-    }
+
+  findProgramCodesByProgramLevel(programLevel: ProgramLevel): Observable<ProgramCode> {
+    console.log('findProgramCodeByProgramLevel :' + programLevel.code);
+    return this.http.get(environment.endpoint + '/api/common/programCodes/programLevel/' + programLevel.code)
+      .map((res: Response) => <ProgramCode>res.json());
+  }
 
   saveProgramCode(code: ProgramCode) {
     let headers = new Headers({
@@ -439,19 +440,18 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-
   // ====================================================================================================
   // STUDY MODE
   // ====================================================================================================
 
   findStudyModes(): Observable<StudyMode[]> {
-    console.log("findStudyModes");
+    console.log('findStudyModes');
     return this.http.get(environment.endpoint + '/api/common/studyModes')
       .map((res: Response) => <StudyMode[]>res.json());
   }
 
   findStudyModeByCode(code: string): Observable<StudyMode> {
-    console.log("findStudyModeByCode");
+    console.log('findStudyModeByCode');
     return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       .map((res: Response) => <StudyMode>res.json());
   }
@@ -491,13 +491,13 @@ export class CommonService {
   // ====================================================================================================
 
   findReligionCodes(): Observable<ReligionCode[]> {
-    console.log("findReligionCodes");
+    console.log('findReligionCodes');
     return this.http.get(environment.endpoint + '/api/common/religionCodes')
       .map((res: Response) => <ReligionCode[]>res.json());
   }
 
   findReligionCodeByCode(code: string): Observable<ReligionCode> {
-    console.log("findReligionCodeByCode");
+    console.log('findReligionCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/religionCodes/' + code)
       .map((res: Response) => <ReligionCode>res.json());
   }
@@ -525,7 +525,7 @@ export class CommonService {
   removeReligionCode(code: ReligionCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
+      // 'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/religionCodes/' + code.code, options)
@@ -537,13 +537,16 @@ export class CommonService {
 // ====================================================================================================
 
   findCountryCodes(): Observable<CountryCode[]> {
-    console.log("findCountryCodes");
-    return this.http.get(environment.endpoint + '/api/common/countryCodes')
+    console.log('findCountryCodes');
+    console.log('auth: ' + this.authService.token);
+    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authService.token});
+    let options: RequestOptions = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/common/countryCodes', options)
       .map((res: Response) => <CountryCode[]>res.json());
   }
 
   findCountryCodeByCode(code: string): Observable<CountryCode> {
-    console.log("findCountryCodeByCode");
+    console.log('findCountryCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
       .map((res: Response) => <CountryCode>res.json());
   }
@@ -551,7 +554,7 @@ export class CommonService {
   saveCountryCode(code: CountryCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
+      'Authorization': 'Bearer ' + this.authService.token,
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/countryCodes', JSON.stringify(code), options)
@@ -583,19 +586,19 @@ export class CommonService {
 // ====================================================================================================
 
   findSupervisorCodes(): Observable<SupervisorCode[]> {
-    console.log("findSupervisorCodes()");
+    console.log('findSupervisorCodes()');
     return this.http.get(environment.endpoint + '/api/common/supervisorCodes')
       .map((res: Response) => <SupervisorCode[]>res.json());
   }
 
   findSupervisorCodesByFilter(filter: string): Observable<SupervisorCode[]> {
-    console.log("findSupervisorCodesByFilter");
+    console.log('findSupervisorCodesByFilter');
     return this.http.get(environment.endpoint + '/api/common/supervisorCodes/byFilter/' + filter)
       .map((res: Response) => <SupervisorCode[]>res.json());
   }
 
   findSupervisorCodeByCode(code: string): Observable<SupervisorCode> {
-    console.log("findSupervisorCodeByCode");
+    console.log('findSupervisorCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/supervisorCodes/' + code)
       .map((res: Response) => <SupervisorCode>res.json());
   }
@@ -630,23 +633,21 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-
 // ====================================================================================================
 // STATE CODES
 // ====================================================================================================
 
   findStateCodes(): Observable<StateCode[]> {
-    console.log("findStateCodes()");
+    console.log('findStateCodes()');
     return this.http.get(environment.endpoint + '/api/common/stateCodes')
       .map((res: Response) => <StateCode[]>res.json());
   }
 
   findStateCodeByCode(code: string): Observable<StateCode> {
-    console.log("findStateCodeByCode");
+    console.log('findStateCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
       .map((res: Response) => <StateCode>res.json());
   }
-
 
   saveStateCode(code: StateCode) {
     let headers = new Headers({
@@ -683,13 +684,13 @@ export class CommonService {
 // ====================================================================================================
 
   findRaceCodes(): Observable<RaceCode[]> {
-    console.log("findRaceCodes()");
+    console.log('findRaceCodes()');
     return this.http.get(environment.endpoint + '/api/common/raceCodes')
       .map((res: Response) => <RaceCode[]>res.json());
   }
 
   findRaceCodeByCode(code: string): Observable<RaceCode> {
-    console.log("findRaceCodeByCode");
+    console.log('findRaceCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/raceCodes/' + code)
       .map((res: Response) => <RaceCode>res.json());
   }
@@ -709,13 +710,13 @@ export class CommonService {
 // ====================================================================================================
 
   findEthnicityCodes(): Observable<EthnicityCode[]> {
-    console.log("findEthnicityCodes");
+    console.log('findEthnicityCodes');
     return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
       .map((res: Response) => <EthnicityCode[]>res.json());
   }
 
   findEthnicityCodeByCode(code: string): Observable<EthnicityCode> {
-    console.log("findEthnicityCodeByCode");
+    console.log('findEthnicityCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
       .map((res: Response) => <EthnicityCode>res.json());
   }
@@ -755,13 +756,13 @@ export class CommonService {
   // ====================================================================================================
 
   findNationalityCodes(): Observable<NationalityCode[]> {
-    console.log("findNationalityCodes");
+    console.log('findNationalityCodes');
     return this.http.get(environment.endpoint + '/api/common/nationalityCodes')
       .map((res: Response) => <NationalityCode[]>res.json());
   }
 
   findNationalityCodeByCode(code: string): Observable<NationalityCode> {
-    console.log("findNationalityCodeByCode");
+    console.log('findNationalityCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/nationalityCodes/' + code)
       .map((res: Response) => <NationalityCode>res.json());
   }
@@ -801,13 +802,13 @@ export class CommonService {
   // ====================================================================================================
 
   findResidencyCodes(): Observable<ResidencyCode[]> {
-    console.log("findResidencyCodes");
+    console.log('findResidencyCodes');
     return this.http.get(environment.endpoint + '/api/common/residencyCodes')
       .map((res: Response) => <ResidencyCode[]>res.json());
   }
 
   findResidencyCodeByCode(code: string): Observable<ResidencyCode> {
-    console.log("findResidencyCodeByCode");
+    console.log('findResidencyCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/residencyCodes/' + code)
       .map((res: Response) => <ResidencyCode>res.json());
   }
@@ -847,13 +848,13 @@ export class CommonService {
   // ====================================================================================================
 
   findDisabilityCodes(): Observable<DisabilityCode[]> {
-    console.log("findDisabilityCodes");
+    console.log('findDisabilityCodes');
     return this.http.get(environment.endpoint + '/api/common/disabilityCodes')
       .map((res: Response) => <DisabilityCode[]>res.json());
   }
 
   findDisabilityCodeByCode(code: string): Observable<DisabilityCode> {
-    console.log("findDisabilityCodeByCode");
+    console.log('findDisabilityCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/disabilityCodes/' + code)
       .map((res: Response) => <DisabilityCode>res.json());
   }
@@ -893,13 +894,13 @@ export class CommonService {
   // ====================================================================================================
 
   findSchoolCodes(): Observable<SchoolCode[]> {
-    console.log("findSchoolCodes");
+    console.log('findSchoolCodes');
     return this.http.get(environment.endpoint + '/api/common/schoolCodes')
       .map((res: Response) => <SchoolCode[]>res.json());
   }
 
   findSchoolCodeByCode(code: string): Observable<SchoolCode> {
-    console.log("findSchoolCodeByCode");
+    console.log('findSchoolCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/schoolCodes/' + code)
       .map((res: Response) => <SchoolCode>res.json());
   }
@@ -939,13 +940,13 @@ export class CommonService {
   // ====================================================================================================
 
   findStudyCenterCodes(): Observable<StudyCenterCode[]> {
-    console.log("findStudyCenterCodes");
+    console.log('findStudyCenterCodes');
     return this.http.get(environment.endpoint + '/api/common/studyCenterCodes')
       .map((res: Response) => <StudyCenterCode[]>res.json());
   }
 
   findStudyCenterCodeByCode(code: string): Observable<StudyCenterCode> {
-    console.log("findStudyCenterCodeByCode");
+    console.log('findStudyCenterCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/studyCenterCodes/' + code)
       .map((res: Response) => <StudyCenterCode>res.json());
   }
@@ -985,13 +986,13 @@ export class CommonService {
   // ====================================================================================================
 
   findSubjectCodes(): Observable<SubjectCode[]> {
-    console.log("findSubjectCodes");
+    console.log('findSubjectCodes');
     return this.http.get(environment.endpoint + '/api/common/subjectCodes')
       .map((res: Response) => <SubjectCode[]>res.json());
   }
 
   findSubjectCodeByCode(code: string): Observable<SubjectCode> {
-    console.log("findSubjectCodeByCode");
+    console.log('findSubjectCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/subjectCodes/' + code)
       .map((res: Response) => <SubjectCode>res.json());
   }
@@ -1031,13 +1032,13 @@ export class CommonService {
   // ====================================================================================================
 
   findGradeCodes(): Observable<GradeCode[]> {
-    console.log("findGradeCodes");
+    console.log('findGradeCodes');
     return this.http.get(environment.endpoint + '/api/common/gradeCodes')
       .map((res: Response) => <GradeCode[]>res.json());
   }
 
   findGradeCodeByCode(code: string): Observable<GradeCode> {
-    console.log("findGradeCodeByCode");
+    console.log('findGradeCodeByCode');
     return this.http.get(environment.endpoint + '/api/common/gradeCodes/' + code)
       .map((res: Response) => <GradeCode>res.json());
   }

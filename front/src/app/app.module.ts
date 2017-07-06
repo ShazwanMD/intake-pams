@@ -7,8 +7,8 @@ import {CovalentHttpModule, IHttpInterceptor} from '@covalent/http';
 import {CovalentHighlightModule} from '@covalent/highlight';
 import {CovalentMarkdownModule} from '@covalent/markdown';
 import {CovalentChartsModule} from '@covalent/charts';
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {StoreModule, combineReducers, ActionReducer} from "@ngrx/store";
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {StoreModule, combineReducers, ActionReducer} from '@ngrx/store';
 
 import {AppComponent} from './app.component';
 import {MainComponent} from './main/main.component';
@@ -20,28 +20,29 @@ import {appRoutes, appRoutingProviders} from './app.routes';
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
 
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-import {UrlSerializer} from "@angular/router";
-import {CustomUrlSerializer} from "./common/custom-url-serializer";
+import {UrlSerializer} from '@angular/router';
+import {CustomUrlSerializer} from './common/custom-url-serializer';
 import {
   ApplicationModule, ApplicationModuleState, INITIAL_APPLICATION_STATE,
-  applicationModuleReducers
-} from "./application/index";
-import {PolicyModule, PolicyModuleState, INITIAL_POLICY_STATE, policyModuleReducers} from "./policy/index";
+  applicationModuleReducers,
+} from './application/index';
+import {PolicyModule, PolicyModuleState, INITIAL_POLICY_STATE, policyModuleReducers} from './policy/index';
 import {
   AdmissionModuleState, INITIAL_ADMISSION_STATE, admissionModuleReducers,
-  AdmissionModule
-} from "./admission/index";
+  AdmissionModule,
+} from './admission/index';
 import {
   RegistrationModule, registrationModuleReducers, RegistrationModuleState,
-  INITIAL_REGISTRATION_STATE
-} from "./registration/index";
-import {centerModuleReducers, INITIAL_CENTER_STATE, CenterModuleState, CenterModule} from "./center/index";
-import {DashboardModule} from "./dashboard/index";
-import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from "./common/index";
-import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./setup/index";
-import {PipeModule} from "./app.pipe.module";
-import {environment} from "../environments/environment";
-
+  INITIAL_REGISTRATION_STATE,
+} from './registration/index';
+import {centerModuleReducers, INITIAL_CENTER_STATE, CenterModuleState, CenterModule} from './center/index';
+import {DashboardModule} from './dashboard/index';
+import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from './common/index';
+import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from './setup/index';
+import {PipeModule} from './app.pipe.module';
+import {environment} from '../environments/environment';
+import {AuthenticationService} from '../services/authentication.service';
+import {AuthorizationService} from '../services/authorization.service';
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -87,7 +88,6 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   return productionReducer(applicationState, action);
 }
 
-
 @NgModule({
 
   declarations: [
@@ -129,8 +129,10 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   providers: [
     appRoutingProviders,
     httpInterceptorProviders,
+    AuthenticationService,
+    AuthorizationService,
     Title,
-    {provide: UrlSerializer, useClass: CustomUrlSerializer}
+    {provide: UrlSerializer, useClass: CustomUrlSerializer},
   ], // additional providers needed for this module
   entryComponents: [],
   bootstrap: [AppComponent],

@@ -38,7 +38,7 @@ export class SupervisorOfferingListComponent {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '50%';
+    config.width = '80%';
     config.height = '30%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(SupervisorOfferingEditorDialog, config);
