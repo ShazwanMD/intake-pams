@@ -23,6 +23,6 @@ export class SystemService {
     let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
     let options: RequestOptions = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/system/modules/authorized', options)
-      .map((res: Response) => <CountryCode[]>res.json());
+      .map((res: Response) => <Module[]>res.json());
   }
 }
