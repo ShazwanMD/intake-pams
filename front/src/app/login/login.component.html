@@ -13,7 +13,7 @@
 
             <form #loginForm="ngForm">
               <div layout="row">
-                <md-input-container flex> 
+                <md-input-container flex>
                   <input mdInput #userElement #userControl="ngModel" placeholder="Username" type="text" maxlength="30" name="username" [(ngModel)]="username" required>
                   <span md-prefix><md-icon>person</md-icon></span>
                   <md-hint align="start">
@@ -23,7 +23,7 @@
                 </md-input-container>
               </div>
               <div layout="row">
-                <md-input-container flex> 
+                <md-input-container flex>
                   <input mdInput #passElement #passControl="ngModel" placeholder="Password" type="password" name="password" [(ngModel)]="password" required>
                   <span md-prefix><md-icon>lock</md-icon></span>
                   <md-hint align="start">
@@ -36,13 +36,12 @@
           </md-card-content>
           <md-divider></md-divider>
           <md-card-actions layout="row">
-            <button flex md-raised-button color="accent" [disabled]="!loginForm.form.valid" (click)="login()">Sign In</button>
-             <!--<button flex md-button color="primary" [routerLink]="['forget-password']">Forget Password</button>-->
+            <button flex md-raised-button color="accent" [disabled]="!loginForm.form.valid" (click)="dummyLogin()">Sign In</button>
                <button flex md-button color="primary"  class="push-bottom" [routerLink]="['/forget-password']">Forget Password</button>
-             
+
           </md-card-actions>
         </md-card>
       </div>
-    </div>    
+    </div>
   </div>
 </div>

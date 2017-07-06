@@ -24,6 +24,19 @@ export class LoginComponent {
               private systemService: SystemService) {
   }
 
+  dummyLogin(): void {
+    this.dummyPopulatePermission();
+    this._router.navigate(['/']);
+  }
+
+  dummyPopulatePermission(): void {
+    let aclData: any = {
+      user: ['VIEW_APN', 'VIEW_PLC', 'VIEW_RGN', 'VIEW_ADM'],
+    }
+    this.authzService.attachRole('user');
+    this.authzService.setAbilities(aclData);
+  }
+
   login(): void {
     this.authnService.login(this.username, this.password)
       .subscribe((result) => {
@@ -38,24 +51,15 @@ export class LoginComponent {
   }
 
   populatePermission(): void {
-    // todo: we should pull permission via promise here
-    // todo: and populate authnService
-    // {"roles":["user"],"abilities":{"user":["VIEW_APN","VIEW_PLC"]}}
-    // this.authzService.attachRole('user');
-    // this.systemService.findAuthorizedModules()
-    //   .map((modules: Module[]) => {
-    //     for (let module of modules) {
-    //       console.log('module: ' + module.code);
-    //       this.authzService.addAbility('user', 'VIEW_' + module.code);
-    //     }
-    //     this._router.navigate(['/']);
-    //   })
-    //   .toPromise();
-
-    // dummy
-    let aclData: any = {
-      user: ['VIEW_APN', 'VIEW_PLC', 'VIEW_RGN', 'VIEW_ADM'],
-    }
-    this.authzService.setAbilities(aclData);
+    this.authzService.attachRole('user');
+    this.systemService.findAuthorizedModules()
+      .map((modules: Module[]) => {
+        for (let module of modules) {
+          console.log('module: ' + module.code);
+          this.authzService.addAbility('user', 'VIEW_' + module.code);
+        }
+        this._router.navigate(['/']);
+      })
+      .toPromise();
   }
 }
