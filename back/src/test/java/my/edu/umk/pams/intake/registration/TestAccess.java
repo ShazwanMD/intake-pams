@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
 import my.edu.umk.pams.intake.identity.model.InGroup;
+import my.edu.umk.pams.intake.identity.model.InPrincipal;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.security.integration.InPermission;
 import my.edu.umk.pams.intake.security.service.AccessService;
@@ -21,22 +22,35 @@ import my.edu.umk.pams.intake.system.service.SystemService;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class TestAccess {
-	
-	@Autowired
-	IdentityService identityService;
-	
-	@Autowired
-	SystemService systemService;
-	
-	@Autowired
-	AccessService accessService;
-	
-	  @Test
-	    @Rollback(false)
-	    public void testAccess() {
-	        InGroup group = identityService.findGroupByName("GRP_APCN");
-	        InModule module = systemService.findModuleByCode("APN");
-	        accessService.grantPermission(module, group, InPermission.VIEW);
-	    }
 
+    @Autowired
+    IdentityService identityService;
+
+    @Autowired
+    SystemService systemService;
+
+    @Autowired
+    AccessService accessService;
+
+    @Test
+    @Rollback(false)
+    public void testAccess() {
+        InGroup group = identityService.findGroupByName("GRP_APCN");
+        InModule module = systemService.findModuleByCode("APN");
+        accessService.grantPermission(module, group, InPermission.VIEW);
+    }
+
+    @Test
+    @Rollback(false)
+    public void testAccessToRoot() {
+        InPrincipal root = identityService.findPrincipalByName("root");
+        InModule apnModule = systemService.findModuleByCode("APN");
+        InModule rgnModule = systemService.findModuleByCode("APN");
+        InModule admModule = systemService.findModuleByCode("APN");
+        InModule plcdmModule = systemService.findModuleByCode("PLC");
+        accessService.grantPermission(apnModule, root, InPermission.VIEW);
+        accessService.grantPermission(plcdmModule, root, InPermission.VIEW);
+        accessService.grantPermission(rgnModule, root, InPermission.VIEW);
+        accessService.grantPermission(admModule, root, InPermission.VIEW);
+    }
 }

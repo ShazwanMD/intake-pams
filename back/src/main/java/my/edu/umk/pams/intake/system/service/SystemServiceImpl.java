@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.dao.*;
 import my.edu.umk.pams.intake.system.model.*;
 import my.edu.umk.pams.intake.util.Util;
+
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -115,9 +117,9 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public List<InModule> findModules(boolean authorized) {
-    	System.out.println("Util.getCurrentUser() :"+Util.getCurrentUser());
+        System.out.println("securityService.getCurrentUser() :" + securityService.getCurrentUser());
         return authorized ?
-                moduleDao.findAuthorized(identityService.findSids(Util.getCurrentUser())) :
+                moduleDao.findAuthorized(identityService.findSids(securityService.getCurrentUser())) :
                 moduleDao.find();
     }
 
@@ -134,7 +136,7 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public List<InModule> findModules(boolean authorized, Integer offset, Integer limit) {
         return authorized ?
-                moduleDao.findAuthorized(identityService.findSids(Util.getCurrentUser()), offset, limit) :
+                moduleDao.findAuthorized(identityService.findSids(securityService.getCurrentUser()), offset, limit) :
                 moduleDao.find(offset, limit);
     }
 
@@ -146,7 +148,7 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public List<InSubModule> findSubModules(boolean authorized) {
         return authorized ?
-                subModuleDao.findAuthorized(identityService.findSids(Util.getCurrentUser())) :
+                subModuleDao.findAuthorized(identityService.findSids(securityService.getCurrentUser())) :
                 subModuleDao.find();
     }
 
@@ -177,25 +179,25 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void saveModule(InModule module) {
-        moduleDao.save(module, Util.getCurrentUser());
+        moduleDao.save(module, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateModule(InModule module) {
-        moduleDao.update(module, Util.getCurrentUser());
+        moduleDao.update(module, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addSubModule(InModule module, InSubModule subModule) {
-        moduleDao.addSubModule(module, subModule, Util.getCurrentUser());
+        moduleDao.addSubModule(module, subModule, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateSubModule(InModule module, InSubModule subModule) {
-        moduleDao.updateSubModule(module, subModule, Util.getCurrentUser());
+        moduleDao.updateSubModule(module, subModule, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -272,7 +274,7 @@ public class SystemServiceImpl implements SystemService {
 
             // update
             referenceNo.setCurrentValue(newValue);
-            referenceNoDao.save(referenceNo, Util.getCurrentUser());
+            referenceNoDao.save(referenceNo, securityService.getCurrentUser());
             sessionFactory.getCurrentSession().flush();
             NumberFormat numberFormat = new DecimalFormat(referenceNo.getSequenceFormat());
 
@@ -289,10 +291,10 @@ public class SystemServiceImpl implements SystemService {
             // get old and new value
             Integer oldValue = referenceNo.getCurrentValue();
             Integer newValue = referenceNo.getCurrentValue() + referenceNo.getIncrementValue();
-            LOG.debug("referenceNo, Util.getCurrentUser() :" + Util.getCurrentUser());
+            LOG.debug("referenceNo, securityService.getCurrentUser() :" + securityService.getCurrentUser());
             // update
             referenceNo.setCurrentValue(newValue);
-            referenceNoDao.save(referenceNo, Util.getCurrentUser());
+            referenceNoDao.save(referenceNo, securityService.getCurrentUser());
             sessionFactory.getCurrentSession().flush();
 
             Date now = new Date();
@@ -374,19 +376,19 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void saveConfiguration(InConfiguration config) {
-        configurationDao.save(config, Util.getCurrentUser());
+        configurationDao.save(config, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateConfiguration(InConfiguration config) {
-        configurationDao.update(config, Util.getCurrentUser());
+        configurationDao.update(config, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeConfiguration(InConfiguration config) {
-        configurationDao.remove(config, Util.getCurrentUser());
+        configurationDao.remove(config, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -437,19 +439,19 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void saveEmailTemplate(InEmailTemplate template) {
-        emailTemplateDao.save(template, Util.getCurrentUser());
+        emailTemplateDao.save(template, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateEmailTemplate(InEmailTemplate template) {
-        emailTemplateDao.update(template, Util.getCurrentUser());
+        emailTemplateDao.update(template, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeEmailTemplate(InEmailTemplate template) {
-        emailTemplateDao.remove(template, Util.getCurrentUser());
+        emailTemplateDao.remove(template, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -490,7 +492,7 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void updateEmailQueue(InEmailQueue emailQueue) {
-    	LOG.debug("emailQueue :"+emailQueue.getQueueStatus());
+        LOG.debug("emailQueue :" + emailQueue.getQueueStatus());
         emailQueueDao.update(emailQueue, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
