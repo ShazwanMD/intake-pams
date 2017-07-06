@@ -15,18 +15,18 @@ import {StateCodeListPage} from './state-codes/state-code-list.page';
 import {MaritalCodeListPage} from './marital-codes/marital-code-list-page';
 import {ReligionCodeListPage} from './religion-codes/religion-code-list.page';
 import {Routes, RouterModule} from '@angular/router';
-import {SetupPage} from "./setup.page";
-import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
-import {GraduateCenterListPage} from "./graduate-centers/graduate-center-list.page";
+import {SetupPage} from './setup.page';
+import {BankCodeListPage} from './bank-codes/bank-code-list.page';
+import {GraduateCenterListPage} from './graduate-centers/graduate-center-list.page';
 import {CountryCodeListPage} from './country-codes/country-code-list.page';
 import {StudyCenterCodeListPage} from './study-center-codes/study-center-code-list.page';
 import {DunCodeListPage} from './dun-codes/dun-code-list-page';
-import {LanguageCodeListPage} from "./language-codes/language-code-list-page";
+import {LanguageCodeListPage} from './language-codes/language-code-list-page';
 import {SubjectCodeListPage} from './subject-codes/subject-code-list-page';
 import {GradeCodeListPage} from './grade-codes/grade-code-list-page';
-import {AuthenticationGuard} from "../identity/guard/authentication.guard";
+import {AuthenticationGuard} from '../identity/guard/authentication.guard';
 
-export const SetupModuleRoutes: Routes = [
+export const setupModuleRoutes: Routes = [
   {
     path: 'setup', component: SetupPage, canActivate: [AuthenticationGuard],
     children: [
@@ -56,8 +56,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'subject-codes', component: SubjectCodeListPage},
       {path: 'grade-codes', component: GradeCodeListPage},
 
-
-    ]
+    ],
   },
 
 ];

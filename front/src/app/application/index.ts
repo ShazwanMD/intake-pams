@@ -93,7 +93,7 @@ export const applicationModuleReducers = {
   supervisorOfferings: intakeSupervisorOfferingListReducer,
   studyModeOfferings: intakeStudyModeOfferingListReducer,
   intakeApplications: intakeApplicationListReducer,
-  intakeApplication: intakeApplicationReducer
+  intakeApplication: intakeApplicationReducer,
 };
 
 @NgModule({

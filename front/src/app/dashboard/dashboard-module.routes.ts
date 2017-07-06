@@ -1,7 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
-import {DashboardPage} from "./dashboard.page";
+import {DashboardPage} from './dashboard.page';
 
-export const DashboardModuleRoutes: Routes = [
+export const dashboardModuleRoutes: Routes = [
   {path: '', component: DashboardPage},
 
 ];

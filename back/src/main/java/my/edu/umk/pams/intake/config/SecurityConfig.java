@@ -7,6 +7,7 @@ import my.edu.umk.pams.intake.security.integration.jwt.filter.JwtAuthenticationF
 import my.edu.umk.pams.intake.security.integration.jwt.handler.JwtAuthenticationFailureHandler;
 import my.edu.umk.pams.intake.security.integration.jwt.handler.JwtAuthenticationSuccessHandler;
 import my.edu.umk.pams.intake.security.integration.jwt.provider.JwtAuthenticationProvider;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -71,33 +72,35 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
 
                 // note: testing acl
-                 .antMatchers("/api/common/**").permitAll()
-                 .antMatchers("/api/system/**").permitAll()
-                 .antMatchers("/api/identity/**").permitAll()
-                 .antMatchers("/api/registration/**").permitAll()
-                 .antMatchers("/api/policy/**").permitAll()
-                 .antMatchers("/api/application/**").permitAll()
-                 .antMatchers("/api/admission/**").permitAll()
-                 .antMatchers("/download/**").permitAll()
+//                 .antMatchers("/api/common/**").permitAll()
+//                 .antMatchers("/api/system/**").permitAll()
+//                 .antMatchers("/api/identity/**").permitAll()
+//                 .antMatchers("/api/registration/**").permitAll()
+//                 .antMatchers("/api/policy/**").permitAll()
+//                 .antMatchers("/api/application/**").permitAll()
+//                 .antMatchers("/api/admission/**").permitAll()
+//                 .antMatchers("/download/**").permitAll()
 
-//                .antMatchers("/api/common/**").hasRole("USER")
-//                .antMatchers("/api/system/**").hasRole("USER")
-//                .antMatchers("/api/identity/**").hasRole("USER")
-//                .antMatchers("/api/registration/**").hasRole("USER")
-//                .antMatchers("/api/policy/**").hasRole("USER")
-//                .antMatchers("/api/application/**").hasRole("USER")
-//                .antMatchers("/api/admission/**").hasRole("USER")
-//                .antMatchers("/download/**").hasRole("USER")
-               .antMatchers("/login").permitAll()
+
+                .authorizeRequests()
+                .antMatchers("/api/registration/**").permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/api/common/**").hasRole("USER")
+                .antMatchers("/api/system/**").hasRole("USER")
+                .antMatchers("/api/identity/**").hasRole("USER")
+                .antMatchers("/api/policy/**").hasRole("USER")
+                .antMatchers("/api/application/**").hasRole("USER")
+                .antMatchers("/api/admission/**").hasRole("USER")
+                .antMatchers("/download/**").hasRole("USER")
                 .anyRequest().permitAll()
                 .and()
 
                 // note: testing acl
-//                .addFilterAfter(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-//                .addFilterAt(jsonUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(jsonUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(restAuthenticationEntryPoint());
     }
@@ -147,7 +150,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new PlaintextPasswordEncoder());
     }
 
-    // note: testing acl @Bean
+    @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
         JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter();
         jwtAuthenticationFilter.setAuthenticationManager(authenticationManager());
