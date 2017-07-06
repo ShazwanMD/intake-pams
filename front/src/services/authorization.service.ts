@@ -100,8 +100,9 @@ export class AuthorizationService {
   /**
    * Remove all roles from current user
    */
-  flushRoles() {
+  flushRoles(): void {
     this.data.roles = [];
+    this.data.abilities = {};
     this.save();
   }
 

@@ -1,4 +1,3 @@
-import {CountryCode} from '../app/common/country-codes/country-code.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';

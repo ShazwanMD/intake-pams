@@ -38,6 +38,7 @@ export class LoginComponent {
   }
 
   login(): void {
+    this.authzService.flushRoles();
     this.authnService.login(this.username, this.password)
       .subscribe((result) => {
         if (result === true) {
