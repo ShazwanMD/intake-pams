@@ -45,11 +45,11 @@ public class TestAccess {
     public void testAccessToRoot() {
         InPrincipal root = identityService.findPrincipalByName("root");
         InModule apnModule = systemService.findModuleByCode("APN");
-        InModule rgnModule = systemService.findModuleByCode("APN");
-        InModule admModule = systemService.findModuleByCode("APN");
-        InModule plcdmModule = systemService.findModuleByCode("PLC");
+        InModule rgnModule = systemService.findModuleByCode("RGN");
+        InModule admModule = systemService.findModuleByCode("ADM");
+        InModule plcModule = systemService.findModuleByCode("PLC");
         accessService.grantPermission(apnModule, root, InPermission.VIEW);
-        accessService.grantPermission(plcdmModule, root, InPermission.VIEW);
+        accessService.grantPermission(plcModule, root, InPermission.VIEW);
         accessService.grantPermission(rgnModule, root, InPermission.VIEW);
         accessService.grantPermission(admModule, root, InPermission.VIEW);
     }
