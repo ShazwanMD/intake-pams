@@ -20,6 +20,7 @@ export class SystemService {
   // ====================================================================================================
 
   findAuthorizedModules(): Observable<Module[]> {
+    console.log('system auth: ' + this.authnService.token);
     let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
     let options: RequestOptions = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/system/modules/authorized', options)

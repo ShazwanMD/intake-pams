@@ -1,12 +1,29 @@
 <td-layout #layout>
   <td-navigation-drawer logo="assets:covalent" sidenavTitle="PAMS Intake" name="Bob" email="bob@gmail.com">
     <md-nav-list>
-      <template let-item let-last="last" ngFor [ngForOf]="routes">
-        <a md-list-item [routerLink]="[item.route]" (click)="layout.close()"><md-icon>{{item.icon}}</md-icon>{{item.title}}</a>
-      </template>
+      <a md-list-item routerLink="['/']" (click)="layout.close()">
+        <md-icon>dashboard</md-icon>
+        Dashboard</a>
+      <a md-list-item [routerLink]="['/setup']" (click)="layout.close()">
+        <md-icon>label</md-icon>
+        Code Setup</a>
+      <a md-list-item [routerLink]="['/registration']" (click)="layout.close()" aclShow="VIEW_RGN">
+        <md-icon>label</md-icon>
+        Applicant Registration</a>
+      <a md-list-item [routerLink]="['/policy']" (click)="layout.close()" aclShow="VIEW_PLC">
+        <md-icon>label</md-icon>
+        Intake Manager</a>
+      <a md-list-item [routerLink]="['/application']" (click)="layout.close()" aclShow="VIEW_APN">
+        <md-icon>label</md-icon>
+        Intake Application</a>
+      <a md-list-item [routerLink]="['/admission']" (click)="layout.close()" aclShow="VIEW_ADM">
+        <md-icon>label</md-icon>
+        Candidate Admission</a>
     </md-nav-list>
     <md-nav-list td-navigation-drawer-menu>
-      <a md-list-item (click)="logout()"><md-icon>exit_to_app</md-icon>Sign out</a>
+      <a md-list-item (click)="logout()">
+        <md-icon>exit_to_app</md-icon>
+        Sign out</a>
     </md-nav-list>
   </td-navigation-drawer>
   <router-outlet></router-outlet>

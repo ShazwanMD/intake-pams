@@ -43,6 +43,7 @@ import {PipeModule} from './app.pipe.module';
 import {environment} from '../environments/environment';
 import {AuthenticationService} from '../services/authentication.service';
 import {AuthorizationService} from '../services/authorization.service';
+import {SystemService} from "../services/system.service";
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -131,6 +132,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     httpInterceptorProviders,
     AuthenticationService,
     AuthorizationService,
+    SystemService,
     Title,
     {provide: UrlSerializer, useClass: CustomUrlSerializer},
   ], // additional providers needed for this module
