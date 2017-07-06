@@ -15,12 +15,13 @@ export class AuthorizationService {
     storageKey: 'AuthorizationService',
   };
 
-  data = {
+  data: any = {
     roles: [],
-    abilities: {}
+    abilities: {},
   };
 
   constructor() {
+    // no op
   }
 
   /**
@@ -207,9 +208,9 @@ export class AuthorizationService {
    * @returns {boolean}
    */
   can(ability) {
-    var role, abilities;
+    let role, abilities;
     // Loop through roles
-    var l = this.data.roles.length;
+    let l: number = this.data.roles.length;
     for (; l--;) {
       // Grab the the current role
       role = this.data.roles[l];
@@ -230,10 +231,10 @@ export class AuthorizationService {
    * @returns {boolean}
    */
   canAny(abilities) {
-    var role, roleAbilities;
+    let role, roleAbilities;
     // Loop through roles
-    var l = this.data.roles.length;
-    var j = abilities.length;
+    let l = this.data.roles.length;
+    let j = abilities.length;
 
     for (; l--;) {
       // Grab the the current role
@@ -254,7 +255,7 @@ export class AuthorizationService {
   /**
    * Persist data to storage based on config
    */
-  private save() {
+  private save(): void {
     switch (this.config.storage) {
       case 'sessionStorage':
         this.saveToStorage('sessionStorage');
@@ -271,15 +272,15 @@ export class AuthorizationService {
   /**
    * Persist data to web storage
    */
-  private saveToStorage(storagetype) {
+  private saveToStorage(storagetype): void {
     window[storagetype]['setItem'](this.config.storageKey, JSON.stringify(this.data));
   }
 
   /**
    * Retrieve data from web storage
    */
-  private fetchFromStorage(storagetype) {
-    var data = window[storagetype]['getItem'](this.config.storageKey);
+  private fetchFromStorage(storagetype): any {
+    let data = window[storagetype]['getItem'](this.config.storageKey);
     return (data) ? JSON.parse(data) : false;
   }
 }

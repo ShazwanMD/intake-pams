@@ -109,6 +109,7 @@ import {subjectCodeListReducer, SubjectCodeListState} from "./subject-codes/subj
 import {SubjectCode} from './../common/subject-codes/subject-code.interface';
 import {gradeCodeListReducer, GradeCodeListState} from "./grade-codes/grade-code-list.reducer";
 import {GradeCode} from './../common/grade-codes/grade-code.interface';
+import {AclShowDirective} from "../identity/directive/acl-show.directive";
 
 export interface SetupModuleState {
   title: TitleState;
@@ -215,6 +216,7 @@ export const setupModuleReducers = {
   ],
   declarations: [
     // page
+    AclShowDirective,
     SetupPage,
     BankCodeListPage,
     GraduateCenterListPage,
@@ -268,7 +270,8 @@ export const setupModuleReducers = {
     GradeCodeEditorDialog,
 
   ],
-  exports: [],
+  exports: [    AclShowDirective,
+  ],
   entryComponents: [
     MaritalCodeEditorDialog,
     LanguageCodeEditorDialog,
@@ -302,7 +305,7 @@ export class SetupModule {
       ngModule: SetupModule,
       providers: [
         appRoutingProviders,
-        SetupActions
+        SetupActions,
       ],
     };
   }

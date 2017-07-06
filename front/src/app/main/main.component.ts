@@ -12,28 +12,28 @@ export class MainComponent {
     title: 'Dashboard',
     route: '/',
     icon: 'dashboard',
-  }, 
-   {
-    title: 'Code Setup',
-    route: '/setup',
-    icon: 'label',
-  }, {
-    title: 'Applicant Registration',
-    route: '/registration',
-    icon: 'label',
-  }, {
-    title: 'Intake Manager',
-    route: '/policy',
-    icon: 'label',
-  }, {
-    title: 'Intake Application',
-    route: '/application',
-    icon: 'label',
-  }, {
-    title: 'Candidate Admission',
-    route: '/admission',
-    icon: 'label',
-  }
+  },
+    {
+      title: 'Code Setup',
+      route: '/setup',
+      icon: 'label',
+    }, {
+      title: 'Applicant Registration',
+      route: '/registration',
+      icon: 'label',
+    }, {
+      title: 'Intake Manager',
+      route: '/policy',
+      icon: 'label',
+    }, {
+      title: 'Intake Application',
+      route: '/application',
+      icon: 'label',
+    }, {
+      title: 'Candidate Admission',
+      route: '/admission',
+      icon: 'label',
+    }
   ];
 
   constructor(private _router: Router) {
