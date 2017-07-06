@@ -24,10 +24,11 @@ import {DunCodeListPage} from './dun-codes/dun-code-list-page';
 import {LanguageCodeListPage} from "./language-codes/language-code-list-page";
 import {SubjectCodeListPage} from './subject-codes/subject-code-list-page';
 import {GradeCodeListPage} from './grade-codes/grade-code-list-page';
+import {AuthenticationGuard} from "../identity/guard/authentication.guard";
 
 export const SetupModuleRoutes: Routes = [
   {
-    path: 'setup', component: SetupPage,
+    path: 'setup', component: SetupPage, canActivate: [AuthenticationGuard],
     children: [
       {path: 'bank-codes', component: BankCodeListPage},
       {path: 'graduate-centers', component: GraduateCenterListPage},

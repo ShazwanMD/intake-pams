@@ -90,7 +90,7 @@ export class AuthorizationService {
    * @param role
    */
   detachRole(role) {
-    var i = this.data.roles.indexOf(role);
+    let i: number = this.data.roles.indexOf(role);
     if (i > -1) {
       this.data.roles.splice(i, 1);
       this.save();

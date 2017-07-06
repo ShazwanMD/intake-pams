@@ -1,10 +1,10 @@
-import { GradeCodeListPage } from './grade-codes/grade-code-list-page';
-import { SubjectCodeEditorDialog } from './subject-codes/dialog/subject-code-editor.dialog';
-import { SubjectCodeListPage } from './subject-codes/subject-code-list-page';
-import { LanguageCode } from './../common/language-codes/language-code.interface';
-import { ResidencyCodeEditorDialog } from './residency-codes/dialog/residency-code-editor.dialog';
-import { ResidencyCodeListPage } from './residency-codes/residency-code-list-page';
-import { StateCodeEditorDialog } from './state-codes/dialog/state-code-editor.dialog';
+import {GradeCodeListPage} from './grade-codes/grade-code-list-page';
+import {SubjectCodeEditorDialog} from './subject-codes/dialog/subject-code-editor.dialog';
+import {SubjectCodeListPage} from './subject-codes/subject-code-list-page';
+import {LanguageCode} from './../common/language-codes/language-code.interface';
+import {ResidencyCodeEditorDialog} from './residency-codes/dialog/residency-code-editor.dialog';
+import {ResidencyCodeListPage} from './residency-codes/residency-code-list-page';
+import {StateCodeEditorDialog} from './state-codes/dialog/state-code-editor.dialog';
 import {DistrictCodeEditorDialog} from './district-codes/dialog/district-code-editor.dialog';
 import {DistrictCodeListPage} from './district-codes/district-code-list-page';
 import {DunCodeEditorDialog} from './dun-codes/dialog/dun-code-editor.dialog';
@@ -91,7 +91,10 @@ import {MaritalCodeEditorDialog} from "./marital-codes/dialog/marital-code-edito
 import {disabilityCodeListReducer, DisabilityCodeListState} from "./disability-codes/disability-code-list.reducer";
 import {schoolCodeListReducer, SchoolCodeListState} from "./school-codes/school-code-list.reducer";
 import {SchoolCode} from './../common/school-codes/school-code.interface';
-import {studyCenterCodeListReducer,StudyCenterCodeListState} from "./study-center-codes/study-center-code-list.reducer";
+import {
+  studyCenterCodeListReducer,
+  StudyCenterCodeListState
+} from "./study-center-codes/study-center-code-list.reducer";
 import {districtCodeListReducer, DistrictCodeListState} from "./district-codes/district-code-list.reducer";
 import {DistrictCode} from './../common/district-codes/district-code.interface';
 import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.reducer";
@@ -110,6 +113,7 @@ import {SubjectCode} from './../common/subject-codes/subject-code.interface';
 import {gradeCodeListReducer, GradeCodeListState} from "./grade-codes/grade-code-list.reducer";
 import {GradeCode} from './../common/grade-codes/grade-code.interface';
 import {AclShowDirective} from "../identity/directive/acl-show.directive";
+import {AuthenticationGuard} from "../identity/guard/authentication.guard";
 
 export interface SetupModuleState {
   title: TitleState;
@@ -270,7 +274,8 @@ export const setupModuleReducers = {
     GradeCodeEditorDialog,
 
   ],
-  exports: [    AclShowDirective,
+  exports: [
+    AclShowDirective,
   ],
   entryComponents: [
     MaritalCodeEditorDialog,
