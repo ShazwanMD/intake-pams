@@ -10,9 +10,9 @@ import {AuthenticationService} from './authentication.service';
 @Injectable()
 export class SystemService {
 
-  constructor(private authnService: AuthenticationService,
-              private http: Http,
-              private _http: HttpInterceptorService) {
+  constructor(private http: Http,
+              private _http: HttpInterceptorService,
+              private authnService: AuthenticationService) {
   }
 
   // ====================================================================================================
@@ -20,7 +20,6 @@ export class SystemService {
   // ====================================================================================================
 
   findAuthorizedModules(): Observable<Module[]> {
-    console.log('system auth: ' + this.authnService.token);
     let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
     let options: RequestOptions = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/system/modules/authorized', options)

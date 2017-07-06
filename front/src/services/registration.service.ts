@@ -1,32 +1,33 @@
 import {Injectable} from '@angular/core';
 import {Response, Http, RequestOptions, Headers} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
-import {environment} from "../environments/environment";
-import {ProgramCode} from "../app/common/program-codes/program-code.interface";
-import {Observable} from "rxjs";
-import {FacultyCode} from "../app/common/faculty-codes/faculty-code.interface";
-import {UserRegistration} from "../app/registration/user-registration.interface";
+import {environment} from '../environments/environment';
+import {Observable} from 'rxjs';
+import {UserRegistration} from '../app/registration/user-registration.interface';
+import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class RegistrationService {
 
   constructor(private http: Http,
-              private _http: HttpInterceptorService) {
+              private _http: HttpInterceptorService,
+              private authnService: AuthenticationService) {
   }
 
   registerUser(registration: UserRegistration): Observable<String> {
-    let headers = new Headers({
+    let headers: Headers = new Headers({
       'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
+      'Authorization': 'Bearer ' + this.authnService.token,
     });
-    let options = new RequestOptions({headers: headers});
+    let options: RequestOptions = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/registration/registerUser', JSON.stringify(registration), options)
-      .flatMap((res:Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
- verifyUser(token: String): Observable<Boolean> {
-   console.log("token :" + token)
-    return this.http.get(environment.endpoint + '/api/registration/verifyUser/' + token)
+  verifyUser(token: String): Observable<Boolean> {
+    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
+    let options: RequestOptions = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/registration/verifyUser/' + token, options)
       .map((res: Response) => <Boolean>res.json());
   }
 }
