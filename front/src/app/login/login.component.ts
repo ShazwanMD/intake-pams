@@ -41,21 +41,21 @@ export class LoginComponent {
     // todo: we should pull permission via promise here
     // todo: and populate authnService
     // {"roles":["user"],"abilities":{"user":["VIEW_APN","VIEW_PLC"]}}
-    this.authzService.attachRole('user');
-    this.systemService.findAuthorizedModules()
-      .map((modules: Module[]) => {
-        for (let module of modules) {
-          console.log('module: ' + module.code);
-          this.authzService.addAbility('user', 'VIEW_' + module.code);
-        }
-        this._router.navigate(['/']);
-      })
-      .toPromise();
+    // this.authzService.attachRole('user');
+    // this.systemService.findAuthorizedModules()
+    //   .map((modules: Module[]) => {
+    //     for (let module of modules) {
+    //       console.log('module: ' + module.code);
+    //       this.authzService.addAbility('user', 'VIEW_' + module.code);
+    //     }
+    //     this._router.navigate(['/']);
+    //   })
+    //   .toPromise();
 
-    // let aclData: any = {
-    //   user: ['VIEW_APN', 'VIEW_PLC'],
-    // }
-    //
-    // this.authzService.setAbilities(aclData);
+    // dummy
+    let aclData: any = {
+      user: ['VIEW_APN', 'VIEW_PLC', 'VIEW_RGN', 'VIEW_ADM'],
+    }
+    this.authzService.setAbilities(aclData);
   }
 }
