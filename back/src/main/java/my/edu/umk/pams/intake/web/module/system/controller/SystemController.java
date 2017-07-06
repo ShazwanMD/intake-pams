@@ -36,9 +36,8 @@ public class SystemController {
     private AuthenticationManager authenticationManager;
 
 
-    @RequestMapping(value = "/listModules", method = RequestMethod.GET)
+    @RequestMapping(value = "/modules/authorized", method = RequestMethod.GET)
     public ResponseEntity<List<Module>>listModules() {
-    	dummyLogin();
     	 List<InModule> modules = systemService.findModules(true);
     	return new ResponseEntity<List<Module>>(systemTransformer.toModuleVos(modules), HttpStatus.OK);
     }

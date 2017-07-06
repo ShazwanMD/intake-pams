@@ -60,9 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/**.css")
                 .antMatchers(HttpMethod.GET, "/assets/**")
                 .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**");
-        ;
     }
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -74,17 +72,31 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/common/**").permitAll() // todo(uda): .hasRole("USER")
-                .antMatchers("/api/identity/**").permitAll() // todo(uda): .hasRole("USER")
-                .antMatchers("/api/registration/**").permitAll() // todo(uda): .hasRole("USER")
-                .antMatchers("/api/policy/**").permitAll() // todo(uda): .hasRole("USER")
-                .antMatchers("/api/application/**").permitAll() // todo(uda): .hasRole("USER")
-                .antMatchers("/api/admission/**").permitAll() // todo(uda): .hasRole("USER")
+
+                // note: testing acl
+                // .antMatchers("/api/common/**").permitAll()
+                // .antMatchers("/api/system/**").permitAll()
+                // .antMatchers("/api/identity/**").permitAll()
+                // .antMatchers("/api/registration/**").permitAll()
+                // .antMatchers("/api/policy/**").permitAll()
+                // .antMatchers("/api/application/**").permitAll()
+                // .antMatchers("/api/admission/**").permitAll()
+                // .antMatchers("/download/**").permitAll()
+
+                .antMatchers("/api/common/**").hasRole("USER")
+                .antMatchers("/api/system/**").hasRole("USER")
+                .antMatchers("/api/identity/**").hasRole("USER")
+                .antMatchers("/api/registration/**").hasRole("USER")
+                .antMatchers("/api/policy/**").hasRole("USER")
+                .antMatchers("/api/application/**").hasRole("USER")
+                .antMatchers("/api/admission/**").hasRole("USER")
                 .antMatchers("/download/**").hasRole("USER")
-                .antMatchers("/login").permitAll()
+               .antMatchers("/login").permitAll()
                 .anyRequest().permitAll()
-                .and()  // todo(max) Simply use @bean instead of jwtAuthenticationFilter()
-//                .addFilterAfter(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .and()
+
+                // note: testing acl
+                .addFilterAfter(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterAt(jsonUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(restAuthenticationEntryPoint());
@@ -135,7 +147,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new PlaintextPasswordEncoder());
     }
 
-    //@Bean // todo(max) reinstate bean to enable authentication
+    @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
         JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter();
         jwtAuthenticationFilter.setAuthenticationManager(authenticationManager());
