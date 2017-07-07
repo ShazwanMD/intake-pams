@@ -53,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
+                .antMatchers("/api/registration/**")
                 .antMatchers(HttpMethod.GET, "/index.html")
                 .antMatchers(HttpMethod.GET, "/**.ico")
                 .antMatchers(HttpMethod.GET, "/**.woff")
@@ -72,21 +73,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-
-                // note: testing acl
-//                 .antMatchers("/api/common/**").permitAll()
-//                 .antMatchers("/api/system/**").permitAll()
-//                 .antMatchers("/api/identity/**").permitAll()
-//                 .antMatchers("/api/registration/**").permitAll()
-//                 .antMatchers("/api/policy/**").permitAll()
-//                 .antMatchers("/api/application/**").permitAll()
-//                 .antMatchers("/api/admission/**").permitAll()
-//                 .antMatchers("/download/**").permitAll()
-
-
-                .authorizeRequests()
-                .antMatchers("/api/registration/**").permitAll()
-                .and()
                 .authorizeRequests()
                 .antMatchers("/api/common/**").hasRole("USER")
                 .antMatchers("/api/system/**").hasRole("USER")
@@ -95,10 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/application/**").hasRole("USER")
                 .antMatchers("/api/admission/**").hasRole("USER")
                 .antMatchers("/download/**").hasRole("USER")
-                .anyRequest().permitAll()
                 .and()
-
-                // note: testing acl
                 .addFilterAfter(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterAt(jsonUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
