@@ -24,19 +24,6 @@ export class LoginPage {
               private systemService: SystemService) {
   }
 
-  dummyLogin(): void {
-    this.dummyPopulatePermission();
-    this._router.navigate(['/']);
-  }
-
-  dummyPopulatePermission(): void {
-    let aclData: any = {
-      user: ['VIEW_APN', 'VIEW_PLC', 'VIEW_RGN', 'VIEW_ADM'],
-    }
-    this.authzService.attachRole('user');
-    this.authzService.setAbilities(aclData);
-  }
-
   login(): void {
     this.authzService.flushRoles();
     this.authnService.login(this.username, this.password)
@@ -52,14 +39,24 @@ export class LoginPage {
   }
 
   populatePermission(): void {
-    this.authzService.attachRole('user');
+    this.authnService.roles.forEach((role: string) => {
+      this.authzService.attachRole(role);
+    });
+
     this.systemService.findAuthorizedModules()
       .map((modules: Module[]) => {
         for (let module of modules) {
           console.log('module: ' + module.code);
           this.authzService.addAbility('user', 'VIEW_' + module.code);
         }
-        this._router.navigate(['/']);
+
+        if (this.authzService.hasRole('ROLE_ADMINISTRATOR') && this.authzService.hasRole('ROLE_USER')) {
+          this._router.navigate(['/secure/administrator']);
+        } else if (this.authzService.hasRole('ROLE_USER')) {
+          this._router.navigate(['/secure/applicant']);
+        } else {
+          this._router.navigate(['/secure/somewhere']);
+        }
       })
       .toPromise();
   }

@@ -1,15 +1,20 @@
 <td-layout-nav>
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>PAMS: Postgraduate Management System</span>
+    <span flex></span>
+  </div>
+
   <td-layout-card-over>
     <div layout="row" layout-align="start center">
       <div>
-        <md-card-title>PAMS INTAKE</md-card-title>
-        <md-card-subtitle>UMK Postgraduate Management System</md-card-subtitle>
+        <md-card-title>PAMS UMK</md-card-title>
+        <md-card-subtitle>Postgraduate Management System</md-card-subtitle>
       </div>
     </div>
     <md-divider></md-divider>
     <md-nav-list hide-gt-sm>
       <template let-item let-last="last" ngFor [ngForOf]="items">
-        <a md-list-item [routerLink]="[item.route]">
+        <a md-list-item [routerLink]="[item.route]" authorizedShow="{}">
           <md-icon md-list-avatar>{{item.icon}}</md-icon>
           <h3 md-line> {{item.title}} </h3>
           <p md-line> {{item.description}} </p>
@@ -26,9 +31,7 @@
             </md-toolbar>
             <md-card-content>
               <div layout="column" layout-padding>
-                <div class="md-subhead">
-                  <span mdTooltip="{{item.description}}" [mdTooltipShowDelay]="2000"  tooltip-position="after">{{item.title}}</span>
-                </div>
+                <div class="md-subhead">{{item.title}}</div>
               </div>
             </md-card-content>
           </md-card>
@@ -37,7 +40,6 @@
     </div>
     <md-divider></md-divider>
     <div layout="row" layout-wrap>
-
       <template let-stat let-last="last" ngFor [ngForOf]="stats">
         <div flex-md="100" flex-gt-md="33" layout="column">
           <md-card class="md-card-colored" flex>

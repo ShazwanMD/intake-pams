@@ -11,7 +11,9 @@ import {environment} from '../environments/environment';
 @Injectable()
 export class AuthenticationService {
 
+  _roles: string[];
   public token: string;
+  public parsedToken: any;
 
   constructor(private http: Http) {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
@@ -33,6 +35,12 @@ export class AuthenticationService {
 
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
+
+          // look at claims
+          this.parsedToken = this.parseToken();
+          this._roles = this.parsedToken.role.split(',');
+          console.log('role: ' + this._roles);
+
           // return true to indicate successful login
           return true;
         } else {
@@ -40,6 +48,13 @@ export class AuthenticationService {
           return false;
         }
       });
+  }
+
+  parseToken(): any {
+    let base64Url: string = this.token.split('.')[1];
+    let base64: string = base64Url.replace('-', '+').replace('_', '/');
+    console.log('token: ' + JSON.stringify(JSON.parse(window.atob(base64))));
+    return JSON.parse(window.atob(base64));
   }
 
   logout(): void {
@@ -53,5 +68,10 @@ export class AuthenticationService {
   }
 
   currentUsername(): any {
-    return JSON.parse(localStorage.getItem('currentUser'))}
+    return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  get roles(): string[] {
+    return this._roles;
+  }
 }

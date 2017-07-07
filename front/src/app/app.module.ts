@@ -48,7 +48,8 @@ import {AuthorizedShowDirective} from './identity/directive/authorized-show.dire
 import {AuthenticatedShowDirective} from './identity/directive/authenticated-show.directive';
 import {NotAuthenticatedShowDirective} from './identity/directive/not-authenticated-show.directive';
 import {SecurePage} from './secure/secure.page';
-import {DashboardPage} from "./secure/dashboard.page";
+import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
+import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -102,7 +103,8 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     LoginPage,
     HomePage,
     SecurePage,
-    DashboardPage,
+    AdministratorDashboardPage,
+    ApplicantDashboardPage,
     ForgetPasswordComponent,
     AuthorizedShowDirective,
     AuthenticatedShowDirective,
@@ -158,5 +160,4 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   bootstrap: [AppComponent],
 })
 export class AppModule {
-
 }

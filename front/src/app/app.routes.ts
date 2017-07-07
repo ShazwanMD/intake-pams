@@ -10,7 +10,9 @@ import {ForgetPasswordComponent} from './login/forget-password.page';
 import {applicationModuleRoutes} from './application/application-module.routes';
 import {setupModuleRoutes} from './setup/setup-module.routes';
 import {SecurePage} from './secure/secure.page';
-import {DashboardPage} from "./secure/dashboard.page";
+import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
+import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
+import {AuthenticationGuard} from './identity/guard/authentication.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginPage},
@@ -20,18 +22,27 @@ const routes: Routes = [
     path: '', component: HomePage,
   },
   {
-    path: 'secure', component: SecurePage,
+    path: 'secure', component: SecurePage, canActivate: [AuthenticationGuard],
     children: [
-      {path: '', component: DashboardPage},
-      ...registrationModuleRoutes,
-      ...policyModuleRoutes,
-      ...admissionModuleRoutes,
-      ...centerModuleRoutes,
-      ...applicationModuleRoutes,
-      ...setupModuleRoutes,
-    ],
+      {
+        path: 'administrator', component: AdministratorDashboardPage,
+        children: [
+          ...registrationModuleRoutes,
+          ...policyModuleRoutes,
+          ...admissionModuleRoutes,
+          ...centerModuleRoutes,
+          ...applicationModuleRoutes,
+          ...setupModuleRoutes,
+        ],
+      },
+      {
+        path: 'applicant', component: ApplicantDashboardPage,
+        children: [
+        ],
+      }    ],
   },
-];
+  ]
+;
 
 export const appRoutingProviders: any[] = [];
 
