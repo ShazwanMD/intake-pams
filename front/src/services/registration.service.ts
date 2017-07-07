@@ -15,12 +15,16 @@ export class RegistrationService {
   }
 
   registerUser(registration: UserRegistration): Observable<String> {
-    return this.http.post(environment.endpoint + '/api/registration/registerUser', JSON.stringify(registration))
+    let headers: Headers = new Headers({'Content-Type': 'application/json'});
+    let options: RequestOptions = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/registration/registerUser', JSON.stringify(registration), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   verifyUser(token: String): Observable<Boolean> {
-    return this.http.get(environment.endpoint + '/api/registration/verifyUser/' + token)
+    let headers: Headers = new Headers();
+    let options: RequestOptions = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/registration/verifyUser/' + token, options)
       .map((res: Response) => <Boolean>res.json());
   }
 }

@@ -8,11 +8,16 @@ import {AuthenticationService} from '../../services/authentication.service';
 })
 export class SecurePage implements OnInit {
 
-  constructor(private authnService: AuthenticationService) {
-    // no op
+  constructor(private _router: Router,
+              private authnService: AuthenticationService) {
   }
 
   ngOnInit(): void {
-    this.authnService.currentUsername();
+    // no op
+  }
+
+  logout(): void {
+    this.authnService.logout();
+    this._router.navigate(['/login']);
   }
 }
