@@ -8,7 +8,6 @@
       <div>
         <md-card-title>Applicant Registration</md-card-title>
         <md-card-subtitle>Applicant Registration for Programs</md-card-subtitle>
-        <md-card-subtitle><a [routerLink]="['/login']">Already Register? Login here!</a></md-card-subtitle>
       </div>
     </div>
     <md-divider></md-divider>
@@ -51,8 +50,10 @@
     </div>
     <md-divider></md-divider>
     <md-card-actions>
-      <button md-button color="primary" (click)="goBack()">Back</button>
-      <button md-raised-button color="accent" [routerLink]="['/registrationInfo']" (click)="register(registrationForm.value, registrationForm.valid)">Register</button>
-     </md-card-actions>
+      <button md-raised-button color="accent" [routerLink]="['/registrationInfo']"
+              (click)="register(registrationForm.value, registrationForm.valid)">Register
+      </button>
+      <button md-button color="primary" [routerLink]="['/login']">Already Register? Login here!</button>
+    </md-card-actions>
   </td-layout-card-over>
 </td-layout-nav>

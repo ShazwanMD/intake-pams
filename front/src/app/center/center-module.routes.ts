@@ -3,7 +3,7 @@ import {CenterPage} from "./center.page";
 import {MgsebCenterPage} from "./mgseb-center.page";
 import {CpsCenterPage} from "./cps-center.page";
 
-export const CenterModuleRoutes: Routes = [
+export const centerModuleRoutes: Routes = [
   {path: 'center', component: CenterPage},
   {path: 'center/MGSEB', redirectTo: 'center/mgseb'},
   {path: 'center/mgseb', component: MgsebCenterPage},

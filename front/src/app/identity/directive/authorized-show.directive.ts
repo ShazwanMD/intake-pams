@@ -1,18 +1,17 @@
 import {Directive, ElementRef, Input, OnInit, Renderer} from '@angular/core';
 import {AuthorizationService} from '../../../services/authorization.service';
 
-@Directive({selector: '[aclShow]'})
-export class AclShowDirective implements OnInit {
+@Directive({selector: '[authorizedShow]'})
+export class AuthorizedShowDirective implements OnInit {
 
-  @Input() aclShow: string;
+  @Input() authorizedShow: string;
 
   constructor(private el: ElementRef, private renderer: Renderer, private authzService: AuthorizationService) {
-    console.log('initing directive');
   }
 
   ngOnInit(): void {
-    console.log('checking for permission: ' + this.aclShow);
-    if (!this.authzService.can(this.aclShow)) {
+    console.log('checking for permission: ' + this.authorizedShow);
+    if (!this.authzService.can(this.authorizedShow)) {
       this.renderer.setElementStyle(this.el.nativeElement, 'display', 'none');
     }
   }

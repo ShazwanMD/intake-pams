@@ -1,27 +1,32 @@
 import {Routes, RouterModule} from '@angular/router';
 
-import {MainComponent} from './main/main.component';
-import {LoginComponent} from './login/login.component';
-import {RegistrationModuleRoutes} from './registration/registration-module.routes';
-import {PolicyModuleRoutes} from './policy/policy-module.routes';
-import {AdmissionModuleRoutes} from './admission/admission-module.routes';
-import {CenterModuleRoutes} from './center/center-module.routes';
-import {ForgetPasswordComponent} from './login/forget-password.component';
-import {dashboardModuleRoutes} from './dashboard/dashboard-module.routes';
+import {LoginPage} from './login/login.page';
+import {HomePage} from './home/home.page';
+import {registrationModuleRoutes} from './registration/registration-module.routes';
+import {policyModuleRoutes} from './policy/policy-module.routes';
+import {admissionModuleRoutes} from './admission/admission-module.routes';
+import {centerModuleRoutes} from './center/center-module.routes';
+import {ForgetPasswordComponent} from './login/forget-password.page';
 import {applicationModuleRoutes} from './application/application-module.routes';
 import {setupModuleRoutes} from './setup/setup-module.routes';
+import {SecurePage} from './secure/secure.page';
+import {DashboardPage} from "./secure/dashboard.page";
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginPage},
   {path: 'forget-password', component: ForgetPasswordComponent},
+  ...registrationModuleRoutes,
   {
-    path: '', component: MainComponent,
+    path: '', component: HomePage,
+  },
+  {
+    path: 'secure', component: SecurePage,
     children: [
-      ...dashboardModuleRoutes,
-      ...RegistrationModuleRoutes,
-      ...PolicyModuleRoutes,
-      ...AdmissionModuleRoutes,
-      ...CenterModuleRoutes,
+      {path: '', component: DashboardPage},
+      ...registrationModuleRoutes,
+      ...policyModuleRoutes,
+      ...admissionModuleRoutes,
+      ...centerModuleRoutes,
       ...applicationModuleRoutes,
       ...setupModuleRoutes,
     ],

@@ -5,8 +5,8 @@ import {TdLoadingService} from '@covalent/core';
 
 @Component({
   selector: 'pams-login-forgetpassword',
-  templateUrl: './forget-password.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './forget-password.page.html',
+  styleUrls: ['./forget-password.page.scss'],
 })
 export class ForgetPasswordComponent {
 

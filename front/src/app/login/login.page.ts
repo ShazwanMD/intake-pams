@@ -9,10 +9,10 @@ import {toPromise} from 'rxjs/operator/toPromise';
 
 @Component({
   selector: 'pams-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
 })
-export class LoginComponent {
+export class LoginPage {
 
   username: string;
   password: string;

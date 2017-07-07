@@ -51,4 +51,7 @@ export class AuthenticationService {
   isLoggedIn(): boolean {
     return tokenNotExpired('currentUser');
   }
+
+  currentUsername(): any {
+    return JSON.parse(localStorage.getItem('currentUser'))}
 }

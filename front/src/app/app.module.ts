@@ -7,14 +7,13 @@ import {CovalentHttpModule, IHttpInterceptor} from '@covalent/http';
 import {CovalentHighlightModule} from '@covalent/highlight';
 import {CovalentMarkdownModule} from '@covalent/markdown';
 import {CovalentChartsModule} from '@covalent/charts';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreModule, combineReducers, ActionReducer} from '@ngrx/store';
 
 import {AppComponent} from './app.component';
 import {MainComponent} from './main/main.component';
-import {DashboardPage} from './dashboard/dashboard.page';
-import {LoginComponent} from './login/login.component';
-import {ForgetPasswordComponent} from './login/forget-password.component';
+import {HomePage} from './home/home.page';
+import {LoginPage} from './login/login.page';
+import {ForgetPasswordComponent} from './login/forget-password.page';
 import {appRoutes, appRoutingProviders} from './app.routes';
 
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
@@ -36,16 +35,20 @@ import {
   INITIAL_REGISTRATION_STATE,
 } from './registration/index';
 import {centerModuleReducers, INITIAL_CENTER_STATE, CenterModuleState, CenterModule} from './center/index';
-import {DashboardModule} from './dashboard/index';
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from './common/index';
 import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from './setup/index';
 import {PipeModule} from './app.pipe.module';
 import {environment} from '../environments/environment';
 import {AuthenticationService} from '../services/authentication.service';
 import {AuthorizationService} from '../services/authorization.service';
-import {SystemService} from "../services/system.service";
-import {AuthenticationGuard} from "./identity/guard/authentication.guard";
-import {AuthorizationGuard} from "./identity/guard/authorization.guard";
+import {SystemService} from '../services/system.service';
+import {AuthenticationGuard} from './identity/guard/authentication.guard';
+import {AuthorizationGuard} from './identity/guard/authorization.guard';
+import {AuthorizedShowDirective} from './identity/directive/authorized-show.directive';
+import {AuthenticatedShowDirective} from './identity/directive/authenticated-show.directive';
+import {NotAuthenticatedShowDirective} from './identity/directive/not-authenticated-show.directive';
+import {SecurePage} from './secure/secure.page';
+import {DashboardPage} from "./secure/dashboard.page";
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -96,9 +99,20 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   declarations: [
     AppComponent,
     MainComponent,
-    LoginComponent,
+    LoginPage,
+    HomePage,
+    SecurePage,
+    DashboardPage,
     ForgetPasswordComponent,
+    AuthorizedShowDirective,
+    AuthenticatedShowDirective,
+    NotAuthenticatedShowDirective,
   ], // directives, components, and pipes owned by this NgModule
+  exports: [
+    AuthorizedShowDirective,
+    AuthenticatedShowDirective,
+    NotAuthenticatedShowDirective,
+  ],
 
   imports: [
     appRoutes,
@@ -120,7 +134,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 
     PipeModule,
 
-    DashboardModule.forRoot(),
+    // DashboardModule.forRoot(),
     CommonModule.forRoot(),
     CenterModule.forRoot(),
     PolicyModule.forRoot(),

@@ -4,7 +4,7 @@ import {VerificationPage} from "./verification.page";
 import {RegistrationInformationPage} from "./registration-information.page";
 
 
-export const RegistrationModuleRoutes: Routes = [
+export const registrationModuleRoutes: Routes = [
   {path: 'registration', component: RegistrationPage},
   {path: 'registrationInfo', component: RegistrationInformationPage},
   {path: 'verification/:token', component: VerificationPage},

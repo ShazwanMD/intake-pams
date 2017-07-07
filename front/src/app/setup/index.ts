@@ -112,7 +112,7 @@ import {subjectCodeListReducer, SubjectCodeListState} from "./subject-codes/subj
 import {SubjectCode} from './../common/subject-codes/subject-code.interface';
 import {gradeCodeListReducer, GradeCodeListState} from "./grade-codes/grade-code-list.reducer";
 import {GradeCode} from './../common/grade-codes/grade-code.interface';
-import {AclShowDirective} from "../identity/directive/acl-show.directive";
+import {AuthorizedShowDirective} from "../identity/directive/authorized-show.directive";
 import {AuthenticationGuard} from "../identity/guard/authentication.guard";
 
 export interface SetupModuleState {
@@ -220,7 +220,6 @@ export const setupModuleReducers = {
   ],
   declarations: [
     // page
-    AclShowDirective,
     SetupPage,
     BankCodeListPage,
     GraduateCenterListPage,
@@ -275,7 +274,6 @@ export const setupModuleReducers = {
 
   ],
   exports: [
-    AclShowDirective,
   ],
   entryComponents: [
     MaritalCodeEditorDialog,

@@ -1,17 +1,32 @@
-<td-layout-nav class="white-red">
+<td-layout-nav>
   <div td-toolbar-content layout="row" layout-align="start center" flex>
     <span hide-xs>Center for Postgraduate Studies Univesiti Malaysia Kelantan</span>
     <span flex></span>
+    <span notAuthenticatedShow>
+      <button flex md-button color="primary" class="push-bottom" [routerLink]="['/login']">Login</button>
+    </span>
   </div>
   <md-toolbar color="primary" class="pad-none pull-top">
     <nav md-tab-nav-bar class="pull-bottom">
       <a md-tab-link
          [routerLink]="['/center/mgseb']">
-        Malaysian Graduate School of Entrepreneur and Business
+        PROSPECTIVE STUDENTS
       </a>
       <a md-tab-link
          [routerLink]="['/center/cps']">
-        Center for Postgraduate Studies
+        POST GRADUATE PROGRAMS
+      </a>
+      <a md-tab-link
+         [routerLink]="['/center/cps']">
+        APPLY NOW!
+      </a>
+      <a md-tab-link
+         [routerLink]="['/login']" notAuthenticatedShow>
+        LOGIN
+      </a>
+      <a md-tab-link
+         [routerLink]="['/secure']" authenticatedShow>
+        SECURE AREA
       </a>
     </nav>
   </md-toolbar>
@@ -43,19 +58,15 @@
   <section class="bgc-red-600 tc-red-50" tdMediaToggle="gt-xs"
            [mediaClasses]="['pad-top-xl', 'pad-bottom-xl']">
     <h2 class="md-headline text-upper text-center tc-grey-50 push-bottom">Programs</h2>
-    <div layout="row" layout-align-gt-xs="center center">
+    <div layout="row" align="center center">
       <div flex-gt-xs="80" layout="row" layout-wrap>
         <div class="text-center" flex-xs="33" flex-gt-xs="33">
           <md-icon class="tc-grey-50 md-display-2">system_update_alt</md-icon>
-          <div class="pad-bottom-md">Post Graduates Programs</div>
+          <div class="pad-bottom-md">MGSEB Programs</div>
         </div>
         <div class="text-center" flex-xs="33" flex-gt-xs="33">
           <md-icon class="tc-grey-50 md-display-2 ">dashboard</md-icon>
-          <div class="pad-bottom-md">Professional Programs</div>
-        </div>
-        <div class="text-center" flex-xs="33" flex-gt-xs="33">
-          <md-icon class="tc-grey-50 md-display-2">email</md-icon>
-          <div class="pad-bottom-md">Custom Programs</div>
+          <div class="pad-bottom-md">CPS Programs</div>
         </div>
       </div>
     </div>
