@@ -410,8 +410,9 @@ public class PolicyController {
     // ====================================================================================================
 
     private void dummyLogin() {
-        InAutoLoginToken token = new InAutoLoginToken("root");
-        Authentication authed = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(authed);
+//        Noop
+//        InAutoLoginToken token = new InAutoLoginToken("root");
+//        Authentication authed = authenticationManager.authenticate(token);
+//        SecurityContextHolder.getContext().setAuthentication(authed);
     }
 }
