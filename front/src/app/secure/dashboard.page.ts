@@ -1,4 +1,4 @@
-import {Component, Output, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -18,52 +18,42 @@ export class DashboardPage implements OnInit {
   ngOnInit(): void {
     {
       this.items = [{
-        title: 'Profile',
-        route: '/profile',
+        title: 'Application',
+        route: '/secure/application',
         icon: 'contacts',
         color: 'blue-700',
-        description: '',
+        description: 'Intake Application',
       },
         {
-          title: 'Planner',
-          // route: '/planner/academic-sessions',
-          route: '/planner',
+          title: 'Manager',
+          route: '/secure/policy',
           icon: 'assignment',
           color: 'blue-700',
-          description: '',
+          description: 'Intake Manager',
         }
         ,
         {
-          title: 'Term',
-          route: '/term',
+          title: 'Registration',
+          route: '/registration',
           icon: 'description',
           color: 'blue-700',
-          description: '',
+          description: 'Applicant Registration',
         },
         {
-          title: 'Graduation',
-          route: '/graduation',
+          title: 'Admission',
+          route: '/secure/admission',
           icon: 'assignment',
           color: 'blue-700',
-          description: '',
+          description: 'Candidate Admission',
         },
         {
           title: 'Setup',
-          route: '/setup',
+          route: '/secure/setup',
           icon: 'assignment',
           color: 'blue-700',
-          description: ' ',
+          description: 'Intake Setup',
         },
-         /*{
-          title: 'Subject Registration',
-          route: '/term',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: ' ',
-        }, */
-
       ];
     }
-    ;
   }
 }
