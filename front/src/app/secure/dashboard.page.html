@@ -2,8 +2,8 @@
   <td-layout-card-over>
     <div layout="row" layout-align="start center">
       <div>
-        <md-card-title>PAMS UMK</md-card-title>
-        <md-card-subtitle>Postgraduate Management System</md-card-subtitle>
+        <md-card-title>PAMS INTAKE</md-card-title>
+        <md-card-subtitle>UMK Postgraduate Management System</md-card-subtitle>
       </div>
     </div>
     <md-divider></md-divider>
@@ -26,7 +26,9 @@
             </md-toolbar>
             <md-card-content>
               <div layout="column" layout-padding>
-                <div class="md-subhead">{{item.title}}</div>
+                <div class="md-subhead">
+                  <span mdTooltip="{{item.description}}" [mdTooltipShowDelay]="2000"  tooltip-position="after">{{item.title}}</span>
+                </div>
               </div>
             </md-card-content>
           </md-card>
