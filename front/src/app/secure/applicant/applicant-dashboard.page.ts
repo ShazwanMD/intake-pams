@@ -1,5 +1,6 @@
 import {Component, Output, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import {AuthorizationService} from '../../../services/authorization.service';
 
 @Component({
   selector: 'pams-applicant-dashboard',
@@ -12,56 +13,50 @@ export class ApplicantDashboardPage implements OnInit {
   private items: Object[];
 
   constructor(private router: Router,
-              private  route: ActivatedRoute) {
+              private  route: ActivatedRoute,
+              private authz:AuthorizationService
+  ) {
   }
 
   ngOnInit(): void {
+    console.log('auth:' + JSON.stringify(this.authz.data));
     {
       this.items = [{
-        title: 'Profile',
-        route: '/profile',
+        title: 'Application',
+        route: '/secure/applicant/application',
         icon: 'contacts',
         color: 'blue-700',
-        description: '',
+        description: 'Intake Application',
       },
-        {
-          title: 'Planner',
-          // route: '/planner/academic-sessions',
-          route: '/planner',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: '',
-        }
+        // {
+        //   title: 'Manager',
+        //   route: '/secure/applicant/policy',
+        //   icon: 'assignment',
+        //   color: 'blue-700',
+        //   description: 'Intake Manager',
+        // }
         ,
         {
-          title: 'Term',
-          route: '/term',
+          title: 'Registration',
+          route: '/registration',
           icon: 'description',
           color: 'blue-700',
-          description: '',
+          description: 'Applicant Registration',
         },
         {
-          title: 'Graduation',
-          route: '/graduation',
+          title: 'Admission',
+          route: '/secure/applicant/admission',
           icon: 'assignment',
           color: 'blue-700',
-          description: '',
+          description: 'Candidate Admission',
         },
-        {
-          title: 'Setup',
-          route: '/setup',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: ' ',
-        },
-         /*{
-          title: 'Subject Registration',
-          route: '/term',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: ' ',
-        }, */
-
+        // {
+        //   title: 'Setup',
+        //   route: '/secure/applicant/setup',
+        //   icon: 'assignment',
+        //   color: 'blue-700',
+        //   description: 'Intake Setup',
+        // },
       ];
     }
     ;
