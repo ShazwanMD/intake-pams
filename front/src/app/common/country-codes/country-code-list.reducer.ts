@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {CommonActions} from "../common.action";
-import { CountryCode } from "./country-code.interface";
+import {CommonActions} from '../common.action';
+import {CountryCode} from '../../shared/model/common/country-code.interface';
 
 export type CountryCodeListState = CountryCode[];
 

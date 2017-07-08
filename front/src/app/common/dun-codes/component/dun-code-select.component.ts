@@ -1,12 +1,10 @@
-import { SetupActions } from './../../../setup/setup.action';
-import { SetupModuleState } from './../../../setup/index';
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import { DunCode } from "../dun-code.interface";
-
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {DunCode} from '../../../shared/model/common/dun-code.interface';
+import {SetupModuleState} from '../../../secure/administrator/setup/index';
+import {SetupActions} from '../../../secure/administrator/setup/setup.action';
 
 @Component({
   selector: 'pams-dun-code-select',
@@ -14,10 +12,10 @@ import { DunCode } from "../dun-code.interface";
 })
 export class DunCodeSelectComponent implements OnInit {
 
-  private DUN_CODE = "setupModuleState.dunCodes".split(".");
+  private DUN_CODE: string[] = 'setupModuleState.dunCodes'.split('.');
+  private dunCodes$: Observable<DunCode[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  dunCodes$: Observable<DunCode[]>;
 
   constructor(private store: Store<SetupModuleState>,
               private actions: SetupActions) {

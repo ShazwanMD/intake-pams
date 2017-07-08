@@ -4,7 +4,7 @@ import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {CommonActions} from '../../common.action';
 import {CommonModuleState} from '../../index';
-import {StateCode} from '../state-code.interface';
+import {StateCode} from '../../../shared/model/common/state-code.interface';
 
 @Component({
   selector: 'pams-state-code-select',
@@ -31,4 +31,4 @@ export class StateCodeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

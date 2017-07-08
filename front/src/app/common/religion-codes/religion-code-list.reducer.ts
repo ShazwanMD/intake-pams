@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {CommonActions} from "../common.action";
-import { ReligionCode } from "./religion-code.interface";
+import {CommonActions} from '../common.action';
+import {ReligionCode} from '../../shared/model/common/religion-code.interface';
 
 export type ReligionCodeListState = ReligionCode[];
 

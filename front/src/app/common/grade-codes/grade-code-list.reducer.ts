@@ -1,8 +1,6 @@
-import { SetupActions } from './../../setup/setup.action';
 import {Action} from '@ngrx/store';
-
-import { GradeCode } from "./grade-code.interface";
-
+import {GradeCode} from '../../shared/model/common/grade-code.interface';
+import {SetupActions} from '../../secure/administrator/setup/setup.action';
 
 export type GradeCodeListState = GradeCode[];
 

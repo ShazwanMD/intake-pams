@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import { CommonModuleState } from "../../index";
-import { SubjectCode } from "../subject-code.interface";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {SubjectCode} from '../../../shared/model/common/subject-code.interface';
 
 @Component({
   selector: 'pams-subject-code-select',
@@ -12,7 +12,7 @@ import { SubjectCode } from "../subject-code.interface";
 })
 export class SubjectCodeSelectComponent implements OnInit {
 
-  private SUBJECT_CODE = "commonModuleState.subjectCodes".split(".");
+  private SUBJECT_CODE: string[] = 'commonModuleState.subjectCodes'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   subjectCodes$: Observable<SubjectCode[]>;
@@ -30,4 +30,4 @@ export class SubjectCodeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

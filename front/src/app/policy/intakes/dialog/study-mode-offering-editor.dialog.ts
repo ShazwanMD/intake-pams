@@ -5,7 +5,7 @@ import {Store} from '@ngrx/store';
 import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {IntakeActions} from '../intake.action';
 import {PolicyModuleState} from '../../index';
-import {StudyMode} from '../../../common/study-modes/study-mode.interface';
+import {StudyMode} from '../../../shared/model/common/study-mode.interface';
 import {Intake} from '../../../shared/model/policy/intake.interface';
 import {StudyModeOffering} from '../../../shared/model/policy/study-mode-offering.interface';
 

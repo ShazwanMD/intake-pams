@@ -1,5 +1,5 @@
 import {MetaObject} from "../../../core/meta-object.interface";
-import {ProgramCode} from "../../../common/program-codes/program-code.interface";
+import {ProgramCode} from "../common/program-code.interface";
 import { Intake } from "./intake.interface";
 export interface ProgramOffering extends MetaObject {
   id:number;

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {SubjectCode} from "./subject-code.interface";
-import {CommonActions} from "../common.action";
+import {CommonActions} from '../common.action';
+import {SubjectCode} from '../../shared/model/common/subject-code.interface';
 
 export type SubjectCodeListState = SubjectCode[];
 

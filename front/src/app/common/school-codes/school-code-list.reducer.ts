@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {SchoolCode} from "./school-code.interface";
-import {CommonActions} from "../common.action";
+import {CommonActions} from '../common.action';
+import {SchoolCode} from '../../shared/model/common/school-code.interface';
 
 export type SchoolCodeListState = SchoolCode[];
 

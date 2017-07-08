@@ -5,7 +5,7 @@ import {Store} from '@ngrx/store';
 import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {IntakeActions} from '../intake.action';
 import {PolicyModuleState} from '../../index';
-import {SupervisorCode} from '../../../common/supervisor-codes/supervisor-code.interface';
+import {SupervisorCode} from '../../../shared/model/common/supervisor-code.interface';
 import {Intake} from '../../../shared/model/policy/intake.interface';
 import {SupervisorOffering} from '../../../shared/model/policy/supervisor-offering.interface';
 

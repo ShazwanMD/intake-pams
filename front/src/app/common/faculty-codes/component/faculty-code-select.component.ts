@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import { CommonModuleState } from "../../index";
-import { FacultyCode } from "../faculty-code.interface";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {FacultyCode} from '../../../shared/model/common/faculty-code.interface';
 
 @Component({
   selector: 'pams-faculty-code-select',
@@ -13,7 +12,7 @@ import { FacultyCode } from "../faculty-code.interface";
 })
 export class FacultyCodeSelectComponent implements OnInit {
 
-  private FACULTY_CODE = "commonModuleState.facultyCodes".split(".");
+  private FACULTY_CODE: string[] = 'commonModuleState.facultyCodes'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   facultyCodes$: Observable<FacultyCode[]>;

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {CenterActions} from "./center.action";
-import {GraduateCenter} from "../common/graduate-centers/graduate-center.interface";
+import {CenterActions} from './center.action';
+import {GraduateCenter} from '../shared/model/common/graduate-center.interface';
 
 export type GraduateCenterState = GraduateCenter;
 

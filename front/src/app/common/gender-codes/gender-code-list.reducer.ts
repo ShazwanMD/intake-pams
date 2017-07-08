@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {GenderCode} from "./gender-code.interface";
-import {CommonActions} from "../common.action";
+import {CommonActions} from '../common.action';
+import {GenderCode} from '../../shared/model/common/gender-code.interface';
 
 export type GenderCodeListState = GenderCode[];
 

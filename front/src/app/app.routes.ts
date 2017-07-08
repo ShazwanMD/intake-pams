@@ -8,7 +8,6 @@ import {admissionModuleRoutes} from './admission/admission-module.routes';
 import {centerModuleRoutes} from './center/center-module.routes';
 import {ForgetPasswordComponent} from './login/forget-password.page';
 import {applicationModuleRoutes} from './secure/applicant/application/application-module.routes';
-import {setupModuleRoutes} from './setup/setup-module.routes';
 import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
 import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
@@ -32,7 +31,6 @@ const routes: Routes = [
           ...admissionModuleRoutes,
           ...centerModuleRoutes,
           ...applicationModuleRoutes,
-          ...setupModuleRoutes,
         ],
       },
       {

@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import {CommonModuleState} from "../../index";
-import { StudyCenterCode } from "../study-center-code.interface";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {StudyCenterCode} from '../../../shared/model/common/study-center-code.interface';
 
 @Component({
   selector: 'pams-study-center-code-select',
@@ -14,10 +14,10 @@ import { StudyCenterCode } from "../study-center-code.interface";
 })
 export class StudyCenterCodeSelectComponent implements OnInit {
 
-  private STUDY_CENTER_CODES = "commonModuleState.studyCenterCodes".split(".");
+  private STUDY_CENTER_CODES:string[] = 'commonModuleState.studyCenterCodes'.split('.');
+  private studyCenterCodes$: Observable<StudyCenterCode[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  studyCenterCodes$: Observable<StudyCenterCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {

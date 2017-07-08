@@ -7,7 +7,7 @@ import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
 import {PolicyModuleState} from '../../index';
 import {IntakeActions} from '../intake.action';
-import {ProgramCode} from '../../../common/program-codes/program-code.interface';
+import {ProgramCode} from '../../../shared/model/common/program-code.interface';
 import {ProgramOffering} from '../../../shared/model/policy/program-offering.interface';
 import {Intake} from '../../../shared/model/policy/intake.interface';
 

@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import {CommonModuleState} from "../../index";
-import {StudyMode} from "../study-mode.interface";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {StudyMode} from '../../../shared/model/common/study-mode.interface';
 
 @Component({
   selector: 'pams-study-mode-select',
@@ -14,10 +13,10 @@ import {StudyMode} from "../study-mode.interface";
 })
 export class StudyModeSelectComponent implements OnInit {
 
-  private STUDY_MODE = "commonModuleState.studyModes".split(".");
+  private STUDY_MODE: string[] = 'commonModuleState.studyModes'.split('.');
+  private studyModes$: Observable<StudyMode[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  studyModes$: Observable<StudyMode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
@@ -32,4 +31,4 @@ export class StudyModeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

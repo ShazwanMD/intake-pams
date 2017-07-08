@@ -1,7 +1,6 @@
 import {Action} from '@ngrx/store';
-import {CommonActions} from "../common.action";
-// import { StateCodeListState } from "../../setup/state-codes/state-code-list.reducer";
-import { StateCode } from "./state-code.interface";
+import {CommonActions} from '../common.action';
+import {StateCode} from '../../shared/model/common/state-code.interface';
 
 export type StateCodeListState = StateCode[];
 

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {LanguageCode} from "./language-code.interface";
-import {CommonActions} from "../common.action";
+import {CommonActions} from '../common.action';
+import {LanguageCode} from '../../shared/model/common/language-code.interface';
 
 export type LanguageCodeListState = LanguageCode[];
 

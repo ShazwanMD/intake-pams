@@ -1,5 +1,5 @@
 import {Language} from '../../../../../../shared/model/application/language.interface';
-import {LanguageCode} from '../../../../../../common/language-codes/language-code.interface';
+import {LanguageCode} from '../../../../../../shared/model/common/language-code.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';

@@ -1,7 +1,7 @@
-import { SetupActions } from './../../setup/setup.action';
 import {Action} from '@ngrx/store';
 
-import { ParliamentCode } from './parliament-code.interface';
+import { ParliamentCode } from '../../shared/model/common/parliament-code.interface';
+import {SetupActions} from '../../secure/administrator/setup/setup.action';
 
 export type ParliamentCodeListState = ParliamentCode[];
 

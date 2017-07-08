@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import { CommonModuleState } from "../../index";
-import { DisabilityCode } from "../disability-code.interface";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {DisabilityCode} from '../../../shared/model/common/disability-code.interface';
 
 @Component({
   selector: 'pams-disability-code-select',
@@ -12,7 +12,7 @@ import { DisabilityCode } from "../disability-code.interface";
 })
 export class DisabilityCodeSelectComponent implements OnInit {
 
-  private DISABILITY_CODE = "commonModuleState.disabilityCodes".split(".");
+  private DISABILITY_CODE: string[] = 'commonModuleState.disabilityCodes'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   disabilityCodes$: Observable<DisabilityCode[]>;
@@ -30,4 +30,4 @@ export class DisabilityCodeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {MaritalCode} from "./marital-code.interface";
-import {CommonActions} from "../common.action";
+import {CommonActions} from '../common.action';
+import {MaritalCode} from '../../shared/model/common/marital-code.interface';
 
 export type MaritalCodeListState = MaritalCode[];
 

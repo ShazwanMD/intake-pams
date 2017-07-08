@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import { CommonModuleState } from "../../index";
-import { MaritalCode } from "../marital-code.interface";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {MaritalCode} from '../../../shared/model/common/marital-code.interface';
 
 @Component({
   selector: 'pams-marital-code-select',
@@ -14,10 +13,10 @@ import { MaritalCode } from "../marital-code.interface";
 })
 export class MaritalCodeSelectComponent implements OnInit {
 
-  private MARITAL_CODE = "commonModuleState.maritalCodes".split(".");
+  private MARITAL_CODE: string[] = 'commonModuleState.maritalCodes'.split('.');
+  private maritalCodes$: Observable<MaritalCode[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  maritalCodes$: Observable<MaritalCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
@@ -32,4 +31,4 @@ export class MaritalCodeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

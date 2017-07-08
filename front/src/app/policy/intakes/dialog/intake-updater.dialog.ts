@@ -5,7 +5,7 @@ import {Store} from '@ngrx/store';
 import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {IntakeActions} from '../intake.action';
 import {PolicyModuleState} from '../../index';
-import {GraduateCenter} from '../../../common/graduate-centers/graduate-center.interface';
+import {GraduateCenter} from '../../../shared/model/common/graduate-center.interface';
 import {Intake} from '../../../shared/model/policy/intake.interface';
 import {IntakeSession} from '../../../shared/model/policy/intake-session.interface';
 import {ProgramLevel} from '../../../shared/model/policy/program-level.interface';

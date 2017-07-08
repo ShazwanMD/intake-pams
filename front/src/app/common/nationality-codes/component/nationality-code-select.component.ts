@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import { CommonModuleState } from "../../index";
-import { NationalityCode } from "../nationality-code.interface";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {NationalityCode} from '../../../shared/model/common/nationality-code.interface';
 
 @Component({
   selector: 'pams-nationality-code-select',
@@ -13,10 +13,10 @@ import { NationalityCode } from "../nationality-code.interface";
 })
 export class NationalityCodeSelectComponent implements OnInit {
 
-  private NATIONALITY_CODE = "commonModuleState.nationalityCodes".split(".");
+  private NATIONALITY_CODE: string[] = 'commonModuleState.nationalityCodes'.split('.');
+  private nationalityCodes$: Observable<NationalityCode[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  nationalityCodes$: Observable<NationalityCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {

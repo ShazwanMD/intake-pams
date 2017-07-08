@@ -36,7 +36,6 @@ import {
 } from './registration/index';
 import {centerModuleReducers, INITIAL_CENTER_STATE, CenterModuleState, CenterModule} from './center/index';
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers, CommonModule} from './common/index';
-import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from './setup/index';
 import {PipeModule} from './app.pipe.module';
 import {environment} from '../environments/environment';
 import {AuthenticationService} from '../services/authentication.service';
@@ -64,7 +63,6 @@ interface ApplicationState {
   admissionModuleState: AdmissionModuleState;
   registrationModuleState: RegistrationModuleState;
   centerModuleState: CenterModuleState;
-  setupModuleState: SetupModuleState;
 }
 ;
 
@@ -77,7 +75,6 @@ export const INITIAL_APP_STATE: ApplicationState =
     admissionModuleState: INITIAL_ADMISSION_STATE,
     registrationModuleState: INITIAL_REGISTRATION_STATE,
     centerModuleState: INITIAL_CENTER_STATE,
-    setupModuleState: INITIAL_SETUP_STATE,
   };
 
 // combine reducer
@@ -88,7 +85,6 @@ export const applicationReducers = {
   admissionModuleState: combineReducers({...admissionModuleReducers}),
   registrationModuleState: combineReducers({...registrationModuleReducers}),
   centerModuleState: combineReducers({...centerModuleReducers}),
-  setupModuleState: combineReducers({...setupModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
@@ -143,7 +139,6 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     ApplicationModule.forRoot(),
     AdmissionModule.forRoot(),
     RegistrationModule.forRoot(),
-    SetupModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,

@@ -1,13 +1,10 @@
-import { SetupActions } from './../../../setup/setup.action';
-import { SetupModuleState } from './../../../setup/index';
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-
-import { ParliamentCode } from "../parliament-code.interface";
-
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {ParliamentCode} from '../../../shared/model/common/parliament-code.interface';
+import {SetupModuleState} from '../../../secure/administrator/setup/index';
+import {SetupActions} from '../../../secure/administrator/setup/setup.action';
 
 @Component({
   selector: 'pams-parliament-code-select',
@@ -15,10 +12,10 @@ import { ParliamentCode } from "../parliament-code.interface";
 })
 export class ParliamentCodeSelectComponent implements OnInit {
 
-  private PARLIAMENT_CODE = "setupModuleState.parliamentCodes".split(".");
+  private PARLIAMENT_CODE: string[] = 'setupModuleState.parliamentCodes'.split('.');
+  private parliamentCodes$: Observable<ParliamentCode[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  parliamentCodes$: Observable<ParliamentCode[]>;
 
   constructor(private store: Store<SetupModuleState>,
               private actions: SetupActions) {

@@ -4,7 +4,7 @@ import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {CommonActions} from '../../common.action';
 import {CommonModuleState} from '../../index';
-import {CountryCode} from '../country-code.interface';
+import {CountryCode} from "../../../shared/model/common/country-code.interface";
 
 @Component({
   selector: 'pams-country-code-select',

@@ -1,10 +1,10 @@
 import {Result} from '../../../../../shared/model/application/result.interface';
-import {RaceCode} from '../../../../../common/race-codes/race-code.interface';
-import {GenderCode} from '../../../../../common/gender-codes/gender-code.interface';
-import {CountryCode} from '../../../../../common/country-codes/country-code.interface';
-import {StateCode} from '../../../../../common/state-codes/state-code.interface';
-import {EthnicityCode} from '../../../../../common/ethnicity-codes/ethnicity-code.interface';
-import {DisabilityCode} from '../../../../../common/disability-codes/disability-code.interface';
+import {RaceCode} from '../../../../../shared/model/common/race-code.interface';
+import {GenderCode} from '../../../../../shared/model/common/gender-code.interface';
+import {CountryCode} from '../../../../../shared/model/common/country-code.interface';
+import {StateCode} from '../../../../../shared/model/common/state-code.interface';
+import {EthnicityCode} from '../../../../../shared/model/common/ethnicity-code.interface';
+import {DisabilityCode} from '../../../../../shared/model/common/disability-code.interface';
 import {Referee} from '../../../../../shared/model/application/referee.interface';
 import {Employment} from '../../../../../shared/model/application/employment.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
@@ -16,9 +16,9 @@ import {IntakeApplicationActions} from '../intake-application.action';
 import {Observable} from 'rxjs/Observable';
 import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
 import {Language} from '../../../../../shared/model/application/language.interface';
-import {NationalityCode} from '../../../../../common/nationality-codes/nationality-code.interface';
-import {MaritalCode} from '../../../../../common/marital-codes/marital-code.interface';
-import {ReligionCode} from '../../../../../common/religion-codes/religion-code.interface';
+import {NationalityCode} from '../../../../../shared/model/common/nationality-code.interface';
+import {MaritalCode} from '../../../../../shared/model/common/marital-code.interface';
+import {ReligionCode} from '../../../../../shared/model/common/religion-code.interface';
 import {MdSnackBar} from '@angular/material';
 
 @Component({

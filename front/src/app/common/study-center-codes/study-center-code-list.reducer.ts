@@ -1,7 +1,6 @@
 import {Action} from '@ngrx/store';
-import {CommonActions} from "../common.action";
-import { StudyCenterCode } from "./study-center-code.interface";
-
+import {CommonActions} from '../common.action';
+import {StudyCenterCode} from '../../shared/model/common/study-center-code.interface';
 
 export type StudyCenterCodeListState = StudyCenterCode[];
 

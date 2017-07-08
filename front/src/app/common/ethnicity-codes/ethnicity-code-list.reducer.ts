@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {CommonActions} from "../common.action";
-import { EthnicityCode } from "./ethnicity-code.interface";
+import {CommonActions} from '../common.action';
+import {EthnicityCode} from '../../shared/model/common/ethnicity-code.interface';
 
 export type EthnicityCodeListState = EthnicityCode[];
 

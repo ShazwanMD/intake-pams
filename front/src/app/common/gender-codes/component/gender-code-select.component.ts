@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import { CommonModuleState } from "../../index";
-import { GenderCode } from "../gender-code.interface";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {GenderCode} from '../../../shared/model/common/gender-code.interface';
 
 @Component({
   selector: 'pams-gender-code-select',
@@ -13,7 +13,7 @@ import { GenderCode } from "../gender-code.interface";
 })
 export class GenderCodeSelectComponent implements OnInit {
 
-  private GENDER_CODE = "commonModuleState.genderCodes".split(".");
+  private GENDER_CODE: string[] = 'commonModuleState.genderCodes'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   genderCodes$: Observable<GenderCode[]>;

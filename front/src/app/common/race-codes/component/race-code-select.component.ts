@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import { CommonModuleState } from "../../index";
-import { RaceCode } from "../race-code.interface";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {RaceCode} from '../../../shared/model/common/race-code.interface';
 
 @Component({
   selector: 'pams-race-code-select',
@@ -14,7 +13,7 @@ import { RaceCode } from "../race-code.interface";
 })
 export class RaceCodeSelectComponent implements OnInit {
 
-  private RACE_CODE = "commonModuleState.raceCodes".split(".");
+  private RACE_CODE: string[] = 'commonModuleState.raceCodes'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   raceCodes$: Observable<RaceCode[]>;

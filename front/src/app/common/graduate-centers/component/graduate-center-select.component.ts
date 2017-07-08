@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
-import {GraduateCenter} from '../graduate-center.interface';
 import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {CommonActions} from '../../common.action';
 import {CommonModuleState} from '../../index';
+import {GraduateCenter} from '../../../shared/model/common/graduate-center.interface';
 
 @Component({
   selector: 'pams-graduate-center-select',
@@ -13,10 +13,10 @@ import {CommonModuleState} from '../../index';
 })
 export class GraduateCenterSelectComponent implements OnInit {
 
-  private GRADUATE_CENTERS = 'commonModuleState.graduateCenters'.split('.');
+  private GRADUATE_CENTERS: string[] = 'commonModuleState.graduateCenters'.split('.');
+  private graduateCenters$: Observable<GraduateCenter[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  graduateCenters$: Observable<GraduateCenter[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
@@ -31,4 +31,4 @@ export class GraduateCenterSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

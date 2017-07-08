@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs/Observable';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {StudyCenterCode} from '../../../../../common/study-center-codes/study-center-code.interface';
+import {StudyCenterCode} from '../../../../../shared/model/common/study-center-code.interface';
 import {Component, Input, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';

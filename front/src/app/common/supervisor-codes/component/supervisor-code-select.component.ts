@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import {CommonModuleState} from "../../index";
-import {SupervisorCode} from "../supervisor-code.interface";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {SupervisorCode} from '../../../shared/model/common/supervisor-code.interface';
 
 @Component({
   selector: 'pams-supervisor-code-select',
@@ -14,10 +13,10 @@ import {SupervisorCode} from "../supervisor-code.interface";
 })
 export class SupervisorCodeSelectComponent implements OnInit {
 
-  private SUPERVISOR_CODES = "commonModuleState.supervisorCodes".split(".");
+  private SUPERVISOR_CODES: string[] = 'commonModuleState.supervisorCodes'.split('.');
+  private supervisorCodes$: Observable<SupervisorCode[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  supervisorCodes$: Observable<SupervisorCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
@@ -32,4 +31,4 @@ export class SupervisorCodeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

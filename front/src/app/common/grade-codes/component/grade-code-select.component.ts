@@ -1,12 +1,10 @@
-import { SetupActions } from './../../../setup/setup.action';
-import { SetupModuleState } from './../../../setup/index';
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import { GradeCode } from "../grade-code.interface";
-
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {GradeCode} from '../../../shared/model/common/grade-code.interface';
+import {SetupModuleState} from '../../../secure/administrator/setup/index';
+import {SetupActions} from '../../../secure/administrator/setup/setup.action';
 
 @Component({
   selector: 'pams-grade-code-select',
@@ -14,7 +12,7 @@ import { GradeCode } from "../grade-code.interface";
 })
 export class GradeCodeSelectComponent implements OnInit {
 
-  private GRADE_CODE = "setupModuleState.gradeCodes".split(".");
+  private GRADE_CODE: string[] = 'setupModuleState.gradeCodes'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   gradeCodes$: Observable<GradeCode[]>;
@@ -32,4 +30,4 @@ export class GradeCodeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

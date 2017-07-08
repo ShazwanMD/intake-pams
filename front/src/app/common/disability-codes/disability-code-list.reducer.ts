@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {DisabilityCode} from "./disability-code.interface";
-import {CommonActions} from "../common.action";
+import {CommonActions} from '../common.action';
+import {DisabilityCode} from '../../shared/model/common/disability-code.interface';
 
 export type DisabilityCodeListState = DisabilityCode[];
 
