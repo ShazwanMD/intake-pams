@@ -1,18 +1,11 @@
-import { PolicyModule } from './../../policy/index';
-import { FacultyCode } from './../../common/faculty-codes/faculty-code.interface';
-import { ProgramLevel } from './../../policy/program-levels/program-level.interface';
-import { GraduateCenter } from '../../common/graduate-centers/graduate-center.interface';
-import {MdDialogConfig, MdDialogRef, MdSnackBar, MdDialog} from "@angular/material";
+import {MdDialogConfig, MdDialogRef, MdSnackBar, MdDialog} from '@angular/material';
 import {ProgramCodeCreatorDialog} from './dialog/program-code-creator.dialog';
 import {ProgramCode} from './../../common/program-codes/program-code.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {SetupActions} from "../setup.action";
-import {SetupModuleState} from "../index";
-import {Observable} from "rxjs/Observable";
-
-
-
+import {Store} from '@ngrx/store';
+import {SetupActions} from '../setup.action';
+import {SetupModuleState} from '../index';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'pams-program-list-page',
@@ -20,18 +13,17 @@ import {Observable} from "rxjs/Observable";
 })
 export class ProgramCodeListPage implements OnInit {
 
-  private FACULTY_CODES = "setupModuleState.facultyCodes".split(".");
-  private SUPERVISOR_OFFERINGS = "policyModuleState.supervisorOfferings".split(".");
-  private GRADUATE_CENTER = "setupModuleState.graduateCenters".split(".");
-  private PROGRAM_CODES = "setupModuleState.programCodes".split(".");
+  private FACULTY_CODES: string[] = 'setupModuleState.facultyCodes'.split('.');
+  private SUPERVISOR_OFFERINGS: string[] = 'policyModuleState.supervisorOfferings'.split('.');
+  private GRADUATE_CENTER: string[] = 'setupModuleState.graduateCenters'.split('.');
+  private PROGRAM_CODES: string[] = 'setupModuleState.programCodes'.split('.');
   private creatorDialogRef: MdDialogRef<ProgramCodeCreatorDialog>;
-
   private programCodes$: Observable<ProgramCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
 
   constructor(private actions: SetupActions,
@@ -44,29 +36,29 @@ export class ProgramCodeListPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findProgramCodes());
-    this.store.dispatch(this.actions.changeTitle("Program Codes"))
+    this.store.dispatch(this.actions.changeTitle('Program Codes'));
   }
 
   createDialog(): void {
     this.showDialog(null);
   }
 
-  editDialog(code:ProgramCode): void {
+  editDialog(code: ProgramCode): void {
     this.showDialog(code);
   }
 
   delete(code: ProgramCode): void {
-    let snackBarRef = this.snackBar.open("Delete this program code?", "Ok");
+    let snackBarRef = this.snackBar.open('Delete this program code?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
-    this.store.dispatch(this.actions.removeProgramCode(code))
+      this.store.dispatch(this.actions.removeProgramCode(code));
     });
   }
 
   filter(): void {
   }
 
-  private showDialog(code:ProgramCode): void {
-    console.log("create");
+  private showDialog(code: ProgramCode): void {
+    console.log('create');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -74,9 +66,9 @@ export class ProgramCodeListPage implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(ProgramCodeCreatorDialog, config);
-    if(code) this.creatorDialogRef.componentInstance.programCode = code; // set
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    if (code) this.creatorDialogRef.componentInstance.programCode = code; // set
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 }

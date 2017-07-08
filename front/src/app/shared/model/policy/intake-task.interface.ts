@@ -1,4 +1,4 @@
-import {FlowState} from "../../core/flow-state.enum";
+import {FlowState} from "../../../core/flow-state.enum";
 import {Intake} from "./intake.interface";
 export interface IntakeTask {
   taskId:string;

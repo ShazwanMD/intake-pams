@@ -1,13 +1,13 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Intake} from "../intake.interface";
-import {IntakeActions} from "../intake.action";
-import {PolicyModuleState} from "../../index";
-import {Store} from "@ngrx/store";
+import {Intake} from '../../../shared/model/policy/intake.interface';
+import {IntakeActions} from '../intake.action';
+import {PolicyModuleState} from '../../index';
+import {Store} from '@ngrx/store';
 
-import {ActivatedRoute} from "@angular/router";
-import {IntakeApplication} from "../../../secure/applicant/application/intake-applications/intake-application.interface";
-import { MdDialogConfig, MdDialogRef, MdDialog } from "@angular/material";
-import { ApplicantProfileDialog } from "../dialog/applicant-profile.dialog";
+import {ActivatedRoute} from '@angular/router';
+import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
+import { MdDialogConfig, MdDialogRef, MdDialog } from '@angular/material';
+import { ApplicantProfileDialog } from '../dialog/applicant-profile.dialog';
 
 @Component({
   selector: 'pams-intake-application-submitted-list',
@@ -35,12 +35,12 @@ export class IntakeApplicationSubmittedListComponent {
   }
 
   profileDialog(intakeApplication) {
-      console.log("intakeApplication :" + intakeApplication);
+      console.log('intakeApplication :' + intakeApplication);
       this.showDialog(intakeApplication);
   }
 
   showDialog(intakeApplication : IntakeApplication): void {
-      console.log("showDialog");
+      console.log('showDialog');
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';

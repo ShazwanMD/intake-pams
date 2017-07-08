@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {AttachmentType} from '../attachment-type.enum';
+import {AttachmentType} from '../../../../../shared/model/application/attachment-type.enum';
 
 @Component({
   selector: 'pams-attachment-type-select',

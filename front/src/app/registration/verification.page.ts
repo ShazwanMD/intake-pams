@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {UserRegistration} from "./user-registration.interface";
+import {FormBuilder, FormGroup} from '@angular/forms';
 
-import {Store} from "@ngrx/store";
-import {RegistrationModuleState} from "./index";
-import {RegistrationActions} from "./registration.action";
+import {Store} from '@ngrx/store';
+import {RegistrationModuleState} from './index';
+import {RegistrationActions} from './registration.action';
 
 @Component({
   selector: 'pams-verification-page',

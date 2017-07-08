@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {IntakeSession} from "../intake-session.interface";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {IntakeSessionActions} from "../intake-session.action";
-import {PolicyModuleState} from "../../index";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {IntakeSessionActions} from '../intake-session.action';
+import {PolicyModuleState} from '../../index';
+import {IntakeSession} from "../../../shared/model/policy/intake-session.interface";
 
 @Component({
   selector: 'pams-intake-session-select',
@@ -14,7 +13,7 @@ import {PolicyModuleState} from "../../index";
 })
 export class IntakeSessionSelectComponent implements OnInit {
 
-  private INTAKE_SESSIONS = "policyModuleState.intakeSessions".split(".");
+  private INTAKE_SESSIONS = 'policyModuleState.intakeSessions'.split('.');
   private intakeSessions$: Observable<IntakeSession[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;

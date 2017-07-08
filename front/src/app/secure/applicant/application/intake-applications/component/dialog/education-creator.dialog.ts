@@ -6,7 +6,7 @@ import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../../index';
 import {MdDialogRef} from '@angular/material';
 import {IntakeApplicationActions} from '../../intake-application.action';
-import {Education} from '../../education.interface';
+import {Education} from '../../../../../../shared/model/application/education.interface';
 @Component({
   selector: 'pams-education-creator',
   templateUrl: './education-creator.dialog.html',

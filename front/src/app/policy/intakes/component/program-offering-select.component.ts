@@ -1,11 +1,11 @@
 import {Component, Input, ChangeDetectionStrategy, OnInit} from '@angular/core';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs/Rx";
-import {Intake} from "../intake.interface";
-import {PolicyModuleState} from "../../index";
-import {IntakeActions} from "../intake.action";
-import {ProgramOffering} from "../program-offering.interface";
-import {FormControl} from "@angular/forms";
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Rx';
+import {PolicyModuleState} from '../../index';
+import {IntakeActions} from '../intake.action';
+import {FormControl} from '@angular/forms';
+import {Intake} from '../../../shared/model/policy/intake.interface';
+import {ProgramOffering} from '../../../shared/model/policy/program-offering.interface';
 
 @Component({
   selector: 'pams-program-offering-select',
@@ -14,11 +14,11 @@ import {FormControl} from "@angular/forms";
 })
 export class ProgramOfferingSelectComponent implements OnInit {
 
+  private PROGRAM_OFFERING = 'policyModuleState.programOfferings'.split('.');
+  private programOfferings$: Observable<ProgramOffering>;
   @Input() intake: Intake;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  private PROGRAM_OFFERING = "policyModuleState.programOfferings".split(".");
-  private programOfferings$: Observable<ProgramOffering>;
 
   constructor(private store: Store<PolicyModuleState>,
               private actions: IntakeActions) {

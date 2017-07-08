@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {IntakeApplicationActions} from './intake-application.action';
-import {IntakeApplication} from './intake-application.interface';
+import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
 
 export type IntakeApplicationListState = IntakeApplication[];
 

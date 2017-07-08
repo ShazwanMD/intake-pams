@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {RefereeType} from '../referee-type.enum';
+import {RefereeType} from '../../../../../shared/model/application/referee-type.enum';
 
 @Component({
   selector: 'pams-referee-type-select',

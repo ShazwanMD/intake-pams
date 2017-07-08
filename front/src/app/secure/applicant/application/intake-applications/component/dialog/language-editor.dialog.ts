@@ -1,4 +1,4 @@
-import {Language} from '../../language.interface';
+import {Language} from '../../../../../../shared/model/application/language.interface';
 import {LanguageCode} from '../../../../../../common/language-codes/language-code.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -8,7 +8,7 @@ import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../../index';
 import {MdDialogRef} from '@angular/material';
 import {IntakeApplicationActions} from '../../intake-application.action';
-import {IntakeApplication} from '../../intake-application.interface';
+import {IntakeApplication} from '../../../../../../shared/model/application/intake-application.interface';
 
 @Component({
   selector: 'pams-language-editor',

@@ -4,10 +4,10 @@ import {
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {IntakeTask} from '../policy/intakes/intake-task.interface';
 import {AdmissionActions} from './admission.action';
 import {AdmissionModuleState} from './index';
-import {Candidate} from './candidate.interface';
+import {IntakeTask} from '../shared/model/policy/intake-task.interface';
+import {Candidate} from '../shared/model/admission/candidate.interface';
 
 @Component({
   selector: 'pams-intake-task-view',

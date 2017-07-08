@@ -1,40 +1,51 @@
-import { Observable } from 'rxjs';
-import { IntakeSession } from './../intake-session.interface';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit,ViewContainerRef} from '@angular/core';
-import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import { IntakeSessionActions } from "../intake-session.action";
-import { Store } from "@ngrx/store";
-import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
-import { PolicyModuleState } from "../../index";
-import { IntakeSessionEditorDialog } from "./intake-session-editor.dialog";
-import { MdSnackBar } from "@angular/material";
+import {Observable} from 'rxjs';
+import {
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  ViewContainerRef
+} from '@angular/core';
+import {
+  TdDataTableSortingOrder,
+  TdDataTableService,
+  ITdDataTableSortChangeEvent,
+  IPageChangeEvent
+} from '@covalent/core';
+import {IntakeSessionActions} from '../intake-session.action';
+import {Store} from '@ngrx/store';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {PolicyModuleState} from '../../index';
+import {IntakeSessionEditorDialog} from './intake-session-editor.dialog';
+import {MdSnackBar} from '@angular/material';
+import {IntakeSession} from '../../../shared/model/policy/intake-session.interface';
 
 @Component({
   selector: 'pams-intake-session-list',
   templateUrl: './intake-session-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IntakeSessionListComponent implements AfterViewInit  {
+export class IntakeSessionListComponent implements AfterViewInit {
 
   @Input() intakeSessions: IntakeSession[];
   @Output() view = new EventEmitter<IntakeSession>();
 
-  private INTAKE_SESSION = "policyModuleState.intakeSession".split(".");
-  private intakeSession$:Observable<IntakeSession>;
+  private INTAKE_SESSION = 'policyModuleState.intakeSession'.split('.');
+  private intakeSession$: Observable<IntakeSession>;
   private creatorDialogRef: MdDialogRef<IntakeSessionEditorDialog>;
-  
-  
+
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'Description (MS)'},
     {name: 'descriptionEn', label: 'Description (EN)'},
     {name: 'year', label: 'Year'},
-    {name: 'current', label: 'Current'}, 
-    {name: 'label', label: 'Label'},   
+    {name: 'current', label: 'Current'},
+    {name: 'label', label: 'Label'},
     {name: 'id', label: 'id'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
-
 
   //   constructor(private actions: IntakeSessionActions,
   //             private store: Store<PolicyModuleState>,
@@ -52,71 +63,70 @@ export class IntakeSessionListComponent implements AfterViewInit  {
   sortBy: string = 'code';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  constructor(
-  private actions: IntakeSessionActions,
-  private store: Store<PolicyModuleState>,
-  private vcf: ViewContainerRef,
-  private dialog: MdDialog,
-  private _dataTableService: TdDataTableService,
-  private snackBar: MdSnackBar) {
+  constructor(private actions: IntakeSessionActions,
+              private store: Store<PolicyModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog,
+              private _dataTableService: TdDataTableService,
+              private snackBar: MdSnackBar) {
     this.intakeSession$ = this.store.select(...this.INTAKE_SESSION);
   }
 
   ngAfterViewInit(): void {
-  this.store.dispatch(this.actions.findIntakeSessions());
-  this.filteredData = this.intakeSessions;
-  this.filteredTotal = this.intakeSessions.length;
-  this.filter();
+    this.store.dispatch(this.actions.findIntakeSessions());
+    this.filteredData = this.intakeSessions;
+    this.filteredTotal = this.intakeSessions.length;
+    this.filter();
   }
 
   sort(sortEvent: ITdDataTableSortChangeEvent): void {
-  this.sortBy = sortEvent.name;
-  this.sortOrder = sortEvent.order;
-  this.filter();
+    this.sortBy = sortEvent.name;
+    this.sortOrder = sortEvent.order;
+    this.filter();
   }
 
   search(searchTerm: string): void {
-  this.searchTerm = searchTerm;
-  this.filter();
+    this.searchTerm = searchTerm;
+    this.filter();
   }
 
   page(pagingEvent: IPageChangeEvent): void {
-  this.fromRow = pagingEvent.fromRow;
-  this.currentPage = pagingEvent.page;
-  this.pageSize = pagingEvent.pageSize;
-  this.filter();
+    this.fromRow = pagingEvent.fromRow;
+    this.currentPage = pagingEvent.page;
+    this.pageSize = pagingEvent.pageSize;
+    this.filter();
   }
 
   filter(): void {
-  let newData: any[] = this.intakeSessions;
-  newData = this._dataTableService.filterData(newData, this.searchTerm, true);
-  this.filteredTotal = newData.length;
-  newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
-  newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
-  this.filteredData = newData;
+    let newData: any[] = this.intakeSessions;
+    newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+    this.filteredTotal = newData.length;
+    newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+    newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+    this.filteredData = newData;
   }
 
   // ngOnInit(): void {
   //   this.store.dispatch(this.actions.findIntakeSessions());
   //  }
 
-   createDialog(): void {
+  createDialog(): void {
     this.showDialog(null);
   }
 
-  editDialog(code:IntakeSession): void {
+  editDialog(code: IntakeSession): void {
     this.showDialog(code);
   }
 
   delete(id: IntakeSession): void {
-    this.store.dispatch(this.actions.removeIntakeSession(id))
+    this.store.dispatch(this.actions.removeIntakeSession(id));
   }
 
   // filter(): void {
   // }
 
-  private showDialog(code:IntakeSession): void {
-    console.log("create");
+  private showDialog(code: IntakeSession): void {
+    console.log('create');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -124,9 +134,9 @@ export class IntakeSessionListComponent implements AfterViewInit  {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(IntakeSessionEditorDialog, config);
-    if(code) this.creatorDialogRef.componentInstance.intakeSession = code; // set
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    if (code) this.creatorDialogRef.componentInstance.intakeSession = code; // set
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 }

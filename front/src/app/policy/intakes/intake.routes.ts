@@ -1,7 +1,6 @@
 import {Routes, RouterModule} from '@angular/router';
-import {IntakeCenterPage} from "./intake-center.page";
-import {IntakeTaskDetailPage} from "./intake-task-detail.page";
-
+import {IntakeCenterPage} from './intake-center.page';
+import {IntakeTaskDetailPage} from './intake-task-detail.page';
 
 export const IntakeRoutes: Routes = [
   {path: 'policy/intakes', component: IntakeCenterPage},

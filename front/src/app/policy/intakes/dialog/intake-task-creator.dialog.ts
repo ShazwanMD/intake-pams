@@ -1,16 +1,15 @@
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
-import {Store} from "@ngrx/store";
-import { MdDialogRef, MdSnackBar } from "@angular/material";
-import {IntakeActions} from "../intake.action";
-import {PolicyModuleState} from "../../index";
-import {Intake} from "../intake.interface";
-import {IntakeSession} from "../../intake-sessions/intake-session.interface";
-import {GraduateCenter} from "../../../common/graduate-centers/graduate-center.interface";
-import {ProgramLevel} from "../../program-levels/program-level.interface";
-import { IntakeTask } from "../intake-task.interface";
-
+import {Store} from '@ngrx/store';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
+import {IntakeActions} from '../intake.action';
+import {PolicyModuleState} from '../../index';
+import {GraduateCenter} from '../../../common/graduate-centers/graduate-center.interface';
+import {IntakeTask} from '../../../shared/model/policy/intake-task.interface';
+import {Intake} from '../../../shared/model/policy/intake.interface';
+import {ProgramLevel} from '../../../shared/model/policy/program-level.interface';
+import {IntakeSession} from '../../../shared/model/policy/intake-session.interface';
 
 @Component({
   selector: 'pams-intake-task-creator',
@@ -20,8 +19,8 @@ import { IntakeTask } from "../intake-task.interface";
 export class IntakeTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
-    private edit: boolean = false;
-    private _intakeTask: IntakeTask;
+  private edit: boolean = false;
+  private _intakeTask: IntakeTask;
 
   constructor(private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
@@ -43,15 +42,15 @@ export class IntakeTaskCreatorDialog implements OnInit {
       endDate: null,
       programLevel: <ProgramLevel>{},
       intakeSession: <IntakeSession>{},
-      graduateCenter: <GraduateCenter>{}
+      graduateCenter: <GraduateCenter>{},
     });
   }
 
-    submit(intake: Intake, isValid: boolean) {
-        let snackBarRef = this.snackBar.open("Confirm to create intake?", "Ok");
-        snackBarRef.afterDismissed().subscribe(() => {
-        this.store.dispatch(this.actions.startIntakeTask(intake));
-        this.dialog.close();
-        });
-      }
+  submit(intake: Intake, isValid: boolean) {
+    let snackBarRef = this.snackBar.open('Confirm to create intake?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.store.dispatch(this.actions.startIntakeTask(intake));
+      this.dialog.close();
+    });
   }
+}

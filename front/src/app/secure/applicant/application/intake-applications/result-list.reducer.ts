@@ -1,4 +1,4 @@
-import {Result} from './result.interface';
+import {Result} from '../../../../shared/model/application/result.interface';
 import {IntakeApplicationActions} from './intake-application.action';
 import {Action} from '@ngrx/store';
 

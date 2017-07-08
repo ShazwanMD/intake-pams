@@ -1,6 +1,6 @@
-import {Attachment} from './attachment.interface';
+import {Attachment} from '../../../../shared/model/application/attachment.interface';
 import {Action} from '@ngrx/store';
-import {IntakeApplicationActions} from "./intake-application.action";
+import {IntakeApplicationActions} from './intake-application.action';
 
 export type AttachmentListState = Attachment[];
 

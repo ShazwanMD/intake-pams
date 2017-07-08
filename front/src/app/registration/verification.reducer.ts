@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {RegistrationActions} from "./registration.action";
+import {RegistrationActions} from './registration.action';
 
 export type VerificationState = boolean;
 const initialState: VerificationState = false;

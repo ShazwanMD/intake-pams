@@ -1,15 +1,15 @@
-import { Component, ViewContainerRef, OnInit, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, ViewContainerRef, OnInit, AfterViewInit, ChangeDetectionStrategy} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import { MdDialogRef, MdSnackBar } from "@angular/material";
-import {Observable} from "rxjs/Observable";
-import {PolicyModuleState} from "../../index";
-import { IntakeActions } from "../intake.action";
-import { Intake } from "../intake.interface";
-import { ProgramOffering } from "../program-offering.interface";
-import { ProgramCode } from "../../../common/program-codes/program-code.interface";
+import {Store} from '@ngrx/store';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
+import {Observable} from 'rxjs/Observable';
+import {PolicyModuleState} from '../../index';
+import {IntakeActions} from '../intake.action';
+import {ProgramCode} from '../../../common/program-codes/program-code.interface';
+import {ProgramOffering} from '../../../shared/model/policy/program-offering.interface';
+import {Intake} from '../../../shared/model/policy/intake.interface';
 
 @Component({
   selector: 'pams-program-offering-list-editor',
@@ -18,13 +18,12 @@ import { ProgramCode } from "../../../common/program-codes/program-code.interfac
 })
 
 export class ProgramOfferingListEditorDialog {
-//implements OnInit {
 
   private editorForm: FormGroup;
   private edit: boolean = false;
   private _programOffering: ProgramOffering;
   private _intake: Intake;
-  private intake$:Observable<Intake>;
+  private intake$: Observable<Intake>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -36,8 +35,8 @@ export class ProgramOfferingListEditorDialog {
               private snackBar: MdSnackBar) {
   }
 
-  set programOffering(programOffering) {
-    console.log("programOffering.id :" + programOffering.programCode.id);
+  set programOffering(programOffering: ProgramOffering) {
+    console.log('programOffering.id :' + programOffering.programCode.id);
     this._programOffering = programOffering;
     this.edit = true;
   }
@@ -50,20 +49,20 @@ export class ProgramOfferingListEditorDialog {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<ProgramOffering>{
-      id:null,
-      projection:0,
-      interview:true,
-      generalCriteria:'',
-      specificCriteria:'',
+      id: null,
+      projection: 0,
+      interview: true,
+      generalCriteria: '',
+      specificCriteria: '',
       programCode: <ProgramCode>{},
     });
-    console.log("this._programOffering :"+this._programOffering.programCode);
-    console.log("this._intake :"+this._intake.id);
+    console.log('this._programOffering :' + this._programOffering.programCode);
+    console.log('this._intake :' + this._intake.id);
     if (this.edit) this.editorForm.patchValue(this._programOffering);
   }
 
   submit(programOffering: ProgramOffering, isValid: boolean) {
-    if (programOffering.id)this.store.dispatch(this.actions.updateProgramOffering(this._intake, programOffering));
+    if (programOffering.id) this.store.dispatch(this.actions.updateProgramOffering(this._intake, programOffering));
     this.dialog.close();
   }
 }

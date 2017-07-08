@@ -3,7 +3,7 @@ import {Response, Http, RequestOptions, Headers} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {environment} from '../environments/environment';
 import {Observable} from 'rxjs';
-import {UserRegistration} from '../app/registration/user-registration.interface';
+import {UserRegistration} from '../app/shared/model/registration/user-registration.interface';
 import {AuthenticationService} from './authentication.service';
 
 @Injectable()

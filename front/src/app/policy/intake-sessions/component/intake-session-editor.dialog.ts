@@ -2,13 +2,12 @@ import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core'
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {PolicyModuleState} from "../../index";
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {PolicyModuleState} from '../../index';
 
-import { IntakeSession } from "../intake-session.interface";
-import { IntakeSessionActions } from "../intake-session.action";
-
+import { IntakeSessionActions } from '../intake-session.action';
+import {IntakeSession} from "../../../shared/model/policy/intake-session.interface";
 
 @Component({
   selector: 'pams-intake-session-editor',

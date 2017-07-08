@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {AdmissionModuleState} from "./index";
-import {IntakeTask} from "../policy/intakes/intake-task.interface";
-import {Observable} from "rxjs/Observable";
-import {AdmissionActions} from "./admission.action";
+import {Store} from '@ngrx/store';
+import {AdmissionModuleState} from './index';
+import {Observable} from 'rxjs/Observable';
+import {AdmissionActions} from './admission.action';
+import {IntakeTask} from '../shared/model/policy/intake-task.interface';
 
 @Component({
   selector: 'pams-admission-page',
@@ -13,7 +13,7 @@ import {AdmissionActions} from "./admission.action";
 
 export class AdmissionPage implements OnInit {
 
-  private INTAKE_TASKS = "admissionModuleState.intakeTasks".split(".");
+  private INTAKE_TASKS: string[] = 'admissionModuleState.intakeTasks'.split('.');
   private intakeTasks$: Observable<IntakeTask[]>;
 
   constructor(private router: Router,
@@ -30,7 +30,7 @@ export class AdmissionPage implements OnInit {
   }
 
   view(intake: IntakeTask) {
-    console.log("intake: " + intake.taskId);
+    console.log('intake: ' + intake.taskId);
     this.router.navigate(['/intake-task-detail', intake.taskId]);
   }
 

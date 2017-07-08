@@ -4,10 +4,10 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../../index';
 import {IntakeApplicationActions} from '../../intake-application.action';
-import {IntakeApplication} from '../../intake-application.interface';
-import {Intake} from '../../../../../../policy/intakes/intake.interface';
+import {IntakeApplication} from '../../../../../../shared/model/application/intake-application.interface';
+import {Intake} from '../../../../../../shared/model/policy/intake.interface';
 import {Observable} from 'rxjs/Observable';
-import {StudyModeOffering} from '../../../../../../policy/intakes/study-mode-offering.interface';
+import {StudyModeOffering} from '../../../../../../shared/model/policy/study-mode-offering.interface';
 import {MdDialogRef} from '@angular/material';
 
 @Component({

@@ -4,7 +4,7 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 import {IntakeApplicationActions} from './intake-application.action';
 import {ApplicationModuleState} from '../index';
-import {IntakeApplication} from './intake-application.interface';
+import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
 
 @Component({
   selector: 'pams-my-intake-application-page',

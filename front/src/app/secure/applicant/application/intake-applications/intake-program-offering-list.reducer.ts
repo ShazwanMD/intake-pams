@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {ProgramOffering} from '../../../../policy/intakes/program-offering.interface';
+import {ProgramOffering} from '../../../../shared/model/policy/program-offering.interface';
 import {IntakeApplicationActions} from './intake-application.action';
 
 export type IntakeProgramOfferingListState = ProgramOffering[];

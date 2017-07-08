@@ -4,10 +4,10 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store, State} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {IntakeActions} from "./intake.action";
-import {IntakeTask} from "./intake-task.interface";
 import {PolicyModuleState} from "../index";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import {IntakeTaskCreatorDialog} from "./dialog/intake-task-creator.dialog";
+import {IntakeTask} from "../../shared/model/policy/intake-task.interface";
 
 @Component({
   selector: 'pams-intake-center',

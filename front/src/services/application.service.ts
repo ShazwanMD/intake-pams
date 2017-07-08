@@ -1,20 +1,20 @@
-import {Result} from '../app/secure/applicant/application/intake-applications/result.interface';
-import {Attachment} from '../app/secure/applicant/application/intake-applications/attachment.interface';
-import {Referee} from '../app/secure/applicant/application/intake-applications/referee.interface';
+import {Result} from '../app/shared/model/application/result.interface';
+import {Attachment} from '../app/shared/model/application/attachment.interface';
+import {Referee} from '../app/shared/model/application/referee.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions, ResponseContentType} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
-import {IntakeApplication} from '../app/secure/applicant/application/intake-applications/intake-application.interface';
+import {IntakeApplication} from '../app/shared/model/application/intake-application.interface';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../environments/environment';
-import {Education} from '../app/secure/applicant/application/intake-applications/education.interface';
-import {Employment} from '../app/secure/applicant/application/intake-applications/employment.interface';
-import {Intake} from '../app/policy/intakes/intake.interface';
-import {ProgramOffering} from '../app/policy/intakes/program-offering.interface';
-import {StudyModeOffering} from '../app/policy/intakes/study-mode-offering.interface';
-import {Language} from '../app/secure/applicant/application/intake-applications/language.interface';
-import {SupervisorOffering} from '../app/policy/intakes/supervisor-offering.interface';
-import {AttachmentType} from '../app/secure/applicant/application/intake-applications/attachment-type.enum';
+import {Education} from '../app/shared/model/application/education.interface';
+import {Employment} from '../app/shared/model/application/employment.interface';
+import {Intake} from '../app/shared/model/policy/intake.interface';
+import {ProgramOffering} from '../app/shared/model/policy/program-offering.interface';
+import {StudyModeOffering} from '../app/shared/model/policy/study-mode-offering.interface';
+import {Language} from '../app/shared/model/application/language.interface';
+import {SupervisorOffering} from '../app/shared/model/policy/supervisor-offering.interface';
+import {AttachmentType} from '../app/shared/model/application/attachment-type.enum';
 import {AuthenticationService} from './authentication.service';
 
 @Injectable()

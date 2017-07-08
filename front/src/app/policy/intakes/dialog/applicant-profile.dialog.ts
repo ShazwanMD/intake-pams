@@ -1,25 +1,17 @@
-import {ReligionCode} from './../../../common/religion-codes/religion-code.interface';
-import {MaritalCode} from './../../../common/marital-codes/marital-code.interface';
-import {RaceCode} from './../../../common/race-codes/race-code.interface';
-import {GenderCode} from './../../../common/gender-codes/gender-code.interface';
-import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef,Input} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {NationalityCode} from "../../../common/nationality-codes/nationality-code.interface";
-import { DisabilityCode } from "../../../common/disability-codes/disability-code.interface";
-import { EthnicityCode } from "../../../common/ethnicity-codes/ethnicity-code.interface";
-import { Observable } from "rxjs/Observable";
-import { IntakeApplication } from "../../../secure/applicant/application/intake-applications/intake-application.interface";
-import { Employment } from "../../../secure/applicant/application/intake-applications/employment.interface";
-import { Language } from "../../../secure/applicant/application/intake-applications/language.interface";
-import { Referee } from "../../../secure/applicant/application/intake-applications/referee.interface";
-import { IntakeApplicationActions } from "../../../secure/applicant/application/intake-applications/intake-application.action";
-import { ApplicationModuleState } from "../../../secure/applicant/application/index";
-import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from "@angular/material";
-import { ApplicantProfileRejectDialog } from "./applicant-profile-reject.dialog";
-import { IntakeActions } from "../intake.action";
-
+import {Store} from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { IntakeApplication } from '../../../shared/model/application/intake-application.interface';
+import { Employment } from '../../../shared/model/application/employment.interface';
+import { Language } from '../../../shared/model/application/language.interface';
+import { Referee } from '../../../shared/model/application/referee.interface';
+import { IntakeApplicationActions } from '../../../secure/applicant/application/intake-applications/intake-application.action';
+import { ApplicationModuleState } from '../../../secure/applicant/application/index';
+import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from '@angular/material';
+import { ApplicantProfileRejectDialog } from './applicant-profile-reject.dialog';
+import { IntakeActions } from '../intake.action';
 
 @Component({
   selector: 'pams-applicant-profile',
@@ -28,19 +20,17 @@ import { IntakeActions } from "../intake.action";
 
 export class ApplicantProfileDialog implements OnInit {
 
-    //private editorForm: FormGroup;
-    @Input() intakeApplication: IntakeApplication;
 
-  private dummyData: any[]=[
-   {"subject":"Bahasa Malaysia", "grade":"A+"},
-   {"subject":"Bahasa Inggeris", "grade":"B"},
-   {"subject":"Geografi", "grade":"C+"},
-   {"subject":"Sejarah", "grade":"D+"},
-   {"subject":"Matematik", "grade":"A+"},
-   {"subject":"Matematik Tambahan", "grade":"A+"},
-   {"subject":"Fizik", "grade":"A+"},
-   {"subject":"Biologi", "grade":"B+"},
-   {"subject":"Kimia", "grade":"B+"},
+  private dummyData: any[]= [
+   {'subject': 'Bahasa Malaysia', 'grade': 'A+'},
+   {'subject': 'Bahasa Inggeris', 'grade': 'B'},
+   {'subject': 'Geografi', 'grade': 'C+'},
+   {'subject': 'Sejarah', 'grade': 'D+'},
+   {'subject': 'Matematik', 'grade': 'A+'},
+   {'subject': 'Matematik Tambahan', 'grade': 'A+'},
+   {'subject': 'Fizik', 'grade': 'A+'},
+   {'subject': 'Biologi', 'grade': 'B+'},
+   {'subject': 'Kimia', 'grade': 'B+'},
  ];
 
   private dummyColumns: any[] = [
@@ -48,14 +38,14 @@ export class ApplicantProfileDialog implements OnInit {
     {name: 'grade', label: 'Grade'},
   ];
 
-  private INTAKE_APPLICATION: string[] = "applicationModuleState.intakeApplication".split(".");
-  private EMPLOYMENTS: string[] = "applicationModuleState.employments".split(".");
-  private LANGUAGES: string[] = "applicationModuleState.languages".split(".");
-  private REFEREES: string[] = "applicationModuleState.referees".split(".");
-  private ATTACHMENTS: string[] = "applicationModuleState.attachments".split(".");
-  private SPM_RESULTS: string[] = "applicationModuleState.spmResults".split(".");
-  private BACHELOR_RESULTS: string[] = "applicationModuleState.bachelorResults".split(".");
-  private DIPLOMA_RESULTS: string[] = "applicationModuleState.diplomaResults".split(".");
+  private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
+  private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
+  private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
+  private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
+  private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
+  private SPM_RESULTS: string[] = 'applicationModuleState.spmResults'.split('.');
+  private BACHELOR_RESULTS: string[] = 'applicationModuleState.bachelorResults'.split('.');
+  private DIPLOMA_RESULTS: string[] = 'applicationModuleState.diplomaResults'.split('.');
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
@@ -63,6 +53,8 @@ export class ApplicantProfileDialog implements OnInit {
   private referees$: Observable<Referee>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
+
+  @Input() intakeApplication: IntakeApplication;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -89,13 +81,13 @@ export class ApplicantProfileDialog implements OnInit {
   }
 
   select(intakeApplication : IntakeApplication) {
-      let snackBarRef = this.snackBar.open("Confirm to Select This Applicant?", "Ok");
+      let snackBarRef = this.snackBar.open('Confirm to Select This Applicant?', 'Ok');
       snackBarRef.afterDismissed().subscribe(() => {
           this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
-          this.editorDialog.afterClosed().subscribe(res => {
+          this.editorDialog.afterClosed().subscribe((res) => {
           this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
-        })
-        this.editorDialog.close();
+        });
+          this.editorDialog.close();
       });
     }
 
@@ -113,7 +105,7 @@ export class ApplicantProfileDialog implements OnInit {
       config.position = {top: '0px'};
       this.editorDialogRef = this.dialog.open(ApplicantProfileRejectDialog, config);
       this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
-      this.editorDialog.afterClosed().subscribe(res => {
+      this.editorDialog.afterClosed().subscribe((res) => {
       this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
 
     });

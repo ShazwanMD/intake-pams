@@ -1,9 +1,9 @@
-import {Employment} from '../employment.interface';
+import {Employment} from '../../../../../shared/model/application/employment.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
-import {IntakeApplication} from '../intake-application.interface';
+import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {EmploymentEditorDialog} from './dialog/employment-editor.dialog';
 

@@ -27,7 +27,7 @@ import {ResidencyCode} from '../app/common/residency-codes/residency-code.interf
 import {LanguageCode} from '../app/common/language-codes/language-code.interface';
 import {SubjectCode} from '../app/common/subject-codes/subject-code.interface';
 import {GradeCode} from '../app/common/grade-codes/grade-code.interface';
-import {ProgramLevel} from '../app/policy/program-levels/program-level.interface';
+import {ProgramLevel} from '../app/shared/model/policy/program-level.interface';
 import {AuthenticationService} from './authentication.service';
 
 @Injectable()

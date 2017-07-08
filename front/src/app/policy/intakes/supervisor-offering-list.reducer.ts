@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {IntakeActions} from "./intake.action";
-import {SupervisorOffering} from "./supervisor-offering.interface";
+import {IntakeActions} from './intake.action';
+import {SupervisorOffering} from '../../shared/model/policy/supervisor-offering.interface';
 
 export type SupervisorOfferingListState = SupervisorOffering[];
 

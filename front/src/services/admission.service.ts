@@ -3,9 +3,9 @@ import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../environments/environment';
-import {IntakeTask} from '../app/policy/intakes/intake-task.interface';
-import {Candidate} from '../app/admission/candidate.interface';
-import {Intake} from '../app/policy/intakes/intake.interface';
+import {IntakeTask} from '../app/shared/model/policy/intake-task.interface';
+import {Candidate} from '../app/shared/model/admission/candidate.interface';
+import {Intake} from '../app/shared/model/policy/intake.interface';
 import {AuthenticationService} from './authentication.service';
 
 @Injectable()

@@ -1,4 +1,4 @@
-import {Referee} from './referee.interface';
+import {Referee} from '../../../../shared/model/application/referee.interface';
 import {Action} from '@ngrx/store';
 import {IntakeApplicationActions} from './intake-application.action';
 

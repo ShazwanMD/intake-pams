@@ -4,8 +4,8 @@ import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {IntakeApplication} from '../intake-application.interface';
-import {Result} from '../result.interface';
+import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
+import {Result} from '../../../../../shared/model/application/result.interface';
 
 @Component({
   selector: 'pams-bachelor-result',

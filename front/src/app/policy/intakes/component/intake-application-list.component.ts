@@ -1,11 +1,11 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Intake} from "../intake.interface";
-import {IntakeActions} from "../intake.action";
-import {PolicyModuleState} from "../../index";
-import {Store} from "@ngrx/store";
+import {Intake} from '../../../shared/model/policy/intake.interface';
+import {IntakeActions} from '../intake.action';
+import {PolicyModuleState} from '../../index';
+import {Store} from '@ngrx/store';
 
-import {ActivatedRoute} from "@angular/router";
-import {IntakeApplication} from "../../../secure/applicant/application/intake-applications/intake-application.interface";
+import {ActivatedRoute} from '@angular/router';
+import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
 
 @Component({
   selector: 'pams-intake-application-list',

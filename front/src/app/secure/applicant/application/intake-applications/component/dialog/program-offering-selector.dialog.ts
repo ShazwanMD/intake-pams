@@ -4,9 +4,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../../index';
 import {IntakeApplicationActions} from '../../intake-application.action';
-import {IntakeApplication} from '../../intake-application.interface';
-import {Intake} from '../../../../../../policy/intakes/intake.interface';
-import {ProgramOffering} from '../../../../../../policy/intakes/program-offering.interface';
+import {IntakeApplication} from '../../../../../../shared/model/application/intake-application.interface';
+import {Intake} from '../../../../../../shared/model/policy/intake.interface';
+import {ProgramOffering} from '../../../../../../shared/model/policy/program-offering.interface';
 import {Observable} from 'rxjs/Observable';
 import {MdDialogRef} from '@angular/material';
 

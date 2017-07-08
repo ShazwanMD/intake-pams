@@ -1,14 +1,11 @@
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {PolicyModuleState} from "../../index";
-import {IntakeSession} from "../../intake-sessions/intake-session.interface";
-import {GraduateCenter} from "../../../common/graduate-centers/graduate-center.interface";
-import {ProgramLevel} from "../../program-levels/program-level.interface";
-import {IntakeSessionActions} from "../intake-session.action";
-
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {PolicyModuleState} from '../../index';
+import {IntakeSessionActions} from '../intake-session.action';
+import {IntakeSession} from '../../../shared/model/policy/intake-session.interface';
 
 @Component({
   selector: 'pams-intake-session-creator',
@@ -17,7 +14,6 @@ import {IntakeSessionActions} from "../intake-session.action";
 
 export class IntakeSessionCreatorDialog implements OnInit {
 
-
   private createForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
@@ -25,7 +21,6 @@ export class IntakeSessionCreatorDialog implements OnInit {
               private store: Store<PolicyModuleState>,
               private actions: IntakeSessionActions,
               private dialog: MdDialogRef<IntakeSessionCreatorDialog>) {
-
 
   }
 

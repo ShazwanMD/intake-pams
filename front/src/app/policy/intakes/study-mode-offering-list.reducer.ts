@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {IntakeActions} from "./intake.action";
-import {StudyModeOffering} from "./study-mode-offering.interface";
+import {IntakeActions} from './intake.action';
+import {StudyModeOffering} from '../../shared/model/policy/study-mode-offering.interface';
 
 export type StudyModeOfferingListState = StudyModeOffering[];
 

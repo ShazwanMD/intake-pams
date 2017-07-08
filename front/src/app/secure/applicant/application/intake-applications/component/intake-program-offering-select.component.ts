@@ -2,8 +2,8 @@ import {Component, Input, ChangeDetectionStrategy, OnInit, OnChanges, SimpleChan
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Rx';
 import {FormControl} from '@angular/forms';
-import {IntakeApplication} from '../intake-application.interface';
-import {ProgramOffering} from '../../../../../policy/intakes/program-offering.interface';
+import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
+import {ProgramOffering} from '../../../../../shared/model/policy/program-offering.interface';
 import {ApplicationModuleState} from '../../index';
 import {IntakeApplicationActions} from '../intake-application.action';
 

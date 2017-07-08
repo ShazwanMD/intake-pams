@@ -1,10 +1,10 @@
 import {LanguageEditorDialog} from './dialog/language-editor.dialog';
-import {Language} from '../language.interface';
+import {Language} from '../../../../../shared/model/application/language.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
-import {IntakeApplication} from '../intake-application.interface';
+import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 
 @Component({

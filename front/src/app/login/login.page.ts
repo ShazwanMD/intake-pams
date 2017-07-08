@@ -4,7 +4,7 @@ import {TdLoadingService} from '@covalent/core';
 import {AuthenticationService} from '../../services/authentication.service';
 import {AuthorizationService} from '../../services/authorization.service';
 import {SystemService} from '../../services/system.service';
-import {Module} from '../system/module.interface';
+import {Module} from '../shared/model/system/module.interface';
 import {toPromise} from 'rxjs/operator/toPromise';
 
 @Component({

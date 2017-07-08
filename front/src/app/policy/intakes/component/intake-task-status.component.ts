@@ -1,6 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Intake} from "../intake.interface";
-import {IntakeTask} from "../intake-task.interface";
+import {IntakeTask} from '../../../shared/model/policy/intake-task.interface';
 
 @Component({
   selector: 'pams-intake-task-status',

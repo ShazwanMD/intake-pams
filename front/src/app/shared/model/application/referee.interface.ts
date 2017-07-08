@@ -1,4 +1,4 @@
-import {MetaObject} from '../../../../core/meta-object.interface';
+import {MetaObject} from '../../../core/meta-object.interface';
 import {RefereeType} from './referee-type.enum';
 export interface Referee extends MetaObject {
   id: number;

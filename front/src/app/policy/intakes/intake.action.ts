@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
-import {Intake} from "./intake.interface";
-import {ProgramOffering} from "./program-offering.interface";
-import {SupervisorOffering} from "./supervisor-offering.interface";
-import {StudyModeOffering} from "./study-mode-offering.interface";
+import {Intake} from '../../shared/model/policy/intake.interface';
+import {ProgramOffering} from '../../shared/model/policy/program-offering.interface';
+import {SupervisorOffering} from '../../shared/model/policy/supervisor-offering.interface';
+import {StudyModeOffering} from '../../shared/model/policy/study-mode-offering.interface';
 
 @Injectable()
 export class IntakeActions {
@@ -12,17 +12,17 @@ export class IntakeActions {
 
   findAssignedIntakeTasks(): Action {
     return {
-      type: IntakeActions.FIND_ASSIGNED_INTAKE_TASKS
+      type: IntakeActions.FIND_ASSIGNED_INTAKE_TASKS,
     };
   }
 
   static FIND_ASSIGNED_INTAKE_TASKS_SUCCESS = '[Intake] Find Assigned Intake Tasks Success';
 
   findAssignedIntakeTasksSuccess(tasks): Action {
-    console.log("findAssignedIntakeTasksSuccess");
+    console.log('findAssignedIntakeTasksSuccess');
     return {
       type: IntakeActions.FIND_ASSIGNED_INTAKE_TASKS_SUCCESS,
-      payload: tasks
+      payload: tasks,
     };
   }
 
@@ -30,37 +30,37 @@ export class IntakeActions {
 
   findPooledIntakeTasks(): Action {
     return {
-      type: IntakeActions.FIND_POOLED_INTAKE_TASKS
+      type: IntakeActions.FIND_POOLED_INTAKE_TASKS,
     };
   }
 
   static FIND_POOLED_INTAKE_TASKS_SUCCESS = '[Intake] Find Pooled Intake Tasks Success';
 
   findPooledIntakeTasksSuccess(tasks): Action {
-    console.log("findAssignedIntakeTasksSuccess");
+    console.log('findAssignedIntakeTasksSuccess');
     return {
       type: IntakeActions.FIND_POOLED_INTAKE_TASKS_SUCCESS,
-      payload: tasks
+      payload: tasks,
     };
   }
 
   static FIND_INTAKE_TASK_BY_TASK_ID = '[Intake] Find Intake Task By Task Id';
 
   findIntakeTaskByTaskId(taskId): Action {
-    console.log("findIntakeTaskByTaskId");
+    console.log('findIntakeTaskByTaskId');
     return {
       type: IntakeActions.FIND_INTAKE_TASK_BY_TASK_ID,
-      payload: taskId
+      payload: taskId,
     };
   }
 
   static FIND_INTAKE_TASK_BY_TASK_ID_SUCCESS = '[Intake] Find Intake Task By Task Id Success';
 
   findIntakeTaskByTaskIdSuccess(task): Action {
-    console.log("findIntakeTaskByTaskIdSuccess");
+    console.log('findIntakeTaskByTaskIdSuccess');
     return {
       type: IntakeActions.FIND_INTAKE_TASK_BY_TASK_ID_SUCCESS,
-      payload: task
+      payload: task,
     };
   }
 
@@ -69,7 +69,7 @@ export class IntakeActions {
   startIntakeTask(intake): Action {
     return {
       type: IntakeActions.START_INTAKE_TASK,
-      payload: intake
+      payload: intake,
     };
   }
 
@@ -78,16 +78,16 @@ export class IntakeActions {
   startIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.START_INTAKE_TASK_SUCCESS,
-      payload: task
+      payload: task,
     };
   }
-  
+
   static PROCESS_INTAKE_CANDIDATE = '[Intake] Process Intake Candidate';
 
   processIntakeCandidate(intake): Action {
     return {
       type: IntakeActions.PROCESS_INTAKE_CANDIDATE,
-      payload: intake
+      payload: intake,
     };
   }
 
@@ -96,7 +96,7 @@ export class IntakeActions {
   processIntakeCandidateSuccess(task): Action {
     return {
       type: IntakeActions.PROCESS_INTAKE_CANDIDATE_SUCCESS,
-      payload: task
+      payload: task,
     };
   }
 
@@ -105,7 +105,7 @@ export class IntakeActions {
   completeIntakeTask(intake): Action {
     return {
       type: IntakeActions.COMPLETE_INTAKE_TASK,
-      payload: intake
+      payload: intake,
     };
   }
 
@@ -114,16 +114,16 @@ export class IntakeActions {
   completeIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.COMPLETE_INTAKE_TASK_SUCCESS,
-      payload: task
+      payload: task,
     };
   }
-  
+
   static COPY_INTAKE_TASK = '[Intake] Copy Intake Task';
 
   copyIntakeTask(intake): Action {
     return {
       type: IntakeActions.COPY_INTAKE_TASK,
-      payload: intake
+      payload: intake,
     };
   }
 
@@ -132,7 +132,7 @@ export class IntakeActions {
   copyIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.COPY_INTAKE_TASK_SUCCESS,
-      payload: task
+      payload: task,
     };
   }
 
@@ -141,7 +141,7 @@ export class IntakeActions {
   claimIntakeTask(intake): Action {
     return {
       type: IntakeActions.CLAIM_INTAKE_TASK,
-      payload: intake
+      payload: intake,
     };
   }
 
@@ -150,7 +150,7 @@ export class IntakeActions {
   claimIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.CLAIM_INTAKE_TASK_SUCCESS,
-      payload: task
+      payload: task,
     };
   }
 
@@ -159,7 +159,7 @@ export class IntakeActions {
   releaseIntakeTask(intake): Action {
     return {
       type: IntakeActions.RELEASE_INTAKE_TASK,
-      payload: intake
+      payload: intake,
     };
   }
 
@@ -168,7 +168,7 @@ export class IntakeActions {
   releaseIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.RELEASE_INTAKE_TASK_SUCCESS,
-      payload: task
+      payload: task,
     };
   }
 
@@ -177,7 +177,7 @@ export class IntakeActions {
   findIntakeById(id): Action {
     return {
       type: IntakeActions.FIND_INTAKE_BY_ID,
-      payload: id
+      payload: id,
     };
   }
 
@@ -186,7 +186,7 @@ export class IntakeActions {
   findIntakeByIdSuccess(intake): Action {
     return {
       type: IntakeActions.FIND_INTAKE_BY_ID_SUCCESS,
-      payload: intake
+      payload: intake,
     };
   }
 
@@ -195,7 +195,7 @@ export class IntakeActions {
   findIntakeByReferenceNo(referenceNo): Action {
     return {
       type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO,
-      payload: referenceNo
+      payload: referenceNo,
     };
   }
 
@@ -204,47 +204,47 @@ export class IntakeActions {
   findIntakeByReferenceNoSuccess(intake): Action {
     return {
       type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_SUCCESS,
-      payload: intake
+      payload: intake,
     };
   }
-  
+
   static FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS = '[Intake] Find Intake By Reference No And Bid Status';
 
   findIntakeByReferenceNoAndBidStatus(referenceNo): Action {
-      console.log ("findIntakeByReferenceNoAndBidStatus :"+referenceNo);
-    return {
+      console.log ('findIntakeByReferenceNoAndBidStatus :' + referenceNo);
+      return {
       type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS,
-      payload: referenceNo
+      payload: referenceNo,
     };
   }
 
   static FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS_SUCCESS = '[Intake] Find Intake By Reference No And Bid Status Success';
 
   findIntakeByReferenceNoAndBidStatusSuccess(intake): Action {
-      console.log ("findIntakeByReferenceNoAndBidSuccess :"+intake);
-    return {
+      console.log ('findIntakeByReferenceNoAndBidSuccess :' + intake);
+      return {
       type: IntakeActions.FIND_INTAKE_BY_REFERENCE_NO_AND_BID_STATUS_SUCCESS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_PROGRAM_OFFERINGS = '[Intake] Find Program Offerings';
 
   findProgramOfferings(intake): Action {
-    console.log("findProgramOfferings :"+intake);
+    console.log('findProgramOfferings :' + intake);
     return {
       type: IntakeActions.FIND_PROGRAM_OFFERINGS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_PROGRAM_OFFERINGS_SUCCESS = '[Intake] Find Program Offerings Success';
 
   findProgramOfferingsSuccess(items): Action {
-    console.log("findProgramOfferingsSuccess");
+    console.log('findProgramOfferingsSuccess');
     return {
       type: IntakeActions.FIND_PROGRAM_OFFERINGS_SUCCESS,
-      payload: items
+      payload: items,
     };
   }
 
@@ -253,17 +253,17 @@ export class IntakeActions {
   findSupervisorOfferings(intake): Action {
     return {
       type: IntakeActions.FIND_SUPERVISOR_OFFERINGS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_SUPERVISOR_OFFERINGS_SUCCESS = '[Intake] Find Supervisor Offering Success';
 
   findSupervisorOfferingsSuccess(offerings): Action {
-    console.log("findSupervisorOfferingsSuccess");
+    console.log('findSupervisorOfferingsSuccess');
     return {
       type: IntakeActions.FIND_SUPERVISOR_OFFERINGS_SUCCESS,
-      payload: offerings
+      payload: offerings,
     };
   }
 
@@ -272,137 +272,136 @@ export class IntakeActions {
   findStudyModeOfferings(intake): Action {
     return {
       type: IntakeActions.FIND_STUDY_MODE_OFFERINGS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_STUDY_MODE_OFFERINGS_SUCCESS = '[Intake] Find Study Mode Offering Success';
 
   findStudyModeOfferingsSuccess(offerings): Action {
-    console.log("findStudyModeOfferingsSuccess");
+    console.log('findStudyModeOfferingsSuccess');
     return {
       type: IntakeActions.FIND_STUDY_MODE_OFFERINGS_SUCCESS,
-      payload: offerings
+      payload: offerings,
     };
   }
-
 
   static FIND_INTAKE_APPLICATIONS = '[Intake] Find INTAKE APPLICATION ';
 
   findIntakeApplications(intake): Action {
     return {
       type: IntakeActions.FIND_INTAKE_APPLICATIONS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find Intake Application Success';
 
   findIntakeApplicationsSuccess(applications): Action {
-    console.log("findIntakeApplicationsSuccess");
+    console.log('findIntakeApplicationsSuccess');
     return {
       type: IntakeActions.FIND_INTAKE_APPLICATIONS_SUCCESS,
-      payload: applications
+      payload: applications,
     };
   }
-  
+
   static FIND_SUBMITTED_INTAKE_APPLICATIONS = '[Intake] Find SUBMITTED INTAKE APPLICATIONS ';
 
   findSubmittedIntakeApplications(intake): Action {
-      console.log("findSubmittedIntakeApplications :"+intake);
-    return {
+      console.log('findSubmittedIntakeApplications :' + intake);
+      return {
       type: IntakeActions.FIND_SUBMITTED_INTAKE_APPLICATIONS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find SUBMITTED Intake Applications Success';
 
   findSubmittedIntakeApplicationsSuccess(applications): Action {
-    console.log("findSubmittedIntakeApplicationsSuccess");
+    console.log('findSubmittedIntakeApplicationsSuccess');
     return {
       type: IntakeActions.FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS,
-      payload: applications
+      payload: applications,
     };
   }
-  
+
   static FIND_SELECTED_INTAKE_APPLICATIONS = '[Intake] Find SELECTED INTAKE APPLICATION ';
 
   findSelectedIntakeApplications(intake): Action {
-      console.log("findSelectedIntakeApplications :"+intake);
-    return {
+      console.log('findSelectedIntakeApplications :' + intake);
+      return {
       type: IntakeActions.FIND_SELECTED_INTAKE_APPLICATIONS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_SELECTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find SELECTED Intake Application Success';
 
   findSelectedIntakeApplicationsSuccess(applications): Action {
-    console.log("FIND_SELECTED_INTAKE_APPLICATIONS_SUCCESS");
+    console.log('FIND_SELECTED_INTAKE_APPLICATIONS_SUCCESS');
     return {
       type: IntakeActions.FIND_SELECTED_INTAKE_APPLICATIONS_SUCCESS,
-      payload: applications
+      payload: applications,
     };
   }
-  
+
   static FIND_EVALUATED_INTAKE_APPLICATIONS = '[Intake] Find EVALUATED INTAKE APPLICATION ';
 
   findEvaluatedIntakeApplications(intake): Action {
-      console.log("findEvaluatedIntakeApplications :"+intake);
-    return {
+      console.log('findEvaluatedIntakeApplications :' + intake);
+      return {
       type: IntakeActions.FIND_EVALUATED_INTAKE_APPLICATIONS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_EVALUATED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find EVALUATED Intake Application Success';
 
   findEvaluatedIntakeApplicationsSuccess(applications): Action {
-    console.log("findEvaluatedIntakeApplicationsSuccess");
+    console.log('findEvaluatedIntakeApplicationsSuccess');
     return {
       type: IntakeActions.FIND_EVALUATED_INTAKE_APPLICATIONS_SUCCESS,
-      payload: applications
+      payload: applications,
     };
   }
-  
+
   static FIND_REJECTED_INTAKE_APPLICATIONS = '[Intake] Find REJECTED INTAKE APPLICATION ';
 
   findRejectedIntakeApplications(intake): Action {
-      console.log("findRejectedIntakeApplications :"+intake);
-    return {
+      console.log('findRejectedIntakeApplications :' + intake);
+      return {
       type: IntakeActions.FIND_REJECTED_INTAKE_APPLICATIONS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_REJECTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find REJECTED Intake Application Success';
 
   findRejectedIntakeApplicationsSuccess(applications): Action {
-    console.log("findRejectedIntakeApplicationsSuccess");
+    console.log('findRejectedIntakeApplicationsSuccess');
     return {
       type: IntakeActions.FIND_REJECTED_INTAKE_APPLICATIONS_SUCCESS,
-      payload: applications
+      payload: applications,
     };
   }
-  
+
   static FIND_VERIFIED_INTAKE_APPLICATIONS = '[Intake] Find VERIFIED INTAKE APPLICATION ';
 
   findVerifiedIntakeApplications(intake): Action {
-      console.log("findVerifieddIntakeApplications :"+intake);
-    return {
+      console.log('findVerifieddIntakeApplications :' + intake);
+      return {
       type: IntakeActions.FIND_VERIFIED_INTAKE_APPLICATIONS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static FIND_VERIFIED_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find VERIFIED Intake Application Success';
 
   findVerifiedIntakeApplicationsSuccess(applications): Action {
-    console.log("findVerifieddIntakeApplications");
+    console.log('findVerifieddIntakeApplications');
     return {
       type: IntakeActions.FIND_VERIFIED_INTAKE_APPLICATIONS_SUCCESS,
-      payload: applications
+      payload: applications,
     };
   }
 
@@ -411,17 +410,17 @@ export class IntakeActions {
   updateIntake(intake): Action {
     return {
       type: IntakeActions.UPDATE_INTAKE,
-      payload: intake
+      payload: intake,
     };
   }
 
   static UPDATE_INTAKE_SUCCESS = '[Intake] Update Intake Success';
 
   updateIntakeSuccess(message): Action {
-      console.log("updateIntakeSuccess");
-    return {
+      console.log('updateIntakeSuccess');
+      return {
       type: IntakeActions.UPDATE_INTAKE_SUCCESS,
-      payload: message
+      payload: message,
     };
   }
 
@@ -430,7 +429,7 @@ export class IntakeActions {
   removeIntake(intake): Action {
     return {
       type: IntakeActions.REMOVE_INTAKE,
-      payload: intake
+      payload: intake,
     };
   }
 
@@ -439,16 +438,16 @@ export class IntakeActions {
   removeIntakeSuccess(intake): Action {
     return {
       type: IntakeActions.REMOVE_INTAKE_SUCCESS,
-      payload: intake
+      payload: intake,
     };
   }
 
   static ADD_PROGRAM_OFFERING = '[Intake] Add Program Offering';
 
-  addProgramOffering(intake:Intake, programOffering: ProgramOffering) {
+  addProgramOffering(intake: Intake, programOffering: ProgramOffering) {
     return {
       type: IntakeActions.ADD_PROGRAM_OFFERING,
-      payload:{intake:intake, programOffering:programOffering}
+      payload: {intake: intake, programOffering: programOffering},
     };
   }
 
@@ -457,38 +456,38 @@ export class IntakeActions {
   addProgramOfferingSuccess(message) {
     return {
       type: IntakeActions.ADD_PROGRAM_OFFERING_SUCCESS,
-      payload:message
+      payload: message,
     };
   }
 
   static UPDATE_PROGRAM_OFFERING = '[Intake] Update Program Offering';
 
-  updateProgramOffering(intake:Intake, programOffering: ProgramOffering) {
-      console.log("updateProgramOffering");
-      console.log("intake id :"+intake.id);
-      console.log("programOffering programCode id :"+programOffering.programCode.id);
-    return {
+  updateProgramOffering(intake: Intake, programOffering: ProgramOffering) {
+      console.log('updateProgramOffering');
+      console.log('intake id :' + intake.id);
+      console.log('programOffering programCode id :' + programOffering.programCode.id);
+      return {
       type: IntakeActions.UPDATE_PROGRAM_OFFERING,
-      payload:{intake:intake, programOffering:programOffering}
+      payload: {intake: intake, programOffering: programOffering},
     };
   }
 
    static UPDATE_PROGRAM_OFFERING_SUCCESS = '[Intake] Update Program Offering Success';
 
   updateProgramOfferingSuccess(message) {
-      console.log("updateProgramOfferingSuccess");
-    return {
+      console.log('updateProgramOfferingSuccess');
+      return {
       type: IntakeActions.UPDATE_PROGRAM_OFFERING_SUCCESS,
-      payload:message
+      payload: message,
     };
   }
 
   static DELETE_PROGRAM_OFFERING = '[Intake] DELETE Program Offering';
 
-  deleteProgramOffering(intake:Intake, programOffering: ProgramOffering) {
+  deleteProgramOffering(intake: Intake, programOffering: ProgramOffering) {
     return {
       type: IntakeActions.DELETE_PROGRAM_OFFERING,
-      payload:{intake:intake, programOffering:programOffering}
+      payload: {intake: intake, programOffering: programOffering},
     };
   }
 
@@ -497,16 +496,16 @@ export class IntakeActions {
   deleteProgramOfferingSuccess(message) {
     return {
       type: IntakeActions.DELETE_PROGRAM_OFFERING_SUCCESS,
-      payload:message
+      payload: message,
     };
   }
 
   static ADD_SUPERVISOR_OFFERING = '[Intake] Add Supervisor Offering';
 
-  addSupervisorOffering(intake:Intake, supervisorOffering: SupervisorOffering) {
+  addSupervisorOffering(intake: Intake, supervisorOffering: SupervisorOffering) {
     return {
       type: IntakeActions.ADD_SUPERVISOR_OFFERING,
-      payload:{intake:intake, supervisorOffering:supervisorOffering}
+      payload: {intake: intake, supervisorOffering: supervisorOffering},
     };
   }
 
@@ -515,16 +514,16 @@ export class IntakeActions {
   addSupervisorOfferingSuccess(message) {
     return {
       type: IntakeActions.ADD_SUPERVISOR_OFFERING_SUCCESS,
-      payload:message
+      payload: message,
     };
   }
 
   static DELETE_SUPERVISOR_OFFERING = '[Intake] Delete Supervisor Offering';
 
-  deleteSupervisorOffering(intake:Intake, supervisorOffering: SupervisorOffering) {
+  deleteSupervisorOffering(intake: Intake, supervisorOffering: SupervisorOffering) {
     return {
       type: IntakeActions.DELETE_SUPERVISOR_OFFERING,
-      payload:{intake:intake, supervisorOffering:supervisorOffering}
+      payload: {intake: intake, supervisorOffering: supervisorOffering},
     };
   }
 
@@ -533,15 +532,15 @@ export class IntakeActions {
   deleteSupervisorOfferingSuccess(message) {
     return {
       type: IntakeActions.DELETE_SUPERVISOR_OFFERING_SUCCESS,
-      payload:message
+      payload: message,
     };
   }
   static ADD_STUDY_MODE_OFFERING = '[Intake] Add StudyMode Offering';
 
-  addStudyModeOffering(intake:Intake, studyModeOffering: StudyModeOffering) {
+  addStudyModeOffering(intake: Intake, studyModeOffering: StudyModeOffering) {
     return {
       type: IntakeActions.ADD_STUDY_MODE_OFFERING,
-      payload:{intake:intake, studyModeOffering:studyModeOffering}
+      payload: {intake: intake, studyModeOffering: studyModeOffering},
     };
   }
 
@@ -550,16 +549,16 @@ export class IntakeActions {
   addStudyModeOfferingSuccess(message) {
     return {
       type: IntakeActions.ADD_STUDY_MODE_OFFERING_SUCCESS,
-      payload:message
+      payload: message,
     };
   }
 
   static DELETE_STUDY_MODE_OFFERING = '[Intake] Delete Study Mode Offering';
 
-  deleteStudyModeOffering(intake:Intake, studyModeOffering: StudyModeOffering) {
+  deleteStudyModeOffering(intake: Intake, studyModeOffering: StudyModeOffering) {
     return {
       type: IntakeActions.DELETE_STUDY_MODE_OFFERING,
-      payload:{intake:intake, studyModeOffering:studyModeOffering}
+      payload: {intake: intake, studyModeOffering: studyModeOffering},
     };
   }
 
@@ -568,7 +567,7 @@ export class IntakeActions {
   deleteStudyModeOfferingSuccess(message) {
     return {
       type: IntakeActions.DELETE_STUDY_MODE_OFFERING_SUCCESS,
-      payload:message
+      payload: message,
     };
   }
 }

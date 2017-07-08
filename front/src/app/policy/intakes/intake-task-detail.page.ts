@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {IntakeTask} from "./intake-task.interface";
-import {IntakeActions} from "./intake.action";
-import {Observable} from "rxjs";
-import {PolicyModuleState} from "../index";
-import {Store} from "@ngrx/store";
-
+import {IntakeActions} from './intake.action';
+import {Observable} from 'rxjs';
+import {PolicyModuleState} from '../index';
+import {Store} from '@ngrx/store';
+import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
 
 @Component({
   selector: 'pams-intake-task-detail',
@@ -13,14 +12,14 @@ import {Store} from "@ngrx/store";
 })
 export class IntakeTaskDetailPage implements OnInit {
 
-  private INTAKE_TASK = "policyModuleState.intakeTask".split(".");
+  private INTAKE_TASK: string[] = 'policyModuleState.intakeTask'.split('.');
   private intakeTask$: Observable<IntakeTask>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<PolicyModuleState>,
               private actions: IntakeActions) {
-    this.intakeTask$ = this.store.select(...this.INTAKE_TASK)
+    this.intakeTask$ = this.store.select(...this.INTAKE_TASK);
   }
 
   ngOnInit(): void {
@@ -34,5 +33,4 @@ export class IntakeTaskDetailPage implements OnInit {
     this.router.navigate(['/policy/intakes']);
   }
 }
-
 

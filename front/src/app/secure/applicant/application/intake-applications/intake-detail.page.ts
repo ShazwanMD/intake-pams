@@ -3,9 +3,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {ApplicationModuleState} from '../index';
-import {Intake} from '../../../../policy/intakes/intake.interface';
+import {Intake} from '../../../../shared/model/policy/intake.interface';
 import {IntakeApplicationActions} from './intake-application.action';
-import {ProgramOffering} from '../../../../policy/intakes/program-offering.interface';
+import {ProgramOffering} from '../../../../shared/model/policy/program-offering.interface';
 
 @Component({
   selector: 'pams-intake-detail',

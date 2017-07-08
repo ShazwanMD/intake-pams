@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {UserRegistration} from "./user-registration.interface";
-import {Store} from "@ngrx/store";
-import {RegistrationModuleState} from "./index";
-import {RegistrationActions} from "./registration.action";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {RegistrationModuleState} from './index';
+import {RegistrationActions} from './registration.action';
+import {UserRegistration} from '../shared/model/registration/user-registration.interface';
 
 @Component({
   selector: 'pams-registration-page',
@@ -19,7 +19,7 @@ export class RegistrationPage implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private store: Store<RegistrationModuleState>,
-              private registrationActions:RegistrationActions,
+              private registrationActions: RegistrationActions,
           ) {
   }
 

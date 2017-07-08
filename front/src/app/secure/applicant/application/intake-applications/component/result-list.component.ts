@@ -2,13 +2,13 @@ import { StpmResultEditorDialog } from './dialog/stpm-result-editor.dialog';
 import { DiplomaResultEditorDialog } from './dialog/diploma-result-editor.dialog';
 import { SpmResultEditorDialog } from './dialog/spm-result-editor.dialog';
 import { BachelorResultEditorDialog } from './dialog/bachelor-result-editor.dialog';
-import { Result } from './../result.interface';
+import { Result } from '../../../../../shared/model/application/result.interface';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef } from '@angular/core';
 import { IntakeApplicationActions } from '../intake-application.action';
 import { Store } from '@ngrx/store';
 import { ApplicationModuleState } from '../../index';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
-import { IntakeApplication } from '../intake-application.interface';
+import { IntakeApplication } from '../../../../../shared/model/application/intake-application.interface';
 
 @Component({
   selector: 'pams-result-list',

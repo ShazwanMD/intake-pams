@@ -4,8 +4,8 @@ import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
 import {AttachmentCreatorDialog} from './dialog/attachment-creator.dialog';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
-import {IntakeApplication} from '../intake-application.interface';
-import {Attachment} from '../attachment.interface';
+import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
+import {Attachment} from '../../../../../shared/model/application/attachment.interface';
 
 @Component({
   selector: 'pams-attachment-list',

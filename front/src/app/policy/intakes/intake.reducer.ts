@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {IntakeActions} from "./intake.action";
-import {Intake} from "./intake.interface";
+import {IntakeActions} from './intake.action';
+import {Intake} from '../../shared/model/policy/intake.interface';
 
 export type IntakeState = Intake;
 

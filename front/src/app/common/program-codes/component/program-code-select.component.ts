@@ -1,12 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CommonActions} from "../../common.action";
-import {CommonModuleState} from "../../index";
-import {ProgramCode} from "../program-code.interface";
-import { ProgramLevel } from "../../../policy/program-levels/program-level.interface";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
+import {ProgramCode} from '../program-code.interface';
+import {ProgramLevel} from '../../../shared/model/policy/program-level.interface';
 
 @Component({
   selector: 'pams-program-code-select',
@@ -15,7 +14,7 @@ import { ProgramLevel } from "../../../policy/program-levels/program-level.inter
 })
 export class ProgramCodeSelectComponent implements OnInit {
 
-  private PROGRAM_CODES = "commonModuleState.programCodes".split(".");
+  private PROGRAM_CODES: string[] = 'commonModuleState.programCodes'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   @Input() programLevel: ProgramLevel;
@@ -34,4 +33,3 @@ export class ProgramCodeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-

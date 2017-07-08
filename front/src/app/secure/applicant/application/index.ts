@@ -1,6 +1,6 @@
-import {Result} from '../../applicant/application/intake-applications/result.interface';
-import {SupervisorOffering} from '../../../policy/intakes/supervisor-offering.interface';
-import {Referee} from '../../applicant/application/intake-applications/referee.interface';
+import {Result} from '../../../shared/model/application/result.interface';
+import {SupervisorOffering} from '../../../shared/model/policy/supervisor-offering.interface';
+import {Referee} from '../../../shared/model/application/referee.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -41,20 +41,20 @@ import {
   employmentListReducer,
   EmploymentListState,
 } from '../../applicant/application/intake-applications/employment-list.reducer';
-import {Employment} from '../../applicant/application/intake-applications/employment.interface';
-import {Intake} from '../../../policy/intakes/intake.interface';
-import {ProgramOffering} from '../../../policy/intakes/program-offering.interface';
-import {IntakeApplication} from '../../applicant/application/intake-applications/intake-application.interface';
+import {Employment} from '../../../shared/model/application/employment.interface';
+import {Intake} from '../../../shared/model/policy/intake.interface';
+import {ProgramOffering} from '../../../shared/model/policy/program-offering.interface';
+import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
 import {refereeListReducer, RefereeListState} from '../../applicant/application/intake-applications/referee-list.reducer';
 import {resultListReducer, ResultListState} from '../../applicant/application/intake-applications/result-list.reducer';
-import {StudyModeOffering} from '../../../policy/intakes/study-mode-offering.interface';
-import {Language} from '../../applicant/application/intake-applications/language.interface';
+import {StudyModeOffering} from '../../../shared/model/policy/study-mode-offering.interface';
+import {Language} from '../../../shared/model/application/language.interface';
 import {languageListReducer, LanguageListState} from '../../applicant/application/intake-applications/language-list.reducer';
 import {
   attachmentListReducer,
   AttachmentListState,
 } from '../../applicant/application/intake-applications/attachment-list.reducer';
-import {Attachment} from '../../applicant/application/intake-applications/attachment.interface';
+import {Attachment} from '../../../shared/model/application/attachment.interface';
 
 export interface ApplicationModuleState {
   intakes: IntakeListState;

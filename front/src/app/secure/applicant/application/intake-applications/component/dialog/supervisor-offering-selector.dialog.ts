@@ -1,12 +1,12 @@
-import {SupervisorOffering} from '../../../../../../policy/intakes/supervisor-offering.interface';
+import {SupervisorOffering} from '../../../../../../shared/model/policy/supervisor-offering.interface';
 import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../../index';
 import {IntakeApplicationActions} from '../../intake-application.action';
-import {IntakeApplication} from '../../intake-application.interface';
-import {Intake} from '../../../../../../policy/intakes/intake.interface';
+import {IntakeApplication} from '../../../../../../shared/model/application/intake-application.interface';
+import {Intake} from '../../../../../../shared/model/policy/intake.interface';
 import {Observable} from 'rxjs/Observable';
 import {MdDialogRef} from '@angular/material';
 

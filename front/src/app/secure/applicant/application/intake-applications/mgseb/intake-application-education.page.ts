@@ -3,7 +3,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {IntakeApplication} from '../intake-application.interface';
+import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
 import {ApplicationModuleState} from '../../index';
 
 @Component({

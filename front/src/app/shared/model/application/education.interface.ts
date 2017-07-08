@@ -1,4 +1,4 @@
-import {MetaObject} from '../../../../core/meta-object.interface';
+import {MetaObject} from '../../../core/meta-object.interface';
 
 export interface Education extends MetaObject {
   id: number;

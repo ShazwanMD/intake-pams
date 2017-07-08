@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {Employment} from './employment.interface';
+import {Employment} from '../../../../shared/model/application/employment.interface';
 import {IntakeApplicationActions} from './intake-application.action';
 
 export type EmploymentListState = Employment[];

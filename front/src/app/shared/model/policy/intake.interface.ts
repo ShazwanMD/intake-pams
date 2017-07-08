@@ -1,7 +1,7 @@
-import {MetaObject} from "../../core/meta-object.interface";
-import {IntakeSession} from "../intake-sessions/intake-session.interface";
-import {GraduateCenter} from "../../common/graduate-centers/graduate-center.interface";
-import {ProgramLevel} from "../program-levels/program-level.interface";
+import {MetaObject} from "../../../core/meta-object.interface";
+import {IntakeSession} from "./intake-session.interface";
+import {GraduateCenter} from "../../../common/graduate-centers/graduate-center.interface";
+import {ProgramLevel} from "./program-level.interface";
 export interface Intake extends MetaObject{
 
   id: number;

@@ -15,15 +15,15 @@ import {IntakeState, intakeReducer} from './intakes/intake.reducer';
 import {IntakeTaskState, intakeTaskReducer} from './intakes/intake-task.reducer';
 import {SupervisorOfferingListState, supervisorOfferingListReducer} from './intakes/supervisor-offering-list.reducer';
 import {StudyModeOfferingListState, studyModeOfferingListReducer} from './intakes/study-mode-offering-list.reducer';
-import {IntakeTask} from './intakes/intake-task.interface';
-import {Intake} from './intakes/intake.interface';
-import {ProgramOffering} from './intakes/program-offering.interface';
-import {SupervisorOffering} from './intakes/supervisor-offering.interface';
-import {StudyModeOffering} from './intakes/study-mode-offering.interface';
-import {IntakeSession} from './intake-sessions/intake-session.interface';
+import {IntakeTask} from '../shared/model/policy/intake-task.interface';
+import {Intake} from '../shared/model/policy/intake.interface';
+import {ProgramOffering} from '../shared/model/policy/program-offering.interface';
+import {SupervisorOffering} from '../shared/model/policy/supervisor-offering.interface';
+import {StudyModeOffering} from '../shared/model/policy/study-mode-offering.interface';
+import {IntakeSession} from '../shared/model/policy/intake-session.interface';
 import {IntakeSessionSubModule} from './intake-sessions/index';
 import {ProgramLevelSubModule} from './program-levels/index';
-import {ProgramLevel} from './program-levels/program-level.interface';
+import {ProgramLevel} from '../shared/model/policy/program-level.interface';
 import {ProgramLevelListState, programLevelListReducer} from './program-levels/program-level.reducer';
 import {programOfferingListReducer, ProgramOfferingListState} from './intakes/program-offering-list.reducer';
 import {
@@ -31,7 +31,7 @@ import {
   pooledIntakeTaskListReducer,
 } from './intakes/intake-task-list.reducer';
 import {intakeSessionListReducer, IntakeSessionListState} from './intake-sessions/intake-session-list.reducer';
-import {IntakeApplication} from '../secure/applicant/application/intake-applications/intake-application.interface';
+import {IntakeApplication} from '../shared/model/application/intake-application.interface';
 import {intakeApplicationListReducer, IntakeApplicationListState} from './intakes/intake-application-list.reducer';
 import {
   intakeSubmittedApplicationListReducer,

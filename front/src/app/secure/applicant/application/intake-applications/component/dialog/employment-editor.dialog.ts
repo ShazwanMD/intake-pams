@@ -6,9 +6,9 @@ import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../../index';
 import {MdDialogRef} from '@angular/material';
 import {IntakeApplicationActions} from '../../intake-application.action';
-import {IntakeApplication} from '../../intake-application.interface';
-import {Employment} from '../../employment.interface';
-import {EmploymentType} from '../../employment-type.enum';
+import {IntakeApplication} from '../../../../../../shared/model/application/intake-application.interface';
+import {Employment} from '../../../../../../shared/model/application/employment.interface';
+import {EmploymentType} from '../../../../../../shared/model/application/employment-type.enum';
 
 @Component({
   selector: 'pams-employment-editor',
@@ -59,4 +59,4 @@ export class EmploymentEditorDialog implements OnInit {
     this.dialog.close();
   }
 }
-
+

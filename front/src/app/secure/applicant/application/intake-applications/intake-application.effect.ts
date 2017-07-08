@@ -7,9 +7,9 @@ import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../index';
 import {Observable} from 'rxjs';
-import {Intake} from '../../../../policy/intakes/intake.interface';
-import {IntakeApplication} from './intake-application.interface';
-import { IntakeActions } from '../../../../policy/intakes/intake.action';
+import {Intake} from '../../../../shared/model/policy/intake.interface';
+import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
+import {IntakeActions} from '../../../../policy/intakes/intake.action';
 
 @Injectable()
 export class IntakeApplicationEffects {
@@ -134,28 +134,28 @@ export class IntakeApplicationEffects {
     .map((applications) => this.intakeApplicationActions.findIntakeApplications());
 
   @Effect() selectIntakeApplication$ = this.actions$
-  .ofType(IntakeApplicationActions.SELECT_INTAKE_APPLICATION)
-  .map((action) => action.payload)
-  .switchMap((application) => this.applicationService.selectIntakeApplication(application))
-  .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message));
+    .ofType(IntakeApplicationActions.SELECT_INTAKE_APPLICATION)
+    .map((action) => action.payload)
+    .switchMap((application) => this.applicationService.selectIntakeApplication(application))
+    .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message));
 
   @Effect() verifyIntakeApplication$ = this.actions$
-  .ofType(IntakeApplicationActions.VERIFY_INTAKE_APPLICATION)
-  .map((action) => action.payload)
-  .switchMap((application) => this.applicationService.verifyIntakeApplication(application))
-  .map((message) => this.intakeApplicationActions.verifyIntakeApplicationSuccess(message));
+    .ofType(IntakeApplicationActions.VERIFY_INTAKE_APPLICATION)
+    .map((action) => action.payload)
+    .switchMap((application) => this.applicationService.verifyIntakeApplication(application))
+    .map((message) => this.intakeApplicationActions.verifyIntakeApplicationSuccess(message));
 
   @Effect() rejectIntakeApplication$ = this.actions$
-  .ofType(IntakeApplicationActions.REJECT_INTAKE_APPLICATION)
-  .map((action) => action.payload)
-  .switchMap((application) => this.applicationService.rejectIntakeApplication(application))
-  .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message));
+    .ofType(IntakeApplicationActions.REJECT_INTAKE_APPLICATION)
+    .map((action) => action.payload)
+    .switchMap((application) => this.applicationService.rejectIntakeApplication(application))
+    .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message));
 
   @Effect() findSubmittedIntakeApplications$ = this.actions$
-  .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
-  .map((action) => action.payload)
-  .switchMap((intake) => this.applicationService.findSubmittedIntakeApplications(intake))
-  .map((applications) => this.intakeActions.findIntakeApplicationsSuccess(applications));
+    .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
+    .map((action) => action.payload)
+    .switchMap((intake) => this.applicationService.findSubmittedIntakeApplications(intake))
+    .map((applications) => this.intakeActions.findIntakeApplicationsSuccess(applications));
 
   // ====================================================================================================
   // EDUCATION
@@ -307,19 +307,19 @@ export class IntakeApplicationEffects {
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
   @Effect() downloadAttachment = this.actions$
-  .ofType(IntakeApplicationActions.DOWNLOAD_ATTACHMENT)
-  .map((action) => action.payload)
-  .switchMap((payload) => this.applicationService.downloadAttachment(payload.attachment))
-  .map((file) => {
+    .ofType(IntakeApplicationActions.DOWNLOAD_ATTACHMENT)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.applicationService.downloadAttachment(payload.attachment))
+    .map((file) => {
       let url = URL.createObjectURL(file);
       let a = document.createElement('a');
-      a.href = url ;
+      a.href = url;
       a.download = file.name;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-  }).ignoreElements();
+    }).ignoreElements();
 
   // ====================================================================================================
   // RESULT
@@ -340,7 +340,7 @@ export class IntakeApplicationEffects {
     .map((state) => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
- @Effect() deleteResult$ = this.actions$
+  @Effect() deleteResult$ = this.actions$
     .ofType(IntakeApplicationActions.DELETE_RESULT)
     .map((action) => action.payload)
     .switchMap((payload) => this.applicationService.deleteResult(payload.application, payload.result))
@@ -390,4 +390,4 @@ export class IntakeApplicationEffects {
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
 }
-
+

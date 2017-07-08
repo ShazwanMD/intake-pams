@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {EmploymentType} from '../employment-type.enum';
+import {EmploymentType} from '../../../../../shared/model/application/employment-type.enum';
 
 @Component({
   selector: 'pams-employment-type-select',

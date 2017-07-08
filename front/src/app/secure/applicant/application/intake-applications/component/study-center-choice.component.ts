@@ -6,7 +6,7 @@ import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {IntakeApplication} from '../intake-application.interface';
+import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
 import {StudyModeOfferingSelectorDialog} from './dialog/study-mode-offering-selector.dialog';
 import {ProgramOfferingSelectorDialog} from './dialog/program-offering-selector.dialog';
 

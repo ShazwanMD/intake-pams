@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {ResultType} from '../result-type.enum';
+import {ResultType} from '../../../../../shared/model/application/result-type.enum';
 
 @Component({
   selector: 'pams-result-type-select',
@@ -26,4 +26,4 @@ export class ResultTypeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

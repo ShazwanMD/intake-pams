@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {Candidate} from "./candidate.interface";
-import {AdmissionActions} from "./admission.action";
+import {AdmissionActions} from './admission.action';
+import {Candidate} from '../shared/model/admission/candidate.interface';
 
 export type CandidateListState = Candidate[];
 
@@ -38,4 +38,4 @@ export function rejectedCandidateListReducer(state = initialState, action: Actio
     }
   }
 }
-
+

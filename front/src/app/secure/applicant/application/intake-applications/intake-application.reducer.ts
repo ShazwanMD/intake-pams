@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {IntakeApplication} from './intake-application.interface';
+import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
 import {IntakeApplicationActions} from './intake-application.action';
 
 export type IntakeApplicationState = IntakeApplication;

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {IntakeSession} from "./intake-session.interface";
-import {IntakeSessionActions} from "./intake-session.action";
+import {IntakeSessionActions} from './intake-session.action';
+import {IntakeSession} from '../../shared/model/policy/intake-session.interface';
 
 export type IntakeSessionListState = IntakeSession[];
 

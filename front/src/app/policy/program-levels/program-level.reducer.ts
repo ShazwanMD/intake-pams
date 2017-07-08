@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {ProgramLevelActions} from "./program-level.action";
-import {ProgramLevel} from "./program-level.interface";
+import {ProgramLevelActions} from './program-level.action';
+import {ProgramLevel} from '../../shared/model/policy/program-level.interface';
 
 export type ProgramLevelListState = ProgramLevel[];
 

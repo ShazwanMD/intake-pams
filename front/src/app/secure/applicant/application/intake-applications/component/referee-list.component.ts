@@ -1,10 +1,10 @@
-import {Referee} from '../referee.interface';
+import {Referee} from '../../../../../shared/model/application/referee.interface';
 import {RefereeEditorDialog} from './dialog/referee-editor.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
-import {IntakeApplication} from '../intake-application.interface';
+import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 
 @Component({

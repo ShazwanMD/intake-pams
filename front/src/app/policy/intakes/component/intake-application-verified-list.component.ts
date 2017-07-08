@@ -1,14 +1,13 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Intake} from "../intake.interface";
-import {IntakeActions} from "../intake.action";
-import {PolicyModuleState} from "../../index";
-import {Store} from "@ngrx/store";
+import {Intake} from '../../../shared/model/policy/intake.interface';
+import {IntakeActions} from '../intake.action';
+import {PolicyModuleState} from '../../index';
+import {Store} from '@ngrx/store';
 
-import {ActivatedRoute} from "@angular/router";
-import {IntakeApplication} from "../../../secure/applicant/application/intake-applications/intake-application.interface";
-import { MdDialogConfig, MdDialogRef, MdDialog } from "@angular/material";
-import { ApplicantProfileDialog } from "../dialog/applicant-profile.dialog";
-import { ApplicantProfileVerifyDialog } from "../dialog/applicant-profile-verify.dialog";
+import {ActivatedRoute} from '@angular/router';
+import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
+import { MdDialogConfig, MdDialogRef, MdDialog } from '@angular/material';
+import { ApplicantProfileVerifyDialog } from '../dialog/applicant-profile-verify.dialog';
 
 @Component({
   selector: 'pams-intake-application-verified-list',
@@ -17,9 +16,9 @@ import { ApplicantProfileVerifyDialog } from "../dialog/applicant-profile-verify
 })
 export class IntakeApplicationVerifiedListComponent {
 
+  private editorDialogRef: MdDialogRef<ApplicantProfileVerifyDialog>;
   @Input() intake: Intake;
   @Input() intakeVerifiedApplications: IntakeApplication;
-  private editorDialogRef: MdDialogRef<ApplicantProfileVerifyDialog>;
 
   constructor(private store: Store<PolicyModuleState>,
               private route: ActivatedRoute,
@@ -35,12 +34,12 @@ export class IntakeApplicationVerifiedListComponent {
   }
 
   profileDialog(intakeApplication) {
-      console.log("intakeApplication :" + intakeApplication);
+      console.log('intakeApplication :' + intakeApplication);
       this.showDialog(intakeApplication);
   }
 
   showDialog(intakeApplication : IntakeApplication): void {
-      console.log("showDialog");
+      console.log('showDialog');
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
