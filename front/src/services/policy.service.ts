@@ -10,7 +10,7 @@ import {SupervisorOffering} from '../app/policy/intakes/supervisor-offering.inte
 import {StudyModeOffering} from '../app/policy/intakes/study-mode-offering.interface';
 import {IntakeSession} from '../app/policy/intake-sessions/intake-session.interface';
 import {ProgramLevel} from '../app/policy/program-levels/program-level.interface';
-import {IntakeApplication} from '../app/application/intake-applications/intake-application.interface';
+import {IntakeApplication} from '../app/secure/applicant/application/intake-applications/intake-application.interface';
 import {AuthenticationService} from './authentication.service';
 
 @Injectable()

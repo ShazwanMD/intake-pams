@@ -9,7 +9,7 @@ import {PolicyModuleState} from '../../index';
 import {ProgramOffering} from '../program-offering.interface';
 import {StudyModeOffering} from '../study-mode-offering.interface';
 import {SupervisorOffering} from '../supervisor-offering.interface';
-import {IntakeApplication} from '../../../application/intake-applications/intake-application.interface';
+import {IntakeApplication} from '../../../secure/applicant/application/intake-applications/intake-application.interface';
 
 @Component({
   selector: 'pams-intake-evaluate-task',

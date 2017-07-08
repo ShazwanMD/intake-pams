@@ -5,7 +5,7 @@ import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
 
 import {ActivatedRoute} from "@angular/router";
-import {IntakeApplication} from "../../../application/intake-applications/intake-application.interface";
+import {IntakeApplication} from "../../../secure/applicant/application/intake-applications/intake-application.interface";
 
 @Component({
   selector: 'pams-intake-application-list',

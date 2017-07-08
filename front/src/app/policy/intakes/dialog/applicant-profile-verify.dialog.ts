@@ -10,12 +10,12 @@ import { NationalityCode } from "../../../common/nationality-codes/nationality-c
 import { DisabilityCode } from "../../../common/disability-codes/disability-code.interface";
 import { EthnicityCode } from "../../../common/ethnicity-codes/ethnicity-code.interface";
 import { Observable } from "rxjs/Observable";
-import { IntakeApplication } from "../../../application/intake-applications/intake-application.interface";
-import { Employment } from "../../../application/intake-applications/employment.interface";
-import { Language } from "../../../application/intake-applications/language.interface";
-import { Referee } from "../../../application/intake-applications/referee.interface";
-import { IntakeApplicationActions } from "../../../application/intake-applications/intake-application.action";
-import { ApplicationModuleState } from "../../../application/index";
+import { IntakeApplication } from "../../../secure/applicant/application/intake-applications/intake-application.interface";
+import { Employment } from "../../../secure/applicant/application/intake-applications/employment.interface";
+import { Language } from "../../../secure/applicant/application/intake-applications/language.interface";
+import { Referee } from "../../../secure/applicant/application/intake-applications/referee.interface";
+import { IntakeApplicationActions } from "../../../secure/applicant/application/intake-applications/intake-application.action";
+import { ApplicationModuleState } from "../../../secure/applicant/application/index";
 import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from "@angular/material";
 import { ApplicantProfileRejectDialog } from "./applicant-profile-reject.dialog";
 import { IntakeActions } from "../intake.action";

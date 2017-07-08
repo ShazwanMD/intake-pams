@@ -42,6 +42,7 @@ public class JwtAuthenticationSuccessHandler extends SimpleUrlAuthenticationSucc
         int i = 0;
         for (GrantedAuthority ga : authentication.getAuthorities()) {
             roles.append(ga.getAuthority());
+            LOG.debug("grantedAuthority: " + ga.getAuthority());
             if (i != size - 1) {
                 roles.append(",");
             }

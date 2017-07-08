@@ -10,12 +10,12 @@ import {NationalityCode} from "../../../common/nationality-codes/nationality-cod
 import { DisabilityCode } from "../../../common/disability-codes/disability-code.interface";
 import { EthnicityCode } from "../../../common/ethnicity-codes/ethnicity-code.interface";
 import { Observable } from "rxjs/Observable";
-import { IntakeApplication } from "../../../application/intake-applications/intake-application.interface";
-import { Employment } from "../../../application/intake-applications/employment.interface";
-import { Language } from "../../../application/intake-applications/language.interface";
-import { Referee } from "../../../application/intake-applications/referee.interface";
-import { IntakeApplicationActions } from "../../../application/intake-applications/intake-application.action";
-import { ApplicationModuleState } from "../../../application/index";
+import { IntakeApplication } from "../../../secure/applicant/application/intake-applications/intake-application.interface";
+import { Employment } from "../../../secure/applicant/application/intake-applications/employment.interface";
+import { Language } from "../../../secure/applicant/application/intake-applications/language.interface";
+import { Referee } from "../../../secure/applicant/application/intake-applications/referee.interface";
+import { IntakeApplicationActions } from "../../../secure/applicant/application/intake-applications/intake-application.action";
+import { ApplicationModuleState } from "../../../secure/applicant/application/index";
 import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from "@angular/material";
 import { ApplicantProfileRejectDialog } from "./applicant-profile-reject.dialog";
 import { IntakeActions } from "../intake.action";
@@ -27,7 +27,7 @@ import { IntakeActions } from "../intake.action";
 })
 
 export class ApplicantProfileDialog implements OnInit {
-    
+
     //private editorForm: FormGroup;
     @Input() intakeApplication: IntakeApplication;
 
@@ -63,7 +63,7 @@ export class ApplicantProfileDialog implements OnInit {
   private referees$: Observable<Referee>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
-   
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -87,23 +87,23 @@ export class ApplicantProfileDialog implements OnInit {
       let referenceNo: string = this.intakeApplication.referenceNo;
       this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
-  
+
   select(intakeApplication : IntakeApplication) {
       let snackBarRef = this.snackBar.open("Confirm to Select This Applicant?", "Ok");
       snackBarRef.afterDismissed().subscribe(() => {
           this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
           this.editorDialog.afterClosed().subscribe(res => {
-          this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));       
-        })  
+          this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
+        })
         this.editorDialog.close();
       });
     }
-  
+
   reject(intakeApplication : IntakeApplication) {
       this.showDialog(intakeApplication);
     //  this.editorDialog.close();
-   }  
-  
+   }
+
   showDialog(intakeApplication): void {
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
@@ -118,5 +118,5 @@ export class ApplicantProfileDialog implements OnInit {
 
     });
   }
-  
+
 }

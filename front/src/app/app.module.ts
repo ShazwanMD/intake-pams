@@ -24,7 +24,7 @@ import {CustomUrlSerializer} from './common/custom-url-serializer';
 import {
   ApplicationModule, ApplicationModuleState, INITIAL_APPLICATION_STATE,
   applicationModuleReducers,
-} from './application/index';
+} from './secure/applicant/application/index';
 import {PolicyModule, PolicyModuleState, INITIAL_POLICY_STATE, policyModuleReducers} from './policy/index';
 import {
   AdmissionModuleState, INITIAL_ADMISSION_STATE, admissionModuleReducers,

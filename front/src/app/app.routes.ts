@@ -7,7 +7,7 @@ import {policyModuleRoutes} from './policy/policy-module.routes';
 import {admissionModuleRoutes} from './admission/admission-module.routes';
 import {centerModuleRoutes} from './center/center-module.routes';
 import {ForgetPasswordComponent} from './login/forget-password.page';
-import {applicationModuleRoutes} from './application/application-module.routes';
+import {applicationModuleRoutes} from './secure/applicant/application/application-module.routes';
 import {setupModuleRoutes} from './setup/setup-module.routes';
 import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';

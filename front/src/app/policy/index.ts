@@ -8,35 +8,47 @@ import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 
-import {PolicyPage} from "./policy.page";
-import {PolicyService} from "../../services/policy.service";
-import {IntakeSubModule} from "./intakes/index";
-import {IntakeState, intakeReducer} from "./intakes/intake.reducer";
-import {IntakeTaskState, intakeTaskReducer} from "./intakes/intake-task.reducer";
-import {SupervisorOfferingListState, supervisorOfferingListReducer} from "./intakes/supervisor-offering-list.reducer";
-import {StudyModeOfferingListState, studyModeOfferingListReducer} from "./intakes/study-mode-offering-list.reducer";
-import {IntakeTask} from "./intakes/intake-task.interface";
-import {Intake} from "./intakes/intake.interface";
-import {ProgramOffering} from "./intakes/program-offering.interface";
-import {SupervisorOffering} from "./intakes/supervisor-offering.interface";
-import {StudyModeOffering} from "./intakes/study-mode-offering.interface";
-import {IntakeSession} from "./intake-sessions/intake-session.interface";
-import {IntakeSessionSubModule} from "./intake-sessions/index";
-import {ProgramLevelSubModule} from "./program-levels/index";
-import {ProgramLevel} from "./program-levels/program-level.interface";
-import {ProgramLevelListState, programLevelListReducer} from "./program-levels/program-level.reducer";
-import {programOfferingListReducer, ProgramOfferingListState} from "./intakes/program-offering-list.reducer";
+import {PolicyPage} from './policy.page';
+import {PolicyService} from '../../services/policy.service';
+import {IntakeSubModule} from './intakes/index';
+import {IntakeState, intakeReducer} from './intakes/intake.reducer';
+import {IntakeTaskState, intakeTaskReducer} from './intakes/intake-task.reducer';
+import {SupervisorOfferingListState, supervisorOfferingListReducer} from './intakes/supervisor-offering-list.reducer';
+import {StudyModeOfferingListState, studyModeOfferingListReducer} from './intakes/study-mode-offering-list.reducer';
+import {IntakeTask} from './intakes/intake-task.interface';
+import {Intake} from './intakes/intake.interface';
+import {ProgramOffering} from './intakes/program-offering.interface';
+import {SupervisorOffering} from './intakes/supervisor-offering.interface';
+import {StudyModeOffering} from './intakes/study-mode-offering.interface';
+import {IntakeSession} from './intake-sessions/intake-session.interface';
+import {IntakeSessionSubModule} from './intake-sessions/index';
+import {ProgramLevelSubModule} from './program-levels/index';
+import {ProgramLevel} from './program-levels/program-level.interface';
+import {ProgramLevelListState, programLevelListReducer} from './program-levels/program-level.reducer';
+import {programOfferingListReducer, ProgramOfferingListState} from './intakes/program-offering-list.reducer';
 import {
   assignedIntakeTaskListReducer, IntakeTaskListState,
-  pooledIntakeTaskListReducer
-} from "./intakes/intake-task-list.reducer";
-import {intakeSessionListReducer, IntakeSessionListState} from "./intake-sessions/intake-session-list.reducer";
-import {IntakeApplication} from "../application/intake-applications/intake-application.interface";
-import {intakeApplicationListReducer, IntakeApplicationListState} from "./intakes/intake-application-list.reducer";
-import {intakeSubmittedApplicationListReducer, IntakeSubmittedApplicationListState} from "./intakes/intake-submitted-application-list.reducer";
-import {intakeSelectedApplicationListReducer, IntakeSelectedApplicationListState} from "./intakes/intake-selected-application-list.reducer";
-import {intakeRejectedApplicationListReducer, IntakeRejectedApplicationListState} from "./intakes/intake-rejected-application-list.reducer";
-import {intakeVerifiedApplicationListReducer, IntakeVerifiedApplicationListState} from "./intakes/intake-verified-application-list.reducer";
+  pooledIntakeTaskListReducer,
+} from './intakes/intake-task-list.reducer';
+import {intakeSessionListReducer, IntakeSessionListState} from './intake-sessions/intake-session-list.reducer';
+import {IntakeApplication} from '../secure/applicant/application/intake-applications/intake-application.interface';
+import {intakeApplicationListReducer, IntakeApplicationListState} from './intakes/intake-application-list.reducer';
+import {
+  intakeSubmittedApplicationListReducer,
+  IntakeSubmittedApplicationListState,
+} from './intakes/intake-submitted-application-list.reducer';
+import {
+  intakeSelectedApplicationListReducer,
+  IntakeSelectedApplicationListState,
+} from './intakes/intake-selected-application-list.reducer';
+import {
+  intakeRejectedApplicationListReducer,
+  IntakeRejectedApplicationListState,
+} from './intakes/intake-rejected-application-list.reducer';
+import {
+  intakeVerifiedApplicationListReducer,
+  IntakeVerifiedApplicationListState,
+} from './intakes/intake-verified-application-list.reducer';
 
 export interface PolicyModuleState {
   intakeSessions: IntakeSessionListState;
@@ -53,7 +65,8 @@ export interface PolicyModuleState {
   intakeSelectedApplications: IntakeSelectedApplicationListState;
   intakeRejectedApplications: IntakeRejectedApplicationListState;
   intakeVerifiedApplications: IntakeVerifiedApplicationListState;
-};
+}
+;
 
 export const INITIAL_POLICY_STATE: PolicyModuleState =
   <PolicyModuleState>{
@@ -110,8 +123,7 @@ export const policyModuleReducers = {
   ],
 
   exports: [],
-  entryComponents: [
-  ],
+  entryComponents: [],
 
 })
 
@@ -119,7 +131,7 @@ export class PolicyModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: PolicyModule,
-       providers: [
+      providers: [
         appRoutingProviders,
         IdentityService,
         CommonService,

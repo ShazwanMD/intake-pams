@@ -5,7 +5,7 @@ import {PolicyModuleState} from "../../index";
 import {Store} from "@ngrx/store";
 
 import {ActivatedRoute} from "@angular/router";
-import {IntakeApplication} from "../../../application/intake-applications/intake-application.interface";
+import {IntakeApplication} from "../../../secure/applicant/application/intake-applications/intake-application.interface";
 import { MdDialogConfig, MdDialogRef, MdDialog } from "@angular/material";
 import { ApplicantProfileDialog } from "../dialog/applicant-profile.dialog";
 
@@ -32,12 +32,12 @@ export class IntakeApplicationSelectedListComponent {
 
   filter(): void {
   }
-  
+
   profileDialog(intakeApplication) {
       console.log("intakeApplication :" + intakeApplication);
       this.showDialog(intakeApplication);
   }
-  
+
   showDialog(intakeApplication : IntakeApplication): void {
       console.log("showDialog");
       let config = new MdDialogConfig();

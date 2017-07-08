@@ -1,20 +1,20 @@
-import {Result} from '../app/application/intake-applications/result.interface';
-import {Attachment} from '../app/application/intake-applications/attachment.interface';
-import {Referee} from '../app/application/intake-applications/referee.interface';
+import {Result} from '../app/secure/applicant/application/intake-applications/result.interface';
+import {Attachment} from '../app/secure/applicant/application/intake-applications/attachment.interface';
+import {Referee} from '../app/secure/applicant/application/intake-applications/referee.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions, ResponseContentType} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
-import {IntakeApplication} from '../app/application/intake-applications/intake-application.interface';
+import {IntakeApplication} from '../app/secure/applicant/application/intake-applications/intake-application.interface';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../environments/environment';
-import {Education} from '../app/application/intake-applications/education.interface';
-import {Employment} from '../app/application/intake-applications/employment.interface';
+import {Education} from '../app/secure/applicant/application/intake-applications/education.interface';
+import {Employment} from '../app/secure/applicant/application/intake-applications/employment.interface';
 import {Intake} from '../app/policy/intakes/intake.interface';
 import {ProgramOffering} from '../app/policy/intakes/program-offering.interface';
 import {StudyModeOffering} from '../app/policy/intakes/study-mode-offering.interface';
-import {Language} from '../app/application/intake-applications/language.interface';
+import {Language} from '../app/secure/applicant/application/intake-applications/language.interface';
 import {SupervisorOffering} from '../app/policy/intakes/supervisor-offering.interface';
-import {AttachmentType} from '../app/application/intake-applications/attachment-type.enum';
+import {AttachmentType} from '../app/secure/applicant/application/intake-applications/attachment-type.enum';
 import {AuthenticationService} from './authentication.service';
 
 @Injectable()
