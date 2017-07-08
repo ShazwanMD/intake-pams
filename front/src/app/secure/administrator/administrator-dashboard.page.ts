@@ -22,50 +22,41 @@ export class AdministratorDashboardPage implements OnInit {
     console.log('auth:' + JSON.stringify(this.authz.data));
     {
       this.items = [{
-        title: 'Profile',
-        route: '/profile',
+        title: 'Application',
+        route: '/secure/administrator/application',
         icon: 'contacts',
         color: 'blue-700',
-        description: '',
+        description: 'Intake Application',
       },
         {
-          title: 'Planner',
-          // route: '/planner/academic-sessions',
-          route: '/planner',
+          title: 'Manager',
+          route: '/secure/administrator/policy',
           icon: 'assignment',
           color: 'blue-700',
-          description: '',
+          description: 'Intake Manager',
         }
         ,
         {
-          title: 'Term',
-          route: '/term',
+          title: 'Registration',
+          route: '/registration',
           icon: 'description',
           color: 'blue-700',
-          description: '',
+          description: 'Applicant Registration',
         },
         {
-          title: 'Graduation',
-          route: '/graduation',
+          title: 'Admission',
+          route: '/secure/administrator/admission',
           icon: 'assignment',
           color: 'blue-700',
-          description: '',
+          description: 'Candidate Admission',
         },
         {
           title: 'Setup',
-          route: '/setup',
+          route: '/secure/administrator/setup',
           icon: 'assignment',
           color: 'blue-700',
-          description: ' ',
+          description: 'Intake Setup',
         },
-         /*{
-          title: 'Subject Registration',
-          route: '/term',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: ' ',
-        }, */
-
       ];
     }
     ;
