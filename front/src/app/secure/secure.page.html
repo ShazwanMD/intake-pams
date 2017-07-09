@@ -1,10 +1,7 @@
 <td-layout #layout>
   <td-navigation-drawer logo="assets:covalent" sidenavTitle="PAMS Intake" name="Bob" email="bob@gmail.com">
     <md-nav-list>
-      <a md-list-item [routerLink]="['/']" (click)="layout.close()">
-        <md-icon>dashboard</md-icon>
-        Dashboard</a>
-      <a md-list-item [routerLink]="['/setup']" (click)="layout.close()">
+      <a md-list-item [routerLink]="['/setup']" (click)="layout.close()" authorizedShow="VIEW_STM">
         <md-icon>label</md-icon>
         Code Setup</a>
       <a md-list-item [routerLink]="['/registration']" (click)="layout.close()" authorizedShow="VIEW_RGN">
