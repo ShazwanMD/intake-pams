@@ -7,4 +7,3 @@ public enum InActorType {
     STAFF, //0
     APPLICANT, //1
 }
-        

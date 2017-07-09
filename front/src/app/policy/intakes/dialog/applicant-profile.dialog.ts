@@ -2,16 +2,16 @@ import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Inp
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { IntakeApplication } from '../../../shared/model/application/intake-application.interface';
-import { Employment } from '../../../shared/model/application/employment.interface';
-import { Language } from '../../../shared/model/application/language.interface';
-import { Referee } from '../../../shared/model/application/referee.interface';
-import { IntakeApplicationActions } from '../../../secure/applicant/application/intake-applications/intake-application.action';
-import { ApplicationModuleState } from '../../../secure/applicant/application/index';
-import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from '@angular/material';
-import { ApplicantProfileRejectDialog } from './applicant-profile-reject.dialog';
-import { IntakeActions } from '../intake.action';
+import {Observable} from 'rxjs/Observable';
+import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
+import {Employment} from '../../../shared/model/application/employment.interface';
+import {Language} from '../../../shared/model/application/language.interface';
+import {Referee} from '../../../shared/model/application/referee.interface';
+import {IntakeApplicationActions} from '../../../secure/applicant/application/intake-applications/intake-application.action';
+import {ApplicationModuleState} from '../../../secure/applicant/application/index';
+import {MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog} from '@angular/material';
+import {ApplicantProfileRejectDialog} from './applicant-profile-reject.dialog';
+import {IntakeActions} from '../intake.action';
 
 @Component({
   selector: 'pams-applicant-profile',
@@ -21,17 +21,17 @@ import { IntakeActions } from '../intake.action';
 export class ApplicantProfileDialog implements OnInit {
 
 
-  private dummyData: any[]= [
-   {'subject': 'Bahasa Malaysia', 'grade': 'A+'},
-   {'subject': 'Bahasa Inggeris', 'grade': 'B'},
-   {'subject': 'Geografi', 'grade': 'C+'},
-   {'subject': 'Sejarah', 'grade': 'D+'},
-   {'subject': 'Matematik', 'grade': 'A+'},
-   {'subject': 'Matematik Tambahan', 'grade': 'A+'},
-   {'subject': 'Fizik', 'grade': 'A+'},
-   {'subject': 'Biologi', 'grade': 'B+'},
-   {'subject': 'Kimia', 'grade': 'B+'},
- ];
+  private dummyData: any[] = [
+    {'subject': 'Bahasa Malaysia', 'grade': 'A+'},
+    {'subject': 'Bahasa Inggeris', 'grade': 'B'},
+    {'subject': 'Geografi', 'grade': 'C+'},
+    {'subject': 'Sejarah', 'grade': 'D+'},
+    {'subject': 'Matematik', 'grade': 'A+'},
+    {'subject': 'Matematik Tambahan', 'grade': 'A+'},
+    {'subject': 'Fizik', 'grade': 'A+'},
+    {'subject': 'Biologi', 'grade': 'B+'},
+    {'subject': 'Kimia', 'grade': 'B+'},
+  ];
 
   private dummyColumns: any[] = [
     {name: 'subject', label: 'Subject'},
@@ -76,36 +76,36 @@ export class ApplicantProfileDialog implements OnInit {
   }
 
   ngOnInit(): void {
-      let referenceNo: string = this.intakeApplication.referenceNo;
-      this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+    let referenceNo: string = this.intakeApplication.referenceNo;
+    this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
 
-  select(intakeApplication : IntakeApplication) {
-      let snackBarRef = this.snackBar.open('Confirm to Select This Applicant?', 'Ok');
-      snackBarRef.afterDismissed().subscribe(() => {
-          this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
-          this.editorDialog.afterClosed().subscribe((res) => {
-          this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
-        });
-          this.editorDialog.close();
+  select(intakeApplication: IntakeApplication) {
+    let snackBarRef = this.snackBar.open('Confirm to Select This Applicant?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
+      this.editorDialog.afterClosed().subscribe((res) => {
+        this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
       });
-    }
+      this.editorDialog.close();
+    });
+  }
 
-  reject(intakeApplication : IntakeApplication) {
-      this.showDialog(intakeApplication);
+  reject(intakeApplication: IntakeApplication) {
+    this.showDialog(intakeApplication);
     //  this.editorDialog.close();
-   }
+  }
 
   showDialog(intakeApplication): void {
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '50%';
-      config.height = '40%';
-      config.position = {top: '0px'};
-      this.editorDialogRef = this.dialog.open(ApplicantProfileRejectDialog, config);
-      this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
-      this.editorDialog.afterClosed().subscribe((res) => {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '40%';
+    config.position = {top: '0px'};
+    this.editorDialogRef = this.dialog.open(ApplicantProfileRejectDialog, config);
+    this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
+    this.editorDialog.afterClosed().subscribe((res) => {
       this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
 
     });

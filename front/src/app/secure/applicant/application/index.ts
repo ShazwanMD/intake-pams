@@ -11,49 +11,49 @@ import {IdentityService} from '../../../../services';
 import {ApplicationPage} from './application.page';
 import {ApplicationService} from '../../../../services/application.service';
 import {PolicyService} from '../../../../services/policy.service';
-import {IntakeApplicationSubModule} from '../../applicant/application/intake-applications/index';
+import {IntakeApplicationSubModule} from './intake-applications/index';
 import {
   intakeApplicationReducer,
   IntakeApplicationState,
-} from '../../applicant/application/intake-applications/intake-application.reducer';
+} from './intake-applications/intake-application.reducer';
 import {
   intakeApplicationListReducer,
   IntakeApplicationListState,
-} from '../../applicant/application/intake-applications/intake-application-list.reducer';
-import {intakeListReducer, IntakeListState} from '../../applicant/application/intake-applications/intake-list.reducer';
-import {intakeReducer, IntakeState} from '../../applicant/application/intake-applications/intake.reducer';
+} from './intake-applications/intake-application-list.reducer';
+import {intakeListReducer, IntakeListState} from './intake-applications/intake-list.reducer';
+import {intakeReducer, IntakeState} from './intake-applications/intake.reducer';
 import {CommonModule} from '../../../common/index';
 import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
-import {CpsIntakeApplicationSubModule} from '../../applicant/application/intake-applications/cps/index';
+import {CpsIntakeApplicationSubModule} from './intake-applications/cps/index';
 import {
   intakeProgramOfferingListReducer,
   IntakeProgramOfferingListState,
-} from '../../applicant/application/intake-applications/intake-program-offering-list.reducer';
+} from './intake-applications/intake-program-offering-list.reducer';
 import {
   intakeStudyModeOfferingListReducer,
   IntakeStudyModeOfferingListState,
-} from '../../applicant/application/intake-applications/intake-study-mode-offering-list.reducer';
+} from './intake-applications/intake-study-mode-offering-list.reducer';
 import {
   intakeSupervisorOfferingListReducer,
   IntakeSupervisorOfferingListState,
-} from '../../applicant/application/intake-applications/intake-supervisor-offering-list.reducer';
+} from './intake-applications/intake-supervisor-offering-list.reducer';
 import {
   employmentListReducer,
   EmploymentListState,
-} from '../../applicant/application/intake-applications/employment-list.reducer';
+} from './intake-applications/employment-list.reducer';
 import {Employment} from '../../../shared/model/application/employment.interface';
 import {Intake} from '../../../shared/model/policy/intake.interface';
 import {ProgramOffering} from '../../../shared/model/policy/program-offering.interface';
 import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
-import {refereeListReducer, RefereeListState} from '../../applicant/application/intake-applications/referee-list.reducer';
-import {resultListReducer, ResultListState} from '../../applicant/application/intake-applications/result-list.reducer';
+import {refereeListReducer, RefereeListState} from './intake-applications/referee-list.reducer';
+import {resultListReducer, ResultListState} from './intake-applications/result-list.reducer';
 import {StudyModeOffering} from '../../../shared/model/policy/study-mode-offering.interface';
 import {Language} from '../../../shared/model/application/language.interface';
-import {languageListReducer, LanguageListState} from '../../applicant/application/intake-applications/language-list.reducer';
+import {languageListReducer, LanguageListState} from './intake-applications/language-list.reducer';
 import {
   attachmentListReducer,
   AttachmentListState,
-} from '../../applicant/application/intake-applications/attachment-list.reducer';
+} from './intake-applications/attachment-list.reducer';
 import {Attachment} from '../../../shared/model/application/attachment.interface';
 
 export interface ApplicationModuleState {

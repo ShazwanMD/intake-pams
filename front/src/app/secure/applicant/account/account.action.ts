@@ -2,43 +2,61 @@ import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
 
 @Injectable()
-export class ApplicationActions {
+export class AccountActions {
 
-  static FIND_PUBLISHED_INTAKE_TASKS = '[Application] Find Published Intakes';
+  static FIND_PUBLISHED_INTAKES = '[Account] Find Published Intakes';
 
-  findPublishedIntakeTasks(): Action {
+  findPublishedIntakes(): Action {
     return {
-      type: ApplicationActions.FIND_PUBLISHED_INTAKE_TASKS
+      type: AccountActions.FIND_PUBLISHED_INTAKES,
     };
   }
 
-  static FIND_PUBLISHED_INTAKES_SUCCESS = '[Application] Find Published Application Success';
+  static FIND_PUBLISHED_INTAKES_SUCCESS = '[Account] Find Published Intakes Success';
 
   findPublishedIntakesSuccess(intakes): Action {
-    console.log("findPublishedIntakesSuccess");
+    console.log('findPublishedIntakeSuccess');
     return {
-      type: ApplicationActions.FIND_PUBLISHED_INTAKES_SUCCESS,
-      payload: intakes
+      type: AccountActions.FIND_PUBLISHED_INTAKES_SUCCESS,
+      payload: intakes,
     };
   }
 
-  static APPLY_INTAKE = '[Application] Apply Intake Application';
 
-  applyIntake(intakes): Action {
-    console.log("applyIntake");
+  static FIND_DRAFTED_INTAKE_APPLICATIONS = '[Account] Find Drafted Intake Applications';
+
+  findDraftedIntakeApplications(applications): Action {
     return {
-      type: ApplicationActions.APPLY_INTAKE,
-      payload: intakes
+      type: AccountActions.FIND_DRAFTED_INTAKE_APPLICATIONS,
     };
   }
 
-  static APPLY_INTAKE_SUCCESS = '[Application] Apply Intake Application Success';
+  static FIND_DRAFTED_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find Drafted Intake Applications Success';
 
-  applyIntakeSuccess(intakes): Action {
-    console.log("applyIntake Success");
+  findDraftedIntakeApplicationsSuccess(applcations): Action {
+    console.log('findIntakeApplicationsSuccess');
     return {
-      type: ApplicationActions.APPLY_INTAKE_SUCCESS,
-      payload: intakes
+      type: AccountActions.FIND_DRAFTED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applcations,
     };
   }
+
+  static FIND_SUBMITTED_INTAKE_APPLICATIONS = '[Account] Find Submitted Intake Applications';
+
+  findSubmittedIntakeApplications(applications): Action {
+    return {
+      type: AccountActions.FIND_SUBMITTED_INTAKE_APPLICATIONS,
+    };
+  }
+
+  static FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find Submitted Intake Applications Success';
+
+  findSubmittedIntakeApplicationsSuccess(applcations): Action {
+    console.log('findIntakeApplicationsSuccess');
+    return {
+      type: AccountActions.FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applcations,
+    };
+  }
+
 }

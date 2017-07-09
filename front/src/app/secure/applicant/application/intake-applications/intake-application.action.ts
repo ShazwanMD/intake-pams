@@ -179,9 +179,27 @@ export class IntakeApplicationActions {
     };
   }
 
+  static FIND_DRAFTED_INTAKE_APPLICATIONS = '[Intake Application] Find Drafted Intake Applications';
+
+  findDraftedIntakeApplications(): Action {
+    return {
+      type: IntakeApplicationActions.FIND_DRAFTED_INTAKE_APPLICATIONS,
+    };
+  }
+
+  static FIND_DRAFTED_INTAKE_APPLICATIONS_SUCCESS = '[Intake Application] Find Drafted Intake Applications Success';
+
+  findDraftedIntakeApplicationsSuccess(applcations): Action {
+    console.log('findIntakeApplicationsSuccess');
+    return {
+      type: IntakeApplicationActions.FIND_DRAFTED_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applcations,
+    };
+  }
+
   static FIND_SUBMITTED_INTAKE_APPLICATIONS = '[Intake Application] Find Submitted Intake Applications';
 
-  findSubmittedIntakeApplications(applications): Action {
+  findSubmittedIntakeApplications(): Action {
     return {
       type: IntakeApplicationActions.FIND_SUBMITTED_INTAKE_APPLICATIONS,
     };

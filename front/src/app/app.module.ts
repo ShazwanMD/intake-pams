@@ -50,6 +50,7 @@ import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
 import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
 import {AccountService} from "../services/account.service";
+import {accountModuleReducers, AccountModuleState, INITIAL_ACCOUNT_STATE} from "./secure/applicant/account/index";
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -64,8 +65,8 @@ interface ApplicationState {
   admissionModuleState: AdmissionModuleState;
   registrationModuleState: RegistrationModuleState;
   centerModuleState: CenterModuleState;
+  accountModuleState: AccountModuleState;
 }
-;
 
 // initial state
 export const INITIAL_APP_STATE: ApplicationState =
@@ -76,6 +77,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     admissionModuleState: INITIAL_ADMISSION_STATE,
     registrationModuleState: INITIAL_REGISTRATION_STATE,
     centerModuleState: INITIAL_CENTER_STATE,
+    accountModuleState: INITIAL_ACCOUNT_STATE,
   };
 
 // combine reducer
@@ -86,6 +88,7 @@ export const applicationReducers = {
   admissionModuleState: combineReducers({...admissionModuleReducers}),
   registrationModuleState: combineReducers({...registrationModuleReducers}),
   centerModuleState: combineReducers({...centerModuleReducers}),
+  accountModuleState: combineReducers({...accountModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {

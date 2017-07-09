@@ -1,6 +1,3 @@
-import {Result} from '../../../shared/model/application/result.interface';
-import {SupervisorOffering} from '../../../shared/model/policy/supervisor-offering.interface';
-import {Referee} from '../../../shared/model/application/referee.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -11,96 +8,37 @@ import {IdentityService} from '../../../../services';
 import {ApplicationService} from '../../../../services/application.service';
 import {PolicyService} from '../../../../services/policy.service';
 import {IntakeApplicationSubModule} from '../application/intake-applications/index';
-import {
-  intakeApplicationReducer,
-  IntakeApplicationState,
-} from '../application/intake-applications/intake-application.reducer';
-import {
-  intakeApplicationListReducer,
-  IntakeApplicationListState,
-} from '../application/intake-applications/intake-application-list.reducer';
-import {intakeListReducer, IntakeListState} from '../application/intake-applications/intake-list.reducer';
-import {intakeReducer, IntakeState} from '../application/intake-applications/intake.reducer';
 import {CommonModule} from '../../../common/index';
 import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
 import {CpsIntakeApplicationSubModule} from '../application/intake-applications/cps/index';
+import {ApplicationPage} from '../application/application.page';
+import {IntakeListState} from '../application/intake-applications/intake-list.reducer';
+import {IntakeApplicationListState} from '../application/intake-applications/intake-application-list.reducer';
+import {openIntakeListReducer} from './intake-list.reducer';
+import {IntakeApplicationState} from '../application/intake-applications/intake-application.reducer';
 import {
-  intakeProgramOfferingListReducer,
-  IntakeProgramOfferingListState,
-} from '../application/intake-applications/intake-program-offering-list.reducer';
-import {
-  intakeStudyModeOfferingListReducer,
-  IntakeStudyModeOfferingListState,
-} from '../application/intake-applications/intake-study-mode-offering-list.reducer';
-import {
-  intakeSupervisorOfferingListReducer,
-  IntakeSupervisorOfferingListState,
-} from '../application/intake-applications/intake-supervisor-offering-list.reducer';
-import {
-  employmentListReducer,
-  EmploymentListState,
-} from '../application/intake-applications/employment-list.reducer';
-import {Employment} from '../../../shared/model/application/employment.interface';
-import {Intake} from '../../../shared/model/policy/intake.interface';
-import {ProgramOffering} from '../../../shared/model/policy/program-offering.interface';
-import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
-import {refereeListReducer, RefereeListState} from '../application/intake-applications/referee-list.reducer';
-import {resultListReducer, ResultListState} from '../application/intake-applications/result-list.reducer';
-import {StudyModeOffering} from '../../../shared/model/policy/study-mode-offering.interface';
-import {Language} from '../../../shared/model/application/language.interface';
-import {languageListReducer, LanguageListState} from '../application/intake-applications/language-list.reducer';
-import {
-  attachmentListReducer,
-  AttachmentListState,
-} from '../application/intake-applications/attachment-list.reducer';
-import {Attachment} from '../../../shared/model/application/attachment.interface';
-import {ApplicationPage} from "../application/application.page";
+  draftedIntakeApplicationListReducer,
+  submittedIntakeApplicationListReducer,
+} from './intake-application-list.reducer';
 
-export interface ApplicationModuleState {
-  intakes: IntakeListState;
-  intake: IntakeState;
-  employments: EmploymentListState;
-  languages: LanguageListState;
-  referees: RefereeListState;
-  attachments: AttachmentListState;
-  programOfferings: IntakeProgramOfferingListState;
-  supervisorOfferings: IntakeSupervisorOfferingListState;
-  studyModeOfferings: IntakeStudyModeOfferingListState;
-  intakeApplications: IntakeApplicationListState;
-  intakeApplication: IntakeApplicationState;
-  results: ResultListState;
+export interface AccountModuleState {
+  openIntakes: IntakeListState;
+  submittedIntakeApplications: IntakeApplicationListState;
+  draftedIntakeApplication: IntakeApplicationState;
 }
 ;
 
-export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationModuleState>{
-  intakes: <Intake[]>[],
-  intake: <Intake>{},
-  employments: <Employment[]>[],
-  languages: <Language[]>[],
-  referees: <Referee[]>[],
-  attachments: <Attachment[]>[],
-  results: <Result[]>[],
-  programOfferings: <ProgramOffering[]>[],
-  supervisorOfferings: <SupervisorOffering[]>[],
-  studyModeOfferings: <StudyModeOffering[]>[],
-  intakeApplications: [],
-  intakeApplication: <IntakeApplication>{},
+export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
+  openIntakes: [],
+  submittedIntakeApplications: [],
+  draftedIntakeApplications: [],
 
 };
 
-export const applicationModuleReducers = {
-  intakes: intakeListReducer,
-  intake: intakeReducer,
-  employments: employmentListReducer,
-  languages: languageListReducer,
-  referees: refereeListReducer,
-  attachments: attachmentListReducer,
-  results: resultListReducer,
-  programOfferings: intakeProgramOfferingListReducer,
-  supervisorOfferings: intakeSupervisorOfferingListReducer,
-  studyModeOfferings: intakeStudyModeOfferingListReducer,
-  intakeApplications: intakeApplicationListReducer,
-  intakeApplication: intakeApplicationReducer,
+export const accountModuleReducers = {
+  openIntakes: openIntakeListReducer,
+  draftedIntakeApplication: draftedIntakeApplicationListReducer,
+  submittedIntakeApplications: submittedIntakeApplicationListReducer,
 };
 
 @NgModule({
@@ -122,10 +60,10 @@ export const applicationModuleReducers = {
 
   entryComponents: [],
 })
-export class ApplicationModule {
+export class AccountModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: ApplicationModule,
+      ngModule: AccountModule,
       providers: [
         appRoutingProviders,
         IdentityService,

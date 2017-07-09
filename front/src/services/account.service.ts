@@ -6,6 +6,7 @@ import {environment} from '../environments/environment';
 import {AuthenticationService} from './authentication.service';
 import {IntakeApplication} from '../app/shared/model/application/intake-application.interface';
 import {Applicant} from '../app/identity/applicant.interface';
+import {Intake} from '../app/shared/model/policy/intake.interface';
 
 @Injectable()
 export class AccountService {
@@ -13,6 +14,14 @@ export class AccountService {
   constructor(private http: Http,
               private _http: HttpInterceptorService,
               private authnService: AuthenticationService) {
+  }
+
+  findPublishedIntakes(): Observable<Intake[]> {
+    console.log('findPublishedIntakes');
+    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
+    let options: RequestOptions = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/account/intake/flowState/PUBLISHED  ', options)
+      .map((res: Response) => <Intake[]>res.json());
   }
 
   findDraftedIntakeApplications(): Observable<IntakeApplication[]> {

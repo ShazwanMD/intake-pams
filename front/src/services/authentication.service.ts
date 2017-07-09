@@ -5,7 +5,7 @@ import {Http, Response} from '@angular/http';
 import {Headers} from '@angular/http';
 import {tokenNotExpired} from 'angular2-jwt';
 import {environment} from '../environments/environment';
-import {AuthenticatedUser} from "../app/shared/model/identity/authenticated-user.interface";
+import {AuthenticatedUser} from '../app/shared/model/identity/authenticated-user.interface';
 
 /**
  */
@@ -34,6 +34,7 @@ export class AuthenticationService {
         let token: any = res.json() && res.json().token;
         if (token) {
           this.token = token;
+          console.log('token: ' + this.token);
 
           // store username and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
