@@ -49,6 +49,7 @@ import {NotAuthenticatedShowDirective} from './identity/directive/not-authentica
 import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
 import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
+import {AccountService} from "../services/account.service";
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -145,6 +146,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     httpInterceptorProviders,
     AuthenticationService,
     AuthorizationService,
+    AccountService,
     SystemService,
     AuthenticationGuard,
     AuthorizationGuard,
