@@ -64,6 +64,8 @@ export class AuthenticationService {
     // storage to log user out
     this.token = undefined;
     localStorage.removeItem('currentUser');
+    this.authenticatedUser = undefined;
+    // todo: clear store by dispatching init
   }
 
   isLoggedIn(): boolean {

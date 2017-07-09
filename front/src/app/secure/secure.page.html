@@ -3,24 +3,28 @@
     <md-nav-list>
       <a md-list-item [routerLink]="['/setup']" (click)="layout.close()" authorizedShow="VIEW_STM">
         <md-icon>label</md-icon>
-        Code Setup</a>
+        Code Setup
+      </a>
       <a md-list-item [routerLink]="['/registration']" (click)="layout.close()" authorizedShow="VIEW_RGN">
         <md-icon>label</md-icon>
-        Applicant Registration</a>
+        Applicant Registration
+      </a>
       <a md-list-item [routerLink]="['/policy']" (click)="layout.close()" authorizedShow="VIEW_PLC">
         <md-icon>label</md-icon>
-        Intake Manager</a>
+        Intake Manager
+      </a>
       <a md-list-item [routerLink]="['/application']" (click)="layout.close()" authorizedShow="VIEW_APN">
         <md-icon>label</md-icon>
-        Intake Application</a>
+        Intake Application
+      </a>
       <a md-list-item [routerLink]="['/admission']" (click)="layout.close()" authorizedShow="VIEW_ADM">
         <md-icon>label</md-icon>
-        Candidate Admission</a>
-    </md-nav-list>
-    <md-nav-list td-navigation-drawer-menu>
-      <a md-list-item (click)="logout()">
-        <md-icon>exit_to_app</md-icon>
-        Sign out</a>
+        Candidate Admission
+      </a>
+       <a md-list-item (click)="logout()">
+        <md-icon>label</md-icon>
+        Logout
+      </a>
     </md-nav-list>
   </td-navigation-drawer>
   <router-outlet></router-outlet>
