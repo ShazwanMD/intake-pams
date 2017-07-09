@@ -14,46 +14,48 @@ export class AdministratorDashboardPage implements OnInit {
 
   constructor(private router: Router,
               private  route: ActivatedRoute,
-              private authz: AuthorizationService) {
+              private authz:AuthorizationService
+  ) {
   }
 
   ngOnInit(): void {
     console.log('auth:' + JSON.stringify(this.authz.data));
     {
       this.items = [{
-        title: 'Profile',
-        route: '/profile',
+        title: 'Application',
+        route: '/secure/administrator/application',
         icon: 'contacts',
         color: 'blue-700',
-        description: '',
+        description: 'Intake Application',
       },
         {
-          title: 'Intake Manager',
+          title: 'Manager',
           route: '/secure/administrator/policy',
+          icon: 'assignment',
+          color: 'blue-700',
+          description: 'Intake Manager',
+        }
+        ,
+        {
+          title: 'Registration',
+          route: '/registration',
           icon: 'description',
           color: 'blue-700',
-          description: '',
+          description: 'Applicant Registration',
         },
         {
-          title: 'Candidate Admission',
-          route: '/secure/administrator//admission',
+          title: 'Admission',
+          route: '/secure/administrator/admission',
           icon: 'assignment',
           color: 'blue-700',
-          description: '',
-        },
-        {
-          title: 'Intake Application',
-          route: '/secure/administrator//application',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: '',
+          description: 'Candidate Admission',
         },
         {
           title: 'Setup',
           route: '/secure/administrator/setup',
           icon: 'assignment',
           color: 'blue-700',
-          description: ' ',
+          description: 'Intake Setup',
         },
       ];
     }
