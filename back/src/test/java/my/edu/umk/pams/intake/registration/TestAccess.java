@@ -44,10 +44,14 @@ public class TestAccess {
     @Rollback(false)
     public void testAccessToRoot() {
         InPrincipal root = identityService.findPrincipalByName("root");
+        InModule stmModule = systemService.findModuleByCode("STM");
+        InModule idtModule = systemService.findModuleByCode("IDT");
         InModule apnModule = systemService.findModuleByCode("APN");
         InModule rgnModule = systemService.findModuleByCode("RGN");
         InModule admModule = systemService.findModuleByCode("ADM");
         InModule plcModule = systemService.findModuleByCode("PLC");
+        accessService.grantPermission(stmModule, root, InPermission.VIEW);
+        accessService.grantPermission(idtModule, root, InPermission.VIEW);
         accessService.grantPermission(apnModule, root, InPermission.VIEW);
         accessService.grantPermission(plcModule, root, InPermission.VIEW);
         accessService.grantPermission(rgnModule, root, InPermission.VIEW);
