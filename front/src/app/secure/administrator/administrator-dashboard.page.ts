@@ -14,8 +14,7 @@ export class AdministratorDashboardPage implements OnInit {
 
   constructor(private router: Router,
               private  route: ActivatedRoute,
-              private authz:AuthorizationService
-  ) {
+              private authz: AuthorizationService) {
   }
 
   ngOnInit(): void {
@@ -29,43 +28,33 @@ export class AdministratorDashboardPage implements OnInit {
         description: '',
       },
         {
-          title: 'Planner',
-          // route: '/planner/academic-sessions',
-          route: '/planner',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: '',
-        }
-        ,
-        {
-          title: 'Term',
-          route: '/term',
+          title: 'Intake Manager',
+          route: '/secure/administrator/policy',
           icon: 'description',
           color: 'blue-700',
           description: '',
         },
         {
-          title: 'Graduation',
-          route: '/graduation',
+          title: 'Candidate Admission',
+          route: '/secure/administrator//admission',
+          icon: 'assignment',
+          color: 'blue-700',
+          description: '',
+        },
+        {
+          title: 'Intake Application',
+          route: '/secure/administrator//application',
           icon: 'assignment',
           color: 'blue-700',
           description: '',
         },
         {
           title: 'Setup',
-          route: '/setup',
+          route: '/secure/administrator/setup',
           icon: 'assignment',
           color: 'blue-700',
           description: ' ',
         },
-         /*{
-          title: 'Subject Registration',
-          route: '/term',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: ' ',
-        }, */
-
       ];
     }
     ;

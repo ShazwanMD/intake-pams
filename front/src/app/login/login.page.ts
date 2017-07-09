@@ -47,7 +47,7 @@ export class LoginPage {
       .map((modules: Module[]) => {
         for (let module of modules) {
           console.log('module: ' + module.code);
-          this.authzService.addAbility('user', 'VIEW_' + module.code);
+          this.authzService.addAbility('ROLE_USER', 'VIEW_' + module.code);
         }
 
         if (this.authzService.hasRole('ROLE_ADMINISTRATOR') && this.authzService.hasRole('ROLE_USER')) {
@@ -59,5 +59,6 @@ export class LoginPage {
         }
       })
       .toPromise();
+
   }
 }
