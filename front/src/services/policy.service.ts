@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Response, Http, Headers, RequestOptions} from '@angular/http';
+import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Intake} from '../app/shared/model/policy/intake.interface';
 import {Observable} from 'rxjs';
@@ -11,14 +11,13 @@ import {StudyModeOffering} from '../app/shared/model/policy/study-mode-offering.
 import {IntakeSession} from '../app/shared/model/policy/intake-session.interface';
 import {ProgramLevel} from '../app/shared/model/policy/program-level.interface';
 import {IntakeApplication} from '../app/shared/model/application/intake-application.interface';
-import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class PolicyService {
 
-  constructor(private http: Http,
-              private _http: HttpInterceptorService,
-              private authnService: AuthenticationService) {
+  private policy_api: string = environment.endpoint + '/api/policy';
+
+  constructor(private _http: HttpInterceptorService) {
   }
 
   // ====================================================================================================
@@ -27,39 +26,22 @@ export class PolicyService {
 
   findIntakeSessions(): Observable<IntakeSession[]> {
     console.log('findIntakeSessions');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakeSessions', options)
+    return this._http.get(this.policy_api + '/intakeSessions')
       .map((res: Response) => <IntakeSession[]>res.json());
   }
 
   saveIntakeSession(sessions: IntakeSession): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intake-sessions', JSON.stringify(sessions), options)
+    return this._http.post(this.policy_api + '/intake-sessions', JSON.stringify(sessions))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeIntakeSession(session: IntakeSession): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.delete(environment.endpoint + '/api/policy/intake-sessions/' + session.id, options)
+    return this._http.delete(this.policy_api + '/intake-sessions/' + session.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateIntakeSession(code: IntakeSession): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/policy/intake-sessions/' + code.code, JSON.stringify(code), options)
+    return this._http.put(this.policy_api + '/intake-sessions/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -69,9 +51,7 @@ export class PolicyService {
 
   findProgramLevels(): Observable<ProgramLevel[]> {
     console.log('findProgramLevels');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/programLevels', options)
+    return this._http.get(this.policy_api + '/programLevels')
       .map((res: Response) => <ProgramLevel[]>res.json());
   }
 
@@ -81,145 +61,96 @@ export class PolicyService {
 
   findAssignedIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findAssignedIntakeTasks');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/assignedTasks', options)
+    return this._http.get(this.policy_api + '/intakes/assignedTasks')
       .map((res: Response) => <IntakeTask[]>res.json());
   }
 
   findPooledIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findPooledIntakeTasks');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/pooledTasks', options)
+    return this._http.get(this.policy_api + '/intakes/pooledTasks')
       .map((res: Response) => <IntakeTask[]>res.json());
   }
 
   findIntakeTaskByTaskId(taskId: string): Observable<IntakeTask> {
     console.log('findIntakeTaskByTaskId');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/viewTask/' + taskId, options)
+    return this._http.get(this.policy_api + '/intakes/viewTask/' + taskId)
       .map((res: Response) => <IntakeTask>res.json());
   }
 
   findIntakeByReferenceNo(referenceNo: string): Observable<Intake> {
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + referenceNo, options)
+    return this._http.get(this.policy_api + '/intakes/' + referenceNo)
       .map((res: Response) => <Intake>res.json());
   }
 
   findIntakeByTaskId(taskId: string): Observable<Intake> {
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + taskId, options)
+    return this._http.get(this.policy_api + '/intakes/' + taskId)
       .map((res: Response) => <Intake>res.json());
   }
 
   findProgramOfferings(intake: Intake): Observable<ProgramOffering[]> {
     console.log('findProgramOfferings: ' + intake.referenceNo);
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings', options)
+    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/programOfferings')
       .map((res: Response) => <ProgramOffering[]>res.json());
   }
 
   findSupervisorOfferings(intake: Intake): Observable<SupervisorOffering[]> {
     console.log('findSupervisorOfferings');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/supervisorOfferings', options)
+    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/supervisorOfferings')
       .map((res: Response) => <SupervisorOffering[]>res.json());
   }
 
   findStudyModeOfferings(intake: Intake): Observable<StudyModeOffering[]> {
     console.log('findStudyModeOfferings');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/studyModeOfferings', options)
+    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/studyModeOfferings')
       .map((res: Response) => <StudyModeOffering[]>res.json());
   }
 
   findIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications :' + intake.referenceNo);
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/intakeApplications', options)
+    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/intakeApplications')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findSubmittedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findSubmittedIntakeApplications :' + intake);
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SUBMITTED', options)
+    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SUBMITTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findRejectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/REJECTED', options)
+    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/REJECTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findSelectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SELECTED', options)
+    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SELECTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   startIntakeTask(intake: Intake): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/startTask', JSON.stringify(intake), options)
+    return this._http.post(this.policy_api + '/intakes/startTask', JSON.stringify(intake))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   copyIntakeTask(intake: Intake): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/copy', JSON.stringify(intake), options)
+    return this._http.post(this.policy_api + '/intakes/' + intake.referenceNo + '/copy', JSON.stringify(intake))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   completeIntakeTask(intakeTask: IntakeTask): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/completeTask', JSON.stringify(intakeTask), options)
+    return this._http.post(this.policy_api + '/intakes/completeTask', JSON.stringify(intakeTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   claimIntakeTask(intakeTask: IntakeTask): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/claimTask', JSON.stringify(intakeTask), options)
+    return this._http.post(this.policy_api + '/intakes/claimTask', JSON.stringify(intakeTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   releaseIntakeTask(intakeTask: IntakeTask): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/releaseTask', JSON.stringify(intakeTask), options)
+    return this._http.post(this.policy_api + '/intakes/releaseTask', JSON.stringify(intakeTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -228,88 +159,48 @@ export class PolicyService {
     console.log('description :' + intake.description);
     console.log('description :' + intake.startDate);
     console.log('description :' + intake.endDate);
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo, JSON.stringify(intake), options)
+    return this._http.put(this.policy_api + '/intakes/' + intake.referenceNo, JSON.stringify(intake))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings',
-      JSON.stringify(offering), options)
+    return this._http.post(this.policy_api + '/intakes/' + intake.referenceNo + '/programOfferings',
+      JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
     console.log('offering gen criteria :' + offering.generalCriteria);
     console.log('offering spes criteria :' + offering.specificCriteria);
-    return this.http.put(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings/'
-      + offering.id, JSON.stringify(offering), options)
+    return this._http.put(this.policy_api + '/intakes/' + intake.referenceNo + '/programOfferings/'
+      + offering.id, JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/programOfferings/' + offering.id, options)
+    return this._http.delete(this.policy_api + '/intakes/' + intake.referenceNo + '/programOfferings/' + offering.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/supervisorOfferings',
-      JSON.stringify(offering), options)
+    return this._http.post(this.policy_api + '/intakes/' + intake.referenceNo + '/supervisorOfferings',
+      JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/supervisorOfferings/' + offering.id, options)
+    return this._http.delete(this.policy_api + '/intakes/' + intake.referenceNo + '/supervisorOfferings/' + offering.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/studyModeOfferings',
-      JSON.stringify(offering), options)
+    return this._http.post(this.policy_api + '/intakes/' + intake.referenceNo + '/studyModeOfferings',
+      JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<String> {
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.authnService.token,
-    });
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.delete(environment.endpoint + '/api/policy/intakes/' + intake.referenceNo + '/studyModeOfferings/' + offering.id, options)
+    return this._http.delete(this.policy_api + '/intakes/' + intake.referenceNo + '/studyModeOfferings/' + offering.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

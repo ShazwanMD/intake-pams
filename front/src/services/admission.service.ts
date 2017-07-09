@@ -1,19 +1,18 @@
 import {Injectable} from '@angular/core';
-import {Response, Http, Headers, RequestOptions} from '@angular/http';
+import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../environments/environment';
 import {IntakeTask} from '../app/shared/model/policy/intake-task.interface';
 import {Candidate} from '../app/shared/model/admission/candidate.interface';
 import {Intake} from '../app/shared/model/policy/intake.interface';
-import {AuthenticationService} from './authentication.service';
 
 @Injectable()
 export class AdmissionService {
 
-  constructor(private http: Http,
-              private _http: HttpInterceptorService,
-              private authnService: AuthenticationService) {
+  private admission_api: string = environment.endpoint + '/api/admission';
+
+  constructor(private _http: HttpInterceptorService) {
   }
 
   // ====================================================================================================
@@ -22,25 +21,19 @@ export class AdmissionService {
 
   findAssignedIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findAssignedIntakeTasks');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/admission/intakes/assignedTasks', options)
+    return this._http.get(this.admission_api + '/intakes/assignedTasks')
       .map((res: Response) => <IntakeTask[]>res.json());
   }
 
   findPooledIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findPooledIntakeTasks');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/admission/intakes/pooledTasks', options)
+    return this._http.get(this.admission_api + '/intakes/pooledTasks')
       .map((res: Response) => <IntakeTask[]>res.json());
   }
 
   findIntakeTaskByTaskId(taskId: string): Observable<IntakeTask> {
     console.log('findIntakeTaskByTaskId');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/admission/intakes/viewTask/' + taskId, options)
+    return this._http.get(this.admission_api + '/intakes/viewTask/' + taskId)
       .map((res: Response) => <IntakeTask>res.json());
   }
 
@@ -51,33 +44,25 @@ export class AdmissionService {
   findCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findCandidates');
     console.log('findCandidates intake.referenceNo: ' + intake.referenceNo);
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/admission/intakes/' + intake.referenceNo + '/candidates', options)
+    return this._http.get(this.admission_api + '/intakes/' + intake.referenceNo + '/candidates')
       .map((res: Response) => <Candidate[]>res.json());
   }
 
   findSelectedCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findSelectedCandidates');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/admission/intakes/' + intake.referenceNo + '/candidates/candidateStatus/SELECTED', options)
+    return this._http.get(this.admission_api + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/SELECTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
 
   findRejectedCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findRejectedCandidates');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/admission/intakes/' + intake.referenceNo + '/candidates/candidateStatus/REJECTED', options)
+    return this._http.get(this.admission_api + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/REJECTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
 
   findAcceptedCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findAcceptedCandidates');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/admission/intakes/' + intake.referenceNo + '/candidates/candidateStatus/ACCEPTED', options)
+    return this._http.get(this.admission_api + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/ACCEPTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
 }
