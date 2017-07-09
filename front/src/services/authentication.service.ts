@@ -5,13 +5,15 @@ import {Http, Response} from '@angular/http';
 import {Headers} from '@angular/http';
 import {tokenNotExpired} from 'angular2-jwt';
 import {environment} from '../environments/environment';
+import {AuthenticatedUser} from "../app/shared/model/identity/authenticated-user.interface";
 
 /**
  */
 @Injectable()
 export class AuthenticationService {
 
-  _roles: string[];
+  private _roles: string[];
+  private _authenticatedUser: AuthenticatedUser;
   public token: string;
   public parsedToken: any;
 
@@ -58,7 +60,8 @@ export class AuthenticationService {
   }
 
   logout(): void {
-    // clear token remove user from local storage to log user out
+    // clear token remove user from local
+    // storage to log user out
     this.token = undefined;
     localStorage.removeItem('currentUser');
   }
@@ -73,5 +76,13 @@ export class AuthenticationService {
 
   get roles(): string[] {
     return this._roles;
+  }
+
+  get authenticatedUser(): AuthenticatedUser {
+    return this._authenticatedUser;
+  }
+
+  set authenticatedUser(value: AuthenticatedUser) {
+    this._authenticatedUser = value;
   }
 }

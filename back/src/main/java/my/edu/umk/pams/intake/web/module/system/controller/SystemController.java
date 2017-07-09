@@ -6,10 +6,13 @@ import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
+import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.security.service.SecurityServiceImpl;
 import my.edu.umk.pams.intake.system.model.InModule;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeSession;
 import my.edu.umk.pams.intake.web.module.registration.vo.UserRegistration;
+import my.edu.umk.pams.intake.web.module.system.vo.AuthenticatedUser;
 import my.edu.umk.pams.intake.web.module.system.vo.Module;
 
 import java.util.List;
@@ -30,26 +33,30 @@ public class SystemController {
     private SystemService systemService;
 
     @Autowired
+    private SecurityService securityService;
+
+    @Autowired
     private SystemTransformer systemTransformer;
-    
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
-
     @RequestMapping(value = "/modules/authorized", method = RequestMethod.GET)
-    public ResponseEntity<List<Module>>listModules() {
-    	 List<InModule> modules = systemService.findModules(true);
-    	return new ResponseEntity<List<Module>>(systemTransformer.toModuleVos(modules), HttpStatus.OK);
+    public ResponseEntity<List<Module>> findModules() {
+        List<InModule> modules = systemService.findModules(true);
+        return new ResponseEntity<List<Module>>(systemTransformer.toModuleVos(modules), HttpStatus.OK);
     }
-    
- // ====================================================================================================
+
+    @RequestMapping(value = "/authenticatedUser", method = RequestMethod.GET)
+    public ResponseEntity<AuthenticatedUser> findAuthenticatedUser() {
+        InUser currentUser = securityService.getCurrentUser();
+        AuthenticatedUser authenticatedUser = new AuthenticatedUser();
+        authenticatedUser.setUsername(currentUser.getUsername());
+        authenticatedUser.setEmail(currentUser.getEmail());
+        return new ResponseEntity<AuthenticatedUser>(authenticatedUser, HttpStatus.OK);
+    }
+
+    // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================
-
-    private void dummyLogin() {
-//        Noop
-//        InAutoLoginToken token = new InAutoLoginToken("applicant1");
-//        Authentication authed = authenticationManager.authenticate(token);
-//        SecurityContextHolder.getContext().setAuthentication(authed);
-    }
 }

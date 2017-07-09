@@ -1,6 +1,7 @@
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
+import {AuthenticatedUser} from '../shared/model/identity/authenticated-user.interface';
 
 @Component({
   selector: 'pams-secure',
@@ -8,12 +9,14 @@ import {AuthenticationService} from '../../services/authentication.service';
 })
 export class SecurePage implements OnInit {
 
+  private authenticatedUser: AuthenticatedUser;
+
   constructor(private _router: Router,
               private authnService: AuthenticationService) {
   }
 
   ngOnInit(): void {
-    // no op
+    this.authenticatedUser = this.authnService.authenticatedUser;
   }
 
   logout(): void {
