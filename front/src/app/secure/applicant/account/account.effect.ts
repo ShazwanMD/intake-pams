@@ -1,19 +1,18 @@
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {AccountActions} from './account.action';
-import {ApplicationService} from '../../../../services/application.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AccountService} from '../../../../services/account.service';
 
 @Injectable()
-export class ApplicationEffects {
+export class AccountEffects {
   constructor(private actions$: Actions,
               private router: Router,
               private accountActions: AccountActions,
               private accountService: AccountService) {
   }
 
-  @Effect() findPublishedIntake$ = this.actions$
+  @Effect() findPublishedIntakea$ = this.actions$
     .ofType(AccountActions.FIND_PUBLISHED_INTAKES)
     .switchMap(() => this.accountService.findPublishedIntakes())
     .map((intakes) => this.accountActions.findPublishedIntakesSuccess(intakes));
@@ -29,6 +28,4 @@ export class ApplicationEffects {
     .map((action) => action.payload)
     .switchMap((intake) => this.accountService.findSubmittedIntakeApplications())
     .map((applications) => this.accountActions.findSubmittedIntakeApplicationsSuccess(applications));
-
-
 }

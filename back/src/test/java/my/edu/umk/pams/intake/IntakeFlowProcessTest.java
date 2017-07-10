@@ -173,7 +173,7 @@ public class IntakeFlowProcessTest {
         application1.setBidStatus(InBidStatus.NEW);
         application1.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
         applicationService.applyIntake(intake, application1);
-        applicationService.submitIntakeApplication(draftedIntake, application1);
+//        applicationService.submitIntakeApplication(draftedIntake, application1);
 
         InIntakeApplication application2 = new InIntakeApplicationImpl();
         application2.setIntake(intake);
@@ -190,7 +190,7 @@ public class IntakeFlowProcessTest {
         application2.setBidStatus(InBidStatus.NEW);
         application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
         applicationService.applyIntake(intake, application2);
-        applicationService.submitIntakeApplication(draftedIntake, application2);
+//        applicationService.submitIntakeApplication(draftedIntake, application2);
 
     }
 

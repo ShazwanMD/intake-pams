@@ -6,7 +6,7 @@ export type IntakeListState = Intake[];
 
 const initialState: IntakeListState = <Intake[]>[];
 
-export function openIntakeListReducer(state = initialState, action: Action): IntakeListState {
+export function publishedIntakeListReducer(state = initialState, action: Action): IntakeListState {
   switch (action.type) {
     case AccountActions.FIND_PUBLISHED_INTAKES_SUCCESS: {
       return action.payload;

@@ -25,7 +25,7 @@ export class AccountActions {
 
   static FIND_DRAFTED_INTAKE_APPLICATIONS = '[Account] Find Drafted Intake Applications';
 
-  findDraftedIntakeApplications(applications): Action {
+  findDraftedIntakeApplications(): Action {
     return {
       type: AccountActions.FIND_DRAFTED_INTAKE_APPLICATIONS,
     };
@@ -34,7 +34,7 @@ export class AccountActions {
   static FIND_DRAFTED_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find Drafted Intake Applications Success';
 
   findDraftedIntakeApplicationsSuccess(applcations): Action {
-    console.log('findIntakeApplicationsSuccess');
+    console.log('findDraftedIntakeApplicationsSuccess');
     return {
       type: AccountActions.FIND_DRAFTED_INTAKE_APPLICATIONS_SUCCESS,
       payload: applcations,
@@ -43,7 +43,7 @@ export class AccountActions {
 
   static FIND_SUBMITTED_INTAKE_APPLICATIONS = '[Account] Find Submitted Intake Applications';
 
-  findSubmittedIntakeApplications(applications): Action {
+  findSubmittedIntakeApplications(): Action {
     return {
       type: AccountActions.FIND_SUBMITTED_INTAKE_APPLICATIONS,
     };
@@ -52,7 +52,7 @@ export class AccountActions {
   static FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find Submitted Intake Applications Success';
 
   findSubmittedIntakeApplicationsSuccess(applcations): Action {
-    console.log('findIntakeApplicationsSuccess');
+    console.log('findSubmittedIntakeApplicationsSuccess');
     return {
       type: AccountActions.FIND_SUBMITTED_INTAKE_APPLICATIONS_SUCCESS,
       payload: applcations,

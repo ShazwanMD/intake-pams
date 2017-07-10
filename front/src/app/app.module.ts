@@ -50,7 +50,10 @@ import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
 import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
 import {AccountService} from "../services/account.service";
-import {accountModuleReducers, AccountModuleState, INITIAL_ACCOUNT_STATE} from "./secure/applicant/account/index";
+import {
+  AccountModule, accountModuleReducers, AccountModuleState,
+  INITIAL_ACCOUNT_STATE
+} from "./secure/applicant/account/index";
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -143,6 +146,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     ApplicationModule.forRoot(),
     AdmissionModule.forRoot(),
     RegistrationModule.forRoot(),
+    AccountModule.forRoot(),
   ],
   providers: [
     appRoutingProviders,

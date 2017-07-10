@@ -108,8 +108,8 @@ import {ProgramCode} from '../../../shared/model/common/program-code.interface';
 import {StateCode} from '../../../shared/model/common/state-code.interface';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
 import {ReligionCodeListPage} from './religion-codes/religion-code-list.page';
-import {CommonModule} from "../../../common/index";
-import {IntakeSessionSubModule} from "../../../policy/intake-sessions/index";
+import {CommonModule} from '../../../common/index';
+import {IntakeSessionSubModule} from '../../../policy/intake-sessions/index';
 
 export interface SetupModuleState {
   title: TitleState;
