@@ -10,34 +10,32 @@ import {Intake} from '../app/shared/model/policy/intake.interface';
 @Injectable()
 export class AccountService {
 
-  private account_api: string = environment.endpoint + '/api/account';
+  private ACCOUNT_API: string = environment.endpoint + '/api/account';
 
   constructor(private _http: HttpInterceptorService) {
   }
 
   findPublishedIntakes(): Observable<Intake[]> {
     console.log('findPublishedIntakes');
-    let headers: Headers = new Headers({'Authorization': 'Bearer ' + this.authnService.token});
-    let options: RequestOptions = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/account/intake/flowState/PUBLISHED  ', options)
+    return this._http.get(this.ACCOUNT_API + '/intakes/flowState/PUBLISHED  ')
       .map((res: Response) => <Intake[]>res.json());
   }
 
   findDraftedIntakeApplications(): Observable<IntakeApplication[]> {
     console.log('findDraftedIntakeApplications');
-    return this._http.get(this.account_api + '/intakeApplications/bidStatus/DRAFTED')
+    return this._http.get(this.ACCOUNT_API + '/intakeApplications/bidStatus/DRAFTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findSubmittedIntakeApplications(): Observable<IntakeApplication[]> {
     console.log('findSubmittedIntakeApplications');
-    return this._http.get(this.account_api + '/intakeApplications/bidStatus/SUBMITTED')
+    return this._http.get(this.ACCOUNT_API + '/intakeApplications/bidStatus/SUBMITTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   updateApplicant(applicant: Applicant): Observable<String> {
     console.log('updateApplicant');
-    return this._http.post(this.account_api + '/applicant', JSON.stringify(applicant))
+    return this._http.post(this.ACCOUNT_API + '/applicant', JSON.stringify(applicant))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 }

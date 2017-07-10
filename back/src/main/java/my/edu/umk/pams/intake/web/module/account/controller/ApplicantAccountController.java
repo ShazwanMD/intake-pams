@@ -18,6 +18,7 @@ import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
@@ -29,6 +30,7 @@ import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTrans
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
+import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 
 /**
  */
@@ -66,8 +68,14 @@ public class ApplicantAccountController {
     // DASHBOARD
     // ====================================================================================================
 
+    @RequestMapping(value = "/intakes/flowState/{flowState}", method = RequestMethod.GET)
+    public ResponseEntity<List<Intake>> findIntakesByFlowState(@PathVariable String flowState) {
+        List<InIntake> intakes = policyService.findIntakesByFlowState(InFlowState.valueOf(flowState));
+        return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/intakeApplications/bidStatus/{bidStatus}", method = RequestMethod.GET)
-    public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByIntake(@PathVariable String bidStatus) {
+    public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByBidStatus(@PathVariable String bidStatus) {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
         if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();

@@ -10,6 +10,7 @@ import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.config.TestAppConfiguration;
+import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -63,10 +64,10 @@ public class IntakeFlowProcessTest {
 
     @Autowired
     private CommonService commonService;
-    
+
     @Autowired
     private SystemService systemService;
-    
+
     @Autowired
     private ApplicationService applicationService;
 
@@ -94,7 +95,7 @@ public class IntakeFlowProcessTest {
         InIntake intake = new InIntakeImpl();
         intake.setAuditNo(UUID.randomUUID().toString());
         intake.setSourceNo("MASTER/201720182" + System.currentTimeMillis());
-        intake.setDescription("Intake for Program Master 201720181 "  + System.currentTimeMillis());
+        intake.setDescription("Intake for Program Master 201720181 " + System.currentTimeMillis());
         intake.setProjection(100);
         intake.setStartDate(new Date());
         intake.setEndDate(new Date());
@@ -102,9 +103,9 @@ public class IntakeFlowProcessTest {
         intake.setSession(session);
         intake.setGraduateCenter(center);
         String referenceNo = policyService.startIntakeTask(intake);
-        
+
         // verify intake
-        
+
         List<Task> draftedTasks = policyService.findAssignedIntakeTasks(0, 100);
         Assert.notEmpty(draftedTasks, "Tasks should not be empty");
         Task draftedTask = draftedTasks.get(0);
@@ -128,38 +129,36 @@ public class IntakeFlowProcessTest {
         InStudyMode fulltime = commonService.findStudyModeByCode("1");
         InStudyModeOffering fulltimeOffering = new InStudyModeOfferingImpl();
         fulltimeOffering.setStudyMode(fulltime);
-        
+
         policyService.addStudyModeOffering(intake, fulltimeOffering);
 
         InStudyMode parttime = commonService.findStudyModeByCode("2");
         InStudyModeOffering parttimeOffering = new InStudyModeOfferingImpl();
         parttimeOffering.setStudyMode(parttime);
         policyService.addStudyModeOffering(intake, parttimeOffering);
-        
+
         // preload supervisor offering
         InSupervisorCode supervisor1 = commonService.findSupervisorCodeByCode("00001A");
         InSupervisorOffering supervisorOffering1 = new InSupervisorOfferingImpl();
         supervisorOffering1.setSupervisorCode(supervisor1);
-        
+
         policyService.addSupervisorOffering(intake, supervisorOffering1);
 
         InSupervisorCode supervisor2 = commonService.findSupervisorCodeByCode("00019A");
         InSupervisorOffering supervisorOffering2 = new InSupervisorOfferingImpl();
         supervisorOffering2.setSupervisorCode(supervisor2);
-        
+
         policyService.addSupervisorOffering(intake, supervisorOffering2);
-        
-  
         workflowService.completeTask(draftedTask);
-        
+
         // publish intake
         List<Task> assignedVerifiedIntakes = policyService.findAssignedIntakeTasks(0, 100);
         Assert.notEmpty(assignedVerifiedIntakes, "Tasks should not be empty");
         workflowService.completeTask(assignedVerifiedIntakes.get(0)); // TO APPROVED
-        
+
         //Create application samples for citizen and on citizen application
 
-      InIntakeApplication  application1 = new InIntakeApplicationImpl();
+        InIntakeApplication application1 = new InIntakeApplicationImpl();
         application1.setIntake(intake);
         application1.setReferenceNo(referenceNo);
         application1.setStudyModeSelection(parttimeOffering);
@@ -172,10 +171,11 @@ public class IntakeFlowProcessTest {
         application1.setPhone("01110202022");
         application1.setNationalityCode(commonService.findNationalityCodeByCode("1"));
         application1.setBidStatus(InBidStatus.NEW);
-        applicationService.applyIntake(intake, application1);        
+        application1.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
+        applicationService.applyIntake(intake, application1);
         applicationService.submitIntakeApplication(draftedIntake, application1);
-        
-      InIntakeApplication  application2 = new InIntakeApplicationImpl();
+
+        InIntakeApplication application2 = new InIntakeApplicationImpl();
         application2.setIntake(intake);
         application2.setReferenceNo(referenceNo);
         application2.setStudyModeSelection(fulltimeOffering);
@@ -188,9 +188,10 @@ public class IntakeFlowProcessTest {
         application2.setPhone("011102021221");
         application2.setNationalityCode(commonService.findNationalityCodeByCode("2"));
         application2.setBidStatus(InBidStatus.NEW);
-        applicationService.applyIntake(intake, application2);        
+        application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
+        applicationService.applyIntake(intake, application2);
         applicationService.submitIntakeApplication(draftedIntake, application2);
 
     }
-    
+
 }

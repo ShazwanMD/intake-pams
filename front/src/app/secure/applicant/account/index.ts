@@ -9,52 +9,47 @@ import {ApplicationService} from '../../../../services/application.service';
 import {PolicyService} from '../../../../services/policy.service';
 import {IntakeApplicationSubModule} from '../application/intake-applications/index';
 import {CommonModule} from '../../../common/index';
-import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
-import {CpsIntakeApplicationSubModule} from '../application/intake-applications/cps/index';
-import {ApplicationPage} from '../application/application.page';
 import {IntakeListState} from '../application/intake-applications/intake-list.reducer';
 import {IntakeApplicationListState} from '../application/intake-applications/intake-application-list.reducer';
-import {openIntakeListReducer} from './intake-list.reducer';
-import {IntakeApplicationState} from '../application/intake-applications/intake-application.reducer';
+import {publishedIntakeListReducer} from './intake-list.reducer';
 import {
   draftedIntakeApplicationListReducer,
   submittedIntakeApplicationListReducer,
 } from './intake-application-list.reducer';
+import {Intake} from '../../../shared/model/policy/intake.interface';
+import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
+import {AccountActions} from './account.action';
+import {AccountEffects} from './account.effect';
+import {EffectsModule} from '@ngrx/effects';
 
 export interface AccountModuleState {
-  openIntakes: IntakeListState;
+  publishedIntakes: IntakeListState;
+  draftedIntakeApplications: IntakeApplicationListState;
   submittedIntakeApplications: IntakeApplicationListState;
-  draftedIntakeApplication: IntakeApplicationState;
 }
-;
 
 export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
-  openIntakes: [],
-  submittedIntakeApplications: [],
-  draftedIntakeApplications: [],
+  publishedIntakes: <Intake[]>[],
+  draftedIntakeApplications: <IntakeApplication[]>[],
+  submittedIntakeApplications: <IntakeApplication[]>[],
 
 };
 
 export const accountModuleReducers = {
-  openIntakes: openIntakeListReducer,
-  draftedIntakeApplication: draftedIntakeApplicationListReducer,
+  publishedIntakes: publishedIntakeListReducer,
+  draftedIntakeApplications: draftedIntakeApplicationListReducer,
   submittedIntakeApplications: submittedIntakeApplicationListReducer,
 };
 
 @NgModule({
   imports: [
-    appRoutes,
-    BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     IntakeApplicationSubModule.forRoot(),
     CommonModule.forRoot(),
-    ProgramLevelSubModule.forRoot(),
-    CpsIntakeApplicationSubModule.forRoot(),
+    EffectsModule.run(AccountEffects),
   ],
   declarations: [
-    // page
-    ApplicationPage,
   ],
   exports: [],
 
@@ -70,6 +65,7 @@ export class AccountModule {
         CommonService,
         PolicyService,
         ApplicationService,
+        AccountActions,
       ],
     };
   }

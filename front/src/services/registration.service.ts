@@ -8,18 +8,18 @@ import {UserRegistration} from '../app/shared/model/registration/user-registrati
 @Injectable()
 export class RegistrationService {
 
-  private registration_api: string = environment.endpoint + '/api/registration';
+  private REGISTRATION_API: string = environment.endpoint + '/api/registration';
 
   constructor(private _http: HttpInterceptorService) {
   }
 
   registerUser(registration: UserRegistration): Observable<String> {
-    return this._http.post(this.registration_api + '/registerUser', JSON.stringify(registration))
+    return this._http.post(this.REGISTRATION_API + '/registerUser', JSON.stringify(registration))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   verifyUser(token: String): Observable<Boolean> {
-    return this._http.get(this.registration_api + '/verifyUser/' + token)
+    return this._http.get(this.REGISTRATION_API + '/verifyUser/' + token)
       .map((res: Response) => <Boolean>res.json());
   }
 }

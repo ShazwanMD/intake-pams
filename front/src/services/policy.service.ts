@@ -15,7 +15,7 @@ import {IntakeApplication} from '../app/shared/model/application/intake-applicat
 @Injectable()
 export class PolicyService {
 
-  private policy_api: string = environment.endpoint + '/api/policy';
+  private POLICY_API: string = environment.endpoint + '/api/policy';
 
   constructor(private _http: HttpInterceptorService) {
   }
@@ -26,22 +26,22 @@ export class PolicyService {
 
   findIntakeSessions(): Observable<IntakeSession[]> {
     console.log('findIntakeSessions');
-    return this._http.get(this.policy_api + '/intakeSessions')
+    return this._http.get(this.POLICY_API + '/intakeSessions')
       .map((res: Response) => <IntakeSession[]>res.json());
   }
 
   saveIntakeSession(sessions: IntakeSession): Observable<String> {
-    return this._http.post(this.policy_api + '/intake-sessions', JSON.stringify(sessions))
+    return this._http.post(this.POLICY_API + '/intake-sessions', JSON.stringify(sessions))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeIntakeSession(session: IntakeSession): Observable<String> {
-    return this._http.delete(this.policy_api + '/intake-sessions/' + session.id)
+    return this._http.delete(this.POLICY_API + '/intake-sessions/' + session.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateIntakeSession(code: IntakeSession): Observable<String> {
-    return this._http.put(this.policy_api + '/intake-sessions/' + code.code, JSON.stringify(code))
+    return this._http.put(this.POLICY_API + '/intake-sessions/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -51,7 +51,7 @@ export class PolicyService {
 
   findProgramLevels(): Observable<ProgramLevel[]> {
     console.log('findProgramLevels');
-    return this._http.get(this.policy_api + '/programLevels')
+    return this._http.get(this.POLICY_API + '/programLevels')
       .map((res: Response) => <ProgramLevel[]>res.json());
   }
 
@@ -61,96 +61,96 @@ export class PolicyService {
 
   findAssignedIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findAssignedIntakeTasks');
-    return this._http.get(this.policy_api + '/intakes/assignedTasks')
+    return this._http.get(this.POLICY_API + '/intakes/assignedTasks')
       .map((res: Response) => <IntakeTask[]>res.json());
   }
 
   findPooledIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findPooledIntakeTasks');
-    return this._http.get(this.policy_api + '/intakes/pooledTasks')
+    return this._http.get(this.POLICY_API + '/intakes/pooledTasks')
       .map((res: Response) => <IntakeTask[]>res.json());
   }
 
   findIntakeTaskByTaskId(taskId: string): Observable<IntakeTask> {
     console.log('findIntakeTaskByTaskId');
-    return this._http.get(this.policy_api + '/intakes/viewTask/' + taskId)
+    return this._http.get(this.POLICY_API + '/intakes/viewTask/' + taskId)
       .map((res: Response) => <IntakeTask>res.json());
   }
 
   findIntakeByReferenceNo(referenceNo: string): Observable<Intake> {
-    return this._http.get(this.policy_api + '/intakes/' + referenceNo)
+    return this._http.get(this.POLICY_API + '/intakes/' + referenceNo)
       .map((res: Response) => <Intake>res.json());
   }
 
   findIntakeByTaskId(taskId: string): Observable<Intake> {
-    return this._http.get(this.policy_api + '/intakes/' + taskId)
+    return this._http.get(this.POLICY_API + '/intakes/' + taskId)
       .map((res: Response) => <Intake>res.json());
   }
 
   findProgramOfferings(intake: Intake): Observable<ProgramOffering[]> {
     console.log('findProgramOfferings: ' + intake.referenceNo);
-    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/programOfferings')
+    return this._http.get(this.POLICY_API + '/intakes/' + intake.referenceNo + '/programOfferings')
       .map((res: Response) => <ProgramOffering[]>res.json());
   }
 
   findSupervisorOfferings(intake: Intake): Observable<SupervisorOffering[]> {
     console.log('findSupervisorOfferings');
-    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/supervisorOfferings')
+    return this._http.get(this.POLICY_API + '/intakes/' + intake.referenceNo + '/supervisorOfferings')
       .map((res: Response) => <SupervisorOffering[]>res.json());
   }
 
   findStudyModeOfferings(intake: Intake): Observable<StudyModeOffering[]> {
     console.log('findStudyModeOfferings');
-    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/studyModeOfferings')
+    return this._http.get(this.POLICY_API + '/intakes/' + intake.referenceNo + '/studyModeOfferings')
       .map((res: Response) => <StudyModeOffering[]>res.json());
   }
 
   findIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications :' + intake.referenceNo);
-    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/intakeApplications')
+    return this._http.get(this.POLICY_API + '/intakes/' + intake.referenceNo + '/intakeApplications')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findSubmittedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findSubmittedIntakeApplications :' + intake);
-    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SUBMITTED')
+    return this._http.get(this.POLICY_API + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SUBMITTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findRejectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications');
-    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/REJECTED')
+    return this._http.get(this.POLICY_API + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/REJECTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findSelectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications');
-    return this._http.get(this.policy_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SELECTED')
+    return this._http.get(this.POLICY_API + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SELECTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   startIntakeTask(intake: Intake): Observable<String> {
-    return this._http.post(this.policy_api + '/intakes/startTask', JSON.stringify(intake))
+    return this._http.post(this.POLICY_API + '/intakes/startTask', JSON.stringify(intake))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   copyIntakeTask(intake: Intake): Observable<String> {
-    return this._http.post(this.policy_api + '/intakes/' + intake.referenceNo + '/copy', JSON.stringify(intake))
+    return this._http.post(this.POLICY_API + '/intakes/' + intake.referenceNo + '/copy', JSON.stringify(intake))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   completeIntakeTask(intakeTask: IntakeTask): Observable<String> {
-    return this._http.post(this.policy_api + '/intakes/completeTask', JSON.stringify(intakeTask))
+    return this._http.post(this.POLICY_API + '/intakes/completeTask', JSON.stringify(intakeTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   claimIntakeTask(intakeTask: IntakeTask): Observable<String> {
-    return this._http.post(this.policy_api + '/intakes/claimTask', JSON.stringify(intakeTask))
+    return this._http.post(this.POLICY_API + '/intakes/claimTask', JSON.stringify(intakeTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   releaseIntakeTask(intakeTask: IntakeTask): Observable<String> {
-    return this._http.post(this.policy_api + '/intakes/releaseTask', JSON.stringify(intakeTask))
+    return this._http.post(this.POLICY_API + '/intakes/releaseTask', JSON.stringify(intakeTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -159,12 +159,12 @@ export class PolicyService {
     console.log('description :' + intake.description);
     console.log('description :' + intake.startDate);
     console.log('description :' + intake.endDate);
-    return this._http.put(this.policy_api + '/intakes/' + intake.referenceNo, JSON.stringify(intake))
+    return this._http.put(this.POLICY_API + '/intakes/' + intake.referenceNo, JSON.stringify(intake))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
-    return this._http.post(this.policy_api + '/intakes/' + intake.referenceNo + '/programOfferings',
+    return this._http.post(this.POLICY_API + '/intakes/' + intake.referenceNo + '/programOfferings',
       JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -172,35 +172,35 @@ export class PolicyService {
   updateProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
     console.log('offering gen criteria :' + offering.generalCriteria);
     console.log('offering spes criteria :' + offering.specificCriteria);
-    return this._http.put(this.policy_api + '/intakes/' + intake.referenceNo + '/programOfferings/'
+    return this._http.put(this.POLICY_API + '/intakes/' + intake.referenceNo + '/programOfferings/'
       + offering.id, JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteProgramOffering(intake: Intake, offering: ProgramOffering): Observable<String> {
-    return this._http.delete(this.policy_api + '/intakes/' + intake.referenceNo + '/programOfferings/' + offering.id)
+    return this._http.delete(this.POLICY_API + '/intakes/' + intake.referenceNo + '/programOfferings/' + offering.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<String> {
-    return this._http.post(this.policy_api + '/intakes/' + intake.referenceNo + '/supervisorOfferings',
+    return this._http.post(this.POLICY_API + '/intakes/' + intake.referenceNo + '/supervisorOfferings',
       JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteSupervisorOffering(intake: Intake, offering: SupervisorOffering): Observable<String> {
-    return this._http.delete(this.policy_api + '/intakes/' + intake.referenceNo + '/supervisorOfferings/' + offering.id)
+    return this._http.delete(this.POLICY_API + '/intakes/' + intake.referenceNo + '/supervisorOfferings/' + offering.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<String> {
-    return this._http.post(this.policy_api + '/intakes/' + intake.referenceNo + '/studyModeOfferings',
+    return this._http.post(this.POLICY_API + '/intakes/' + intake.referenceNo + '/studyModeOfferings',
       JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteStudyModeOffering(intake: Intake, offering: StudyModeOffering): Observable<String> {
-    return this._http.delete(this.policy_api + '/intakes/' + intake.referenceNo + '/studyModeOfferings/' + offering.id)
+    return this._http.delete(this.POLICY_API + '/intakes/' + intake.referenceNo + '/studyModeOfferings/' + offering.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

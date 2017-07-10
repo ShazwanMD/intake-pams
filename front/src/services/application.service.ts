@@ -19,7 +19,7 @@ import {AttachmentType} from '../app/shared/model/application/attachment-type.en
 @Injectable()
 export class ApplicationService {
 
-  private application_api: string = environment.endpoint + '/api/application';
+  private APPLICATION_API: string = environment.endpoint + '/api/application';
 
   constructor(private _http: HttpInterceptorService) {
   }
@@ -30,39 +30,39 @@ export class ApplicationService {
 
   findPublishedIntakes(): Observable<Intake[]> {
     console.log('findPublishedIntakes');
-    return this._http.get(this.application_api + '/intakes/state/PUBLISHED')
+    return this._http.get(this.APPLICATION_API + '/intakes/state/PUBLISHED')
       .map((res: Response) => <Intake[]>res.json());
   }
 
   findIntakes(): Observable<Intake[]> {
     console.log('findIntakes');
-    return this._http.get(this.application_api + '/intakes')
+    return this._http.get(this.APPLICATION_API + '/intakes')
       .map((res: Response) => <Intake[]>res.json());
   }
 
   findIntakeByReferenceNo(referenceNo: string): Observable<Intake> {
     console.log('findIntakeByReferenceNo : ' + referenceNo);
-    return this._http.get(this.application_api + '/intakes/' + referenceNo)
+    return this._http.get(this.APPLICATION_API + '/intakes/' + referenceNo)
       .map((res: Response) => <Intake>res.json());
   }
 
   findProgramOfferingsByIntake(intake: Intake): Observable<ProgramOffering[]> {
-    return this._http.get(this.application_api + '/intakes/' + intake.referenceNo + '/programOfferings')
+    return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/programOfferings')
       .map((res: Response) => <ProgramOffering[]>res.json());
   }
 
   findSupervisorOfferingsByIntake(intake: Intake): Observable<SupervisorOffering[]> {
-    return this._http.get(this.application_api + '/intakes/' + intake.referenceNo + '/supervisorOfferings')
+    return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/supervisorOfferings')
       .map((res: Response) => <SupervisorOffering[]>res.json());
   }
 
   findStudyModeOfferingsByIntake(intake: Intake): Observable<StudyModeOffering[]> {
-    return this._http.get(this.application_api + '/intakes/' + intake.referenceNo + '/studyModeOfferings')
+    return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/studyModeOfferings')
       .map((res: Response) => <StudyModeOffering[]>res.json());
   }
 
   applyIntake(intake: Intake): Observable<IntakeApplication> {
-    return this._http.post(this.application_api + '/intakes/' + intake.referenceNo + '/apply', JSON.stringify(intake))
+    return this._http.post(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/apply', JSON.stringify(intake))
       .map((res: Response) => <IntakeApplication>res.json());
   }
 
@@ -72,36 +72,36 @@ export class ApplicationService {
 
   findIntakeApplications(): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications');
-    return this._http.get(this.application_api + '/intakeApplications')
+    return this._http.get(this.APPLICATION_API + '/intakeApplications')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findIntakeApplicationByReferenceNo(referenceNo: string): Observable<IntakeApplication> {
-    return this._http.get(this.application_api + '/intakeApplication/' + referenceNo)
+    return this._http.get(this.APPLICATION_API + '/intakeApplication/' + referenceNo)
       .map((res: Response) => <IntakeApplication>res.json());
   }
 
   submitIntakeApplication(application: IntakeApplication): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/'
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/submit', JSON.stringify(application))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   selectIntakeApplication(application: IntakeApplication): Observable<String> {
-    return this._http.put(this.application_api + '/intakeApplications/'
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/select', JSON.stringify(application))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   verifyIntakeApplication(application: IntakeApplication): Observable<String> {
-    return this._http.put(this.application_api + '/intakeApplications/'
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/verify', JSON.stringify(application))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   rejectIntakeApplication(application: IntakeApplication): Observable<String> {
     console.log('application {}', application);
-    return this._http.put(this.application_api + '/intakeApplications/'
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/reject', JSON.stringify(application))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -110,32 +110,32 @@ export class ApplicationService {
     console.log('updateIntakeApplication ');
     console.log('email: ' + application.email);
     console.log('researchTitle: ' + application.researchTitle);
-    return this._http.put(this.application_api + '/intakeApplications/'
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo, JSON.stringify(application))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   findSubmittedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findSubmittedIntakeApplications ' + intake.referenceNo);
-    return this._http.get(this.application_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SUBMITTED')
+    return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SUBMITTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findRejectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications');
-    return this._http.get(this.application_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/REJECTED')
+    return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/REJECTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findSelectedIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications');
-    return this._http.get(this.application_api + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SELECTED')
+    return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/intakeApplications/bidStatus/SELECTED')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
   findVerifiedInternationalIntakeApplications(intake: Intake): Observable<IntakeApplication[]> {
     console.log('findVerifiedInternationalIntakeApplications');
-    return this._http.get(this.application_api + '/intakes/'
+    return this._http.get(this.APPLICATION_API + '/intakes/'
       + intake.referenceNo + '/intakeApplications/bidStatus/SELECTED/verify/false')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
@@ -146,18 +146,18 @@ export class ApplicationService {
 
   findEducationsByIntakeApplication(application: IntakeApplication): Observable<Education[]> {
     console.log('findEducations');
-    return this._http.get(this.application_api + '/intakeApplications/' + application.referenceNo + '/educations')
+    return this._http.get(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/educations')
       .map((res: Response) => <Education[]>res.json());
   }
 
   addEducation(application: IntakeApplication, education: Education): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/' + application.referenceNo
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo
       + '/educations', JSON.stringify(education))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteEducation(application: IntakeApplication, education: Education): Observable<String> {
-    return this._http.delete(this.application_api + '/intakeApplications/' + application.referenceNo + '/educations/' + education.id)
+    return this._http.delete(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/educations/' + education.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -167,24 +167,24 @@ export class ApplicationService {
 
   findEmploymentsByIntakeApplication(application: IntakeApplication): Observable<Employment[]> {
     console.log('findEmployments');
-    return this._http.get(this.application_api + '/intakeApplications/' + application.referenceNo + '/employments')
+    return this._http.get(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/employments')
       .map((res: Response) => <Employment[]>res.json());
   }
 
   addEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/' + application.referenceNo
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo
       + '/employments', JSON.stringify(employment))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
-    return this._http.put(this.application_api + '/intakeApplications/'
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/employments/' + employment.id, JSON.stringify(employment))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteEmployment(application: IntakeApplication, employment: Employment): Observable<String> {
-    return this._http.delete(this.application_api + '/intakeApplications/' + application.referenceNo
+    return this._http.delete(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo
       + '/employments/' + employment.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -195,24 +195,24 @@ export class ApplicationService {
 
   findLanguagesByIntakeApplication(application: IntakeApplication): Observable<Language[]> {
     console.log('findLanguages');
-    return this._http.get(this.application_api + '/intakeApplications/' + application.referenceNo + '/languages')
+    return this._http.get(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/languages')
       .map((res: Response) => <Language[]>res.json());
   }
 
   addLanguage(application: IntakeApplication, language: Language): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/' + application.referenceNo
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo
       + '/languages', JSON.stringify(language))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateLanguage(application: IntakeApplication, language: Language): Observable<String> {
-    return this._http.put(this.application_api + '/intakeApplications/' + application.referenceNo
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo
       + '/languages/' + language.id, JSON.stringify(language))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteLanguage(application: IntakeApplication, language: Language): Observable<String> {
-    return this._http.delete(this.application_api + '/intakeApplications/'
+    return this._http.delete(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/languages/' + language.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -223,14 +223,14 @@ export class ApplicationService {
 
   findAttachmentsByIntakeApplication(application: IntakeApplication): Observable<Attachment[]> {
     console.log('findAttachments');
-    return this._http.get(this.application_api + '/intakeApplications/' + application.referenceNo + '/attachments')
+    return this._http.get(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/attachments')
       .map((res: Response) => <Attachment[]>res.json());
   }
 
   downloadAttachment(attachment: Attachment): Observable<File> {
     console.log('downloadAttachment');
     let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
-    return this._http.get(this.application_api + '/intakeApplications/download/attachment/' + attachment.id, options)
+    return this._http.get(this.APPLICATION_API + '/intakeApplications/download/attachment/' + attachment.id, options)
       .map((res: Response) => {
         let type: string = attachment.mimeType;
         let filename: string = attachment.name;
@@ -245,7 +245,7 @@ export class ApplicationService {
     let formData: FormData = new FormData();
     formData.append('attachmentType', attachmentType.toString());
     formData.append('file', file);
-    return this._http.post(this.application_api + '/intakeApplications/' + application.referenceNo + '/attachments', formData)
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/attachments', formData)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -255,24 +255,24 @@ export class ApplicationService {
 
   findRefereesByIntakeApplication(application: IntakeApplication): Observable<Referee[]> {
     console.log('findReferees');
-    return this._http.get(this.application_api + '/intakeApplications/' + application.referenceNo + '/referees')
+    return this._http.get(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/referees')
       .map((res: Response) => <Referee[]>res.json());
   }
 
   addReferee(application: IntakeApplication, referee: Referee): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/'
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/referees', JSON.stringify(referee))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateReferee(application: IntakeApplication, referee: Referee): Observable<String> {
-    return this._http.put(this.application_api + '/intakeApplications/'
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/referees/' + referee.id, JSON.stringify(referee))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteReferee(application: IntakeApplication, referee: Referee): Observable<String> {
-    return this._http.delete(this.application_api + '/intakeApplications/'
+    return this._http.delete(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/referees/' + referee.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -283,24 +283,24 @@ export class ApplicationService {
 
   findResultsByIntakeApplication(application: IntakeApplication): Observable<Result[]> {
     console.log('findResultsByIntakeApplication');
-    return this._http.get(this.application_api + '/intakeApplications/' + application.referenceNo + '/results')
+    return this._http.get(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/results')
       .map((res: Response) => <Result[]>res.json());
   }
 
   addResult(application: IntakeApplication, result: Result): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/'
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/results', JSON.stringify(result))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateResult(application: IntakeApplication, result: Result): Observable<String> {
-    return this._http.put(this.application_api + '/intakeApplications/' + application.referenceNo
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo
       + '/results/' + result.id, JSON.stringify(result))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deleteResult(application: IntakeApplication, result: Result): Observable<String> {
-    return this._http.delete(this.application_api + '/intakeApplications/' + application.referenceNo
+    return this._http.delete(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo
       + '/results/' + result.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -310,19 +310,19 @@ export class ApplicationService {
   // ====================================================================================================
 
   selectProgramOffering(application: IntakeApplication, offering: ProgramOffering): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/'
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/programOfferingSelection', JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   selectSupervisorOffering(application, offering): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/' + application.referenceNo
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo
       + '/supervisorOfferingSelection', JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   selectStudyModeOffering(application, offering): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/'
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/studyModeOfferingSelection', JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -331,7 +331,7 @@ export class ApplicationService {
   // PROCESS CANDIDATE
   // ====================================================================================================
   processIntakeCandidate(application: IntakeApplication): Observable<String> {
-    return this._http.post(this.application_api + '/intakeApplications/'
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/processCandidate', JSON.stringify(application))
       .flatMap((res: Response) => Observable.of(res.text()));
   }

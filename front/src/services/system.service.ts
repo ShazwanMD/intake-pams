@@ -9,7 +9,7 @@ import {AuthenticatedUser} from '../app/shared/model/identity/authenticated-user
 @Injectable()
 export class SystemService {
 
-  private system_api: string = environment.endpoint + '/api/system';
+  private SYSTEM_API: string = environment.endpoint + '/api/system';
 
   constructor(private _http: HttpInterceptorService) {
   }
@@ -19,12 +19,12 @@ export class SystemService {
   // ====================================================================================================
 
   findAuthorizedModules(): Observable<Module[]> {
-    return this._http.get(this.system_api + '/modules/authorized')
+    return this._http.get(this.SYSTEM_API + '/modules/authorized')
       .map((res: Response) => <Module[]>res.json());
   }
 
   findAuthenticatedUser(): Observable<AuthenticatedUser> {
-    return this._http.get(this.system_api + '/authenticatedUser')
+    return this._http.get(this.SYSTEM_API + '/authenticatedUser')
       .map((res: Response) => <AuthenticatedUser>res.json());
   }
 }

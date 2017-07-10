@@ -10,7 +10,7 @@ import {Intake} from '../app/shared/model/policy/intake.interface';
 @Injectable()
 export class AdmissionService {
 
-  private admission_api: string = environment.endpoint + '/api/admission';
+  private ADMISSION_API: string = environment.endpoint + '/api/admission';
 
   constructor(private _http: HttpInterceptorService) {
   }
@@ -21,19 +21,19 @@ export class AdmissionService {
 
   findAssignedIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findAssignedIntakeTasks');
-    return this._http.get(this.admission_api + '/intakes/assignedTasks')
+    return this._http.get(this.ADMISSION_API + '/intakes/assignedTasks')
       .map((res: Response) => <IntakeTask[]>res.json());
   }
 
   findPooledIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findPooledIntakeTasks');
-    return this._http.get(this.admission_api + '/intakes/pooledTasks')
+    return this._http.get(this.ADMISSION_API + '/intakes/pooledTasks')
       .map((res: Response) => <IntakeTask[]>res.json());
   }
 
   findIntakeTaskByTaskId(taskId: string): Observable<IntakeTask> {
     console.log('findIntakeTaskByTaskId');
-    return this._http.get(this.admission_api + '/intakes/viewTask/' + taskId)
+    return this._http.get(this.ADMISSION_API + '/intakes/viewTask/' + taskId)
       .map((res: Response) => <IntakeTask>res.json());
   }
 
@@ -44,25 +44,25 @@ export class AdmissionService {
   findCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findCandidates');
     console.log('findCandidates intake.referenceNo: ' + intake.referenceNo);
-    return this._http.get(this.admission_api + '/intakes/' + intake.referenceNo + '/candidates')
+    return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates')
       .map((res: Response) => <Candidate[]>res.json());
   }
 
   findSelectedCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findSelectedCandidates');
-    return this._http.get(this.admission_api + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/SELECTED')
+    return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/SELECTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
 
   findRejectedCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findRejectedCandidates');
-    return this._http.get(this.admission_api + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/REJECTED')
+    return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/REJECTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
 
   findAcceptedCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findAcceptedCandidates');
-    return this._http.get(this.admission_api + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/ACCEPTED')
+    return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/ACCEPTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
 }
