@@ -17,6 +17,12 @@ export class AccountEffects {
     .switchMap(() => this.accountService.findPublishedIntakes())
     .map((intakes) => this.accountActions.findPublishedIntakesSuccess(intakes));
 
+  @Effect() findIntakeApplications = this.actions$
+    .ofType(AccountActions.FIND_INTAKE_APPLICATIONS)
+    .map((action) => action.payload)
+    .switchMap((intake) => this.accountService.findIntakeApplications())
+    .map((applications) => this.accountActions.findIntakeApplicationsSuccess(applications));
+
   @Effect() findDraftedIntakeApplications = this.actions$
     .ofType(AccountActions.FIND_DRAFTED_INTAKE_APPLICATIONS)
     .map((action) => action.payload)

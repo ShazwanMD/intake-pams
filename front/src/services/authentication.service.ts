@@ -20,7 +20,7 @@ export class AuthenticationService {
   constructor(private http: Http) {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
-    console.log('currentUser: ' + currentUser);
+    console.log('currentUser: ' + JSON.stringify(currentUser));
     console.log('token: ' + this.token);
   }
 
@@ -65,6 +65,7 @@ export class AuthenticationService {
     // storage to log user out
     this.token = undefined;
     localStorage.removeItem('currentUser');
+    localStorage.clear();
     this.authenticatedUser = undefined;
     // todo: clear store by dispatching init
   }

@@ -21,6 +21,12 @@ export class AccountService {
       .map((res: Response) => <Intake[]>res.json());
   }
 
+  findIntakeApplications(): Observable<IntakeApplication[]> {
+    console.log('findIntakeApplications');
+    return this._http.get(this.ACCOUNT_API + '/intakeApplications')
+      .map((res: Response) => <IntakeApplication[]>res.json());
+  }
+
   findDraftedIntakeApplications(): Observable<IntakeApplication[]> {
     console.log('findDraftedIntakeApplications');
     return this._http.get(this.ACCOUNT_API + '/intakeApplications/bidStatus/DRAFTED')
