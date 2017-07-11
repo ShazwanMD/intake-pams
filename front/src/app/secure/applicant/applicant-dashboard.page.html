@@ -25,69 +25,39 @@
               <md-icon md-list-avatar>chevron_right</md-icon>
               <h3 md-line>Update address</h3>
             </a>
-            <a md-list-item [routerLink]="['/secure/applicant/change-password']">
+            <a md-list-item [routerLink]="['/']">
               <md-icon md-list-avatar>chevron_right</md-icon>
               <h3 md-line> Change password </h3>
             </a>
           </md-nav-list>
         </md-tab>
         <md-tab label="My Applications">
-          <td-data-table
-            [data]="draftedIntakeApplications$ | async"
-            [columns]="applicationColumns"
-            [sortBy]="summary"
-            [sortOrder]="ASC"
-            [sortable]="false"
-            [multiple]="false"
-            [selectable]="false"
-            (rowSelect)="view.emit($event)" dense>
-            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-              <div layout="row">
-                <span flex>{{value}}</span>
-              </div>
-            </template>
-            <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-              <div layout="row">
-                <a md-button color="warn" class="text-upper">
-                  <span>Continue</span>
-                </a>
-              </div>
-            </template>
-          </td-data-table>
 
-          <td-data-table
-            [data]="submittedIntakeApplications$ | async"
-            [columns]="applicationColumns"
-            [sortBy]="summary"
-            [sortOrder]="ASC"
-            [sortable]="false"
-            [multiple]="false"
-            [selectable]="false"
-            (rowSelect)="view.emit($event)" dense>
-            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-              <div layout="row">
-                <span flex>{{value}}</span>
+
+          <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+            <template let-item let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
+              <div flex-md="50" flex-gt-md="33" layout="column">
+                <md-card href class="md-card-colored" flex>
+                  <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
+                    <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
+                  </md-toolbar>
+                  <md-card-content>
+                    <div layout="row" layout-padding>
+                      <p>{{item.bidStatus}}</p>
+                      <span flex></span>
+                      <button *ngIf="item.bidStatus === 'DRAFTED'" md-button color="primary">Edit</button>
+                      <button *ngIf="item.bidStatus === 'SUBMITTED'" md-button color="primary">Result</button>
+                    </div>
+                  </md-card-content>
+                </md-card>
               </div>
             </template>
-            <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-              <div layout="row">
-                <a md-button color="warn" class="text-upper">
-                  <span>Result</span>
-                </a>
-              </div>
-            </template>
-          </td-data-table>
+          </div>
+
         </md-tab>
         <md-tab label="Open Intakes">
-          <td-data-table
-            [data]="publishedIntakes$ | async"
-            [columns]="intakeColumns"
-            [sortBy]="summary"
-            [sortOrder]="ASC"
-            [sortable]="false"
-            [multiple]="false"
-            [selectable]="false"
-            (rowSelect)="view.emit($event)" dense>
+          <td-data-table [data]="publishedIntakes$ | async" [columns]="intakeColumns" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false"
+            [multiple]="false" [selectable]="false" (rowSelect)="view.emit($event)" dense>
             <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
               <div layout="row">
                 <span flex>{{value}}</span>
