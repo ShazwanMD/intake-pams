@@ -158,22 +158,39 @@ public class IntakeFlowProcessTest {
 
         //Create application samples for citizen and on citizen application
 
-        InIntakeApplication application1 = new InIntakeApplicationImpl();
-        application1.setIntake(intake);
-        application1.setReferenceNo(referenceNo);
-        application1.setStudyModeSelection(parttimeOffering);
-        application1.setSupervisorSelection(supervisorOffering1);
-        application1.setProgramSelection(mckOffering);
-        application1.setCredentialNo("234234");
-        application1.setResearchTitle("test1");
-        application1.setName("testCitizen bin ting");
-        application1.setEmail("testCitizen@email.com");
-        application1.setPhone("01110202022");
-        application1.setNationalityCode(commonService.findNationalityCodeByCode("1"));
-        application1.setBidStatus(InBidStatus.NEW);
-        application1.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
-        applicationService.applyIntake(intake, application1);
+        InIntakeApplication application1a = new InIntakeApplicationImpl();
+        application1a.setIntake(intake);
+        application1a.setReferenceNo(referenceNo);
+        application1a.setStudyModeSelection(parttimeOffering);
+        application1a.setSupervisorSelection(supervisorOffering1);
+        application1a.setProgramSelection(mckOffering);
+        application1a.setCredentialNo("234234");
+        application1a.setResearchTitle("test1a");
+        application1a.setName("testCitizen bin ting");
+        application1a.setEmail("testCitizen@email.com");
+        application1a.setPhone("01110202022");
+        application1a.setNationalityCode(commonService.findNationalityCodeByCode("1"));
+        application1a.setBidStatus(InBidStatus.NEW);
+        application1a.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
+        applicationService.applyIntake(intake, application1a);
 //        applicationService.submitIntakeApplication(draftedIntake, application1);
+        
+        InIntakeApplication application1b = new InIntakeApplicationImpl();
+        application1b.setIntake(intake);
+        application1b.setReferenceNo(referenceNo);
+        application1b.setStudyModeSelection(parttimeOffering);
+        application1b.setSupervisorSelection(supervisorOffering1);
+        application1b.setProgramSelection(mckOffering);
+        application1b.setCredentialNo("234234");
+        application1b.setResearchTitle("test1b");
+        application1b.setName("testCitizen bin ting");
+        application1b.setEmail("testCitizen@email.com");
+        application1b.setPhone("011102202022");
+        application1b.setNationalityCode(commonService.findNationalityCodeByCode("1"));
+        application1b.setBidStatus(InBidStatus.NEW);
+        application1b.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
+        applicationService.applyIntake(intake, application1b);
+        applicationService.submitIntakeApplication(draftedIntake, application1b);
 
         InIntakeApplication application2 = new InIntakeApplicationImpl();
         application2.setIntake(intake);
@@ -188,7 +205,7 @@ public class IntakeFlowProcessTest {
         application2.setPhone("011102021221");
         application2.setNationalityCode(commonService.findNationalityCodeByCode("2"));
         application2.setBidStatus(InBidStatus.NEW);
-        application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
+        application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant2").getActor());
         applicationService.applyIntake(intake, application2);
 //        applicationService.submitIntakeApplication(draftedIntake, application2);
 
