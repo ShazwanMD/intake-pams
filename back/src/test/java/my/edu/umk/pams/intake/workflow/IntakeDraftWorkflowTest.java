@@ -103,7 +103,7 @@ public class IntakeDraftWorkflowTest {
 
         InStudyMode parttime = commonService.findStudyModeByCode("1");
         InStudyModeOffering parttimeOffering = new InStudyModeOfferingImpl();
-        fulltimeOffering.setStudyMode(parttime);
+        parttimeOffering.setStudyMode(parttime);
         policyService.addStudyModeOffering(intake, parttimeOffering);
 
     }
