@@ -16,9 +16,11 @@ import java.util.List;
 
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InRefereeType;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
+import my.edu.umk.pams.intake.identity.model.InActorType;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
@@ -90,6 +92,9 @@ public class ApplicantAccountController {
         applicant.setEmail(vo.getEmail());
         applicant.setFax(vo.getFax());
         applicant.setMobile(vo.getMobile());
+        applicant.setName(vo.getEmail());
+        applicant.setIdentityNo(vo.getIdentityNo());
+     //   applicant.setActorType(InActorType.get(vo.getActorType().ordinal()));
         identityService.updateApplicant(applicant);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

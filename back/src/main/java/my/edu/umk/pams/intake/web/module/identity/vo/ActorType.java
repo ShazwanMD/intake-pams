@@ -6,7 +6,7 @@ package my.edu.umk.pams.intake.web.module.identity.vo;
 public enum ActorType {
 
     STAFF, //0
-    STUDENT, //1
+    APPLICANT, //1
     SPONSOR; //2
 
     public static ActorType get(int index) {
