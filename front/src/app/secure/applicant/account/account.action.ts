@@ -23,7 +23,7 @@ export class AccountActions {
   }
 
 
-  static FIND_INTAKE_APPLICATIONS = '[Account] Find Drafted Intake Applications';
+  static FIND_INTAKE_APPLICATIONS = '[Account] Find Intake Applications';
 
   findIntakeApplications(): Action {
     return {
@@ -31,7 +31,7 @@ export class AccountActions {
     };
   }
 
-  static FIND_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find  Intake Applications Success';
+  static FIND_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find Intake Applications Success';
 
   findIntakeApplicationsSuccess(applcations): Action {
     console.log('findIntakeApplicationsSuccess');

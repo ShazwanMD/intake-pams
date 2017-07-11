@@ -76,7 +76,7 @@ public class ApplicantAccountController {
         return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakeApplications}", method = RequestMethod.GET)
+    @RequestMapping(value = "/intakeApplications", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplications() {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
