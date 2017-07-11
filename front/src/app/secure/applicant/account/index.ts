@@ -13,7 +13,7 @@ import {IntakeListState} from '../application/intake-applications/intake-list.re
 import {IntakeApplicationListState} from '../application/intake-applications/intake-application-list.reducer';
 import {publishedIntakeListReducer} from './intake-list.reducer';
 import {
-  draftedIntakeApplicationListReducer,
+  draftedIntakeApplicationListReducer, intakeApplicationListReducer,
   submittedIntakeApplicationListReducer,
 } from './intake-application-list.reducer';
 import {Intake} from '../../../shared/model/policy/intake.interface';
@@ -24,21 +24,18 @@ import {EffectsModule} from '@ngrx/effects';
 
 export interface AccountModuleState {
   publishedIntakes: IntakeListState;
-  draftedIntakeApplications: IntakeApplicationListState;
-  submittedIntakeApplications: IntakeApplicationListState;
+  intakeApplications: IntakeApplicationListState;
 }
 
 export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
   publishedIntakes: <Intake[]>[],
-  draftedIntakeApplications: <IntakeApplication[]>[],
-  submittedIntakeApplications: <IntakeApplication[]>[],
+  intakeApplications: <IntakeApplication[]>[],
 
 };
 
 export const accountModuleReducers = {
   publishedIntakes: publishedIntakeListReducer,
-  draftedIntakeApplications: draftedIntakeApplicationListReducer,
-  submittedIntakeApplications: submittedIntakeApplicationListReducer,
+  intakeApplications: intakeApplicationListReducer,
 };
 
 @NgModule({
