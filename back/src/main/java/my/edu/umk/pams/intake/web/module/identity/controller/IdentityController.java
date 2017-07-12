@@ -1,12 +1,14 @@
 package my.edu.umk.pams.intake.web.module.identity.controller;
 
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.web.module.identity.vo.Actor;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.identity.vo.Staff;
+import my.edu.umk.pams.intake.web.module.identity.vo.User;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -93,4 +96,24 @@ public class IdentityController {
         return new ResponseEntity<Applicant>(identityTransformer
                 .toApplicantVo(identityService.findApplicantByApplicantNo(identityNo)), HttpStatus.OK);
     }
+//    
+//    // ==================================================================================================== //
+//    // USER
+//    // ==================================================================================================== //
+//
+//    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
+//    public ResponseEntity<String> changePassword(@PathVariable Long id, @RequestBody User vo)
+//    {
+//       
+//        InUser user = identityService.findUserById(vo.getId());
+//        {
+//       
+//        user.setPassword(vo.getPassword());
+//        identityService.updateUser(user);
+//       
+//        return new ResponseEntity<String>("Success", HttpStatus.OK);
+//    }
+//        
+//    }
+    
 }
