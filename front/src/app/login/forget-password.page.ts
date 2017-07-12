@@ -10,20 +10,25 @@ import {TdLoadingService} from '@covalent/core';
 })
 export class ForgetPasswordComponent {
 
-  username: string;
-  password: string;
+  email: string;
+  //password: string;
 
   constructor(private _router: Router,
               private _loadingService: TdLoadingService) {
   }
 
    forgetPassword() : void {
+
     this._loadingService.register();
-    alert('reset new password' + this.username);
+    alert('forget password' + this.email);
     setTimeout(() => {
       this._router.navigate(['/']);
       this._loadingService.resolve();
     }, 2000);
   }
+
+    //     register(registration: UserRegistration, isValid: boolean) {
+  //   this.store.dispatch(this.registrationActions.registerUser(registration));
+  // }
 
 }

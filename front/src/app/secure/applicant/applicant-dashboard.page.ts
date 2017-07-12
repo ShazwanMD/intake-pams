@@ -18,10 +18,8 @@ import {Intake} from "../../shared/model/policy/intake.interface";
 export class ApplicantDashboardPage implements OnInit {
 
   private PUBLISHED_INTAKES: string[] = 'accountModuleState.publishedIntakes'.split('.');
-  private SUBMITTED_INTAKE_APPLICATIONS: string[] = 'accountModuleState.submittedIntakeApplications'.split('.');
-  private DRAFTED_INTAKE_APPLICATIONS: string[] = 'accountModuleState.draftedIntakeApplications'.split('.');
-  private draftedIntakeApplications$: Observable<IntakeApplication[]>;
-  private submittedIntakeApplications$: Observable<IntakeApplication[]>;
+  private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
+  private intakeApplications$: Observable<IntakeApplication[]>;
   private publishedIntakes$: Observable<Intake[]>;
 
   private intakeColumns: any[] = [
@@ -32,26 +30,17 @@ export class ApplicantDashboardPage implements OnInit {
     {name: 'action', label: ''},
   ];
 
-  private applicationColumns: any[] = [
-    {name: 'referenceNo', label: 'ReferenceNo'},
-    {name: 'intake.referenceNo', label: 'Intake'},
-    {name: 'bidStatus', label: 'Status'},
-    {name: 'action', label: ''},
-  ];
-
   constructor(private router: Router,
               private  route: ActivatedRoute,
               private authz: AuthorizationService,
               private store: Store<ApplicationModuleState>,
               private actions: AccountActions) {
     this.publishedIntakes$ = this.store.select(...this.PUBLISHED_INTAKES);
-    this.draftedIntakeApplications$ = this.store.select(...this.DRAFTED_INTAKE_APPLICATIONS);
-    this.submittedIntakeApplications$ = this.store.select(...this.SUBMITTED_INTAKE_APPLICATIONS);
+    this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findDraftedIntakeApplications());
-    this.store.dispatch(this.actions.findSubmittedIntakeApplications());
-    this.store.dispatch(this.actions.findPublishedIntakes())
+    this.store.dispatch(this.actions.findIntakeApplications());
+    this.store.dispatch(this.actions.findPublishedIntakes());
   }
 }

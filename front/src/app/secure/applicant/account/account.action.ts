@@ -23,6 +23,25 @@ export class AccountActions {
   }
 
 
+  static FIND_INTAKE_APPLICATIONS = '[Account] Find Intake Applications';
+
+  findIntakeApplications(): Action {
+    return {
+      type: AccountActions.FIND_INTAKE_APPLICATIONS,
+    };
+  }
+
+  static FIND_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find Intake Applications Success';
+
+  findIntakeApplicationsSuccess(applcations): Action {
+    console.log('findIntakeApplicationsSuccess');
+    return {
+      type: AccountActions.FIND_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applcations,
+    };
+  }
+
+
   static FIND_DRAFTED_INTAKE_APPLICATIONS = '[Account] Find Drafted Intake Applications';
 
   findDraftedIntakeApplications(): Action {
