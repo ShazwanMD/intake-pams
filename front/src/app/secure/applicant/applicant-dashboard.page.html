@@ -35,19 +35,23 @@
 
 
           <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-            <template let-item let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
+            <template let-intakeApplication let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
               <div flex-md="50" flex-gt-md="33" layout="column">
                 <md-card href class="md-card-colored" flex>
-                   
-                   <img md-card-avatar src="https://source.unsplash.com/random/200x200">
+                    <md-card-content>
+                 <h2 class="md-title tc-grey-600">{{intakeApplication.intake.description}}</h2>
                   
-                   <img md-card-image src="https://source.unsplash.com/random/800x600">
+                   <p> Application Reference No : {{intakeApplication.referenceNo}}<br>
+                   Research Title : {{intakeApplication.researchTitle}}<br>
+                   Program : {{intakeApplication.programSelection?.programCode.descriptionEn}}<br>
+                   Study Mode : {{intakeApplication.studyModeSelection?.studyMode.descriptionEn}}<br></p>
+                   </md-card-content>
                   <md-card-content>
                     <div layout="row" layout-padding>
-                      <p>{{item.bidStatus}}</p>
+                      <p>{{intakeApplication.bidStatus}}</p>
                       <span flex></span>
-                      <button *ngIf="item.bidStatus === 'DRAFTED'" [routerLink]="['/intakes-search']"  md-button color="primary">Edit </button>      
-                      <button *ngIf="item.bidStatus === 'SUBMITTED'" [routerLink]="['/intakes-search']" md-button color="primary">Result</button>
+                      <button *ngIf="intakeApplication.bidStatus === 'DRAFTED'" [routerLink]="['/secure/applicant/application/intake-application/',intakeApplication.intake.graduateCenter.code.toLowerCase(),intakeApplication.referenceNo]"  md-button color="primary">Edit </button>      
+                      <button *ngIf="intakeApplication.bidStatus === 'SUBMITTED'" [routerLink]="['/secure/applicant/application/intake-application/my-intake-application']" md-button color="primary">Result</button>
                     </div>
                   </md-card-content>
                 </md-card>
