@@ -12,10 +12,15 @@ export class AccountEffects {
               private accountService: AccountService) {
   }
 
-  @Effect() findPublishedIntakea$ = this.actions$
+  @Effect() findPublishedIntakes$ = this.actions$
     .ofType(AccountActions.FIND_PUBLISHED_INTAKES)
     .switchMap(() => this.accountService.findPublishedIntakes())
     .map((intakes) => this.accountActions.findPublishedIntakesSuccess(intakes));
+
+  @Effect() findApplicant = this.actions$
+    .ofType(AccountActions.FIND_APPLICANT)
+    .switchMap(() => this.accountService.findApplicant())
+    .map((applicant) => this.accountActions.findApplicantSuccess(applicant));    
 
   @Effect() findIntakeApplications = this.actions$
     .ofType(AccountActions.FIND_INTAKE_APPLICATIONS)
