@@ -19,19 +19,20 @@ public class AccountTransformer {
     // USER
     // ====================================================================================================
 
-//    public User toUserVo(InUser user) {
-//    	if(null == user) return null;
-//        User vo = new User();
-//        vo.setId(user.getId());
-//        vo.setName(user.getName());
-//        vo.setEmail(user.getEmail());
-//        vo.setPassword(user.getPassword());
-//        vo.setUsername(user.getUsername());
-//        return vo;
-//    }
-//
-//    public List<User> toUserVos(List<InUser> user) {
-//        List<User> vos = user.stream().map((user1) -> toUserVo(user1)).collect(Collectors.toList());
-//        return vos;
-//    }
+    public User toUserVo(InUser user) {
+    	if(null == user) return null;
+        User vo = new User();
+        vo.setId(user.getId());
+   //     vo.setName(user.getName());
+        vo.setEmail(user.getEmail());
+        vo.setPassword(user.getPassword());
+        vo.setRealName(user.getRealName());
+   //     vo.setUsername(user.getUsername());
+        return vo;
+    }
+
+    public List<User> toUserVos(List<InUser> user) {
+        List<User> vos = user.stream().map((user1) -> toUserVo(user1)).collect(Collectors.toList());
+        return vos;
+    }
 }
