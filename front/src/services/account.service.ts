@@ -44,4 +44,11 @@ export class AccountService {
     return this._http.post(this.ACCOUNT_API + '/applicant', JSON.stringify(applicant))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  findApplicant(): Observable<Applicant> {
+    console.log('findApplicant');
+    return this._http.get(this.ACCOUNT_API + '/applicant')
+      .map((res: Response) => <Applicant>res.json());
+  }
+
 }

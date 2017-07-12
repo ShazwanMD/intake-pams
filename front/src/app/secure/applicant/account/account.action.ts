@@ -22,6 +22,23 @@ export class AccountActions {
     };
   }
 
+  static FIND_APPLICANT = '[Account] Find Applicant';
+
+  findApplicant(): Action {
+    return {
+      type: AccountActions.FIND_APPLICANT,
+    };
+  }
+
+  static FIND_APPLICANT_SUCCESS = '[Account] Find Applicant Success';
+
+  findApplicantSuccess(applicant): Action {
+    console.log('findApplicantSuccess');
+    return {
+      type: AccountActions.FIND_APPLICANT_SUCCESS,
+      payload: applicant,
+    };
+  }  
 
   static FIND_INTAKE_APPLICATIONS = '[Account] Find Intake Applications';
 

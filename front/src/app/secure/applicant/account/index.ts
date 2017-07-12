@@ -1,3 +1,4 @@
+import { Applicant } from './../../../identity/applicant.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -12,6 +13,7 @@ import {CommonModule} from '../../../common/index';
 import {IntakeListState} from '../application/intake-applications/intake-list.reducer';
 import {IntakeApplicationListState} from '../application/intake-applications/intake-application-list.reducer';
 import {publishedIntakeListReducer} from './intake-list.reducer';
+import {applicantReducer, ApplicantState} from './applicant.reducer';
 import {
   draftedIntakeApplicationListReducer, intakeApplicationListReducer,
   submittedIntakeApplicationListReducer,
@@ -23,17 +25,20 @@ import {AccountEffects} from './account.effect';
 import {EffectsModule} from '@ngrx/effects';
 
 export interface AccountModuleState {
+  applicant: ApplicantState;
   publishedIntakes: IntakeListState;
   intakeApplications: IntakeApplicationListState;
 }
 
 export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
+  applicant:<Applicant>{},
   publishedIntakes: <Intake[]>[],
   intakeApplications: <IntakeApplication[]>[],
 
 };
 
 export const accountModuleReducers = {
+  applicant:applicantReducer,
   publishedIntakes: publishedIntakeListReducer,
   intakeApplications: intakeApplicationListReducer,
 };
