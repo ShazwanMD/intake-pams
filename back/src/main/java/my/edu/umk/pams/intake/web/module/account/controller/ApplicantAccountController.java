@@ -78,6 +78,9 @@ public class ApplicantAccountController {
     private PolicyTransformer policyTransformer;
 
     @Autowired
+    private IdentityTransformer identityTransformer;
+    
+    @Autowired
     private ApplicationTransformer applicationTransformer;
     
     @Autowired
@@ -122,6 +125,15 @@ public class ApplicantAccountController {
                 HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/applicant", method = RequestMethod.GET)
+    public ResponseEntity<Applicant> findApplicant() {
+        InUser user = securityService.getCurrentUser();
+        InApplicant applicant = null;
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor(); 
+        
+        return new ResponseEntity<Applicant>(identityTransformer.toApplicantVo(applicant), HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/applicant", method = RequestMethod.POST)
     public ResponseEntity<String> updateApplicant(@RequestBody Applicant vo) {
         InApplicant applicant = identityService.findApplicantById(vo.getId());
