@@ -35,42 +35,57 @@
 
 
           <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-            <template let-item let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
-              <div flex-md="50" flex-gt-md="33" layout="column">
+            <template let-item let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">         
                 <md-card href class="md-card-colored" flex>
-                  <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
-                    <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
-                  </md-toolbar>
+                  <md-card-header>
+                  <img md-card-avatar src="https://source.unsplash.com/random/200x200">
+                  <md-card-title> INTAKE {{item.intake.startDate | date:'y'}} </md-card-title>
+                  <md-card-subtitle> {{item.intake.graduateCenter.code}} {{item.intake.programLevel.code}} </md-card-subtitle>
+                   </md-card-header>
+                  <img md-card-image src="https://source.unsplash.com/random/800x600">
                   <md-card-content>
                     <div layout="row" layout-padding>
+                      <!--<div> {{item | json}} </div>    -->
                       <p>{{item.bidStatus}}</p>
                       <span flex></span>
-                      <button *ngIf="item.bidStatus === 'DRAFTED'" md-button color="primary">Edit</button>
-                      <button *ngIf="item.bidStatus === 'SUBMITTED'" md-button color="primary">Result</button>
+                      <button *ngIf="item.bidStatus === 'DRAFTED'" [routerLink]="['/intakes-search']" md-button color="primary">Edit </button>
+                      <button *ngIf="item.bidStatus === 'SUBMITTED'" [routerLink]="['/intakes-search']" md-button color="primary">Result</button>
+                    </div>
+                  </md-card-content>       
+                </md-card>
+            </template>
+          </div>
+        </md-tab>
+
+        <md-tab label="Open Intakes">
+          <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+            <template let-item let-last="last" ngFor [ngForOf]="publishedIntakes$ | async ">
+              <div flex-md="50" flex-gt-md="33" layout="column">
+                <md-card href class="md-card-colored" flex>
+                  <!--<img md-card-avatar src="https://source.unsplash.com/random/200x200">-->
+                  <md-card-title> INTAKE {{item.startDate | date:'y'}} </md-card-title>
+                  <md-card-subtitle> {{item.graduateCenter.code}} {{item.programLevel.code}} </md-card-subtitle>
+                  <img md-card-image src="https://source.unsplash.com/random/800x600">
+                  <md-card-content>
+                    <div fxLayout="row" fxLayoutAlign="space-around center">
+                      <span flex></span>
+                      <div>
+                        <small class="bb"> From: </small> {{item.startDate | date:'EEEE d MMMM'}}
+                        <span flex></span>
+                      </div>
+                      <div>
+                        <small class="bb"> To: </small> {{item.endDate | date:'EEEE d MMMM'}}
+                      </div>
+                      <div>
+                        <button *ngIf="item.flowState === 'PUBLISHED'" [routerLink]="['/intakes-search']" md-button color="primary">Apply Now! </button>
+                        <!--<div> {{item | json}} </div>-->
+                      </div>
                     </div>
                   </md-card-content>
                 </md-card>
               </div>
             </template>
           </div>
-
-        </md-tab>
-        <md-tab label="Open Intakes">
-          <td-data-table [data]="publishedIntakes$ | async" [columns]="intakeColumns" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false"
-            [multiple]="false" [selectable]="false" (rowSelect)="view.emit($event)" dense>
-            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-              <div layout="row">
-                <span flex>{{value}}</span>
-              </div>
-            </template>
-            <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-              <div layout="row">
-                <a md-button color="warn" class="text-upper">
-                  <span>View</span>
-                </a>
-              </div>
-            </template>
-          </td-data-table>
         </md-tab>
       </md-tab-group>
 
