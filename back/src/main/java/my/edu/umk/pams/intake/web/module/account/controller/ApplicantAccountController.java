@@ -18,11 +18,14 @@ import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InRefereeType;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InSubjectCode;
+import my.edu.umk.pams.intake.common.model.InSubjectCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InActorType;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -30,7 +33,10 @@ import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationController;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
+import my.edu.umk.pams.intake.web.module.common.vo.SubjectCode;
+import my.edu.umk.pams.intake.web.module.identity.controller.IdentityTransformer;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
+import my.edu.umk.pams.intake.web.module.identity.vo.User;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 
@@ -98,4 +104,27 @@ public class ApplicantAccountController {
         identityService.updateApplicant(applicant);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    // ==================================================================================================== //
+    // USER
+    // ==================================================================================================== //
+  
+
+//    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<User> findUserById(@PathVariable Long id) {
+//        
+//    	return new ResponseEntity<User>(accountTransformer(identityService.findUserById(id)),HttpStatus.OK);
+//    }
+//    
+//    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
+//    public ResponseEntity<String> updatePassword(@PathVariable Long id, @RequestBody User vo) {
+//        dummyLogin();
+//
+//        InUser user = identityService.findUserById(vo.getId());
+//        user.setName(vo.getName());
+//        user.setPassword(vo.getPassword());
+//        identityService.updateUser(user);
+//        return new ResponseEntity<String>("Success", HttpStatus.OK);
+//    }
+
 }
