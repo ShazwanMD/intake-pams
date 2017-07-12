@@ -19,10 +19,10 @@
 
 
         <md-tab label="My Account">
-          
-<md-nav-list>
-  
-          <!--<md-card>
+
+          <md-nav-list>
+
+            <!--<md-card>
             <md-list>
               <md-list-item>
                 <img md-list-avatar src="..." alt="Desc 1">
@@ -50,19 +50,11 @@
             </md-list>
           </md-card>-->
 
-          
-            <a md-list-item [routerLink]="['/']">
-              <md-icon md-list-avatar>chevron_right</md-icon>
-              <h3 md-line> Update email address </h3>
-            </a>
-            <a md-list-item [routerLink]="['/']">
-              <md-icon md-list-avatar>chevron_right</md-icon>
-              <h3 md-line>Update address</h3>
-            </a>
-            <a md-list-item [routerLink]="['/']">
-              <md-icon md-list-avatar>chevron_right</md-icon>
-              <h3 md-line> Change password </h3>
-            </a>
+
+          <!--<pams-applicant
+          [applicant]="applicant$ | async">
+          </pams-applicant>-->
+         
           </md-nav-list>
         </md-tab>
 
@@ -73,23 +65,25 @@
 
           <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
             <template let-item let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
-              <md-card href class="md-card-colored" flex>
-                <md-card-header>
-                  <img md-card-avatar src="https://source.unsplash.com/random/200x200">
-                  <md-card-title> INTAKE {{item.intake.startDate | date:'y'}} </md-card-title>
-                  <md-card-subtitle> {{item.intake.graduateCenter.code}} {{item.intake.programLevel.code}} </md-card-subtitle>
-                </md-card-header>
-                <img md-card-image src="https://source.unsplash.com/random/800x600">
-                <md-card-content>
-                  <div layout="row" layout-padding>
-                    <!--<div> {{item | json}} </div>    -->
-                    <p>{{item.bidStatus}}</p>
-                    <span flex></span>
-                    <button *ngIf="item.bidStatus === 'DRAFTED'" [routerLink]="['/intakes-search']" md-button color="primary">Edit </button>
-                    <button *ngIf="item.bidStatus === 'SUBMITTED'" [routerLink]="['/intakes-search']" md-button color="primary">Result</button>
-                  </div>
-                </md-card-content>
-              </md-card>
+              <div flex-md="50" flex-gt-md="33" layout="column">
+                <md-card href class="md-card-colored" flex>
+                  <md-card-header>
+                    <img md-card-avatar src="https://source.unsplash.com/random/200x200">
+                    <md-card-title> INTAKE {{item.intake.startDate | date:'y'}} </md-card-title>
+                    <md-card-subtitle> {{item.intake.graduateCenter.code}} {{item.intake.programLevel.code}} </md-card-subtitle>
+                  </md-card-header>
+                  <img md-card-image src="https://source.unsplash.com/random/800x600">
+                  <md-card-content>
+                    <div layout="row" layout-padding>
+                      <!--<div> {{item | json}} </div>    -->
+                      <p>{{item.bidStatus}}</p>
+                      <span flex></span>
+                      <button *ngIf="item.bidStatus === 'DRAFTED'" [routerLink]="['/intakes-search']" md-button color="primary">Edit </button>
+                      <button *ngIf="item.bidStatus === 'SUBMITTED'" [routerLink]="['/intakes-search']" md-button color="primary">Result</button>
+                    </div>
+                  </md-card-content>
+                </md-card>
+              </div>
             </template>
           </div>
         </md-tab>

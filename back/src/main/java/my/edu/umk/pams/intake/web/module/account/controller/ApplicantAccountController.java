@@ -129,8 +129,7 @@ public class ApplicantAccountController {
     public ResponseEntity<Applicant> findApplicant() {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
-        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor(); 
-        
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();         
         return new ResponseEntity<Applicant>(identityTransformer.toApplicantVo(applicant), HttpStatus.OK);
     }
     
