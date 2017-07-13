@@ -42,4 +42,26 @@ export class RegistrationActions {
       payload: verified
     };
   }
+
+    static FORGET_PASSWORD = '[Registration] Forget Password';
+
+  forgetPassword(email): Action {
+    console.log("forgetPassword");
+    return {
+      type: RegistrationActions.FORGET_PASSWORD,
+      payload: email
+    };
+  }
+
+  static FORGET_PASSWORD_SUCCESS = '[Registration] Forget Password Success';
+
+  forgetPasswordSuccess(message): Action {
+    console.log("forgetPasswordSuccess");
+    return {
+      type: RegistrationActions.FORGET_PASSWORD_SUCCESS,
+      payload: message
+    };
+  }
+
+
 }

@@ -1,3 +1,5 @@
+import { ChangePasswordDialog } from './dialog/change-password.dialog';
+import { ApplicantComponent } from './component/applicant.component';
 import { Applicant } from '../../administrator/identity/applicant.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -52,10 +54,17 @@ export const accountModuleReducers = {
     EffectsModule.run(AccountEffects),
   ],
   declarations: [
-  ],
-  exports: [],
+    ApplicantComponent,
+    ChangePasswordDialog,
 
-  entryComponents: [],
+  ],
+  exports: [
+    ApplicantComponent,
+  ],
+
+  entryComponents: [
+    ChangePasswordDialog,
+  ],
 })
 export class AccountModule {
   static forRoot(): ModuleWithProviders {

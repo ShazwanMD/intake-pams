@@ -21,4 +21,10 @@ export class RegistrationEffects {
     .map(action => action.payload)
     .switchMap(token => this.registrationService.verifyUser(token))
     .map(verified => this.registrationActions.verifyUserSuccess(verified));
+
+  @Effect() forgetPassword$ = this.actions$
+    .ofType(RegistrationActions.FORGET_PASSWORD)
+    .map(action => action.payload)
+    .switchMap(email => this.registrationService.forgetPassword(email))
+    .map(message => this.registrationActions.forgetPasswordSuccess(message));  
 }
