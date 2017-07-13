@@ -1,11 +1,5 @@
 package my.edu.umk.pams.intake.identity.service;
 
-import my.edu.umk.pams.intake.identity.dao.*;
-import my.edu.umk.pams.intake.identity.event.StaffCreatedEvent;
-import my.edu.umk.pams.intake.identity.event.StaffUpdatedEvent;
-import my.edu.umk.pams.intake.identity.model.*;
-import my.edu.umk.pams.intake.system.service.SystemServiceImpl;
-import my.edu.umk.pams.intake.util.Util;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +11,29 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import my.edu.umk.pams.intake.identity.dao.InActorDao;
+import my.edu.umk.pams.intake.identity.dao.InApplicantDao;
+import my.edu.umk.pams.intake.identity.dao.InGroupDao;
+import my.edu.umk.pams.intake.identity.dao.InPrincipalDao;
+import my.edu.umk.pams.intake.identity.dao.InStaffDao;
+import my.edu.umk.pams.intake.identity.dao.InUserDao;
+import my.edu.umk.pams.intake.identity.dao.RecursiveGroupException;
+import my.edu.umk.pams.intake.identity.event.StaffCreatedEvent;
+import my.edu.umk.pams.intake.identity.event.StaffUpdatedEvent;
+import my.edu.umk.pams.intake.identity.model.InActor;
+import my.edu.umk.pams.intake.identity.model.InActorType;
+import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InGroup;
+import my.edu.umk.pams.intake.identity.model.InGroupImpl;
+import my.edu.umk.pams.intake.identity.model.InPrincipal;
+import my.edu.umk.pams.intake.identity.model.InPrincipalRole;
+import my.edu.umk.pams.intake.identity.model.InPrincipalRoleImpl;
+import my.edu.umk.pams.intake.identity.model.InRoleType;
+import my.edu.umk.pams.intake.identity.model.InStaff;
+import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.system.service.SystemServiceImpl;
 
 /**
  * @author canang technologies
@@ -52,6 +69,11 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Autowired
     private InApplicantDao applicantDao;
+
+    @Autowired
+    private SecurityService securityService;
+
+
 
     //====================================================================================================
     // PRINCIPAL
@@ -98,13 +120,13 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void addPrincipalRole(InPrincipal principal, InPrincipalRole principalRole) {
-        principalDao.addRole(principal, principalRole, Util.getCurrentUser());
+        principalDao.addRole(principal, principalRole, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deletePrincipalRole(InPrincipal principal, InPrincipalRole principalRole) {
-        principalDao.deleteRole(principal, principalRole, Util.getCurrentUser());
+        principalDao.deleteRole(principal, principalRole, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -164,26 +186,26 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void saveUser(InUser user) {
-        userDao.save(user, Util.getCurrentUser());
+        userDao.save(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateUser(InUser user) {
-        userDao.update(user, Util.getCurrentUser());
+        userDao.update(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeUser(InUser user) {
-        userDao.remove(user, Util.getCurrentUser());
+        userDao.remove(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void changePassword(InUser user, String newPassword) {
         user.setPassword(newPassword);
-        userDao.update(user, Util.getCurrentUser());
+        userDao.update(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -211,7 +233,7 @@ public class IdentityServiceImpl implements IdentityService {
             group.setName(name);
             group.setEnabled(true);
             group.setLocked(false);
-            groupDao.save(group, Util.getCurrentUser());
+            groupDao.save(group, securityService.getCurrentUser());
         }
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(group);
@@ -299,14 +321,14 @@ public class IdentityServiceImpl implements IdentityService {
         group.setName(name);
         group.setEnabled(true);
         group.setLocked(false);
-        groupDao.save(group, Util.getCurrentUser());
+        groupDao.save(group, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(group);
 
         for (InRoleType type : types) {
             InPrincipalRole role = new InPrincipalRoleImpl();
             role.setRole(type);
-            principalDao.addRole(group, role, Util.getCurrentUser());
+            principalDao.addRole(group, role, securityService.getCurrentUser());
             sessionFactory.getCurrentSession().flush();
         }
         sessionFactory.getCurrentSession().refresh(group);
@@ -315,25 +337,25 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void saveGroup(InGroup group) {
-        groupDao.save(group, Util.getCurrentUser());
+        groupDao.save(group, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateGroup(InGroup group) {
-        groupDao.update(group, Util.getCurrentUser());
+        groupDao.update(group, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeGroup(InGroup group) {
-        groupDao.remove(group, Util.getCurrentUser());
+        groupDao.remove(group, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addGroupMember(InGroup group, InPrincipal principal) throws RecursiveGroupException {
-        groupDao.addMember(group, principal, Util.getCurrentUser());
+        groupDao.addMember(group, principal, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -449,19 +471,19 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void saveStaff(InStaff staff) {
-        staffDao.save(staff, Util.getCurrentUser());
+        staffDao.save(staff, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateStaff(InStaff staff) {
-        staffDao.update(staff, Util.getCurrentUser());
+        staffDao.update(staff, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deleteStaff(InStaff staff) {
-        staffDao.delete(staff, Util.getCurrentUser());
+        staffDao.delete(staff, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -514,13 +536,13 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void saveApplicant(InApplicant applicant) {
-        applicantDao.save(applicant, Util.getCurrentUser());
+        applicantDao.save(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateApplicant(InApplicant applicant) {
-        applicantDao.update(applicant, Util.getCurrentUser());
+        applicantDao.update(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 }

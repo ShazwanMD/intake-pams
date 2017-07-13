@@ -1,6 +1,8 @@
 package my.edu.umk.pams.intake.identity.dao;
 
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
+import my.edu.umk.pams.intake.core.InMetaState;
+import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.*;
 import org.apache.commons.lang3.Validate;
 import org.hibernate.Query;
@@ -11,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -240,9 +243,17 @@ public class InGroupDaoImpl extends GenericDaoSupport<Long, InGroup> implements 
         }
 
         Session session = sessionFactory.getCurrentSession();
+
         InGroupMember groupMember = new InGroupMemberImpl();
         groupMember.setGroup(group);
         groupMember.setPrincipal(member);
+
+        InMetadata metadata = new InMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        metadata.setState(InMetaState.ACTIVE);
+        groupMember.setMetadata(metadata);
+
         session.save(groupMember);
     }
 
