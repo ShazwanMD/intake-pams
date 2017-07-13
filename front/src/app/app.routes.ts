@@ -12,33 +12,30 @@ import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
 import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
 import {AuthenticationGuard} from './secure/administrator/identity/guard/authentication.guard';
+import {ApplicationPage} from "./secure/applicant/application/application.page";
 
 const routes: Routes = [
-  {path: 'login', component: LoginPage},
-  {path: 'forget-password', component: ForgetPasswordComponent},
-  ...registrationModuleRoutes,
-  {
-    path: '', component: HomePage,
-  },
-  {
-    path: 'secure', component: SecurePage, canActivate: [AuthenticationGuard],
-    children: [
-      {
-        path: 'administrator', component: AdministratorDashboardPage,
-        children: [
-          ...registrationModuleRoutes,
-          ...policyModuleRoutes,
-          ...admissionModuleRoutes,
-          ...centerModuleRoutes,
-          ...applicationModuleRoutes,
-        ],
-      },
-      {
-        path: 'applicant', component: ApplicantDashboardPage,
-        children: [
-        ],
-      }    ],
-  },
+    {path: 'login', component: LoginPage},
+    {path: 'forget-password', component: ForgetPasswordComponent},
+    ...registrationModuleRoutes,
+    {
+      path: '', component: HomePage,
+    },
+    {
+      path: 'secure', component: SecurePage, canActivate: [AuthenticationGuard],
+      children: [
+        {
+          path: 'administrator', component: AdministratorDashboardPage,
+        },
+        ...policyModuleRoutes,
+        ...admissionModuleRoutes,
+        ...centerModuleRoutes,
+        {
+          path: 'applicant', component: ApplicantDashboardPage,
+        },
+        ...applicationModuleRoutes,
+      ],
+    },
   ]
 ;
 

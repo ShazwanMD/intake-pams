@@ -14,7 +14,7 @@ export class AdministratorDashboardPage implements OnInit {
 
   constructor(private router: Router,
               private  route: ActivatedRoute,
-              private authz:AuthorizationService
+              private authz:AuthorizationService,
   ) {
   }
 
@@ -30,7 +30,7 @@ export class AdministratorDashboardPage implements OnInit {
       },
         {
           title: 'Manager',
-          route: '/secure/administrator/policy',
+          route: '/secure/policy',
           icon: 'assignment',
           color: 'blue-700',
           description: 'Intake Manager',

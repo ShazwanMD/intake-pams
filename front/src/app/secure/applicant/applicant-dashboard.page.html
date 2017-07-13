@@ -54,7 +54,7 @@
           <!--<pams-applicant
           [applicant]="applicant$ | async">
           </pams-applicant>-->
-         
+
           </md-nav-list>
         </md-tab>
 
@@ -75,11 +75,10 @@
                   <img md-card-image src="https://source.unsplash.com/random/800x600">
                   <md-card-content>
                     <div layout="row" layout-padding>
-                      <!--<div> {{item | json}} </div>    -->
                       <p>{{item.bidStatus}}</p>
                       <span flex></span>
-                      <button *ngIf="item.bidStatus === 'DRAFTED'" [routerLink]="['/intakes-search']" md-button color="primary">Edit </button>
-                      <button *ngIf="item.bidStatus === 'SUBMITTED'" [routerLink]="['/intakes-search']" md-button color="primary">Result</button>
+                      <button *ngIf="item.bidStatus === 'DRAFTED'" [routerLink]="['/secure/applicant/application/intake-application/', item.intake?.graduateCenter?.code.toLowerCase(), item.referenceNo]" md-button color="primary">Edit </button>
+                      <button *ngIf="item.bidStatus === 'SUBMITTED'" [routerLink]="['/secure/applicant/application/intake-application/']" md-button color="primary">Result</button>
                     </div>
                   </md-card-content>
                 </md-card>

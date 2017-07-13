@@ -5,7 +5,7 @@ import {IntakeSessionRoutes} from './intake-sessions/intake-session.routes';
 import {AuthenticationGuard} from '../identity/guard/authentication.guard';
 
 export const policyModuleRoutes: Routes = [
-  {path: 'policy', component: PolicyPage, canActivate: [AuthenticationGuard]},
+  {path: 'policy', component: PolicyPage},
   ...IntakeRoutes,
   ...IntakeSessionRoutes,
 ];

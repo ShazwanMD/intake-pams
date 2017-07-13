@@ -11,16 +11,18 @@ export class SecurePage implements OnInit {
 
   private authenticatedUser: AuthenticatedUser;
 
-  constructor(private _router: Router,
+  constructor(private router: Router,
               private authnService: AuthenticationService) {
   }
 
   ngOnInit(): void {
     this.authenticatedUser = this.authnService.authenticatedUser;
+    console.log(this.router.config);
+
   }
 
   logout(): void {
     this.authnService.logout();
-    this._router.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 }

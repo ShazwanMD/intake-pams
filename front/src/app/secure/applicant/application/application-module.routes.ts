@@ -5,6 +5,4 @@ import {AuthenticationGuard} from '../../administrator/identity/guard/authentica
 
 export const applicationModuleRoutes: Routes = [
   {path: 'application', component: ApplicationPage, canActivate: [AuthenticationGuard]},
-  ...intakeApplicationRoutes,
-
 ];

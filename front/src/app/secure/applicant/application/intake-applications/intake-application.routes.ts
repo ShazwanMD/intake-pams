@@ -6,7 +6,7 @@ import {MyIntakeApplicationPage} from './my-intake-application.page';
 
 export const intakeApplicationRoutes: Routes = [
   {path: 'application/intake-detail/:referenceNo', component: IntakeDetailPage},
-  {path: 'application/intake-application/my-intake-application', component: MyIntakeApplicationPage},
-  {path: 'application/intake-application/cps/:referenceNo', component: CpsIntakeApplicationPage},
-  {path: 'application/intake-application/mgseb/:referenceNo', component: MgsebIntakeApplicationPage},
+  {path: 'intake-application/my-intake-application', component: MyIntakeApplicationPage},
+  {path: 'intake-application/cps/:referenceNo', component: CpsIntakeApplicationPage},
+  {path: 'intake-application/mgseb/:referenceNo', component: MgsebIntakeApplicationPage},
 ];
