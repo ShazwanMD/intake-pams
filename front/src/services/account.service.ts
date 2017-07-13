@@ -6,6 +6,7 @@ import {environment} from '../environments/environment';
 import {IntakeApplication} from '../app/shared/model/application/intake-application.interface';
 import {Applicant} from '../app/identity/applicant.interface';
 import {Intake} from '../app/shared/model/policy/intake.interface';
+import { User } from "../app/identity/user.interface";
 
 @Injectable()
 export class AccountService {
@@ -51,4 +52,20 @@ export class AccountService {
       .map((res: Response) => <Applicant>res.json());
   }
 
+  findUser(): Observable<User[]> {
+    console.log('findUser');
+    return this._http.get(this.ACCOUNT_API + '/user')
+      .map((res: Response) => <User[]>res.json());
+  }
+
+  saveUser(user: User): Observable<String> {
+    return this._http.post(this.ACCOUNT_API + '/user', JSON.stringify(user))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateUser(user: User): Observable<String> {
+    return this._http.put(this.ACCOUNT_API + '/user/' + user.id, JSON.stringify(user))
+    .flatMap((res: Response) => Observable.of(res.text()));
+  }
 }
+

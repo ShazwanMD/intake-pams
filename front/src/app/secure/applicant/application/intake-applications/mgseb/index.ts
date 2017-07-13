@@ -10,10 +10,10 @@ import {IntakeApplicationEducationPage} from './intake-application-education.pag
 import {IdentityService} from '../../../../../../services/identity.service';
 import {CommonService} from '../../../../../../services/common.service';
 import {CommonModule} from '../../../../../common/index';
-import {ProgramLevelSubModule} from '../../../../../policy/program-levels/index';
+import {ProgramLevelSubModule} from '../../../../administrator/policy/program-levels/index';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {CommonActions} from '../../../../../common/common.action';
-import {ProgramOfferingSelectComponent} from '../../../../../policy/intakes/component/program-offering-select.component';
+import {ProgramOfferingSelectComponent} from '../../../../administrator/policy/intakes/component/program-offering-select.component';
 import {EmploymentListComponent} from '../component/employment-list.component';
 import {StudyModeOfferingSelectorDialog} from '../component/dialog/study-mode-offering-selector.dialog';
 import {StudyCenterChoiceComponent} from '../component/study-center-choice.component';

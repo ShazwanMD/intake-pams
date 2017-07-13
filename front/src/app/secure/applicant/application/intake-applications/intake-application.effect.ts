@@ -9,7 +9,7 @@ import {ApplicationModuleState} from '../index';
 import {Observable} from 'rxjs';
 import {Intake} from '../../../../shared/model/policy/intake.interface';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
-import {IntakeActions} from '../../../../policy/intakes/intake.action';
+import {IntakeActions} from '../../../administrator/policy/intakes/intake.action';
 
 @Injectable()
 export class IntakeApplicationEffects {

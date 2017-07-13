@@ -94,5 +94,68 @@ export class AccountActions {
       payload: applcations,
     };
   }
+// ====================================================================================================
+  // USER
+  // ====================================================================================================
+  
+  static FIND_USER = '[Account] Find User';
+
+  findUser(): Action {
+    console.log('findUsers');
+    return {
+      type: AccountActions.FIND_USER,
+    };
+  }
+
+  static FIND_USER_SUCCESS = '[Account] Find User Success';
+
+  findUserSuccess(user): Action {
+    console.log('findUserSuccess');
+    return {
+      type: AccountActions.FIND_USER_SUCCESS,
+      payload: user,
+    };
+  }
+
+  static SAVE_USER = '[Account] Save User';
+
+  saveUser(user): Action {
+    console.log('saveUser');
+    return {
+      type: AccountActions.SAVE_USER,
+      payload: user,
+    };
+  }
+
+  static SAVE_USER_SUCCESS = '[Account] Save User Success';
+
+  saveUserSuccess(message): Action {
+    console.log('saveUserSuccess');
+    return {
+      type: AccountActions.SAVE_USER_SUCCESS,
+      payload: message,
+    };
+  }
+
+  static UPDATE_USER= '[Account] Update User';
+
+  updateUser(user): Action {
+    console.log('updateUser');
+    return {
+      type: AccountActions.UPDATE_USER,
+      payload: user,
+    };
+  }
+
+  static UPDATE_USER_SUCCESS = '[Account] Update User Success';
+
+  updateUserSuccess(message): Action {
+    console.log('updateUserSuccess');
+    return {
+      type: AccountActions.UPDATE_USER_SUCCESS,
+      payload: message,
+    };
+  }
+
 
 }

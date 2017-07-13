@@ -1,0 +1,202 @@
+<!-- Basic Card -->
+<md-card>
+  <md-card-title>Applicant Personal Info</md-card-title>
+  <md-card-subtitle>Verify Application Form</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+    <!--Tab Section Here-->
+    <md-tab-group>
+
+      <!--MULA TAB STUDENT INFORMATION-->
+      <md-tab label="Applicant Information">
+
+        <br/>
+
+        <!--APPLICANT INFORMATION-->
+        <md-card>
+          <div md-content flex md-scroll-y>
+            <div layout="column" layout-gt-md="row" class="insert">
+              <div flex-gt-md="50">
+                <md-card-title>Applicant Information</md-card-title>
+              </div>
+            </div>
+          </div>
+          <md-divider></md-divider>
+          <md-card-content>
+
+            <div layout="column" layout-gt-md="row" class="insert">
+
+              <div flex-gt-md="40">
+                <b>Name</b> : {{intakeApplication.name}}<br/><br/>
+                <b>NRIC/Passport</b> : {{intakeApplication.credentialNo}}<br/><br/>
+                <b>Passport Expired Date</b> : {{intakeApplication.passExpDate}}<br/><br/>
+                <b>Nationality</b> : {{intakeApplication.nationalityCode?.descriptionEn}}<br/><br/>
+                <b>Email</b> : {{intakeApplication.email}}<br/><br/>
+                <b>Phone</b> : {{intakeApplication.phone}}<br/><br/>
+                <b>Mobile</b> : {{intakeApplication.mobile}}<br/><br/>
+                <b>Status</b> : {{intakeApplication.maritalCode?.descriptionEn}}<br/><br/>
+              </div>
+
+              <div flex-gt-md="40">
+                <b>Study Mode</b> : {{intakeApplication.studyModeSelection?.studyMode.descriptionEn}}<br/><br/>
+                <b>Program</b> : {{intakeApplication.programSelection?.programCode?.descriptionEn | uppercase}}<br/><br/>
+                <b>Research Title</b> : {{intakeApplication.researchTitle}}<br/><br/>
+                <b>Faculty</b> : {{intakeApplication.programSelection?.programCode?.facultyCode?.descriptionEn | uppercase}}<br/><br/>
+              </div>
+
+            </div>
+
+            <br/><br/><br/>
+
+            <!--TAB OTHERS INFORMATION-->
+            <md-tab-group>
+              <md-tab label="Address">
+                <!--ADDRESS INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Address Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+
+                 <!-- Address information here -->
+				<md-tab-group>
+					<md-tab label="Mailing">
+					<div flex-gt-md="50">
+		                <b>Address </b> : {{intakeApplication.mailingAddress1}}&nbsp;{{intakeApplication.mailingAddress2}}&nbsp;{{intakeApplication.mailingAddress3}}<br/><br/>
+		                <b>Poscode</b> : {{intakeApplication.mailingPostcode}}<br/><br/>
+		                <b>State</b> : {{intakeApplication.mailingStateCode?.descriptionEn}}<br/><br/>
+		                <b>Country</b> : {{intakeApplication.mailingCountryCode?.descriptionEn}}
+             		 </div>
+             		 </md-tab>
+             		 <md-tab label="Official">
+					<div flex-gt-md="50">
+		                <b>Address </b> : {{intakeApplication.officialAddress1}}&nbsp;{{intakeApplication.officialAddress2}}&nbsp;{{intakeApplication.officialAddress3}}<br/><br/>
+		                <b>Poscode</b> : {{intakeApplication.officialPostcode}}<br/><br/>
+		                <b>State</b> : {{intakeApplication.officialStateCode?.descriptionEn}}<br/><br/>
+		                <b>Country</b> : {{intakeApplication.officialCountryCode?.descriptionEn}}
+             		 </div>
+             		 </md-tab>
+				</md-tab-group>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Academic">
+                <!--ACADEMIC INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Academic Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                    <!-- <td-data-table
+                      [data]="contacts"
+                      [columns]="columnContact"
+                      [sortBy]="summary"
+                      [sortOrder]="ASC"
+                      [sortable]="false"
+                      [multiple]="false"
+                      [selectable]="false"
+                      (rowSelect)="edit.emit($event)" dense>
+
+                      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                        <div layout="row">
+                          <span flex>{{value}}</span>
+                        </div>
+                      </template>
+
+                      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                        <div layout="row">
+                          <button md-icon-button [md-menu-trigger-for]="menuContact">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                          <md-menu x-position="before" #menuContact="mdMenu">
+                            <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
+                            <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
+                          </md-menu>
+                        </div>
+                      </template>
+                    </td-data-table> -->
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Working Experience">
+                <!--WORKING EXPERIENCE INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Working Experience Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                   <pams-employment-list [intakeApplication]="intakeApplication$ | async" [employments]="employments$ | async">
+           			</pams-employment-list>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Attachment">
+                <!--ATTACHMENT INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Attachment Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                   <pams-attachment-list [intakeApplication]="intakeApplication$ | async" [attachments]="attachments$ | async">
+           			</pams-attachment-list>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Referee">
+                <!--REFEREE INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Referees Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                   <pams-referee-list [intakeApplication]="intakeApplication$ | async" [referees]="referees$ | async">
+           			</pams-referee-list>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+            </md-tab-group>
+          </md-card-content>
+        </md-card>
+        	<button md-raised-button color="accent" (click)="verify(intakeApplication)">Verify</button>
+        	<button md-raised-button color="accent" (click)="reject(intakeApplication)">Reject</button>
+      </md-tab>
+    </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
+</md-card>

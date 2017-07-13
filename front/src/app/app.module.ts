@@ -25,7 +25,7 @@ import {
   ApplicationModule, ApplicationModuleState, INITIAL_APPLICATION_STATE,
   applicationModuleReducers,
 } from './secure/applicant/application/index';
-import {PolicyModule, PolicyModuleState, INITIAL_POLICY_STATE, policyModuleReducers} from './policy/index';
+import {PolicyModule, PolicyModuleState, INITIAL_POLICY_STATE, policyModuleReducers} from './secure/administrator/policy/index';
 import {
   AdmissionModuleState, INITIAL_ADMISSION_STATE, admissionModuleReducers,
   AdmissionModule,
@@ -49,11 +49,11 @@ import {NotAuthenticatedShowDirective} from './identity/directive/not-authentica
 import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
 import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
-import {AccountService} from "../services/account.service";
+import {AccountService} from '../services/account.service';
 import {
   AccountModule, accountModuleReducers, AccountModuleState,
-  INITIAL_ACCOUNT_STATE
-} from "./secure/applicant/account/index";
+  INITIAL_ACCOUNT_STATE,
+} from './secure/applicant/account/index';
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [

@@ -3,7 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {LoginPage} from './login/login.page';
 import {HomePage} from './home/home.page';
 import {registrationModuleRoutes} from './registration/registration-module.routes';
-import {policyModuleRoutes} from './policy/policy-module.routes';
+import {policyModuleRoutes} from './secure/administrator/policy/policy-module.routes';
 import {admissionModuleRoutes} from './admission/admission-module.routes';
 import {centerModuleRoutes} from './center/center-module.routes';
 import {ForgetPasswordComponent} from './login/forget-password.page';

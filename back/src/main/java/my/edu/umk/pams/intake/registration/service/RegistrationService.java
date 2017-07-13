@@ -12,7 +12,7 @@ public interface RegistrationService {
 
     void verifyUser(String token);
     
-  //  void forgetPassword(InUser user);
+    void forgetPassword(InUser user);
 
     boolean isUserExists(String username);
 }
