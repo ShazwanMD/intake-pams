@@ -64,6 +64,7 @@ import {ApplicationContextEffects} from './application-context.effect';
 import {DashboardPage} from './secure/dashboard.page';
 import {ApplicantDashboardPanel} from './secure/applicant-dashboard.panel';
 import {AdministratorDashboardPanel} from './secure/administrator-dashboard.panel';
+import {SetupModule} from "./secure/administrator/setup/index";
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -157,6 +158,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     ApplicationModule.forRoot(),
     AdmissionModule.forRoot(),
     RegistrationModule.forRoot(),
+    SetupModule.forRoot(),
     AccountModule.forRoot(),
   ],
   entryComponents: [

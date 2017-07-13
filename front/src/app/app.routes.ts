@@ -11,11 +11,13 @@ import {applicationModuleRoutes} from './secure/applicant/application/applicatio
 import {SecurePage} from './secure/secure.page';
 import {AuthenticationGuard} from './secure/administrator/identity/guard/authentication.guard';
 import {DashboardPage} from './secure/dashboard.page';
+import {setupModuleRoutes} from './secure/administrator/setup/setup-module.routes';
 
 const routes: Routes = [
     {path: 'login', component: LoginPage},
     {path: 'forget-password', component: ForgetPasswordPage},
     ...registrationModuleRoutes,
+    ...centerModuleRoutes,
     {
       path: '', component: HomePage,
     },
@@ -25,10 +27,10 @@ const routes: Routes = [
         {
           path: '', component: DashboardPage,
         },
-        ...policyModuleRoutes,
         ...admissionModuleRoutes,
-        ...centerModuleRoutes,
+        ...policyModuleRoutes,
         ...applicationModuleRoutes,
+        ...setupModuleRoutes,
       ],
     },
   ]

@@ -19,13 +19,6 @@ export class AdministratorDashboardPanel implements OnInit {
   ngOnInit(): void {
     {
       this.items = [{
-        title: 'Application',
-        route: '/secure/administrator/application',
-        icon: 'contacts',
-        color: 'blue-700',
-        description: 'Intake Application',
-      },
-        {
           title: 'Manager',
           route: '/secure/policy',
           icon: 'assignment',
@@ -35,14 +28,14 @@ export class AdministratorDashboardPanel implements OnInit {
         ,
         {
           title: 'Admission',
-          route: '/secure/administrator/admission',
+          route: '/secure/admission',
           icon: 'assignment',
           color: 'blue-700',
           description: 'Candidate Admission',
         },
         {
           title: 'Setup',
-          route: '/secure/administrator/setup',
+          route: '/secure/setup',
           icon: 'assignment',
           color: 'blue-700',
           description: 'Intake Setup',
