@@ -20,7 +20,6 @@ export class AuthenticationService {
   constructor(private http: Http) {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
-    console.log('currentUser: ' + JSON.stringify(currentUser));
     console.log('token: ' + this.token);
   }
 
@@ -50,7 +49,8 @@ export class AuthenticationService {
           // return false to indicate failed login
           return false;
         }
-      });
+      })
+    ;
   }
 
   parseToken(): any {

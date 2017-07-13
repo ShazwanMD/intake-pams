@@ -6,17 +6,15 @@ import {registrationModuleRoutes} from './registration/registration-module.route
 import {policyModuleRoutes} from './secure/administrator/policy/policy-module.routes';
 import {admissionModuleRoutes} from './secure/administrator/admission/admission-module.routes';
 import {centerModuleRoutes} from './center/center-module.routes';
-import {ForgetPasswordComponent} from './login/forget-password.page';
+import {ForgetPasswordPage} from './login/forget-password.page';
 import {applicationModuleRoutes} from './secure/applicant/application/application-module.routes';
 import {SecurePage} from './secure/secure.page';
-import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
-import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
 import {AuthenticationGuard} from './secure/administrator/identity/guard/authentication.guard';
-import {ApplicationPage} from "./secure/applicant/application/application.page";
+import {DashboardPage} from './secure/dashboard.page';
 
 const routes: Routes = [
     {path: 'login', component: LoginPage},
-    {path: 'forget-password', component: ForgetPasswordComponent},
+    {path: 'forget-password', component: ForgetPasswordPage},
     ...registrationModuleRoutes,
     {
       path: '', component: HomePage,
@@ -25,14 +23,11 @@ const routes: Routes = [
       path: 'secure', component: SecurePage, canActivate: [AuthenticationGuard],
       children: [
         {
-          path: 'administrator', component: AdministratorDashboardPage,
+          path: '', component: DashboardPage,
         },
         ...policyModuleRoutes,
         ...admissionModuleRoutes,
         ...centerModuleRoutes,
-        {
-          path: 'applicant', component: ApplicantDashboardPage,
-        },
         ...applicationModuleRoutes,
       ],
     },

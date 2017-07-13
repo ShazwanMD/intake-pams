@@ -63,7 +63,8 @@ export class ApplicationService {
 
   applyIntake(intake: Intake): Observable<IntakeApplication> {
     return this._http.post(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/apply', JSON.stringify(intake))
-      .map((res: Response) => <IntakeApplication>res.json());
+      .map((res: Response) => <IntakeApplication>res.json())
+      .catch(this.handleError);
   }
 
   // ====================================================================================================
@@ -334,5 +335,10 @@ export class ApplicationService {
     return this._http.post(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/processCandidate', JSON.stringify(application))
       .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  private handleError(error: Response | any) {
+    let body: any = error.json();
+    return Observable.throw(body);
   }
 }

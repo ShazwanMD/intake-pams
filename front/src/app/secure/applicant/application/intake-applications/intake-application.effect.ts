@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import {Intake} from '../../../../shared/model/policy/intake.interface';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
 import {IntakeActions} from '../../../administrator/policy/intakes/intake.action';
+import {ApplicationContextActions} from "../../../../application-context.action";
 
 @Injectable()
 export class IntakeApplicationEffects {
@@ -23,7 +24,8 @@ export class IntakeApplicationEffects {
               private intakeActions: IntakeActions,
               private applicationService: ApplicationService,
               private router: Router,
-              private store$: Store<ApplicationModuleState>) {
+              private store$: Store<ApplicationModuleState>,
+              private ctxActions: ApplicationContextActions) {
     this.intake$ = this.store$.select(...this.INTAKE);
   }
 
@@ -56,11 +58,8 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map((action) => action.payload)
     .switchMap((intake) => this.applicationService.applyIntake(intake))
-    .do((application) =>
-      this.router.navigate(['/application/intake-applications/',
-        application.intake.graduateCenter.code.toLocaleLowerCase(),
-        application.referenceNo]),
-    ).ignoreElements();
+    // .catch((error) => this.ctxActions.setErrorMessage(error))
+    // .do((referenceNo: string) => this.router.navigate(['/secure/applicant/intake-applications', referenceNo])).ignoreElements();
 
   // ====================================================================================================
   // PROGRAM_OFFERING

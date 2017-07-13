@@ -4,7 +4,7 @@ import {SetupActions} from '../setup.action';
 import {SetupModuleState} from '../index';
 import {Observable} from 'rxjs/Observable';
 import {DisabilityCodeEditorDialog} from './dialog/disability-code-editor.dialog';
-import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {DisabilityCode} from '../../../../shared/model/common/disability-code.interface';
 
 @Component({
@@ -13,7 +13,7 @@ import {DisabilityCode} from '../../../../shared/model/common/disability-code.in
 })
 export class DisabilityCodeListPage implements OnInit {
 
-  private DISABILITY_CODES : string[]= 'setupModuleState.disabilityCodes'.split('.');
+  private DISABILITY_CODES: string[] = 'setupModuleState.disabilityCodes'.split('.');
   private disabilityCodes$: Observable<DisabilityCode>;
   private creatorDialogRef: MdDialogRef<DisabilityCodeEditorDialog>;
   private columns: any[] = [
@@ -38,7 +38,7 @@ export class DisabilityCodeListPage implements OnInit {
 
   createDialog(): void {
     this.showDialog(null);
-}
+  }
 
   editDialog(code: DisabilityCode): void {
     this.showDialog(code);
@@ -47,7 +47,7 @@ export class DisabilityCodeListPage implements OnInit {
   delete(code: DisabilityCode): void {
     let snackBarRef = this.snackBar.open('Delete this disability code?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
-    this.store.dispatch(this.actions.removeDisabilityCode(code));
+      this.store.dispatch(this.actions.removeDisabilityCode(code));
     });
   }
 

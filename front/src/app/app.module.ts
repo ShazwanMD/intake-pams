@@ -12,19 +12,23 @@ import {StoreModule, combineReducers, ActionReducer} from '@ngrx/store';
 import {AppComponent} from './app.component';
 import {HomePage} from './home/home.page';
 import {LoginPage} from './login/login.page';
-import {ForgetPasswordComponent} from './login/forget-password.page';
+import {ForgetPasswordPage} from './login/forget-password.page';
 import {appRoutes, appRoutingProviders} from './app.routes';
 
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
 
+import {EffectsModule} from '@ngrx/effects';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-import {UrlSerializer} from '@angular/router';
-import {CustomUrlSerializer} from './common/custom-url-serializer';
 import {
   ApplicationModule, ApplicationModuleState, INITIAL_APPLICATION_STATE,
   applicationModuleReducers,
 } from './secure/applicant/application/index';
-import {PolicyModule, PolicyModuleState, INITIAL_POLICY_STATE, policyModuleReducers} from './secure/administrator/policy/index';
+import {
+  PolicyModule,
+  PolicyModuleState,
+  INITIAL_POLICY_STATE,
+  policyModuleReducers,
+} from './secure/administrator/policy/index';
 import {
   AdmissionModuleState, INITIAL_ADMISSION_STATE, admissionModuleReducers,
   AdmissionModule,
@@ -46,13 +50,20 @@ import {AuthorizedShowDirective} from './secure/administrator/identity/directive
 import {AuthenticatedShowDirective} from './secure/administrator/identity/directive/authenticated-show.directive';
 import {NotAuthenticatedShowDirective} from './secure/administrator/identity/directive/not-authenticated-show.directive';
 import {SecurePage} from './secure/secure.page';
-import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
-import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
 import {AccountService} from '../services/account.service';
 import {
   AccountModule, accountModuleReducers, AccountModuleState,
   INITIAL_ACCOUNT_STATE,
 } from './secure/applicant/account/index';
+import {
+  applicationContextReducer, ApplicationContextState,
+  INITIAL_APPLICATION_CONTEXT_STATE,
+} from './application-context.reducer';
+import {ApplicationContextActions} from './application-context.action';
+import {ApplicationContextEffects} from './application-context.effect';
+import {DashboardPage} from './secure/dashboard.page';
+import {ApplicantDashboardPanel} from './secure/applicant-dashboard.panel';
+import {AdministratorDashboardPanel} from './secure/administrator-dashboard.panel';
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -61,6 +72,7 @@ const httpInterceptorProviders: Type<any>[] = [
 
 // state
 interface ApplicationState {
+  applicationContextState: ApplicationContextState;
   commonModuleState: CommonModuleState;
   policyModuleState: PolicyModuleState;
   applicationModuleState: ApplicationModuleState;
@@ -73,6 +85,7 @@ interface ApplicationState {
 // initial state
 export const INITIAL_APP_STATE: ApplicationState =
   <ApplicationState>{
+    applicationContextState: INITIAL_APPLICATION_CONTEXT_STATE,
     commonModuleState: INITIAL_COMMON_STATE,
     policyModuleState: INITIAL_POLICY_STATE,
     applicationModuleState: INITIAL_APPLICATION_STATE,
@@ -84,6 +97,7 @@ export const INITIAL_APP_STATE: ApplicationState =
 
 // combine reducer
 export const applicationReducers = {
+  applicationContextState: applicationContextReducer,
   commonModuleState: combineReducers({...commonModuleReducers}),
   policyModuleState: combineReducers({...policyModuleReducers}),
   applicationModuleState: combineReducers({...applicationModuleReducers}),
@@ -98,25 +112,24 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 }
 
 @NgModule({
-
   declarations: [
     AppComponent,
     LoginPage,
     HomePage,
     SecurePage,
-    AdministratorDashboardPage,
-    ApplicantDashboardPage,
-    ForgetPasswordComponent,
+    DashboardPage,
+    ForgetPasswordPage,
+    ApplicantDashboardPanel,
+    AdministratorDashboardPanel,
     AuthorizedShowDirective,
     AuthenticatedShowDirective,
     NotAuthenticatedShowDirective,
-  ], // directives, components, and pipes owned by this NgModule
+  ],
   exports: [
     AuthorizedShowDirective,
     AuthenticatedShowDirective,
     NotAuthenticatedShowDirective,
   ],
-
   imports: [
     appRoutes,
     BrowserModule,
@@ -132,12 +145,12 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     CovalentHighlightModule.forRoot(),
     CovalentMarkdownModule.forRoot(),
     NgxChartsModule,
+    EffectsModule.run(ApplicationContextEffects),
     StoreModule.provideStore(applicationReducer),
     environment.imports,
 
     PipeModule,
 
-    // DashboardModule.forRoot(),
     CommonModule.forRoot(),
     CenterModule.forRoot(),
     PolicyModule.forRoot(),
@@ -145,6 +158,10 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     AdmissionModule.forRoot(),
     RegistrationModule.forRoot(),
     AccountModule.forRoot(),
+  ],
+  entryComponents: [
+    ApplicantDashboardPanel,
+    AdministratorDashboardPanel,
   ],
   providers: [
     appRoutingProviders,
@@ -156,9 +173,8 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     AuthenticationGuard,
     AuthorizationGuard,
     Title,
-    {provide: UrlSerializer, useClass: CustomUrlSerializer},
+    ApplicationContextActions,
   ], // additional providers needed for this module
-  entryComponents: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {

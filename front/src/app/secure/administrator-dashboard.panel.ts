@@ -1,25 +1,22 @@
 import {Component, Output, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {AuthorizationService} from '../../../services/authorization.service';
+import {AuthorizationService} from '../../services/authorization.service';
 
 @Component({
-  selector: 'pams-administrator-dashboard',
-  templateUrl: './administrator-dashboard.page.html',
-  styleUrls: ['./administrator-dashboard.page.scss'],
+  selector: 'pams-administrator-dashboard-panel',
+  templateUrl: './administrator-dashboard.panel.html',
 })
 
-export class AdministratorDashboardPage implements OnInit {
+export class AdministratorDashboardPanel implements OnInit {
 
   private items: Object[];
 
   constructor(private router: Router,
               private  route: ActivatedRoute,
-              private authz:AuthorizationService,
-  ) {
+              private authz: AuthorizationService) {
   }
 
   ngOnInit(): void {
-    console.log('auth:' + JSON.stringify(this.authz.data));
     {
       this.items = [{
         title: 'Application',
@@ -36,13 +33,6 @@ export class AdministratorDashboardPage implements OnInit {
           description: 'Intake Manager',
         }
         ,
-        {
-          title: 'Registration',
-          route: '/registration',
-          icon: 'description',
-          color: 'blue-700',
-          description: 'Applicant Registration',
-        },
         {
           title: 'Admission',
           route: '/secure/administrator/admission',

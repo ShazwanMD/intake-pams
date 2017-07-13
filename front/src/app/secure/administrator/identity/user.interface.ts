@@ -1,4 +1,4 @@
-import { ForgetPasswordComponent } from '../../../login/forget-password.page';
+import { ForgetPasswordPage } from '../../../login/forget-password.page';
 import {Actor} from './actor.interface';
 export interface User {
   id: number;

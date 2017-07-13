@@ -16,10 +16,9 @@ import {IntakeTask} from '../../../../../shared/model/policy/intake-task.interfa
 })
 export class IntakeTaskWorkflowPanel implements OnInit {
 
-  private taskPanel: ViewContainerRef;
   private componentRef: ComponentRef<any>;
 
-  @ViewChild('taskPanel', {read: ViewContainerRef})
+  @ViewChild('taskPanel', {read: ViewContainerRef}) taskPanel: ViewContainerRef;
   @Input() intakeTaskObservable: Observable<IntakeTask>;
 
   constructor(private viewContainerRef: ViewContainerRef,

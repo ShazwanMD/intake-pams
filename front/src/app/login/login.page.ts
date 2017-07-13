@@ -17,8 +17,7 @@ export class LoginPage {
   username: string;
   password: string;
 
-  constructor(private _router: Router,
-              private _loadingService: TdLoadingService,
+  constructor(private router: Router,
               private authnService: AuthenticationService,
               private authzService: AuthorizationService,
               private systemService: SystemService) {
@@ -62,14 +61,8 @@ export class LoginPage {
           this.authzService.addAbility('ROLE_USER', 'VIEW_' + module.code);
         }
 
-        // check role
-        if (this.authzService.hasRole('ROLE_ADMINISTRATOR') && this.authzService.hasRole('ROLE_USER')) {
-          this._router.navigate(['/secure/administrator']);
-        } else if (this.authzService.hasRole('ROLE_USER')) {
-          this._router.navigate(['/secure/applicant']);
-        } else {
-          this._router.navigate(['/secure/somewhere']);
-        }
+        // navigate to secure area
+        this.router.navigate(['/secure']);
       })
       .toPromise();
 
