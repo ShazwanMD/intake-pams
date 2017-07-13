@@ -63,6 +63,6 @@ export class IntakePublishTaskPanel implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/policy/intakes']);
+    this.router.navigate(['/secure/policy/intakes']);
   }
 }
