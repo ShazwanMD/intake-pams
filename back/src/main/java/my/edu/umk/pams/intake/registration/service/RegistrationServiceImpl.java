@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.registration.service;
 
+import my.edu.umk.pams.intake.identity.dao.InUserDao;
 import my.edu.umk.pams.intake.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InGroup;
@@ -47,6 +48,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Autowired
     private InUserVerificationDao userVerificationDao;
+    
+    @Autowired
+    private InUserDao userDao;
     
     @Autowired
     private SystemService systemService;
@@ -101,9 +105,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         sessionFactory.getCurrentSession().flush();
 
         // todo(samiya): send email notification
+        String applicationUrl= systemService.findConfigurationByKey("application.url").getValue();
         InEmailQueue email= new InEmailQueueImpl();
         String subject = "Email verification";
-        String body = "Please verify your email address by clicking this url : http://pams.umk.edu.my/verification/"+ token;
+        String body = "Please verify your email address by clicking this url : "+applicationUrl+"/verification/"+ token;
         //verification.getToken();
         email.setTo(user.getEmail());
         email.setSubject(subject);
@@ -126,6 +131,30 @@ public class RegistrationServiceImpl implements RegistrationService {
         identityService.updateUser(user);
         logoutAsSystem(sc);
     }
+    
+//    @Override
+//    public void forgetPassword(InUser user) {
+//    	
+//    	LOG.debug("userB check ",user);
+//    	if (user == null) LOG.debug("UserB is null");
+//    	
+//    	LOG.debug("email check",user.getEmail());
+//    	if (user.getEmail() == null) LOG.debug("Email is null");
+//    	LOG.debug("123 {}",user.getEmail());
+//    	
+//    	LOG.debug("123 {}",user.getEmail());
+//
+//    	//InUser zzz = identityService.findUserByEmail(user.getEmail());	 
+//    	InEmailQueue email= new InEmailQueueImpl();
+//        String subject = "Password Recovery";
+//        String body = "Your password is : " + user.getPassword();
+//        email.setTo(user.getEmail());
+//        email.setSubject(subject);
+//        email.setBody(body);
+//        email.setCode("EQ/" + System.currentTimeMillis());
+//        email.setQueueStatus(InEmailQueueStatus.QUEUED);
+//        systemService.saveEmailQueue(email);
+//    }
 
     @Override
     public boolean isUserExists(String username) {
