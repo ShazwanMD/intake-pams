@@ -83,8 +83,8 @@ public class ApplicantAccountController {
     @Autowired
     private ApplicationTransformer applicationTransformer;
     
-    @Autowired
-    private AccountTransformer accountTransformer;
+//    @Autowired
+//    private AccountTransformer accountTransformer;
 
     @Autowired
     private IdentityService identityService;
@@ -150,22 +150,22 @@ public class ApplicantAccountController {
     // USER
     // ==================================================================================================== //
   
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> findUser(@PathVariable Long id) {
-        return new ResponseEntity<User>(accountTransformer.toUserVo(identityService.findUserById(id)),HttpStatus.OK);           
-    }
-
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public ResponseEntity<String> saveUser(@RequestBody User vo) {
-       dummyLogin();
-        InUser user = new InUserImpl();
-       // user.setName(vo.getName());
-        user.setEmail(vo.getEmail());
-        user.setPassword(vo.getPassword());
-        user.setRealName(vo.getRealName());
-        identityService.saveUser(user);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<User> findUser(@PathVariable Long id) {
+//        return new ResponseEntity<User>(accountTransformer.toUserVo(identityService.findUserById(id)),HttpStatus.OK);           
+//    }
+//
+//    @RequestMapping(value = "/users", method = RequestMethod.POST)
+//    public ResponseEntity<String> saveUser(@RequestBody User vo) {
+//       dummyLogin();
+//        InUser user = new InUserImpl();
+//       // user.setName(vo.getName());
+//        user.setEmail(vo.getEmail());
+//        user.setPassword(vo.getPassword());
+//        user.setRealName(vo.getRealName());
+//        identityService.saveUser(user);
+//        return new ResponseEntity<String>("Success", HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody User vo) {
