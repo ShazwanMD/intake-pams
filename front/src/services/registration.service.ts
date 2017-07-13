@@ -22,4 +22,9 @@ export class RegistrationService {
     return this._http.get(this.REGISTRATION_API + '/verifyUser/' + token)
       .map((res: Response) => <Boolean>res.json());
   }
+  
+  forgetPassword(email: String): Observable<Boolean> {
+    return this._http.get(this.REGISTRATION_API + '/forgetPassword/' + email)
+      .map((res: Response) => <Boolean>res.json());
+  }
 }
