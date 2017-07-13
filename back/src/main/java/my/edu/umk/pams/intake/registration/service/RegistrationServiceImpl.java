@@ -132,29 +132,20 @@ public class RegistrationServiceImpl implements RegistrationService {
         logoutAsSystem(sc);
     }
     
-//    @Override
-//    public void forgetPassword(InUser user) {
-//    	
-//    	LOG.debug("userB check ",user);
-//    	if (user == null) LOG.debug("UserB is null");
-//    	
-//    	LOG.debug("email check",user.getEmail());
-//    	if (user.getEmail() == null) LOG.debug("Email is null");
-//    	LOG.debug("123 {}",user.getEmail());
-//    	
-//    	LOG.debug("123 {}",user.getEmail());
-//
-//    	//InUser zzz = identityService.findUserByEmail(user.getEmail());	 
-//    	InEmailQueue email= new InEmailQueueImpl();
-//        String subject = "Password Recovery";
-//        String body = "Your password is : " + user.getPassword();
-//        email.setTo(user.getEmail());
-//        email.setSubject(subject);
-//        email.setBody(body);
-//        email.setCode("EQ/" + System.currentTimeMillis());
-//        email.setQueueStatus(InEmailQueueStatus.QUEUED);
-//        systemService.saveEmailQueue(email);
-//    }
+    @Override
+    public void forgetPassword(InUser user) {
+    	if (user == null) LOG.debug("UserB is null");
+    	if (user.getEmail() == null) LOG.debug("Email is null");
+    	InEmailQueue email= new InEmailQueueImpl();
+        String subject = "Password Recovery";
+        String body = "Your password is : " + user.getPassword();
+        email.setTo(user.getEmail());
+        email.setSubject(subject);
+        email.setBody(body);
+        email.setCode("EQ/" + System.currentTimeMillis());
+        email.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(email);
+    }
 
     @Override
     public boolean isUserExists(String username) {
