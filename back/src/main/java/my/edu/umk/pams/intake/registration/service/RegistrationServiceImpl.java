@@ -134,6 +134,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     
     @Override
     public void forgetPassword(InUser user) {
+    	SecurityContext sc = loginAsSystem();
     	if (user == null) LOG.debug("UserB is null");
     	if (user.getEmail() == null) LOG.debug("Email is null");
     	InEmailQueue email= new InEmailQueueImpl();
@@ -145,6 +146,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         email.setCode("EQ/" + System.currentTimeMillis());
         email.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(email);
+        logoutAsSystem(sc);
     }
 
     @Override
