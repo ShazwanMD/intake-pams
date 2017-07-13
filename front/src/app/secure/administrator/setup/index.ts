@@ -19,7 +19,7 @@ import {SchoolCodeEditorDialog} from './school-codes/dialog/school-code-editor.d
 import {SchoolCodeListPage} from './school-codes/school-code-list-page';
 import {DisabilityCode} from '../../../shared/model/common/disability-code.interface';
 import {DisabilityCodeEditorDialog} from './disability-codes/dialog/disability-code-editor.dialog';
-import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
+import {ProgramLevelSubModule} from '../policy/program-levels/index';
 import {SupervisorCodeEditorDialog} from './supervisor-codes/dialog/supervisor-code-editor.dialog';
 import {StudyMode} from '../../../shared/model/common/study-mode.interface';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
@@ -109,7 +109,7 @@ import {StateCode} from '../../../shared/model/common/state-code.interface';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
 import {ReligionCodeListPage} from './religion-codes/religion-code-list.page';
 import {CommonModule} from '../../../common/index';
-import {IntakeSessionSubModule} from '../../../policy/intake-sessions/index';
+import {IntakeSessionSubModule} from '../policy/intake-sessions/index';
 
 export interface SetupModuleState {
   title: TitleState;

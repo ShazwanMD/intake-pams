@@ -23,7 +23,7 @@ import {
 import {intakeListReducer, IntakeListState} from './intake-applications/intake-list.reducer';
 import {intakeReducer, IntakeState} from './intake-applications/intake.reducer';
 import {CommonModule} from '../../../common/index';
-import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
+import {ProgramLevelSubModule} from '../../administrator/policy/program-levels/index';
 import {CpsIntakeApplicationSubModule} from './intake-applications/cps/index';
 import {
   intakeProgramOfferingListReducer,
