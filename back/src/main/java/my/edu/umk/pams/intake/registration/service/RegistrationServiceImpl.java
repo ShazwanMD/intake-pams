@@ -139,7 +139,8 @@ public class RegistrationServiceImpl implements RegistrationService {
     	if (user.getEmail() == null) LOG.debug("Email is null");
     	InEmailQueue email= new InEmailQueueImpl();
         String subject = "Password Recovery";
-        String body = "Your password is : " + user.getPassword();
+        String body = "Your password is : " + user.getPassword()+
+        			  ". Please Login to continue";
         email.setTo(user.getEmail());
         email.setSubject(subject);
         email.setBody(body);
