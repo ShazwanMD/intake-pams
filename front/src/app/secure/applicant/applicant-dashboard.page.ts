@@ -1,4 +1,5 @@
-import {Component, Output, OnInit} from '@angular/core';
+import { Applicant } from './../../identity/applicant.interface';
+import { Component, Output, OnInit, Input } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AuthorizationService} from '../../../services/authorization.service';
 import {ApplicationModuleState} from './application/index';
@@ -19,8 +20,11 @@ export class ApplicantDashboardPage implements OnInit {
 
   private PUBLISHED_INTAKES: string[] = 'accountModuleState.publishedIntakes'.split('.');
   private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
+  private APPLICANT: string[] = 'accountModuleState.applicant'.split('.');
   private intakeApplications$: Observable<IntakeApplication[]>;
   private publishedIntakes$: Observable<Intake[]>;
+  private applicant$: Observable<Applicant>;
+
 
   private intakeColumns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
@@ -37,10 +41,12 @@ export class ApplicantDashboardPage implements OnInit {
               private actions: AccountActions) {
     this.publishedIntakes$ = this.store.select(...this.PUBLISHED_INTAKES);
     this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
+    this.applicant$ = this.store.select(...this.APPLICANT);
   }
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findIntakeApplications());
     this.store.dispatch(this.actions.findPublishedIntakes());
+    this.store.dispatch(this.actions.findApplicant());
   }
 }
