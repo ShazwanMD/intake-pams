@@ -39,4 +39,30 @@ export class AccountEffects {
     .map((action) => action.payload)
     .switchMap((intake) => this.accountService.findSubmittedIntakeApplications())
     .map((applications) => this.accountActions.findSubmittedIntakeApplicationsSuccess(applications));
+
+    
+  // ====================================================================================================
+  // USER
+  // ====================================================================================================
+
+     @Effect() findUser$ = this.actions$
+    .ofType(AccountActions.FIND_USER)
+    .map((action) => action.payload)
+    .switchMap(() => this.accountService.findUser())
+    .map((user) => this.accountActions.findUserSuccess(user));
+
+  @Effect() saveUser$ = this.actions$
+    .ofType(AccountActions.SAVE_USER)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.accountService.saveUser(payload))
+    .map((message) => this.accountActions.saveUserSuccess(message));
+    // .mergeMap((action) => from([action, this.accountActions.findUser()]));.
+
+  @Effect() updateUser$ = this.actions$
+    .ofType(AccountActions.UPDATE_USER)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.accountService.updateUser(payload))
+    .map((message) => this.accountActions.updateUserSuccess(message));
+    // .mergeMap((action) => from([action, this.accountActions.findUser()]));
 }
+
