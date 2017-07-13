@@ -15,7 +15,7 @@ public interface ApplicationService {
 
     void calculateApplicantMerit(InIntake intake);
 
-    String applyIntake(InIntake intake, InIntakeApplication application);
+    String applyIntake(InIntake intake, InIntakeApplication application) throws Exception;
 
     void updateIntakeApplication(InIntakeApplication application);
 
@@ -181,6 +181,8 @@ public interface ApplicationService {
     boolean hasInvolvement(InIntakeApplication application);
 
     boolean hasReferee(InIntakeApplication application);
+
+    boolean hasApplied(InIntake intake, InApplicant applicant);
 
 }
 

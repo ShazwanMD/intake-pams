@@ -7,6 +7,7 @@ import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -485,6 +486,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         return (Integer) query.uniqueResult() > 0;
     }
 
+    @Override
+    public boolean hasApplied(InIntake intake, InApplicant applicant) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from InIntakeApplication p " +
+                "where p.intake = :intake " +
+                "and p.applicant = :applicant");
+        query.setEntity("intake", intake);
+        query.setEntity("applicant", applicant);
+        return (Integer) query.uniqueResult() > 0;
+    }
+
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
@@ -506,7 +518,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         session.save(result);
 
     }
-    
+
     @Override
     public void updateResult(InIntakeApplication application, InResult result, InUser user) {
         Validate.notNull(application, "Application cannot be null");
@@ -515,7 +527,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.update(result);
-    }    
+    }
 
     @Override
     public void deleteResult(InIntakeApplication application, InResult result, InUser user) {

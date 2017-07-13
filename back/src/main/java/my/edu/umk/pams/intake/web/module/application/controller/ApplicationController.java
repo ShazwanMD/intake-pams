@@ -21,6 +21,7 @@ import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,8 +91,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/apply", method = RequestMethod.POST)
     public ResponseEntity<IntakeApplication> applyIntake(@PathVariable String referenceNo) {
-        dummyLogin();
-
         // user & applicant
         InUser currentUser = securityService.getCurrentUser();
         InActor actor = currentUser.getActor();
@@ -105,51 +104,48 @@ public class ApplicationController {
         application.setEmail(applicant.getEmail());
         application.setApplicant(applicant);
 
-        String intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
-        LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
-        InIntakeApplication generatedApplication = applicationService
-                .findIntakeApplicationByReferenceNo(intakeApplicationReferenceNo);
+        InIntakeApplication generatedApplication = null;
+        try {
+            String intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
+            LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
+            generatedApplication = applicationService.findIntakeApplicationByReferenceNo(intakeApplicationReferenceNo);
+        } catch (Exception e) {
+            // todo: push to client
+            e.printStackTrace();
+        }
         return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(generatedApplication),
                 HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications", method = RequestMethod.POST)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByIntake(@PathVariable String referenceNo) {
-        dummyLogin();
-
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
     }
-   
+
     @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications/bidStatus/{bidStatus}", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByIntakeAndBidStatus(@PathVariable String referenceNo, @PathVariable String bidStatus) {
-        dummyLogin();
-
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InBidStatus status = InBidStatus.valueOf(bidStatus);
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, status);
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications/bidStatus/{bidStatus}/verify/false", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findVerifyInternationalIntakeApplicationsByIntakeAndBidStatus(@PathVariable String referenceNo, @PathVariable String bidStatus) {
-        dummyLogin();
-
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InBidStatus status = InBidStatus.valueOf(bidStatus);
         boolean verify = false;
-        List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByVerificationStatus(intake,status,verify);
+        List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByVerificationStatus(intake, status, verify);
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<ProgramOffering>> findProgramOfferings(@PathVariable String referenceNo) {
-        dummyLogin();
-
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         List<InProgramOffering> programOfferings = policyService.findProgramOfferings(intake);
         return new ResponseEntity<List<ProgramOffering>>(policyTransformer.toProgramOfferingVos(programOfferings),
@@ -159,8 +155,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
-        dummyLogin();
-
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         List<InSupervisorOffering> supervisorOfferings = policyService.findSupervisorOfferings(intake);
         return new ResponseEntity<List<SupervisorOffering>>(policyTransformer.toSupervisorOfferingVos(supervisorOfferings),
@@ -169,8 +163,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakes/{referenceNo}/studyModeOfferings", method = RequestMethod.GET)
     public ResponseEntity<List<StudyModeOffering>> findStudyModeOfferings(@PathVariable String referenceNo) {
-        dummyLogin();
-
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         List<InStudyModeOffering> studyModeOfferings = policyService.findStudyModeOfferings(intake);
         return new ResponseEntity<List<StudyModeOffering>>(policyTransformer.toStudyModeOfferingVos(studyModeOfferings),
@@ -183,8 +175,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplications() {
-        dummyLogin();
-
         // user & applicant
         InUser currentUser = securityService.getCurrentUser();
         InActor actor = currentUser.getActor();
@@ -206,8 +196,6 @@ public class ApplicationController {
     @RequestMapping(value = "/intakeApplications/{referenceNo}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         application.setResearchTitle(vo.getResearchTitle());
         application.setName(vo.getName());
@@ -283,9 +271,6 @@ public class ApplicationController {
     @RequestMapping(value = "/intakeApplications/{referenceNo}/submit", method = RequestMethod.POST)
     public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
-        dummyLogin();
-
-        // update and submit
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
         InIntake intake = application.getIntake();
         updateIntakeApplication(referenceNo, vo);
@@ -296,21 +281,19 @@ public class ApplicationController {
     @RequestMapping(value = "/intakeApplications/{referenceNo}/select", method = RequestMethod.PUT)
     public ResponseEntity<String> selectIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
-        dummyLogin();
         System.out.println("vo.getReason() select");
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
         InIntake intake = application.getIntake();
         application.setBidStatus(InBidStatus.SELECTED);
         if (vo.getNationalityCode().getDescriptionEn().equals("CITIZEN"))
-        application.setVerified(true);
+            application.setVerified(true);
         applicationService.selectIntakeApplication(intake, application);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/intakeApplications/{referenceNo}/verify", method = RequestMethod.PUT)
     public ResponseEntity<String> verifyIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
-        dummyLogin();
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
         InIntake intake = application.getIntake();
         application.setVerified(true);
@@ -321,11 +304,9 @@ public class ApplicationController {
     @RequestMapping(value = "/intakeApplications/{referenceNo}/reject", method = RequestMethod.PUT)
     public ResponseEntity<String> rejectIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody IntakeApplication vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
         application.setReason(vo.getReason());
-        System.out.println("vo.getReason() reject:"+vo.getReason());
+        System.out.println("vo.getReason() reject:" + vo.getReason());
         application.setBidStatus(InBidStatus.REJECTED);
         InIntake intake = application.getIntake();
         applicationService.rejectIntakeApplication(intake, application);
@@ -335,8 +316,6 @@ public class ApplicationController {
     @RequestMapping(value = "/intakeApplications/{referenceNo}/programOfferingSelection", method = RequestMethod.POST)
     public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody ProgramOffering vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InProgramOffering programOffering = policyService.findProgramOfferingById(vo.getId());
         application.setProgramSelection(programOffering);
@@ -347,8 +326,6 @@ public class ApplicationController {
     @RequestMapping(value = "/intakeApplications/{referenceNo}/studyModeOfferingSelection", method = RequestMethod.POST)
     public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody StudyModeOffering vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InStudyModeOffering studyModeOffering = policyService.findStudyModeOfferingById(vo.getId());
         application.setStudyModeSelection(studyModeOffering);
@@ -359,8 +336,6 @@ public class ApplicationController {
     @RequestMapping(value = "/intakeApplications/{referenceNo}/supervisorOfferingSelection", method = RequestMethod.POST)
     public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo,
                                                           @RequestBody SupervisorOffering vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InSupervisorOffering supervisorOffering = policyService.findSupervisorOfferingById(vo.getId());
         application.setSupervisorSelection(supervisorOffering);
@@ -381,8 +356,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/employments", method = RequestMethod.POST)
     public ResponseEntity<String> addEmployment(@PathVariable String referenceNo, @RequestBody Employment vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InEmployment employment = new InEmploymentImpl();
         employment.setEmployer(vo.getEmployer());
@@ -393,14 +366,11 @@ public class ApplicationController {
         // employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
         // employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
         // employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
-        System.out.println("vo.getEmploymentType().ordinal() :"+vo.getEmploymentType().ordinal());
-        if (vo.getEmploymentType().ordinal()==0)
-        {
-        	employment.setCurrent(true);
-        }
-        else
-        {
-        	employment.setCurrent(false);	
+        System.out.println("vo.getEmploymentType().ordinal() :" + vo.getEmploymentType().ordinal());
+        if (vo.getEmploymentType().ordinal() == 0) {
+            employment.setCurrent(true);
+        } else {
+            employment.setCurrent(false);
         }
         applicationService.addEmployment(application, employment);
 
@@ -409,8 +379,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/employments/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteEmployment(@PathVariable String referenceNo, @PathVariable Long id) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InEmployment employment = applicationService.findEmploymentById(id);
         applicationService.deleteEmployment(application, employment);
@@ -419,16 +387,12 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/employments/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Boolean> updateEmployment(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Employment vo) {
-        dummyLogin();
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InEmployment employment = applicationService.findEmploymentById(id);
         employment.setEmployer(vo.getEmployer());
         employment.setDesignation(vo.getDesignation());
         employment.setStartDate(vo.getStartDate());
         employment.setEndDate(vo.getEndDate());
-        // employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
-        // employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
-        // employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
         employment.setCurrent(false);
         applicationService.updateEmployment(application, employment);
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
@@ -447,8 +411,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/languages", method = RequestMethod.POST)
     public ResponseEntity<String> addLanguage(@PathVariable String referenceNo, @RequestBody Language vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InLanguage language = new InLanguageImpl();
         language.setOral(vo.getOral());
@@ -461,8 +423,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/languages/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Boolean> updateLanguage(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Language vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InLanguage language = applicationService.findLanguageById(id);
         language.setOral(vo.getOral());
@@ -474,8 +434,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/languages/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteLanguage(@PathVariable String referenceNo, @PathVariable Long id) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InLanguage language = applicationService.findLanguageById(id);
         applicationService.deleteLanguage(application, language);
@@ -495,8 +453,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/educations", method = RequestMethod.POST)
     public ResponseEntity<String> addEducation(@PathVariable String referenceNo, @RequestBody Education vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InEducation education = new InEducationImpl();
         education.setProvider(vo.getProvider());
@@ -522,8 +478,6 @@ public class ApplicationController {
     // note: http://www.codejava.net/coding/upload-files-to-database-with-spring-mvc-and-hibernate
     @RequestMapping(value = "/intakeApplications/{referenceNo}/attachments", method = RequestMethod.POST)
     public ResponseEntity<String> addAttachment(@PathVariable String referenceNo, @RequestParam("file") MultipartFile file, @RequestParam("attachmentType") String attachmentType) {
-        dummyLogin();
-
         LOG.debug("files is empty? : {}", file.isEmpty());
         LOG.debug("name: {}", file.getName());
         LOG.debug("original file name: {}", file.getOriginalFilename());
@@ -548,8 +502,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/attachment/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteAttachment(@PathVariable String referenceNo, @PathVariable Long id) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InAttachment attachment = applicationService.findAttachmentById(id);
         applicationService.deleteAttachment(application, attachment);
@@ -558,8 +510,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/download/attachment/{id}", method = RequestMethod.GET)
     public ResponseEntity downloadAttachment(@PathVariable Long id) {
-        dummyLogin();
-
         InAttachment attachment = applicationService.findAttachmentById(id);
         ByteArrayResource resource = null;
         //ByteArrayOutputStream outputStream = new ByteArrayOutputStream(attachment.getBytes());
@@ -584,8 +534,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/referees", method = RequestMethod.POST)
     public ResponseEntity<String> addReferee(@PathVariable String referenceNo, @RequestBody Referee vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InReferee referee = new InRefereeImpl();
         referee.setName(vo.getName());
@@ -600,8 +548,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/referees/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Boolean> updateReferee(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Referee vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InReferee referee = applicationService.findRefereeById(id);
         referee.setName(vo.getName());
@@ -615,8 +561,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/referees/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteReferee(@PathVariable String referenceNo, @PathVariable Long id) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InReferee referee = applicationService.findRefereeById(id);
         applicationService.deleteReferee(application, referee);
@@ -638,8 +582,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/results", method = RequestMethod.POST)
     public ResponseEntity<String> addResult(@PathVariable String referenceNo, @RequestBody Result vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InResult result = new InResultImpl();
         result.setResultType(InResultType.get(vo.getResultType().ordinal()));
@@ -656,8 +598,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/results/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Boolean> updateResult(@PathVariable String referenceNo, @PathVariable Long id, @RequestBody Result vo) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InResult result = applicationService.findResultById(id);
         result.setResultType(InResultType.get(vo.getResultType().ordinal()));
@@ -674,8 +614,6 @@ public class ApplicationController {
 
     @RequestMapping(value = "/intakeApplications/{referenceNo}/results/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteResult(@PathVariable String referenceNo, @PathVariable Long id) {
-        dummyLogin();
-
         InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InResult result = applicationService.findResultById(id);
         applicationService.deleteResult(application, result);
@@ -687,23 +625,28 @@ public class ApplicationController {
     // ====================================================================================================
     @RequestMapping(value = "/intakeApplications/{referenceNo}/processCandidate", method = RequestMethod.POST)
     public ResponseEntity<IntakeApplication> processCandidate(@PathVariable String referenceNo) {
-    	dummyLogin();
-    	InUser currentUser = securityService.getCurrentUser();
+        InUser currentUser = securityService.getCurrentUser();
         InActor actor = currentUser.getActor();
         InApplicant applicant = identityService.findApplicantById(actor.getId());
         if (actor instanceof InApplicant)
             applicant = (InApplicant) actor;
 
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        InIntakeApplication application = new InIntakeApplicationImpl();
-        application.setName(applicant.getName());
-        application.setEmail(applicant.getEmail());
-        application.setApplicant(applicant);
+        InIntakeApplication generatedApplication = null;
+        try {
+            InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+            InIntakeApplication application = new InIntakeApplicationImpl();
+            application.setName(applicant.getName());
+            application.setEmail(applicant.getEmail());
+            application.setApplicant(applicant);
 
-        String intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
-        LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
-        InIntakeApplication generatedApplication = applicationService
-                .findIntakeApplicationByReferenceNo(intakeApplicationReferenceNo);
+            String intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
+            LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
+            generatedApplication = applicationService
+                    .findIntakeApplicationByReferenceNo(intakeApplicationReferenceNo);
+        } catch (Exception e) {
+            return new ResponseEntity<IntakeApplication>(new IntakeApplication(), HttpStatus.BAD_REQUEST);
+        }
+
         return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(generatedApplication),
                 HttpStatus.OK);
     }
@@ -711,11 +654,4 @@ public class ApplicationController {
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================
-
-    private void dummyLogin() {
-//        Noop
-//        InAutoLoginToken token = new InAutoLoginToken("applicant1");
-//        Authentication authed = authenticationManager.authenticate(token);
-//        SecurityContextHolder.getContext().setAuthentication(authed);
-    }
 }

@@ -114,6 +114,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     boolean hasAttachment(InIntakeApplication application);
 
+    boolean hasApplied(InIntake intake, InApplicant applicant);
+
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
@@ -165,4 +167,5 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void updateEmployment(InIntakeApplication application, InEmployment employment, InUser user);
 
     void updateLanguage(InIntakeApplication application, InLanguage language, InUser user);
+
 }

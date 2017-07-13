@@ -86,7 +86,7 @@ public class IntakeFlowProcessTest {
 
     @Test
     @Rollback(false)
-    public void testDraftWorkflow() {
+    public void testDraftWorkflow() throws Exception {
         InProgramLevel level = policyService.findProgramLevelByCode("MASTER");
         InIntakeSession session = policyService.findIntakeSessionByCode("20171");
         InGraduateCenter center = commonService.findGraduateCenterByCode("CPS");
@@ -208,7 +208,6 @@ public class IntakeFlowProcessTest {
         application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant2").getActor());
         applicationService.applyIntake(intake, application2);
 //        applicationService.submitIntakeApplication(draftedIntake, application2);
-
     }
 
 }

@@ -62,7 +62,7 @@ public class ApplicationServiceImpl implements ApplicationService {
             List<InEmployment> employments = application.getEmployments();
             for (InEmployment employment : employments) {
                 LOG.debug("employment: {}", employment.getEmployer());
-                if (!employment.isCurrent()==true) { // if current, we don't have end date
+                if (!employment.isCurrent() == true) { // if current, we don't have end date
                     LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
                     LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
                     Period period = new Period(start, end);
@@ -81,7 +81,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public String applyIntake(InIntake intake, InIntakeApplication application) {
+    public String applyIntake(InIntake intake, InIntakeApplication application) throws Exception {
+        if(hasApplied(intake, application.getApplicant()))
+            throw new Exception("Applicant has applied");
+
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("intakeSession", intake.getSession());
         map.put("programLevel", intake.getProgramLevel());
@@ -172,7 +175,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public void addEmployment(InIntakeApplication application, InEmployment employment) {
-    	LOG.debug("employment.getCurrent :"+employment.isCurrent());
+        LOG.debug("employment.getCurrent :" + employment.isCurrent());
         intakeApplicationDao.addEmployment(application, employment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
@@ -513,6 +516,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public boolean hasReferee(InIntakeApplication application) {
         return intakeApplicationDao.hasReferee(application);
+    }
+
+    @Override
+    public boolean hasApplied(InIntake intake, InApplicant applicant) {
+        return intakeApplicationDao.hasApplied(intake, applicant);
     }
 
     @Override
