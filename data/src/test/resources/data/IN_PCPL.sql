@@ -64,6 +64,10 @@ INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 4', 'applicant4@gmail.com', 'abc123');
 
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant5@gmail.com', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 5', 'applicant5@gmail.com', 'abc123');
+
 INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'candidate1', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 VALUES (currval('SQ_IN_PCPL'), 'PAMS Candidate1', 'candidate1@gmail.com', 'abc123');
@@ -211,6 +215,10 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant4'), 1, 1, CURRENT_TIMESTAMP);	
 																				 
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant5@gmail.com'), 1, 1, CURRENT_TIMESTAMP);
+
 ---------------------------------------------------------
 -- GROUP END
 ---------------------------------------------------------
