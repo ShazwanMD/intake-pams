@@ -1,4 +1,4 @@
-import { Applicant } from './../../../identity/applicant.interface';
+import { Applicant } from '../../administrator/identity/applicant.interface';
 import {Action} from '@ngrx/store';
 import {Intake} from '../../../shared/model/policy/intake.interface';
 import {AccountActions} from './account.action';

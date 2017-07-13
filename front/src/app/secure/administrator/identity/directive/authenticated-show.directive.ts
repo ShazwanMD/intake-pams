@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Input, OnInit, Renderer} from '@angular/core';
-import {AuthenticationService} from '../../../services/authentication.service';
+import {AuthenticationService} from '../../../../../services/authentication.service';
 
 @Directive({selector: '[authenticatedShow]'})
 export class AuthenticatedShowDirective implements OnInit {

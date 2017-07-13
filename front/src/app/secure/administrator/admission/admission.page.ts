@@ -4,7 +4,7 @@ import {Store} from '@ngrx/store';
 import {AdmissionModuleState} from './index';
 import {Observable} from 'rxjs/Observable';
 import {AdmissionActions} from './admission.action';
-import {IntakeTask} from '../shared/model/policy/intake-task.interface';
+import {IntakeTask} from '../../../shared/model/policy/intake-task.interface';
 
 @Component({
   selector: 'pams-admission-page',

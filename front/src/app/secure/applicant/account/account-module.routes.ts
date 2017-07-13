@@ -1,5 +1,5 @@
 import {Routes, RouterModule} from '@angular/router';
-import {AuthenticationGuard} from '../../../identity/guard/authentication.guard';
+import {AuthenticationGuard} from '../../administrator/identity/guard/authentication.guard';
 import {ApplicationPage} from '../application/application.page';
 import {intakeApplicationRoutes} from '../application/intake-applications/intake-application.routes';
 

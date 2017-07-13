@@ -1,4 +1,4 @@
-import { Applicant } from './../../identity/applicant.interface';
+import { Applicant } from '../administrator/identity/applicant.interface';
 import { Component, Output, OnInit, Input } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AuthorizationService} from '../../../services/authorization.service';

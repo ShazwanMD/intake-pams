@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {AdmissionActions} from './admission.action';
-import {Candidate} from '../shared/model/admission/candidate.interface';
+import {Candidate} from '../../../shared/model/admission/candidate.interface';
 
 export type CandidateState = Candidate;
 

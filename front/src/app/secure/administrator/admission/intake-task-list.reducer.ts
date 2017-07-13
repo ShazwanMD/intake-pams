@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {AdmissionActions} from './admission.action';
-import {IntakeTask} from '../shared/model/policy/intake-task.interface';
+import {IntakeTask} from '../../../shared/model/policy/intake-task.interface';
 
 export type IntakeTaskListState = IntakeTask[];
 

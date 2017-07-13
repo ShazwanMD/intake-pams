@@ -4,14 +4,14 @@ import {LoginPage} from './login/login.page';
 import {HomePage} from './home/home.page';
 import {registrationModuleRoutes} from './registration/registration-module.routes';
 import {policyModuleRoutes} from './secure/administrator/policy/policy-module.routes';
-import {admissionModuleRoutes} from './admission/admission-module.routes';
+import {admissionModuleRoutes} from './secure/administrator/admission/admission-module.routes';
 import {centerModuleRoutes} from './center/center-module.routes';
 import {ForgetPasswordComponent} from './login/forget-password.page';
 import {applicationModuleRoutes} from './secure/applicant/application/application-module.routes';
 import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
 import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
-import {AuthenticationGuard} from './identity/guard/authentication.guard';
+import {AuthenticationGuard} from './secure/administrator/identity/guard/authentication.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginPage},

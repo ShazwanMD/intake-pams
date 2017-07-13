@@ -4,9 +4,9 @@ import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
 import {environment} from '../environments/environment';
 import {IntakeApplication} from '../app/shared/model/application/intake-application.interface';
-import {Applicant} from '../app/identity/applicant.interface';
+import {Applicant} from '../app/secure/administrator/identity/applicant.interface';
 import {Intake} from '../app/shared/model/policy/intake.interface';
-import { User } from "../app/identity/user.interface";
+import { User } from "../app/secure/administrator/identity/user.interface";
 
 @Injectable()
 export class AccountService {

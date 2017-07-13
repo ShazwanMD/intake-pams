@@ -10,7 +10,6 @@ import {CovalentChartsModule} from '@covalent/charts';
 import {StoreModule, combineReducers, ActionReducer} from '@ngrx/store';
 
 import {AppComponent} from './app.component';
-import {MainComponent} from './main/main.component';
 import {HomePage} from './home/home.page';
 import {LoginPage} from './login/login.page';
 import {ForgetPasswordComponent} from './login/forget-password.page';
@@ -29,7 +28,7 @@ import {PolicyModule, PolicyModuleState, INITIAL_POLICY_STATE, policyModuleReduc
 import {
   AdmissionModuleState, INITIAL_ADMISSION_STATE, admissionModuleReducers,
   AdmissionModule,
-} from './admission/index';
+} from './secure/administrator/admission/index';
 import {
   RegistrationModule, registrationModuleReducers, RegistrationModuleState,
   INITIAL_REGISTRATION_STATE,
@@ -41,11 +40,11 @@ import {environment} from '../environments/environment';
 import {AuthenticationService} from '../services/authentication.service';
 import {AuthorizationService} from '../services/authorization.service';
 import {SystemService} from '../services/system.service';
-import {AuthenticationGuard} from './identity/guard/authentication.guard';
-import {AuthorizationGuard} from './identity/guard/authorization.guard';
-import {AuthorizedShowDirective} from './identity/directive/authorized-show.directive';
-import {AuthenticatedShowDirective} from './identity/directive/authenticated-show.directive';
-import {NotAuthenticatedShowDirective} from './identity/directive/not-authenticated-show.directive';
+import {AuthenticationGuard} from './secure/administrator/identity/guard/authentication.guard';
+import {AuthorizationGuard} from './secure/administrator/identity/guard/authorization.guard';
+import {AuthorizedShowDirective} from './secure/administrator/identity/directive/authorized-show.directive';
+import {AuthenticatedShowDirective} from './secure/administrator/identity/directive/authenticated-show.directive';
+import {NotAuthenticatedShowDirective} from './secure/administrator/identity/directive/not-authenticated-show.directive';
 import {SecurePage} from './secure/secure.page';
 import {ApplicantDashboardPage} from './secure/applicant/applicant-dashboard.page';
 import {AdministratorDashboardPage} from './secure/administrator/administrator-dashboard.page';
@@ -102,7 +101,6 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 
   declarations: [
     AppComponent,
-    MainComponent,
     LoginPage,
     HomePage,
     SecurePage,

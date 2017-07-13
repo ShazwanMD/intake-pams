@@ -1,4 +1,4 @@
-import { User } from './../../../../identity/user.interface';
+import { User } from '../../../administrator/identity/user.interface';
 import { AccountActions } from './../account.action';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -20,7 +20,7 @@ export class ChangePasswordDialog implements OnInit {
   private changePasswordForm: FormGroup;
   private edit: boolean = false;
   private _user: User;
-  
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -34,7 +34,7 @@ export class ChangePasswordDialog implements OnInit {
   set user(value: User) {
     this._user = value;
     this.edit = true;
-    
+
   }
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class ChangePasswordDialog implements OnInit {
       password: '',
       realName: '',
       email: '',
-  
+
     });
 
     if (this.edit) this.changePasswordForm.patchValue(this._user);

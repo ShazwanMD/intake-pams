@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {AdmissionActions} from './admission.action';
-import {AdmissionService} from '../../services/admission.service';
+import {AdmissionService} from '../../../../services/admission.service';
 
 @Injectable()
 export class AdmissionEffects {
