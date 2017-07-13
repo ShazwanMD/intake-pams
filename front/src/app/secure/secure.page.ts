@@ -17,8 +17,6 @@ export class SecurePage implements OnInit {
 
   ngOnInit(): void {
     this.authenticatedUser = this.authnService.authenticatedUser;
-    console.log(this.router.config);
-
   }
 
   logout(): void {
