@@ -48,6 +48,7 @@ import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.web.module.common.vo.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,10 +80,10 @@ public class ApplicantAccountController {
 
     @Autowired
     private IdentityTransformer identityTransformer;
-    
+
     @Autowired
     private ApplicationTransformer applicationTransformer;
-    
+
 //    @Autowired
 //    private AccountTransformer accountTransformer;
 
@@ -110,6 +111,8 @@ public class ApplicantAccountController {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
         if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
@@ -120,6 +123,8 @@ public class ApplicantAccountController {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
         if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant, InBidStatus.valueOf(bidStatus));
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
@@ -129,10 +134,12 @@ public class ApplicantAccountController {
     public ResponseEntity<Applicant> findApplicant() {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
-        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();         
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+
         return new ResponseEntity<Applicant>(identityTransformer.toApplicantVo(applicant), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/applicant", method = RequestMethod.POST)
     public ResponseEntity<String> updateApplicant(@RequestBody Applicant vo) {
         InApplicant applicant = identityService.findApplicantById(vo.getId());
@@ -141,51 +148,25 @@ public class ApplicantAccountController {
         applicant.setMobile(vo.getMobile());
         applicant.setName(vo.getEmail());
         applicant.setIdentityNo(vo.getIdentityNo());
-     //   applicant.setActorType(InActorType.get(vo.getActorType().ordinal()));
         identityService.updateApplicant(applicant);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
+
     // ==================================================================================================== //
     // USER
     // ==================================================================================================== //
-  
-//    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-//    public ResponseEntity<User> findUser(@PathVariable Long id) {
-//        return new ResponseEntity<User>(accountTransformer.toUserVo(identityService.findUserById(id)),HttpStatus.OK);           
-//    }
-//
-//    @RequestMapping(value = "/users", method = RequestMethod.POST)
-//    public ResponseEntity<String> saveUser(@RequestBody User vo) {
-//       dummyLogin();
-//        InUser user = new InUserImpl();
-//       // user.setName(vo.getName());
-//        user.setEmail(vo.getEmail());
-//        user.setPassword(vo.getPassword());
-//        user.setRealName(vo.getRealName());
-//        identityService.saveUser(user);
-//        return new ResponseEntity<String>("Success", HttpStatus.OK);
-//    }
 
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody User vo) {
-    	  dummyLogin();
-    	InUser user = identityService.findUserById(vo.getId());
-      //  user.setName(vo.getName());
+        InUser user = identityService.findUserById(vo.getId());
+        if (null == user) throw new IllegalArgumentException("User does not exists");
+
         user.setEmail(vo.getEmail());
         user.setRealName(vo.getRealName());
         user.setPassword(vo.getPassword());
         identityService.updateUser(user);
-        
+
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
-    private void dummyLogin() {
-     // Noop
-//      InAutoLoginToken token = new InAutoLoginToken("root");
-//      Authentication authed = authenticationManager.authenticate(token);
-//      SecurityContextHolder.getContext().setAuthentication(authed);
-  }
-
 }
 
