@@ -16,7 +16,7 @@ export function applicationContextReducer(state = INITIAL_APPLICATION_CONTEXT_ST
     case ApplicationContextActions.SET_ERROR_MESSAGE_SUCCESS: {
       return {hasError: true, errorMessage: action.payload};
     }
-    case ApplicationContextActions.REMOVE_ERROR_MESSAGE_SUCCESS : {
+    case ApplicationContextActions.RESET_ERROR_MESSAGE_SUCCESS : {
       return {hasError: false, errorMessage: undefined};
     }
     default: {

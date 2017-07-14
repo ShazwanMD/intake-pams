@@ -6,7 +6,7 @@ import {environment} from '../environments/environment';
 import {IntakeApplication} from '../app/shared/model/application/intake-application.interface';
 import {Applicant} from '../app/secure/administrator/identity/applicant.interface';
 import {Intake} from '../app/shared/model/policy/intake.interface';
-import { User } from "../app/secure/administrator/identity/user.interface";
+import {User} from '../app/secure/administrator/identity/user.interface';
 
 @Injectable()
 export class AccountService {
@@ -19,37 +19,43 @@ export class AccountService {
   findPublishedIntakes(): Observable<Intake[]> {
     console.log('findPublishedIntakes');
     return this._http.get(this.ACCOUNT_API + '/intakes/flowState/PUBLISHED  ')
-      .map((res: Response) => <Intake[]>res.json());
+      .map((res: Response) => <Intake[]>res.json())
+      .catch((error) => this.handleError(error));
   }
 
   findIntakeApplications(): Observable<IntakeApplication[]> {
     console.log('findIntakeApplications');
     return this._http.get(this.ACCOUNT_API + '/intakeApplications')
-      .map((res: Response) => <IntakeApplication[]>res.json());
+      .map((res: Response) => <IntakeApplication[]>res.json())
+      .catch((error) => this.handleError(error));
   }
 
   findDraftedIntakeApplications(): Observable<IntakeApplication[]> {
     console.log('findDraftedIntakeApplications');
     return this._http.get(this.ACCOUNT_API + '/intakeApplications/bidStatus/DRAFTED')
-      .map((res: Response) => <IntakeApplication[]>res.json());
+      .map((res: Response) => <IntakeApplication[]>res.json())
+      .catch((error) => this.handleError(error));
   }
 
   findSubmittedIntakeApplications(): Observable<IntakeApplication[]> {
     console.log('findSubmittedIntakeApplications');
     return this._http.get(this.ACCOUNT_API + '/intakeApplications/bidStatus/SUBMITTED')
-      .map((res: Response) => <IntakeApplication[]>res.json());
+      .map((res: Response) => <IntakeApplication[]>res.json())
+      .catch((error) => this.handleError(error));
   }
 
   updateApplicant(applicant: Applicant): Observable<String> {
     console.log('updateApplicant');
     return this._http.post(this.ACCOUNT_API + '/applicant', JSON.stringify(applicant))
-      .flatMap((res: Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()))
+      .catch((error) => this.handleError(error));
   }
 
   findApplicant(): Observable<Applicant> {
     console.log('findApplicant');
     return this._http.get(this.ACCOUNT_API + '/applicant')
-      .map((res: Response) => <Applicant>res.json());
+      .map((res: Response) => <Applicant>res.json())
+      .catch((error) => this.handleError(error));
   }
 
   findUser(): Observable<User[]> {
@@ -65,7 +71,16 @@ export class AccountService {
 
   updateUser(user: User): Observable<String> {
     return this._http.put(this.ACCOUNT_API + '/user/' + user.id, JSON.stringify(user))
-    .flatMap((res: Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  // ====================================================================================================
+  // PRIVATE METHODS
+  // ====================================================================================================
+
+  private handleError(error: Response | any) {
+    let body: any = error.json();
+    return Observable.throw(body);
   }
 }
 

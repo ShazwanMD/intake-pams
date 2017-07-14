@@ -13,8 +13,7 @@ export class ApplicationContextEffects {
     .map((action) => action.payload)
     .map((payload) => this.ctxActions.setErrorMessageSuccess(payload));
 
-  @Effect() removeErrorMessage$ = this.actions$
-    .ofType(ApplicationContextActions.REMOVE_ERROR_MESSAGE)
-    .map((action) => action.payload)
-    .map((payload) => this.ctxActions.removeErrorMessageSuccess());
+  @Effect() resetErrorMessage$ = this.actions$
+    .ofType(ApplicationContextActions.RESET_ERROR_MESSAGE)
+    .map(() => this.ctxActions.resetErrorMessageSuccess());
 }

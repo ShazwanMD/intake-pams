@@ -1,4 +1,4 @@
-import { Applicant } from './../../../administrator/identity/applicant.interface';
+import { Applicant } from '../../../administrator/identity/applicant.interface';
 import { Observable } from 'rxjs/Observable';
 
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
@@ -11,5 +11,6 @@ import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 })
 export class ApplicantComponent {
  @Input() applicant: Applicant;
-//   private applicant$: Observable<Applicant>;
+
+
 }
