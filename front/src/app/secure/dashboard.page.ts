@@ -2,6 +2,7 @@ import {
   Component, OnInit, OnDestroy, ViewChild, ViewContainerRef,
   ComponentFactoryResolver, ComponentFactory, ComponentRef,
 } from '@angular/core';
+import {Router} from '@angular/router';
 import {AuthorizationService} from '../../services/authorization.service';
 import {AdministratorDashboardPanel} from './administrator-dashboard.panel';
 import {ApplicantDashboardPanel} from './applicant-dashboard.panel';
@@ -17,7 +18,8 @@ export class DashboardPage implements OnInit, OnDestroy {
 
   constructor(private authzService: AuthorizationService,
               private viewContainerRef: ViewContainerRef,
-              private cfr: ComponentFactoryResolver) {
+              private cfr: ComponentFactoryResolver,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -27,7 +29,13 @@ export class DashboardPage implements OnInit, OnDestroy {
     } else if (this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(ApplicantDashboardPanel);
     }
-    this.componentRef = this.dashboardPanel.createComponent(componentFactory);
+
+    // handle null factory
+    if (componentFactory) {
+      this.componentRef = this.dashboardPanel.createComponent(componentFactory);
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
 
   ngOnDestroy(): void {

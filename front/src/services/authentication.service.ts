@@ -21,6 +21,10 @@ export class AuthenticationService {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
     console.log('token: ' + this.token);
+    // look at claims
+    this.parsedToken = this.parseToken();
+    this._roles = this.parsedToken.role.split(',');
+    console.log('role: ' + this._roles);
   }
 
   login(username: string, password: string): Observable<boolean> {

@@ -176,7 +176,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     AuthorizationGuard,
     Title,
     ApplicationContextActions,
-  ], // additional providers needed for this module
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

@@ -12,5 +12,4 @@ import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 export class ApplicantComponent {
  @Input() applicant: Applicant;
 
-
 }

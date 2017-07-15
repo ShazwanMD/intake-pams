@@ -10,42 +10,37 @@
   <md-card class="">
     <md-tab-group [selectedIndex]="0">
 
-
       <md-tab label="My Account">
-
         <md-nav-list>
-
           <pams-applicant
             [applicant]="applicant$ | async">
           </pams-applicant>
-
         </md-nav-list>
       </md-tab>
 
 
       <md-tab label="My Applications">
-
-
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-          <template let-item let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
+          <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not applied yet. Please take a look at open intakes</span></div>
+          <template let-application let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
             <div flex-md="50" flex-gt-md="33" layout="column">
               <md-card href class="md-card-colored" flex>
                 <md-card-header>
                   <img md-card-avatar src="https://source.unsplash.com/random/200x200">
-                  <md-card-title> INTAKE {{item.intake.startDate | date:'y'}}</md-card-title>
-                  <md-card-subtitle> {{item.intake.graduateCenter.code}} {{item.intake.programLevel.code}}
+                  <md-card-title> INTAKE {{application.intake.startDate | date:'y'}}</md-card-title>
+                  <md-card-subtitle> {{application.intake.graduateCenter.code}} {{application.intake.programLevel.code}}
                   </md-card-subtitle>
                 </md-card-header>
                 <img md-card-image src="https://source.unsplash.com/random/800x600">
                 <md-card-content>
                   <div layout="row" layout-padding>
-                    <p>{{item.bidStatus}}</p>
+                    <p>{{application.bidStatus}}</p>
                     <span flex></span>
-                    <button *ngIf="item.bidStatus === 'DRAFTED'"
-                            [routerLink]="['/secure/applicant/application/intake-application/', item.intake?.graduateCenter?.code.toLowerCase(), item.referenceNo]"
+                    <button *ngIf="application.bidStatus === 'DRAFTED'"
+                            [routerLink]="['/secure/applicant/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
                             md-button color="primary">Edit
                     </button>
-                    <button *ngIf="item.bidStatus === 'SUBMITTED'"
+                    <button *ngIf="application.bidStatus === 'SUBMITTED'"
                             [routerLink]="['/secure/applicant/application/intake-application/']" md-button
                             color="primary">Result
                     </button>
@@ -59,30 +54,29 @@
 
       <md-tab label="Open Intakes">
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-          <template let-item let-last="last" ngFor [ngForOf]="publishedIntakes$ | async ">
+          <div *ngIf="(publishedIntakes$ | async)?.length === 0"><span>There is no open intake at the moment. Please check again later</span></div>
+          <template let-intake let-last="last" ngFor [ngForOf]="publishedIntakes$ | async ">
             <div flex-md="50" flex-gt-md="33" layout="column">
               <md-card href class="md-card-colored" flex>
-                <!--<img md-card-avatar src="https://source.unsplash.com/random/200x200">-->
-                <md-card-title> INTAKE {{item.startDate | date:'y'}}</md-card-title>
-                <md-card-subtitle> {{item.graduateCenter.code}} {{item.programLevel.code}}</md-card-subtitle>
+                <md-card-title> INTAKE {{intake.startDate | date:'y'}}</md-card-title>
+                <md-card-subtitle> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle>
                 <img md-card-image src="https://source.unsplash.com/random/800x600">
                 <md-card-content>
                   <div fxLayout="row" fxLayoutAlign="space-around center">
                     <span flex></span>
                     <div>
                       <small class="bb"> From:</small>
-                      {{item.startDate | date:'EEEE d MMMM'}}
+                      {{intake.startDate | date:'EEEE d MMMM'}}
                       <span flex></span>
                     </div>
                     <div>
                       <small class="bb"> To:</small>
-                      {{item.endDate | date:'EEEE d MMMM'}}
+                      {{intake.endDate | date:'EEEE d MMMM'}}
                     </div>
                     <div>
-                      <button *ngIf="item.flowState === 'PUBLISHED'" [routerLink]="['/intakes-search']" md-button
+                      <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/intakes-search']" md-button
                               color="primary">Apply Now!
                       </button>
-                      <!--<div> {{item | json}} </div>-->
                     </div>
                   </div>
                 </md-card-content>
