@@ -8,7 +8,7 @@ const initialState: IntakeApplicationListState = <IntakeApplication[]>[];
 
 export function intakeApplicationListReducer(state = initialState, action: Action): IntakeApplicationListState {
   switch (action.type) {
-    case IntakeActions.FIND_INTAKE_APPLICATIONS_SUCCESS: {
+    case IntakeActions.FIND_INTAKE_APPLICATIONS_INTAKE_SUCCESS: {
       return action.payload;
     }
     default: {

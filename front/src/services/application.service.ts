@@ -61,6 +61,13 @@ export class ApplicationService {
       .map((res: Response) => <StudyModeOffering[]>res.json());
   }
 
+  findIntakeApplicationsByIntake(intake: Intake): Observable<IntakeApplication[]> {
+    console.log('findIntakeApplicationsByIntake');
+    return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/intakeApplications')
+      .map((res: Response) => <IntakeApplication[]>res.json());
+  }
+
+
   applyIntake(intake: Intake): Observable<IntakeApplication> {
     return this._http.post(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/apply', JSON.stringify(intake))
       .map((res: Response) => <IntakeApplication>res.json())
@@ -70,12 +77,6 @@ export class ApplicationService {
   // ====================================================================================================
   // INTAKE APPLICATION
   // ====================================================================================================
-
-  findIntakeApplications(): Observable<IntakeApplication[]> {
-    console.log('findIntakeApplications');
-    return this._http.get(this.APPLICATION_API + '/intakeApplications')
-      .map((res: Response) => <IntakeApplication[]>res.json());
-  }
 
   findIntakeApplicationByReferenceNo(referenceNo: string): Observable<IntakeApplication> {
     return this._http.get(this.APPLICATION_API + '/intakeApplication/' + referenceNo)

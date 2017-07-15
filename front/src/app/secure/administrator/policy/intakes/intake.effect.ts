@@ -83,10 +83,10 @@ export class IntakeEffects {
     .map((items) => this.intakeActions.findStudyModeOfferingsSuccess(items));
 
   @Effect() findIntakeApplications = this.actions$
-    .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
+    .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS_BY_INTAKE)
     .map((action) => action.payload)
-    .switchMap((intake) => this.applicationService.findIntakeApplications())
-    .map((applications) => this.intakeActions.findIntakeApplicationsSuccess(applications));
+    .switchMap((intake) => this.applicationService.findIntakeApplicationsByIntake(intake))
+    .map((applications) => this.intakeActions.findIntakeApplicationsByIntakeSuccess(applications));
 
   @Effect() findSelectedIntakeApplications = this.actions$
     .ofType(IntakeActions.FIND_SELECTED_INTAKE_APPLICATIONS)

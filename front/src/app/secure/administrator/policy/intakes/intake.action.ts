@@ -286,21 +286,21 @@ export class IntakeActions {
     };
   }
 
-  static FIND_INTAKE_APPLICATIONS = '[Intake] Find INTAKE APPLICATION ';
+  static FIND_INTAKE_APPLICATIONS_BY_INTAKE = '[Intake] Find Intake Application By Intake ';
 
   findIntakeApplications(intake): Action {
     return {
-      type: IntakeActions.FIND_INTAKE_APPLICATIONS,
+      type: IntakeActions.FIND_INTAKE_APPLICATIONS_BY_INTAKE,
       payload: intake,
     };
   }
 
-  static FIND_INTAKE_APPLICATIONS_SUCCESS = '[Intake] Find Intake Application Success';
+  static FIND_INTAKE_APPLICATIONS_INTAKE_SUCCESS = '[Intake] Find Intake Application By Intake Success';
 
-  findIntakeApplicationsSuccess(applications): Action {
-    console.log('findIntakeApplicationsSuccess');
+  findIntakeApplicationsByIntakeSuccess(applications): Action {
+    console.log('findIntakeApplicationsByIntakeSuccess');
     return {
-      type: IntakeActions.FIND_INTAKE_APPLICATIONS_SUCCESS,
+      type: IntakeActions.FIND_INTAKE_APPLICATIONS_INTAKE_SUCCESS,
       payload: applications,
     };
   }

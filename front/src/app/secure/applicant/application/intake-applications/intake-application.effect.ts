@@ -95,11 +95,6 @@ export class IntakeApplicationEffects {
   // INTAKE_APPLICATION
   // ====================================================================================================
 
-  @Effect() findIntakeApplications$ = this.actions$
-    .ofType(IntakeApplicationActions.FIND_INTAKE_APPLICATIONS)
-    .switchMap(() => this.applicationService.findIntakeApplications())
-    .map((applications) => this.intakeApplicationActions.findIntakeApplicationsSuccess(applications));
-
   @Effect() findIntakeApplicationByReferenceNo$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_REFERENCE_NO)
     .map((action) => action.payload)
@@ -151,10 +146,10 @@ export class IntakeApplicationEffects {
     .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message));
 
   @Effect() findSubmittedIntakeApplications$ = this.actions$
-    .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS)
+    .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS_BY_INTAKE)
     .map((action) => action.payload)
     .switchMap((intake) => this.applicationService.findSubmittedIntakeApplications(intake))
-    .map((applications) => this.intakeActions.findIntakeApplicationsSuccess(applications));
+    .map((applications) => this.intakeActions.findIntakeApplicationsByIntakeSuccess(applications));
 
   // ====================================================================================================
   // EDUCATION

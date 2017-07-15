@@ -117,7 +117,7 @@ public class ApplicationController {
                 HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications", method = RequestMethod.POST)
+    @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByIntake(@PathVariable String referenceNo) {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
@@ -173,18 +173,6 @@ public class ApplicationController {
     // INTAKE APPLICATION
     // ====================================================================================================
 
-    @RequestMapping(value = "/intakeApplications", method = RequestMethod.GET)
-    public ResponseEntity<List<IntakeApplication>> findIntakeApplications() {
-        // user & applicant
-        InUser currentUser = securityService.getCurrentUser();
-        InActor actor = currentUser.getActor();
-        InApplicant applicant = identityService.findApplicantById(actor.getId());
-        if (actor instanceof InApplicant)
-            applicant = (InApplicant) actor;
-        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
-        List<IntakeApplication> applicationVos = applicationTransformer.toIntakeApplicationVos(applications);
-        return new ResponseEntity<List<IntakeApplication>>(applicationVos, HttpStatus.OK);
-    }
 
     @RequestMapping(value = "/intakeApplication/{referenceNo}", method = RequestMethod.GET)
     public ResponseEntity<IntakeApplication> findIntakeApplicationByReferenceNo(@PathVariable String referenceNo) {
