@@ -112,7 +112,11 @@ public class WhenEnterRequiredInformation extends Stage<WhenEnterRequiredInforma
 //        applicant.setApplicantApplication(Collections.singletonList(intakeApplication));
 //        intakeApplication.setApplicant(applicant);
 
-        applicationService.applyIntake(intake, intakeApplication);
+        try {
+            applicationService.applyIntake(intake, intakeApplication);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return self();
     }

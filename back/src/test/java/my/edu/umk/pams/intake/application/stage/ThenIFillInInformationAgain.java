@@ -42,9 +42,13 @@ public class ThenIFillInInformationAgain extends Stage<ThenIFillInInformationAga
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setBidStatus(InBidStatus.DRAFTED);
-        applicationService.applyIntake(intake, intakeApplication);
-               
-		Assert.notNull(InBidStatus.DRAFTED, "application is not drafted");
+        try {
+            applicationService.applyIntake(intake, intakeApplication);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Assert.notNull(InBidStatus.DRAFTED, "application is not drafted");
 		LOG.debug("intake application status is: {}", intakeApplication.getBidStatus());
 
         return self();

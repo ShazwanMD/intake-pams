@@ -58,8 +58,12 @@ public class WhenIDeclareInternationalApplicant extends Stage<WhenIDeclareIntern
         intakeApplication.setPassportNo("A1234561240");
         intakeApplication.setPassportExpDate(Date.valueOf(LocalDate.of(2022, 10, 30)));
         intakeApplication.setVisaType(InVisaType.STUDENT);
-        applicationService.applyIntake(intake, intakeApplication);
-              
+        try {
+            applicationService.applyIntake(intake, intakeApplication);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return self();
     }
 }

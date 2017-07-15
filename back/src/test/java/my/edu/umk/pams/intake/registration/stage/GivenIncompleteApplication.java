@@ -69,7 +69,11 @@ public class GivenIncompleteApplication extends Stage<GivenIncompleteApplication
         application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
         application.setApplicant(applicant);
 
-        applicationService.applyIntake(intake, application);
+        try {
+            applicationService.applyIntake(intake, application);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return self();
     }
 

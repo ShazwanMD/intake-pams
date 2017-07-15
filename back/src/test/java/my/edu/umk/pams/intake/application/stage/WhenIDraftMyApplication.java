@@ -82,7 +82,11 @@ public class WhenIDraftMyApplication extends Stage<WhenIDraftMyApplication> {
         application.setResidencyCode(commonService.findResidencyCodeByCode("RESIDENT"));
         application.setApplicant(applicant);
 
-        applicationService.applyIntake(intake, application);
+        try {
+            applicationService.applyIntake(intake, application);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return self();
     }

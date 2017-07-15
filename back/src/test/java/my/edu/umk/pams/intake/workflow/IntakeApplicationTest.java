@@ -86,6 +86,10 @@ public class IntakeApplicationTest {
         InIntakeApplication application = new InIntakeApplicationImpl();
         application.setName(applicant.getName());
         application.setEmail(applicant.getEmail());
-        applicationService.applyIntake(intake, application);
+        try {
+            applicationService.applyIntake(intake, application);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

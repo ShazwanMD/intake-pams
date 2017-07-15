@@ -68,9 +68,13 @@ public class WhenIWantToFillInMultipleInformationOnMyHistoryOfEducation
         intakeApplication.setName("whatever");
         intakeApplication.setEmail("msyahrul@umk.edu.my");
         intakeApplication.setReferenceNo(referenceNo);
-        applicationService.applyIntake(intake, intakeApplication);
-		
-		return self();
+        try {
+            applicationService.applyIntake(intake, intakeApplication);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return self();
 	}
 
 }

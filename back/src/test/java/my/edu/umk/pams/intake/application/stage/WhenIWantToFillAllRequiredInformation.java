@@ -61,7 +61,11 @@ public class WhenIWantToFillAllRequiredInformation extends Stage<WhenIWantToFill
         application.setEmail("dummyjohn@gmail.com");
         application.setPhone("0111020202");
         application.setBidStatus(InBidStatus.NEW);
-        applicationService.applyIntake(intake, application);
+        try {
+            applicationService.applyIntake(intake, application);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return self();
     }

@@ -62,7 +62,11 @@ public class WhenIFillProcessingApplication extends Stage<WhenIFillProcessingApp
         intakeApplication.setPhone("0111020202");
         intakeApplication.setOkuNo("S12223214");
         intakeApplication.setBidStatus(InBidStatus.SELECTED);
-        applicationService.applyIntake(intake, intakeApplication);
+        try {
+            applicationService.applyIntake(intake, intakeApplication);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return self();
     }
