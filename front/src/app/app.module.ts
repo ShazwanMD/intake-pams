@@ -72,7 +72,7 @@ const httpInterceptorProviders: Type<any>[] = [
 ];
 
 // state
-interface ApplicationState {
+export interface ApplicationState {
   applicationContextState: ApplicationContextState;
   commonModuleState: CommonModuleState;
   policyModuleState: PolicyModuleState;

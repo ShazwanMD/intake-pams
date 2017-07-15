@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
+import {Store, Action, Dispatcher} from '@ngrx/store';
 import {Http, Response} from '@angular/http';
 import {Headers} from '@angular/http';
-import {tokenNotExpired} from 'angular2-jwt';
+import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import {environment} from '../environments/environment';
 import {AuthenticatedUser} from '../app/shared/model/identity/authenticated-user.interface';
+import {ApplicationState} from '../app/app.module';
 
 /**
  */
@@ -14,17 +16,21 @@ export class AuthenticationService {
 
   private _roles: string[];
   private _authenticatedUser: AuthenticatedUser;
+  private jwtHelper: JwtHelper = new JwtHelper();
   public token: string;
   public parsedToken: any;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private store: Store<ApplicationState>) {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
-    console.log('token: ' + this.token);
+    console.log('ctor:currentUser: ' + currentUser);
+    console.log('ctor:token: ' + this.token);
+
     // look at claims
-    this.parsedToken = this.parseToken();
-    this._roles = this.parsedToken.role.split(',');
-    console.log('role: ' + this._roles);
+    if (currentUser) {
+      this.parseRoles();
+    }
   }
 
   login(username: string, password: string): Observable<boolean> {
@@ -43,9 +49,7 @@ export class AuthenticationService {
           localStorage.setItem('currentUser', JSON.stringify({username: username, token: token}));
 
           // look at claims
-          this.parsedToken = this.parseToken();
-          this._roles = this.parsedToken.role.split(',');
-          console.log('role: ' + this._roles);
+          this.parseRoles();
 
           // return true to indicate successful login
           return true;
@@ -54,15 +58,9 @@ export class AuthenticationService {
           return false;
         }
       })
-    ;
+      ;
   }
 
-  parseToken(): any {
-    let base64Url: string = this.token.split('.')[1];
-    let base64: string = base64Url.replace('-', '+').replace('_', '/');
-    console.log('token: ' + JSON.stringify(JSON.parse(window.atob(base64))));
-    return JSON.parse(window.atob(base64));
-  }
 
   logout(): void {
     // clear token remove user from local
@@ -72,10 +70,20 @@ export class AuthenticationService {
     localStorage.clear();
     this.authenticatedUser = undefined;
     // todo: clear store by dispatching init
+    // todo:
+    // this.store.dispatch(<Action>{type: Dispatcher.INIT});
+  }
+
+  parseRoles(): void {
+    this.parsedToken = this.jwtHelper.decodeToken(this.token);
+    this._roles = this.parsedToken.role.split(',');
+    console.log('role: ' + this._roles);
   }
 
   isLoggedIn(): boolean {
-    return tokenNotExpired('currentUser');
+    let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser && currentUser.token;
+    return !this.jwtHelper.isTokenExpired(this.token);
   }
 
   currentUsername(): any {

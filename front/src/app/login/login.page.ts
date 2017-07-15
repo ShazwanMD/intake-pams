@@ -28,9 +28,13 @@ export class LoginPage {
     this.authnService.login(this.username, this.password)
       .subscribe((result: boolean) => {
         if (result === true) {
+          console.log('LoginPage: ' + result);
           // login successful
           this.populateUser();
           this.populatePermission();
+          // navigate to secure area
+          console.log('to secure page');
+          this.router.navigate(['/secure']);
         } else {
           // login failed
           // this.error = 'Username or password is incorrect';
@@ -39,6 +43,7 @@ export class LoginPage {
   }
 
   populateUser(): void {
+    console.log('populate user');
     this.systemService.findAuthenticatedUser()
       .map((user: AuthenticatedUser) => {
         this.authnService.authenticatedUser = user;
@@ -48,6 +53,7 @@ export class LoginPage {
   }
 
   populatePermission(): void {
+    console.log('populate permission');
     this.authnService.roles.forEach((role: string) => {
       this.authzService.attachRole(role);
     });
@@ -61,8 +67,6 @@ export class LoginPage {
           this.authzService.addAbility('ROLE_USER', 'VIEW_' + module.code);
         }
 
-        // navigate to secure area
-        this.router.navigate(['/secure']);
       })
       .toPromise();
 
