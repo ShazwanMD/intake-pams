@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {DunCode} from '../../shared/model/common/dun-code.interface';
-import {SetupActions} from '../../secure/administrator/setup/setup.action';
+import {SetupActions} from '../../secure/setup/setup.action';
 
 export type DunCodeListState = DunCode[];
 

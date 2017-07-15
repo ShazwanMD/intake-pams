@@ -2,7 +2,7 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit,
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
-import {AttachmentCreatorDialog} from './dialog/attachment-creator.dialog';
+import {AttachmentCreatorDialog} from '../dialog/attachment-creator.dialog';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
 import {Attachment} from '../../../../shared/model/application/attachment.interface';

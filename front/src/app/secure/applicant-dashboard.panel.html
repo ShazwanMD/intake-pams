@@ -37,11 +37,11 @@
                     <p>{{application.bidStatus}}</p>
                     <span flex></span>
                     <button *ngIf="application.bidStatus === 'DRAFTED'"
-                            [routerLink]="['/secure/applicant/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
+                            [routerLink]="['/secure/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
                             md-button color="primary">Edit
                     </button>
                     <button *ngIf="application.bidStatus === 'SUBMITTED'"
-                            [routerLink]="['/secure/applicant/application/intake-application/']" md-button
+                            [routerLink]="['/secure/application/intake-application/']" md-button
                             color="primary">Result
                     </button>
                   </div>

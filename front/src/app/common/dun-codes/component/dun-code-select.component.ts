@@ -3,8 +3,8 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {DunCode} from '../../../shared/model/common/dun-code.interface';
-import {SetupModuleState} from '../../../secure/administrator/setup/index';
-import {SetupActions} from '../../../secure/administrator/setup/setup.action';
+import {SetupModuleState} from '../../../secure/setup/index';
+import {SetupActions} from '../../../secure/setup/setup.action';
 
 @Component({
   selector: 'pams-dun-code-select',

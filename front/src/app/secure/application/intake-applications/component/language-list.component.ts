@@ -1,4 +1,4 @@
-import {LanguageEditorDialog} from './dialog/language-editor.dialog';
+import {LanguageEditorDialog} from '../dialog/language-editor.dialog';
 import {Language} from '../../../../shared/model/application/language.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';

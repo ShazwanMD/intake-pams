@@ -1,4 +1,4 @@
-import {BachelorResultEditorDialog} from './dialog/bachelor-result-editor.dialog';
+import {BachelorResultEditorDialog} from '../dialog/bachelor-result-editor.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';

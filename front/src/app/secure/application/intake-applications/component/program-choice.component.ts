@@ -1,14 +1,14 @@
-import {SupervisorOfferingSelectorDialog} from './dialog/supervisor-offering-selector.dialog';
+import {SupervisorOfferingSelectorDialog} from '../dialog/supervisor-offering-selector.dialog';
 import {Referee} from '../../../../shared/model/application/referee.interface';
 import {Component, Input, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
-import {RefereeEditorDialog} from './dialog/referee-editor.dialog';
+import {RefereeEditorDialog} from '../dialog/referee-editor.dialog';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
-import {ProgramOfferingSelectorDialog} from './dialog/program-offering-selector.dialog';
-import {StudyModeOfferingSelectorDialog} from './dialog/study-mode-offering-selector.dialog';
+import {ProgramOfferingSelectorDialog} from '../dialog/program-offering-selector.dialog';
+import {StudyModeOfferingSelectorDialog} from '../dialog/study-mode-offering-selector.dialog';
 
 @Component({
   selector: 'pams-program-choice',

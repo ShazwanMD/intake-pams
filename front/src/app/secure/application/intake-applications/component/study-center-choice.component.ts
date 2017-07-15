@@ -7,8 +7,8 @@ import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
-import {StudyModeOfferingSelectorDialog} from './dialog/study-mode-offering-selector.dialog';
-import {ProgramOfferingSelectorDialog} from './dialog/program-offering-selector.dialog';
+import {StudyModeOfferingSelectorDialog} from '../dialog/study-mode-offering-selector.dialog';
+import {ProgramOfferingSelectorDialog} from '../dialog/program-offering-selector.dialog';
 
 @Component({
   selector: 'pams-study-center-choice',

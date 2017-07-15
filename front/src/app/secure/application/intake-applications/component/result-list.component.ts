@@ -1,7 +1,7 @@
-import { StpmResultEditorDialog } from './dialog/stpm-result-editor.dialog';
-import { DiplomaResultEditorDialog } from './dialog/diploma-result-editor.dialog';
-import { SpmResultEditorDialog } from './dialog/spm-result-editor.dialog';
-import { BachelorResultEditorDialog } from './dialog/bachelor-result-editor.dialog';
+import { StpmResultEditorDialog } from '../dialog/stpm-result-editor.dialog';
+import { DiplomaResultEditorDialog } from '../dialog/diploma-result-editor.dialog';
+import { SpmResultEditorDialog } from '../dialog/spm-result-editor.dialog';
+import { BachelorResultEditorDialog } from '../dialog/bachelor-result-editor.dialog';
 import { Result } from '../../../../shared/model/application/result.interface';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef } from '@angular/core';
 import { IntakeApplicationActions } from '../intake-application.action';

@@ -1,4 +1,4 @@
-import { Applicant } from '../../administrator/identity/applicant.interface';
+import { Applicant } from '../../identity/applicant.interface';
 import { Observable } from 'rxjs/Observable';
 
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';

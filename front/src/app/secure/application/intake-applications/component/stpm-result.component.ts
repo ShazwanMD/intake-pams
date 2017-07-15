@@ -1,4 +1,4 @@
-import {StpmResultEditorDialog} from './dialog/stpm-result-editor.dialog';
+import {StpmResultEditorDialog} from '../dialog/stpm-result-editor.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';

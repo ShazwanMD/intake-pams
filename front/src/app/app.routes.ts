@@ -3,15 +3,15 @@ import {Routes, RouterModule} from '@angular/router';
 import {LoginPage} from './login/login.page';
 import {HomePage} from './home/home.page';
 import {registrationModuleRoutes} from './registration/registration-module.routes';
-import {policyModuleRoutes} from './secure/administrator/policy/policy-module.routes';
-import {admissionModuleRoutes} from './secure/administrator/admission/admission-module.routes';
+import {policyModuleRoutes} from './secure/policy/policy-module.routes';
+import {admissionModuleRoutes} from './secure/admission/admission-module.routes';
 import {centerModuleRoutes} from './center/center-module.routes';
 import {ForgetPasswordPage} from './login/forget-password.page';
 import {applicationModuleRoutes} from './secure/application/application-module.routes';
 import {SecurePage} from './secure/secure.page';
-import {AuthenticationGuard} from './secure/administrator/identity/guard/authentication.guard';
+import {AuthenticationGuard} from './secure/identity/guard/authentication.guard';
 import {DashboardPage} from './secure/dashboard.page';
-import {setupModuleRoutes} from './secure/administrator/setup/setup-module.routes';
+import {setupModuleRoutes} from './secure/setup/setup-module.routes';
 
 const routes: Routes = [
     {path: 'login', component: LoginPage},

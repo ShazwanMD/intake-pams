@@ -1,4 +1,4 @@
-import { User } from '../../administrator/identity/user.interface';
+import { User } from '../../identity/user.interface';
 import { AccountActions } from '../account.action';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';

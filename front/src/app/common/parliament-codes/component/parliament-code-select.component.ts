@@ -3,8 +3,8 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {ParliamentCode} from '../../../shared/model/common/parliament-code.interface';
-import {SetupModuleState} from '../../../secure/administrator/setup/index';
-import {SetupActions} from '../../../secure/administrator/setup/setup.action';
+import {SetupModuleState} from '../../../secure/setup/index';
+import {SetupActions} from '../../../secure/setup/setup.action';
 
 @Component({
   selector: 'pams-parliament-code-select',

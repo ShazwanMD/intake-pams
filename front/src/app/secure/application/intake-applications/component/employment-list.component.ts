@@ -5,7 +5,7 @@ import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {EmploymentEditorDialog} from './dialog/employment-editor.dialog';
+import {EmploymentEditorDialog} from '../dialog/employment-editor.dialog';
 
 @Component({
   selector: 'pams-employment-list',

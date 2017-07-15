@@ -12,11 +12,11 @@ import {EffectsModule} from '@ngrx/effects';
 import {IntakeApplicationEffects} from './intake-application.effect';
 import {IntakeApplicationActions} from './intake-application.action';
 import {IntakeDetailPage} from './intake-detail.page';
-import {EducationCreatorDialog} from './component/dialog/education-creator.dialog';
+import {EducationCreatorDialog} from './dialog/education-creator.dialog';
 import {CommonModule} from '../../../common/index';
-import {ProgramLevelSubModule} from '../../administrator/policy/program-levels/index';
+import {ProgramLevelSubModule} from '../../policy/program-levels/index';
 import {MyIntakeApplicationPage} from './my-intake-application.page';
-import {ProgramOfferingSelectorDialog} from './component/dialog/program-offering-selector.dialog';
+import {ProgramOfferingSelectorDialog} from './dialog/program-offering-selector.dialog';
 import {PipeModule} from '../../../app.pipe.module';
 
 @NgModule({

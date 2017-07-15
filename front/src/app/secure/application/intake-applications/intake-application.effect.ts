@@ -9,7 +9,7 @@ import {ApplicationModuleState} from '../index';
 import {Observable} from 'rxjs';
 import {Intake} from '../../../shared/model/policy/intake.interface';
 import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
-import {IntakeActions} from '../../administrator/policy/intakes/intake.action';
+import {IntakeActions} from '../../policy/intakes/intake.action';
 import {ApplicationContextActions} from "../../../application-context.action";
 
 @Injectable()
@@ -59,7 +59,7 @@ export class IntakeApplicationEffects {
     .map((action) => action.payload)
     .switchMap((intake) => this.applicationService.applyIntake(intake))
     // .catch((error) => this.ctxActions.setErrorMessage(error))
-    // .do((referenceNo: string) => this.router.navigate(['/secure/applicant/intake-applications', referenceNo])).ignoreElements();
+    // .do((referenceNo: string) => this.router.navigate(['/secure/intake-applications', referenceNo])).ignoreElements();
 
   // ====================================================================================================
   // PROGRAM_OFFERING

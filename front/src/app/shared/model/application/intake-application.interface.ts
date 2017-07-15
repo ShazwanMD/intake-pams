@@ -8,7 +8,7 @@ import {RaceCode} from '../common/race-code.interface';
 import {ReligionCode} from '../common/religion-code.interface';
 import {StudyCenterCode} from '../common/study-center-code.interface';
 import {Intake} from '../policy/intake.interface';
-import {Applicant} from '../../../secure/administrator/identity/applicant.interface';
+import {Applicant} from '../../../secure/identity/applicant.interface';
 import {ProgramOffering} from '../policy/program-offering.interface';
 import {SupervisorOffering} from '../policy/supervisor-offering.interface';
 import {StudyModeOffering} from '../policy/study-mode-offering.interface';

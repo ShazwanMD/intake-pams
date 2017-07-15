@@ -1,6 +1,6 @@
 import { ChangePasswordDialog } from './dialog/change-password.dialog';
 import { ApplicantComponent } from './component/applicant.component';
-import { Applicant } from '../administrator/identity/applicant.interface';
+import { Applicant } from '../identity/applicant.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';

@@ -28,11 +28,11 @@ import {
   PolicyModuleState,
   INITIAL_POLICY_STATE,
   policyModuleReducers,
-} from './secure/administrator/policy/index';
+} from './secure/policy/index';
 import {
   AdmissionModuleState, INITIAL_ADMISSION_STATE, admissionModuleReducers,
   AdmissionModule,
-} from './secure/administrator/admission/index';
+} from './secure/admission/index';
 import {
   RegistrationModule, registrationModuleReducers, RegistrationModuleState,
   INITIAL_REGISTRATION_STATE,
@@ -44,11 +44,11 @@ import {environment} from '../environments/environment';
 import {AuthenticationService} from '../services/authentication.service';
 import {AuthorizationService} from '../services/authorization.service';
 import {SystemService} from '../services/system.service';
-import {AuthenticationGuard} from './secure/administrator/identity/guard/authentication.guard';
-import {AuthorizationGuard} from './secure/administrator/identity/guard/authorization.guard';
-import {AuthorizedShowDirective} from './secure/administrator/identity/directive/authorized-show.directive';
-import {AuthenticatedShowDirective} from './secure/administrator/identity/directive/authenticated-show.directive';
-import {NotAuthenticatedShowDirective} from './secure/administrator/identity/directive/not-authenticated-show.directive';
+import {AuthenticationGuard} from './secure/identity/guard/authentication.guard';
+import {AuthorizationGuard} from './secure/identity/guard/authorization.guard';
+import {AuthorizedShowDirective} from './secure/identity/directive/authorized-show.directive';
+import {AuthenticatedShowDirective} from './secure/identity/directive/authenticated-show.directive';
+import {NotAuthenticatedShowDirective} from './secure/identity/directive/not-authenticated-show.directive';
 import {SecurePage} from './secure/secure.page';
 import {AccountService} from '../services/account.service';
 import {
@@ -64,7 +64,7 @@ import {ApplicationContextEffects} from './application-context.effect';
 import {DashboardPage} from './secure/dashboard.page';
 import {ApplicantDashboardPanel} from './secure/applicant-dashboard.panel';
 import {AdministratorDashboardPanel} from './secure/administrator-dashboard.panel';
-import {SetupModule} from "./secure/administrator/setup/index";
+import {SetupModule} from "./secure/setup/index";
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [

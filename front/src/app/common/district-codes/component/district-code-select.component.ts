@@ -3,8 +3,8 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {DistrictCode} from '../../../shared/model/common/district-code.interface';
-import {SetupModuleState} from '../../../secure/administrator/setup/index';
-import {SetupActions} from '../../../secure/administrator/setup/setup.action';
+import {SetupModuleState} from '../../../secure/setup/index';
+import {SetupActions} from '../../../secure/setup/setup.action';
 
 @Component({
   selector: 'pams-district-code-select',
@@ -30,4 +30,4 @@ export class DistrictCodeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {DistrictCode} from "../../shared/model/common/district-code.interface";
-import {SetupActions} from "../../secure/administrator/setup/setup.action";
+import {SetupActions} from "../../secure/setup/setup.action";
 
 
 export type DistrictCodeListState = DistrictCode[];
