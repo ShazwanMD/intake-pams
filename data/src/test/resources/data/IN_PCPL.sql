@@ -189,7 +189,82 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'bursary'), 1, 1, CURRENT_TIMESTAMP);																					 
-		
+
+
+-- GROUP FACULTY
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A01', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A01'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A02', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A02'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A03', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A03'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A04', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A04'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A05', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A05'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A06', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A06'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A07', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A07'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A08', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A08'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A09', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A09'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A10', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A10'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A11', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A11'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A12', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A12'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A13', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A13'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_B010205', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_MGT'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_B010205'), 1, 1, CURRENT_TIMESTAMP);
+
+
+
 -- APPLICANT
 INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_APCN', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
