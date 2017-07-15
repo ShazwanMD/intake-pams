@@ -7,7 +7,7 @@ import {policyModuleRoutes} from './secure/administrator/policy/policy-module.ro
 import {admissionModuleRoutes} from './secure/administrator/admission/admission-module.routes';
 import {centerModuleRoutes} from './center/center-module.routes';
 import {ForgetPasswordPage} from './login/forget-password.page';
-import {applicationModuleRoutes} from './secure/applicant/application/application-module.routes';
+import {applicationModuleRoutes} from './secure/application/application-module.routes';
 import {SecurePage} from './secure/secure.page';
 import {AuthenticationGuard} from './secure/administrator/identity/guard/authentication.guard';
 import {DashboardPage} from './secure/dashboard.page';

@@ -39,7 +39,7 @@ import {IntakeUpdaterDialog} from './dialog/intake-updater.dialog';
 import {IntakeEvaluateTaskPanel} from './panel/intake-evaluate-task.panel';
 import {ApplicantProfileDialog} from './dialog/applicant-profile.dialog';
 import {IntakeApplicationEvaluateListComponent} from './component/intake-application-evaluate-list.component';
-import {CpsIntakeApplicationSubModule} from '../../../applicant/application/intake-applications/cps/index';
+import {CpsIntakeApplicationSubModule} from '../../../application/intake-applications/cps/index';
 import {PipeModule} from '../../../../app.pipe.module';
 import {ApplicantProfileRejectDialog} from './dialog/applicant-profile-reject.dialog';
 import {IntakeApplicationSubmittedListComponent} from './component/intake-application-submitted-list.component';

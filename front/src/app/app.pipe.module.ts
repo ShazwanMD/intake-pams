@@ -1,6 +1,6 @@
 import {NgModule}      from '@angular/core';
 import {FlowStatePipe} from './core/flow-state.pipe';
-import {BidStatusPipe} from './secure/applicant/application/intake-applications/bid-status.pipe';
+import {BidStatusPipe} from './secure/application/intake-applications/bid-status.pipe';
 
 @NgModule({
   imports: [],

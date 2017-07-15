@@ -7,8 +7,8 @@ import {IntakeApplication} from '../../../../../shared/model/application/intake-
 import {Employment} from '../../../../../shared/model/application/employment.interface';
 import {Language} from '../../../../../shared/model/application/language.interface';
 import {Referee} from '../../../../../shared/model/application/referee.interface';
-import {IntakeApplicationActions} from '../../../../applicant/application/intake-applications/intake-application.action';
-import {ApplicationModuleState} from '../../../../applicant/application/index';
+import {IntakeApplicationActions} from '../../../../application/intake-applications/intake-application.action';
+import {ApplicationModuleState} from '../../../../application/index';
 import {MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog} from '@angular/material';
 import {ApplicantProfileRejectDialog} from './applicant-profile-reject.dialog';
 import {IntakeActions} from '../intake.action';

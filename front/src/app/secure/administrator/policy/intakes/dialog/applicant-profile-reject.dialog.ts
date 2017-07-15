@@ -3,8 +3,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {IntakeApplication} from '../../../../../shared/model/application/intake-application.interface';
-import {IntakeApplicationActions} from '../../../../applicant/application/intake-applications/intake-application.action';
-import {ApplicationModuleState} from '../../../../applicant/application/index';
+import {IntakeApplicationActions} from '../../../../application/intake-applications/intake-application.action';
+import {ApplicationModuleState} from '../../../../application/index';
 import {MdSnackBar, MdDialogRef, MdDialogConfig} from '@angular/material';
 
 @Component({

@@ -22,7 +22,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {
   ApplicationModule, ApplicationModuleState, INITIAL_APPLICATION_STATE,
   applicationModuleReducers,
-} from './secure/applicant/application/index';
+} from './secure/application/index';
 import {
   PolicyModule,
   PolicyModuleState,
@@ -54,7 +54,7 @@ import {AccountService} from '../services/account.service';
 import {
   AccountModule, accountModuleReducers, AccountModuleState,
   INITIAL_ACCOUNT_STATE,
-} from './secure/applicant/account/index';
+} from './secure/account/index';
 import {
   applicationContextReducer, ApplicationContextState,
   INITIAL_APPLICATION_CONTEXT_STATE,

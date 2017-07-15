@@ -6,9 +6,9 @@ import {MdDialogConfig, MdDialogRef, MdDialog} from '@angular/material';
 import {IntakeApplication} from '../shared/model/application/intake-application.interface';
 import {Intake} from '../shared/model/policy/intake.interface';
 import {Applicant} from './administrator/identity/applicant.interface';
-import {ChangePasswordDialog} from './applicant/account/dialog/change-password.dialog';
-import {ApplicationModuleState} from './applicant/application/index';
-import {AccountActions} from './applicant/account/account.action';
+import {ChangePasswordDialog} from './account/dialog/change-password.dialog';
+import {ApplicationModuleState} from './application/index';
+import {AccountActions} from './account/account.action';
 
 @Component({
   selector: 'pams-applicant-dashboard-panel',
