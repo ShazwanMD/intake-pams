@@ -210,7 +210,6 @@ export const setupModuleReducers = {
     CommonModule.forRoot(),
     IntakeSessionSubModule.forRoot(),
     EffectsModule.run(SetupEffects),
-
   ],
   declarations: [
     // page
