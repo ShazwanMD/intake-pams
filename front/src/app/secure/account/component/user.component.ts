@@ -1,14 +1,11 @@
 import { AccountActions } from './../account.action';
-import { Applicant } from '../../identity/applicant.interface';
-import { Observable } from 'rxjs/Observable';
 
 import { Component, Input, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
-import { MdDialogRef, MdDialogConfig, MdDialog } from "@angular/material";
-import { ChangePasswordEditorDialog } from "../dialog/change-password-editor.dialog";
-import { Store } from "@ngrx/store";
-import { AccountModuleState } from "../index";
-import { User } from "../../identity/user.interface";
-
+import { MdDialogRef, MdDialogConfig, MdDialog } from '@angular/material';
+import { PasswordChangerDialog } from '../dialog/password-changer.dialog';
+import { Store } from '@ngrx/store';
+import { AccountModuleState } from '../index';
+import { User } from '../../identity/user.interface';
 
 @Component({
   selector: 'pams-user',
@@ -17,8 +14,7 @@ import { User } from "../../identity/user.interface";
 })
 export class UserComponent {
 
-
- private editorDialogRef: MdDialogRef<ChangePasswordEditorDialog>;
+ private editorDialogRef: MdDialogRef<PasswordChangerDialog>;
  @Input() user: User;
 
   constructor(private actions: AccountActions,
@@ -26,7 +22,6 @@ export class UserComponent {
               private store: Store<AccountModuleState>,
               private dialog: MdDialog) {
   }
- 
 
   editDialog(): void {
     console.log('editDialog');
@@ -36,7 +31,7 @@ export class UserComponent {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(ChangePasswordEditorDialog, config);
+    this.editorDialogRef = this.dialog.open(PasswordChangerDialog, config);
     this.editorDialogRef.componentInstance.user = this.user;
     this.editorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
@@ -44,5 +39,4 @@ export class UserComponent {
     });
   }
 }
-
 

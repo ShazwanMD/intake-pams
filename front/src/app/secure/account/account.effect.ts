@@ -70,10 +70,10 @@ export class AccountEffects {
     .switchMap((payload) => this.accountService.updateUser(payload))
     .map((message) => this.accountActions.updateUserSuccess(message));
 
-  @Effect() updateUserPassword$ = this.actions$
-    .ofType(AccountActions.UPDATE_USER_PASSWORD)
+  @Effect() changeUserPassword$ = this.actions$
+    .ofType(AccountActions.CHANGE_USER_PASSWORD)
     .map((action) => action.payload)
-    .switchMap((payload) => this.accountService.updateUserPassword(payload))
-    .map((message) => this.accountActions.updateUserPasswordSuccess(message));
+    .switchMap((payload) => this.accountService.changeUserPassword(payload))
+    .map((message) => this.accountActions.changeUserPasswordSuccess(message));
 }
 

@@ -9,43 +9,36 @@ import {MdDialogRef} from '@angular/material';
 import {AccountModuleState} from '../index';
 
 @Component({
-  selector: 'pams-change-password-editor',
-  templateUrl: './change-password-editor.dialog.html',
+  selector: 'pams-password-changer',
+  templateUrl: './password-changer.dialog.html',
 })
 
-export class ChangePasswordEditorDialog implements OnInit {
+export class PasswordChangerDialog implements OnInit {
 
   private changePasswordForm: FormGroup;
-  private edit: boolean = false;
   private _user: User;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<ChangePasswordEditorDialog>,
+  constructor(private formBuilder: FormBuilder,
+              private dialog: MdDialogRef<PasswordChangerDialog>,
               private store: Store<AccountModuleState>,
               private actions: AccountActions) {
   }
 
   set user(value: User) {
     this._user = value;
-    this.edit = true;
   }
 
   ngOnInit(): void {
     this.changePasswordForm = this.formBuilder.group({
-      user: [undefined],
       currentPassword: ['', Validators.required],
       newPassword: ['', Validators.required],
+      newPasswordAgain: ['', Validators.required],
     });
-
-    this.changePasswordForm.patchValue(this._user);
   }
 
   submit(change: PasswordChange, valid: boolean): void {
-    console.log('submit password change: ', change.user);
-    this.store.dispatch(this.actions.updateUserPassword(change));
+    console.log('submit password change: ', change);
+    this.store.dispatch(this.actions.changeUserPassword(change));
     this.dialog.close();
   }
 }

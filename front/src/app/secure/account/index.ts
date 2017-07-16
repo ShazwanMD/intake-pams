@@ -1,7 +1,7 @@
-import { UserComponent } from './component/user.component';
-import { User } from './../identity/user.interface';
-import { ApplicantComponent } from './component/applicant.component';
-import { Applicant } from '../identity/applicant.interface';
+import {UserComponent} from './component/user.component';
+import {User} from './../identity/user.interface';
+import {ApplicantComponent} from './component/applicant.component';
+import {Applicant} from '../identity/applicant.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -27,7 +27,7 @@ import {IntakeApplication} from '../../shared/model/application/intake-applicati
 import {AccountActions} from './account.action';
 import {AccountEffects} from './account.effect';
 import {EffectsModule} from '@ngrx/effects';
-import { ChangePasswordEditorDialog } from "./dialog/change-password-editor.dialog";
+import {PasswordChangerDialog} from './dialog/password-changer.dialog';
 
 export interface AccountModuleState {
   user: UserState;
@@ -37,16 +37,16 @@ export interface AccountModuleState {
 }
 
 export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
-  user:<User>{},
-  applicant:<Applicant>{},
+  user: <User>{},
+  applicant: <Applicant>{},
   publishedIntakes: <Intake[]>[],
   intakeApplications: <IntakeApplication[]>[],
 
 };
 
 export const accountModuleReducers = {
-  user:userReducer,
-  applicant:applicantReducer,
+  user: userReducer,
+  applicant: applicantReducer,
   publishedIntakes: publishedIntakeListReducer,
   intakeApplications: intakeApplicationListReducer,
 };
@@ -62,7 +62,7 @@ export const accountModuleReducers = {
   declarations: [
     ApplicantComponent,
     UserComponent,
-    ChangePasswordEditorDialog,
+    PasswordChangerDialog,
 
   ],
   exports: [
@@ -71,7 +71,7 @@ export const accountModuleReducers = {
   ],
 
   entryComponents: [
-    ChangePasswordEditorDialog,
+    PasswordChangerDialog,
   ],
 })
 export class AccountModule {

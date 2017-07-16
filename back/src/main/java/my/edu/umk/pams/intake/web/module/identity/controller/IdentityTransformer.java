@@ -71,12 +71,13 @@ public class IdentityTransformer {
         else return null;
     }
     
-    public User toUserVo(InUser User) {
+    public User toUserVo(InUser user) {
         User m = new User();
-        m.setId(User.getId());
-        m.setPassword(User.getPassword());
-        m.setRealName(User.getRealName());
-        m.setEmail(User.getEmail());
+        m.setId(user.getId());
+        m.setName(user.getName());
+        m.setPassword(user.getPassword());
+        m.setRealName(user.getRealName());
+        m.setEmail(user.getEmail());
     
         return m;
     }

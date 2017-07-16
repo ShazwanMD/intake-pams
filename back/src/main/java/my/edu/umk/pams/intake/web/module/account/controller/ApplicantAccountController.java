@@ -145,7 +145,7 @@ public class ApplicantAccountController {
     public ResponseEntity<String> updateApplicant(@RequestBody Applicant vo) {
         InApplicant applicant = identityService.findApplicantById(vo.getId());
         applicant.setEmail(vo.getEmail());
-        
+
         applicant.setFax(vo.getFax());
         applicant.setMobile(vo.getMobile());
         applicant.setName(vo.getEmail());
@@ -167,10 +167,10 @@ public class ApplicantAccountController {
 
         return new ResponseEntity<User>(identityTransformer.toUserVo(user), HttpStatus.OK);
     }
-    
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody User vo) {
-        InUser user = identityService.findUserById(id);
+
+    @RequestMapping(value = "/updateUser", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateUser(@RequestBody User vo) {
+        InUser user = identityService.findUserByUsername(securityService.getCurrentUser().getUsername());
         if (null == user) throw new IllegalArgumentException("User does not exists");
 
         user.setEmail(vo.getEmail());
@@ -181,10 +181,15 @@ public class ApplicantAccountController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/users/{id}/passwordChange", method = RequestMethod.POST)
-    public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody PasswordChange vo) {
-        InUser user = identityService.findUserById(id);
-        if (null == user) throw new IllegalArgumentException("User does not exists");
+    @RequestMapping(value = "/passwordChange", method = RequestMethod.POST)
+    public ResponseEntity<String> changeUserPassword(@RequestBody PasswordChange vo) {
+        InUser user = identityService.findUserByUsername(securityService.getCurrentUser().getUsername());
+        if (null == user)
+            throw new IllegalArgumentException("User does not exists");
+        if(user.getPassword().equals(vo.getNewPassword()))
+            throw new IllegalArgumentException("Please use a different password");
+        LOG.debug("changing user password");
+
         user.setPassword(vo.getNewPassword());
         identityService.updateUser(user);
 

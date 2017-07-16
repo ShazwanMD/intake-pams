@@ -72,13 +72,14 @@ export class AccountService {
   }
 
   updateUser(user: User): Observable<String> {
-    return this._http.put(this.ACCOUNT_API + '/user/' + user.id, JSON.stringify(user))
+    return this._http.put(this.ACCOUNT_API + '/updateUser', JSON.stringify(user))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  updateUserPassword(change: PasswordChange): Observable<String> {
-    return this._http.post(this.ACCOUNT_API + '/user/' + change.user.id + '/passwordChange', JSON.stringify(change))
-      .flatMap((res: Response) => Observable.of(res.text()));
+  changeUserPassword(change: PasswordChange): Observable<String> {
+    return this._http.post(this.ACCOUNT_API + '/passwordChange', JSON.stringify(change))
+      .flatMap((res: Response) => Observable.of(res.text()))
+      .catch((error) => this.handleError(error));
   }
 
   // ====================================================================================================

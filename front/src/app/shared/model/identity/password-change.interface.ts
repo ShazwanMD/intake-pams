@@ -1,7 +1,5 @@
-import {User} from '../../../secure/identity/user.interface';
-
 export interface PasswordChange {
-  user: User;
+  oldPassword: string;
   newPassword: string;
   currentPassword: string;
 }

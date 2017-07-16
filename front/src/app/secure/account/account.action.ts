@@ -158,25 +158,23 @@ export class AccountActions {
     };
   }
 
-  static UPDATE_USER_PASSWORD = '[Account] Update User Password';
+  static CHANGE_USER_PASSWORD = '[Account] Change User Password';
 
-  updateUserPassword(change): Action {
-    console.log('updateUserPassword');
+  changeUserPassword(change): Action {
+    console.log('changeUserPassword');
     return {
-      type: AccountActions.UPDATE_USER_PASSWORD,
+      type: AccountActions.CHANGE_USER_PASSWORD,
       payload: change,
     };
   }
 
-  static UPDATE_USER_PASSWORD_SUCCESS = '[Account] Update User Password Success';
+  static CHANGE_USER_PASSWORD_SUCCESS = '[Account] Change User Password Success';
 
-  updateUserPasswordSuccess(message): Action {
-    console.log('updateUserPasswordSuccess');
+  changeUserPasswordSuccess(message): Action {
+    console.log('changeUserPasswordSuccess');
     return {
-      type: AccountActions.UPDATE_USER_PASSWORD_SUCCESS,
+      type: AccountActions.CHANGE_USER_PASSWORD_SUCCESS,
       payload: message,
     };
   }
-
-
 }
