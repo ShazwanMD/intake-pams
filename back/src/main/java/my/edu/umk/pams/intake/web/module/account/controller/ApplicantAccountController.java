@@ -35,6 +35,7 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.web.module.account.vo.PasswordChange;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationController;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
@@ -169,12 +170,22 @@ public class ApplicantAccountController {
     
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody User vo) {
-        InUser user = identityService.findUserById(vo.getId());
+        InUser user = identityService.findUserById(id);
         if (null == user) throw new IllegalArgumentException("User does not exists");
 
         user.setEmail(vo.getEmail());
         user.setRealName(vo.getRealName());
         user.setPassword(vo.getPassword());
+        identityService.updateUser(user);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/users/{id}/passwordChange", method = RequestMethod.POST)
+    public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody PasswordChange vo) {
+        InUser user = identityService.findUserById(id);
+        if (null == user) throw new IllegalArgumentException("User does not exists");
+        user.setPassword(vo.getNewPassword());
         identityService.updateUser(user);
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);

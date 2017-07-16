@@ -7,6 +7,7 @@ import {IntakeApplication} from '../app/shared/model/application/intake-applicat
 import {Applicant} from '../app/secure/identity/applicant.interface';
 import {Intake} from '../app/shared/model/policy/intake.interface';
 import {User} from '../app/secure/identity/user.interface';
+import {PasswordChange} from "../app/shared/model/identity/password-change.interface";
 
 @Injectable()
 export class AccountService {
@@ -72,6 +73,11 @@ export class AccountService {
 
   updateUser(user: User): Observable<String> {
     return this._http.put(this.ACCOUNT_API + '/user/' + user.id, JSON.stringify(user))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateUserPassword(user: User, change: PasswordChange): Observable<String> {
+    return this._http.post(this.ACCOUNT_API + '/user/' + user.id + '/passwordChange', JSON.stringify(change))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
