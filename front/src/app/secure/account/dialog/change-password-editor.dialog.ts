@@ -36,17 +36,14 @@ export class ChangePasswordEditorDialog implements OnInit {
     this.edit = true;
 
   }
-
-  ngOnInit(): void {
-
+  
+   ngOnInit(): void {
     this.changePasswordForm = this.formBuilder.group(<User>{
-      id: null,
+     id: null,
       password: '',
       realName: '',
       email: '',
-
     });
-
     if (this.edit) this.changePasswordForm.patchValue(this._user);
   }
 
