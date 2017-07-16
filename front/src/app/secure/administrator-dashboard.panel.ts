@@ -27,6 +27,13 @@ export class AdministratorDashboardPanel implements OnInit {
         }
         ,
         {
+            title: 'Application',
+            route: '/secure/application',
+            icon: 'assignment',
+            color: 'blue-700',
+            description: 'Application',
+        },
+        {
           title: 'Admission',
           route: '/secure/admission',
           icon: 'assignment',
