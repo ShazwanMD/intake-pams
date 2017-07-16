@@ -38,7 +38,7 @@ export class AccountActions {
       type: AccountActions.FIND_APPLICANT_SUCCESS,
       payload: applicant,
     };
-  }  
+  }
 
   static FIND_INTAKE_APPLICATIONS = '[Account] Find Intake Applications';
 
@@ -94,10 +94,11 @@ export class AccountActions {
       payload: applcations,
     };
   }
+
 // ====================================================================================================
   // USER
   // ====================================================================================================
-  
+
   static FIND_USER = '[Account] Find User';
 
   findUser(): Action {
@@ -137,7 +138,7 @@ export class AccountActions {
     };
   }
 
-  static UPDATE_USER= '[Account] Update User';
+  static UPDATE_USER = '[Account] Update User';
 
   updateUser(user): Action {
     console.log('updateUser');
@@ -153,6 +154,26 @@ export class AccountActions {
     console.log('updateUserSuccess');
     return {
       type: AccountActions.UPDATE_USER_SUCCESS,
+      payload: message,
+    };
+  }
+
+  static UPDATE_USER_PASSWORD = '[Account] Update User Password';
+
+  updateUserPassword(user, change): Action {
+    console.log('updateUserPassword');
+    return {
+      type: AccountActions.UPDATE_USER_PASSWORD,
+      payload: {user: user, change: change},
+    };
+  }
+
+  static UPDATE_USER_PASSWORD_SUCCESS = '[Account] Update User Password Success';
+
+  updateUserPasswordSuccess(message): Action {
+    console.log('updateUserPasswordSuccess');
+    return {
+      type: AccountActions.UPDATE_USER_PASSWORD_SUCCESS,
       payload: message,
     };
   }
