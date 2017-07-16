@@ -74,7 +74,7 @@
                       {{intake.endDate | date:'EEEE d MMMM'}}
                     </div>
                     <div>
-                      <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/intakes-search']" md-button
+                      <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]" md-button
                               color="primary">Apply Now!
                       </button>
                     </div>
