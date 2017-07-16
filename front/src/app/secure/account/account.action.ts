@@ -160,11 +160,11 @@ export class AccountActions {
 
   static UPDATE_USER_PASSWORD = '[Account] Update User Password';
 
-  updateUserPassword(user, change): Action {
+  updateUserPassword(change): Action {
     console.log('updateUserPassword');
     return {
       type: AccountActions.UPDATE_USER_PASSWORD,
-      payload: {user: user, change: change},
+      payload: change,
     };
   }
 

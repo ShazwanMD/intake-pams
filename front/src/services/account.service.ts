@@ -76,8 +76,8 @@ export class AccountService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  updateUserPassword(user: User, change: PasswordChange): Observable<String> {
-    return this._http.post(this.ACCOUNT_API + '/user/' + user.id + '/passwordChange', JSON.stringify(change))
+  updateUserPassword(change: PasswordChange): Observable<String> {
+    return this._http.post(this.ACCOUNT_API + '/user/' + change.user.id + '/passwordChange', JSON.stringify(change))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

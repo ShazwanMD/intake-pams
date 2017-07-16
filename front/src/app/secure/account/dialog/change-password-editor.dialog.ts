@@ -1,13 +1,12 @@
-import { PasswordChange } from './../../../shared/model/identity/password-change.interface';
-import { User } from '../../identity/user.interface';
-import { AccountActions } from '../account.action';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {PasswordChange} from '../../../shared/model/identity/password-change.interface';
+import {User} from '../../identity/user.interface';
+import {AccountActions} from '../account.action';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
-import { AccountModuleState } from "../index";
+import {AccountModuleState} from '../index';
 
 @Component({
   selector: 'pams-change-password-editor',
@@ -19,7 +18,7 @@ export class ChangePasswordEditorDialog implements OnInit {
   private changePasswordForm: FormGroup;
   private edit: boolean = false;
   private _user: User;
-   
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -32,23 +31,21 @@ export class ChangePasswordEditorDialog implements OnInit {
   set user(value: User) {
     this._user = value;
     this.edit = true;
-     
-
   }
-  
-   ngOnInit(): void {
-    this.changePasswordForm = this.formBuilder.group(<PasswordChange>{
-      id: null,
-      newPassword: '',
-      oldPassword: '',
+
+  ngOnInit(): void {
+    this.changePasswordForm = this.formBuilder.group({
+      user: [undefined],
+      currentPassword: ['', Validators.required],
+      newPassword: ['', Validators.required],
     });
 
-  this.changePasswordForm.patchValue(this._user);
+    this.changePasswordForm.patchValue(this._user);
   }
 
-  submit(user: User, change: PasswordChange) {
-    console.log("submitting",user);
-    this.store.dispatch(this.actions.updateUserPassword(user, change));
+  submit(change: PasswordChange, valid: boolean): void {
+    console.log('submit password change: ', change.user);
+    this.store.dispatch(this.actions.updateUserPassword(change));
     this.dialog.close();
   }
 }
