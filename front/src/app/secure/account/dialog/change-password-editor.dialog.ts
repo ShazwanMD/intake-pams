@@ -1,3 +1,4 @@
+import { PasswordChange } from './../../../shared/model/identity/password-change.interface';
 import { User } from '../../identity/user.interface';
 import { AccountActions } from '../account.action';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
@@ -22,6 +23,7 @@ export class ChangePasswordEditorDialog implements OnInit {
   private _user: User;
 
 
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -38,18 +40,16 @@ export class ChangePasswordEditorDialog implements OnInit {
   }
   
    ngOnInit(): void {
-    this.changePasswordForm = this.formBuilder.group(<User>{
+    this.changePasswordForm = this.formBuilder.group(<PasswordChange>{
      id: null,
-      password: '',
-      realName: '',
-      email: '',
+      newPassword: '',
+      oldPassword: '',
     });
-    if (this.edit) this.changePasswordForm.patchValue(this._user);
+
   }
 
-  submit(user: User, isValid: boolean) {
-    if (!user.id) this.store.dispatch(this.actions.saveUser(user));
-    else  this.store.dispatch(this.actions.updateUser(user));
+  submit(user: User, change: PasswordChange) {
+    this.store.dispatch(this.actions.updateUserPassword(user, change));
     this.dialog.close();
   }
 }
