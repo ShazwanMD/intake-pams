@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
     @Override
     protected boolean requiresAuthentication(HttpServletRequest request, HttpServletResponse response) {
         LOG.info("request uri" + request.getRequestURI());
-        return !request.getRequestURI().startsWith("/api/registration");
+        return !request.getRequestURI().startsWith("/api/registration") && !request.getRequestURI().startsWith("/servlet");
     }
 
     @Override
