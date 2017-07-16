@@ -188,7 +188,7 @@ public class IntakeFlowProcessTest {
         application1b.setPhone("011102202022");
         application1b.setNationalityCode(commonService.findNationalityCodeByCode("1"));
         application1b.setBidStatus(InBidStatus.NEW);
-        application1b.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
+        application1b.setApplicant((InApplicant) identityService.findUserByUsername("applicant2").getActor());
         applicationService.applyIntake(intake, application1b);
         applicationService.submitIntakeApplication(draftedIntake, application1b);
 
@@ -205,7 +205,7 @@ public class IntakeFlowProcessTest {
         application2.setPhone("011102021221");
         application2.setNationalityCode(commonService.findNationalityCodeByCode("2"));
         application2.setBidStatus(InBidStatus.NEW);
-        application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant2").getActor());
+        application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant3").getActor());
         applicationService.applyIntake(intake, application2);
 //        applicationService.submitIntakeApplication(draftedIntake, application2);
     }

@@ -494,7 +494,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
                 "and p.applicant = :applicant");
         query.setEntity("intake", intake);
         query.setEntity("applicant", applicant);
-        return (Integer) query.uniqueResult() > 0;
+        return ((Long) query.uniqueResult()) > 0;
     }
 
     // ====================================================================================================
