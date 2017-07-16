@@ -11,11 +11,11 @@ import { AccountModuleState } from "../index";
 
 
 @Component({
-  selector: 'pams-change-password',
-  templateUrl: './change-password.dialog.html',
+  selector: 'pams-change-password-editor',
+  templateUrl: './change-password-editor.dialog.html',
 })
 
-export class ChangePasswordDialog implements OnInit {
+export class ChangePasswordEditorDialog implements OnInit {
 
   private changePasswordForm: FormGroup;
   private edit: boolean = false;
@@ -26,7 +26,7 @@ export class ChangePasswordDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<ChangePasswordDialog>,
+              private dialog: MdDialogRef<ChangePasswordEditorDialog>,
               private store: Store<AccountModuleState>,
               private actions: AccountActions) {
   }

@@ -1,6 +1,5 @@
 import { UserComponent } from './component/user.component';
 import { User } from './../identity/user.interface';
-import { ChangePasswordDialog } from './dialog/change-password.dialog';
 import { ApplicantComponent } from './component/applicant.component';
 import { Applicant } from '../identity/applicant.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -28,6 +27,7 @@ import {IntakeApplication} from '../../shared/model/application/intake-applicati
 import {AccountActions} from './account.action';
 import {AccountEffects} from './account.effect';
 import {EffectsModule} from '@ngrx/effects';
+import { ChangePasswordEditorDialog } from "./dialog/change-password-editor.dialog";
 
 export interface AccountModuleState {
   user: UserState;
@@ -62,7 +62,7 @@ export const accountModuleReducers = {
   declarations: [
     ApplicantComponent,
     UserComponent,
-    ChangePasswordDialog,
+    ChangePasswordEditorDialog,
 
   ],
   exports: [
@@ -71,7 +71,7 @@ export const accountModuleReducers = {
   ],
 
   entryComponents: [
-    ChangePasswordDialog,
+    ChangePasswordEditorDialog,
   ],
 })
 export class AccountModule {

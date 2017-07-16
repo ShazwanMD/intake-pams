@@ -7,7 +7,6 @@ import {MdDialogConfig, MdDialogRef, MdDialog} from '@angular/material';
 import {IntakeApplication} from '../shared/model/application/intake-application.interface';
 import {Intake} from '../shared/model/policy/intake.interface';
 import {Applicant} from './identity/applicant.interface';
-import {ChangePasswordDialog} from './account/dialog/change-password.dialog';
 import {ApplicationModuleState} from './application/index';
 import {AccountActions} from './account/account.action';
 
@@ -29,7 +28,6 @@ export class ApplicantDashboardPanel implements OnInit {
   private applicant$: Observable<Applicant>;
   private user$: Observable<User>;
 
-  private editorDialogRef: MdDialogRef<ChangePasswordDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -50,18 +48,5 @@ export class ApplicantDashboardPanel implements OnInit {
     this.store.dispatch(this.actions.findPublishedIntakes());
   }
 
-  showDialog(): void {
-    console.log('showDialog');
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(ChangePasswordDialog, config);
-    this.editorDialogRef.afterClosed().subscribe((res) => {
-      console.log('close dialog');
-      // load something here
-    });
-  }
+ 
 }
