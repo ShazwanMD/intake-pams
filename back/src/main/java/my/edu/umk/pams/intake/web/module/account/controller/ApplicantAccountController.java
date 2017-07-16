@@ -144,6 +144,7 @@ public class ApplicantAccountController {
     public ResponseEntity<String> updateApplicant(@RequestBody Applicant vo) {
         InApplicant applicant = identityService.findApplicantById(vo.getId());
         applicant.setEmail(vo.getEmail());
+        
         applicant.setFax(vo.getFax());
         applicant.setMobile(vo.getMobile());
         applicant.setName(vo.getEmail());
@@ -156,6 +157,16 @@ public class ApplicantAccountController {
     // USER
     // ==================================================================================================== //
 
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ResponseEntity<User> findUser() {
+        InUser user = securityService.getCurrentUser();
+        InApplicant applicant = null;
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+
+        return new ResponseEntity<User>(identityTransformer.toUserVo(user), HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateUser(@PathVariable Long id, @RequestBody User vo) {
         InUser user = identityService.findUserById(vo.getId());

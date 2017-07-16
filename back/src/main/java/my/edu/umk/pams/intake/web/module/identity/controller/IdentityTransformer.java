@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.web.module.identity.controller;
 
 import my.edu.umk.pams.intake.identity.model.InActor;
 import my.edu.umk.pams.intake.identity.model.InStaff;
+import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.web.module.identity.vo.*;
 import org.springframework.stereotype.Component;
@@ -44,6 +45,7 @@ public class IdentityTransformer {
         m.setMobile(Applicant.getMobile());
         m.setPhone(Applicant.getPhone());
         m.setFax(Applicant.getFax());
+    
         return m;
     }
 
@@ -68,4 +70,23 @@ public class IdentityTransformer {
         return toApplicantVo((InApplicant) actor);
         else return null;
     }
+    
+    public User toUserVo(InUser User) {
+        User m = new User();
+        m.setId(User.getId());
+        m.setPassword(User.getPassword());
+        m.setRealName(User.getRealName());
+        m.setEmail(User.getEmail());
+    
+        return m;
+    }
+
+    public List<User> toUserVos(List<InUser> users) {
+        List<User> vos = users.stream()
+                .map((user) -> toUserVo(user))
+                .collect(toList());
+        return vos;
+    }    
+    
+    
 }

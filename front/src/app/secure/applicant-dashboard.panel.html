@@ -12,9 +12,15 @@
 
       <md-tab label="My Account">
         <md-nav-list>
+
           <pams-applicant
             [applicant]="applicant$ | async">
           </pams-applicant>
+
+          <pams-user
+            [user]="user$ | async">
+          </pams-user>
+
         </md-nav-list>
       </md-tab>
 

@@ -61,7 +61,8 @@ export class AccountService {
   findUser(): Observable<User[]> {
     console.log('findUser');
     return this._http.get(this.ACCOUNT_API + '/user')
-      .map((res: Response) => <User[]>res.json());
+      .map((res: Response) => <User[]>res.json())
+      .catch((error) => this.handleError(error));
   }
 
   saveUser(user: User): Observable<String> {

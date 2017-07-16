@@ -1,3 +1,4 @@
+import { User } from './identity/user.interface';
 import {Component, Output, OnInit, Input, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -22,9 +23,11 @@ export class ApplicantDashboardPanel implements OnInit {
   private PUBLISHED_INTAKES: string[] = 'accountModuleState.publishedIntakes'.split('.');
   private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
   private APPLICANT: string[] = 'accountModuleState.applicant'.split('.');
+  private USER: string[] = 'accountModuleState.user'.split('.');
   private intakeApplications$: Observable<IntakeApplication[]>;
   private publishedIntakes$: Observable<Intake[]>;
   private applicant$: Observable<Applicant>;
+  private user$: Observable<User>;
 
   private editorDialogRef: MdDialogRef<ChangePasswordDialog>;
 
@@ -37,10 +40,12 @@ export class ApplicantDashboardPanel implements OnInit {
     this.publishedIntakes$ = this.store.select(...this.PUBLISHED_INTAKES);
     this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
     this.applicant$ = this.store.select(...this.APPLICANT);
+    this.user$ = this.store.select(...this.USER);
   }
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findApplicant());
+    this.store.dispatch(this.actions.findUser());
     this.store.dispatch(this.actions.findIntakeApplications());
     this.store.dispatch(this.actions.findPublishedIntakes());
   }
