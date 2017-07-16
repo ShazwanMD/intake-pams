@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {RegistrationModuleState} from '../registration/index';
 import {Store} from '@ngrx/store';
 import {RegistrationActions} from '../registration/registration.action';
@@ -23,15 +23,17 @@ export class ForgetPasswordPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.forgetPasswordForm = this.formBuilder.group(<UserRegistration>{
-      name: '',
-      email: '',
-      identityNo: '',
-      password: '',
+    let emailPattern: string = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$';
+    this.forgetPasswordForm = this.formBuilder.group({
+      name: [''],
+      email: ['', Validators.pattern(emailPattern)],
+      identityNo: [''],
+      password: [''],
     });
   }
 
-  submit(email: String, isValid: boolean): void {
-    this.store.dispatch(this.registrationActions.forgetPassword(email));
+  submit(forgetPasswordForm: any, isValid: boolean): void {
+    console.log('submit email=: ', forgetPasswordForm.email);
+    this.store.dispatch(this.registrationActions.forgetPassword(forgetPasswordForm.email));
   }
 }

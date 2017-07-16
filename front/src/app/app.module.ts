@@ -65,6 +65,7 @@ import {DashboardPage} from './secure/dashboard.page';
 import {ApplicantDashboardPanel} from './secure/applicant-dashboard.panel';
 import {AdministratorDashboardPanel} from './secure/administrator-dashboard.panel';
 import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./secure/setup/index";
+import {ReactiveFormsModule} from '@angular/forms';
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -137,6 +138,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   imports: [
     appRoutes,
     BrowserModule,
+    ReactiveFormsModule,
     CovalentExpansionPanelModule,
     CovalentCoreModule.forRoot(),
     CovalentChartsModule.forRoot(),
