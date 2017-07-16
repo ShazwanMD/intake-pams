@@ -9,8 +9,6 @@ import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import { AccountModuleState } from "../index";
 
-
-
 @Component({
   selector: 'pams-change-password-editor',
   templateUrl: './change-password-editor.dialog.html',
@@ -21,9 +19,7 @@ export class ChangePasswordEditorDialog implements OnInit {
   private changePasswordForm: FormGroup;
   private edit: boolean = false;
   private _user: User;
-
-
-
+   
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -36,19 +32,22 @@ export class ChangePasswordEditorDialog implements OnInit {
   set user(value: User) {
     this._user = value;
     this.edit = true;
+     
 
   }
   
    ngOnInit(): void {
     this.changePasswordForm = this.formBuilder.group(<PasswordChange>{
-     id: null,
+      id: null,
       newPassword: '',
       oldPassword: '',
     });
 
+  this.changePasswordForm.patchValue(this._user);
   }
 
   submit(user: User, change: PasswordChange) {
+    console.log("submitting",user);
     this.store.dispatch(this.actions.updateUserPassword(user, change));
     this.dialog.close();
   }
