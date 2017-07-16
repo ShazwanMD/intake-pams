@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="502aeeef-be78-4a3d-a90a-366fab5fb4e7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="CODE" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     in_prgm_code."id" AS in_prgm_code_id,
+     in_prgm_code."code" AS in_prgm_code_code,
+     in_prgm_code."description_en" AS in_prgm_code_description_en,
+     in_prgm_code."description_ms" AS in_prgm_code_description_ms,
+     in_prgm_code."c_ts" AS in_prgm_code_c_ts,
+     in_prgm_code."c_id" AS in_prgm_code_c_id,
+     in_prgm_code."d_ts" AS in_prgm_code_d_ts,
+     in_prgm_code."d_id" AS in_prgm_code_d_id,
+     in_prgm_code."m_ts" AS in_prgm_code_m_ts,
+     in_prgm_code."m_id" AS in_prgm_code_m_id,
+     in_prgm_code."m_st" AS in_prgm_code_m_st,
+     in_prgm_code."faculty_code_id" AS in_prgm_code_faculty_code_id,
+     in_prgm_code."graduate_center_id" AS in_prgm_code_graduate_center_id,
+     in_prgm_code."program_level_id" AS in_prgm_code_program_level_id
+FROM
+     "public"."in_prgm_code" in_prgm_code]]>
+	</queryString>
+	<field name="in_prgm_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_code" class="java.lang.String"/>
+	<field name="in_prgm_code_description_en" class="java.lang.String"/>
+	<field name="in_prgm_code_description_ms" class="java.lang.String"/>
+	<field name="in_prgm_code_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_code_c_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_code_d_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_code_m_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_m_st" class="java.lang.Integer"/>
+	<field name="in_prgm_code_faculty_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_graduate_center_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_program_level_id" class="java.lang.Long"/>
+	<filterExpression><![CDATA[$F{in_prgm_code_code}.equals( $P{CODE} )]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="42" y="0" width="100" height="20" uuid="001e5b62-1ccc-4a28-b02c-d6fda7b976e6"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="0" width="255" height="20" uuid="839386eb-462f-449b-9c7b-6869cf0b7316"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DESCRIPTION]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="42" y="0" width="100" height="20" uuid="0c7b580b-87e6-465c-8d77-ad90a64c3288"/>
+				<box leftPadding="10">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{in_prgm_code_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="142" y="0" width="255" height="20" uuid="6b2e084f-2e92-4368-bf38-07100614c148"/>
+				<box leftPadding="10">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{in_prgm_code_description_en}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
