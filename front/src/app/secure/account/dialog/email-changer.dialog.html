@@ -1,0 +1,26 @@
+<h2 md-dialog-title>Enter Your New Email Address/h2>
+<md-dialog-content>
+  <form [formGroup]="emailChangerForm" novalidate>
+    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+      <div layout="column" class="pad-right" flex>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput placeholder="Current Email" formControlName="email" flex/>
+          </md-input-container>
+        </div>
+
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput placeholder="Enter New Password" formControlName="newEmail" flex/>
+          </md-input-container>
+        </div>       
+      </div>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(emailChangerForm.value, emailChangerForm.valid)">
+    Change Email
+  </button>
+</md-dialog-actions>
+
