@@ -5,6 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,6 +36,8 @@ import my.edu.umk.pams.intake.identity.model.InPrincipalRoleImpl;
 import my.edu.umk.pams.intake.identity.model.InRoleType;
 import my.edu.umk.pams.intake.identity.model.InStaff;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
+import my.edu.umk.pams.intake.security.integration.NonSerializableSecurityContext;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemServiceImpl;
 
@@ -73,6 +79,8 @@ public class IdentityServiceImpl implements IdentityService {
     @Autowired
     private SecurityService securityService;
 
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
 
     //====================================================================================================
@@ -81,7 +89,7 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public InPrincipal findPrincipalById(Long id) {
-    	return principalDao.findById(id);
+        return principalDao.findById(id);
     }
 
     @Override
@@ -91,12 +99,12 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public List<InPrincipal> findPrincipals(String filter, Integer offset, Integer limit) {
-    	return principalDao.find(filter, offset, limit);
+        return principalDao.find(filter, offset, limit);
     }
 
     @Override
     public Set<String> findSids(InPrincipal principal) {
-    	Set<InGroup> groups = null;
+        Set<InGroup> groups = null;
         Set<String> principals = new HashSet<String>();
         try {
             groups = groupDao.findEffectiveAsNative(principal);
@@ -192,8 +200,10 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void updateUser(InUser user) {
+        SecurityContext sc = loginAsSystem();
         userDao.update(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        logoutAsSystem(sc);
     }
 
     @Override
@@ -204,9 +214,11 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void changePassword(InUser user, String newPassword) {
+        SecurityContext sc = loginAsSystem();
         user.setPassword(newPassword);
         userDao.update(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        logoutAsSystem(sc);
     }
 
     //====================================================================================================
@@ -544,5 +556,20 @@ public class IdentityServiceImpl implements IdentityService {
     public void updateApplicant(InApplicant applicant) {
         applicantDao.update(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+    }
+
+    private SecurityContext loginAsSystem() {
+        SecurityContext savedCtx = SecurityContextHolder.getContext();
+        InAutoLoginToken authenticationToken = new InAutoLoginToken("system");
+        Authentication authed = authenticationManager.authenticate(authenticationToken);
+        SecurityContext system = new NonSerializableSecurityContext();
+        system.setAuthentication(authed);
+        SecurityContextHolder.setContext(system);
+        return savedCtx;
+    }
+
+    private void logoutAsSystem(SecurityContext context) {
+        SecurityContextHolder.setContext(context);
+
     }
 }

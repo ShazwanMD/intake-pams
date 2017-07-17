@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.web.module.account.controller;
 
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,9 +85,6 @@ public class ApplicantAccountController {
 
     @Autowired
     private ApplicationTransformer applicationTransformer;
-
-//    @Autowired
-//    private AccountTransformer accountTransformer;
 
     @Autowired
     private IdentityService identityService;
@@ -189,7 +187,6 @@ public class ApplicantAccountController {
         if(user.getPassword().equals(vo.getNewPassword()))
             throw new IllegalArgumentException("Please use a different password");
         LOG.debug("changing user password");
-
         user.setPassword(vo.getNewPassword());
         identityService.updateUser(user);
 
