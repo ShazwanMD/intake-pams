@@ -1,3 +1,4 @@
+import {VenueCodeListPage} from './venue-codes/venue-code-list.page';
 import {ResidencyCodeListPage} from './residency-codes/residency-code-list-page';
 import {ParliamentCodeListPage} from './parliament-codes/parliament-code-list-page';
 import {DistrictCodeListPage} from './district-codes/district-code-list-page';
@@ -26,6 +27,7 @@ import {SubjectCodeListPage} from './subject-codes/subject-code-list-page';
 import {GradeCodeListPage} from './grade-codes/grade-code-list-page';
 import {AuthenticationGuard} from '../identity/guard/authentication.guard';
 
+
 export const setupModuleRoutes: Routes = [
   {
     path: 'setup', component: SetupPage, canActivate: [AuthenticationGuard],
@@ -34,6 +36,7 @@ export const setupModuleRoutes: Routes = [
       {path: 'graduate-centers', component: GraduateCenterListPage},
       {path: 'religion-codes', component: ReligionCodeListPage},
       {path: 'marital-codes', component: MaritalCodeListPage},
+      {path: 'venue-codes', component: VenueCodeListPage},
       {path: 'language-codes', component: LanguageCodeListPage},
       {path: 'country-codes', component: CountryCodeListPage},
       {path: 'state-codes', component: StateCodeListPage},

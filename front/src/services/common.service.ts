@@ -1,3 +1,4 @@
+import { VenueCode } from './../app/shared/model/common/venue-code.interface';
 import {ParliamentCode} from '../app/shared/model/common/parliament-code.interface';
 import {StudyCenterCode} from '../app/shared/model/common/study-center-code.interface';
 import {StudyMode} from '../app/shared/model/common/study-mode.interface';
@@ -198,6 +199,38 @@ export class CommonService {
     return this._http.delete(this.COMMON_API + '/maritalCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  // ====================================================================================================
+  // VENUE CODES
+  // ====================================================================================================
+
+  findVenueCodes(): Observable<VenueCode[]> {
+    console.log('findVenueCodes');
+    return this._http.get(this.COMMON_API + '/venueCodes')
+      .map((res: Response) => <VenueCode[]>res.json());
+  }
+
+  findVenueCodeByCode(code: string): Observable<VenueCode> {
+    console.log('findVenueCodeByCode');
+    return this._http.get(this.COMMON_API + '/venueCodes/' + code)
+      .map((res: Response) => <MaritalCode>res.json());
+  }
+
+  saveVenueCode(code: VenueCode): Observable<String> {
+    return this._http.post(this.COMMON_API + '/venueCodes', JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateVenueCode(code: VenueCode): Observable<String> {
+    return this._http.put(this.COMMON_API + '/venueCodes/' + code.code, JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeVenueCode(code: VenueCode): Observable<String> {
+    return this._http.delete(this.COMMON_API + '/venueCodes/' + code.code)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
   // ====================================================================================================
   // LANGUAGE CODES

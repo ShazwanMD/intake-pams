@@ -107,6 +107,38 @@ export class SetupEffects {
     .map((message) => this.setupActions.removeMaritalCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findMaritalCodes()]));
 
+
+  // ====================================================================================================
+  // VENUE CODE
+  // ====================================================================================================
+
+  @Effect() findVenueCode$ = this.actions$
+    .ofType(SetupActions.FIND_VENUE_CODES)
+    .map((action) => action.payload)
+    .switchMap(() => this.commonService.findVenueCodes())
+    .map((codes) => this.setupActions.findVenueCodesSuccess(codes));
+
+  @Effect() saveVenueCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_VENUE_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.saveVenueCode(payload))
+    .map((message) => this.setupActions.saveVenueCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findVenueCodes()]));
+
+  @Effect() updateVenueCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_VENUE_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.updateVenueCode(payload))
+    .map((message) => this.setupActions.updateVenueCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findVenueCodes()]));
+
+  @Effect() removeVenueCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_VENUE_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.removeVenueCode(payload))
+    .map((message) => this.setupActions.removeVenueCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findVenueCodes()]));    
+
   // ====================================================================================================
   // COUNTRY CODE
   // ====================================================================================================

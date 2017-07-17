@@ -1,3 +1,6 @@
+import { VenueCodeListPage } from './venue-codes/venue-code-list.page';
+import { VenueCodeEditorDialog } from './venue-codes/dialog/venue-code-editor.dialog';
+import { VenueCode } from './../../shared/model/common/venue-code.interface';
 import {GradeCodeListPage} from './grade-codes/grade-code-list-page';
 import {SubjectCodeEditorDialog} from './subject-codes/dialog/subject-code-editor.dialog';
 import {SubjectCodeListPage} from './subject-codes/subject-code-list-page';
@@ -110,10 +113,13 @@ import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {ReligionCodeListPage} from './religion-codes/religion-code-list.page';
 import {CommonModule} from '../../common/index';
 import {IntakeSessionSubModule} from '../policy/intake-sessions/index';
+import {venueCodeListReducer, VenueCodeListState} from './venue-codes/venue-code-list.reducer';
+
 
 export interface SetupModuleState {
   title: TitleState;
   maritalCodes: MaritalCodeListState;
+  venueCodes: VenueCodeListState;
   bankCodes: BankCodeListState;
   graduateCenters: GraduateCenterListState;
   religionCodes: ReligionCodeListState;
@@ -145,6 +151,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
   <SetupModuleState>{
     title: 'Setup Codes',
     bankCodes: <BankCode[]>[],
+    venueCodes: <VenueCode[]>[],
     graduateCenters: <GraduateCenter[]>[],
     religionCodes: <ReligionCode[]>[],
     supervisorCodes: <SupervisorCode[]>[],
@@ -182,6 +189,7 @@ export const setupModuleReducers = {
   programCodes: programCodeListReducer,
   supervisorCodes: supervisorCodeListReducer,
   raceCodes: raceCodeListReducer,
+  venueCodes: venueCodeListReducer,
   genderCodes: genderCodeListReducer,
   ethnicityCodes: ethnicityCodeListReducer,
   nationalityCodes: nationalityCodeListReducer,
@@ -218,6 +226,7 @@ export const setupModuleReducers = {
     GraduateCenterListPage,
     ReligionCodeListPage,
     MaritalCodeListPage,
+    VenueCodeListPage,
     LanguageCodeListPage,
     CountryCodeListPage,
     StateCodeListPage,
@@ -241,6 +250,7 @@ export const setupModuleReducers = {
 
     // dialog
     MaritalCodeEditorDialog,
+    VenueCodeEditorDialog,
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
     GraduateCenterCreatorDialog,
@@ -270,6 +280,7 @@ export const setupModuleReducers = {
   ],
   entryComponents: [
     MaritalCodeEditorDialog,
+    VenueCodeEditorDialog,
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
     GraduateCenterCreatorDialog,

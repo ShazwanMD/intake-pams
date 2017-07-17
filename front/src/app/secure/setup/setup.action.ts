@@ -225,7 +225,93 @@ export class SetupActions {
     };
   }
 
-//---------------------------------------------------------------------------
+
+  //=================================================================================//
+  //  VENUE_CODES                                                               //
+  //=================================================================================//
+
+  static FIND_VENUE_CODES = '[Setup] Find Venue Codes';
+
+  findVenueCodes(): Action {
+    console.log('findVenueCodes');
+    return {
+      type: SetupActions.FIND_VENUE_CODES,
+    };
+  }
+
+  static FIND_VENUE_CODES_SUCCESS = '[Setup] Find Venue Codes Success';
+
+  findVenueCodesSuccess(codes): Action {
+    console.log('findVenueCodesSuccess');
+    return {
+      type: SetupActions.FIND_VENUE_CODES_SUCCESS,
+      payload: codes,
+    };
+  }
+
+  static SAVE_VENUE_CODE = '[Setup] Save Venue Code';
+
+  saveVenueCode(code): Action {
+    console.log('saveVenueCode');
+    return {
+      type: SetupActions.SAVE_VENUE_CODE,
+      payload: code,
+    };
+  }
+
+  static SAVE_VENUE_CODE_SUCCESS = '[Setup] Save Venue Code Success';
+
+  saveVenueCodeSuccess(message): Action {
+    console.log('saveVenueCodeSuccess');
+    return {
+      type: SetupActions.SAVE_VENUE_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+
+  static UPDATE_VENUE_CODE = '[Setup] Update Venue Code';
+
+  updateVenueCode(code): Action {
+    console.log('updateVenueCode');
+    return {
+      type: SetupActions.UPDATE_VENUE_CODE,
+      payload: code,
+    };
+  }
+
+  static UPDATE_VENUE_CODE_SUCCESS = '[Setup] Update Venue Code Success';
+
+  updateVenueCodeSuccess(message): Action {
+    console.log('updateVenueCodeSuccess');
+    return {
+      type: SetupActions.UPDATE_VENUE_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+
+  static REMOVE_VENUE_CODE = '[Setup] Remove Venue Code';
+
+  removeVenueCode(code): Action {
+    console.log('removeVenueCode');
+    return {
+      type: SetupActions.REMOVE_VENUE_CODE,
+      payload: code,
+    };
+  }
+
+  static REMOVE_VENUE_CODE_SUCCESS = '[Setup] Remove Venue Code Success';
+
+  removeVenueCodeSuccess(message): Action {
+    console.log('removeVenueCodeSuccess');
+    return {
+      type: SetupActions.REMOVE_VENUE_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+
+  //=================================================================================//
+  //  MARITAL_CODES                                                               //
+  //=================================================================================//
 
   static FIND_MARITAL_CODES = '[Setup] Find Marital Codes';
 
@@ -305,7 +391,6 @@ export class SetupActions {
       payload: message,
     };
   }
-
   //=================================================================================//
   //  COUNTRY_CODES                                                               //
   //=================================================================================//
