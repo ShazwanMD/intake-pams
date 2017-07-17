@@ -23,10 +23,9 @@ export class RegistrationService {
       .map((res: Response) => <Boolean>res.json());
   }
   
-  forgetPassword(email: String): Observable<Boolean> {
+  forgetPassword(email: String): Observable<String> {
     console.log('user email: ' + email);
-    console.log('forget password: ' + this.forgetPassword);
     return this._http.get(this.REGISTRATION_API + '/forgetPassword/' + email)
-      .map((res: Response) => <Boolean>res.json());
+      .map((res: Response) => <String>res.text());
   }
 }
