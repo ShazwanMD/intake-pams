@@ -62,10 +62,8 @@ public class RegistrationController {
     
     @RequestMapping(value = "/forgetPassword/{email:.+}", method = RequestMethod.GET)
     public ResponseEntity<String> forgetPassword(@PathVariable String email) {
-//    	email = "samiya.cm@umk.edu.my";
     	LOG.debug("My email value is: " + email);
     	if (email == null) LOG.debug("Email is null");
-    	if (!"samiya.cm@umk.edu.my".equals(email)) LOG.debug("Email has no match:" + email);
 
     	InUser user=identityService.findUserByEmail(email);
     	if (user == null) LOG.debug("UserA is null");
