@@ -211,14 +211,14 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/completeTask", method = RequestMethod.POST)
     public void completeIntakeTask(@RequestBody IntakeTask vo) {
-        dummyLogin();
+       // dummyLogin();
         Task task = policyService.findIntakeTaskByTaskId(vo.getTaskId());
         workflowService.completeTask(task);
     }
 
     @RequestMapping(value = "/intakes/releaseTask", method = RequestMethod.POST)
     public void releaseIntakeTask(@RequestBody IntakeTask vo) {
-        dummyLogin();
+       // dummyLogin();
         Task task = policyService.findIntakeTaskByTaskId(vo.getTaskId());
         workflowService.releaseTask(task);
     }

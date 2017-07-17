@@ -562,6 +562,53 @@ public class CommonController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
+
+    //====================================================================================================
+    // VENUE CODES
+    //====================================================================================================
+
+    @RequestMapping(value = "/venueCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<VenueCode>> findVenueCodes() {
+        return new ResponseEntity<List<VenueCode>>(commonTransformer.toVenueCodeVos(commonService.findVenueCodes()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/VenueCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<VenueCode> findVenueCode(@PathVariable String code) {
+        return new ResponseEntity<VenueCode>(commonTransformer.toVenueCodeVo(commonService.findVenueCodeByCode(code)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/venueCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveVenueCode(@RequestBody VenueCode vo) {
+        dummyLogin();
+
+        InVenueCode venueCode = new InVenueCodeImpl();
+        venueCode.setCode(vo.getCode());
+        venueCode.setDescriptionEn(vo.getDescriptionEn());
+        venueCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.saveVenueCode(venueCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/venueCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateVenueCode(@PathVariable String code, @RequestBody VenueCode vo) {
+        dummyLogin();
+
+        InVenueCode venueCode = commonService.findVenueCodeById(vo.getId());
+        venueCode.setCode(vo.getCode());
+        venueCode.setDescriptionEn(vo.getDescriptionEn());
+        venueCode.setDescriptionMs(vo.getDescriptionMs());
+        commonService.updateVenueCode(venueCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/venueCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeVenueCode(@PathVariable String code) {
+        dummyLogin();
+
+        InVenueCode venueCode = commonService.findVenueCodeByCode(code);
+        commonService.removeVenueCode(venueCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
     //====================================================================================================
     // MARITAL_CODE
     //====================================================================================================

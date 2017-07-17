@@ -71,6 +71,26 @@ public class CommonTransformer {
     }
 
     // ====================================================================================================
+    // VENUE CODE
+    // ====================================================================================================
+
+    public VenueCode toVenueCodeVo(InVenueCode e) {
+    	if(null == e) return null;
+        VenueCode vo = new VenueCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
+
+        return vo;
+    }
+
+    public List<VenueCode> toVenueCodeVos(List<InVenueCode> e) {
+        List<VenueCode> vos = e.stream().map((e1) -> toVenueCodeVo(e1)).collect(Collectors.toList());
+        return vos;
+    }    
+    
+    // ====================================================================================================
     // BANK CODE
     // ====================================================================================================
 
