@@ -17,5 +17,7 @@ export enum FlowState {
   REMOVED,                // 15
   COMPLETED,              // 16
   ARCHIVED,               // 17
+  PRE_APPROVED,           // 18
+  PROCESSED               // 19
 
 }
