@@ -238,7 +238,7 @@ public class IdentityServiceImpl implements IdentityService {
         
     	if (user == null) LOG.debug("UserB is null");
     	if (user.getEmail() == null) LOG.debug("Email is null");
-    	user = this.findUserByEmail(newEmail);
+    	
     	InEmailQueue email= new InEmailQueueImpl();
         String subject = "Change Email";
         String body = "Your Email has been changed to : " + newEmail +

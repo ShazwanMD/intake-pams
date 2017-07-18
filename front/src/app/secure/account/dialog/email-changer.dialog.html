@@ -11,15 +11,19 @@
 
         <div layout="row">
           <md-input-container flex>
-            <input mdInput placeholder="Enter New Password" formControlName="newEmail" flex/>
+            <input mdInput placeholder="Enter New Email" formControlName="newEmail" flex/>
           </md-input-container>
+          <div class="error" class="tc-red-600"
+                   *ngIf="emailChangerForm.get('newEmail').invalid && emailChangerForm.get('newEmail').touched">
+              Please enter your new email!
+              </div>
         </div>       
       </div>
     </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(emailChangerForm.value, emailChangerForm.valid)">
+  <button md-raised-button color="accent"  (click)="submit(emailChangerForm.value, emailChangerForm.valid)">
     Change Email
   </button>
 </md-dialog-actions>
