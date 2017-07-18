@@ -36,6 +36,7 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.web.module.account.vo.EmailChange;
 import my.edu.umk.pams.intake.web.module.account.vo.PasswordChange;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationController;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
@@ -188,6 +189,20 @@ public class ApplicantAccountController {
             throw new IllegalArgumentException("Please use a different password");
         LOG.debug("changing user password");
         user.setPassword(vo.getNewPassword());
+        identityService.updateUser(user);
+
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/emailChange", method = RequestMethod.POST)
+    public ResponseEntity<String> changeUserEmail(@RequestBody EmailChange vo) {
+        InUser user = identityService.findUserByUsername(securityService.getCurrentUser().getUsername());
+        if (null == user)
+            throw new IllegalArgumentException("User does not exists");
+        if(user.getEmail().equals(vo.getNewEmail()))
+            throw new IllegalArgumentException("Please use a different email");
+        LOG.debug("changing user email");
+        user.setEmail(vo.getNewEmail());
         identityService.updateUser(user);
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);

@@ -557,7 +557,7 @@ public class IdentityServiceImpl implements IdentityService {
         applicantDao.update(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-
+    
     private SecurityContext loginAsSystem() {
         SecurityContext savedCtx = SecurityContextHolder.getContext();
         InAutoLoginToken authenticationToken = new InAutoLoginToken("system");
