@@ -8,6 +8,7 @@ import {Applicant} from '../app/secure/identity/applicant.interface';
 import {Intake} from '../app/shared/model/policy/intake.interface';
 import {User} from '../app/secure/identity/user.interface';
 import {PasswordChange} from "../app/shared/model/identity/password-change.interface";
+import { EmailChange } from "../app/shared/model/identity/email-change.interface";
 
 @Injectable()
 export class AccountService {
@@ -80,6 +81,12 @@ export class AccountService {
     return this._http.post(this.ACCOUNT_API + '/passwordChange', JSON.stringify(change))
       .flatMap((res: Response) => Observable.of(res.text()))
       .catch((error) => this.handleError(error));
+  }
+
+  changeUserEmail(change:EmailChange) : Observable<String>{
+    return this._http.post(this.ACCOUNT_API + '/emailChange', JSON.stringify(change))
+    .flatMap((res:Response) => Observable.of(res.text()))
+    .catch((error) => this.handleError(error));    
   }
 
   // ====================================================================================================

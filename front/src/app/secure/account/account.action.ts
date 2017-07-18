@@ -177,4 +177,26 @@ export class AccountActions {
       payload: message,
     };
   }
+
+
+  static CHANGE_USER_EMAIL = '[Account] Change User Email';
+
+  changeUserEmail(change): Action {
+    console.log('changeUserEmail');
+    return {
+      type: AccountActions.CHANGE_USER_EMAIL,
+      payload: change,
+    };
+  }
+
+  static CHANGE_USER_EMAIL_SUCCESS = '[Account] Change User Email Success';
+
+  changeUserEmailSuccess(message): Action {
+    console.log('changeUserEmailSuccess');
+    return {
+      type: AccountActions.CHANGE_USER_EMAIL_SUCCESS,
+      payload: message,
+    };
+  }
+
 }

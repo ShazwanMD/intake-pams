@@ -1,3 +1,4 @@
+import { EmailChangerDialog } from './dialog/email-changer.dialog';
 import {UserComponent} from './component/user.component';
 import {User} from './../identity/user.interface';
 import {ApplicantComponent} from './component/applicant.component';
@@ -63,6 +64,7 @@ export const accountModuleReducers = {
     ApplicantComponent,
     UserComponent,
     PasswordChangerDialog,
+    EmailChangerDialog,
 
   ],
   exports: [
@@ -72,6 +74,7 @@ export const accountModuleReducers = {
 
   entryComponents: [
     PasswordChangerDialog,
+    EmailChangerDialog,
   ],
 })
 export class AccountModule {
