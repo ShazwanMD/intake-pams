@@ -83,10 +83,10 @@ export class AccountService {
       .catch((error) => this.handleError(error));
   }
 
-  changeUserEmail(change:EmailChange) : Observable<String>{
+  changeApplicantEmail(change:EmailChange) : Observable<String>{
     return this._http.post(this.ACCOUNT_API + '/emailChange', JSON.stringify(change))
     .flatMap((res:Response) => Observable.of(res.text()))
-    .catch((error) => this.handleError(error));    
+    .catch((error) => this.handleError(error))    
   }
 
   // ====================================================================================================

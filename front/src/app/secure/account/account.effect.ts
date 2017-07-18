@@ -76,11 +76,11 @@ export class AccountEffects {
     .switchMap((payload) => this.accountService.changeUserPassword(payload))
     .map((message) => this.accountActions.changeUserPasswordSuccess(message));
 
-    @Effect() changeUserEmail$ = this.actions$
-    .ofType(AccountActions.CHANGE_USER_EMAIL)
+    @Effect() changeApplicantEmail$ = this.actions$
+    .ofType(AccountActions.CHANGE_APPLICANT_EMAIL)
     .map((action) => action.payload)
-    .switchMap((payload) => this.accountService.changeUserEmail(payload))
-    .map((message) => this.accountActions.changeUserEmailSuccess(message));
+    .switchMap((payload) => this.accountService.changeApplicantEmail(payload))
+    .map((message) => this.accountActions.changeApplicantEmailSuccess(message));
 
     
 

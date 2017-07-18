@@ -179,22 +179,22 @@ export class AccountActions {
   }
 
 
-  static CHANGE_USER_EMAIL = '[Account] Change User Email';
+  static CHANGE_APPLICANT_EMAIL = '[Account] Change Applicant Email';
 
-  changeUserEmail(change): Action {
-    console.log('changeUserEmail');
+  changeApplicantEmail(change): Action {
+    console.log('changeApplicantEmail');
     return {
-      type: AccountActions.CHANGE_USER_EMAIL,
+      type: AccountActions.CHANGE_APPLICANT_EMAIL,
       payload: change,
     };
   }
 
-  static CHANGE_USER_EMAIL_SUCCESS = '[Account] Change User Email Success';
+  static CHANGE_APPLICANT_EMAIL_SUCCESS = '[Account] Change Applicant Email Success';
 
-  changeUserEmailSuccess(message): Action {
-    console.log('changeUserEmailSuccess');
+  changeApplicantEmailSuccess(message): Action {
+    console.log('changeApplicantEmailSuccess');
     return {
-      type: AccountActions.CHANGE_USER_EMAIL_SUCCESS,
+      type: AccountActions.CHANGE_APPLICANT_EMAIL_SUCCESS,
       payload: message,
     };
   }
