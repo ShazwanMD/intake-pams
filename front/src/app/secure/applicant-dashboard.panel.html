@@ -17,6 +17,29 @@
             [applicant]="applicant$ | async">
           </pams-applicant>
 
+
+        <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+          <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not filled in address in intake application address yet</span></div>
+          <template let-application let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
+            <div flex-md="50" flex-gt-md="33" layout="column">
+                <md-card-header>
+                  <md-card-title> Official Address :  {{application.officialAddress1}}</md-card-title>
+                </md-card-header>   
+                  <div layout="row" layout-padding>
+                    <p>{{application.bidStatus}}</p>
+                    <span flex></span>
+                    <button *ngIf="application.bidStatus === 'SUBMITTED'"
+                            [routerLink]="['/secure/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
+                            md-button color="primary">Edit
+                    </button>
+                    
+                  </div>
+            </div>
+          </template>
+        </div>
+
+
+
           <pams-user
             [user]="user$ | async">
           </pams-user>

@@ -158,56 +158,81 @@ public class IntakeFlowProcessTest {
 
         //Create application samples for citizen and on citizen application
 
-        InIntakeApplication application1a = new InIntakeApplicationImpl();
-        application1a.setIntake(intake);
-        application1a.setReferenceNo(referenceNo);
-        application1a.setStudyModeSelection(parttimeOffering);
-        application1a.setSupervisorSelection(supervisorOffering1);
-        application1a.setProgramSelection(mckOffering);
-        application1a.setCredentialNo("234234");
-        application1a.setResearchTitle("test1a");
-        application1a.setName("testCitizen bin ting");
-        application1a.setEmail("testCitizen@email.com");
-        application1a.setPhone("01110202022");
-        application1a.setNationalityCode(commonService.findNationalityCodeByCode("1"));
-        application1a.setBidStatus(InBidStatus.NEW);
-        application1a.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
-        applicationService.applyIntake(intake, application1a);
-//        applicationService.submitIntakeApplication(draftedIntake, application1);
-        
-        InIntakeApplication application1b = new InIntakeApplicationImpl();
-        application1b.setIntake(intake);
-        application1b.setReferenceNo(referenceNo);
-        application1b.setStudyModeSelection(parttimeOffering);
-        application1b.setSupervisorSelection(supervisorOffering1);
-        application1b.setProgramSelection(mckOffering);
-        application1b.setCredentialNo("234234");
-        application1b.setResearchTitle("test1b");
-        application1b.setName("testCitizen bin ting");
-        application1b.setEmail("testCitizen@email.com");
-        application1b.setPhone("011102202022");
-        application1b.setNationalityCode(commonService.findNationalityCodeByCode("1"));
-        application1b.setBidStatus(InBidStatus.NEW);
-        application1b.setApplicant((InApplicant) identityService.findUserByUsername("applicant2").getActor());
-        applicationService.applyIntake(intake, application1b);
-        applicationService.submitIntakeApplication(draftedIntake, application1b);
+        //application 1 (sample of drafted Citizen application)
+        InIntakeApplication application1 = new InIntakeApplicationImpl();
+        application1.setIntake(intake);
+        application1.setReferenceNo(referenceNo);
+        application1.setStudyModeSelection(parttimeOffering);
+        application1.setSupervisorSelection(supervisorOffering1);
+        application1.setProgramSelection(mckOffering);
+        application1.setCredentialNo("234234");
+        application1.setOfficialAddress1("test official address 1");
+        application1.setResearchTitle("test1a");
+        application1.setName("testCitizen bin ting");
+        application1.setEmail("testCitizen@email.com");
+        application1.setPhone("01110202022");
+        application1.setNationalityCode(commonService.findNationalityCodeByCode("1"));
+        application1.setBidStatus(InBidStatus.NEW);
+        application1.setApplicant((InApplicant) identityService.findUserByUsername("applicant1").getActor());
+        applicationService.applyIntake(intake, application1);
 
+        
+      //application 2 (sample of Submitted Citizen application)
         InIntakeApplication application2 = new InIntakeApplicationImpl();
         application2.setIntake(intake);
         application2.setReferenceNo(referenceNo);
-        application2.setStudyModeSelection(fulltimeOffering);
-        application2.setSupervisorSelection(supervisorOffering2);
-        application2.setProgramSelection(mcnOffering);
-        application2.setCredentialNo("123123");
-        application2.setResearchTitle("test2");
-        application2.setName("testNonCitizen bin ting");
-        application2.setEmail("testNonCitizen@email.com");
-        application2.setPhone("011102021221");
-        application2.setNationalityCode(commonService.findNationalityCodeByCode("2"));
+        application2.setStudyModeSelection(parttimeOffering);
+        application2.setSupervisorSelection(supervisorOffering1);
+        application2.setProgramSelection(mckOffering);
+        application2.setCredentialNo("234234");
+        application1.setOfficialAddress1("test official address 1");
+        application2.setResearchTitle("test1b");
+        application2.setName("testCitizen bin ting");
+        application2.setEmail("testCitizen@email.com");
+        application2.setPhone("011102202022");
+        application2.setNationalityCode(commonService.findNationalityCodeByCode("1"));
         application2.setBidStatus(InBidStatus.NEW);
-        application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant3").getActor());
+        application2.setApplicant((InApplicant) identityService.findUserByUsername("applicant2").getActor());
         applicationService.applyIntake(intake, application2);
-//        applicationService.submitIntakeApplication(draftedIntake, application2);
+        applicationService.submitIntakeApplication(draftedIntake, application2);
+
+      //application 3 (sample of Drafted non citizen application)
+        InIntakeApplication application3 = new InIntakeApplicationImpl();
+        application3.setIntake(intake);
+        application3.setReferenceNo(referenceNo);
+        application3.setStudyModeSelection(fulltimeOffering);
+        application3.setSupervisorSelection(supervisorOffering2);
+        application3.setProgramSelection(mcnOffering);
+        application3.setCredentialNo("123123");
+        application1.setOfficialAddress1("test official address 1");
+        application3.setResearchTitle("test2");
+        application3.setName("testNonCitizen bin ting");
+        application3.setEmail("testNonCitizen@email.com");
+        application3.setPhone("011102021221");
+        application3.setNationalityCode(commonService.findNationalityCodeByCode("2"));
+        application3.setBidStatus(InBidStatus.NEW);
+        application3.setApplicant((InApplicant) identityService.findUserByUsername("applicant3").getActor());
+        applicationService.applyIntake(intake, application3);
+
+        
+        //application 4 (sample of Submitted non citizen application)
+        InIntakeApplication application4 = new InIntakeApplicationImpl();
+        application4.setIntake(intake);
+        application4.setReferenceNo(referenceNo);
+        application4.setStudyModeSelection(fulltimeOffering);
+        application4.setSupervisorSelection(supervisorOffering2);
+        application4.setProgramSelection(mcnOffering);
+        application4.setCredentialNo("123123");
+        application1.setOfficialAddress1("test official address 1");
+        application4.setResearchTitle("test2");
+        application4.setName("testNonCitizen bin ting");
+        application4.setEmail("testNonCitizen@email.com");
+        application4.setPhone("011102021221");
+        application4.setNationalityCode(commonService.findNationalityCodeByCode("2"));
+        application4.setBidStatus(InBidStatus.NEW);
+        application4.setApplicant((InApplicant) identityService.findUserByUsername("applicant4").getActor());
+        applicationService.applyIntake(intake, application4);
+        applicationService.submitIntakeApplication(draftedIntake, application4);
     }
 
 }
