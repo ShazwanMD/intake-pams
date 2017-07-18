@@ -61,6 +61,8 @@ public interface IdentityService {
     void removeUser(InUser user);
 
     void changePassword(InUser user, String newPassword);
+    
+    void changeEmail(InUser user, String newEmail);
 
 
     //====================================================================================================
