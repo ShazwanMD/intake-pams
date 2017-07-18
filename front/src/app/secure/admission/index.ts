@@ -23,6 +23,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {IntakeTaskViewPage} from './intake-task-view.page';
 import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
 import {Candidate} from '../../shared/model/admission/candidate.interface';
+import { CandidateListComponent } from './component/candidate-list.component';
 
 export interface AdmissionModuleState {
   intakeTasks: IntakeTaskListState;
@@ -62,8 +63,10 @@ export const admissionModuleReducers = {
     AdmissionPage,
     IntakeTaskViewPage,
     IntakeTaskListComponent,
+    CandidateListComponent,
+    
   ],
-  exports: [],
+  exports: [CandidateListComponent,],
 })
 export class AdmissionModule {
   static forRoot(): ModuleWithProviders {

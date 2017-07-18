@@ -13,35 +13,31 @@
       <md-tab label="My Account">
         <md-nav-list>
 
-          <pams-applicant
-            [applicant]="applicant$ | async">
+          <pams-applicant [applicant]="applicant$ | async">
           </pams-applicant>
 
 
-        <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-          <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not filled in address in intake application address yet</span></div>
-          <template let-application let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
-            <div flex-md="50" flex-gt-md="33" layout="column">
-                <md-card-header>
-                  <md-card-title> Official Address :  {{application.officialAddress1}}</md-card-title>
-                </md-card-header>   
-                  <div layout="row" layout-padding>
-                    <!--<p>{{application.bidStatus}}</p>-->
-                    <span flex></span>
-                    <button *ngIf="application.bidStatus === 'SUBMITTED'"
-                            [routerLink]="['/secure/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
-                            md-button color="primary">Edit
-                    </button>
-                    
+          <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+            <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not filled in address in intake application address yet</span></div>
+            <template let-application let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
+              <div flex-md="50" flex-gt-md="33" layout="column">
+                <div layout="row" layout-padding>
+                  <span flex></span>
+                  <div class="md-padding" *ngIf="application.bidStatus === 'SUBMITTED'">
+                    <a md-list-item>
+                      <md-icon md-list-avatar>home</md-icon>
+                      <h3 md-line>Official Address : {{application.officialAddress1}}</h3>
+                      <md-card-subtitle>Update Address</md-card-subtitle>
+                    </a>
                   </div>
-            </div>
-          </template>
-        </div>
+                </div>
+              </div>
+            </template>
+          </div>
 
 
 
-          <pams-user
-            [user]="user$ | async">
+          <pams-user [user]="user$ | async">
           </pams-user>
 
         </md-nav-list>
@@ -65,13 +61,11 @@
                   <div layout="row" layout-padding>
                     <p>{{application.bidStatus}}</p>
                     <span flex></span>
-                    <button *ngIf="application.bidStatus === 'DRAFTED'"
-                            [routerLink]="['/secure/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
-                            md-button color="primary">Edit
+                    <button *ngIf="application.bidStatus === 'DRAFTED'" [routerLink]="['/secure/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
+                      md-button color="primary">Edit
                     </button>
-                    <button *ngIf="application.bidStatus === 'SUBMITTED'"
-                            [routerLink]="['/secure/application/intake-application/']" md-button
-                            color="primary">Result
+                    <button *ngIf="application.bidStatus === 'SUBMITTED'" [routerLink]="['/secure/application/intake-application/']" md-button
+                      color="primary">Result
                     </button>
                   </div>
                 </md-card-content>
@@ -94,17 +88,15 @@
                   <div fxLayout="row" fxLayoutAlign="space-around center">
                     <span flex></span>
                     <div>
-                      <small class="bb"> From:</small>
-                      {{intake.startDate | date:'EEEE d MMMM'}}
+                      <small class="bb"> From:</small> {{intake.startDate | date:'EEEE d MMMM'}}
                       <span flex></span>
                     </div>
                     <div>
-                      <small class="bb"> To:</small>
-                      {{intake.endDate | date:'EEEE d MMMM'}}
+                      <small class="bb"> To:</small> {{intake.endDate | date:'EEEE d MMMM'}}
                     </div>
                     <div>
-                      <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]" md-button
-                              color="primary">Apply Now!
+                      <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]"
+                        md-button color="primary">Apply Now!
                       </button>
                     </div>
                   </div>
