@@ -69,12 +69,15 @@
 
         <md-card>
           <md-card-title>Candidates</md-card-title>
-          <md-card-subtitle>Candidates offered this program</md-card-subtitle>
+          <md-card-subtitle>Candidates for this program</md-card-subtitle>
           <md-divider></md-divider>
           <md-tab-group>
-            <md-tab label="All">
+            <md-tab label="All ({{(candidates$ | async)?.length}})">
+            <pams-candidate-list [candidate]="candidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
+          </md-tab>
+            <md-tab label="Pre Selected">
               <td-data-table
-                [data]="candidates$ | async"
+                [data]="selectedCandidates$ | async"
                 [columns]="columns"
                 [sortBy]="summary"
                 [sortOrder]="ASC"
@@ -135,7 +138,7 @@
             <md-list-item (click)="approve()">
               <md-icon md-list-avatar>done</md-icon>
               <h4 md-line>Approve</h4>
-              <p md-line>Approve this intake</p>
+              <p md-line>Approve candidate for this intake</p>
             </md-list-item>
             <md-list-item (click)="broadcast()">
               <md-icon md-list-avatar>announcement</md-icon>

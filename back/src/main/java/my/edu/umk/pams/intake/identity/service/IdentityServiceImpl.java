@@ -39,6 +39,10 @@ import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.integration.NonSerializableSecurityContext;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.system.model.InEmailQueue;
+import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
+import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
+import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.system.service.SystemServiceImpl;
 
 /**
@@ -78,6 +82,10 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Autowired
     private SecurityService securityService;
+    
+    @Autowired
+    private SystemService systemService;
+
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -218,6 +226,29 @@ public class IdentityServiceImpl implements IdentityService {
         user.setPassword(newPassword);
         userDao.update(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        logoutAsSystem(sc);
+    }
+    
+    @Override
+    public void changeEmail(InUser user, String newEmail) {
+    	SecurityContext sc = loginAsSystem();
+    	user.setEmail(newEmail);
+        userDao.update(user, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        
+    	if (user == null) LOG.debug("UserB is null");
+    	if (user.getEmail() == null) LOG.debug("Email is null");
+    	user = this.findUserByEmail(newEmail);
+    	InEmailQueue email= new InEmailQueueImpl();
+        String subject = "Change Email";
+        String body = "Your Email has been changed to : " + newEmail +
+        			  ". Please Login to continue";
+        email.setTo(newEmail);
+        email.setSubject(subject);
+        email.setBody(body);
+        email.setCode("EQ/" + System.currentTimeMillis());
+        email.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(email);
         logoutAsSystem(sc);
     }
 

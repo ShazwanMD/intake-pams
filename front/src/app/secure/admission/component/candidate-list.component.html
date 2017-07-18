@@ -1,0 +1,17 @@
+<div layout="row"
+     layout-align="start center"
+     layout-wrap>
+  <md-nav-list dense flex>
+
+    <template let-candidate let-last="last" ngFor [ngForOf]="candidate">
+      <a md-list-item  class="text-upper" [target]="'_blank'"
+               [routerLink]="['/search-engine']">
+        <md-icon md-list-avatar>label</md-icon>
+        <h3 md-line> {{candidate.name}} </h3>
+        <p md-line> {{candidate.programOffering?.programCode.descriptionEn}} </p>
+        <p md-line> {{candidate.identityNo}} </p>
+        <p md-line> {{candidate.email}} </p>
+      </a>
+    </template>
+  </md-nav-list>
+</div>
