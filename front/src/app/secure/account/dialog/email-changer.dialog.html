@@ -1,11 +1,11 @@
-<h2 md-dialog-title>Enter Your New Email Address/h2>
+<h2 md-dialog-title>Enter Your New Email Address</h2>
 <md-dialog-content>
   <form [formGroup]="emailChangerForm" novalidate>
     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
       <div layout="column" class="pad-right" flex>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput placeholder="Current Email" formControlName="email" flex/>
+            <input mdInput placeholder="Current Email" formControlName="oldEmail" flex/>
           </md-input-container>
         </div>
 

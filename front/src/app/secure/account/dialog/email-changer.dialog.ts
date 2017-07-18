@@ -1,3 +1,4 @@
+import { Applicant } from './../../identity/applicant.interface';
 import { AuthenticatedUser } from './../../../shared/model/identity/authenticated-user.interface';
 import {User} from '../../identity/user.interface';
 import {AccountActions} from '../account.action';
@@ -8,6 +9,7 @@ import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {AccountModuleState} from '../index';
 import { AuthenticationService } from "../../../../services/authentication.service";
+import { EmailChange } from "../../../shared/model/identity/email-change.interface";
 
 @Component({
   selector: 'pams-email-changer',
@@ -17,7 +19,7 @@ import { AuthenticationService } from "../../../../services/authentication.servi
 export class EmailChangerDialog implements OnInit {
 
   private emailChangerForm: FormGroup;
-  private _user: User;
+  private _applicant: Applicant;
   private authenticatedUser: AuthenticatedUser;
 
   constructor(private formBuilder: FormBuilder,
@@ -28,13 +30,14 @@ export class EmailChangerDialog implements OnInit {
               private actions: AccountActions) {
   }
 
-  set user(value: User) {
-    this._user = value;
+  set applicant(value: Applicant) {
+    this._applicant= value;
   }
 
   ngOnInit(): void {
     this.emailChangerForm = this.formBuilder.group({
-      currentEmail: ['', Validators.required],
+      currentEmail:['',Validators.required],
+      oldEmail: ['', Validators.required],
       newEmail: ['', Validators.required],
     });
   }
@@ -44,10 +47,10 @@ export class EmailChangerDialog implements OnInit {
     this.router.navigate(['/login']);
   }
 
-//   submit(change: PasswordChange, valid: boolean) {
-//     console.log('submit password change: ', change);
-//     this.store.dispatch(this.actions.changeUserPassword(change));
-//     this.dialog.close();
-//     this.logout();   
-// } 
+    submit(change: EmailChange, valid: boolean) {
+    console.log('submit email change: ', change);
+    this.store.dispatch(this.actions.changeApplicantEmail(change));
+    this.dialog.close();
+    // this.logout();   
+} 
 }
