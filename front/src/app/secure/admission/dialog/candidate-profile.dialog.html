@@ -1,0 +1,199 @@
+<!-- Basic Card -->
+<md-card>
+  <md-card-title>Candidate Personal Info</md-card-title>
+  <md-card-subtitle>Pre Select Application Form</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+    <!--Tab Section Here-->
+    <md-tab-group>
+
+      <!--MULA TAB STUDENT INFORMATION-->
+      <md-tab label="Candidate Information">
+
+        <br/>
+
+        <!--APPLICANT INFORMATION-->
+        <md-card>
+          <div md-content flex md-scroll-y>
+            <div layout="column" layout-gt-md="row" class="insert">
+              <div flex-gt-md="50">
+                <md-card-title>Candidate Information</md-card-title>
+              </div>
+            </div>
+          </div>
+          <md-divider></md-divider>
+          <md-card-content>
+
+            <div layout="column" layout-gt-md="row" class="insert">
+
+              <div flex-gt-md="40">
+                <b>Name</b> : <br/><br/>
+                <b>NRIC/Passport</b> : <br/><br/>
+                <b>Passport Expired Date</b> : <br/><br/>
+                <b>Nationality</b> :<br/><br/>
+                <b>Email</b> : <br/><br/>
+                <b>Phone</b> : <br/><br/>
+                <b>Mobile</b> :<br/><br/>
+                <b>Status</b> :<br/><br/>
+              </div>
+
+              <div flex-gt-md="40">
+                <b>Study Mode</b> : <br/><br/>
+                <b>Program</b> : <br/><br/>
+                <b>Research Title</b> : <br/><br/>
+                <b>Faculty</b> : <br/><br/>
+              </div>
+
+            </div>
+
+            <br/><br/><br/>
+
+            <!--TAB OTHERS INFORMATION-->
+            <md-tab-group>
+              <md-tab label="Address">
+                <!--ADDRESS INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Address Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+
+                 <!-- Address information here -->
+				<md-tab-group>
+					<md-tab label="Mailing">
+					<div flex-gt-md="50">
+		                <b>Address </b> : 
+		                <b>Poscode</b> : 
+		                <b>State</b> : 
+		                <b>Country</b> : 
+             		 </div>
+             		 </md-tab>
+             		 <md-tab label="Official">
+					<div flex-gt-md="50">
+		                <b>Address </b> : 
+		                <b>Poscode</b> : 
+		                <b>State</b> :
+		                <b>Country</b> :
+             		 </div>
+             		 </md-tab>
+				</md-tab-group>
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Academic">
+                <!--ACADEMIC INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Academic Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                    <!-- <td-data-table
+                      [data]="contacts"
+                      [columns]="columnContact"
+                      [sortBy]="summary"
+                      [sortOrder]="ASC"
+                      [sortable]="false"
+                      [multiple]="false"
+                      [selectable]="false"
+                      (rowSelect)="edit.emit($event)" dense>
+
+                      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                        <div layout="row">
+                          <span flex>{{value}}</span>
+                        </div>
+                      </template>
+
+                      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                        <div layout="row">
+                          <button md-icon-button [md-menu-trigger-for]="menuContact">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                          <md-menu x-position="before" #menuContact="mdMenu">
+                            <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
+                            <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
+                          </md-menu>
+                        </div>
+                      </template>
+                    </td-data-table> -->
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Working Experience">
+                <!--WORKING EXPERIENCE INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Working Experience Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                  
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Attachment">
+                <!--ATTACHMENT INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Attachment Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                  
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+              <md-tab label="Referee">
+                <!--REFEREE INFORMATION-->
+                <md-card>
+                  <div md-content flex md-scroll-y>
+                    <div layout="column" layout-gt-md="row" class="insert">
+
+                      <div flex-gt-md="50">
+                        <md-card-title>Referees Information</md-card-title>
+                      </div>
+
+                    </div>
+                  </div>
+                  <md-divider></md-divider>
+                  <md-card-content>
+                  
+                  </md-card-content>
+                </md-card>
+              </md-tab>
+            </md-tab-group>
+          </md-card-content>
+        </md-card>
+        	<button md-raised-button color="accent" (click)="select(intakeApplication)">Pre Select</button>
+        	<button md-raised-button color="accent" (click)="reject(intakeApplication)">Reject</button>
+      </md-tab>
+    </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
+</md-card>

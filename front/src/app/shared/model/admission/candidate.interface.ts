@@ -1,3 +1,4 @@
+import { Applicant } from '../../../secure/identity/applicant.interface';
 import {StudyMode} from '../common/study-mode.interface';
 import {Intake} from '../policy/intake.interface';
 import {IntakeApplication} from '../application/intake-application.interface';
@@ -10,6 +11,7 @@ export interface Candidate {
   email: string;
   studyMode: StudyMode;
   intake: Intake;
+  applicant: Applicant;
   programOffering?: ProgramOffering;
   supervisorOffering?: SupervisorOffering;
   application?: IntakeApplication;

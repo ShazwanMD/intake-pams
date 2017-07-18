@@ -24,6 +24,9 @@ import {IntakeTaskViewPage} from './intake-task-view.page';
 import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
 import {Candidate} from '../../shared/model/admission/candidate.interface';
 import { CandidateListComponent } from './component/candidate-list.component';
+import { CandidateProfileRejectDialog } from './dialog/candidate-profile-reject.dialog';
+import { CandidateProfileSelectDialog } from './dialog/candidate-profile-select.dialog';
+import { CandidateProfileDialog } from './dialog/candidate-profile.dialog';
 
 export interface AdmissionModuleState {
   intakeTasks: IntakeTaskListState;
@@ -64,9 +67,22 @@ export const admissionModuleReducers = {
     IntakeTaskViewPage,
     IntakeTaskListComponent,
     CandidateListComponent,
+    CandidateProfileSelectDialog,
+    CandidateProfileRejectDialog,
+    CandidateProfileDialog,
     
   ],
-  exports: [CandidateListComponent,],
+  exports: [CandidateListComponent,
+    CandidateProfileSelectDialog,
+    CandidateProfileRejectDialog,
+    CandidateProfileDialog,
+  ],
+  entryComponents: [
+    CandidateListComponent,
+    CandidateProfileSelectDialog,
+    CandidateProfileRejectDialog,
+    CandidateProfileDialog,
+  ],
 })
 export class AdmissionModule {
   static forRoot(): ModuleWithProviders {
