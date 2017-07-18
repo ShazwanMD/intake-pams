@@ -194,16 +194,17 @@ public class ApplicantAccountController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/emailChange/{newEmail:.+}", method = RequestMethod.POST)
-    public ResponseEntity<String> changeUserEmail(@PathVariable String newEmail, @RequestBody EmailChange vo) {
+    @RequestMapping(value = "/emailChange/{currentEmail:.+}", method = RequestMethod.POST)
+    public ResponseEntity<String> changeUserEmail(@PathVariable String currentEmail, @RequestBody EmailChange vo) {
     	
-  //      InUser user = identityService.findUserByUsername(securityService.getCurrentUser().getUsername());
-        InUser user=identityService.findUserByEmail(newEmail);
+        InUser user = identityService.findUserByEmail(currentEmail);
         if (null == user)
             throw new IllegalArgumentException("User does not exists");
         if(user.getEmail().equals(vo.getNewEmail()))
             throw new IllegalArgumentException("Please use a different email");
-        LOG.debug("changing user email");
+
+        LOG.debug("EmailChange from: " + vo.getCurrentEmail());
+        LOG.debug("EmailChange to: " + vo.getNewEmail());
         user.setEmail(vo.getNewEmail());
         identityService.updateUser(user);
        
