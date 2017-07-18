@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.admission.model;
 
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -58,5 +59,9 @@ public interface InCandidate extends InMetaObject {
     InSupervisorOffering getSupervisorSelection();
 
     void setSupervisorSelection(InSupervisorOffering offering);
+
+	InIntakeApplication getApplication();
+
+	void setApplication(InIntakeApplication application);
 
 }

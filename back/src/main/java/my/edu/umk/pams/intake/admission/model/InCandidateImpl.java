@@ -1,5 +1,7 @@
 package my.edu.umk.pams.intake.admission.model;
 
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -57,6 +59,10 @@ public class InCandidateImpl implements InCandidate {
     @OneToOne(targetEntity = InApplicantImpl.class)
     @JoinColumn(name = "APPLICANT_ID")
     private InApplicant applicant;
+    
+    @OneToOne(targetEntity = InIntakeApplicationImpl.class)
+    @JoinColumn(name = "APPLICATION_ID")
+    private InIntakeApplication application;
 
     @OneToOne(targetEntity = InIntakeImpl.class)
     @JoinColumn(name = "INTAKE_ID")
@@ -165,6 +171,16 @@ public class InCandidateImpl implements InCandidate {
     }
 
     @Override
+    public InIntakeApplication getApplication() {
+		return application;
+	}
+
+    @Override
+	public void setApplication(InIntakeApplication application) {
+		this.application = application;
+	}
+
+	@Override
     public InIntake getIntake() {
         return intake;
     }

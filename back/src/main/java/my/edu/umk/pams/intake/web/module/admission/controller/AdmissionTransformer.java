@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.web.module.admission.controller;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
+import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,9 @@ public class AdmissionTransformer {
 
     @Autowired
     private CommonTransformer commonTransformer;
+    
+    @Autowired
+    private ApplicationTransformer applicationTransformer;
 
     public Candidate toCandidateVo(InCandidate e) {
         Candidate vo = new Candidate();
@@ -28,6 +32,7 @@ public class AdmissionTransformer {
         vo.setIdentityNo(e.getIdentityNo());
         vo.setMatricNo(e.getMatricNo());;
         vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));
+        vo.setApplication(applicationTransformer.toIntakeApplicationVo(e.getApplication()));
         return vo;
     }
 
