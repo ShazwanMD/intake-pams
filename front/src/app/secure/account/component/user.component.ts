@@ -6,6 +6,7 @@ import { PasswordChangerDialog } from '../dialog/password-changer.dialog';
 import { Store } from '@ngrx/store';
 import { AccountModuleState } from '../index';
 import { User } from '../../identity/user.interface';
+import { EmailChangerDialog } from "../dialog/email-changer.dialog";
 
 @Component({
   selector: 'pams-user',
@@ -15,6 +16,7 @@ import { User } from '../../identity/user.interface';
 export class UserComponent {
 
  private editorDialogRef: MdDialogRef<PasswordChangerDialog>;
+  // private editorDialogRef2: MdDialogRef<EmailChangerDialog>;
  @Input() user: User;
 
   constructor(private actions: AccountActions,
@@ -38,5 +40,21 @@ export class UserComponent {
       // load something here
     });
   }
+
+  //   editDialog2(): void {
+  //   console.log('editDialog2');
+  //   let config: MdDialogConfig = new MdDialogConfig();
+  //   config.viewContainerRef = this.vcf;
+  //   config.role = 'dialog';
+  //   config.width = '70%';
+  //   config.height = '65%';
+  //   config.position = {top: '0px'};
+  //   this.editorDialogRef2 = this.dialog.open(EmailChangerDialog, config);
+  //   this.editorDialogRef2.componentInstance.user = this.user;
+  //   this.editorDialogRef2.afterClosed().subscribe((res) => {
+  //     console.log('close dialog');
+  //     // load something here
+  //   });
+  // }
 }
 
