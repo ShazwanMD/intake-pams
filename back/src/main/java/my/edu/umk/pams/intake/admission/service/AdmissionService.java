@@ -57,4 +57,6 @@ public interface AdmissionService {
     
     void broadcastResult(InIntake intake);
 
+	void approveCandidate(InCandidate candidate);
+
 }

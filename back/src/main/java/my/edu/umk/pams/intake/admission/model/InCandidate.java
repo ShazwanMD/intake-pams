@@ -44,10 +44,6 @@ public interface InCandidate extends InMetaObject {
 
     void setStatus(InCandidateStatus status);
 
-    InApplicant getApplicant();
-
-    void setApplicant(InApplicant applicant);
-
     InIntake getIntake();
 
     void setIntake(InIntake intake);

@@ -55,10 +55,6 @@ public class InCandidateImpl implements InCandidate {
     @OneToOne(targetEntity = InSupervisorOfferingImpl.class)
     @JoinColumn(name = "SUPERVISOR_SELECTION_ID", nullable = true)
     private InSupervisorOffering supervisorSelection;
-
-    @OneToOne(targetEntity = InApplicantImpl.class)
-    @JoinColumn(name = "APPLICANT_ID")
-    private InApplicant applicant;
     
     @OneToOne(targetEntity = InIntakeApplicationImpl.class)
     @JoinColumn(name = "APPLICATION_ID")
@@ -158,16 +154,6 @@ public class InCandidateImpl implements InCandidate {
     @Override
     public void setSupervisorSelection(InSupervisorOffering supervisorSelection) {
         this.supervisorSelection = supervisorSelection;
-    }
-
-    @Override
-    public InApplicant getApplicant() {
-        return applicant;
-    }
-
-    @Override
-    public void setApplicant(InApplicant applicant) {
-        this.applicant = applicant;
     }
 
     @Override

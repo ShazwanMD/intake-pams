@@ -94,7 +94,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setEmail(application.getEmail());
         candidate.setStudyMode(application.getStudyModeSelection().getStudyMode());
         candidate.setStatus(InCandidateStatus.SELECTED);
-        candidate.setApplicant(application.getApplicant());
         candidate.setProgramSelection(application.getProgramSelection());
         candidate.setSupervisorSelection(application.getSupervisorSelection());
         candidate.setRegistration(false);
@@ -191,6 +190,21 @@ public class AdmissionServiceImpl implements AdmissionService {
         emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(emailQueue);
     }
+    
+    @Override
+    public void approveCandidate(InCandidate candidate) {
+        candidate.setStudyMode(commonService.findStudyModeByCode("F")); // FULL
+        candidate.setStatus(InCandidateStatus.APPROVED);
+        candidateDao.save(candidate, securityService.getCurrentUser());
+
+        // notify candidate
+        InEmailQueue emailQueue = new InEmailQueueImpl();
+        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
+        emailQueue.setTo(candidate.getEmail());
+        emailQueue.setSubject("Sedang diproses");
+        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(emailQueue);
+    }
 
     @Override
     public void offerCandidate(InCandidate candidate) {
@@ -209,13 +223,13 @@ public class AdmissionServiceImpl implements AdmissionService {
         String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
         candidate.setMatricNo(generatedMatricNo);
         candidate.setStudyMode(candidate.getStudyMode());
-        candidate.setStatus(InCandidateStatus.SELECTED);
+        candidate.setStatus(InCandidateStatus.OFFERED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
 
     @Override
     public void broadcastResult(InIntake intake) {
-        List<InCandidate> candidates = this.findCandidatesByStatus(intake, InCandidateStatus.SELECTED);
+        List<InCandidate> candidates = this.findCandidatesByStatus(intake, InCandidateStatus.OFFERED);
         for (InCandidate candidate : candidates) {
 
             // notify candidate
@@ -236,7 +250,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setEmail(application.getEmail());
         candidate.setStudyMode(application.getStudyModeSelection().getStudyMode());
         candidate.setStatus(InCandidateStatus.SELECTED);
-        candidate.setApplicant(application.getApplicant());
         candidate.setProgramSelection(application.getProgramSelection());
         candidate.setSupervisorSelection(application.getSupervisorSelection());
         candidate.setRegistration(false);

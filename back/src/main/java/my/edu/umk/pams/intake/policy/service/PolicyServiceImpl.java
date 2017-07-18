@@ -208,6 +208,7 @@ public class PolicyServiceImpl implements PolicyService {
 
     @Override
     public Task findIntakeTaskByTaskId(String taskId) {
+    	sessionFactory.getCurrentSession().flush();
         return workflowService.findTask(taskId);
     }
 

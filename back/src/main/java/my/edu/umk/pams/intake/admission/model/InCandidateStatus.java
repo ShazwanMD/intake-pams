@@ -7,8 +7,10 @@ public enum InCandidateStatus {
 
     SELECTED, // 0
     PREAPPROVED, // 1
-    ACCEPTED,    // 2
-    DECLINED,    // 3
-    REJECTED,    // 4
-	WITHDRAWN;  //5
+    APPROVED, // 2
+    OFFERED, // 4
+    ACCEPTED,    // 5
+    DECLINED,    // 6
+    REJECTED,    // 7
+	WITHDRAWN;  //8
 }
