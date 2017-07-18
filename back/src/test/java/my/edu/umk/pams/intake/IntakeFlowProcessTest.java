@@ -185,7 +185,7 @@ public class IntakeFlowProcessTest {
         application2.setSupervisorSelection(supervisorOffering1);
         application2.setProgramSelection(mckOffering);
         application2.setCredentialNo("234234");
-        application1.setOfficialAddress1("test official address 1");
+        application2.setOfficialAddress1("test official address 1");
         application2.setResearchTitle("test1b");
         application2.setName("testCitizen bin ting");
         application2.setEmail("testCitizen@email.com");
@@ -204,7 +204,7 @@ public class IntakeFlowProcessTest {
         application3.setSupervisorSelection(supervisorOffering2);
         application3.setProgramSelection(mcnOffering);
         application3.setCredentialNo("123123");
-        application1.setOfficialAddress1("test official address 1");
+        application3.setOfficialAddress1("test official address 1");
         application3.setResearchTitle("test2");
         application3.setName("testNonCitizen bin ting");
         application3.setEmail("testNonCitizen@email.com");
@@ -223,7 +223,7 @@ public class IntakeFlowProcessTest {
         application4.setSupervisorSelection(supervisorOffering2);
         application4.setProgramSelection(mcnOffering);
         application4.setCredentialNo("123123");
-        application1.setOfficialAddress1("test official address 1");
+        application4.setOfficialAddress1("test official address 1");
         application4.setResearchTitle("test2");
         application4.setName("testNonCitizen bin ting");
         application4.setEmail("testNonCitizen@email.com");
