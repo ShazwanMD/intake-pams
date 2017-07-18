@@ -26,7 +26,7 @@
                   <md-card-title> Official Address :  {{application.officialAddress1}}</md-card-title>
                 </md-card-header>   
                   <div layout="row" layout-padding>
-                    <p>{{application.bidStatus}}</p>
+                    <!--<p>{{application.bidStatus}}</p>-->
                     <span flex></span>
                     <button *ngIf="application.bidStatus === 'SUBMITTED'"
                             [routerLink]="['/secure/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
