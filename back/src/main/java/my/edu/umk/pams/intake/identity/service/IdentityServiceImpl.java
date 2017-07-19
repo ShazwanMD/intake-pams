@@ -252,29 +252,7 @@ public class IdentityServiceImpl implements IdentityService {
 //        logoutAsSystem(sc);
 //    }
     
-    @Override
-  public void changeEmail(InApplicant applicant, String newEmail) {
-  	SecurityContext sc = loginAsSystem();
-  	applicant.setEmail(newEmail);
-      applicantDao.update(applicant, securityService.getCurrentUser());
-      sessionFactory.getCurrentSession().flush();
-      
-  	if (applicant == null) LOG.debug("ApplicantB is null");
-  	if (applicant.getEmail() == null) LOG.debug("Email is null");
-  	
-  	InEmailQueue email= new InEmailQueueImpl();
-      String subject = "Change Email";
-      String body = "Your Email has been changed to : " + newEmail +
-      			  ". Please Login to continue";
-      email.setTo(newEmail);
-      email.setSubject(subject);
-      email.setBody(body);
-      email.setCode("EQ/" + System.currentTimeMillis());
-      email.setQueueStatus(InEmailQueueStatus.QUEUED);
-      systemService.saveEmailQueue(email);
-      logoutAsSystem(sc);
-  }
-
+ 
     
     //====================================================================================================
     // GROUP
@@ -619,6 +597,30 @@ public class IdentityServiceImpl implements IdentityService {
         sessionFactory.getCurrentSession().flush();
         logoutAsSystem(sc);
     }
+    
+    @Override
+    public void changeEmail(InApplicant applicant, String newEmail) {
+    	SecurityContext sc = loginAsSystem();
+    	applicant.setEmail(newEmail);
+        applicantDao.update(applicant, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        
+    	if (applicant == null) LOG.debug("ApplicantB is null");
+    	if (applicant.getEmail() == null) LOG.debug("Email is null");
+    	
+    	InEmailQueue email= new InEmailQueueImpl();
+        String subject = "Change Email";
+        String body = "Your Email has been changed to : " + newEmail +
+        			  ". Please Login to continue";
+        email.setTo(newEmail);
+        email.setSubject(subject);
+        email.setBody(body);
+        email.setCode("EQ/" + System.currentTimeMillis());
+        email.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(email);
+        logoutAsSystem(sc);
+    }
+
     
     private SecurityContext loginAsSystem() {
         SecurityContext savedCtx = SecurityContextHolder.getContext();
