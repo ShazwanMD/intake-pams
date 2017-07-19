@@ -22,11 +22,8 @@
     </div>
   </form>
 </md-dialog-content>
-<md-dialog-actions align="end">
-  <button md-raised-button color="accent"
-          [disabled]="emailChangerForm.invalid"
-          (click)="submit(emailChangerForm.value, emailChangerForm.valid)">
-    Change Email
-  </button>
-</md-dialog-actions>
-
+   <md-dialog-actions>
+      <button md-raised-button color="accent" 
+               (click)="submit(emailChangerForm.value, emailChangerForm.valid)"> Change Email
+      </button>
+    </md-dialog-actions>

@@ -62,7 +62,9 @@ public interface IdentityService {
 
     void changePassword(InUser user, String newPassword);
     
-    void changeEmail(InUser user, String newEmail);
+//    void changeEmail(InUser user, String newEmail);
+    
+    void changeEmail(InApplicant applicant, String newEmail);
 
 
     //====================================================================================================
@@ -177,6 +179,8 @@ public interface IdentityService {
 
     InApplicant findApplicantById(Long id);
 
+    InApplicant findApplicantByEmail(String email);
+ 
     InApplicant findApplicantByApplicantNo(String ApplicantNo);
 
     List<InApplicant> findApplicants(Integer offset, Integer limit);

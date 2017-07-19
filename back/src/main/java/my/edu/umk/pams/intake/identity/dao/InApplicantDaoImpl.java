@@ -4,6 +4,8 @@ import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
+import my.edu.umk.pams.intake.identity.model.InUser;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -30,6 +32,15 @@ public class InApplicantDaoImpl extends GenericDaoSupport<Long, InApplicant> imp
         query.setString("identityNo", applicantNo);
         return (InApplicant) query.uniqueResult();
     }
+    
+    @Override
+    public InApplicant findByEmail(String email) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select u from InApplicant u where u.email = :email ");
+        query.setString("email", email);
+        return (InApplicant) query.uniqueResult();
+    }
+
 
     @Override
     public List<InApplicant> find(String filter, Integer offset, Integer limit) {

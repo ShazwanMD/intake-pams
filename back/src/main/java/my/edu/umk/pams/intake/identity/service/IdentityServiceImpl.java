@@ -229,29 +229,53 @@ public class IdentityServiceImpl implements IdentityService {
         logoutAsSystem(sc);
     }
     
+//    @Override
+//    public void changeEmail(InUser user, String newEmail) {
+//    	SecurityContext sc = loginAsSystem();
+//    	user.setEmail(newEmail);
+//        userDao.update(user, securityService.getCurrentUser());
+//        sessionFactory.getCurrentSession().flush();
+//        
+//    	if (user == null) LOG.debug("UserB is null");
+//    	if (user.getEmail() == null) LOG.debug("Email is null");
+//    	
+//    	InEmailQueue email= new InEmailQueueImpl();
+//        String subject = "Change Email";
+//        String body = "Your Email has been changed to : " + newEmail +
+//        			  ". Please Login to continue";
+//        email.setTo(newEmail);
+//        email.setSubject(subject);
+//        email.setBody(body);
+//        email.setCode("EQ/" + System.currentTimeMillis());
+//        email.setQueueStatus(InEmailQueueStatus.QUEUED);
+//        systemService.saveEmailQueue(email);
+//        logoutAsSystem(sc);
+//    }
+    
     @Override
-    public void changeEmail(InUser user, String newEmail) {
-    	SecurityContext sc = loginAsSystem();
-    	user.setEmail(newEmail);
-        userDao.update(user, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-        
-    	if (user == null) LOG.debug("UserB is null");
-    	if (user.getEmail() == null) LOG.debug("Email is null");
-    	
-    	InEmailQueue email= new InEmailQueueImpl();
-        String subject = "Change Email";
-        String body = "Your Email has been changed to : " + newEmail +
-        			  ". Please Login to continue";
-        email.setTo(newEmail);
-        email.setSubject(subject);
-        email.setBody(body);
-        email.setCode("EQ/" + System.currentTimeMillis());
-        email.setQueueStatus(InEmailQueueStatus.QUEUED);
-        systemService.saveEmailQueue(email);
-        logoutAsSystem(sc);
-    }
+  public void changeEmail(InApplicant applicant, String newEmail) {
+  	SecurityContext sc = loginAsSystem();
+  	applicant.setEmail(newEmail);
+      applicantDao.update(applicant, securityService.getCurrentUser());
+      sessionFactory.getCurrentSession().flush();
+      
+  	if (applicant == null) LOG.debug("ApplicantB is null");
+  	if (applicant.getEmail() == null) LOG.debug("Email is null");
+  	
+  	InEmailQueue email= new InEmailQueueImpl();
+      String subject = "Change Email";
+      String body = "Your Email has been changed to : " + newEmail +
+      			  ". Please Login to continue";
+      email.setTo(newEmail);
+      email.setSubject(subject);
+      email.setBody(body);
+      email.setCode("EQ/" + System.currentTimeMillis());
+      email.setQueueStatus(InEmailQueueStatus.QUEUED);
+      systemService.saveEmailQueue(email);
+      logoutAsSystem(sc);
+  }
 
+    
     //====================================================================================================
     // GROUP
     //====================================================================================================
@@ -553,6 +577,11 @@ public class IdentityServiceImpl implements IdentityService {
     }
 
     @Override
+    public InApplicant findApplicantByEmail(String email) {
+        return applicantDao.findByEmail(email);
+    }
+
+    @Override
     public InApplicant findApplicantByApplicantNo(String ApplicantNo) {
         return applicantDao.findByApplicantNo(ApplicantNo);
     }
@@ -585,8 +614,10 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void updateApplicant(InApplicant applicant) {
+    	SecurityContext sc = loginAsSystem();
         applicantDao.update(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        logoutAsSystem(sc);
     }
     
     private SecurityContext loginAsSystem() {
