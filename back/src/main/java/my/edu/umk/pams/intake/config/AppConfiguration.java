@@ -37,7 +37,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         "my.edu.umk.pams.intake.web.module.admission",
         "my.edu.umk.pams.intake.web.module.application",
         "my.edu.umk.pams.intake.web.module.registration",
-
 }
 )
 @Import({
@@ -49,6 +48,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         SwaggerConfig.class,
         ReportConfig.class,
         EmailConfig.class,
+//        IntegrationConfig.class,
 //        VelocityConfig.class,
 //        ThreadingConfig.class,
 })
