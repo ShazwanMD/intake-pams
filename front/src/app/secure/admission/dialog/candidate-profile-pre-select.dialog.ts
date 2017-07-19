@@ -1,9 +1,12 @@
+import { Candidate } from '../../../shared/model/admission/candidate.interface';
 import { Employment } from '../../../shared/model/application/employment.interface';
 import { IntakeApplication } from '../../../shared/model/application/intake-application.interface';
 import { Language } from '../../../shared/model/application/language.interface';
 import { Referee } from '../../../shared/model/application/referee.interface';
+import { ApplicationModuleState } from '../../application';
 import { IntakeApplicationActions } from '../../application/intake-applications/intake-application.action';
 import { IntakeActions } from '../../policy/intakes/intake.action';
+import { AdmissionActions } from '../admission.action';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -12,8 +15,8 @@ import {Observable} from 'rxjs/Observable';
 import {MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog} from '@angular/material';
 
 @Component({
-  selector: 'pams-candidate-profile-pre-select',
-  templateUrl: './candidate-profile-pre-select.dialog.html',
+  selector: 'pams-candidate-profile-select',
+  templateUrl: './candidate-profile-select.dialog.html',
 })
 
 export class CandidateProfilePreSelectDialog implements OnInit {
@@ -52,6 +55,7 @@ export class CandidateProfilePreSelectDialog implements OnInit {
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
 
+  @Input() candidate: Candidate;
   @Input() intakeApplication: IntakeApplication;
 
   constructor(private router: Router,
@@ -59,12 +63,12 @@ export class CandidateProfilePreSelectDialog implements OnInit {
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
-              private intakeActions: IntakeActions,
+              private admissionActions: AdmissionActions,
               private dialog: MdDialog,
               private editorDialog: MdDialogRef<CandidateProfilePreSelectDialog>,
               private editorDialogRef: MdDialogRef<CandidateProfilePreSelectDialog>,
               private snackBar: MdSnackBar,
-              private store: Store<CandidateProfilePreSelectDialog>) {
+              private store: Store<ApplicationModuleState>) {
 
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
@@ -74,39 +78,27 @@ export class CandidateProfilePreSelectDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    let referenceNo: string = this.intakeApplication.referenceNo;
+    let referenceNo: string = this.candidate.application.referenceNo;
     this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
 
-  select(intakeApplication: IntakeApplication) {
-    let snackBarRef = this.snackBar.open('Confirm to Select This Applicant?', 'Ok');
+  select(candidate: Candidate) {
+     let snackBarRef = this.snackBar.open('Confirm to Select This Candidate?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
-      this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
+     this.store.dispatch(this.admissionActions.selectCandidate(candidate));
       this.editorDialog.afterClosed().subscribe((res) => {
-        this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
+      this.route.params.subscribe((params: { taskId: string }) => {
+      let taskId: string = params.taskId;
+      console.log('intake: ' + taskId);
+      this.store.dispatch(this.admissionActions.findIntakeTaskByTaskId(taskId));
+    });
       });
       this.editorDialog.close();
     });
   }
 
-  reject(intakeApplication: IntakeApplication) {
-    this.showDialog(intakeApplication);
+  reject(candidate: Candidate) {
     //  this.editorDialog.close();
-  }
-
-  showDialog(intakeApplication): void {
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '40%';
-    config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(CandidateProfilePreSelectDialog, config);
-    this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
-    this.editorDialog.afterClosed().subscribe((res) => {
-      this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
-
-    });
   }
 
 }

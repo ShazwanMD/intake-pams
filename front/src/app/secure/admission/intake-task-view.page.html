@@ -76,7 +76,7 @@
             <pams-candidate-list [candidate]="selectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
           </md-tab>
            <md-tab label="Pre Selected ({{(preSelectedCandidates$ | async)?.length}})">
-            <pams-candidate-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
+            <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-preselect-list>
           </md-tab>
             <md-tab label="Selected">
               <td-data-table

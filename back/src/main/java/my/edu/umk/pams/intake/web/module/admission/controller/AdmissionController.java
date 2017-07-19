@@ -110,6 +110,24 @@ public class AdmissionController {
         admissionService.preSelectCandidate(candidate);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/select", method = RequestMethod.PUT)
+    public ResponseEntity<String> selectCandidate(@PathVariable String referenceNo,
+                                                          @RequestBody Candidate vo) {
+    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+        admissionService.selectCandidate(candidate);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/reject", method = RequestMethod.PUT)
+    public ResponseEntity<String> rejectCandidate(@PathVariable String referenceNo,
+                                                          @RequestBody Candidate vo) {
+    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+        admissionService.rejectCandidate(candidate);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // PRIVATE METHODS

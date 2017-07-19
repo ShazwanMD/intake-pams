@@ -64,4 +64,10 @@ export class AdmissionEffects {
     .map((action) => action.payload)
     .switchMap((candidate) => this.admissionService.preSelectCandidate(candidate))
     .map((message) => this.admissionActions.preSelectCandidateSuccess(message));
+  
+  @Effect() selectCandidate$ = this.actions$
+    .ofType(AdmissionActions.SELECT_CANDIDATE)
+    .map((action) => action.payload)
+    .switchMap((candidate) => this.admissionService.selectCandidate(candidate))
+    .map((message) => this.admissionActions.selectCandidateSuccess(message));
 }

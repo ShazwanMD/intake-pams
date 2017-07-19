@@ -77,4 +77,10 @@ export class AdmissionService {
       + candidate.application.referenceNo + '/candidates/candidateStatus/preSelect', JSON.stringify(candidate))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  selectCandidate(candidate: Candidate): Observable<String> {
+    return this._http.put(this.ADMISSION_API + '/application/'
+      + candidate.application.referenceNo + '/candidates/candidateStatus/select', JSON.stringify(candidate))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 }

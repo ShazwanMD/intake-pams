@@ -78,6 +78,24 @@ export class AdmissionActions {
       payload: message,
     };
   }
+  
+  static SELECT_CANDIDATE = '[Admission] Select Candidate';
+
+  selectCandidate(candidate): Action {
+    return {
+      type: AdmissionActions.SELECT_CANDIDATE,
+      payload: candidate,
+    };
+  }
+
+  static SELECT_CANDIDATE_SUCCESS = '[Admission] Select Candidate Success';
+
+  selectCandidateSuccess(message): Action {
+    return {
+      type: AdmissionActions.SELECT_CANDIDATE_SUCCESS,
+      payload: message,
+    };
+  }
 
   static FIND_CANDIDATES = '[Admission] Find Candidates';
 

@@ -26,6 +26,8 @@ import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
 import {Candidate} from '../../shared/model/admission/candidate.interface';
 import { CpsIntakeApplicationSubModule } from '../application/intake-applications/cps';
 import { CandidateListComponent } from './component/candidate-list.component';
+import { CandidatePreSelectListComponent } from './component/candidate-preselect-list.component';
+import { CandidateProfilePreSelectDialog } from './dialog/candidate-profile-pre-select.dialog';
 import { CandidateProfileRejectDialog } from './dialog/candidate-profile-reject.dialog';
 import { CandidateProfileSelectDialog } from './dialog/candidate-profile-select.dialog';
 import { CandidateProfileDialog } from './dialog/candidate-profile.dialog';
@@ -74,21 +76,28 @@ export const admissionModuleReducers = {
     IntakeTaskViewPage,
     IntakeTaskListComponent,
     CandidateListComponent,
+    CandidatePreSelectListComponent,
     CandidateProfileSelectDialog,
     CandidateProfileRejectDialog,
     CandidateProfileDialog,
+    CandidateProfilePreSelectDialog,
     
   ],
   exports: [CandidateListComponent,
     CandidateProfileSelectDialog,
     CandidateProfileRejectDialog,
     CandidateProfileDialog,
+    CandidateProfilePreSelectDialog,
+    CandidatePreSelectListComponent,
+    
   ],
   entryComponents: [
     CandidateListComponent,
     CandidateProfileSelectDialog,
     CandidateProfileRejectDialog,
     CandidateProfileDialog,
+    CandidateProfilePreSelectDialog,
+    CandidatePreSelectListComponent,
   ],
 })
 export class AdmissionModule {

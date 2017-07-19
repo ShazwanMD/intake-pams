@@ -62,4 +62,8 @@ public interface AdmissionService {
 
 	void preSelectCandidate(InCandidate candidate);
 
+	void selectCandidate(InCandidate candidate);
+
+	void rejectCandidate(InCandidate candidate);
+
 }

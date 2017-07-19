@@ -103,6 +103,42 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void preSelectCandidate(InCandidate candidate) {
     	candidate.setStatus(InCandidateStatus.PREAPPROVED);
         candidateDao.update(candidate, securityService.getCurrentUser());
+        
+     // notify candidate
+        InEmailQueue emailQueue = new InEmailQueueImpl();
+        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
+        emailQueue.setTo(candidate.getEmail());
+        emailQueue.setSubject("Sedang diproses");
+        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(emailQueue);
+    }
+    
+    @Override
+    public void selectCandidate(InCandidate candidate) {
+    	candidate.setStatus(InCandidateStatus.APPROVED);
+        candidateDao.update(candidate, securityService.getCurrentUser());
+        
+     // notify candidate
+        InEmailQueue emailQueue = new InEmailQueueImpl();
+        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
+        emailQueue.setTo(candidate.getEmail());
+        emailQueue.setSubject("Sedang diproses");
+        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(emailQueue);
+    }
+    
+    @Override
+    public void rejectCandidate(InCandidate candidate) {
+    	candidate.setStatus(InCandidateStatus.REJECTED);
+        candidateDao.update(candidate, securityService.getCurrentUser());
+        
+     // notify candidate
+        InEmailQueue emailQueue = new InEmailQueueImpl();
+        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
+        emailQueue.setTo(candidate.getEmail());
+        emailQueue.setSubject("Sedang diproses");
+        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(emailQueue);
     }
 
     @Override

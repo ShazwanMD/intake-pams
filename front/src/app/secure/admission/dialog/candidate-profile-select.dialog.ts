@@ -1,9 +1,12 @@
+import { Candidate } from '../../../shared/model/admission/candidate.interface';
 import { Employment } from '../../../shared/model/application/employment.interface';
 import { IntakeApplication } from '../../../shared/model/application/intake-application.interface';
 import { Language } from '../../../shared/model/application/language.interface';
 import { Referee } from '../../../shared/model/application/referee.interface';
+import { ApplicationModuleState } from '../../application';
 import { IntakeApplicationActions } from '../../application/intake-applications/intake-application.action';
 import { IntakeActions } from '../../policy/intakes/intake.action';
+import { AdmissionActions } from '../admission.action';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -52,6 +55,7 @@ export class CandidateProfileSelectDialog implements OnInit {
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
 
+  @Input() candidate: Candidate;
   @Input() intakeApplication: IntakeApplication;
 
   constructor(private router: Router,
@@ -59,12 +63,12 @@ export class CandidateProfileSelectDialog implements OnInit {
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
-              private intakeActions: IntakeActions,
+              private admissionActions: AdmissionActions,
               private dialog: MdDialog,
               private editorDialog: MdDialogRef<CandidateProfileSelectDialog>,
               private editorDialogRef: MdDialogRef<CandidateProfileSelectDialog>,
               private snackBar: MdSnackBar,
-              private store: Store<CandidateProfileSelectDialog>) {
+              private store: Store<ApplicationModuleState>) {
 
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
@@ -74,39 +78,27 @@ export class CandidateProfileSelectDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    let referenceNo: string = this.intakeApplication.referenceNo;
+    let referenceNo: string = this.candidate.application.referenceNo;
     this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
 
-  select(intakeApplication: IntakeApplication) {
-    let snackBarRef = this.snackBar.open('Confirm to Select This Applicant?', 'Ok');
+  select(candidate: Candidate) {
+     let snackBarRef = this.snackBar.open('Confirm to Pre-Select This Candidate?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
-      this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
+     this.store.dispatch(this.admissionActions.preSelectCandidate(candidate));
       this.editorDialog.afterClosed().subscribe((res) => {
-        this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
+      this.route.params.subscribe((params: { taskId: string }) => {
+      let taskId: string = params.taskId;
+      console.log('intake: ' + taskId);
+      this.store.dispatch(this.admissionActions.findIntakeTaskByTaskId(taskId));
+    });
       });
       this.editorDialog.close();
     });
   }
 
-  reject(intakeApplication: IntakeApplication) {
-    this.showDialog(intakeApplication);
+  reject(candidate: Candidate) {
     //  this.editorDialog.close();
-  }
-
-  showDialog(intakeApplication): void {
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '40%';
-    config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(CandidateProfileSelectDialog, config);
-    this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
-    this.editorDialog.afterClosed().subscribe((res) => {
-      this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
-
-    });
   }
 
 }

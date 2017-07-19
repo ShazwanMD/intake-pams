@@ -6,7 +6,7 @@ export enum BidStatus{
     REJECTED,  // rejected in intake evaluation flow
     WITHDRAW,  // ?? we have cancidate
     APPEALED, // ?? we have candidate
-    PRE_APPROVED, // ?? we have candidate
+    PREAPPROVED, // ?? we have candidate
     APPROVED, // ?? we have candidate
     OFFERED // ?? we have approved candidate
 }

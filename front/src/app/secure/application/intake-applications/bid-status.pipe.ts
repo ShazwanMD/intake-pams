@@ -20,7 +20,7 @@ export class BidStatusPipe implements PipeTransform {
           return 'Withdraw';
       case BidStatus.APPEALED:
           return 'Appealed';
-      case BidStatus.PRE_APPROVED:
+      case BidStatus.PREAPPROVED:
           return 'Pre Approved';
       case BidStatus.APPROVED:
           return 'Approved';
