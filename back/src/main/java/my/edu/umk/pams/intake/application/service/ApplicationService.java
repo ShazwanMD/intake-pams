@@ -184,5 +184,7 @@ public interface ApplicationService {
 
     boolean hasApplied(InIntake intake, InApplicant applicant);
 
+	List<InIntakeApplication> findIntakeApplicationsByStatusVerify(InIntake intake, InBidStatus status);
+
 }
 

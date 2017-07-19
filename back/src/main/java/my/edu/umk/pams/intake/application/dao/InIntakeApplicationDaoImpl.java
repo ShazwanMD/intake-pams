@@ -278,6 +278,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setInteger("bidStatus", bidStatus.ordinal());
         return (List<InIntakeApplication>) query.list();
     }
+    
+    @Override
+    public List<InIntakeApplication> findStatusVerify(InIntake intake, InBidStatus bidStatus) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
+                "p.intake = :intake " +
+                "and p.bidStatus = :bidStatus and p.verified = TRUE ");
+        query.setEntity("intake", intake);
+        query.setInteger("bidStatus", bidStatus.ordinal());
+        return (List<InIntakeApplication>) query.list();
+    }
 
     @Override
     public List<InApplicant> findApplicants(InIntake intake) {

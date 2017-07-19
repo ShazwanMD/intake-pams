@@ -1,14 +1,20 @@
 package my.edu.umk.pams.intake.web.module.admission.controller;
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
+import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
 import org.activiti.engine.task.Task;
+import org.jfree.util.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +22,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +43,9 @@ public class AdmissionController {
     @Autowired
     private PolicyService policyService;
 
+    @Autowired
+    private ApplicationService applicationService;
+    
     @Autowired
     private AdmissionTransformer admissionTransformer;
 
@@ -79,6 +89,7 @@ public class AdmissionController {
     @RequestMapping(value = "/intakes/{referenceNo}/candidates", method = RequestMethod.GET)
     public ResponseEntity<List<Candidate>> findCandidates(@PathVariable String referenceNo) {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        System.out.println("intake "+intake.getReferenceNo());
         return new ResponseEntity<List<Candidate>>(
                 admissionTransformer.toCandidateVos(admissionService.findCandidates(intake)), HttpStatus.OK);
     }
@@ -89,6 +100,15 @@ public class AdmissionController {
         return new ResponseEntity<List<Candidate>>(
                 admissionTransformer.toCandidateVos(
                         admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/preSelect", method = RequestMethod.PUT)
+    public ResponseEntity<String> preSelectCandidate(@PathVariable String referenceNo,
+                                                          @RequestBody Candidate vo) {
+    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+        admissionService.preSelectCandidate(candidate);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
     // ====================================================================================================

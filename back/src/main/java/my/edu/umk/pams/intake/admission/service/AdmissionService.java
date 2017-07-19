@@ -19,8 +19,7 @@ public interface AdmissionService {
     @Deprecated
     void processIntake(InIntake intake);
 
-    @Deprecated
-    void preselectIntakeApplication(InIntakeApplication application);
+    void preSelectIntakeApplication(InIntakeApplication application);
 
     void processIntakeSelection(InIntake intake);
 
@@ -37,6 +36,8 @@ public interface AdmissionService {
     InCandidate findCandidateByIdentityNo(String identityNo);
     
     InCandidate findCandidateByMatricNo(String matricNo);
+    
+    InCandidate findCandidateByIntakeApplication(InIntakeApplication intakeApplication);
 
     List<InCandidate> findCandidates(InIntake intake);
 
@@ -58,5 +59,7 @@ public interface AdmissionService {
     void broadcastResult(InIntake intake);
 
 	void approveCandidate(InCandidate candidate);
+
+	void preSelectCandidate(InCandidate candidate);
 
 }

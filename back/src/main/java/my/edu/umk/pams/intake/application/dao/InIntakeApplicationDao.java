@@ -168,4 +168,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     void updateLanguage(InIntakeApplication application, InLanguage language, InUser user);
 
+	List<InIntakeApplication> findStatusVerify(InIntake intake, InBidStatus bidStatus);
+
 }

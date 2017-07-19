@@ -31,7 +31,7 @@ export class AdmissionEffects {
     .switchMap((taskId) => this.admissionService.findIntakeTaskByTaskId(taskId))
     .map((task) => this.admissionActions.findIntakeTaskByTaskIdSuccess(task))
     .mergeMap((action) => from([action,
-      this.admissionActions.findCandidates(action.payload),
+      this.admissionActions.findSelectedCandidates(action.payload),
     ]));
 
   @Effect() findCandidates = this.actions$
@@ -51,4 +51,10 @@ export class AdmissionEffects {
     .map(action => action.payload)
     .switchMap(intake => this.admissionService.findRejectedCandidates(intake))
     .map(candidates => this.admissionActions.findRejectedCandidatesSuccess(candidates));
+  
+  @Effect() preSelectCandidate$ = this.actions$
+    .ofType(AdmissionActions.PRESELECT_CANDIDATE)
+    .map((action) => action.payload)
+    .switchMap((candidate) => this.admissionService.preSelectCandidate(candidate))
+    .map((message) => this.admissionActions.preSelectCandidateSuccess(message));
 }

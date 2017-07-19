@@ -61,7 +61,7 @@ package my.edu.umk.pams.intake.registration.stage;
 			//dapatkan senarai pemohon yang telah dipilih
 			for (InIntakeApplication application : applications) {
 
-				admissionService.preselectIntakeApplication(application);
+				admissionService.preSelectIntakeApplication(application);
 
 				  
 			}

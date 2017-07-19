@@ -402,6 +402,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<InIntakeApplication> findIntakeApplications(InIntake intake, InBidStatus status) {
         return intakeApplicationDao.find(intake, status);
     }
+    
+    @Override
+    public List<InIntakeApplication> findIntakeApplicationsByStatusVerify(InIntake intake, InBidStatus status) {
+        return intakeApplicationDao.findStatusVerify(intake, status);
+    }
 
     @Override
     public List<InIntakeApplication> findIntakeApplications(InIntake intake, Integer offset, Integer limit) {

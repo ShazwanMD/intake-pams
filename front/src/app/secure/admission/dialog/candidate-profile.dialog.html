@@ -27,21 +27,21 @@
             <div layout="column" layout-gt-md="row" class="insert">
 
               <div flex-gt-md="40">
-                <b>Name</b> : <br/><br/>
-                <b>NRIC/Passport</b> : <br/><br/>
-                <b>Passport Expired Date</b> : <br/><br/>
-                <b>Nationality</b> :<br/><br/>
-                <b>Email</b> : <br/><br/>
-                <b>Phone</b> : <br/><br/>
-                <b>Mobile</b> :<br/><br/>
-                <b>Status</b> :<br/><br/>
+                <b>Name</b> : {{candidate.name}}<br/><br/>
+                <b>NRIC/Passport</b> : {{candidate.identityNo}}<br/><br/>
+                <b>Passport Expired Date</b> : {{candidate.application?.passExpDate}}<br/><br/>
+                <b>Nationality</b> : {{candidate.application?.nationalityCode?.descriptionEn}}<br/><br/>
+                <b>Email</b> : {{candidate.email}} <br/><br/>
+                <b>Phone</b> : {{candidate.application?.phone}}<br/><br/>
+                <b>Mobile</b> : {{candidate.application?.mobile}}<br/><br/>
+                <b>Marital Status</b> : {{candidate.application?.maritalCode?.descriptionEn}}<br/><br/><br/>
               </div>
 
               <div flex-gt-md="40">
-                <b>Study Mode</b> : <br/><br/>
-                <b>Program</b> : <br/><br/>
-                <b>Research Title</b> : <br/><br/>
-                <b>Faculty</b> : <br/><br/>
+                <b>Study Mode</b> : {{candidate.application?.studyModeSelection?.studyMode.descriptionEn}}<br/><br/>
+                <b>Program</b> : {{candidate.application?.programSelection?.programCode?.descriptionEn | uppercase}}<br/><br/>
+                <b>Research Title</b> : {{candidate.application?.researchTitle}}<br/><br/>
+                <b>Faculty</b> : {{candidate.application?.programSelection?.programCode?.facultyCode?.descriptionEn | uppercase}}<br/><br/>
               </div>
 
             </div>
@@ -69,18 +69,18 @@
 				<md-tab-group>
 					<md-tab label="Mailing">
 					<div flex-gt-md="50">
-		                <b>Address </b> : 
-		                <b>Poscode</b> : 
-		                <b>State</b> : 
-		                <b>Country</b> : 
+		                <b>Address </b> : {{candidate.application?.mailingAddress1}}&nbsp;{{candidate.application?.mailingAddress2}}&nbsp;{{candidate.application?.mailingAddress3}}<br/><br/>
+		                <b>Poscode</b> : {{candidate.application?.mailingPostcode}}<br/><br/>
+		                <b>State</b> : {{candidate.application?.mailingStateCode?.descriptionEn}}<br/><br/>
+		                <b>Country</b> : {{candidate.application?.mailingCountryCode?.descriptionEn}}
              		 </div>
              		 </md-tab>
              		 <md-tab label="Official">
 					<div flex-gt-md="50">
-		                <b>Address </b> : 
-		                <b>Poscode</b> : 
-		                <b>State</b> :
-		                <b>Country</b> :
+		                <b>Address </b> : {{candidate.application?.officialAddress1}}&nbsp;{{candidate.application?.officialAddress2}}&nbsp;{{candidate.application?.officialAddress3}}<br/><br/>
+		                <b>Poscode</b> : {{candidate.application?.officialPostcode}}<br/><br/>
+		                <b>State</b> : {{candidate.application?.officialStateCode?.descriptionEn}}<br/><br/>
+		                <b>Country</b> : {{candidate.application?.officialCountryCode?.descriptionEn}}
              		 </div>
              		 </md-tab>
 				</md-tab-group>
@@ -146,7 +146,8 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                  
+                  <pams-employment-list [intakeApplication]="intakeApplication$ | async" [employments]="employments$ | async">
+           			</pams-employment-list>
                   </md-card-content>
                 </md-card>
               </md-tab>
@@ -164,7 +165,8 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                  
+                  <pams-attachment-list [intakeApplication]="intakeApplication$ | async" [attachments]="attachments$ | async">
+           			</pams-attachment-list>
                   </md-card-content>
                 </md-card>
               </md-tab>
@@ -182,15 +184,16 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                  
+                  <pams-referee-list [intakeApplication]="intakeApplication$ | async" [referees]="referees$ | async">
+           			</pams-referee-list>
                   </md-card-content>
                 </md-card>
               </md-tab>
             </md-tab-group>
           </md-card-content>
         </md-card>
-        	<button md-raised-button color="accent" (click)="select(intakeApplication)">Pre Select</button>
-        	<button md-raised-button color="accent" (click)="reject(intakeApplication)">Reject</button>
+        	<button md-raised-button color="accent" (click)="preSelect(candidate)">Pre Select</button>
+        	<button md-raised-button color="accent" (click)="reject(candidate)">Reject</button>
       </md-tab>
     </md-tab-group>
 

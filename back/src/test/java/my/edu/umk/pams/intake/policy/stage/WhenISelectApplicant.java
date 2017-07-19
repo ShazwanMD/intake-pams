@@ -75,7 +75,7 @@ public class WhenISelectApplicant extends Stage <WhenISelectApplicant>{
 		LOG.debug("intake {} :", intake);
 		LOG.debug("intake {} :", intakeApplication);
         standardSelectionStrategy.select(intake);
-		admissionService.preselectIntakeApplication(intakeApplication);
+		admissionService.preSelectIntakeApplication(intakeApplication);
 
 //		InCandidate candidate = new InCandidateImpl();
 //        candidate.setName(application.getName());

@@ -60,6 +60,24 @@ export class AdmissionActions {
       payload: task,
     };
   }
+  
+  static PRESELECT_CANDIDATE = '[Admission] Pre Select Candidate';
+
+  preSelectCandidate(candidate): Action {
+    return {
+      type: AdmissionActions.PRESELECT_CANDIDATE,
+      payload: candidate,
+    };
+  }
+
+  static PRESELECT_CANDIDATE_SUCCESS = '[Admission] Pre Select Candidate Success';
+
+  preSelectCandidateSuccess(message): Action {
+    return {
+      type: AdmissionActions.PRESELECT_CANDIDATE_SUCCESS,
+      payload: message,
+    };
+  }
 
   static FIND_CANDIDATES = '[Admission] Find Candidates';
 
@@ -94,7 +112,7 @@ export class AdmissionActions {
   static FIND_SELECTED_CANDIDATES_SUCCESS = '[Admission] Find Selected Candidates Success';
 
   findSelectedCandidatesSuccess(candidates): Action {
-    console.log('findCandidatesSuccess');
+    console.log('findSelectedCandidatesSuccess');
     return {
       type: AdmissionActions.FIND_SELECTED_CANDIDATES_SUCCESS,
       payload: candidates,

@@ -6,6 +6,7 @@ import { Referee } from '../../../shared/model/application/referee.interface';
 import { ApplicationModuleState } from '../../application';
 import { IntakeApplicationActions } from '../../application/intake-applications/intake-application.action';
 import { IntakeActions } from '../../policy/intakes/intake.action';
+import { AdmissionActions } from '../admission.action';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -55,13 +56,14 @@ export class CandidateProfileDialog implements OnInit {
   private applicationForm: FormGroup;
 
   @Input() candidate: Candidate;
+  @Input() intakeApplication: IntakeApplication;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
-              private intakeActions: IntakeActions,
+              private admissionActions: AdmissionActions,
               private dialog: MdDialog,
               private editorDialog: MdDialogRef<CandidateProfileDialog>,
               private editorDialogRef: MdDialogRef<CandidateProfileDialog>,
@@ -80,10 +82,22 @@ export class CandidateProfileDialog implements OnInit {
     this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
 
-  preSelect(intakeApplication: IntakeApplication) {
+  preSelect(candidate: Candidate) {
+     let snackBarRef = this.snackBar.open('Confirm to Pre-Select This Candidate?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+     this.store.dispatch(this.admissionActions.preSelectCandidate(candidate));
+      this.editorDialog.afterClosed().subscribe((res) => {
+      this.route.params.subscribe((params: { taskId: string }) => {
+      let taskId: string = params.taskId;
+      console.log('intake: ' + taskId);
+      this.store.dispatch(this.admissionActions.findIntakeTaskByTaskId(taskId));
+    });
+      });
+      this.editorDialog.close();
+    });
   }
 
-  reject(intakeApplication: IntakeApplication) {
+  reject(candidate: Candidate) {
     //  this.editorDialog.close();
   }
 

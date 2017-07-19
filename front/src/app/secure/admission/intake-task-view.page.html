@@ -72,8 +72,8 @@
           <md-card-subtitle>Candidates for this program</md-card-subtitle>
           <md-divider></md-divider>
           <md-tab-group>
-            <md-tab label="All ({{(candidates$ | async)?.length}})">
-            <pams-candidate-list [candidate]="candidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
+            <md-tab label="All ({{(selectedCandidates$ | async)?.length}})">
+            <pams-candidate-list [candidate]="selectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
           </md-tab>
             <md-tab label="Pre Selected">
               <td-data-table

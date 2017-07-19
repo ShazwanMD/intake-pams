@@ -78,14 +78,13 @@ public class AdmissionServiceImpl implements AdmissionService {
         // todo(uda) : InBidStatus.SELECTED
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
         for (InIntakeApplication application : applications) {
-            preselectIntakeApplication(application);
+            preSelectIntakeApplication(application);
         }
     }
 
 
-    @Deprecated
     @Override
-    public void preselectIntakeApplication(InIntakeApplication application) {
+    public void preSelectIntakeApplication(InIntakeApplication application) {
         // create candidate
         InCandidate candidate = new InCandidateImpl();
         candidate.setIntake(application.getIntake());
@@ -99,10 +98,16 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setRegistration(false);
         candidateDao.save(candidate, Util.getCurrentUser());
     }
+    
+    @Override
+    public void preSelectCandidate(InCandidate candidate) {
+    	candidate.setStatus(InCandidateStatus.PREAPPROVED);
+        candidateDao.update(candidate, securityService.getCurrentUser());
+    }
 
     @Override
     public void processIntakeSelection(InIntake intake) {
-        List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake); // todo: , InBidStatus.SELECTED);
+        List<InIntakeApplication> applications = applicationService.findIntakeApplicationsByStatusVerify(intake,InBidStatus.SELECTED); // todo: , InBidStatus.SELECTED);
         for (InIntakeApplication application : applications) {
             postToCandidate(application);
         }
@@ -115,7 +120,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         for (InCandidate candidate : candidates) {
             // verifyUser candidate status to true
             candidate.setRegistration(true);
-            candidateDao.save(candidate, Util.getCurrentUser());
+            candidateDao.save(candidate, securityService.getCurrentUser());
         }
     }
 
@@ -149,6 +154,11 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public InCandidate findCandidateByMatricNo(String matricNo) {
         return candidateDao.findCandidateByMatricNo(matricNo);
+    }
+    
+    @Override
+    public InCandidate findCandidateByIntakeApplication(InIntakeApplication intakeApplication) {
+        return candidateDao.findCandidateByIntakeApplication(intakeApplication);
     }
 
     @Override
@@ -253,6 +263,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setProgramSelection(application.getProgramSelection());
         candidate.setSupervisorSelection(application.getSupervisorSelection());
         candidate.setRegistration(false);
+        candidate.setApplication(application);
         candidateDao.save(candidate, securityService.getCurrentUser());
     }
 }

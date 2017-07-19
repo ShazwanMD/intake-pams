@@ -46,6 +46,14 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
         query.setString("matricNo", matricNo);
         return (InCandidate) query.uniqueResult();
     }
+    
+    @Override
+    public InCandidate findCandidateByIntakeApplication(InIntakeApplication application) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select c from InCandidate c where c.application = :application");
+        query.setEntity("application", application);
+        return (InCandidate) query.uniqueResult();
+    }
 
     @Override
     public List<InCandidate> find(InIntake intake) {

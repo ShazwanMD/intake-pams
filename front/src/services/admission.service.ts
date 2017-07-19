@@ -65,4 +65,10 @@ export class AdmissionService {
     return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/ACCEPTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
+  
+  preSelectCandidate(candidate: Candidate): Observable<String> {
+    return this._http.put(this.ADMISSION_API + '/application/'
+      + candidate.application.referenceNo + '/candidates/candidateStatus/preSelect', JSON.stringify(candidate))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 }
