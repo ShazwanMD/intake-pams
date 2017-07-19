@@ -16,7 +16,7 @@ import {intakeTaskListReducer, IntakeTaskListState} from './intake-task-list.red
 import {intakeTaskReducer, IntakeTaskState} from './intake-task.reducer';
 import {
   candidateListReducer, CandidateListState, rejectedCandidateListReducer,
-  selectedCandidateListReducer,
+  selectedCandidateListReducer, preSelectedCandidateListReducer,
 } from './candidate-list.reducer';
 import {AdmissionActions} from './admission.action';
 import {AdmissionEffects} from './admission.effect';
@@ -35,6 +35,7 @@ export interface AdmissionModuleState {
   intakeTask: IntakeTaskState;
   candidates: CandidateListState;
   selectedCandidates: CandidateListState;
+  preSelectedCandidates: CandidateListState;
   rejectedCandidates: CandidateListState;
 }
 ;
@@ -46,12 +47,14 @@ export const INITIAL_ADMISSION_STATE: AdmissionModuleState =
     candidates: <Candidate[]>[],
     selectedCandidates: <Candidate[]>[],
     rejectedCandidates: <Candidate[]>[],
+    preSelectedCandidates: <Candidate[]>[],
   };
 export const admissionModuleReducers = {
   intakeTasks: intakeTaskListReducer,
   intakeTask: intakeTaskReducer,
   candidates: candidateListReducer,
   selectedCandidates: selectedCandidateListReducer,
+  preSelectedCandidates: preSelectedCandidateListReducer,
   rejectedCandidates: rejectedCandidateListReducer,
 };
 

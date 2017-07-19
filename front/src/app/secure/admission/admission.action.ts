@@ -118,6 +118,26 @@ export class AdmissionActions {
       payload: candidates,
     };
   }
+  
+  static FIND_PRE_SELECTED_CANDIDATES = '[Admission] Find Pre Selected Candidates';
+
+  findPreSelectedCandidates(intake): Action {
+    console.log('findPreSelectedCandidates');
+    return {
+      type: AdmissionActions.FIND_PRE_SELECTED_CANDIDATES,
+      payload: intake,
+    };
+  }
+
+  static FIND_PRE_SELECTED_CANDIDATES_SUCCESS = '[Admission] Find Pre Selected Candidates Success';
+
+  findPreSelectedCandidatesSuccess(candidates): Action {
+    console.log('findPreSelectedCandidatesSuccess');
+    return {
+      type: AdmissionActions.FIND_PRE_SELECTED_CANDIDATES_SUCCESS,
+      payload: candidates,
+    };
+  }
 
   static FIND_REJECTED_CANDIDATES = '[Admission] Find Rejected Candidates';
 

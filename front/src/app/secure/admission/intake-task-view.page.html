@@ -72,26 +72,12 @@
           <md-card-subtitle>Candidates for this program</md-card-subtitle>
           <md-divider></md-divider>
           <md-tab-group>
-            <md-tab label="All ({{(selectedCandidates$ | async)?.length}})">
+          <md-tab label="All ({{(selectedCandidates$ | async)?.length}})">
             <pams-candidate-list [candidate]="selectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
           </md-tab>
-            <md-tab label="Pre Selected">
-              <td-data-table
-                [data]="selectedCandidates$ | async"
-                [columns]="columns"
-                [sortBy]="summary"
-                [sortOrder]="ASC"
-                [sortable]="false"
-                [multiple]="false"
-                [selectable]="false"
-                (rowSelect)="view.emit($event)" dense>
-                <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                  <div layout="row">
-                    <span flex>{{value}}</span>
-                  </div>
-                </template>
-              </td-data-table>
-            </md-tab>
+           <md-tab label="Pre Selected ({{(preSelectedCandidates$ | async)?.length}})">
+            <pams-candidate-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
+          </md-tab>
             <md-tab label="Selected">
               <td-data-table
                 [data]="selectedCandidates$ | async"

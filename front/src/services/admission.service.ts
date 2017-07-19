@@ -53,6 +53,12 @@ export class AdmissionService {
     return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/SELECTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
+  
+  findPreSelectedCandidates(intake: Intake): Observable<Candidate[]> {
+    console.log('findPreSelectedCandidates');
+    return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/PREAPPROVED')
+      .map((res: Response) => <Candidate[]>res.json());
+  }
 
   findRejectedCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findRejectedCandidates');

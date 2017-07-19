@@ -28,6 +28,17 @@ export function selectedCandidateListReducer(state = initialState, action: Actio
   }
 }
 
+export function preSelectedCandidateListReducer(state = initialState, action: Action): CandidateListState {
+  switch (action.type) {
+    case AdmissionActions.FIND_PRE_SELECTED_CANDIDATES_SUCCESS: {
+      return action.payload;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 export function rejectedCandidateListReducer(state = initialState, action: Action): CandidateListState {
   switch (action.type) {
     case AdmissionActions.FIND_REJECTED_CANDIDATES_SUCCESS: {
