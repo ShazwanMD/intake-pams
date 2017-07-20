@@ -22,6 +22,7 @@ export class IntakeTaskCreatorDialog implements OnInit {
   private edit: boolean = false;
   private _intakeTask: IntakeTask;
 
+
   constructor(private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
               private store: Store<PolicyModuleState>,
@@ -47,10 +48,13 @@ export class IntakeTaskCreatorDialog implements OnInit {
   }
 
   submit(intake: Intake, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to create intake?', 'Ok');
+    let snackBarRef = this.snackBar.open('Creating Intake', 'Cancel', {
+      duration: 50000,
+    });
     snackBarRef.afterDismissed().subscribe(() => {
       this.store.dispatch(this.actions.startIntakeTask(intake));
       this.dialog.close();
+
     });
   }
 }
