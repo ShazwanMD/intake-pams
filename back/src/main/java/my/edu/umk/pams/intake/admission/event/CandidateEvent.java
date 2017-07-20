@@ -10,17 +10,17 @@ import my.edu.umk.pams.intake.admission.model.InCandidate;
 public class CandidateEvent extends ApplicationEvent {
 
     private InCandidate candidate;
-    private String payload;
+    private CandidatePayload payload;
 
     public CandidateEvent(InCandidate candidate) {
         super(candidate);
     }
 
-    public String getPayload() {
+    public CandidatePayload getPayload() {
         return payload;
     }
 
-    public void setPayload(String payload) {
+    public void setPayload(CandidatePayload payload) {
         this.payload = payload;
     }
 }
