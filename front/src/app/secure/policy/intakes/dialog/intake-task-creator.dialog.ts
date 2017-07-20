@@ -1,15 +1,15 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Store} from '@ngrx/store';
-import {MdDialogRef, MdSnackBar} from '@angular/material';
-import {IntakeActions} from '../intake.action';
-import {PolicyModuleState} from '../../index';
-import {GraduateCenter} from '../../../../shared/model/common/graduate-center.interface';
-import {IntakeTask} from '../../../../shared/model/policy/intake-task.interface';
-import {Intake} from '../../../../shared/model/policy/intake.interface';
-import {ProgramLevel} from '../../../../shared/model/policy/program-level.interface';
-import {IntakeSession} from '../../../../shared/model/policy/intake-session.interface';
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
+import { IntakeActions } from '../intake.action';
+import { PolicyModuleState } from '../../index';
+import { GraduateCenter } from '../../../../shared/model/common/graduate-center.interface';
+import { IntakeTask } from '../../../../shared/model/policy/intake-task.interface';
+import { Intake } from '../../../../shared/model/policy/intake.interface';
+import { ProgramLevel } from '../../../../shared/model/policy/program-level.interface';
+import { IntakeSession } from '../../../../shared/model/policy/intake-session.interface';
 
 @Component({
   selector: 'pams-intake-task-creator',
@@ -24,11 +24,11 @@ export class IntakeTaskCreatorDialog implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-              private viewContainerRef: ViewContainerRef,
-              private store: Store<PolicyModuleState>,
-              private actions: IntakeActions,
-              private dialog: MdDialogRef<IntakeTaskCreatorDialog>,
-              private snackBar: MdSnackBar) {
+    private viewContainerRef: ViewContainerRef,
+    private store: Store<PolicyModuleState>,
+    private actions: IntakeActions,
+    private dialog: MdDialogRef<IntakeTaskCreatorDialog>,
+    private snackBar: MdSnackBar) {
   }
 
   ngOnInit(): void {
@@ -48,13 +48,16 @@ export class IntakeTaskCreatorDialog implements OnInit {
   }
 
   submit(intake: Intake, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Creating Intake', 'Cancel', {
-      duration: 50000,
+    let snackBarRef = this.snackBar.open('Create Intake?', 'Ok', {
+      duration: 10000,
     });
     snackBarRef.afterDismissed().subscribe(() => {
+      this.dialog.close();
+    });
+    snackBarRef.onAction().subscribe(() => {
       this.store.dispatch(this.actions.startIntakeTask(intake));
       this.dialog.close();
-
     });
+
   }
 }
