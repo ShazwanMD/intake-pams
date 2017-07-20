@@ -29,6 +29,7 @@ public class AdmissionTransformer {
         vo.setId(e.getId());
         vo.setName(e.getName());
         vo.setEmail(e.getEmail());
+        vo.setReason(e.getReason());
         vo.setIdentityNo(e.getIdentityNo());
         vo.setMatricNo(e.getMatricNo());;
         vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));

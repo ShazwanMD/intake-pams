@@ -60,4 +60,8 @@ public interface InCandidate extends InMetaObject {
 
 	void setApplication(InIntakeApplication application);
 
+	String getReason();
+
+	void setReason(String reason);
+
 }

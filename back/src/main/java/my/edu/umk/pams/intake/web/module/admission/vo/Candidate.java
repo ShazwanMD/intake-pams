@@ -14,6 +14,7 @@ public class Candidate extends MetaObject {
     private String identityNo;
     private String matricNo;
     private String email;
+    private String reason;
     private StudyMode studyMode;
     private Intake intake;
     private IntakeApplication application;
@@ -50,7 +51,15 @@ public class Candidate extends MetaObject {
         this.email = email;
     }
 
-    public StudyMode getStudyMode() {
+    public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public StudyMode getStudyMode() {
         return studyMode;
     }
 

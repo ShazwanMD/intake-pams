@@ -35,6 +35,9 @@ public class InCandidateImpl implements InCandidate {
     @Column(name = "EMAIL", nullable = false)
     private String email;
     
+    @Column(name = "REASON", nullable = true)
+    private String reason;
+    
     @Column(name = "REGISTRATION_STATUS", nullable = false)
     private boolean registration = false;
     
@@ -117,6 +120,16 @@ public class InCandidateImpl implements InCandidate {
     }
 
     @Override
+    public String getReason() {
+		return reason;
+	}
+
+    @Override
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	@Override
     public InStudyMode getStudyMode() {
         return studyMode;
     }
