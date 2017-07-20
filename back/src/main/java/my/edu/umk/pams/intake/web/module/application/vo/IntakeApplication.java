@@ -86,7 +86,7 @@ public class IntakeApplication extends MetaObject {
     private ReligionCode religionCode;
 
     private BidType bidType;
-    private BidStatus bidStatus;
+    private InCandidateStatus bidStatus;
 
     private Applicant applicant;
     private Intake intake;
@@ -455,11 +455,11 @@ public class IntakeApplication extends MetaObject {
         this.bidType = bidType;
     }
 
-    public BidStatus getBidStatus() {
+    public InCandidateStatus getBidStatus() {
         return bidStatus;
     }
 
-    public void setBidStatus(BidStatus bidStatus) {
+    public void setBidStatus(InCandidateStatus bidStatus) {
         this.bidStatus = bidStatus;
     }
 

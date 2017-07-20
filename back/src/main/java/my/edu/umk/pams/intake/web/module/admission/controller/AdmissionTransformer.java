@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.web.module.admission.controller;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
@@ -30,8 +31,9 @@ public class AdmissionTransformer {
         vo.setName(e.getName());
         vo.setEmail(e.getEmail());
         vo.setReason(e.getReason());
+        vo.setStatus(InCandidateStatus.get(e.getStatus().ordinal()));
         vo.setIdentityNo(e.getIdentityNo());
-        vo.setMatricNo(e.getMatricNo());;
+        vo.setMatricNo(e.getMatricNo());
         vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));
         vo.setApplication(applicationTransformer.toIntakeApplicationVo(e.getApplication()));
         return vo;

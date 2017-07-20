@@ -5,7 +5,8 @@ import {Intake} from '../policy/intake.interface';
 import {IntakeApplication} from '../application/intake-application.interface';
 import {SupervisorOffering} from '../policy/supervisor-offering.interface';
 import {ProgramOffering} from '../policy/program-offering.interface';
-export interface Candidate {
+import {MetaObject} from '../../../core/meta-object.interface';
+export interface Candidate extends MetaObject{
   name: string;
   identityNo: string;
   matricNo: string;
@@ -17,4 +18,5 @@ export interface Candidate {
   programOffering?: ProgramOffering;
   supervisorOffering?: SupervisorOffering;
   application?: IntakeApplication;
+  reason: string;
 }

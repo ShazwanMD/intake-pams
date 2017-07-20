@@ -16,7 +16,7 @@ import {intakeTaskListReducer, IntakeTaskListState} from './intake-task-list.red
 import {intakeTaskReducer, IntakeTaskState} from './intake-task.reducer';
 import {
   candidateListReducer, CandidateListState, rejectedCandidateListReducer,
-  selectedCandidateListReducer, preSelectedCandidateListReducer,
+  selectedCandidateListReducer, preSelectedCandidateListReducer,approvedCandidateListReducer,
 } from './candidate-list.reducer';
 import {AdmissionActions} from './admission.action';
 import {AdmissionEffects} from './admission.effect';
@@ -27,6 +27,8 @@ import {Candidate} from '../../shared/model/admission/candidate.interface';
 import { CpsIntakeApplicationSubModule } from '../application/intake-applications/cps';
 import { CandidateListComponent } from './component/candidate-list.component';
 import { CandidatePreSelectListComponent } from './component/candidate-preselect-list.component';
+import {CandidateApproveListComponent} from './component/candidate-approve-list.component';
+import { CandidateRejectedListComponent } from './component/candidate-rejected-list.component';
 import { CandidateProfilePreSelectDialog } from './dialog/candidate-profile-pre-select.dialog';
 import { CandidateProfileRejectDialog } from './dialog/candidate-profile-reject.dialog';
 import { CandidateProfileSelectDialog } from './dialog/candidate-profile-select.dialog';
@@ -39,6 +41,7 @@ export interface AdmissionModuleState {
   selectedCandidates: CandidateListState;
   preSelectedCandidates: CandidateListState;
   rejectedCandidates: CandidateListState;
+  approvedCandidates: CandidateListState;
 }
 ;
 
@@ -50,6 +53,7 @@ export const INITIAL_ADMISSION_STATE: AdmissionModuleState =
     selectedCandidates: <Candidate[]>[],
     rejectedCandidates: <Candidate[]>[],
     preSelectedCandidates: <Candidate[]>[],
+    approvedCandidates: <Candidate[]>[],
   };
 export const admissionModuleReducers = {
   intakeTasks: intakeTaskListReducer,
@@ -58,6 +62,7 @@ export const admissionModuleReducers = {
   selectedCandidates: selectedCandidateListReducer,
   preSelectedCandidates: preSelectedCandidateListReducer,
   rejectedCandidates: rejectedCandidateListReducer,
+  approvedCandidates: approvedCandidateListReducer,
 };
 
 @NgModule({
@@ -77,10 +82,12 @@ export const admissionModuleReducers = {
     IntakeTaskListComponent,
     CandidateListComponent,
     CandidatePreSelectListComponent,
+    CandidateApproveListComponent,
     CandidateProfileSelectDialog,
     CandidateProfileRejectDialog,
     CandidateProfileDialog,
     CandidateProfilePreSelectDialog,
+    CandidateRejectedListComponent,
     
   ],
   exports: [CandidateListComponent,
@@ -89,6 +96,8 @@ export const admissionModuleReducers = {
     CandidateProfileDialog,
     CandidateProfilePreSelectDialog,
     CandidatePreSelectListComponent,
+    CandidateApproveListComponent,
+    CandidateRejectedListComponent,
     
   ],
   entryComponents: [
@@ -98,6 +107,8 @@ export const admissionModuleReducers = {
     CandidateProfileDialog,
     CandidateProfilePreSelectDialog,
     CandidatePreSelectListComponent,
+    CandidateApproveListComponent,
+    CandidateRejectedListComponent,
   ],
 })
 export class AdmissionModule {

@@ -80,7 +80,7 @@ public class ApplicationTransformer {
 		
 		
 		vo.setBidType(BidType.get(e.getBidType().ordinal()));
-		vo.setBidStatus(BidStatus.get(e.getBidStatus().ordinal()));
+		vo.setBidStatus(InCandidateStatus.get(e.getBidStatus().ordinal()));
 				
 		vo.setGenderCode(commonTransformer.toGenderCodeVo(e.getGenderCode()));
 		vo.setRaceCode(commonTransformer.toRaceCodeVo(e.getRaceCode()));

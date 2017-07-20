@@ -79,6 +79,25 @@ export class AdmissionActions {
     };
   }
   
+  static REJECT_CANDIDATE = '[Admission] Reject Candidate';
+
+  rejectCandidate(candidate): Action {
+    return {
+      type: AdmissionActions.REJECT_CANDIDATE,
+      payload: candidate,
+    };
+  }
+
+  static REJECT_CANDIDATE_SUCCESS = '[Admission] Reject Candidate Success';
+
+  rejectCandidateSuccess(message): Action {
+    return {
+      type: AdmissionActions.REJECT_CANDIDATE_SUCCESS,
+      payload: message,
+    };
+  }
+  
+  
   static SELECT_CANDIDATE = '[Admission] Select Candidate';
 
   selectCandidate(candidate): Action {
@@ -133,6 +152,26 @@ export class AdmissionActions {
     console.log('findSelectedCandidatesSuccess');
     return {
       type: AdmissionActions.FIND_SELECTED_CANDIDATES_SUCCESS,
+      payload: candidates,
+    };
+  }
+  
+  static FIND_APPROVED_CANDIDATES = '[Admission] Find Approved Candidates';
+
+  findApprovedCandidates(intake): Action {
+    console.log('findApprovedCandidates');
+    return {
+      type: AdmissionActions.FIND_APPROVED_CANDIDATES,
+      payload: intake,
+    };
+  }
+
+  static FIND_APPROVED_CANDIDATES_SUCCESS = '[Admission] Find Approved Candidates Success';
+
+  findApprovedCandidatesSuccess(candidates): Action {
+    console.log('findApprovedCandidatesSuccess');
+    return {
+      type: AdmissionActions.FIND_APPROVED_CANDIDATES_SUCCESS,
       payload: candidates,
     };
   }

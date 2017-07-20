@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.web.module.admission.vo;
 
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.common.vo.StudyMode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
@@ -15,6 +16,7 @@ public class Candidate extends MetaObject {
     private String matricNo;
     private String email;
     private String reason;
+    private InCandidateStatus status;
     private StudyMode studyMode;
     private Intake intake;
     private IntakeApplication application;
@@ -57,6 +59,14 @@ public class Candidate extends MetaObject {
 
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+
+	public InCandidateStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(InCandidateStatus status) {
+		this.status = status;
 	}
 
 	public StudyMode getStudyMode() {

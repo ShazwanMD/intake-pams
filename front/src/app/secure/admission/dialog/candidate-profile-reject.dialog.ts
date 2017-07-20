@@ -1,6 +1,8 @@
+import { Candidate } from '../../../shared/model/admission/candidate.interface';
 import { IntakeApplication } from '../../../shared/model/application/intake-application.interface';
 import { ApplicationModuleState } from '../../application';
 import { IntakeApplicationActions } from '../../application/intake-applications/intake-application.action';
+import { AdmissionActions } from '../admission.action';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -15,38 +17,39 @@ import {MdSnackBar, MdDialogRef, MdDialogConfig} from '@angular/material';
 export class CandidateProfileRejectDialog implements OnInit {
 
   private rejectForm: FormGroup;
-  private _intakeApplication: IntakeApplication;
+  private _candidate: Candidate;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
-              private actions: IntakeApplicationActions,
+              private actions: AdmissionActions,
               private dialog: MdDialogRef<CandidateProfileRejectDialog>,
               private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>) {
   }
 
-  set intakeApplication(intakeApplication: IntakeApplication) {
-    console.log('intakeApplication.id :' + intakeApplication.id);
-    this._intakeApplication = intakeApplication;
+  set candidate(candidate: Candidate) {
+    console.log('candidate.id :'+candidate.id);
+    this._candidate = candidate;
   }
 
   ngOnInit(): void {
-    this.rejectForm = this.formBuilder.group(<IntakeApplication>{
+    this.rejectForm = this.formBuilder.group(<Candidate>{
       id: null,
       reason: '',
-      referenceNo: '',
     });
 
-    this.rejectForm.patchValue(this._intakeApplication);
+    this.rejectForm.patchValue(this._candidate);
   }
 
-  submit(intakeApplication: IntakeApplication) {
-    let snackBarRef = this.snackBar.open('Confirm to Reject This Applicant?', 'Ok');
+  submit(candidate : Candidate) {
+    console.log("submit candidate : "+candidate.id);
+    let snackBarRef = this.snackBar.open('Confirm to Reject This candidate?', 'Ok');
 
     snackBarRef.afterDismissed().subscribe(() => {
-      this.store.dispatch(this.actions.rejectIntakeApplication(intakeApplication));
+      console.log("submit candidate in snck bar: "+candidate.id);
+      this.store.dispatch(this.actions.rejectCandidate(this._candidate));
       this.dialog.close();
     });
   }

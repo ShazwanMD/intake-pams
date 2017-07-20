@@ -136,7 +136,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         InEmailQueue emailQueue = new InEmailQueueImpl();
         emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
         emailQueue.setTo(candidate.getEmail());
-        emailQueue.setSubject("Sedang diproses");
+        emailQueue.setSubject("Permohonan anda tidak berjaya kerana "+candidate.getReason());
         emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(emailQueue);
     }

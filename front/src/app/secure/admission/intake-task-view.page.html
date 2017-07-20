@@ -78,40 +78,12 @@
            <md-tab label="Pre Selected ({{(preSelectedCandidates$ | async)?.length}})">
             <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-preselect-list>
           </md-tab>
-            <md-tab label="Selected">
-              <td-data-table
-                [data]="selectedCandidates$ | async"
-                [columns]="columns"
-                [sortBy]="summary"
-                [sortOrder]="ASC"
-                [sortable]="false"
-                [multiple]="false"
-                [selectable]="false"
-                (rowSelect)="view.emit($event)" dense>
-                <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                  <div layout="row">
-                    <span flex>{{value}}</span>
-                  </div>
-                </template>
-              </td-data-table>
-            </md-tab>
-            <md-tab label="Rejected">
-              <td-data-table
-                [data]="rejectedCandidates$ | async"
-                [columns]="columns"
-                [sortBy]="summary"
-                [sortOrder]="ASC"
-                [sortable]="false"
-                [multiple]="false"
-                [selectable]="false"
-                (rowSelect)="view.emit($event)" dense>
-                <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                  <div layout="row">
-                    <span flex>{{value}}</span>
-                  </div>
-                </template>
-              </td-data-table>
-            </md-tab>
+          <md-tab label="Selected ({{(approvedCandidates$ | async)?.length}})">
+            <pams-candidate-approve-list [candidate]="approvedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-approve-list>
+          </md-tab>
+          <md-tab label="Rejected ({{(rejectedCandidates$ | async)?.length}})">
+            <pams-candidate-rejected-list [candidate]="rejectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-rejected-list>
+          </md-tab>
           </md-tab-group>
         </md-card>
       </div>

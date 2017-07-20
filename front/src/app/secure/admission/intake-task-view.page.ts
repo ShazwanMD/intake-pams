@@ -20,11 +20,13 @@ export class IntakeTaskViewPage implements OnInit {
   private SELECTED_CANDIDATES: string[] = 'admissionModuleState.selectedCandidates'.split('.');
   private PRE_SELECTED_CANDIDATES: string[] = 'admissionModuleState.preSelectedCandidates'.split('.');
   private REJECTED_CANDIDATES: string[] = 'admissionModuleState.rejectedCandidates'.split('.');
+  private APPROVED_CANDIDATES: string[] = 'admissionModuleState.approvedCandidates'.split('.');
   private intakeTask$: Observable<IntakeTask>;
   private candidates$: Observable<Candidate[]>;
   private selectedCandidates$: Observable<Candidate[]>;
   private preSelectedCandidates$: Observable<Candidate[]>;
   private rejectedCandidates$: Observable<Candidate[]>;
+  private approvedCandidates$: Observable<Candidate[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -35,6 +37,7 @@ export class IntakeTaskViewPage implements OnInit {
     this.selectedCandidates$ = this.store.select(...this.SELECTED_CANDIDATES);
     this.rejectedCandidates$ = this.store.select(...this.REJECTED_CANDIDATES);
     this.preSelectedCandidates$ = this.store.select(...this.PRE_SELECTED_CANDIDATES);
+    this.approvedCandidates$ = this.store.select(...this.APPROVED_CANDIDATES);
   }
 
   ngOnInit(): void {

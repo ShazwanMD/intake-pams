@@ -13,4 +13,8 @@ public enum InCandidateStatus {
     DECLINED,    // 6
     REJECTED,    // 7
 	WITHDRAWN;  //8
+	
+	public static InCandidateStatus get(int index) {
+        return values()[index];
+    }
 }

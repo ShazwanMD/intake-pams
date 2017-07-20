@@ -11,6 +11,15 @@ export function candidateListReducer(state = initialState, action: Action): Cand
     case AdmissionActions.FIND_CANDIDATES_SUCCESS: {
       return action.payload;
     }
+    case AdmissionActions.FIND_PRE_SELECTED_CANDIDATES_SUCCESS: {
+      return action.payload;
+    }
+    case AdmissionActions.FIND_APPROVED_CANDIDATES_SUCCESS: {
+      return action.payload;
+    }
+      case AdmissionActions.FIND_REJECTED_CANDIDATES_SUCCESS: {
+      return action.payload;
+    }
     default: {
       return state;
     }

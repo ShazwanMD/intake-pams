@@ -39,6 +39,17 @@ export function preSelectedCandidateListReducer(state = initialState, action: Ac
   }
 }
 
+export function approvedCandidateListReducer(state = initialState, action: Action): CandidateListState {
+  switch (action.type) {
+    case AdmissionActions.FIND_APPROVED_CANDIDATES_SUCCESS: {
+      return action.payload;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 export function rejectedCandidateListReducer(state = initialState, action: Action): CandidateListState {
   switch (action.type) {
     case AdmissionActions.FIND_REJECTED_CANDIDATES_SUCCESS: {

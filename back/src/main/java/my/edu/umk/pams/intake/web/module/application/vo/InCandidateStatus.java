@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.web.module.application.vo;
 /**
  * @author PAMS
  */
-public enum BidStatus {
+public enum InCandidateStatus {
 	NEW,
     DRAFTED, // new, incomplete
     SUBMITTED, // after submit
@@ -13,7 +13,7 @@ public enum BidStatus {
     APPEALED, // ?? we have candidate
     APPROVED; // ?? we have candidate
 
-    public static BidStatus get(int index) {
+    public static InCandidateStatus get(int index) {
         return values()[index];
     }
 }
