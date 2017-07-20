@@ -52,8 +52,8 @@ export class IntakeTaskViewPage implements OnInit {
     // this.store.dispatch(this.actions.broadcastIntakeResult(null));
   }
 
-  approve(): void {
-    // no op
+  offer(): void {
+    // start offer process for candidate in status approve
   }
 
   goBack(): void {
