@@ -2,7 +2,7 @@ package my.edu.umk.pams.intake.config;
 
 import my.edu.umk.pams.intake.security.integration.InAutoLoginAuthenticationProvider;
 import my.edu.umk.pams.intake.security.integration.jwt.RestAuthenticationEntryPoint;
-import my.edu.umk.pams.intake.security.integration.jwt.filter.JsonUsernamePasswordAuthenticationFilter;
+import my.edu.umk.pams.intake.security.integration.jwt.filter.LoginAuthenticationFilter;
 import my.edu.umk.pams.intake.security.integration.jwt.filter.JwtAuthenticationFilter;
 import my.edu.umk.pams.intake.security.integration.jwt.handler.JwtAuthenticationFailureHandler;
 import my.edu.umk.pams.intake.security.integration.jwt.handler.JwtAuthenticationSuccessHandler;
@@ -19,7 +19,6 @@ import org.springframework.security.authentication.encoding.PlaintextPasswordEnc
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -33,7 +32,6 @@ import javax.servlet.ServletException;
 /**
  * http://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/
  */
-@EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -50,10 +48,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Qualifier(value = "userDetailService")
     private UserDetailsService userDetailService;
 
+    private static String API_URL = "/api/**";
+    private static String LOGIN_URL = "/api/authentication/login**";
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/api/registration/**")
+                .antMatchers("/servlet/**")
                 .antMatchers(HttpMethod.GET, "/index.html")
                 .antMatchers(HttpMethod.GET, "/**.ico")
                 .antMatchers(HttpMethod.GET, "/**.woff")
@@ -83,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/download/**").hasRole("USER")
                 .and()
                 .addFilterAfter(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterAt(jsonUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(loginAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(restAuthenticationEntryPoint());
     }
@@ -133,20 +135,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new PlaintextPasswordEncoder());
     }
 
-    @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
-        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter();
+    private JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
+        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(API_URL);
         jwtAuthenticationFilter.setAuthenticationManager(authenticationManager());
         return jwtAuthenticationFilter;
     }
 
-    public JsonUsernamePasswordAuthenticationFilter jsonUsernamePasswordAuthenticationFilter() throws Exception {
-        JsonUsernamePasswordAuthenticationFilter filter = new JsonUsernamePasswordAuthenticationFilter("/api/authentication/login**");
-        filter.setAuthenticationFailureHandler(jwtAuthenticationFailureHandler());
-        filter.setAuthenticationSuccessHandler(jwtAuthenticationSuccessHandler());
-        filter.setAuthenticationManager(authenticationManagerBean());
-        filter.afterPropertiesSet();
-        return filter;
+    private LoginAuthenticationFilter loginAuthenticationFilter() throws Exception {
+        LoginAuthenticationFilter loginAuthenticationFilter = new LoginAuthenticationFilter(LOGIN_URL);
+        loginAuthenticationFilter.setAuthenticationFailureHandler(jwtAuthenticationFailureHandler());
+        loginAuthenticationFilter.setAuthenticationSuccessHandler(jwtAuthenticationSuccessHandler());
+        loginAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
+        loginAuthenticationFilter.afterPropertiesSet();
+        return loginAuthenticationFilter;
     }
 
     @Bean

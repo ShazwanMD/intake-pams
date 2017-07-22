@@ -19,17 +19,17 @@ import java.util.Map;
 /**
  * Created by shazi on 12/28/2016.
  */
-public class JsonUsernamePasswordAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+public class LoginAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
     private boolean postOnly = true;
 
-    public JsonUsernamePasswordAuthenticationFilter(String defaultFilterProcessesUrl) {
+    public LoginAuthenticationFilter(String defaultFilterProcessesUrl) {
         super(defaultFilterProcessesUrl);
     }
 
-    public JsonUsernamePasswordAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
+    public LoginAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
         super(requiresAuthenticationRequestMatcher);
     }
 
