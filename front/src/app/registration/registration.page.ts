@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup,Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {RegistrationModuleState} from './index';
 import {RegistrationActions} from './registration.action';
@@ -24,11 +24,12 @@ export class RegistrationPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.registrationForm = this.formBuilder.group(<UserRegistration>{
-      name: '',
-      email: '',
-      identityNo: '',
-      password: '',
+    let emailPattern: string = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$';
+    this.registrationForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      email: ['', Validators.pattern(emailPattern)],
+      identityNo: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 

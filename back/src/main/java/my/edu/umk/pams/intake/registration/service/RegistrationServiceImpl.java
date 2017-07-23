@@ -137,10 +137,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     	SecurityContext sc = loginAsSystem();
     	if (user == null) LOG.debug("UserB is null");
     	if (user.getEmail() == null) LOG.debug("Email is null");
+    	String applicationUrl= systemService.findConfigurationByKey("application.url").getValue();
     	InEmailQueue email= new InEmailQueueImpl();
         String subject = "Password Recovery";
-        String body = "Your password is : " + user.getPassword()+
-        			  ". Please Login to continue";
+        String body = "Your password is : "+ user.getPassword()+ 
+        			  ". You are encourage to change your password. Please click the given url to login. " +applicationUrl+"/login/";
         email.setTo(user.getEmail());
         email.setSubject(subject);
         email.setBody(body);
