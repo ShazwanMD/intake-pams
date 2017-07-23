@@ -1,3 +1,5 @@
+import { MgsebIntakeApplicationPage } from './application/intake-applications/mgseb/intake-application.page';
+import { CpsIntakeApplicationPage } from './application/intake-applications/cps/intake-application.page';
 import { IntakeApplication } from './../shared/model/application/intake-application.interface';
 import {
   Component, OnInit, OnDestroy, ViewChild, ViewContainerRef,
@@ -26,9 +28,9 @@ export class IntakeApplicationDetailPage implements OnInit {
   ngOnInit(): void {
     let componentFactory: ComponentFactory<any>;
     if (this.intakeApplication.intake.graduateCenter.code === 'CPS') {
-      componentFactory = this.cfr.resolveComponentFactory(CpsIntakeApplicationPanel);
+      componentFactory = this.cfr.resolveComponentFactory(CpsIntakeApplicationPage);
     } else if (this.intakeApplication.intake.graduateCenter.code === 'MGSEB') {
-      componentFactory = this.cfr.resolveComponentFactory(MgsebIntakeApplicationPanel);
+      componentFactory = this.cfr.resolveComponentFactory(MgsebIntakeApplicationPage);
     }
     // handle null factory
     if (componentFactory) {
