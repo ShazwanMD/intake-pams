@@ -22,10 +22,10 @@ import {StateCode} from '../../../../shared/model/common/state-code.interface';
 
 @Component({
   selector: 'pams-intake-application',
-  templateUrl: './intake-application.page.html',
+  templateUrl: './intake-application.panel.html',
 })
 
-export class CpsIntakeApplicationPage implements OnInit {
+export class CpsIntakeApplicationPanel implements OnInit {
 
   private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');

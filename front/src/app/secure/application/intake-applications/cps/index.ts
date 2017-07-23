@@ -19,7 +19,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule, CovalentFileModule} from '@covalent/core';
 import {appRoutes, appRoutingProviders} from '../../../../app.routes';
-import {CpsIntakeApplicationPage} from './intake-application.page';
+import {CpsIntakeApplicationPanel} from './intake-application.panel';
 import {IdentityService} from '../../../../../services/identity.service';
 import {CommonService} from '../../../../../services/common.service';
 import {ProgramLevelSubModule} from '../../../policy/program-levels/index';
@@ -45,7 +45,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     CommonModule.forRoot(),
   ],
   declarations: [
-    CpsIntakeApplicationPage,
+    CpsIntakeApplicationPanel,
     IntakeProgramOfferingSelectComponent,
 
     // components
