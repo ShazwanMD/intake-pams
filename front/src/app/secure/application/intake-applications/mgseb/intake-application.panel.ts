@@ -23,10 +23,10 @@ import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-intake-application',
-  templateUrl: './intake-application.page.html',
+  templateUrl: './intake-application.panel.html',
 })
 
-export class MgsebIntakeApplicationPage implements OnInit {
+export class MgsebIntakeApplicationPanel implements OnInit {
 
   intakeApplication: any;
   dialog: any;

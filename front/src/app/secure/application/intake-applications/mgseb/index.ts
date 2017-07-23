@@ -5,7 +5,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 import {appRoutes, appRoutingProviders} from '../../../../app.routes';
-import {MgsebIntakeApplicationPage} from './intake-application.page';
+import {MgsebIntakeApplicationPanel} from './intake-application.panel';
 import {IntakeApplicationEducationPage} from './intake-application-education.page';
 import {IdentityService} from '../../../../../services/identity.service';
 import {CommonService} from '../../../../../services/common.service';
@@ -29,7 +29,7 @@ import {StudyCenterChoiceComponent} from '../component/study-center-choice.compo
     CpsIntakeApplicationSubModule.forRoot(),
   ],
   declarations: [
-    MgsebIntakeApplicationPage,
+    MgsebIntakeApplicationPanel,
     IntakeApplicationEducationPage,
 
     // components
