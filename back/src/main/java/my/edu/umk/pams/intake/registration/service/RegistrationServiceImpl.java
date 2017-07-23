@@ -96,9 +96,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         identityService.updateUser(user);
 
         // generate token
+        String token = generateToken();
         InUserVerification verification = new InUserVerificationImpl();
         verification.setExpiryDate(calculateExpiryDate(ONE_WEEK));
-        verification.setToken(generateToken());
+        verification.setToken(token);
         verification.setUser(user);
         userVerificationDao.save(verification, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
