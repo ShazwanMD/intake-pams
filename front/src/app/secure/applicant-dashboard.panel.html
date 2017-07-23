@@ -17,28 +17,26 @@
           </pams-applicant>
 
 
+          <pams-user [user]="user$ | async">
+          </pams-user>
+
+
+
           <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-            <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not filled in address in intake application address yet</span></div>
+            <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not filled and submitted an address in your intake application</span></div>
             <template let-application let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
               <div flex-md="50" flex-gt-md="33" layout="column">
                 <div layout="row" layout-padding>
-                  <span flex></span>
                   <div class="md-padding" *ngIf="application.bidStatus === 'SUBMITTED'">
-                    <a md-list-item>
+                    <a md-list-item>   
                       <md-icon md-list-avatar>home</md-icon>
                       <h3 md-line>Official Address : {{application.officialAddress1}}</h3>
-                      <md-card-subtitle>Update Address</md-card-subtitle>
                     </a>
                   </div>
                 </div>
               </div>
             </template>
           </div>
-
-
-
-          <pams-user [user]="user$ | async">
-          </pams-user>
 
         </md-nav-list>
       </md-tab>
