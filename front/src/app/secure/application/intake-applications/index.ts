@@ -1,3 +1,5 @@
+import { IntakeApplicationDetailPage } from './intake-application-detail.page';
+import { AccountModule } from './../../account/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -36,16 +38,18 @@ import {PipeModule} from '../../../app.pipe.module';
   declarations: [
     IntakeDetailPage,
     MyIntakeApplicationPage,
-
+    //IntakeApplicationDetailPage,
     // components
     // dialogs
     EducationCreatorDialog,
     ProgramOfferingSelectorDialog,
+    
   ],
   exports: [],
   entryComponents: [
     EducationCreatorDialog,
     ProgramOfferingSelectorDialog,
+    //IntakeApplicationDetailPage,
   ],
 })
 export class IntakeApplicationSubModule {

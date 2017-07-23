@@ -1,14 +1,13 @@
-import { MgsebIntakeApplicationPanel } from './application/intake-applications/mgseb/intake-application.panel';
-import { CpsIntakeApplicationPanel} from './application/intake-applications/cps/intake-application.panel';
-import { IntakeApplication } from './../shared/model/application/intake-application.interface';
+import { MgsebIntakeApplicationPanel } from './mgseb/intake-application.panel';
+import { CpsIntakeApplicationPanel } from './cps/intake-application.panel';
+import { IntakeApplication } from './../../../shared/model/application/intake-application.interface';
+
 import {
   Component, OnInit, OnDestroy, ViewChild, ViewContainerRef,
   ComponentFactoryResolver, ComponentFactory, ComponentRef,
 } from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthorizationService} from '../../services/authorization.service';
-import {AdministratorDashboardPanel} from './administrator-dashboard.panel';
-import {ApplicantDashboardPanel} from './applicant-dashboard.panel';
+
 
 
 @Component({
