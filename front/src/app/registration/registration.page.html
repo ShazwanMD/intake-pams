@@ -18,7 +18,11 @@
             <input mdInput
                    placeholder="Name"
                    formControlName="name"
+                   type="text"
                    flex/>
+            <div class="error" class="tc-red-600"
+                       *ngIf="registrationForm.get('name').invalid && registrationForm.get('name').touched">Required!
+                  </div>
           </md-input-container>
         </div>
         <div layout="row" class="pad-bottom" flex>
@@ -26,15 +30,23 @@
             <input mdInput
                    placeholder="NRIC/Passport"
                    formControlName="identityNo"
+                   type="text"
                    flex/>
+            <div class="error" class="tc-red-600"
+                       *ngIf="registrationForm.get('identityNo').invalid && registrationForm.get('identityNo').touched">Required!
+                  </div>
           </md-input-container>
         </div>
         <div layout="row" class="pad-bottom" flex>
           <md-input-container flex>
             <input mdInput
                    placeholder="Email"
+                   type="email"
                    formControlName="email"
                    flex/>
+            <div class="error" class="tc-red-600"
+                       *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">Required!
+                  </div>
           </md-input-container>
         </div>
         <div layout="row" class="pad-bottom" flex>
@@ -44,6 +56,9 @@
                    placeholder="Password"
                    formControlName="password"
                    flex/>
+            <div class="error" class="tc-red-600"
+                       *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">Required!
+                  </div>
           </md-input-container>
         </div>
       </form>
@@ -51,8 +66,9 @@
     <md-divider></md-divider>
     <md-card-actions>
       <button md-raised-button color="accent" [routerLink]="['/registrationInfo']"
-              (click)="register(registrationForm.value, registrationForm.valid)">Register
-      </button>
+              (click)="register(registrationForm.value, registrationForm.valid)"
+              [disabled] = "!registrationForm.valid">Register
+      </button>        
       <button md-button color="primary" [routerLink]="['/login']">Already Register? Login here!</button>
     </md-card-actions>
   </td-layout-card-over>
