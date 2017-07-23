@@ -1,3 +1,4 @@
+import { AlertService } from './../../services/alert.service';
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {TdLoadingService} from '@covalent/core';
@@ -16,10 +17,13 @@ export class LoginPage {
 
   username: string;
   password: string;
+  errorMsg = '';
+  loading = false;
 
   constructor(private router: Router,
               private authnService: AuthenticationService,
               private authzService: AuthorizationService,
+              private alertService: AlertService,
               private systemService: SystemService) {
   }
 
@@ -38,6 +42,10 @@ export class LoginPage {
         } else {
           // login failed
           // this.error = 'Username or password is incorrect';
+          this.alertService.getMessage();
+          this.loading = false;
+          this.router.navigate(['/login']);
+         
         }
       });
   }
@@ -71,4 +79,10 @@ export class LoginPage {
       .toPromise();
 
   }
+
+  checkCredentials(): void {
+
+  }
+
+
 }

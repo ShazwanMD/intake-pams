@@ -8,6 +8,7 @@ import {JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import {environment} from '../environments/environment';
 import {AuthenticatedUser} from '../app/shared/model/identity/authenticated-user.interface';
 import {ApplicationState} from '../app/app.module';
+import { Router } from "@angular/router";
 
 /**
  */
@@ -21,6 +22,7 @@ export class AuthenticationService {
   public parsedToken: any;
 
   constructor(private http: Http,
+              private router : Router,
               private store: Store<ApplicationState>) {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
@@ -72,6 +74,12 @@ export class AuthenticationService {
     // todo: clear store by dispatching init
     // todo:
     // this.store.dispatch(<Action>{type: Dispatcher.INIT});
+  }
+
+  checkCredentials(){
+    if(localStorage.getItem("user")=== null){
+      this.router.navigate(['Login']);
+    }
   }
 
   parseRoles(): void {

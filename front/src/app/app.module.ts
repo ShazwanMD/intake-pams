@@ -1,3 +1,5 @@
+import { AlertService } from './../services/alert.service';
+import { AlertComponent } from './secure/identity/directive/alert.component';
 import {NgModule, Type} from '@angular/core';
 import {BrowserModule, Title}  from '@angular/platform-browser';
 
@@ -119,6 +121,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
     LoginPage,
     HomePage,
     SecurePage,
@@ -174,6 +177,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     appRoutingProviders,
     httpInterceptorProviders,
     AuthenticationService,
+    AlertService,
     AuthorizationService,
     AccountService,
     SystemService,

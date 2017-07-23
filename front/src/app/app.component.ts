@@ -8,6 +8,7 @@ import {ApplicationContextState} from './application-context.reducer';
 import {ApplicationContextActions} from './application-context.action';
 
 @Component({
+  // moduleId:module.id,
   selector: 'pams-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
