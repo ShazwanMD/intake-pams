@@ -83,7 +83,7 @@ export class AuthenticationService {
   isLoggedIn(): boolean {
     let currentUser: any = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
-    return !this.jwtHelper.isTokenExpired(this.token);
+    return this.token ? !this.jwtHelper.isTokenExpired(this.token) : false;
   }
 
   currentUsername(): any {
