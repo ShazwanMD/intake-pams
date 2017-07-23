@@ -25,6 +25,10 @@
         <md-icon>label</md-icon>
         Logout
       </a>
+       <a md-list-item [routerLink]="['/secure']" (click)="layout.close()">
+        <md-icon>label</md-icon>
+        Back to Dashboard
+      </a>
     </md-nav-list>
   </td-navigation-drawer>
   <router-outlet></router-outlet>
