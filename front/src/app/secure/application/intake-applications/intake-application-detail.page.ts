@@ -17,10 +17,11 @@ import {Router} from '@angular/router';
 export class IntakeApplicationDetailPage implements OnInit {
 
   private componentRef: ComponentRef<any>;
+  private intakeApplication: IntakeApplication;
   @ViewChild('intakeApplicationFormPanel',{read: ViewContainerRef}) intakeApplicationFormPanel: ViewContainerRef;
   
   constructor(private viewContainerRef: ViewContainerRef,
-              private intakeApplication: IntakeApplication,
+             // private intakeApplication: IntakeApplication,
               private cfr: ComponentFactoryResolver,
               private router: Router) {
   }

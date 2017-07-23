@@ -38,7 +38,7 @@ import {PipeModule} from '../../../app.pipe.module';
   declarations: [
     IntakeDetailPage,
     MyIntakeApplicationPage,
-    //IntakeApplicationDetailPage,
+    IntakeApplicationDetailPage,
     // components
     // dialogs
     EducationCreatorDialog,
@@ -49,7 +49,7 @@ import {PipeModule} from '../../../app.pipe.module';
   entryComponents: [
     EducationCreatorDialog,
     ProgramOfferingSelectorDialog,
-    //IntakeApplicationDetailPage,
+    IntakeApplicationDetailPage,
   ],
 })
 export class IntakeApplicationSubModule {
