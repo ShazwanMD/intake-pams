@@ -255,22 +255,16 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public void offerCandidate(InCandidate candidate) {
         // start offering process
-        // generate matric no
-        Map<String, Object> map = new HashMap<String, Object>();
-        InFacultyCode facultyCode = candidate.getProgramSelection().getProgramCode().getFacultyCode();
-        InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
-        InProgramLevel programLevel = candidate.getProgramSelection().getProgramCode().getProgramLevel();
-        InStudyMode studyMode = candidate.getStudyMode();
-        map.put("facultyCode", facultyCode);
-        map.put("studyMode", studyMode);
-        map.put("programLevel", programLevel);
-        map.put("intakeSession", session);
-
-        String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
-        candidate.setMatricNo(generatedMatricNo);
-        candidate.setStudyMode(candidate.getStudyMode());
         candidate.setStatus(InCandidateStatus.OFFERED);
         candidateDao.update(candidate, securityService.getCurrentUser());
+        
+        // notify candidate
+        InEmailQueue emailQueue = new InEmailQueueImpl();
+        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
+        emailQueue.setTo(candidate.getEmail());
+        emailQueue.setSubject("Tawaran diterima");
+        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
+        systemService.saveEmailQueue(emailQueue);
     }
 
     @Override
@@ -301,5 +295,22 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setRegistration(false);
         candidate.setApplication(application);
         candidateDao.save(candidate, securityService.getCurrentUser());
+    }
+    
+    private String generateMatricNumber(InCandidate candidate){
+    	 // generate matric no
+        Map<String, Object> map = new HashMap<String, Object>();
+        InFacultyCode facultyCode = candidate.getProgramSelection().getProgramCode().getFacultyCode();
+        InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
+        InProgramLevel programLevel = candidate.getProgramSelection().getProgramCode().getProgramLevel();
+        InStudyMode studyMode = candidate.getStudyMode();
+        map.put("facultyCode", facultyCode);
+        map.put("studyMode", studyMode);
+        map.put("programLevel", programLevel);
+        map.put("intakeSession", session);
+
+        String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
+        
+        return generatedMatricNo;
     }
 }

@@ -102,6 +102,16 @@ public class AdmissionController {
                         admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
     }
     
+    @RequestMapping(value = "/intakes/{referenceNo}/candidates/offer", method = RequestMethod.PUT)
+    public ResponseEntity<String> offerCandidates(@PathVariable String referenceNo) {
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        List<InCandidate> candidate = admissionService.findCandidatesByStatus(intake, InCandidateStatus.APPROVED);
+        for (InCandidate inCandidate : candidate) {
+        	admissionService.offerCandidate(inCandidate);
+		}
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/preSelect", method = RequestMethod.PUT)
     public ResponseEntity<String> preSelectCandidate(@PathVariable String referenceNo,
                                                           @RequestBody Candidate vo) {
@@ -113,6 +123,15 @@ public class AdmissionController {
     
     @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/select", method = RequestMethod.PUT)
     public ResponseEntity<String> selectCandidate(@PathVariable String referenceNo,
+                                                          @RequestBody Candidate vo) {
+    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+        admissionService.selectCandidate(candidate);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/offer", method = RequestMethod.PUT)
+    public ResponseEntity<String> offerCandidate(@PathVariable String referenceNo,
                                                           @RequestBody Candidate vo) {
     	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);

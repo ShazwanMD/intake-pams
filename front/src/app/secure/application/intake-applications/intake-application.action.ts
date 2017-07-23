@@ -232,6 +232,24 @@ export class IntakeApplicationActions {
       payload: message,
     };
   }
+  
+  static COPY_ADDRESS_APPLICATION = '[Intake Application] Copy Address Intake Application';
+
+  copyAddressApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.COPY_ADDRESS_APPLICATION,
+      payload: application,
+    };
+  }
+
+  static COPY_ADDRESS_APPLICATION_SUCCESS = '[Intake Application] Copy Address Application Success';
+
+  copyAddressApplicationSuccess(message): Action {
+    return {
+      type: IntakeApplicationActions.COPY_ADDRESS_APPLICATION_SUCCESS,
+      payload: message,
+    };
+  }
 
   static SELECT_INTAKE_APPLICATION = '[Intake Application] Select Intake Application';
 

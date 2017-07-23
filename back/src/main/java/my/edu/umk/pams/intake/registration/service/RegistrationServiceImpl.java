@@ -71,7 +71,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     public void registerUser(InUser user, InApplicant applicant) {
         SecurityContext sc = loginAsSystem();
 
-        user.setEnabled(true);
+        user.setEnabled(false);
         user.setLocked(true);
 
         // save user and refresh
@@ -96,10 +96,9 @@ public class RegistrationServiceImpl implements RegistrationService {
         identityService.updateUser(user);
 
         // generate token
-        String token = UUID.randomUUID().toString();
         InUserVerification verification = new InUserVerificationImpl();
         verification.setExpiryDate(calculateExpiryDate(ONE_WEEK));
-        verification.setToken(token);
+        verification.setToken(generateToken());
         verification.setUser(user);
         userVerificationDao.save(verification, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -174,5 +173,14 @@ public class RegistrationServiceImpl implements RegistrationService {
         cal.setTime(new Timestamp(cal.getTime().getTime()));
         cal.add(Calendar.MINUTE, expiryTimeInMinutes);
         return new Date(cal.getTime().getTime());
+    }
+    
+    @Override
+    public String generateToken (){
+    	
+    	String token = UUID.randomUUID().toString();
+    	
+    	return token;
+    	
     }
 }

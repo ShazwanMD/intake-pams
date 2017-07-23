@@ -8,6 +8,8 @@ import {AdmissionActions} from './admission.action';
 import {AdmissionModuleState} from './index';
 import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
 import {Candidate} from '../../shared/model/admission/candidate.interface';
+import { Intake } from '../../shared/model/policy/intake.interface';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'pams-intake-task-view',
@@ -31,6 +33,7 @@ export class IntakeTaskViewPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<AdmissionModuleState>,
+              private snackBar: MdSnackBar,
               private actions: AdmissionActions) {
     this.intakeTask$ = this.store.select(...this.INTAKE_TASK);
     this.candidates$ = this.store.select(...this.CANDIDATES);
@@ -52,8 +55,15 @@ export class IntakeTaskViewPage implements OnInit {
     // this.store.dispatch(this.actions.broadcastIntakeResult(null));
   }
 
-  offer(): void {
+  offer(referenceNo): void {
     // start offer process for candidate in status approve
+     let snackBarRef = this.snackBar.open('Confirm to Offer This candidate?', 'Ok');
+
+    snackBarRef.afterDismissed().subscribe(() => {
+      console.log("submit candidate in snck bar: "+referenceNo);
+      this.store.dispatch(this.actions.offerCandidate(referenceNo));
+      this.goBack();
+    });
   }
 
   goBack(): void {

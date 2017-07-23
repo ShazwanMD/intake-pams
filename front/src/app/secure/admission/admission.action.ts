@@ -115,6 +115,24 @@ export class AdmissionActions {
       payload: message,
     };
   }
+  
+  static OFFER_CANDIDATE = '[Admission] Offer Candidate';
+
+  offerCandidate(intake): Action {
+    return {
+      type: AdmissionActions.OFFER_CANDIDATE,
+      payload: intake,
+    };
+  }
+
+  static OFFER_CANDIDATE_SUCCESS = '[Admission] Offer Candidate Success';
+
+  offerCandidateSuccess(message): Action {
+    return {
+      type: AdmissionActions.OFFER_CANDIDATE_SUCCESS,
+      payload: message,
+    };
+  }
 
   static FIND_CANDIDATES = '[Admission] Find Candidates';
 

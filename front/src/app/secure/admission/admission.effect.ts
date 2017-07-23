@@ -79,6 +79,12 @@ export class AdmissionEffects {
     .switchMap((candidate) => this.admissionService.selectCandidate(candidate))
     .map((message) => this.admissionActions.selectCandidateSuccess(message));
   
+  @Effect() offerCandidate$ = this.actions$
+    .ofType(AdmissionActions.OFFER_CANDIDATE)
+    .map((action) => action.payload)
+    .switchMap((candidate) => this.admissionService.offerCandidate(candidate))
+    .map((message) => this.admissionActions.offerCandidateSuccess(message));
+  
   @Effect() rejectCandidate$ = this.actions$
     .ofType(AdmissionActions.REJECT_CANDIDATE)
     .map((action) => action.payload)

@@ -78,6 +78,12 @@ export class AdmissionService {
       .map((res: Response) => <Candidate[]>res.json());
   }
   
+  offerCandidate(intake: Intake): Observable<String> {
+    return this._http.put(this.ADMISSION_API + '/intakes/'
+      + intake.referenceNo + '/candidates/offer', JSON.stringify(intake))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+  
   preSelectCandidate(candidate: Candidate): Observable<String> {
     return this._http.put(this.ADMISSION_API + '/application/'
       + candidate.application.referenceNo + '/candidates/candidateStatus/preSelect', JSON.stringify(candidate))

@@ -146,6 +146,15 @@ export class CpsIntakeApplicationPage implements OnInit {
            return false;
        }
     }
+  
+  copyAddress(application: IntakeApplication){
+  if (confirm('Confirm to Copy this address?')) {
+           this.store.dispatch(this.actions.copyAddressApplication(application));
+           this.goBack();
+       } else {
+           return false;
+       }
+  }
 
 
   // submit(application: IntakeApplication, isValid: boolean): void {

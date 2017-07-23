@@ -36,6 +36,9 @@ import my.edu.umk.pams.intake.identity.model.InPrincipalRoleImpl;
 import my.edu.umk.pams.intake.identity.model.InRoleType;
 import my.edu.umk.pams.intake.identity.model.InStaff;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.registration.model.InUserVerification;
+import my.edu.umk.pams.intake.registration.model.InUserVerificationImpl;
+import my.edu.umk.pams.intake.registration.service.RegistrationService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.integration.NonSerializableSecurityContext;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -85,6 +88,9 @@ public class IdentityServiceImpl implements IdentityService {
     
     @Autowired
     private SystemService systemService;
+    
+    @Autowired
+    private RegistrationService registrationService;
 
 
     @Autowired
@@ -604,6 +610,13 @@ public class IdentityServiceImpl implements IdentityService {
     	applicant.setEmail(newEmail);
         applicantDao.update(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        
+        //generate token
+        String token = registrationService.generateToken();
+        InUserVerification verification = new InUserVerificationImpl();
+       // verification.setExpiryDate(calculateExpiryDate(ONE_WEEK));
+        verification.setToken(token);
+        //verification.setUser(user);
         
     	if (applicant == null) LOG.debug("ApplicantB is null");
     	if (applicant.getEmail() == null) LOG.debug("Email is null");

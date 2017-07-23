@@ -15,4 +15,6 @@ public interface RegistrationService {
     void forgetPassword(InUser user);
 
     boolean isUserExists(String username);
+
+	String generateToken();
 }
