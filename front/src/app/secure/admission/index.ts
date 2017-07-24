@@ -1,3 +1,4 @@
+import { IntakeTaskViewPage } from './intake-task-view.page';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -102,6 +103,7 @@ export const admissionModuleReducers = {
     CandidateRegisterTaskPanel,
     CandidateTaskWorkflowPanel,
     IntakeTaskDetailPage,
+    IntakeTaskViewPage,
     CandidateTaskStatusComponent,
     CandidateRecommendListComponent,
     CandidateOfferTaskPanel,
@@ -120,6 +122,7 @@ export const admissionModuleReducers = {
     CandidateRegisterTaskPanel,
     CandidateTaskWorkflowPanel,
     IntakeTaskDetailPage,
+    IntakeTaskViewPage,
     CandidateTaskStatusComponent,
     CandidateRecommendListComponent,
     CandidateOfferTaskPanel,
@@ -139,6 +142,7 @@ export const admissionModuleReducers = {
     CandidateRegisterTaskPanel,
     CandidateTaskWorkflowPanel,
     IntakeTaskDetailPage,
+    IntakeTaskViewPage,
     CandidateTaskStatusComponent,
     CandidateRecommendListComponent,
     CandidateOfferTaskPanel,
