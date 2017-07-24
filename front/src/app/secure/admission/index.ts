@@ -10,8 +10,8 @@ import {IdentityService} from '../../../services';
 
 import {AdmissionPage} from './admission.page';
 import {AdmissionService} from '../../../services/admission.service';
+import { PipeModule } from '../../app.pipe.module';
 import { CommonModule } from '../../common';
-import {IntakeTaskListComponent} from './component/intake-task-list.component';
 import {intakeTaskListReducer, IntakeTaskListState} from './intake-task-list.reducer';
 import {intakeTaskReducer, IntakeTaskState} from './intake-task.reducer';
 import {
@@ -21,18 +21,27 @@ import {
 import {AdmissionActions} from './admission.action';
 import {AdmissionEffects} from './admission.effect';
 import {EffectsModule} from '@ngrx/effects';
-import {IntakeTaskViewPage} from './intake-task-view.page';
 import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
 import {Candidate} from '../../shared/model/admission/candidate.interface';
 import { CpsIntakeApplicationSubModule } from '../application/intake-applications/cps';
+import { IntakeSubModule } from '../policy/intakes';
 import { CandidateListComponent } from './component/candidate-list.component';
 import { CandidatePreSelectListComponent } from './component/candidate-preselect-list.component';
 import {CandidateApproveListComponent} from './component/candidate-approve-list.component';
+import { CandidateRecommendListComponent } from './component/candidate-recommend-list.component';
 import { CandidateRejectedListComponent } from './component/candidate-rejected-list.component';
+import { CandidateTaskListComponent } from './component/candidate-task-list.component';
+import { CandidateTaskStatusComponent } from './component/candidate-task-status.component';
 import { CandidateProfilePreSelectDialog } from './dialog/candidate-profile-pre-select.dialog';
 import { CandidateProfileRejectDialog } from './dialog/candidate-profile-reject.dialog';
 import { CandidateProfileSelectDialog } from './dialog/candidate-profile-select.dialog';
 import { CandidateProfileDialog } from './dialog/candidate-profile.dialog';
+import { IntakeTaskDetailPage } from './intake-task-detail.page';
+import { CandidateApproveTaskPanel } from './panel/candidate-approve-task.panel';
+import { CandidateOfferTaskPanel } from './panel/candidate-offer-task.panel';
+import { CandidatePreApproveTaskPanel } from './panel/candidate-preapprove-task.panel';
+import { CandidateRegisterTaskPanel } from './panel/candidate-register-task.panel';
+import { CandidateTaskWorkflowPanel } from './panel/candidate-task-workflow.panel';
 
 export interface AdmissionModuleState {
   intakeTasks: IntakeTaskListState;
@@ -74,12 +83,11 @@ export const admissionModuleReducers = {
     EffectsModule.run(AdmissionEffects),
     CommonModule.forRoot(),
     CpsIntakeApplicationSubModule,
+    PipeModule.forRoot(),
   ],
   declarations: [
     // page
     AdmissionPage,
-    IntakeTaskViewPage,
-    IntakeTaskListComponent,
     CandidateListComponent,
     CandidatePreSelectListComponent,
     CandidateApproveListComponent,
@@ -88,7 +96,15 @@ export const admissionModuleReducers = {
     CandidateProfileDialog,
     CandidateProfilePreSelectDialog,
     CandidateRejectedListComponent,
-    
+    CandidateTaskListComponent,
+    CandidateApproveTaskPanel,
+    CandidatePreApproveTaskPanel,
+    CandidateRegisterTaskPanel,
+    CandidateTaskWorkflowPanel,
+    IntakeTaskDetailPage,
+    CandidateTaskStatusComponent,
+    CandidateRecommendListComponent,
+    CandidateOfferTaskPanel,
   ],
   exports: [CandidateListComponent,
     CandidateProfileSelectDialog,
@@ -98,7 +114,15 @@ export const admissionModuleReducers = {
     CandidatePreSelectListComponent,
     CandidateApproveListComponent,
     CandidateRejectedListComponent,
-    
+    CandidateTaskListComponent,
+    CandidateApproveTaskPanel,
+    CandidatePreApproveTaskPanel,
+    CandidateRegisterTaskPanel,
+    CandidateTaskWorkflowPanel,
+    IntakeTaskDetailPage,
+    CandidateTaskStatusComponent,
+    CandidateRecommendListComponent,
+    CandidateOfferTaskPanel,
   ],
   entryComponents: [
     CandidateListComponent,
@@ -109,6 +133,15 @@ export const admissionModuleReducers = {
     CandidatePreSelectListComponent,
     CandidateApproveListComponent,
     CandidateRejectedListComponent,
+    CandidateTaskListComponent,
+    CandidateApproveTaskPanel,
+    CandidatePreApproveTaskPanel,
+    CandidateRegisterTaskPanel,
+    CandidateTaskWorkflowPanel,
+    IntakeTaskDetailPage,
+    CandidateTaskStatusComponent,
+    CandidateRecommendListComponent,
+    CandidateOfferTaskPanel,
   ],
 })
 export class AdmissionModule {

@@ -192,7 +192,7 @@
             </md-tab-group>
           </md-card-content>
         </md-card>
-        	<button md-raised-button color="accent" (click)="preSelect(candidate)">Pre Select</button>
+        	<button md-raised-button color="accent" (click)="preSelect(candidate)">Select</button>
         	<template [ngIf]="candidate.status !== 'REJECTED'"><button md-raised-button color="accent" (click)="reject(candidate)">Reject</button></template>
       </md-tab>
     </md-tab-group>

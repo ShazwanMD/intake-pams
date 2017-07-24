@@ -1,10 +1,4 @@
-<td-layout-nav>
-  <div toolbar-content layout="row" layout-align="center center" flex>
-    <span>PAMS: Postgraduate Management System</span>
-    <span flex></span>
-  </div>
-
-  <div md-content flex md-scroll-y>
+ <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
         <md-card>
@@ -72,17 +66,8 @@
           <md-card-subtitle>Candidates for this program</md-card-subtitle>
           <md-divider></md-divider>
           <md-tab-group>
-          <md-tab label="All ({{(selectedCandidates$ | async)?.length}})">
-            <pams-candidate-list [candidate]="selectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
-          </md-tab>
-           <md-tab label="Pre Selected ({{(preSelectedCandidates$ | async)?.length}})">
-            <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-preselect-list>
-          </md-tab>
-          <md-tab label="Selected ({{(approvedCandidates$ | async)?.length}})">
-            <pams-candidate-approve-list [candidate]="approvedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-approve-list>
-          </md-tab>
-          <md-tab label="Rejected ({{(rejectedCandidates$ | async)?.length}})">
-            <pams-candidate-rejected-list [candidate]="rejectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-rejected-list>
+          <md-tab label="All ({{(approvedCandidates$ | async)?.length}})">
+            <pams-candidate-approve-list [candidate]="approvedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-approve-list>
           </md-tab>
           </md-tab-group>
         </md-card>
@@ -93,12 +78,11 @@
           <md-card-subtitle>Actions available on current intake</md-card-subtitle>
           <md-divider></md-divider>
           <md-nav-list dense>
-          <div *ngIf="(selectedCandidates$ | async)?.length <= 0 && (preSelectedCandidates$ | async)?.length <= 0">
             <md-list-item (click)="offer()">
               <md-icon md-list-avatar>done</md-icon>
               <h4 md-line>Offer</h4>
-              <p md-line>Offer candidate for this intake</p>
-            </md-list-item></div>
+              <p md-line>Offer candidates for this intake</p>
+            </md-list-item>
             <!-- <md-list-item (click)="broadcast()">
               <md-icon md-list-avatar>announcement</md-icon>
               <h4 md-line>Broadcast</h4>
@@ -114,4 +98,3 @@
       </div>
     </div>
   </div>
-</td-layout-nav>
