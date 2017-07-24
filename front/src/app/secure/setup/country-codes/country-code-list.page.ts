@@ -33,7 +33,8 @@ export class CountryCodeListPage implements OnInit{
   private creatorDialogRef: MdDialogRef<CountryCodeCreatorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'description', label: 'Description'},
+    {name: 'descriptionMs', label: 'DescriptionMs'},
+    {name: 'descriptionEn', label: 'DescriptionEn'},
     {name: 'action', label: ''}
   ];
     private countryCodes: CountryCode[];
