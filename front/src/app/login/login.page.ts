@@ -1,3 +1,4 @@
+import { MdSnackBar } from '@angular/material';
 import { AlertService } from './../../services/alert.service';
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
@@ -14,6 +15,7 @@ import {AuthenticatedUser} from '../shared/model/identity/authenticated-user.int
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
+  error: string;
 
   username: string;
   password: string;
@@ -24,6 +26,7 @@ export class LoginPage {
               private authnService: AuthenticationService,
               private authzService: AuthorizationService,
               private alertService: AlertService,
+              private snackBar: MdSnackBar,
               private systemService: SystemService) {
   }
 
@@ -31,6 +34,7 @@ export class LoginPage {
     this.authzService.flushRoles();
     this.authnService.login(this.username, this.password)
       .subscribe((result: boolean) => {
+        console.log("result is" + result);
         if (result === true) {
           console.log('LoginPage: ' + result);
           // login successful
@@ -38,18 +42,20 @@ export class LoginPage {
           this.populatePermission();
           // navigate to secure area
           console.log('to secure page');
-          this.router.navigate(['/secure']);
+         this.router.navigate(['/secure']);
         } else {
-          // login failed
-          // this.error = 'Username or password is incorrect';
-          this.alertService.getMessage();
-          this.loading = false;
-          this.router.navigate(['/login']);
-         
         }
+      }, 
+        error => {
+       console.log("invalid user" + error);
+       let snackBarRef = this.snackBar.open('Invalid Username or Password','OK');
+       snackBarRef.afterDismissed().subscribe(() => {
+         console.log('invalid username and password:' +this.username);
+          window.location.reload();
       });
+      //  window.alert('Invalid Username or Password');      
+    },);
   }
-
   populateUser(): void {
     console.log('populate user');
     this.systemService.findAuthenticatedUser()
@@ -81,8 +87,14 @@ export class LoginPage {
   }
 
   checkCredentials(): void {
-
+    console.log('invalid username and password');
+    this.authnService.checkCredentials();
+    this.systemService.findAuthenticatedUser()
+    .map((user: AuthenticatedUser) => {
+        this.authnService.authenticatedUser = user;
+        console.log('user: ' + JSON.stringify(user));
+      })
+      .toPromise();
   }
-
-
+  
 }
