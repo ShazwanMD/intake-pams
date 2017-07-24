@@ -1,61 +1,170 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {SetupActions} from '../setup.action';
-import {SetupModuleState} from '../index';
-import {Observable} from 'rxjs/Observable';
+// import {Component, OnInit, ViewContainerRef} from '@angular/core';
+// import {Store} from '@ngrx/store';
+// import {SetupActions} from '../setup.action';
+// import {SetupModuleState} from '../index';
+// import {Observable} from 'rxjs/Observable';
+// import {DisabilityCodeEditorDialog} from './dialog/disability-code-editor.dialog';
+// import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+// import {DisabilityCode} from '../../../shared/model/common/disability-code.interface';
+
+// @Component({
+//   selector: 'pams-disability-list-page',
+//   templateUrl: './disability-code-list.page.html',
+// })
+// export class DisabilityCodeListPage implements OnInit {
+
+//   private DISABILITY_CODES: string[] = 'setupModuleState.disabilityCodes'.split('.');
+//   private disabilityCodes$: Observable<DisabilityCode>;
+//   private creatorDialogRef: MdDialogRef<DisabilityCodeEditorDialog>;
+//   private columns: any[] = [
+//     {name: 'code', label: 'Code'},
+//     {name: 'descriptionMs', label: 'DescriptionMs'},
+//     {name: 'descriptionEn', label: 'DescriptionEn'},
+//     {name: 'action', label: ''},
+//   ];
+
+//   constructor(private actions: SetupActions,
+//               private store: Store<SetupModuleState>,
+//               private vcf: ViewContainerRef,
+//               private dialog: MdDialog,
+//               private snackBar: MdSnackBar) {
+//     this.disabilityCodes$ = this.store.select(...this.DISABILITY_CODES);
+//   }
+
+//   ngOnInit(): void {
+//     this.store.dispatch(this.actions.findDisabilityCodes());
+//     this.store.dispatch(this.actions.changeTitle('Disability Codes'));
+//   }
+
+//   createDialog(): void {
+//     this.showDialog(null);
+//   }
+
+//   editDialog(code: DisabilityCode): void {
+//     this.showDialog(code);
+//   }
+
+//   delete(code: DisabilityCode): void {
+//     let snackBarRef = this.snackBar.open('Delete this disability code?', 'Ok');
+//     snackBarRef.afterDismissed().subscribe(() => {
+//       this.store.dispatch(this.actions.removeDisabilityCode(code));
+//     });
+//   }
+
+//   filter(): void {
+//   }
+
+//   private showDialog(code: DisabilityCode): void {
+//     console.log('create');
+//     let config = new MdDialogConfig();
+//     config.viewContainerRef = this.vcf;
+//     config.role = 'dialog';
+//     config.width = '70%';
+//     config.height = '65%';
+//     config.position = {top: '0px'};
+//     this.creatorDialogRef = this.dialog.open(DisabilityCodeEditorDialog, config);
+//     if (code) this.creatorDialogRef.componentInstance.disabilityCode = code; // set
+//     this.creatorDialogRef.afterClosed().subscribe((res) => {
+//       console.log('close dialog');
+//     });
+//   }
+
+// }
+import { DisabilityCode } from './../../../shared/model/common/disability-code.interface';
+import {
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+  OnInit,
+  AfterViewInit,
+  ViewContainerRef,
+} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {SetupActions} from "../setup.action";
+import {SetupModuleState} from "../index";
+import {Observable} from "rxjs/Observable";
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {DisabilityCodeEditorDialog} from './dialog/disability-code-editor.dialog';
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
-import {DisabilityCode} from '../../../shared/model/common/disability-code.interface';
+import {
+  TdDataTableService,
+  TdDataTableSortingOrder,
+  ITdDataTableSortChangeEvent,
+  IPageChangeEvent,
+} from '@covalent/core';
 
 @Component({
   selector: 'pams-disability-list-page',
   templateUrl: './disability-code-list.page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DisabilityCodeListPage implements OnInit {
-
-  private DISABILITY_CODES: string[] = 'setupModuleState.disabilityCodes'.split('.');
-  private disabilityCodes$: Observable<DisabilityCode>;
+export class DisabilityCodeListPage implements OnInit{
+  private DISABILITY_CODES = "setupModuleState.disabilityCodes".split(".");
+  private disabilityCodes$: Observable<DisabilityCode[]>;
   private creatorDialogRef: MdDialogRef<DisabilityCodeEditorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
-    {name: 'action', label: ''},
+    {name: 'action', label: ''}
   ];
-
+    private disabilityCodes: DisabilityCode[];
+  filteredData: any[];
+  filteredTotal: number;
+  searchTerm: string = '';
+  fromRow: number = 1;
+  currentPage: number = 1;
+  pageSize: number = 10;
+  sortBy: string = 'code';
+  sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog,
-              private snackBar: MdSnackBar) {
+              private _dataTableService: TdDataTableService) {
     this.disabilityCodes$ = this.store.select(...this.DISABILITY_CODES);
+    this.disabilityCodes$.subscribe(DisabilityCodes=>this.disabilityCodes = DisabilityCodes)
   }
-
   ngOnInit(): void {
     this.store.dispatch(this.actions.findDisabilityCodes());
-    this.store.dispatch(this.actions.changeTitle('Disability Codes'));
+    this.store.dispatch(this.actions.changeTitle("Disability Codes"));
   }
-
   createDialog(): void {
     this.showDialog(null);
   }
-
-  editDialog(code: DisabilityCode): void {
+  editDialog(code:DisabilityCode): void {
     this.showDialog(code);
   }
-
   delete(code: DisabilityCode): void {
-    let snackBarRef = this.snackBar.open('Delete this disability code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-      this.store.dispatch(this.actions.removeDisabilityCode(code));
-    });
+    this.store.dispatch(this.actions.removeDisabilityCode(code))
   }
-
+  sort(sortEvent: ITdDataTableSortChangeEvent): void {
+    this.sortBy = sortEvent.name;
+    this.sortOrder = sortEvent.order;
+    this.filter();
+  }
+   search(searchTerm: string): void {
+    this.searchTerm = searchTerm;
+    this.filter();
+  }
+    page(pagingEvent: IPageChangeEvent): void {
+    this.fromRow = pagingEvent.fromRow;
+    this.currentPage = pagingEvent.page;
+    this.pageSize = pagingEvent.pageSize;
+    this.filter();
+  }
   filter(): void {
+    console.log('filter');
+    let newData: any[] = this.disabilityCodes;
+    newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+    this.filteredTotal = newData.length;
+    newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+    newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+    this.filteredData = newData;
   }
-
-  private showDialog(code: DisabilityCode): void {
-    console.log('create');
+  private showDialog(code:DisabilityCode): void {
+    console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -63,10 +172,9 @@ export class DisabilityCodeListPage implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(DisabilityCodeEditorDialog, config);
-    if (code) this.creatorDialogRef.componentInstance.disabilityCode = code; // set
-    this.creatorDialogRef.afterClosed().subscribe((res) => {
-      console.log('close dialog');
+    if(code) this.creatorDialogRef.componentInstance.disabilityCode = code; // set
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
     });
   }
-
 }
