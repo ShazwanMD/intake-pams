@@ -37,7 +37,7 @@ export class CountryCodeListPage implements OnInit{
     {name: 'descriptionEn', label: 'DescriptionEn'},
     {name: 'action', label: ''}
   ];
-    private countryCodes: CountryCode[];
+  private countryCodes: CountryCode[];
   filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';
