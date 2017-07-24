@@ -1,16 +1,16 @@
+import { IntakeTask } from '../../../shared/model/policy/intake-task.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {IntakeTask} from '../../../shared/model/policy/intake-task.interface';
 
 @Component({
-  selector: 'pams-intake-task-list',
-  templateUrl: './intake-task-list.component.html',
+  selector: 'pams-candidate-task-list',
+  templateUrl: './candidate-task-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IntakeTaskListComponent {
+export class CandidateTaskListComponent {
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
-    {name: 'candidateCount', label: 'Candidate Count'},
+    {name: 'projection', label: 'Projection'},
     {name: 'startDate', label: 'Start Date'},
     {name: 'endDate', label: 'End Date'},
     {name: 'flowState', label: 'Status'},
@@ -18,6 +18,6 @@ export class IntakeTaskListComponent {
   ];
 
   @Input() intakeTasks: IntakeTask[];
-  @Output() view: EventEmitter<IntakeTask> = new EventEmitter<IntakeTask>();
+  @Output() view = new EventEmitter<IntakeTask>();
 
 }

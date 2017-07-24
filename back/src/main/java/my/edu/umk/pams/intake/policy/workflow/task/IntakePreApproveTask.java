@@ -1,8 +1,5 @@
 package my.edu.umk.pams.intake.policy.workflow.task;
 
-import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
-import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -16,25 +13,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import static java.lang.System.currentTimeMillis;
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_ID;
 
-@Component("intake_approve_ST")
-public class IntakeApproveTask extends BpmnActivityBehavior
+@Component("intake_preapprove_ST")
+public class IntakePreApproveTask extends BpmnActivityBehavior
         implements ActivityBehavior {
 
-    private static final Logger LOG = LoggerFactory.getLogger(IntakeApproveTask.class);
+    private static final Logger LOG = LoggerFactory.getLogger(IntakePreApproveTask.class);
 
     @Autowired
     private SecurityService securityService;
 
     @Autowired
     private PolicyService policyService;
-    
-    @Autowired
-    private AdmissionService admissionService;
 
     /**
      * @param execution
@@ -48,7 +41,7 @@ public class IntakeApproveTask extends BpmnActivityBehavior
         InIntake intake = policyService.findIntakeById(intakeId);
 
         // update flow state
-        intake.getFlowdata().setState(InFlowState.UPPER_APPROVED);
+        intake.getFlowdata().setState(InFlowState.APPROVED);
         intake.getFlowdata().setApprovedDate(new Timestamp(currentTimeMillis()));
         intake.getFlowdata().setApproverId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);

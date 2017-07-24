@@ -1,20 +1,7 @@
-<td-layout-nav>
-  <div toolbar-content layout="row" layout-align="center center" flex>
-    <span>PAMS: Postgraduate Management System</span>
-    <span flex></span>
-  </div>
-
-  <div md-content flex md-scroll-y>
-    <div layout="column" layout-gt-md="row" class="inset">
-      <div flex-gt-md="70">
-        <md-card>
-          <div toolbar-buttons layout="row" layout-align="start center" flex>
-            <span flex></span>
-            <button md-button class="md-icon-button">
-              <md-icon class="md-24">more_vert</md-icon>
-            </button>
-          </div>
-
+<div md-content flex md-scroll-y>
+  <div layout="column" layout-gt-md="row" class="inset">
+    <div flex-gt-md="70">
+      <md-card>
           <md-card-title>{{intakeTask?.referenceNo}}</md-card-title>
           <md-card-subtitle>{{intakeTask?.description}}</md-card-subtitle>
 
@@ -73,31 +60,29 @@
           <md-divider></md-divider>
           <md-tab-group>
           <md-tab label="All ({{(selectedCandidates$ | async)?.length}})">
-            <pams-candidate-list [candidate]="selectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-list>
+            <pams-candidate-list [candidate]="selectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-list>
           </md-tab>
-           <md-tab label="Pre Selected ({{(preSelectedCandidates$ | async)?.length}})">
-            <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-preselect-list>
-          </md-tab>
-          <md-tab label="Selected ({{(approvedCandidates$ | async)?.length}})">
-            <pams-candidate-approve-list [candidate]="approvedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-approve-list>
+           <md-tab label="Selected ({{(preSelectedCandidates$ | async)?.length}})">
+            <pams-candidate-recommend-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-recommend-list>
           </md-tab>
           <md-tab label="Rejected ({{(rejectedCandidates$ | async)?.length}})">
-            <pams-candidate-rejected-list [candidate]="rejectedCandidates$|async" [intake]="intakeTask$|async"></pams-candidate-rejected-list>
+            <pams-candidate-rejected-list [candidate]="rejectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-rejected-list>
           </md-tab>
           </md-tab-group>
         </md-card>
       </div>
       <div flex-gt-md="30">
+      <pams-candidate-task-status [intakeTask]="intakeTask"></pams-candidate-task-status>
         <md-card>
           <md-card-title>Action</md-card-title>
           <md-card-subtitle>Actions available on current intake</md-card-subtitle>
           <md-divider></md-divider>
           <md-nav-list dense>
-          <div *ngIf="(selectedCandidates$ | async)?.length <= 0 && (preSelectedCandidates$ | async)?.length <= 0">
-            <md-list-item (click)="offer()">
+          <div *ngIf="(selectedCandidates$ | async)?.length <= 0">
+            <md-list-item (click)="preApprove()">
               <md-icon md-list-avatar>done</md-icon>
-              <h4 md-line>Offer</h4>
-              <p md-line>Offer candidate for this intake</p>
+              <h4 md-line>Recommend</h4>
+              <p md-line>Recommend candidate for this intake</p>
             </md-list-item></div>
             <!-- <md-list-item (click)="broadcast()">
               <md-icon md-list-avatar>announcement</md-icon>
@@ -114,4 +99,3 @@
       </div>
     </div>
   </div>
-</td-layout-nav>

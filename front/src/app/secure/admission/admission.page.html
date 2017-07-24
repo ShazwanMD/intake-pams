@@ -11,10 +11,6 @@
         <md-icon>label</md-icon>
         Admission
       </a>
-      <a md-list-item [routerLink]="['/application/admissions/registerations']">
-        <md-icon>label</md-icon>
-        New Student Registeration
-      </a>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex></span>
@@ -30,9 +26,9 @@
       <md-card-title>Intakes</md-card-title>
       <md-card-subtitle>List of intake</md-card-subtitle>
 
-      <pams-intake-task-list
+      <pams-candidate-task-list
         [intakeTasks]="intakeTasks$ | async"
-        (view)="view($event)"></pams-intake-task-list>
+        (view)="view($event)"></pams-candidate-task-list>
 
       <md-divider></md-divider>
       <md-card-actions>

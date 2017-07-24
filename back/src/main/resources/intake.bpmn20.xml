@@ -7,7 +7,7 @@
 
     <!--
     ====================================================================================================
-    == DRAFTED > VERIFIED > PUBLISHED  > EVALUATED > SELECTED > COMPLETED
+    == DRAFTED > VERIFIED > PUBLISHED > EVALUATED > SELECTED > PRE_APPROVED > APPROVED > REGISTERED > COMPLETED
     == VARIABLE:
     == intakeId: intake id
     ======================================================================================================
@@ -145,19 +145,94 @@
             </documentation>
         </userTask>
 
-        <sequenceFlow id="flow10.2" sourceRef="intake_select_UT" targetRef="intake_approve_ST"/>
+        <sequenceFlow id="flow10.2" sourceRef="intake_select_UT" targetRef="intake_preapprove_ST"/>
 
         <!--
         ====================================================================================================
-        == STATE : SELECTED
-        == SERVICE TASK : approved a intake
+        == STATE : PREAPPROVE
+        == SERVICE TASK : pre approved a candidate intake
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="intake_preapprove_ST"
+                     activiti:expression="#{intake_preapprove_ST.execute(execution)}"/>
+                     
+        <sequenceFlow id="flow11.1" sourceRef="intake_preapprove_ST" targetRef="intake_preapprove_UT"/>
+
+        <userTask id="intake_preapprove_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:APPROVED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                PREAPPROVE
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow11.2" sourceRef="intake_preapprove_UT" targetRef="intake_approve_ST"/>
+                      
+        <!--
+        ====================================================================================================
+        == STATE : APPROVE
+        == SERVICE TASK : approved a candidate intake
         == USER TASK :
         ====================================================================================================
         -->
         <serviceTask id="intake_approve_ST"
                      activiti:expression="#{intake_approve_ST.execute(execution)}"/>
+                     
+        <sequenceFlow id="flow14.1" sourceRef="intake_approve_ST" targetRef="intake_approve_UT"/>
 
-        <sequenceFlow id="flow11.1" sourceRef="intake_approve_ST"
+        <userTask id="intake_approve_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:UPPER_APPROVED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                APPROVE
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow14.2" sourceRef="intake_approve_UT"
+                      targetRef="intake_offer_ST"/>
+                      
+        <!--
+        ====================================================================================================
+        == STATE : OFFER
+        == SERVICE TASK : offer a candidate intake
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="intake_offer_ST"
+                     activiti:expression="#{intake_offer_ST.execute(execution)}"/>
+                     
+        <sequenceFlow id="flow16.1" sourceRef="intake_offer_ST" targetRef="intake_offer_UT"/>
+
+        <userTask id="intake_offer_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:OFFERED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                OFFERED
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow16.2" sourceRef="intake_offer_UT"
+                      targetRef="intake_register_ST"/>
+
+
+        <!--
+        ====================================================================================================
+        == STATE : REGISTER
+        == SERVICE TASK : register a candidate intake
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="intake_register_ST"
+                     activiti:expression="#{intake_register_ST.execute(execution)}"/>
+                     
+        <sequenceFlow id="flow15.1" sourceRef="intake_register_ST" targetRef="intake_register_UT"/>
+
+        <userTask id="intake_register_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:REGISTERED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                REGISTERED
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow15.2" sourceRef="intake_register_UT"
                       targetRef="intake_complete_ST"/>
 
 

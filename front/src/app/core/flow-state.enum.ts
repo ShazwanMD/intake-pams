@@ -18,6 +18,6 @@ export enum FlowState {
   COMPLETED,              // 16
   ARCHIVED,               // 17
   PRE_APPROVED,           // 18
-  PROCESSED               // 19
+  PROCESSED,               // 19
 
 }

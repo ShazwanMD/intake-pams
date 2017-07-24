@@ -1,21 +1,20 @@
+import { AdmissionModuleState } from '..';
+import { Candidate } from '../../../shared/model/admission/candidate.interface';
+import { IntakeTask } from '../../../shared/model/policy/intake-task.interface';
+import { AdmissionActions } from '../admission.action';
 import {
   Component, OnInit, Input,
 } from '@angular/core';
+import { MdSnackBar } from '@angular/material';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {AdmissionActions} from './admission.action';
-import {AdmissionModuleState} from './index';
-import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
-import {Candidate} from '../../shared/model/admission/candidate.interface';
-import { Intake } from '../../shared/model/policy/intake.interface';
-import { MdSnackBar } from '@angular/material';
 
 @Component({
-  selector: 'pams-intake-task-view',
-  templateUrl: './intake-task-view.page.html',
+  selector: 'pams-candidate-register-task',
+  templateUrl: './candidate-register-task.panel.html',
 })
-export class IntakeTaskViewPage implements OnInit {
+export class CandidateRegisterTaskPanel implements OnInit {
   
   @Input() intakeTask: IntakeTask;
 
@@ -69,6 +68,6 @@ export class IntakeTaskViewPage implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/policy/intakes']);
+    this.router.navigate(['/secure/admission']);
   }
 }

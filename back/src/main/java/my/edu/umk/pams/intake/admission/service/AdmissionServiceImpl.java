@@ -263,6 +263,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
         emailQueue.setTo(candidate.getEmail());
         emailQueue.setSubject("Tawaran diterima");
+        emailQueue.setBody("Tahniah kerana anda diterima masuk UMK");
         emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(emailQueue);
     }

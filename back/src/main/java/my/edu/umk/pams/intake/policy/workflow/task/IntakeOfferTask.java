@@ -21,11 +21,11 @@ import java.util.List;
 import static java.lang.System.currentTimeMillis;
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_ID;
 
-@Component("intake_approve_ST")
-public class IntakeApproveTask extends BpmnActivityBehavior
+@Component("intake_offer_ST")
+public class IntakeOfferTask extends BpmnActivityBehavior
         implements ActivityBehavior {
 
-    private static final Logger LOG = LoggerFactory.getLogger(IntakeApproveTask.class);
+    private static final Logger LOG = LoggerFactory.getLogger(IntakeOfferTask.class);
 
     @Autowired
     private SecurityService securityService;
@@ -48,9 +48,15 @@ public class IntakeApproveTask extends BpmnActivityBehavior
         InIntake intake = policyService.findIntakeById(intakeId);
 
         // update flow state
-        intake.getFlowdata().setState(InFlowState.UPPER_APPROVED);
+        intake.getFlowdata().setState(InFlowState.OFFERED);
         intake.getFlowdata().setApprovedDate(new Timestamp(currentTimeMillis()));
         intake.getFlowdata().setApproverId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);
+        
+        //offer candidates
+        List<InCandidate> candidate = admissionService.findCandidatesByStatus(intake, InCandidateStatus.APPROVED);
+        for (InCandidate inCandidate : candidate) {
+        	 admissionService.offerCandidate(inCandidate);
+		}
     }
 }

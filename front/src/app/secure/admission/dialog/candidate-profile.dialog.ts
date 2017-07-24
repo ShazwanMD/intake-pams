@@ -84,7 +84,7 @@ export class CandidateProfileDialog implements OnInit {
   }
 
   preSelect(candidate: Candidate) {
-     let snackBarRef = this.snackBar.open('Confirm to Pre-Select This Candidate?', 'Ok');
+     let snackBarRef = this.snackBar.open('Confirm to Select This Candidate?', 'Ok');
     snackBarRef.afterDismissed().subscribe((res) => {
      this.store.dispatch(this.admissionActions.preSelectCandidate(candidate));
       this.editorDialog.afterClosed().subscribe((res) => {

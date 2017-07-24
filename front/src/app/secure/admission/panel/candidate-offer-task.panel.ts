@@ -1,21 +1,21 @@
+import { AdmissionModuleState } from '..';
+import { Candidate } from '../../../shared/model/admission/candidate.interface';
+import { IntakeTask } from '../../../shared/model/policy/intake-task.interface';
+import { IntakeActions } from '../../policy/intakes/intake.action';
+import { AdmissionActions } from '../admission.action';
 import {
   Component, OnInit, Input,
 } from '@angular/core';
+import { MdSnackBar } from '@angular/material';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {AdmissionActions} from './admission.action';
-import {AdmissionModuleState} from './index';
-import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
-import {Candidate} from '../../shared/model/admission/candidate.interface';
-import { Intake } from '../../shared/model/policy/intake.interface';
-import { MdSnackBar } from '@angular/material';
 
 @Component({
-  selector: 'pams-intake-task-view',
-  templateUrl: './intake-task-view.page.html',
+  selector: 'pams-candidate-offer-task',
+  templateUrl: './candidate-offer-task.panel.html',
 })
-export class IntakeTaskViewPage implements OnInit {
+export class CandidateOfferTaskPanel implements OnInit {
   
   @Input() intakeTask: IntakeTask;
 
@@ -26,7 +26,7 @@ export class IntakeTaskViewPage implements OnInit {
   private REJECTED_CANDIDATES: string[] = 'admissionModuleState.rejectedCandidates'.split('.');
   private APPROVED_CANDIDATES: string[] = 'admissionModuleState.approvedCandidates'.split('.');
   //private intakeTask$: Observable<IntakeTask>;
-  private candidates$: Observable<Candidate[]>;
+  //private candidates$: Observable<Candidate[]>;
   private selectedCandidates$: Observable<Candidate[]>;
   private preSelectedCandidates$: Observable<Candidate[]>;
   private rejectedCandidates$: Observable<Candidate[]>;
@@ -36,9 +36,9 @@ export class IntakeTaskViewPage implements OnInit {
               private route: ActivatedRoute,
               private store: Store<AdmissionModuleState>,
               private snackBar: MdSnackBar,
+              private intakeActions: IntakeActions,
               private actions: AdmissionActions) {
-    //this.intakeTask$ = this.store.select(...this.INTAKE_TASK);
-    this.candidates$ = this.store.select(...this.CANDIDATES);
+    //this.candidates$ = this.store.select(...this.CANDIDATES);
     this.selectedCandidates$ = this.store.select(...this.SELECTED_CANDIDATES);
     this.rejectedCandidates$ = this.store.select(...this.REJECTED_CANDIDATES);
     this.preSelectedCandidates$ = this.store.select(...this.PRE_SELECTED_CANDIDATES);
@@ -46,29 +46,22 @@ export class IntakeTaskViewPage implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.route.params.subscribe((params: { taskId: string }) => {
-      //let taskId: string = params.taskId;
-      console.log('intake: ' + this.intakeTask.taskId);
-      this.store.dispatch(this.actions.findIntakeTaskByTaskId(this.intakeTask.taskId));
-    //});
+
   }
 
   broadcast(): void {
     // this.store.dispatch(this.actions.broadcastIntakeResult(null));
   }
 
-  offer(referenceNo): void {
-    // start offer process for candidate in status approve
-     let snackBarRef = this.snackBar.open('Confirm to Offer This candidate?', 'Ok');
-
+  offer(): void {
+    let snackBarRef = this.snackBar.open('Offer this candidates?', 'Yes');
     snackBarRef.afterDismissed().subscribe(() => {
-      console.log("submit candidate in snck bar: "+referenceNo);
-      this.store.dispatch(this.actions.offerCandidate(referenceNo));
+      this.store.dispatch(this.intakeActions.completeIntakeTask(this.intakeTask));
       this.goBack();
     });
   }
 
   goBack(): void {
-    this.router.navigate(['/policy/intakes']);
+    this.router.navigate(['/secure/admission']);
   }
 }

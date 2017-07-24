@@ -12,7 +12,8 @@ public enum InCandidateStatus {
     ACCEPTED,    // 5
     DECLINED,    // 6
     REJECTED,    // 7
-	WITHDRAWN;  //8
+	WITHDRAWN,  //8
+    REGISTERED;
 	
 	public static InCandidateStatus get(int index) {
         return values()[index];
