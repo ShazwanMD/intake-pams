@@ -3,7 +3,9 @@
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
+
   <!-- switch between cps/mgseb form panel -->
-  <div #intakeApplicationFormPanel>
-  </div>
+  <pams-intake-application-form [intakeApplicationObservable]="intakeApplication$">
+  </pams-intake-application-form>
+
 </td-layout-nav>

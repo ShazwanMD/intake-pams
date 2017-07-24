@@ -4,6 +4,6 @@ import {intakeApplicationRoutes} from './intake-applications/intake-application.
 import {AuthenticationGuard} from '../identity/guard/authentication.guard';
 
 export const applicationModuleRoutes: Routes = [
-  {path: 'applicant/application', component: ApplicationPage, canActivate: [AuthenticationGuard]},
+  {path: 'application', component: ApplicationPage, canActivate: [AuthenticationGuard]},
   ...intakeApplicationRoutes,
 ];

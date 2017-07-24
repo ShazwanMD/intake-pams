@@ -1,5 +1,3 @@
-import { IntakeApplicationDetailPage } from './intake-application-detail.page';
-import { AccountModule } from './../../account/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -20,6 +18,8 @@ import {ProgramLevelSubModule} from '../../policy/program-levels/index';
 import {MyIntakeApplicationPage} from './my-intake-application.page';
 import {ProgramOfferingSelectorDialog} from './dialog/program-offering-selector.dialog';
 import {PipeModule} from '../../../app.pipe.module';
+import {IntakeApplicationFormPanel} from './panel/intake-application-form.panel';
+import {IntakeApplicationDetailPage} from './intake-application-detail.page';
 
 @NgModule({
   imports: [
@@ -40,16 +40,16 @@ import {PipeModule} from '../../../app.pipe.module';
     MyIntakeApplicationPage,
     IntakeApplicationDetailPage,
     // components
+    IntakeApplicationFormPanel,
     // dialogs
     EducationCreatorDialog,
     ProgramOfferingSelectorDialog,
-    
+
   ],
   exports: [],
   entryComponents: [
     EducationCreatorDialog,
     ProgramOfferingSelectorDialog,
-    IntakeApplicationDetailPage,
   ],
 })
 export class IntakeApplicationSubModule {
