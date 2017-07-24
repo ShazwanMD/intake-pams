@@ -59,7 +59,7 @@
                   <div layout="row" layout-padding>
                     <p>{{application.bidStatus}}</p>
                     <span flex></span>
-                    <button *ngIf="application.bidStatus === 'DRAFTED'" [routerLink]="['/secure/application/intake-application/', application.intake?.graduateCenter?.code.toLowerCase(), application.referenceNo]"
+                    <button *ngIf="application.bidStatus === 'DRAFTED'" [routerLink]="['/secure/applicant/application/intake-application-detail/',  application.referenceNo]"
                       md-button color="primary">Edit
                     </button>
                     <button *ngIf="application.bidStatus === 'SUBMITTED'" [routerLink]="['/secure/application/intake-application/']" md-button
