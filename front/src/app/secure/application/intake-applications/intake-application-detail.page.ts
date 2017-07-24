@@ -27,16 +27,21 @@ export class IntakeApplicationDetailPage implements OnInit {
   }
   ngOnInit(): void {
     let componentFactory: ComponentFactory<any>;
+    console.log('test IA detail 1');
     if (this.intakeApplication.intake.graduateCenter.code === 'CPS') {
       componentFactory = this.cfr.resolveComponentFactory(CpsIntakeApplicationPanel);
+      console.log('test IA detail 2');
     } else if (this.intakeApplication.intake.graduateCenter.code === 'MGSEB') {
       componentFactory = this.cfr.resolveComponentFactory(MgsebIntakeApplicationPanel);
+      console.log('test IA detail 3');
     }
     // handle null factory
     if (componentFactory) {
       this.componentRef = this.intakeApplicationFormPanel.createComponent(componentFactory);
+      console.log('test IA detail 4');
     } else {
       this.router.navigate(['/intakes']);
+      console.log('test IA detail 5');
     }
   }
 }
