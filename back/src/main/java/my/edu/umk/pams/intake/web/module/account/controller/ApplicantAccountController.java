@@ -209,22 +209,26 @@ public class ApplicantAccountController {
 //        user.setEmail(vo.getNewEmail());
 //        identityService.updateUser(user);
        
-   @RequestMapping(value = "/emailChange/{currentEmail:.+}", method = RequestMethod.POST)
-   public ResponseEntity<String> changeApplicantEmail(@PathVariable String currentEmail, @RequestBody EmailChange vo) {
-  	
+	@RequestMapping(value = "/emailChange/{currentEmail:.+}", method = RequestMethod.POST)
+	public ResponseEntity<String> changeApplicantEmail(@PathVariable String currentEmail, @RequestBody EmailChange vo) {
+
 		InPrincipal principal = identityService.findPrincipalByName(currentEmail);
 		if (null == principal)
 			throw new IllegalArgumentException("Applicant does not exists");
 		if (principal.getName().equals(vo.getNewEmail()))
 			throw new IllegalArgumentException("Please use a different email");
+		LOG.debug("EmailChange from: " + vo.getCurrentEmail());
+		LOG.debug("EmailChange to: " + vo.getNewEmail());
+		principal.setName(vo.getNewEmail());
+		identityService.updatePrincipal(principal);
+		InApplicant applicant = identityService.findApplicantByEmail(currentEmail);
+		if (null == applicant)
+			throw new IllegalArgumentException("Applicant does not exists");
+		if (applicant.getName().equals(vo.getNewEmail()))
+			throw new IllegalArgumentException("Please use a different email");
+		applicant.setEmail(vo.getNewEmail());
+		identityService.updateApplicant(applicant);
 
-
-      LOG.debug("EmailChange from: " + vo.getCurrentEmail());
-      LOG.debug("EmailChange to: " + vo.getNewEmail());
-      principal.setName(vo.getNewEmail());
-      identityService.updatePrincipal(principal);
-
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 }
-
