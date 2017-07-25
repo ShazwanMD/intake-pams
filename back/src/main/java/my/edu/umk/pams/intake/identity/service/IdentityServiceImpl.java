@@ -31,6 +31,7 @@ import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InGroup;
 import my.edu.umk.pams.intake.identity.model.InGroupImpl;
 import my.edu.umk.pams.intake.identity.model.InPrincipal;
+import my.edu.umk.pams.intake.identity.model.InPrincipalImpl;
 import my.edu.umk.pams.intake.identity.model.InPrincipalRole;
 import my.edu.umk.pams.intake.identity.model.InPrincipalRoleImpl;
 import my.edu.umk.pams.intake.identity.model.InRoleType;
@@ -615,10 +616,15 @@ public class IdentityServiceImpl implements IdentityService {
     @Override
     public void changeEmail(InApplicant applicant, String newEmail) {
     	SecurityContext sc = loginAsSystem();
+    	
     	applicant.setEmail(newEmail);
         applicantDao.update(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         
+        InPrincipal principal = this.findPrincipalById(applicant.getId());
+        
+        principal.setName(newEmail);
+        this.updatePrincipal(principal);
         //generate token
         String token = registrationService.generateToken();
         InUserVerification verification = new InUserVerificationImpl();
@@ -629,10 +635,11 @@ public class IdentityServiceImpl implements IdentityService {
     	if (applicant == null) LOG.debug("ApplicantB is null");
     	if (applicant.getEmail() == null) LOG.debug("Email is null");
     	
+    	String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
     	InEmailQueue email= new InEmailQueueImpl();
         String subject = "Change Email";
         String body = "Your Email has been changed to : " + newEmail +
-        			  ". Please Login to continue";
+        			  ". Please Login to continue" + applicationUrl+ "/login/";
         email.setTo(newEmail);
         email.setSubject(subject);
         email.setBody(body);
@@ -641,6 +648,8 @@ public class IdentityServiceImpl implements IdentityService {
         systemService.saveEmailQueue(email);
         logoutAsSystem(sc);
     }
+    
+    
 
     
     private SecurityContext loginAsSystem() {
