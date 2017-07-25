@@ -102,6 +102,14 @@ public class AdmissionController {
                         admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
     }
     
+    @RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}/accepted", method = RequestMethod.GET)
+    public ResponseEntity<List<Candidate>> findOfferAcceptCandidates(@PathVariable String referenceNo, @PathVariable String candidateStatus) {
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        return new ResponseEntity<List<Candidate>>(
+                admissionTransformer.toCandidateVos(
+                        admissionService.findCandidatesAcceptOffered(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/intakes/{referenceNo}/candidates/offer", method = RequestMethod.PUT)
     public ResponseEntity<String> offerCandidates(@PathVariable String referenceNo) {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);

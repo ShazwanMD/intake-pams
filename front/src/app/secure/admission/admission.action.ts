@@ -214,6 +214,26 @@ export class AdmissionActions {
     };
   }
   
+  static FIND_ACCEPT_OFFERED_CANDIDATES = '[Admission] Find Accept Offered Candidates';
+
+  findAcceptOfferedCandidates(intake): Action {
+    console.log('findAcceptOfferedCandidates');
+    return {
+      type: AdmissionActions.FIND_ACCEPT_OFFERED_CANDIDATES,
+      payload: intake,
+    };
+  }
+
+  static FIND_ACCEPT_OFFERED_CANDIDATES_SUCCESS = '[Admission] Find Accept Offered Candidates Success';
+
+  findAcceptOfferedCandidatesSuccess(candidates): Action {
+    console.log('findAcceptOfferedCandidatesSuccess');
+    return {
+      type: AdmissionActions.FIND_ACCEPT_OFFERED_CANDIDATES_SUCCESS,
+      payload: candidates,
+    };
+  }
+  
   static FIND_PRE_SELECTED_CANDIDATES = '[Admission] Find Pre Selected Candidates';
 
   findPreSelectedCandidates(intake): Action {

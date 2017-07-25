@@ -66,4 +66,6 @@ public interface AdmissionService {
 
 	void rejectCandidate(InCandidate candidate);
 
+	List<InCandidate> findCandidatesAcceptOffered(InIntake intake, InCandidateStatus status);
+
 }

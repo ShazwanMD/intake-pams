@@ -30,4 +30,6 @@ public interface InCandidateDao extends GenericDao<Long, InCandidate> {
     Integer count(InIntake intake);
 
     Integer count(InIntake intake, InCandidateStatus status);
+
+	List<InCandidate> findAcceptCandidate(InIntake intake, InCandidateStatus status);
 }

@@ -211,6 +211,12 @@ public class AdmissionServiceImpl implements AdmissionService {
     public List<InCandidate> findCandidatesByStatus(InIntake intake, InCandidateStatus status) {
         return candidateDao.find(intake, status);
     }
+    
+    @Override
+    public List<InCandidate> findCandidatesAcceptOffered(InIntake intake, InCandidateStatus status) {
+        return candidateDao.findAcceptCandidate(intake, status);
+    }
+
 
     @Override
     public Integer countCandidate(InIntake intake) {
