@@ -55,6 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/api/registration/**")
+                .antMatchers("/api/integration/**")
                 .antMatchers("/servlet/**")
                 .antMatchers(HttpMethod.GET, "/index.html")
                 .antMatchers(HttpMethod.GET, "/**.ico")

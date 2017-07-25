@@ -127,4 +127,4 @@
     mvn javadoc:javadoc
     mvn cobertura:cobertura
     mvn schemaspy
- 
+    mvn -Dserver.port=8090 spring-boot:run 
