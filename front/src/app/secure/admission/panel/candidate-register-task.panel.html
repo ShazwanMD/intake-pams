@@ -66,10 +66,13 @@
           <md-card-subtitle>Candidates for this program</md-card-subtitle>
           <md-divider></md-divider>
           <md-tab-group>
-          <md-tab label="All ({{(selectedCandidates$ | async)?.length}})">
-            <pams-candidate-list [candidate]="selectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-list>
+          <md-tab label="Offered ({{(offeredCandidates$ | async)?.length}})">
+            <pams-candidate-offer-list [candidate]="offeredCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-offer-list>
           </md-tab>
-           <md-tab label="Registered ({{(preSelectedCandidates$ | async)?.length}})">
+          <md-tab label="Accepted ({{(preSelectedCandidates$ | async)?.length}})">
+            <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-preselect-list>
+          </md-tab>
+          <md-tab label="Registered ({{(preSelectedCandidates$ | async)?.length}})">
             <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-preselect-list>
           </md-tab>
           </md-tab-group>

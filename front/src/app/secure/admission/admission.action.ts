@@ -194,6 +194,26 @@ export class AdmissionActions {
     };
   }
   
+  static FIND_OFFERED_CANDIDATES = '[Admission] Find Offered Candidates';
+
+  findOfferedCandidates(intake): Action {
+    console.log('findOfferedCandidates');
+    return {
+      type: AdmissionActions.FIND_OFFERED_CANDIDATES,
+      payload: intake,
+    };
+  }
+
+  static FIND_OFFERED_CANDIDATES_SUCCESS = '[Admission] Find Offered Candidates Success';
+
+  findOfferedCandidatesSuccess(candidates): Action {
+    console.log('findOfferedCandidatesSuccess');
+    return {
+      type: AdmissionActions.FIND_OFFERED_CANDIDATES_SUCCESS,
+      payload: candidates,
+    };
+  }
+  
   static FIND_PRE_SELECTED_CANDIDATES = '[Admission] Find Pre Selected Candidates';
 
   findPreSelectedCandidates(intake): Action {

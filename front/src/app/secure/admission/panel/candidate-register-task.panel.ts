@@ -24,12 +24,14 @@ export class CandidateRegisterTaskPanel implements OnInit {
   private PRE_SELECTED_CANDIDATES: string[] = 'admissionModuleState.preSelectedCandidates'.split('.');
   private REJECTED_CANDIDATES: string[] = 'admissionModuleState.rejectedCandidates'.split('.');
   private APPROVED_CANDIDATES: string[] = 'admissionModuleState.approvedCandidates'.split('.');
+  private OFFERED_CANDIDATES: string[] = 'admissionModuleState.offeredCandidates'.split('.');
   //private intakeTask$: Observable<IntakeTask>;
   private candidates$: Observable<Candidate[]>;
   private selectedCandidates$: Observable<Candidate[]>;
   private preSelectedCandidates$: Observable<Candidate[]>;
   private rejectedCandidates$: Observable<Candidate[]>;
   private approvedCandidates$: Observable<Candidate[]>;
+  private offeredCandidates$: Observable<Candidate[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -41,7 +43,7 @@ export class CandidateRegisterTaskPanel implements OnInit {
     this.selectedCandidates$ = this.store.select(...this.SELECTED_CANDIDATES);
     this.rejectedCandidates$ = this.store.select(...this.REJECTED_CANDIDATES);
     this.preSelectedCandidates$ = this.store.select(...this.PRE_SELECTED_CANDIDATES);
-    this.approvedCandidates$ = this.store.select(...this.APPROVED_CANDIDATES);
+    this.offeredCandidates$ = this.store.select(...this.OFFERED_CANDIDATES);
   }
 
   ngOnInit(): void {
