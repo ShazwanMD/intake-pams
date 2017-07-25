@@ -4,5 +4,5 @@ import {IntakeTaskDetailPage} from './intake-task-detail.page';
 
 export const IntakeRoutes: Routes = [
   {path: 'policy/intakes', component: IntakeCenterPage},
-   {path: 'policy/intakes/view-task/:taskId', component: IntakeTaskDetailPage},
+   {path: 'policy/intakes/view-task/:referenceNo', component: IntakeTaskDetailPage},
 ];

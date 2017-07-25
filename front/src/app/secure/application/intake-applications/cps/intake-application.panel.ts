@@ -5,8 +5,8 @@ import {RaceCode} from '../../../../shared/model/common/race-code.interface';
 import {GenderCode} from '../../../../shared/model/common/gender-code.interface';
 import {Referee} from '../../../../shared/model/application/referee.interface';
 import {Employment} from '../../../../shared/model/application/employment.interface';
-import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, Input, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
@@ -27,20 +27,19 @@ import {StateCode} from '../../../../shared/model/common/state-code.interface';
 
 export class CpsIntakeApplicationPanel implements OnInit {
 
-  private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
   private RESULTS: string[] = 'applicationModuleState.results'.split('.');
   private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
 
-  private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private results$: Observable<Result>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
+  @Input() intakeApplication: IntakeApplication;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -49,7 +48,6 @@ export class CpsIntakeApplicationPanel implements OnInit {
               private actions: IntakeApplicationActions,
               private store: Store<ApplicationModuleState>) {
 
-    this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
@@ -58,45 +56,38 @@ export class CpsIntakeApplicationPanel implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { referenceNo: string }) => {
-      let referenceNo: string = params.referenceNo;
-      this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
-    });
-
     this.applicationForm = this.formBuilder.group({
-      id:  [undefined],
-      referenceNo:  [''],
+      id: [undefined],
+      referenceNo: [''],
       researchTitle: [''],
       rank: [0],
       merit: [0],
       name: [''],
       credentialNo: ['', Validators.required],
-      birthDate:[undefined, Validators.required],
+      birthDate: [undefined, Validators.required],
       mobile: ['', Validators.required],
-      okuNo:[''],
+      okuNo: [''],
       email: [''],
       phone: [''],
-      fax:  [''],
+      fax: [''],
       age: [0],
       passExpDate: [''],
       mailingAddress1: [''],
       mailingAddress2: [''],
       mailingAddress3: [''],
-      mailingPostcode:[''],
+      mailingPostcode: [''],
       officialAddress1: [''],
       officialAddress2: [''],
       officialAddress3: [''],
       officialPostcode: [''],
-
-
       genderCode: [<GenderCode>{}],
-      maritalCode:[<MaritalCode>{}],
+      maritalCode: [<MaritalCode>{}],
       disabilityCode: [<DisabilityCode>{}],
       ethnicityCode: [<EthnicityCode>{}],
       raceCode: [<RaceCode>{}],
-      religionCode:  [<ReligionCode>{}],
-      nationalityCode:  [<NationalityCode>{}],
-      mailingStateCode:  [<StateCode>{}],
+      religionCode: [<ReligionCode>{}],
+      nationalityCode: [<NationalityCode>{}],
+      mailingStateCode: [<StateCode>{}],
       mailingCountryCode: [<CountryCode>{}],
       officialStateCode: [<StateCode>{}],
       officialCountryCode: [<CountryCode>{}],
@@ -111,25 +102,25 @@ export class CpsIntakeApplicationPanel implements OnInit {
       bachelorResultAttached: [true],
       toeflResultAttached: [true],
       ieltsResultAttached: [true],
-      languageResultAttached:[true],
+      languageResultAttached: [true],
       processingFeeAttached: [true],
       bankStatementAttached: [true],
       refereeFormAttached: [true],
-      researchProposalAttached:[true],
-      sponsorLetterAttached:[true],
+      researchProposalAttached: [true],
+      sponsorLetterAttached: [true],
 
       processingReceipt: [true],
       foreignResult: [true],
       educationResult: [true],
       academic: [true],
-      financialLetter:[true],
+      financialLetter: [true],
       researchProposal: [true],
       bankStatement: [true],
-      refereeForm:[true],
+      refereeForm: [true],
       declared: [true, Validators.requiredTrue],
 
     });
-    this.intakeApplication$.subscribe((intakeApplication) => this.applicationForm.patchValue(intakeApplication));
+    this.applicationForm.patchValue(this.intakeApplication);
   }
 
   onTabChange(): void {
@@ -137,25 +128,23 @@ export class CpsIntakeApplicationPanel implements OnInit {
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
-
-   submit(application: IntakeApplication, isValid: boolean){
+  submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
-           this.store.dispatch(this.actions.submitIntakeApplication(application));
-           this.goBack();
-       } else {
-           return false;
-       }
+      this.store.dispatch(this.actions.submitIntakeApplication(application));
+      this.goBack();
+    } else {
+      return false;
     }
-  
-  copyAddress(application: IntakeApplication){
-  if (confirm('Confirm to Copy this address?')) {
-           this.store.dispatch(this.actions.copyAddressApplication(application));
-           this.goBack();
-       } else {
-           return false;
-       }
   }
 
+  copyAddress(application: IntakeApplication) {
+    if (confirm('Confirm to Copy this address?')) {
+      this.store.dispatch(this.actions.copyAddressApplication(application));
+      this.goBack();
+    } else {
+      return false;
+    }
+  }
 
   // submit(application: IntakeApplication, isValid: boolean): void {
   //   console.log('submitting application');

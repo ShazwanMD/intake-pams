@@ -1,58 +1,39 @@
-import { Observable } from 'rxjs/Observable';
-import { IntakeApplicationActions } from './intake-application.action';
-import { ApplicationModuleState } from './../index';
-import { Store } from '@ngrx/store';
-import { Intake } from './../../../shared/model/policy/intake.interface';
-import { MgsebIntakeApplicationPanel } from './mgseb/intake-application.panel';
-import { CpsIntakeApplicationPanel } from './cps/intake-application.panel';
-import { IntakeApplication } from './../../../shared/model/application/intake-application.interface';
-import {
-  Component, OnInit, OnDestroy, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentFactory, ComponentRef, Input,
-} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {IntakeApplicationActions} from './intake-application.action';
+import {ApplicationModuleState} from '../index';
+import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
+
 @Component({
   selector: 'pams-intake-application-detail',
   templateUrl: './intake-application-detail.page.html',
 })
 export class IntakeApplicationDetailPage implements OnInit {
-  private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
-  private componentRef: ComponentRef<any>;
-  private intakeApplication$: Observable<IntakeApplication>;
-  
-  @ViewChild('intakeApplicationFormPanel', { read: ViewContainerRef }) intakeApplicationFormPanel: ViewContainerRef;
-  constructor(private viewContainerRef: ViewContainerRef,
-    private actions: IntakeApplicationActions,
-    private cfr: ComponentFactoryResolver,
-    private store: Store<ApplicationModuleState>,
-    private route: ActivatedRoute,
-    private router: Router) {
-  }
-  ngOnInit(): void {
 
-    let componentFactory: ComponentFactory<any>;
+  private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
+  private intakeApplication$: Observable<IntakeApplication>;
+
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private store: Store<ApplicationModuleState>,
+              private actions: IntakeApplicationActions) {
     this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
-    this.intakeApplication$.subscribe((intakeApplication) => {
-      console.log('test IA detail 1',  intakeApplication);
-      if (intakeApplication) {
-          if (intakeApplication.intake.graduateCenter.code === 'CPS') {
-        componentFactory = this.cfr.resolveComponentFactory(CpsIntakeApplicationPanel);
-        console.log('test IA detail 2');
-          }
-      } else if (intakeApplication) {
-          if (intakeApplication.intake.graduateCenter.code === 'MGSEB') {
-        componentFactory = this.cfr.resolveComponentFactory(MgsebIntakeApplicationPanel);
-        console.log('test IA detail 3');
-          }
-      }
-      // handle null factory
-      if (componentFactory) {
-        this.componentRef = this.intakeApplicationFormPanel.createComponent(componentFactory);
-        console.log('test IA detail 4');
-      } else {
-        this.router.navigate(['/intakes']);
-        console.log('test IA detail 5');
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params: { referenceNo: string }) => {
+      let referenceNo: string = params.referenceNo;
+      console.log('intake application by refno: ' + referenceNo);
+      if (referenceNo) {
+        this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
       }
     });
   }
+
+  goBack(): void {
+    this.router.navigate(['/secure/']);
+  }
 }
+
