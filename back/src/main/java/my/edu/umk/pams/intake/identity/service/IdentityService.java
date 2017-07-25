@@ -194,6 +194,8 @@ public interface IdentityService {
     void saveApplicant(InApplicant Applicant);
 
     void updateApplicant(InApplicant Applicant);
+
+	void updatePrincipal(InPrincipal principal);
 }
 
 

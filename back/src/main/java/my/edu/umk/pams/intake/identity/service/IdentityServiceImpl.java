@@ -605,6 +605,14 @@ public class IdentityServiceImpl implements IdentityService {
     }
     
     @Override
+    public void updatePrincipal(InPrincipal principal) {
+    	SecurityContext sc = loginAsSystem();
+        principalDao.update(principal, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        logoutAsSystem(sc);
+    }
+    
+    @Override
     public void changeEmail(InApplicant applicant, String newEmail) {
     	SecurityContext sc = loginAsSystem();
     	applicant.setEmail(newEmail);

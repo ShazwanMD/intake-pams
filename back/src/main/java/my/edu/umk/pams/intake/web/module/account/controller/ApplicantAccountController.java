@@ -30,6 +30,7 @@ import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InActorType;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InPrincipal;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
@@ -211,16 +212,17 @@ public class ApplicantAccountController {
    @RequestMapping(value = "/emailChange/{currentEmail:.+}", method = RequestMethod.POST)
    public ResponseEntity<String> changeApplicantEmail(@PathVariable String currentEmail, @RequestBody EmailChange vo) {
   	
-      InApplicant applicant = identityService.findApplicantByEmail(currentEmail);
-      if (null == applicant)
-          throw new IllegalArgumentException("Applicant does not exists");
-      if(applicant.getEmail().equals(vo.getNewEmail()))
-          throw new IllegalArgumentException("Please use a different email");
+		InPrincipal principal = identityService.findPrincipalByName(currentEmail);
+		if (null == principal)
+			throw new IllegalArgumentException("Applicant does not exists");
+		if (principal.getName().equals(vo.getNewEmail()))
+			throw new IllegalArgumentException("Please use a different email");
+
 
       LOG.debug("EmailChange from: " + vo.getCurrentEmail());
       LOG.debug("EmailChange to: " + vo.getNewEmail());
-      applicant.setEmail(vo.getNewEmail());
-      identityService.updateApplicant(applicant);
+      principal.setName(vo.getNewEmail());
+      identityService.updatePrincipal(principal);
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
