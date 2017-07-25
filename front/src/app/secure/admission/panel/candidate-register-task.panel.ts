@@ -45,11 +45,6 @@ export class CandidateRegisterTaskPanel implements OnInit {
   }
 
   ngOnInit(): void {
-   // this.route.params.subscribe((params: { taskId: string }) => {
-      //let taskId: string = params.taskId;
-      console.log('intake: ' + this.intakeTask.taskId);
-      this.store.dispatch(this.actions.findIntakeTaskByTaskId(this.intakeTask.taskId));
-    //});
   }
 
   broadcast(): void {

@@ -1,5 +1,4 @@
-<td-layout-nav>
-  <div md-content flex md-scroll-y>
+<div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
         <md-card>
@@ -70,14 +69,8 @@
           <md-tab label="All ({{(selectedCandidates$ | async)?.length}})">
             <pams-candidate-list [candidate]="selectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-list>
           </md-tab>
-           <md-tab label="Pre Selected ({{(preSelectedCandidates$ | async)?.length}})">
+           <md-tab label="Registered ({{(preSelectedCandidates$ | async)?.length}})">
             <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-preselect-list>
-          </md-tab>
-          <md-tab label="Selected ({{(approvedCandidates$ | async)?.length}})">
-            <pams-candidate-approve-list [candidate]="approvedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-approve-list>
-          </md-tab>
-          <md-tab label="Rejected ({{(rejectedCandidates$ | async)?.length}})">
-            <pams-candidate-rejected-list [candidate]="rejectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-rejected-list>
           </md-tab>
           </md-tab-group>
         </md-card>
@@ -89,10 +82,10 @@
           <md-divider></md-divider>
           <md-nav-list dense>
           <div *ngIf="(selectedCandidates$ | async)?.length <= 0 && (preSelectedCandidates$ | async)?.length <= 0">
-            <md-list-item (click)="offer()">
+            <md-list-item (click)="startAcademic()">
               <md-icon md-list-avatar>done</md-icon>
-              <h4 md-line>Offer</h4>
-              <p md-line>Offer candidate for this intake</p>
+              <h4 md-line>Start Academic</h4>
+              <p md-line>Start Academic for this intake</p>
             </md-list-item></div>
             <!-- <md-list-item (click)="broadcast()">
               <md-icon md-list-avatar>announcement</md-icon>
@@ -109,4 +102,3 @@
       </div>
     </div>
   </div>
-</td-layout-nav>
