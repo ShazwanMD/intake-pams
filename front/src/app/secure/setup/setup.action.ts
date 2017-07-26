@@ -394,6 +394,7 @@ export class SetupActions {
   //=================================================================================//
   //  COUNTRY_CODES                                                               //
   //=================================================================================//
+  //1---------------------------------------------------------------
   static FIND_COUNTRY_CODES = '[Setup] Find Country Codes';
 
   findCountryCodes(): Action {
@@ -818,6 +819,7 @@ export class SetupActions {
   //=================================================================================//
   //  GENDER_CODES                                                               //
   //=================================================================================//
+  //1--------------------------------------
   static FIND_GENDER_CODES = '[Common] Find Gender Codes';
 
   findGenderCodes(): Action {
@@ -826,7 +828,7 @@ export class SetupActions {
       type: SetupActions.FIND_GENDER_CODES,
     };
   }
-
+//2-------------------------------------------------------
   static FIND_GENDER_CODES_SUCCESS = '[Common] Find Gender Codes Success';
 
   findGenderCodesSuccess(codes): Action {
@@ -836,7 +838,7 @@ export class SetupActions {
       payload: codes,
     };
   }
-
+//3-----------------------------------------------------
   static SAVE_GENDER_CODE = '[Setup] Save Gender Code';
 
   saveGenderCode(code): Action {
@@ -846,7 +848,7 @@ export class SetupActions {
       payload: code,
     };
   }
-
+//4--------------------------------------------------------------
   static SAVE_GENDER_CODE_SUCCESS = '[Setup] Save Gender Code Success';
 
   saveGenderCodeSuccess(message): Action {
@@ -856,7 +858,46 @@ export class SetupActions {
       payload: message,
     };
   }
+//5------------------------------------------------------------------
+  static UPDATE_GENDER_CODE = '[Setup] Update Gender Code';
 
+  updateGenderCode(code): Action {
+    console.log('updateGenderCode');
+    return {
+      type: SetupActions.UPDATE_GENDER_CODE,
+      payload: code,
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_GENDER_CODE_SUCCESS = '[Setup] Update Gender Code  Success';
+
+  updateGenderCodeSuccess(message): Action {
+    console.log('updateGenderCodeSuccess');
+    return {
+      type: SetupActions.UPDATE_GENDER_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_GENDER_CODE = '[Setup] Remove Gender Code';
+
+  removeGenderCode(code): Action {
+    console.log('removeGenderCode');
+    return {
+      type: SetupActions.REMOVE_GENDER_CODE,
+      payload: code,
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_GENDER_CODE_SUCCESS = '[Setup] Remove Gender Code  Success';
+
+  removeGenderCodeSuccess(message): Action {
+    console.log('removeGenderCodeSuccess');
+    return {
+      type: SetupActions.REMOVE_GENDER_CODE_SUCCESS,
+      payload: message,
+    };
+  }
 //==========================================================================================
 //      ETHNICITY CODE
 //==========================================================================================
