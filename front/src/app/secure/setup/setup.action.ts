@@ -732,6 +732,10 @@ export class SetupActions {
     };
   }
 
+//=================================================================================//
+//  RACE_CODES                                                                     //
+//=================================================================================//
+  //1----------------------------------------------------
   static FIND_RACE_CODES = '[Common] Find RaceCodes';
 
   findRaceCodes(): Action {
@@ -740,7 +744,7 @@ export class SetupActions {
       type: SetupActions.FIND_RACE_CODES,
     };
   }
-
+  //2-------------------------------------------------------------------
   static FIND_RACE_CODES_SUCCESS = '[Common] Find Race Codes Success';
 
   findRaceCodesSuccess(codes): Action {
@@ -750,7 +754,7 @@ export class SetupActions {
       payload: codes,
     };
   }
-
+  //3------------------------------------------------------------------------
   static SAVE_RACE_CODE = '[Setup] Save Race Code';
 
   saveRaceCode(code): Action {
@@ -760,7 +764,7 @@ export class SetupActions {
       payload: code,
     };
   }
-
+  //4--------------------------------------------------------------------------
   static SAVE_RACE_CODE_SUCCESS = '[Setup] Save Race Code Success';
 
   saveRaceCodeSuccess(message): Action {
@@ -770,7 +774,50 @@ export class SetupActions {
       payload: message,
     };
   }
+  //5------------------------------------------------------------------
+  static UPDATE_RACE_CODE = '[Setup] Update Race Code';
 
+  updateRaceCode(code): Action {
+    console.log('updateRaceCode');
+    return {
+      type: SetupActions.UPDATE_RACE_CODE,
+      payload: code,
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_RACE_CODE_SUCCESS = '[Setup] Update Race Code  Success';
+
+  updateRaceCodeSuccess(message): Action {
+    console.log('updateRaceCodeSuccess');
+    return {
+      type: SetupActions.UPDATE_RACE_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_RACE_CODE = '[Setup] Remove Race Code';
+
+  removeRaceCode(code): Action {
+    console.log('removeRaceCode');
+    return {
+      type: SetupActions.REMOVE_RACE_CODE,
+      payload: code,
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_RACE_CODE_SUCCESS = '[Setup] Remove Race Code  Success';
+
+  removeRaceCodeSuccess(message): Action {
+    console.log('removeRaceCodeSuccess');
+    return {
+      type: SetupActions.REMOVE_RACE_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+
+  //=================================================================================//
+  //  GENDER_CODES                                                               //
+  //=================================================================================//
   static FIND_GENDER_CODES = '[Common] Find Gender Codes';
 
   findGenderCodes(): Action {
