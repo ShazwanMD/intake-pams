@@ -3,7 +3,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {SetupModuleState} from '../../index';
 import {SetupActions} from '../../setup.action';
 import {RaceCode} from '../../../../shared/model/common/race-code.interface';
@@ -16,6 +16,8 @@ import {RaceCode} from '../../../../shared/model/common/race-code.interface';
 export class RaceCodeCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private edit: boolean = false;
+  private _raceCode: RaceCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -24,7 +26,12 @@ export class RaceCodeCreatorDialog implements OnInit {
               private dialog: MdDialogRef<RaceCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
-  ) {
+              private snackBar: MdSnackBar) {
+  }
+
+  set raceCode(value: RaceCode) {
+    this._raceCode = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
@@ -35,11 +42,17 @@ export class RaceCodeCreatorDialog implements OnInit {
       descriptionMs: '',
       descriptionEn: '',
       prefix: '',
-
     });
-  }
+ 
+  if (this.edit) this.createForm.patchValue(this._raceCode);
+ }
 
   save(code: RaceCode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveRaceCode(code));
-  }
+    let snackBarRef = this.snackBar.open('Update race code?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+    if (!code.id) this.store.dispatch(this.actions.saveRaceCode(code));
+    else  this.store.dispatch(this.actions.updateRaceCode(code));
+    this.dialog.close();
+  });
+ }
 }
