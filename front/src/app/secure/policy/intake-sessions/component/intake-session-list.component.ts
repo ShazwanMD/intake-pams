@@ -6,7 +6,8 @@ import {
   Output,
   ChangeDetectionStrategy,
   AfterViewInit,
-  ViewContainerRef
+  ViewContainerRef,
+  OnChanges, SimpleChanges, SimpleChange
 } from '@angular/core';
 import {
   TdDataTableSortingOrder,
@@ -27,7 +28,7 @@ import {IntakeSession} from '../../../../shared/model/policy/intake-session.inte
   templateUrl: './intake-session-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class IntakeSessionListComponent implements AfterViewInit {
+export class IntakeSessionListComponent implements AfterViewInit, OnChanges {
 
   @Input() intakeSessions: IntakeSession[];
   @Output() view = new EventEmitter<IntakeSession>();
@@ -70,6 +71,16 @@ export class IntakeSessionListComponent implements AfterViewInit {
               private _dataTableService: TdDataTableService,
               private snackBar: MdSnackBar) {
     this.intakeSession$ = this.store.select(...this.INTAKE_SESSION);
+  }
+
+
+  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+    console.log("changes",changes,changes['intakeSessions']);
+      if (changes['intakeSessions']){
+      this.filteredData = changes['intakeSessions'].currentValue; 
+      this.filteredTotal = changes['intakeSessions'].currentValue.length;
+      this.filter();
+    }
   }
 
   ngAfterViewInit(): void {
