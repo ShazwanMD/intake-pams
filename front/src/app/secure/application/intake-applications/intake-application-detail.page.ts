@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
@@ -11,6 +11,8 @@ import {IntakeApplication} from '../../../shared/model/application/intake-applic
   templateUrl: './intake-application-detail.page.html',
 })
 export class IntakeApplicationDetailPage implements OnInit {
+
+    @Input() intakeApplication: IntakeApplication;
 
   private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   private intakeApplication$: Observable<IntakeApplication>;

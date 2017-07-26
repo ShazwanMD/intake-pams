@@ -91,6 +91,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     BachelorResultComponent,
     StpmResultComponent,
     DiplomaResultComponent,
+    CpsIntakeApplicationPanel,
   ],
 
   entryComponents: [
@@ -102,6 +103,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     DiplomaResultEditorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,
+    CpsIntakeApplicationPanel,
   ],
 })
 export class CpsIntakeApplicationSubModule {

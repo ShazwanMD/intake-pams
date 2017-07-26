@@ -7,7 +7,7 @@ import {EthnicityCode} from '../../../../shared/model/common/ethnicity-code.inte
 import {DisabilityCode} from '../../../../shared/model/common/disability-code.interface';
 import {Referee} from '../../../../shared/model/application/referee.interface';
 import {Employment} from '../../../../shared/model/application/employment.interface';
-import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -45,6 +45,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
   private results$: Observable<Result>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,

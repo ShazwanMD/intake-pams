@@ -101,7 +101,7 @@ public class PolicyTransformer {
         vo.setProgramLevel(toProgramLevelVo(e.getProgramLevel()));
         vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
-        vo.setGraduateCenter(toGraduateCenterVo(e.getGraduateCenter()));
+        vo.setGraduateCenter(commonTransformer.toGraduateCenterVo(e.getGraduateCenter()));
         return vo;
     }
 

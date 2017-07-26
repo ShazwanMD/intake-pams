@@ -1,8 +1,9 @@
+import { IntakeActions } from './../../../policy/intakes/intake.action';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {
   Component, OnInit, OnDestroy, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentFactory, ComponentRef, Input,
+  ComponentFactoryResolver, ComponentFactory, ComponentRef, Input, Output,
 } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
@@ -16,6 +17,8 @@ import {MgsebIntakeApplicationPanel} from '../mgseb/intake-application.panel';
 })
 export class IntakeApplicationFormPanel implements OnInit {
   private componentRef: ComponentRef<any>;
+  
+
   @Input() intakeApplicationObservable: Observable<IntakeApplication>;
   @ViewChild('intakeApplicationFormPanel', {read: ViewContainerRef}) intakeApplicationFormPanel: ViewContainerRef;
 
@@ -29,6 +32,7 @@ export class IntakeApplicationFormPanel implements OnInit {
 
   ngOnInit(): void {
     let componentFactory: ComponentFactory<any>;
+    
     this.intakeApplicationObservable.subscribe((intakeApplication: IntakeApplication) => {
       if (intakeApplication && intakeApplication.intake) {
         console.log('graduate center: ' + intakeApplication.intake.graduateCenter.code);

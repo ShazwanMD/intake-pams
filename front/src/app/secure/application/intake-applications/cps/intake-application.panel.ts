@@ -56,6 +56,12 @@ export class CpsIntakeApplicationPanel implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // this.route.params.subscribe((params: { referenceNo: string }) => {
+    //   let referenceNo: string = params.referenceNo;
+    //   this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+    // });
+
     this.applicationForm = this.formBuilder.group({
       id: [undefined],
       referenceNo: [''],
@@ -120,7 +126,11 @@ export class CpsIntakeApplicationPanel implements OnInit {
       declared: [true, Validators.requiredTrue],
 
     });
-    this.applicationForm.patchValue(this.intakeApplication);
+    this.route.params.subscribe((params: { referenceNo: string }) => {
+      let referenceNo: string = params.referenceNo;
+    this.applicationForm.patchValue(
+      this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+      });
   }
 
   onTabChange(): void {
