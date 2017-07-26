@@ -50,7 +50,7 @@ public class InUserDetails implements UserDetails {
     }
 
     public boolean isEnabled() {
-        return user.isLocked();
+        return user.isEnabled();
     }
 
     public void setUser(InUser user) {
