@@ -3,7 +3,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {SetupModuleState} from '../../index';
 import {SetupActions} from '../../setup.action';
 import {GenderCode} from '../../../../shared/model/common/gender-code.interface';
@@ -16,6 +16,9 @@ import {GenderCode} from '../../../../shared/model/common/gender-code.interface'
 export class GenderCodeCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private edit: boolean = false;
+  private _genderCode: GenderCode;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -24,22 +27,31 @@ export class GenderCodeCreatorDialog implements OnInit {
               private dialog: MdDialogRef<GenderCodeCreatorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
-  ) {
+              private snackBar: MdSnackBar) {
+  }
+
+  set genderCode(value: GenderCode) {
+    this._genderCode = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
-
     this.createForm = this.formBuilder.group(<GenderCode>{
       id: null,
       code: '',
       descriptionMs: '',
       descriptionEn: '',
-      prefix: '',
-
     });
+
+    if (this.edit) this.createForm.patchValue(this._genderCode);
   }
 
   save(code: GenderCode, isValid: boolean) {
-    this.store.dispatch(this.actions.saveGenderCode(code));
+    let snackBarRef = this.snackBar.open('Update race code?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+    if (!code.id) this.store.dispatch(this.actions.saveRaceCode(code));
+    else  this.store.dispatch(this.actions.updateRaceCode(code));
+    this.dialog.close();
+    });
   }
 }
