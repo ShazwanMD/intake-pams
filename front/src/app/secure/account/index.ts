@@ -1,3 +1,5 @@
+import { IntakeApplicationComponent } from './component/intake-application.component';
+import { IntakeApplication } from './../../shared/model/application/intake-application.interface';
 import { EmailChangerDialog } from './dialog/email-changer.dialog';
 import {UserComponent} from './component/user.component';
 import {User} from './../identity/user.interface';
@@ -24,7 +26,6 @@ import {
   submittedIntakeApplicationListReducer,
 } from './intake-application-list.reducer';
 import {Intake} from '../../shared/model/policy/intake.interface';
-import {IntakeApplication} from '../../shared/model/application/intake-application.interface';
 import {AccountActions} from './account.action';
 import {AccountEffects} from './account.effect';
 import {EffectsModule} from '@ngrx/effects';
@@ -63,6 +64,7 @@ export const accountModuleReducers = {
   declarations: [
     ApplicantComponent,
     UserComponent,
+    IntakeApplicationComponent,
     PasswordChangerDialog,
     EmailChangerDialog,
 
@@ -70,6 +72,7 @@ export const accountModuleReducers = {
   exports: [
     ApplicantComponent,
     UserComponent,
+    IntakeApplicationComponent,
   ],
 
   entryComponents: [

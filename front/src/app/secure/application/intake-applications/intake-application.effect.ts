@@ -58,8 +58,8 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map((action) => action.payload)
     .switchMap((intake) => this.applicationService.applyIntake(intake))
-    // .catch((error) => this.ctxActions.setErrorMessage(error))
-    // .do((referenceNo: string) => this.router.navigate(['/secure/intake-applications', referenceNo])).ignoreElements();
+   //  .catch((error) => this.ctxActions.setErrorMessage(error))
+  //  .do((referenceNo: string) => this.router.navigate(['/secure/intake-applications', referenceNo])).ignoreElements();
 
   // ====================================================================================================
   // PROGRAM_OFFERING

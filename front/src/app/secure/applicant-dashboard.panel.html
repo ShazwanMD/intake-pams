@@ -20,8 +20,11 @@
           <pams-user [user]="user$ | async">
           </pams-user>
 
+           <pams-intake-application [intakeApplication]="intakeApplication$ | async">
+          </pams-intake-application> 
 
-          <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+  
+           <!-- <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
             <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not filled and submitted an address in your intake application</span>
             </div>
             <template let-application let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
@@ -36,7 +39,7 @@
                 </div>
               </div>
             </template>
-          </div>
+          </div>    -->
 
         </md-nav-list>
       </md-tab>
@@ -61,7 +64,7 @@
                     <p>{{application.bidStatus}}</p>
                     <span flex></span>
                     <button *ngIf="application.bidStatus === 'DRAFTED'"
-                            [routerLink]="['/secure/application/intake-applications/',  application.referenceNo]"
+                            [routerLink]="['/secure/applicant/application/intake-application-detail/',  application.referenceNo]"
                             md-button color="primary">Edit
                     </button>
                     <button *ngIf="application.bidStatus === 'SUBMITTED'"
