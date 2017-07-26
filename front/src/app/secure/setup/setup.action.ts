@@ -82,7 +82,10 @@ export class SetupActions {
       payload: message,
     };
   }
-
+//=================================================================================//
+//  GRADUATE_CODES                                                                 //
+//=================================================================================//
+ //1-------------------------------------------------------------
   static FIND_GRADUATE_CENTERS = '[Setup] Find Graduate Centers';
 
   findGraduateCenters(): Action {
@@ -91,7 +94,7 @@ export class SetupActions {
       type: SetupActions.FIND_GRADUATE_CENTERS,
     };
   }
-
+//2---------------------------------------------------------------------
   static FIND_GRADUATE_CENTERS_SUCCESS = '[Setup] Find Graduate Centers Success';
 
   findGraduateCentersSuccess(codes): Action {
@@ -101,7 +104,7 @@ export class SetupActions {
       payload: codes,
     };
   }
-
+//3-------------------------------------------------------------------------
   static SAVE_GRADUATE_CENTER = '[Setup] Save Graduate Center';
 
   saveGraduateCenter(code): Action {
@@ -111,7 +114,7 @@ export class SetupActions {
       payload: code,
     };
   }
-
+//4--------------------------------------------------------------------------
   static SAVE_GRADUATE_CENTER_SUCCESS = '[Setup] Save Graduate Center  Success';
 
   saveGraduateCenterSuccess(message): Action {
@@ -121,7 +124,7 @@ export class SetupActions {
       payload: message,
     };
   }
-
+//5---------------------------------------------------------------------------
   static UPDATE_GRADUATE_CENTER = '[Setup] Update Graduate Center';
 
   updateGraduateCenter(code): Action {
@@ -131,7 +134,7 @@ export class SetupActions {
       payload: code,
     };
   }
-
+//6-----------------------------------------------------------------------
   static UPDATE_GRADUATE_CENTER_SUCCESS = '[Setup] Update Graduate Center  Success';
 
   updateGraduateCenterSuccess(message): Action {
@@ -141,6 +144,27 @@ export class SetupActions {
       payload: message,
     };
   }
+//7------------------------------------------------------------------
+  static REMOVE_GRADUATE_CENTER = '[Setup] Remove Graduate Center';
+
+  removeGraduateCenter(code): Action {
+    console.log('removeGraduateCenter');
+    return {
+      type: SetupActions.REMOVE_GRADUATE_CENTER,
+      payload: code,
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_GRADUATE_CENTER_SUCCESS = '[Setup] Remove Graduate Center  Success';
+
+  removeGraduateCenterSuccess(message): Action {
+    console.log('removeGraduateCenterSuccess');
+    return {
+      type: SetupActions.REMOVE_GRADUATE_CENTER_SUCCESS,
+      payload: message,
+    };
+  }
+
 
 //=================================================================================//
 //  RELIGION_CODES                                                                 //
