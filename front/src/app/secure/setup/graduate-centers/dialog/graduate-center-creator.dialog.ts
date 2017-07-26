@@ -3,7 +3,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {SetupModuleState} from '../../index';
 import {SetupActions} from '../../setup.action';
 import {GraduateCenter} from '../../../../shared/model/common/graduate-center.interface';
@@ -16,6 +16,8 @@ import {GraduateCenter} from '../../../../shared/model/common/graduate-center.in
 export class GraduateCenterCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private edit: boolean = false;
+  private _graduateCenter: GraduateCenter;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -24,7 +26,12 @@ export class GraduateCenterCreatorDialog implements OnInit {
               private dialog: MdDialogRef<GraduateCenterCreatorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
-  ) {
+              private snackBar: MdSnackBar) {
+  }
+
+  set graduateCenter(value: GraduateCenter) {
+    this._graduateCenter = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
@@ -35,10 +42,16 @@ export class GraduateCenterCreatorDialog implements OnInit {
       descriptionMs: '',
       descriptionEn: '',
     });
+
+    if (this.edit) this.createForm.patchValue(this._graduateCenter);
   }
 
   save(code: GraduateCenter, isValid: boolean) {
-    this.store.dispatch(this.actions.saveGraduateCenter(code));
+    let snackBarRef = this.snackBar.open('Update graduate center?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+    if (!code.id) this.store.dispatch(this.actions.saveGraduateCenter(code));
+    else  this.store.dispatch(this.actions.updateGraduateCenter(code));
     this.dialog.close();
+    });
   }
 }
