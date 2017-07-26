@@ -1,43 +1,104 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {Store} from '@ngrx/store';
-import {SetupActions} from '../setup.action';
-import {SetupModuleState} from '../index';
-import {Observable} from 'rxjs/Observable';
+import { GraduateCenter } from './../../../shared/model/common/graduate-center.interface';
+import {
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+  OnInit,
+  AfterViewInit,
+  ViewContainerRef,
+} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {SetupActions} from "../setup.action";
+import {SetupModuleState} from "../index";
+import {Observable} from "rxjs/Observable";
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {GraduateCenterCreatorDialog} from './dialog/graduate-center-creator.dialog';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {GraduateCenter} from '../../../shared/model/common/graduate-center.interface';
+import {
+  TdDataTableService,
+  TdDataTableSortingOrder,
+  ITdDataTableSortChangeEvent,
+  IPageChangeEvent,
+} from '@covalent/core';
 
 @Component({
-  selector: 'pams-graduate-center-list-page',
+  selector: 'pams-graduate-list.page',
   templateUrl: './graduate-center-list.page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GraduateCenterListPage implements OnInit {
-
-  private GRADUATE_CENTERS: string[] = 'setupModuleState.graduateCenters'.split('.');
-  private graduateCenters$: Observable<GraduateCenter>;
+export class GraduateCenterListPage implements OnInit{
+  private GRADUATE_CENTERS = "setupModuleState.graduateCenters".split(".");
+  private graduateCenters$: Observable<GraduateCenter[]>;
   private creatorDialogRef: MdDialogRef<GraduateCenterCreatorDialog>;
-
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'descriptionMs', label: 'Description Ms'},
-    {name: 'descriptionEn', label: 'Description En'},
-    {name: 'action', label: ''},
+    {name: 'descriptionMs', label: 'DescriptionMs'},
+    {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'action', label: ''}
   ];
-
+  private graduateCenters: GraduateCenter[];
+  filteredData: any[];
+  filteredTotal: number;
+  searchTerm: string = '';
+  fromRow: number = 1;
+  currentPage: number = 1;
+  pageSize: number = 5;
+  sortBy: string = 'code';
+  sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   constructor(private actions: SetupActions,
               private store: Store<SetupModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private _dataTableService: TdDataTableService) {
     this.graduateCenters$ = this.store.select(...this.GRADUATE_CENTERS);
+    this.graduateCenters$.subscribe(GraduateCenters=>this.graduateCenters = GraduateCenters)
   }
-
   ngOnInit(): void {
     this.store.dispatch(this.actions.findGraduateCenters());
-    this.store.dispatch(this.actions.changeTitle('Graduate Codes'));
+    this.store.dispatch(this.actions.changeTitle("Graduate Centers"));
+  }
+  createDialog(): void {
+    this.showDialog(null);
+  }
+  editDialog(code:GraduateCenter): void {
+    this.showDialog(code);
+  }
+  delete(code: GraduateCenter): void {
+    this.store.dispatch(this.actions.removeGraduateCenter(code))
+  }
+  sort(sortEvent: ITdDataTableSortChangeEvent): void {
+    this.sortBy = sortEvent.name;
+    this.sortOrder = sortEvent.order;
+    this.filter();
+  }
+   search(searchTerm: string): void {
+    this.searchTerm = searchTerm;
+    this.filter();
+  }
+    page(pagingEvent: IPageChangeEvent): void {
+    this.fromRow = pagingEvent.fromRow;
+    this.currentPage = pagingEvent.page;
+    this.pageSize = pagingEvent.pageSize;
+    this.filter();
+  }
+  filter(): void {
+    console.log('filter');
+    let newData: any[] = this.graduateCenters;
+    newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+    this.filteredTotal = newData.length;
+    newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+    newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+    this.filteredData = newData;
   }
 
-  showDialog(): void {
-    console.log('showDialog');
+  deactivate(event): void {
+    // this.store.dispatch(this.actions.removeGraduateCenter())
+    console.log('event' + event);
+  }
+  
+  private showDialog(center:GraduateCenter): void {
+    console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -45,19 +106,9 @@ export class GraduateCenterListPage implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(GraduateCenterCreatorDialog, config);
-    this.creatorDialogRef.afterClosed().subscribe((res) => {
-      console.log('close dialog');
-      // load something here
+    if(center) this.creatorDialogRef.componentInstance.graduateCenter = center; // set
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
     });
   }
-
-  filter(filter: string): void {
-    console.log('filter');
-  }
-
-  deactivate(event): void {
-    // this.store.dispatch(this.actions.removeGraduateCenter())
-    console.log('event' + event);
-  }
-
 }
