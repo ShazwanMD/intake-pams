@@ -17,7 +17,7 @@ import {MgsebIntakeApplicationPanel} from '../mgseb/intake-application.panel';
 })
 export class IntakeApplicationFormPanel implements OnInit {
   private componentRef: ComponentRef<any>;
-  
+
 
   @Input() intakeApplicationObservable: Observable<IntakeApplication>;
   @ViewChild('intakeApplicationFormPanel', {read: ViewContainerRef}) intakeApplicationFormPanel: ViewContainerRef;
@@ -32,7 +32,7 @@ export class IntakeApplicationFormPanel implements OnInit {
 
   ngOnInit(): void {
     let componentFactory: ComponentFactory<any>;
-    
+
     this.intakeApplicationObservable.subscribe((intakeApplication: IntakeApplication) => {
       if (intakeApplication && intakeApplication.intake) {
         console.log('graduate center: ' + intakeApplication.intake.graduateCenter.code);
@@ -46,6 +46,7 @@ export class IntakeApplicationFormPanel implements OnInit {
         // handle null factory
         if (componentFactory) {
           this.componentRef = this.intakeApplicationFormPanel.createComponent(componentFactory);
+          this.componentRef.instance.intakeApplication = intakeApplication;
           console.log('test IA detail 4');
         } else {
           this.router.navigate(['/intakes']);

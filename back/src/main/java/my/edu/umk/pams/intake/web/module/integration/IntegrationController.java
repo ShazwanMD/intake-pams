@@ -41,7 +41,7 @@ public class IntegrationController {
 //    @RequestMapping(value = "/candidate", method = RequestMethod.POST)
 //    public ResponseEntity<String> test(@RequestBody CandidatePayload payload) {
 //        LOG.info("candidate: " + payload);
-//        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+//        return new ResponseEntity<String>("success", HttpStatus.OK);
 //    }
 
     // ====================================================================================================
@@ -50,16 +50,16 @@ public class IntegrationController {
 
     @RequestMapping(value = "/cohortCode", method = RequestMethod.POST)
     public ResponseEntity<String> saveCohortCode() {
-        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/programCode", method = RequestMethod.POST)
     public ResponseEntity<String> saveprogramCode() {
-        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/facultyCode", method = RequestMethod.POST)
     public ResponseEntity<String> savefacultyCode() {
-        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 }

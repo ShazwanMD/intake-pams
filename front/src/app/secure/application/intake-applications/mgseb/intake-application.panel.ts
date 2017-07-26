@@ -7,7 +7,7 @@ import {EthnicityCode} from '../../../../shared/model/common/ethnicity-code.inte
 import {DisabilityCode} from '../../../../shared/model/common/disability-code.interface';
 import {Referee} from '../../../../shared/model/application/referee.interface';
 import {Employment} from '../../../../shared/model/application/employment.interface';
-import { Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -22,30 +22,27 @@ import {ReligionCode} from '../../../../shared/model/common/religion-code.interf
 import {MdSnackBar} from '@angular/material';
 
 @Component({
-  selector: 'pams-intake-application',
+  selector: 'pams-mgseb-intake-application',
   templateUrl: './intake-application.panel.html',
 })
 
 export class MgsebIntakeApplicationPanel implements OnInit {
 
-  intakeApplication: any;
-  dialog: any;
-
-  private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
   private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
   private RESULTS: string[] = 'applicationModuleState.results'.split('.');
 
-  private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private results$: Observable<Result>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
+  private _intakeApplication: Observable<IntakeApplication>;
 
+  private dialog: any;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -54,13 +51,19 @@ export class MgsebIntakeApplicationPanel implements OnInit {
               private actions: IntakeApplicationActions,
               private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>) {
-
-    this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.results$ = this.store.select(...this.RESULTS);
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
+  }
+
+  get intakeApplication(): Observable<IntakeApplication> {
+    return this._intakeApplication;
+  }
+
+  set intakeApplication(value: Observable<IntakeApplication>) {
+    this._intakeApplication = value;
   }
 
   ngOnInit(): void {
@@ -132,21 +135,14 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       bankStatement: [true],
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
-
     });
-    this.intakeApplication$.subscribe((intakeApplication) => this.applicationForm.patchValue(intakeApplication));
+    this.applicationForm.patchValue(this._intakeApplication);
   }
 
   onTabChange(): void {
     console.log('tab change');
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
-
-//  submit(application: IntakeApplication, isValid: boolean): void {
-//     console.log('submitting application');
-//     this.store.dispatch(this.actions.submitIntakeApplication(application));
-//     this.goBack();
-//   }
 
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {

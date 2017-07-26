@@ -5,7 +5,7 @@ import {RaceCode} from '../../../../shared/model/common/race-code.interface';
 import {GenderCode} from '../../../../shared/model/common/gender-code.interface';
 import {Referee} from '../../../../shared/model/application/referee.interface';
 import {Employment} from '../../../../shared/model/application/employment.interface';
-import {Component, Input, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -21,7 +21,7 @@ import {CountryCode} from '../../../../shared/model/common/country-code.interfac
 import {StateCode} from '../../../../shared/model/common/state-code.interface';
 
 @Component({
-  selector: 'pams-intake-application',
+  selector: 'pams-cps-intake-application',
   templateUrl: './intake-application.panel.html',
 })
 
@@ -39,7 +39,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
   private results$: Observable<Result>;
   private attachments$: Observable<Referee>;
   private applicationForm: FormGroup;
-  @Input() intakeApplication: IntakeApplication;
+  private _intakeApplication: IntakeApplication;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -55,13 +55,15 @@ export class CpsIntakeApplicationPanel implements OnInit {
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
   }
 
+  get intakeApplication(): IntakeApplication {
+    return this._intakeApplication;
+  }
+
+  set intakeApplication(value: IntakeApplication) {
+    this._intakeApplication = value;
+  }
+
   ngOnInit(): void {
-
-    // this.route.params.subscribe((params: { referenceNo: string }) => {
-    //   let referenceNo: string = params.referenceNo;
-    //   this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
-    // });
-
     this.applicationForm = this.formBuilder.group({
       id: [undefined],
       referenceNo: [''],
@@ -124,13 +126,8 @@ export class CpsIntakeApplicationPanel implements OnInit {
       bankStatement: [true],
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
-
     });
-    this.route.params.subscribe((params: { referenceNo: string }) => {
-      let referenceNo: string = params.referenceNo;
-    this.applicationForm.patchValue(
-      this.actions.findIntakeApplicationByReferenceNo(referenceNo));
-      });
+    this.applicationForm.patchValue(this._intakeApplication);
   }
 
   onTabChange(): void {
@@ -156,19 +153,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     }
   }
 
-  // submit(application: IntakeApplication, isValid: boolean): void {
-  //   console.log('submitting application');
-  //   this.store.dispatch(this.actions.submitIntakeApplication(application));
-  //   this.goBack();
-  // }
-
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
-
-  // saverange(): void {
-  //  // console.log(this.applicationForm);
-  //   console.log(this.applicationForm.controls['merit'].value,this.applicationForm.controls['year'].value);
-  //   this.applicationForm.controls['merit'].setValue(this.applicationForm.controls['year'].value*0.05);
-  // }
 }
