@@ -15,7 +15,8 @@ export class ForgetPasswordPage implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<RegistrationModuleState>,
-              private registrationActions: RegistrationActions,) {
+              private registrationActions: RegistrationActions,
+  ) {
   }
 
   ngOnInit(): void {

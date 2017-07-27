@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.identity.dao;
 
 import my.edu.umk.pams.intake.core.GenericDao;
+import my.edu.umk.pams.intake.identity.model.InActor;
 import my.edu.umk.pams.intake.identity.model.InActorType;
 
 import java.util.List;
@@ -9,17 +10,19 @@ import java.util.List;
  * @author canang technologies
  * @since 1/30/14
  */
-public interface InActorDao extends GenericDao<Long, my.edu.umk.pams.intake.identity.model.InActor> {
+public interface InActorDao extends GenericDao<Long, InActor> {
 
-    my.edu.umk.pams.intake.identity.model.InActor findByCode(String code);
+    InActor findByCode(String code);
 
-    my.edu.umk.pams.intake.identity.model.InActor findByIdentityNo(String identityNo);
+    InActor findByIdentityNo(String identityNo);
 
-    List<my.edu.umk.pams.intake.identity.model.InActor> find(String filter, Integer offset, Integer limit);
+    InActor findByEmail(String email);
 
-    List<my.edu.umk.pams.intake.identity.model.InActor> find(InActorType type, Integer offset, Integer limit);
+    List<InActor> find(String filter, Integer offset, Integer limit);
 
-    List<my.edu.umk.pams.intake.identity.model.InActor> find(String filter, InActorType type, Integer offset, Integer limit);
+    List<InActor> find(InActorType type, Integer offset, Integer limit);
+
+    List<InActor> find(String filter, InActorType type, Integer offset, Integer limit);
 
     Integer count(String filter);
 
@@ -27,7 +30,5 @@ public interface InActorDao extends GenericDao<Long, my.edu.umk.pams.intake.iden
 
     Integer count(InActorType type);
 
-    my.edu.umk.pams.intake.identity.model.InActor findByEmail(String email);
-    
     boolean isEmailExists(String email);
 }

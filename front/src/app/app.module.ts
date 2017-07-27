@@ -66,7 +66,7 @@ import {ApplicationContextEffects} from './application-context.effect';
 import {DashboardPage} from './secure/dashboard.page';
 import {ApplicantDashboardPanel} from './secure/applicant-dashboard.panel';
 import {AdministratorDashboardPanel} from './secure/administrator-dashboard.panel';
-import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from "./secure/setup/index";
+import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from './secure/setup/index';
 import {ReactiveFormsModule} from '@angular/forms';
 
 // interceptor

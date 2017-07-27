@@ -566,7 +566,7 @@ public class IdentityServiceImpl implements IdentityService {
 
 
     //====================================================================================================
-    // VENDOR
+    // APPLICANT
     //====================================================================================================
 
     @Override
@@ -687,9 +687,12 @@ public class IdentityServiceImpl implements IdentityService {
     	
     	
         logoutAsSystem(sc);
-    }    
+    }
 
-    
+    //====================================================================================================
+    // PRIVATE METHODS
+    //====================================================================================================
+
     private SecurityContext loginAsSystem() {
         SecurityContext savedCtx = SecurityContextHolder.getContext();
         InAutoLoginToken authenticationToken = new InAutoLoginToken("system");
