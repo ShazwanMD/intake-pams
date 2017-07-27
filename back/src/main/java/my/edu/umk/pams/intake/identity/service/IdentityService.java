@@ -141,6 +141,8 @@ public interface IdentityService {
     Integer countActor(String filter);
 
     Integer countActor(String filter, InActorType type);
+    
+    boolean isActorEmailExists(String email);
 
     //====================================================================================================
     // STAFF
