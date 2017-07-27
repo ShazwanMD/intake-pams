@@ -20,10 +20,10 @@ export class ApplicantDashboardPanel implements OnInit {
   [x: string]: any;
 
   private PUBLISHED_INTAKES: string[] = 'accountModuleState.publishedIntakes'.split('.');
-  private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
+  private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplication'.split('.');
   private APPLICANT: string[] = 'accountModuleState.applicant'.split('.');
   private USER: string[] = 'accountModuleState.user'.split('.');
-  private intakeApplications$: Observable<IntakeApplication[]>;
+  private intakeApplication$: Observable<IntakeApplication[]>;
   private publishedIntakes$: Observable<Intake[]>;
   private applicant$: Observable<Applicant>;
   private user$: Observable<User>;
@@ -36,7 +36,7 @@ export class ApplicantDashboardPanel implements OnInit {
               private store: Store<ApplicationModuleState>,
               private actions: AccountActions) {
     this.publishedIntakes$ = this.store.select(...this.PUBLISHED_INTAKES);
-    this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
+    this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATIONS);
     this.applicant$ = this.store.select(...this.APPLICANT);
     this.user$ = this.store.select(...this.USER);
   }

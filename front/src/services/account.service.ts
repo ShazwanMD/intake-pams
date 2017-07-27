@@ -1,3 +1,4 @@
+import { AddressChange } from './../app/shared/model/identity/address-change.interface';
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -86,6 +87,12 @@ export class AccountService {
   changeApplicantEmail(change: EmailChange): Observable<String> {
     console.log('EmailChange: ', change);
     return this._http.post(this.ACCOUNT_API + '/emailChange/' + change.currentEmail, JSON.stringify(change))
+      .map((res: Response) => <String>res.text());
+  }
+
+  changeApplicantAddress(change: AddressChange): Observable<String> {
+    console.log('AddressChange: ', change);
+    return this._http.post(this.ACCOUNT_API + '/addressChange/' + change.currentAddress, JSON.stringify(change))
       .map((res: Response) => <String>res.text());
   }
 

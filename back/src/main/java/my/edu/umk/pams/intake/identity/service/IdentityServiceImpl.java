@@ -16,6 +16,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.identity.dao.InActorDao;
 import my.edu.umk.pams.intake.identity.dao.InApplicantDao;
 import my.edu.umk.pams.intake.identity.dao.InGroupDao;
@@ -83,9 +85,15 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Autowired
     private InApplicantDao applicantDao;
+    
+    @Autowired
+    private InIntakeApplicationDao intakeApplicationDao;
 
     @Autowired
     private SecurityService securityService;
+    
+    @Autowired
+    private IdentityService identityService;
     
     @Autowired
     private SystemService systemService;
@@ -649,7 +657,32 @@ public class IdentityServiceImpl implements IdentityService {
         logoutAsSystem(sc);
     }
     
-    
+    @Override
+    public void changeAddress(InIntakeApplication intakeApplication, String newAddress) {
+    	SecurityContext sc = loginAsSystem();
+        InUser user = identityService.findUserByUsername(securityService.getCurrentUser().getUsername());
+        if (null == user)
+            throw new IllegalArgumentException("User does not exists");
+//        if(user.getPassword().equals(vo.getNewPassword()))
+//            throw new IllegalArgumentException("Please use a different password");
+    	
+    	intakeApplication.setMailingAddress1(newAddress);
+    	intakeApplicationDao.update(intakeApplication, user);
+        sessionFactory.getCurrentSession().flush();
+             
+        //generate token
+        String token = registrationService.generateToken();
+        InUserVerification verification = new InUserVerificationImpl();
+       // verification.setExpiryDate(calculateExpiryDate(ONE_WEEK));
+        verification.setToken(token);
+        //verification.setUser(user);
+        
+    	if (intakeApplication == null) LOG.debug("Intake Application is null");
+    	if (intakeApplication.getMailingAddress1() == null) LOG.debug("Address is null");
+    	
+    	
+        logoutAsSystem(sc);
+    }    
 
     
     private SecurityContext loginAsSystem() {

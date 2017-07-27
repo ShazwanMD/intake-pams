@@ -1,14 +1,13 @@
+import { AddressChangerDialog } from './../dialog/address-changer.dialog';
+import { ApplicationModuleState } from './../../application/index';
 import { IntakeApplication } from './../../../shared/model/application/intake-application.interface';
-import { Component, Output, OnInit, Input, ViewContainerRef, ChangeDetectionStrategy } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Observable} from 'rxjs';
-import {Store} from '@ngrx/store';
-import {MdDialogConfig, MdDialogRef, MdDialog} from '@angular/material';
-import { Intake } from "../../../shared/model/policy/intake.interface";
-import { Applicant } from "../../identity/applicant.interface";
-import { ApplicationModuleState } from "../../application/index";
+import { Observable } from 'rxjs/Observable';
+import { Component, Input, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
+import { EmailChangerDialog } from "../dialog/email-changer.dialog";
+import { MdDialogRef, MdDialog, MdDialogConfig } from "@angular/material";
 import { AccountActions } from "../account.action";
-
+import { AccountModuleState } from "../index";
+import { Store } from "@ngrx/store";
 
 
 @Component({
@@ -17,33 +16,30 @@ import { AccountActions } from "../account.action";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IntakeApplicationComponent {
-
  @Input() intakeApplication: IntakeApplication;
 
-  private PUBLISHED_INTAKES: string[] = 'accountModuleState.publishedIntakes'.split('.');
-  private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
-  // private APPLICANT: string[] = 'accountModuleState.applicant'.split('.');
-  private intakeApplications$: Observable<IntakeApplication[]>;
-  private publishedIntakes$: Observable<Intake[]>;
- 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
+ private editorDialogRef: MdDialogRef<AddressChangerDialog>;
+
+  constructor(private actions: AccountActions,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog,
               private store: Store<ApplicationModuleState>,
-              private actions: AccountActions) {
-    this.publishedIntakes$ = this.store.select(...this.PUBLISHED_INTAKES);
-    this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
-  
-
+              private dialog: MdDialog) {
   }
 
-  ngOnInit(): void {
-    // this.store.dispatch(this.actions.findApplicant());
-    // this.store.dispatch(this.actions.findUser());
-    this.store.dispatch(this.actions.findIntakeApplications());
-    this.store.dispatch(this.actions.findPublishedIntakes());
+  editDialog(): void {
+    console.log('editDialog');
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '65%';
+    config.position = {top: '0px'};
+    this.editorDialogRef = this.dialog.open(AddressChangerDialog, config);
+    this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
+      // load something here
+    });
   }
 
- 
 }

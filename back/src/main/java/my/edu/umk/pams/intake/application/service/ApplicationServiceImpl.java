@@ -356,6 +356,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     public InIntakeApplication findIntakeApplicationByNricNoOrPassportNo(String identityNo) {
         return intakeApplicationDao.findByNricNoOrPassportNo(identityNo);
     }
+    
+    @Override
+    public InIntakeApplication findInIntakeApplicationByAddress(String address) {
+        return intakeApplicationDao.findByAddress(address);
+    }
 
     @Override
     public InIntakeApplication findIntakeApplicationByIntakeAndApplicant(InIntake intake, InApplicant applicant) {

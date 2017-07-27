@@ -37,6 +37,7 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.web.module.account.vo.AddressChange;
 import my.edu.umk.pams.intake.web.module.account.vo.EmailChange;
 import my.edu.umk.pams.intake.web.module.account.vo.PasswordChange;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationController;
@@ -200,6 +201,15 @@ public class ApplicantAccountController {
 
     InApplicant applicant = identityService.findApplicantByEmail(currentEmail);
 	identityService.changeEmail(applicant, vo.getNewEmail());
+	      
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
+	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
+
+    InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress(currentAddress);
+    identityService.changeAddress(intakeApplication, vo.getNewAddress());
 	      
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

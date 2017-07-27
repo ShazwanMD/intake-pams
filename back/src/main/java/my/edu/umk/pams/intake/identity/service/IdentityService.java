@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.identity.service;
 
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.intake.identity.model.*;
 
@@ -196,6 +197,8 @@ public interface IdentityService {
     void updateApplicant(InApplicant Applicant);
 
 	void updatePrincipal(InPrincipal principal);
+
+	void changeAddress(InIntakeApplication intakeApplication, String newAddress);
 }
 
 

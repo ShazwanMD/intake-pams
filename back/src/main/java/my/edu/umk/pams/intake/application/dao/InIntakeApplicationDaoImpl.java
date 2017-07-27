@@ -45,6 +45,14 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setString("nricNo", identityNo);
         return (InIntakeApplication) query.uniqueResult();
     }
+    
+    @Override
+    public InIntakeApplication findByAddress(String address) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select u from InIntakeApplicantion u where u.address = :address ");
+        query.setString("address", address);
+        return (InIntakeApplication) query.uniqueResult();
+    }
 
     @Override
     public InIntakeApplication findByIntakeAndApplicant(InIntake intake, InApplicant applicant) {

@@ -1,3 +1,4 @@
+import { AddressChangerDialog } from './dialog/address-changer.dialog';
 import { IntakeApplicationComponent } from './component/intake-application.component';
 import { IntakeApplication } from './../../shared/model/application/intake-application.interface';
 import { EmailChangerDialog } from './dialog/email-changer.dialog';
@@ -35,14 +36,14 @@ export interface AccountModuleState {
   user: UserState;
   applicant: ApplicantState;
   publishedIntakes: IntakeListState;
-  intakeApplications: IntakeApplicationListState;
+  intakeApplication: IntakeApplicationListState;
 }
 
 export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
   user: <User>{},
   applicant: <Applicant>{},
   publishedIntakes: <Intake[]>[],
-  intakeApplications: <IntakeApplication[]>[],
+  intakeApplication: <IntakeApplication[]>[],
 
 };
 
@@ -50,7 +51,7 @@ export const accountModuleReducers = {
   user: userReducer,
   applicant: applicantReducer,
   publishedIntakes: publishedIntakeListReducer,
-  intakeApplications: intakeApplicationListReducer,
+  intakeApplication: intakeApplicationListReducer,
 };
 
 @NgModule({
@@ -67,6 +68,7 @@ export const accountModuleReducers = {
     IntakeApplicationComponent,
     PasswordChangerDialog,
     EmailChangerDialog,
+    AddressChangerDialog,
 
   ],
   exports: [
@@ -78,6 +80,8 @@ export const accountModuleReducers = {
   entryComponents: [
     PasswordChangerDialog,
     EmailChangerDialog,
+    IntakeApplicationComponent,
+    AddressChangerDialog,
   ],
 })
 export class AccountModule {

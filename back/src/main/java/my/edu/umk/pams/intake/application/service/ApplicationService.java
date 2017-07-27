@@ -186,5 +186,7 @@ public interface ApplicationService {
 
 	List<InIntakeApplication> findIntakeApplicationsByStatusVerify(InIntake intake, InBidStatus status);
 
+	InIntakeApplication findInIntakeApplicationByAddress(String address);
+
 }
 

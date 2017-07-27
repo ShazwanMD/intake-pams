@@ -82,6 +82,12 @@ export class AccountEffects {
     .switchMap((payload) => this.accountService.changeApplicantEmail(payload))
     .map((message) => this.accountActions.changeApplicantEmailSuccess(message));
 
+    @Effect() changeApplicantAddress$ = this.actions$
+    .ofType(AccountActions.CHANGE_APPLICANT_ADDRESS)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.accountService.changeApplicantAddress(payload))
+    .map((message) => this.accountActions.changeApplicantAddressSuccess(message));    
+
     
 
 

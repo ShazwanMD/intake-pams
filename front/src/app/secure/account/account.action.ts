@@ -199,4 +199,24 @@ export class AccountActions {
     };
   }
 
+  static CHANGE_APPLICANT_ADDRESS = '[Account] Change Applicant Address';
+
+  changeApplicantAddress(change): Action {
+    console.log('changeApplicantAddress');
+    return {
+      type: AccountActions.CHANGE_APPLICANT_ADDRESS,
+      payload: change,
+    };
+  }
+
+  static CHANGE_APPLICANT_ADDRESS_SUCCESS = '[Account] Change Applicant Address Success';
+
+  changeApplicantAddressSuccess(message): Action {
+    console.log('changeApplicantAddressSuccess');
+    return {
+      type: AccountActions.CHANGE_APPLICANT_ADDRESS_SUCCESS,
+      payload: message,
+    };
+  }  
+
 }
