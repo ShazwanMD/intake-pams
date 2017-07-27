@@ -28,4 +28,6 @@ public interface InActorDao extends GenericDao<Long, my.edu.umk.pams.intake.iden
     Integer count(InActorType type);
 
     my.edu.umk.pams.intake.identity.model.InActor findByEmail(String email);
+    
+    boolean isEmailExists(String email);
 }
