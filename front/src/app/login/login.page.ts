@@ -2,7 +2,6 @@ import { MdSnackBar } from '@angular/material';
 import { AlertService } from './../../services/alert.service';
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {TdLoadingService} from '@covalent/core';
 import {AuthenticationService} from '../../services/authentication.service';
 import {AuthorizationService} from '../../services/authorization.service';
 import {SystemService} from '../../services/system.service';
@@ -45,7 +44,7 @@ export class LoginPage {
          this.router.navigate(['/secure']);
         } else {
         }
-      }, 
+      },
         error => {
        console.log("invalid user" + error);
        let snackBarRef = this.snackBar.open('Invalid Username or Password','OK');
@@ -53,7 +52,7 @@ export class LoginPage {
          console.log('invalid username and password:' +this.username);
           window.location.reload();
       });
-      //  window.alert('Invalid Username or Password');      
+      //  window.alert('Invalid Username or Password');
     },);
   }
   populateUser(): void {
@@ -96,5 +95,5 @@ export class LoginPage {
       })
       .toPromise();
   }
-  
+
 }

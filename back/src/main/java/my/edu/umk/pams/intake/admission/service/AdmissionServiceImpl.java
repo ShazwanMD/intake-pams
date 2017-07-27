@@ -106,7 +106,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setProgramSelection(application.getProgramSelection());
         candidate.setSupervisorSelection(application.getSupervisorSelection());
         candidate.setRegistration(false);
-        candidateDao.save(candidate, Util.getCurrentUser());
+        candidateDao.save(candidate, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(candidate);
 
@@ -194,7 +194,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Override
     public void updateSelectedCandidate(InCandidate candidate) {
-        candidateDao.update(candidate, Util.getCurrentUser());
+        candidateDao.update(candidate, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
 
     }

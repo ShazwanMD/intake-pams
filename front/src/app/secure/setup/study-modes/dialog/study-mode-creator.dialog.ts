@@ -36,7 +36,7 @@ export class StudyModeCreatorDialog implements OnInit {
   ngOnInit(): void {
 
     this.creatorForm = this.formBuilder.group(<StudyMode>{
-      id: null,
+      id: undefined,
       code: '',
       descriptionMs: '',
       descriptionEn: '',

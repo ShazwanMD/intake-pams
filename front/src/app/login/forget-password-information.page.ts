@@ -4,8 +4,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 import {UserRegistration} from '../shared/model/registration/user-registration.interface';
-import { RegistrationModuleState } from "../registration/index";
-import { RegistrationActions } from "../registration/registration.action";
+import { RegistrationModuleState } from '../registration/index';
+import { RegistrationActions } from '../registration/registration.action';
 
 @Component({
   selector: 'pams-forget-password-information-page',
@@ -13,7 +13,6 @@ import { RegistrationActions } from "../registration/registration.action";
 })
 
 export class ForgetPasswordInformationPage {
-  
 
   private REGISTRATION: string[] = 'registrationModuleState.registration'.split('.');
   private forgetPasswordForm: FormGroup;
@@ -23,7 +22,7 @@ export class ForgetPasswordInformationPage {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private store: Store<RegistrationModuleState>,
-              private registrationActions: RegistrationActions,) {
+              private registrationActions: RegistrationActions, ) {
    this.registration$ = this.store.select(...this.REGISTRATION);
   }
 

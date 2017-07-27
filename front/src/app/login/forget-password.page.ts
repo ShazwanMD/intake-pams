@@ -3,17 +3,13 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {RegistrationModuleState} from '../registration/index';
 import {Store} from '@ngrx/store';
 import {RegistrationActions} from '../registration/registration.action';
-import {UserRegistration} from '../shared/model/registration/user-registration.interface';
 
 @Component({
-  selector: 'pams-login-forgetpassword',
+  selector: 'pams-login-forget-password',
   templateUrl: './forget-password.page.html',
   styleUrls: ['./forget-password.page.scss'],
 })
 export class ForgetPasswordPage implements OnInit {
-
-  // email: string;
-  // password: string;
 
   private forgetPasswordForm: FormGroup;
 

@@ -14,13 +14,11 @@ import {DashboardPage} from './secure/dashboard.page';
 import {setupModuleRoutes} from './secure/setup/setup-module.routes';
 
 const routes: Routes = [
+    {path: '', component: HomePage},
     {path: 'login', component: LoginPage},
     {path: 'forget-password', component: ForgetPasswordPage},
     ...registrationModuleRoutes,
     ...centerModuleRoutes,
-    {
-      path: '', component: HomePage,
-    },
     {
       path: 'secure', component: SecurePage, canActivate: [AuthenticationGuard],
       children: [
