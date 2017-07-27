@@ -123,4 +123,15 @@ public class InActorDaoImpl extends GenericDaoSupport<Long, my.edu.umk.pams.inta
         query.setInteger("actorType", type.ordinal());
         return ((Long) query.uniqueResult()).intValue();
     }
+    
+    @Override
+    public boolean isEmailExists(String email) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(s) from InActor s where " +
+                "s.email = :email " +
+                "and s.metadata.state = :state ");
+        query.setString("email", email);
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        return ((Integer) query.uniqueResult() > 0);
+    }
 }
