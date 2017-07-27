@@ -1,3 +1,4 @@
+import { DisabilityCodesComponent } from './disability-codes/component/disability-code';
 import { VenueCodeListPage } from './venue-codes/venue-code-list.page';
 import { VenueCodeEditorDialog } from './venue-codes/dialog/venue-code-editor.dialog';
 import { VenueCode } from './../../shared/model/common/venue-code.interface';
@@ -273,6 +274,7 @@ export const setupModuleReducers = {
     GradeCodeEditorDialog,
 
     CountryCodesComponent,
+    DisabilityCodesComponent,
 
   ],
   exports: [
