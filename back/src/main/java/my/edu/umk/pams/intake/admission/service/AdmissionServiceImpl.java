@@ -10,12 +10,17 @@ import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
+import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.identity.model.InGroup;
+import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.security.integration.InPermission;
+import my.edu.umk.pams.intake.security.service.AccessService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
@@ -65,6 +70,12 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Autowired
     private SystemService systemService;
 
+    @Autowired
+    private AccessService accessService;
+
+    @Autowired
+    private IdentityService identityService;
+
     // ====================================================================================================
     // INTAKE, INTAKE APPLICATION
     // ====================================================================================================
@@ -82,7 +93,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         }
     }
 
-
     @Override
     public void preSelectIntakeApplication(InIntakeApplication application) {
         // create candidate
@@ -97,6 +107,15 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setSupervisorSelection(application.getSupervisorSelection());
         candidate.setRegistration(false);
         candidateDao.save(candidate, Util.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(candidate);
+
+        // give permission to faculty group
+        // example: GRP_FCTY_A01
+        InProgramCode programCode = candidate.getProgramSelection().getProgramCode();
+        InFacultyCode facultyCode = programCode.getFacultyCode();
+        InGroup facultyGroup = identityService.findGroupByName("GRP_FCTY_" + facultyCode.getCode());
+        accessService.grantPermission(candidate, facultyGroup, InPermission.VIEW);
     }
     
     @Override
