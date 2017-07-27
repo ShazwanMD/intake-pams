@@ -69,11 +69,11 @@
           <md-tab label="Offered ({{(offeredCandidates$ | async)?.length}})">
             <pams-candidate-offer-list [candidate]="offeredCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-offer-list>
           </md-tab>
-          <md-tab label="Accepted ({{(preSelectedCandidates$ | async)?.length}})">
-            <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-preselect-list>
+          <md-tab label="Accepted ({{(acceptedCandidates$ | async)?.length}})">
+            <pams-candidate-accept-list [candidate]="acceptedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-accept-list>
           </md-tab>
-          <md-tab label="Registered ({{(preSelectedCandidates$ | async)?.length}})">
-            <pams-candidate-preselect-list [candidate]="preSelectedCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-preselect-list>
+          <md-tab label="Registered ({{(registeredCandidates$ | async)?.length}})">
+            <pams-candidate-register-list [candidate]="registeredCandidates$|async" [intake]="intakeTask.intake"></pams-candidate-register-list>
           </md-tab>
           </md-tab-group>
         </md-card>

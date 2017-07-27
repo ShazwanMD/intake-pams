@@ -53,6 +53,8 @@ public interface AdmissionService {
     void preapproveCandidate(InCandidate candidate);
 
     void offerCandidate(InCandidate candidate);
+    
+    void registerCandidate(InCandidate candidate);
 
     void registerCandidates(InIntake intake, List<InCandidate> candidates);
     

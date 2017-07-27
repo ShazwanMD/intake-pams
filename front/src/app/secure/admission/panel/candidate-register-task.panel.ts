@@ -9,6 +9,7 @@ import { MdSnackBar } from '@angular/material';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
+import { IntakeActions } from "../../policy/intakes/intake.action";
 
 @Component({
   selector: 'pams-candidate-register-task',
@@ -25,6 +26,8 @@ export class CandidateRegisterTaskPanel implements OnInit {
   private REJECTED_CANDIDATES: string[] = 'admissionModuleState.rejectedCandidates'.split('.');
   private APPROVED_CANDIDATES: string[] = 'admissionModuleState.approvedCandidates'.split('.');
   private OFFERED_CANDIDATES: string[] = 'admissionModuleState.offeredCandidates'.split('.');
+  private ACCEPTED_CANDIDATES: string[] = 'admissionModuleState.acceptedCandidates'.split('.');
+  private REGISTERED_CANDIDATES: string[] = 'admissionModuleState.registeredCandidates'.split('.');
   //private intakeTask$: Observable<IntakeTask>;
   private candidates$: Observable<Candidate[]>;
   private selectedCandidates$: Observable<Candidate[]>;
@@ -32,11 +35,14 @@ export class CandidateRegisterTaskPanel implements OnInit {
   private rejectedCandidates$: Observable<Candidate[]>;
   private approvedCandidates$: Observable<Candidate[]>;
   private offeredCandidates$: Observable<Candidate[]>;
+  private acceptedCandidates$: Observable<Candidate[]>;
+  private registeredCandidates$: Observable<Candidate[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<AdmissionModuleState>,
               private snackBar: MdSnackBar,
+              private intakeActions: IntakeActions,
               private actions: AdmissionActions) {
     //this.intakeTask$ = this.store.select(...this.INTAKE_TASK);
     this.candidates$ = this.store.select(...this.CANDIDATES);
@@ -44,6 +50,8 @@ export class CandidateRegisterTaskPanel implements OnInit {
     this.rejectedCandidates$ = this.store.select(...this.REJECTED_CANDIDATES);
     this.preSelectedCandidates$ = this.store.select(...this.PRE_SELECTED_CANDIDATES);
     this.offeredCandidates$ = this.store.select(...this.OFFERED_CANDIDATES);
+    this.acceptedCandidates$ = this.store.select(...this.ACCEPTED_CANDIDATES);
+    this.registeredCandidates$ = this.store.select(...this.REGISTERED_CANDIDATES);
   }
 
   ngOnInit(): void {
@@ -53,13 +61,12 @@ export class CandidateRegisterTaskPanel implements OnInit {
     // this.store.dispatch(this.actions.broadcastIntakeResult(null));
   }
 
-  offer(referenceNo): void {
+  startAcademic(referenceNo): void {
     // start offer process for candidate in status approve
-     let snackBarRef = this.snackBar.open('Confirm to Offer This candidate?', 'Ok');
+     let snackBarRef = this.snackBar.open('Confirm to Start Academic This candidate?', 'Ok');
 
     snackBarRef.afterDismissed().subscribe(() => {
-      console.log("submit candidate in snck bar: "+referenceNo);
-      this.store.dispatch(this.actions.offerCandidate(referenceNo));
+        this.store.dispatch(this.intakeActions.completeIntakeTask(this.intakeTask));
       this.goBack();
     });
   }

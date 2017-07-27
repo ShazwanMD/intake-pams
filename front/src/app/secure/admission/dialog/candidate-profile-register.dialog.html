@@ -35,6 +35,7 @@
                 <b>Phone</b> : {{candidate.application?.phone}}<br/><br/>
                 <b>Mobile</b> : {{candidate.application?.mobile}}<br/><br/>
                 <b>Marital Status</b> : {{candidate.application?.maritalCode?.descriptionEn}}<br/><br/><br/>
+                <b>Acception Status</b> : {{candidate.acception}}<br/><br/><br/>
               </div>
 
               <div flex-gt-md="40">
@@ -192,7 +193,7 @@
             </md-tab-group>
           </md-card-content>
         </md-card>
-        	<template [ngIf]="candidate.status === 'OFFERED'"><button md-raised-button color="accent" (click)="select(candidate)">Register</button></template>
+        	<template [ngIf]="candidate.status === 'OFFERED'"><button md-raised-button color="accent" (click)="register(candidate)">Register</button></template>
         	<button md-raised-button color="accent" (click)="reject(candidate)">Reject</button>
       </md-tab>
     </md-tab-group>

@@ -292,6 +292,13 @@ public class AdmissionServiceImpl implements AdmissionService {
         emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(emailQueue);
     }
+    
+    @Override
+    public void registerCandidate(InCandidate candidate) {
+        candidate.setStatus(InCandidateStatus.REGISTERED);
+        candidateDao.update(candidate, securityService.getCurrentUser());
+        
+    }
 
     @Override
     public void broadcastResult(InIntake intake) {

@@ -118,7 +118,7 @@ export class AdmissionActions {
   
   static OFFER_CANDIDATE = '[Admission] Offer Candidate';
 
-  offerCandidate(intake): Action {
+  offerCandidates(intake): Action {
     return {
       type: AdmissionActions.OFFER_CANDIDATE,
       payload: intake,
@@ -130,6 +130,24 @@ export class AdmissionActions {
   offerCandidateSuccess(message): Action {
     return {
       type: AdmissionActions.OFFER_CANDIDATE_SUCCESS,
+      payload: message,
+    };
+  }
+  
+  static REGISTER_CANDIDATE = '[Admission] Register Candidate';
+
+  registerCandidate(intake): Action {
+    return {
+      type: AdmissionActions.REGISTER_CANDIDATE,
+      payload: intake,
+    };
+  }
+
+  static REGISTER_CANDIDATE_SUCCESS = '[Admission] Register Candidate Success';
+
+  registerCandidateSuccess(message): Action {
+    return {
+      type: AdmissionActions.REGISTER_CANDIDATE_SUCCESS,
       payload: message,
     };
   }
@@ -194,6 +212,26 @@ export class AdmissionActions {
     };
   }
   
+  static FIND_ACCEPTED_CANDIDATES = '[Admission] Find Accepted Candidates';
+
+  findAcceptedCandidates(intake): Action {
+    console.log('findAcceptedCandidates');
+    return {
+      type: AdmissionActions.FIND_ACCEPTED_CANDIDATES,
+      payload: intake,
+    };
+  }
+
+  static FIND_ACCEPTED_CANDIDATES_SUCCESS = '[Admission] Find Accepted Candidates Success';
+
+  findAcceptedCandidatesSuccess(candidates): Action {
+    console.log('findApprovedCandidatesSuccess');
+    return {
+      type: AdmissionActions.FIND_ACCEPTED_CANDIDATES_SUCCESS,
+      payload: candidates,
+    };
+  }
+  
   static FIND_OFFERED_CANDIDATES = '[Admission] Find Offered Candidates';
 
   findOfferedCandidates(intake): Action {
@@ -230,6 +268,26 @@ export class AdmissionActions {
     console.log('findAcceptOfferedCandidatesSuccess');
     return {
       type: AdmissionActions.FIND_ACCEPT_OFFERED_CANDIDATES_SUCCESS,
+      payload: candidates,
+    };
+  }
+  
+  static FIND_REGISTERED_CANDIDATES = '[Admission] Find Registered Candidates';
+
+  findRegisteredCandidates(intake): Action {
+    console.log('findRegisteredCandidates');
+    return {
+      type: AdmissionActions.FIND_REGISTERED_CANDIDATES,
+      payload: intake,
+    };
+  }
+
+  static FIND_REGISTERED_CANDIDATES_SUCCESS = '[Admission] Find Registered Candidates Success';
+
+  findRegisteredCandidatesSuccess(candidates): Action {
+    console.log('findRegisteredCandidatesSuccess');
+    return {
+      type: AdmissionActions.FIND_REGISTERED_CANDIDATES_SUCCESS,
       payload: candidates,
     };
   }

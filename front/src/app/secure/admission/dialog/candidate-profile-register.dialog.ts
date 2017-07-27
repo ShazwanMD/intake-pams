@@ -86,7 +86,7 @@ export class CandidateProfileRegisterDialog implements OnInit {
   register(candidate: Candidate) {
      let snackBarRef = this.snackBar.open('Confirm to Register This Candidate?', 'Ok');
     snackBarRef.afterDismissed().subscribe((res) => {
-     this.store.dispatch(this.admissionActions.preSelectCandidate(candidate));
+     this.store.dispatch(this.admissionActions.registerCandidate(candidate));
       this.editorDialog.afterClosed().subscribe((res) => {
       this.route.params.subscribe((params: { taskId: string }) => {
       let taskId: string = params.taskId;

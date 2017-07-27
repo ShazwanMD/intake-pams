@@ -147,6 +147,15 @@ public class AdmissionController {
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
     
+    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/register", method = RequestMethod.PUT)
+    public ResponseEntity<String> registerCandidate(@PathVariable String referenceNo,
+                                                          @RequestBody Candidate vo) {
+    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+        admissionService.registerCandidate(candidate);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
     @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/reject", method = RequestMethod.PUT)
     public ResponseEntity<String> rejectCandidate(@PathVariable String referenceNo,
                                                           @RequestBody Candidate vo) {

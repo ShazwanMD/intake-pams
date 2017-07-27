@@ -20,6 +20,7 @@ public class Candidate extends MetaObject {
     private StudyMode studyMode;
     private Intake intake;
     private IntakeApplication application;
+    private boolean acception;
 
     public String getName() {
         return name;
@@ -92,4 +93,12 @@ public class Candidate extends MetaObject {
     public void setApplication(IntakeApplication application) {
         this.application = application;
     }
+
+	public boolean isAcception() {
+		return acception;
+	}
+
+	public void setAcception(boolean acception) {
+		this.acception = acception;
+	}
 }

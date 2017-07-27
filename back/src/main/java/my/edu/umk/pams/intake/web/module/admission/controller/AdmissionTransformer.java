@@ -36,6 +36,7 @@ public class AdmissionTransformer {
         vo.setMatricNo(e.getMatricNo());
         vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));
         vo.setApplication(applicationTransformer.toIntakeApplicationVo(e.getApplication()));
+        vo.setAcception(e.getAcception());
         return vo;
     }
 

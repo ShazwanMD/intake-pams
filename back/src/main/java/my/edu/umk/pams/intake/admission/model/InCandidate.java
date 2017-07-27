@@ -64,4 +64,8 @@ public interface InCandidate extends InMetaObject {
 
 	void setReason(String reason);
 
+	boolean getAcception();
+
+	void setAcception(boolean acception);
+
 }

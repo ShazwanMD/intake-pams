@@ -199,10 +199,12 @@ public class InCandidateImpl implements InCandidate {
 		this.registration = registration;
 	}
 
+    @Override
 	public boolean getAcception() {
 		return acception;
 	}
 
+    @Override
 	public void setAcception(boolean acception) {
 		this.acception = acception;
 	}

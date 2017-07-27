@@ -83,6 +83,12 @@ export class AdmissionService {
     return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/REJECTED')
       .map((res: Response) => <Candidate[]>res.json());
   }
+  
+  findRejisteredCandidates(intake: Intake): Observable<Candidate[]> {
+      console.log('findRejisteredCandidates');
+      return this._http.get(this.ADMISSION_API + '/intakes/' + intake.referenceNo + '/candidates/candidateStatus/REGISTERED')
+        .map((res: Response) => <Candidate[]>res.json());
+    }
 
   findAcceptedCandidates(intake: Intake): Observable<Candidate[]> {
     console.log('findAcceptedCandidates');
@@ -90,11 +96,17 @@ export class AdmissionService {
       .map((res: Response) => <Candidate[]>res.json());
   }
   
-  offerCandidate(intake: Intake): Observable<String> {
+  offerCandidates(intake: Intake): Observable<String> {
     return this._http.put(this.ADMISSION_API + '/intakes/'
       + intake.referenceNo + '/candidates/offer', JSON.stringify(intake))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  registerCandidate(candidate: Candidate): Observable<String> {
+      return this._http.put(this.ADMISSION_API + '/application/'
+              + candidate.application.referenceNo + '/candidates/candidateStatus/register', JSON.stringify(candidate))
+              .flatMap((res: Response) => Observable.of(res.text()));
+    }
   
   preSelectCandidate(candidate: Candidate): Observable<String> {
     return this._http.put(this.ADMISSION_API + '/application/'

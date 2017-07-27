@@ -97,11 +97,12 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
     
     @Override
     public List<InCandidate> findAcceptCandidate(InIntake intake, InCandidateStatus status) {
+    	System.out.println("execute query select accepted");
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InCandidate p where " +
                 "p.intake = :intake " +
                 "and p.status = :status "+
-    			"and p.acception = :accept ");
+    			"and p.acception = :accept");
         query.setEntity("intake", intake);
         query.setInteger("status", status.ordinal());
         query.setBoolean("accept", true);

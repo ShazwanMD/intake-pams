@@ -4,7 +4,7 @@
   <md-nav-list dense flex>
 
     <template let-candidate let-last="last" ngFor [ngForOf]="candidate">
-      <a md-list-item  class="text-upper">
+      <a md-list-item  class="text-upper" (click)="profileDialog(candidate)">
         <md-icon md-list-avatar>label</md-icon>
         <h3 md-line> {{candidate.name}} </h3>
         <p md-line> {{candidate.programOffering?.programCode.descriptionEn}} </p>

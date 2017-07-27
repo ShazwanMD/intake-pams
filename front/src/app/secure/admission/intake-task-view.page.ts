@@ -63,7 +63,7 @@ export class IntakeTaskViewPage implements OnInit {
 
     snackBarRef.afterDismissed().subscribe(() => {
       console.log("submit candidate in snck bar: "+referenceNo);
-      this.store.dispatch(this.actions.offerCandidate(referenceNo));
+      this.store.dispatch(this.actions.offerCandidates(referenceNo));
       this.goBack();
     });
   }
