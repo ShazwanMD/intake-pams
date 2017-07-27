@@ -478,6 +478,11 @@ public class IdentityServiceImpl implements IdentityService {
     public Integer countActor(String filter, InActorType type) {
         return actorDao.count(filter, type);
     }
+    
+    @Override
+    public boolean isActorEmailExists(String email) {
+        return actorDao.isEmailExists(email);
+    }
 
 
     //====================================================================================================
