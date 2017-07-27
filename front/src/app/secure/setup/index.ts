@@ -47,6 +47,7 @@ import {CountryCodeListPage} from './country-codes/country-code-list.page';
 import {MaritalCodeListPage} from './marital-codes/marital-code-list-page';
 import {SetupPage} from './setup.page';
 import {DisabilityCodeListPage} from './disability-codes/disability-code-list-page';
+import {CountryCodesComponent} from './country-codes/component/country-code';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -76,10 +77,7 @@ import {titleReducer, TitleState} from './title.reducer';
 import {MaritalCodeEditorDialog} from './marital-codes/dialog/marital-code-editor.dialog';
 import {disabilityCodeListReducer, DisabilityCodeListState} from './disability-codes/disability-code-list.reducer';
 import {schoolCodeListReducer, SchoolCodeListState} from './school-codes/school-code-list.reducer';
-import {
-  studyCenterCodeListReducer,
-  StudyCenterCodeListState,
-} from './study-center-codes/study-center-code-list.reducer';
+import {studyCenterCodeListReducer, StudyCenterCodeListState} from './study-center-codes/study-center-code-list.reducer';
 import {districtCodeListReducer, DistrictCodeListState} from './district-codes/district-code-list.reducer';
 import {dunCodeListReducer, DunCodeListState} from './dun-codes/dun-code-list.reducer';
 import {parliamentCodeListReducer, ParliamentCodeListState} from './parliament-codes/parliament-code-list.reducer';
@@ -144,8 +142,7 @@ export interface SetupModuleState {
   subjectCodes: SubjectCodeListState;
   gradeCodes: GradeCodeListState;
 
-}
-;
+};
 
 export const INITIAL_SETUP_STATE: SetupModuleState =
   <SetupModuleState>{
@@ -274,6 +271,8 @@ export const setupModuleReducers = {
     ResidencyCodeEditorDialog,
     SubjectCodeEditorDialog,
     GradeCodeEditorDialog,
+
+    CountryCodesComponent,
 
   ],
   exports: [
