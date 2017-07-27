@@ -36,6 +36,9 @@ public class AccessServiceImpl implements AccessService {
     private IdentityService identityService;
 
     @Autowired
+    private SecurityService  securityService;
+
+    @Autowired
     private AclObjectIdentityDao aclObjectIdentityDao;
 
     @Autowired
@@ -97,17 +100,17 @@ public class AccessServiceImpl implements AccessService {
 
     @Override
     public Integer countArchivedRecord(String filter, Date startDate, Date endDate, Class<?> aClass) {
-        return aclObjectIdentityDao.count(filter, aClass, identityService.findEffectiveGroupsAsString(Util.getCurrentUser()));
+        return aclObjectIdentityDao.count(filter, aClass, identityService.findEffectiveGroupsAsString(securityService.getCurrentUser()));
     }
 
     @Override
     public Integer countArchivedRecord(String filter, InFlowState flowType, Date startDate, Date endDate, Class<?> aClass) {
-        return aclObjectIdentityDao.count(filter, aClass, identityService.findEffectiveGroupsAsString(Util.getCurrentUser()));
+        return aclObjectIdentityDao.count(filter, aClass, identityService.findEffectiveGroupsAsString(securityService.getCurrentUser()));
     }
 
     @Override
     public List<Long> findArchived(String filter, InFlowState flowType, Date startDate, Date endDate, Class<?> aClass, Integer offset, Integer limit) {
-        return aclObjectIdentityDao.find(filter, aClass, identityService.findEffectiveGroupsAsString(Util.getCurrentUser()), offset, limit);
+        return aclObjectIdentityDao.find(filter, aClass, identityService.findEffectiveGroupsAsString(securityService.getCurrentUser()), offset, limit);
     }
 
     private Set<String> retrieveSids(InUser user) {

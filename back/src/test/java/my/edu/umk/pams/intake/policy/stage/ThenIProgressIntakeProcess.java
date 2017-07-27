@@ -3,10 +3,13 @@ package my.edu.umk.pams.intake.policy.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.util.Util;
+
 import org.activiti.engine.task.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +30,9 @@ public class ThenIProgressIntakeProcess extends Stage<ThenIProgressIntakeProcess
 
     @Autowired
     private PolicyService policyService;
+
+    @Autowired
+    private SecurityService securityService;
 
     @ExpectedScenarioState
     private InIntakeSession session;
@@ -54,7 +60,7 @@ public class ThenIProgressIntakeProcess extends Stage<ThenIProgressIntakeProcess
         // pegawai CPS login
         List<Task> verifyTasks = policyService.findPooledIntakeTasks(0, 100);
         for (Task verifyTask : verifyTasks) {
-            policyService.assignTask(verifyTask, Util.getCurrentUser());
+            policyService.assignTask(verifyTask, securityService.getCurrentUser());
         }
 
         List<Task> verifyAssignedTasks = policyService.findAssignedIntakeTasks(0, 100);
