@@ -33,7 +33,7 @@ export class IntakeApplicationFormPanel implements OnInit {
   ngOnInit(): void {
     let componentFactory: ComponentFactory<any>;
 
-    this.intakeApplicationObservable.subscribe((intakeApplication: IntakeApplication) => {
+    this.intakeApplicationObservable.take(2).subscribe((intakeApplication: IntakeApplication) => {
       if (intakeApplication && intakeApplication.intake) {
         console.log('graduate center: ' + intakeApplication.intake.graduateCenter.code);
         if (intakeApplication.intake.graduateCenter.code === 'CPS') {
