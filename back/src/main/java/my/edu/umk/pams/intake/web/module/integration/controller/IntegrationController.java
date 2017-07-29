@@ -6,14 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import my.edu.umk.pams.connector.payload.FacultyCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramCodePayload;
+import my.edu.umk.pams.intake.common.model.InFacultyCode;
+import my.edu.umk.pams.intake.common.model.InFacultyCodeImpl;
+import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
+import my.edu.umk.pams.intake.security.integration.NonSerializableSecurityContext;
 
 @Transactional
 @RestController
@@ -34,28 +46,51 @@ public class IntegrationController {
     @Autowired
     private PolicyService policyService;
 
-//    @RequestMapping(value = "/candidate", method = RequestMethod.POST)
-//    public ResponseEntity<String> test(@RequestBody CandidatePayload payload) {
-//        LOG.info("candidate: " + payload);
-//        return new ResponseEntity<String>("success", HttpStatus.OK);
-//    }
-
     // ====================================================================================================
-    // COHORT
+    // CODES
     // ====================================================================================================
 
-    @RequestMapping(value = "/cohortCode", method = RequestMethod.POST)
-    public ResponseEntity<String> saveCohortCode() {
+    @RequestMapping(value = "/programCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveProgramCode(ProgramCodePayload payload) {
+        SecurityContext ctx = loginAsSystem();
+
+        InProgramCode programCode = new InProgramCodeImpl();
+        programCode.setCode(payload.getCode());
+        programCode.setDescriptionEn(payload.getDescription());
+        programCode.setDescriptionMs(payload.getDescription());
+        programCode.setFacultyCode(commonService.findFacultyCodeByCode(payload.getFacultyCode().getCode()));
+        programCode.setGraduateCenter(commonService.findGraduateCenterByCode("MGSEB")); // todo
+        programCode.setProgramLevel(policyService.findProgramLevelByCode("MASTER")); // todo
+
+        logoutAsSystem(ctx);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/programCode", method = RequestMethod.POST)
-    public ResponseEntity<String> saveprogramCode() {
+    @RequestMapping(value = "/facultyCodes", method = RequestMethod.POST)
+    public ResponseEntity<String> saveFacultyCode(@RequestBody FacultyCodePayload payload) {
+        SecurityContext ctx = loginAsSystem();
+
+        InFacultyCode facultyCode = new InFacultyCodeImpl();
+        facultyCode.setCode(payload.getCode());
+        facultyCode.setPrefix(payload.getCode()); // prefix
+        facultyCode.setDescriptionEn(payload.getDescription());
+        facultyCode.setDescriptionMs(payload.getDescription());
+
+        logoutAsSystem(ctx);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/facultyCode", method = RequestMethod.POST)
-    public ResponseEntity<String> savefacultyCode() {
-        return new ResponseEntity<String>("success", HttpStatus.OK);
+    private SecurityContext loginAsSystem() {
+        SecurityContext savedCtx = SecurityContextHolder.getContext();
+        InAutoLoginToken authenticationToken = new InAutoLoginToken("system");
+        Authentication authed = authenticationManager.authenticate(authenticationToken);
+        SecurityContext system = new NonSerializableSecurityContext();
+        system.setAuthentication(authed);
+        SecurityContextHolder.setContext(system);
+        return savedCtx;
+    }
+
+    private void logoutAsSystem(SecurityContext context) {
+        SecurityContextHolder.setContext(context);
     }
 }
