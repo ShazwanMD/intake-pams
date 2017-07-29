@@ -51,7 +51,7 @@ public class IntegrationController {
     // ====================================================================================================
 
     @RequestMapping(value = "/programCodes", method = RequestMethod.POST)
-    public ResponseEntity<String> saveProgramCode(ProgramCodePayload payload) {
+    public ResponseEntity<String> saveProgramCode(@RequestBody ProgramCodePayload payload) {
         SecurityContext ctx = loginAsSystem();
 
         InProgramCode programCode = new InProgramCodeImpl();
