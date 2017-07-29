@@ -25,10 +25,10 @@ import java.util.Map;
 
 import javax.jms.ConnectionFactory;
 
+import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.CohortCodePayload;
 import my.edu.umk.pams.intake.admission.event.CandidateAcceptedEvent;
-import my.edu.umk.pams.intake.admission.event.CandidatePayload;
 import my.edu.umk.pams.intake.admission.event.CandidateRejectedEvent;
-import my.edu.umk.pams.intake.admission.event.CohortPayload;
 
 //@Configuration
 //@EnableIntegration
@@ -104,7 +104,7 @@ public class IntegrationConfig {
         public DestinationExpressionFunction() {
             queueMap = new HashMap<>();
             queueMap.put(CandidatePayload.class.getName(), new ActiveMQQueue("candidateQueue"));
-            queueMap.put(CohortPayload.class.getName(), new ActiveMQQueue("cohortQueue"));
+            queueMap.put(CohortCodePayload.class.getName(), new ActiveMQQueue("cohortCodeQueue"));
         }
 
         @Override
