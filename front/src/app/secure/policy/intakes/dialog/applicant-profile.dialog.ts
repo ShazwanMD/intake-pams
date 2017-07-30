@@ -93,7 +93,7 @@ export class ApplicantProfileDialog implements OnInit {
 
   reject(intakeApplication: IntakeApplication) {
     this.showDialog(intakeApplication);
-    //  this.editorDialog.close();
+    this.editorDialog.close();
   }
 
   showDialog(intakeApplication): void {

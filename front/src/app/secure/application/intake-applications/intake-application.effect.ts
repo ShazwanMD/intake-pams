@@ -132,19 +132,22 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.SELECT_INTAKE_APPLICATION)
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.selectIntakeApplication(application))
-    .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message));
+    .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message))
+      .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() verifyIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.VERIFY_INTAKE_APPLICATION)
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.verifyIntakeApplication(application))
-    .map((message) => this.intakeApplicationActions.verifyIntakeApplicationSuccess(message));
+    .map((message) => this.intakeApplicationActions.verifyIntakeApplicationSuccess(message))
+      .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() rejectIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.REJECT_INTAKE_APPLICATION)
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.rejectIntakeApplication(application))
-    .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message));
+    .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message))
+      .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() findSubmittedIntakeApplications$ = this.actions$
     .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS_BY_INTAKE)

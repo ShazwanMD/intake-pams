@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {IntakeActions} from './intake.action';
@@ -17,6 +18,7 @@ export class IntakeEffects {
   constructor(private actions$: Actions,
               private intakeActions: IntakeActions,
               private policyService: PolicyService,
+              private router: Router,
               private applicationService: ApplicationService,
               private store$: Store<PolicyModuleState>) {
   }
@@ -35,7 +37,8 @@ export class IntakeEffects {
     .ofType(IntakeActions.FIND_INTAKE_TASK_BY_TASK_ID)
     .map((action) => action.payload)
     .switchMap((taskId) => this.policyService.findIntakeTaskByTaskId(taskId))
-    .map((task) => this.intakeActions.findIntakeTaskByTaskIdSuccess(task));
+    .map((task) => this.intakeActions.findIntakeTaskByTaskIdSuccess(task))
+    .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() findIntakeByReferenceNo$ = this.actions$
     .ofType(IntakeActions.FIND_INTAKE_BY_REFERENCE_NO)
