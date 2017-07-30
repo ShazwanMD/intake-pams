@@ -27,16 +27,6 @@
       </md-menu>
     </div>
   </template>
-  <!--<template tdDataTableTemplate="flowState" let-value="value" let-row="row" let-column="column">
-    <div layout="row">{{row['flowState'] | flowStatePipe }}</div>
-  </template>-->
-  <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <a md-button color="accent" class="text-upper" (click)="viewWaiverApplication(row)">
-        <span>View</span>
-      </a>
-       </div>
-  </template>-->
 </td-data-table>
 <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
     <h3>No results to display.</h3>
