@@ -411,6 +411,10 @@
 
     <repositories>
         <repository>
+            <id>CanangPublicRepo</id>
+            <url>http://canang.com.my/maven/</url>
+        </repository>
+        <repository>
             <id>repo.spring.io.milestone</id>
             <name>Spring Framework Maven Milestone Repository</name>
             <url>https://repo.spring.io/libs-milestone</url>
