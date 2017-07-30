@@ -1,7 +1,9 @@
 package my.edu.umk.pams.intake.admission.service;
 
+import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
+import my.edu.umk.pams.intake.admission.event.CandidateAcceptedEvent;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
@@ -31,6 +33,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -75,6 +78,9 @@ public class AdmissionServiceImpl implements AdmissionService {
 
     @Autowired
     private IdentityService identityService;
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     // ====================================================================================================
     // INTAKE, INTAKE APPLICATION
@@ -266,6 +272,30 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void registerCandidate(InCandidate candidate) {
         candidate.setStatus(InCandidateStatus.REGISTERED);
         candidateDao.update(candidate, securityService.getCurrentUser());
+
+
+        // payload
+        InProgramCode programCode = candidate.getProgramSelection().getProgramCode();
+        InFacultyCode facultyCode = programCode.getFacultyCode();
+        CandidatePayload payload = new CandidatePayload();
+        payload.setName(candidate.getName());
+        payload.setMatricNo(candidate.getMatricNo());
+        payload.setEmail(candidate.getEmail());
+
+        // if( application != null)
+        payload.setMobile(candidate.getApplication().getMobile());
+        payload.setFax(candidate.getApplication().getFax());
+        payload.setFacultyCode(facultyCode.getCode());
+        payload.setProgramCode(programCode.getCode());
+
+        // <program_code>-CHRT-<academic_session_code>
+        String cohortCode = facultyCode.getCode() + "-" + programCode.getProgramLevel().getCode() + "-" + programCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
+        // todo: address etc, etc
+        // todo: supevisor, studymode, cohort, address etc, etc
+        // address, .....
+        //
+        CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
+        applicationContext.publishEvent(event);
         
     }
 
