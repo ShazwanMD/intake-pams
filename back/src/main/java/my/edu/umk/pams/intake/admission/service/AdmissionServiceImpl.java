@@ -152,14 +152,6 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void rejectCandidate(InCandidate candidate) {
     	candidate.setStatus(InCandidateStatus.REJECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
-        
-     // notify candidate
-        InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
-        emailQueue.setTo(candidate.getEmail());
-        emailQueue.setSubject("Permohonan anda tidak berjaya kerana "+candidate.getReason());
-        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-        systemService.saveEmailQueue(emailQueue);
     }
 
     @Override
@@ -254,15 +246,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setStudyMode(commonService.findStudyModeByCode("F")); // FULL
         candidate.setStatus(InCandidateStatus.PREAPPROVED);
         candidateDao.save(candidate, securityService.getCurrentUser());
-
-        // notify candidate
-        InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
-        emailQueue.setTo(candidate.getEmail());
-        emailQueue.setSubject("Sedang diproses");
-        emailQueue.setBody("Permohonan anda pada status "+InCandidateStatus.PREAPPROVED);
-        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-        systemService.saveEmailQueue(emailQueue);
     }
     
     @Override
@@ -270,15 +253,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setStudyMode(commonService.findStudyModeByCode("F")); // FULL
         candidate.setStatus(InCandidateStatus.APPROVED);
         candidateDao.save(candidate, securityService.getCurrentUser());
-
-        // notify candidate
-        InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
-        emailQueue.setTo(candidate.getEmail());
-        emailQueue.setSubject("Sedang diproses");
-        emailQueue.setBody("Permohonan anda pada status "+InCandidateStatus.APPROVED);
-        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-        systemService.saveEmailQueue(emailQueue);
     }
 
     @Override
@@ -286,19 +260,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         // start offering process
         candidate.setStatus(InCandidateStatus.OFFERED);
         candidateDao.update(candidate, securityService.getCurrentUser());
-        
-        //generate offer letter and send link offer letter to emel
-        String applicationUrl= systemService.findConfigurationByKey("application.url").getValue();
-        String offerLetter = applicationUrl+"/servlet/report?report=IN_0001.jrxml&report.pdf";
-        
-        // notify candidate
-        InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
-        emailQueue.setTo(candidate.getEmail());
-        emailQueue.setSubject("Tawaran diterima");
-        emailQueue.setBody("Tahniah kerana anda diterima masuk UMK. Sila klik untuk lihat surat tawaran :"+offerLetter);
-        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-        systemService.saveEmailQueue(emailQueue);
     }
     
     @Override
