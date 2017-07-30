@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.system.dao;
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
@@ -38,5 +39,14 @@ public class InEmailQueueDaoImpl extends GenericDaoSupport<Long, InEmailQueue> i
                 "eq.queueStatus in (:statuses) ");
         query.setParameterList("statuses", statuses);
         return query.list();
+    }
+    
+    @Override
+    public boolean hasEmailQueue(String email) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select eq from InEmailQueue eq where " +
+                "eq.to = :email");
+        query.setString("email", email);
+        return (Long) query.uniqueResult() > 0;
     }
 }
