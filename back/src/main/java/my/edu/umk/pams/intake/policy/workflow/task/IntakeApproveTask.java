@@ -52,5 +52,10 @@ public class IntakeApproveTask extends BpmnActivityBehavior
         intake.getFlowdata().setApprovedDate(new Timestamp(currentTimeMillis()));
         intake.getFlowdata().setApproverId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);
+
+
+        //
+        // IntakeApproveEvent event = new IntakeApproveEvent(payload);
+
     }
 }
