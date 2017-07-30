@@ -1,3 +1,4 @@
+import { EthnicityCodesComponent } from './ethnicity-codes/component/ethnicity-code';
 import { DunCodesComponent } from './dun-codes/component/dun-code';
 import { DisabilityCodesComponent } from './disability-codes/component/disability-code';
 
@@ -278,6 +279,8 @@ export const setupModuleReducers = {
     CountryCodesComponent,
     DisabilityCodesComponent,
     DunCodesComponent,
+    EthnicityCodesComponent,
+
 
   ],
   exports: [
