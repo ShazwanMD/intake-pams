@@ -5,7 +5,7 @@
 <md-divider></md-divider>
 <td-data-table
     #dataTable
-	[data]="filteredData" 
+    [data]="filteredData" 
     [columns]="columns"
     [sortable]="true"
     [sortBy]="sortBy"
@@ -27,6 +27,7 @@
       </md-menu>
     </div>
   </template>
+  
 </td-data-table>
 <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
     <h3>No results to display.</h3>

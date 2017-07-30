@@ -161,4 +161,6 @@ public interface SystemService {
     void saveEmailQueue(InEmailQueue emailQueue);
 
     void updateEmailQueue(InEmailQueue emailQueue);
+
+	boolean hasEmailQueue(String email);
 }

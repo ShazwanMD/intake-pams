@@ -286,6 +286,20 @@ export class SetupEffects {
     .map((message) => this.setupActions.saveRaceCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findRaceCodes()]));
 
+    @Effect() removeRaceCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_RACE_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.removeRaceCode(payload))
+    .map((message) => this.setupActions.removeRaceCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findRaceCodes()]));
+
+  @Effect() updateRaceCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_RACE_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.updateRaceCode(payload))
+    .map((message) => this.setupActions.updateRaceCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findRaceCodes()]));
+
   // ====================================================================================================
   // GENDER CODE
   // ====================================================================================================

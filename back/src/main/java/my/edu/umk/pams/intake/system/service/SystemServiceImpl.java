@@ -468,6 +468,11 @@ public class SystemServiceImpl implements SystemService {
     public List<InEmailQueue> findEmailQueues() {
         return emailQueueDao.find();
     }
+    
+    @Override
+    public boolean hasEmailQueue(String email) {
+        return emailQueueDao.hasEmailQueue(email);
+    }
 
     @Override
     public List<InEmailQueue> findEmailQueues(InEmailQueueStatus status) {
