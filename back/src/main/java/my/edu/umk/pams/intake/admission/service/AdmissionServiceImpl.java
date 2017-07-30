@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.admission.service;
 
+import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
@@ -292,17 +293,24 @@ public class AdmissionServiceImpl implements AdmissionService {
         String cohortCode = facultyCode.getCode() + "-" + programCode.getProgramLevel().getCode() + "-" + programCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
         payload.setCohortCode(cohortCode);
         // todo: address etc, etc
-        payload.setOfficialAddress1(candidate.getApplication().getOfficialAddress1());
-        payload.setOfficialAddress2(candidate.getApplication().getOfficialAddress2());
-        payload.setOfficialAddress3(candidate.getApplication().getOfficialAddress3());
-        payload.setOfficialPostcode(candidate.getApplication().getOfficialPostcode());
-        payload.setOfficialStateCode(candidate.getApplication().getOfficialStateCode().getCode());
         
-        payload.setMailingAddress1(candidate.getApplication().getMailingAddress1());
-        payload.setMailingAddress2(candidate.getApplication().getMailingAddress2());
-        payload.setMailingAddress3(candidate.getApplication().getMailingAddress3());
-        payload.setMailingPostcode(candidate.getApplication().getMailingPostcode());
-        payload.setMailingStateCode(candidate.getApplication().getMailingStateCode().getCode());
+        AddressPayload primaryAddress =  new AddressPayload();
+        primaryAddress.setAddress1(candidate.getApplication().getOfficialAddress1());
+        primaryAddress.setAddress2(candidate.getApplication().getOfficialAddress2());
+        primaryAddress.setAddress3(candidate.getApplication().getOfficialAddress3());
+        primaryAddress.setPostcode(candidate.getApplication().getOfficialPostcode());
+        primaryAddress.setStateCode(candidate.getApplication().getOfficialStateCode().getCode());
+        
+        payload.setPrimaryAddress(primaryAddress);
+        
+        AddressPayload secondaryAddress =  new AddressPayload();
+        secondaryAddress.setAddress1(candidate.getApplication().getMailingAddress1());
+        secondaryAddress.setAddress2(candidate.getApplication().getMailingAddress2());
+        secondaryAddress.setAddress3(candidate.getApplication().getMailingAddress3());
+        secondaryAddress.setPostcode(candidate.getApplication().getMailingPostcode());
+        secondaryAddress.setStateCode(candidate.getApplication().getMailingStateCode().getCode());
+        
+        payload.setSecondaryAddress(secondaryAddress);
         
         // todo: supevisor, studymode, cohort, address etc, etc
         payload.setSupervisorCode(candidate.getApplication().getSupervisorSelection().getSupervisorCode().getCode());
