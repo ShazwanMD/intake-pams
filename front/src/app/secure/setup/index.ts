@@ -1,3 +1,4 @@
+import { RaceCodesComponent } from './race-codes/component/race-code';
 import { EthnicityCodesComponent } from './ethnicity-codes/component/ethnicity-code';
 import { DunCodesComponent } from './dun-codes/component/dun-code';
 import { DisabilityCodesComponent } from './disability-codes/component/disability-code';
@@ -280,10 +281,11 @@ export const setupModuleReducers = {
     DisabilityCodesComponent,
     DunCodesComponent,
     EthnicityCodesComponent,
-
+    RaceCodesComponent,
 
   ],
   exports: [
+    
   ],
   entryComponents: [
     MaritalCodeEditorDialog,
@@ -310,6 +312,7 @@ export const setupModuleReducers = {
     ResidencyCodeEditorDialog,
     SubjectCodeEditorDialog,
     GradeCodeEditorDialog,
+    RaceCodeCreatorDialog,
 
   ],
 })
