@@ -523,13 +523,12 @@ export class CommonService {
 // ====================================================================================================
 
   findRaceCodes(): Observable<RaceCode[]> {
-    console.log('findRaceCodes()');
+    console.log('findRaceCodes');
     return this._http.get(this.COMMON_API + '/raceCodes')
       .map((res: Response) => <RaceCode[]>res.json());
   }
 
   findRaceCodeByCode(code: string): Observable<RaceCode> {
-    console.log('findRaceCodeByCode');
     console.log('findRaceCodeByCode');
     return this._http.get(this.COMMON_API + '/raceCodes/' + code)
       .map((res: Response) => <RaceCode>res.json());
@@ -537,6 +536,16 @@ export class CommonService {
 
   saveRaceCode(code: RaceCode): Observable<String> {
     return this._http.post(this.COMMON_API + '/raceCodes', JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateRaceCode(code: RaceCode): Observable<String> {
+    return this._http.put(this.COMMON_API + '/raceCodes/' + code.code, JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeRaceCode(code: RaceCode): Observable<String> {
+    return this._http.delete(this.COMMON_API + '/raceCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
