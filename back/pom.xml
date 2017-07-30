@@ -437,10 +437,6 @@
             <url>http://jaspersoft.artifactoryonline.com/jaspersoft/jaspersoft-repo</url>
         </repository>
         <repository>
-            <id>CanangPublicRepo</id>
-            <url>http://canang.com.my/maven/</url>
-        </repository>
-        <repository>
             <id>Liferay</id>
             <url>https://repository.liferay.com/nexus/content/groups/public</url>
         </repository>
