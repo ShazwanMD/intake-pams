@@ -10,6 +10,7 @@ import {Intake} from '../shared/model/policy/intake.interface';
 import {Applicant} from './identity/applicant.interface';
 import {ApplicationModuleState} from './application/index';
 import {AccountActions} from './account/account.action';
+import { ResultCandidateDialog } from "./account/dialog/result-candidate.dialog";
 
 @Component({
   selector: 'pams-applicant-dashboard-panel',
@@ -20,6 +21,7 @@ import {AccountActions} from './account/account.action';
 export class ApplicantDashboardPanel implements OnInit {
   [x: string]: any;
    private editorDialogRef: MdDialogRef<AddressChangerDialog>;
+   private resultDialogRef: MdDialogRef<ResultCandidateDialog>;
 
   private PUBLISHED_INTAKES: string[] = 'accountModuleState.publishedIntakes'.split('.');
   private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
@@ -50,8 +52,21 @@ export class ApplicantDashboardPanel implements OnInit {
     this.store.dispatch(this.actions.findPublishedIntakes());
   }
 
-    createDialog(): void {
-    this.showDialog(null);
+  resultDialog(intakeApplication: IntakeApplication): void {
+      console.log('resultDialog');
+      let config: MdDialogConfig = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '70%';
+      config.height = '65%';
+      config.position = {top: '0px'};
+      this.resultDialogRef = this.dialog.open(ResultCandidateDialog, config);
+      if(intakeApplication) this.resultDialogRef.componentInstance.intakeApplication = intakeApplication; // set
+      // this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+      this.resultDialogRef.afterClosed().subscribe((res) => {
+        console.log('close dialog');
+        // load something here
+      });
   }
 
   editDialog(intakeApplication: IntakeApplication): void {

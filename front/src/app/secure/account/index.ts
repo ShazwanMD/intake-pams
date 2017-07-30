@@ -31,6 +31,7 @@ import {AccountActions} from './account.action';
 import {AccountEffects} from './account.effect';
 import {EffectsModule} from '@ngrx/effects';
 import {PasswordChangerDialog} from './dialog/password-changer.dialog';
+import { ResultCandidateDialog } from "./dialog/result-candidate.dialog";
 
 export interface AccountModuleState {
   user: UserState;
@@ -69,6 +70,7 @@ export const accountModuleReducers = {
     PasswordChangerDialog,
     EmailChangerDialog,
     AddressChangerDialog,
+    ResultCandidateDialog
 
   ],
   exports: [
@@ -82,6 +84,7 @@ export const accountModuleReducers = {
     EmailChangerDialog,
    // IntakeApplicationComponent,
     AddressChangerDialog,
+    ResultCandidateDialog,
   ],
 })
 export class AccountModule {
