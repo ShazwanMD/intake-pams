@@ -290,10 +290,23 @@ public class AdmissionServiceImpl implements AdmissionService {
 
         // <program_code>-CHRT-<academic_session_code>
         String cohortCode = facultyCode.getCode() + "-" + programCode.getProgramLevel().getCode() + "-" + programCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
+        payload.setCohortCode(cohortCode);
         // todo: address etc, etc
+        payload.setOfficialAddress1(candidate.getApplication().getOfficialAddress1());
+        payload.setOfficialAddress2(candidate.getApplication().getOfficialAddress2());
+        payload.setOfficialAddress3(candidate.getApplication().getOfficialAddress3());
+        payload.setOfficialPostcode(candidate.getApplication().getOfficialPostcode());
+        payload.setOfficialStateCode(candidate.getApplication().getOfficialStateCode().getCode());
+        
+        payload.setMailingAddress1(candidate.getApplication().getMailingAddress1());
+        payload.setMailingAddress2(candidate.getApplication().getMailingAddress2());
+        payload.setMailingAddress3(candidate.getApplication().getMailingAddress3());
+        payload.setMailingPostcode(candidate.getApplication().getMailingPostcode());
+        payload.setMailingStateCode(candidate.getApplication().getMailingStateCode().getCode());
+        
         // todo: supevisor, studymode, cohort, address etc, etc
-        // address, .....
-        //
+        payload.setSupervisorCode(candidate.getApplication().getSupervisorSelection().getSupervisorCode().getCode());
+        payload.setStudyModeCode(candidate.getStudyMode().getCode());
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
         applicationContext.publishEvent(event);
         
