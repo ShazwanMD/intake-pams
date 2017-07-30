@@ -22,6 +22,7 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InPermission;
 import my.edu.umk.pams.intake.security.service.AccessService;
@@ -275,7 +276,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setStatus(InCandidateStatus.REGISTERED);
         candidateDao.update(candidate, securityService.getCurrentUser());
 
-
         // payload
         InProgramCode programCode = candidate.getProgramSelection().getProgramCode();
         InFacultyCode facultyCode = programCode.getFacultyCode();
@@ -285,41 +285,43 @@ public class AdmissionServiceImpl implements AdmissionService {
         payload.setEmail(candidate.getEmail());
 
         // if( application != null)
-        payload.setMobile(candidate.getApplication().getMobile());
-        payload.setFax(candidate.getApplication().getFax());
+        InIntakeApplication application = candidate.getApplication();
+        payload.setMobile(application.getMobile());
+        payload.setFax(application.getFax());
         payload.setFacultyCode(facultyCode.getCode());
         payload.setProgramCode(programCode.getCode());
 
         // <program_code>-CHRT-<academic_session_code>
-        String cohortCode = facultyCode.getCode() + "-" + programCode.getProgramLevel().getCode() + "-" + programCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
+        String cohortCode = facultyCode.getCode()
+                + "-" + programCode.getProgramLevel().getCode()
+                + "-" + programCode.getCode()
+                + "-CHRT-"
+                + candidate.getIntake().getSession().getCode();
         payload.setCohortCode(cohortCode);
-        // todo: address etc, etc
-        
+
         AddressPayload primaryAddress =  new AddressPayload();
-        primaryAddress.setAddress1(candidate.getApplication().getOfficialAddress1());
-        primaryAddress.setAddress2(candidate.getApplication().getOfficialAddress2());
-        primaryAddress.setAddress3(candidate.getApplication().getOfficialAddress3());
-        primaryAddress.setPostcode(candidate.getApplication().getOfficialPostcode());
-        primaryAddress.setStateCode(candidate.getApplication().getOfficialStateCode().getCode());
-        
+        primaryAddress.setAddress1(application.getOfficialAddress1());
+        primaryAddress.setAddress2(application.getOfficialAddress2());
+        primaryAddress.setAddress3(application.getOfficialAddress3());
+        primaryAddress.setPostcode(application.getOfficialPostcode());
+        primaryAddress.setStateCode(application.getOfficialStateCode().getCode());
         payload.setPrimaryAddress(primaryAddress);
         
         AddressPayload secondaryAddress =  new AddressPayload();
-        secondaryAddress.setAddress1(candidate.getApplication().getMailingAddress1());
-        secondaryAddress.setAddress2(candidate.getApplication().getMailingAddress2());
-        secondaryAddress.setAddress3(candidate.getApplication().getMailingAddress3());
-        secondaryAddress.setPostcode(candidate.getApplication().getMailingPostcode());
-        secondaryAddress.setStateCode(candidate.getApplication().getMailingStateCode().getCode());
-        
+        secondaryAddress.setAddress1(application.getMailingAddress1());
+        secondaryAddress.setAddress2(application.getMailingAddress2());
+        secondaryAddress.setAddress3(application.getMailingAddress3());
+        secondaryAddress.setPostcode(application.getMailingPostcode());
+        secondaryAddress.setStateCode(application.getMailingStateCode().getCode());
         payload.setSecondaryAddress(secondaryAddress);
         
         // todo: supevisor, studymode, cohort, address etc, etc
-        payload.setSupervisorCode(candidate.getApplication().getSupervisorSelection().getSupervisorCode().getCode());
+        InSupervisorOffering supervisorSelection = application.getSupervisorSelection();
+        payload.setSupervisorCode(supervisorSelection.getSupervisorCode().getCode());
         
         StudyModePayload studyMode = new StudyModePayload();
         studyMode.setCode(candidate.getStudyMode().getCode());
         studyMode.setDescription(candidate.getStudyMode().getDescriptionEn());
-        
         payload.setStudyModeCode(studyMode);
         
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
