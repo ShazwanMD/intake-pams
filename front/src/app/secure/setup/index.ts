@@ -1,4 +1,7 @@
+import { EthnicityCodesComponent } from './ethnicity-codes/component/ethnicity-code';
+import { DunCodesComponent } from './dun-codes/component/dun-code';
 import { DisabilityCodesComponent } from './disability-codes/component/disability-code';
+
 import { VenueCodeListPage } from './venue-codes/venue-code-list.page';
 import { VenueCodeEditorDialog } from './venue-codes/dialog/venue-code-editor.dialog';
 import { VenueCode } from './../../shared/model/common/venue-code.interface';
@@ -275,6 +278,9 @@ export const setupModuleReducers = {
 
     CountryCodesComponent,
     DisabilityCodesComponent,
+    DunCodesComponent,
+    EthnicityCodesComponent,
+
 
   ],
   exports: [
