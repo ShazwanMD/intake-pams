@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.admission.service;
 
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.ResidencyCodePayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
@@ -15,6 +16,7 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InGroup;
@@ -318,15 +320,21 @@ public class AdmissionServiceImpl implements AdmissionService {
         // todo: supevisor, studymode, cohort, address etc, etc
         InSupervisorOffering supervisorSelection = application.getSupervisorSelection();
         payload.setSupervisorCode(supervisorSelection.getSupervisorCode().getCode());
-        
-        StudyModePayload studyMode = new StudyModePayload();
-        studyMode.setCode(candidate.getStudyMode().getCode());
-        studyMode.setDescription(candidate.getStudyMode().getDescriptionEn());
-        payload.setStudyModeCode(studyMode);
-        
+
+        InStudyMode studyMode = candidate.getStudyMode();
+        StudyModePayload studyModePayload = new StudyModePayload();
+        studyModePayload.setCode(studyMode.getCode());
+        studyModePayload.setDescription(studyMode.getDescriptionEn());
+        payload.setStudyMode(studyModePayload);
+
+        InResidencyCode residencyCode = application.getResidencyCode();
+        ResidencyCodePayload residencyCodePayload = new ResidencyCodePayload();
+        residencyCodePayload.setCode(residencyCode.getCode());
+        residencyCodePayload.setDescription(residencyCode.getDescriptionEn());
+        payload.setResidencyCode(residencyCodePayload);
+
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
         applicationContext.publishEvent(event);
-        
     }
 
     @Override
