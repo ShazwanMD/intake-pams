@@ -824,7 +824,8 @@ public class CommonController {
 
     @RequestMapping(value = "/raceCodes", method = RequestMethod.GET)
     public ResponseEntity<List<RaceCode>> findRaceCodes() {
-        return new ResponseEntity<List<RaceCode>>(commonTransformer.toRaceCodeVos(commonService.findRaceCodes()), HttpStatus.OK);
+        return new ResponseEntity<List<RaceCode>>(commonTransformer.toRaceCodeVos(
+        		commonService.findRaceCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/raceCodes/{code}", method = RequestMethod.GET)
