@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.admission.service;
 
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.event.CandidateAcceptedEvent;
@@ -314,7 +315,13 @@ public class AdmissionServiceImpl implements AdmissionService {
         
         // todo: supevisor, studymode, cohort, address etc, etc
         payload.setSupervisorCode(candidate.getApplication().getSupervisorSelection().getSupervisorCode().getCode());
-        payload.setStudyModeCode(candidate.getStudyMode().getCode());
+        
+        StudyModePayload studyMode = new StudyModePayload();
+        studyMode.setCode(candidate.getStudyMode().getCode());
+        studyMode.setDescription(candidate.getStudyMode().getDescriptionEn());
+        
+        payload.setStudyModeCode(studyMode);
+        
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
         applicationContext.publishEvent(event);
         

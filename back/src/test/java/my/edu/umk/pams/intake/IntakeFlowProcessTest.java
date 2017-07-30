@@ -88,7 +88,7 @@ public class IntakeFlowProcessTest {
     @Rollback(false)
     public void testDraftWorkflow() throws Exception {
         InProgramLevel level = policyService.findProgramLevelByCode("MASTER");
-        InIntakeSession session = policyService.findIntakeSessionByCode("20171");
+        InIntakeSession session = policyService.findIntakeSessionByCode("201720181");
         InGraduateCenter center = commonService.findGraduateCenterByCode("CPS");
 
         // start a new intake
