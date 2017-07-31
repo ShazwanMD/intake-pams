@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../../services/notification.service';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -61,6 +62,7 @@ export class IntakeApplicationSubModule {
         IdentityService,
         CommonService,
         PolicyService,
+        NotificationService,
         IntakeApplicationActions,
       ],
     };

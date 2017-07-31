@@ -93,7 +93,7 @@ public class IntakePublishTask extends BpmnActivityBehavior
            chrtPayload.setProgramCode(programCodePayload);
            
            IntakePayload intakePayload = new IntakePayload();
-           intakePayload.setCohort(cohortCode);
+        //   intakePayload.setCohort(cohortCode);
            
            IntakeSessionCodePayload intakeSessionPayload = new IntakeSessionCodePayload();
            intakeSessionPayload.setCode(intake.getSession().getCode());

@@ -188,5 +188,7 @@ public interface ApplicationService {
 
 	InIntakeApplication findInIntakeApplicationByAddress(String address);
 
+	boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant);
+
 }
 

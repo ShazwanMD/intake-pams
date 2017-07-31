@@ -335,6 +335,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     public InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application) {
         return intakeApplicationDao.findGuardianByType(guardianType, application);
     }
+    
+
 
     @Override
     public InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application) {
@@ -365,6 +367,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public InIntakeApplication findIntakeApplicationByIntakeAndApplicant(InIntake intake, InApplicant applicant) {
         return intakeApplicationDao.findByIntakeAndApplicant(intake, applicant);
+    }
+    
+    @Override
+    public boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant) {
+        return intakeApplicationDao.isIntakeApplicationExists(intake, applicant);
     }
 
     @Override
