@@ -90,7 +90,7 @@ public class ApplicationController {
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/apply", method = RequestMethod.POST)
-    public ResponseEntity<IntakeApplication> applyIntake(@PathVariable String referenceNo) {
+    public ResponseEntity<String> applyIntake(@PathVariable String referenceNo) {
         // user & applicant
         InUser currentUser = securityService.getCurrentUser();
         InActor actor = currentUser.getActor();
@@ -99,22 +99,23 @@ public class ApplicationController {
             applicant = (InApplicant) actor;
 
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        if(applicationService.isIntakeApplicationExists(intake, applicant))
+        	   throw new IllegalArgumentException("You have already apply for this intake");
+      
+        
         InIntakeApplication application = new InIntakeApplicationImpl();
         application.setName(applicant.getName());
         application.setEmail(applicant.getEmail());
         application.setApplicant(applicant);
-
-        InIntakeApplication generatedApplication = null;
+        
+        String intakeApplicationReferenceNo = null;
         try {
-            String intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
+            intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
             LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
-            generatedApplication = applicationService.findIntakeApplicationByReferenceNo(intakeApplicationReferenceNo);
         } catch (Exception e) {
-            // todo: push to client
-            e.printStackTrace();
+         throw new IllegalArgumentException("Error in applying intake");
         }
-        return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(generatedApplication),
-                HttpStatus.OK);
+        return new ResponseEntity<String>(intakeApplicationReferenceNo, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/intakeApplications", method = RequestMethod.GET)
@@ -620,13 +621,14 @@ public class ApplicationController {
             applicant = (InApplicant) actor;
 
         InIntakeApplication generatedApplication = null;
-        try {
             InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-            InIntakeApplication application = new InIntakeApplicationImpl();
-            application.setName(applicant.getName());
-            application.setEmail(applicant.getEmail());
-            application.setApplicant(applicant);
-
+            
+        
+            try {
+                InIntakeApplication application = new InIntakeApplicationImpl();
+                application.setName(applicant.getName());
+                application.setEmail(applicant.getEmail());
+                application.setApplicant(applicant);
             String intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
             LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
             generatedApplication = applicationService

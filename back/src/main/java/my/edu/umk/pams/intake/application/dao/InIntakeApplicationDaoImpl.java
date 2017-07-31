@@ -64,6 +64,19 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         query.setEntity("intake", intake);
         return (InIntakeApplication) query.uniqueResult();
     }
+    
+    @Override
+    public boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from InIntakeApplication s where " +
+                "s.intake = :intake " +
+                "and s.applicant = :applicant " +
+                "and s.metadata.state = :state ");
+        query.setEntity("applicant", applicant);
+        query.setEntity("intake", intake);       
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
 
     @Override
     public InResult findResultById(Long id) {

@@ -67,10 +67,9 @@ export class ApplicationService {
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
 
-
-  applyIntake(intake: Intake): Observable<IntakeApplication> {
+  applyIntake(intake: Intake): Observable<String> {
     return this._http.post(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/apply', JSON.stringify(intake))
-      .map((res: Response) => <IntakeApplication>res.json())
+      .map((res: Response) => Observable.of(res.text()))
       .catch(this.handleError);
   }
 
