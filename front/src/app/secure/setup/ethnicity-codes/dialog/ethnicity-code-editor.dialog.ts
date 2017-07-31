@@ -10,10 +10,10 @@ import {EthnicityCode} from '../../../../shared/model/common/ethnicity-code.inte
 
 @Component({
   selector: 'pams-ethnicity-code-creator',
-  templateUrl: './ethnicity-code-creator.dialog.html',
+  templateUrl: './ethnicity-code-editor.dialog.html',
 })
 
-export class EthnicityCodeCreatorDialog implements OnInit {
+export class EthnicityCodeEditorDialog implements OnInit {
 
   private creatorForm: FormGroup;
   private edit: boolean = false;
@@ -23,7 +23,7 @@ export class EthnicityCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<EthnicityCodeCreatorDialog>,
+              private dialog: MdDialogRef<EthnicityCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {

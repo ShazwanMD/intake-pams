@@ -39,7 +39,7 @@ import {FacultyCodeCreatorDialog} from './faculty-codes/dialog/faculty-code-crea
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
 import {NationalityCodeEditorDialog} from './nationality-codes/dialog/nationality-code-editor.dialog';
 import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
-import {EthnicityCodeCreatorDialog} from './ethnicity-codes/dialog/ethnicity-code-creator.dialog';
+import {EthnicityCodeEditorDialog} from './ethnicity-codes/dialog/ethnicity-code-editor.dialog';
 import {EthnicityCodeListPage} from './ethnicity-codes/ethnicity-code-list.page';
 import {GenderCodeCreatorDialog} from './gender-codes/dialog/gender-code-creator.dialog';
 import {GenderCodeListPage} from './gender-codes/gender-code-list.page';
@@ -266,7 +266,7 @@ export const setupModuleReducers = {
     SupervisorCodeEditorDialog,
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
-    EthnicityCodeCreatorDialog,
+    EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
@@ -306,7 +306,7 @@ export const setupModuleReducers = {
     ProgramCodeCreatorDialog,
     SupervisorCodeEditorDialog,
     GenderCodeCreatorDialog,
-    EthnicityCodeCreatorDialog,
+  	EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
