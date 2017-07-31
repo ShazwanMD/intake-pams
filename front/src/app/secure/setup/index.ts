@@ -34,7 +34,7 @@ import {ProgramLevelSubModule} from '../policy/program-levels/index';
 import {SupervisorCodeEditorDialog} from './supervisor-codes/dialog/supervisor-code-editor.dialog';
 import {StudyMode} from '../../shared/model/common/study-mode.interface';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
-import {StudyModeCreatorDialog} from './study-modes/dialog/study-mode-creator.dialog';
+import {StudyModeEditorDialog} from './study-modes/dialog/study-mode-editor.dialog';
 import {FacultyCodeEditorDialog} from './faculty-codes/dialog/faculty-code-editor.dialog';
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
 import {NationalityCodeEditorDialog} from './nationality-codes/dialog/nationality-code-editor.dialog';
@@ -269,7 +269,7 @@ export const setupModuleReducers = {
     EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
     FacultyCodeEditorDialog,
-    StudyModeCreatorDialog,
+    StudyModeEditorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,
     StudyCenterCodeEditorDialog,
@@ -309,7 +309,7 @@ export const setupModuleReducers = {
     EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
     FacultyCodeEditorDialog,
-    StudyModeCreatorDialog,
+    StudyModeEditorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,
     StudyCenterCodeEditorDialog,

@@ -9,11 +9,11 @@ import {SetupActions} from '../../setup.action';
 import {StudyMode} from '../../../../shared/model/common/study-mode.interface';
 
 @Component({
-  selector: 'pams-study-mode-creator',
-  templateUrl: './study-mode-creator.dialog.html',
+  selector: 'pams-study-mode-editor',
+  templateUrl: './study-mode-editor.dialog.html',
 })
 
-export class StudyModeCreatorDialog implements OnInit {
+export class StudyModeEditorDialog implements OnInit {
 
   private creatorForm: FormGroup;
   private edit: boolean = false;
@@ -23,7 +23,7 @@ export class StudyModeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<StudyModeCreatorDialog>,
+              private dialog: MdDialogRef<StudyModeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions) {
   }
