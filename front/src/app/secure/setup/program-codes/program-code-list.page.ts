@@ -14,7 +14,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {ProgramCodeCreatorDialog} from './dialog/program-code-creator.dialog';
+import {ProgramCodeCreatorDialog} from './dialog/program-code-editor.dialog';
 import {
   TdDataTableService,
   TdDataTableSortingOrder,

@@ -13,10 +13,10 @@ import {GraduateCenter} from '../../../../shared/model/common/graduate-center.in
 
 @Component({
   selector: 'pams-program-code-creator',
-  templateUrl: './program-code-creator.dialog.html',
+  templateUrl: './program-code-editor.dialog.html',
 })
 
-export class ProgramCodeCreatorDialog implements OnInit {
+export class ProgramCodeEditorDialog implements OnInit {
 
   private editorForm: FormGroup;
   private edit: boolean = false;
