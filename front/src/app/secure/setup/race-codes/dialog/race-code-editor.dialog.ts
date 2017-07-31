@@ -10,10 +10,10 @@ import {RaceCode} from '../../../../shared/model/common/race-code.interface';
 
 @Component({
   selector: 'pams-race-code-creator',
-  templateUrl: './race-code-creator.dialog.html',
+  templateUrl: './race-code-editor.dialog.html',
 })
 
-export class RaceCodeCreatorDialog implements OnInit {
+export class RaceCodeEditorDialog implements OnInit {
 
   private createForm: FormGroup;
   private edit: boolean = false;
@@ -23,7 +23,7 @@ export class RaceCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<RaceCodeCreatorDialog>,
+              private dialog: MdDialogRef<RaceCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {
@@ -43,7 +43,7 @@ export class RaceCodeCreatorDialog implements OnInit {
       descriptionEn: '',
       prefix: '',
     });
- 
+
   if (this.edit) this.createForm.patchValue(this._raceCode);
  }
 
