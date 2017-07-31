@@ -1,3 +1,4 @@
+import { NationalityCodesComponent } from './nationality-codes/component/nationality-code';
 import { LanguageCodesComponent } from './language-codes/component/language-code';
 import { FacultyCodesComponent } from './faculty-codes/component/faculty-code';
 import { RaceCodesComponent } from './race-codes/component/race-code';
@@ -285,6 +286,7 @@ export const setupModuleReducers = {
     EthnicityCodesComponent,
     FacultyCodesComponent,
     LanguageCodesComponent,
+    NationalityCodesComponent,
     RaceCodesComponent,
 
 
