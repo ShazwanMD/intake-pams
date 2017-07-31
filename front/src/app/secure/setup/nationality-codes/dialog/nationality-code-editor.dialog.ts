@@ -9,11 +9,11 @@ import {SetupActions} from '../../setup.action';
 import {NationalityCode} from '../../../../shared/model/common/nationality-code.interface';
 
 @Component({
-  selector: 'pams-nationality-code-creator',
-  templateUrl: './nationality-code-creator.dialog.html',
+  selector: 'pams-nationality-code-editor',
+  templateUrl: './nationality-code-editor.dialog.html',
 })
 
-export class NationalityCodeCreatorDialog implements OnInit {
+export class NationalityCodeEditorDialog implements OnInit {
 
   private creatorForm: FormGroup;
   private edit: boolean = false;
@@ -23,7 +23,7 @@ export class NationalityCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<NationalityCodeCreatorDialog>,
+              private dialog: MdDialogRef<NationalityCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {

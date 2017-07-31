@@ -94,7 +94,10 @@ public class ApplicationTransformer {
 		vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
 		vo.setStudyModeSelection(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));
 		vo.setSupervisorSelection(policyTransformer.toSupervisorOfferingVo(e.getSupervisorSelection()));
-		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+		// vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+	    commonTransformer.decorateMeta(e,vo);
+
+
 		return vo;
 	}
 
@@ -132,6 +135,7 @@ public class ApplicationTransformer {
 		vo.setOfficialPostcode(e.getOfficialPostcode());
 		vo.setOfficialStateCode(commonTransformer.toStateCodeVo(e.getOfficialStateCode()));
 		vo.setOfficialCountryCode(commonTransformer.toCountryCodeVo(e.getOfficialCountryCode()));
+		commonTransformer.decorateMeta(e,vo);
 		return vo;
 	}
 

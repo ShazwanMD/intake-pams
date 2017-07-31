@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.admission.service;
 
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.CohortCodePayload;
 import my.edu.umk.pams.connector.payload.ResidencyCodePayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.intake.IntakeConstants;
@@ -292,7 +293,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         payload.setFax(application.getFax());
         payload.setFacultyCode(facultyCode.getCode());
         payload.setProgramCode(programCode.getCode());
-
         // <program_code>-CHRT-<academic_session_code>
         String cohortCode = facultyCode.getCode()
                 + "-" + programCode.getProgramLevel().getCode()

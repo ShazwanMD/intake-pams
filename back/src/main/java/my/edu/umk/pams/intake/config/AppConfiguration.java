@@ -52,8 +52,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         SwaggerConfig.class,
         ReportConfig.class,
         EmailConfig.class,
-        IntegrationConfig.class,
-        JmsConfig.class,
+        //IntegrationConfig.class,
+       // JmsConfig.class,
 //        VelocityConfig.class,
 //        ThreadingConfig.class,
 })
