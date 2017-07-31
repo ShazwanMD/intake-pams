@@ -35,7 +35,7 @@ import {SupervisorCodeEditorDialog} from './supervisor-codes/dialog/supervisor-c
 import {StudyMode} from '../../shared/model/common/study-mode.interface';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
 import {StudyModeCreatorDialog} from './study-modes/dialog/study-mode-creator.dialog';
-import {FacultyCodeCreatorDialog} from './faculty-codes/dialog/faculty-code-creator.dialog';
+import {FacultyCodeEditorDialog} from './faculty-codes/dialog/faculty-code-editor.dialog';
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
 import {NationalityCodeEditorDialog} from './nationality-codes/dialog/nationality-code-editor.dialog';
 import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
@@ -268,7 +268,7 @@ export const setupModuleReducers = {
     GenderCodeCreatorDialog,
     EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
-    FacultyCodeCreatorDialog,
+    FacultyCodeEditorDialog,
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,
@@ -308,7 +308,7 @@ export const setupModuleReducers = {
     GenderCodeCreatorDialog,
     EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
-    FacultyCodeCreatorDialog,
+    FacultyCodeEditorDialog,
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,

@@ -10,10 +10,10 @@ import {FacultyCode} from '../../../../shared/model/common/faculty-code.interfac
 
 @Component({
   selector: 'pams-faculty-code-creator',
-  templateUrl: './faculty-code-creator.dialog.html',
+  templateUrl: './faculty-code-editor.dialog.html',
 })
 
-export class FacultyCodeCreatorDialog implements OnInit {
+export class FacultyCodeEditorDialog implements OnInit {
 
   private creatorForm: FormGroup;
   private edit: boolean = false;
@@ -23,7 +23,7 @@ export class FacultyCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<FacultyCodeCreatorDialog>,
+              private dialog: MdDialogRef<FacultyCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {
