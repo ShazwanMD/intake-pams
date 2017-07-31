@@ -48,11 +48,12 @@ export class CpsIntakeApplicationPanel implements OnInit {
               private actions: IntakeApplicationActions,
               private store: Store<ApplicationModuleState>) {
 
+    this.attachments$ = this.store.select(...this.ATTACHMENTS);
+
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.results$ = this.store.select(...this.RESULTS);
-    this.attachments$ = this.store.select(...this.ATTACHMENTS);
   }
 
   get intakeApplication(): IntakeApplication {

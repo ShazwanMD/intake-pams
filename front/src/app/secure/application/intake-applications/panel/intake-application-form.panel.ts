@@ -31,9 +31,14 @@ export class IntakeApplicationFormPanel implements OnInit {
   }
 
   ngOnInit(): void {
-    let componentFactory: ComponentFactory<any>;
+    let componentFactory;
 
-    this.intakeApplicationObservable.take(1).subscribe((intakeApplication: IntakeApplication) => {
+    this.intakeApplicationObservable.subscribe((intakeApplication: IntakeApplication) => {
+
+      if (this.componentRef) {
+        this.componentRef.destroy();
+      }
+
       if (intakeApplication && intakeApplication.intake) {
         console.log('graduate center: ' + intakeApplication.intake.graduateCenter.code);
         if (intakeApplication.intake.graduateCenter.code === 'CPS') {
@@ -56,7 +61,9 @@ export class IntakeApplicationFormPanel implements OnInit {
     });
   }
 
-  // ngDestroy(){
-  //
-  // }
+  ngOnDestroy() {
+    if (this.componentRef) {
+      this.componentRef.destroy();
+    }
+  }
 }
