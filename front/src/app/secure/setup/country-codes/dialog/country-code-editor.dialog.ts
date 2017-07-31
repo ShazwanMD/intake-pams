@@ -10,10 +10,10 @@ import {CountryCode} from '../../../../shared/model/common/country-code.interfac
 
 @Component({
   selector: 'pams-country-code-creator',
-  templateUrl: './country-code-creator.dialog.html',
+  templateUrl: './country-code-editor.dialog.html',
 })
 
-export class CountryCodeCreatorDialog implements OnInit {
+export class CountryCodeEditorDialog implements OnInit {
 
   private createForm: FormGroup;
   private edit: boolean = false;
@@ -23,7 +23,7 @@ export class CountryCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<CountryCodeCreatorDialog>,
+              private dialog: MdDialogRef<CountryCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {
