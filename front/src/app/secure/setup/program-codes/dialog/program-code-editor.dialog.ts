@@ -26,7 +26,7 @@ export class ProgramCodeEditorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<ProgramCodeCreatorDialog>,
+              private dialog: MdDialogRef<ProgramCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar, ) {

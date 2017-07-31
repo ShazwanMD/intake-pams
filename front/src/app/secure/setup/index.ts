@@ -47,7 +47,7 @@ import {RaceCodeCreatorDialog} from './race-codes/dialog/race-code-creator.dialo
 import {RaceCodeListPage} from './race-codes/race-code-list.page';
 import {SupervisorCodeListPage} from './supervisor-codes/supervisor-code-list.page';
 import {ReligionCodeCreatorDialog} from './religion-codes/dialog/religion-code-creator.dialog';
-import {ProgramCodeCreatorDialog} from './program-codes/dialog/program-code-editor.dialog';
+import {ProgramCodeEditorDialog} from './program-codes/dialog/program-code-editor.dialog';
 import {ProgramCodeListPage} from './program-codes/program-code-list.page';
 import {StateCodeListPage} from './state-codes/state-code-list.page';
 import {CountryCodeEditorDialog} from './country-codes/dialog/country-code-editor.dialog';
@@ -261,7 +261,7 @@ export const setupModuleReducers = {
     GraduateCenterEditorDialog,
     CountryCodeEditorDialog,
     StateCodeEditorDialog,
-    ProgramCodeCreatorDialog,
+    ProgramCodeEditorDialog,
     ReligionCodeCreatorDialog,
     SupervisorCodeEditorDialog,
     RaceCodeCreatorDialog,
@@ -303,7 +303,7 @@ export const setupModuleReducers = {
     ReligionCodeCreatorDialog,
     CountryCodeEditorDialog,
     StateCodeEditorDialog,
-    ProgramCodeCreatorDialog,
+    ProgramCodeEditorDialog,
     SupervisorCodeEditorDialog,
     GenderCodeEditorDialog,
     EthnicityCodeEditorDialog,
