@@ -69,7 +69,7 @@ export class ApplicationService {
 
   applyIntake(intake: Intake): Observable<String> {
     return this._http.post(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/apply', JSON.stringify(intake))
-      .flatMap((res: Response) => Observable.of(res.text()))
+      .map((res: Response) => Observable.of(res.text()))
       .catch(this.handleError);
   }
 
