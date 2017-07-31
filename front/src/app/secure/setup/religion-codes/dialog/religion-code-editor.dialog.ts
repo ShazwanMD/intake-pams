@@ -6,51 +6,51 @@ import {Store} from '@ngrx/store';
 import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {SetupModuleState} from '../../index';
 import {SetupActions} from '../../setup.action';
-import {GraduateCenter} from '../../../../shared/model/common/graduate-center.interface';
+import {ReligionCode} from '../../../../shared/model/common/religion-code.interface';
 
 @Component({
-  selector: 'pams-graduate-center-editor',
-  templateUrl: './graduate-center-editor.dialog.html',
+  selector: 'pams-religion-code-editor',
+  templateUrl: './religion-code-editor.dialog.html',
 })
 
-export class GraduateCenterEditorDialog implements OnInit {
+export class ReligionCodeEditorDialog implements OnInit {
 
-  private createForm: FormGroup;
+  private creatorForm: FormGroup;
   private edit: boolean = false;
-  private _graduateCenter: GraduateCenter;
+  private _religionCode: ReligionCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<GraduateCenterEditorDialog>,
+              private dialog: MdDialogRef<ReligionCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {
   }
 
-  set graduateCenter(value: GraduateCenter) {
-    this._graduateCenter = value;
+set religionCode(value: ReligionCode) {
+    this._religionCode = value;
     this.edit = true;
   }
 
   ngOnInit(): void {
 
-    this.createForm = this.formBuilder.group(<GraduateCenter>{
+    this.creatorForm = this.formBuilder.group(<ReligionCode>{
       id: null,
       code: '',
       descriptionMs: '',
       descriptionEn: '',
     });
 
-    if (this.edit) this.createForm.patchValue(this._graduateCenter);
-  }
+    if (this.edit) this.creatorForm.patchValue(this._religionCode);
+}
 
-  save(code: GraduateCenter, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Update graduate center?', 'Ok');
+   submit(code: ReligionCode, isValid: boolean) {
+    let snackBarRef = this.snackBar.open('Confirm to update religion code?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
-    if (!code.id) this.store.dispatch(this.actions.saveGraduateCenter(code));
-    else  this.store.dispatch(this.actions.updateGraduateCenter(code));
+    if (!code.id) this.store.dispatch(this.actions.saveReligionCode(code));
+    else  this.store.dispatch(this.actions.updateReligionCode(code));
     this.dialog.close();
     });
   }
