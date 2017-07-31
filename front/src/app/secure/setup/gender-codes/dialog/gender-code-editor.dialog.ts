@@ -10,10 +10,10 @@ import {GenderCode} from '../../../../shared/model/common/gender-code.interface'
 
 @Component({
   selector: 'pams-gender-code-creator',
-  templateUrl: './gender-code-creator.dialog.html',
+  templateUrl: './gender-code-editor.dialog.html',
 })
 
-export class GenderCodeCreatorDialog implements OnInit {
+export class GenderCodeEditorDialog implements OnInit {
 
   private createForm: FormGroup;
   private edit: boolean = false;
@@ -24,7 +24,7 @@ export class GenderCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<GenderCodeCreatorDialog>,
+              private dialog: MdDialogRef<GenderCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {
