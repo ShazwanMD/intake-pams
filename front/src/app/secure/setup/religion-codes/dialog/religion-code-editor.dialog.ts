@@ -9,11 +9,11 @@ import {SetupActions} from '../../setup.action';
 import {ReligionCode} from '../../../../shared/model/common/religion-code.interface';
 
 @Component({
-  selector: 'pams-religion-code-creator',
-  templateUrl: './religion-code-creator.dialog.html',
+  selector: 'pams-religion-code-editor',
+  templateUrl: './religion-code-editor.dialog.html',
 })
 
-export class ReligionCodeCreatorDialog implements OnInit {
+export class ReligionCodeEditorDialog implements OnInit {
 
   private creatorForm: FormGroup;
   private edit: boolean = false;
@@ -23,7 +23,7 @@ export class ReligionCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<ReligionCodeCreatorDialog>,
+              private dialog: MdDialogRef<ReligionCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {

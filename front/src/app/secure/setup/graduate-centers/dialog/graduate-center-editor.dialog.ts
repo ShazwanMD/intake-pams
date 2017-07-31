@@ -9,7 +9,7 @@ import {SetupActions} from '../../setup.action';
 import {GraduateCenter} from '../../../../shared/model/common/graduate-center.interface';
 
 @Component({
-  selector: 'pams-graduate-center-creator',
+  selector: 'pams-graduate-center-editor',
   templateUrl: './graduate-center-editor.dialog.html',
 })
 
