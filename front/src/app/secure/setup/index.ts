@@ -37,7 +37,7 @@ import {StudyModeListPage} from './study-modes/study-mode-list.page';
 import {StudyModeCreatorDialog} from './study-modes/dialog/study-mode-creator.dialog';
 import {FacultyCodeCreatorDialog} from './faculty-codes/dialog/faculty-code-creator.dialog';
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
-import {NationalityCodeCreatorDialog} from './nationality-codes/dialog/nationality-code-creator.dialog';
+import {NationalityCodeEditorDialog} from './nationality-codes/dialog/nationality-code-editor.dialog';
 import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
 import {EthnicityCodeCreatorDialog} from './ethnicity-codes/dialog/ethnicity-code-creator.dialog';
 import {EthnicityCodeListPage} from './ethnicity-codes/ethnicity-code-list.page';
@@ -50,7 +50,7 @@ import {ReligionCodeCreatorDialog} from './religion-codes/dialog/religion-code-c
 import {ProgramCodeCreatorDialog} from './program-codes/dialog/program-code-creator.dialog';
 import {ProgramCodeListPage} from './program-codes/program-code-list.page';
 import {StateCodeListPage} from './state-codes/state-code-list.page';
-import {CountryCodeCreatorDialog} from './country-codes/dialog/country-code-creator.dialog';
+import {CountryCodeEditorDialog} from './country-codes/dialog/country-code-editor.dialog';
 import {CountryCodeListPage} from './country-codes/country-code-list.page';
 import {MaritalCodeListPage} from './marital-codes/marital-code-list-page';
 import {SetupPage} from './setup.page';
@@ -259,7 +259,7 @@ export const setupModuleReducers = {
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
     GraduateCenterCreatorDialog,
-    CountryCodeCreatorDialog,
+    CountryCodeEditorDialog,
     StateCodeEditorDialog,
     ProgramCodeCreatorDialog,
     ReligionCodeCreatorDialog,
@@ -267,7 +267,7 @@ export const setupModuleReducers = {
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
-    NationalityCodeCreatorDialog,
+    NationalityCodeEditorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
@@ -292,7 +292,7 @@ export const setupModuleReducers = {
 
   ],
   exports: [
-    
+
   ],
   entryComponents: [
     MaritalCodeEditorDialog,
@@ -301,13 +301,13 @@ export const setupModuleReducers = {
     BankCodeCreatorDialog,
     GraduateCenterCreatorDialog,
     ReligionCodeCreatorDialog,
-    CountryCodeCreatorDialog,
+    CountryCodeEditorDialog,
     StateCodeEditorDialog,
     ProgramCodeCreatorDialog,
     SupervisorCodeEditorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
-    NationalityCodeCreatorDialog,
+    NationalityCodeEditorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
