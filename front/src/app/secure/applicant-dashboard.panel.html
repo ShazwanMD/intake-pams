@@ -62,7 +62,7 @@
                   <div layout="row" layout-padding>
                     <p>{{application.bidStatus}}</p>
                     <span flex></span>
-                    <button *ngIf="application.bidStatus === 'DRAFTED'" [routerLink]="['/secure/applicant/application/intake-application-detail/',  application.referenceNo]"
+                    <button *ngIf="application.bidStatus === 'DRAFTED'" [routerLink]="['/application/intake-application-detail/',  application.referenceNo]"
                       md-button color="primary">Edit
                     </button>
                     <button *ngIf="application.bidStatus === 'SELECTED'" (click)="resultDialog(application)"

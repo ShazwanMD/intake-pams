@@ -1,3 +1,4 @@
+import { NotificationService } from './../../../../services/notification.service';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {from} from 'rxjs/observable/from';
@@ -23,6 +24,7 @@ export class IntakeApplicationEffects {
               private intakeApplicationActions: IntakeApplicationActions,
               private intakeActions: IntakeActions,
               private applicationService: ApplicationService,
+              private notificationService: NotificationService,
               private router: Router,
               private store$: Store<ApplicationModuleState>,
               private ctxActions: ApplicationContextActions) {
@@ -58,9 +60,9 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
     .map((action) => action.payload)
     .switchMap((intake) => this.applicationService.applyIntake(intake))
-    .map((intake) => this.intakeApplicationActions.applyIntakeSuccess(intake))
-  //   .catch((error) => this.ctxActions.setErrorMessage(error))
-  //  .do((referenceNo: string) => this.router.navigate(['/secure/intake-applications', referenceNo])).ignoreElements();
+    .map((referenceNo) => this.intakeApplicationActions.applyIntakeSuccess(referenceNo))
+    .catch((error) => this.notificationService.showError(error))
+    .do(action => this.router.navigate(['secure/application/intake-application-detail/', action.payload])).ignoreElements();
 
   // ====================================================================================================
   // PROGRAM_OFFERING
@@ -132,19 +134,22 @@ export class IntakeApplicationEffects {
     .ofType(IntakeApplicationActions.SELECT_INTAKE_APPLICATION)
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.selectIntakeApplication(application))
-    .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message));
+    .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message))
+      .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() verifyIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.VERIFY_INTAKE_APPLICATION)
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.verifyIntakeApplication(application))
-    .map((message) => this.intakeApplicationActions.verifyIntakeApplicationSuccess(message));
+    .map((message) => this.intakeApplicationActions.verifyIntakeApplicationSuccess(message))
+      .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() rejectIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.REJECT_INTAKE_APPLICATION)
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.rejectIntakeApplication(application))
-    .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message));
+    .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message))
+      .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() findSubmittedIntakeApplications$ = this.actions$
     .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS_BY_INTAKE)

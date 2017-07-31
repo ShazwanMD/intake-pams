@@ -14,7 +14,7 @@ import {SetupActions} from "../setup.action";
 import {SetupModuleState} from "../index";
 import {Observable} from "rxjs/Observable";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {FacultyCodeCreatorDialog} from './dialog/faculty-code-creator.dialog';
+import {FacultyCodeEditorDialog} from './dialog/faculty-code-editor.dialog';
 import {
   TdDataTableService,
   TdDataTableSortingOrder,
@@ -31,7 +31,7 @@ export class FacultyCodeListPage implements OnInit {
 
   private FACULTY_CODES = 'setupModuleState.facultyCodes'.split('.');
   private facultyCodes$: Observable<FacultyCode[]>;
-  private creatorDialogRef: MdDialogRef<FacultyCodeCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<FacultyCodeEditorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
@@ -112,7 +112,7 @@ export class FacultyCodeListPage implements OnInit {
     config.width = '70%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(FacultyCodeCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(FacultyCodeEditorDialog, config);
     if (code) this.creatorDialogRef.componentInstance.facultyCode = code; // set
     this.creatorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');

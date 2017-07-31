@@ -172,4 +172,6 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
 	List<InIntakeApplication> findStatusVerify(InIntake intake, InBidStatus bidStatus);
 
+	boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant);
+
 }

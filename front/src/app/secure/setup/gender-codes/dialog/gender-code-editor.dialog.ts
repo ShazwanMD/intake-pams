@@ -6,51 +6,51 @@ import {Store} from '@ngrx/store';
 import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {SetupModuleState} from '../../index';
 import {SetupActions} from '../../setup.action';
-import {GraduateCenter} from '../../../../shared/model/common/graduate-center.interface';
+import {GenderCode} from '../../../../shared/model/common/gender-code.interface';
 
 @Component({
-  selector: 'pams-graduate-center-creator',
-  templateUrl: './graduate-center-creator.dialog.html',
+  selector: 'pams-gender-code-creator',
+  templateUrl: './gender-code-editor.dialog.html',
 })
 
-export class GraduateCenterCreatorDialog implements OnInit {
+export class GenderCodeEditorDialog implements OnInit {
 
   private createForm: FormGroup;
   private edit: boolean = false;
-  private _graduateCenter: GraduateCenter;
+  private _genderCode: GenderCode;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<GraduateCenterCreatorDialog>,
+              private dialog: MdDialogRef<GenderCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {
   }
 
-  set graduateCenter(value: GraduateCenter) {
-    this._graduateCenter = value;
+  set genderCode(value: GenderCode) {
+    this._genderCode = value;
     this.edit = true;
   }
 
   ngOnInit(): void {
-
-    this.createForm = this.formBuilder.group(<GraduateCenter>{
+    this.createForm = this.formBuilder.group(<GenderCode>{
       id: null,
       code: '',
       descriptionMs: '',
       descriptionEn: '',
     });
 
-    if (this.edit) this.createForm.patchValue(this._graduateCenter);
+    if (this.edit) this.createForm.patchValue(this._genderCode);
   }
 
-  save(code: GraduateCenter, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Update graduate center?', 'Ok');
+  save(code: GenderCode, isValid: boolean) {
+    let snackBarRef = this.snackBar.open('Update race code?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
-    if (!code.id) this.store.dispatch(this.actions.saveGraduateCenter(code));
-    else  this.store.dispatch(this.actions.updateGraduateCenter(code));
+    if (!code.id) this.store.dispatch(this.actions.saveRaceCode(code));
+    else  this.store.dispatch(this.actions.updateRaceCode(code));
     this.dialog.close();
     });
   }

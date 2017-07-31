@@ -12,11 +12,11 @@ import {FacultyCode} from '../../../../shared/model/common/faculty-code.interfac
 import {GraduateCenter} from '../../../../shared/model/common/graduate-center.interface';
 
 @Component({
-  selector: 'pams-program-code-creator',
-  templateUrl: './program-code-creator.dialog.html',
+  selector: 'pams-program-code-editor',
+  templateUrl: './program-code-editor.dialog.html',
 })
 
-export class ProgramCodeCreatorDialog implements OnInit {
+export class ProgramCodeEditorDialog implements OnInit {
 
   private editorForm: FormGroup;
   private edit: boolean = false;
@@ -26,7 +26,7 @@ export class ProgramCodeCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<ProgramCodeCreatorDialog>,
+              private dialog: MdDialogRef<ProgramCodeEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar, ) {

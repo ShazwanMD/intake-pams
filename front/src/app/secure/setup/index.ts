@@ -35,19 +35,19 @@ import {SupervisorCodeEditorDialog} from './supervisor-codes/dialog/supervisor-c
 import {StudyMode} from '../../shared/model/common/study-mode.interface';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
 import {StudyModeCreatorDialog} from './study-modes/dialog/study-mode-creator.dialog';
-import {FacultyCodeCreatorDialog} from './faculty-codes/dialog/faculty-code-creator.dialog';
+import {FacultyCodeEditorDialog} from './faculty-codes/dialog/faculty-code-editor.dialog';
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
 import {NationalityCodeEditorDialog} from './nationality-codes/dialog/nationality-code-editor.dialog';
 import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
 import {EthnicityCodeEditorDialog} from './ethnicity-codes/dialog/ethnicity-code-editor.dialog';
 import {EthnicityCodeListPage} from './ethnicity-codes/ethnicity-code-list.page';
-import {GenderCodeCreatorDialog} from './gender-codes/dialog/gender-code-creator.dialog';
+import {GenderCodeEditorDialog} from './gender-codes/dialog/gender-code-editor.dialog';
 import {GenderCodeListPage} from './gender-codes/gender-code-list.page';
-import {RaceCodeCreatorDialog} from './race-codes/dialog/race-code-creator.dialog';
+import {RaceCodeEditorDialog} from './race-codes/dialog/race-code-editor.dialog';
 import {RaceCodeListPage} from './race-codes/race-code-list.page';
 import {SupervisorCodeListPage} from './supervisor-codes/supervisor-code-list.page';
 import {ReligionCodeCreatorDialog} from './religion-codes/dialog/religion-code-creator.dialog';
-import {ProgramCodeCreatorDialog} from './program-codes/dialog/program-code-creator.dialog';
+import {ProgramCodeEditorDialog} from './program-codes/dialog/program-code-editor.dialog';
 import {ProgramCodeListPage} from './program-codes/program-code-list.page';
 import {StateCodeListPage} from './state-codes/state-code-list.page';
 import {CountryCodeEditorDialog} from './country-codes/dialog/country-code-editor.dialog';
@@ -69,7 +69,7 @@ import {BankCodeListPage} from './bank-codes/bank-code-list.page';
 import {SetupActions} from './setup.action';
 import {graduateCenterListReducer, GraduateCenterListState} from './graduate-centers/graduate-center-list.reducer';
 import {GraduateCenterListPage} from './graduate-centers/graduate-center-list.page';
-import {GraduateCenterCreatorDialog} from './graduate-centers/dialog/graduate-center-creator.dialog';
+import {GraduateCenterEditorDialog} from './graduate-centers/dialog/graduate-center-editor.dialog';
 import {BankCodeCreatorDialog} from './bank-codes/dialog/bank-code-creator.dialog';
 import {countryCodeListReducer, CountryCodeListState} from './country-codes/country-code-list.reducer';
 import {stateCodeListReducer, StateCodeListState} from './state-codes/state-code-list.reducer';
@@ -258,17 +258,17 @@ export const setupModuleReducers = {
     VenueCodeEditorDialog,
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
-    GraduateCenterCreatorDialog,
+    GraduateCenterEditorDialog,
     CountryCodeEditorDialog,
     StateCodeEditorDialog,
-    ProgramCodeCreatorDialog,
+    ProgramCodeEditorDialog,
     ReligionCodeCreatorDialog,
     SupervisorCodeEditorDialog,
-    RaceCodeCreatorDialog,
-    GenderCodeCreatorDialog,
+    RaceCodeEditorDialog,
+    GenderCodeEditorDialog,
     EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
-    FacultyCodeCreatorDialog,
+    FacultyCodeEditorDialog,
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,
@@ -299,16 +299,16 @@ export const setupModuleReducers = {
     VenueCodeEditorDialog,
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
-    GraduateCenterCreatorDialog,
+    GraduateCenterEditorDialog,
     ReligionCodeCreatorDialog,
     CountryCodeEditorDialog,
     StateCodeEditorDialog,
-    ProgramCodeCreatorDialog,
+    ProgramCodeEditorDialog,
     SupervisorCodeEditorDialog,
-    GenderCodeCreatorDialog,
-  	EthnicityCodeEditorDialog,
+    GenderCodeEditorDialog,
+    EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
-    FacultyCodeCreatorDialog,
+    FacultyCodeEditorDialog,
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,
@@ -319,7 +319,7 @@ export const setupModuleReducers = {
     ResidencyCodeEditorDialog,
     SubjectCodeEditorDialog,
     GradeCodeEditorDialog,
-    RaceCodeCreatorDialog,
+    RaceCodeEditorDialog,
 
   ],
 })
