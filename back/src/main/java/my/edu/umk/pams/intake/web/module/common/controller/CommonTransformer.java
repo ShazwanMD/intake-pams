@@ -1,7 +1,11 @@
 package my.edu.umk.pams.intake.web.module.common.controller;
 
 import my.edu.umk.pams.intake.common.model.*;
+import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.web.module.common.vo.*;
+import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
+import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
+
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -478,6 +482,13 @@ public class CommonTransformer {
     public List<GradeCode> toGradeCodeVos(List<InGradeCode> e) {
         List<GradeCode> vos = e.stream().map((e1) -> toGradeCodeVo(e1)).collect(Collectors.toList());
         return vos;
+    }
+
+    public void decorateMeta(InMetaObject metaObject, MetaObject vo){
+        vo.setMetaState(MetaState.get(metaObject.getMetadata().getState().ordinal()));
+        vo.setCreatedDate(metaObject.getMetadata().getCreatedDate());
+        vo.setModifiedDate(metaObject.getMetadata().getModifiedDate());
+        vo.setDeletedDate(metaObject.getMetadata().getDeletedDate());
     }
 
 }
