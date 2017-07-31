@@ -12,7 +12,7 @@ import {FacultyCode} from '../../../../shared/model/common/faculty-code.interfac
 import {GraduateCenter} from '../../../../shared/model/common/graduate-center.interface';
 
 @Component({
-  selector: 'pams-program-code-creator',
+  selector: 'pams-program-code-editor',
   templateUrl: './program-code-editor.dialog.html',
 })
 
