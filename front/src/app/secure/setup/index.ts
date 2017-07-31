@@ -37,7 +37,7 @@ import {StudyModeListPage} from './study-modes/study-mode-list.page';
 import {StudyModeCreatorDialog} from './study-modes/dialog/study-mode-creator.dialog';
 import {FacultyCodeCreatorDialog} from './faculty-codes/dialog/faculty-code-creator.dialog';
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
-import {NationalityCodeCreatorDialog} from './nationality-codes/dialog/nationality-code-creator.dialog';
+import {NationalityCodeEditorDialog} from './nationality-codes/dialog/nationality-code-editor.dialog';
 import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
 import {EthnicityCodeCreatorDialog} from './ethnicity-codes/dialog/ethnicity-code-creator.dialog';
 import {EthnicityCodeListPage} from './ethnicity-codes/ethnicity-code-list.page';
@@ -267,7 +267,7 @@ export const setupModuleReducers = {
     RaceCodeCreatorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
-    NationalityCodeCreatorDialog,
+    NationalityCodeEditorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
@@ -292,7 +292,7 @@ export const setupModuleReducers = {
 
   ],
   exports: [
-    
+
   ],
   entryComponents: [
     MaritalCodeEditorDialog,
@@ -307,7 +307,7 @@ export const setupModuleReducers = {
     SupervisorCodeEditorDialog,
     GenderCodeCreatorDialog,
     EthnicityCodeCreatorDialog,
-    NationalityCodeCreatorDialog,
+    NationalityCodeEditorDialog,
     FacultyCodeCreatorDialog,
     StudyModeCreatorDialog,
     DisabilityCodeEditorDialog,
