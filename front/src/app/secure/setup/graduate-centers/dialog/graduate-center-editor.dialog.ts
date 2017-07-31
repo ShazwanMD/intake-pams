@@ -10,10 +10,10 @@ import {GraduateCenter} from '../../../../shared/model/common/graduate-center.in
 
 @Component({
   selector: 'pams-graduate-center-creator',
-  templateUrl: './graduate-center-creator.dialog.html',
+  templateUrl: './graduate-center-editor.dialog.html',
 })
 
-export class GraduateCenterCreatorDialog implements OnInit {
+export class GraduateCenterEditorDialog implements OnInit {
 
   private createForm: FormGroup;
   private edit: boolean = false;
@@ -23,7 +23,7 @@ export class GraduateCenterCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<GraduateCenterCreatorDialog>,
+              private dialog: MdDialogRef<GraduateCenterEditorDialog>,
               private store: Store<SetupModuleState>,
               private actions: SetupActions,
               private snackBar: MdSnackBar) {

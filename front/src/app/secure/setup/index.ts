@@ -69,7 +69,7 @@ import {BankCodeListPage} from './bank-codes/bank-code-list.page';
 import {SetupActions} from './setup.action';
 import {graduateCenterListReducer, GraduateCenterListState} from './graduate-centers/graduate-center-list.reducer';
 import {GraduateCenterListPage} from './graduate-centers/graduate-center-list.page';
-import {GraduateCenterCreatorDialog} from './graduate-centers/dialog/graduate-center-creator.dialog';
+import {GraduateCenterEditorDialog} from './graduate-centers/dialog/graduate-center-editor.dialog';
 import {BankCodeCreatorDialog} from './bank-codes/dialog/bank-code-creator.dialog';
 import {countryCodeListReducer, CountryCodeListState} from './country-codes/country-code-list.reducer';
 import {stateCodeListReducer, StateCodeListState} from './state-codes/state-code-list.reducer';
@@ -258,7 +258,7 @@ export const setupModuleReducers = {
     VenueCodeEditorDialog,
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
-    GraduateCenterCreatorDialog,
+    GraduateCenterEditorDialog,
     CountryCodeEditorDialog,
     StateCodeEditorDialog,
     ProgramCodeCreatorDialog,
@@ -299,7 +299,7 @@ export const setupModuleReducers = {
     VenueCodeEditorDialog,
     LanguageCodeEditorDialog,
     BankCodeCreatorDialog,
-    GraduateCenterCreatorDialog,
+    GraduateCenterEditorDialog,
     ReligionCodeCreatorDialog,
     CountryCodeEditorDialog,
     StateCodeEditorDialog,
