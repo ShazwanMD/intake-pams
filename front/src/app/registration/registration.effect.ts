@@ -1,20 +1,27 @@
+import { Routes, Router } from '@angular/router';
 import {Injectable} from "@angular/core";
 import {Effect, Actions} from '@ngrx/effects';
 import {RegistrationService} from "../../services/registration.service";
 import {RegistrationActions} from "./registration.action";
+import { NotificationService } from "../../services/notification.service";
 
 @Injectable()
 export class RegistrationEffects {
   constructor(private actions$: Actions,
               private registrationActions: RegistrationActions,
-              private registrationService: RegistrationService) {
+              private registrationService: RegistrationService,
+              private router : Router,
+              private notificationService: NotificationService,
+            ) {
   }
 
   @Effect() registerUser$ = this.actions$
     .ofType(RegistrationActions.REGISTER_USER)
     .map(action => action.payload)
     .switchMap(registration => this.registrationService.registerUser(registration))
-    .map(message => this.registrationActions.registerUserSuccess(message));
+    .map(message => this.registrationActions.registerUserSuccess(message))
+    .catch((error) => this.notificationService.showError(error))
+    .do(action => this.router.navigate(['/registration', action.payload])).ignoreElements();
 
   @Effect() verifyUser$ = this.actions$
     .ofType(RegistrationActions.VERIFY_USER)
