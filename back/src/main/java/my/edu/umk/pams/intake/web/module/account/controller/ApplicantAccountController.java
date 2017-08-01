@@ -205,12 +205,37 @@ public class ApplicantAccountController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 	
+//	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
+//	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
+//
+//    InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress(currentAddress);
+//    identityService.changeAddress(intakeApplication, vo.getNewAddress());
+//	      
+//		return new ResponseEntity<String>("Success", HttpStatus.OK);
+//	}
+//	
+	
+//	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
+//	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
+//		InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress(securityService.getCurrentUser().getUsername());
+//        if (null == intakeApplication)
+//            throw new IllegalArgumentException("intake Application does not exists");
+//        if(intakeApplication.getOfficialAddress1().equals(vo.getNewAddress()))
+//            throw new IllegalArgumentException("Please use a different intake Application");
+//        LOG.debug("changing user address");
+//        intakeApplication.setOfficialAddress1(vo.getNewAddress());
+//        identityService.changeAddress(intakeApplication, vo.getNewAddress());
+//
+//        return new ResponseEntity<String>("Success", HttpStatus.OK);
+//    }
+	
 	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
 	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
 
-    InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress(currentAddress);
-    identityService.changeAddress(intakeApplication, vo.getNewAddress());
+		InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress(currentAddress);
+	    identityService.changeAddress(intakeApplication, vo.getNewAddress());
 	      
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
 }

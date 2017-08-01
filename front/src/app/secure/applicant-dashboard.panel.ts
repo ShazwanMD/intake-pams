@@ -84,7 +84,8 @@ export class ApplicantDashboardPanel implements OnInit {
     this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
     this.editorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
-      this.store.dispatch(this.actions.findSubmittedIntakeApplications());
+    this.store.dispatch(this.actions.findIntakeApplications());
+      
       // load something here
     });
 

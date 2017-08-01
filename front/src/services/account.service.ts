@@ -91,9 +91,8 @@ export class AccountService {
   }
 
   changeApplicantAddress(change: AddressChange): Observable<String> {
-    console.log('AddressChange: ', change);
-    return this._http.post(this.ACCOUNT_API + '/addressChange/' + change.currentAddress, JSON.stringify(change))
-      .map((res: Response) => <String>res.text());
+   return this._http.post(this.ACCOUNT_API + '/addressChange/' + change.currentAddress, JSON.stringify(change))
+      .flatMap((res: Response) => Observable.of(res.text()))
   }
 
   // ====================================================================================================

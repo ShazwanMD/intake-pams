@@ -38,9 +38,7 @@ export class AddressChangerDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('officialAddress1'+this._intakeApplication.officialAddress1);
     this.store.dispatch(this.actions.findSubmittedIntakeApplications());
-
     this.changeAddressForm = this.formBuilder.group({    
       currentAddress: [this._intakeApplication.officialAddress1, Validators.compose([Validators.required])],
       newAddress: ['', Validators.required],
@@ -55,7 +53,12 @@ export class AddressChangerDialog implements OnInit {
   }
 
   submit(change: AddressChange, valid: boolean) {
+    console.log('submit address change: ', change);
     this.store.dispatch(this.actions.changeApplicantAddress(change));
     this.dialog.close();
+  
   }
 }
+
+ 
+

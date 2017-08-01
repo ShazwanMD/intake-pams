@@ -661,33 +661,16 @@ public class IdentityServiceImpl implements IdentityService {
         systemService.saveEmailQueue(email);
         logoutAsSystem(sc);
     }
-    
+  
     @Override
     public void changeAddress(InIntakeApplication intakeApplication, String newAddress) {
-    	SecurityContext sc = loginAsSystem();
-        InUser user = identityService.findUserByUsername(securityService.getCurrentUser().getUsername());
-        if (null == user)
-            throw new IllegalArgumentException("User does not exists");
-//        if(user.getPassword().equals(vo.getNewPassword()))
-//            throw new IllegalArgumentException("Please use a different password");
-    	
-    	intakeApplication.setMailingAddress1(newAddress);
-    	intakeApplicationDao.update(intakeApplication, user);
+        SecurityContext sc = loginAsSystem();
+        intakeApplication.setOfficialAddress1(newAddress);
+        intakeApplicationDao.update(intakeApplication, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-             
-        //generate token
-        String token = registrationService.generateToken();
-        InUserVerification verification = new InUserVerificationImpl();
-       // verification.setExpiryDate(calculateExpiryDate(ONE_WEEK));
-        verification.setToken(token);
-        //verification.setUser(user);
-        
-    	if (intakeApplication == null) LOG.debug("Intake Application is null");
-    	if (intakeApplication.getMailingAddress1() == null) LOG.debug("Address is null");
-    	
-    	
         logoutAsSystem(sc);
     }
+    
 
     //====================================================================================================
     // PRIVATE METHODS
