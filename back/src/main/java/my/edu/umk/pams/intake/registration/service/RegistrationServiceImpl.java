@@ -69,7 +69,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void registerUser(InUser user, InApplicant applicant) {
-        SecurityContext sc = loginAsSystem();
+        SecurityContext sc = loginAsSystem();      
 
         user.setEnabled(false);
         user.setLocked(true);
