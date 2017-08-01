@@ -23,7 +23,6 @@
           <!--<pams-intake-application [intakeApplication]="intakeApplication$ | async">
           </pams-intake-application> -->
 
-
           <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
             <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not filled and submitted an address in your intake application</span>
             </div>
@@ -31,7 +30,7 @@
               <div flex-md="50" flex-gt-md="33" layout="column">
                 <div layout="row" layout-padding>
                   <div class="md-padding" *ngIf="application.bidStatus === 'SUBMITTED'">
-                    <a md-list-item (click)="showDialog()">
+                    <a md-list-item (click)="showDialog(application)">
                       <md-icon md-list-avatar>home</md-icon>
                       <h3 md-line>Official Address : {{application.officialAddress1}}</h3>
                     </a>
