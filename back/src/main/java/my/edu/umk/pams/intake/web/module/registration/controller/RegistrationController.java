@@ -37,6 +37,7 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     public ResponseEntity<String> registerUser(@RequestBody UserRegistration registration) {
+    		
         InUser user = new InUserImpl();
         user.setUsername(registration.getEmail());
         user.setEmail(registration.getEmail());
@@ -44,12 +45,15 @@ public class RegistrationController {
         user.setPassword(registration.getPassword());
         user.setEnabled(false);
         user.setLocked(true);
+        
+        if(identityService.isUserExists(user.getUsername())){
+   		 throw new IllegalArgumentException ("You have already register");}
 
         InApplicant applicant = new InApplicantImpl();
         applicant.setIdentityNo(registration.getIdentityNo());
         applicant.setName(registration.getName());
         applicant.setEmail(registration.getEmail());
-
+        
         registrationService.registerUser(user, applicant);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
