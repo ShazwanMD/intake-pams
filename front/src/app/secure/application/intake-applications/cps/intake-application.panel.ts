@@ -1,3 +1,4 @@
+import { Attachment } from './../../../../shared/model/application/attachment.interface';
 import {Result} from '../../../../shared/model/application/result.interface';
 import {ReligionCode} from '../../../../shared/model/common/religion-code.interface';
 import {MaritalCode} from '../../../../shared/model/common/marital-code.interface';
@@ -37,7 +38,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private results$: Observable<Result>;
-  private attachments$: Observable<Referee>;
+  private attachments$: Observable<Attachment>;
   private applicationForm: FormGroup;
   private _intakeApplication: IntakeApplication;
 

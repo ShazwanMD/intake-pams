@@ -1,3 +1,4 @@
+import { Attachment } from './../../../../shared/model/application/attachment.interface';
 import {Result} from '../../../../shared/model/application/result.interface';
 import {RaceCode} from '../../../../shared/model/common/race-code.interface';
 import {GenderCode} from '../../../../shared/model/common/gender-code.interface';
@@ -30,49 +31,44 @@ export class MgsebIntakeApplicationPanel implements OnInit {
 
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
-  private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
   private RESULTS: string[] = 'applicationModuleState.results'.split('.');
+  private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
 
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private results$: Observable<Result>;
-  private attachments$: Observable<Referee>;
+  private attachments$: Observable<Attachment>;
   private applicationForm: FormGroup;
-  private _intakeApplication: Observable<IntakeApplication>;
+  private _intakeApplication: IntakeApplication;
 
-  private dialog: any;
 
-  constructor(private router: Router,
+
+ constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
-              private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>) {
+
+    this.attachments$ = this.store.select(...this.ATTACHMENTS);
+
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.results$ = this.store.select(...this.RESULTS);
-    this.attachments$ = this.store.select(...this.ATTACHMENTS);
   }
 
-  get intakeApplication(): Observable<IntakeApplication> {
+  get intakeApplication(): IntakeApplication {
     return this._intakeApplication;
   }
 
-  set intakeApplication(value: Observable<IntakeApplication>) {
+  set intakeApplication(value: IntakeApplication) {
     this._intakeApplication = value;
   }
 
   ngOnInit(): void {
-
-    this.route.params.subscribe((params: { referenceNo: string }) => {
-      let referenceNo: string = params.referenceNo;
-      this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
-    });
-
     this.applicationForm = this.formBuilder.group({
       id: [undefined],
       referenceNo: [''],
@@ -141,7 +137,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
 
   onTabChange(): void {
     console.log('tab change');
-   // this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  //  this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
   submit(application: IntakeApplication, isValid: boolean) {
