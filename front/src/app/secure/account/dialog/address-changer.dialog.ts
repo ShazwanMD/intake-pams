@@ -1,3 +1,4 @@
+import { intakeApplicationRoutes } from './../../application/intake-applications/intake-application.routes';
 import { AddressChange } from './../../../shared/model/identity/address-change.interface';
 import { IntakeApplication } from './../../../shared/model/application/intake-application.interface';
 import {AuthenticatedUser} from '../../../shared/model/identity/authenticated-user.interface';
@@ -21,7 +22,7 @@ export class AddressChangerDialog implements OnInit {
   private changeAddressForm: FormGroup;
   private _intakeApplication: IntakeApplication;
   private authenticatedUser: AuthenticatedUser;
-  
+  private edit : boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               private dialog: MdDialogRef<AddressChangerDialog>,
@@ -31,16 +32,21 @@ export class AddressChangerDialog implements OnInit {
               private actions: AccountActions) {
   }
 
-  set intakeApplication(value: IntakeApplication) {
-    this._intakeApplication = value;
+  set intakeApplication(intakeApplication : IntakeApplication) {
+    this._intakeApplication = intakeApplication;
+    this.edit = true;
   }
 
   ngOnInit(): void {
-    this.changeAddressForm = this.formBuilder.group({
-      currentAddress: ['', Validators.required],
+    console.log('officialAddress1'+this._intakeApplication.officialAddress1);
+    this.store.dispatch(this.actions.findSubmittedIntakeApplications());
+
+    this.changeAddressForm = this.formBuilder.group({    
+      currentAddress: [this._intakeApplication.officialAddress1, Validators.compose([Validators.required])],
       newAddress: ['', Validators.required],
-      newAddressAgain: ['', Validators.required],
+     
     });
+    if(this.edit)this.changeAddressForm.patchValue(this._intakeApplication);
   }
 
   logout(): void {

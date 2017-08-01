@@ -32,7 +32,6 @@ export class ApplicantDashboardPanel implements OnInit {
   private applicant$: Observable<Applicant>;
   private user$: Observable<User>;
 
-
   constructor(private router: Router,
               private route: ActivatedRoute,
               private vcf: ViewContainerRef,
@@ -82,10 +81,10 @@ export class ApplicantDashboardPanel implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(AddressChangerDialog, config);
-    if(intakeApplication) this.editorDialogRef.componentInstance.intakeApplication = intakeApplication; // set
-    // this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
     this.editorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
+      this.store.dispatch(this.actions.findSubmittedIntakeApplications());
       // load something here
     });
 
