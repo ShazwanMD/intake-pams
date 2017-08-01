@@ -7,7 +7,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {CovalentCoreModule} from '@covalent/core';
 
 import {CommonService} from '../../services';
-import {IdentityService} from '../../services';
+import { IdentityService, NotificationService } from '../../services';
 
 import {RegistrationPage} from "./registration.page";
 import {RegistrationService} from "../../services/registration.service";
@@ -59,6 +59,7 @@ export class RegistrationModule {
         CommonService,
         RegistrationService,
         RegistrationActions,
+        NotificationService,
       ],
     };
   }
