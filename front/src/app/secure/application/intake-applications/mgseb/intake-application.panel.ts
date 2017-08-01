@@ -141,7 +141,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
 
   onTabChange(): void {
     console.log('tab change');
-    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+   // this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
   submit(application: IntakeApplication, isValid: boolean) {

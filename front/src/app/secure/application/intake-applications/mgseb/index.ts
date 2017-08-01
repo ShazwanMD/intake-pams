@@ -42,6 +42,7 @@ import {StudyCenterChoiceComponent} from '../component/study-center-choice.compo
   ],
   exports: [
     StudyCenterChoiceComponent,
+    MgsebIntakeApplicationPanel,
 
   ],
   entryComponents: [
@@ -49,6 +50,7 @@ import {StudyCenterChoiceComponent} from '../component/study-center-choice.compo
     ProgramOfferingSelectComponent,
     StudyModeOfferingSelectorDialog,
     SupervisorOfferingSelectorDialog,
+    MgsebIntakeApplicationPanel,
   ],
 })
 export class MgsebIntakeApplicationSubModule {

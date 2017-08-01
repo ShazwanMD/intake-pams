@@ -89,7 +89,7 @@ public class IntakeCreatorTest {
 	public void testDraftWorkflow() throws Exception {
 		InProgramLevel level = policyService.findProgramLevelByCode("MASTER");
 		InIntakeSession session = policyService.findIntakeSessionByCode("201720181");
-		InGraduateCenter center = commonService.findGraduateCenterByCode("CPS");
+		InGraduateCenter center = commonService.findGraduateCenterByCode("MGSEB");
 
 		// start a new intake
 		InIntake intake = new InIntakeImpl();
