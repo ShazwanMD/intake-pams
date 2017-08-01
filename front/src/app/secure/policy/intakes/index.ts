@@ -1,3 +1,4 @@
+import { MgsebIntakeApplicationSubModule } from './../../application/intake-applications/mgseb/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -56,6 +57,7 @@ import {ApplicantProfileVerifyDialog} from './dialog/applicant-profile-verify.di
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
     CpsIntakeApplicationSubModule,
+    MgsebIntakeApplicationSubModule,
     IntakeSessionSubModule.forRoot(),
     ProgramLevelSubModule.forRoot(),
     EffectsModule.run(IntakeEffects),
