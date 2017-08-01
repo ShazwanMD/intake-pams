@@ -15,7 +15,8 @@ export class RegistrationService {
 
   registerUser(registration: UserRegistration): Observable<String> {
     return this._http.post(this.REGISTRATION_API + '/registerUser', JSON.stringify(registration))
-      .flatMap((res: Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()))
+      .catch(this.handleError);
   }
 
   verifyUser(token: String): Observable<Boolean> {
@@ -27,5 +28,10 @@ export class RegistrationService {
     console.log('user email: ' + email);
     return this._http.get(this.REGISTRATION_API + '/forgetPassword/' + email)
       .map((res: Response) => <String>res.text());
+  }
+
+  private handleError(error: Response | any) {
+    let body: any = error.json();
+    return Observable.throw(body);
   }
 }
