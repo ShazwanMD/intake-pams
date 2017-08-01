@@ -21,7 +21,7 @@ export class RegistrationEffects {
     .switchMap(registration => this.registrationService.registerUser(registration))
     .map(message => this.registrationActions.registerUserSuccess(message))
     .catch((error) => this.notificationService.showError(error))
-    .do(action => this.router.navigate(['/registration', action.payload])).ignoreElements();
+    //.do(action => this.router.navigate(['/registration', action.payload])).ignoreElements();
 
   @Effect() verifyUser$ = this.actions$
     .ofType(RegistrationActions.VERIFY_USER)
@@ -33,5 +33,6 @@ export class RegistrationEffects {
     .ofType(RegistrationActions.FORGET_PASSWORD)
     .map(action => action.payload)
     .switchMap(email => this.registrationService.forgetPassword(email))
-    .map(message => this.registrationActions.forgetPasswordSuccess(message));  
+    .map(message => this.registrationActions.forgetPasswordSuccess(message))
+    .catch((error) => this.notificationService.showError(error));  
 }
