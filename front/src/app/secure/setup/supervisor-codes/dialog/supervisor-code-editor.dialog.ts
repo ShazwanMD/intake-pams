@@ -39,9 +39,8 @@ export class SupervisorCodeEditorDialog implements OnInit {
     this.editorForm = this.formBuilder.group(<SupervisorCode>{
       id: null,
       code: '',
-      name: '',
       descriptionEn: '',
-      descriptionMs: '',
+      name: '',
     });
 
     if (this.edit) this.editorForm.patchValue(this._supervisorCode);
