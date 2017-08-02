@@ -1,3 +1,4 @@
+import { SchoolCodesComponent } from './school-codes/component/school-code';
 import { ResidencyCodesComponent } from './residency-codes/component/residency-code';
 import { ReligionCodesComponent } from './religion-codes/component/religion-code';
 import { ProgramCodesComponent } from './program-codes/component/program-code';
@@ -294,6 +295,7 @@ export const setupModuleReducers = {
     RaceCodesComponent,
     ReligionCodesComponent,
     ResidencyCodesComponent,
+    SchoolCodesComponent,
 
 
   ],
