@@ -1,3 +1,4 @@
+import { StudyModesComponent } from './study-modes/component/study-mode';
 import { SubjectCodesComponent } from './subject-codes/component/subject-code';
 import { SupervisorCodesComponent } from './supervisor-codes/component/supervisor-code';
 import { VenueCodesComponent } from './venue-codes/component/venue-code';
@@ -303,6 +304,7 @@ export const setupModuleReducers = {
     SchoolCodesComponent,
     StateCodesComponent,
     StudyCenterCodesComponent,
+    StudyModesComponent,
     SubjectCodesComponent,
     SupervisorCodesComponent,
     VenueCodesComponent,
