@@ -1,3 +1,4 @@
+import { MaritalCodesComponent } from './marital-codes/component/marital-code';
 import { ParliamentCodesComponent } from './parliament-codes/component/parliament-code';
 import { StudyModesComponent } from './study-modes/component/study-mode';
 import { SubjectCodesComponent } from './subject-codes/component/subject-code';
@@ -297,6 +298,7 @@ export const setupModuleReducers = {
     EthnicityCodesComponent,
     FacultyCodesComponent,
     LanguageCodesComponent,
+    MaritalCodesComponent,
     NationalityCodesComponent,
     ParliamentCodesComponent,
     ProgramCodesComponent,
