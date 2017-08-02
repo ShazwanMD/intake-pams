@@ -1420,6 +1420,10 @@ export class SetupActions {
     };
   }
 
+//=================================================================================//
+//  STUDY CENTER CODES                                                                   //
+//=================================================================================//
+//1----------------------------------------------------------------------------
     static FIND_STUDY_CENTER_CODES = '[Setup] Find Study Center Codes';
 
   findStudyCenterCodes(): Action {
@@ -1428,7 +1432,7 @@ export class SetupActions {
       type: SetupActions.FIND_STUDY_CENTER_CODES,
     };
   }
-
+//2-----------------------------------------------------------------------------------
   static FIND_STUDY_CENTER_CODES_SUCCESS = '[Setup] Study Center Codes Success';
 
   findStudyCenterCodesSuccess(codes): Action {
@@ -1438,7 +1442,7 @@ export class SetupActions {
       payload: codes,
     };
   }
-
+//3---------------------------------------------------------------------------------------
   static SAVE_STUDY_CENTER_CODE = '[Setup] Save Study Center Code';
 
   saveStudyCenterCode(code): Action {
@@ -1448,7 +1452,7 @@ export class SetupActions {
       payload: code,
     };
   }
-
+//4----------------------------------------------------------------------------------------
  static SAVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Save Study Center Code Success';
 
   saveStudyCenterCodeSuccess(message): Action {
@@ -1458,8 +1462,8 @@ export class SetupActions {
       payload: message,
     };
   }
-
-static UPDATE_STUDY_CENTER_CODE = '[Setup] Update Study Center Code';
+//5------------------------------------------------------------------------------------------
+  static UPDATE_STUDY_CENTER_CODE = '[Setup] Update Study Center Code';
 
   updateStudyCenterCode(code): Action {
     console.log('updateStudyCenterCode');
@@ -1468,8 +1472,8 @@ static UPDATE_STUDY_CENTER_CODE = '[Setup] Update Study Center Code';
       payload: code,
     };
   }
-
-static UPDATE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Update Study Center Code Success';
+//6------------------------------------------------------------------------------------------------
+  static UPDATE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Update Study Center Code Success';
 
   updateStudyCenterCodeSuccess(message): Action {
     console.log('updateStudyCenterCodeSuccess');
@@ -1478,7 +1482,7 @@ static UPDATE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Update Study Center Code Succ
       payload: message,
     };
   }
-
+//7-----------------------------------------------------------------------------------------------
 static REMOVE_STUDY_CENTER_CODE = '[Setup] Remove Study Center Code';
 
   removeStudyCenterCode(code): Action {
@@ -1488,7 +1492,7 @@ static REMOVE_STUDY_CENTER_CODE = '[Setup] Remove Study Center Code';
       payload: code,
     };
   }
-
+//8-----------------------------------------------------------------------------------------
 static REMOVE_STUDY_CENTER_CODE_SUCCESS = '[Setup] Remove Study Center Code Success';
 
   removeStudyCenterCodeSuccess(message): Action {

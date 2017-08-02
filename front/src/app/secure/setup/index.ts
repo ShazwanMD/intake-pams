@@ -1,3 +1,4 @@
+import { StudyCenterCodesComponent } from './study-center-codes/component/study-center-code';
 import { StateCodesComponent } from './state-codes/component/state-code';
 import { SchoolCodesComponent } from './school-codes/component/school-code';
 import { ResidencyCodesComponent } from './residency-codes/component/residency-code';
@@ -298,7 +299,8 @@ export const setupModuleReducers = {
     ResidencyCodesComponent,
     SchoolCodesComponent,
     StateCodesComponent,
-
+    StudyCenterCodesComponent,
+    
 
   ],
   exports: [
