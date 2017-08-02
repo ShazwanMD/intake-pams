@@ -70,13 +70,19 @@ public class RegistrationController {
     	if (email == null) LOG.debug("Email is null");
 
     	InUser user=identityService.findUserByEmail(email);
+    	
     	if (user == null) LOG.debug("UserA is null");
     	LOG.debug("user check ",user);
 
     	LOG.debug("email",email);
     	LOG.debug("user",user);
+    	
+    	if((identityService.findUserByEmail(email)==null))
+    		throw new IllegalArgumentException ("Invalid email!");
+    	
         registrationService.forgetPassword(user);
-        LOG.debug("after forget");
+        LOG.debug("after forget");       
+        
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 }
