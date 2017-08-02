@@ -169,6 +169,18 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  updateGenderCode(code: GenderCode): Observable<String> {
+
+    return this._http.put(this.COMMON_API + '/genderCodes/' + code.code, JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeGenderCode(code: GenderCode): Observable<String> {
+    return this._http.delete(this.COMMON_API + '/genderCodes/' + code.code)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+
   // ====================================================================================================
   // MARITAL CODES
   // ====================================================================================================

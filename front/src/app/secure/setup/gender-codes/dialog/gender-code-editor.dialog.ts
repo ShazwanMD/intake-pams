@@ -49,8 +49,8 @@ export class GenderCodeEditorDialog implements OnInit {
   save(code: GenderCode, isValid: boolean) {
     let snackBarRef = this.snackBar.open('Update race code?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
-    if (!code.id) this.store.dispatch(this.actions.saveRaceCode(code));
-    else  this.store.dispatch(this.actions.updateRaceCode(code));
+    if (!code.id) this.store.dispatch(this.actions.saveGenderCode(code));
+    else  this.store.dispatch(this.actions.updateGenderCode(code));
     this.dialog.close();
     });
   }

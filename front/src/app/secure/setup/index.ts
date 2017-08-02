@@ -1,3 +1,4 @@
+import { GenderCodesComponent } from './gender-codes/component/gender-code';
 import { DistrictCodesComponent } from './district-codes/component/district-code';
 import { MaritalCodesComponent } from './marital-codes/component/marital-code';
 import { ParliamentCodesComponent } from './parliament-codes/component/parliament-code';
@@ -299,6 +300,7 @@ export const setupModuleReducers = {
     DunCodesComponent,
     EthnicityCodesComponent,
     FacultyCodesComponent,
+    GenderCodesComponent,
     LanguageCodesComponent,
     MaritalCodesComponent,
     NationalityCodesComponent,

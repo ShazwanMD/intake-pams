@@ -16,9 +16,9 @@ public class InGenderCodeImpl implements InGenderCode {
     private Long id;
 
     @NotNull
-    @Column(name = "CODE", unique = true, length = 1)
+    @Column(name = "CODE", unique = true, nullable = false)
     private String code;
-
+    
     @NotNull
     @Column(name = "DESCRIPTION_MS", nullable = false)
     private String descriptionMs;

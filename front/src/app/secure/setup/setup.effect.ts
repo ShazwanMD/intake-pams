@@ -317,6 +317,20 @@ export class SetupEffects {
     .map((message) => this.setupActions.saveGenderCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findGenderCodes()]));
 
+     @Effect() removeGenderCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_GENDER_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.removeGenderCode(payload))
+    .map((message) => this.setupActions.removeGenderCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findGenderCodes()]));
+
+  @Effect() updateGenderCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_GENDER_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.updateGenderCode(payload))
+    .map((message) => this.setupActions.updateGenderCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findGenderCodes()]));
+
   // ====================================================================================================
   // ETHNICITY CODE
   // ====================================================================================================
