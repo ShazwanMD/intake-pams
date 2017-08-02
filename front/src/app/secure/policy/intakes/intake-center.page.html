@@ -41,6 +41,11 @@
               [intakeTasks]="pooledIntakeTasks$ | async"
               (view)="view($event)"></pams-intake-task-list>
           </md-tab>
+          <md-tab label="Archived">
+            <pams-archived-intake-list
+              [intakes]="archivedIntakes$ | async"
+              (view)="view($event)"></pams-archived-intake-list>
+          </md-tab>
         </md-tab-group>
 
       <md-divider></md-divider>

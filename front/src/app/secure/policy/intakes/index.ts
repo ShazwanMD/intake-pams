@@ -48,6 +48,7 @@ import {IntakeApplicationSelectedListComponent} from './component/intake-applica
 import {IntakeApplicationRejectedListComponent} from './component/intake-application-rejected-list.component';
 import {IntakeApplicationVerifiedListComponent} from './component/intake-application-verified-list.component';
 import {ApplicantProfileVerifyDialog} from './dialog/applicant-profile-verify.dialog';
+import {ArchivedIntakeListComponent} from './component/archived-intake-list.component';
 
 @NgModule({
   imports: [
@@ -70,6 +71,7 @@ import {ApplicantProfileVerifyDialog} from './dialog/applicant-profile-verify.di
 
     // components
     IntakeTaskListComponent,
+    ArchivedIntakeListComponent,
     ProgramOfferingListComponent,
     SupervisorOfferingListComponent,
     StudyModeOfferingListComponent,

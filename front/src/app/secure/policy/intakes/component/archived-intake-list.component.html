@@ -1,0 +1,21 @@
+<td-data-table
+  [data]="intakes"
+  [columns]="columns"
+  [sortBy]="summary"
+  [sortOrder]="ASC"
+  [sortable]="false"
+  [multiple]="false"
+  [selectable]="false"
+  (rowSelect)="view.emit($event)" dense>
+  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <span flex>{{value}}</span>
+    </div>
+  </template>
+  <template tdDataTableTemplate="startDate" let-value="value" let-row="row" let-column="column">
+    <div layout="row">{{row['startDate'] | date :'longDate'}}</div>
+  </template>
+  <template tdDataTableTemplate="endDate" let-value="value" let-row="row" let-column="column">
+    <div layout="row">{{row['endDate'] | date :'longDate'}}</div>
+  </template>
+</td-data-table>

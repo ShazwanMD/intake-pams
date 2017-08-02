@@ -23,6 +23,12 @@ export class IntakeEffects {
               private store$: Store<PolicyModuleState>) {
   }
 
+  @Effect() findArchivedIntakes$ = this.actions$
+    .ofType(IntakeActions.FIND_ARCHIVED_INTAKES)
+    .switchMap(() => this.policyService.findArchivedIntakes())
+    .map((intakes) => this.intakeActions.findArchivedIntakesSuccess(intakes));
+
+
   @Effect() findAssignedIntakeTasks$ = this.actions$
     .ofType(IntakeActions.FIND_ASSIGNED_INTAKE_TASKS)
     .switchMap(() => this.policyService.findAssignedIntakeTasks())
@@ -131,6 +137,18 @@ export class IntakeEffects {
     .map((action) => action.payload)
     .switchMap((intakeTask) => this.policyService.completeIntakeTask(intakeTask))
     .map((message) => this.intakeActions.completeIntakeTaskSuccess(message))
+    .mergeMap((action) => from([action,
+        this.intakeActions.findAssignedIntakeTasks(),
+        this.intakeActions.findPooledIntakeTasks(),
+      ],
+    ));
+
+
+  @Effect() removeIntakeTask$ = this.actions$
+    .ofType(IntakeActions.REMOVE_INTAKE_TASK)
+    .map((action) => action.payload)
+    .switchMap((intakeTask) => this.policyService.removeIntakeTask(intakeTask))
+    .map((message) => this.intakeActions.removeIntakeTaskSuccess(message))
     .mergeMap((action) => from([action,
         this.intakeActions.findAssignedIntakeTasks(),
         this.intakeActions.findPooledIntakeTasks(),

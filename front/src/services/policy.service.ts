@@ -59,6 +59,12 @@ export class PolicyService {
   // INTAKE
   // ====================================================================================================
 
+  findArchivedIntakes(): Observable<Intake[]> {
+    console.log('findArchivedIntakes');
+    return this._http.get(this.POLICY_API + '/intakes/archived' )
+      .map((res: Response) => <Intake[]>res.json());
+  }
+
   findAssignedIntakeTasks(): Observable<IntakeTask[]> {
     console.log('findAssignedIntakeTasks');
     return this._http.get(this.POLICY_API + '/intakes/assignedTasks')
@@ -141,6 +147,11 @@ export class PolicyService {
 
   completeIntakeTask(intakeTask: IntakeTask): Observable<String> {
     return this._http.post(this.POLICY_API + '/intakes/completeTask', JSON.stringify(intakeTask))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeIntakeTask(intakeTask: IntakeTask): Observable<String> {
+    return this._http.post(this.POLICY_API + '/intakes/removeTask', JSON.stringify(intakeTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

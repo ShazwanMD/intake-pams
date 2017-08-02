@@ -113,6 +113,8 @@ public interface PolicyService {
 
     List<InIntake> findIntakesByFlowState(InFlowState flowState);
 
+    List<InIntake> findIntakesByFlowStates(InFlowState... flowStates);
+
     List<InIntake> findIntakes(InGraduateCenter graduateCenter);
 
     List<InIntake> findIntakes(InIntakeSession session);
@@ -168,4 +170,5 @@ public interface PolicyService {
     InStudyModeOffering findStudyModeOfferingByIntakeAndStudyMode(InIntake intake, InStudyMode studyMode);
 
     List<InStudyModeOffering> findStudyModeOfferings(InIntake intake);
+
 }

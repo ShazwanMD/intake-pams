@@ -98,11 +98,22 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
     }
 
     @Override
-    public List<InIntake> find(InFlowState flowState) {
+    public List<InIntake> findByFlowState(InFlowState flowState) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntake p where " +
                 "p.flowdata.state = :flowState ");
         query.setInteger("flowState", flowState.ordinal());
+        return (List<InIntake>) query.list();
+    }
+
+    @Override
+    public List<InIntake> findByFlowStates(InFlowState... flowStates) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InIntake p where " +
+                "p.metadata.state = :state " +
+                "and p.flowdata.state in (:flowStates) ");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        query.setParameterList("flowStates", flowStates);
         return (List<InIntake>) query.list();
     }
 

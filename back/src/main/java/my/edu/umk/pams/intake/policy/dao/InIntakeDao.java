@@ -34,7 +34,9 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
 
     InStudyModeOffering findModeOfferingByIntakeAndMode(InIntake intake, InStudyMode studyMode);
 
-    List<InIntake> find(InFlowState flowState);
+    List<InIntake> findByFlowState(InFlowState flowState);
+
+    List<InIntake> findByFlowStates(InFlowState... flowState);
 
     List<InIntake> find(InGraduateCenter graduateCenter);
 
@@ -82,7 +84,7 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
     void addProgramOffering(InIntake intake, InProgramOffering offering, InUser user);
 
     void deleteProgramOffering(InIntake intake, InProgramOffering offering, InUser user);
-    
+
     void updateProgramOfferings(InIntake intake, InProgramOffering offering, InUser user);
 
     void addSupervisorOffering(InIntake intake, InSupervisorOffering offering, InUser user);

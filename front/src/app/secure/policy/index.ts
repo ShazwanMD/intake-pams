@@ -49,12 +49,15 @@ import {
   intakeVerifiedApplicationListReducer,
   IntakeVerifiedApplicationListState,
 } from './intakes/intake-verified-application-list.reducer';
+import {IntakeListState} from '../application/intake-applications/intake-list.reducer';
+import {archivedIntakeListReducer} from '../account/intake-list.reducer';
 
 export interface PolicyModuleState {
   intakeSessions: IntakeSessionListState;
   programLevels: ProgramLevelListState;
   assignedIntakeTasks: IntakeTaskListState;
   pooledIntakeTasks: IntakeTaskListState;
+  archivedIntakes: IntakeListState;
   intakeTask: IntakeTaskState;
   intake: IntakeState;
   programOfferings: ProgramOfferingListState;
@@ -74,6 +77,7 @@ export const INITIAL_POLICY_STATE: PolicyModuleState =
     programLevels: <ProgramLevel[]>[],
     assignedIntakeTasks: <IntakeTask[]>[],
     pooledIntakeTasks: <IntakeTask[]>[],
+    archivedIntakes: <Intake[]>[],
     intakeTask: <IntakeTask>{},
     intake: <Intake>{},
     intakeSession: <IntakeSession>{},
@@ -92,6 +96,7 @@ export const policyModuleReducers = {
   programLevels: programLevelListReducer,
   assignedIntakeTasks: assignedIntakeTaskListReducer,
   pooledIntakeTasks: pooledIntakeTaskListReducer,
+  archivedIntakes: archivedIntakeListReducer,
   intakeTask: intakeTaskReducer,
   intake: intakeReducer,
   programOfferings: programOfferingListReducer,

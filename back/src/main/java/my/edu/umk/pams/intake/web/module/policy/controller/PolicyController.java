@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.policy.model.*;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
@@ -26,8 +27,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+
+import static java.lang.Boolean.TRUE;
+import static my.edu.umk.pams.intake.workflow.service.WorkflowConstants.REMOVE_DECISION;
 
 @RestController
 @RequestMapping("/api/policy")
@@ -165,6 +171,12 @@ public class PolicyController {
         return new ResponseEntity<String>(generatedReferenceNo, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/intakes/archived", method = RequestMethod.GET)
+    public ResponseEntity<List<Intake>> findArchivedIntakes() {
+        List<InIntake> intakes = policyService.findIntakesByFlowStates(InFlowState.CANCELLED, InFlowState.REMOVED, InFlowState.COMPLETED);
+        return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/intakes/assignedTasks", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeTask>> findAssignedIntakes() {
         dummyLogin();
@@ -211,14 +223,20 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/completeTask", method = RequestMethod.POST)
     public void completeIntakeTask(@RequestBody IntakeTask vo) {
-       // dummyLogin();
         Task task = policyService.findIntakeTaskByTaskId(vo.getTaskId());
         workflowService.completeTask(task);
     }
 
+    @RequestMapping(value = "/intakes/removeTask", method = RequestMethod.POST)
+    public void removeIntakeTask(@RequestBody IntakeTask vo) {
+        Task task = policyService.findIntakeTaskByTaskId(vo.getTaskId());
+        Map<String, Object> variables = new HashMap<String, Object>();
+        variables.put(REMOVE_DECISION, TRUE);
+        workflowService.completeTask(task, variables);
+    }
+
     @RequestMapping(value = "/intakes/releaseTask", method = RequestMethod.POST)
     public void releaseIntakeTask(@RequestBody IntakeTask vo) {
-       // dummyLogin();
         Task task = policyService.findIntakeTaskByTaskId(vo.getTaskId());
         workflowService.releaseTask(task);
     }

@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewContainerRef, Input} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {IntakeActions} from '../intake.action';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -44,12 +44,16 @@ export class IntakeDraftTaskPanel implements OnInit {
     this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
   }
 
-  verify() {
+  verify(): void {
     let snackBarRef = this.snackBar.open('Verify this intake?', 'Yes');
     snackBarRef.afterDismissed().subscribe(() => {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
       this.goBack();
     });
+  }
+
+  remove(): void {
+    this.store.dispatch(this.actions.removeIntakeTask(this.intakeTask));
   }
 
   edit(): void {

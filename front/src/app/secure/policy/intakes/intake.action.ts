@@ -8,6 +8,25 @@ import {StudyModeOffering} from '../../../shared/model/policy/study-mode-offerin
 @Injectable()
 export class IntakeActions {
 
+  static FIND_ARCHIVED_INTAKES = '[Intake] Find Archived Intakes';
+
+  findArchivedIntakes(): Action {
+    return {
+      type: IntakeActions.FIND_ARCHIVED_INTAKES,
+    };
+  }
+
+  static FIND_ARCHIVED_INTAKES_SUCCESS = '[Intake] Find Archived Intakes Success';
+
+  findArchivedIntakesSuccess(intakes): Action {
+    console.log('findArchivedIntakesSuccess');
+    return {
+      type: IntakeActions.FIND_ARCHIVED_INTAKES_SUCCESS,
+      payload: intakes,
+    };
+  }
+
+
   static FIND_ASSIGNED_INTAKE_TASKS = '[Intake] Find Assigned Intake Tasks';
 
   findAssignedIntakeTasks(): Action {
@@ -114,6 +133,24 @@ export class IntakeActions {
   completeIntakeTaskSuccess(task): Action {
     return {
       type: IntakeActions.COMPLETE_INTAKE_TASK_SUCCESS,
+      payload: task,
+    };
+  }
+
+  static REMOVE_INTAKE_TASK = '[Intake] Remove Intake Task';
+
+  removeIntakeTask(intake): Action {
+    return {
+      type: IntakeActions.REMOVE_INTAKE_TASK,
+      payload: intake,
+    };
+  }
+
+  static REMOVE_INTAKE_TASK_SUCCESS = '[Intake] Remove Intake Task Success';
+
+  removeIntakeTaskSuccess(task): Action {
+    return {
+      type: IntakeActions.REMOVE_INTAKE_TASK_SUCCESS,
       payload: task,
     };
   }
