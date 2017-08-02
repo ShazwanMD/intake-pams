@@ -155,7 +155,6 @@ public class IntakeCreatorTest {
 		List<Task> assignedVerifiedIntakes = policyService.findAssignedIntakeTasks(0, 100);
 		Assert.notEmpty(assignedVerifiedIntakes, "Tasks should not be empty");
 		workflowService.completeTask(assignedVerifiedIntakes.get(0)); // TO
-																		// APPROVED
-
+																		// APPROVED		
 	}
 }

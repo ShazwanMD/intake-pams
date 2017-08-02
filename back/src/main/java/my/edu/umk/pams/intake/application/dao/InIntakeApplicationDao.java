@@ -20,7 +20,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     InIntakeApplication findByIntakeAndApplicant(InIntake intake, InApplicant applicant);
     
-    InIntakeApplication findByAddress(String address);
+    InIntakeApplication findByAddress(String officialAddress1);
 
     InResult findResultById(Long id);
 
@@ -173,5 +173,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 	List<InIntakeApplication> findStatusVerify(InIntake intake, InBidStatus bidStatus);
 
 	boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant);
+
+
 
 }

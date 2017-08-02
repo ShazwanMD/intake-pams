@@ -27,7 +27,7 @@ export class AccountService {
   }
 
   findIntakeApplications(): Observable<IntakeApplication[]> {
-    console.log('findIntakeApplications');
+    // console.log('findIntakeApplications');
     return this._http.get(this.ACCOUNT_API + '/intakeApplications')
       .map((res: Response) => <IntakeApplication[]>res.json())
       .catch((error) => this.handleError(error));
@@ -92,7 +92,12 @@ export class AccountService {
 
   changeApplicantAddress(change: AddressChange): Observable<String> {
    return this._http.post(this.ACCOUNT_API + '/addressChange/' + change.currentAddress, JSON.stringify(change))
-      .flatMap((res: Response) => Observable.of(res.text()))
+     .map((res: Response) => <String>res.text());
+  }
+
+  updateIntakeApplication(intakeApplication: IntakeApplication): Observable<String> {
+    return this._http.put(this.ACCOUNT_API + '/updateIntakeApplication', JSON.stringify(intakeApplication))
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   // ====================================================================================================

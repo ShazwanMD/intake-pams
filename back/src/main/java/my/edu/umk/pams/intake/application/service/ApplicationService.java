@@ -186,9 +186,10 @@ public interface ApplicationService {
 
 	List<InIntakeApplication> findIntakeApplicationsByStatusVerify(InIntake intake, InBidStatus status);
 
-	InIntakeApplication findInIntakeApplicationByAddress(String address);
+	InIntakeApplication findInIntakeApplicationByAddress(String officialAddress1);
 
 	boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant);
+
 
 }
 

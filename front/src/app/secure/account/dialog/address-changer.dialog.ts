@@ -5,7 +5,7 @@ import {AuthenticatedUser} from '../../../shared/model/identity/authenticated-us
 import {AccountActions} from '../account.action';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {AccountModuleState} from '../index';
@@ -22,9 +22,10 @@ export class AddressChangerDialog implements OnInit {
   private changeAddressForm: FormGroup;
   private _intakeApplication: IntakeApplication;
   private authenticatedUser: AuthenticatedUser;
-  private edit : boolean = false;
+  // private edit : boolean = false;
 
   constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
               private dialog: MdDialogRef<AddressChangerDialog>,
               private store: Store<AccountModuleState>,
               private authnService: AuthenticationService,
@@ -32,10 +33,20 @@ export class AddressChangerDialog implements OnInit {
               private actions: AccountActions) {
   }
 
-  set intakeApplication(intakeApplication : IntakeApplication) {
-    this._intakeApplication = intakeApplication;
-    this.edit = true;
+  set intakeApplication(value : IntakeApplication) {
+    this._intakeApplication = value;
+    // this.edit = true;
   }
+  // set intakeApplication(intakeApplication : IntakeApplication) {
+  //   this._intakeApplication = intakeApplication;
+  //   this.edit = true;
+  // }
+
+  // get intakeApplication(): IntakeApplication {
+  //   return this._intakeApplication;
+  // }
+
+ 
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findSubmittedIntakeApplications());
@@ -44,7 +55,7 @@ export class AddressChangerDialog implements OnInit {
       newAddress: ['', Validators.required],
      
     });
-    if(this.edit)this.changeAddressForm.patchValue(this._intakeApplication);
+    // if(this.edit)this.changeAddressForm.patchValue(this._intakeApplication);
   }
 
   logout(): void {
@@ -53,10 +64,18 @@ export class AddressChangerDialog implements OnInit {
   }
 
   submit(change: AddressChange, valid: boolean) {
+   if (confirm('change address?')){
     console.log('submit address change: ', change);
     this.store.dispatch(this.actions.changeApplicantAddress(change));
     this.dialog.close();
-  
+    this.goBack();
+    }
+    else{
+      return false;}
+    }
+
+  goBack(): void {
+    this.router.navigate(['/secure']);
   }
 }
 

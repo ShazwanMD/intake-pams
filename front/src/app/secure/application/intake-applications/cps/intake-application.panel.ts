@@ -27,6 +27,7 @@ import {StateCode} from '../../../../shared/model/common/state-code.interface';
 })
 
 export class CpsIntakeApplicationPanel implements OnInit {
+  [x: string]: any;
 
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
@@ -130,11 +131,23 @@ export class CpsIntakeApplicationPanel implements OnInit {
       declared: [true, Validators.requiredTrue],
     });
     this.applicationForm.patchValue(this._intakeApplication);
+
+  //   this.connection = this.chatService.getMessages().subscribe(message => {
+  //     this.messages.push(message);
+  //   });
+  //   this.userbase = this.chatService.getUsers().subscribe(user => {
+  //     this.users.push(user);
+  //   });
+  //   this.routes = this.chatService.getRoutes().subscribe(route => {
+  //     this.routes.push(route);
+  //   });
+  // }
+
   }
 
   onTabChange(): void {
     console.log('tab change');
-    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  //  this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
   submit(application: IntakeApplication, isValid: boolean) {
@@ -148,7 +161,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
 
   copyAddress(application: IntakeApplication) {
     if (confirm('Confirm to Copy this address?')) {
-      this.store.dispatch(this.actions.copyAddressApplication(application));
+      this.store.dispatch(this.actions.copyAddressApplication(application)); 
       this.goBack();
     } else {
       return false;

@@ -360,8 +360,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     
     @Override
-    public InIntakeApplication findInIntakeApplicationByAddress(String address) {
-        return intakeApplicationDao.findByAddress(address);
+    public InIntakeApplication findInIntakeApplicationByAddress(String officialAddress1) {
+        return intakeApplicationDao.findByAddress(officialAddress1);
     }
 
     @Override

@@ -51,7 +51,7 @@ export class AccountActions {
   static FIND_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find Intake Applications Success';
 
   findIntakeApplicationsSuccess(applcations): Action {
-    console.log('findIntakeApplicationsSuccess');
+    // console.log('findIntakeApplicationsSuccess');
     return {
       type: AccountActions.FIND_INTAKE_APPLICATIONS_SUCCESS,
       payload: applcations,
@@ -94,6 +94,27 @@ export class AccountActions {
       payload: applcations,
     };
   }
+
+  static UPDATE_INTAKE_APPLICATION = '[Account] Update Intake Application';
+
+  updateIntakeApplication(intakeApplication): Action {
+    console.log('update IntakeApplication');
+    return {
+      type: AccountActions.UPDATE_INTAKE_APPLICATION,
+      payload: intakeApplication,
+    };
+  }
+
+  static UPDATE_INTAKE_APPLICATION_SUCCESS = '[Account] Update Intake Application';
+
+  updateIntakeApplicationSuccess(message): Action {
+    console.log('updateIntakeApplicationSucces');
+    return {
+      type: AccountActions.UPDATE_INTAKE_APPLICATION_SUCCESS,
+      payload: message,
+    };
+  }
+
 
 // ====================================================================================================
   // USER

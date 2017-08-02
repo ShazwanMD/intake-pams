@@ -47,11 +47,11 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
     
     @Override
-    public InIntakeApplication findByAddress(String address) {
+    public InIntakeApplication findByAddress(String officialAddress1) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select u from InIntakeApplication u " +
-        	   "where u.address = :address ");
-        query.setString("address", address);
+        Query query = session.createQuery("select p from InIntakeApplication p " +
+        		"where p.officialAddress1 = :officialAddress1 ");
+        query.setString("officialAddress1", officialAddress1);
         return (InIntakeApplication) query.uniqueResult();
     }
 
