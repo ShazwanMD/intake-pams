@@ -389,5 +389,15 @@ export class IntakeApplicationEffects {
     .map((state) => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
+  @Effect() copyAddressApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.COPY_ADDRESS_APPLICATION)
+    .map((action) => action.payload)
+    .switchMap((application) => this.applicationService.copyAddressApplication(application))
+    .map((message) => this.intakeApplicationActions.copyAddressApplicationSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map((state) => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
+
 }
 

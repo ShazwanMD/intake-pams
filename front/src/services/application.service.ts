@@ -341,4 +341,11 @@ export class ApplicationService {
     let body: any = error.json();
     return Observable.throw(body);
   }
+
+  copyAddressApplication(application: IntakeApplication): Observable<String> {
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/'
+     + application.referenceNo + '/copy', JSON.stringify(application))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 }

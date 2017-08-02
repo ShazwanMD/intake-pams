@@ -155,6 +155,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     }
   }
 
+
   goBack(): void {
     this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
