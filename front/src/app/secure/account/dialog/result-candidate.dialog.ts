@@ -50,8 +50,8 @@ export class ResultCandidateDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    let referenceNo: string = this.candidate.application.referenceNo;
-    this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+    // let referenceNo: string = this.candidate.application.referenceNo;
+    // this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
 
 
