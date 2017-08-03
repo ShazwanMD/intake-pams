@@ -3,6 +3,9 @@ package my.edu.umk.pams.intake.web.module.account.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.util.stream.Collectors.toCollection;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +15,7 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.web.module.account.vo.MyIntakeApplication;
 import my.edu.umk.pams.intake.web.module.admission.controller.AdmissionTransformer;
+import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.identity.vo.User;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 
@@ -42,7 +46,7 @@ public class AccountTransformer {
         return vo;
     }
 
-    public MyIntakeApplication toMyIntakeApplication(InIntakeApplication application) {
+    public MyIntakeApplication toMyIntakeApplicationVo(InIntakeApplication application) {
         InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
         MyIntakeApplication vo = new MyIntakeApplication();
         vo.setReferenceNo(application.getReferenceNo());
@@ -50,6 +54,12 @@ public class AccountTransformer {
         vo.setCandidate(admissionTransformer.toCandidateVo(candidate));
         return vo;
     }
+    
+    public List<MyIntakeApplication> toMyIntakeApplicationVos(List<InIntakeApplication> applications) {
+        return applications.stream()
+                .map((task) -> toMyIntakeApplicationVo(task))
+                .collect(toCollection(() -> new ArrayList<MyIntakeApplication>()));
+    }    
 
     public List<User> toUserVos(List<InUser> user) {
         List<User> vos = user.stream().map((user1) -> toUserVo(user1)).collect(Collectors.toList());

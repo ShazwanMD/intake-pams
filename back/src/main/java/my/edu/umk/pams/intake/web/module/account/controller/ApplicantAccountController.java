@@ -30,6 +30,7 @@ import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.web.module.account.vo.AddressChange;
 import my.edu.umk.pams.intake.web.module.account.vo.EmailChange;
+import my.edu.umk.pams.intake.web.module.account.vo.MyIntakeApplication;
 import my.edu.umk.pams.intake.web.module.account.vo.PasswordChange;
 import my.edu.umk.pams.intake.web.module.admission.controller.AdmissionTransformer;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
@@ -67,7 +68,10 @@ public class ApplicantAccountController {
     private PolicyTransformer policyTransformer;
     
     @Autowired
-    private AdmissionTransformer admissionTransformer;    
+    private AdmissionTransformer admissionTransformer;  
+    
+    @Autowired
+    private AccountTransformer accountTransformer;        
 
     @Autowired
     private IdentityTransformer identityTransformer;
@@ -105,6 +109,19 @@ public class ApplicantAccountController {
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/myIntakeApplications", method = RequestMethod.GET)
+    public ResponseEntity<List<MyIntakeApplication>> findMyIntakeApplications() {
+        InUser user = securityService.getCurrentUser();
+        InApplicant applicant = null;
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+        
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
+        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
+                HttpStatus.OK);
+    }  
+    
     
     @RequestMapping(value = "/candidates", method = RequestMethod.GET)
     public ResponseEntity<List<Candidate>> findCandidates(@PathVariable String referenceNo) {
