@@ -56,7 +56,7 @@ export class ApplicantDashboardPanel implements OnInit {
     this.store.dispatch(this.actions.findUser());
     this.store.dispatch(this.actions.findIntakeApplications());
     this.store.dispatch(this.actions.findPublishedIntakes());
-    //this.store.dispatch(this.actions.findCandidates());
+    this.store.dispatch(this.actions.findCandidates());
   }
 
   resultDialog(candidate): void {
