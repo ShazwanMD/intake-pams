@@ -1,3 +1,4 @@
+import { GradeCodesComponent } from './grade-codes/component/grade-code';
 import { GenderCodesComponent } from './gender-codes/component/gender-code';
 import { DistrictCodesComponent } from './district-codes/component/district-code';
 import { MaritalCodesComponent } from './marital-codes/component/marital-code';
@@ -301,6 +302,7 @@ export const setupModuleReducers = {
     EthnicityCodesComponent,
     FacultyCodesComponent,
     GenderCodesComponent,
+    GradeCodesComponent,
     LanguageCodesComponent,
     MaritalCodesComponent,
     NationalityCodesComponent,
