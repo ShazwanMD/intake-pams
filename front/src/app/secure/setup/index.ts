@@ -295,6 +295,7 @@ export const setupModuleReducers = {
     SubjectCodeEditorDialog,
     GradeCodeEditorDialog,
 
+    //component
     CountryCodesComponent,
     DisabilityCodesComponent,
     DistrictCodesComponent,
