@@ -1,15 +1,16 @@
 package my.edu.umk.pams.intake.web.module.admission.controller;
 
-import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
-import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
-import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
-import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
+import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
+import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
+import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
 
 import static java.util.stream.Collectors.toCollection;
 
@@ -26,6 +27,7 @@ public class AdmissionTransformer {
     private ApplicationTransformer applicationTransformer;
 
     public Candidate toCandidateVo(InCandidate e) {
+        if(null == e) return null;
         Candidate vo = new Candidate();
         vo.setId(e.getId());
         vo.setName(e.getName());
