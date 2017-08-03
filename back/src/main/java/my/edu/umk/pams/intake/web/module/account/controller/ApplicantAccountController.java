@@ -1,6 +1,5 @@
 package my.edu.umk.pams.intake.web.module.account.controller;
 
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,25 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Locale;
 
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
-import my.edu.umk.pams.intake.application.model.InRefereeType;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.common.model.InBankCode;
-import my.edu.umk.pams.intake.common.model.InBankCodeImpl;
-import my.edu.umk.pams.intake.common.model.InStudyMode;
-import my.edu.umk.pams.intake.common.model.InStudyModeImpl;
-import my.edu.umk.pams.intake.common.model.InSubjectCode;
-import my.edu.umk.pams.intake.common.model.InSubjectCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
-import my.edu.umk.pams.intake.identity.model.InActorType;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
-import my.edu.umk.pams.intake.identity.model.InPrincipal;
 import my.edu.umk.pams.intake.identity.model.InUser;
-import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -48,19 +36,6 @@ import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.identity.vo.User;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
-
-
-import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
-import my.edu.umk.pams.intake.web.module.common.vo.*;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
 
 
 /**
