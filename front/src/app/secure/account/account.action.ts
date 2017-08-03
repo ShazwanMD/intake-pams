@@ -58,6 +58,24 @@ export class AccountActions {
     };
   }
 
+  static FIND_CANDIDATES = '[Account] Find Candidates';
+
+  findCandidates(): Action {
+    return {
+      type: AccountActions.FIND_CANDIDATES,
+    };
+  }
+
+  static FIND_CANDIDATES_SUCCESS = '[Account] Find Intake Candidates Success';
+
+  findCandidatesSuccess(candidates): Action {
+    // console.log('findIntakeApplicationsSuccess');
+    return {
+      type: AccountActions.FIND_CANDIDATES_SUCCESS,
+      payload: candidates,
+    };
+  }
+
 
   static FIND_DRAFTED_INTAKE_APPLICATIONS = '[Account] Find Drafted Intake Applications';
 

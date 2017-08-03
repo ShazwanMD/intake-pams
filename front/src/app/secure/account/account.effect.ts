@@ -36,6 +36,13 @@ export class AccountEffects {
     .map((applications) => this.accountActions.findIntakeApplicationsSuccess(applications))
     .catch((error) => Observable.of(this.ctxActions.setErrorMessage(error.error)));
 
+  @Effect() findCandidates = this.actions$
+    .ofType(AccountActions.FIND_CANDIDATES)
+    .map((action) => action.payload)
+    .switchMap((intake) => this.accountService.findCandidates())
+    .map((candidates) => this.accountActions.findCandidatesSuccess(candidates))
+    .catch((error) => Observable.of(this.ctxActions.setErrorMessage(error.error)));    
+
   @Effect() findDraftedIntakeApplications = this.actions$
     .ofType(AccountActions.FIND_DRAFTED_INTAKE_APPLICATIONS)
     .map((action) => action.payload)
