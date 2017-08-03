@@ -1,3 +1,4 @@
+import { CpsIntakeApplicationSubModule } from './../application/intake-applications/cps/index';
 import { AddressChangerDialog } from './dialog/address-changer.dialog';
 //import { IntakeApplicationComponent } from './component/intake-application.component';
 import { IntakeApplication } from './../../shared/model/application/intake-application.interface';
@@ -60,6 +61,7 @@ export const accountModuleReducers = {
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     IntakeApplicationSubModule.forRoot(),
+    CpsIntakeApplicationSubModule.forRoot(),
     CommonModule.forRoot(),
     EffectsModule.run(AccountEffects),
   ],
@@ -70,7 +72,7 @@ export const accountModuleReducers = {
     PasswordChangerDialog,
     EmailChangerDialog,
     AddressChangerDialog,
-    ResultCandidateDialog
+    ResultCandidateDialog,
 
   ],
   exports: [
