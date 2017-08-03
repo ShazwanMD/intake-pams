@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Locale;
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InRefereeType;
@@ -40,6 +43,8 @@ import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.web.module.account.vo.AddressChange;
 import my.edu.umk.pams.intake.web.module.account.vo.EmailChange;
 import my.edu.umk.pams.intake.web.module.account.vo.PasswordChange;
+import my.edu.umk.pams.intake.web.module.admission.controller.AdmissionTransformer;
+import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationController;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
@@ -73,6 +78,9 @@ public class ApplicantAccountController {
 
     @Autowired
     private ApplicationService applicationService;
+    
+    @Autowired
+    private AdmissionService admissionService;    
 
     @Autowired
     private PolicyService policyService;
@@ -82,6 +90,9 @@ public class ApplicantAccountController {
 
     @Autowired
     private PolicyTransformer policyTransformer;
+    
+    @Autowired
+    private AdmissionTransformer admissionTransformer;    
 
     @Autowired
     private IdentityTransformer identityTransformer;
@@ -119,6 +130,19 @@ public class ApplicantAccountController {
         return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
                 HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/candidates", method = RequestMethod.GET)
+    public ResponseEntity<List<Candidate>> findCandidates(@PathVariable String referenceNo) {
+        InUser user = securityService.getCurrentUser();
+        InApplicant applicant = null; 
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+        
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        System.out.println("intake "+intake.getReferenceNo());
+        return new ResponseEntity<List<Candidate>>(
+                admissionTransformer.toCandidateVos(admissionService.findCandidates(intake)), HttpStatus.OK);
+    }  
 
     @RequestMapping(value = "/intakeApplications/bidStatus/{bidStatus}", method = RequestMethod.GET)
     public ResponseEntity<List<IntakeApplication>> findIntakeApplicationsByBidStatus(@PathVariable String bidStatus) {
@@ -237,5 +261,13 @@ public class ApplicantAccountController {
 	      
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+    @RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}", method = RequestMethod.GET)
+    public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo, @PathVariable String candidateStatus) {
+        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+        return new ResponseEntity<List<Candidate>>(
+                admissionTransformer.toCandidateVos(
+                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
+    }
 	
 }

@@ -1,3 +1,4 @@
+import { Candidate } from './../../shared/model/admission/candidate.interface';
 import { CpsIntakeApplicationSubModule } from './../application/intake-applications/cps/index';
 import { AddressChangerDialog } from './dialog/address-changer.dialog';
 //import { IntakeApplicationComponent } from './component/intake-application.component';
@@ -33,12 +34,15 @@ import {AccountEffects} from './account.effect';
 import {EffectsModule} from '@ngrx/effects';
 import {PasswordChangerDialog} from './dialog/password-changer.dialog';
 import { ResultCandidateDialog } from "./dialog/result-candidate.dialog";
+import { candidateListReducer } from "../admission/candidate-list.reducer";
+import { CandidateListState } from "./candidate-list.reducer";
 
 export interface AccountModuleState {
   user: UserState;
   applicant: ApplicantState;
   publishedIntakes: IntakeListState;
   intakeApplications: IntakeApplicationListState;
+  candidates: CandidateListState;
 }
 
 export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
@@ -46,6 +50,7 @@ export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
   applicant: <Applicant>{},
   publishedIntakes: <Intake[]>[],
   intakeApplications: <IntakeApplication[]>[],
+  candidates: <Candidate[]>[],
 
 };
 
@@ -54,6 +59,7 @@ export const accountModuleReducers = {
   applicant: applicantReducer,
   publishedIntakes: publishedIntakeListReducer,
   intakeApplications: intakeApplicationListReducer,
+  candidates: candidateListReducer,
 };
 
 @NgModule({
