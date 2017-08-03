@@ -1,17 +1,5 @@
 package my.edu.umk.pams.intake.application.service;
 
-import my.edu.umk.pams.intake.IntakeConstants;
-import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
-import my.edu.umk.pams.intake.application.model.*;
-import my.edu.umk.pams.intake.identity.model.InApplicant;
-import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
-import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.service.PolicyService;
-import my.edu.umk.pams.intake.security.service.SecurityService;
-import my.edu.umk.pams.intake.system.service.SystemService;
-import my.edu.umk.pams.intake.workflow.service.WorkflowService;
-
 import org.hibernate.SessionFactory;
 import org.joda.time.LocalDate;
 import org.joda.time.Period;
@@ -26,7 +14,33 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
+
+import my.edu.umk.pams.intake.IntakeConstants;
+import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
+import my.edu.umk.pams.intake.application.model.InAttachment;
+import my.edu.umk.pams.intake.application.model.InBidStatus;
+import my.edu.umk.pams.intake.application.model.InBidType;
+import my.edu.umk.pams.intake.application.model.InContact;
+import my.edu.umk.pams.intake.application.model.InContactType;
+import my.edu.umk.pams.intake.application.model.InEducation;
+import my.edu.umk.pams.intake.application.model.InEmployment;
+import my.edu.umk.pams.intake.application.model.InGuarantor;
+import my.edu.umk.pams.intake.application.model.InGuarantorType;
+import my.edu.umk.pams.intake.application.model.InGuardian;
+import my.edu.umk.pams.intake.application.model.InGuardianType;
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InInvolvement;
+import my.edu.umk.pams.intake.application.model.InLanguage;
+import my.edu.umk.pams.intake.application.model.InReferee;
+import my.edu.umk.pams.intake.application.model.InResult;
+import my.edu.umk.pams.intake.application.model.InResultType;
+import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.system.service.SystemService;
+import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 /**
  * @author PAMS
@@ -84,7 +98,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public String applyIntake(InIntake intake, InIntakeApplication application) throws Exception {
-        if(hasApplied(intake, application.getApplicant()))
+        if (hasApplied(intake, application.getApplicant()))
             throw new Exception("Applicant has applied");
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -337,8 +351,6 @@ public class ApplicationServiceImpl implements ApplicationService {
     public InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application) {
         return intakeApplicationDao.findGuardianByType(guardianType, application);
     }
-    
-
 
     @Override
     public InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application) {
@@ -360,17 +372,19 @@ public class ApplicationServiceImpl implements ApplicationService {
     public InIntakeApplication findIntakeApplicationByNricNoOrPassportNo(String identityNo) {
         return intakeApplicationDao.findByNricNoOrPassportNo(identityNo);
     }
-    
+
+    // find intake application by address????
+    // macam tak betul API ni
     @Override
     public InIntakeApplication findInIntakeApplicationByAddress(String address) {
-        return intakeApplicationDao.findByAddress(address)
+        return intakeApplicationDao.findByAddress(address);
     }
 
     @Override
     public InIntakeApplication findIntakeApplicationByIntakeAndApplicant(InIntake intake, InApplicant applicant) {
         return intakeApplicationDao.findByIntakeAndApplicant(intake, applicant);
     }
-    
+
     @Override
     public boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant) {
         return intakeApplicationDao.isIntakeApplicationExists(intake, applicant);
@@ -416,7 +430,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     public List<InIntakeApplication> findIntakeApplications(InIntake intake, InBidStatus status) {
         return intakeApplicationDao.find(intake, status);
     }
-    
+
     @Override
     public List<InIntakeApplication> findIntakeApplicationsByStatusVerify(InIntake intake, InBidStatus status) {
         return intakeApplicationDao.findStatusVerify(intake, status);
@@ -551,23 +565,17 @@ public class ApplicationServiceImpl implements ApplicationService {
     public boolean hasResult(InIntakeApplication application, InResultType resultType) {
         return intakeApplicationDao.hasResult(application, resultType);
     }
-    
-    @Override
-    public String copyAddress(InIntakeApplication address) {
-    	InIntakeApplication application = this.findInIntakeApplicationByAddress(address);
-//    	   LOG.debug("application: {}", application.getReferenceNo());
-//           LOG.debug("intake application: {}", application.getReferenceNo());
-//           
-    	application.setMailingAddress1(address.getOfficialAddress1());
-    	application.setMailingAddress2(address.getOfficialAddress2());
-    	application.setMailingAddress3(address.getOfficialAddress3());
-    	application.setMailingPostcode(address.getOfficialPostcode());
-    	application.setMailingStateCode(address.getOfficialStateCode());  	
-    	application.setMailingCountryCode(address.getOfficialCountryCode());  
-    	String referenceNo = copyAddress(application);
-    	updateIntakeApplication(application);
-		return referenceNo;
- 
-}
 
+    @Override
+    public String copyAddress(InIntakeApplication application) {
+        application.setMailingAddress1(application.getOfficialAddress1());
+        application.setMailingAddress2(application.getOfficialAddress2());
+        application.setMailingAddress3(application.getOfficialAddress3());
+        application.setMailingPostcode(application.getOfficialPostcode());
+        application.setMailingStateCode(application.getOfficialStateCode());
+        application.setMailingCountryCode(application.getOfficialCountryCode());
+        String referenceNo = copyAddress(application);
+        updateIntakeApplication(application);
+        return referenceNo;
+    }
 }
