@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -25,6 +26,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author PAMS
@@ -360,8 +362,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     
     @Override
-    public InIntakeApplication findInIntakeApplicationByAddress(String officialAddress1) {
-        return intakeApplicationDao.findByAddress(officialAddress1);
+    public InIntakeApplication findInIntakeApplicationByAddress(String address) {
+        return intakeApplicationDao.findByAddress(address)
     }
 
     @Override
@@ -549,5 +551,23 @@ public class ApplicationServiceImpl implements ApplicationService {
     public boolean hasResult(InIntakeApplication application, InResultType resultType) {
         return intakeApplicationDao.hasResult(application, resultType);
     }
+    
+    @Override
+    public String copyAddress(InIntakeApplication address) {
+    	InIntakeApplication application = this.findInIntakeApplicationByAddress(address);
+//    	   LOG.debug("application: {}", application.getReferenceNo());
+//           LOG.debug("intake application: {}", application.getReferenceNo());
+//           
+    	application.setMailingAddress1(address.getOfficialAddress1());
+    	application.setMailingAddress2(address.getOfficialAddress2());
+    	application.setMailingAddress3(address.getOfficialAddress3());
+    	application.setMailingPostcode(address.getOfficialPostcode());
+    	application.setMailingStateCode(address.getOfficialStateCode());  	
+    	application.setMailingCountryCode(address.getOfficialCountryCode());  
+    	String referenceNo = copyAddress(application);
+    	updateIntakeApplication(application);
+		return referenceNo;
+ 
+}
 
 }
