@@ -1,10 +1,17 @@
 package my.edu.umk.pams.intake.common.model;
 
-import my.edu.umk.pams.intake.core.InMetadata;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import my.edu.umk.pams.intake.core.InMetadata;
+
+@Deprecated
 @Entity(name = "InEmploymentFieldCode")
 @Table(name = "IN_EMPT_FILD_CODE")
 public class InEmploymentFieldCodeImpl implements InEmploymentFieldCode {

@@ -352,9 +352,6 @@ public class ApplicationController {
         employment.setStartDate(vo.getStartDate());
         employment.setEndDate(vo.getEndDate());
         employment.setEmploymentType(InEmploymentType.get(vo.getEmploymentType().ordinal()));
-        // employment.setFieldCode(commonService.findEmploymentFieldCodeById(vo.getFieldCode().getId()));
-        // employment.setLevelCode(commonService.findEmploymentLevelCodeById(vo.getLevelCode().getId()));
-        // employment.setSectorCode(commonService.findEmploymentSectorCodeById(vo.getSectorCode().getId()));
         System.out.println("vo.getEmploymentType().ordinal() :" + vo.getEmploymentType().ordinal());
         if (vo.getEmploymentType().ordinal() == 0) {
             employment.setCurrent(true);
@@ -501,8 +498,6 @@ public class ApplicationController {
     public ResponseEntity downloadAttachment(@PathVariable Long id) {
         InAttachment attachment = applicationService.findAttachmentById(id);
         ByteArrayResource resource = null;
-        //ByteArrayOutputStream outputStream = new ByteArrayOutputStream(attachment.getBytes());
-        //workbook.write(outputStream);
         resource = new ByteArrayResource(attachment.getBytes());
 
         return ResponseEntity.ok()
