@@ -157,8 +157,6 @@ public class IntakeCreatorTestMGSEB {
 		workflowService.completeTask(assignedVerifiedIntakes.get(0)); // TO
 																		// APPROVED
 		
-		InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress("test official address 1");
-		LOG.debug("test : {}", intakeApplication);
 
 	}
 }

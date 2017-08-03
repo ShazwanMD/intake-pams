@@ -64,8 +64,15 @@
                     <button *ngIf="application.bidStatus === 'DRAFTED'" [routerLink]="['application/intake-application-detail/',  application.referenceNo]"
                       md-button color="primary">Edit
                     </button>
-                    <button *ngIf="application.bidStatus === 'SELECTED'" (click)="resultDialog(application)"
-                      md-button color="primary">Result
+                    
+                      <md-card-subtitle *ngIf="application.bidStatus === 'SUBMITTED'">
+                        <div layout="row" layout-margin>
+                          <div flex></div>
+                        </div>
+                        Processing
+                      </md-card-subtitle>
+                    
+                    <button *ngIf="application.bidStatus === 'SELECTED'" (click)="resultDialog(candidate)" md-button color="primary">Result
                     </button>
                   </div>
                 </md-card-content>

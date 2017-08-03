@@ -1,15 +1,18 @@
-import { AddressChange } from './../../../shared/model/identity/address-change.interface';
-import { IntakeApplication } from './../../../shared/model/application/intake-application.interface';
-import {AuthenticatedUser} from '../../../shared/model/identity/authenticated-user.interface';
-import {AccountActions} from '../account.action';
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import { AdmissionActions } from './../../admission/admission.action';
+import { Candidate } from '../../../shared/model/admission/candidate.interface';
+import { Employment } from '../../../shared/model/application/employment.interface';
+import { IntakeApplication } from '../../../shared/model/application/intake-application.interface';
+import { Language } from '../../../shared/model/application/language.interface';
+import { Referee } from '../../../shared/model/application/referee.interface';
+import { ApplicationModuleState } from '../../application';
+import { IntakeApplicationActions } from '../../application/intake-applications/intake-application.action';
+import { IntakeActions } from '../../policy/intakes/intake.action';
+import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
-import {AccountModuleState} from '../index';
-import {AuthenticationService} from '../../../../services/authentication.service';
-import {EmailChange} from '../../../shared/model/identity/email-change.interface';
+import {Observable} from 'rxjs/Observable';
+import {MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog} from '@angular/material';
 
 @Component({
   selector: 'pams-result-candidate',
@@ -18,38 +21,58 @@ import {EmailChange} from '../../../shared/model/identity/email-change.interface
 
 export class ResultCandidateDialog implements OnInit {
 
-  private changeAddressForm: FormGroup;
-  private _intakeApplication: IntakeApplication;
-  private authenticatedUser: AuthenticatedUser;
-  
+  private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
+  private CANDIDATES: string[] = 'admissionModuleState.candidates'.split('.');
 
-  constructor(private formBuilder: FormBuilder,
-              private dialog: MdDialogRef<ResultCandidateDialog>,
-              private store: Store<AccountModuleState>,
-              private authnService: AuthenticationService,
-              private router: Router,
-              private actions: AccountActions) {
-  }
 
-  set intakeApplication(value: IntakeApplication) {
-    this._intakeApplication = value;
+  private intakeApplication$: Observable<IntakeApplication>;
+  private candidates$: Observable<Candidate[]>;
+  private applicationForm: FormGroup;
+
+  @Input() candidate: Candidate;
+  @Input() intakeApplication: IntakeApplication;
+
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private vcf: ViewContainerRef,
+              private actions: IntakeApplicationActions,
+              private admissionActions: AdmissionActions,
+              private dialog: MdDialog,
+              private editorDialog: MdDialogRef< ResultCandidateDialog>,
+          //    private editorDialogRef: MdDialogRef<CandidateProfileRejectDialog>,
+              private snackBar: MdSnackBar,
+              private store: Store<ApplicationModuleState>) {
+
+    this.intakeApplication$ = this.store.select(...this.INTAKE_APPLICATION);
+    this.candidates$ = this.store.select(...this.CANDIDATES);
+
   }
 
   ngOnInit(): void {
-    this.changeAddressForm = this.formBuilder.group({
-      currentAddress: ['', Validators.required],
-      newAddress: ['', Validators.required],
-      newAddressAgain: ['', Validators.required],
-    });
+    let referenceNo: string = this.candidate.application.referenceNo;
+    this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
 
-  logout(): void {
-    this.authnService.logout();
-    this.router.navigate(['/login']);
-  }
 
-  submit(change: AddressChange, valid: boolean) {
-    this.store.dispatch(this.actions.changeApplicantAddress(change));
-    this.dialog.close();
-  }
+
+  
+  // showDialog(candidate): void {
+  //   let config = new MdDialogConfig();
+  //   config.viewContainerRef = this.vcf;
+  //   config.role = 'dialog';
+  //   config.width = '50%';
+  //   config.height = '40%';
+  //   config.position = {top: '0px'};
+  //   this.editorDialogRef = this.dialog.open(CandidateProfileRejectDialog, config);
+  //   this.editorDialogRef.componentInstance.candidate = candidate;
+  //   this.editorDialog.afterClosed().subscribe((res) => {
+  //    this.route.params.subscribe((params: { taskId: string }) => {
+  //     let taskId: string = params.taskId;
+  //     console.log('intake: ' + taskId);
+  //     this.store.dispatch(this.admissionActions.findIntakeTaskByTaskId(taskId));
+  //   });
+  //   });
+  // }
+
 }
