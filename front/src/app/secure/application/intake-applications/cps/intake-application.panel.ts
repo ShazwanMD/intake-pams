@@ -162,6 +162,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
   copyAddress(application: IntakeApplication) {
     if (confirm('Confirm to Copy this address?')) {
       this.store.dispatch(this.actions.copyAddressApplication(application)); 
+      this.store.dispatch(this.actions.updateIntakeApplication(application));
       this.goBack();
     } else {
       return false;
