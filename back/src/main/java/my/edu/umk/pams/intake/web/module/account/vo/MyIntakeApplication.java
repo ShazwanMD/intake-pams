@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.web.module.account.vo;
 
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
+import my.edu.umk.pams.intake.web.module.application.vo.InCandidateStatus;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 
 /**
@@ -11,6 +12,7 @@ public class MyIntakeApplication {
     private String referenceNo;
     private Intake intake;
     private Candidate candidate;
+    private InCandidateStatus bidStatus;
 
     public String getReferenceNo() {
         return referenceNo;
@@ -35,4 +37,14 @@ public class MyIntakeApplication {
     public void setCandidate(Candidate candidate) {
         this.candidate = candidate;
     }
+
+	public InCandidateStatus getBidStatus() {
+		return bidStatus;
+	}
+
+	public void setBidStatus(InCandidateStatus bidStatus) {
+		this.bidStatus = bidStatus;
+	}
+    
+    
 }

@@ -16,6 +16,7 @@ import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.web.module.account.vo.MyIntakeApplication;
 import my.edu.umk.pams.intake.web.module.admission.controller.AdmissionTransformer;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
+import my.edu.umk.pams.intake.web.module.application.vo.InCandidateStatus;
 import my.edu.umk.pams.intake.web.module.identity.vo.User;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 
@@ -50,6 +51,7 @@ public class AccountTransformer {
         InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
         MyIntakeApplication vo = new MyIntakeApplication();
         vo.setReferenceNo(application.getReferenceNo());
+        vo.setBidStatus(InCandidateStatus.get(application.getBidStatus().ordinal()));
         vo.setIntake(policyTransformer.toIntakeVo(application.getIntake()));
         vo.setCandidate(admissionTransformer.toCandidateVo(candidate));
         return vo;

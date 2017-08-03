@@ -46,33 +46,35 @@
 
       <md-tab label="My Applications">
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-          <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not applied yet. Please take a look at open intakes</span>
+          <div *ngIf="(myIntakeApplications$ | async)?.length === 0"><span>You have not applied yet. Please take a look at open intakes</span>
           </div>
-          <template let-application let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
+          <template let-myIntakeApplication let-last="last" ngFor [ngForOf]="myIntakeApplications$ | async ">
             <div flex-md="50" flex-gt-md="33" layout="column">
+
               <md-card href class="md-card-colored" flex>
-                <md-card-title> INTAKE {{application.intake.startDate | date:'y'}}</md-card-title>
+                <md-card-title> INTAKE {{myIntakeApplication.intake.startDate | date:'y'}}</md-card-title>
                 <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
-                  <md-card-subtitle> {{application.intake.graduateCenter.code}} {{application.intake.programLevel.code}}
+                  <md-card-subtitle> {{myIntakeApplication.intake.graduateCenter.code}} {{myIntakeApplication.intake.programLevel.code}}
                   </md-card-subtitle>
                   <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
                 </md-toolbar>
                 <md-card-content>
                   <div layout="row" layout-padding>
-                    <p>{{application.bidStatus}}</p>
+
+                    <p>{{myIntakeApplication.bidStatus}}</p>
                     <span flex></span>
-                    <button *ngIf="application.bidStatus === 'DRAFTED'" [routerLink]="['application/intake-application-detail/',  application.referenceNo]"
+                    <button *ngIf="myIntakeApplication.bidStatus === 'DRAFTED'" [routerLink]="['application/intake-application-detail/',  myIntakeApplication.referenceNo]"
                       md-button color="primary">Edit
                     </button>
-                    
-                      <md-card-subtitle *ngIf="application.bidStatus === 'SUBMITTED'">
-                        <div layout="row" layout-margin>
-                          <div flex></div>
-                        </div>
-                        Processing
-                      </md-card-subtitle>
-                    
-                    <button *ngIf="application.bidStatus === 'SELECTED'" (click)="resultDialog(candidate)" md-button color="primary">Result
+
+                    <md-card-subtitle *ngIf="myIntakeApplication.bidStatus === 'SUBMITTED'">
+                      <div layout="row" layout-margin>
+                        <div flex></div>
+                      </div>
+                      Processing
+                    </md-card-subtitle>
+
+                    <button *ngIf="myIntakeApplication.candidate.status === 'OFFERED'" (click)="resultDialog(candidate)" md-button color="primary">Result
                     </button>
                   </div>
                 </md-card-content>
