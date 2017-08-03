@@ -51,9 +51,27 @@ export class AccountActions {
   static FIND_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find Intake Applications Success';
 
   findIntakeApplicationsSuccess(applcations): Action {
-    // console.log('findIntakeApplicationsSuccess');
+     console.log('findIntakeApplicationsSuccess');
     return {
       type: AccountActions.FIND_INTAKE_APPLICATIONS_SUCCESS,
+      payload: applcations,
+    };
+  }
+
+  static FIND_MY_INTAKE_APPLICATIONS = '[Account] Find My Intake Applications';
+
+  findMyIntakeApplications(): Action {
+    return {
+      type: AccountActions.FIND_MY_INTAKE_APPLICATIONS,
+    };
+  }
+
+  static FIND_MY_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find My Intake Applications Success';
+
+  findMyIntakeApplicationsSuccess(applcations): Action {
+     console.log('findMyIntakeApplicationsSuccess');
+    return {
+      type: AccountActions.FIND_MY_INTAKE_APPLICATIONS_SUCCESS,
       payload: applcations,
     };
   }

@@ -36,12 +36,15 @@ import {PasswordChangerDialog} from './dialog/password-changer.dialog';
 import { ResultCandidateDialog } from "./dialog/result-candidate.dialog";
 import { candidateListReducer } from "../admission/candidate-list.reducer";
 import { CandidateListState } from "./candidate-list.reducer";
+import {
+  MyIntakeApplicationListState, myIntakeApplicationListReducer} from './my-intake-application-list.reducer';
 
 export interface AccountModuleState {
   user: UserState;
   applicant: ApplicantState;
   publishedIntakes: IntakeListState;
   intakeApplications: IntakeApplicationListState;
+  myIntakeApplications: MyIntakeApplicationListState;
   candidates: CandidateListState;
 }
 
@@ -50,6 +53,7 @@ export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
   applicant: <Applicant>{},
   publishedIntakes: <Intake[]>[],
   intakeApplications: <IntakeApplication[]>[],
+  myIntakeApplications: <IntakeApplication[]>[],
   candidates: <Candidate[]>[],
 
 };
@@ -59,6 +63,7 @@ export const accountModuleReducers = {
   applicant: applicantReducer,
   publishedIntakes: publishedIntakeListReducer,
   intakeApplications: intakeApplicationListReducer,
+  myIntakeApplications: myIntakeApplicationListReducer,
   candidates: candidateListReducer,
 };
 

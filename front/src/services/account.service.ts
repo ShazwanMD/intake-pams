@@ -34,6 +34,13 @@ export class AccountService {
       .catch((error) => this.handleError(error));
   }
 
+  findMyIntakeApplications(): Observable<IntakeApplication[]> {
+    console.log('findMyIntakeApplications');
+    return this._http.get(this.ACCOUNT_API + '/myIntakeApplications')
+      .map((res: Response) => <IntakeApplication[]>res.json())
+      .catch((error) => this.handleError(error));
+  }  
+
   findCandidates(): Observable<Candidate[]> {
     console.log('findCandidates');
     return this._http.get(this.ACCOUNT_API + '/candidates')
