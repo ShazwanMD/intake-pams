@@ -566,16 +566,4 @@ public class ApplicationServiceImpl implements ApplicationService {
         return intakeApplicationDao.hasResult(application, resultType);
     }
 
-    @Override
-    public String copyAddress(InIntakeApplication application) {
-        application.setMailingAddress1(application.getOfficialAddress1());
-        application.setMailingAddress2(application.getOfficialAddress2());
-        application.setMailingAddress3(application.getOfficialAddress3());
-        application.setMailingPostcode(application.getOfficialPostcode());
-        application.setMailingStateCode(application.getOfficialStateCode());
-        application.setMailingCountryCode(application.getOfficialCountryCode());
-        String referenceNo = copyAddress(application);
-        updateIntakeApplication(application);
-        return referenceNo;
-    }
 }
