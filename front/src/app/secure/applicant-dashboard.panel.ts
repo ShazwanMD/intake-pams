@@ -1,3 +1,4 @@
+import { MyIntakeApplication } from './../shared/model/application/my-intake-application.interface';
 import { IntakeApplication } from './../shared/model/application/intake-application.interface';
 import { AddressChangerDialog } from './account/dialog/address-changer.dialog';
 import { User } from './identity/user.interface';
@@ -33,7 +34,7 @@ export class ApplicantDashboardPanel implements OnInit {
   private APPLICANT: string[] = 'accountModuleState.applicant'.split('.');
   private USER: string[] = 'accountModuleState.user'.split('.');
   private intakeApplications$: Observable<IntakeApplication[]>;
-  private myIntakeApplications$: Observable<IntakeApplication[]>;
+  private myIntakeApplications$: Observable<MyIntakeApplication[]>;
   private publishedIntakes$: Observable<Intake[]>;
   private applicant$: Observable<Applicant>;
   private user$: Observable<User>;
@@ -60,7 +61,7 @@ export class ApplicantDashboardPanel implements OnInit {
     this.store.dispatch(this.actions.findMyIntakeApplications());
   }
 
-  resultDialog(candidate): void {
+  resultDialog(myIntakeApplication: MyIntakeApplication): void {
     console.log('resultDialog');
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -69,8 +70,7 @@ export class ApplicantDashboardPanel implements OnInit {
     config.height = '65%';
     config.position = { top: '0px' };
     this.resultDialogRef = this.dialog.open(ResultCandidateDialog, config);
-   // this.editorDialogRef.componentInstance.candidate = candidate;
-    // this.editorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    // this.resultDialogRef.componentInstance.myIntakeApplication = this.myIntakeApplication;  todo in ResultDialog
     this.resultDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
       // load something here

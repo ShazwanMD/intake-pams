@@ -1,3 +1,4 @@
+import { MyIntakeApplication } from './../../shared/model/application/my-intake-application.interface';
 import { Candidate } from './../../shared/model/admission/candidate.interface';
 import { CpsIntakeApplicationSubModule } from './../application/intake-applications/cps/index';
 import { AddressChangerDialog } from './dialog/address-changer.dialog';
@@ -53,7 +54,7 @@ export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
   applicant: <Applicant>{},
   publishedIntakes: <Intake[]>[],
   intakeApplications: <IntakeApplication[]>[],
-  myIntakeApplications: <IntakeApplication[]>[],
+  myIntakeApplications: <MyIntakeApplication[]>[],
   candidates: <Candidate[]>[],
 
 };

@@ -1,3 +1,4 @@
+import { MyIntakeApplication } from './../app/shared/model/application/my-intake-application.interface';
 import { Candidate } from './../app/shared/model/admission/candidate.interface';
 import { AddressChange } from './../app/shared/model/identity/address-change.interface';
 import { Injectable } from '@angular/core';
@@ -34,10 +35,10 @@ export class AccountService {
       .catch((error) => this.handleError(error));
   }
 
-  findMyIntakeApplications(): Observable<IntakeApplication[]> {
+  findMyIntakeApplications(): Observable<MyIntakeApplication[]> {
     console.log('findMyIntakeApplications');
     return this._http.get(this.ACCOUNT_API + '/myIntakeApplications')
-      .map((res: Response) => <IntakeApplication[]>res.json())
+      .map((res: Response) => <MyIntakeApplication[]>res.json())
       .catch((error) => this.handleError(error));
   }  
 

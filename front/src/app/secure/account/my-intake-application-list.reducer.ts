@@ -1,10 +1,10 @@
+import { MyIntakeApplication } from './../../shared/model/application/my-intake-application.interface';
 import {Action} from '@ngrx/store';
 import {AccountActions} from './account.action';
-import {IntakeApplication} from '../../shared/model/application/intake-application.interface';
 
-export type MyIntakeApplicationListState = IntakeApplication[];
+export type MyIntakeApplicationListState = MyIntakeApplication[];
 
-const initialState: MyIntakeApplicationListState = <IntakeApplication[]>[];
+const initialState: MyIntakeApplicationListState = <MyIntakeApplication[]>[];
 
 export function myIntakeApplicationListReducer(state = initialState, action: Action): MyIntakeApplicationListState {
   switch (action.type) {
