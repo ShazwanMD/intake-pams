@@ -442,6 +442,7 @@
         </repository>
     </repositories>
     <build>
+        <finalName>intake-${version}</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
