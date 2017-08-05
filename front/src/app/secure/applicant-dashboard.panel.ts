@@ -22,7 +22,7 @@ import { Candidate } from "../shared/model/admission/candidate.interface";
 
 export class ApplicantDashboardPanel implements OnInit {
 
-
+  @Input() myIntakeApplications: MyIntakeApplication;
 
   [x: string]: any;
   private editorDialogRef: MdDialogRef<AddressChangerDialog>;
@@ -46,9 +46,8 @@ export class ApplicantDashboardPanel implements OnInit {
     private store: Store<ApplicationModuleState>,
     private actions: AccountActions) {
     this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
-    this.myIntakeApplications$ = this.store.select(...this.MY_INTAKE_APPLICATIONS);   
+    this.myIntakeApplications$ = this.store.select(...this.MY_INTAKE_APPLICATIONS);
     this.publishedIntakes$ = this.store.select(...this.PUBLISHED_INTAKES);
-    this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
     this.applicant$ = this.store.select(...this.APPLICANT);
     this.user$ = this.store.select(...this.USER);
   }
@@ -61,7 +60,7 @@ export class ApplicantDashboardPanel implements OnInit {
     this.store.dispatch(this.actions.findMyIntakeApplications());
   }
 
-  resultDialog(myIntakeApplication: MyIntakeApplication): void {
+  resultDialog(myIntakeApplications: MyIntakeApplication): void {
     console.log('resultDialog');
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -70,9 +69,9 @@ export class ApplicantDashboardPanel implements OnInit {
     config.height = '65%';
     config.position = { top: '0px' };
     this.resultDialogRef = this.dialog.open(ResultCandidateDialog, config);
-    // this.resultDialogRef.componentInstance.myIntakeApplication = this.myIntakeApplication;  todo in ResultDialog
+    this.resultDialogRef.componentInstance.myIntakeApplications = this.myIntakeApplications;
     this.resultDialogRef.afterClosed().subscribe((res) => {
-      console.log('close dialog');
+    console.log('close dialog');
       // load something here
     });
   }

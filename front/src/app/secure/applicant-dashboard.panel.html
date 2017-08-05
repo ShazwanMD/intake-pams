@@ -74,7 +74,7 @@
                       Processing
                     </md-card-subtitle>
 
-                    <button *ngIf="myIntakeApplication.candidate?.status === 'OFFERED'" (click)="resultDialog(candidate)" md-button color="primary">Result
+                    <button *ngIf="myIntakeApplication.bidStatus === 'SELECTED'" (click)="resultDialog(candidate)" md-button color="primary">Result
                     </button>
                   </div>
                 </md-card-content>
