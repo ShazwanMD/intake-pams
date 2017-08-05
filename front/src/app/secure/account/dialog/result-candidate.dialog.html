@@ -2,5 +2,10 @@
     <template let-myIntakeApplication let-last="last" ngFor [ngForOf]="myIntakeApplications$ | async ">
         <md-card-subtitle>Candidates Result Information For : {{myIntakeApplication.intake.intakeSession.descriptionEn}}</md-card-subtitle>
         <md-card-subtitle>Candidates Name : {{myIntakeApplication.candidate?.name}}</md-card-subtitle>
-    </template>
+        <md-card-subtitle>Candidates Program : {{myIntakeApplication.candidate?.programOffering?.programCode.descriptionEn}}</md-card-subtitle>
+        <md-card-subtitle>Candidates Identity Number : {{myIntakeApplication.candidate?.identityNo}} </md-card-subtitle>
+        <md-card-subtitle>Candidates Application Reference Number : {{myIntakeApplication.candidate?.application?.referenceNo}}</md-card-subtitle>
+    </template>     
 </div>
+    <button md-raised-button color="accent" (click)="accept(candidate)">Accept</button>
+    <button md-raised-button color="accent" (click)="decline(candidate)">Decline</button>
