@@ -190,8 +190,5 @@ public interface ApplicationService {
 
 	boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant);
 
-//	String copyAddress(InIntakeApplication address);
-
-
 }
 
