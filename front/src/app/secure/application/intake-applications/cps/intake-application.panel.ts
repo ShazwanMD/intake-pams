@@ -55,7 +55,6 @@ export class CpsIntakeApplicationPanel implements OnInit {
               private store: Store<ApplicationModuleState>) {
 
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
-
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
@@ -139,8 +138,9 @@ export class CpsIntakeApplicationPanel implements OnInit {
     this.applicationForm.patchValue(this._intakeApplication);
   }
 
-  onTabChange(): void {
+  onSelectChange(): void {
     console.log('tab change');
+    this.store.dispatch(this.actions.selectTabIndex(0));
   //  this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
