@@ -473,7 +473,7 @@ public class CommonController {
 
     @RequestMapping(value = "/studyModes", method = RequestMethod.GET)
     public ResponseEntity<List<StudyMode>> findStudyModes() {
-        return new ResponseEntity<List<StudyMode>>(commonTransformer.toStudyModeVos(commonService.findStudyModes()), HttpStatus.OK);
+        return new ResponseEntity<List<StudyMode>>(commonTransformer.toStudyModeVos(commonService.findStudyModes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/studyModes/{code}", method = RequestMethod.GET)
