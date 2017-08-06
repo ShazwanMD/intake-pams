@@ -15,7 +15,7 @@ export interface Candidate extends MetaObject{
   studyMode: StudyMode;
   intake: Intake;
   applicant: Applicant;
-  programOffering?: ProgramOffering;
+  programSelection?: ProgramOffering;
   supervisorOffering?: SupervisorOffering;
   application?: IntakeApplication;
   reason: string;

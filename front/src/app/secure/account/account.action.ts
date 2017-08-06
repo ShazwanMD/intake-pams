@@ -68,11 +68,11 @@ export class AccountActions {
 
   static FIND_MY_INTAKE_APPLICATIONS_SUCCESS = '[Account] Find My Intake Applications Success';
 
-  findMyIntakeApplicationsSuccess(applcations): Action {
+  findMyIntakeApplicationsSuccess(myIntakeApplications): Action {
      console.log('findMyIntakeApplicationsSuccess');
     return {
       type: AccountActions.FIND_MY_INTAKE_APPLICATIONS_SUCCESS,
-      payload: applcations,
+      payload: myIntakeApplications,
     };
   }
 

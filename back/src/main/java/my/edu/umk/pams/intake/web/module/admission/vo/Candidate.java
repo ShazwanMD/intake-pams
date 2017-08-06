@@ -5,6 +5,7 @@ import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.common.vo.StudyMode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 
 /**
  * @author PAMS
@@ -21,6 +22,7 @@ public class Candidate extends MetaObject {
     private Intake intake;
     private IntakeApplication application;
     private boolean acception;
+    private ProgramOffering programSelection;
 
     public String getName() {
         return name;
@@ -101,4 +103,15 @@ public class Candidate extends MetaObject {
 	public void setAcception(boolean acception) {
 		this.acception = acception;
 	}
+
+	public ProgramOffering getProgramSelection() {
+		return programSelection;
+	}
+
+	public void setProgramSelection(ProgramOffering programSelection) {
+		this.programSelection = programSelection;
+	}
+	
+	
+	
 }

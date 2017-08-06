@@ -40,7 +40,7 @@ export class AccountEffects {
     .ofType(AccountActions.FIND_MY_INTAKE_APPLICATIONS)
     .map((action) => action.payload)
     .switchMap(() => this.accountService.findMyIntakeApplications())
-    .map((applications) => this.accountActions.findMyIntakeApplicationsSuccess(applications))
+    .map((myIntakeApplications) => this.accountActions.findMyIntakeApplicationsSuccess(myIntakeApplications))
     .catch((error) => Observable.of(this.ctxActions.setErrorMessage(error.error)));    
 
   @Effect() findCandidates = this.actions$
