@@ -521,7 +521,7 @@ public class CommonController {
 
     @RequestMapping(value = "/genderCodes", method = RequestMethod.GET)
     public ResponseEntity<List<GenderCode>> findGenderCodes() {
-        return new ResponseEntity<List<GenderCode>>(commonTransformer.toGenderCodeVos(commonService.findGenderCodes()), HttpStatus.OK);
+        return new ResponseEntity<List<GenderCode>>(commonTransformer.toGenderCodeVos(commonService.findGenderCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/genderCodes/{code}", method = RequestMethod.GET)
