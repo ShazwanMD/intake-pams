@@ -43,12 +43,11 @@ export class MgsebIntakeApplicationPanel implements OnInit {
   private applicationForm: FormGroup;
   private _intakeApplication: IntakeApplication;
 
-
-
  constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
+              private snackBar: MdSnackBar,
               private actions: IntakeApplicationActions,
               private store: Store<ApplicationModuleState>) {
 
@@ -131,6 +130,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       bankStatement: [true],
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
+      copyAddress:[false],
     });
     this.applicationForm.patchValue(this._intakeApplication);
   }
@@ -147,6 +147,15 @@ export class MgsebIntakeApplicationPanel implements OnInit {
     } else {
       return false;
     }
+  }
+
+   copyAddress(application: IntakeApplication) {
+     let snackBarRef = this.snackBar.open('Confirm to Copy this address?', 'Ok');
+      snackBarRef.afterDismissed().subscribe(() => {
+        if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
+         else  this.store.dispatch(this.actions.copyAddressApplication(application));
+     this.goBack();
+    });
   }
 
   goBack(): void {

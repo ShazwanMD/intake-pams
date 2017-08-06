@@ -126,39 +126,8 @@
         <md-tab>
           <template md-tab-label>Address Information</template>
           <td-expansion-panel label="Address Detail">
-
-            Mailing Address
-
-            <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
-              <md-input-container fxFlex="calc(100%-25px)">
-                <input mdInput placeholder="Address 1" formControlName="mailingAddress1"/>
-              </md-input-container>
-
-              <md-input-container fxFlex="calc(100%-25px)">
-                <input mdInput placeholder="Address 2" formControlName="mailingAddress2"/>
-              </md-input-container>
-
-              <md-input-container fxFlex="calc(100%-25px)">
-                <input mdInput placeholder="Address 3" formControlName="mailingAddress3" flex/>
-              </md-input-container>
-
-              <md-input-container fxFlex="calc(100%-25px)">
-                <input mdInput placeholder="Postcode" formControlName="mailingPostcode"/>
-              </md-input-container>
-
-              <pams-state-code-select [placeholder]="'State'"
-                                      [innerFormControl]="applicationForm.controls.mailingStateCode"
-                                      fxFlex="calc(50%-25px)" class="pad-bottom">
-              </pams-state-code-select>
-
-              <pams-country-code-select [placeholder]="'Country'"
-                                        [innerFormControl]="applicationForm.controls.mailingCountryCode"
-                                        fxFlex="calc(50%-25px)" class="pad-bottom">
-              </pams-country-code-select>
-
-            </div>
-
-            Official Address
+            
+               Official Address
 
             <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
               <md-input-container fxFlex="calc(100%-25px)">
@@ -187,6 +156,46 @@
                                         fxFlex="calc(50%-25px)" class="pad-bottom">
               </pams-country-code-select>
             </div>
+
+            Mailing Address
+
+           <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+          <div class="checkbox">
+         <label>
+         <md-checkbox formControlName="copyAddress" (click)="copyAddress(intakeApplication)">
+        Check if mailing address and official address is same</md-checkbox>
+         </label>
+        </div>
+           </div>
+
+            <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+              <md-input-container fxFlex="calc(100%-25px)">
+                <input mdInput placeholder="Address 1" formControlName="mailingAddress1"/>
+              </md-input-container>
+
+              <md-input-container fxFlex="calc(100%-25px)">
+                <input mdInput placeholder="Address 2" formControlName="mailingAddress2"/>
+              </md-input-container>
+
+              <md-input-container fxFlex="calc(100%-25px)">
+                <input mdInput placeholder="Address 3" formControlName="mailingAddress3" flex/>
+              </md-input-container>
+
+              <md-input-container fxFlex="calc(100%-25px)">
+                <input mdInput placeholder="Postcode" formControlName="mailingPostcode"/>
+              </md-input-container>
+
+              <pams-state-code-select [placeholder]="'State'"
+                                      [innerFormControl]="applicationForm.controls.mailingStateCode"
+                                      fxFlex="calc(50%-25px)" class="pad-bottom">
+              </pams-state-code-select>
+
+              <pams-country-code-select [placeholder]="'Country'"
+                                        [innerFormControl]="applicationForm.controls.mailingCountryCode"
+                                        fxFlex="calc(50%-25px)" class="pad-bottom">
+              </pams-country-code-select>
+
+            </div>        
           </td-expansion-panel>
         </md-tab>
 
