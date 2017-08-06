@@ -55,8 +55,12 @@ import {
   AttachmentListState,
 } from './intake-applications/attachment-list.reducer';
 import {Attachment} from '../../shared/model/application/attachment.interface';
+import { TabIndexState, intakeApplicationTabReducer } from "./intake-applications/intake-application-tab.reducer";
+
 
 export interface ApplicationModuleState {
+
+  tabIndex: TabIndexState;
   intakes: IntakeListState;
   intake: IntakeState;
   employments: EmploymentListState;
@@ -73,6 +77,7 @@ export interface ApplicationModuleState {
 ;
 
 export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationModuleState>{
+  tabIndex: 0,
   intakes: <Intake[]>[],
   intake: <Intake>{},
   employments: <Employment[]>[],
@@ -89,6 +94,7 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
 };
 
 export const applicationModuleReducers = {
+  tabIndex : intakeApplicationTabReducer,
   intakes: intakeListReducer,
   intake: intakeReducer,
   employments: employmentListReducer,

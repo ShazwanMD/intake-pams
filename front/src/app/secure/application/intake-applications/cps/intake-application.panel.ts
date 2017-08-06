@@ -30,6 +30,7 @@ import { MdSnackBar, MdDialogRef } from "@angular/material";
 export class CpsIntakeApplicationPanel implements OnInit {
   [x: string]: any;
 
+  private TAB_INDEX: string[] = 'applicationModuleState.tabIndex'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
@@ -42,6 +43,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
   private results$: Observable<Result>;
   private attachments$: Observable<Attachment>;
   private applicationForm: FormGroup;
+  private tabIndex$: Observable<number>;
   private _intakeApplication: IntakeApplication;
 
   constructor(private router: Router,
@@ -58,6 +60,8 @@ export class CpsIntakeApplicationPanel implements OnInit {
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.results$ = this.store.select(...this.RESULTS);
+    this.tabIndex$ = this.store.select(...this.TAB_INDEX);  
+
   }
 
   get intakeApplication(): IntakeApplication {

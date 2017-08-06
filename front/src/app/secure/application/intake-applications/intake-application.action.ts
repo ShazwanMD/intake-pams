@@ -863,4 +863,25 @@ export class IntakeApplicationActions {
     };
   }
 
+  static SELECT_TAB_INDEX = '[Intake Application] Select Tab Index';
+
+  selectTabIndex(tab): Action {
+    console.log('selectTabIndex');
+    return {
+      type: IntakeApplicationActions.SELECT_TAB_INDEX,
+      payload: tab,
+    };
+  }
+
+  static SELECT_TAB_INDEX_SUCCESS = '[Intake Application] Select Tab Index Success';
+
+  selectTabIndexSuccess(tab): Action {
+    console.log('selectTabIndexSuccess');
+    return {
+      type: IntakeApplicationActions.SELECT_TAB_INDEX_SUCCESS,
+      payload: tab,
+    };
+  }
+
+
 }
