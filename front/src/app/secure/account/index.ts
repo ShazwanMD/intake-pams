@@ -2,7 +2,6 @@ import { MyIntakeApplication } from './../../shared/model/application/my-intake-
 import { Candidate } from './../../shared/model/admission/candidate.interface';
 import { CpsIntakeApplicationSubModule } from './../application/intake-applications/cps/index';
 import { AddressChangerDialog } from './dialog/address-changer.dialog';
-//import { IntakeApplicationComponent } from './component/intake-application.component';
 import { IntakeApplication } from './../../shared/model/application/intake-application.interface';
 import { EmailChangerDialog } from './dialog/email-changer.dialog';
 import {UserComponent} from './component/user.component';
@@ -80,7 +79,7 @@ export const accountModuleReducers = {
   declarations: [
     ApplicantComponent,
     UserComponent,
-    //IntakeApplicationComponent,
+
     PasswordChangerDialog,
     EmailChangerDialog,
     AddressChangerDialog,
@@ -90,13 +89,11 @@ export const accountModuleReducers = {
   exports: [
     ApplicantComponent,
     UserComponent,
-   //IntakeApplicationComponent,
   ],
 
   entryComponents: [
     PasswordChangerDialog,
     EmailChangerDialog,
-   // IntakeApplicationComponent,
     AddressChangerDialog,
     ResultCandidateDialog,
   ],

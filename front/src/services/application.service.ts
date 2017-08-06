@@ -2,7 +2,7 @@ import {Result} from '../app/shared/model/application/result.interface';
 import {Attachment} from '../app/shared/model/application/attachment.interface';
 import {Referee} from '../app/shared/model/application/referee.interface';
 import {Injectable} from '@angular/core';
-import {RequestOptions, Response, ResponseContentType} from '@angular/http';
+import { Response, ResponseContentType, RequestOptions, Headers } from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {IntakeApplication} from '../app/shared/model/application/intake-application.interface';
 import {Observable} from 'rxjs/Observable';
@@ -243,10 +243,12 @@ export class ApplicationService {
     console.log('addAttachment');
     console.log('file: ' + file.name);
     console.log('attachmentType: ' + attachmentType);
+    let headers: Headers = new Headers({'Content-Type': ''});
+    let options: RequestOptions = new RequestOptions({headers: headers});
     let formData: FormData = new FormData();
     formData.append('attachmentType', attachmentType.toString());
     formData.append('file', file);
-    return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/attachments', formData)
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/attachments', formData, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
