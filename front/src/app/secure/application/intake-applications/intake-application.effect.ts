@@ -1,6 +1,6 @@
-import { NotificationService } from './../../../../services/notification.service';
+import {NotificationService} from '../../../../services/notification.service';
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {from} from 'rxjs/observable/from';
 import {IntakeApplicationActions} from './intake-application.action';
 import {ApplicationService} from '../../../../services/application.service';
@@ -11,13 +11,13 @@ import {Observable} from 'rxjs';
 import {Intake} from '../../../shared/model/policy/intake.interface';
 import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
 import {IntakeActions} from '../../policy/intakes/intake.action';
-import {ApplicationContextActions} from "../../../application-context.action";
+import {ApplicationContextActions} from '../../../application-context.action';
 
 @Injectable()
 export class IntakeApplicationEffects {
 
-  private INTAKE = 'applicationModuleState.intake'.split('.');
-  private INTAKE_APPLICATION = 'applicationModuleState.intakeApplication'.split('.');
+  private INTAKE: string[] = 'applicationModuleState.intake'.split('.');
+  private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   private intake$: Observable<Intake>;
 
   constructor(private actions$: Actions,
@@ -135,21 +135,21 @@ export class IntakeApplicationEffects {
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.selectIntakeApplication(application))
     .map((message) => this.intakeApplicationActions.selectIntakeApplicationSuccess(message))
-   //   .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
+  //   .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() verifyIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.VERIFY_INTAKE_APPLICATION)
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.verifyIntakeApplication(application))
     .map((message) => this.intakeApplicationActions.verifyIntakeApplicationSuccess(message))
-    //  .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
+  //  .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() rejectIntakeApplication$ = this.actions$
     .ofType(IntakeApplicationActions.REJECT_INTAKE_APPLICATION)
     .map((action) => action.payload)
     .switchMap((application) => this.applicationService.rejectIntakeApplication(application))
     .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message))
-   //   .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
+  //   .do(action => this.router.navigate(['policy/intakes/view-task/', action.payload])).ignoreElements();
 
   @Effect() findSubmittedIntakeApplications$ = this.actions$
     .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS_BY_INTAKE)
@@ -402,8 +402,7 @@ export class IntakeApplicationEffects {
    @Effect() selectTabIndex$ = this.actions$
     .ofType(IntakeApplicationActions.SELECT_TAB_INDEX)
     .map((action) => action.payload)
-    .map((tab) => this.intakeApplicationActions.selectTabIndexSuccess(tab));
-
+    .map((index) => this.intakeApplicationActions.selectTabIndexSuccess(index));
 
 }
 

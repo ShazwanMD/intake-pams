@@ -1,4 +1,4 @@
-import { Attachment } from './../../../../shared/model/application/attachment.interface';
+import {Attachment} from './../../../../shared/model/application/attachment.interface';
 import {Result} from '../../../../shared/model/application/result.interface';
 import {ReligionCode} from '../../../../shared/model/common/religion-code.interface';
 import {MaritalCode} from '../../../../shared/model/common/marital-code.interface';
@@ -8,7 +8,7 @@ import {Referee} from '../../../../shared/model/application/referee.interface';
 import {Employment} from '../../../../shared/model/application/employment.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
 import {IntakeApplicationActions} from '../intake-application.action';
@@ -20,7 +20,7 @@ import {DisabilityCode} from '../../../../shared/model/common/disability-code.in
 import {EthnicityCode} from '../../../../shared/model/common/ethnicity-code.interface';
 import {CountryCode} from '../../../../shared/model/common/country-code.interface';
 import {StateCode} from '../../../../shared/model/common/state-code.interface';
-import { MdSnackBar, MdDialogRef } from "@angular/material";
+import {MdSnackBar, MdSnackBarRef, MdTabChangeEvent, SimpleSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-cps-intake-application',
@@ -59,8 +59,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.results$ = this.store.select(...this.RESULTS);
-    this.tabIndex$ = this.store.select(...this.TAB_INDEX);  
-
+    this.tabIndex$ = this.store.select(...this.TAB_INDEX);
   }
 
   get intakeApplication(): IntakeApplication {
@@ -134,15 +133,15 @@ export class CpsIntakeApplicationPanel implements OnInit {
       bankStatement: [true],
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
-      copyAddress:[false],
+      copyAddress: [false],
     });
     this.applicationForm.patchValue(this._intakeApplication);
   }
 
-  onChangeTab(): void {
-    console.log('tab change');
-    this.store.dispatch(this.actions.selectTabIndex());
-  //  this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  onTabChange(event: MdTabChangeEvent): void {
+    console.log('tab change: ' + event.index);
+    this.store.dispatch(this.actions.selectTabIndex(event.index));
+    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
   submit(application: IntakeApplication, isValid: boolean) {
@@ -154,26 +153,16 @@ export class CpsIntakeApplicationPanel implements OnInit {
     }
   }
 
-  // copyAddress(application: IntakeApplication) {
-  //   if (confirm('Confirm to Copy this address?')) {
-  //     console.log("application :"+application.id);
-  //     this.store.dispatch(this.actions.copyAddressApplication(application)); 
-  //     this.goBack();
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  copyAddress(application: IntakeApplication) {
-     let snackBarRef = this.snackBar.open('Confirm to Copy this address?', 'Ok');
-      snackBarRef.afterDismissed().subscribe(() => {
-        if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
-         else  this.store.dispatch(this.actions.copyAddressApplication(application));
-     this.goBack();
+  copyAddress(application: IntakeApplication): void {
+    let snackBarRef: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Confirm to Copy this address?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+      if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
+      else  this.store.dispatch(this.actions.copyAddressApplication(application));
+      this.goBack();
     });
   }
 
   goBack(): void {
-    //this.router.navigate(['/application/intake-applications/my-intake-application']);
+    // this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
 }

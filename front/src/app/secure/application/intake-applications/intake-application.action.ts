@@ -232,7 +232,7 @@ export class IntakeApplicationActions {
       payload: message,
     };
   }
-  
+
   static COPY_ADDRESS_APPLICATION = '[Intake Application] Copy Address Intake Application';
 
   copyAddressApplication(application): Action {
@@ -671,8 +671,8 @@ export class IntakeApplicationActions {
   static DOWNLOAD_ATTACHMENT = '[Intake Application] Download Attachment';
 
   downloadAttachment(attachment) {
-      console.log('downloadAttachment');
-      return {
+    console.log('downloadAttachment');
+    return {
       type: IntakeApplicationActions.DOWNLOAD_ATTACHMENT,
       payload: {attachment: attachment},
     };
@@ -681,14 +681,14 @@ export class IntakeApplicationActions {
   static DOWNLOAD_ATTACHMENT_SUCCESS = '[Intake Application] Download Attachment Success';
 
   downloadAttachmentSucces(message) {
-      console.log('downloadAttachmentSucces');
-      return {
+    console.log('downloadAttachmentSucces');
+    return {
       type: IntakeApplicationActions.DOWNLOAD_ATTACHMENT_SUCCESS,
       payload: message,
     };
   }
 
- // ====================================================================================================
+  // ====================================================================================================
   // RESULT
   // ====================================================================================================
 
@@ -729,7 +729,7 @@ export class IntakeApplicationActions {
     };
   }
 
-  static UPDATE_RESULT= '[Intake Application] Update Result Application';
+  static UPDATE_RESULT = '[Intake Application] Update Result Application';
 
   updateResult(application, result): Action {
     return {
@@ -865,11 +865,11 @@ export class IntakeApplicationActions {
 
   static SELECT_TAB_INDEX = '[Intake Application] Select Tab Index';
 
-  selectTabIndex(): Action {
+  selectTabIndex(index): Action {
     console.log('selectTabIndex');
     return {
       type: IntakeApplicationActions.SELECT_TAB_INDEX,
-
+      payload: index,
     };
   }
 
@@ -882,6 +882,4 @@ export class IntakeApplicationActions {
       payload: tab,
     };
   }
-
-
 }
