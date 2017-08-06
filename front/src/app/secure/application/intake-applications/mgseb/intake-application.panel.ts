@@ -148,7 +148,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
       this.store.dispatch(this.actions.submitIntakeApplication(application));
-      this.goBack();
+     // this.goBack();
     } else {
       return false;
     }
@@ -164,7 +164,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/application/intake-applications/my-intake-application']);
+    this.router.navigate(['secure/applicant/application/intake-detail/']);
   }
 }
 

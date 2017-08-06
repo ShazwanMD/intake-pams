@@ -1,26 +1,26 @@
-import {Attachment} from './../../../../shared/model/application/attachment.interface';
-import {Result} from '../../../../shared/model/application/result.interface';
-import {ReligionCode} from '../../../../shared/model/common/religion-code.interface';
-import {MaritalCode} from '../../../../shared/model/common/marital-code.interface';
-import {RaceCode} from '../../../../shared/model/common/race-code.interface';
-import {GenderCode} from '../../../../shared/model/common/gender-code.interface';
-import {Referee} from '../../../../shared/model/application/referee.interface';
-import {Employment} from '../../../../shared/model/application/employment.interface';
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Store} from '@ngrx/store';
-import {ApplicationModuleState} from '../../index';
-import {IntakeApplicationActions} from '../intake-application.action';
-import {Observable} from 'rxjs/Observable';
-import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
-import {Language} from '../../../../shared/model/application/language.interface';
-import {NationalityCode} from '../../../../shared/model/common/nationality-code.interface';
-import {DisabilityCode} from '../../../../shared/model/common/disability-code.interface';
-import {EthnicityCode} from '../../../../shared/model/common/ethnicity-code.interface';
-import {CountryCode} from '../../../../shared/model/common/country-code.interface';
-import {StateCode} from '../../../../shared/model/common/state-code.interface';
-import {MdSnackBar, MdSnackBarRef, MdTabChangeEvent, SimpleSnackBar} from '@angular/material';
+import { Attachment } from './../../../../shared/model/application/attachment.interface';
+import { Result } from '../../../../shared/model/application/result.interface';
+import { ReligionCode } from '../../../../shared/model/common/religion-code.interface';
+import { MaritalCode } from '../../../../shared/model/common/marital-code.interface';
+import { RaceCode } from '../../../../shared/model/common/race-code.interface';
+import { GenderCode } from '../../../../shared/model/common/gender-code.interface';
+import { Referee } from '../../../../shared/model/application/referee.interface';
+import { Employment } from '../../../../shared/model/application/employment.interface';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { ApplicationModuleState } from '../../index';
+import { IntakeApplicationActions } from '../intake-application.action';
+import { Observable } from 'rxjs/Observable';
+import { IntakeApplication } from '../../../../shared/model/application/intake-application.interface';
+import { Language } from '../../../../shared/model/application/language.interface';
+import { NationalityCode } from '../../../../shared/model/common/nationality-code.interface';
+import { DisabilityCode } from '../../../../shared/model/common/disability-code.interface';
+import { EthnicityCode } from '../../../../shared/model/common/ethnicity-code.interface';
+import { CountryCode } from '../../../../shared/model/common/country-code.interface';
+import { StateCode } from '../../../../shared/model/common/state-code.interface';
+import { MdSnackBar, MdSnackBarRef, MdTabChangeEvent, SimpleSnackBar } from '@angular/material';
 
 @Component({
   selector: 'pams-cps-intake-application',
@@ -47,12 +47,12 @@ export class CpsIntakeApplicationPanel implements OnInit {
   private _intakeApplication: IntakeApplication;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private vcf: ViewContainerRef,
-              private actions: IntakeApplicationActions,
-              private snackBar: MdSnackBar,
-              private store: Store<ApplicationModuleState>) {
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private vcf: ViewContainerRef,
+    private actions: IntakeApplicationActions,
+    private snackBar: MdSnackBar,
+    private store: Store<ApplicationModuleState>) {
 
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
@@ -147,7 +147,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
       this.store.dispatch(this.actions.submitIntakeApplication(application));
-      this.goBack();
+      //   this.goBack();
     } else {
       return false;
     }
@@ -157,7 +157,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     let snackBarRef: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Confirm to Copy this address?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
       if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
-      else  this.store.dispatch(this.actions.copyAddressApplication(application));
+      else this.store.dispatch(this.actions.copyAddressApplication(application));
       this.goBack();
     });
   }
