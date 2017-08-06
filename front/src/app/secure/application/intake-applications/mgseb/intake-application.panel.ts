@@ -1,26 +1,26 @@
 import { Attachment } from './../../../../shared/model/application/attachment.interface';
-import {Result} from '../../../../shared/model/application/result.interface';
-import {RaceCode} from '../../../../shared/model/common/race-code.interface';
-import {GenderCode} from '../../../../shared/model/common/gender-code.interface';
-import {CountryCode} from '../../../../shared/model/common/country-code.interface';
-import {StateCode} from '../../../../shared/model/common/state-code.interface';
-import {EthnicityCode} from '../../../../shared/model/common/ethnicity-code.interface';
-import {DisabilityCode} from '../../../../shared/model/common/disability-code.interface';
-import {Referee} from '../../../../shared/model/application/referee.interface';
-import {Employment} from '../../../../shared/model/application/employment.interface';
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from '@ngrx/store';
-import {ApplicationModuleState} from '../../index';
-import {IntakeApplicationActions} from '../intake-application.action';
-import {Observable} from 'rxjs/Observable';
-import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
-import {Language} from '../../../../shared/model/application/language.interface';
-import {NationalityCode} from '../../../../shared/model/common/nationality-code.interface';
-import {MaritalCode} from '../../../../shared/model/common/marital-code.interface';
-import {ReligionCode} from '../../../../shared/model/common/religion-code.interface';
-import {MdSnackBar} from '@angular/material';
+import { Result } from '../../../../shared/model/application/result.interface';
+import { RaceCode } from '../../../../shared/model/common/race-code.interface';
+import { GenderCode } from '../../../../shared/model/common/gender-code.interface';
+import { CountryCode } from '../../../../shared/model/common/country-code.interface';
+import { StateCode } from '../../../../shared/model/common/state-code.interface';
+import { EthnicityCode } from '../../../../shared/model/common/ethnicity-code.interface';
+import { DisabilityCode } from '../../../../shared/model/common/disability-code.interface';
+import { Referee } from '../../../../shared/model/application/referee.interface';
+import { Employment } from '../../../../shared/model/application/employment.interface';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { ApplicationModuleState } from '../../index';
+import { IntakeApplicationActions } from '../intake-application.action';
+import { Observable } from 'rxjs/Observable';
+import { IntakeApplication } from '../../../../shared/model/application/intake-application.interface';
+import { Language } from '../../../../shared/model/application/language.interface';
+import { NationalityCode } from '../../../../shared/model/common/nationality-code.interface';
+import { MaritalCode } from '../../../../shared/model/common/marital-code.interface';
+import { ReligionCode } from '../../../../shared/model/common/religion-code.interface';
+import { MdSnackBar, MdTabChangeEvent } from '@angular/material';
 
 @Component({
   selector: 'pams-mgseb-intake-application',
@@ -29,6 +29,7 @@ import {MdSnackBar} from '@angular/material';
 
 export class MgsebIntakeApplicationPanel implements OnInit {
 
+  private TAB_INDEX: string[] = 'applicationModuleState.tabIndex'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
@@ -41,15 +42,16 @@ export class MgsebIntakeApplicationPanel implements OnInit {
   private results$: Observable<Result>;
   private attachments$: Observable<Attachment>;
   private applicationForm: FormGroup;
+  private tabIndex$: Observable<number>;
   private _intakeApplication: IntakeApplication;
 
- constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private vcf: ViewContainerRef,
-              private snackBar: MdSnackBar,
-              private actions: IntakeApplicationActions,
-              private store: Store<ApplicationModuleState>) {
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private vcf: ViewContainerRef,
+    private snackBar: MdSnackBar,
+    private actions: IntakeApplicationActions,
+    private store: Store<ApplicationModuleState>) {
 
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
 
@@ -57,6 +59,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
     this.results$ = this.store.select(...this.RESULTS);
+    this.tabIndex$ = this.store.select(...this.TAB_INDEX);
   }
 
   get intakeApplication(): IntakeApplication {
@@ -130,15 +133,17 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       bankStatement: [true],
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
-      copyAddress:[false],
+      copyAddress: [false],
     });
     this.applicationForm.patchValue(this._intakeApplication);
   }
 
-  onTabChange(): void {
-    console.log('tab change');
-  //  this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  onTabChange(event: MdTabChangeEvent): void {
+    console.log('tab change: ' + event.index);
+    this.store.dispatch(this.actions.selectTabIndex(event.index));
+    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
+
 
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
@@ -149,12 +154,12 @@ export class MgsebIntakeApplicationPanel implements OnInit {
     }
   }
 
-   copyAddress(application: IntakeApplication) {
-     let snackBarRef = this.snackBar.open('Confirm to Copy this address?', 'Ok');
-      snackBarRef.afterDismissed().subscribe(() => {
-        if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
-         else  this.store.dispatch(this.actions.copyAddressApplication(application));
-     this.goBack();
+  copyAddress(application: IntakeApplication) {
+    let snackBarRef = this.snackBar.open('Confirm to Copy this address?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+      if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
+      else this.store.dispatch(this.actions.copyAddressApplication(application));
+      this.goBack();
     });
   }
 
