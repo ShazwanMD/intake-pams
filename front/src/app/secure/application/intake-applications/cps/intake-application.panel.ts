@@ -20,6 +20,7 @@ import {DisabilityCode} from '../../../../shared/model/common/disability-code.in
 import {EthnicityCode} from '../../../../shared/model/common/ethnicity-code.interface';
 import {CountryCode} from '../../../../shared/model/common/country-code.interface';
 import {StateCode} from '../../../../shared/model/common/state-code.interface';
+import { MdSnackBar, MdDialogRef } from "@angular/material";
 
 @Component({
   selector: 'pams-cps-intake-application',
@@ -48,6 +49,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
               private actions: IntakeApplicationActions,
+              private snackBar: MdSnackBar,
               private store: Store<ApplicationModuleState>) {
 
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
@@ -131,18 +133,6 @@ export class CpsIntakeApplicationPanel implements OnInit {
       declared: [true, Validators.requiredTrue],
     });
     this.applicationForm.patchValue(this._intakeApplication);
-
-  //   this.connection = this.chatService.getMessages().subscribe(message => {
-  //     this.messages.push(message);
-  //   });
-  //   this.userbase = this.chatService.getUsers().subscribe(user => {
-  //     this.users.push(user);
-  //   });
-  //   this.routes = this.chatService.getRoutes().subscribe(route => {
-  //     this.routes.push(route);
-  //   });
-  // }
-
   }
 
   onTabChange(): void {
@@ -159,18 +149,26 @@ export class CpsIntakeApplicationPanel implements OnInit {
     }
   }
 
+  // copyAddress(application: IntakeApplication) {
+  //   if (confirm('Confirm to Copy this address?')) {
+  //     console.log("application :"+application.id);
+  //     this.store.dispatch(this.actions.copyAddressApplication(application)); 
+  //     this.goBack();
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
   copyAddress(application: IntakeApplication) {
-    if (confirm('Confirm to Copy this address?')) {
-      this.store.dispatch(this.actions.copyAddressApplication(application)); 
-      this.store.dispatch(this.actions.updateIntakeApplication(application));
-      this.goBack();
-    } else {
-      return false;
-    }
+     let snackBarRef = this.snackBar.open('Confirm to Copy this address?', 'Ok');
+      snackBarRef.afterDismissed().subscribe(() => {
+        if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
+         else  this.store.dispatch(this.actions.copyAddressApplication(application));
+     this.goBack();
+    });
   }
 
-
   goBack(): void {
-    this.router.navigate(['/application/intake-applications/my-intake-application']);
+    //this.router.navigate(['/application/intake-applications/my-intake-application']);
   }
 }

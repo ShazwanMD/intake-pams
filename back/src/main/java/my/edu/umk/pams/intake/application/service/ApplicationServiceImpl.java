@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
@@ -29,6 +30,7 @@ import my.edu.umk.pams.intake.application.model.InGuarantorType;
 import my.edu.umk.pams.intake.application.model.InGuardian;
 import my.edu.umk.pams.intake.application.model.InGuardianType;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.model.InInvolvement;
 import my.edu.umk.pams.intake.application.model.InLanguage;
 import my.edu.umk.pams.intake.application.model.InReferee;
@@ -36,7 +38,13 @@ import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.application.model.InResultType;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
+import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
+import my.edu.umk.pams.intake.policy.model.InStudyModeOfferingImpl;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
@@ -375,10 +383,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     // find intake application by address????
     // macam tak betul API ni
-    @Override
-    public InIntakeApplication findInIntakeApplicationByAddress(String address) {
-        return intakeApplicationDao.findByAddress(address);
-    }
+//    @Override
+//    public InIntakeApplication findInIntakeApplicationByAddress(String address) {
+//        return intakeApplicationDao.findByAddress(address);
+//    }
 
     @Override
     public InIntakeApplication findIntakeApplicationByIntakeAndApplicant(InIntake intake, InApplicant applicant) {
@@ -566,4 +574,17 @@ public class ApplicationServiceImpl implements ApplicationService {
         return intakeApplicationDao.hasResult(application, resultType);
     }
 
+    @Override
+    public void copyAddressApplication(InIntakeApplication application) {
+    	
+    	application.setMailingAddress1(application.getOfficialAddress1());
+    	application.setMailingAddress2(application.getOfficialAddress2());
+    	application.setMailingAddress3(application.getOfficialAddress3());
+    	application.setMailingPostcode(application.getOfficialPostcode());
+    	application.setMailingStateCode(application.getOfficialStateCode());
+    	application.setMailingCountryCode(application.getOfficialCountryCode());
+    	
+    	updateIntakeApplication(application);
+
+    }
 }
