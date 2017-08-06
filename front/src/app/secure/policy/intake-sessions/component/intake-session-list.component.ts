@@ -60,7 +60,7 @@ export class IntakeSessionListComponent implements AfterViewInit, OnChanges {
   searchTerm: string = '';
   fromRow: number = 1;
   currentPage: number = 1;
-  pageSize: number = 15;
+  pageSize: number = 5;
   sortBy: string = 'code';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
