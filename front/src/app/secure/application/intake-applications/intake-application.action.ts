@@ -865,11 +865,11 @@ export class IntakeApplicationActions {
 
   static SELECT_TAB_INDEX = '[Intake Application] Select Tab Index';
 
-  selectTabIndex(tab): Action {
+  selectTabIndex(): Action {
     console.log('selectTabIndex');
     return {
       type: IntakeApplicationActions.SELECT_TAB_INDEX,
-      payload: tab,
+
     };
   }
 

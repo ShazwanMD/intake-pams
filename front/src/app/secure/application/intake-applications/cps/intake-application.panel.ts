@@ -139,9 +139,9 @@ export class CpsIntakeApplicationPanel implements OnInit {
     this.applicationForm.patchValue(this._intakeApplication);
   }
 
-  onSelectChange(): void {
+  onChangeTab(): void {
     console.log('tab change');
-    this.store.dispatch(this.actions.selectTabIndex(0));
+    this.store.dispatch(this.actions.selectTabIndex());
   //  this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
