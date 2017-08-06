@@ -399,5 +399,11 @@ export class IntakeApplicationEffects {
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
 
+   @Effect() selectTabIndex$ = this.actions$
+    .ofType(IntakeApplicationActions.SELECT_TAB_INDEX)
+    .map((action) => action.payload)
+    .map((payload) => this.intakeApplicationActions.selectTabIndexSuccess(payload));
+
+
 }
 

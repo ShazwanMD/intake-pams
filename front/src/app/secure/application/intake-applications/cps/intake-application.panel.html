@@ -7,7 +7,7 @@
       </div>
     </div>
     <md-divider></md-divider>
-    <md-tab-group (selectChange)="onTabChange($event)" md-stretch-tabs>
+    <md-tab-group (selectChange)="onSelectChange($event)" [selectedIndex]="tabIndex$ | async">
       <md-tab>
 
         <template md-tab-label>Detail Of Candidate</template>
