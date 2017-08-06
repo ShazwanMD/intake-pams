@@ -245,21 +245,21 @@ public class ApplicantAccountController {
 //        return new ResponseEntity<String>("Success", HttpStatus.OK);
 //    }
 	
-	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
-	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
-
-		InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress(currentAddress);
-	    identityService.changeAddress(intakeApplication, vo.getNewAddress());
-	      
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
-	
-    @RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}", method = RequestMethod.GET)
-    public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo, @PathVariable String candidateStatus) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        return new ResponseEntity<List<Candidate>>(
-                admissionTransformer.toCandidateVos(
-                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
-    }
-	
+//	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
+//	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
+//
+//		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(currentAddress);
+//	    identityService.changeAddress(intakeApplication, vo.getNewAddress());
+//	      
+//		return new ResponseEntity<String>("Success", HttpStatus.OK);
+//	}
+//	
+//    @RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}", method = RequestMethod.GET)
+//    public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo, @PathVariable String candidateStatus) {
+//        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+//        return new ResponseEntity<List<Candidate>>(
+//                admissionTransformer.toCandidateVos(
+//                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
+//    }
+//	
 }

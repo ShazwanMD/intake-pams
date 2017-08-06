@@ -131,6 +131,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
       bankStatement: [true],
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
+      copyAddress:[false],
     });
     this.applicationForm.patchValue(this._intakeApplication);
   }

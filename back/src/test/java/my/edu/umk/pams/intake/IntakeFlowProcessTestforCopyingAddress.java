@@ -169,9 +169,9 @@ public class IntakeFlowProcessTestforCopyingAddress {
         application1.setOfficialAddress1("test official address 1");
         application1.setOfficialAddress2("test official address 2");
         application1.setOfficialAddress3("test official address 3");
-        application1.setMailingAddress1("test mailing address 1");
-        application1.setMailingAddress2("test mailing address 2");
-        application1.setMailingAddress3("test mailing address 3");
+        application1.setMailingAddress1("");
+        application1.setMailingAddress2("");
+        application1.setMailingAddress3("");
         application1.setResearchTitle("test1a");
         application1.setName("testCitizen bin ting");
         application1.setEmail("testCitizen@email.com");
