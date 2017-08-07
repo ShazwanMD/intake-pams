@@ -154,6 +154,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
   }
 
   copyAddress(application: IntakeApplication): void {
+    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
     let snackBarRef: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Confirm to Copy this address?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
       if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
