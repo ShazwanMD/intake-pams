@@ -275,6 +275,13 @@ public class AdmissionServiceImpl implements AdmissionService {
     }
     
     @Override
+    public void acceptCandidate(InCandidate candidate) {
+        // start offering process
+        candidate.setStatus(InCandidateStatus.ACCEPTED);
+        candidateDao.update(candidate, securityService.getCurrentUser());
+    }
+    
+    @Override
     public void registerCandidate(InCandidate candidate) {
         candidate.setStatus(InCandidateStatus.REGISTERED);
         candidateDao.update(candidate, securityService.getCurrentUser());
