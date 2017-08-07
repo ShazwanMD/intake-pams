@@ -36,6 +36,7 @@ import my.edu.umk.pams.intake.application.model.InLanguage;
 import my.edu.umk.pams.intake.application.model.InReferee;
 import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.application.model.InResultType;
+import my.edu.umk.pams.intake.common.model.InCountryCode;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
@@ -597,5 +598,11 @@ public class ApplicationServiceImpl implements ApplicationService {
     	
     	updateIntakeApplication(application);
 
+    }   
+    
+    @Override
+    public void changeAddress(InIntakeApplication application) {
+    	intakeApplicationDao.update(application, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 }

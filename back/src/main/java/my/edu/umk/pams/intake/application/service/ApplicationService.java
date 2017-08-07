@@ -189,8 +189,8 @@ public interface ApplicationService {
 	boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant);
 
 	void copyAddressApplication(InIntakeApplication application);
-	
-	
 
+	void changeAddress(InIntakeApplication application);
+	
 }
 

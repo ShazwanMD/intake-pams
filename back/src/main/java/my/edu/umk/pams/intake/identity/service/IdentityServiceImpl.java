@@ -18,6 +18,7 @@ import java.util.Set;
 
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.identity.dao.InActorDao;
 import my.edu.umk.pams.intake.identity.dao.InApplicantDao;
 import my.edu.umk.pams.intake.identity.dao.InGroupDao;
@@ -95,6 +96,9 @@ public class IdentityServiceImpl implements IdentityService {
     @Autowired
     private IdentityService identityService;
     
+    @Autowired
+    private ApplicationService applicationService;
+       
     @Autowired
     private SystemService systemService;
     
@@ -662,14 +666,15 @@ public class IdentityServiceImpl implements IdentityService {
         logoutAsSystem(sc);
     }
   
-    @Override
-    public void changeAddress(InIntakeApplication intakeApplication, String newAddress) {
-        SecurityContext sc = loginAsSystem();
-        intakeApplication.setOfficialAddress1(newAddress);
-        intakeApplicationDao.update(intakeApplication, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-        logoutAsSystem(sc);
-    }
+//    @Override
+//    public void changeAddress(InIntakeApplication intakeApplication, String newAddress) {
+//        SecurityContext sc = loginAsSystem();
+//        intakeApplication.setOfficialAddress1(newAddress);     
+//        intakeApplicationDao.update(intakeApplication, securityService.getCurrentUser());
+//        sessionFactory.getCurrentSession().flush();  
+//  
+//        
+//    }
     
 
     //====================================================================================================

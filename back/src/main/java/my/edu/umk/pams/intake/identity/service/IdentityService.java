@@ -200,7 +200,7 @@ public interface IdentityService {
 
 	void updatePrincipal(InPrincipal principal);
 
-	void changeAddress(InIntakeApplication intakeApplication, String newAddress);
+//	void changeAddress(InIntakeApplication intakeApplication, String newAddress);
 }
 
 

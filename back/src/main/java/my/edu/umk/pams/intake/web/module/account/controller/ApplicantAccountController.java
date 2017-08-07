@@ -237,45 +237,19 @@ public class ApplicantAccountController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 	
-//	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
-//	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
-//
-//    InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress(currentAddress);
-//    identityService.changeAddress(intakeApplication, vo.getNewAddress());
-//	      
-//		return new ResponseEntity<String>("Success", HttpStatus.OK);
-//	}
-//	
-	
-//	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
-//	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
-//		InIntakeApplication intakeApplication = applicationService.findInIntakeApplicationByAddress(securityService.getCurrentUser().getUsername());
-//        if (null == intakeApplication)
-//            throw new IllegalArgumentException("intake Application does not exists");
-//        if(intakeApplication.getOfficialAddress1().equals(vo.getNewAddress()))
-//            throw new IllegalArgumentException("Please use a different intake Application");
-//        LOG.debug("changing user address");
-//        intakeApplication.setOfficialAddress1(vo.getNewAddress());
-//        identityService.changeAddress(intakeApplication, vo.getNewAddress());
-//
-//        return new ResponseEntity<String>("Success", HttpStatus.OK);
-//    }
-	
-//	@RequestMapping(value = "/addressChange/{currentAddress:.+}", method = RequestMethod.POST)
-//	public ResponseEntity<String> changeUserAddress(@PathVariable String currentAddress, @RequestBody AddressChange vo) {
-//
-//		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(currentAddress);
-//	    identityService.changeAddress(intakeApplication, vo.getNewAddress());
-//	      
-//		return new ResponseEntity<String>("Success", HttpStatus.OK);
-//	}
-//	
-//    @RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}", method = RequestMethod.GET)
-//    public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo, @PathVariable String candidateStatus) {
-//        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-//        return new ResponseEntity<List<Candidate>>(
-//                admissionTransformer.toCandidateVos(
-//                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
-//    }
-//	
+	@RequestMapping(value = "/addressChange/{newAddress}", method = RequestMethod.PUT)
+    public ResponseEntity<String> changeAddress(@PathVariable String currentAddress, @RequestBody IntakeApplication vo) {
+     
+	 InIntakeApplication intakeApplication = applicationService.findIntakeApplicationById(vo.getId());
+	 intakeApplication.setOfficialAddress1(vo.getOfficialAddress1());
+//	 intakeApplication.setOfficialAddress2(vo.getOfficialAddress2());
+//	 intakeApplication.setOfficialAddress3(vo.getOfficialAddress3());
+//	 intakeApplication.setOfficialPostcode(vo.getOfficialPostcode());
+//	 intakeApplication.setOfficialStateCode(vo.getOfficialStateCode());
+//	 intakeApplication.setOfficialCountryCode(vo.getOfficialCountryCode());
+	 applicationService.changeAddress(intakeApplication);
+    
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
 }

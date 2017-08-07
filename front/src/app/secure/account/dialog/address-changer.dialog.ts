@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {AccountModuleState} from '../index';
 import {AuthenticationService} from '../../../../services/authentication.service';
 import {EmailChange} from '../../../shared/model/identity/email-change.interface';
@@ -30,23 +30,13 @@ export class AddressChangerDialog implements OnInit {
               private store: Store<AccountModuleState>,
               private authnService: AuthenticationService,
               private router: Router,
-              private actions: AccountActions) {
+              private actions: AccountActions,
+               private snackBar: MdSnackBar) {
   }
 
   set intakeApplication(value : IntakeApplication) {
     this._intakeApplication = value;
-    // this.edit = true;
   }
-  // set intakeApplication(intakeApplication : IntakeApplication) {
-  //   this._intakeApplication = intakeApplication;
-  //   this.edit = true;
-  // }
-
-  // get intakeApplication(): IntakeApplication {
-  //   return this._intakeApplication;
-  // }
-
- 
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findSubmittedIntakeApplications());
@@ -63,16 +53,25 @@ export class AddressChangerDialog implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  submit(change: AddressChange, valid: boolean) {
-   if (confirm('change address?')){
-    console.log('submit address change: ', change);
-    this.store.dispatch(this.actions.changeApplicantAddress(change));
+  // submit(change: AddressChange, valid: boolean) {
+  //  if (confirm('change address?')){
+  //   console.log('submit address change: ', change);
+  //   this.store.dispatch(this.actions.changeApplicantAddress(change));
+  //   this.dialog.close();
+  //   this.goBack();
+  //   }
+  //   else{
+  //     return false;}
+  //   }
+
+    submit(intakeApplication: AddressChange, valid: boolean) {
+    let snackBarRef = this.snackBar.open('confirm submit address changes?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+    if (!intakeApplication.currentAddress) this.store.dispatch(this.actions.changeApplicantAddress(intakeApplication));
+    else  this.store.dispatch(this.actions.changeApplicantAddress(intakeApplication));
     this.dialog.close();
-    this.goBack();
-    }
-    else{
-      return false;}
-    }
+    });
+  }
 
   goBack(): void {
     this.router.navigate(['/secure']);
