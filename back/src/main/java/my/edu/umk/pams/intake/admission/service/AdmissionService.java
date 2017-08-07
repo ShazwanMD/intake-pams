@@ -70,4 +70,6 @@ public interface AdmissionService {
 
 	List<InCandidate> findCandidatesAcceptOffered(InIntake intake, InCandidateStatus status);
 
+	void acceptCandidate(InCandidate candidate);
+
 }
