@@ -105,9 +105,9 @@ public class AdmissionController {
     @RequestMapping(value = "/intakes/{referenceNo}/candidates/offer", method = RequestMethod.PUT)
     public ResponseEntity<String> offerCandidates(@PathVariable String referenceNo) {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        List<InCandidate> candidate = admissionService.findCandidatesByStatus(intake, InCandidateStatus.APPROVED);
-        for (InCandidate inCandidate : candidate) {
-        	admissionService.offerCandidate(inCandidate);
+        List<InCandidate> candidates = admissionService.findCandidatesByStatus(intake, InCandidateStatus.APPROVED);
+        for (InCandidate candidate : candidates) {
+        	admissionService.offerCandidate(candidate);
 		}
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
