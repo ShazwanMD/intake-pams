@@ -122,6 +122,13 @@ export class AccountService {
       .map((res: Response) => <Candidate[]>res.json());
   }
 
+  acceptCandidate(): Observable<MyIntakeApplication[]> {
+    console.log('acceptCandidate');
+    return this._http.get(this.ACCOUNT_API + '/myIntakeApplications')
+      .map((res: Response) => <MyIntakeApplication[]>res.json())
+      .catch((error) => this.handleError(error));
+  }
+
   // ====================================================================================================
   // PRIVATE METHODS
   // ====================================================================================================
