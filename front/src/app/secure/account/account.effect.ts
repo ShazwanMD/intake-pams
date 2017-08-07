@@ -102,7 +102,12 @@ export class AccountEffects {
     .switchMap((payload) => this.accountService.changeApplicantAddress(payload))
     .map((message) => this.accountActions.changeApplicantAddressSuccess(message));    
 
-    
+    @Effect() acceptCandidate = this.actions$
+    .ofType(AccountActions.ACCEPT_CANDIDATE)
+    .map((action) => action.payload)
+    .switchMap(() => this.accountService.acceptCandidate())
+    .map((myIntakeApplications) => this.accountActions.acceptCandidateSuccess(myIntakeApplications))
+    .catch((error) => Observable.of(this.ctxActions.setErrorMessage(error.error)));
 
 
 
