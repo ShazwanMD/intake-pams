@@ -5,7 +5,7 @@
 
     <template let-intakeApplication let-last="last" ngFor [ngForOf]="intakeApplications">
       <a md-list-item  class="text-upper" [target]="'_blank'"
-               [routerLink]="['/application', 'intake-applications', intakeApplication.intake.graduateCenter.code.toLowerCase(), intakeApplication.referenceNo]">
+               [routerLink]="['/secure', 'application', 'intake-application-detail', intakeApplication.referenceNo]">
         <md-icon md-list-avatar>label</md-icon>
         <h3 md-line> {{intakeApplication.name}} </h3>
         <p md-line> {{intakeApplication.referenceNo}} </p>
