@@ -39,6 +39,7 @@ export class SupervisorCodeEditorDialog implements OnInit {
     this.editorForm = this.formBuilder.group(<SupervisorCode>{
       id: null,
       code: '',
+      descriptionMs: '',
       descriptionEn: '',
       name: '',
     });

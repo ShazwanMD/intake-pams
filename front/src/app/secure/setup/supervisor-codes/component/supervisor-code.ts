@@ -24,6 +24,7 @@ import { SupervisorCode } from './../../../../shared/model/common/supervisor-cod
 export class SupervisorCodesComponent implements OnChanges {
   private columns: any[] = [
     {name: 'code', label: 'Code'},
+    {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
     {name: 'name', label: 'Name'},
     {name: 'action', label: ''}
