@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
-import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
@@ -120,7 +119,24 @@ public class ApplicantAccountController {
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
         return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
                 HttpStatus.OK);
-    }  
+    } 
+    
+    @RequestMapping(value = "/acceptCandidate", method = RequestMethod.PUT)
+    public ResponseEntity<List<MyIntakeApplication>> acceptCandidate() {
+        InUser user = securityService.getCurrentUser();
+        InApplicant applicant = null;
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+    	   	
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
+        for (InIntakeApplication application : applications) {
+        	InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
+        	admissionService.acceptCandidate(candidate);
+        	
+		}
+        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
+                HttpStatus.OK);
+    }
     
     
     @RequestMapping(value = "/candidates", method = RequestMethod.GET)
