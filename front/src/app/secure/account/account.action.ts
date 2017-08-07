@@ -274,6 +274,24 @@ export class AccountActions {
       type: AccountActions.CHANGE_APPLICANT_ADDRESS_SUCCESS,
       payload: message,
     };
-  }  
+  } 
+  
+   static ACCEPT_CANDIDATE = '[Account] Accept Candidate';
+
+  acceptCandidate(): Action {
+    return {
+      type: AccountActions.ACCEPT_CANDIDATE,
+    };
+  }
+
+  static ACCEPT_CANDIDATE_SUCCESS = '[Account] Accept Candidate Success';
+
+  acceptCandidateSuccess(myIntakeApplications): Action {
+     console.log('acceptCandidateSuccess');
+    return {
+      type: AccountActions.ACCEPT_CANDIDATE_SUCCESS,
+      payload: myIntakeApplications,
+    };
+  }
 
 }
