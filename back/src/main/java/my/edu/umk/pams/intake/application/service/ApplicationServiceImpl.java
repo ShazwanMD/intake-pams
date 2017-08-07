@@ -577,6 +577,17 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public void copyAddressApplication(InIntakeApplication application) {
     	
+    	InIntakeApplication officialAddress = new InIntakeApplicationImpl();
+    	//update new official address 
+    	officialAddress.setOfficialAddress1(application.getOfficialAddress1());
+    	officialAddress.setOfficialAddress2(application.getOfficialAddress2());
+    	officialAddress.setOfficialAddress3(application.getOfficialAddress3());
+    	officialAddress.setOfficialPostcode(application.getOfficialPostcode());
+    	officialAddress.setOfficialStateCode(application.getOfficialStateCode());
+    	officialAddress.setOfficialCountryCode(application.getOfficialCountryCode()); 	
+    	updateIntakeApplication(application);
+    	
+    	//copy updated official address to mailing address
     	application.setMailingAddress1(application.getOfficialAddress1());
     	application.setMailingAddress2(application.getOfficialAddress2());
     	application.setMailingAddress3(application.getOfficialAddress3());
