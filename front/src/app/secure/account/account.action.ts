@@ -295,4 +295,23 @@ export class AccountActions {
     };
   }
 
+  static DECLINED_CANDIDATE = '[Account] Declined Candidate';
+
+  declinedCandidate(decline): Action {
+    return {
+      type: AccountActions.DECLINED_CANDIDATE,
+      payload: decline,
+    };
+  }
+
+  static DECLINED_CANDIDATE_SUCCESS = '[Account] Declined Candidate Success';
+
+  declinedCandidateSuccess(message): Action {
+     console.log('declinedCandidateSuccess');
+    return {
+      type: AccountActions.DECLINED_CANDIDATE_SUCCESS,
+      payload: message,
+    };
+  }
+
 }

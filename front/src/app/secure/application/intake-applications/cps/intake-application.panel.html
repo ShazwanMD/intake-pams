@@ -11,7 +11,7 @@
 
       <md-tab>
 
-        <template md-tab-label>Detail Of Candidatex</template>
+        <template md-tab-label>Detail Of Candidate</template>
         <td-expansion-panel label="Program Choices">
           <pams-program-choice [intakeApplication]="_intakeApplication">
           </pams-program-choice>
@@ -203,29 +203,31 @@
 
         </td-expansion-panel>
       </md-tab>
-
-      <md-tab>
+   <md-tab>
         <md-card>
           <template md-tab-label>Working Experience</template>
           <td-expansion-panel label="Working Experience">
-            <pams-employment-list [intakeApplication]="_intakeApplication"
-                                  [employments]="employments$ | async"></pams-employment-list>
+            <pams-employment-list [intakeApplication]="_intakeApplication" [employments]="employments$ | async"></pams-employment-list>
           </td-expansion-panel>
         </md-card>
       </md-tab>
 
-      <md-tab>
+   <md-tab>
         <md-card>
-          <template md-tab-label>Academic Details</template>
-
-          <td-expansion-panel label="Level of Language Proficiency">
-            <pams-language-list [intakeApplication]="_intakeApplication" [languages]="languages$ | async">
-            </pams-language-list>
-          </td-expansion-panel>
+          <template md-tab-label>Academic Qualification</template>
+          <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
+          <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form
+          </md-card-subtitle>
 
           <td-expansion-panel label="Results">
             <pams-result-list [intakeApplication]="_intakeApplication" [results]="results$ | async">
             </pams-result-list>
+          </td-expansion-panel>
+
+          <td-expansion-panel label="Proficiency in Malay/English Language">
+            <pams-language-list [intakeApplication]="_intakeApplication" [languages]="languages$ | async">
+            </pams-language-list>
+
           </td-expansion-panel>
 
         </md-card>

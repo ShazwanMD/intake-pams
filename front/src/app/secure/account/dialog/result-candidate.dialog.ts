@@ -52,12 +52,20 @@ export class ResultCandidateDialog implements OnInit {
 
 
   accept(accept: MyIntakeApplication) {
-     let snackBarRef = this.snackBar.open('Confirm to Pre-Select This Candidate?', 'Ok');
+     let snackBarRef = this.snackBar.open('Confirm to Accept this Offer?', 'Ok');
     snackBarRef.afterDismissed().subscribe((res) => {
       this.store.dispatch(this.actions.acceptCandidate(accept));
 
-  
-      this.editorDialog.close();
+      // this.editorDialog.close();
+    });
+  }
+
+    decline(decline: MyIntakeApplication) {
+     let snackBarRef = this.snackBar.open('Confirm to Decline this Offer?', 'Ok');
+    snackBarRef.afterDismissed().subscribe((res) => {
+      this.store.dispatch(this.actions.declinedCandidate(decline));
+
+      // this.editorDialog.close();
     });
   }
 

@@ -128,6 +128,12 @@ export class AccountService {
      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  declinedCandidate(myIntakeApplication: MyIntakeApplication): Observable<String> {
+    console.log('declinedCandidate');
+    return this._http.put(this.ACCOUNT_API + '/declinedCandidate', JSON.stringify(myIntakeApplication))
+     .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // PRIVATE METHODS
   // ====================================================================================================

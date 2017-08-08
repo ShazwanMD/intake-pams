@@ -106,7 +106,13 @@ export class AccountEffects {
     .ofType(AccountActions.ACCEPT_CANDIDATE)
     .map((action) => action.payload)
     .switchMap((payload) => this.accountService.acceptCandidate(payload))
-    .map((message) => this.accountActions.acceptCandidateSuccess(message))
+    .map((message) => this.accountActions.acceptCandidateSuccess(message));
+
+    @Effect() declinedCandidate = this.actions$
+    .ofType(AccountActions.DECLINED_CANDIDATE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.accountService.declinedCandidate(payload))
+    .map((message) => this.accountActions.declinedCandidateSuccess(message));
 
 
 
