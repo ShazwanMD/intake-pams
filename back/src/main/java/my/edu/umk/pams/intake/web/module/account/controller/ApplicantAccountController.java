@@ -138,6 +138,23 @@ public class ApplicantAccountController {
                 HttpStatus.OK);
     }
     
+    @RequestMapping(value = "/declinedCandidate", method = RequestMethod.PUT)
+    public ResponseEntity<List<MyIntakeApplication>> declinedCandidate() {
+        InUser user = securityService.getCurrentUser();
+        InApplicant applicant = null;
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+    	   	
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
+        for (InIntakeApplication application : applications) {
+        	InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
+        	admissionService.declinedCandidate(candidate);
+        	
+		}
+        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
+                HttpStatus.OK);
+    }
+    
     
     @RequestMapping(value = "/candidates", method = RequestMethod.GET)
     public ResponseEntity<List<Candidate>> findCandidates(@PathVariable String referenceNo) {
