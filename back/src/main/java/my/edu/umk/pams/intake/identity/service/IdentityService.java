@@ -199,6 +199,8 @@ public interface IdentityService {
     void updateApplicant(InApplicant Applicant);
 
 	void updatePrincipal(InPrincipal principal);
+	
+	void changeAddress(InIntakeApplication application, String newAddress);
 
 //	void changeAddress(InIntakeApplication intakeApplication, String newAddress);
 }

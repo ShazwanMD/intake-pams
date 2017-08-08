@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.application.service;
 
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 
@@ -190,7 +191,9 @@ public interface ApplicationService {
 
 	void copyAddressApplication(InIntakeApplication application);
 
-	void changeAddress(InIntakeApplication application);
+//	void changeAddress(InIntakeApplication application);
+	
+	 
 	
 }
 

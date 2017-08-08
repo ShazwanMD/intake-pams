@@ -6,6 +6,7 @@ import org.joda.time.Period;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +39,7 @@ import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.application.model.InResultType;
 import my.edu.umk.pams.intake.common.model.InCountryCode;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
+import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
@@ -600,9 +602,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     }   
     
-    @Override
-    public void changeAddress(InIntakeApplication application) {
-    	intakeApplicationDao.update(application, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+
+  
 }
