@@ -12,6 +12,7 @@ export interface Candidate extends MetaObject{
   matricNo: string;
   email: string;
   status: BidStatus;
+  acception : boolean;
   studyMode: StudyMode;
   intake: Intake;
   applicant: Applicant;
