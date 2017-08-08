@@ -10,6 +10,7 @@ import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 public class MyIntakeApplication {
 
     private String referenceNo;
+    private String reason;
     private Intake intake;
     private Candidate candidate;
     private InCandidateStatus bidStatus;
@@ -44,6 +45,14 @@ public class MyIntakeApplication {
 
 	public void setBidStatus(InCandidateStatus bidStatus) {
 		this.bidStatus = bidStatus;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
     
     

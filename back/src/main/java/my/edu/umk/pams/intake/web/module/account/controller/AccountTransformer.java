@@ -51,6 +51,7 @@ public class AccountTransformer {
         InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
         MyIntakeApplication vo = new MyIntakeApplication();
         vo.setReferenceNo(application.getReferenceNo());
+        vo.setReason(application.getReason());
         vo.setBidStatus(InCandidateStatus.get(application.getBidStatus().ordinal()));
         vo.setIntake(policyTransformer.toIntakeVo(application.getIntake()));
         vo.setCandidate(admissionTransformer.toCandidateVo(candidate));
