@@ -676,6 +676,15 @@ public class IdentityServiceImpl implements IdentityService {
 //        
 //    }
     
+    @Override
+    public void changeAddress(InIntakeApplication application, String newAddress) {
+    	 SecurityContext sc = loginAsSystem();  
+    	application.setOfficialAddress1(newAddress);
+    	intakeApplicationDao.update(application, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        logoutAsSystem(sc);
+    }
+    
 
     //====================================================================================================
     // PRIVATE METHODS

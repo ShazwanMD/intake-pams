@@ -257,15 +257,14 @@ public class ApplicantAccountController {
 	@RequestMapping(value = "/addressChange/{newAddress}", method = RequestMethod.PUT)
     public ResponseEntity<String> changeAddress(@PathVariable String currentAddress, @RequestBody IntakeApplication vo) {
      
-	 InIntakeApplication intakeApplication = applicationService.findIntakeApplicationById(vo.getId());
+	 InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(currentAddress);
 	 intakeApplication.setOfficialAddress1(vo.getOfficialAddress1());
 //	 intakeApplication.setOfficialAddress2(vo.getOfficialAddress2());
 //	 intakeApplication.setOfficialAddress3(vo.getOfficialAddress3());
 //	 intakeApplication.setOfficialPostcode(vo.getOfficialPostcode());
 //	 intakeApplication.setOfficialStateCode(vo.getOfficialStateCode());
 //	 intakeApplication.setOfficialCountryCode(vo.getOfficialCountryCode());
-	 applicationService.changeAddress(intakeApplication);
-    
+	identityService.changeAddress(intakeApplication, currentAddress);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
