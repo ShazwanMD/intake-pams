@@ -134,30 +134,12 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void preSelectCandidate(InCandidate candidate) {
     	candidate.setStatus(InCandidateStatus.PREAPPROVED);
         candidateDao.update(candidate, securityService.getCurrentUser());
-        
-     // notify candidate
-        InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
-        emailQueue.setTo(candidate.getEmail());
-        emailQueue.setSubject("Sedang diproses");
-        emailQueue.setBody("Permohonan anda pada status "+InCandidateStatus.PREAPPROVED);
-        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-        systemService.saveEmailQueue(emailQueue);
     }
     
     @Override
     public void selectCandidate(InCandidate candidate) {
     	candidate.setStatus(InCandidateStatus.APPROVED);
         candidateDao.update(candidate, securityService.getCurrentUser());
-        
-     // notify candidate
-        InEmailQueue emailQueue = new InEmailQueueImpl();
-        emailQueue.setCode("EQ/" + System.currentTimeMillis()); // todo(uda): do we need code?
-        emailQueue.setTo(candidate.getEmail());
-        emailQueue.setSubject("Sedang diproses");
-        emailQueue.setBody("Permohonan anda pada status "+InCandidateStatus.APPROVED);
-        emailQueue.setQueueStatus(InEmailQueueStatus.QUEUED);
-        systemService.saveEmailQueue(emailQueue);
     }
     
     @Override
@@ -277,7 +259,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public void acceptCandidate(InCandidate candidate) {
         // start offering process
-        candidate.setStatus(InCandidateStatus.ACCEPTED);
+        candidate.setAcception(true);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
     
