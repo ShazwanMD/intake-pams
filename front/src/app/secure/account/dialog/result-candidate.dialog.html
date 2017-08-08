@@ -8,13 +8,13 @@
 
         <p></p>
         <br>
-        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'ACCEPTED'">
+        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === true">
                       <div layout="row" layout-margin>
                         <div flex></div>
                       </div>
                       You have Accepted the offered.
                     </md-card-subtitle>
-                    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'DECLINED'">
+                    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === false">
                       <div layout="row" layout-margin>
                         <div flex></div>
                       </div>
