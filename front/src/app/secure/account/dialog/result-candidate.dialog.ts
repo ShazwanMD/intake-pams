@@ -50,4 +50,15 @@ export class ResultCandidateDialog implements OnInit {
     this.store.dispatch(this.actions.findMyIntakeApplications());
   }
 
+
+  accept(accept: MyIntakeApplication) {
+     let snackBarRef = this.snackBar.open('Confirm to Pre-Select This Candidate?', 'Ok');
+    snackBarRef.afterDismissed().subscribe((res) => {
+      this.store.dispatch(this.actions.acceptCandidate(accept));
+
+  
+      this.editorDialog.close();
+    });
+  }
+
 }

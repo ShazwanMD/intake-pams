@@ -278,19 +278,20 @@ export class AccountActions {
   
    static ACCEPT_CANDIDATE = '[Account] Accept Candidate';
 
-  acceptCandidate(): Action {
+  acceptCandidate(accept): Action {
     return {
       type: AccountActions.ACCEPT_CANDIDATE,
+      payload: accept,
     };
   }
 
   static ACCEPT_CANDIDATE_SUCCESS = '[Account] Accept Candidate Success';
 
-  acceptCandidateSuccess(myIntakeApplications): Action {
+  acceptCandidateSuccess(message): Action {
      console.log('acceptCandidateSuccess');
     return {
       type: AccountActions.ACCEPT_CANDIDATE_SUCCESS,
-      payload: myIntakeApplications,
+      payload: message,
     };
   }
 

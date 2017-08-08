@@ -105,9 +105,9 @@ export class AccountEffects {
     @Effect() acceptCandidate = this.actions$
     .ofType(AccountActions.ACCEPT_CANDIDATE)
     .map((action) => action.payload)
-    .switchMap(() => this.accountService.acceptCandidate())
-    .map((myIntakeApplications) => this.accountActions.acceptCandidateSuccess(myIntakeApplications))
-    .catch((error) => Observable.of(this.ctxActions.setErrorMessage(error.error)));
+    .switchMap((payload) => this.accountService.acceptCandidate(payload))
+    .map((message) => this.accountActions.acceptCandidateSuccess(message))
+
 
 
 

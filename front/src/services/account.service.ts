@@ -122,11 +122,10 @@ export class AccountService {
       .map((res: Response) => <Candidate[]>res.json());
   }
 
-  acceptCandidate(): Observable<MyIntakeApplication[]> {
+  acceptCandidate(myIntakeApplication: MyIntakeApplication): Observable<String> {
     console.log('acceptCandidate');
-    return this._http.get(this.ACCOUNT_API + '/myIntakeApplications')
-      .map((res: Response) => <MyIntakeApplication[]>res.json())
-      .catch((error) => this.handleError(error));
+    return this._http.put(this.ACCOUNT_API + '/acceptCandidate', JSON.stringify(myIntakeApplication))
+     .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   // ====================================================================================================
