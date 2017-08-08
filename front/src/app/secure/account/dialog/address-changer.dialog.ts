@@ -53,11 +53,12 @@ export class AddressChangerDialog implements OnInit {
     this.router.navigate(['/login']);
   }
 
-    submit(intakeApplication: AddressChange, valid: boolean) {
+    submit(change: AddressChange, isValid: boolean) {
+    console.log('address change to: ', change);
     let snackBarRef = this.snackBar.open('confirm submit address changes?', 'Ok');
     snackBarRef.afterDismissed().subscribe(() => {
-    if (!intakeApplication.currentAddress) this.store.dispatch(this.actions.changeApplicantAddress(intakeApplication));
-    else  this.store.dispatch(this.actions.changeApplicantAddress(intakeApplication));
+    if (!change.currentAddress) this.store.dispatch(this.actions.updateIntakeApplication(change));
+    else  this.store.dispatch(this.actions.changeApplicantAddress(change));
     this.dialog.close();
     });
   }

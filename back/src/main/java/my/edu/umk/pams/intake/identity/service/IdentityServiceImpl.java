@@ -665,27 +665,18 @@ public class IdentityServiceImpl implements IdentityService {
         systemService.saveEmailQueue(email);
         logoutAsSystem(sc);
     }
-  
-//    @Override
-//    public void changeAddress(InIntakeApplication intakeApplication, String newAddress) {
-//        SecurityContext sc = loginAsSystem();
-//        intakeApplication.setOfficialAddress1(newAddress);     
-//        intakeApplicationDao.update(intakeApplication, securityService.getCurrentUser());
-//        sessionFactory.getCurrentSession().flush();  
-//  
-//        
-//    }
     
     @Override
     public void changeAddress(InIntakeApplication application, String newAddress) {
-    	 SecurityContext sc = loginAsSystem();  
+    	SecurityContext sc = loginAsSystem();  
+    	applicationService.findIntakeApplication();
+    	 LOG.debug("change address ler",application.getOfficialAddress1());
     	application.setOfficialAddress1(newAddress);
     	intakeApplicationDao.update(application, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().flush();      
         logoutAsSystem(sc);
     }
     
-
     //====================================================================================================
     // PRIVATE METHODS
     //====================================================================================================

@@ -47,6 +47,7 @@ export class EmailChangerDialog implements OnInit {
   }
 
   submit(change: EmailChange, valid: boolean) {
+    console.log('submit address change: ', change);
     this.store.dispatch(this.actions.changeApplicantEmail(change));
     this.dialog.close();
   }

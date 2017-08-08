@@ -47,7 +47,6 @@ export class PasswordChangerDialog implements OnInit {
   }
 
   submit(change: PasswordChange, valid: boolean) {
-    console.log('submit password change: ', change);
     this.store.dispatch(this.actions.changeUserPassword(change));
     this.dialog.close();
     this.logout();   

@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.web.module.account.controller;
 
+import org.jfree.util.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -256,8 +257,9 @@ public class ApplicantAccountController {
 	
 	@RequestMapping(value = "/addressChange/{newAddress}", method = RequestMethod.PUT)
     public ResponseEntity<String> changeAddress(@PathVariable String currentAddress, @RequestBody IntakeApplication vo) {
-     
+		
 	 InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(currentAddress);
+	 LOG.debug("change address ler",currentAddress);
 	 intakeApplication.setOfficialAddress1(vo.getOfficialAddress1());
 //	 intakeApplication.setOfficialAddress2(vo.getOfficialAddress2());
 //	 intakeApplication.setOfficialAddress3(vo.getOfficialAddress3());
