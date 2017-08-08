@@ -1,3 +1,4 @@
+import { ResultCandidateReasonDialog } from './account/dialog/result-candidate-reason.dialog';
 import { MyIntakeApplication } from './../shared/model/application/my-intake-application.interface';
 import { IntakeApplication } from './../shared/model/application/intake-application.interface';
 import { AddressChangerDialog } from './account/dialog/address-changer.dialog';
@@ -27,6 +28,7 @@ export class ApplicantDashboardPanel implements OnInit {
   [x: string]: any;
   private editorDialogRef: MdDialogRef<AddressChangerDialog>;
   private resultDialogRef: MdDialogRef<ResultCandidateDialog>;
+  private reasonDialogRef: MdDialogRef<ResultCandidateReasonDialog>;
 
   private PUBLISHED_INTAKES: string[] = 'accountModuleState.publishedIntakes'.split('.');
   private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
@@ -71,6 +73,22 @@ export class ApplicantDashboardPanel implements OnInit {
     this.resultDialogRef = this.dialog.open(ResultCandidateDialog, config);
     this.resultDialogRef.componentInstance.myIntakeApplications = this.myIntakeApplications;
     this.resultDialogRef.afterClosed().subscribe((res) => {
+    console.log('close dialog');
+      // load something here
+    });
+  }
+
+  reasonDialog(myIntakeApplications: MyIntakeApplication): void {
+    console.log('reasonDialog');
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '65%';
+    config.position = { top: '0px' };
+    this.reasonDialogRef = this.dialog.open(ResultCandidateReasonDialog, config);
+    this.reasonDialogRef.componentInstance.myIntakeApplications = this.myIntakeApplications;
+    this.reasonDialogRef.afterClosed().subscribe((res) => {
     console.log('close dialog');
       // load something here
     });

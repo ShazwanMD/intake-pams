@@ -258,7 +258,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     
     @Override
     public void acceptCandidate(InCandidate candidate) {
-        // start offering process
+        // start acception process
         candidate.setAcception(true);
 
         String generatedMatricNo = generateMatricNumber(candidate);
@@ -270,7 +270,6 @@ public class AdmissionServiceImpl implements AdmissionService {
     @Override
     public void declinedCandidate(InCandidate candidate) {
         // start declined process
-        candidate.setStatus(InCandidateStatus.DECLINED);
         candidate.setAcception(false);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
