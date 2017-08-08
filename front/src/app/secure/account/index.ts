@@ -1,3 +1,4 @@
+import { ResultCandidateReasonDialog } from './dialog/result-candidate-reason.dialog';
 import { MyIntakeApplication } from './../../shared/model/application/my-intake-application.interface';
 import { Candidate } from './../../shared/model/admission/candidate.interface';
 import { CpsIntakeApplicationSubModule } from './../application/intake-applications/cps/index';
@@ -84,6 +85,7 @@ export const accountModuleReducers = {
     EmailChangerDialog,
     AddressChangerDialog,
     ResultCandidateDialog,
+    ResultCandidateReasonDialog,
 
   ],
   exports: [
@@ -96,6 +98,7 @@ export const accountModuleReducers = {
     EmailChangerDialog,
     AddressChangerDialog,
     ResultCandidateDialog,
+    ResultCandidateReasonDialog,
   ],
 })
 export class AccountModule {
