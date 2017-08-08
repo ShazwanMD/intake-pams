@@ -39,10 +39,10 @@ public class AdmissionSchedulerImpl implements AdmissionScheduler {
 
 	@Scheduled(cron = "*/10 * * * * *")
 	public void sendEmail() {
-		/*this.preapproveCandidate();
+		this.preapproveCandidate();
 		this.approveCandidate();
 		this.offerCandidate();
-		this.rejectCandidate();*/
+		this.rejectCandidate();
 	}
 
 	public void preapproveCandidate() {
@@ -54,8 +54,10 @@ public class AdmissionSchedulerImpl implements AdmissionScheduler {
 			List<InCandidate> inCandidate = admissionService.findCandidatesByStatus(inIntake,
 					InCandidateStatus.PREAPPROVED);
 			for (InCandidate candidate : inCandidate) {
-				boolean emailQueueExist = systemService.hasEmailQueue(candidate.getEmail());
-				if (emailQueueExist == true) {
+				boolean isExists = false;
+				isExists = systemService.hasEmailQueue(candidate.getEmail());
+				if(isExists = true)
+				{
 					InEmailQueue emailQueue = new InEmailQueueImpl();
 					emailQueue.setCode("EQ/" + System.currentTimeMillis());
 					emailQueue.setTo(candidate.getEmail());
@@ -78,8 +80,10 @@ public class AdmissionSchedulerImpl implements AdmissionScheduler {
 			List<InCandidate> inCandidate = admissionService.findCandidatesByStatus(inIntake,
 					InCandidateStatus.APPROVED);
 			for (InCandidate candidate : inCandidate) {
-				boolean emailQueueExist = systemService.hasEmailQueue(candidate.getEmail());
-				if (emailQueueExist == true) {
+				boolean isExists = false;
+				isExists = systemService.hasEmailQueue(candidate.getEmail());
+				if(isExists == true)
+				{
 					InEmailQueue emailQueue = new InEmailQueueImpl();
 					emailQueue.setCode("EQ/" + System.currentTimeMillis());
 					emailQueue.setTo(candidate.getEmail());
@@ -102,8 +106,10 @@ public class AdmissionSchedulerImpl implements AdmissionScheduler {
 			List<InCandidate> inCandidate = admissionService.findCandidatesByStatus(inIntake,
 					InCandidateStatus.OFFERED);
 			for (InCandidate candidate : inCandidate) {
-				boolean emailQueueExist = systemService.hasEmailQueue(candidate.getEmail());
-				if (emailQueueExist == true) {
+				boolean isExists = false;
+				isExists = systemService.hasEmailQueue(candidate.getEmail());
+				if(isExists == true)
+				{
 					// generate offer letter and send link offer letter to emel
 					String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
 					String offerLetter = applicationUrl + "/servlet/report?report=IN_0001.jrxml&report.pdf";
@@ -130,8 +136,10 @@ public class AdmissionSchedulerImpl implements AdmissionScheduler {
 			List<InCandidate> inCandidate = admissionService.findCandidatesByStatus(inIntake,
 					InCandidateStatus.REJECTED);
 			for (InCandidate candidate : inCandidate) {
-				boolean emailQueueExist = systemService.hasEmailQueue(candidate.getEmail());
-				if (emailQueueExist == true) {
+				boolean isExists = false;
+				isExists = systemService.hasEmailQueue(candidate.getEmail());
+				if(isExists == true)
+				{
 					InEmailQueue emailQueue = new InEmailQueueImpl();
 					emailQueue.setCode("EQ/" + System.currentTimeMillis());
 					emailQueue.setTo(candidate.getEmail());

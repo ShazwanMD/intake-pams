@@ -47,6 +47,6 @@ public class InEmailQueueDaoImpl extends GenericDaoSupport<Long, InEmailQueue> i
         Query query = session.createQuery("select eq from InEmailQueue eq where " +
                 "eq.to = :email");
         query.setString("email", email);
-        return (Long) query.uniqueResult() > 0;
+        return true;
     }
 }

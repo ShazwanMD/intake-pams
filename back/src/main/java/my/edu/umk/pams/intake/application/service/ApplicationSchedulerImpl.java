@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -37,7 +39,11 @@ public class ApplicationSchedulerImpl implements ApplicationScheduler{
 
 	@Scheduled(cron = "*/10 * * * * *")
 	public void sendEmail() {
-		/*// TODO Auto-generated method stub
+		this.reminderApplicant();
+	}
+	
+	public void reminderApplicant() {
+		// TODO Auto-generated method stub
 		InIntakeSession intakeSession = policyService.findCurrentIntakeSession();
 		List<InIntake> intake = policyService.findIntakes(intakeSession);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -72,7 +78,8 @@ public class ApplicationSchedulerImpl implements ApplicationScheduler{
 					}
 				}
 			}
-		}*/
+		}
+
 	}
 
 }
