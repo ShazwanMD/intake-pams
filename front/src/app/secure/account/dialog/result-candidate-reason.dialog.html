@@ -1,0 +1,12 @@
+<div>
+    <template let-myIntakeApplication let-last="last" ngFor [ngForOf]="myIntakeApplications$ | async ">
+        <md-card-subtitle>Application Result Information For : {{myIntakeApplication.intake.intakeSession.descriptionEn}}</md-card-subtitle>
+        <p></p>
+        <br>
+        <md-card-subtitle>Application Status : {{myIntakeApplication.bidStatus}}</md-card-subtitle>
+        <br>
+        <md-card-subtitle>Reason : {{myIntakeApplication.reason}}</md-card-subtitle>
+        
+    </template>     
+</div>
+
