@@ -276,8 +276,21 @@ public class AdmissionServiceImpl implements AdmissionService {
     
     @Override
     public void acceptCandidate(InCandidate candidate) {
-        // start offering process
+        // start accepted process
         candidate.setStatus(InCandidateStatus.ACCEPTED);
+        candidate.setAcception(true);
+        
+        String generatedMatricNo = generateMatricNumber(candidate);
+        candidate.setMatricNo(generatedMatricNo);
+        
+        candidateDao.update(candidate, securityService.getCurrentUser());
+    }
+    
+    @Override
+    public void declinedCandidate(InCandidate candidate) {
+        // start declined process
+        candidate.setStatus(InCandidateStatus.DECLINED);
+        candidate.setAcception(false);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
     
