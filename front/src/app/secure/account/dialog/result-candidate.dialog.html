@@ -5,8 +5,25 @@
         <md-card-subtitle>Candidates Program : {{myIntakeApplication.candidate?.programSelection?.programCode.descriptionEn}}</md-card-subtitle>
         <md-card-subtitle>Candidates Identity Number : {{myIntakeApplication.candidate?.identityNo}} </md-card-subtitle>
         <md-card-subtitle>Candidates Application Reference Number : {{myIntakeApplication.candidate?.application?.referenceNo}}</md-card-subtitle>
+
+        <p></p>
+        <br>
+        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'ACCEPTED'">
+                      <div layout="row" layout-margin>
+                        <div flex></div>
+                      </div>
+                      You have Accepted the offered.
+                    </md-card-subtitle>
+                    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'DECLINED'">
+                      <div layout="row" layout-margin>
+                        <div flex></div>
+                      </div>
+                      You have Declined the offered.
+                    </md-card-subtitle>
     </template>     
 </div>
+    <p></p>
+        <br>
     <button md-raised-button color="accent" (click)="offerLetter(candidate)">View Offer Letter</button>
     <button md-raised-button color="accent" (click)="accept(row)">Accept</button>
-    <button md-raised-button color="accent" (click)="decline(candidate)">Decline</button>
+    <button md-raised-button color="accent" (click)="decline(row)">Decline</button>
