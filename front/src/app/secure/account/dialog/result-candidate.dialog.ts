@@ -69,4 +69,8 @@ export class ResultCandidateDialog implements OnInit {
     });
   }
 
+  offerLetter() : void{
+    
+  }
+
 }
