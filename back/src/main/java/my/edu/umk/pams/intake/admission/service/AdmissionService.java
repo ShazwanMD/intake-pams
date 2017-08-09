@@ -73,5 +73,7 @@ public interface AdmissionService {
 	void acceptCandidate(InCandidate candidate);
 	
 	void declinedCandidate(InCandidate candidate);
+	
+	boolean isMatricNoExists(String matricNo);
 
 }
