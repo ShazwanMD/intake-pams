@@ -128,4 +128,13 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
         query.setInteger("status", status.ordinal());
         return ((Long) query.uniqueResult()).intValue();
     }
+    
+    @Override
+    public boolean isExists(String matricNo) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from InCandidate p where " +
+                "upper(p.matricNo) = upper(:generateMatricNumber) ");
+        query.setString("generateMatricNumber", matricNo);
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
 }
