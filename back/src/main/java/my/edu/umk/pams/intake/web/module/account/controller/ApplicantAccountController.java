@@ -20,7 +20,6 @@ import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
-import my.edu.umk.pams.intake.common.model.InBankCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -38,7 +37,6 @@ import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationController;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
-import my.edu.umk.pams.intake.web.module.common.vo.BankCode;
 import my.edu.umk.pams.intake.web.module.identity.controller.IdentityTransformer;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.identity.vo.User;
@@ -257,27 +255,72 @@ public class ApplicantAccountController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 	
-//	@RequestMapping(value = "/addressChange/{newAddress}", method = RequestMethod.PUT)
-//    public ResponseEntity<String> changeAddress(@PathVariable String currentAddress, @RequestBody IntakeApplication vo) {
-//		
-//	 InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(currentAddress);
-//	 LOG.debug("change address ler",currentAddress);
-//	 intakeApplication.setOfficialAddress1(vo.getOfficialAddress1());
-////	 intakeApplication.setOfficialAddress2(vo.getOfficialAddress2());
-////	 intakeApplication.setOfficialAddress3(vo.getOfficialAddress3());
-////	 intakeApplication.setOfficialPostcode(vo.getOfficialPostcode());
-////	 intakeApplication.setOfficialStateCode(vo.getOfficialStateCode());
-////	 intakeApplication.setOfficialCountryCode(vo.getOfficialCountryCode());
-//	identityService.changeAddress(intakeApplication, currentAddress);
+//	@RequestMapping(value = "/addressChange", method = RequestMethod.POST)
+//	public ResponseEntity<String> changeAddress(@RequestBody AddressChange vo) {
+//        InUser user = securityService.getCurrentUser();
+//        InApplicant applicant = null;
+//        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+//        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+//        
+//        
+//        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
+//        for (InIntakeApplication application : applications) {        	
+//        	  
+//        	identityService.updateMyIntakeApplication(application);
+//		}
 //        return new ResponseEntity<String>("Success", HttpStatus.OK);
 //    }
 	
-	@RequestMapping(value = "/addressChange/{newAddress}", method = RequestMethod.PUT)
-	public ResponseEntity<String> changeAddress(@PathVariable String newAddress, @RequestBody AddressChange vo) {
-		
-		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(vo.getCurrentAddress());
-		application.setOfficialAddress1(vo.getNewAddress());
-		applicationService.updateIntakeApplication(application);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}		
+	
+    @RequestMapping(value = "/changeAddress", method = RequestMethod.PUT)
+    public ResponseEntity<List<MyIntakeApplication>> changeAddress(@RequestBody MyIntakeApplication vo) {
+        InUser user = securityService.getCurrentUser();
+        InApplicant applicant = null;
+        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+    	   	
+        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
+        for (InIntakeApplication application : applications) {
+        //	application.setOfficialAddress1(vo.getOfficialAddress1());
+        	identityService.updateMyIntakeApplication(application);
+        	
+		}
+        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
+                HttpStatus.OK);
+    }
+	
+//    @RequestMapping(value = "/passwordChange", method = RequestMethod.POST)
+//    public ResponseEntity<String> changeUserPassword(@RequestBody PasswordChange vo) {
+//        InUser user = identityService.findUserByUsername(securityService.getCurrentUser().getUsername());
+//        if (null == user)
+//            throw new IllegalArgumentException("User does not exists");
+//        if(user.getPassword().equals(vo.getNewPassword()))
+//            throw new IllegalArgumentException("Please use a different password");
+//        LOG.debug("changing user password");
+//        user.setPassword(vo.getNewPassword());
+//        identityService.updateUser(user);
+//
+//        return new ResponseEntity<String>("Success", HttpStatus.OK);
+//    }
+//	
+       // return new ResponseEntity<String>("Success", HttpStatus.OK);
+  //  }
+	
+//    @RequestMapping(value = "/acceptCandidate", method = RequestMethod.PUT)
+//    public ResponseEntity<List<MyIntakeApplication>> acceptCandidate() {
+//        InUser user = securityService.getCurrentUser();
+//        InApplicant applicant = null;
+//        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
+//        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
+//    	   	
+//        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
+//        for (InIntakeApplication application : applications) {
+//        	InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
+//        	admissionService.acceptCandidate(candidate);
+//        	
+//		}
+//        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
+//                HttpStatus.OK);
+//    }
+
 }

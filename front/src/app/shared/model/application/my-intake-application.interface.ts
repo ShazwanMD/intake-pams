@@ -6,6 +6,7 @@ export interface MyIntakeApplication extends MetaObject {
   
   bidStatus: BidStatus;
   referenceNo: String; 
+  officialAddress1: String;
   intake: Intake;
   candidate: Candidate;
 }

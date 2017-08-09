@@ -25,6 +25,7 @@ export class ApplicantDashboardPanel implements OnInit {
 
   @Input() myIntakeApplications: MyIntakeApplication;
 
+
   [x: string]: any;
   private editorDialogRef: MdDialogRef<AddressChangerDialog>;
   private resultDialogRef: MdDialogRef<ResultCandidateDialog>;
@@ -94,11 +95,11 @@ export class ApplicantDashboardPanel implements OnInit {
     });
   }
 
-  editDialog(intakeApplication: IntakeApplication): void {
-    this.showDialog(intakeApplication);
-  }
+  // editDialog(intakeApplication: IntakeApplication): void {
+  //   this.showDialog(intakeApplication);
+  // }
 
-  private showDialog(intakeApplication: IntakeApplication): void {
+  private showDialog(myIntakeApplications: MyIntakeApplication): void {
     console.log('editDialog');
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -107,13 +108,10 @@ export class ApplicantDashboardPanel implements OnInit {
     config.height = '65%';
     config.position = { top: '0px' };
     this.editorDialogRef = this.dialog.open(AddressChangerDialog, config);
-    this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
+    this.editorDialogRef.componentInstance.myIntakeApplications = this.myIntakeApplications;
     this.editorDialogRef.afterClosed().subscribe((res) => {
-      console.log('close dialog');
-      this.store.dispatch(this.actions.findIntakeApplications());
-
+    console.log('close dialog');
       // load something here
     });
-
   }
 }

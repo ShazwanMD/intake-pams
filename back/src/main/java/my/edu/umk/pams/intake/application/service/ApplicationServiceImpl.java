@@ -589,7 +589,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     	officialAddress.setOfficialStateCode(application.getOfficialStateCode());
     	officialAddress.setOfficialCountryCode(application.getOfficialCountryCode()); 	
     	updateIntakeApplication(application);
-    	
+  
     	//copy updated official address to mailing address
     	application.setMailingAddress1(application.getOfficialAddress1());
     	application.setMailingAddress2(application.getOfficialAddress2());

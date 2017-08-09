@@ -106,10 +106,10 @@ export class AccountService {
       .map((res: Response) => <String>res.text());
   }
 
-  changeApplicantAddress(change: AddressChange): Observable<String> {
-    return this._http.post(this.ACCOUNT_API + '/addressChange/' + change.currentAddress, JSON.stringify(change))
-      .map((res: Response) => <String>res.text());
-  }
+  // changeApplicantAddress(change: AddressChange): Observable<String> {
+  //   return this._http.post(this.ACCOUNT_API + '/addressChange/' + change.currentAddress, JSON.stringify(change))
+  //     .map((res: Response) => <String>res.text());
+  // }
 
   updateIntakeApplication(intakeApplication: IntakeApplication): Observable<String> {
     return this._http.put(this.ACCOUNT_API + '/updateIntakeApplication', JSON.stringify(intakeApplication))
@@ -132,6 +132,13 @@ export class AccountService {
     console.log('declinedCandidate');
     return this._http.put(this.ACCOUNT_API + '/declinedCandidate', JSON.stringify(myIntakeApplication))
      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  changeApplicantAddress(myIntakeApplication: MyIntakeApplication): Observable<String> {
+    console.log('addressChange');
+    return this._http.put(this.ACCOUNT_API + '/changeAddress', JSON.stringify(myIntakeApplication))
+      .flatMap((res: Response) => Observable.of(res.text()))
+
   }
 
   // ====================================================================================================

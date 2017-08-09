@@ -1,16 +1,18 @@
-import { intakeApplicationRoutes } from './../../application/intake-applications/intake-application.routes';
+import { MyIntakeApplication } from './../../../shared/model/application/my-intake-application.interface';
+import { Observable } from 'rxjs/Observable';
 import { AddressChange } from './../../../shared/model/identity/address-change.interface';
 import { IntakeApplication } from './../../../shared/model/application/intake-application.interface';
-import {AuthenticatedUser} from '../../../shared/model/identity/authenticated-user.interface';
+import { AuthenticatedUser } from './../../../shared/model/identity/authenticated-user.interface';
+import {PasswordChange} from '../../../shared/model/identity/password-change.interface';
+import {User} from '../../identity/user.interface';
 import {AccountActions} from '../account.action';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import { MdDialogRef, MdSnackBar } from '@angular/material';
+import {MdDialogRef} from '@angular/material';
 import {AccountModuleState} from '../index';
-import {AuthenticationService} from '../../../../services/authentication.service';
-import {EmailChange} from '../../../shared/model/identity/email-change.interface';
+import { AuthenticationService } from "../../../../services/authentication.service";
 
 @Component({
   selector: 'pams-address-changer',
@@ -19,54 +21,44 @@ import {EmailChange} from '../../../shared/model/identity/email-change.interface
 
 export class AddressChangerDialog implements OnInit {
 
+
+ private MY_INTAKE_APPLICATIONS: string[] = 'accountModuleState.myIntakeApplications'.split('.');
+
+  private myIntakeApplications$: Observable<MyIntakeApplication[]>;
+
   private changeAddressForm: FormGroup;
-  private _intakeApplication: IntakeApplication;
-  private authenticatedUser: AuthenticatedUser;
-  // private edit : boolean = false;
+  private _myIntakeApplication: MyIntakeApplication;
+    private authenticatedUser: AuthenticatedUser;
 
   constructor(private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
               private dialog: MdDialogRef<AddressChangerDialog>,
               private store: Store<AccountModuleState>,
               private authnService: AuthenticationService,
               private router: Router,
-              private actions: AccountActions,
-               private snackBar: MdSnackBar) {
+              private actions: AccountActions) {
+ this.myIntakeApplications$ = this.store.select(...this.MY_INTAKE_APPLICATIONS);
   }
 
-  set intakeApplication(value : IntakeApplication) {
-    this._intakeApplication = value;
+  set myIntakeApplications(value: MyIntakeApplication) {
+    this._myIntakeApplication= value;
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findSubmittedIntakeApplications());
-    this.changeAddressForm = this.formBuilder.group({    
-      currentAddress: [this._intakeApplication.officialAddress1, Validators.compose([Validators.required])],
-      newAddress: ['', Validators.required],
-     
+
+    this.changeAddressForm = this.formBuilder.group({
+    //  currentAddress: this._intakeApplication.officialAddress1,
+      officialAddress1: ['', Validators.required],
     });
-    // if(this.edit)this.changeAddressForm.patchValue(this._intakeApplication);
   }
 
-  logout(): void {
+    logout(): void {
     this.authnService.logout();
     this.router.navigate(['/login']);
   }
 
-    submit(change: AddressChange, isValid: boolean) {
-    console.log('address change to: ', change);
-    let snackBarRef = this.snackBar.open('confirm submit address changes?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-    if (!change.currentAddress) this.store.dispatch(this.actions.updateIntakeApplication(change));
-    else  this.store.dispatch(this.actions.changeApplicantAddress(change));
+  submit(changeAddress: AddressChange, valid: boolean) {
+    this.store.dispatch(this.actions.changeApplicantAddress(changeAddress));
     this.dialog.close();
-    });
-  }
-
-  goBack(): void {
-    this.router.navigate(['/secure']);
-  }
+ //   this.logout();   
+} 
 }
-
- 
-
