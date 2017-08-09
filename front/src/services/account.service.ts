@@ -134,12 +134,14 @@ export class AccountService {
      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  changeApplicantAddress(myIntakeApplication: MyIntakeApplication): Observable<String> {
+  changeApplicantAddress(changeAddress: AddressChange): Observable<String> {
     console.log('addressChange');
-    return this._http.put(this.ACCOUNT_API + '/changeAddress', JSON.stringify(myIntakeApplication))
+    return this._http.post(this.ACCOUNT_API + '/addressChange', JSON.stringify(changeAddress))
       .flatMap((res: Response) => Observable.of(res.text()))
-
+      .catch((error) => this.handleError(error));
   }
+
+
 
   // ====================================================================================================
   // PRIVATE METHODS

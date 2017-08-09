@@ -255,72 +255,23 @@ public class ApplicantAccountController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 	
-//	@RequestMapping(value = "/addressChange", method = RequestMethod.POST)
-//	public ResponseEntity<String> changeAddress(@RequestBody AddressChange vo) {
-//        InUser user = securityService.getCurrentUser();
-//        InApplicant applicant = null;
-//        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
-//        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
-//        
-//        
-//        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
-//        for (InIntakeApplication application : applications) {        	
-//        	  
-//        	identityService.updateMyIntakeApplication(application);
-//		}
-//        return new ResponseEntity<String>("Success", HttpStatus.OK);
-//    }
 	
-	
-    @RequestMapping(value = "/changeAddress", method = RequestMethod.PUT)
-    public ResponseEntity<List<MyIntakeApplication>> changeAddress(@RequestBody MyIntakeApplication vo) {
+    @RequestMapping(value = "/addressChange", method = RequestMethod.POST)
+    public ResponseEntity<String> changeApplicantAddress(@RequestBody AddressChange vo) {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
         if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
         if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
-    	   	
+    	
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
         for (InIntakeApplication application : applications) {
-        //	application.setOfficialAddress1(vo.getOfficialAddress1());
-        	identityService.updateMyIntakeApplication(application);
         	
-		}
-        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
-                HttpStatus.OK);
+        	application.setOfficialAddress1(vo.getNewAddress());
+        	applicationService.updateIntakeApplication(application);
+        }
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 	
-//    @RequestMapping(value = "/passwordChange", method = RequestMethod.POST)
-//    public ResponseEntity<String> changeUserPassword(@RequestBody PasswordChange vo) {
-//        InUser user = identityService.findUserByUsername(securityService.getCurrentUser().getUsername());
-//        if (null == user)
-//            throw new IllegalArgumentException("User does not exists");
-//        if(user.getPassword().equals(vo.getNewPassword()))
-//            throw new IllegalArgumentException("Please use a different password");
-//        LOG.debug("changing user password");
-//        user.setPassword(vo.getNewPassword());
-//        identityService.updateUser(user);
-//
-//        return new ResponseEntity<String>("Success", HttpStatus.OK);
-//    }
-//	
-       // return new ResponseEntity<String>("Success", HttpStatus.OK);
-  //  }
-	
-//    @RequestMapping(value = "/acceptCandidate", method = RequestMethod.PUT)
-//    public ResponseEntity<List<MyIntakeApplication>> acceptCandidate() {
-//        InUser user = securityService.getCurrentUser();
-//        InApplicant applicant = null;
-//        if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
-//        if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
-//    	   	
-//        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
-//        for (InIntakeApplication application : applications) {
-//        	InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
-//        	admissionService.acceptCandidate(candidate);
-//        	
-//		}
-//        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
-//                HttpStatus.OK);
-//    }
+    
 
 }

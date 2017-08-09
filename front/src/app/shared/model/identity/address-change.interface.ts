@@ -1,5 +1,5 @@
 export interface AddressChange {
   newAddress: string;
-  // currentAddress: string;
+  currentAddress: string;
   
 }

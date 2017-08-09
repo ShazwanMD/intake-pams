@@ -24,6 +24,7 @@ import { Candidate } from "../shared/model/admission/candidate.interface";
 export class ApplicantDashboardPanel implements OnInit {
 
   @Input() myIntakeApplications: MyIntakeApplication;
+  @Input() intakeApplications: IntakeApplication;
 
 
   [x: string]: any;
@@ -95,22 +96,19 @@ export class ApplicantDashboardPanel implements OnInit {
     });
   }
 
-  // editDialog(intakeApplication: IntakeApplication): void {
-  //   this.showDialog(intakeApplication);
-  // }
 
-  private showDialog(myIntakeApplications: MyIntakeApplication): void {
+  editDialog(): void {
     console.log('editDialog');
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '70%';
     config.height = '65%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(AddressChangerDialog, config);
-    this.editorDialogRef.componentInstance.myIntakeApplications = this.myIntakeApplications;
+    this.editorDialogRef.componentInstance.intakeApplications = this.intakeApplications;
     this.editorDialogRef.afterClosed().subscribe((res) => {
-    console.log('close dialog');
+      console.log('close dialog');
       // load something here
     });
   }

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { AddressChange } from './../../../shared/model/identity/address-change.interface';
 import { IntakeApplication } from './../../../shared/model/application/intake-application.interface';
 import { AuthenticatedUser } from './../../../shared/model/identity/authenticated-user.interface';
-import {PasswordChange} from '../../../shared/model/identity/password-change.interface';
+
 import {User} from '../../identity/user.interface';
 import {AccountActions} from '../account.action';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
@@ -22,12 +22,12 @@ import { AuthenticationService } from "../../../../services/authentication.servi
 export class AddressChangerDialog implements OnInit {
 
 
- private MY_INTAKE_APPLICATIONS: string[] = 'accountModuleState.myIntakeApplications'.split('.');
+ private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
 
-  private myIntakeApplications$: Observable<MyIntakeApplication[]>;
+  private intakeApplications$: Observable<IntakeApplication[]>;
 
   private changeAddressForm: FormGroup;
-  private _myIntakeApplication: MyIntakeApplication;
+  private _intakeApplication: IntakeApplication;
     private authenticatedUser: AuthenticatedUser;
 
   constructor(private formBuilder: FormBuilder,
@@ -36,18 +36,18 @@ export class AddressChangerDialog implements OnInit {
               private authnService: AuthenticationService,
               private router: Router,
               private actions: AccountActions) {
- this.myIntakeApplications$ = this.store.select(...this.MY_INTAKE_APPLICATIONS);
+ this.intakeApplications$ = this.store.select(...this.INTAKE_APPLICATIONS);
   }
 
-  set myIntakeApplications(value: MyIntakeApplication) {
-    this._myIntakeApplication= value;
+  set intakeApplications(value: IntakeApplication) {
+    this._intakeApplication= value;
   }
 
   ngOnInit(): void {
 
     this.changeAddressForm = this.formBuilder.group({
-    //  currentAddress: this._intakeApplication.officialAddress1,
-      officialAddress1: ['', Validators.required],
+      currentAddress: ['', Validators.required],
+      newAddress: ['', Validators.required],
     });
   }
 

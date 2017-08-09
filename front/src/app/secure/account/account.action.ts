@@ -258,11 +258,11 @@ export class AccountActions {
 
   static CHANGE_APPLICANT_ADDRESS = '[Account] Change Applicant Address';
 
-  changeApplicantAddress(addressChange): Action {
+  changeApplicantAddress(changeAddress): Action {
     console.log('changeApplicantAddress');
     return {
       type: AccountActions.CHANGE_APPLICANT_ADDRESS,
-      payload: addressChange,
+      payload: changeAddress,
     };
   }
 

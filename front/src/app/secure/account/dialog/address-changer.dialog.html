@@ -1,53 +1,26 @@
-<!--<h2 md-dialog-title>Enter Your New Address</h2>
+<h2 md-dialog-title>Enter Your New Address</h2>
 <md-dialog-content>
   <form [formGroup]="changeAddressForm" novalidate>
     <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
       <div layout="column" class="pad-right" flex>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput placeholder="Current Address" formControlName="currentAddress" flex readonly/>
+            <input mdInput placeholder="Current Address" formControlName="currentAddress"  flex/>
           </md-input-container>
         </div>
 
         <div layout="row">
           <md-input-container flex>
-            <input mdInput placeholder="Enter New Address" formControlName="newAddress" flex/>
+            <input mdInput placeholder="Enter New Address" formControlName="newAddress"  flex/>
           </md-input-container>
         </div>
+
       </div>
     </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(row)">
-    Change
-  </button>
-</md-dialog-actions>-->
-
-
-<h2 md-dialog-title>Change Address</h2>
-<md-dialog-content>
-  <form [formGroup]="changeAddressForm">
-    <md-card>
-      <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-
-        <div layout="column" class="pad-right" flex>
-          <div layout="row">
-            <md-input-container flex>
-              <input mdInput placeholder="new address : " formControlName="officialAddress1" flex/>
-            </md-input-container>
-          </div>
-
-
-
-
-        </div>
-      </div>
-    </md-card>
-  </form>
-</md-dialog-content>
-<md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(row)">
+  <button md-raised-button color="accent" (click)="submit(changeAddressForm.value, changeAddressForm.valid)">
     Change
   </button>
 </md-dialog-actions>

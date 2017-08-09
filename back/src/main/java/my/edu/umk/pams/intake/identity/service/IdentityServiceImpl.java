@@ -240,7 +240,7 @@ public class IdentityServiceImpl implements IdentityService {
     @Override
     public void updateMyIntakeApplication(InIntakeApplication application) {
 
-    //	application.setOfficialAddress1();
+    	application.setOfficialAddress1(application.getOfficialAddress1());
         intakeApplicationDao.update(application, securityService.getCurrentUser());
 
 

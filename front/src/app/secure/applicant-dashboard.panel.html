@@ -30,7 +30,7 @@
               <div flex-md="50" flex-gt-md="33" layout="column">
                 <div layout="row" layout-padding>
                   <div class="md-padding" *ngIf="application.bidStatus === 'SUBMITTED'">
-                    <a md-list-item (click)="showDialog(row)">
+                    <a md-list-item (click)="editDialog()">
                       <md-icon md-list-avatar>home</md-icon>
                       <h3 md-line>Official Address : {{application.officialAddress1}}</h3>
                     </a>
