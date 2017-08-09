@@ -20,6 +20,7 @@ import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InBankCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
@@ -37,6 +38,7 @@ import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationController;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
+import my.edu.umk.pams.intake.web.module.common.vo.BankCode;
 import my.edu.umk.pams.intake.web.module.identity.controller.IdentityTransformer;
 import my.edu.umk.pams.intake.web.module.identity.vo.Applicant;
 import my.edu.umk.pams.intake.web.module.identity.vo.User;
@@ -255,19 +257,27 @@ public class ApplicantAccountController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 	
+//	@RequestMapping(value = "/addressChange/{newAddress}", method = RequestMethod.PUT)
+//    public ResponseEntity<String> changeAddress(@PathVariable String currentAddress, @RequestBody IntakeApplication vo) {
+//		
+//	 InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(currentAddress);
+//	 LOG.debug("change address ler",currentAddress);
+//	 intakeApplication.setOfficialAddress1(vo.getOfficialAddress1());
+////	 intakeApplication.setOfficialAddress2(vo.getOfficialAddress2());
+////	 intakeApplication.setOfficialAddress3(vo.getOfficialAddress3());
+////	 intakeApplication.setOfficialPostcode(vo.getOfficialPostcode());
+////	 intakeApplication.setOfficialStateCode(vo.getOfficialStateCode());
+////	 intakeApplication.setOfficialCountryCode(vo.getOfficialCountryCode());
+//	identityService.changeAddress(intakeApplication, currentAddress);
+//        return new ResponseEntity<String>("Success", HttpStatus.OK);
+//    }
+	
 	@RequestMapping(value = "/addressChange/{newAddress}", method = RequestMethod.PUT)
-    public ResponseEntity<String> changeAddress(@PathVariable String currentAddress, @RequestBody IntakeApplication vo) {
+	public ResponseEntity<String> changeAddress(@PathVariable String newAddress, @RequestBody AddressChange vo) {
 		
-	 InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(currentAddress);
-	 LOG.debug("change address ler",currentAddress);
-	 intakeApplication.setOfficialAddress1(vo.getOfficialAddress1());
-//	 intakeApplication.setOfficialAddress2(vo.getOfficialAddress2());
-//	 intakeApplication.setOfficialAddress3(vo.getOfficialAddress3());
-//	 intakeApplication.setOfficialPostcode(vo.getOfficialPostcode());
-//	 intakeApplication.setOfficialStateCode(vo.getOfficialStateCode());
-//	 intakeApplication.setOfficialCountryCode(vo.getOfficialCountryCode());
-	identityService.changeAddress(intakeApplication, currentAddress);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(vo.getCurrentAddress());
+		application.setOfficialAddress1(vo.getNewAddress());
+		applicationService.updateIntakeApplication(application);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}		
 }

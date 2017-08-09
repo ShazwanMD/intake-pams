@@ -19,6 +19,7 @@ import java.util.Set;
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InDunCode;
 import my.edu.umk.pams.intake.identity.dao.InActorDao;
 import my.edu.umk.pams.intake.identity.dao.InApplicantDao;
 import my.edu.umk.pams.intake.identity.dao.InGroupDao;
@@ -666,14 +667,22 @@ public class IdentityServiceImpl implements IdentityService {
         logoutAsSystem(sc);
     }
     
+//    @Override
+//    public void changeAddress(InIntakeApplication application, String newAddress) {
+//    	SecurityContext sc = loginAsSystem();  
+////    	applicationService.findIntakeApplication();
+//    	 LOG.debug("change address ler",application.getOfficialAddress1());
+//    	application.setOfficialAddress1(newAddress);
+//    	intakeApplicationDao.update(application, securityService.getCurrentUser());
+//        sessionFactory.getCurrentSession().flush();      
+//        logoutAsSystem(sc);
+//    }
+    
     @Override
-    public void changeAddress(InIntakeApplication application, String newAddress) {
-    	SecurityContext sc = loginAsSystem();  
-    	applicationService.findIntakeApplication();
-    	 LOG.debug("change address ler",application.getOfficialAddress1());
-    	application.setOfficialAddress1(newAddress);
-    	intakeApplicationDao.update(application, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();      
+    public void changeAddress(InIntakeApplication application) {
+    	SecurityContext sc = loginAsSystem();
+    	intakeApplicationDao.update(application,securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
         logoutAsSystem(sc);
     }
     
