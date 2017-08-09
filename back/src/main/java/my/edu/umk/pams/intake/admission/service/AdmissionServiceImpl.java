@@ -262,6 +262,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setAcception(true);
 
         String generatedMatricNo = generateMatricNumber(candidate);
+        if(generatedMatricNo==null)
         candidate.setMatricNo(generatedMatricNo);
         
         candidateDao.update(candidate, securityService.getCurrentUser());
@@ -366,6 +367,10 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setApplication(application);
         candidateDao.save(candidate, securityService.getCurrentUser());
     
+    }
+    @Override
+    public boolean isMatricNoExists(String matricNo) {
+        return this.isMatricNoExists(matricNo);
     }
     
     private String generateMatricNumber(InCandidate candidate){
