@@ -13,6 +13,8 @@ import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {AccountModuleState} from '../index';
 import { AuthenticationService } from "../../../../services/authentication.service";
+import { StateCode } from "../../../shared/model/common/state-code.interface";
+import { CountryCode } from "../../../shared/model/common/country-code.interface";
 
 @Component({
   selector: 'pams-address-changer',
@@ -47,7 +49,13 @@ export class AddressChangerDialog implements OnInit {
 
     this.changeAddressForm = this.formBuilder.group({
       currentAddress: ['', Validators.required],
-      newAddress: ['', Validators.required],
+      newAddress1: ['', Validators.required],
+      newAddress2: ['', Validators.required],
+      newAddress3: ['', Validators.required],
+      newPostcode:['',Validators.required],
+      officialStateCode: [<StateCode>{}],
+      officialCountryCode: [<CountryCode>{}],     
+
     });
   }
 

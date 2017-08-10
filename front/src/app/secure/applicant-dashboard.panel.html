@@ -32,7 +32,10 @@
                   <div class="md-padding" *ngIf="application.bidStatus === 'SUBMITTED'">
                     <a md-list-item (click)="editDialog()">
                       <md-icon md-list-avatar>home</md-icon>
-                      <h3 md-line>Official Address : {{application.officialAddress1}}</h3>
+                      <h3 md-line>Official Address : {{application.officialAddress1}},
+                         {{application.officialAddress2}},
+                         {{application.officialAddress3}}   
+                        </h3>
                     </a>
                   </div>
                 </div>

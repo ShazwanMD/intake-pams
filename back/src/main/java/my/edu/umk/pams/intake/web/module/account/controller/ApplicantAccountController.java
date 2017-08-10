@@ -265,8 +265,15 @@ public class ApplicantAccountController {
     	
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
         for (InIntakeApplication application : applications) {
-        	
-        	application.setOfficialAddress1(vo.getNewAddress());
+        	        	
+        	application.setOfficialAddress1(vo.getNewAddress1());
+        	application.setOfficialAddress2(vo.getNewAddress2());
+        	application.setOfficialAddress3(vo.getNewAddress3());
+        	application.setOfficialPostcode(vo.getNewPostcode());
+        	 if (null != vo.getOfficialStateCode())
+                 application.setOfficialStateCode(commonService.findStateCodeById(vo.getOfficialStateCode().getId()));
+             if (null != vo.getOfficialCountryCode())
+                 application.setOfficialCountryCode(commonService.findCountryCodeById(vo.getOfficialCountryCode().getId()));
         	applicationService.updateIntakeApplication(application);
         }
         return new ResponseEntity<String>("Success", HttpStatus.OK);
