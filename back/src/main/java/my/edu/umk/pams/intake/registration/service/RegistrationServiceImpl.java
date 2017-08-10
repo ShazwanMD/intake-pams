@@ -108,7 +108,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         String applicationUrl= systemService.findConfigurationByKey("application.url").getValue();
         InEmailQueue email= new InEmailQueueImpl();
         String subject = "Email verification";
-        String body = "Please verify your email address by clicking this url : "+applicationUrl+"/verification/"+ token;
+        String body = "Please verify your email address upon 7 days from your registration day by clicking this url : "+applicationUrl+"/verification/"+ token;
         //verification.getToken();
         email.setTo(user.getEmail());
         email.setSubject(subject);
