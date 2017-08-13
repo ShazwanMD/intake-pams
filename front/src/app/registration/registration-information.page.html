@@ -14,8 +14,12 @@
         <md-card-subtitle>A verification email has been sent to your registered email.</md-card-subtitle>
         <md-card-subtitle>Please click the verification link to complete your registration.</md-card-subtitle>
         <!--{{registration.email}}-->
-      </div>
-
+        <md-card-actions>
+        <button md-button color="accent" [routerLink]="['/login']">
+        Login
+        </button>
+      </md-card-actions>
     </div>
+  </div>
   </td-layout-card-over>
 </td-layout-nav>
