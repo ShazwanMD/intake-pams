@@ -153,7 +153,7 @@ public class AdmissionController {
                                                           @RequestBody Candidate vo) {
     	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
         InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
-        candidate.setReason(vo.getReason());
+
         admissionService.rejectCandidate(candidate);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }

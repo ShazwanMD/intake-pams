@@ -144,6 +144,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     
     @Override
     public void rejectCandidate(InCandidate candidate) {
+    	candidate.setReason(candidate.getReason());
     	candidate.setStatus(InCandidateStatus.REJECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
