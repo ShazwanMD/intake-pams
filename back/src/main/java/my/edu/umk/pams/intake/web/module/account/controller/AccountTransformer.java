@@ -52,7 +52,6 @@ public class AccountTransformer {
         MyIntakeApplication vo = new MyIntakeApplication();
         vo.setReferenceNo(application.getReferenceNo());
         vo.setReason(application.getReason());
-        vo.setOfficialAddress1(application.getOfficialAddress1());
         vo.setBidStatus(InCandidateStatus.get(application.getBidStatus().ordinal()));
         vo.setIntake(policyTransformer.toIntakeVo(application.getIntake()));
         vo.setCandidate(admissionTransformer.toCandidateVo(candidate));
