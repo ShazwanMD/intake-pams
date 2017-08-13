@@ -6,7 +6,7 @@ import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {AccountModuleState} from '../index';
 import { AuthenticationService } from "../../../../services/authentication.service";
 
@@ -16,6 +16,7 @@ import { AuthenticationService } from "../../../../services/authentication.servi
 })
 
 export class PasswordChangerDialog implements OnInit {
+  [x: string]: any;
 
   private changePasswordForm: FormGroup;
   private _user: User;
@@ -26,7 +27,8 @@ export class PasswordChangerDialog implements OnInit {
               private store: Store<AccountModuleState>,
               private authnService: AuthenticationService,
               private router: Router,
-              private actions: AccountActions) {
+              private actions: AccountActions,
+              private snackBar: MdSnackBar) {
   }
 
   set user(value: User) {
@@ -46,9 +48,19 @@ export class PasswordChangerDialog implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  submit(change: PasswordChange, valid: boolean) {
+//   submit(change: PasswordChange, valid: boolean) {
+//     this.store.dispatch(this.actions.changeUserPassword(change));
+//     this.dialog.close();
+//     this.logout();   
+// } 
+
+submit(change: PasswordChange, valid: boolean) {
+   let snackBarRef = this.snackBar.open('Confirm to change your password?', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
+      if(!change.newPassword)this.store.dispatch(this.actions.saveUser(change));
     this.store.dispatch(this.actions.changeUserPassword(change));
     this.dialog.close();
     this.logout();   
-} 
+});
+}
 }
