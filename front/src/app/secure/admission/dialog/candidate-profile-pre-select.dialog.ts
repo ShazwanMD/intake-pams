@@ -1,3 +1,4 @@
+import { Result } from './../../../shared/model/application/result.interface';
 import { Referee } from './../../../shared/model/application/referee.interface';
 import { Attachment } from './../../../shared/model/application/attachment.interface';
 import { Candidate } from '../../../shared/model/admission/candidate.interface';
@@ -29,9 +30,7 @@ export class CandidateProfilePreSelectDialog implements OnInit {
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
   private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
-  private SPM_RESULTS: string[] = 'applicationModuleState.spmResults'.split('.');
-  private BACHELOR_RESULTS: string[] = 'applicationModuleState.bachelorResults'.split('.');
-  private DIPLOMA_RESULTS: string[] = 'applicationModuleState.diplomaResults'.split('.');
+  private RESULTS: string[] = 'applicationModuleState.results'.split('.');
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
@@ -39,6 +38,7 @@ export class CandidateProfilePreSelectDialog implements OnInit {
   private referees$: Observable<Referee>;
   private attachments$: Observable<Attachment>;
   private applicationForm: FormGroup;
+  private results$: Observable<Result>;  
 
   @Input() candidate: Candidate;
   @Input() intakeApplication: IntakeApplication;
@@ -59,6 +59,7 @@ export class CandidateProfilePreSelectDialog implements OnInit {
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
+    this.results$ = this.store.select(...this.RESULTS);    
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
   }
 

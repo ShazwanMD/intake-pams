@@ -1,3 +1,4 @@
+import { Attachment } from './../../../../shared/model/application/attachment.interface';
 import { Result } from './../../../../shared/model/application/result.interface';
 import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef, Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
@@ -35,7 +36,7 @@ export class ApplicantProfileVerifyDialog implements OnInit {
   private results$: Observable<Result>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
-  private attachments$: Observable<Referee>;
+  private attachments$: Observable<Attachment>;
 
   @Input() intakeApplication: IntakeApplication;
 
