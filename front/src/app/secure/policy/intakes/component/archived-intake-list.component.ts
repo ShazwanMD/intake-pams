@@ -1,6 +1,8 @@
+
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {MdSnackBar, MdSnackBarRef, SimpleSnackBar} from '@angular/material';
 import {Intake} from '../../../../shared/model/policy/intake.interface';
+
 
 @Component({
   selector: 'pams-archived-intake-list',
@@ -15,6 +17,7 @@ export class ArchivedIntakeListComponent {
     {name: 'startDate', label: 'Start Date'},
     {name: 'endDate', label: 'End Date'},
     {name: 'flowState', label: 'Status'},
+    
   ];
 
   @Input() intakes: Intake[];
