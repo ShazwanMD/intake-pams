@@ -102,34 +102,10 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <!-- <td-data-table
-                      [data]="contacts"
-                      [columns]="columnContact"
-                      [sortBy]="summary"
-                      [sortOrder]="ASC"
-                      [sortable]="false"
-                      [multiple]="false"
-                      [selectable]="false"
-                      (rowSelect)="edit.emit($event)" dense>
 
-                      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                        <div layout="row">
-                          <span flex>{{value}}</span>
-                        </div>
-                      </template>
+                    <pams-result-list [intakeApplication]="intakeApplication$ | async" [results]="results$ | async">
+                    </pams-result-list>
 
-                      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-                        <div layout="row">
-                          <button md-icon-button [md-menu-trigger-for]="menuContact">
-                            <md-icon>more_vert</md-icon>
-                          </button>
-                          <md-menu x-position="before" #menuContact="mdMenu">
-                            <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
-                            <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
-                          </md-menu>
-                        </div>
-                      </template>
-                    </td-data-table> -->
                   </md-card-content>
                 </md-card>
               </md-tab>
