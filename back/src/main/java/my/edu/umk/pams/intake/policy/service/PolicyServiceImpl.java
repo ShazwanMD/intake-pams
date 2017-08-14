@@ -98,6 +98,11 @@ public class PolicyServiceImpl implements PolicyService {
     public InIntakeSession findIntakeSessionByCode(String code) {
         return intakeSessionDao.findByCode(code);
     }
+    
+    @Override
+    public List<InIntakeSession> findIntakeSessionsByCurrent(Boolean current) {
+        return intakeSessionDao.findInIntakeSessionsByCurrent(current);
+    }
 
     @Override
     public List<InIntakeSession> findIntakeSessions(Integer offset, Integer limit) {

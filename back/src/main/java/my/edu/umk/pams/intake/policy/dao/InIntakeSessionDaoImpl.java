@@ -24,6 +24,15 @@ public class InIntakeSessionDaoImpl extends GenericDaoSupport<Long, InIntakeSess
         query.setString("code", code);
         return (InIntakeSession) query.uniqueResult();
     }
+    
+    @Override
+    public List<InIntakeSession> findInIntakeSessionsByCurrent(Boolean current) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from InIntakeSession p " +
+                "where p.current = :current ");
+        query.setBoolean("current", current);
+        return (List<InIntakeSession>) query.list();
+    }
 
     @Override
     public InIntakeSession findCurrent() {

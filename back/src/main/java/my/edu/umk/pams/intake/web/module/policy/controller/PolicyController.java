@@ -94,6 +94,12 @@ public class PolicyController {
         List<InIntakeSession> sessions = policyService.findIntakeSessions(0, 100);
         return new ResponseEntity<List<IntakeSession>>(policyTransformer.toIntakeSessionVos(sessions), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/intakeSessionsCurrent", method = RequestMethod.GET)
+    public ResponseEntity<List<IntakeSession>> findIntakeSessionsByCurrent() {
+        List<InIntakeSession> sessions = policyService.findIntakeSessionsByCurrent(TRUE);
+        return new ResponseEntity<List<IntakeSession>>(policyTransformer.toIntakeSessionVos(sessions), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/intake-sessions", method = RequestMethod.POST)
     public ResponseEntity<String> saveIntakeSession(@RequestBody IntakeSession vo) {
