@@ -58,6 +58,7 @@ export class CandidateApproveTaskPanel implements OnInit {
     snackBarRef.afterDismissed().subscribe(() => {
       this.store.dispatch(this.intakeActions.completeIntakeTask(this.intakeTask));
       this.goBack();
+      window.location.reload();
     });
   }
 

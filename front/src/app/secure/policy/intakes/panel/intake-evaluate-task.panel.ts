@@ -64,12 +64,19 @@ export class IntakeEvaluateTaskPanel implements OnInit {
     });
   }
 
+  // process(): void {
+  //   let snackBarRef = this.snackBar.open('Process this intake?', 'Yes');
+  //   snackBarRef.afterDismissed().subscribe(() => {
+  //     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
+  //     this.goBack();
+  //   });
+  // }
   process(): void {
-    let snackBarRef = this.snackBar.open('Process this intake?', 'Yes');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Process this intake?')) {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
-      this.goBack();
-    });
+         this.goBack();
+    } else {
+    }
   }
 
   goBack(): void {

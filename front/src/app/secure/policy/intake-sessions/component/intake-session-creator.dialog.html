@@ -5,45 +5,38 @@
       <div layout="column" class="pad-right" flex>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput #description
-                   placeholder="Code"
-                   formControlName="code"
-                   flex/>
+            <input mdInput #description placeholder="Code" formControlName="code" flex/>
           </md-input-container>
         </div>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput #description
-                   placeholder="label"
-                   formControlName="label"
-                   flex/>
+            <input mdInput #description placeholder="label" formControlName="label" flex/>
           </md-input-container>
         </div>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput #description
-                   placeholder="Description (MS)"
-                   formControlName="descriptionMs"
-                   flex/>
+            <input mdInput #description placeholder="Description (MS)" formControlName="descriptionMs" flex/>
           </md-input-container>
         </div>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput #description
-                   placeholder="Description (EN)"
-                   formControlName="descriptionEn"
-                   flex/>
+            <input mdInput #description placeholder="Description (EN)" formControlName="descriptionEn" flex/>
           </md-input-container>
         </div>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput
-                   type="number"
-                   placeholder="Year"
-                   formControlName="year"
-                   flex/>
+            <input mdInput type="number" placeholder="Year" formControlName="year" flex/>
           </md-input-container>
         </div>
+
+        <div layout="row" class="pad-bottom">
+          <md-checkbox formControlName="current">
+            <div layout="column" flex>
+              Active
+            </div>
+          </md-checkbox>
+        </div>
+
       </div>
     </div>
   </form>
@@ -51,4 +44,3 @@
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
 </md-dialog-actions>
-
