@@ -106,6 +106,7 @@ public class ApplicationController {
         InIntakeApplication application = new InIntakeApplicationImpl();
         application.setName(applicant.getName());
         application.setEmail(applicant.getEmail());
+        application.setCredentialNo(applicant.getIdentityNo());
         application.setApplicant(applicant);
         
         String intakeApplicationReferenceNo = null;

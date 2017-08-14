@@ -63,5 +63,6 @@ export class CandidatePreApproveTaskPanel implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/secure/admission']);
+    window.location.reload();
   }
 }

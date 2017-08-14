@@ -11,7 +11,6 @@ public class MyIntakeApplication {
 
     private String referenceNo;
     private String reason;
-    private String officialAddress1;
     private Intake intake;
     private Candidate candidate;
     private InCandidateStatus bidStatus;
@@ -56,13 +55,6 @@ public class MyIntakeApplication {
 		this.reason = reason;
 	}
 
-	public String getOfficialAddress1() {
-		return officialAddress1;
-	}
-
-	public void setOfficialAddress1(String officialAddress1) {
-		this.officialAddress1 = officialAddress1;
-	}
 	
 	
     

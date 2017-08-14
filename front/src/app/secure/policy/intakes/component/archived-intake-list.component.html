@@ -18,4 +18,7 @@
   <template tdDataTableTemplate="endDate" let-value="value" let-row="row" let-column="column">
     <div layout="row">{{row['endDate'] | date :'longDate'}}</div>
   </template>
+  <template tdDataTableTemplate="flowState" let-value="value" let-row="row" let-column="column">
+    <div layout="row">{{row['flowState'] | flowStatePipe }}</div>
+  </template>
 </td-data-table>

@@ -144,6 +144,7 @@ public class AdmissionServiceImpl implements AdmissionService {
     
     @Override
     public void rejectCandidate(InCandidate candidate) {
+    	candidate.setReason(candidate.getReason());
     	candidate.setStatus(InCandidateStatus.REJECTED);
         candidateDao.update(candidate, securityService.getCurrentUser());
     }
@@ -262,7 +263,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setAcception(true);
 
         String generatedMatricNo = generateMatricNumber(candidate);
-        if(generatedMatricNo==null)
+        if(candidate.getMatricNo()==null)
         candidate.setMatricNo(generatedMatricNo);
         
         candidateDao.update(candidate, securityService.getCurrentUser());

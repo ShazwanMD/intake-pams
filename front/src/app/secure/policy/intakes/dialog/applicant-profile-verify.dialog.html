@@ -65,25 +65,25 @@
                   <md-divider></md-divider>
                   <md-card-content>
 
-                 <!-- Address information here -->
-				<md-tab-group>
-					<md-tab label="Mailing">
-					<div flex-gt-md="50">
-		                <b>Address </b> : {{intakeApplication.mailingAddress1}}&nbsp;{{intakeApplication.mailingAddress2}}&nbsp;{{intakeApplication.mailingAddress3}}<br/><br/>
-		                <b>Poscode</b> : {{intakeApplication.mailingPostcode}}<br/><br/>
-		                <b>State</b> : {{intakeApplication.mailingStateCode?.descriptionEn}}<br/><br/>
-		                <b>Country</b> : {{intakeApplication.mailingCountryCode?.descriptionEn}}
-             		 </div>
-             		 </md-tab>
-             		 <md-tab label="Official">
-					<div flex-gt-md="50">
-		                <b>Address </b> : {{intakeApplication.officialAddress1}}&nbsp;{{intakeApplication.officialAddress2}}&nbsp;{{intakeApplication.officialAddress3}}<br/><br/>
-		                <b>Poscode</b> : {{intakeApplication.officialPostcode}}<br/><br/>
-		                <b>State</b> : {{intakeApplication.officialStateCode?.descriptionEn}}<br/><br/>
-		                <b>Country</b> : {{intakeApplication.officialCountryCode?.descriptionEn}}
-             		 </div>
-             		 </md-tab>
-				</md-tab-group>
+                    <!-- Address information here -->
+                    <md-tab-group>
+                      <md-tab label="Mailing">
+                        <div flex-gt-md="50">
+                          <b>Address </b> : {{intakeApplication.mailingAddress1}}&nbsp;{{intakeApplication.mailingAddress2}}&nbsp;{{intakeApplication.mailingAddress3}}<br/><br/>
+                          <b>Poscode</b> : {{intakeApplication.mailingPostcode}}<br/><br/>
+                          <b>State</b> : {{intakeApplication.mailingStateCode?.descriptionEn}}<br/><br/>
+                          <b>Country</b> : {{intakeApplication.mailingCountryCode?.descriptionEn}}
+                        </div>
+                      </md-tab>
+                      <md-tab label="Official">
+                        <div flex-gt-md="50">
+                          <b>Address </b> : {{intakeApplication.officialAddress1}}&nbsp;{{intakeApplication.officialAddress2}}&nbsp;{{intakeApplication.officialAddress3}}<br/><br/>
+                          <b>Poscode</b> : {{intakeApplication.officialPostcode}}<br/><br/>
+                          <b>State</b> : {{intakeApplication.officialStateCode?.descriptionEn}}<br/><br/>
+                          <b>Country</b> : {{intakeApplication.officialCountryCode?.descriptionEn}}
+                        </div>
+                      </md-tab>
+                    </md-tab-group>
                   </md-card-content>
                 </md-card>
               </md-tab>
@@ -101,34 +101,17 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <!-- <td-data-table
-                      [data]="contacts"
-                      [columns]="columnContact"
-                      [sortBy]="summary"
-                      [sortOrder]="ASC"
-                      [sortable]="false"
-                      [multiple]="false"
-                      [selectable]="false"
-                      (rowSelect)="edit.emit($event)" dense>
 
-                      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                        <div layout="row">
-                          <span flex>{{value}}</span>
-                        </div>
-                      </template>
+          <td-expansion-panel label="Results">
+            <pams-result-list [intakeApplication]="intakeApplication$ | async" [results]="results$ | async">
+            </pams-result-list>
+          </td-expansion-panel>
 
-                      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-                        <div layout="row">
-                          <button md-icon-button [md-menu-trigger-for]="menuContact">
-                            <md-icon>more_vert</md-icon>
-                          </button>
-                          <md-menu x-position="before" #menuContact="mdMenu">
-                            <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
-                            <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
-                          </md-menu>
-                        </div>
-                      </template>
-                    </td-data-table> -->
+          <td-expansion-panel label="Proficiency in Malay/English Language">
+            <pams-language-list [intakeApplication]="intakeApplication$ | async" [languages]="languages$ | async">
+            </pams-language-list>
+          </td-expansion-panel>
+
                   </md-card-content>
                 </md-card>
               </md-tab>
@@ -146,8 +129,8 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                   <pams-employment-list [intakeApplication]="intakeApplication$ | async" [employments]="employments$ | async">
-           			</pams-employment-list>
+                    <pams-employment-list [intakeApplication]="intakeApplication$ | async" [employments]="employments$ | async">
+                    </pams-employment-list>
                   </md-card-content>
                 </md-card>
               </md-tab>
@@ -165,8 +148,8 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                   <pams-attachment-list [intakeApplication]="intakeApplication$ | async" [attachments]="attachments$ | async">
-           			</pams-attachment-list>
+                    <pams-attachment-list [intakeApplication]="intakeApplication$ | async" [attachments]="attachments$ | async">
+                    </pams-attachment-list>
                   </md-card-content>
                 </md-card>
               </md-tab>
@@ -184,16 +167,16 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                   <pams-referee-list [intakeApplication]="intakeApplication$ | async" [referees]="referees$ | async">
-           			</pams-referee-list>
+                    <pams-referee-list [intakeApplication]="intakeApplication$ | async" [referees]="referees$ | async">
+                    </pams-referee-list>
                   </md-card-content>
                 </md-card>
               </md-tab>
             </md-tab-group>
           </md-card-content>
         </md-card>
-        	<button md-raised-button color="accent" (click)="verify(intakeApplication)">Verify</button>
-        	<button md-raised-button color="accent" (click)="reject(intakeApplication)">Reject</button>
+        <button md-raised-button color="accent" (click)="verify(intakeApplication)">Verify</button>
+        <button md-raised-button color="accent" (click)="reject(intakeApplication)">Reject</button>
       </md-tab>
     </md-tab-group>
 

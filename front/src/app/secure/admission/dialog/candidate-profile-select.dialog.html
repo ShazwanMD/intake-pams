@@ -101,34 +101,18 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <!-- <td-data-table
-                      [data]="contacts"
-                      [columns]="columnContact"
-                      [sortBy]="summary"
-                      [sortOrder]="ASC"
-                      [sortable]="false"
-                      [multiple]="false"
-                      [selectable]="false"
-                      (rowSelect)="edit.emit($event)" dense>
 
-                      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                        <div layout="row">
-                          <span flex>{{value}}</span>
-                        </div>
-                      </template>
 
-                      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-                        <div layout="row">
-                          <button md-icon-button [md-menu-trigger-for]="menuContact">
-                            <md-icon>more_vert</md-icon>
-                          </button>
-                          <md-menu x-position="before" #menuContact="mdMenu">
-                            <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
-                            <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
-                          </md-menu>
-                        </div>
-                      </template>
-                    </td-data-table> -->
+          <td-expansion-panel label="Results">
+            <pams-result-list [intakeApplication]="intakeApplication$ | async" [results]="results$ | async">
+            </pams-result-list>
+          </td-expansion-panel>
+
+          <td-expansion-panel label="Proficiency in Malay/English Language">
+            <pams-language-list [intakeApplication]="intakeApplication$ | async" [languages]="languages$ | async">
+            </pams-language-list>
+          </td-expansion-panel>
+
                   </md-card-content>
                 </md-card>
               </md-tab>

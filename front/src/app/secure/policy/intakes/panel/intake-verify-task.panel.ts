@@ -44,12 +44,19 @@ export class IntakeVerifyTaskPanel implements OnInit {
     this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
   }
 
+  // publish() {
+  //   let snackBarRef = this.snackBar.open('Publish this intake?', 'Yes');
+  //   snackBarRef.afterDismissed().subscribe(() => {
+  //     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
+  //     this.goBack();
+  //   });
+  // }
   publish() {
-    let snackBarRef = this.snackBar.open('Publish this intake?', 'Yes');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Publish this intake?')) {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
-      this.goBack();
-    });
+         this.goBack();
+    } else {
+    }
   }
 
   edit(): void {

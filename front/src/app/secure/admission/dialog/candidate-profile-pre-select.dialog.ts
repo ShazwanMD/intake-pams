@@ -1,8 +1,10 @@
+import { Result } from './../../../shared/model/application/result.interface';
+import { Referee } from './../../../shared/model/application/referee.interface';
+import { Attachment } from './../../../shared/model/application/attachment.interface';
 import { Candidate } from '../../../shared/model/admission/candidate.interface';
 import { Employment } from '../../../shared/model/application/employment.interface';
 import { IntakeApplication } from '../../../shared/model/application/intake-application.interface';
 import { Language } from '../../../shared/model/application/language.interface';
-import { Referee } from '../../../shared/model/application/referee.interface';
 import { ApplicationModuleState } from '../../application';
 import { IntakeApplicationActions } from '../../application/intake-applications/intake-application.action';
 import { IntakeActions } from '../../policy/intakes/intake.action';
@@ -23,38 +25,20 @@ import {MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog} from '@angular/materi
 export class CandidateProfilePreSelectDialog implements OnInit {
 
 
-  private dummyData: any[] = [
-    {'subject': 'Bahasa Malaysia', 'grade': 'A+'},
-    {'subject': 'Bahasa Inggeris', 'grade': 'B'},
-    {'subject': 'Geografi', 'grade': 'C+'},
-    {'subject': 'Sejarah', 'grade': 'D+'},
-    {'subject': 'Matematik', 'grade': 'A+'},
-    {'subject': 'Matematik Tambahan', 'grade': 'A+'},
-    {'subject': 'Fizik', 'grade': 'A+'},
-    {'subject': 'Biologi', 'grade': 'B+'},
-    {'subject': 'Kimia', 'grade': 'B+'},
-  ];
-
-  private dummyColumns: any[] = [
-    {name: 'subject', label: 'Subject'},
-    {name: 'grade', label: 'Grade'},
-  ];
-
   private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
   private LANGUAGES: string[] = 'applicationModuleState.languages'.split('.');
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
   private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
-  private SPM_RESULTS: string[] = 'applicationModuleState.spmResults'.split('.');
-  private BACHELOR_RESULTS: string[] = 'applicationModuleState.bachelorResults'.split('.');
-  private DIPLOMA_RESULTS: string[] = 'applicationModuleState.diplomaResults'.split('.');
+  private RESULTS: string[] = 'applicationModuleState.results'.split('.');
 
   private intakeApplication$: Observable<IntakeApplication>;
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
-  private attachments$: Observable<Referee>;
+  private attachments$: Observable<Attachment>;
   private applicationForm: FormGroup;
+  private results$: Observable<Result>;  
 
   @Input() candidate: Candidate;
   @Input() intakeApplication: IntakeApplication;
@@ -75,6 +59,7 @@ export class CandidateProfilePreSelectDialog implements OnInit {
     this.employments$ = this.store.select(...this.EMPLOYMENTS);
     this.languages$ = this.store.select(...this.LANGUAGES);
     this.referees$ = this.store.select(...this.REFEREES);
+    this.results$ = this.store.select(...this.RESULTS);    
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
   }
 
