@@ -1,4 +1,3 @@
-import { DateValidator } from './../../../../shared/component/date-validator';
 import { Checkpassword } from './../../../account/component/check-password';
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
