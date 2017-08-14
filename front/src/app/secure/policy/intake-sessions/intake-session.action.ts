@@ -22,6 +22,25 @@ export class IntakeSessionActions {
     };
   }
 
+  static FIND_INTAKE_SESSIONS_BY_CURRENT = '[IntakeSession] Find Intake Sessions By Current';
+
+  findIntakeSessionsByCurrent(): Action {
+    console.log("findIntakeSessionsByCurrent");
+    return {
+      type: IntakeSessionActions.FIND_INTAKE_SESSIONS_BY_CURRENT,
+    };
+  }
+
+  static FIND_INTAKE_SESSIONS_BY_CURRENT_SUCCESS = '[IntakeSession] Find Intake Sessions By Current Success';
+
+  findIntakeSessionsByCurrentSuccess(sessions): Action {
+    console.log("findIntakeSessionsByCurrentSuccess");
+    return {
+      type: IntakeSessionActions.FIND_INTAKE_SESSIONS_BY_CURRENT_SUCCESS,
+      payload: sessions
+    };
+  }  
+
   static SAVE_INTAKE_SESSIONS = '[IntakeSession] Save Intake Sessions';
 
   saveIntakeSession(sessions): Action {

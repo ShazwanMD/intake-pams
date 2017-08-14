@@ -13,18 +13,18 @@ import {IntakeSession} from "../../../../shared/model/policy/intake-session.inte
 })
 export class IntakeSessionSelectComponent implements OnInit {
 
-  private INTAKE_SESSIONS = 'policyModuleState.intakeSessions'.split('.');
-  private intakeSessions$: Observable<IntakeSession[]>;
+  private INTAKE_SESSIONS_BY_CURRENT = 'policyModuleState.intakeSessionsByCurrent'.split('.');
+  private intakeSessionsByCurrent$: Observable<IntakeSession[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
 
   constructor(private store: Store<PolicyModuleState>,
               private actions: IntakeSessionActions) {
-    this.intakeSessions$ = this.store.select(...this.INTAKE_SESSIONS);
+    this.intakeSessionsByCurrent$ = this.store.select(...this.INTAKE_SESSIONS_BY_CURRENT);
   }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.findIntakeSessions());
+    this.store.dispatch(this.actions.findIntakeSessionsByCurrent());
   }
 
   selectChangeEvent(event: IntakeSession) {
