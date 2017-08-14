@@ -15,6 +15,12 @@ export class FlowStatePipe implements PipeTransform {
       case FlowState.VERIFIED: {
         return 'Verify';
       }
+      case FlowState.PUBLISHED: {
+        return 'Publish';
+      }
+      case FlowState.EVALUATED: {
+        return 'Evaluate';
+      }
       case FlowState.COMPLETED: {
         return 'Final';
       }
