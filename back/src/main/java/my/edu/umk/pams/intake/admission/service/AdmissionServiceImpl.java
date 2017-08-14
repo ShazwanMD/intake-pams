@@ -263,7 +263,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setAcception(true);
 
         String generatedMatricNo = generateMatricNumber(candidate);
-        if(generatedMatricNo==null)
+        if(candidate.getMatricNo()==null)
         candidate.setMatricNo(generatedMatricNo);
         
         candidateDao.update(candidate, securityService.getCurrentUser());
