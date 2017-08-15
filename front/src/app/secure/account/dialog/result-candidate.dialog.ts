@@ -45,32 +45,36 @@ export class ResultCandidateDialog implements OnInit {
     this._myIntakeApplications = value;
   }
 
-
   ngOnInit(): void {
     this.store.dispatch(this.actions.findMyIntakeApplications());
   }
 
-
   accept(accept: MyIntakeApplication) {
      let snackBarRef = this.snackBar.open('Confirm to Accept this Offer?', 'Ok');
     snackBarRef.afterDismissed().subscribe((res) => {
-      this.store.dispatch(this.actions.acceptCandidate(accept));
-
-      // this.editorDialog.close();
+      this.store.dispatch(this.actions.acceptCandidate(accept)); 
+      this.editorDialog.close();
     });
+    let snackBarRef2 = this.snackBar.open('You have Accepted the offer', '',{duration: 10000,});   
+    snackBarRef2.afterDismissed().subscribe((res) => {  
+    });
+    snackBarRef2.onAction().subscribe(() => {   
+    });
+    
   }
 
     decline(decline: MyIntakeApplication) {
      let snackBarRef = this.snackBar.open('Confirm to Decline this Offer?', 'Ok');
     snackBarRef.afterDismissed().subscribe((res) => {
       this.store.dispatch(this.actions.declinedCandidate(decline));
-
-      // this.editorDialog.close();
+      this.editorDialog.close();
+    });
+    let snackBarRef2 = this.snackBar.open('You have Declined the offer', '',{duration: 10000,});
+    snackBarRef.afterDismissed().subscribe((res) => {     
     });
   }
 
-  offerLetter() : void{
-    
+  offerLetter() : void{ 
   }
 
 }
