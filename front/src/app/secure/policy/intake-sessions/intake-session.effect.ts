@@ -27,6 +27,12 @@ private INTAKE_SESSIONS = 'policyModuleState.intakeSessions'.split('.');
     .switchMap(() => this.policyService.findIntakeSessions())
     .map((sessions) => this.intakeSessionActions.findIntakeSessionsSuccess(sessions));
 
+  @Effect() findIntakeSessionsByCurrent$ = this.actions$
+    .ofType(IntakeSessionActions.FIND_INTAKE_SESSIONS_BY_CURRENT)
+    .map((action) => action.payload)
+    .switchMap(() => this.policyService.findIntakeSessionsByCurrent())
+    .map((sessions) => this.intakeSessionActions.findIntakeSessionsByCurrentSuccess(sessions));    
+
   @Effect() saveIntakeSessions$ = this.actions$
     .ofType(IntakeSessionActions.SAVE_INTAKE_SESSIONS)
     .map((action) => action.payload)

@@ -171,4 +171,8 @@ public interface PolicyService {
 
     List<InStudyModeOffering> findStudyModeOfferings(InIntake intake);
 
+	List<InIntakeSession> findIntakeSessionsByCurrent(Boolean current);
+
+
+
 }

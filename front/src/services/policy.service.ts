@@ -30,6 +30,12 @@ export class PolicyService {
       .map((res: Response) => <IntakeSession[]>res.json());
   }
 
+    findIntakeSessionsByCurrent(): Observable<IntakeSession[]> {
+    console.log('findIntakeSessionsCurrent');
+    return this._http.get(this.POLICY_API + '/intakeSessionsCurrent')
+      .map((res: Response) => <IntakeSession[]>res.json());
+  }
+
   saveIntakeSession(sessions: IntakeSession): Observable<String> {
     return this._http.post(this.POLICY_API + '/intake-sessions', JSON.stringify(sessions))
       .flatMap((res: Response) => Observable.of(res.text()));

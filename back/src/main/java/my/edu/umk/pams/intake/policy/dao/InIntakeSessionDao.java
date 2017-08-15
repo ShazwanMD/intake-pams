@@ -22,4 +22,6 @@ public interface InIntakeSessionDao extends GenericDao<Long, InIntakeSession> {
     // ===================================================================
 
     Integer count(String filter);
+
+	List<InIntakeSession> findInIntakeSessionsByCurrent(Boolean current);
 }

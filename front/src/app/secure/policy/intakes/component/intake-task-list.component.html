@@ -22,8 +22,8 @@
     <div layout="row">{{row['flowState'] | flowStatePipe }}</div>
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/policy/intakes/view-task', row['taskId']]">
+    <div layout="row" >
+      <a md-button color="accent" class="text-upper" *ngIf="row.flowState != 'SELECTED' && row.flowState != 'OFFERED'" [routerLink]="['/secure/policy/intakes/view-task', row['taskId']]">
         <span>View</span>
       </a>
     </div>
