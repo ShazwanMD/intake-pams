@@ -43,7 +43,7 @@ export class AttachmentCreatorDialog implements OnInit {
   }
 
   upload(attachmentHelper: AttachmentHelper, file: File) {
-    this.store.dispatch(this.actions.addAttachment(this._intakeApplication, file, attachmentHelper.attachmentType));
+    this.store.dispatch(this.actions.addAndCheckAttachment(this._intakeApplication, file, attachmentHelper.attachmentType));
     this.dialog.close();
   }
 }

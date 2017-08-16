@@ -608,6 +608,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     	
     	if(attachment.getAttachmentType().SPM != null)
     	application.setSpmResultAttached(true);
+    	
     	else if (attachment.getAttachmentType().STPM != null)
         application.setStpmResultAttached(true);	
     	

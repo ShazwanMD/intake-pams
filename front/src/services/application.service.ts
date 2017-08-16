@@ -252,6 +252,19 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+   addAndCheckAttachment(application: IntakeApplication, file: File, attachmentType: AttachmentType): Observable<String> {
+    console.log('addAttachment');
+    console.log('file: ' + file.name);
+    console.log('attachmentType: ' + attachmentType);
+    let headers: Headers = new Headers({'Content-Type': ''});
+    let options: RequestOptions = new RequestOptions({headers: headers});
+    let formData: FormData = new FormData();
+    formData.append('attachmentType', attachmentType.toString());
+    formData.append('file', file);
+    return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/addAndCheckAttachments', formData, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  } 
+
   // ====================================================================================================
   // REFEREE
   // ====================================================================================================

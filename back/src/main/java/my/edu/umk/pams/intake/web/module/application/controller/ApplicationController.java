@@ -496,7 +496,6 @@ public class ApplicationController {
 				attachment.setBytes(file.getBytes());
 				attachment.setAttachmentType(InAttachmentType.valueOf(attachmentType));
 				applicationService.addAttachment(application, attachment);
-				applicationService.checkAttachment(application, attachment);
 			}
 		} catch (IOException e) {
 			return new ResponseEntity<String>("Failed", HttpStatus.OK);
@@ -504,6 +503,33 @@ public class ApplicationController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
+	
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/addAndCheckAttachments", method = RequestMethod.POST)
+	public ResponseEntity<String> addAndCheckAttachment(@PathVariable String referenceNo,
+			@RequestParam("file") MultipartFile file, @RequestParam("attachmentType") String attachmentType) {
+		LOG.debug("files is empty? : {}", file.isEmpty());
+		LOG.debug("name: {}", file.getName());
+		LOG.debug("original file name: {}", file.getOriginalFilename());
+		LOG.debug("content type: {}", file.getContentType());
+		LOG.debug("size: {}", file.getSize());
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		try {
+			if (!file.isEmpty()) {
+				InAttachment attachment = new InAttachmentImpl();
+				attachment.setMimeType("application/pdf"); // todo(switch)
+				attachment.setName(file.getOriginalFilename());
+				attachment.setSize(file.getSize());
+				attachment.setBytes(file.getBytes());
+				attachment.setAttachmentType(InAttachmentType.valueOf(attachmentType));
+				applicationService.addAttachment(application, attachment);
+				applicationService.checkAttachment(application, attachment);
+			}
+		} catch (IOException e) {
+			return new ResponseEntity<String>("Failed", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}	
+	
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachment/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteAttachment(@PathVariable String referenceNo, @PathVariable Long id) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);

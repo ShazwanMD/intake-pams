@@ -650,6 +650,26 @@ export class IntakeApplicationActions {
     };
   }
 
+  static ADD_AND_CHECK_ATTACHMENT = '[Intake Application] Add And Check Attachment';
+
+  addAndCheckAttachment(application, file, attachmentType): Action {
+    console.log('addAndCheckAttachment');
+    return {
+      type: IntakeApplicationActions.ADD_AND_CHECK_ATTACHMENT,
+      payload: {application: application, file: file, attachmentType: attachmentType},
+    };
+  }
+
+  static ADD_AND_CHECK_ATTACHMENT_SUCCESS = '[Intake Application] Add And Check Attachment Success';
+
+  addAndCheckAttachmentSuccess(message): Action {
+    console.log('addAndCheckAttachmentSuccess');
+    return {
+      type: IntakeApplicationActions.ADD_AND_CHECK_ATTACHMENT_SUCCESS,
+      payload: message,
+    };
+  }  
+
   static DELETE_ATTACHMENT = '[Intake Application] Delete Attachment';
 
   deleteAttachment(application, attachment) {
