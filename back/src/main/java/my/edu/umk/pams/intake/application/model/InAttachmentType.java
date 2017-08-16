@@ -4,21 +4,21 @@ package my.edu.umk.pams.intake.application.model;
  * @author PAMS
  */
 public enum InAttachmentType {
-    SPM("SPM"),
-    STAM("STAM"),
-    STPM("STPM"),
-    MUET("MUET"),
-    TOEFL("TOEFL"),
-    DIPLOMA("Diploma"),
-    DIPLOMA_EQUIVALENT("DiplomaEquivalent"),
-    BACHELOR("Bachelor"),
-    BACHELOR_EQUIVALENT("BachelorEquivalent"),
-    FEE("Fee"),
-    SPONSOR("Sponsor"),
-    BANK_STATEMENT("BankStatement"),
-    REFEREE_FORM("RefereeForm"),
-    RESEARCH_PROPOSAL("ResearchProposal"),
-    VISA("Visa");
+    SPM("SPM"),  //0
+    STAM("STAM"), //1
+    STPM("STPM"),  //2
+    MUET("MUET"),  //3
+    TOEFL("TOEFL"),  //4
+    DIPLOMA("Diploma"),  //5
+    DIPLOMA_EQUIVALENT("DiplomaEquivalent"),  //6
+    BACHELOR("Bachelor"),  //7
+    BACHELOR_EQUIVALENT("BachelorEquivalent"), //7
+    FEE("Fee"),  //8
+    SPONSOR("Sponsor"),  //9
+    BANK_STATEMENT("BankStatement"),   //10
+    REFEREE_FORM("RefereeForm"),  //11
+    RESEARCH_PROPOSAL("ResearchProposal"),   //12
+    VISA("Visa");   //13
 
     private String code;
 
