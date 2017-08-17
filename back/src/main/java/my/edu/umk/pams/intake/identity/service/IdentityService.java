@@ -66,7 +66,7 @@ public interface IdentityService {
 //    void changeEmail(InUser user, String newEmail);
     
     void changeEmail(InApplicant applicant, String newEmail);
-
+    
 
     //====================================================================================================
     // GROUP
@@ -143,6 +143,8 @@ public interface IdentityService {
     Integer countActor(String filter, InActorType type);
     
     boolean isActorEmailExists(String email);
+    
+    boolean isActorIdentityNoExists(String identityNo);
 
     //====================================================================================================
     // STAFF
