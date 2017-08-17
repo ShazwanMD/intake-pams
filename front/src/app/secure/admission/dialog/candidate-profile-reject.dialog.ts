@@ -38,18 +38,19 @@ export class CandidateProfileRejectDialog implements OnInit {
     this.rejectForm = this.formBuilder.group(<Candidate>{
       id: null,
       reason: '',
+      application: <IntakeApplication>{},
     });
 
     this.rejectForm.patchValue(this._candidate);
   }
 
   submit(candidate : Candidate) {
-    console.log("submit candidate : "+candidate.id);
+    
     let snackBarRef = this.snackBar.open('Confirm to Reject This candidate?', 'Ok');
 
     snackBarRef.afterDismissed().subscribe(() => {
-      console.log("submit candidate in snck bar: "+candidate.id);
-      this.store.dispatch(this.actions.rejectCandidate(this._candidate));
+        console.log("submit candidate : "+candidate.id);
+      this.store.dispatch(this.actions.rejectCandidate(candidate));
       this.dialog.close();
     });
   }
