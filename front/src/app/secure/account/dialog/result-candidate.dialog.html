@@ -78,7 +78,7 @@
                       <div layout="row" layout-margin>
                         <div flex>
 
-    <a href="http://localhost:8080/servlet/report?report=report4.jrxml&report.pdf" [target]="'_blank'">View Offer Letter</a>
+    <a href="http://localhost:8080/servlet/report?report=adm_0001.jrxml&report.pdf&reference_no={{myIntakeApplication.candidate?.application?.referenceNo}}" [target]="'_blank'">View Offer Letter</a>
 
     <button md-raised-button color="accent" (click)="accept(row)">Accept</button>
     <button md-raised-button color="accent" (click)="decline(row)">Decline</button>
