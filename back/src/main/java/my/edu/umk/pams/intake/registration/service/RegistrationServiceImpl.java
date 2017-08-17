@@ -155,6 +155,16 @@ public class RegistrationServiceImpl implements RegistrationService {
     public boolean isUserExists(String username) {
         return identityService.isUserExists(username);
     }
+    
+    @Override
+    public boolean isActorEmailExists(String email) {
+        return identityService.isActorEmailExists(email);
+    }
+    
+    @Override
+    public boolean isActorIdentityNoExists(String identityNo) {
+        return identityService.isActorIdentityNoExists(identityNo);
+    }
 
     private SecurityContext loginAsSystem() {
         SecurityContext savedCtx = SecurityContextHolder.getContext();
