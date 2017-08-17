@@ -39,10 +39,10 @@ public class AdmissionSchedulerImpl implements AdmissionScheduler {
 
 	@Scheduled(cron = "*/10 * * * * *")
 	public void sendEmail() {
-		this.preapproveCandidate();
-		this.approveCandidate();
-		this.offerCandidate();
-		this.rejectCandidate();
+//		this.preapproveCandidate();
+//		this.approveCandidate();
+//		this.offerCandidate();
+//		this.rejectCandidate();
 	}
 
 	public void preapproveCandidate() {
