@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import my.edu.umk.pams.intake.identity.model.InActor;
+import my.edu.umk.pams.intake.identity.model.InActorImpl;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -48,6 +50,36 @@ public class RegistrationController {
         
         if(identityService.isUserExists(user.getUsername())){
    		 throw new IllegalArgumentException ("You have already register");}
+        
+     //   InActor actor = new InActorImpl();
+//        LOG.debug("My email value is: " + user.getEmail());
+//    	if (user.getEmail() != null) LOG.debug("Email is not null");
+//
+//    	user=identityService.findUserByEmail(user.getEmail());
+//    	
+//    	if (user != null) LOG.debug("UserA is not null");
+//    	LOG.debug("user check ",user);
+//
+//    	LOG.debug("email",user.getEmail());
+//    	LOG.debug("user",user);
+//    	
+//    	//if((identityService.findUserByEmail(user.getEmail())!=null))
+//    	if (true)
+//    		throw new IllegalArgumentException ("Invalid! Email exists!");
+ 
+        
+        
+        
+        
+        
+        
+//        identityService.findUserByEmail(user.getEmail());
+//        if(identityService.isActorEmailExists(user.getEmail())){
+//      		 throw new IllegalArgumentException ("Your email is already registered");}
+        
+//        InActor actor = identityService.findActorByIdentityNo(registration.getIdentityNo());
+//         if(identityService.isActorIdentityNoExists(actor.getIdentityNo())){
+//     		 throw new IllegalArgumentException ("Your identity number is already registered");}
 
         InApplicant applicant = new InApplicantImpl();
         applicant.setIdentityNo(registration.getIdentityNo());
