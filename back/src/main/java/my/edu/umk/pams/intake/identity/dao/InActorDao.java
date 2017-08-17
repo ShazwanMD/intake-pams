@@ -31,4 +31,6 @@ public interface InActorDao extends GenericDao<Long, InActor> {
     Integer count(InActorType type);
 
     boolean isEmailExists(String email);
+    
+    boolean isIdentityNoExists(String identityNo);
 }
