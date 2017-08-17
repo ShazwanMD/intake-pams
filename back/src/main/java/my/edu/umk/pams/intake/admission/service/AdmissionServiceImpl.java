@@ -280,62 +280,62 @@ public class AdmissionServiceImpl implements AdmissionService {
         candidate.setStatus(InCandidateStatus.REGISTERED);
         candidateDao.update(candidate, securityService.getCurrentUser());
 
-//        // payload
-//        InProgramCode programCode = candidate.getProgramSelection().getProgramCode();
-//        InFacultyCode facultyCode = programCode.getFacultyCode();
-//        CandidatePayload payload = new CandidatePayload();
-//        payload.setName(candidate.getName());
-//        payload.setMatricNo(candidate.getMatricNo());
-//        payload.setEmail(candidate.getEmail());
-//
-//        // if( application != null)
-//        InIntakeApplication application = candidate.getApplication();
-//        payload.setMobile(application.getMobile());
-//        payload.setFax(application.getFax());
-//        payload.setFacultyCode(facultyCode.getCode());
-//        payload.setProgramCode(programCode.getCode());
-//        // <program_code>-CHRT-<academic_session_code>
-//        String cohortCode = facultyCode.getCode()
-//                + "-" + programCode.getProgramLevel().getCode()
-//                + "-" + programCode.getCode()
-//                + "-CHRT-"
-//                + candidate.getIntake().getSession().getCode();
-//        payload.setCohortCode(cohortCode);
-//
-//        AddressPayload primaryAddress =  new AddressPayload();
-//        primaryAddress.setAddress1(application.getOfficialAddress1());
-//        primaryAddress.setAddress2(application.getOfficialAddress2());
-//        primaryAddress.setAddress3(application.getOfficialAddress3());
-//        primaryAddress.setPostcode(application.getOfficialPostcode());
-//        primaryAddress.setStateCode(application.getOfficialStateCode().getCode());
-//        payload.setPrimaryAddress(primaryAddress);
-//        
-//        AddressPayload secondaryAddress =  new AddressPayload();
-//        secondaryAddress.setAddress1(application.getMailingAddress1());
-//        secondaryAddress.setAddress2(application.getMailingAddress2());
-//        secondaryAddress.setAddress3(application.getMailingAddress3());
-//        secondaryAddress.setPostcode(application.getMailingPostcode());
-//        secondaryAddress.setStateCode(application.getMailingStateCode().getCode());
-//        payload.setSecondaryAddress(secondaryAddress);
-//        
-//        // todo: supevisor, studymode, cohort, address etc, etc
-//        InSupervisorOffering supervisorSelection = application.getSupervisorSelection();
-//        payload.setSupervisorCode(supervisorSelection.getSupervisorCode().getCode());
-//
-//        InStudyMode studyMode = candidate.getStudyMode();
-//        StudyModePayload studyModePayload = new StudyModePayload();
-//        studyModePayload.setCode(studyMode.getCode());
-//        studyModePayload.setDescription(studyMode.getDescriptionEn());
-//        payload.setStudyMode(studyModePayload);
-//
-//        InResidencyCode residencyCode = application.getResidencyCode();
-//        ResidencyCodePayload residencyCodePayload = new ResidencyCodePayload();
-//        residencyCodePayload.setCode(residencyCode.getCode());
-//        residencyCodePayload.setDescription(residencyCode.getDescriptionEn());
-//        payload.setResidencyCode(residencyCodePayload);
-//
-//        CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
-//        applicationContext.publishEvent(event);
+        // payload
+        InProgramCode programCode = candidate.getProgramSelection().getProgramCode();
+        InFacultyCode facultyCode = programCode.getFacultyCode();
+        CandidatePayload payload = new CandidatePayload();
+        payload.setName(candidate.getName());
+        payload.setMatricNo(candidate.getMatricNo());
+        payload.setEmail(candidate.getEmail());
+
+        // if( application != null)
+        InIntakeApplication application = candidate.getApplication();
+        payload.setMobile(application.getMobile());
+        payload.setFax(application.getFax());
+        payload.setFacultyCode(facultyCode.getCode());
+        payload.setProgramCode(programCode.getCode());
+        // <program_code>-CHRT-<academic_session_code>
+        String cohortCode = facultyCode.getCode()
+                + "-" + programCode.getProgramLevel().getCode()
+                + "-" + programCode.getCode()
+                + "-CHRT-"
+                + candidate.getIntake().getSession().getCode();
+        payload.setCohortCode(cohortCode);
+
+        AddressPayload primaryAddress =  new AddressPayload();
+        primaryAddress.setAddress1(application.getOfficialAddress1());
+        primaryAddress.setAddress2(application.getOfficialAddress2());
+        primaryAddress.setAddress3(application.getOfficialAddress3());
+        primaryAddress.setPostcode(application.getOfficialPostcode());
+        primaryAddress.setStateCode(application.getOfficialStateCode().getCode());
+        payload.setPrimaryAddress(primaryAddress);
+        
+        AddressPayload secondaryAddress =  new AddressPayload();
+        secondaryAddress.setAddress1(application.getMailingAddress1());
+        secondaryAddress.setAddress2(application.getMailingAddress2());
+        secondaryAddress.setAddress3(application.getMailingAddress3());
+        secondaryAddress.setPostcode(application.getMailingPostcode());
+        secondaryAddress.setStateCode(application.getMailingStateCode().getCode());
+        payload.setSecondaryAddress(secondaryAddress);
+        
+        // todo: supevisor, studymode, cohort, address etc, etc
+        InSupervisorOffering supervisorSelection = application.getSupervisorSelection();
+        payload.setSupervisorCode(supervisorSelection.getSupervisorCode().getCode());
+
+        InStudyMode studyMode = candidate.getStudyMode();
+        StudyModePayload studyModePayload = new StudyModePayload();
+        studyModePayload.setCode(studyMode.getCode());
+        studyModePayload.setDescription(studyMode.getDescriptionEn());
+        payload.setStudyMode(studyModePayload);
+
+        InResidencyCode residencyCode = application.getResidencyCode();
+        ResidencyCodePayload residencyCodePayload = new ResidencyCodePayload();
+        residencyCodePayload.setCode(residencyCode.getCode());
+        residencyCodePayload.setDescription(residencyCode.getDescriptionEn());
+        payload.setResidencyCode(residencyCodePayload);
+
+        CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
+        applicationContext.publishEvent(event);
     }
 
     @Override

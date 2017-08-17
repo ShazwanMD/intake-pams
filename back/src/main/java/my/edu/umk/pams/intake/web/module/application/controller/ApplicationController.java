@@ -520,9 +520,15 @@ public class ApplicationController {
 				attachment.setName(file.getOriginalFilename());
 				attachment.setSize(file.getSize());
 				attachment.setBytes(file.getBytes());
-				attachment.setAttachmentType(InAttachmentType.valueOf(attachmentType));
+			 	attachment.setAttachmentType(InAttachmentType.valueOf(attachmentType));
 				applicationService.addAttachment(application, attachment);
-				applicationService.checkAttachment(application, attachment);
+				if (attachment.getAttachmentType() == InAttachmentType.SPM) {
+					application.setSpmResultAttached(true);
+				} else if (attachment.getAttachmentType() == InAttachmentType.STPM) {
+					application.setStpmResultAttached(true);
+				}
+
+				applicationService.updateIntakeApplication(application);			
 			}
 		} catch (IOException e) {
 			return new ResponseEntity<String>("Failed", HttpStatus.OK);
