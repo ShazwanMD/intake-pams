@@ -55,7 +55,7 @@ export class ResultCandidateDialog implements OnInit {
       this.store.dispatch(this.actions.acceptCandidate(accept)); 
       this.editorDialog.close();
     });
-    let snackBarRef2 = this.snackBar.open('You have Accepted the offer', '',{duration: 10000,});   
+    let snackBarRef2 = this.snackBar.open('You have Accepted the offer', '',{duration: 3000,});   
     snackBarRef2.afterDismissed().subscribe((res) => {  
     });
     snackBarRef2.onAction().subscribe(() => {   
@@ -69,7 +69,7 @@ export class ResultCandidateDialog implements OnInit {
       this.store.dispatch(this.actions.declinedCandidate(decline));
       this.editorDialog.close();
     });
-    let snackBarRef2 = this.snackBar.open('You have Declined the offer', '',{duration: 10000,});
+    let snackBarRef2 = this.snackBar.open('You have Declined the offer', '',{duration: 3000,});
     snackBarRef.afterDismissed().subscribe((res) => {     
     });
   }
