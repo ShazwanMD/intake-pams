@@ -614,7 +614,33 @@ public class ApplicationServiceImpl implements ApplicationService {
 		} else if (attachment.getAttachmentType() == InAttachmentType.STPM) {
 			application.setStpmResultAttached(true);
 		}
-
+		else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA) {
+			application.setStpmResultAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR) {
+			application.setBachelorResultAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
+			application.setSponsorLetterAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.REFEREE_FORM) {
+			application.setRefereeFormAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.BANK_STATEMENT) {
+			application.setBankStatementAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.FEE) {
+			application.setProcessingFeeAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.RESEARCH_PROPOSAL) {
+			application.setResearchProposalAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.VISA) {
+			application.setStpmResultAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.TOEFL) {
+			application.setToeflResultAttached(true);
+		}
 		this.updateIntakeApplication(application);
 
 	}
