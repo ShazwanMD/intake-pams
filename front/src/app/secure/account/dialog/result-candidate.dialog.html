@@ -41,8 +41,12 @@
                       <div layout="row" layout-margin>
                         <div flex></div>   
                       </div>
-                      Sorry.You have been REJECTED from this offer at Faculty Approval.
+                      <br><br><br>Sorry.You have been REJECTED from this offer at Faculty Approval.
+                      <p></p>
+                      <br>
+                      <md-card-subtitle>Reason : {{myIntakeApplication.candidate?.reason}}</md-card-subtitle>
                     </md-card-subtitle>
+
                     
                     <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'SELECTED'">
                       <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
@@ -74,7 +78,7 @@
                       <div layout="row" layout-margin>
                         <div flex>
 
-    <a href="http://localhost:8080/servlet/report?report=report4.jrxml&report.pdf" [target]="'_blank'">View Offer Letter</a>
+    <a href="http://localhost:8080/servlet/report?report=adm_0001.jrxml&report.pdf&reference_no={{myIntakeApplication.candidate?.application?.referenceNo}}" [target]="'_blank'">View Offer Letter</a>
 
     <button md-raised-button color="accent" (click)="accept(row)">Accept</button>
     <button md-raised-button color="accent" (click)="decline(row)">Decline</button>

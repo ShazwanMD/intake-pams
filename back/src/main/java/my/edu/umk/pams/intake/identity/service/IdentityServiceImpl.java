@@ -175,6 +175,11 @@ public class IdentityServiceImpl implements IdentityService {
     public InUser findUserByEmail(String email) {
         return userDao.findByEmail(email);
     }
+    
+//    @Override
+//    public InUser findUserByIdentityNo(String identityNo) {
+//        return userDao.findByIdentityNo(identityNo);
+//    }
 
     @Override
     public InUser findUserByUsername(String username) {
@@ -220,6 +225,13 @@ public class IdentityServiceImpl implements IdentityService {
     public boolean isUserExists(String username) {
         return userDao.isExists(username);
     }
+    
+//    @Override
+//    public boolean isUserEmailExists(String email) {
+//        return userDao.isEmailExists(email);
+//    }
+    
+
 
     @Override
     public void saveUser(InUser user) {
@@ -499,6 +511,11 @@ public class IdentityServiceImpl implements IdentityService {
     @Override
     public boolean isActorEmailExists(String email) {
         return actorDao.isEmailExists(email);
+    }
+    
+    @Override
+    public boolean isActorIdentityNoExists(String identityNo) {
+        return actorDao.isIdentityNoExists(identityNo);
     }
 
 

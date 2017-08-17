@@ -134,4 +134,15 @@ public class InActorDaoImpl extends GenericDaoSupport<Long, my.edu.umk.pams.inta
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
         return ((Integer) query.uniqueResult() > 0);
     }
+    
+    @Override
+    public boolean isIdentityNoExists(String identityNo) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(s) from InActor s where " +
+                "s.identityNo = :identityNo " +
+                "and s.metadata.state = :state ");
+        query.setString("identityNo", identityNo);
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        return ((Integer) query.uniqueResult() > 0);
+    }
 }

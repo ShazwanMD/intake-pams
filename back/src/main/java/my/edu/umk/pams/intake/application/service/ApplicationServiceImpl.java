@@ -21,6 +21,7 @@ import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.InAttachment;
+import my.edu.umk.pams.intake.application.model.InAttachmentType;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InBidType;
 import my.edu.umk.pams.intake.application.model.InContact;
@@ -608,9 +609,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Override
 	public void checkAttachment(InIntakeApplication application, InAttachment attachment) {
 
-		if (attachment.getAttachmentType().SPM != null) {
+		if (attachment.getAttachmentType() == InAttachmentType.SPM) {
 			application.setSpmResultAttached(true);
-		} else if (attachment.getAttachmentType().STPM != null) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.STPM) {
 			application.setStpmResultAttached(true);
 		}
 
