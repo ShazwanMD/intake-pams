@@ -51,6 +51,8 @@ public class IntakeApplication extends MetaObject {
     private Boolean bachelorResultAttached;
     private Boolean toeflResultAttached;
     private Boolean ieltsResultAttached;
+    private Boolean muetResultAttached;
+    private Boolean stamResultAttached;
     private Boolean languageResultAttached;
     private Boolean processingFeeAttached;
     private Boolean researchProposalAttached;
@@ -248,9 +250,25 @@ public class IntakeApplication extends MetaObject {
 
     public Boolean getSpmResultAttached() {
         return spmResultAttached;
-    }
+    }        
 
-    public void setSpmResultAttached(Boolean spmResultAttached) {
+    public Boolean getMuetResultAttached() {
+		return muetResultAttached;
+	}
+
+	public void setMuetResultAttached(Boolean muetResultAttached) {
+		this.muetResultAttached = muetResultAttached;
+	}
+
+	public Boolean getStamResultAttached() {
+		return stamResultAttached;
+	}
+
+	public void setStamResultAttached(Boolean stamResultAttached) {
+		this.stamResultAttached = stamResultAttached;
+	}
+
+	public void setSpmResultAttached(Boolean spmResultAttached) {
         this.spmResultAttached = spmResultAttached;
     }
 

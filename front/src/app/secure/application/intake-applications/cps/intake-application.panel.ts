@@ -113,6 +113,8 @@ export class CpsIntakeApplicationPanel implements OnInit {
 
       spmResultAttached: [true],
       stpmResultAttached: [true],
+      stamResultAttached: [true],
+      muetResultAttached: [true],
       diplomaResultAttached: [true],
       bachelorResultAttached: [true],
       toeflResultAttached: [true],
@@ -147,7 +149,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
       this.store.dispatch(this.actions.submitIntakeApplication(application));
-      //   this.goBack();
+      this.goBack();
     } else {
       return false;
     }

@@ -118,12 +118,18 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "STPM_RESULT_ATTACHED")
     private Boolean stpmResultAttached = false;
+    
+    @Column(name = "STAM_RESULT_ATTACHED")
+    private Boolean stamResultAttached = false;
 
     @Column(name = "DIPLOMA_RESULT_ATTACHED")
     private Boolean diplomaResultAttached = false;
 
     @Column(name = "BACHELOR_RESULT_ATTACHED")
     private Boolean bachelorResultAttached = false;
+    
+    @Column(name = "MUET_RESULT_ATTACHED")
+    private Boolean muetResultAttached = false;
 
     @Column(name = "RESEARCH_PROPOSAL_ATTACHED")
     private Boolean researchProposalAttached = false;
@@ -538,6 +544,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     public void setStpmResultAttached(Boolean stpmResultAttached) {
         this.stpmResultAttached = stpmResultAttached;
     }
+    
+    @Override
+    public Boolean isStamResultAttached() {
+        return stamResultAttached;
+    }
+
+    @Override
+    public void setStamResultAttached(Boolean stamResultAttached) {
+        this.stamResultAttached = stamResultAttached;
+    }
 
     @Override
     public Boolean isDiplomaResultAttached() {
@@ -557,6 +573,16 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setBachelorResultAttached(Boolean bachelorResultAttached) {
         this.bachelorResultAttached = bachelorResultAttached;
+    }
+
+    @Override
+    public Boolean isMuetResultAttached() {
+        return muetResultAttached;
+    }
+
+    @Override
+    public void setMuetResultAttached(Boolean muetResultAttached) {
+        this.muetResultAttached = muetResultAttached;
     }
 
     @Override

@@ -57,7 +57,7 @@ export class ProgramOfferingListComponent {
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
       config.width = '65%';
-      config.height = '40%';
+      config.height = '46%';
       config.position = {top: '0px'};
       this.editorDialogRef = this.dialog.open(ProgramOfferingEditorDialog, config);
       this.editorDialogRef.componentInstance.intake = this.intake;

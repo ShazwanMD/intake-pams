@@ -38,7 +38,7 @@ export class SupervisorOfferingListComponent {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '80%';
-    config.height = '30%';
+    config.height = '32%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(SupervisorOfferingEditorDialog, config);
     this.editorDialogRef.componentInstance.intake = this.intake;

@@ -186,6 +186,10 @@ public class IntakeFlowProcessTest {
         application2.setProgramSelection(mckOffering);
         application2.setCredentialNo("234234");
         application2.setOfficialAddress1("test official address 1");
+        application2.setOfficialAddress2("test official address 2");
+        application2.setOfficialAddress3("test official address 3");
+        application2.setOfficialCountryCode(commonService.findCountryCodeByCode("A03"));
+        application2.setOfficialStateCode(commonService.findStateCodeByCode("02"));
         application2.setResearchTitle("test1b");
         application2.setName("testCitizen bin ting");
         application2.setEmail("testCitizen@email.com");
@@ -224,6 +228,10 @@ public class IntakeFlowProcessTest {
         application4.setProgramSelection(mcnOffering);
         application4.setCredentialNo("123123");
         application4.setOfficialAddress1("test official address 1");
+        application4.setOfficialAddress2("test official address 2");
+        application4.setOfficialAddress3("test official address 3");
+        application4.setOfficialCountryCode(commonService.findCountryCodeByCode("A03"));
+        application4.setOfficialStateCode(commonService.findStateCodeByCode("02"));
         application4.setResearchTitle("test2");
         application4.setName("testNonCitizen bin ting");
         application4.setEmail("testNonCitizen@email.com");
