@@ -34,26 +34,8 @@ export class RegistrationPage implements OnInit {
       password: ['', Validators.required],
     });
   }
-
+  
   register(registration: UserRegistration, isValid: boolean) {
     this.store.dispatch(this.registrationActions.registerUser(registration));
-    //if (this.registrationActions.registerUserSuccess){ 
-  //   if (true){ 
-  //   let snackBarRef = this.snackBar.open('A verification email has been sent to your registered email.', '',
-  //   {duration: 3000,});
-  //   snackBarRef.afterDismissed().subscribe((res) => { 
-  //     let snackBarRef2 = this.snackBar.open('Please click the verification link to complete your registration.', '',
-  //   {duration: 3000,});
-  //   snackBarRef2.afterDismissed().subscribe((res) => {     
-  //   });    
-  //   });
-  //   }
-
-  // // else if (!(this.registrationActions.registerUserSuccess))
-  // else
-  //   {
-
-  // }
-
   }
 }

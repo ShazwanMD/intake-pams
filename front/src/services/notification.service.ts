@@ -16,9 +16,12 @@ export class NotificationService {
   }
 
   showError(error: ApplicationError): Observable<any> {
-    let config: MdSnackBarConfig = new MdSnackBarConfig();
-    config.duration = 5000;
-    this.snackBar.open(error.error, undefined, config);
+    let snackBarRef = this.snackBar.open(error.error, 'Ok', {
+        duration: 5000,
+      });
+      snackBarRef.afterDismissed().subscribe(() => {
+          window.location.reload();
+      });
     return Observable.empty();
   }
 }

@@ -71,11 +71,10 @@
     </div>
     <md-divider></md-divider>
     <md-card-actions>
-      <button md-raised-button color="accent" [routerLink]="['/registrationInfo']"   
+      <button md-raised-button color="accent" 
               (click)="register(registrationForm.value, registrationForm.valid)"
               [disabled] = "!registrationForm.valid">Register
-      </button>   
-            <!-- [routerLink]="['/registrationInfo']"      -->
+      </button>
       <button md-button color="primary" [routerLink]="['/login']">Already Register? Login here!</button>
     </md-card-actions>
   </td-layout-card-over>
