@@ -56,6 +56,8 @@ public class ApplicationTransformer {
 		vo.setBachelorResultAttached(e.isBachelorResultAttached());
 		vo.setToeflResultAttached(e.isToeflResultAttached());
 		vo.setIeltsResultAttached(e.isIeltsResultAttached());
+		vo.setMuetResultAttached(e.isMuetResultAttached());
+		vo.setStamResultAttached(e.isStamResultAttached());
 		vo.setLanguageResultAttached(e.isLanguageResultAttached());
 		vo.setResearchProposalAttached(e.isResearchProposalAttached());
 		vo.setSponsorLetterAttached(e.isSponsorLetterAttached());

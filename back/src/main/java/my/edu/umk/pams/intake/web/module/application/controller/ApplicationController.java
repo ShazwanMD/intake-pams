@@ -216,6 +216,8 @@ public class ApplicationController {
 		application.setBachelorResultAttached(vo.getBachelorResultAttached());
 		application.setToeflResultAttached(vo.getToeflResultAttached());
 		application.setIeltsResultAttached(vo.getIeltsResultAttached());
+		application.setMuetResultAttached(vo.getMuetResultAttached());
+		application.setStamResultAttached(vo.getStamResultAttached());
 		application.setLanguageResultAttached(vo.getLanguageResultAttached());
 		application.setProcessingFeeAttached(vo.getProcessingFeeAttached());
 		application.setBankStatementAttached(vo.getBankStatementAttached());
