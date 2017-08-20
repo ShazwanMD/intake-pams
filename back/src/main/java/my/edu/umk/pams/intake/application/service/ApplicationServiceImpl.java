@@ -635,12 +635,24 @@ public class ApplicationServiceImpl implements ApplicationService {
 		else if (attachment.getAttachmentType() == InAttachmentType.RESEARCH_PROPOSAL) {
 			application.setResearchProposalAttached(true);
 		}
-		else if (attachment.getAttachmentType() == InAttachmentType.VISA) {
-			application.setStpmResultAttached(true);
+		else if (attachment.getAttachmentType() == InAttachmentType.IELTS) {
+			application.setIeltsResultAttached(true);
 		}
 		else if (attachment.getAttachmentType() == InAttachmentType.TOEFL) {
 			application.setToeflResultAttached(true);
 		}
+		else if (attachment.getAttachmentType() == InAttachmentType.LANGUAGE){
+			application.setLanguageResultAttached(true);
+		}
+		
+		else if (attachment.getAttachmentType() == InAttachmentType.STAM){
+			application.setStamResultAttached(true);
+		}
+		
+		else if (attachment.getAttachmentType() == InAttachmentType.MUET){
+			application.setMuetResultAttached(true);
+		}
+		
 		this.updateIntakeApplication(application);
 
 	}

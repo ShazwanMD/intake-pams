@@ -18,7 +18,9 @@ public enum InAttachmentType {
     BANK_STATEMENT("BankStatement"),   //10
     REFEREE_FORM("RefereeForm"),  //11
     RESEARCH_PROPOSAL("ResearchProposal"),   //12
-    VISA("Visa");   //13
+    VISA("Visa"),  //13
+	LANGUAGE("Language"),  //14
+	IELTS("IELTS");
 
     private String code;
 
