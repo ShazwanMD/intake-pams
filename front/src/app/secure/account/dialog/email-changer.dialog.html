@@ -15,7 +15,7 @@
           </md-input-container>
           <div class="error" class="tc-red-600"
                    *ngIf="emailChangerForm.get('newEmail').invalid && emailChangerForm.get('newEmail').touched">
-              Please enter your new email!
+                   Please insert a valid email format!(e.g:ali@gmail.com)
               </div>
         </div>       
       </div>
@@ -24,6 +24,7 @@
 </md-dialog-content>
    <md-dialog-actions>
       <button md-raised-button color="accent" 
-               (click)="submit(emailChangerForm.value, emailChangerForm.valid)"> Change Email
+               (click)="submit(emailChangerForm.value, emailChangerForm.valid)" 
+               [disabled] = "!emailChangerForm.valid">Change Email
       </button>
     </md-dialog-actions>
