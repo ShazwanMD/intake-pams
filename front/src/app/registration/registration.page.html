@@ -71,7 +71,7 @@
     </div>
     <md-divider></md-divider>
     <md-card-actions>
-      <button md-raised-button color="accent" 
+      <button md-raised-button color="accent" [routerLink]="['/registrationInfo']"   
               (click)="register(registrationForm.value, registrationForm.valid)"
               [disabled] = "!registrationForm.valid">Register
       </button>   
