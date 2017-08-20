@@ -1,0 +1,20 @@
+<td-layout-nav>
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>Email Validation</span>
+    <span flex></span>
+  </div>
+
+  <td-layout-card-over>
+    <div layout="row" layout-align="start center">
+      <div>
+        <md-card-title>Change Email Verification</md-card-title>
+        <md-card-subtitle>Your new email has been validated!</md-card-subtitle>
+        <md-card-subtitle>Please use your email as your username.</md-card-subtitle>
+      </div>
+    </div>
+
+    <md-card-actions>
+      <button md-button color="accent" [routerLink]="['/login']">
+        Please Log In
+      </button>
+    </md-card-actions>

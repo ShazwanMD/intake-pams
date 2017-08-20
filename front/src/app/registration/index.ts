@@ -17,6 +17,8 @@ import {RegistrationEffects} from "./registration.effect";
 import {VerificationPage} from "./verification.page";
 import {RegistrationInformationPage} from "./registration-information.page";
 import { ForgetPasswordInformationPage } from "../login/forget-password-information.page";
+import { ChangeEmailVerificationPage } from "./change-email-verification";
+
 
 export interface RegistrationModuleState {
   registration: RegistrationState
@@ -45,6 +47,7 @@ export const registrationModuleReducers = {
     RegistrationPage,
     RegistrationInformationPage,
     VerificationPage,
+    ChangeEmailVerificationPage,
     ForgetPasswordInformationPage,
   ],
   exports: [],

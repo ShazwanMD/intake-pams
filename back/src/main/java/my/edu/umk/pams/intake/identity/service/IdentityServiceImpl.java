@@ -12,6 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,6 +45,7 @@ import my.edu.umk.pams.intake.identity.model.InPrincipalRoleImpl;
 import my.edu.umk.pams.intake.identity.model.InRoleType;
 import my.edu.umk.pams.intake.identity.model.InStaff;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.registration.dao.InUserVerificationDao;
 import my.edu.umk.pams.intake.registration.model.InUserVerification;
 import my.edu.umk.pams.intake.registration.model.InUserVerificationImpl;
 import my.edu.umk.pams.intake.registration.service.RegistrationService;
@@ -64,6 +68,7 @@ public class IdentityServiceImpl implements IdentityService {
 
     private static final String GROUP_ROOT = "GRP_ADMN";
     private static final Logger LOG = LoggerFactory.getLogger(SystemServiceImpl.class);
+    public static final int ONE_WEEK = 60 * 24 * 7;
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -74,6 +79,9 @@ public class IdentityServiceImpl implements IdentityService {
     @Autowired
     private InPrincipalDao principalDao;
 
+    @Autowired
+    private InUserVerificationDao userVerificationDao;
+    
     @Autowired
     private InUserDao userDao;
 
@@ -272,31 +280,6 @@ public class IdentityServiceImpl implements IdentityService {
         sessionFactory.getCurrentSession().flush();
         logoutAsSystem(sc);
     }
-    
-//    @Override
-//    public void changeEmail(InUser user, String newEmail) {
-//    	SecurityContext sc = loginAsSystem();
-//    	user.setEmail(newEmail);
-//        userDao.update(user, securityService.getCurrentUser());
-//        sessionFactory.getCurrentSession().flush();
-//        
-//    	if (user == null) LOG.debug("UserB is null");
-//    	if (user.getEmail() == null) LOG.debug("Email is null");
-//    	
-//    	InEmailQueue email= new InEmailQueueImpl();
-//        String subject = "Change Email";
-//        String body = "Your Email has been changed to : " + newEmail +
-//        			  ". Please Login to continue";
-//        email.setTo(newEmail);
-//        email.setSubject(subject);
-//        email.setBody(body);
-//        email.setCode("EQ/" + System.currentTimeMillis());
-//        email.setQueueStatus(InEmailQueueStatus.QUEUED);
-//        systemService.saveEmailQueue(email);
-//        logoutAsSystem(sc);
-//    }
-    
- 
     
     //====================================================================================================
     // GROUP
@@ -674,6 +657,10 @@ public class IdentityServiceImpl implements IdentityService {
         actorDao.update(actor, securityService.getCurrentUser());
         //must find user
         InUser user = this.findUserByActor(actor);
+        
+        user.setEnabled(false);
+        user.setLocked(true);
+        
         user.setEmail(newEmail);
         userDao.update(user, securityService.getCurrentUser());
         InPrincipal principal = this.findPrincipalById(user.getId());
@@ -681,30 +668,43 @@ public class IdentityServiceImpl implements IdentityService {
         principal.setName(newEmail);
         this.updatePrincipal(principal);
         //generate token
+        // generate token
         String token = registrationService.generateToken();
         InUserVerification verification = new InUserVerificationImpl();
-       // verification.setExpiryDate(calculateExpiryDate(ONE_WEEK));
+        verification.setExpiryDate(calculateExpiryDate(ONE_WEEK));
         verification.setToken(token);
-        //verification.setUser(user);
+        verification.setUser(user);
+        userVerificationDao.save(verification, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
         
     	if (applicant == null) LOG.debug("ApplicantB is null");
     	if (applicant.getEmail() == null) LOG.debug("Email is null");
-    	
-    	String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
-    	InEmailQueue email= new InEmailQueueImpl();
-        String subject = "Change Email";
-        String body = "Your Email has been changed to : " + newEmail +
-        			  ". Please Login to continue" + applicationUrl+ "/login/";
-        email.setTo(newEmail);
+
+        String applicationUrl= systemService.findConfigurationByKey("application.url").getValue();
+        InEmailQueue email= new InEmailQueueImpl();
+        String subject = "Email verification";
+        String body = "Please verify your email address upon 7 days from your registration day by clicking this url : "+applicationUrl+"/changeEmailVerification/"+ token;
+        //verification.getToken();
+        email.setTo(user.getEmail());
         email.setSubject(subject);
         email.setBody(body);
+       //method send email 
         email.setCode("EQ/" + System.currentTimeMillis());
         email.setQueueStatus(InEmailQueueStatus.QUEUED);
         systemService.saveEmailQueue(email);
+        
+        // logout
         logoutAsSystem(sc);
     }
-    
-    @Override
+      
+    private Date calculateExpiryDate(int expiryTimeInMinutes) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Timestamp(cal.getTime().getTime()));
+        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
+        return new Date(cal.getTime().getTime());
+    }
+
+	@Override
     public void changeAddress(InIntakeApplication application, String newAddress) {
     	SecurityContext sc = loginAsSystem();  
     //	applicationService.findIntakeApplication();
