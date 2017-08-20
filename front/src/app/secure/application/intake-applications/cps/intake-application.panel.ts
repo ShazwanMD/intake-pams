@@ -113,6 +113,8 @@ export class CpsIntakeApplicationPanel implements OnInit {
 
       spmResultAttached: [true],
       stpmResultAttached: [true],
+      stamResultAttached: [true],
+      muetResultAttached: [true],
       diplomaResultAttached: [true],
       bachelorResultAttached: [true],
       toeflResultAttached: [true],
