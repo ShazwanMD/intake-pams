@@ -313,5 +313,13 @@ public interface InIntakeApplication extends InMetaObject {
     void setReferees(List<InReferee> referees);
 
     List<InReferee> getReferees();
+
+	Boolean isStamResultAttached();
+	
+	void setStamResultAttached(Boolean stamResultAttached);
+
+	Boolean isMuetResultAttached();
+
+	void setMuetResultAttached(Boolean muetResultAttached);
 }
 

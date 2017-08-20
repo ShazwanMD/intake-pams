@@ -159,7 +159,7 @@
           </div>
 
           Mailing Address
-
+<!-- 
           <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
             <div class="checkbox">
               <label>
@@ -168,7 +168,7 @@
                 </md-checkbox>
               </label>
             </div>
-          </div>
+          </div> -->
 
           <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
             <md-input-container fxFlex="calc(100%-25px)">
@@ -268,7 +268,7 @@
         </td-expansion-panel>
 
         <md-card>
-          <td-expansion-panel label="Upload Document Checklist">
+          <td-expansion-panel label="Document Checklist">
             <md-card-subtitle>Please check all the uploaded attachments below</md-card-subtitle>
             <div layout="row" class="pad-bottom" flex>
               <md-checkbox formControlName="processingFeeAttached">
@@ -285,6 +285,14 @@
                 </div>
               </md-checkbox>
             </div>
+
+            <div layout="row" class="pad-bottom" flex>
+                <md-checkbox formControlName="muetResultAttached">
+                  <div layout="column" flex>
+                    Muet Result
+                  </div>
+                </md-checkbox>
+              </div>
 
             <div layout="row" class="pad-bottom" flex>
               <md-checkbox formControlName="toeflResultAttached">
@@ -309,6 +317,14 @@
                 </div>
               </md-checkbox>
             </div>
+
+            <div layout="row" class="pad-bottom" flex>
+                <md-checkbox formControlName="stamResultAttached">
+                  <div layout="column" flex>
+                    Stam Result
+                  </div>
+                </md-checkbox>
+              </div>
 
             <div layout="row" class="pad-bottom" flex>
               <md-checkbox formControlName="stpmResultAttached">

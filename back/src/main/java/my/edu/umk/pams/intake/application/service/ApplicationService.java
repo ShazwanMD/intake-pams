@@ -191,6 +191,8 @@ public interface ApplicationService {
 
 	void copyAddressApplication(InIntakeApplication application);
 
+	void checkAttachment(InIntakeApplication application, InAttachment attachment);
+
 //	void changeAddress(InIntakeApplication application);
 	
 	 

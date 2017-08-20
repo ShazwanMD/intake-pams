@@ -39,7 +39,7 @@ export class StudyModeOfferingListComponent {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
-    config.height = '30%';
+    config.height = '40%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(StudyModeOfferingEditorDialog, config);
     this.editorDialogRef.componentInstance.intake = this.intake;

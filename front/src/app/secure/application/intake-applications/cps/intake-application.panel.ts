@@ -113,6 +113,8 @@ export class CpsIntakeApplicationPanel implements OnInit {
 
       spmResultAttached: [true],
       stpmResultAttached: [true],
+      stamResultAttached: [true],
+      muetResultAttached: [true],
       diplomaResultAttached: [true],
       bachelorResultAttached: [true],
       toeflResultAttached: [true],
@@ -147,21 +149,21 @@ export class CpsIntakeApplicationPanel implements OnInit {
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
       this.store.dispatch(this.actions.submitIntakeApplication(application));
-      //   this.goBack();
+      this.goBack();
     } else {
       return false;
     }
   }
 
-  copyAddress(application: IntakeApplication): void {
-    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
-    let snackBarRef: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Confirm to Copy this address?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-      if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
-      else this.store.dispatch(this.actions.copyAddressApplication(application));
-      this.goBack();
-    });
-  }
+  // copyAddress(application: IntakeApplication): void {
+  //   this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  //   let snackBarRef: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Confirm to Copy this address?', 'Ok');
+  //   snackBarRef.afterDismissed().subscribe(() => {
+  //     if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
+  //     else this.store.dispatch(this.actions.copyAddressApplication(application));
+  //     this.goBack();
+  //   });
+  // }
 
   goBack(): void {
     this.router.navigate(['/secure']);

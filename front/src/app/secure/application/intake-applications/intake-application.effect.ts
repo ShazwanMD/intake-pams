@@ -303,6 +303,15 @@ export class IntakeApplicationEffects {
     .map((state) => state[1])
     .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
 
+@Effect() addAndCheckAttachment = this.actions$
+    .ofType(IntakeApplicationActions.ADD_AND_CHECK_ATTACHMENT)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.applicationService.addAndCheckAttachment(payload.application, payload.file, payload.attachmentType))
+    .map((message) => this.intakeApplicationActions.addAndCheckAttachmentSuccess(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map((state) => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));    
+
   @Effect() downloadAttachment = this.actions$
     .ofType(IntakeApplicationActions.DOWNLOAD_ATTACHMENT)
     .map((action) => action.payload)
