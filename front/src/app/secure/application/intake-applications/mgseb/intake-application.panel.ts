@@ -156,16 +156,16 @@ export class MgsebIntakeApplicationPanel implements OnInit {
     }
   }
 
-  copyAddress(application: IntakeApplication) {
-    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
-    let snackBarRef = this.snackBar.open('Confirm to Copy this address?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-      if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
-      else
-         this.store.dispatch(this.actions.copyAddressApplication(application));  
-      // this.goBack();
-    });
-  }
+  // copyAddress(application: IntakeApplication) {
+  //   this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  //   let snackBarRef = this.snackBar.open('Confirm to Copy this address?', 'Ok');
+  //   snackBarRef.afterDismissed().subscribe(() => {
+  //     if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
+  //     else
+  //        this.store.dispatch(this.actions.copyAddressApplication(application));  
+  //     // this.goBack();
+  //   });
+  // }
 
   goBack(): void {
     this.router.navigate(['/secure']);
