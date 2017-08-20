@@ -188,6 +188,7 @@ public class IntakeFlowProcessTest {
         application2.setOfficialAddress1("test official address 1");
         application2.setOfficialAddress2("test official address 2");
         application2.setOfficialAddress3("test official address 3");
+        application2.setOfficialPostcode("test official postcode");
         application2.setOfficialCountryCode(commonService.findCountryCodeByCode("A03"));
         application2.setOfficialStateCode(commonService.findStateCodeByCode("02"));
         application2.setResearchTitle("test1b");
@@ -230,6 +231,7 @@ public class IntakeFlowProcessTest {
         application4.setOfficialAddress1("test official address 1");
         application4.setOfficialAddress2("test official address 2");
         application4.setOfficialAddress3("test official address 3");
+        application4.setOfficialPostcode("test official postcode");
         application4.setOfficialCountryCode(commonService.findCountryCodeByCode("A03"));
         application4.setOfficialStateCode(commonService.findStateCodeByCode("02"));
         application4.setResearchTitle("test2");
