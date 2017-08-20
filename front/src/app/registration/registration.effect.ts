@@ -21,7 +21,7 @@ export class RegistrationEffects {
     .switchMap(registration => this.registrationService.registerUser(registration))
     .map(message => this.registrationActions.registerUserSuccess(message))
     .catch((error) => this.notificationService.showError(error))
-    //.do(action => this.router.navigate(['/registration', action.payload])).ignoreElements();
+    .do(action => this.router.navigate(['/registrationInfo'])).ignoreElements();
 
   @Effect() verifyUser$ = this.actions$
     .ofType(RegistrationActions.VERIFY_USER)

@@ -668,7 +668,15 @@ public class IdentityServiceImpl implements IdentityService {
         applicantDao.update(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         
-        InPrincipal principal = this.findPrincipalById(applicant.getId());
+        //must find actor
+        InActor actor = this.findApplicantById(applicant.getId());
+        actor.setEmail(newEmail);
+        actorDao.update(actor, securityService.getCurrentUser());
+        //must find user
+        InUser user = this.findUserByActor(actor);
+        user.setEmail(newEmail);
+        userDao.update(user, securityService.getCurrentUser());
+        InPrincipal principal = this.findPrincipalById(user.getId());
         
         principal.setName(newEmail);
         this.updatePrincipal(principal);
