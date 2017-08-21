@@ -12,6 +12,7 @@ import { Intake } from '../../../../shared/model/policy/intake.interface';
 import { ProgramLevel } from '../../../../shared/model/policy/program-level.interface';
 import { IntakeSession } from '../../../../shared/model/policy/intake-session.interface';
 import { DateValidation } from "../../../../shared/component/date-validation";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'pams-intake-task-creator',
@@ -26,7 +27,8 @@ export class IntakeTaskCreatorDialog implements OnInit {
   private _intakeTask: IntakeTask;
 
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private router: Router,
+    private formBuilder: FormBuilder,
     private viewContainerRef: ViewContainerRef,
     private store: Store<PolicyModuleState>,
     private actions: IntakeActions,
@@ -53,23 +55,19 @@ export class IntakeTaskCreatorDialog implements OnInit {
       graduateCenter: [<GraduateCenter>{}],
     },{
        validator: DateValidation.CheckDate // your validation method
-    })
-    
+    }) 
   }
 
- 
   submit(intake: Intake, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Create Intake?', 'Ok', {
-      duration: 10000,
-    });
-    snackBarRef.afterDismissed().subscribe(() => {
-      this.dialog.close();
-    });
-    snackBarRef.onAction().subscribe(() => {
+    if (confirm('Create intake?')) {
       this.store.dispatch(this.actions.startIntakeTask(intake));
       this.dialog.close();
-    });
+    }else {
+}  
+}
 
-  }
+goBack(): void {
+  this.router.navigate(['/secure/policy/intakes']);
+}
 
 }
