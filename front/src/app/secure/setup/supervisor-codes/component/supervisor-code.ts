@@ -26,6 +26,7 @@ export class SupervisorCodesComponent implements OnChanges {
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'title', label: 'Title'},
     {name: 'name', label: 'Name'},
     {name: 'action', label: ''}
   ];

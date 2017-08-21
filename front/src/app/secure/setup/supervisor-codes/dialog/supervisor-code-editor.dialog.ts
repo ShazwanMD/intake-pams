@@ -42,6 +42,7 @@ export class SupervisorCodeEditorDialog implements OnInit {
       descriptionMs: '',
       descriptionEn: '',
       name: '',
+      title: '',
     });
 
     if (this.edit) this.editorForm.patchValue(this._supervisorCode);

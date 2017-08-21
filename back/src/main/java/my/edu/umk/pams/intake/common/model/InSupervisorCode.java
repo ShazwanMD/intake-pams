@@ -11,6 +11,10 @@ public interface InSupervisorCode extends InMetaObject {
     String getName();
 
     void setName(String name);
+    
+    String getTitle();
+
+    void setTitle(String title);
 
     String getDescriptionMs();
 

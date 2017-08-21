@@ -20,6 +20,10 @@ public class InSupervisorCodeImpl implements InSupervisorCode {
     private String code;
     
     @NotNull
+    @Column(name = "TITLE", nullable = false)
+    private String title;
+    
+    @NotNull
     @Column(name = "NAME", nullable = false)
     private String name;
 
@@ -81,9 +85,17 @@ public class InSupervisorCodeImpl implements InSupervisorCode {
     @Override
     public void setDescriptionEn(String descriptionEn) {
         this.descriptionEn = descriptionEn;
-    }
+    }        
 
-    @Override
+    public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }
@@ -97,5 +109,7 @@ public class InSupervisorCodeImpl implements InSupervisorCode {
     public Class<?> getInterfaceClass() {
         return InSupervisorCode.class;
     }
+    
+    
 
 }

@@ -440,6 +440,7 @@ public class CommonController {
         InSupervisorCode supervisorCode = new InSupervisorCodeImpl();
         supervisorCode.setCode(vo.getCode());
         supervisorCode.setName(vo.getName());
+        supervisorCode.setTitle(vo.getTitle());
         supervisorCode.setDescriptionEn(vo.getDescriptionEn());
         supervisorCode.setDescriptionMs(vo.getDescriptionMs());
         commonService.saveSupervisorCode(supervisorCode);
@@ -454,6 +455,8 @@ public class CommonController {
         supervisorCode.setCode(vo.getCode());
         supervisorCode.setDescriptionEn(vo.getDescriptionEn());
         supervisorCode.setDescriptionMs(vo.getDescriptionMs());
+        supervisorCode.setTitle(vo.getTitle());
+        supervisorCode.setName(vo.getName());
         commonService.updateSupervisorCode(supervisorCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

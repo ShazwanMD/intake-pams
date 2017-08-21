@@ -158,6 +158,7 @@ public class CommonTransformer {
         vo.setId(e.getId());
         vo.setCode(e.getCode());
         vo.setName(e.getName());
+        vo.setTitle(e.getTitle());
         vo.setDescriptionMs(e.getDescriptionMs());
         vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
