@@ -12,15 +12,15 @@ public enum InAttachmentType {
     DIPLOMA("Diploma"),  //5
     DIPLOMA_EQUIVALENT("DiplomaEquivalent"),  //6
     BACHELOR("Bachelor"),  //7
-    BACHELOR_EQUIVALENT("BachelorEquivalent"), //7
-    FEE("Fee"),  //8
-    SPONSOR("Sponsor"),  //9
-    BANK_STATEMENT("BankStatement"),   //10
-    REFEREE_FORM("RefereeForm"),  //11
-    RESEARCH_PROPOSAL("ResearchProposal"),   //12
-    VISA("Visa"),  //13
+    BACHELOR_EQUIVALENT("BachelorEquivalent"), //8
+    FEE("Fee"),  //9
+    SPONSOR("Sponsor"),  //10
+    BANK_STATEMENT("BankStatement"),   //11
+    REFEREE_FORM("RefereeForm"),  //12
+    RESEARCH_PROPOSAL("ResearchProposal"),   //13
+//    VISA("Visa"),  //13
 	LANGUAGE("Language"),  //14
-	IELTS("IELTS");
+	IELTS("IELTS");  //15
 
     private String code;
 
