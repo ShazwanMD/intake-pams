@@ -70,11 +70,11 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     public boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(*) from InIntakeApplication s where " +
-                "s.intake = :intake " +
+                "s.intake.session.year = :year " +
                 "and s.applicant = :applicant " +
                 "and s.metadata.state = :state ");
         query.setEntity("applicant", applicant);
-        query.setEntity("intake", intake);       
+        query.setInteger("year", intake.getSession().getYear());
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
     }

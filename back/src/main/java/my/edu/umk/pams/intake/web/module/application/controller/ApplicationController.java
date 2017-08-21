@@ -105,23 +105,24 @@ public class ApplicationController {
 			applicant = (InApplicant) actor;
 
 		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-		if (applicationService.isIntakeApplicationExists(intake, applicant))
-			throw new IllegalArgumentException("You have already apply for this intake");
+		if (applicationService.isIntakeApplicationExists(intake, applicant)) {
+			throw new IllegalArgumentException("You have already applied for an intake in this year");
+		} else {
+			InIntakeApplication application = new InIntakeApplicationImpl();
+			application.setName(applicant.getName());
+			application.setEmail(applicant.getEmail());
+			application.setCredentialNo(applicant.getIdentityNo());
+			application.setApplicant(applicant);
 
-		InIntakeApplication application = new InIntakeApplicationImpl();
-		application.setName(applicant.getName());
-		application.setEmail(applicant.getEmail());
-		application.setCredentialNo(applicant.getIdentityNo());
-		application.setApplicant(applicant);
-
-		String intakeApplicationReferenceNo = null;
-		try {
-			intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
-			LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
-		} catch (Exception e) {
-			throw new IllegalArgumentException("Error in applying intake");
+			String intakeApplicationReferenceNo = null;
+			try {
+				intakeApplicationReferenceNo = applicationService.applyIntake(intake, application);
+				LOG.debug("application referenceNo: " + intakeApplicationReferenceNo);
+			} catch (Exception e) {
+				throw new IllegalArgumentException("Error in applying intake");
+			}
+			return new ResponseEntity<String>(intakeApplicationReferenceNo, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(intakeApplicationReferenceNo, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/intakes/{referenceNo}/intakeApplications", method = RequestMethod.GET)
