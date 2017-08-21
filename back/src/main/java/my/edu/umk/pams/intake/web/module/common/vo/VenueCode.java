@@ -12,8 +12,8 @@ import java.io.IOException;
 public class VenueCode  extends MetaObject{
 
     private String code;
-    private String descriptionEn;
-    private String descriptionMs;
+    private String registrationDate;
+    private String registrationLocation;
 
     public String getCode() {
         return code;
@@ -23,21 +23,21 @@ public class VenueCode  extends MetaObject{
         this.code = code;
     }
 
-    public String getDescriptionEn() {
-        return descriptionEn;
-    }
+	public String getRegistrationDate() {
+		return registrationDate;
+	}
 
-    public void setDescriptionEn(String descriptionEn) {
-        this.descriptionEn = descriptionEn;
-    }
+	public void setRegistrationDate(String registrationDate) {
+		this.registrationDate = registrationDate;
+	}
 
-    public String getDescriptionMs() {
-        return descriptionMs;
-    }
+	public String getRegistrationLocation() {
+		return registrationLocation;
+	}
 
-    public void setDescriptionMs(String descriptionMs) {
-        this.descriptionMs = descriptionMs;
-    }
+	public void setRegistrationLocation(String registrationLocation) {
+		this.registrationLocation = registrationLocation;
+	}
 
 	@JsonCreator
     public static VenueCode create(String jsonString) {

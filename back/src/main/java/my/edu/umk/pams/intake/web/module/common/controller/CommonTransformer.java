@@ -83,8 +83,8 @@ public class CommonTransformer {
         VenueCode vo = new VenueCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
-        vo.setDescriptionMs(e.getDescriptionMs());
-        vo.setDescriptionEn(e.getDescriptionEn());
+        vo.setRegistrationDate(e.getRegistrationDate());
+        vo.setRegistrationLocation(e.getRegistrationLocation());
 
         return vo;
     }

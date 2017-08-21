@@ -20,12 +20,12 @@ public class InVenueCodeImpl implements InVenueCode {
     private String code;
 
     @NotNull
-    @Column(name = "DESCRIPTION_MS", nullable = false)
-    private String descriptionMs;
+    @Column(name = "REGISTRATION_DATE", nullable = false)
+    private String registrationDate;
     
     @NotNull
-    @Column(name = "DESCRIPTION_EN", nullable = false)
-    private String descriptionEn;
+    @Column(name = "REGISTRATION_LOCATION", nullable = false)
+    private String registrationLocation;
 
     @Embedded
     private InMetadata metadata;
@@ -49,24 +49,20 @@ public class InVenueCodeImpl implements InVenueCode {
         this.code = code;
     }
 
-    @Override
-    public String getDescriptionMs() {
-		return descriptionMs;
-	}
-    
-    @Override
-	public void setDescriptionMs(String descriptionMs) {
-		this.descriptionMs = descriptionMs;
+	public String getRegistrationDate() {
+		return registrationDate;
 	}
 
-    @Override
-	public String getDescriptionEn() {
-		return descriptionEn;
+	public void setRegistrationDate(String registrationDate) {
+		this.registrationDate = registrationDate;
 	}
-    
-    @Override
-	public void setDescriptionEn(String descriptionEn) {
-		this.descriptionEn = descriptionEn;
+
+	public String getRegistrationLocation() {
+		return registrationLocation;
+	}
+
+	public void setRegistrationLocation(String registrationLocation) {
+		this.registrationLocation = registrationLocation;
 	}
 
 	public InMetadata getMetadata() {

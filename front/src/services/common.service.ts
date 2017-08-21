@@ -225,7 +225,7 @@ export class CommonService {
   findVenueCodeByCode(code: string): Observable<VenueCode> {
     console.log('findVenueCodeByCode');
     return this._http.get(this.COMMON_API + '/venueCodes/' + code)
-      .map((res: Response) => <MaritalCode>res.json());
+      .map((res: Response) => <VenueCode>res.json());
   }
 
   saveVenueCode(code: VenueCode): Observable<String> {

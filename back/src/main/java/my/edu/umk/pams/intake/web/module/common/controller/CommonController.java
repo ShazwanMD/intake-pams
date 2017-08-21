@@ -586,8 +586,8 @@ public class CommonController {
 
         InVenueCode venueCode = new InVenueCodeImpl();
         venueCode.setCode(vo.getCode());
-        venueCode.setDescriptionEn(vo.getDescriptionEn());
-        venueCode.setDescriptionMs(vo.getDescriptionMs());
+        venueCode.setRegistrationDate(vo.getRegistrationDate());
+        venueCode.setRegistrationLocation(vo.getRegistrationLocation());
         commonService.saveVenueCode(venueCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -598,8 +598,8 @@ public class CommonController {
 
         InVenueCode venueCode = commonService.findVenueCodeById(vo.getId());
         venueCode.setCode(vo.getCode());
-        venueCode.setDescriptionEn(vo.getDescriptionEn());
-        venueCode.setDescriptionMs(vo.getDescriptionMs());
+        venueCode.setRegistrationDate(vo.getRegistrationDate());
+        venueCode.setRegistrationLocation(vo.getRegistrationLocation());
         commonService.updateVenueCode(venueCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

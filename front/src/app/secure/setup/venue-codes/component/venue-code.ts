@@ -24,8 +24,8 @@ import { VenueCode } from './../../../../shared/model/common/venue-code.interfac
 export class VenueCodesComponent implements OnChanges {
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'descriptionMs', label: 'DescriptionMs'},
-    {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'registrationDate', label: 'Registration Date'},
+    {name: 'registrationLocation', label: 'Registration Location'},
     {name: 'action', label: ''}
   ];
   filteredData: any[];

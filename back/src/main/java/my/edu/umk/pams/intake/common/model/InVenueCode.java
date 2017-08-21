@@ -8,13 +8,13 @@ public interface InVenueCode extends InMetaObject {
 
     void setCode(String code);
 
-	String getDescriptionMs();
+	String getRegistrationDate();
 
-	void setDescriptionMs(String descriptionMs);
+	void setRegistrationDate(String registrationDate);
 
-	String getDescriptionEn();
+	String getRegistrationLocation();
 
-	void setDescriptionEn(String descriptionEn);
+	void setRegistrationLocation(String registrationLocation);
 	
 	
 
