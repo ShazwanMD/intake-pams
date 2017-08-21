@@ -44,13 +44,6 @@ export class IntakeDraftTaskPanel implements OnInit {
     this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
   }
 
-  // verify(): void {
-  //   let snackBarRef = this.snackBar.open('Verify this intake?', 'Yes');
-  //   snackBarRef.afterDismissed().subscribe(() => {
-  //     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
-  //     this.goBack();
-  //   });
-  // }
   verify(): void {
       if (confirm('Verify this intake?')) {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));

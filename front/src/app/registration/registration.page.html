@@ -44,12 +44,7 @@
                    type="email"
                    formControlName="email"
                    flex/>
-<!-- *ngIf="registrationForm.get('email').isExists">Email already exists! -->
-            <!-- <div class="error" class="tc-red-600"
-                       
-                       *ngIf="registrationForm.registration?.email.isExists && registrationForm.get('email').touched">Email already exists!
 
-                  </div> -->
             <div class="error" class="tc-red-600"
                        *ngIf="registrationForm.get('email').invalid && registrationForm.get('email').touched">Please insert a valid email format!(e.g:ali@gmail.com)
                   </div>

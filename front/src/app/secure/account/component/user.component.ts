@@ -16,7 +16,6 @@ import { EmailChangerDialog } from "../dialog/email-changer.dialog";
 export class UserComponent {
 
  private editorDialogRef: MdDialogRef<PasswordChangerDialog>;
-  // private editorDialogRef2: MdDialogRef<EmailChangerDialog>;
  @Input() user: User;
 
   constructor(private actions: AccountActions,
@@ -41,20 +40,5 @@ export class UserComponent {
     });
   }
 
-  //   editDialog2(): void {
-  //   console.log('editDialog2');
-  //   let config: MdDialogConfig = new MdDialogConfig();
-  //   config.viewContainerRef = this.vcf;
-  //   config.role = 'dialog';
-  //   config.width = '70%';
-  //   config.height = '65%';
-  //   config.position = {top: '0px'};
-  //   this.editorDialogRef2 = this.dialog.open(EmailChangerDialog, config);
-  //   this.editorDialogRef2.componentInstance.user = this.user;
-  //   this.editorDialogRef2.afterClosed().subscribe((res) => {
-  //     console.log('close dialog');
-  //     // load something here
-  //   });
-  // }
 }
 

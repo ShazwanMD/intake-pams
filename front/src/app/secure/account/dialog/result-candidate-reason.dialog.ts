@@ -27,9 +27,7 @@ import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from '@angular/mate
 
 export class ResultCandidateReasonDialog implements OnInit {
 
-//   private MY_INTAKE_APPLICATIONS: string[] = 'accountModuleState.myIntakeApplications'.split('.');
-   private _myIntakeApplications: MyIntakeApplication;
-//   private myIntakeApplications$: Observable<MyIntakeApplication[]>;
+  private _myIntakeApplications: MyIntakeApplication;
   private applicationForm: FormGroup;
 
   private PUBLISHED_INTAKES: string[] = 'accountModuleState.publishedIntakes'.split('.');
@@ -62,7 +60,6 @@ export class ResultCandidateReasonDialog implements OnInit {
   set myIntakeApplications(value: MyIntakeApplication) {
     this._myIntakeApplications = value;
   }
-
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findMyIntakeApplications());

@@ -49,10 +49,5 @@ export class IntakeApplicationEvaluateListComponent {
     this.editorDialogRef = this.dialog.open(ApplicantProfileDialog, config);
     this.editorDialogRef.componentInstance.intakeApplication = intakeApplication;
 
-    /*this.editorDialogRef.afterClosed().subscribe(res => {
-     console.log("closeDialog");
-     // reload program offerings
-     this.store.dispatch(this.actions.findProgramOfferings(this.intake));
-     });*/
   }
 }

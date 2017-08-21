@@ -72,19 +72,4 @@ export class IntakeTaskCreatorDialog implements OnInit {
 
   }
 
-
-//   error:any={isError:false,errorMessage:''};
-
-// compareTwoDates(){
-//    if(new Date(this.form.controls['endDate'].value)<new Date(this.form.controls['startDate'].value))
-//     {
-//       this.error =
-//       {
-//         isError:true,
-//         errorMessage:'End Date can't before start date'
-//       };
-//    }
-// }
-// }
-
 }

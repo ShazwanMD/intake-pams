@@ -14,39 +14,17 @@
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Intake Session Center</span>
-      <!-- <button md-button class="md-icon-button">
-        <md-icon class="md-24">settings</md-icon>
-      </button>
-      <button md-button class="md-icon-button">
-        <md-icon class="md-24">more_vert</md-icon>
-      </button> -->
+
     </div>
     <div layout="row" layout-wrap>
     </div>
     <md-card>
-      <!--<td-search-box class="push-left push-right"
-                     placeholder="search"
-                     [alwaysVisible]="true"
-                     (searchDebounce)="search($event)">
-      </td-search-box>-->
-       
 
       <md-divider></md-divider>
-      <pams-intake-session-list
-        [intakeSessions]="intakeSessions$ | async">
+      <pams-intake-session-list [intakeSessions]="intakeSessions$ | async">
       </pams-intake-session-list>
 
       {{(intakeSessions$ | async).length}}
-      <!--<td-paging-bar #pagingBar pageSizeAllText="All" [pageSizeAll]="true" [pageSizes]="[10,20,30,40,50]"
-                [initialPage]="1" [firstLast]="firstLast" [pageSize]="10" [total]="[(intakeSessions$ | async).length]" (change)="change($event)">
-  <span td-paging-bar-label hide-xs>Row per page:</span>
-  {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-</td-paging-bar>-->
-      <!--<md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/policy/intake-sessions']">
-          <span>View More</span>
-        </a>
-      </md-card-actions>-->
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>

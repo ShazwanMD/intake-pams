@@ -37,7 +37,6 @@ export class IntakeSessionCreatorDialog implements OnInit {
   }
 
   save(sessions: IntakeSession, isValid: boolean) {
-    // todo(samiya): add method, effect, action
     this.store.dispatch(this.actions.saveIntakeSession(sessions));
     this.dialog.close();
   }

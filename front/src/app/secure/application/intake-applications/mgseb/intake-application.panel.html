@@ -1,7 +1,3 @@
-<!--<div toolbar-content layout="row" layout-align="center center" flex>
-    <span>PAMS: Postgraduate Management System</span>
-    <span flex></span>
-  </div>-->
 
 <td-layout-card-over>
   <form [formGroup]="applicationForm" novalidate>
@@ -18,12 +14,6 @@
         <td-expansion-panel label="Program Choices">
           <pams-study-center-choice [intakeApplication]="_intakeApplication">
           </pams-study-center-choice>
-
-          <!--<div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
-              <pams-study-center-code-select [placeholder]="'Study Center'" [innerFormControl]="applicationForm.controls.studyCenterCode"
-                fxFlex="calc(70%-25px)" class="push-bottom">
-              </pams-study-center-code-select>
-            </div>-->
         </td-expansion-panel>
 
 
@@ -69,12 +59,6 @@
             <pams-marital-code-select [placeholder]="'Marital'" [innerFormControl]="applicationForm.controls.maritalCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-marital-code-select>
-
-
-            <!--</div>-->
-
-            <!--second column -->
-            <!--<div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">-->
 
             <md-input-container fxFlex="calc(50%-25px)">
               <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>

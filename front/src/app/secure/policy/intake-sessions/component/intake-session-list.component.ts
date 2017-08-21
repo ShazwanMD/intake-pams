@@ -48,13 +48,6 @@ export class IntakeSessionListComponent implements AfterViewInit, OnChanges {
     {name: 'action', label: ''},
   ];
 
-  //   constructor(private actions: IntakeSessionActions,
-  //             private store: Store<PolicyModuleState>,
-  //             private vcf: ViewContainerRef,
-  //             private dialog: MdDialog) {
-  //   this.intakeSession$ = this.store.select(...this.INTAKE_SESSION);
-  // }
-
   filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';
@@ -117,10 +110,6 @@ export class IntakeSessionListComponent implements AfterViewInit, OnChanges {
     this.filteredData = newData;
   }
 
-  // ngOnInit(): void {
-  //   this.store.dispatch(this.actions.findIntakeSessions());
-  //  }
-
   createDialog(): void {
     this.showDialog(null);
   }
@@ -132,9 +121,6 @@ export class IntakeSessionListComponent implements AfterViewInit, OnChanges {
   delete(id: IntakeSession): void {
     this.store.dispatch(this.actions.removeIntakeSession(id));
   }
-
-  // filter(): void {
-  // }
 
   private showDialog(code: IntakeSession): void {
     console.log('create');
