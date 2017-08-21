@@ -230,7 +230,6 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public String startIntakeTask(InIntake intake) {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("intakeSession", intake.getSession());
         map.put("programLevel", intake.getProgramLevel());
         map.put("graduateCenter", intake.getGraduateCenter());
         String refNo = systemService.generateFormattedReferenceNo(INTAKE_REFERENCE_NO, map);
