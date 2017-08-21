@@ -167,7 +167,7 @@ export class IntakeEffects {
     ));
 
   @Effect() processIntakeCandidate$ = this.actions$
-    .ofType(IntakeActions.COPY_INTAKE_TASK)
+    .ofType(IntakeActions.PROCESS_INTAKE_CANDIDATE)
     .map((action) => action.payload)
     .switchMap((intakeTask) => this.applicationService.processIntakeCandidate(intakeTask))
     .map((message) => this.intakeActions.processIntakeCandidateSuccess(message))
