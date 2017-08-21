@@ -1,65 +1,53 @@
-<h2 md-dialog-title>Update Intake</h2>
-<md-dialog-content>
+<h2 md-dialog-title>Update Intake Task</h2>
   <form [formGroup]="updateForm">
-    <div layout="column" class="pad-right" flex>
-      <div layout="row">
-        <md-input-container flex>
-          <input mdInput #description
-                 placeholder="Description"
-                 formControlName="description"
-                 flex/>
-        </md-input-container>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+      <md-input-container fxFlex="calc(100%-25px)">
+      <input mdInput #description placeholder="Description" formControlName="description"/>
+    </md-input-container>
+   </div>
+
+   <div>
+    <md-input-container fxFlex="calc(33%-25px)">
+    <input mdInput type="number" placeholder="Projection" formControlName="projection"/>
+    </md-input-container>
+    </div>
+
+    <div>
+    <md-input-container fxFlex="calc(33%-25px)">
+    <input mdInput type="date" placeholder="Start Date" formControlName="startDate"/>
+   </md-input-container>
+    </div>
+
+    <div>
+      <md-input-container fxFlex="calc(33%-25px)">
+        <input mdInput type="date" placeholder="End Date" formControlName="endDate" />
+      </md-input-container>
+  
+      <div class="error" class="tc-red-600" *ngIf="updateForm.controls.endDate.errors?.CheckDate">
       </div>
-      <div layout="row">
-        <md-input-container flex>
-          <input mdInput
-                 type="number"
-                 placeholder="Projection"
-                 formControlName="projection"
-                 flex/>
-        </md-input-container>
+      <div class="error" class="tc-red-600" *ngIf="updateForm.get('endDate').invalid && updateForm.get('endDate').touched">
+        End Date should be greater and not equal to start date!
       </div>
     </div>
-    <div layout="column" class="pad-left" flex>
-      <div layout="row">
-        <md-input-container flex>
-          <input mdInput
-                 type="date"
-                 placeholder="Start Date"
-                 formControlName="startDate"
-                 flex/>
-        </md-input-container>
-      </div>
-      <div layout="row">
-        <md-input-container flex>
-          <input mdInput
-                 type="date"
-                 placeholder="End Date"
-                 formControlName="endDate"
-                 flex/>
-        </md-input-container>
-      </div>
-      <div layout="row" class="pad-top">
-        <pams-program-level-select
-          [placeholder]="'Program Level'"
-          [innerFormControl]="updateForm.controls.programLevel">
-        </pams-program-level-select>
-      </div>
-      <div layout="row" class="pad-top">
-        <pams-graduate-center-select
-          [placeholder]="'Graduate Center'"
-          [innerFormControl]="updateForm.controls.graduateCenter">
-        </pams-graduate-center-select>
-      </div>
-      <div layout="row" class="pad-top">
-        <pams-intake-session-select
-          [placeholder]="'Intake Session'"
-          [innerFormControl]="updateForm.controls.intakeSession">
-        </pams-intake-session-select>
-      </div>
+
+    <div>
+      <pams-program-level-select [placeholder]="'Program Level'" [innerFormControl]="updateForm.controls.programLevel" fxFlex="calc(100%-25px)"
+        class="pad-bottom">
+      </pams-program-level-select>
     </div>
-  </form>
-</md-dialog-content>
+
+    <div>
+      <pams-graduate-center-select [placeholder]="'Graduate Center'" [innerFormControl]="updateForm.controls.graduateCenter" fxFlex="calc(100%-25px)"
+        class="pad-bottom">
+      </pams-graduate-center-select>
+    </div>
+
+    <div>
+      <pams-intake-session-select [placeholder]="'Intake Session'" [innerFormControl]="updateForm.controls.intakeSession" fxFlex="calc(100%-25px)"
+        class="pad-bottom">
+      </pams-intake-session-select>
+    </div>
+</form>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(updateForm.value, updateForm.valid)">Update</button>
 </md-dialog-actions>
