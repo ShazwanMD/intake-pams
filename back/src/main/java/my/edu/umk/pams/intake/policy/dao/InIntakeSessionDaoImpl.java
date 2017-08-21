@@ -39,7 +39,7 @@ public class InIntakeSessionDaoImpl extends GenericDaoSupport<Long, InIntakeSess
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select p from InIntakeSession p " +
                 "where p.current = true ");
-        return (InIntakeSession) query.uniqueResult();
+        return (InIntakeSession) query.setMaxResults(1).uniqueResult();
     }
 
     @Override
