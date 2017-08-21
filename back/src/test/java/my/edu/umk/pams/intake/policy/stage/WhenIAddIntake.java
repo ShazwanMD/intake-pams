@@ -49,7 +49,7 @@ public class WhenIAddIntake extends Stage<WhenIAddIntake> {
         // start a new intake
         intake = new InIntakeImpl();
         intake.setAuditNo(UUID.randomUUID().toString());
-        intake.setDescription("Intake for Program Master 201720181");
+        intake.setDescriptionEn("Intake for Program Master 201720181");
         intake.setProjection(100);
         intake.setStartDate(new Date());
         intake.setEndDate(new Date());

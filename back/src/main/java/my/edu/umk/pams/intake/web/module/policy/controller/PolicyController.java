@@ -170,7 +170,8 @@ public class PolicyController {
     @RequestMapping(value = "/intakes/{referenceNo}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateIntake(@PathVariable String referenceNo, @RequestBody Intake vo) {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        intake.setDescription(vo.getDescription());
+        intake.setDescriptionEn(vo.getDescriptionEn());
+        intake.setDescriptionMs(vo.getDescriptionMs());
         intake.setStartDate(vo.getStartDate());
         intake.setEndDate(vo.getEndDate());
         intake.setProjection(vo.getProjection());
@@ -211,7 +212,8 @@ public class PolicyController {
         InIntake intake = new InIntakeImpl();
         intake.setSourceNo(UUID.randomUUID().toString());
         intake.setAuditNo(UUID.randomUUID().toString());
-        intake.setDescription(vo.getDescription());
+        intake.setDescriptionEn(vo.getDescriptionEn());
+        intake.setDescriptionMs(vo.getDescriptionMs());
         intake.setStartDate(vo.getStartDate());
         intake.setEndDate(vo.getEndDate());
         intake.setProjection(vo.getProjection());

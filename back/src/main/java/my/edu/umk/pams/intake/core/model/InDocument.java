@@ -20,9 +20,13 @@ public interface InDocument extends InFlowObject {
 
     void setAuditNo(String auditNo);
 
-    String getDescription();
+    String getDescriptionEn();
 
-    void setDescription(String description);
+    void setDescriptionEn(String descriptionEn);
+    
+    String getDescriptionMs();
+
+    void setDescriptionMs(String descriptionMs);
 
     String getRemoveComment();
 

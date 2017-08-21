@@ -8,7 +8,8 @@ public class Document extends FlowObject {
     private String referenceNo;
     private String sourceNo;
     private String auditNo;
-    private String description;
+    private String descriptionEn;
+    private String descriptionMs;
     private String cancelComment;
     private String removeComment;
 
@@ -36,15 +37,23 @@ public class Document extends FlowObject {
         this.auditNo = auditNo;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescriptionEn() {
+		return descriptionEn;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
 
-    public String getCancelComment() {
+	public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+	public String getCancelComment() {
         return cancelComment;
     }
 

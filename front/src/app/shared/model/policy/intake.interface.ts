@@ -7,7 +7,8 @@ export interface Intake extends MetaObject{
   id: number;
   referenceNo: string;
   sourceNo: string;
-  description: string;
+  descriptionEn: string;
+  descriptionMs: string;
   projection: number;
   startDate: Date;
   endDate: Date;

@@ -175,7 +175,8 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntake p where " +
                 "(upper(p.referenceNo) like upper(:filter) or " +
-                "upper(p.description) like upper(:filter)) " +
+                "upper(p.descriptionEn) like upper(:filter)) " +
+                "upper(p.descriptionMs) like upper(:filter)) " +
                 "and p.session = :session ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setEntity("session", session);
@@ -189,7 +190,8 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntake p where " +
                 "(upper(p.referenceNo) like upper(:filter) or " +
-                "upper(p.description) like upper(:filter)) " +
+                "upper(p.descriptionEn) like upper(:filter)) " +
+                "upper(p.descriptionMs) like upper(:filter)) " +
                 "and p.session = :session " +
                 "and p.graduateCenter = :graduateCenter");
         query.setEntity("session", session);

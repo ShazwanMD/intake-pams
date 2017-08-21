@@ -95,7 +95,7 @@ public class IntakeCreatorTest {
 		InIntake intake = new InIntakeImpl();
 		intake.setAuditNo(UUID.randomUUID().toString());
 		intake.setSourceNo("MASTER/201720182" + System.currentTimeMillis());
-		intake.setDescription("Intake for Program Master 201720181 " + System.currentTimeMillis());
+		intake.setDescriptionEn("Intake for Program Master 201720181 " + System.currentTimeMillis());
 		intake.setProjection(100);
 		intake.setStartDate(new Date());
 		intake.setEndDate(new Date());

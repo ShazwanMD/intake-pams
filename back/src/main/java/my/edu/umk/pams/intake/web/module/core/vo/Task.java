@@ -8,7 +8,8 @@ public class Task {
     private String taskName;
     private String referenceNo;
     private String sourceNo;
-    private String description;
+    private String descriptionEn;
+    private String descriptionMs;    
     private String candidate;
     private String assignee;
     private FlowState flowState;
@@ -54,15 +55,23 @@ public class Task {
         this.sourceNo = sourceNo;
     }
 
-    public String getDescription() {
-        return description;
-    }
+    public String getDescriptionEn() {
+		return descriptionEn;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
 
-    public String getCandidate() {
+	public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+	public String getCandidate() {
         return candidate;
     }
 

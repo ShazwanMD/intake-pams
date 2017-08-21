@@ -33,8 +33,11 @@ public class InIntakeImpl implements InIntake {
     @Column(name = "AUDIT_NO", unique = true, nullable = false)
     private String auditNo;
 
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
+    @Column(name = "DESCRIPTION_EN", nullable = false)
+    private String descriptionEn;
+    
+    @Column(name = "DESCRIPTION_MS", nullable = false)
+    private String descriptionMs;
 
     @NotNull
     @Column(name = "START_DATE", nullable = false)
@@ -123,17 +126,23 @@ public class InIntakeImpl implements InIntake {
         this.auditNo = auditNo;
     }
 
-    @Override
-    public String getDescription() {
-        return description;
-    }
+    public String getDescriptionEn() {
+		return descriptionEn;
+	}
 
-    @Override
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
 
-    @Override
+	public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+	@Override
     public Date getStartDate() {
         return startDate;
     }

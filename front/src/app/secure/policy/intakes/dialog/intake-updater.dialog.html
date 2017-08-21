@@ -4,57 +4,41 @@
     <div layout="column" class="pad-right" flex>
       <div layout="row">
         <md-input-container flex>
-          <input mdInput #description
-                 placeholder="Description"
-                 formControlName="description"
-                 flex/>
+          <input mdInput #description placeholder="DescriptionEn" formControlName="descriptionEn" flex/>
         </md-input-container>
       </div>
       <div layout="row">
         <md-input-container flex>
-          <input mdInput
-                 type="number"
-                 placeholder="Projection"
-                 formControlName="projection"
-                 flex/>
+          <input mdInput #description placeholder="DescriptionMs" formControlName="descriptionMs" flex/>
+        </md-input-container>
+      </div>
+      <div layout="row">
+        <md-input-container flex>
+          <input mdInput type="number" placeholder="Projection" formControlName="projection" flex/>
         </md-input-container>
       </div>
     </div>
     <div layout="column" class="pad-left" flex>
       <div layout="row">
         <md-input-container flex>
-          <input mdInput
-                 type="date"
-                 placeholder="Start Date"
-                 formControlName="startDate"
-                 flex/>
+          <input mdInput type="date" placeholder="Start Date" formControlName="startDate" flex/>
         </md-input-container>
       </div>
       <div layout="row">
         <md-input-container flex>
-          <input mdInput
-                 type="date"
-                 placeholder="End Date"
-                 formControlName="endDate"
-                 flex/>
+          <input mdInput type="date" placeholder="End Date" formControlName="endDate" flex/>
         </md-input-container>
       </div>
       <div layout="row" class="pad-top">
-        <pams-program-level-select
-          [placeholder]="'Program Level'"
-          [innerFormControl]="updateForm.controls.programLevel">
+        <pams-program-level-select [placeholder]="'Program Level'" [innerFormControl]="updateForm.controls.programLevel">
         </pams-program-level-select>
       </div>
       <div layout="row" class="pad-top">
-        <pams-graduate-center-select
-          [placeholder]="'Graduate Center'"
-          [innerFormControl]="updateForm.controls.graduateCenter">
+        <pams-graduate-center-select [placeholder]="'Graduate Center'" [innerFormControl]="updateForm.controls.graduateCenter">
         </pams-graduate-center-select>
       </div>
       <div layout="row" class="pad-top">
-        <pams-intake-session-select
-          [placeholder]="'Intake Session'"
-          [innerFormControl]="updateForm.controls.intakeSession">
+        <pams-intake-session-select [placeholder]="'Intake Session'" [innerFormControl]="updateForm.controls.intakeSession">
         </pams-intake-session-select>
       </div>
     </div>
@@ -63,4 +47,3 @@
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(updateForm.value, updateForm.valid)">Update</button>
 </md-dialog-actions>
-

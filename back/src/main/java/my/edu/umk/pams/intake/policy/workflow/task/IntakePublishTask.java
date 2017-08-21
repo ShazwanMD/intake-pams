@@ -89,7 +89,8 @@ public class IntakePublishTask extends BpmnActivityBehavior
            programCodePayload.setProgramLevel(prgrmLvlPayload);
            
            chrtPayload.setCode(cohortCode);
-           chrtPayload.setDescription(intake.getDescription());
+           chrtPayload.setDescription(intake.getDescriptionEn());
+//         chrtPayload.setDescriptionMs(intake.getDescriptionMs());
            chrtPayload.setProgramCode(programCodePayload);
            
            IntakePayload intakePayload = new IntakePayload();

@@ -75,7 +75,7 @@ public class IntakeWorkflowTest {
         // start a new intake
         InIntake intake = new InIntakeImpl();
         intake.setAuditNo(UUID.randomUUID().toString());
-        intake.setDescription("Intake for Program Master 201720181");
+        intake.setDescriptionEn("Intake for Program Master 201720181");
         intake.setProgramLevel(level);
         intake.setSession(session);
         intake.setProjection(100);

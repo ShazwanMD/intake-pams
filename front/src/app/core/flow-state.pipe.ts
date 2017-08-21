@@ -36,11 +36,9 @@ export class FlowStatePipe implements PipeTransform {
       case FlowState.OFFERED: {
         return 'Offer';
       }
-
       case FlowState.REGISTERED: {
         return 'Register';
       }
-
       default: {
         return value;
       }

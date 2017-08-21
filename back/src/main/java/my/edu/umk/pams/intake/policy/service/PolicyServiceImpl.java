@@ -425,7 +425,8 @@ public class PolicyServiceImpl implements PolicyService {
         InIntake intake = new InIntakeImpl();
         intake.setSourceNo(UUID.randomUUID().toString());
         intake.setAuditNo(UUID.randomUUID().toString());
-        intake.setDescription(oldIntake.getDescription());
+        intake.setDescriptionEn(oldIntake.getDescriptionEn());
+        intake.setDescriptionMs(oldIntake.getDescriptionMs());
         intake.setStartDate(oldIntake.getStartDate());
         intake.setEndDate(oldIntake.getEndDate());
         intake.setProjection(oldIntake.getProjection());

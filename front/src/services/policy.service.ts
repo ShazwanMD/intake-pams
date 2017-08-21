@@ -173,7 +173,7 @@ export class PolicyService {
 
   updateIntake(intake: Intake): Observable<String> {
     console.log('referenceNo :' + intake.referenceNo);
-    console.log('description :' + intake.description);
+    console.log('description :' + intake.descriptionEn);
     console.log('description :' + intake.startDate);
     console.log('description :' + intake.endDate);
     return this._http.put(this.POLICY_API + '/intakes/' + intake.referenceNo, JSON.stringify(intake))

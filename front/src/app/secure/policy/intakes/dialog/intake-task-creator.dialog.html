@@ -3,9 +3,14 @@
 <form [formGroup]="createForm" novalidate>
   <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
     <md-input-container fxFlex="calc(100%-25px)">
-      <input mdInput #description placeholder="Description" formControlName="description" />
+      <input mdInput #description placeholder="DescriptionEn" formControlName="descriptionEn" />
     </md-input-container>
   </div>
+  <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+    <md-input-container fxFlex="calc(100%-25px)">
+      <input mdInput #description placeholder="DescriptionMs" formControlName="descriptionMs" />
+    </md-input-container>
+  </div>  
   <div>
     <md-input-container fxFlex="calc(33%-25px)">
       <input mdInput type="number" placeholder="Projection" formControlName="projection" />

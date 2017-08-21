@@ -8,7 +8,8 @@ export interface IntakeTask {
   referenceNo: string;
   sourceNo: string;
   accountCode: string;
-  description: string;
+  descriptionEn: string;
+  descriptionMs: string;
   projection: number;
   startDate: number;
   endDate: number;

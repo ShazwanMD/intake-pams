@@ -45,7 +45,8 @@ public class PolicyTransformer {
         task.setTaskId(t.getId());
         task.setReferenceNo(intake.getReferenceNo());
         task.setSourceNo(intake.getSourceNo());
-        task.setDescription(intake.getDescription());
+        task.setDescriptionEn(intake.getDescriptionEn());
+        task.setDescriptionMs(intake.getDescriptionMs());
         task.setProjection(intake.getProjection());
         task.setStartDate(intake.getStartDate());
         task.setEndDate(intake.getEndDate());
@@ -93,7 +94,8 @@ public class PolicyTransformer {
         vo.setId(e.getId());
         vo.setReferenceNo(e.getReferenceNo());
         vo.setSourceNo(e.getSourceNo());
-        vo.setDescription(e.getDescription());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        vo.setDescriptionMs(e.getDescriptionMs());
         vo.setProjection(e.getProjection());
         vo.setStartDate(e.getStartDate());
         vo.setEndDate(e.getEndDate());
