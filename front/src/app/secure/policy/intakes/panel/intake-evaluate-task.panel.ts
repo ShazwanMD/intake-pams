@@ -64,6 +64,15 @@ export class IntakeEvaluateTaskPanel implements OnInit {
     });
   }
 
+  remove(): void {
+    if(confirm('Confirm remove this intake?')){
+    this.store.dispatch(this.actions.removeIntakeTask(this.intakeTask));
+    this.goBack();
+ } 
+    else {
+   }
+}
+
   // process(): void {
   //   let snackBarRef = this.snackBar.open('Process this intake?', 'Yes');
   //   snackBarRef.afterDismissed().subscribe(() => {
