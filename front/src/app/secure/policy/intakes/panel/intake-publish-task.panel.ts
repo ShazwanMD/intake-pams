@@ -69,15 +69,6 @@ export class IntakePublishTaskPanel implements OnInit {
     });
   }
 
-  remove(): void {
-    if(confirm('Confirm remove this intake?')){
-    this.store.dispatch(this.actions.removeIntakeTask(this.intakeTask));
-    this.goBack();
- } 
-    else {
-   }
-}
-
   goBack(): void {
     this.router.navigate(['/secure/policy/intakes']);
   }
