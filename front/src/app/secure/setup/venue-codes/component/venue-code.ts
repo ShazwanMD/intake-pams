@@ -1,12 +1,12 @@
 import {
-    Component, 
-    Input, 
-    EventEmitter, 
-    Output, 
-    ChangeDetectionStrategy, 
-    AfterViewInit, 
-    OnChanges, 
-    SimpleChange
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  OnChanges,
+  SimpleChange
 } from '@angular/core';
 import {
   TdDataTableSortingOrder,
@@ -14,7 +14,7 @@ import {
   ITdDataTableSortChangeEvent,
   IPageChangeEvent
 } from '@covalent/core';
-import {MdSnackBar} from '@angular/material';
+import { MdSnackBar } from '@angular/material';
 import { VenueCode } from './../../../../shared/model/common/venue-code.interface';
 @Component({
   selector: 'pams-venue-code-list',
@@ -23,10 +23,12 @@ import { VenueCode } from './../../../../shared/model/common/venue-code.interfac
 })
 export class VenueCodesComponent implements OnChanges {
   private columns: any[] = [
-    {name: 'code', label: 'Code'},
-    {name: 'registrationDate', label: 'Registration Date'},
-    {name: 'registrationLocation', label: 'Registration Location'},
-    {name: 'action', label: ''}
+    { name: 'code', label: 'Code' },
+    { name: 'registrationDate', label: 'Registration Date' },
+    { name: 'registrationLocation', label: 'Registration Location' },
+    { name: 'startTime', label: 'Start Time' },
+    { name: 'endTime', label: 'End Time' },
+    { name: 'action', label: '' }
   ];
   filteredData: any[];
   filteredTotal: number;
@@ -40,15 +42,15 @@ export class VenueCodesComponent implements OnChanges {
   @Output() editDialog: EventEmitter<VenueCode> = new EventEmitter<VenueCode>();
   @Output() delete: EventEmitter<VenueCode> = new EventEmitter<VenueCode>();
   constructor(private _dataTableService: TdDataTableService,
-              private snackBar: MdSnackBar) {
+    private snackBar: MdSnackBar) {
   }
-  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
-    if (changes['venueCodes']){
-        this.filteredData = changes['venueCodes'].currentValue; 
-        this.filteredTotal = changes['venueCodes'].currentValue.length;
-        this.filter();
-      }
+  ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+    if (changes['venueCodes']) {
+      this.filteredData = changes['venueCodes'].currentValue;
+      this.filteredTotal = changes['venueCodes'].currentValue.length;
+      this.filter();
     }
+  }
   sort(sortEvent: ITdDataTableSortChangeEvent): void {
     this.sortBy = sortEvent.name;
     this.sortOrder = sortEvent.order;

@@ -3,26 +3,27 @@
   <form [formGroup]="editorForm">
     <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput
-               placeholder="Code"
-               formControlName="code"
-               flex/>
+        <input mdInput placeholder="Code" formControlName="code" flex/>
+      </md-input-container>
+    </div>
+    <div layout="row">
+      <md-input-container flex>
+        <input mdInput type="date" placeholder="Registration Date" formControlName="registrationDate" flex/>
       </md-input-container>
     </div>
     <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput
-               placeholder="Registration Date"
-               formControlName="registrationDate"
-               flex/>
+        <input mdInput placeholder="Registration Location" formControlName="registrationLocation" flex/>
       </md-input-container>
     </div>
     <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput
-               placeholder="Registration Location"
-               formControlName="registrationLocation"
-               flex/>
+        <input mdInput placeholder="Start Time" formControlName="startTime" flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput placeholder="End Time" formControlName="endTime" flex/>
       </md-input-container>
     </div>
   </form>
