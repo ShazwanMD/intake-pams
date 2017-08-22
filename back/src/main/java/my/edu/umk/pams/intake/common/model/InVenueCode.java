@@ -18,13 +18,21 @@ public interface InVenueCode extends InMetaObject {
 
 	void setRegistrationLocation(String registrationLocation);
 	
-	String getStartTime();
+	String getStartTimeEn();
 
-	void setStartTime(String startTime);		
+	void setStartTimeEn(String startTimeEn);
 	
-	String getEndTime();
+	String getStartTimeMs();
 
-	void setEndTime(String endTime);	
+	void setStartTimeMs(String startTimeMs);	
+	
+	String getEndTimeEn();
+
+	void setEndTimeEn(String endTimeEn);	
+	
+	String getEndTimeMs();
+
+	void setEndTimeMs(String endTimeMs);
 	
 	
 

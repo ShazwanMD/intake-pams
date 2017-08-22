@@ -3,6 +3,8 @@ export interface VenueCode extends MetaObject{
   code:string;
   registrationDate:Date;
   registrationLocation:string;
-  startTime:string;
-  endTime:string;
+  startTimeEn:string;
+  startTimeMs:string;
+  endTimeEn:string;
+  endTimeMs:string;
 }

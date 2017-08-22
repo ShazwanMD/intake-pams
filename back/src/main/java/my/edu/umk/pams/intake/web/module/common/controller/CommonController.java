@@ -588,8 +588,10 @@ public class CommonController {
         venueCode.setCode(vo.getCode());
         venueCode.setRegistrationDate(vo.getRegistrationDate());
         venueCode.setRegistrationLocation(vo.getRegistrationLocation());
-        venueCode.setStartTime(vo.getStartTime());
-        venueCode.setEndTime(vo.getEndTime());
+        venueCode.setStartTimeEn(vo.getStartTimeEn());
+        venueCode.setStartTimeMs(vo.getStartTimeMs());
+        venueCode.setEndTimeEn(vo.getEndTimeEn());
+        venueCode.setEndTimeMs(vo.getEndTimeMs());
         commonService.saveVenueCode(venueCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

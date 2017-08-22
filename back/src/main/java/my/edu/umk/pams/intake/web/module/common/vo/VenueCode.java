@@ -17,8 +17,10 @@ public class VenueCode  extends MetaObject{
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date registrationDate;
     private String registrationLocation;
-    private String startTime;
-    private String endTime;
+    private String startTimeEn;
+    private String startTimeMs;
+    private String endTimeEn;
+    private String endTimeMs;
 
     public String getCode() {
         return code;
@@ -36,20 +38,36 @@ public class VenueCode  extends MetaObject{
 		this.registrationDate = registrationDate;
 	}
 
-	public String getStartTime() {
-		return startTime;
+	public String getStartTimeEn() {
+		return startTimeEn;
 	}
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
+	public void setStartTimeEn(String startTimeEn) {
+		this.startTimeEn = startTimeEn;
 	}
 
-	public String getEndTime() {
-		return endTime;
+	public String getStartTimeMs() {
+		return startTimeMs;
 	}
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
+	public void setStartTimeMs(String startTimeMs) {
+		this.startTimeMs = startTimeMs;
+	}
+
+	public String getEndTimeEn() {
+		return endTimeEn;
+	}
+
+	public void setEndTimeEn(String endTimeEn) {
+		this.endTimeEn = endTimeEn;
+	}
+
+	public String getEndTimeMs() {
+		return endTimeMs;
+	}
+
+	public void setEndTimeMs(String endTimeMs) {
+		this.endTimeMs = endTimeMs;
 	}
 
 	public String getRegistrationLocation() {

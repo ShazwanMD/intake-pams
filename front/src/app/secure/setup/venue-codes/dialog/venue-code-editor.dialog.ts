@@ -41,8 +41,10 @@ export class VenueCodeEditorDialog implements OnInit {
       code: '',
       registrationDate: null,
       registrationLocation: '',
-      startTime: '',
-      endTime: '',
+      startTimeEn: '',
+      startTimeMs: '',
+      endTimeEn: '',
+      endTimeMs: '',
     });
 
     if (this.edit) this.editorForm.patchValue(this._venueCode);

@@ -26,8 +26,10 @@ export class VenueCodesComponent implements OnChanges {
     { name: 'code', label: 'Code' },
     { name: 'registrationDate', label: 'Registration Date' },
     { name: 'registrationLocation', label: 'Registration Location' },
-    { name: 'startTime', label: 'Start Time' },
-    { name: 'endTime', label: 'End Time' },
+    { name: 'startTimeEn', label: 'Start Time (En)' },
+    { name: 'startTimeMs', label: 'Start Time (Ms)' },
+    { name: 'endTimeEn', label: 'End Time (En)' },
+    { name: 'endTimeMs', label: 'End Time (Ms)' },
     { name: 'action', label: '' }
   ];
   filteredData: any[];
