@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1039"/>
+	<property name="ireport.y" value="319"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -98,7 +98,6 @@
      in_intk."id" AS in_intk_id,
      in_intk."audit_no" AS in_intk_audit_no,
      in_intk."cancel_comment" AS in_intk_cancel_comment,
-     in_intk."description" AS in_intk_description,
      in_intk."end_date" AS in_intk_end_date,
      in_intk."av_ts" AS in_intk_av_ts,
      in_intk."av_id" AS in_intk_av_id,
@@ -252,10 +251,16 @@
      in_spvr_code."m_id" AS in_spvr_code_m_id,
      in_spvr_code."m_st" AS in_spvr_code_m_st,
      in_spvr_code."name" AS in_spvr_code_name,
+     in_intk."description_en" AS in_intk_description_en,
+     in_intk."description_ms" AS in_intk_description_ms,
      in_venu_code."id" AS in_venu_code_id,
      in_venu_code."code" AS in_venu_code_code,
-     in_venu_code."description_en" AS in_venu_code_description_en,
-     in_venu_code."description_ms" AS in_venu_code_description_ms,
+     in_venu_code."registration_date" AS in_venu_code_registration_date,
+     in_venu_code."registration_location" AS in_venu_code_registration_location,
+     in_venu_code."start_time_en" AS in_venu_code_start_time_en,
+     in_venu_code."start_time_ms" AS in_venu_code_start_time_ms,
+     in_venu_code."end_time_en" AS in_venu_code_end_time_en,
+     in_venu_code."end_time_ms" AS in_venu_code_end_time_ms,
      in_venu_code."c_ts" AS in_venu_code_c_ts,
      in_venu_code."c_id" AS in_venu_code_c_id,
      in_venu_code."d_ts" AS in_venu_code_d_ts,
@@ -371,7 +376,6 @@ FROM
 	<field name="in_intk_id" class="java.lang.Long"/>
 	<field name="in_intk_audit_no" class="java.lang.String"/>
 	<field name="in_intk_cancel_comment" class="java.lang.String"/>
-	<field name="in_intk_description" class="java.lang.String"/>
 	<field name="in_intk_end_date" class="java.sql.Timestamp"/>
 	<field name="in_intk_av_ts" class="java.sql.Timestamp"/>
 	<field name="in_intk_av_id" class="java.lang.Long"/>
@@ -525,10 +529,16 @@ FROM
 	<field name="in_spvr_code_m_id" class="java.lang.Long"/>
 	<field name="in_spvr_code_m_st" class="java.lang.Integer"/>
 	<field name="in_spvr_code_name" class="java.lang.String"/>
+	<field name="in_intk_description_en" class="java.lang.String"/>
+	<field name="in_intk_description_ms" class="java.lang.String"/>
 	<field name="in_venu_code_id" class="java.lang.Long"/>
 	<field name="in_venu_code_code" class="java.lang.String"/>
-	<field name="in_venu_code_description_en" class="java.lang.String"/>
-	<field name="in_venu_code_description_ms" class="java.lang.String"/>
+	<field name="in_venu_code_registration_date" class="java.sql.Timestamp"/>
+	<field name="in_venu_code_registration_location" class="java.lang.String"/>
+	<field name="in_venu_code_start_time_en" class="java.lang.String"/>
+	<field name="in_venu_code_start_time_ms" class="java.lang.String"/>
+	<field name="in_venu_code_end_time_en" class="java.lang.String"/>
+	<field name="in_venu_code_end_time_ms" class="java.lang.String"/>
 	<field name="in_venu_code_c_ts" class="java.sql.Timestamp"/>
 	<field name="in_venu_code_c_id" class="java.lang.Long"/>
 	<field name="in_venu_code_d_ts" class="java.sql.Timestamp"/>
@@ -699,10 +709,6 @@ FROM
 				<reportElement x="217" y="170" width="338" height="15" uuid="bb9e7dd9-0601-467e-b569-0ce26c5c5a86"/>
 				<textFieldExpression><![CDATA[$F{in_intk_sesn_description_en}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="78" y="185" width="477" height="28" uuid="3f61678c-5f00-4d29-abdb-b7bb5e4364fc"/>
-				<textFieldExpression><![CDATA[$F{in_venu_code_description_en}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="217" y="213" width="111" height="15" uuid="b02ba319-68fd-401b-a963-7d30c71c771b"/>
 				<text><![CDATA[As enclosed]]></text>
@@ -725,6 +731,32 @@ vi.	Eleven (11) passport size photos (Yellow background)
 			<textField>
 				<reportElement x="217" y="155" width="338" height="15" uuid="55fa8a7c-cc1d-4b7a-a914-55422ce6d6ad"/>
 				<textFieldExpression><![CDATA[$F{in_spvr_code_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="78" y="184" width="111" height="15" uuid="7f5a8b2f-ad7c-4d18-a1b6-fa3da2a5dc46"/>
+				<text><![CDATA[Registration Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="184" width="28" height="15" uuid="c4d70b4c-c717-4a2c-95b2-8f297e3566f7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="217" y="184" width="338" height="15" uuid="56e937da-4862-453d-98e8-e8c7ce4b0123"/>
+				<textFieldExpression><![CDATA[$F{in_venu_code_registration_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="78" y="199" width="111" height="15" uuid="5c69c954-1fd9-4920-8c30-982076689d61"/>
+				<text><![CDATA[Registration Vanue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="189" y="198" width="28" height="15" uuid="478b60d2-fa6f-4574-a677-58fbe207acc0"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="217" y="198" width="338" height="15" isPrintWhenDetailOverflows="true" uuid="4a020d60-7f19-4305-840e-dd656c58b1b7"/>
+				<textFieldExpression><![CDATA[$F{in_venu_code_registration_location}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>

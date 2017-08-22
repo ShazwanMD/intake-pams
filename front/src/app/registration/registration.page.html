@@ -16,7 +16,8 @@
         <div layout="row" class="pad-bottom" flex>
           <md-input-container flex>
             <input mdInput
-                   placeholder="Name"
+                   placeholder="Full Name"
+                   #input (input)="input.value=$event.target.value.toUpperCase()"
                    formControlName="name"
                    type="text"
                    flex/>

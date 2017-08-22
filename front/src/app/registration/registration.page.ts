@@ -29,7 +29,7 @@ export class RegistrationPage implements OnInit {
     let emailPattern: string = '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$';
     this.registrationForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.pattern(emailPattern)],
+      email: ['', [(Validators.required), (Validators.pattern(emailPattern))]],
       identityNo: ['', Validators.required],
       password: ['', Validators.required],
     });
