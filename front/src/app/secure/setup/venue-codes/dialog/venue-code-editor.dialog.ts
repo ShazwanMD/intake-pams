@@ -39,8 +39,10 @@ export class VenueCodeEditorDialog implements OnInit {
     this.editorForm = this.formBuilder.group(<VenueCode>{
       id: null,
       code: '',
-      registrationDate: '',
+      registrationDate: null,
       registrationLocation: '',
+      startTime: '',
+      endTime: '',
     });
 
     if (this.edit) this.editorForm.patchValue(this._venueCode);

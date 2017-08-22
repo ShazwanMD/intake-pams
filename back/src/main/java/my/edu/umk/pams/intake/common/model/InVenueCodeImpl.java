@@ -4,6 +4,7 @@ import my.edu.umk.pams.intake.core.InMetadata;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity(name = "InVenueCode")
 @Table(name = "IN_VENU_CODE")
@@ -21,11 +22,20 @@ public class InVenueCodeImpl implements InVenueCode {
 
     @NotNull
     @Column(name = "REGISTRATION_DATE", nullable = false)
-    private String registrationDate;
+    private Date registrationDate;
     
     @NotNull
     @Column(name = "REGISTRATION_LOCATION", nullable = false)
     private String registrationLocation;
+    
+    @NotNull
+    @Column(name = "START_TIME", nullable = false)
+    private String startTime;
+    
+    @NotNull
+    @Column(name = "END_TIME", nullable = false)
+    private String endTime;
+    
 
     @Embedded
     private InMetadata metadata;
@@ -49,11 +59,11 @@ public class InVenueCodeImpl implements InVenueCode {
         this.code = code;
     }
 
-	public String getRegistrationDate() {
+	public Date getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(String registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
@@ -63,6 +73,22 @@ public class InVenueCodeImpl implements InVenueCode {
 
 	public void setRegistrationLocation(String registrationLocation) {
 		this.registrationLocation = registrationLocation;
+	}	
+
+	public String getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 	public InMetadata getMetadata() {
