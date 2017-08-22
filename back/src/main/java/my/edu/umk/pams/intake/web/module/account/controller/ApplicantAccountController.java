@@ -266,14 +266,14 @@ public class ApplicantAccountController {
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
         for (InIntakeApplication application : applications) {
         	        	
-        	application.setOfficialAddress1(vo.getNewAddress1());
-        	application.setOfficialAddress2(vo.getNewAddress2());
-        	application.setOfficialAddress3(vo.getNewAddress3());
-        	application.setOfficialPostcode(vo.getNewPostcode());
-        	 if (null != vo.getOfficialStateCode())
-                 application.setOfficialStateCode(commonService.findStateCodeById(vo.getOfficialStateCode().getId()));
-             if (null != vo.getOfficialCountryCode())
-                 application.setOfficialCountryCode(commonService.findCountryCodeById(vo.getOfficialCountryCode().getId()));
+        	application.setMailingAddress1(vo.getNewAddress1());
+        	application.setMailingAddress2(vo.getNewAddress2());
+        	application.setMailingAddress3(vo.getNewAddress3());
+        	application.setMailingPostcode(vo.getNewPostcode());
+        	 if (null != vo.getMailingStateCode())
+                 application.setMailingStateCode(commonService.findStateCodeById(vo.getMailingStateCode().getId()));
+             if (null != vo.getMailingCountryCode())
+                 application.setMailingCountryCode(commonService.findCountryCodeById(vo.getMailingCountryCode().getId()));
         	applicationService.updateIntakeApplication(application);
         }
         return new ResponseEntity<String>("Success", HttpStatus.OK);

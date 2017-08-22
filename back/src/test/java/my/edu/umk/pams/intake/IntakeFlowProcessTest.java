@@ -186,12 +186,12 @@ public class IntakeFlowProcessTest {
         application2.setSupervisorSelection(supervisorOffering1);
         application2.setProgramSelection(mckOffering);
         application2.setCredentialNo("234234");
-        application2.setOfficialAddress1("test official address 1");
-        application2.setOfficialAddress2("test official address 2");
-        application2.setOfficialAddress3("test official address 3");
-        application2.setOfficialPostcode("test official postcode");
-        application2.setOfficialCountryCode(commonService.findCountryCodeByCode("A03"));
-        application2.setOfficialStateCode(commonService.findStateCodeByCode("02"));
+        application2.setMailingAddress1("mailing address 1");
+        application2.setMailingAddress2("mailing address 2");
+        application2.setMailingAddress3("mailing address 3");
+        application2.setMailingPostcode("mailing postcode");
+        application2.setMailingCountryCode(commonService.findCountryCodeByCode("M01"));
+        application2.setMailingStateCode(commonService.findStateCodeByCode("13"));
         application2.setResearchTitle("test1b");
         application2.setName("testCitizen bin ting");
         application2.setEmail("testCitizen@email.com");

@@ -11,8 +11,8 @@ public class AddressChange {
     private String newAddress2;
     private String newAddress3;
     private String newPostcode;
-    private StateCode officialStateCode;
-    private CountryCode officialCountryCode;
+    private StateCode mailingStateCode;
+    private CountryCode mailingCountryCode;
     
     public String getCurrentAddress() {
         return currentAddress;
@@ -70,14 +70,14 @@ public class AddressChange {
 		this.newPostcode = newPostcode;
 	}
 
-	public StateCode getOfficialStateCode() {
+	public StateCode getMailingStateCode() {
 		// TODO Auto-generated method stub
-		return officialStateCode;
+		return mailingStateCode;
 	}
 
-	public CountryCode getOfficialCountryCode() {
+	public CountryCode getMailingCountryCode() {
 		// TODO Auto-generated method stub
-		return officialCountryCode;
+		return mailingCountryCode;
 	}
 	
 }

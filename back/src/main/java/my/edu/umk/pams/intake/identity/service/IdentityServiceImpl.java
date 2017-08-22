@@ -709,7 +709,7 @@ public class IdentityServiceImpl implements IdentityService {
     	SecurityContext sc = loginAsSystem();  
     //	applicationService.findIntakeApplication();
     //	 LOG.debug("change address ler",application.getOfficialAddress1());
-    	application.setOfficialAddress1(newAddress);
+    	application.setMailingAddress1(newAddress);
     	intakeApplicationDao.update(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();      
         logoutAsSystem(sc);
