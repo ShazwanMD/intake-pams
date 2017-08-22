@@ -55,10 +55,10 @@
           <div *ngIf="(myIntakeApplications$ | async)?.length === 0"><span>You have not applied yet. Please take a look at open intakes</span>
           </div>
           <template let-myIntakeApplication let-last="last" ngFor [ngForOf]="myIntakeApplications$ | async ">
-            <div flex-md="50" flex-gt-md="33" layout="column">
+            <div flex-md="60" flex-gt-md="40" layout="column">
 
               <md-card href class="md-card-colored" flex>
-                <md-card-title> INTAKE {{myIntakeApplication.intake.startDate | date:'y'}}</md-card-title>
+                <md-card-title>{{myIntakeApplication.intake.startDate | date:'MMM' | uppercase}} {{myIntakeApplication.intake.startDate | date:'y'}} INTAKE </md-card-title>
                 <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
                   <md-card-subtitle> {{myIntakeApplication.intake.graduateCenter.code}} {{myIntakeApplication.intake.programLevel.code}}
                   </md-card-subtitle>
@@ -98,9 +98,9 @@
           <div *ngIf="(publishedIntakes$ | async)?.length === 0"><span>There is no open intake at the moment. Please check again later</span>
           </div>
           <template let-intake let-last="last" ngFor [ngForOf]="publishedIntakes$ | async ">
-            <div flex-md="50" flex-gt-md="33" layout="column">
+            <div flex-md="60" flex-gt-md="40" layout="column">
               <md-card href class="md-card-colored" flex>
-                <md-card-title> INTAKE {{intake.startDate | date:'y'}}</md-card-title>
+                <md-card-title>{{intake.startDate | date:'MMM' | uppercase}} {{intake.startDate | date:'y'}} INTAKE </md-card-title>
                 <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
                   <md-card-subtitle> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle>
                   <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
@@ -109,12 +109,9 @@
                   <div fxLayout="row" fxLayoutAlign="space-around center">
                     <span flex></span>
                     <div>
-                      <small class="bb"> From:</small> {{intake.startDate | date:'EEEE d MMMM'}}
-                      <span flex></span>
+                      <small class="bb"> From: {{intake.startDate | date:'EEEE d MMMM'}} To: {{intake.endDate | date:'EEEE d MMMM'}} </small>
                     </div>
-                    <div>
-                      <small class="bb"> To:</small> {{intake.endDate | date:'EEEE d MMMM'}}
-                    </div>
+                             
                     <div>
                       <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]"
                         md-button color="primary">Apply Now!
