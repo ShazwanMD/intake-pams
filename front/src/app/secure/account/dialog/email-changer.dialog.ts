@@ -5,7 +5,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {AccountModuleState} from '../index';
 import {AuthenticationService} from '../../../../services/authentication.service';
 import {EmailChange} from '../../../shared/model/identity/email-change.interface';
@@ -27,7 +27,8 @@ export class EmailChangerDialog implements OnInit {
               private store: Store<AccountModuleState>,
               private authnService: AuthenticationService,
               private router: Router,
-              private actions: AccountActions) {
+              private actions: AccountActions,
+              private snackBar: MdSnackBar) {
   }
 
   set applicant(value: Applicant) {
@@ -48,7 +49,11 @@ export class EmailChangerDialog implements OnInit {
 
   submit(change: EmailChange, valid: boolean) {
     console.log('submit address change: ', change);
+    let snackBarRef = this.snackBar.open('Please verify your new email before login', 'Ok');
+    snackBarRef.afterDismissed().subscribe(() => {
     this.store.dispatch(this.actions.changeApplicantEmail(change));
     this.dialog.close();
+    this.logout();   
+  });
   }
 }
