@@ -25,6 +25,10 @@ public interface InIntakeApplication extends InMetaObject {
     String getReferenceNo();
 
     void setReferenceNo(String referenceNo);
+    
+    String getPromoCode();
+
+    void setPromoCode(String promoCode);
 
     String getResearchTitle();
 
