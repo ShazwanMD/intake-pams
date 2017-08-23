@@ -74,10 +74,10 @@
                       Processing
                     </md-card-subtitle>
 
-                    <button *ngIf="myIntakeApplication.bidStatus === 'SELECTED'" (click)="resultDialog(candidate)" md-button color="primary">Result
+                    <button *ngIf="myIntakeApplication.bidStatus === 'SELECTED'" (click)="resultDialog(myIntakeApplication)" md-button color="primary">Result
                     </button>
 
-                    <button *ngIf="myIntakeApplication.bidStatus === 'REJECTED'" (click)="reasonDialog(candidate)" md-button color="primary">View Reason
+                    <button *ngIf="myIntakeApplication.bidStatus === 'REJECTED'" (click)="reasonDialog(myIntakeApplication)" md-button color="primary">View Reason
                     </button>
                   </div>
                 </md-card-content>

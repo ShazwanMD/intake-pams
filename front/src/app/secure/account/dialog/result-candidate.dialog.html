@@ -2,7 +2,7 @@
 
 <div>
     <template let-myIntakeApplication let-last="last" ngFor [ngForOf]="myIntakeApplications$ | async ">
-
+      <md-card-subtitle *ngIf="myIntakeApplication.bidStatus === 'SELECTED'">
       <p></p>
         <br>
         <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === null">
@@ -90,15 +90,16 @@
                           <div flex></div>   
                         </div>
                           <a href="http://localhost:8080/servlet/report?report=adm_0001_bm.jrxml&report.pdf&reference_no={{myIntakeApplication.candidate?.application?.referenceNo}}" [target]="'_blank'">View Offer Letter(BM)</a>&nbsp;
-     <a href="http://localhost:8080/servlet/report?report=adm_0001_en.jrxml&report.pdf&reference_no={{myIntakeApplication.candidate?.application?.referenceNo}}" [target]="'_blank'">View Offer Letter(EN)</a>                       
+                          <a href="http://localhost:8080/servlet/report?report=adm_0001_en.jrxml&report.pdf&reference_no={{myIntakeApplication.candidate?.application?.referenceNo}}" [target]="'_blank'">View Offer Letter(EN)</a>                       
                         </md-card-subtitle>
 
-    <button md-raised-button color="accent" (click)="accept(row)">Accept</button>
-    <button md-raised-button color="accent" (click)="decline(row)">Decline</button>
+    <button md-raised-button color="accent" (click)="accept(myIntakeApplication)">Accept</button>
+    <button md-raised-button color="accent" (click)="decline(myIntakeApplication)">Decline</button>
 
                       </div>
                      </div>
     </md-card-subtitle>
+  </md-card-subtitle>
 
      </template>     
 </div>
