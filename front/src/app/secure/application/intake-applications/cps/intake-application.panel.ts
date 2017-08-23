@@ -75,6 +75,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
       id: [undefined],
       referenceNo: [''],
       researchTitle: [''],
+      promoCode: [''],
       rank: [0],
       merit: [0],
       name: [''],
