@@ -8,101 +8,94 @@
     </div>
     <md-divider></md-divider>
     <md-tab-group (selectChange)="onTabChange($event)"[selectedIndex]="tabIndex$ | async">
-
       <md-tab>
-
         <template md-tab-label>Detail Of Candidate</template>
         <td-expansion-panel label="Program Choices">
           <pams-program-choice [intakeApplication]="_intakeApplication">
           </pams-program-choice>
 
-
           <div flex class="pad inset" flex>
-            <md-input-container fxFlex="calc(100%-25px)">
-              <p class="md-title tc-grey-600">Your research title :</p>
-              <input mdInput placeholder="" formControlName="researchTitle" flex/>
-            </md-input-container>
+          <md-input-container fxFlex="calc(100%-25px)">
+          <p class="md-title tc-grey-600">Your research title :</p>
+          <input mdInput placeholder="" formControlName="researchTitle" flex/>
+          </md-input-container>
           </div>
         </td-expansion-panel>
 
         <template md-tab-label>Applicant Personal Information</template>
         <td-expansion-panel label="Personal Details">
-          <div>
-            <md-card-subtitle>Applicant Personal Information</md-card-subtitle>
-          </div>
-          <md-divider></md-divider>
-          <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+        <div>
+        <md-card-subtitle>Applicant Personal Information</md-card-subtitle>
+        </div>
+        <md-divider></md-divider>
+        <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
             <!-- first column -->
+        <md-input-container fxFlex="calc(50%-25px)">
+        <input mdInput placeholder="Name" formControlName="name"/>
+        </md-input-container>
 
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="Name" formControlName="name"/>
-            </md-input-container>
+        <md-input-container fxFlex="calc(50%-25px)">
+        <input mdInput placeholder="Email" formControlName="email"/>
+        </md-input-container>
 
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="Email" formControlName="email"/>
-            </md-input-container>
+        <md-input-container fxFlex="calc(50%-25px)">
+        <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo"/>
+        </md-input-container>
+        <div class="error" class="tc-red-600"
+         *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
+         Your Ic or Passport Number is required!
+        </div>
 
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo"/>
-            </md-input-container>
-            <div class="error" class="tc-red-600"
-                 *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
-              Your Ic or Passport Number is required!
-            </div>
-
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate"/>
-            </md-input-container>
-            <div class="error" class="tc-red-600"
-                 *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
+        <md-input-container fxFlex="calc(50%-25px)">
+        <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate"/>
+        </md-input-container>
+        <div class="error" class="tc-red-600"
+          *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
               Your Birth Date is required!
-            </div>
+        </div>
 
-
-            <pams-nationality-code-select [placeholder]="'Nationality'"
+        <pams-nationality-code-select [placeholder]="'Nationality'"
                                           [innerFormControl]="applicationForm.controls.nationalityCode"
                                           fxFlex="calc(50%-25px)" class="pad-bottom">
-            </pams-nationality-code-select>
-            <div class="error" class="tc-red-600"
+        </pams-nationality-code-select>
+        <div class="error" class="tc-red-600"
                  *ngIf="applicationForm.get('nationalityCode').invalid && applicationForm.get('nationalityCode').touched">
               Please add your nationality!
-            </div>
+        </div>
 
-            <pams-race-code-select [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode"
+        <pams-race-code-select [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode"
                                    fxFlex="calc(50%-25px)" class="pad-bottom">
-            </pams-race-code-select>
+        </pams-race-code-select>
 
-
-            <pams-marital-code-select [placeholder]="'Marital'"
+        <pams-marital-code-select [placeholder]="'Marital'"
                                       [innerFormControl]="applicationForm.controls.maritalCode"
                                       fxFlex="calc(50%-25px)" class="pad-bottom">
-            </pams-marital-code-select>
+        </pams-marital-code-select>
 
-            <md-input-container fxFlex="calc(50%-25px)">
+        <md-input-container fxFlex="calc(50%-25px)">
               <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>
-            </md-input-container>
+        </md-input-container>
 
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="Phone No" formControlName="mobile"/>
-            </md-input-container>
-            <div class="error" class="tc-red-600"
+        <md-input-container fxFlex="calc(50%-25px)">
+          <input mdInput placeholder="Phone No" formControlName="mobile"/>
+        </md-input-container>
+          <div class="error" class="tc-red-600"
                  *ngIf="applicationForm.get('mobile').invalid && applicationForm.get('mobile').touched">
               Please add your Phone number!
-            </div>
+          </div>
 
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="Office No" formControlName="phone" flex/>
-            </md-input-container>
+        <md-input-container fxFlex="calc(50%-25px)">
+            <input mdInput placeholder="Office No" formControlName="phone" flex/>
+        </md-input-container>
 
+        <md-input-container fxFlex="calc(50%-25px)">
+            <input mdInput placeholder="Fax No" formControlName="fax" flex/>
+        </md-input-container>
 
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="Fax No" formControlName="fax" flex/>
-            </md-input-container>
-
-            <pams-ethnicity-code-select [placeholder]="'Ethnicity'" required md-maxlength="10"
+        <pams-ethnicity-code-select [placeholder]="'Ethnicity'" required md-maxlength="10"
                                         [innerFormControl]="applicationForm.controls.ethnicityCode"
                                         fxFlex="calc(50%-25px)" class="pad-bottom">
-            </pams-ethnicity-code-select>
+        </pams-ethnicity-code-select>
 
             <pams-gender-code-select [placeholder]="'Gender'"
                                      [innerFormControl]="applicationForm.controls.genderCode"
@@ -192,22 +185,18 @@
                                       fxFlex="calc(50%-25px)"
                                       class="pad-bottom">
             </pams-country-code-select>
-
           </div>
-
         </td-expansion-panel>
       </md-tab>
-   <md-tab>
-        <md-card>
+
+        <md-tab>
           <template md-tab-label>Working Experience</template>
           <td-expansion-panel label="Working Experience">
             <pams-employment-list [intakeApplication]="_intakeApplication" [employments]="employments$ | async"></pams-employment-list>
           </td-expansion-panel>
-        </md-card>
       </md-tab>
 
-   <md-tab>
-        <md-card>
+        <md-tab>
           <template md-tab-label>Academic Qualification</template>
           <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
           <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form
@@ -223,8 +212,6 @@
             </pams-language-list>
 
           </td-expansion-panel>
-
-        </md-card>
       </md-tab>
 
       <md-tab>
@@ -261,7 +248,6 @@
           </pams-attachment-list>
         </td-expansion-panel>
 
-        <md-card>
           <td-expansion-panel label="Document Checklist">
             <md-card-subtitle>Please check all the uploaded attachments below</md-card-subtitle>
             <div layout="row" class="pad-bottom" flex>
@@ -283,7 +269,7 @@
             <div layout="row" class="pad-bottom" flex>
                 <md-checkbox formControlName="muetResultAttached">
                   <div layout="column" flex>
-                    Muet Result
+                    MUET Result
                   </div>
                 </md-checkbox>
               </div>
@@ -307,7 +293,7 @@
             <div layout="row" class="pad-bottom" flex>
               <md-checkbox formControlName="spmResultAttached">
                 <div layout="column" flex>
-                  Spm Result
+                  SPM Result
                 </div>
               </md-checkbox>
             </div>
@@ -315,7 +301,7 @@
             <div layout="row" class="pad-bottom" flex>
                 <md-checkbox formControlName="stamResultAttached">
                   <div layout="column" flex>
-                    Stam Result
+                    STAM Result
                   </div>
                 </md-checkbox>
               </div>
@@ -323,7 +309,7 @@
             <div layout="row" class="pad-bottom" flex>
               <md-checkbox formControlName="stpmResultAttached">
                 <div layout="column" flex>
-                  Stpm Result
+                  STPM Result
                 </div>
               </md-checkbox>
             </div>
@@ -331,7 +317,7 @@
             <div layout="row" class="pad-bottom" flex>
               <md-checkbox formControlName="diplomaResultAttached">
                 <div layout="column" flex>
-                  Diploma Result
+                  Diploma / Diploma Equivalent Result
                 </div>
               </md-checkbox>
             </div>
@@ -339,7 +325,7 @@
             <div layout="row" class="pad-bottom" flex>
               <md-checkbox formControlName="bachelorResultAttached">
                 <div layout="column" flex>
-                  Bachelor Result
+                  Bachelor / Bachelor Equivalent Result
                 </div>
               </md-checkbox>
             </div>
@@ -376,7 +362,6 @@
               </md-checkbox>
             </div>
           </td-expansion-panel>
-        </md-card>
       </md-tab>
 
 
