@@ -96,8 +96,7 @@ export class ApplicantDashboardPanel implements OnInit {
     });
   }
 
-
-  editDialog(): void {
+   editDialog(application): void {
     console.log('editDialog');
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -106,7 +105,7 @@ export class ApplicantDashboardPanel implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(AddressChangerDialog, config);
-    this.editorDialogRef.componentInstance.intakeApplications = this.intakeApplications;
+    this.editorDialogRef.componentInstance.intakeApplications = application;
     this.editorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
       // load something here

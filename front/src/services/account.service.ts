@@ -134,9 +134,9 @@ export class AccountService {
      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  changeApplicantAddress(changeAddress: AddressChange): Observable<String> {
-    console.log('addressChange');
-    return this._http.post(this.ACCOUNT_API + '/addressChange', JSON.stringify(changeAddress))
+  changeApplicantAddress(intakeApplication: IntakeApplication): Observable<String> {
+    console.log('addressChange ');
+    return this._http.post(this.ACCOUNT_API + '/addressChange', JSON.stringify(intakeApplication))
       .flatMap((res: Response) => Observable.of(res.text()))
       .catch((error) => this.handleError(error));
   }

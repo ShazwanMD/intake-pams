@@ -251,8 +251,8 @@ public class ApplicantAccountController {
 	}
 	
 	
-    @RequestMapping(value = "/addressChange", method = RequestMethod.POST)
-    public ResponseEntity<String> changeApplicantAddress(@RequestBody AddressChange vo) {
+	@RequestMapping(value = "/addressChange", method = RequestMethod.POST)
+    public ResponseEntity<String> changeApplicantAddress(@RequestBody IntakeApplication vo) {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
         if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
@@ -261,10 +261,10 @@ public class ApplicantAccountController {
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
         for (InIntakeApplication application : applications) {
         	        	
-        	application.setMailingAddress1(vo.getNewAddress1());
-        	application.setMailingAddress2(vo.getNewAddress2());
-        	application.setMailingAddress3(vo.getNewAddress3());
-        	application.setMailingPostcode(vo.getNewPostcode());
+        	application.setMailingAddress1(vo.getMailingAddress1());
+        	application.setMailingAddress2(vo.getMailingAddress2());
+        	application.setMailingAddress3(vo.getMailingAddress3());
+        	application.setMailingPostcode(vo.getMailingPostcode());
         	 if (null != vo.getMailingStateCode())
                  application.setMailingStateCode(commonService.findStateCodeById(vo.getMailingStateCode().getId()));
              if (null != vo.getMailingCountryCode())
@@ -273,7 +273,6 @@ public class ApplicantAccountController {
         }
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-	
     
 
 }
