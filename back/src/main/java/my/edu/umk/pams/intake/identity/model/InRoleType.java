@@ -8,5 +8,10 @@ public enum InRoleType {
 
     ROLE_ADMINISTRATOR, // 0
     ROLE_USER,          // 1
-    ROLE_GUEST;         // 2
+    ROLE_GUEST,         // 2
+	ROLE_PTJ,			// 3
+	ROLE_APCN,			// 4
+	ROLE_MGT,			// 5
+	ROLE_FCTY;			// 6
+	
 }
