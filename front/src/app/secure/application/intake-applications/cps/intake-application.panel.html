@@ -234,27 +234,6 @@
       <md-tab>
         <template md-tab-label>Documents</template>
 
-        <td-expansion-panel label="Financial Support">
-          <md-card-subtitle>Please choose either one of the following financial Support</md-card-subtitle>
-          <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-            <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-              <md-checkbox formControlName="sponsored">
-                <div layout="column" flex>
-                  Sponsor by Employer / Government. Please attach letter from Sponsor.
-                </div>
-              </md-checkbox>
-            </div>
-
-            <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-              <md-checkbox formControlName="selfSponsored">
-                <div layout="column" flex>
-                  Self Supporting . Please enclose financial guarantee or bank statement.
-                </div>
-              </md-checkbox>
-            </div>
-          </div>
-        </td-expansion-panel>
-
         <!--   <td-expansion-panel label="Referees">
              <pams-referee-list [intakeApplication]="_intakeApplication" [referees]="referees$ | async">
              </pams-referee-list>
@@ -380,6 +359,32 @@
             </div>
           </td-expansion-panel>
       </md-tab>
+
+      <md-tab>
+        <template md-tab-label>Financial Support</template>
+
+        <td-expansion-panel label="Financial Support">
+          <md-card-subtitle>Please choose either one of the following financial Support</md-card-subtitle>
+          <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+            <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+              <md-checkbox formControlName="sponsored">
+                <div layout="column" flex>
+                  Sponsor by Employer / Government. Please attach letter from Sponsor.
+                </div>
+              </md-checkbox>
+            </div>
+
+            <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+              <md-checkbox formControlName="selfSponsored">
+                <div layout="column" flex>
+                  Self Supporting . Please enclose financial guarantee or bank statement.
+                </div>
+              </md-checkbox>
+            </div>
+          </div>
+        </td-expansion-panel>
+      </md-tab>
+
 
 
       <md-tab>
