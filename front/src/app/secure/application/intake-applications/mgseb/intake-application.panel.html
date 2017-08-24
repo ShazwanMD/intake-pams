@@ -8,6 +8,15 @@
       </div>
     </div>
     <md-divider></md-divider>
+
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <div layout="row" layout-align="start center">
+      <button md-raised-button color="primary" (click)="submit(applicationForm.value, applicationForm.valid)">
+          Enter Promo Code (if applicable)
+      </button>
+      </div>
+      </div>
+      
     <md-tab-group (selectChange)="onTabChange($event)" [selectedIndex]="tabIndex$ | async">
       <md-tab>
         <template md-tab-label>Detail Of Candidate</template>

@@ -6,13 +6,13 @@ import { RaceCode } from '../../../../shared/model/common/race-code.interface';
 import { GenderCode } from '../../../../shared/model/common/gender-code.interface';
 import { Referee } from '../../../../shared/model/application/referee.interface';
 import { Employment } from '../../../../shared/model/application/employment.interface';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Input ,ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ApplicationModuleState } from '../../index';
 import { IntakeApplicationActions } from '../intake-application.action';
-import { Observable } from 'rxjs/Observable';
+import { Observable} from 'rxjs/Observable';
 import { IntakeApplication } from '../../../../shared/model/application/intake-application.interface';
 import { Language } from '../../../../shared/model/application/language.interface';
 import { NationalityCode } from '../../../../shared/model/common/nationality-code.interface';
@@ -20,7 +20,8 @@ import { DisabilityCode } from '../../../../shared/model/common/disability-code.
 import { EthnicityCode } from '../../../../shared/model/common/ethnicity-code.interface';
 import { CountryCode } from '../../../../shared/model/common/country-code.interface';
 import { StateCode } from '../../../../shared/model/common/state-code.interface';
-import { MdSnackBar, MdSnackBarRef, MdTabChangeEvent, SimpleSnackBar } from '@angular/material';
+import { MdSnackBar, MdSnackBarRef, MdTabChangeEvent, SimpleSnackBar, MdDialogConfig, MdDialogRef, MdDialog } from '@angular/material';
+import { PromoCodeDialog } from "../dialog/promo-code.dialog";
 
 @Component({
   selector: 'pams-cps-intake-application',
@@ -28,7 +29,12 @@ import { MdSnackBar, MdSnackBarRef, MdTabChangeEvent, SimpleSnackBar } from '@an
 })
 
 export class CpsIntakeApplicationPanel implements OnInit {
+
+  private editorDialogRef: MdDialogRef<PromoCodeDialog>; 
+
   [x: string]: any;
+
+  @Input() intakeApplications: IntakeApplication;
 
   private TAB_INDEX: string[] = 'applicationModuleState.tabIndex'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
@@ -50,6 +56,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private vcf: ViewContainerRef,
+    private dialog: MdDialog,
     private actions: IntakeApplicationActions,
     private snackBar: MdSnackBar,
     private store: Store<ApplicationModuleState>) {
@@ -155,6 +162,21 @@ export class CpsIntakeApplicationPanel implements OnInit {
       return false;
     }
   }
+
+  // promoCodeDialog(): void {
+  //   console.log('promoCodeDialog');
+  //   let config: MdDialogConfig = new MdDialogConfig();
+  //   config.viewContainerRef = this.vcf;
+  //   config.role = 'dialog';
+  //   config.width = '70%';
+  //   config.height = '65%';
+  //   config.position = {top: '0px'};
+  //   this.editorDialogRef = this.dialog.open(PromoCodeDialog, config);
+  //   this.editorDialogRef.afterClosed().subscribe((res) => {
+  //     console.log('close dialog');
+  //     // load something here
+  //   });
+  // }
 
   // copyAddress(application: IntakeApplication): void {
   //   this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));

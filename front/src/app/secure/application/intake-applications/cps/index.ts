@@ -1,3 +1,4 @@
+import { PromoCodeDialog } from './../dialog/promo-code.dialog';
 import {DiplomaResultComponent} from '../component/diploma-result.component';
 import {StpmResultComponent} from '../component/stpm-result.component';
 import {BachelorResultComponent} from '../component/bachelor-result.component';
@@ -73,6 +74,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     DiplomaResultEditorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,
+    PromoCodeDialog,
 
   ],
   exports: [
@@ -103,6 +105,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     DiplomaResultEditorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,
+    PromoCodeDialog,
     CpsIntakeApplicationPanel,
   ],
 })

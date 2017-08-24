@@ -28,8 +28,18 @@
         <md-card-subtitle>Applicant Personal Information</md-card-subtitle>
         </div>
         <md-divider></md-divider>
+
+        <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+        <div layout="row" layout-align="start center">
+        <button md-raised-button color="primary" (click)="submit(applicationForm.value, applicationForm.valid)">
+            Enter Promo Code (if applicable)
+        </button>
+        </div>
+        </div>
+
         <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
             <!-- first column -->
+            
         <md-input-container fxFlex="calc(50%-25px)">
         <input mdInput placeholder="Name" formControlName="name"/>
         </md-input-container>
@@ -37,10 +47,13 @@
         <md-input-container fxFlex="calc(50%-25px)">
         <input mdInput placeholder="Email" formControlName="email"/>
         </md-input-container>
-
+<!-- 
         <md-input-container fxFlex="calc(50%-25px)">
         <input mdInput placeholder="Enter Promo Code (if applicable)" formControlName="promoCode"/>
-        </md-input-container>
+        </md-input-container> -->
+        <!-- <md-input-container fxFlex="calc(50%-25px)">
+        <md-button class = "md-raised"  (click)="">Enter Promo Code (if applicable)</md-button>
+       </md-input-container> -->
 
         <md-input-container fxFlex="calc(50%-25px)">
         <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo"/>

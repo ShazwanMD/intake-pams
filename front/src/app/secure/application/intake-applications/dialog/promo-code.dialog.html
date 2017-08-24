@@ -1,0 +1,24 @@
+<h2 md-dialog-title>Promo Code</h2>
+<md-dialog-content>
+  <form [formGroup]="promoCodeForm">
+    <md-card>
+      <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+
+        <div layout="column" class="pad-right" flex>
+          <div layout="row">
+            <md-input-container flex>
+              <input mdInput placeholder="Promo Code Number" formControlName="promoCode" flex/>
+            </md-input-container>
+          </div>
+        </div>
+      </div>
+    </md-card>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(promoCodeForm.value, promoCodeForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+
+</md-dialog-actions>
+
