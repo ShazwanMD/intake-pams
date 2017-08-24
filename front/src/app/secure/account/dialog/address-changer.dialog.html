@@ -11,37 +11,37 @@
 
         <div layout="row">
           <md-input-container flex>
-            <input mdInput placeholder="Enter New Address" formControlName="newAddress1"  flex/>
+            <input mdInput placeholder="Enter New Address" formControlName="mailingAddress1"  flex/>
           </md-input-container>
         </div>
 
         <div layout="row">
           <md-input-container flex>
-            <input mdInput placeholder="Enter New Address" formControlName="newAddress2"  flex/>
+            <input mdInput placeholder="Enter New Address" formControlName="mailingAddress2"  flex/>
           </md-input-container>
         </div>
 
         <div layout="row">
           <md-input-container flex>
-            <input mdInput placeholder="Enter New Address" formControlName="newAddress3"  flex/>
+            <input mdInput placeholder="Enter New Address" formControlName="mailingAddress3"  flex/>
           </md-input-container>
         </div>
 
         <div layout="row">
           <md-input-container flex>
-            <input mdInput placeholder="Enter New Postcode" formControlName="newPostcode"  flex/>
+            <input mdInput placeholder="Enter New Postcode" formControlName="mailingPostcode"  flex/>
           </md-input-container>
         </div>
           <div layout="row">
           <pams-state-code-select [placeholder]="'State'"
-                                    [innerFormControl]="changeAddressForm.controls.officialStateCode"
+                                    [innerFormControl]="changeAddressForm.controls.mailingStateCode"
                                     fxFlex="calc(50%-25px)"
                                     class="pad-bottom">
             </pams-state-code-select>
           </div>
             <div layout="row">
             <pams-country-code-select [placeholder]="'Country'"
-                                      [innerFormControl]="changeAddressForm.controls.officialCountryCode"
+                                      [innerFormControl]="changeAddressForm.controls.mailingCountryCode"
                                       fxFlex="calc(50%-25px)"
                                       class="pad-bottom">
             </pams-country-code-select>

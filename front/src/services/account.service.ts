@@ -124,19 +124,19 @@ export class AccountService {
 
   acceptCandidate(myIntakeApplication: MyIntakeApplication): Observable<String> {
     console.log('acceptCandidate');
-    return this._http.put(this.ACCOUNT_API + '/acceptCandidate', JSON.stringify(myIntakeApplication))
+    return this._http.put(this.ACCOUNT_API + '/acceptCandidate/application/'+myIntakeApplication.referenceNo, JSON.stringify(myIntakeApplication))
      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   declinedCandidate(myIntakeApplication: MyIntakeApplication): Observable<String> {
     console.log('declinedCandidate');
-    return this._http.put(this.ACCOUNT_API + '/declinedCandidate', JSON.stringify(myIntakeApplication))
+    return this._http.put(this.ACCOUNT_API + '/declinedCandidate/application/'+myIntakeApplication.referenceNo, JSON.stringify(myIntakeApplication))
      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  changeApplicantAddress(changeAddress: AddressChange): Observable<String> {
-    console.log('addressChange');
-    return this._http.post(this.ACCOUNT_API + '/addressChange', JSON.stringify(changeAddress))
+  changeApplicantAddress(intakeApplication: IntakeApplication): Observable<String> {
+    console.log('addressChange ');
+    return this._http.post(this.ACCOUNT_API + '/addressChange', JSON.stringify(intakeApplication))
       .flatMap((res: Response) => Observable.of(res.text()))
       .catch((error) => this.handleError(error));
   }

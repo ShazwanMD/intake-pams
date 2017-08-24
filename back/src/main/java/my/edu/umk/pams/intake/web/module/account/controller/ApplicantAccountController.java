@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
@@ -122,38 +123,32 @@ public class ApplicantAccountController {
                 HttpStatus.OK);
     } 
     
-    @RequestMapping(value = "/acceptCandidate", method = RequestMethod.PUT)
-    public ResponseEntity<List<MyIntakeApplication>> acceptCandidate() {
-        InUser user = securityService.getCurrentUser();
+    @RequestMapping(value = "/acceptCandidate/application/{referenceNo}", method = RequestMethod.PUT)
+    public ResponseEntity<String> acceptCandidate(@PathVariable String referenceNo) {
+    	InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
         if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
         if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
     	   	
-        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
-        for (InIntakeApplication application : applications) {
+            InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        
         	InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
         	admissionService.acceptCandidate(candidate);
-        	
-		}
-        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
-                HttpStatus.OK);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/declinedCandidate", method = RequestMethod.PUT)
-    public ResponseEntity<List<MyIntakeApplication>> declinedCandidate() {
-        InUser user = securityService.getCurrentUser();
+    @RequestMapping(value = "/declinedCandidate/application/{referenceNo}", method = RequestMethod.PUT)
+    public ResponseEntity<String> declinedCandidate(@PathVariable String referenceNo) {
+    	InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
         if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
         if (null == applicant) throw new IllegalArgumentException("Applicant does not exists");
     	   	
-        List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
-        for (InIntakeApplication application : applications) {
+            InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+        
         	InCandidate candidate = admissionService.findCandidateByIntakeApplication(application);
         	admissionService.declinedCandidate(candidate);
-        	
-		}
-        return new ResponseEntity<List<MyIntakeApplication>>(accountTransformer.toMyIntakeApplicationVos(applications),
-                HttpStatus.OK);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
     
     
@@ -256,8 +251,8 @@ public class ApplicantAccountController {
 	}
 	
 	
-    @RequestMapping(value = "/addressChange", method = RequestMethod.POST)
-    public ResponseEntity<String> changeApplicantAddress(@RequestBody AddressChange vo) {
+	@RequestMapping(value = "/addressChange", method = RequestMethod.POST)
+    public ResponseEntity<String> changeApplicantAddress(@RequestBody IntakeApplication vo) {
         InUser user = securityService.getCurrentUser();
         InApplicant applicant = null;
         if (user.getActor() instanceof InApplicant) applicant = (InApplicant) user.getActor();
@@ -266,10 +261,10 @@ public class ApplicantAccountController {
         List<InIntakeApplication> applications = applicationService.findIntakeApplications(applicant);
         for (InIntakeApplication application : applications) {
         	        	
-        	application.setMailingAddress1(vo.getNewAddress1());
-        	application.setMailingAddress2(vo.getNewAddress2());
-        	application.setMailingAddress3(vo.getNewAddress3());
-        	application.setMailingPostcode(vo.getNewPostcode());
+        	application.setMailingAddress1(vo.getMailingAddress1());
+        	application.setMailingAddress2(vo.getMailingAddress2());
+        	application.setMailingAddress3(vo.getMailingAddress3());
+        	application.setMailingPostcode(vo.getMailingPostcode());
         	 if (null != vo.getMailingStateCode())
                  application.setMailingStateCode(commonService.findStateCodeById(vo.getMailingStateCode().getId()));
              if (null != vo.getMailingCountryCode())
@@ -278,7 +273,6 @@ public class ApplicantAccountController {
         }
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-	
     
 
 }

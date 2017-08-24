@@ -30,7 +30,7 @@ export class AddressChangerDialog implements OnInit {
 
   private changeAddressForm: FormGroup;
   private _intakeApplication: IntakeApplication;
-    private authenticatedUser: AuthenticatedUser;
+  private authenticatedUser: AuthenticatedUser;
 
   constructor(private formBuilder: FormBuilder,
               private dialog: MdDialogRef<AddressChangerDialog>,
@@ -48,25 +48,27 @@ export class AddressChangerDialog implements OnInit {
   ngOnInit(): void {
 
     this.changeAddressForm = this.formBuilder.group({
-      currentAddress: ['', Validators.required],
-      newAddress1: ['', Validators.required],
-      newAddress2: ['', Validators.required],
-      newAddress3: ['', Validators.required],
-      newPostcode:['',Validators.required],
-      officialStateCode: [<StateCode>{}],
-      officialCountryCode: [<CountryCode>{}],     
-
+   
+      // currentAddress: [this._intakeApplication.mailingAddress1, Validators.required],
+      mailingAddress1:  '',
+      mailingAddress2:  '',
+      mailingAddress3: '',
+      mailingPostcode: '',
+      mailingStateCode: <StateCode>{},
+      mailingCountryCode: <CountryCode>{},     
     });
+    this.changeAddressForm.patchValue(this._intakeApplication);
   }
 
-    logout(): void {
-    this.authnService.logout();
-    this.router.navigate(['/login']);
-  }
+  //   logout(): void {
+  //   this.authnService.logout();
+  //   this.router.navigate(['/login']);
+  // }
 
-  submit(changeAddress: AddressChange, valid: boolean) {
-    this.store.dispatch(this.actions.changeApplicantAddress(changeAddress));
+  submit(changeAddressForm, valid: boolean) {
+    this.store.dispatch(this.actions.changeApplicantAddress(changeAddressForm));
     this.dialog.close();
+    window.location.reload();
  //   this.logout();   
 } 
 }
