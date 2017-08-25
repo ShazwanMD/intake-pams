@@ -629,7 +629,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		else if (attachment.getAttachmentType() == InAttachmentType.BANK_STATEMENT) {
 			application.setBankStatementAttached(true);
 		}
-		else if (attachment.getAttachmentType() == InAttachmentType.FEE) {
+		else if (attachment.getAttachmentType() == InAttachmentType.PROCESSING_FEE) {
 			application.setProcessingFeeAttached(true);
 		}
 		else if (attachment.getAttachmentType() == InAttachmentType.RESEARCH_PROPOSAL) {
