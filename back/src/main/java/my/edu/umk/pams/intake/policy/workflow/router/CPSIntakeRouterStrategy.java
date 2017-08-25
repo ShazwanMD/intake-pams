@@ -9,12 +9,22 @@ public class CPSIntakeRouterStrategy extends RouterStrategySupport {
     }
 
     @Override
-    public String findRegistererCandidate() {
-        return "GRP_KRN_CPS";
+    public String findVerifierCandidate() {
+        return "GRP_KRN_ADM_CPS";
     }
 
     @Override
-    public String findVerifierCandidate() {
-        return "GRP_PGW_CPS";
+    public String findPublisherCandidate() {
+        return "GRP_PGW_ADM_CPS";
+    }
+
+    @Override
+    public String findEvaluatorCandidate() {
+        return "GRP_HO_ADM_CPS";
+    }
+
+    @Override
+    public String findSelectorCandidate() {
+        return "GRP_AHO_ADM_CPS";
     }
 }
