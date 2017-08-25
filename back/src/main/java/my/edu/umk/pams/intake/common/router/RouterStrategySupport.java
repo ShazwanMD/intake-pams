@@ -115,6 +115,11 @@ public abstract class RouterStrategySupport implements RouterStrategy {
     }
 
     @Override
+    public String findPublisherCandidate() {
+        return null;
+    }
+
+    @Override
     public String findPreparerCandidate() {
         return null;
     }
