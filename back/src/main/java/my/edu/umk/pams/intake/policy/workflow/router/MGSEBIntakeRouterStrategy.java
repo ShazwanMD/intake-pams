@@ -9,12 +9,22 @@ public class MGSEBIntakeRouterStrategy extends RouterStrategySupport {
     }
 
     @Override
-    public String findRegistererCandidate() {
-        return "GRP_KRN_MGSEB";
+    public String findVerifierCandidate() {
+        return "GRP_KRN_ADM_MGSEB";
     }
 
     @Override
-    public String findVerifierCandidate() {
-        return "GRP_PGW_MGSEB";
+    public String findPublisherCandidate() {
+        return "GRP_PGW_ADM_MGSEB";
+    }
+
+    @Override
+    public String findEvaluatorCandidate() {
+        return "GRP_HO_ADM_MGSEB";
+    }
+
+    @Override
+    public String findSelectorCandidate() {
+        return "GRP_AHO_ADM_MGSEB";
     }
 }
