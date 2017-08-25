@@ -1,3 +1,4 @@
+import { ManagementDashboardPanel } from './secure/management-dashboard.panel';
 import { PtjDashboardPanel } from './secure/ptj-dashboard.panel';
 import { FacultyDashboardPanel } from './secure/faculty-dashboard.panel';
 import { AlertService } from './../services/alert.service';
@@ -132,6 +133,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     ApplicantDashboardPanel,
     AdministratorDashboardPanel,
     PtjDashboardPanel,
+    ManagementDashboardPanel,
     FacultyDashboardPanel,
     AuthorizedShowDirective,
     AuthenticatedShowDirective,
@@ -178,6 +180,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     AdministratorDashboardPanel,
     PtjDashboardPanel,
     FacultyDashboardPanel,
+    ManagementDashboardPanel,
   ],
   providers: [
     appRoutingProviders,

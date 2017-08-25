@@ -1,3 +1,4 @@
+import { ManagementDashboardPanel } from './management-dashboard.panel';
 import { PtjDashboardPanel } from './ptj-dashboard.panel';
 import { FacultyDashboardPanel } from './faculty-dashboard.panel';
 import {
@@ -34,8 +35,11 @@ export class DashboardPage implements OnInit, OnDestroy {
      
     } else if (this.authzService.hasRole('ROLE_FCTY') && this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(FacultyDashboardPanel);
+
+    } else if (this.authzService.hasRole('ROLE_MGT') && this.authzService.hasRole('ROLE_USER')) {
+      componentFactory = this.cfr.resolveComponentFactory(ManagementDashboardPanel);     
        
-    } else if (this.authzService.hasRole('ROLE_USER')) {
+    } else if (this.authzService.hasRole('ROLE_APCN') && this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(ApplicantDashboardPanel);
     } 
 
