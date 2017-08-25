@@ -572,7 +572,7 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A13'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_TDKN_FCTY_A13'), 1, 1, CURRENT_TIMESTAMP);																																								 
 																				 
---PEGAWAI
+--PEGAWAI 
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_ADM_CPS'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'cps-pegawai'), 1, 1, CURRENT_TIMESTAMP);	
@@ -589,7 +589,7 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_PTJ_IO'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'io-pegawai'), 1, 1, CURRENT_TIMESTAMP);																						 
 		
--- USER KERANI
+-- USER KERANI 
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_ADM_CPS'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'cps-kerani'), 1, 1, CURRENT_TIMESTAMP);	

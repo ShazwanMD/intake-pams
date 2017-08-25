@@ -1,3 +1,4 @@
+import { PtjDashboardPanel } from './ptj-dashboard.panel';
 import { FacultyDashboardPanel } from './faculty-dashboard.panel';
 import {
   Component, OnInit, OnDestroy, ViewChild, ViewContainerRef,
@@ -27,12 +28,17 @@ export class DashboardPage implements OnInit, OnDestroy {
     let componentFactory: ComponentFactory<any>;
     if (this.authzService.hasRole('ROLE_ADMINISTRATOR') && this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(AdministratorDashboardPanel);
+
+    } else if (this.authzService.hasRole('ROLE_PTJ') && this.authzService.hasRole('ROLE_USER')) {
+      componentFactory = this.cfr.resolveComponentFactory(PtjDashboardPanel);
+     
+    } else if (this.authzService.hasRole('ROLE_FCTY') && this.authzService.hasRole('ROLE_USER')) {
+      componentFactory = this.cfr.resolveComponentFactory(FacultyDashboardPanel);
+       
     } else if (this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(ApplicantDashboardPanel);
     } 
-    else if (this.authzService.hasRole('ROLE_FCTY') && this.authzService.hasRole('ROLE_USER')) {
-      componentFactory = this.cfr.resolveComponentFactory(FacultyDashboardPanel);
-    }
+
 
     // handle null factory
     if (componentFactory) {

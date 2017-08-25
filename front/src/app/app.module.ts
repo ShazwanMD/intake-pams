@@ -1,3 +1,4 @@
+import { PtjDashboardPanel } from './secure/ptj-dashboard.panel';
 import { FacultyDashboardPanel } from './secure/faculty-dashboard.panel';
 import { AlertService } from './../services/alert.service';
 import { AlertComponent } from './secure/identity/directive/alert.component';
@@ -130,6 +131,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     ForgetPasswordPage,
     ApplicantDashboardPanel,
     AdministratorDashboardPanel,
+    PtjDashboardPanel,
     FacultyDashboardPanel,
     AuthorizedShowDirective,
     AuthenticatedShowDirective,
@@ -174,6 +176,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   entryComponents: [
     ApplicantDashboardPanel,
     AdministratorDashboardPanel,
+    PtjDashboardPanel,
     FacultyDashboardPanel,
   ],
   providers: [
