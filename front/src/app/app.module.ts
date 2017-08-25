@@ -1,3 +1,4 @@
+import { FacultyDashboardPanel } from './secure/faculty-dashboard.panel';
 import { AlertService } from './../services/alert.service';
 import { AlertComponent } from './secure/identity/directive/alert.component';
 import {NgModule, Type} from '@angular/core';
@@ -129,6 +130,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     ForgetPasswordPage,
     ApplicantDashboardPanel,
     AdministratorDashboardPanel,
+    FacultyDashboardPanel,
     AuthorizedShowDirective,
     AuthenticatedShowDirective,
     NotAuthenticatedShowDirective,
@@ -172,6 +174,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   entryComponents: [
     ApplicantDashboardPanel,
     AdministratorDashboardPanel,
+    FacultyDashboardPanel,
   ],
   providers: [
     appRoutingProviders,

@@ -1,3 +1,4 @@
+import { FacultyDashboardPanel } from './faculty-dashboard.panel';
 import {
   Component, OnInit, OnDestroy, ViewChild, ViewContainerRef,
   ComponentFactoryResolver, ComponentFactory, ComponentRef,
@@ -28,6 +29,9 @@ export class DashboardPage implements OnInit, OnDestroy {
       componentFactory = this.cfr.resolveComponentFactory(AdministratorDashboardPanel);
     } else if (this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(ApplicantDashboardPanel);
+    } 
+    else if (this.authzService.hasRole('ROLE_FCTY') && this.authzService.hasRole('ROLE_USER')) {
+      componentFactory = this.cfr.resolveComponentFactory(FacultyDashboardPanel);
     }
 
     // handle null factory
