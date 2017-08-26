@@ -1,6 +1,9 @@
 package my.edu.umk.pams.intake.policy.workflow.router;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 import my.edu.umk.pams.intake.common.router.RouterStrategySupport;
 
 public class MGSEBIntakeRouterStrategy extends RouterStrategySupport {
@@ -10,7 +13,7 @@ public class MGSEBIntakeRouterStrategy extends RouterStrategySupport {
 
     @Override
     public String findVerifierCandidate() {
-        return "GRP_KRN_ADM_MGSEB";
+        return "GRP_PGW_KRN_MGSEB";
     }
 
     @Override
@@ -19,12 +22,14 @@ public class MGSEBIntakeRouterStrategy extends RouterStrategySupport {
     }
 
     @Override
-    public String findEvaluatorCandidate() {
-        return "GRP_HO_ADM_MGSEB";
+    public List<String> findEvaluatorCandidates() {
+        return Arrays.asList("GRP_PGW_ADM_CPS", "GRP_KRN_PTJ_IO");
     }
 
     @Override
     public String findSelectorCandidate() {
-        return "GRP_AHO_ADM_MGSEB";
+        return "GRP_PGW_ADM_MGSEB";
     }
+
+
 }

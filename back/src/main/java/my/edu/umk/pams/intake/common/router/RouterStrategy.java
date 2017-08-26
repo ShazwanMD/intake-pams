@@ -64,4 +64,5 @@ public interface RouterStrategy {
 
     public String findPublisherCandidate();
 
+	public List<String> findEvaluatorCandidates();
 }

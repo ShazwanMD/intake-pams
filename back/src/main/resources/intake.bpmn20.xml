@@ -34,7 +34,7 @@
                       targetRef="intake_draft_UT"/>
 
         <userTask id="intake_draft_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:DRAFTED"
-                  activiti:candidateGroups="${userCreator}">
+                  activiti:assignee="${userCreator}">
             <documentation>
                 Draft Intake
                 - Setting Dasar
@@ -66,7 +66,7 @@
         <sequenceFlow id="flow7.1" sourceRef="intake_verify_ST" targetRef="intake_verify_UT"/>
 
         <userTask id="intake_verify_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:VERIFIED"
-                  activiti:candidateGroups="${intakeRouterService.findRegistererCandidates(IntakeId)}">
+                  activiti:candidateGroups="${intakeRouterService.findVerifierCandidates(intakeId)}">
             <documentation>
                 Verify
             </documentation>
@@ -95,7 +95,7 @@
         <sequenceFlow id="flow8.1" sourceRef="intake_publish_ST" targetRef="intake_publish_UT"/>
 
         <userTask id="intake_publish_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:PUBLISHED"
-                  activiti:candidateGroups="${intakeRouterService.findRegistererCandidates(IntakeId)}">
+                  activiti:candidateGroups="${intakeRouterService.findPublisherCandidates(intakeId)}">
             <documentation>
                 Publish
             </documentation>
@@ -117,7 +117,7 @@
         <sequenceFlow id="flow9.1" sourceRef="intake_evaluate_ST" targetRef="intake_evaluate_UT"/>
 
         <userTask id="intake_evaluate_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:EVALUATED"
-                  activiti:candidateGroups="${intakeRouterService.findRegistererCandidates(IntakeId)}">
+                  activiti:candidateGroups="${intakeRouterService.findEvaluatorCandidates(intakeId)}">
             <documentation>
                 evaluate
             </documentation>
@@ -139,7 +139,7 @@
         <sequenceFlow id="flow10.1" sourceRef="intake_select_ST" targetRef="intake_select_UT"/>
 
         <userTask id="intake_select_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:SELECTED"
-                  activiti:candidateGroups="${userCreator}">
+                  activiti:candidateGroups="${intakeRouterService.findSelectorCandidates(intakeId)}">
             <documentation>
                 select
             </documentation>
