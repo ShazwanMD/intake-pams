@@ -53,7 +53,7 @@ public interface RouterStrategy {
 
     public String findEvaluatorCandidate();
 
-    public List<String> findEvaluatorCandidates();
+//    public List<String> findEvaluatorCandidates();
 
     public String findSelectorCandidate();
 
@@ -62,6 +62,8 @@ public interface RouterStrategy {
     public String findPublisherCandidate();
 
     public List<String> findPublisherCandidates();
+
+	String findPreapproverCandidate();
 
 
 }

@@ -13,7 +13,7 @@ public class MGSEBIntakeRouterStrategy extends RouterStrategySupport {
 
     @Override
     public String findVerifierCandidate() {
-        return "GRP_PGW_KRN_MGSEB";
+        return "GRP_PGW_ADM_MGSEB";
     }
 
     @Override
@@ -21,13 +21,23 @@ public class MGSEBIntakeRouterStrategy extends RouterStrategySupport {
         return "GRP_PGW_ADM_MGSEB";
     }
 
+    
     @Override
-    public List<String> findEvaluatorCandidates() {
-        return Arrays.asList("GRP_PGW_ADM_CPS", "GRP_KRN_PTJ_IO");
+    public String findEvaluatorCandidate() {
+        return "GRP_PGW_ADM_MGSEB";
     }
+//    @Override
+//    public List<String> findEvaluatorCandidates() {
+//        return Arrays.asList("GRP_PGW_ADM_CPS", "GRP_KRN_PTJ_IO");
+//    }
 
     @Override
     public String findSelectorCandidate() {
+        return "GRP_PGW_ADM_MGSEB";
+    }
+    
+    @Override
+    public String findPreapproverCandidate() {
         return "GRP_PGW_ADM_MGSEB";
     }
 

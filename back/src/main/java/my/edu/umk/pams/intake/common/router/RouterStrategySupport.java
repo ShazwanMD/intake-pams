@@ -57,10 +57,10 @@ public abstract class RouterStrategySupport implements RouterStrategy {
         return null;
     }
 
-    @Override
-    public List<String> findEvaluatorCandidates() {
-        return null;
-    }
+//    @Override
+//    public List<String> findEvaluatorCandidates() {
+//        return null;
+//    }
 
     @Override
     public List<String> findSelectorCandidates() {

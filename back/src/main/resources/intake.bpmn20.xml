@@ -160,7 +160,7 @@
         <sequenceFlow id="flow11.1" sourceRef="intake_preapprove_ST" targetRef="intake_preapprove_UT"/>
 
         <userTask id="intake_preapprove_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:APPROVED"
-                  activiti:candidateGroups="${userCreator}">
+                  activiti:candidateGroups="${intakeRouterService.findPreapproverCandidates(intakeId)}">
             <documentation>
                 PREAPPROVE
             </documentation>

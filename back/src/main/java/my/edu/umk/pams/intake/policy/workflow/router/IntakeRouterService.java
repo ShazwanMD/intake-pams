@@ -85,4 +85,16 @@ public class IntakeRouterService extends RouterServiceSupport {
 
         return Arrays.asList(candidate);
     }
+    
+    public List<String> findPreapproverCandidates(Long intakeId) {
+        Validate.notNull(intakeId, "Id must not be null");
+
+        InIntake intake = policyService.findIntakeById(intakeId);
+        InGraduateCenter center = intake.getGraduateCenter();
+        RouterStrategy strategy = strategies.get(center.getCode());
+        String candidate = strategy.findPreapproverCandidate();
+        // todo(ashraf): permission publishing
+
+        return Arrays.asList(candidate);
+    }    
 }
