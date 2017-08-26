@@ -1,13 +1,76 @@
 package my.edu.umk.pams.intake.common.router;
 
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
 
  */
 public abstract class RouterStrategySupport implements RouterStrategy {
+    @Override
+    public List<String> findRequesterCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findRegistererCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findVerifierCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findUpperVerifierCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findUpperCheckerCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findCheckerCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findQuerierCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findUpperQuerierCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findApproverCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findPreparerCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findEvaluatorCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findSelectorCandidates() {
+        return null;
+    }
+
+    @Override
+    public List<String> findPublisherCandidates() {
+        return null;
+    }
 
     @Override
     public String findDrafterCandidate() {
@@ -16,16 +79,6 @@ public abstract class RouterStrategySupport implements RouterStrategy {
 
     @Override
     public List<String> findDrafterCandidates() {
-        return null;
-    }
-
-    @Override
-    public String findDrafterCandidate(BigDecimal amount, Enum type) {
-        return null;
-    }
-
-    @Override
-    public List<String> findDrafterCandidates(BigDecimal amount, Enum type) {
         return null;
     }
 
@@ -70,44 +123,10 @@ public abstract class RouterStrategySupport implements RouterStrategy {
     }
 
     @Override
-    public String findRequesterCandidate(BigDecimal amount, Enum type) {
-        return null;
-    }
-
-    @Override
-    public String findRegistererCandidate(BigDecimal amount, Enum type) {
-        return null;
-    }
-
-    @Override
-    public String findVerifierCandidate(BigDecimal amount) {
-        return null;
-    }
-
-    @Override
-    public String findUpperCheckerCandidate(BigDecimal amount) {
-        return null;
-    }
-
-    @Override
-    public String findCheckerCandidate(BigDecimal amount) {
-        return null;
-    }
-
-    @Override
     public String findQuerierCandidate() {
         return null;
     }
 
-    @Override
-    public String findUpperQuerierCandidate(BigDecimal amount) {
-        return null;
-    }
-
-    @Override
-    public String findApproverCandidate(BigDecimal amount) {
-        return null;
-    }
 
     @Override
     public String findEvaluatorCandidate() {
@@ -121,26 +140,6 @@ public abstract class RouterStrategySupport implements RouterStrategy {
 
     @Override
     public String findPreparerCandidate() {
-        return null;
-    }
-
-    @Override
-    public List<String> findPreparerCandidates() {
-        return null;
-    }
-
-    @Override
-    public String findPreparerCandidate(BigDecimal amount, Enum type) {
-        return null;
-    }
-
-    @Override
-    public List<String> findPreparerCandidates(BigDecimal amount, Enum type) {
-        return null;
-    }
-
-    @Override
-    public String findEvaluatorCandidate(BigDecimal amount, Enum type) {
         return null;
     }
 
