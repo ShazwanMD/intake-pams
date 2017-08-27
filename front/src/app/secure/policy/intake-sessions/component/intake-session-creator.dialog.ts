@@ -10,6 +10,7 @@ import {IntakeSession} from '../../../../shared/model/policy/intake-session.inte
 @Component({
   selector: 'pams-intake-session-creator',
   templateUrl: './intake-session-creator.dialog.html',
+  styleUrls: ['./intake-session-creator.dialog.scss'],
 })
 
 export class IntakeSessionCreatorDialog implements OnInit {

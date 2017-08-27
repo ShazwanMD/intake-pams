@@ -12,6 +12,7 @@ import {IntakeSession} from "../../../../shared/model/policy/intake-session.inte
 @Component({
   selector: 'pams-intake-session-editor',
   templateUrl: './intake-session-editor.dialog.html',
+  styleUrls: ['./intake-session-creator.dialog.scss'],
 })
 
 export class IntakeSessionEditorDialog implements OnInit {

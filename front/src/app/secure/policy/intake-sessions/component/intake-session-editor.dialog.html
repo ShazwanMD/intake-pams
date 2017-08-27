@@ -1,26 +1,29 @@
 <h2 md-dialog-title>Intake Session Editor</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput placeholder="Description (MS)" formControlName="descriptionMs" flex/>
-      </md-input-container>
-    </div>
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput placeholder="Description (EN)" formControlName="descriptionEn" flex/>
-      </md-input-container>
-    </div>
-    <div layout="row">
-      <md-input-container flex>
-        <input mdInput #description placeholder="label" formControlName="label" flex/>
-      </md-input-container>
-    </div>
-    <div layout="row">
-      <md-input-container flex>
-        <input mdInput type="number" placeholder="Year" formControlName="year" flex/>
-      </md-input-container>
-    </div>
+    <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
+      <div layout="column" class="pad-right" flex>
+
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput class="uppercase" placeholder="label" formControlName="label" flex/>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput class="uppercase" placeholder="Description (MS)" formControlName="descriptionMs" flex/>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput class="uppercase" placeholder="Description (EN)" formControlName="descriptionEn" flex/>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <input mdInput type="number" placeholder="Year" formControlName="year" flex/>
+          </md-input-container>
+        </div>
 
         <div layout="row" class="pad-bottom">
           <md-checkbox formControlName="current">
@@ -30,6 +33,8 @@
           </md-checkbox>
         </div>
 
+      </div>
+    </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
