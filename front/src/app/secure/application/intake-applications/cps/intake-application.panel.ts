@@ -163,20 +163,19 @@ export class CpsIntakeApplicationPanel implements OnInit {
     }
   }
 
-  // promoCodeDialog(): void {
-  //   console.log('promoCodeDialog');
-  //   let config: MdDialogConfig = new MdDialogConfig();
-  //   config.viewContainerRef = this.vcf;
-  //   config.role = 'dialog';
-  //   config.width = '70%';
-  //   config.height = '65%';
-  //   config.position = {top: '0px'};
-  //   this.editorDialogRef = this.dialog.open(PromoCodeDialog, config);
-  //   this.editorDialogRef.afterClosed().subscribe((res) => {
-  //     console.log('close dialog');
-  //     // load something here
-  //   });
-  // }
+   promoCodeDialog(): void {
+     console.log('promoCodeDialog');
+    let config: MdDialogConfig = new MdDialogConfig();
+     config.viewContainerRef = this.vcf;
+     config.role = 'dialog';
+     config.width = '70%';
+    config.height = '65%';
+     config.position = {top: '0px'};
+    this.editorDialogRef = this.dialog.open(PromoCodeDialog, config);
+     this.editorDialogRef.afterClosed().subscribe((res) => {
+       console.log('close dialog');
+    });
+   }
 
   // copyAddress(application: IntakeApplication): void {
   //   this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));

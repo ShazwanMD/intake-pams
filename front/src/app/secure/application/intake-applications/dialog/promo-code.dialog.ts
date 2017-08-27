@@ -12,8 +12,8 @@ import {EmploymentType} from '../../../../shared/model/application/employment-ty
 import { Observable } from "rxjs/Rx";
 
 @Component({
-  selector: 'pams-employment-editor',
-  templateUrl: './employment-editor.dialog.html',
+  selector: 'pams-promo-code-editor',
+  templateUrl: './promo-code.dialog.html',
 })
 
 export class PromoCodeDialog implements OnInit {

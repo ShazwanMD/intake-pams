@@ -33,10 +33,10 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @NotNull
     @Column(name = "REFERENCE_NO", unique = true, nullable = false)
     private String referenceNo;
-    
-    @NotNull
-    @Column(name = "PROMO_CODE", unique = true)
-    private String promoCode;
+      
+    @OneToOne(targetEntity = InPromoCodeImpl.class)
+    @JoinColumn(name = "PROMO_CODE_ID", unique = true)
+    private InPromoCode promoCode;
 
     @NotNull
     @Column(name = "RESEARCH_TITLE", nullable = false)
@@ -339,11 +339,14 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
         this.referenceNo = referenceNo;
     }   
 
-    public String getPromoCode() {
+    
+    @Override
+	public InPromoCode getPromoCode() {
 		return promoCode;
 	}
 
-	public void setPromoCode(String promoCode) {
+    @Override
+	public void setPromoCode(InPromoCode promoCode) {
 		this.promoCode = promoCode;
 	}
 

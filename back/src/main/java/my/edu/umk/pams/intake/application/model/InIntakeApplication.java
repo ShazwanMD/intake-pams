@@ -26,9 +26,7 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setReferenceNo(String referenceNo);
     
-    String getPromoCode();
-
-    void setPromoCode(String promoCode);
+    InPromoCode getPromoCode();
 
     String getResearchTitle();
 
@@ -325,5 +323,7 @@ public interface InIntakeApplication extends InMetaObject {
 	Boolean isMuetResultAttached();
 
 	void setMuetResultAttached(Boolean muetResultAttached);
+
+	void setPromoCode(InPromoCode promoCode);
 }
 
