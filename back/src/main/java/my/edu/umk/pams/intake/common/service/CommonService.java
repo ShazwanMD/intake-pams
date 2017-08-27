@@ -826,5 +826,7 @@ public interface CommonService {
 
 	void removeStudyMode(InStudyMode studyMode);
 
+	InPromoCode findPromoCodeByCode(String code);
+
 
 }

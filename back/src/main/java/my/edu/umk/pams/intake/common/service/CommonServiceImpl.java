@@ -17,6 +17,9 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private InGraduateCenterDao graduateCenterDao;
+    
+    @Autowired
+    private InPromoCodeDao promoCodeDao;
 
     @Autowired
     private InCountryCodeDao countryCodeDao;
@@ -368,6 +371,15 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
+  //====================================================================================================
+    // PROMO CODE
+    //====================================================================================================
+
+    
+    @Override
+    public InPromoCode findPromoCodeByCode(String code) {
+        return promoCodeDao.findByCode(code);
+    }
 
     //====================================================================================================
     // CITY CODE

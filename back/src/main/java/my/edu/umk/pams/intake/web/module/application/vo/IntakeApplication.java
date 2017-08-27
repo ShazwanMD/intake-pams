@@ -21,7 +21,7 @@ import java.util.Date;
 public class IntakeApplication extends MetaObject {
 
     private String referenceNo;
-    private String promoCode;
+    private PromoCode promoCode;
     private Integer rank;
     private BigDecimal merit = BigDecimal.ZERO;
     private String researchTitle;
@@ -101,12 +101,12 @@ public class IntakeApplication extends MetaObject {
     public void setReferenceNo(String referenceNo) {
         this.referenceNo = referenceNo;
     }
-  
-    public String getPromoCode() {
+    
+	public PromoCode getPromoCode() {
 		return promoCode;
 	}
 
-	public void setPromoCode(String promoCode) {
+	public void setPromoCode(PromoCode promoCode) {
 		this.promoCode = promoCode;
 	}
 

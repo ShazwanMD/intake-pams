@@ -196,7 +196,7 @@ public class ApplicationController {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		application.setResearchTitle(vo.getResearchTitle());
 		application.setName(vo.getName());
-		application.setPromoCode(vo.getPromoCode());
+		application.setPromoCode(commonService.findPromoCodeByCode(vo.getPromoCode().getCode()));
 		application.setPhone(vo.getPhone());
 		application.setMobile(vo.getMobile());
 		application.setFax(vo.getFax());
@@ -281,6 +281,15 @@ public class ApplicationController {
 		InIntake intake = application.getIntake();
 		updateIntakeApplication(referenceNo, vo);
 		applicationService.submitIntakeApplication(intake, application);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/promoCode", method = RequestMethod.PUT)
+	public ResponseEntity<String> promoCodeIntakeApplication(@PathVariable String referenceNo,
+			@RequestBody IntakeApplication vo) {
+		InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+		application.setPromoCode(commonService.findPromoCodeByCode(vo.getPromoCode().getCode()));
+		applicationService.updateIntakeApplication(application);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 
