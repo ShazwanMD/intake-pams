@@ -107,6 +107,12 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  promoCodeIntakeApplication(application: IntakeApplication): Observable<String> {
+    return this._http.put(this.APPLICATION_API + '/intakeApplications/'
+      + application.referenceNo + '/promoCode', JSON.stringify(application))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   updateIntakeApplication(application: IntakeApplication): Observable<String> {
     console.log('updateIntakeApplication ');
     console.log('email: ' + application.email);
