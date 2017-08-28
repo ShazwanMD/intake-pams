@@ -5,7 +5,7 @@ import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {ApplicationModuleState} from '../../index';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Employment} from '../../../../shared/model/application/employment.interface';
 import {EmploymentType} from '../../../../shared/model/application/employment-type.enum';
@@ -30,6 +30,7 @@ export class PromoCodeDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<ApplicationModuleState>,
               private actions: IntakeApplicationActions,
+              private snackBar: MdSnackBar,
               private dialog: MdDialogRef<PromoCodeDialog>) {
   }
 
@@ -44,14 +45,16 @@ export class PromoCodeDialog implements OnInit {
     });
   }
 
-//   submit(change: PasswordChange, valid: boolean) {
-//     let snackBarRef = this.snackBar.open('Confirm to change your password?', 'Ok');
-//      snackBarRef.afterDismissed().subscribe(() => {
-//        if(!change.newPassword)this.store.dispatch(this.actions.saveUser(change));
-//      this.store.dispatch(this.actions.changeUserPassword(change));
-//      this.dialog.close();
-     
-//  });
+  submit(code: IntakeApplication, valid: boolean) {
+    if (confirm('Confirm to Submit this Promo Code?')) {
+      //  if(!change.newPassword)this.store.dispatch(this.actions.saveUser(change));
+     this.store.dispatch(this.actions.promoCodeIntakeApplication(code));
+     this.dialog.close();
+    } else {
+      return false;
+    }
+ }
+
  }
 
   
