@@ -32,7 +32,7 @@ public class ApplicationTransformer {
 		IntakeApplication vo = new IntakeApplication();	
 		vo.setId(e.getId());
 		vo.setReferenceNo(e.getReferenceNo());
-		vo.setPromoCode(e.getPromoCode());
+		vo.setPromoCode(commonTransformer.toPromoCodeVo(e.getPromoCode()));
 		vo.setResearchTitle(e.getResearchTitle());
 		vo.setName(e.getName());
 		vo.setCredentialNo(e.getCredentialNo());

@@ -325,6 +325,23 @@ public class CommonTransformer {
         List<NationalityCode> vos = e.stream().map((e1) -> toNationalityCodeVo(e1)).collect(Collectors.toList());
         return vos;
     }
+    
+    // ====================================================================================================
+    // PROMO CODE
+    // ====================================================================================================
+
+    public PromoCode toPromoCodeVo(InPromoCode e) {
+    	if(null == e) return null;
+    	PromoCode vo = new PromoCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        return vo;
+    }
+
+    public List<PromoCode> toPromoCodeVos(List<InPromoCode> e) {
+        List<PromoCode> vos = e.stream().map((e1) -> toPromoCodeVo(e1)).collect(Collectors.toList());
+        return vos;
+    }
 
     // ====================================================================================================
     // DUN_CODE
