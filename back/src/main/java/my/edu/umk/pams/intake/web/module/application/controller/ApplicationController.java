@@ -277,7 +277,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/submit", method = RequestMethod.POST)
 	public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo,
 			@RequestBody IntakeApplication vo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InIntake intake = application.getIntake();
 		updateIntakeApplication(referenceNo, vo);
 		applicationService.submitIntakeApplication(intake, application);
@@ -287,7 +287,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/promoCode", method = RequestMethod.PUT)
 	public ResponseEntity<String> promoCodeIntakeApplication(@PathVariable String referenceNo,
 			@RequestBody IntakeApplication vo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		application.setPromoCode(commonService.findPromoCodeByCode(vo.getPromoCode().getCode()));
 		applicationService.updateIntakeApplication(application);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -297,7 +297,7 @@ public class ApplicationController {
 	public ResponseEntity<String> selectIntakeApplication(@PathVariable String referenceNo,
 			@RequestBody IntakeApplication vo) {
 		System.out.println("vo.getReason() select");
-		InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InIntake intake = application.getIntake();
 		application.setBidStatus(InBidStatus.SELECTED);
 		if (vo.getNationalityCode().getDescriptionEn().equals("CITIZEN"))
@@ -309,7 +309,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/verify", method = RequestMethod.PUT)
 	public ResponseEntity<String> verifyIntakeApplication(@PathVariable String referenceNo,
 			@RequestBody IntakeApplication vo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InIntake intake = application.getIntake();
 		application.setVerified(true);
 		applicationService.selectIntakeApplication(intake, application);
@@ -319,7 +319,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/reject", method = RequestMethod.PUT)
 	public ResponseEntity<String> rejectIntakeApplication(@PathVariable String referenceNo,
 			@RequestBody IntakeApplication vo) {
-		InIntakeApplication application = applicationService.findIntakeApplicationById(vo.getId());
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		application.setReason(vo.getReason());
 		System.out.println("vo.getReason() reject:" + vo.getReason());
 		application.setBidStatus(InBidStatus.REJECTED);
