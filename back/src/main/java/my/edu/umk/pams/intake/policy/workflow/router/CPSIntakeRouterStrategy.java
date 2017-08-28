@@ -1,4 +1,4 @@
-/*
+
  package my.edu.umk.pams.intake.policy.workflow.router;
 
 
@@ -14,55 +14,51 @@ public class CPSIntakeRouterStrategy extends RouterStrategySupport {
 
     @Override
     public String findVerifierCandidate() {
-        return "GRP_PGW_ADM_CPS";
+        return "GRP_KRN_ADM_CPS";  //cps-kerani
     }
 
     @Override
     public String findPublisherCandidate() {
-        return "GRP_PGW_ADM_CPS";
+        return "GRP_PGW_ADM_CPS";  //cps-pegawai
     }
     
     @Override
     public String findEvaluatorCandidate() {
-        return "GRP_PGW_ADM_CPS";
+        return "GRP_PGW_PTJ_IO";  //io-pegawai
     }
 
-//    @Override
-//    public List<String> findEvaluatorCandidates() {
-//        return Arrays.asList("GRP_PGW_ADM_MGSEB", "GRP_KRN_PTJ_IO");
-//    }
+    @Override
+    public List<String> findEvaluatorCandidates() {
+        return Arrays.asList("GRP_PGW_ADM_CPS", "GRP_PGW_PTJ_IO");   //cps-pegawai , io-pegawai
+    }
 
     @Override
     public String findSelectorCandidate() {
-        return "GRP_PGW_ADM_CPS";
+        return "GRP_KRN_FCTY_A01"; //fakulti-kerani-A01
     }
     
     @Override
     public String findPreapproverCandidate() {
-        return "GRP_PGW_ADM_CPS";
+        return "GRP_PGW_FCTY_A01";  //fakulti-pegawai-A01
+    }
+    
+    @Override
+    public String findUpperCandidate() {
+        return "GRP_PGW_FCTY_A01"; //fakulti-pegawai-A01
+    }
+    
+    @Override
+    public String findOfferCandidate() {
+        return "GRP_PGW_FCTY_A01"; //fakulti-pegawai-A01
+    }
+    
+    @Override
+    public String findRegisterCandidate() {
+        return "GRP_PGW_FCTY_A01"; //fakulti-pegawai-A01
     }
 
 
 }
-*/
-
-package my.edu.umk.pams.intake.policy.workflow.router;
 
 
-import my.edu.umk.pams.intake.common.router.RouterStrategySupport;
 
-public class CPSIntakeRouterStrategy extends RouterStrategySupport {
-
-    public CPSIntakeRouterStrategy() {
-    }
-
-    @Override
-    public String findRegistererCandidate() {
-        return "GRP_KRN_CPS";
-    }
-
-    @Override
-    public String findVerifierCandidate() {
-        return "GRP_PGW_CPS";
-    }
-}

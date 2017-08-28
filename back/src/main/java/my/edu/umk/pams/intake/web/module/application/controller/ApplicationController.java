@@ -196,7 +196,7 @@ public class ApplicationController {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		application.setResearchTitle(vo.getResearchTitle());
 		application.setName(vo.getName());
-		application.setPromoCode(commonService.findPromoCodeByCode(vo.getPromoCode().getCode()));
+	//	application.setPromoCode(commonService.findPromoCodeByCode(vo.getPromoCode().getCode()));
 		application.setPhone(vo.getPhone());
 		application.setMobile(vo.getMobile());
 		application.setFax(vo.getFax());
