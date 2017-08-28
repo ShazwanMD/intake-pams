@@ -24,7 +24,7 @@ public class CPSIntakeRouterStrategy extends RouterStrategySupport {
     
     @Override
     public String findEvaluatorCandidate() {
-        return "GRP_PGW_PTJ_IO";  //io-pegawai
+        return "GRP_PGW_PTJ_IO";  //io-pegawai (not in use)
     }
 
     @Override
