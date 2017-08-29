@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.web.module.application.controller;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.common.model.InPromoCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InActor;
@@ -196,7 +197,6 @@ public class ApplicationController {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		application.setResearchTitle(vo.getResearchTitle());
 		application.setName(vo.getName());
-		application.setPromoCode(commonService.findPromoCodeByCode(vo.getPromoCode().getCode()));
 		application.setPhone(vo.getPhone());
 		application.setMobile(vo.getMobile());
 		application.setFax(vo.getFax());
@@ -284,12 +284,25 @@ public class ApplicationController {
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/promoCode", method = RequestMethod.PUT)
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/promoCode/{promoCode}", method = RequestMethod.PUT)
 	public ResponseEntity<String> promoCodeIntakeApplication(@PathVariable String referenceNo,
-			@RequestBody IntakeApplication vo) {
+			@PathVariable String promoCode, @RequestBody IntakeApplication vo) {
+		LOG.debug(" vo.getPromoCode().getCode() : " + vo.getReferenceNo());
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		application.setPromoCode(commonService.findPromoCodeByCode(vo.getPromoCode().getCode()));
-		applicationService.updateIntakeApplication(application);
+		InPromoCode getPromoCode = commonService.findPromoCodeByCode(promoCode);
+
+		if (getPromoCode==null) {
+			throw new IllegalArgumentException("Your Promo Code Does Not Exists");
+			
+		} else {
+			if (applicationService.isPromoCodeEntered(getPromoCode)) {
+				throw new IllegalArgumentException("Your Promo Code Is Invalid");
+			} else {
+				application.setPromoCode(getPromoCode);
+				applicationService.updateIntakeApplication(application);
+			}
+		}
+
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 
