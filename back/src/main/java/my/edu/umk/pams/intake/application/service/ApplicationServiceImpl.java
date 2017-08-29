@@ -40,6 +40,7 @@ import my.edu.umk.pams.intake.application.model.InReferee;
 import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.application.model.InResultType;
 import my.edu.umk.pams.intake.common.model.InCountryCode;
+import my.edu.umk.pams.intake.common.model.InPromoCode;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -403,6 +404,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 		return intakeApplicationDao.isIntakeApplicationExists(intake, applicant);
 	}
 
+	@Override
+	public boolean isPromoCodeEntered(InPromoCode promoCode) {
+		return intakeApplicationDao.isPromoCodeEntered(promoCode);
+	}
+	
 	@Override
 	public InResult findResultById(Long id) {
 		return intakeApplicationDao.findResultById(id);

@@ -380,6 +380,11 @@ public class CommonServiceImpl implements CommonService {
     public InPromoCode findPromoCodeByCode(String code) {
         return promoCodeDao.findByCode(code);
     }
+    
+    @Override
+    public boolean isPromoCodeExists(String code) {
+        return promoCodeDao.isExists(code);
+    }
 
     //====================================================================================================
     // CITY CODE

@@ -163,7 +163,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     }
   }
 
-   promoCodeDialog(): void {
+   promoCodeDialog(intakeApplication : IntakeApplication): void {
      console.log('promoCodeDialog');
     let config: MdDialogConfig = new MdDialogConfig();
      config.viewContainerRef = this.vcf;
@@ -172,6 +172,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     config.height = '65%';
      config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(PromoCodeDialog, config);
+    this.editorDialogRef.componentInstance.intakeApplications = intakeApplication;
      this.editorDialogRef.afterClosed().subscribe((res) => {
        console.log('close dialog');
     });

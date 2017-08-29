@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.application.service;
 
 import my.edu.umk.pams.intake.application.model.*;
+import my.edu.umk.pams.intake.common.model.InPromoCode;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
@@ -192,6 +193,8 @@ public interface ApplicationService {
 	void copyAddressApplication(InIntakeApplication application);
 
 	void checkAttachment(InIntakeApplication application, InAttachment attachment);
+
+	boolean isPromoCodeEntered(InPromoCode promoCode);
 
 //	void changeAddress(InIntakeApplication application);
 	

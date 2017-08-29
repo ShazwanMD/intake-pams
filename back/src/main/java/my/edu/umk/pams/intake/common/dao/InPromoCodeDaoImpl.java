@@ -40,6 +40,6 @@ public class InPromoCodeDaoImpl extends GenericDaoSupport<Long, InPromoCode> imp
                 "and s.metadata.state = :state ");
         query.setString("code", code);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
-        return 0 < ((Long) query.uniqueResult()).intValue();
+        return 0 > ((Long) query.uniqueResult()).intValue();
     }
 }

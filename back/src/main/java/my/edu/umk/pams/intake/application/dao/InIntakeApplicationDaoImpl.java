@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.application.dao;
 
 import my.edu.umk.pams.intake.application.model.*;
+import my.edu.umk.pams.intake.common.model.InPromoCode;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.core.InMetadata;
@@ -75,6 +76,17 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
                 "and s.metadata.state = :state ");
         query.setEntity("applicant", applicant);
         query.setInteger("year", intake.getSession().getYear());
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
+    
+    @Override
+    public boolean isPromoCodeEntered(InPromoCode promoCode) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from InIntakeApplication s where " +
+                "s.promoCode = :promoCode " +
+                "and s.metadata.state = :state ");
+        query.setEntity("promoCode", promoCode);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
     }

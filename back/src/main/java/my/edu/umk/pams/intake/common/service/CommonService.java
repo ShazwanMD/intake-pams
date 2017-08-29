@@ -828,5 +828,5 @@ public interface CommonService {
 
 	InPromoCode findPromoCodeByCode(String code);
 
-
+	boolean isPromoCodeExists(String code);
 }

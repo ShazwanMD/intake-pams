@@ -14,12 +14,13 @@ import {SupervisorOffering} from '../policy/supervisor-offering.interface';
 import {StudyModeOffering} from '../policy/study-mode-offering.interface';
 import {MetaObject} from '../../../core/meta-object.interface';
 import {GenderCode} from '../common/gender-code.interface';
+import {PromoCode} from '../common/promo-code.interface';
 import {BidStatus} from './bid-status.enum';
 import {BidType} from './bid-type.enum';
 
 export interface IntakeApplication extends MetaObject {
   referenceNo: string;
-  promoCode: string;
+  promoCode?: PromoCode;
   researchTitle: string;
   rank: number;
   merit: number;
