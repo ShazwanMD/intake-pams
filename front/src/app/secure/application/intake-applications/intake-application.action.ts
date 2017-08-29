@@ -365,6 +365,29 @@ export class IntakeApplicationActions {
       payload: educations,
     };
   }
+  
+  // ====================================================================================================
+  // PROMO CODE
+  // ====================================================================================================
+
+  static ENTER_PROMO_CODE = '[Intake Application] Enter Promo Code';
+
+  enterPromoCodeIntakeApplication(application): Action {
+    return {
+      type: IntakeApplicationActions.ENTER_PROMO_CODE,
+      payload: application,
+    };
+  }
+
+  static ENTER_PROMO_CODE_SUCCESS = '[Intake Application] Enter Promo Code Success';
+
+  enterPromoCodeIntakeApplicationSuccess(message): Action {
+    console.log('enterPromoCodeIntakeApplicationSuccess');
+    return {
+      type: IntakeApplicationActions.ENTER_PROMO_CODE_SUCCESS,
+      payload: message,
+    };
+  }
 
   // ====================================================================================================
   // EMPLOYMENT
