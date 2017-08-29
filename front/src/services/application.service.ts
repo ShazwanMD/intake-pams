@@ -140,7 +140,19 @@ export class ApplicationService {
       + intake.referenceNo + '/intakeApplications/bidStatus/SELECTED/verify/false')
       .map((res: Response) => <IntakeApplication[]>res.json());
   }
-
+  
+  //====================================================================================================
+  // PROMO CODE
+  // ====================================================================================================
+  
+  enterPromoCodeIntakeApplication(application: IntakeApplication): Observable<String> {
+      console.log('enterPromoCodeIntakeApplication');
+      return this._http.put(this.APPLICATION_API + '/intakeApplications/'
+        + application.referenceNo + '/promoCode/' + application.promoCode, JSON.stringify(application))
+        .flatMap((res: Response) => Observable.of(res.text()))
+        .catch(this.handleError);
+    }
+  
   // ====================================================================================================
   // EDUCATION
   // ====================================================================================================
