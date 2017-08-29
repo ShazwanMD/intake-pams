@@ -305,6 +305,24 @@ export class IntakeApplicationActions {
     };
   }
 
+  static PROMO_CODE_INTAKE_APPLICATION = '[Intake Application] Promo Code Intake Application';
+  
+  promoCodeIntakeApplication(application): Action {
+      return {
+        type: IntakeApplicationActions.PROMO_CODE_INTAKE_APPLICATION,
+        payload: application,
+      };
+    }
+  
+    static PROMO_CODE_INTAKE_APPLICATION_SUCCESS = '[Intake Application] Promo Code Intake Application Success';
+  
+    promoCodeIntakeApplicationSuccess(message): Action {
+      return {
+        type: IntakeApplicationActions.PROMO_CODE_INTAKE_APPLICATION_SUCCESS,
+        payload: message,
+      };
+    }
+
   static FIND_INTAKE_APPLICATION_BY_REFERENCE_NO = '[Intake Application] Find Intake By Reference No';
 
   findIntakeApplicationByReferenceNo(referenceNo): Action {

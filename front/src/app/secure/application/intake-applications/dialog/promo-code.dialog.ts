@@ -51,7 +51,7 @@ export class PromoCodeDialog implements OnInit {
   }
   
   submit(intakeApplication : IntakeApplication) {
-      if (confirm('Create intake?')) {
+      if (confirm('Confirm to Submit this Promo Code?')) {
           console.log("intakeApplication : "+intakeApplication.referenceNo);
           console.log("intakeApplication : "+intakeApplication.promoCode);
           this.store.dispatch(this.actions.enterPromoCodeIntakeApplication(intakeApplication));

@@ -26,6 +26,8 @@ export class AdmissionPage implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(() => {
       this.store.dispatch(this.actions.findAssignedIntakeTasks());
+      this.store.dispatch(this.actions.findPooledIntakeTasks());
+   // this.store.dispatch(this.actions.findArchivedIntakes());
     });
   }
 

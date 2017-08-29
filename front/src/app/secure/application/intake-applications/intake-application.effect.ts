@@ -148,6 +148,12 @@ export class IntakeApplicationEffects {
     .switchMap((application) => this.applicationService.rejectIntakeApplication(application))
     .map((message) => this.intakeApplicationActions.rejectIntakeApplicationSuccess(message))
 
+    @Effect() promoCodeIntakeApplication$ = this.actions$
+    .ofType(IntakeApplicationActions.PROMO_CODE_INTAKE_APPLICATION)
+    .map((action) => action.payload)
+    .switchMap((application) => this.applicationService.promoCodeIntakeApplication(application))
+    .map((message) => this.intakeApplicationActions.promoCodeIntakeApplicationSuccess(message))
+
   @Effect() findSubmittedIntakeApplications$ = this.actions$
     .ofType(IntakeActions.FIND_INTAKE_APPLICATIONS_BY_INTAKE)
     .map((action) => action.payload)
