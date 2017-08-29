@@ -153,6 +153,17 @@ export class IntakeApplicationEffects {
     .map((action) => action.payload)
     .switchMap((intake) => this.applicationService.findSubmittedIntakeApplications(intake))
     .map((applications) => this.intakeActions.findIntakeApplicationsByIntakeSuccess(applications));
+  
+  // ====================================================================================================
+  // PROMO CODE
+  // ====================================================================================================
+  
+  @Effect() enterPromoCodeIntakeApplications = this.actions$
+  .ofType(IntakeApplicationActions.ENTER_PROMO_CODE)
+  .map((action) => action.payload)
+  .switchMap((application) => this.applicationService.enterPromoCodeIntakeApplication(application))
+  .map((message) => this.intakeApplicationActions.enterPromoCodeIntakeApplicationSuccess(message))
+  .catch((error) => this.notificationService.showError(error));
 
   // ====================================================================================================
   // EDUCATION
