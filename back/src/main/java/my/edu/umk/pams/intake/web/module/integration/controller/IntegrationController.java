@@ -61,6 +61,7 @@ public class IntegrationController {
         programCode.setFacultyCode(commonService.findFacultyCodeByCode(payload.getFacultyCode().getCode()));
         programCode.setGraduateCenter(commonService.findGraduateCenterByCode("MGSEB")); // todo
         programCode.setProgramLevel(policyService.findProgramLevelByCode("MASTER")); // todo
+        commonService.saveProgramCode(programCode);
 
         logoutAsSystem(ctx);
         return new ResponseEntity<String>("success", HttpStatus.OK);
@@ -75,6 +76,7 @@ public class IntegrationController {
         facultyCode.setPrefix(payload.getCode()); // prefix
         facultyCode.setDescriptionEn(payload.getDescription());
         facultyCode.setDescriptionMs(payload.getDescription());
+        commonService.saveFacultyCode(facultyCode);
 
         logoutAsSystem(ctx);
         return new ResponseEntity<String>("success", HttpStatus.OK);
