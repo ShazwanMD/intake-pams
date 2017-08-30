@@ -20,7 +20,8 @@ import { Language } from '../../../../shared/model/application/language.interfac
 import { NationalityCode } from '../../../../shared/model/common/nationality-code.interface';
 import { MaritalCode } from '../../../../shared/model/common/marital-code.interface';
 import { ReligionCode } from '../../../../shared/model/common/religion-code.interface';
-import { MdSnackBar, MdTabChangeEvent } from '@angular/material';
+import { MdSnackBar, MdTabChangeEvent, MdDialogConfig, MdDialog, MdDialogRef } from '@angular/material';
+import { PromoCodeDialog } from "../dialog/promo-code.dialog";
 
 @Component({
   selector: 'pams-mgseb-intake-application',
@@ -28,6 +29,8 @@ import { MdSnackBar, MdTabChangeEvent } from '@angular/material';
 })
 
 export class MgsebIntakeApplicationPanel implements OnInit {
+
+  private editorDialogRef: MdDialogRef<PromoCodeDialog>; 
 
   private TAB_INDEX: string[] = 'applicationModuleState.tabIndex'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
@@ -50,6 +53,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
     private formBuilder: FormBuilder,
     private vcf: ViewContainerRef,
     private snackBar: MdSnackBar,
+    private dialog: MdDialog,
     private actions: IntakeApplicationActions,
     private store: Store<ApplicationModuleState>) {
 
@@ -146,6 +150,20 @@ export class MgsebIntakeApplicationPanel implements OnInit {
     this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
   }
 
+  promoCodeDialog(intakeApplication : IntakeApplication): void {
+    console.log('promoCodeDialog');
+   let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+   config.height = '65%';
+    config.position = {top: '0px'};
+   this.editorDialogRef = this.dialog.open(PromoCodeDialog, config);
+   this.editorDialogRef.componentInstance.intakeApplications = intakeApplication;
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
+   });
+  }
 
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
