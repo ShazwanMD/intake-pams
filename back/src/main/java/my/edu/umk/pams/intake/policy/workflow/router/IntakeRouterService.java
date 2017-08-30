@@ -44,10 +44,10 @@ public class IntakeRouterService extends RouterServiceSupport {
 
         InGraduateCenter center = intake.getGraduateCenter();
         RouterStrategy strategy = strategies.get(center.getCode());
-        String candidate = strategy.findVerifierCandidate();
+        List<String> candidates = strategy.findVerifierCandidates();
         // todo(ashraf): permission publishing
 
-        return Arrays.asList(candidate);
+        return candidates;
     }
 
     public List<String> findPublisherCandidates(Long intakeId) {
@@ -56,10 +56,10 @@ public class IntakeRouterService extends RouterServiceSupport {
         InIntake intake = policyService.findIntakeById(intakeId);
         InGraduateCenter center = intake.getGraduateCenter();
         RouterStrategy strategy = strategies.get(center.getCode());
-        String candidate = strategy.findPublisherCandidate();
+        List<String> candidates = strategy.findPublisherCandidates();
         // todo(ashraf): permission publishing
 
-        return Arrays.asList(candidate);
+        return candidates;
     }
 
     public List<String> findEvaluatorCandidates(Long intakeId) {
@@ -71,7 +71,7 @@ public class IntakeRouterService extends RouterServiceSupport {
         List<String> candidates = strategy.findEvaluatorCandidates();
         // todo(ashraf): permission publishing
 
-        return Arrays.asList("GRP_PGW_PTJ_IO", "GRP_PGW_ADM_CPS");
+        return candidates;
     }
     
     public List<String> findSelectorCandidates(Long intakeId) {
@@ -80,10 +80,10 @@ public class IntakeRouterService extends RouterServiceSupport {
         InIntake intake = policyService.findIntakeById(intakeId);
         InGraduateCenter center = intake.getGraduateCenter();
         RouterStrategy strategy = strategies.get(center.getCode());
-        String candidate = strategy.findSelectorCandidate();
+        List<String> candidates = strategy.findSelectorCandidates();
         // todo(ashraf): permission publishing
 
-        return Arrays.asList(candidate);
+        return candidates;
     }
     
     public List<String> findPreapproverCandidates(Long intakeId) {
@@ -92,10 +92,10 @@ public class IntakeRouterService extends RouterServiceSupport {
         InIntake intake = policyService.findIntakeById(intakeId);
         InGraduateCenter center = intake.getGraduateCenter();
         RouterStrategy strategy = strategies.get(center.getCode());
-        String candidate = strategy.findPreapproverCandidate();
+        List<String> candidates = strategy.findPreapproverCandidates();
         // todo(ashraf): permission publishing
 
-        return Arrays.asList(candidate);
+        return candidates;
     }
     
     public List<String> findUpperCandidates(Long intakeId) {
@@ -104,10 +104,10 @@ public class IntakeRouterService extends RouterServiceSupport {
         InIntake intake = policyService.findIntakeById(intakeId);
         InGraduateCenter center = intake.getGraduateCenter();
         RouterStrategy strategy = strategies.get(center.getCode());
-        String candidate = strategy.findUpperCandidate();
+        List<String> candidates = strategy.findUpperCandidates();
         // todo(ashraf): permission publishing
 
-        return Arrays.asList(candidate);
+        return candidates;
     }
     
     public List<String> findOfferCandidates(Long intakeId) {
@@ -116,10 +116,10 @@ public class IntakeRouterService extends RouterServiceSupport {
         InIntake intake = policyService.findIntakeById(intakeId);
         InGraduateCenter center = intake.getGraduateCenter();
         RouterStrategy strategy = strategies.get(center.getCode());
-        String candidate = strategy.findOfferCandidate();
+        List<String> candidates = strategy.findOfferCandidates();
         // todo(ashraf): permission publishing
 
-        return Arrays.asList(candidate);
+        return candidates;
     }
     
     public List<String> findRegisterCandidates(Long intakeId) {
@@ -128,10 +128,10 @@ public class IntakeRouterService extends RouterServiceSupport {
         InIntake intake = policyService.findIntakeById(intakeId);
         InGraduateCenter center = intake.getGraduateCenter();
         RouterStrategy strategy = strategies.get(center.getCode());
-        String candidate = strategy.findRegisterCandidate();
+        List<String> candidates = strategy.findRegisterCandidates();
         // todo(ashraf): permission publishing
 
-        return Arrays.asList(candidate);
+        return candidates;
     }
 }
 

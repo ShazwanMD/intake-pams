@@ -70,6 +70,14 @@ public interface RouterStrategy {
 
 	public String findRegisterCandidate();
 
+	public List<String> findPreapproverCandidates();
+
+	public List<String> findUpperCandidates();
+
+	public List<String> findOfferCandidates();
+
+	public List<String> findRegisterCandidates();
+
 
 }
 
