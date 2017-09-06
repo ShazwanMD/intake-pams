@@ -56,29 +56,30 @@
        </md-input-container> -->
 
         <md-input-container fxFlex="calc(50%-25px)">
-        <input mdInput placeholder="NRIC/Passport" formControlName="credentialNo"/>
+        <input mdInput formControlName="credentialNo" placeholder="NRIC/Passport *">
         </md-input-container>
         <div class="error" class="tc-red-600"
          *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
          Your Ic or Passport Number is required!
         </div>
-
+        
         <md-input-container fxFlex="calc(50%-25px)">
-        <input mdInput type="date" placeholder="Date of Birth" formControlName="birthDate"/>
+        <input mdInput type="date" formControlName="birthDate" placeholder="Date of Birth *"/>
         </md-input-container>
         <div class="error" class="tc-red-600"
           *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
               Your Birth Date is required!
         </div>
 
-        <pams-nationality-code-select [placeholder]="'Nationality'"
+
+        <pams-nationality-code-select [placeholder]="'Nationality *'"
                                           [innerFormControl]="applicationForm.controls.nationalityCode"
                                           fxFlex="calc(50%-25px)" class="pad-bottom">
         </pams-nationality-code-select>
-        <div class="error" class="tc-red-600"
+        <!-- <div class="error" class="tc-red-600"
                  *ngIf="applicationForm.get('nationalityCode').invalid && applicationForm.get('nationalityCode').touched">
               Please add your nationality!
-        </div>
+        </div> -->
 
         <pams-race-code-select [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode"
                                    fxFlex="calc(50%-25px)" class="pad-bottom">
@@ -94,7 +95,7 @@
         </md-input-container>
 
         <md-input-container fxFlex="calc(50%-25px)">
-          <input mdInput placeholder="Phone No" formControlName="mobile"/>
+        <input mdInput placeholder="Phone No *" formControlName="mobile"/>
         </md-input-container>
           <div class="error" class="tc-red-600"
                  *ngIf="applicationForm.get('mobile').invalid && applicationForm.get('mobile').touched">
