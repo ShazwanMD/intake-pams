@@ -1,3 +1,4 @@
+import { Validators } from '@angular/forms';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -26,13 +27,13 @@ export class IntakeSessionCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<IntakeSession>{
-      id: null,
-      code: '',
-      label: '',
-      descriptionMs: '',
-      descriptionEn: '',
-      year: 0,
+    this.createForm = this.formBuilder.group({
+      id: [null],
+      code: ['',Validators.required],
+      label: ['',Validators.required],
+      descriptionMs: ['',Validators.required],
+      descriptionEn: ['',Validators.required],
+      year: [0,Validators.required],
       current: false,
     });
   }

@@ -7,26 +7,41 @@
           <md-input-container flex>
             <input mdInput #description placeholder="Code" formControlName="code" flex/>
           </md-input-container>
+          <div class="error" class="tc-red-600"
+          *ngIf="createForm.get('code').invalid && createForm.get('code').touched">Code is Required!
+          </div>  
         </div>
         <div layout="row">
           <md-input-container flex>
             <input mdInput class="uppercase" placeholder="label" formControlName="label" flex/>
           </md-input-container>
+          <div class="error" class="tc-red-600"
+          *ngIf="createForm.get('label').invalid && createForm.get('label').touched">Label is Required!
+          </div>  
         </div>
         <div layout="row">
           <md-input-container flex>
             <input mdInput class="uppercase" placeholder="Description (MS)" formControlName="descriptionMs" flex/>
           </md-input-container>
+          <div class="error" class="tc-red-600"
+          *ngIf="createForm.get('descriptionMs').invalid && createForm.get('descriptionMs').touched">Description Ms is Required!
+          </div> 
         </div>
         <div layout="row">
           <md-input-container flex>
             <input mdInput class="uppercase" placeholder="Description (EN)" formControlName="descriptionEn" flex/>
           </md-input-container>
+          <div class="error" class="tc-red-600"
+          *ngIf="createForm.get('descriptionEn').invalid && createForm.get('descriptionEn').touched">Description En is Required!
+          </div> 
         </div>
         <div layout="row">
           <md-input-container flex>
             <input mdInput type="number" placeholder="Year" formControlName="year" flex/>
           </md-input-container>
+          <div class="error" class="tc-red-600"
+          *ngIf="createForm.get('year').invalid && createForm.get('year').touched">Year is Required!
+          </div> 
         </div>
 
         <div layout="row" class="pad-bottom">
@@ -42,5 +57,5 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)"[disabled]="!createForm.valid">Save</button>
 </md-dialog-actions>
