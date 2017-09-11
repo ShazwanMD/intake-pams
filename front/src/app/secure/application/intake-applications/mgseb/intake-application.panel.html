@@ -113,10 +113,18 @@
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 1" formControlName="officialAddress1" flex/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('officialAddress1').invalid && applicationForm.get('officialAddress1').touched">
+            official Address 1 is required!
+           </div>
 
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 2" formControlName="officialAddress2" flex/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('officialAddress2').invalid && applicationForm.get('officialAddress2').touched">
+            official Address 2 is required!
+           </div>
 
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 3" formControlName="officialAddress3" flex/>
@@ -125,6 +133,10 @@
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Postcode" formControlName="officialPostcode" flex/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('officialPostcode').invalid && applicationForm.get('officialPostcode').touched">
+            official Postcode is required!
+           </div>
 
             <pams-state-code-select [placeholder]="'State'" [innerFormControl]="applicationForm.controls.officialStateCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
@@ -150,10 +162,18 @@
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 1" formControlName="mailingAddress1" />
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('mailingAddress1').invalid && applicationForm.get('mailingAddress1').touched">
+            mailing Address 1 is required!
+           </div>
 
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 2" formControlName="mailingAddress2" />
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('mailingAddress2').invalid && applicationForm.get('mailingAddress2').touched">
+            mailing Address 2 is required!
+           </div>
 
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 3" formControlName="mailingAddress3" flex/>
@@ -162,6 +182,11 @@
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Postcode" formControlName="mailingPostcode" />
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('mailingPostcode').invalid && applicationForm.get('mailingPostcode').touched">
+            mailing Postcode is required!
+           </div>
+            
 
             <pams-state-code-select [placeholder]="'State'" [innerFormControl]="applicationForm.controls.mailingStateCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
