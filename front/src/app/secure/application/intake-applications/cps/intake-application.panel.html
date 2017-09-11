@@ -132,23 +132,37 @@
       <md-tab>
         <template md-tab-label>Address Information</template>
         <td-expansion-panel label="Address Detail">
+          Please fill in official and mailing Address.
+          
           Official Address
           <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
             <md-input-container fxFlex="calc(100%-25px)">
-              <input mdInput placeholder="Address 1" formControlName="officialAddress1" flex/>
+              <input mdInput placeholder="Address 1 *" formControlName="officialAddress1" flex/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('officialAddress1').invalid && applicationForm.get('officialAddress1').touched">
+            official Address 1 is required!
+           </div>
 
             <md-input-container fxFlex="calc(100%-25px)">
-              <input mdInput placeholder="Address 2" formControlName="officialAddress2" flex/>
+              <input mdInput placeholder="Address 2 *" formControlName="officialAddress2" flex/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('officialAddress2').invalid && applicationForm.get('officialAddress2').touched">
+            official Address 2 is required!
+           </div>
 
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 3" formControlName="officialAddress3" flex/>
             </md-input-container>
 
             <md-input-container fxFlex="calc(100%-25px)">
-              <input mdInput placeholder="Postcode" formControlName="officialPostcode" flex/>
+              <input mdInput placeholder="Postcode *" formControlName="officialPostcode" flex/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('officialPostcode').invalid && applicationForm.get('officialPostcode').touched">
+            official Postcode is required!
+           </div>
 
             <pams-state-code-select [placeholder]="'State'"
                                     [innerFormControl]="applicationForm.controls.officialStateCode"
@@ -177,20 +191,34 @@
 
           <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
             <md-input-container fxFlex="calc(100%-25px)">
-              <input mdInput placeholder="Address 1" formControlName="mailingAddress1"/>
+              <input mdInput placeholder="Address 1 *" formControlName="mailingAddress1"/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('mailingAddress1').invalid && applicationForm.get('mailingAddress1').touched">
+            mailing Address 1 is required!
+           </div>
+
 
             <md-input-container fxFlex="calc(100%-25px)">
-              <input mdInput placeholder="Address 2" formControlName="mailingAddress2"/>
+              <input mdInput placeholder="Address 2 *" formControlName="mailingAddress2"/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('mailingAddress2').invalid && applicationForm.get('mailingAddress2').touched">
+            mailing Address 2 is required!
+           </div>
+
 
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 3" formControlName="mailingAddress3" flex/>
             </md-input-container>
 
             <md-input-container fxFlex="calc(100%-25px)">
-              <input mdInput placeholder="Postcode" formControlName="mailingPostcode"/>
+              <input mdInput placeholder="Postcode *" formControlName="mailingPostcode"/>
             </md-input-container>
+            <div class="error" class="tc-red-600"
+            *ngIf="applicationForm.get('mailingPostcode').invalid && applicationForm.get('mailingPostcode').touched">
+            mailing Postcode is required!
+           </div>
 
             <pams-state-code-select [placeholder]="'State'"
                                     [innerFormControl]="applicationForm.controls.mailingStateCode"
