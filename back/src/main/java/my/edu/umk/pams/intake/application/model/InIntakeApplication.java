@@ -86,7 +86,11 @@ public interface InIntakeApplication extends InMetaObject {
 
     Boolean isDeclared();
 
-    void setDeclared(Boolean declared);    
+    void setDeclared(Boolean declared); 
+    
+    Boolean isCopiedAddress();
+
+    void setCopiedAddress(Boolean copyAddressed); 
     
     Boolean isSponsored();
 

@@ -98,6 +98,9 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     
     @Column(name = "DECLARED")
     private Boolean declared = false;
+    
+    @Column(name = "COPY_ADDRESSED")
+    private Boolean copyAddressed = false;
 
     @Column(name = "SPONSORED")
     private Boolean sponsored = false;
@@ -687,6 +690,14 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 	public void setDeclared(Boolean declared) {
 		this.declared = declared;
 	}
+	
+	 public Boolean isCopiedAddress() {
+			return copyAddressed;
+		}
+
+		public void setCopiedAddress(Boolean copyAddressed) {
+			this.copyAddressed = copyAddressed;
+		}
 
 	public String getMailingAddress1() {
         return mailingAddress1;

@@ -599,6 +599,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		officialAddress.setOfficialStateCode(application.getOfficialStateCode());
 		officialAddress.setOfficialCountryCode(application.getOfficialCountryCode());
 		updateIntakeApplication(application);
+		application.setCopiedAddress(true);
 
 		// copy updated official address to mailing address
 		application.setMailingAddress1(application.getOfficialAddress1());
@@ -609,6 +610,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		application.setMailingCountryCode(application.getOfficialCountryCode());
 
 		updateIntakeApplication(application);
+		application.setCopiedAddress(true);
 
 	}
 

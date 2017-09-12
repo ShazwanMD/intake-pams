@@ -139,7 +139,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       bankStatement: [true],
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
-      copyAddress: [false],
+      copyAddressed: [true],
     });
     this.applicationForm.patchValue(this._intakeApplication);
   }
