@@ -178,14 +178,24 @@ export class CpsIntakeApplicationPanel implements OnInit {
     });
    }
 
-  copyAddress(application: IntakeApplication): void {
-    this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
-    let snackBarRef: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Confirm to Copy this address?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-      if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
-      else this.store.dispatch(this.actions.copyAddressApplication(application));
+  // copyAddress(application: IntakeApplication): void {
+  //   this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  //   let snackBarRef: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Confirm to Copy this address?', 'Ok');
+  //   snackBarRef.afterDismissed().subscribe(() => {
+  //     if (!application.id) this.store.dispatch(this.actions.updateIntakeApplication(application));
+  //     else this.store.dispatch(this.actions.copyAddressApplication(application));
+  //     this.goBack();
+  //   });
+  // }
+
+  copyAddress(application: IntakeApplication) {
+    // this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+    if (confirm('Confirm to copy this address?')) {
+         this.store.dispatch(this.actions.copyAddressApplication(application));  
       this.goBack();
-    });
+    } else {
+      return false;
+    }
   }
 
   goBack(): void {

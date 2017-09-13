@@ -692,12 +692,12 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 	}
 	
 	 public Boolean isCopiedAddress() {
-			return copyAddressed;
-		}
+		return copyAddressed;
+	}
 
-		public void setCopiedAddress(Boolean copyAddressed) {
-			this.copyAddressed = copyAddressed;
-		}
+	public void setCopiedAddress(Boolean copyAddressed) {
+	   this.copyAddressed = copyAddressed;
+	}
 
 	public String getMailingAddress1() {
         return mailingAddress1;
