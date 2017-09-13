@@ -188,15 +188,15 @@ export class CpsIntakeApplicationPanel implements OnInit {
   //   });
   // }
 
-  copyAddress(application: IntakeApplication) {
-    // this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
-    if (confirm('Confirm to copy this address?')) {
-         this.store.dispatch(this.actions.copyAddressApplication(application));  
-      this.goBack();
-    } else {
-      return false;
-    }
-  }
+  // copyAddress(application: IntakeApplication) {
+  //   // this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
+  //   if (confirm('Confirm to copy this address?')) {
+  //        this.store.dispatch(this.actions.copyAddressApplication(application));  
+  //     this.goBack();
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   goBack(): void {
     this.router.navigate(['/secure']);
