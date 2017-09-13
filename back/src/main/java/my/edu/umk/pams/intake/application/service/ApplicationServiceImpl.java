@@ -614,34 +614,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 		updateIntakeApplication(application);
 		
 	}
-//	
-//	@Override
-//	public void copyAddressApplication(InIntakeApplication application) {
-//
-//		InIntakeApplication officialAddress = new InIntakeApplicationImpl();
-//		// update new official address
-//		application.setCopiedAddress(true);
-//		officialAddress.setOfficialAddress1(application.getOfficialAddress1());
-//		officialAddress.setOfficialAddress2(application.getOfficialAddress2());
-//		officialAddress.setOfficialAddress3(application.getOfficialAddress3());
-//		officialAddress.setOfficialPostcode(application.getOfficialPostcode());
-//		officialAddress.setOfficialStateCode(application.getOfficialStateCode());
-//		officialAddress.setOfficialCountryCode(application.getOfficialCountryCode());
-////		application.setCopiedAddress(true);
-//		updateIntakeApplication(application);
-//		
-//
-//		// copy updated official address to mailing address
-//		application.setMailingAddress1(application.getOfficialAddress1());
-//		application.setMailingAddress2(application.getOfficialAddress2());
-//		application.setMailingAddress3(application.getOfficialAddress3());
-//		application.setMailingPostcode(application.getOfficialPostcode());
-//		application.setMailingStateCode(application.getOfficialStateCode());
-//		application.setMailingCountryCode(application.getOfficialCountryCode());
-////		application.setCopiedAddress(true);
-//		updateIntakeApplication(application);
-//		
-//	}
 
 	@Override
 	public void checkAttachment(InIntakeApplication application, InAttachment attachment) {
@@ -652,7 +624,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 			application.setStpmResultAttached(true);
 		}
 		else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA) {
-			application.setStpmResultAttached(true);
+			application.setDiplomaResultAttached(true);
 		}
 		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR) {
 			application.setBachelorResultAttached(true);

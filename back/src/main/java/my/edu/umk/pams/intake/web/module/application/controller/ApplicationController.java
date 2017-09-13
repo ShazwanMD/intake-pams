@@ -270,6 +270,7 @@ public class ApplicationController {
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/copy", method = RequestMethod.POST)
 	public ResponseEntity<String> copyAddressApplication(@PathVariable String referenceNo) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		application.setCopiedAddress(true);
 		applicationService.copyAddressApplication(application);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}

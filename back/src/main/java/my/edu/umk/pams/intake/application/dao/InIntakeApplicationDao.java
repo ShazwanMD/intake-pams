@@ -170,7 +170,7 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     void updateEmployment(InIntakeApplication application, InEmployment employment, InUser user);
 
     void updateLanguage(InIntakeApplication application, InLanguage language, InUser user);
-
+    
 	List<InIntakeApplication> findStatusVerify(InIntake intake, InBidStatus bidStatus);
 
 	boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant);

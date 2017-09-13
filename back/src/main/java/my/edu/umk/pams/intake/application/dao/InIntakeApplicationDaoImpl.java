@@ -819,6 +819,7 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
         Session session = sessionFactory.getCurrentSession();
         session.update(language);
     }
+    
 
     @Override
     public void deleteReferee(InIntakeApplication application, InReferee referee, InUser user) {
