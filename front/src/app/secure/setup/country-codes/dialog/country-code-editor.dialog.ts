@@ -47,11 +47,10 @@ export class CountryCodeEditorDialog implements OnInit {
   }
 
   save(code: CountryCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Update country code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Update country code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveCountryCode(code));
     else  this.store.dispatch(this.actions.updateCountryCode(code));
     this.dialog.close();
-    });
+    };
   }
 }
