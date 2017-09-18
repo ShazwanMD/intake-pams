@@ -47,11 +47,10 @@ export class GraduateCenterEditorDialog implements OnInit {
   }
 
   save(code: GraduateCenter, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Update graduate center?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Update graduate code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveGraduateCenter(code));
     else  this.store.dispatch(this.actions.updateGraduateCenter(code));
     this.dialog.close();
-    });
+    };
   }
 }
