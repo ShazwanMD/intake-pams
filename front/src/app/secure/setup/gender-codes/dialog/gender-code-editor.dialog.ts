@@ -47,7 +47,7 @@ export class GenderCodeEditorDialog implements OnInit {
   }
 
   save(code: GenderCode, isValid: boolean) {
-    if (confirm('Update race code?')) {
+    if (confirm('Update gender code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveGenderCode(code));
     else  this.store.dispatch(this.actions.updateGenderCode(code));
     this.dialog.close();
