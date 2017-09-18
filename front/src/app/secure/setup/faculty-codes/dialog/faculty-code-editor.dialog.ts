@@ -48,11 +48,10 @@ export class FacultyCodeEditorDialog implements OnInit {
   }
 
   submit(code: FacultyCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update V code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update Faculty code?')){
     if (!code.id) this.store.dispatch(this.actions.saveFacultyCode(code));
     else  this.store.dispatch(this.actions.updateFacultyCode(code));
     this.dialog.close();
-    });
+    };
   }
 }

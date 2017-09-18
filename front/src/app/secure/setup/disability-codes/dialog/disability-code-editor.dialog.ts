@@ -47,11 +47,10 @@ export class DisabilityCodeEditorDialog implements OnInit {
   }
 
   submit(code: DisabilityCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update disability code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update disability code?')){
     if (!code.id) this.store.dispatch(this.actions.saveDisabilityCode(code));
     else  this.store.dispatch(this.actions.updateDisabilityCode(code));
     this.dialog.close();
-    });
+    };
   }
 }

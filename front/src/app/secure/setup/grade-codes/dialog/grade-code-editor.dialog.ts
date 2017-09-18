@@ -46,11 +46,10 @@ export class GradeCodeEditorDialog implements OnInit {
   }
 
   submit(code: GradeCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update grade code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update grade code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveGradeCode(code));
     else  this.store.dispatch(this.actions.updateGradeCode(code));
     this.dialog.close();
-    });
+    };
   }
 }

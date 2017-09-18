@@ -47,11 +47,10 @@ export class LanguageCodeEditorDialog implements OnInit {
   }
 
   submit(code: LanguageCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update language code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Update language code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveLanguageCode(code));
     else  this.store.dispatch(this.actions.updateLanguageCode(code));
     this.dialog.close();
-    });
+    };
   }
 }

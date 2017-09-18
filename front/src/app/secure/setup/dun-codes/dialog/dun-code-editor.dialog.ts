@@ -45,11 +45,10 @@ export class DunCodeEditorDialog implements OnInit {
   }
 
   submit(code: DunCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update dun code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update dun code?')){
       if (!code.id) this.store.dispatch(this.actions.saveDunCode(code));
       else  this.store.dispatch(this.actions.updateDunCode(code));
       this.dialog.close();
-    });
+    };
   }
 }
