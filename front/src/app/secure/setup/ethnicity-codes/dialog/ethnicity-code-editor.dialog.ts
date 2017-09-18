@@ -47,11 +47,10 @@ set ethnicityCode(value: EthnicityCode) {
   }
 
   submit(code: EthnicityCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update ethnicity code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Update ethnicity code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveEthnicityCode(code));
     else  this.store.dispatch(this.actions.updateEthnicityCode(code));
     this.dialog.close();
-    });
+    };
   }
 }
