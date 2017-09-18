@@ -45,11 +45,10 @@ export class DistrictCodeEditorDialog implements OnInit {
   }
 
   submit(code: DistrictCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update district code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update district code?')){
     if (!code.id) this.store.dispatch(this.actions.saveDistrictCode(code));
     else  this.store.dispatch(this.actions.updateDistrictCode(code));
     this.dialog.close();
-    });
+    };
   }
 }
