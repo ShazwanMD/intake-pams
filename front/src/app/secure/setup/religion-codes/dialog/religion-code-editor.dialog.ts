@@ -47,11 +47,10 @@ set religionCode(value: ReligionCode) {
 }
 
    submit(code: ReligionCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update religion code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update religion code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveReligionCode(code));
     else  this.store.dispatch(this.actions.updateReligionCode(code));
     this.dialog.close();
-    });
+    };
   }
 }
