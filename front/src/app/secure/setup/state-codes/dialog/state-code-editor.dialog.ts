@@ -46,8 +46,10 @@ export class StateCodeEditorDialog implements OnInit {
   }
 
   submit(code: StateCode, isValid: boolean) {
+    if (confirm('Confirm to update state code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveStateCode(code));
     else  this.store.dispatch(this.actions.updateStateCode(code));
     this.dialog.close();
-  }
+  };
+ }
 }
