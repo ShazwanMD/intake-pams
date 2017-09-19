@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.common.dao;
 
 import my.edu.umk.pams.intake.common.model.InGradeCode;
+import my.edu.umk.pams.intake.common.model.InGradeCodeImpl;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import org.hibernate.Query;
@@ -17,7 +18,7 @@ public class InGradeCodeDaoImpl extends GenericDaoSupport<Long, InGradeCode> imp
     private static final Logger LOG = LoggerFactory.getLogger(InGradeCodeDaoImpl.class);
 
     public InGradeCodeDaoImpl() {
-        super(InGradeCodeDaoImpl.class);
+        super(InGradeCodeImpl.class);
     }
 
     @Override
