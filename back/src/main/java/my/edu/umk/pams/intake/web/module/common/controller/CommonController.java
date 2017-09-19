@@ -184,7 +184,7 @@ public class CommonController {
     @RequestMapping(value = "/graduateCenters", method = RequestMethod.GET)
     public ResponseEntity<List<GraduateCenter>> findGraduateCenters() {
         return new ResponseEntity<List<GraduateCenter>>(commonTransformer.toGraduateCenterVos(
-                commonService.findGraduateCenters()), HttpStatus.OK);
+                commonService.findGraduateCenters("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/graduateCenters/{code}", method = RequestMethod.GET)
