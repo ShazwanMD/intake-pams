@@ -46,11 +46,10 @@ export class SchoolCodeEditorDialog implements OnInit {
   }
 
   submit(code: SchoolCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update school code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update school code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveSchoolCode(code));
     else  this.store.dispatch(this.actions.updateSchoolCode(code));
     this.dialog.close();
-    });
+    };
   }
 }

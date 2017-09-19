@@ -46,11 +46,10 @@ export class NationalityCodeEditorDialog implements OnInit {
   }
 
   submit(code: NationalityCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update nationality code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-      if (!code.id) this.store.dispatch(this.actions.saveNationalityCode(code));
-      else  this.store.dispatch(this.actions.updateNationalityCode(code));
-      this.dialog.close();
-    });
+    if (confirm('Confirm to update nationality code?')) {
+    if (!code.id) this.store.dispatch(this.actions.saveNationalityCode(code));
+    else  this.store.dispatch(this.actions.updateNationalityCode(code));
+    this.dialog.close();
+    };
   }
 }

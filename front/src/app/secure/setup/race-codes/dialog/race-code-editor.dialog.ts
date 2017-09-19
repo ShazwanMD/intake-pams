@@ -48,11 +48,10 @@ export class RaceCodeEditorDialog implements OnInit {
  }
 
   save(code: RaceCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Update race code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Update race code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveRaceCode(code));
     else  this.store.dispatch(this.actions.updateRaceCode(code));
     this.dialog.close();
-  });
+  };
  }
 }

@@ -54,11 +54,10 @@ export class ProgramCodeEditorDialog implements OnInit {
   }
 
   submit(code: ProgramCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update program code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-      if (!code.id) this.store.dispatch(this.actions.saveProgramCode(code));
-      else  this.store.dispatch(this.actions.updateProgramCode(code));
-      this.dialog.close();
-    });
+    if (confirm('Confirm to update program code?')) {
+    if (!code.id) this.store.dispatch(this.actions.saveProgramCode(code));
+    else  this.store.dispatch(this.actions.updateProgramCode(code));
+    this.dialog.close();
+    };
   }
 }
