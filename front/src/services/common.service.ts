@@ -302,6 +302,16 @@ export class CommonService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  removeGraduateCenter(code: GraduateCenter): Observable<String> {
+    return this._http.delete(this.COMMON_API + '/graduateCenters/' + code.code)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateGraduateCenter(code: GraduateCenter): Observable<String> {
+    return this._http.put(this.COMMON_API + '/graduateCenters/' + code.code, JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   updateProgramCode(code: ProgramCode): Observable<String> {
     return this._http.put(this.COMMON_API + '/programCodes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));

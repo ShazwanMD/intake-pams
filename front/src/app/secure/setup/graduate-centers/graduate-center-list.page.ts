@@ -65,7 +65,7 @@ export class GraduateCenterListPage implements OnInit{
     this.showDialog(code);
   }
   delete(code: GraduateCenter): void {
-    this.store.dispatch(this.actions.removeGraduateCenter(code))
+    this.store.dispatch(this.actions.removeGraduateCenter(code));
   }
   sort(sortEvent: ITdDataTableSortChangeEvent): void {
     this.sortBy = sortEvent.name;

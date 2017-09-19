@@ -45,6 +45,20 @@ export class SetupEffects {
     .switchMap((payload) => this.commonService.saveGraduateCenter(payload))
     .map((message) => this.setupActions.saveGraduateCenterSuccess(message));
 
+    @Effect() updateGraduateCenter$ = this.actions$
+    .ofType(SetupActions.UPDATE_GRADUATE_CENTER)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.updateGraduateCenter(payload))
+    .map((message) => this.setupActions.updateGraduateCenterSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findGraduateCenters()]));
+
+  @Effect() removeGraduateCenters$ = this.actions$
+    .ofType(SetupActions.REMOVE_GRADUATE_CENTER)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.removeGraduateCenter(payload))
+    .map((message) => this.setupActions.removeGraduateCenterSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findGraduateCenters()]));
+
   // ====================================================================================================
   // RELIGION CODE
   // ====================================================================================================
