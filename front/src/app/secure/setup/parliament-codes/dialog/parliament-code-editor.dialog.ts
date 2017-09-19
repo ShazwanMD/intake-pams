@@ -45,11 +45,10 @@ export class ParliamentCodeEditorDialog implements OnInit {
   }
 
   save(code: ParliamentCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update parliament code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-      if (!code.id) this.store.dispatch(this.actions.saveParliamentCode(code));
-      else  this.store.dispatch(this.actions.updateParliamentCode(code));
+    if (confirm('Confirm to update parliament code?')) {
+    if (!code.id) this.store.dispatch(this.actions.saveParliamentCode(code));
+    else  this.store.dispatch(this.actions.updateParliamentCode(code));
       this.dialog.close();
-    });
+    };
   }
 }
