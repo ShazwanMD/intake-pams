@@ -47,11 +47,10 @@ export class ResidencyCodeEditorDialog implements OnInit {
   }
 
   submit(code: ResidencyCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update residency code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update residency code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveResidencyCode(code));
     else  this.store.dispatch(this.actions.updateResidencyCode(code));
     this.dialog.close();
-    });
+    };
   }
 }
