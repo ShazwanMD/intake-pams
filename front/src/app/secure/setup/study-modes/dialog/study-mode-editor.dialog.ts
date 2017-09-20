@@ -47,8 +47,10 @@ export class StudyModeEditorDialog implements OnInit {
   }
 
     save(code: StudyMode, isValid: boolean) {
+      if (confirm('Update study mode?')) {
     if (!code.id) this.store.dispatch(this.actions.saveStudyMode(code));
     else  this.store.dispatch(this.actions.updateStudyMode(code));
     this.dialog.close();
+    };
   }
 }
