@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.admission.service;
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
-import my.edu.umk.pams.connector.payload.ResidencyCodePayload;
+import my.edu.umk.pams.connector.payload.NationalityCodePayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
@@ -16,6 +16,7 @@ import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
+import my.edu.umk.pams.intake.common.model.InNationalityCode;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
@@ -328,11 +329,11 @@ public class AdmissionServiceImpl implements AdmissionService {
         studyModePayload.setDescription(studyMode.getDescriptionEn());
         payload.setStudyMode(studyModePayload);
 
-        InResidencyCode residencyCode = application.getResidencyCode();
-        ResidencyCodePayload residencyCodePayload = new ResidencyCodePayload();
-        residencyCodePayload.setCode(residencyCode.getCode());
-        residencyCodePayload.setDescription(residencyCode.getDescriptionEn());
-        payload.setResidencyCode(residencyCodePayload);
+        InNationalityCode nationilityCode = application.getNationalityCode();
+        NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
+        nationalityCodePayload.setCode(nationilityCode.getCode());
+        nationalityCodePayload.setDescriptionEn(nationalityCodePayload.getDescriptionEn());
+        payload.setNationalityCode(nationalityCodePayload);
 
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
         applicationContext.publishEvent(event);
