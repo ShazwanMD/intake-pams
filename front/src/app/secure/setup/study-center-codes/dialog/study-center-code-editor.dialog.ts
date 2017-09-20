@@ -46,11 +46,10 @@ export class StudyCenterCodeEditorDialog implements OnInit {
   }
 
   submit(code: StudyCenterCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update study center code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to update study center code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveStudyCenterCode(code));
     else  this.store.dispatch(this.actions.updateStudyCenterCode(code));
     this.dialog.close();
-    });
+    };
   }
 }
