@@ -51,11 +51,10 @@ export class VenueCodeEditorDialog implements OnInit {
   }
 
   submit(code: VenueCode, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to update venue code?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
-      if (!code.id) this.store.dispatch(this.actions.saveVenueCode(code));
-      else  this.store.dispatch(this.actions.updateVenueCode(code));
-      this.dialog.close();
-    });
+    if (confirm('Confirm to update venue code?')) {
+    if (!code.id) this.store.dispatch(this.actions.saveVenueCode(code));
+    else  this.store.dispatch(this.actions.updateVenueCode(code));
+    this.dialog.close();
+    };
   }
 }
