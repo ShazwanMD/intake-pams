@@ -47,8 +47,10 @@ export class SubjectCodeEditorDialog implements OnInit {
   }
 
   submit(code: SubjectCode, isValid: boolean) {
+    if (confirm('Update subject code?')) {
     if (!code.id) this.store.dispatch(this.actions.saveSubjectCode(code));
     else  this.store.dispatch(this.actions.updateSubjectCode(code));
     this.dialog.close();
+    };
   }
 }
