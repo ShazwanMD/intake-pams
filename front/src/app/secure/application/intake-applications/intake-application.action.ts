@@ -714,6 +714,7 @@ export class IntakeApplicationActions {
   static DELETE_ATTACHMENT = '[Intake Application] Delete Attachment';
 
   deleteAttachment(application, attachment) {
+    console.log('deleteAttachment');
     return {
       type: IntakeApplicationActions.DELETE_ATTACHMENT,
       payload: {application: application, attachment: attachment},
@@ -723,6 +724,7 @@ export class IntakeApplicationActions {
   static DELETE_ATTACHMENT_SUCCESS = '[Intake Application] Delete Attachment Success';
 
   deleteAttachmentSucces(message) {
+    console.log('deleteAttachmentSuccess');
     return {
       type: IntakeApplicationActions.DELETE_ATTACHMENT_SUCCESS,
       payload: message,

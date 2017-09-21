@@ -288,7 +288,6 @@ export class ApplicationService {
       + application.referenceNo + '/attachments/' + attachment.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
   // ====================================================================================================
   // REFEREE
   // ====================================================================================================

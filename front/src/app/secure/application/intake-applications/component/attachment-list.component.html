@@ -1,23 +1,24 @@
 <div toolbar-buttons layout="row" layout-align="start center" flex>
-  <md-card-title>Attachment List</md-card-title>
+  <md-card-title>Attachment List
+  </md-card-title>
+  <p></p>
+  <!-- <md-card-subtitle> Select level according to your Proficiency</md-card-subtitle> -->
   <md-chip-list *ngIf="attachments?.length > 0">
     <md-chip color="accent">{{attachments?.length}}</md-chip>
   </md-chip-list>
   <span flex></span>
-  <button md-button class="md-icon-button" (click)="createDialog()">
+
+  <button md-button class="md-icon-button" (click)="create()">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
   </button>
-  <!-- <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-  </button> -->
+ 
+ <button md-button class="md-icon-button" (click)="delete()">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length > 0}">delete</md-icon>
+ </button>
 
-  <button md-button class="md-icon-button" (click)="delete()">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length > 0}">delete</md-icon>
-  </button>
-
-  <button md-button class="md-icon-button" (click)="download(selectedRows[0])" [disabled]="selectedRows.length != 1">
-    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">get_app</md-icon>
-  </button>
+ <button md-button class="md-icon-button" (click)="download(selectedRows[0])" [disabled]="selectedRows.length != 1">
+  <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">get_app</md-icon>
+</button>
 </div>
 <md-divider></md-divider>
 <td-data-table
@@ -37,11 +38,10 @@
       <span flex>{{value}}</span>
     </div>
   </template>
+  
   <template tdDataTableTemplate="size" let-value="value" let-row="row" let-column="column">
     <div layout="row">
       <span flex>{{ value | number : '1.2-2'}}Kb</span>
     </div>
   </template>
 </td-data-table>
-
-

@@ -564,7 +564,7 @@ public class ApplicationController {
 		applicationService.deleteAttachment(application, attachment);
 		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(value = "/intakeApplications/download/attachment/{id}", method = RequestMethod.GET)
 	public ResponseEntity downloadAttachment(@PathVariable Long id) {
 		InAttachment attachment = applicationService.findAttachmentById(id);

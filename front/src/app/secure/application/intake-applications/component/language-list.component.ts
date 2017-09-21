@@ -54,7 +54,7 @@ export class LanguageListComponent implements OnInit {
 
   filter(): void {
   }
-
+  
   selectRow(language: Language): void {
   }
 
