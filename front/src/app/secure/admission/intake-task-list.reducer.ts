@@ -6,11 +6,18 @@ export type IntakeTaskListState = IntakeTask[];
 
 const initialState: IntakeTaskListState = <IntakeTask[]>[];
 
-export function intakeTaskListReducer(state = initialState, action: Action): IntakeTaskListState {
+export function assignedCandidateTaskListReducer(state = initialState, action: Action): IntakeTaskListState {
   switch (action.type) {
     case AdmissionActions.FIND_ASSIGNED_INTAKE_TASKS_SUCCESS: {
       return action.payload;
     }
+    default: {
+      return state;
+    }
+  }
+}
+export function pooledCandidateTaskListReducer(state = initialState, action: Action): IntakeTaskListState {
+  switch (action.type) {
     case AdmissionActions.FIND_POOLED_INTAKE_TASKS_SUCCESS: {
       return action.payload;
     }

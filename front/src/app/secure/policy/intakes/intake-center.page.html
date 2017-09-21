@@ -32,14 +32,14 @@
       <!-- TODO: split to assigned and pooled -->
         <md-tab-group [selectedIndex]="0">
           <md-tab label="Assigned">
-            <pams-intake-task-list
+            <pams-assigned-intake-task-list
               [intakeTasks]="assignedIntakeTasks$ | async"
-              (view)="view($event)"></pams-intake-task-list>
+              (view)="viewTask($event)"></pams-assigned-intake-task-list>
           </md-tab>
           <md-tab label="Pooled">
-            <pams-intake-task-list
+            <pams-pooled-intake-task-list
               [intakeTasks]="pooledIntakeTasks$ | async"
-              (view)="view($event)"></pams-intake-task-list>
+              (claim)="claimTask($event)"></pams-pooled-intake-task-list>
           </md-tab>
           <md-tab label="Archived">
             <pams-archived-intake-list

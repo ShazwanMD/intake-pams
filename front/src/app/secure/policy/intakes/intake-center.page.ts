@@ -45,6 +45,17 @@ export class IntakeCenterPage implements OnInit {
     this.router.navigate(['/intake-task-detail', intake.taskId]);
   }
 
+  viewTask(task: IntakeTask) {
+    console.log('intake: ' + task.taskId);
+    this.router.navigate(['/secure/policy/intakes/view-task', task.taskId]);
+
+  }
+
+  claimTask(task: IntakeTask) {
+    console.log('intake: ' + task.taskId);
+    this.store.dispatch(this.actions.claimIntakeTask(task));
+  }
+
   showDialog(): void {
     console.log('showDialog');
     let config = new MdDialogConfig();

@@ -1,3 +1,7 @@
+import { Intake } from './../../shared/model/policy/intake.interface';
+import { AssignedCandidateTaskListComponent } from './component/assigned-candidate-task-list.component';
+import { PooledCandidateTaskListComponent } from './component/pooled-candidate-task-list.component';
+import { AdmissionCenterPage } from './admission-center.page';
 import { IntakeTaskViewPage } from './intake-task-view.page';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -9,11 +13,10 @@ import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 
-import {AdmissionPage} from './admission.page';
 import {AdmissionService} from '../../../services/admission.service';
 import { PipeModule } from '../../app.pipe.module';
 import { CommonModule } from '../../common';
-import {intakeTaskListReducer, IntakeTaskListState} from './intake-task-list.reducer';
+import { IntakeTaskListState, assignedCandidateTaskListReducer, pooledCandidateTaskListReducer } from './intake-task-list.reducer';
 import {intakeTaskReducer, IntakeTaskState} from './intake-task.reducer';
 import {
   candidateListReducer, CandidateListState, rejectedCandidateListReducer,
@@ -47,9 +50,15 @@ import { CandidateRegisterTaskPanel } from './panel/candidate-register-task.pane
 import { CandidateTaskWorkflowPanel } from './panel/candidate-task-workflow.panel';
 import { CandidateAcceptListComponent } from "./component/candidate-accept-list.component";
 import { CandidateRegisterListComponent } from "./component/candidate-register-list.component";
+import { assignedIntakeTaskListReducer, pooledIntakeTaskListReducer } from '../policy/intakes/intake-task-list.reducer';
+import { archivedIntakeListReducer } from '../account/intake-list.reducer';
+import { IntakeListState } from '../application/intake-applications/intake-list.reducer';
 
 export interface AdmissionModuleState {
-  intakeTasks: IntakeTaskListState;
+ // intakeTasks: IntakeTaskListState;
+  assignedCandidateTasks: IntakeTaskListState;
+  pooledCandidateTasks: IntakeTaskListState;
+  archivedIntakes: IntakeListState;
   intakeTask: IntakeTaskState;
   candidates: CandidateListState;
   selectedCandidates: CandidateListState;
@@ -64,7 +73,10 @@ export interface AdmissionModuleState {
 
 export const INITIAL_ADMISSION_STATE: AdmissionModuleState =
   <AdmissionModuleState>{
-    intakeTasks: <IntakeTask[]>[],
+  //  intakeTasks: <IntakeTask[]>[],
+    assignedCandidateTasks: <IntakeTask[]>[],
+    pooledCandidateTasks: <IntakeTask[]>[],
+    archivedIntakes: <Intake[]>[],
     intakeTask: <IntakeTask>{},
     candidates: <Candidate[]>[],
     selectedCandidates: <Candidate[]>[],
@@ -76,7 +88,10 @@ export const INITIAL_ADMISSION_STATE: AdmissionModuleState =
     registeredCandidates: <Candidate[]>[],
   };
 export const admissionModuleReducers = {
-  intakeTasks: intakeTaskListReducer,
+ // intakeTasks: intakeTaskListReducer,
+  assignedCandidateTasks: assignedCandidateTaskListReducer,
+  pooledCandidateTasks: pooledCandidateTaskListReducer,
+  archivedIntakes: archivedIntakeListReducer,
   intakeTask: intakeTaskReducer,
   candidates: candidateListReducer,
   selectedCandidates: selectedCandidateListReducer,
@@ -96,12 +111,13 @@ export const admissionModuleReducers = {
     CovalentCoreModule.forRoot(),
     EffectsModule.run(AdmissionEffects),
     CommonModule.forRoot(),
+    IntakeSubModule.forRoot(),
     CpsIntakeApplicationSubModule,
     PipeModule.forRoot(),
   ],
   declarations: [
     // page
-    AdmissionPage,
+    AdmissionCenterPage,
     CandidateListComponent,
     CandidatePreSelectListComponent,
     CandidateApproveListComponent,
@@ -111,6 +127,8 @@ export const admissionModuleReducers = {
     CandidateProfilePreSelectDialog,
     CandidateRejectedListComponent,
     CandidateTaskListComponent,
+    PooledCandidateTaskListComponent,
+    AssignedCandidateTaskListComponent,
     CandidateApproveTaskPanel,
     CandidatePreApproveTaskPanel,
     CandidateRegisterTaskPanel,
@@ -134,6 +152,8 @@ export const admissionModuleReducers = {
     CandidateApproveListComponent,
     CandidateRejectedListComponent,
     CandidateTaskListComponent,
+    PooledCandidateTaskListComponent,
+    AssignedCandidateTaskListComponent,
     CandidateApproveTaskPanel,
     CandidatePreApproveTaskPanel,
     CandidateRegisterTaskPanel,
@@ -147,6 +167,7 @@ export const admissionModuleReducers = {
     CandidateProfileRegisterDialog,
     CandidateAcceptListComponent,
     CandidateRegisterListComponent,
+    AdmissionCenterPage,
   ],
   entryComponents: [
     CandidateListComponent,
