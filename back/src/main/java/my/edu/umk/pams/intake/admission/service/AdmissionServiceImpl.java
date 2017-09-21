@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.admission.service;
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
-import my.edu.umk.pams.connector.payload.NationalityCodePayload;
+//import my.edu.umk.pams.connector.payload.NationalityCodePayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
@@ -330,10 +330,10 @@ public class AdmissionServiceImpl implements AdmissionService {
         payload.setStudyMode(studyModePayload);
 
         InNationalityCode nationilityCode = application.getNationalityCode();
-        NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
-        nationalityCodePayload.setCode(nationilityCode.getCode());
-        nationalityCodePayload.setDescriptionEn(nationalityCodePayload.getDescriptionEn());
-        payload.setNationalityCode(nationalityCodePayload);
+       // NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
+      //  nationalityCodePayload.setCode(nationilityCode.getCode());
+    //    nationalityCodePayload.setDescriptionEn(nationalityCodePayload.getDescriptionEn());
+   //     payload.setNationalityCode(nationalityCodePayload);
 
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
         applicationContext.publishEvent(event);

@@ -13,6 +13,6 @@ export enum AttachmentType {
   BANK_STATEMENT,
   REFEREE_FORM,
   RESEARCH_PROPOSAL,
-  // VISA,
+  LANGUAGE_RESULT,
+  IELTS,
 }
-

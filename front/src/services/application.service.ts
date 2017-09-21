@@ -270,7 +270,7 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-   addAndCheckAttachment(application: IntakeApplication, file: File, attachmentType: AttachmentType): Observable<String> {
+   addAndCheckAttachment (application: IntakeApplication, file: File, attachmentType: AttachmentType): Observable<String> {
     console.log('addAttachment');
     console.log('file: ' + file.name);
     console.log('attachmentType: ' + attachmentType);
@@ -281,7 +281,13 @@ export class ApplicationService {
     formData.append('file', file);
     return this._http.post(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/addAndCheckAttachments', formData, options)
       .flatMap((res: Response) => Observable.of(res.text()));
-  } 
+   }
+
+  deleteAttachment(application: IntakeApplication, attachment: Attachment): Observable<String> {
+    return this._http.delete(this.APPLICATION_API + '/intakeApplications/'
+      + application.referenceNo + '/attachments/' + attachment.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   // ====================================================================================================
   // REFEREE

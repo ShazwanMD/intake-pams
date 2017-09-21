@@ -309,6 +309,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Override
 	public void deleteAttachment(InIntakeApplication application, InAttachment attachment) {
 		intakeApplicationDao.deleteAttachment(application, attachment, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
@@ -626,7 +627,16 @@ public class ApplicationServiceImpl implements ApplicationService {
 		else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA) {
 			application.setDiplomaResultAttached(true);
 		}
+		
+		else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA_EQUIVALENT) {
+			application.setDiplomaResultAttached(true);
+		}
+		
 		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR) {
+			application.setBachelorResultAttached(true);
+		}
+		
+		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR_EQUIVALENT) {
 			application.setBachelorResultAttached(true);
 		}
 		else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
@@ -650,7 +660,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		else if (attachment.getAttachmentType() == InAttachmentType.TOEFL) {
 			application.setToeflResultAttached(true);
 		}
-		else if (attachment.getAttachmentType() == InAttachmentType.LANGUAGE){
+		else if (attachment.getAttachmentType() == InAttachmentType.LANGUAGE_RESULT){
 			application.setLanguageResultAttached(true);
 		}
 		

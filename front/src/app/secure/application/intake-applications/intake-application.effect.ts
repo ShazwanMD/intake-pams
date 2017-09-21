@@ -344,6 +344,15 @@ export class IntakeApplicationEffects {
       URL.revokeObjectURL(url);
     }).ignoreElements();
 
+    @Effect() deleteAttachment$ = this.actions$
+    .ofType(IntakeApplicationActions.DELETE_ATTACHMENT)
+    .map((action) => action.payload)
+    .flatMap((payload) => this.applicationService.deleteAttachment(payload.application, payload.attachment))
+    .map((message) => this.intakeApplicationActions.deleteAttachmentSucces(message))
+    .withLatestFrom(this.store$.select(...this.INTAKE_APPLICATION))
+    .map((state) => state[1])
+    .map((application: IntakeApplication) => this.intakeApplicationActions.findIntakeApplicationByReferenceNo(application.referenceNo));
+
   // ====================================================================================================
   // RESULT
   // ====================================================================================================

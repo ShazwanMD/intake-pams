@@ -857,5 +857,5 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
 
         Session session = sessionFactory.getCurrentSession();
         session.delete(attachment);
-    }
+    }   
 }

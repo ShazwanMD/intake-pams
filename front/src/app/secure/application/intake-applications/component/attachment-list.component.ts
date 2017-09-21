@@ -1,3 +1,4 @@
+import { Attachment } from './../../../../shared/model/application/attachment.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
@@ -5,7 +6,6 @@ import {ApplicationModuleState} from '../../index';
 import {AttachmentCreatorDialog} from '../dialog/attachment-creator.dialog';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
-import {Attachment} from '../../../../shared/model/application/attachment.interface';
 
 @Component({
   selector: 'pams-attachment-list',
@@ -15,6 +15,9 @@ import {Attachment} from '../../../../shared/model/application/attachment.interf
 
 export class AttachmentListComponent implements OnInit {
 
+  @Input() attachments: Attachment[];
+  @Input() intakeApplication: IntakeApplication;
+
   private selectedRows: Attachment[];
   private creatorDialogRef: MdDialogRef<AttachmentCreatorDialog>;
   private columns: any[] = [
@@ -22,10 +25,6 @@ export class AttachmentListComponent implements OnInit {
     {name: 'size', label: 'Size'},
     {name: 'attachmentType', label: 'Attachment Type'},
   ];
-
-
-  @Input() attachments: Attachment[];
-  @Input() intakeApplication: IntakeApplication;
 
   constructor(private actions: IntakeApplicationActions,
               private vcf: ViewContainerRef,
@@ -38,8 +37,20 @@ export class AttachmentListComponent implements OnInit {
     this.selectedRows = this.attachments.filter((value) => value.selected);
   }
 
-  delete(attachment: Attachment): void {
-    this.store.dispatch(this.actions.deleteAttachment(this.intakeApplication, attachment));
+  create(): void {
+    this.showDialog(null);
+  }
+
+  // delete(attachment: Attachment): void {
+  //   this.store.dispatch(this.actions.deleteAttachment(this.intakeApplication, attachment));
+  // }
+
+  delete(): void {
+    console.log('length: ' + this.selectedRows.length);
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+      this.store.dispatch(this.actions.deleteAttachment(this.intakeApplication, this.selectedRows[i]));
+    }
+    this.selectedRows = [];
   }
 
   download(attachment: Attachment): void {
@@ -63,19 +74,36 @@ export class AttachmentListComponent implements OnInit {
     });
   }
 
-  private showDialog(attachment: Attachment): void {
-    console.log('showDialog');
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '70%';
-    config.height = '30%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(AttachmentCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
-    this.creatorDialogRef.afterClosed().subscribe((res) => {
-      console.log('close dialog');
-      // load something here
-    });
-  }
+//   private showDialog(attachment: Attachment): void {
+//     console.log('showDialog');
+//     let config = new MdDialogConfig();
+//     config.viewContainerRef = this.vcf;
+//     config.role = 'dialog';
+//     config.width = '70%';
+//     config.height = '30%';
+//     config.position = {top: '0px'};
+//     this.creatorDialogRef = this.dialog.open(AttachmentCreatorDialog, config);
+//     this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication = this.intakeApplication;
+//     this.creatorDialogRef.afterClosed().subscribe((res) => {
+//       console.log('close dialog');
+//       // load something here
+//     });
+//   }
+// }
+
+
+showDialog(attachment: Attachment): void {
+  let config = new MdDialogConfig();
+  config.viewContainerRef = this.vcf;
+  config.role = 'dialog';
+  config.width = '50%';
+  config.height = '60%';
+  config.position = {top: '65px'};
+  this.creatorDialogRef = this.dialog.open(AttachmentCreatorDialog, config);
+  this.creatorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+  if (attachment) this.creatorDialogRef.componentInstance.attachment = attachment;
+  this.creatorDialogRef.afterClosed().subscribe((res) => {
+    this.selectedRows = [];
+  });
+}
 }

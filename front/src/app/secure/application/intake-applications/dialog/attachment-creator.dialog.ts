@@ -3,13 +3,13 @@ import { Component, ViewContainerRef, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Store } from "@ngrx/store";
-import { ApplicationModuleState } from "../../index";
-import { MdDialogRef } from "@angular/material";
-import { IntakeApplicationActions } from "../intake-application.action";
-import { IntakeApplication } from "../../../../shared/model/application/intake-application.interface";
-import { AttachmentType } from "../../../../shared/model/application/attachment-type.enum";
-import { AttachmentHelper } from "./attachment-helper.interface";
+import {Store} from '@ngrx/store';
+import {ApplicationModuleState} from '../../index';
+import {MdDialogRef} from '@angular/material';
+import {IntakeApplicationActions} from '../intake-application.action';
+import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
+import { AttachmentType } from '../../../../shared/model/application/attachment-type.enum';
+import { AttachmentHelper } from './attachment-helper.interface';
 
 @Component({
   selector: 'pams-attachment-creator',
@@ -19,7 +19,9 @@ import { AttachmentHelper } from "./attachment-helper.interface";
 export class AttachmentCreatorDialog implements OnInit {
 
   private _intakeApplication: IntakeApplication;
+  private _attachment: Attachment;
   private createForm: FormGroup;
+  private edit: boolean = false;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -30,6 +32,10 @@ export class AttachmentCreatorDialog implements OnInit {
     private dialog: MdDialogRef<AttachmentCreatorDialog>) {
   }
 
+  set attachment(value: Attachment){
+    this._attachment = value;
+    this.edit = true;
+  }
 
   set intakeApplication(value: IntakeApplication) {
     this._intakeApplication = value;
