@@ -230,11 +230,13 @@ public class PolicyController {
     }
 
     @RequestMapping(value = "/intakes/claimTask", method = RequestMethod.POST)
-    public void claimIntakeTask(@RequestBody IntakeTask vo) {
+    public ResponseEntity<String> claimIntakeTask(@RequestBody IntakeTask vo) {
+    	
         Task task = policyService.findIntakeTaskByTaskId(vo.getTaskId());
         workflowService.claimTask(task);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-
+    
     @RequestMapping(value = "/intakes/completeTask", method = RequestMethod.POST)
     public void completeIntakeTask(@RequestBody IntakeTask vo) {
         Task task = policyService.findIntakeTaskByTaskId(vo.getTaskId());

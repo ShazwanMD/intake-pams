@@ -1,3 +1,4 @@
+import { PooledIntakeTaskListComponent } from './component/pooled-intake-task-list.component';
 import { MgsebIntakeApplicationSubModule } from './../../application/intake-applications/mgseb/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -15,6 +16,7 @@ import {IntakeEffects} from './intake.effect';
 import {IntakeActions} from './intake.action';
 import {IntakeCenterPage} from './intake-center.page';
 import {IntakeTaskListComponent} from './component/intake-task-list.component';
+import {AssignedIntakeTaskListComponent} from './component/assigned-intake-task-list.component';
 import {IntakeDraftTaskPanel} from './panel/intake-draft-task.panel';
 import {IntakeTaskWorkflowPanel} from './panel/intake-task-workflow.panel';
 import {IntakeTaskCreatorDialog} from './dialog/intake-task-creator.dialog';
@@ -71,6 +73,8 @@ import {ArchivedIntakeListComponent} from './component/archived-intake-list.comp
 
     // components
     IntakeTaskListComponent,
+    AssignedIntakeTaskListComponent,
+    PooledIntakeTaskListComponent,
     ArchivedIntakeListComponent,
     ProgramOfferingListComponent,
     SupervisorOfferingListComponent,
@@ -105,6 +109,9 @@ import {ArchivedIntakeListComponent} from './component/archived-intake-list.comp
   ],
   exports: [
     IntakeTaskListComponent,
+    ArchivedIntakeListComponent,
+    AssignedIntakeTaskListComponent,
+    PooledIntakeTaskListComponent,
     ProgramOfferingSelectComponent,
   ],
   entryComponents: [
