@@ -283,7 +283,15 @@ export class ApplicationService {
       .flatMap((res: Response) => Observable.of(res.text()));
    }
 
+  // deleteAttachment(application: IntakeApplication, attachment: Attachment): Observable<String> {
+  //   return this._http.delete(this.APPLICATION_API + '/intakeApplications/'
+  //     + application.referenceNo + '/attachments/' + attachment.id)
+  //     .flatMap((res: Response) => Observable.of(res.text()));
+  // }
+
   deleteAttachment(application: IntakeApplication, attachment: Attachment): Observable<String> {
+    console.log('deleteAttachment');
+    console.log('attachment :' + attachment.id);
     return this._http.delete(this.APPLICATION_API + '/intakeApplications/'
       + application.referenceNo + '/attachments/' + attachment.id)
       .flatMap((res: Response) => Observable.of(res.text()));

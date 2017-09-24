@@ -1,6 +1,5 @@
 import { AttachmentCreatorDialog } from './../dialog/attachment-creator.dialog';
 import { Attachment } from './../../../../shared/model/application/attachment.interface';
-
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {Store} from '@ngrx/store';
@@ -41,26 +40,26 @@ export class AttachmentListComponent implements OnInit {
     this.showDialog(null);
   }
 
-  edit(attachment: Attachment): void {
-    this.showDialog(attachment);
-  }
-
   delete(): void {
-    console.log('length: ' + this.selectedRows.length);
+    console.log('berjaya delete x?' +  this.selectedRows.length);
     for (let i: number = 0; i < this.selectedRows.length; i++) {
-      this.store.dispatch(this.actions.deleteAttachment(this.intakeApplication, this.selectedRows[i]));
+      this.store.dispatch(this.actions.deleteAttachment(this.intakeApplication,this.selectedRows[i]));
     }
     this.selectedRows = [];
   }
 
-  filter(): void {
+  download(attachment: Attachment): void {
+    console.log('attachment id ' + attachment.id);
+    this.store.dispatch(this.actions.downloadAttachment(attachment));
   }
-  
-  selectRow(attachment: Attachment): void {
 
-  }   
+  filter(): void{
+}
 
-  selectAllRows(attachment: Attachment[]): void {
+  selectRow(attachment: Attachment): void{
+}
+
+  selectAllRows(attachments: Attachment[]): void {
   }
 
   showDialog(attachment: Attachment): void {
@@ -78,3 +77,5 @@ export class AttachmentListComponent implements OnInit {
     });
   }
 }
+
+  

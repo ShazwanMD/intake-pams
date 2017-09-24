@@ -557,14 +557,14 @@ public class ApplicationController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}	
 	
-	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachment/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachments/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteAttachment(@PathVariable String referenceNo, @PathVariable Long id) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InAttachment attachment = applicationService.findAttachmentById(id);
 		applicationService.deleteAttachment(application, attachment);
 		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/intakeApplications/download/attachment/{id}", method = RequestMethod.GET)
 	public ResponseEntity downloadAttachment(@PathVariable Long id) {
 		InAttachment attachment = applicationService.findAttachmentById(id);
