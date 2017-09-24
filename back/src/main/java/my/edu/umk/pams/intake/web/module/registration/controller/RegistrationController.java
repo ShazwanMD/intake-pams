@@ -71,12 +71,13 @@ public class RegistrationController {
     
     @RequestMapping(value = "/forgetPassword/{email:.+}", method = RequestMethod.GET)
     public ResponseEntity<String> forgetPassword(@PathVariable String email) {
-    	
+    	LOG.debug("My email value is: " + email);
     	if (email == null) LOG.debug("Email is null");
 
     	InUser user=identityService.findUserByEmail(email);
     	
-    	if (user == null)
+    	if (user == null) LOG.debug("UserA is null");
+    	LOG.debug("user check ",user);
 
     	LOG.debug("email",email);
     	LOG.debug("user",user);
