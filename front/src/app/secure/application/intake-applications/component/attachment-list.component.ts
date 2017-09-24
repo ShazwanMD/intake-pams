@@ -41,7 +41,6 @@ export class AttachmentListComponent implements OnInit {
   }
 
   delete(): void {
-    console.log('berjaya delete x?' +  this.selectedRows.length);
     for (let i: number = 0; i < this.selectedRows.length; i++) {
       this.store.dispatch(this.actions.deleteAttachment(this.intakeApplication,this.selectedRows[i]));
     }
