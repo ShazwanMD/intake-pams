@@ -76,8 +76,7 @@ public class RegistrationController {
 
     	InUser user=identityService.findUserByEmail(email);
     	
-    	if (user == null) LOG.debug("UserA is null");
-    	LOG.debug("user check ",user);
+    	if (user == null)
 
     	LOG.debug("email",email);
     	LOG.debug("user",user);
