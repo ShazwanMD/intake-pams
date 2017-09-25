@@ -385,7 +385,7 @@
           </td-expansion-panel>
       </md-tab>
 
-      <md-tab>
+      <!-- <md-tab>
         <template md-tab-label>Financial Support</template>
 
         <td-expansion-panel label="Financial Support">
@@ -408,9 +408,19 @@
             </div>
           </div>
         </td-expansion-panel>
+      </md-tab> -->
+
+      <md-tab>
+        <template md-tab-label>Financial Support</template>
+
+        <td-expansion-panel label="Financial Support">
+          <md-card-subtitle>Please choose either one of the following financial Support</md-card-subtitle>
+          <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">          
+                <md-radio-button value="true" name="sponsored"> Sponsor by Employer / Government. Please attach letter from Sponsor. </md-radio-button>
+                <md-radio-button value="true" name="selfSponsored"> Self Supporting . Please enclose financial guarantee or bank statement.</md-radio-button>                      
+          </div>      
+        </td-expansion-panel>
       </md-tab>
-
-
 
       <md-tab>
         <template md-tab-label>Submit Application</template>
