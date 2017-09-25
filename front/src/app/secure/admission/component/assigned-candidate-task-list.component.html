@@ -28,7 +28,7 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" (click)="viewTask(row)">
+      <a md-button color="accent" class="text-upper" *ngIf="row.flowState != 'DRAFTED' && row.flowState != 'VERIFIED' && row.flowState != 'PUBLISHED' && row.flowState != 'EVALUATED'"  (click)="viewTask(row)">
         <span>View</span>
       </a>
     </div>
