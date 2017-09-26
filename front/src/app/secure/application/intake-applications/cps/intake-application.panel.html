@@ -240,9 +240,7 @@
 
         <md-tab>
           <template md-tab-label>Academic Qualification</template>
-          <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
-          <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form
-          </md-card-subtitle>
+         
 
           <td-expansion-panel label="Results">
             <pams-result-list [intakeApplication]="_intakeApplication" [results]="results$ | async">
@@ -258,7 +256,9 @@
 
       <md-tab>
         <template md-tab-label>Documents</template>
-
+        <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
+        <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form
+        </md-card-subtitle>
         <!--   <td-expansion-panel label="Referees">
              <pams-referee-list [intakeApplication]="_intakeApplication" [referees]="referees$ | async">
              </pams-referee-list>
