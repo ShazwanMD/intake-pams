@@ -35,12 +35,12 @@ export class AssignedCandidateTaskListComponent {
 }
 
 viewTask(task: IntakeTask): void {
-    console.log('Emitting task');
-    let snackBarRef = this.snackBar.open('Viewing intake', 'OK');
-    snackBarRef.afterDismissed().subscribe(() => {
-      this.view.emit(task);
-    });
+  console.log('Emitting task');
+  if (confirm('Viewing intake?')) {
+   this.view.emit(task);
+  } else {
   }
+}
 
   filteredData: any[];
   filteredTotal: number;

@@ -35,12 +35,14 @@ export class PooledCandidateTaskListComponent {
 }
 
 claimTask(task: IntakeTask): void {
-    console.log('Emitting task');
-    let snackBarRef = this.snackBar.open('Viewing intake', 'OK');
-    snackBarRef.afterDismissed().subscribe(() => {
-      this.claim.emit(task);
-    });
+  console.log('Emitting task');
+  if (confirm('Claim intake task?')) {
+    this.claim.emit(task);
+    window.location.reload();
   }
+   else {
+  }
+}
 
   filteredData: any[];
   filteredTotal: number;
