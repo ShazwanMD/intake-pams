@@ -14,12 +14,14 @@
           <pams-program-choice [intakeApplication]="_intakeApplication">
           </pams-program-choice>
 
-          <div flex class="pad inset" flex>
           <md-input-container fxFlex="calc(100%-25px)">
-          <p class="md-title tc-grey-600">Your research title :</p>
-          <input mdInput placeholder="" formControlName="researchTitle" flex/>
+          <p class="md-title tc-grey-600">Your Research Title :</p>
+          <input mdInput placeholder="Research Title" formControlName="researchTitle" flex/>
           </md-input-container>
-          </div>
+          <div class="error" class="tc-red-600" 
+          *ngIf="applicationForm.get('researchTitle').invalid && applicationForm.get('researchTitle').touched">
+          Research title is required!
+         </div>
         </td-expansion-panel>
 
         <template md-tab-label>Applicant Personal Information</template>

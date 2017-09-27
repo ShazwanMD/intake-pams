@@ -81,7 +81,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     this.applicationForm = this.formBuilder.group({
       id: [undefined],
       referenceNo: [''],
-      researchTitle: [''],
+      researchTitle: ['', Validators.required],
       promoCode: [''],
       rank: [0],
       merit: [0],
