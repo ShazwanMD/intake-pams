@@ -46,13 +46,6 @@ export class IntakePublishTaskPanel implements OnInit {
     this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
   }
 
-  // evaluate() {
-  //   let snackBarRef = this.snackBar.open('Evaluate this intake?', 'Yes');
-  //   snackBarRef.afterDismissed().subscribe(() => {
-  //     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
-  //     this.goBack();
-  //   });
-  // }
   evaluate() {
     if (confirm('Evaluate this intake?')) {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
@@ -62,11 +55,11 @@ export class IntakePublishTaskPanel implements OnInit {
   }
 
   copy() {
-    let snackBarRef = this.snackBar.open('Copy this intake?', 'Yes');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if(confirm('Copy this intake?')){
       this.store.dispatch(this.actions.copyIntakeTask(this.intakeTask));
       this.goBack();
-    });
+    }else {
+    }
   }
 
   remove(): void {

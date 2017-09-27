@@ -55,10 +55,10 @@ export class IntakeUpdaterDialog implements OnInit {
   }
 
   submit(intake: Intake, isValid: boolean) {
-    let snackBarRef = this.snackBar.open('Confirm to submit?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to submit?')) {
       this.store.dispatch(this.actions.updateIntake(intake));
       this.dialog.close();
-    });
+    }else {
+    }
   }
 }

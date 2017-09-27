@@ -44,13 +44,6 @@ export class IntakeVerifyTaskPanel implements OnInit {
     this.store.dispatch(this.actions.findIntakeByReferenceNo(this.intakeTask.referenceNo));
   }
 
-  // publish() {
-  //   let snackBarRef = this.snackBar.open('Publish this intake?', 'Yes');
-  //   snackBarRef.afterDismissed().subscribe(() => {
-  //     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
-  //     this.goBack();
-  //   });
-  // }
   publish() {
     if (confirm('Publish this intake?')) {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
@@ -78,8 +71,7 @@ export class IntakeVerifyTaskPanel implements OnInit {
     if(confirm('Confirm remove this intake?')){
     this.store.dispatch(this.actions.removeIntakeTask(this.intakeTask));
     this.goBack();
- } 
-    else {
+    }else {
    }
 }
 

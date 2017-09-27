@@ -54,11 +54,11 @@ export class CandidatePreApproveTaskPanel implements OnInit {
   }
 
   preApprove(): void {
-    let snackBarRef = this.snackBar.open('Recommend this candidates?', 'Yes');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if(confirm('Recommend this candidates?')){
       this.store.dispatch(this.intakeActions.completeIntakeTask(this.intakeTask));
       this.goBack();
-    });
+    }else {
+    }
   }
 
   goBack(): void {

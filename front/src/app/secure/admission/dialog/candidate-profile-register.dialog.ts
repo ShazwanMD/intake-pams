@@ -69,8 +69,7 @@ export class CandidateProfileRegisterDialog implements OnInit {
   }
 
   register(candidate: Candidate) {
-     let snackBarRef = this.snackBar.open('Confirm to Register This Candidate?', 'Ok');
-    snackBarRef.afterDismissed().subscribe((res) => {
+    if(confirm('Confirm to Register This Candidate?')){
      this.store.dispatch(this.admissionActions.registerCandidate(candidate));
       this.editorDialog.afterClosed().subscribe((res) => {
       this.route.params.subscribe((params: { taskId: string }) => {
@@ -80,7 +79,8 @@ export class CandidateProfileRegisterDialog implements OnInit {
     });
       });
       this.editorDialog.close();
-    });
+    }else {
+    }
   }
 
   reject(candidate: Candidate) {

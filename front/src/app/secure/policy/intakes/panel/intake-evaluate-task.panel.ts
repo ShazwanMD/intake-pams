@@ -57,29 +57,21 @@ export class IntakeEvaluateTaskPanel implements OnInit {
   }
 
   copy() {
-    let snackBarRef = this.snackBar.open('Copy this intake?', 'Yes');
-    snackBarRef.afterDismissed().subscribe(() => {
+      if(confirm('Copy this intake?')){
       this.store.dispatch(this.actions.copyIntakeTask(this.intakeTask));
       this.goBack();
-    });
+    }else {
+    }
   }
 
   remove(): void {
     if(confirm('Confirm remove this intake?')){
     this.store.dispatch(this.actions.removeIntakeTask(this.intakeTask));
     this.goBack();
- } 
-    else {
-   }
+    } else {
+    }
 }
 
-  // process(): void {
-  //   let snackBarRef = this.snackBar.open('Process this intake?', 'Yes');
-  //   snackBarRef.afterDismissed().subscribe(() => {
-  //     this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));
-  //     this.goBack();
-  //   });
-  // }
   process(): void {
     if (confirm('Process this intake?')) {
       this.store.dispatch(this.actions.completeIntakeTask(this.intakeTask));

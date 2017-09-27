@@ -59,13 +59,12 @@ export class IntakeTaskViewPage implements OnInit {
 
   offer(referenceNo): void {
     // start offer process for candidate in status approve
-     let snackBarRef = this.snackBar.open('Confirm to Offer This candidate?', 'Ok');
-
-    snackBarRef.afterDismissed().subscribe(() => {
-      console.log("submit candidate in snck bar: "+referenceNo);
+    if(confirm('Confirm to Offer This candidate?')){
+      console.log("submit candidate: "+referenceNo);
       this.store.dispatch(this.actions.offerCandidates(referenceNo));
       this.goBack();
-    });
+    }else {
+    }
   }
 
   goBack(): void {

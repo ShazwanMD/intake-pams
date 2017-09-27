@@ -67,14 +67,14 @@ export class ApplicantProfileDialog implements OnInit {
   }
 
   select(intakeApplication: IntakeApplication) {
-    let snackBarRef = this.snackBar.open('Confirm to Select This Applicant?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to Select This Applicant?')) {
       this.store.dispatch(this.actions.selectIntakeApplication(intakeApplication));
       this.editorDialog.afterClosed().subscribe((res) => {
         this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
       });
       this.editorDialog.close();
-    });
+    }else {
+    }
   }
 
   reject(intakeApplication: IntakeApplication) {

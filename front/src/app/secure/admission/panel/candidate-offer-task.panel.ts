@@ -54,11 +54,11 @@ export class CandidateOfferTaskPanel implements OnInit {
   }
 
   offer(): void {
-    let snackBarRef = this.snackBar.open('Offer this candidates?', 'Yes');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if(confirm('Offer this candidates?')){
       this.store.dispatch(this.intakeActions.completeIntakeTask(this.intakeTask));
       this.goBack();
-    });
+    }else {
+    }
   }
 
   goBack(): void {

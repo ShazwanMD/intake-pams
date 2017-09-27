@@ -66,15 +66,15 @@ export class ApplicantProfileVerifyDialog implements OnInit {
   }
 
   verify(intakeApplication: IntakeApplication): void {
-    let snackBarRef = this.snackBar.open('Confirm to Verify This Applicant?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to Verify This Applicant?')) {
       this.store.dispatch(this.actions.verifyIntakeApplication(intakeApplication));
       this.editorDialog.afterClosed().subscribe((res) => {
         this.store.dispatch(this.intakeActions.findIntakeByReferenceNoAndBidStatus(intakeApplication.intake.referenceNo));
       });
       this.editorDialog.close();
       ;
-    });
+    }else {
+    }
   }
 
   reject(intakeApplication: IntakeApplication) {

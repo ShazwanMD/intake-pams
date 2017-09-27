@@ -63,12 +63,11 @@ export class CandidateRegisterTaskPanel implements OnInit {
 
   startAcademic(referenceNo): void {
     // start offer process for candidate in status approve
-     let snackBarRef = this.snackBar.open('Confirm to Start Academic This candidate?', 'Ok');
-
-    snackBarRef.afterDismissed().subscribe(() => {
+    if(confirm('Confirm to Start Academic This candidate?')){
         this.store.dispatch(this.intakeActions.completeIntakeTask(this.intakeTask));
       this.goBack();
-    });
+    }else {
+    }
   }
 
   goBack(): void {

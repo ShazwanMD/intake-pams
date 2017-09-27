@@ -46,7 +46,6 @@ export class CandidateApproveTaskPanel implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   broadcast(): void {
@@ -54,12 +53,12 @@ export class CandidateApproveTaskPanel implements OnInit {
   }
 
   approve(): void {
-    let snackBarRef = this.snackBar.open('Approve this candidates?', 'Yes');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if(confirm('Approve this candidates?')){
       this.store.dispatch(this.intakeActions.completeIntakeTask(this.intakeTask));
       this.goBack();
       window.location.reload();
-    });
+    }else {
+    }
   }
 
   goBack(): void {

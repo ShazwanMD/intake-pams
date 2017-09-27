@@ -69,8 +69,7 @@ export class CandidateProfilePreSelectDialog implements OnInit {
   }
 
   select(candidate: Candidate) {
-     let snackBarRef = this.snackBar.open('Confirm to Select This Candidate?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+      if(confirm('Confirm to Select This Candidate?')){
      this.store.dispatch(this.admissionActions.selectCandidate(candidate));
       this.editorDialog.afterClosed().subscribe((res) => {
       this.route.params.subscribe((params: { taskId: string }) => {
@@ -80,7 +79,8 @@ export class CandidateProfilePreSelectDialog implements OnInit {
     });
       });
       this.editorDialog.close();
-    });
+    }else {
+    }
   }
 
   reject(candidate: Candidate) {
