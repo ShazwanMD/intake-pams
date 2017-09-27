@@ -79,6 +79,7 @@ export class CandidateProfileRegisterDialog implements OnInit {
     });
       });
       this.editorDialog.close();
+      window.location.reload();
     }else {
     }
   }
