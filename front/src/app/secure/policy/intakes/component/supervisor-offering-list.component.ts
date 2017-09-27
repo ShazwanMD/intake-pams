@@ -26,10 +26,11 @@ export class SupervisorOfferingListComponent {
   }
 
   delete(supervisorOffering: SupervisorOffering): void {
-    let snackBarRef = this.snackBar.open('Delete this supervisor offering?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Delete this supervisor offering?')) {
+    // let snackBarRef = this.snackBar.open('Delete this supervisor offering?', 'Ok');
+    // snackBarRef.afterDismissed().subscribe(() => {
       this.store.dispatch(this.actions.deleteSupervisorOffering(this.intake, supervisorOffering));
-    });
+    };
   }
 
   showDialog(): void {
