@@ -58,6 +58,7 @@ export class IntakeUpdaterDialog implements OnInit {
     if (confirm('Confirm to submit?')) {
       this.store.dispatch(this.actions.updateIntake(intake));
       this.dialog.close();
+      window.location.reload();
     }else {
     }
   }
