@@ -31,9 +31,12 @@
                 <b>NRIC/Passport</b> : {{candidate.identityNo}}<br/><br/>
                 <b>Passport Expired Date</b> : {{candidate.application?.passExpDate}}<br/><br/>
                 <b>Nationality</b> : {{candidate.application?.nationalityCode?.descriptionEn}}<br/><br/>
+                <b>Ethnicity</b> : {{candidate.application?.ethnicityCode?.descriptionEn}} <br/><br/>
+                <b>Religion</b> : {{candidate.application?.religionCode?.descriptionEn}} <br/><br/>
                 <b>Email</b> : {{candidate.email}} <br/><br/>
                 <b>Phone Number</b> : {{candidate.application?.phone}}<br/><br/>
                 <b>Mobile Number</b> : {{candidate.application?.mobile}}<br/><br/>
+                <b>Fax Number</b> : {{candidate.application?.fax}}<br/><br/>
                 <b>Race</b> : {{candidate.application?.raceCode?.descriptionEn}}<br/><br/>
                 <b>Gender</b> : {{candidate.application?.genderCode?.descriptionEn}}<br/><br/>
                 <b>Date of Birth</b> : {{candidate.application?.birthDate}}<br/><br/>                
@@ -42,6 +45,8 @@
 
               <div flex-gt-md="40">
                 <b>Study Mode</b> : {{candidate.application?.studyModeSelection?.studyMode.descriptionEn}}<br/><br/>
+                <b>Study Center</b> : {{candidate.application?.studyCenterCode?.descriptionEn}}<br/><br/>
+                <b>Supervisor</b> : {{candidate.application?.supervisorSelection?.supervisorCode.name}}<br/><br/>
                 <b>Program</b> : {{candidate.application?.programSelection?.programCode?.descriptionEn | uppercase}}<br/><br/>
                 <b>Research Title</b> : {{candidate.application?.researchTitle}}<br/><br/>
                 <b>Faculty</b> : {{candidate.application?.programSelection?.programCode?.facultyCode?.descriptionEn | uppercase}}<br/><br/>
