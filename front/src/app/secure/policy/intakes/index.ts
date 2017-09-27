@@ -1,3 +1,5 @@
+import { IntakeStatusComponent } from './component/intake-status.component';
+import { IntakeProcessDetailPage } from './intake-process-detail.page';
 import { PooledIntakeTaskListComponent } from './component/pooled-intake-task-list.component';
 import { MgsebIntakeApplicationSubModule } from './../../application/intake-applications/mgseb/index';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -70,6 +72,7 @@ import {ArchivedIntakeListComponent} from './component/archived-intake-list.comp
     // page
     IntakeCenterPage,
     IntakeTaskDetailPage,
+    IntakeProcessDetailPage,
 
     // components
     IntakeTaskListComponent,
@@ -80,6 +83,7 @@ import {ArchivedIntakeListComponent} from './component/archived-intake-list.comp
     SupervisorOfferingListComponent,
     StudyModeOfferingListComponent,
     IntakeTaskStatusComponent,
+    IntakeStatusComponent,
     ProgramOfferingSelectComponent,
     IntakeApplicationListComponent,
     IntakeApplicationEvaluateListComponent,
@@ -109,10 +113,12 @@ import {ArchivedIntakeListComponent} from './component/archived-intake-list.comp
   ],
   exports: [
     IntakeTaskListComponent,
+    IntakeStatusComponent,
     ArchivedIntakeListComponent,
     AssignedIntakeTaskListComponent,
     PooledIntakeTaskListComponent,
     ProgramOfferingSelectComponent,
+    IntakeProcessDetailPage,
   ],
   entryComponents: [
     IntakeDraftTaskPanel,
@@ -128,6 +134,8 @@ import {ArchivedIntakeListComponent} from './component/archived-intake-list.comp
     ApplicantProfileDialog,
     ApplicantProfileRejectDialog,
     ApplicantProfileVerifyDialog,
+    IntakeProcessDetailPage,
+    IntakeStatusComponent,
   ],
 
 })

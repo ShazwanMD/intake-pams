@@ -1,0 +1,104 @@
+<td-layout-nav>
+    <div toolbar-content layout="row" layout-align="center center" flex>
+        <span>PAMS: Postgraduate Management System</span>
+        <span flex></span>
+    </div>
+    <div md-content flex md-scroll-y>
+        <div layout="column" layout-gt-md="row" class="inset">
+          <div flex-gt-md="70">
+            <md-card>
+              <md-card-title>#{{(intakes$|async)?.referenceNo}}</md-card-title>
+              <md-card-subtitle>#{{(intakes$|async)?.descriptionEn}}</md-card-subtitle>
+              <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+                <div layout="column" flex>
+                  <md-list dense>
+                    <md-list-item>
+                      <md-icon md-list-icon>local_offer</md-icon>
+                      <h4 md-line>{{(intakes$|async)?.referenceNo}}</h4>
+                      <p md-line>Reference No</p>
+                    </md-list-item>
+                    <md-list-item>
+                      <md-icon md-list-icon>local_offer</md-icon>
+                      <h4 md-line>{{(intakes$|async)?.projection}}</h4>
+                      <p md-line>Projection</p>
+                    </md-list-item>
+                  </md-list>
+                </div>
+                <div layout="column" flex>
+                  <md-list dense>
+                    <md-list-item a>
+                      <md-icon md-list-icon>local_offer</md-icon>
+                      <h4 md-line>{{(intakes$|async)?.startDate| date :'longDate'}}</h4>
+                      <p md-line>Start Date</p>
+                    </md-list-item>
+                    <md-list-item>
+                      <md-icon md-list-icon>local_offer</md-icon>
+                      <h4 md-line>{{(intakes$|async)?.endDate | date :'longDate'}}</h4>
+                      <p md-line>End Date</p>
+                    </md-list-item>
+                  </md-list>
+                </div>
+                <div layout="column" flex>
+                  <md-list dense>
+                    <md-list-item a>
+                      <md-icon md-list-icon>local_offer</md-icon>
+                      <h4 md-line>{{(intakes$|async)?.programLevel?.code}}</h4>
+                      <p md-line>Program Level</p>
+                    </md-list-item>
+                    <md-list-item>
+                      <md-icon md-list-icon>local_offer</md-icon>
+                      <h4 md-line>{{(intakes$|async)?.intakeSession?.code}}</h4>
+                      <p md-line>Intake Session</p>
+                    </md-list-item>
+                  </md-list>
+                </div>
+              </div>
+]          <md-card-actions>
+            </md-card-actions>
+            </md-card>
+            <md-card>
+                <md-card-title>Offerings</md-card-title>
+                <md-card-subtitle>Offered programs, modes and supervisors</md-card-subtitle>
+                <md-divider></md-divider>
+                <md-tab-group>
+                  <md-tab label="Programs ({{(programOfferings$ | async)?.length}})">
+                    <pams-program-offering-list
+                      [programOfferings]="programOfferings$|async"
+                      [intakes]="intakes$|async"></pams-program-offering-list>
+                  </md-tab>
+                  <md-tab label="Study Modes ({{(studyModeOfferings$ | async)?.length}})">
+                    <pams-study-mode-offering-list
+                      [studyModeOfferings]="studyModeOfferings$|async"
+                      [intakes]="intakes$|async"></pams-study-mode-offering-list>
+                  </md-tab>
+                  <md-tab label="Supervisors ({{(supervisorOfferings$ | async)?.length}})">
+                    <pams-supervisor-offering-list
+                      [supervisorOfferings]="supervisorOfferings$|async"
+                      [intakes]="intakes$|async"></pams-supervisor-offering-list>
+                  </md-tab>
+                </md-tab-group>
+              </md-card>
+        </div>
+        <div flex-gt-md="30">
+            <pams-intake-status [intake]="intake" ></pams-intake-status>
+            <md-card>
+                <md-card-title>Action</md-card-title>
+                <md-card-subtitle>Actions available on current intake</md-card-subtitle>
+                <md-divider></md-divider>
+                <md-nav-list dense>
+                  <md-list-item (click)="edit()">
+                    <md-icon md-list-avatar>mode_edit</md-icon>
+                    <h4 md-line>Edit</h4>
+                    <p md-line>Edit this intake</p>
+                  </md-list-item>
+                  <md-list-item (click)="remove()">
+                    <md-icon md-list-avatar>remove_circle</md-icon>
+                    <h4 md-line>Remove</h4>
+                    <p md-line>Remove this intake</p>
+                  </md-list-item>
+                </md-nav-list>
+              </md-card>
+            </div>
+    </div>
+  </div>  
+</td-layout-nav>

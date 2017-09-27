@@ -51,6 +51,10 @@ export class IntakeCenterPage implements OnInit {
 
   }
 
+  viewIntake(intake: Intake) {
+    this.router.navigate(['/secure/policy/intakes/intake-process-detail', intake.referenceNo]);
+  }
+
   claimTask(task: IntakeTask) {
     console.log('intake: ' + task.taskId);
     this.store.dispatch(this.actions.claimIntakeTask(task));

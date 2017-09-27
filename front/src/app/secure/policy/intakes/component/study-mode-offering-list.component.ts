@@ -16,6 +16,7 @@ export class StudyModeOfferingListComponent {
 
   private editorDialogRef: MdDialogRef<StudyModeOfferingEditorDialog>;
   @Input() intake: Intake;
+  @Input() intakes: Intake;
   @Input() studyModeOfferings: StudyModeOffering[];
 
   constructor(private store: Store<PolicyModuleState>,

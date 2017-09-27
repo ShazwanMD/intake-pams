@@ -18,6 +18,7 @@ import {ProgramOffering} from '../../../../shared/model/policy/program-offering.
 export class ProgramOfferingListComponent {
 
   @Input() intake: Intake;
+  @Input() intakes: Intake;
   @Input() programOfferings: ProgramOffering;
 
   private editorDialogRef: MdDialogRef<ProgramOfferingEditorDialog>;

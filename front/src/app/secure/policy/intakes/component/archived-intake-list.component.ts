@@ -24,6 +24,7 @@ export class ArchivedIntakeListComponent {
     {name: 'startDate', label: 'Start Date'},
     {name: 'endDate', label: 'End Date'},
     {name: 'flowState', label: 'Status'},
+    {name: 'action', label: ''},
     
   ];
 

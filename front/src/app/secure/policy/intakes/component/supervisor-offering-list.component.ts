@@ -16,6 +16,7 @@ export class SupervisorOfferingListComponent {
 
   private editorDialogRef: MdDialogRef<SupervisorOfferingEditorDialog>;
   @Input() intake: Intake;
+  @Input() intakes: Intake;
   @Input() supervisorOfferings: SupervisorOffering[];
 
   constructor(private store: Store<PolicyModuleState>,
