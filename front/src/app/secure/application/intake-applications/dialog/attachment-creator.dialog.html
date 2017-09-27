@@ -1,30 +1,29 @@
 <h2 md-dialog-title>Attachment</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
+    <md-card>
+   
+    <md-card-subtitle>Your File size must not exceed 1 mb.</md-card-subtitle>
+
+    
     <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
-      <div class="push-top-sm"></div>
-      <div layout="row" class="pad-top">
-        <pams-attachment-type-select
-          [placeholder]="'Attachment Type'"
-          [innerFormControl]="createForm.controls.attachmentType">
-        </pams-attachment-type-select>
+          <div layout="row" class="pad-top">
+          <pams-attachment-type-select
+              [placeholder]="'Attachment Type'" 
+              [innerFormControl]="createForm.controls.attachmentType" fxFlex="calc(100%-25px)">
+          </pams-attachment-type-select>
+      </div>
+<md-card-subtitle></md-card-subtitle>
+      <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+        <td-file-upload #fileUpload (upload)="upload(createForm.value, $event)" defaultColor="accent" activeColor="warn" cancelColor="primary">
+        <md-icon>file_upload</md-icon><span>{{ fileUpload.files?.name }}</span><template td-file-input-label>
+        <md-icon>attach_file</md-icon><span>Choose a file...</span>
+        </template>
+        </td-file-upload>
       </div>
 
-      <div layout="column" class="pad-right" flex>
-        <div layout="row">
-          <td-file-upload #fileUpload (upload)="upload(createForm.value, $event)" defaultColor="accent"
-                          activeColor="warn"
-                          cancelColor="primary">
-            <md-icon>file_upload</md-icon>
-            <span>{{ fileUpload.files?.name }}</span>
-            <template td-file-input-label>
-              <md-icon>attach_file</md-icon>
-              <span>Choose a file...</span>
-            </template>
-          </td-file-upload>
-        </div>
-      </div>
     </div>
+    </md-card>
   </form>
 </md-dialog-content>
 
