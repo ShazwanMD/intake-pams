@@ -41,11 +41,12 @@ export class ProgramOfferingListComponent {
   }
 
   delete(programOffering: ProgramOffering): void {
-    let snackBarRef = this.snackBar.open('Confirm to delete this program offering?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to delete this program offering?')) {
+    // let snackBarRef = this.snackBar.open('Confirm to delete this program offering?', 'Ok');
+    // snackBarRef.afterDismissed().subscribe(() => {
       console.log('delete program offering :' + programOffering.id);
       this.store.dispatch(this.actions.deleteProgramOffering(this.intake, programOffering));
-    });
+    };
   }
 
   filter(): void {
