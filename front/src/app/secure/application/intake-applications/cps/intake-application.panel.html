@@ -240,9 +240,7 @@
 
         <md-tab>
           <template md-tab-label>Academic Qualification</template>
-          <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
-          <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form
-          </md-card-subtitle>
+         
 
           <td-expansion-panel label="Results">
             <pams-result-list [intakeApplication]="_intakeApplication" [results]="results$ | async">
@@ -258,7 +256,11 @@
 
       <md-tab>
         <template md-tab-label>Documents</template>
-
+       <md-card-subtitle></md-card-subtitle>
+        <md-card-subtitle>Kindly attached all related documents with Certified True Copy</md-card-subtitle>
+        <md-card-subtitle>* Foreign applicant need to submit TOEFL/IELTS result together with the application form
+        </md-card-subtitle>
+        <!-- <md-card-subtitle>* Please attach referee form</md-card-subtitle> -->
         <!--   <td-expansion-panel label="Referees">
              <pams-referee-list [intakeApplication]="_intakeApplication" [referees]="referees$ | async">
              </pams-referee-list>
@@ -385,11 +387,11 @@
           </td-expansion-panel>
       </md-tab>
 
-      <!-- <md-tab>
+      <md-tab>
         <template md-tab-label>Financial Support</template>
 
         <td-expansion-panel label="Financial Support">
-          <md-card-subtitle>Please choose either one of the following financial Support</md-card-subtitle>
+          <md-card-subtitle>Please tick (/) where applicable</md-card-subtitle>
           <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
             <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
               <md-checkbox formControlName="sponsored">
@@ -407,18 +409,6 @@
               </md-checkbox>
             </div>
           </div>
-        </td-expansion-panel>
-      </md-tab> -->
-
-      <md-tab>
-        <template md-tab-label>Financial Support</template>
-
-        <td-expansion-panel label="Financial Support">
-          <md-card-subtitle>Please choose either one of the following financial Support</md-card-subtitle>
-          <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">          
-                <md-radio-button value="true" name="sponsored"> Sponsor by Employer / Government. Please attach letter from Sponsor. </md-radio-button>
-                <md-radio-button value="true" name="selfSponsored"> Self Supporting . Please enclose financial guarantee or bank statement.</md-radio-button>                      
-          </div>      
         </td-expansion-panel>
       </md-tab>
 

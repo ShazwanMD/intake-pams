@@ -37,14 +37,22 @@ export class AttachmentListComponent implements OnInit {
   }
 
   create(): void {
+    if (confirm('Confirm add file?')) {
     this.showDialog(null);
+  }
+  else{
+  }
   }
 
   delete(): void {
+    if (confirm('Confirm delete this file?')) {
     for (let i: number = 0; i < this.selectedRows.length; i++) {
       this.store.dispatch(this.actions.deleteAttachment(this.intakeApplication,this.selectedRows[i]));
     }
     this.selectedRows = [];
+  }
+    else{
+}
   }
 
   download(attachment: Attachment): void {

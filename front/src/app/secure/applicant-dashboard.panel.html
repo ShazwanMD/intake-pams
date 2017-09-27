@@ -33,11 +33,11 @@
                     <md-icon md-list-avatar>home</md-icon>
                       <h3 md-line>Mailing Address : </h3>
                       <h3 md-line>{{application.mailingAddress1}},</h3>
-                       <h3 md-line>{{application.mailingAddress2}},</h3>
-                       <h3 md-line>{{application.mailingAddress3}},</h3>
-                       <h3 md-line>{{application.mailingPostcode}},</h3>
-                       <h3 md-line>{{application.mailingStateCode.descriptionEn}},</h3>
-                       <h3 md-line>{{application.mailingCountryCode.descriptionEn}}</h3>
+                      <h3 md-line>{{application.mailingAddress2}},</h3>
+                      <h3 md-line>{{application?.mailingAddress3}},</h3>
+                      <h3 md-line>{{application.mailingPostcode}},</h3>
+                      <h3 md-line>{{application?.mailingStateCode?.descriptionEn}},</h3>
+                      <h3 md-line>{{application?.mailingCountryCode?.descriptionEn}}</h3>
                   </a>
                 </div>               
           </template>
