@@ -26,11 +26,12 @@ export class StudyModeOfferingListComponent {
   }
 
   delete(studyModeOffering: StudyModeOffering): void {
-    let snackBarRef = this.snackBar.open('Confirm to delete this studymode offering?', 'Ok');
-    snackBarRef.afterDismissed().subscribe(() => {
+    if (confirm('Confirm to delete this studymode offering?')) {
+    // let snackBarRef = this.snackBar.open('Confirm to delete this studymode offering?', 'Ok');
+    // snackBarRef.afterDismissed().subscribe(() => {
     console.log('delete program offering :' + studyModeOffering.id);
     this.store.dispatch(this.actions.deleteStudyModeOffering(this.intake, studyModeOffering));
-    });
+    };
   }
 
   showDialog(): void {
