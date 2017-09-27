@@ -303,6 +303,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 	@Override
 	public void addAttachment(InIntakeApplication application, InAttachment attachment) {
+		this.checkAttachment(application, attachment);
 		intakeApplicationDao.addAttachment(application, attachment, securityService.getCurrentUser());
 	}
 

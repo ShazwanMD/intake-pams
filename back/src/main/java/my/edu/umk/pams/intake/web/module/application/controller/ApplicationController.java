@@ -549,7 +549,7 @@ public class ApplicationController {
 				attachment.setBytes(file.getBytes());
 			 	attachment.setAttachmentType(InAttachmentType.valueOf(attachmentType));
 				applicationService.addAttachment(application, attachment);
-				applicationService.checkAttachment(application, attachment);
+	//			applicationService.checkAttachment(application, attachment);
 			}
 		} catch (IOException e) {
 			return new ResponseEntity<String>("Failed", HttpStatus.OK);

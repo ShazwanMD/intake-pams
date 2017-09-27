@@ -52,6 +52,7 @@ export class AttachmentCreatorDialog implements OnInit {
     if(confirm('Please make sure that your file is not exceed 1 mb')){
       this.store.dispatch(this.actions.addAndCheckAttachment(this._intakeApplication, file, attachmentHelper.attachmentType));
       this.dialog.close();
+      window.location.reload();
     }
    else {
 
