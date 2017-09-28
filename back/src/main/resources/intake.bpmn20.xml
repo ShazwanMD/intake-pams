@@ -7,7 +7,7 @@
 
     <!--
     ====================================================================================================
-    == DRAFTED > VERIFIED > PUBLISHED > EVALUATED > SELECTED > PRE_APPROVED > APPROVED > REGISTERED > COMPLETED
+    == DRAFTED > VERIFIED > PUBLISHED > EVALUATED > SELECTED > PRE_APPROVED > APPROVED > COMPLETED
     == VARIABLE:
     == intakeId: intake id
     ======================================================================================================
@@ -210,29 +210,6 @@
         </userTask>
 
         <sequenceFlow id="flow16.2" sourceRef="intake_offer_UT"
-                      targetRef="intake_register_ST"/>
-
-
-        <!--
-        ====================================================================================================
-        == STATE : REGISTER
-        == SERVICE TASK : register a candidate intake
-        == USER TASK :
-        ====================================================================================================
-        -->
-        <serviceTask id="intake_register_ST"
-                     activiti:expression="#{intake_register_ST.execute(execution)}"/>
-                     
-        <sequenceFlow id="flow15.1" sourceRef="intake_register_ST" targetRef="intake_register_UT"/>
-
-        <userTask id="intake_register_UT" name="my.edu.umk.pams.intake.policy.model.InIntake:REGISTERED"
-                  activiti:candidateGroups="${intakeRouterService.findRegisterCandidates(intakeId)}">
-            <documentation>
-                REGISTERED
-            </documentation>
-        </userTask>
-
-        <sequenceFlow id="flow15.2" sourceRef="intake_register_UT"
                       targetRef="intake_complete_ST"/>
 
 

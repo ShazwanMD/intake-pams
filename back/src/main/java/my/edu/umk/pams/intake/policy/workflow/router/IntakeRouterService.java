@@ -122,17 +122,17 @@ public class IntakeRouterService extends RouterServiceSupport {
         return candidates;
     }
     
-    public List<String> findRegisterCandidates(Long intakeId) {
-        Validate.notNull(intakeId, "Id must not be null");
-
-        InIntake intake = policyService.findIntakeById(intakeId);
-        InGraduateCenter center = intake.getGraduateCenter();
-        RouterStrategy strategy = strategies.get(center.getCode());
-        List<String> candidates = strategy.findRegisterCandidates();
-        // todo(ashraf): permission publishing
-
-        return candidates;
-    }
+//    public List<String> findRegisterCandidates(Long intakeId) {
+//        Validate.notNull(intakeId, "Id must not be null");
+//
+//        InIntake intake = policyService.findIntakeById(intakeId);
+//        InGraduateCenter center = intake.getGraduateCenter();
+//        RouterStrategy strategy = strategies.get(center.getCode());
+//        List<String> candidates = strategy.findRegisterCandidates();
+//        // todo(ashraf): permission publishing
+//
+//        return candidates;
+//    }
 }
 
 
