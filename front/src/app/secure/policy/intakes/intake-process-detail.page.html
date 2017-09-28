@@ -53,10 +53,10 @@
                   </md-list>
                 </div>
               </div>
-]          <md-card-actions>
+          <md-card-actions>
             </md-card-actions>
             </md-card>
-            <md-card>
+            <!-- <md-card>
                 <md-card-title>Offerings</md-card-title>
                 <md-card-subtitle>Offered programs, modes and supervisors</md-card-subtitle>
                 <md-divider></md-divider>
@@ -77,16 +77,16 @@
                       [intakes]="intakes$|async"></pams-supervisor-offering-list>
                   </md-tab>
                 </md-tab-group>
-              </md-card>
+              </md-card> -->
         </div>
         <div flex-gt-md="30">
             <pams-intake-status [intake]="intake" ></pams-intake-status>
             <md-card>
                 <md-card-title>Action</md-card-title>
-                <md-card-subtitle>Actions available on current intake</md-card-subtitle>
+                <md-card-subtitle>Actions available on ccompleted intake</md-card-subtitle>
                 <md-divider></md-divider>
                 <md-nav-list dense>
-                  <md-list-item (click)="edit()">
+                  <!-- <md-list-item (click)="edit()">
                     <md-icon md-list-avatar>mode_edit</md-icon>
                     <h4 md-line>Edit</h4>
                     <p md-line>Edit this intake</p>
@@ -95,7 +95,7 @@
                     <md-icon md-list-avatar>remove_circle</md-icon>
                     <h4 md-line>Remove</h4>
                     <p md-line>Remove this intake</p>
-                  </md-list-item>
+                  </md-list-item> -->
                 </md-nav-list>
               </md-card>
             </div>
