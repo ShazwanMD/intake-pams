@@ -16,7 +16,7 @@
 
           <md-input-container fxFlex="calc(100%-25px)">
           <p class="md-title tc-grey-600">Your Research Title :</p>
-          <input mdInput placeholder="Research Title" formControlName="researchTitle" flex/>
+          <input mdInput formControlName="researchTitle" flex/>
           </md-input-container>
           <div class="error" class="tc-red-600" 
           *ngIf="applicationForm.get('researchTitle').invalid && applicationForm.get('researchTitle').touched">

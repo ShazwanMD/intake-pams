@@ -159,6 +159,28 @@
                   </md-card-content>
                 </md-card>
               </md-tab>
+            
+              <md-tab label="Financial Support">
+                <!--FINANCIAL INFORMATION-->
+                  <md-card-subtitle *ngIf="intakeApplication.intake?.graduateCenter?.code === 'CPS'">
+                    
+                    <md-card-subtitle *ngIf="intakeApplication?.sponsored === true">
+                    <div layout="row" layout-margin><strong>Applicant is Sponsored by Employer or Government and enclosed letter from Sponsor.</strong></div>
+                    </md-card-subtitle>
+                    
+                    <md-card-subtitle *ngIf="intakeApplication?.selfSponsored === true">
+                        <div layout="row" layout-margin><strong>Applicant is Self Supporting and enclosed financial guarantee or bank statement.</strong></div>
+                    </md-card-subtitle>
+                    
+                </md-card-subtitle>
+
+                <md-card-subtitle *ngIf="intakeApplication.intake?.graduateCenter?.code === 'MGSEB'">
+                    <div layout="row" layout-margin><strong>MGSEB does not include financial support in application form.</strong></div>
+                </md-card-subtitle>
+
+
+              </md-tab>
+
               <md-tab label="Referee">
                 <!--REFEREE INFORMATION-->
                 <md-card>

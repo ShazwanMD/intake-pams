@@ -38,6 +38,7 @@ export class ApplicantProfileDialog implements OnInit {
   private results$: Observable<Result>;
   private attachments$: Observable<Attachment>;
   private applicationForm: FormGroup;
+  private _intakeApplications: IntakeApplication;
 
   @Input() intakeApplication: IntakeApplication;
 
@@ -61,6 +62,9 @@ export class ApplicantProfileDialog implements OnInit {
     this.results$ = this.store.select(...this.RESULTS); 
   }
 
+  set intakeApplications(value: IntakeApplication) {
+    this._intakeApplications = value;
+  }
   ngOnInit(): void {
     let referenceNo: string = this.intakeApplication.referenceNo;
     this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
