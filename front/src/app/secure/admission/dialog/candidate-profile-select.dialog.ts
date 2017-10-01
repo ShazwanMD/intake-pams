@@ -39,7 +39,6 @@ export class CandidateProfileSelectDialog implements OnInit {
   private attachments$: Observable<Attachment>;
   private applicationForm: FormGroup;
   private results$: Observable<Result>; 
-  // private _intakeApplications: IntakeApplication;   
 
   @Input() candidate: Candidate;
   @Input() intakeApplication: IntakeApplication;
@@ -68,10 +67,6 @@ export class CandidateProfileSelectDialog implements OnInit {
     let referenceNo: string = this.candidate.application.referenceNo;
     this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
-
-  // set intakeApplications(value: IntakeApplication) {
-  //   this._intakeApplications = value;
-  // }
 
   select(candidate: Candidate) {
     if(confirm('Confirm to Pre-Select This Candidate?')){
