@@ -37,6 +37,7 @@ export class ApplicantProfileVerifyDialog implements OnInit {
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private attachments$: Observable<Attachment>;
+  private _intakeApplications: IntakeApplication;
 
   @Input() intakeApplication: IntakeApplication;
 
@@ -63,6 +64,10 @@ export class ApplicantProfileVerifyDialog implements OnInit {
   ngOnInit(): void {
     let referenceNo: string = this.intakeApplication.referenceNo;
     this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+  }
+
+  set intakeApplications(value: IntakeApplication) {
+    this._intakeApplications = value;
   }
 
   verify(intakeApplication: IntakeApplication): void {

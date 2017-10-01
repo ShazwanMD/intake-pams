@@ -39,6 +39,7 @@ export class CandidateProfileRegisterDialog implements OnInit {
   private attachments$: Observable<Attachment>;
   private results$: Observable<Result>;  
   private applicationForm: FormGroup;
+  private _intakeApplications: IntakeApplication;
 
   @Input() candidate: Candidate;
   @Input() intakeApplication: IntakeApplication;
@@ -61,11 +62,16 @@ export class CandidateProfileRegisterDialog implements OnInit {
     this.referees$ = this.store.select(...this.REFEREES);
     this.results$ = this.store.select(...this.RESULTS);
     this.attachments$ = this.store.select(...this.ATTACHMENTS);
+
   }
 
   ngOnInit(): void {
     let referenceNo: string = this.candidate.application.referenceNo;
     this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+  }
+
+  set intakeApplications(value: IntakeApplication) {
+    this._intakeApplications = value;
   }
 
   register(candidate: Candidate) {
@@ -83,7 +89,6 @@ export class CandidateProfileRegisterDialog implements OnInit {
     }else {
     }
   }
-
   reject(candidate: Candidate) {
      this.showDialog(candidate);
   }
