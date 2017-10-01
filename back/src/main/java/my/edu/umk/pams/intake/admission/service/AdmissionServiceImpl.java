@@ -318,23 +318,24 @@ public class AdmissionServiceImpl implements AdmissionService {
         secondaryAddress.setPostcode(application.getMailingPostcode());
         secondaryAddress.setStateCode(application.getMailingStateCode().getCode());
         payload.setSecondaryAddress(secondaryAddress);
-        
-        // todo: supevisor, studymode, cohort, address etc, etc
-        InSupervisorOffering supervisorSelection = application.getSupervisorSelection();
-        payload.setSupervisorCode(supervisorSelection.getSupervisorCode().getCode());
-
+                     
+//          // todo: supevisor, studymode, cohort, address etc, etc
         InStudyMode studyMode = candidate.getStudyMode();
         StudyModePayload studyModePayload = new StudyModePayload();
         studyModePayload.setCode(studyMode.getCode());
         studyModePayload.setDescription(studyMode.getDescriptionEn());
-        payload.setStudyMode(studyModePayload);
-
+        payload.setStudyMode(studyModePayload);     
+                
+        InSupervisorOffering supervisorSelection = application.getSupervisorSelection();
+        if(candidate.getIntake().getGraduateCenter().getCode()=="CPS") {      
+        payload.setSupervisorCode(supervisorSelection.getSupervisorCode().getCode());
+        }
         InNationalityCode nationilityCode = application.getNationalityCode();
        // NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
       //  nationalityCodePayload.setCode(nationilityCode.getCode());
     //    nationalityCodePayload.setDescriptionEn(nationalityCodePayload.getDescriptionEn());
    //     payload.setNationalityCode(nationalityCodePayload);
-
+        
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
         applicationContext.publishEvent(event);
     }
