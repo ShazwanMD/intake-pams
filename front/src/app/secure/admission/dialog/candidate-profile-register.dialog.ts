@@ -39,7 +39,7 @@ export class CandidateProfileRegisterDialog implements OnInit {
   private attachments$: Observable<Attachment>;
   private results$: Observable<Result>;  
   private applicationForm: FormGroup;
-  private _intakeApplications: IntakeApplication;
+  // private _intakeApplications: IntakeApplication;
 
   @Input() candidate: Candidate;
   @Input() intakeApplication: IntakeApplication;
@@ -70,9 +70,9 @@ export class CandidateProfileRegisterDialog implements OnInit {
     this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
   }
 
-  set intakeApplications(value: IntakeApplication) {
-    this._intakeApplications = value;
-  }
+  // set intakeApplications(value: IntakeApplication) {
+  //   this._intakeApplications = value;
+  // }
 
   register(candidate: Candidate) {
     if(confirm('Confirm to Register This Candidate?')){
@@ -85,7 +85,7 @@ export class CandidateProfileRegisterDialog implements OnInit {
     });
       });
       this.editorDialog.close();
-      window.location.reload();
+      // window.location.reload();
     }else {
     }
   }
