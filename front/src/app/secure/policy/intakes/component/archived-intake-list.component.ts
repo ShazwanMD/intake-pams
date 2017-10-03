@@ -1,5 +1,5 @@
 
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, OnChanges, SimpleChange } from '@angular/core';
 import {MdSnackBar, MdSnackBarRef, SimpleSnackBar} from '@angular/material';
 import {Intake} from '../../../../shared/model/policy/intake.interface';
 import {
@@ -16,7 +16,7 @@ import {
   templateUrl: './archived-intake-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ArchivedIntakeListComponent {
+export class ArchivedIntakeListComponent implements OnChanges {
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
@@ -35,10 +35,6 @@ export class ArchivedIntakeListComponent {
               private _dataTableService: TdDataTableService) {
   }
 
-  // constructor(private snackBar: MdSnackBar,
-  //             private _dataTableService: TdDataTableService) {
-  // }
-
   viewIntake(intake: Intake): void {
     console.log('Emitting task');
     let snackBarRef: MdSnackBarRef<SimpleSnackBar> = this.snackBar.open('Viewing intake', 'OK');
@@ -56,11 +52,13 @@ export class ArchivedIntakeListComponent {
   sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  ngAfterViewInit(): void {
-    this.filteredData = this.intakes;
-    this.filteredTotal = this.intakes.length;
-    this.filter();
-  }
+  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+    if (changes['intakes']){
+        this.filteredData = changes['intakes'].currentValue; 
+        this.filteredTotal = changes['intakes'].currentValue.length;
+        this.filter();
+      }
+    }
 
   sort(sortEvent: ITdDataTableSortChangeEvent): void {
     this.sortBy = sortEvent.name;

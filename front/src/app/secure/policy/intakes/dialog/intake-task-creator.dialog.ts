@@ -64,7 +64,6 @@ export class IntakeTaskCreatorDialog implements OnInit {
     if (confirm('Create intake?')) {
       this.store.dispatch(this.actions.startIntakeTask(intake));
       this.dialog.close();
-      window.location.reload();
     }else {
 }  
 }

@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, SimpleChange, OnChanges } from '@angular/core';
 import {MdSnackBar, MdSnackBarRef, SimpleSnackBar} from '@angular/material';
 import {IntakeTask} from '../../../../shared/model/policy/intake-task.interface';
 import {
@@ -17,7 +17,7 @@ import {
   templateUrl: './assigned-intake-task-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AssignedIntakeTaskListComponent {
+export class AssignedIntakeTaskListComponent implements OnChanges{
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
@@ -54,11 +54,13 @@ export class AssignedIntakeTaskListComponent {
   sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  ngAfterViewInit(): void {
-    this.filteredData = this.intakeTasks;
-    this.filteredTotal = this.intakeTasks.length;
-    this.filter();
-  }
+  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+    if (changes['intakeTasks']){
+        this.filteredData = changes['intakeTasks'].currentValue; 
+        this.filteredTotal = changes['intakeTasks'].currentValue.length;
+        this.filter();
+      }
+    }
 
   sort(sortEvent: ITdDataTableSortChangeEvent): void {
     this.sortBy = sortEvent.name;
