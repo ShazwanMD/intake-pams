@@ -370,7 +370,6 @@ public class CommonTransformer {
         vo.setId(e.getId());
         vo.setCode(e.getCode());
         vo.setDescription(e.getDescription());
-        //vo.setDescriptionEn(e.getDescriptionEn());
         return vo;
     }
 
