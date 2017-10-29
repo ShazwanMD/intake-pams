@@ -15,7 +15,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../../services';
-import {IdentityService} from '../../../services';
+import {IdentityService, ReportService} from '../../../services';
 import {ApplicationService} from '../../../services/application.service';
 import {PolicyService} from '../../../services/policy.service';
 import {IntakeApplicationSubModule} from '../application/intake-applications/index';
@@ -39,6 +39,8 @@ import { candidateListReducer } from "../admission/candidate-list.reducer";
 import { CandidateListState } from "./candidate-list.reducer";
 import {
   MyIntakeApplicationListState, myIntakeApplicationListReducer} from './my-intake-application-list.reducer';
+import { ReportActions } from "../../shared/report/report.action";
+import { ReportModule } from "../../shared/report/index";
 
 export interface AccountModuleState {
   user: UserState;
@@ -75,6 +77,7 @@ export const accountModuleReducers = {
     IntakeApplicationSubModule.forRoot(),
     CpsIntakeApplicationSubModule.forRoot(),
     CommonModule.forRoot(),
+    ReportModule.forRoot(),
     EffectsModule.run(AccountEffects),
   ],
   declarations: [
@@ -111,7 +114,9 @@ export class AccountModule {
         CommonService,
         PolicyService,
         ApplicationService,
+        ReportService,
         AccountActions,
+        ReportActions,
       ],
     };
   }

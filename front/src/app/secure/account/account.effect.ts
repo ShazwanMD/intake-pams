@@ -4,6 +4,7 @@ import {Store} from '@ngrx/store';
 import {AccountActions} from './account.action';
 import {Router, ActivatedRoute} from '@angular/router';
 import {AccountService} from '../../../services/account.service';
+import {ReportService} from '../../../services/report.service';
 import {ApplicationContextActions} from '../../application-context.action';
 import {Observable} from 'rxjs/Observable';
 import {ApplicationError} from '../../shared/model/application-error.interface';
@@ -15,6 +16,7 @@ export class AccountEffects {
               private router: Router,
               private accountActions: AccountActions,
               private accountService: AccountService,
+              private reportService: ReportService,
               private ctxActions: ApplicationContextActions) {
   }
 
@@ -113,9 +115,6 @@ export class AccountEffects {
     .map((action) => action.payload)
     .switchMap((payload) => this.accountService.declinedCandidate(payload))
     .map((message) => this.accountActions.declinedCandidateSuccess(message));
-
-
-
 
 }
 

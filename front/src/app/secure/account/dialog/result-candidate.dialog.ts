@@ -1,6 +1,7 @@
 import { AccountActions } from './../account.action';
 import { AccountModuleState } from './../index';
 import { MyIntakeApplication } from './../../../shared/model/application/my-intake-application.interface';
+import { ReportActions } from './../../../shared/report/report.action';
 import { AdmissionActions } from './../../admission/admission.action';
 import { Candidate } from '../../../shared/model/admission/candidate.interface';
 import { Employment } from '../../../shared/model/application/employment.interface';
@@ -16,6 +17,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from '@angular/material';
+import { ReportDialog } from "../../../shared/report/dialog/report.dialog";
 
 @Component({
   selector: 'pams-result-candidate',
@@ -29,6 +31,8 @@ export class ResultCandidateDialog implements OnInit {
   private myIntakeApplications$: Observable<MyIntakeApplication[]>;
   private applicationForm: FormGroup;
 
+  private editorDialogRef: MdDialogRef<ReportDialog>;
+
   constructor(private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -38,6 +42,7 @@ export class ResultCandidateDialog implements OnInit {
     private editorDialog: MdDialogRef<ResultCandidateDialog>,
     private snackBar: MdSnackBar,
     private store: Store<AccountModuleState>,
+    private reportActions: ReportActions,
     private actions: AccountActions) {
     this.myIntakeApplications$ = this.store.select(...this.MY_INTAKE_APPLICATIONS);
   }
@@ -76,5 +81,12 @@ export class ResultCandidateDialog implements OnInit {
 
   offerLetter() : void{ 
   }
+  
+  downloadReport(reportId,parameterReport:MyIntakeApplication): void {
+      
+      let repParam = reportId+'&reference_no='+ parameterReport.candidate.application.referenceNo;
+     
+      this.store.dispatch(this.reportActions.downloadReport(repParam));
+    }
 
 }

@@ -36,7 +36,9 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string): Observable<boolean> {
+      console.log('environment.endpoint :'+environment.endpoint);
     return this.http.post(
+            
       environment.endpoint + '/api/authentication/login',
       JSON.stringify({username: username, password: password}),
       {headers: new Headers({'Content-Type': 'application/json'})})

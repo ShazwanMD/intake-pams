@@ -31,6 +31,8 @@ export class LoginPage {
 
   login(): void {
     this.authzService.flushRoles();
+    console.log("username is" + this.username);
+    console.log("password is" + this.password);
     this.authnService.login(this.username, this.password)
       .subscribe((result: boolean) => {
         console.log("result is" + result);
