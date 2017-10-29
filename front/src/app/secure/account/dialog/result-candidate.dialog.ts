@@ -17,7 +17,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog } from '@angular/material';
-import { ReportDialog } from "../../../shared/report/dialog/report.dialog";
+
 
 @Component({
   selector: 'pams-result-candidate',
@@ -31,7 +31,7 @@ export class ResultCandidateDialog implements OnInit {
   private myIntakeApplications$: Observable<MyIntakeApplication[]>;
   private applicationForm: FormGroup;
 
-  private editorDialogRef: MdDialogRef<ReportDialog>;
+
 
   constructor(private router: Router,
     private route: ActivatedRoute,
