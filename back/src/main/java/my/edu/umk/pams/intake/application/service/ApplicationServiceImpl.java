@@ -89,6 +89,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		List<InIntakeApplication> applications = findIntakeApplications(intake);
 		for (InIntakeApplication application : applications) {
 			BigDecimal merit = BigDecimal.ZERO;
+			BigDecimal merit1 = BigDecimal.ZERO;
 			List<InEmployment> employments = application.getEmployments();
 			for (InEmployment employment : employments) {
 				LOG.debug("employment: {}", employment.getEmployer());
@@ -97,12 +98,15 @@ public class ApplicationServiceImpl implements ApplicationService {
 					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
 					LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
 					Period period = new Period(start, end);
-					merit = merit.add(BigDecimal.valueOf(period.getYears()));
+					merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
+					merit = merit1.multiply(MERIT_FACTOR);
 				} else {
 					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
 					LocalDate end = LocalDate.fromDateFields(new Date());
 					Period period = new Period(start, end);
-					merit = merit.add(BigDecimal.valueOf(period.getYears()));
+					merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
+					merit = merit1.multiply(MERIT_FACTOR);
+					
 				}
 				LOG.debug("merit: {}", merit);
 			}
