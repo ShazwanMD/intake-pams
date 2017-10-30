@@ -11,7 +11,7 @@ import { ReportEffects } from "./report.effect";
 import { EffectsModule } from "@ngrx/effects";
 import { PipeModule } from "../../app.pipe.module";
 import { AppComponent } from "../../app.component";
-import { PdfViewerComponent } from 'ng2-pdf-viewer';
+
 
 export interface ReportModuleState {
 }
