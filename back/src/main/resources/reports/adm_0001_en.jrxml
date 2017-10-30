@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="790"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -772,29 +772,31 @@ vi.	Eleven (11) passport size photos (Yellow background)
 	<summary>
 		<band height="246" splitType="Stretch">
 			<staticText>
-				<reportElement x="32" y="1" width="505" height="92" uuid="ebcd5d02-283a-410f-9f55-497049fb8ca1"/>
+				<reportElement x="32" y="1" width="505" height="103" uuid="ebcd5d02-283a-410f-9f55-497049fb8ca1"/>
 				<text><![CDATA[Thank you.
 Your sincerely,
 
-PROF. IBRAHIM BIN BUSU
+
+
+PROF. ABDUL JAMAL BIN ABD HAMID
 Dean
 Centre For Postgraduate Studies
 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="44" y="123" width="489" height="16" uuid="0a5765ff-ae94-493b-9579-36acddfeb7a3"/>
+				<reportElement x="44" y="139" width="489" height="16" uuid="0a5765ff-ae94-493b-9579-36acddfeb7a3"/>
 				<textFieldExpression><![CDATA["- Dean, "+$F{in_fcty_code_description_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="44" y="139" width="489" height="17" uuid="16fa4939-6c84-4acf-abc1-9848c97259ab"/>
+				<reportElement x="44" y="155" width="489" height="17" uuid="16fa4939-6c84-4acf-abc1-9848c97259ab"/>
 				<textFieldExpression><![CDATA["- "+$F{in_spvr_code_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="47" y="156" width="118" height="15" uuid="406ab32f-b0ed-40e2-b2d0-0ecae3ec1209"/>
+				<reportElement x="47" y="172" width="118" height="15" uuid="406ab32f-b0ed-40e2-b2d0-0ecae3ec1209"/>
 				<text><![CDATA[- Student’s file]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="108" width="111" height="15" uuid="a1e9bf02-fdc5-4d76-8a82-7d91de0a39cc"/>
+				<reportElement x="32" y="124" width="111" height="15" uuid="a1e9bf02-fdc5-4d76-8a82-7d91de0a39cc"/>
 				<text><![CDATA[c.c - International Office]]></text>
 			</staticText>
 		</band>
