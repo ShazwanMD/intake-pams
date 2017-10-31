@@ -3,7 +3,7 @@ package my.edu.umk.pams.intake.admission.service;
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
-//import my.edu.umk.pams.connector.payload.NationalityCodePayload;
+import my.edu.umk.pams.connector.payload.NationalityCodePayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
@@ -22,6 +22,8 @@ import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InGroup;
+import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
@@ -288,6 +290,13 @@ public class AdmissionServiceImpl implements AdmissionService {
         payload.setName(candidate.getName());
         payload.setMatricNo(candidate.getMatricNo());
         payload.setEmail(candidate.getEmail());
+        
+        //User
+        InUser user = new InUserImpl();
+        user.setUsername(payload.getUserPayload().getUsername());
+        user.setEmail(payload.getUserPayload().getEmail());
+        user.setPassword(payload.getUserPayload().getPassword());
+        user.setRealName(payload.getUserPayload().getRealName());
 
         // if( application != null)
         InIntakeApplication application = candidate.getApplication();
@@ -331,10 +340,10 @@ public class AdmissionServiceImpl implements AdmissionService {
         payload.setSupervisorCode(supervisorSelection.getSupervisorCode().getCode());
         }
         InNationalityCode nationilityCode = application.getNationalityCode();
-       // NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
-      //  nationalityCodePayload.setCode(nationilityCode.getCode());
-    //    nationalityCodePayload.setDescriptionEn(nationalityCodePayload.getDescriptionEn());
-   //     payload.setNationalityCode(nationalityCodePayload);
+        NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
+        nationalityCodePayload.setCode(nationilityCode.getCode());
+        nationalityCodePayload.setDescriptionEn(nationalityCodePayload.getDescriptionEn());
+        payload.setNationalityCode(nationalityCodePayload);
         
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
         applicationContext.publishEvent(event);
