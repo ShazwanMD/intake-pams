@@ -83,37 +83,62 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Autowired
 	private SessionFactory sessionFactory;
 	public static final BigDecimal MERIT_FACTOR = new BigDecimal(0.05);
+	
+    @Override
+    public void calculateApplicantMerit(InIntake intake) {
+        List<InIntakeApplication> applications = findIntakeApplications(intake);
+        for (InIntakeApplication application : applications) {
+            BigDecimal merit = BigDecimal.ZERO;
+            BigDecimal merit1 = BigDecimal.ZERO;
+            BigDecimal resultBac = BigDecimal.ZERO;
+            
+            List<InEmployment> employments = application.getEmployments();
+            for (InEmployment employment : employments) {
+                LOG.debug("employment: {}", employment.getEmployer());
+                if (!employment.isCurrent() == true) { // if current, we don't
+                                                        // have end date
 
-	@Override
-	public void calculateApplicantMerit(InIntake intake) {
-		List<InIntakeApplication> applications = findIntakeApplications(intake);
-		for (InIntakeApplication application : applications) {
-			BigDecimal merit = BigDecimal.ZERO;
-			BigDecimal merit1 = BigDecimal.ZERO;
-			List<InEmployment> employments = application.getEmployments();
-			for (InEmployment employment : employments) {
-				LOG.debug("employment: {}", employment.getEmployer());
-				if (!employment.isCurrent() == true) { // if current, we don't
-														// have end date
-					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
-					LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
-					Period period = new Period(start, end);
-					merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
-					merit = merit1.multiply(MERIT_FACTOR);
-				} else {
-					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
-					LocalDate end = LocalDate.fromDateFields(new Date());
-					Period period = new Period(start, end);
-					merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
-					merit = merit1.multiply(MERIT_FACTOR);
-					
-				}
-				LOG.debug("merit: {}", merit);
-			}
-			application.setMerit(merit);
-			updateIntakeApplication(application);
-		}
-	}
+                    LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
+                    LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
+                    Period period = new Period(start, end);
+                    merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
+                    merit = merit1.multiply(MERIT_FACTOR);
+
+                } else {
+
+                    LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
+                    LocalDate end = LocalDate.fromDateFields(new Date());
+                    Period period = new Period(start, end);
+                    merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
+                    merit = merit1.multiply(MERIT_FACTOR);
+                  
+                    //find result bachelor equa only
+                    
+                    List<InResult> results = application.getResults();
+                
+                    for (InResult result : results) {  
+                    	
+              		 if ((result.getResultType() == InResultType.BACHELOR) 
+              				 || (result.getResultType() == InResultType.BACHELOR_EQUIVALENT))
+              		 {
+              			resultBac=result.getResultNumeric();
+              			merit = merit.add(resultBac);
+                	 }                       
+                }
+
+                LOG.debug("result: {}",resultBac);
+                LOG.debug("merit: {}", merit);
+                }
+            }
+            application.setMerit(merit);
+
+            updateIntakeApplication(application);
+
+        }
+
+    }
+
+
 
 	@Override
 	public String applyIntake(InIntake intake, InIntakeApplication application) throws Exception {
