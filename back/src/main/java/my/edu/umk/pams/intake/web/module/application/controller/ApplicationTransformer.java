@@ -49,6 +49,7 @@ public class ApplicationTransformer {
 		vo.setPaid(e.isPaid());
 		vo.setDeclared(e.isDeclared());
 		vo.setSponsored(e.isSponsored());
+		vo.setMerit(e.getMerit());
 		vo.setSelfSponsored(e.isSelfSponsored());
 		
 		vo.setSpmResultAttached(e.isSpmResultAttached());
@@ -117,6 +118,7 @@ public class ApplicationTransformer {
 		vo.setVerified(e.isVerified());
 		vo.setResearchTitle(e.getResearchTitle());
 		vo.setReason(e.getReason());
+		vo.setMerit(e.getMerit());
 		
 		vo.setMaritalCode(commonTransformer.toMaritalCodeVo(e.getMaritalCode()));
 		vo.setNationalityCode(commonTransformer.toNationalityCodeVo(e.getNationalityCode()));

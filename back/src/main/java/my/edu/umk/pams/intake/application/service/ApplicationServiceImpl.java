@@ -83,62 +83,70 @@ public class ApplicationServiceImpl implements ApplicationService {
 	@Autowired
 	private SessionFactory sessionFactory;
 	public static final BigDecimal MERIT_FACTOR = new BigDecimal(0.05);
-	
-    @Override
-    public void calculateApplicantMerit(InIntake intake) {
-        List<InIntakeApplication> applications = findIntakeApplications(intake);
-        for (InIntakeApplication application : applications) {
-            BigDecimal merit = BigDecimal.ZERO;
-            BigDecimal merit1 = BigDecimal.ZERO;
-            BigDecimal resultBac = BigDecimal.ZERO;
-            
-            List<InEmployment> employments = application.getEmployments();
-            for (InEmployment employment : employments) {
-                LOG.debug("employment: {}", employment.getEmployer());
-                if (!employment.isCurrent() == true) { // if current, we don't
-                                                        // have end date
 
-                    LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
-                    LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
-                    Period period = new Period(start, end);
-                    merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
-                    merit = merit1.multiply(MERIT_FACTOR);
+	@Override
+	public void calculateApplicantMerit(InIntake intake) {
+		List<InIntakeApplication> applications = findIntakeApplications(intake);
+		for (InIntakeApplication application : applications) {
+			BigDecimal merit = BigDecimal.ZERO;
+			BigDecimal merit1 = BigDecimal.ZERO;
+			BigDecimal resultBac = BigDecimal.ZERO;
 
-                } else {
+			List<InEmployment> employments = application.getEmployments();
+			for (InEmployment employment : employments) {
+				LOG.debug("employment: {}", employment.getEmployer());
+				if (!employment.isCurrent() == true) { // if current, we don't
+														// have end date
 
-                    LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
-                    LocalDate end = LocalDate.fromDateFields(new Date());
-                    Period period = new Period(start, end);
-                    merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
-                    merit = merit1.multiply(MERIT_FACTOR);
-                  
-                    //find result bachelor equa only
-                    
-                    List<InResult> results = application.getResults();
-                
-                    for (InResult result : results) {  
-                    	
-              		 if ((result.getResultType() == InResultType.BACHELOR) 
-              				 || (result.getResultType() == InResultType.BACHELOR_EQUIVALENT))
-              		 {
-              			resultBac=result.getResultNumeric();
-              			merit = merit.add(resultBac);
-                	 }                       
-                }
+					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
+					LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
+					Period period = new Period(start, end);
+					merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
+					merit = merit1.multiply(MERIT_FACTOR);
 
-                LOG.debug("result: {}",resultBac);
-                LOG.debug("merit: {}", merit);
-                }
-            }
-            application.setMerit(merit);
+					List<InResult> results = application.getResults();
 
-            updateIntakeApplication(application);
+					for (InResult result : results) {
 
-        }
+						if ((result.getResultType() == InResultType.BACHELOR)
+								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {
+							resultBac = result.getResultNumeric();
+							merit = merit.add(resultBac);
+						}
 
-    }
+					}
+				} else {
 
+					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
+					LocalDate end = LocalDate.fromDateFields(new Date());
+					Period period = new Period(start, end);
+					merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
+					merit = merit1.multiply(MERIT_FACTOR);
 
+					// find result bachelor equa only
+
+					List<InResult> results = application.getResults();
+
+					for (InResult result : results) {
+
+						if ((result.getResultType() == InResultType.BACHELOR)
+								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {
+							resultBac = result.getResultNumeric();
+							merit = merit.add(resultBac);
+						}
+					}
+
+					LOG.debug("result: {}", resultBac);
+					LOG.debug("merit: {}", merit);
+				}
+			}
+			application.setMerit(merit);
+
+			updateIntakeApplication(application);
+
+		}
+
+	}
 
 	@Override
 	public String applyIntake(InIntake intake, InIntakeApplication application) throws Exception {
@@ -439,7 +447,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public boolean isPromoCodeEntered(InPromoCode promoCode) {
 		return intakeApplicationDao.isPromoCodeEntered(promoCode);
 	}
-	
+
 	@Override
 	public InResult findResultById(Long id) {
 		return intakeApplicationDao.findResultById(id);
@@ -623,16 +631,15 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 		InIntakeApplication officialAddress = new InIntakeApplicationImpl();
 		// update new official address
-		
+
 		officialAddress.setOfficialAddress1(application.getOfficialAddress1());
 		officialAddress.setOfficialAddress2(application.getOfficialAddress2());
 		officialAddress.setOfficialAddress3(application.getOfficialAddress3());
 		officialAddress.setOfficialPostcode(application.getOfficialPostcode());
 		officialAddress.setOfficialStateCode(application.getOfficialStateCode());
 		officialAddress.setOfficialCountryCode(application.getOfficialCountryCode());
-//		application.setCopiedAddress(true);
+		// application.setCopiedAddress(true);
 		updateIntakeApplication(application);
-		
 
 		// copy updated official address to mailing address
 		application.setMailingAddress1(application.getOfficialAddress1());
@@ -641,9 +648,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 		application.setMailingPostcode(application.getOfficialPostcode());
 		application.setMailingStateCode(application.getOfficialStateCode());
 		application.setMailingCountryCode(application.getOfficialCountryCode());
-//		application.setCopiedAddress(true);
+		// application.setCopiedAddress(true);
 		updateIntakeApplication(application);
-		
+
 	}
 
 	@Override
@@ -653,55 +660,46 @@ public class ApplicationServiceImpl implements ApplicationService {
 			application.setSpmResultAttached(true);
 		} else if (attachment.getAttachmentType() == InAttachmentType.STPM) {
 			application.setStpmResultAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA) {
 			application.setDiplomaResultAttached(true);
 		}
-		
+
 		else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA_EQUIVALENT) {
 			application.setDiplomaResultAttached(true);
 		}
-		
+
 		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR) {
 			application.setBachelorResultAttached(true);
 		}
-		
+
 		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR_EQUIVALENT) {
 			application.setBachelorResultAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
 			application.setSponsorLetterAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.REFEREE_FORM) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.REFEREE_FORM) {
 			application.setRefereeFormAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.BANK_STATEMENT) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.BANK_STATEMENT) {
 			application.setBankStatementAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.PROCESSING_FEE) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.PROCESSING_FEE) {
 			application.setProcessingFeeAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.RESEARCH_PROPOSAL) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.RESEARCH_PROPOSAL) {
 			application.setResearchProposalAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.IELTS) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.IELTS) {
 			application.setIeltsResultAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.TOEFL) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.TOEFL) {
 			application.setToeflResultAttached(true);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.LANGUAGE_RESULT){
+		} else if (attachment.getAttachmentType() == InAttachmentType.LANGUAGE_RESULT) {
 			application.setLanguageResultAttached(true);
 		}
-		
-		else if (attachment.getAttachmentType() == InAttachmentType.STAM){
+
+		else if (attachment.getAttachmentType() == InAttachmentType.STAM) {
 			application.setStamResultAttached(true);
 		}
-		
-		else if (attachment.getAttachmentType() == InAttachmentType.MUET){
+
+		else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
 			application.setMuetResultAttached(true);
 		}
-		
+
 		this.updateIntakeApplication(application);
 
 	}
