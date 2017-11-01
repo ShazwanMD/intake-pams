@@ -5,6 +5,7 @@ import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
 import my.edu.umk.pams.connector.payload.NationalityCodePayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
+import my.edu.umk.pams.connector.payload.UserPayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.event.CandidateAcceptedEvent;
@@ -291,13 +292,19 @@ public class AdmissionServiceImpl implements AdmissionService {
         payload.setMatricNo(candidate.getMatricNo());
         payload.setEmail(candidate.getEmail());
         
+        InUser user = identityService.findUserByEmail(candidate.getEmail());
+        LOG.debug("user Email:{}",user.getEmail());
+        
         //User
-        InUser user = new InUserImpl();
-        user.setUsername(payload.getUserPayload().getUsername());
-        user.setEmail(payload.getUserPayload().getEmail());
-        user.setPassword(payload.getUserPayload().getPassword());
-        user.setRealName(payload.getUserPayload().getRealName());
-
+        UserPayload userPayload = new UserPayload();
+        userPayload.setUsername(user.getEmail());
+        LOG.debug("Username:{}",user.getEmail());
+        userPayload.setEmail(user.getEmail());
+        userPayload.setPassword(user.getPassword());
+        LOG.debug("Password:{}",user.getPassword());
+        userPayload.setRealName(user.getRealName());
+        LOG.debug("Realname:{}",user.getRealName());
+        
         // if( application != null)
         InIntakeApplication application = candidate.getApplication();
         payload.setMobile(application.getMobile());
