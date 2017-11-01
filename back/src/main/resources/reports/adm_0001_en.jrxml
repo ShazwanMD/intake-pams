@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="790"/>
+	<property name="ireport.y" value="1033"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -554,26 +554,44 @@ FROM
 		<band height="144" splitType="Stretch">
 			<textField>
 				<reportElement x="32" y="10" width="172" height="20" uuid="b0b2f758-b342-4b8e-9516-482ec00c2103"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_name}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="30" width="172" height="20" uuid="dd4890ff-b6c3-45c2-b9ff-69500a4b307f"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_address1}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="50" width="172" height="20" uuid="4fc48987-816e-4ba8-a99a-4524eb5f63ec"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_address2}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="70" width="172" height="20" uuid="beb9fc50-389c-4228-9b23-83b3c14e6674"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[(($F{in_intk_apln_mailing_address3}==null)? "-": $F{in_intk_apln_mailing_address3}.toUpperCase())]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="88" width="172" height="20" uuid="c4fcee2b-84a3-4f37-8a9a-8d4422aee813"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_postcode}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="108" width="172" height="20" uuid="f2482a32-6866-4d4c-b274-9a896923adb7"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_stte_code_description_en}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -582,10 +600,16 @@ FROM
 		<band height="46" splitType="Stretch">
 			<staticText>
 				<reportElement x="32" y="0" width="172" height="20" uuid="fa2291f2-5c88-40de-b1cd-a67ee8f972ef"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Dear Sir/Miss/Madame,]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="32" y="20" width="505" height="21" uuid="fccf6744-a5f0-4faa-b880-410e1627381a"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[OFFER OF ADMISSION TO POSTGRADUATE STUDIES, UNIVERSITI MALAYSIA KELANTAN (UMK)]]></text>
 			</staticText>
 		</band>
@@ -594,127 +618,205 @@ FROM
 		<band height="420" splitType="Stretch">
 			<staticText>
 				<reportElement x="32" y="0" width="505" height="32" uuid="9637b07c-80e5-4c4a-9384-763363d04206"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Congratulation! I am pleased to inform that you have been offered to a postgraduate programme at Universiti Malaysia Kelantan.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="66" width="111" height="15" uuid="cb01c631-067b-412f-b9f0-a71aa3fbef92"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Programme]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="80" width="111" height="15" uuid="999fcc5a-6d24-494e-a7d3-27efaafbb9de"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Programme Structure	]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="95" width="111" height="15" uuid="d0478cd2-bd48-4e72-a930-493a03240410"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Status]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="110" width="111" height="15" uuid="41b48bb4-9bf8-481a-8fd4-452b5540ca3e"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Field of Study  ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="125" width="111" height="15" uuid="bab91906-dacd-4343-9130-3a396727938f"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Programme Code          ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="140" width="111" height="15" uuid="a39d9834-90c8-4c1d-9081-456e015d38b2"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Faculty         ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="155" width="111" height="15" uuid="66844062-d21d-4d1a-8770-203bfe7dd84f"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Main Supervisor	      ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="170" width="111" height="15" uuid="de3e4ff4-41b3-4f25-9d36-484380f5f845"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Semester of Admission]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="213" width="111" height="15" uuid="9303f5a8-17d6-4bf8-b60d-08448c7ae9bc"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Fee Payable]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="32" y="239" width="505" height="15" uuid="fd4792d4-3431-471c-be4e-b4fd03fe27c2"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[2.	The following documents are required during registration:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="217" y="65" width="201" height="16" uuid="d00cb895-c2e1-4fa7-8f0e-0dcd4ed28c5f"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[( $F{in_prgm_levl_description}.equals( "MASTER" ) ? "Master" : "Doctor of Philosophy" )]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="217" y="81" width="201" height="15" uuid="8b8efc2b-71ea-4306-8f3d-0a3558d4d55d"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Research Mode]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="217" y="96" width="257" height="15" uuid="743afc42-becd-46fc-a996-384efa3fdce5"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_stdy_mode_description_en}.substring(0, 1)+$F{in_stdy_mode_description_ms}.substring(1, $F{in_stdy_mode_description_ms}.length()).toLowerCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="217" y="110" width="338" height="15" uuid="b8b98397-4281-4903-b642-f1d4e889d5ff"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_prgm_code_description_en}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="217" y="125" width="338" height="15" uuid="b63f05a6-1a56-4980-8d66-51f89f8937f1"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_prgm_code_code}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="217" y="140" width="338" height="15" uuid="3730faf6-1812-421c-a77c-4071c6131854"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_fcty_code_description_en}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="189" y="213" width="28" height="15" uuid="181a59fb-e71f-4561-8bed-c5bb873dfdd0"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="170" width="28" height="15" uuid="dcbe13f0-8d3e-4205-9e24-046fa963c3a4"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="155" width="28" height="15" uuid="7aa270ff-28d8-46b7-a39a-840da875cbeb"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="140" width="28" height="15" uuid="351d1d11-2fdd-483d-91a2-1b918f7ed3fb"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="125" width="28" height="15" uuid="45c80432-6d2f-4671-bfee-27823932d43e"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="110" width="28" height="15" uuid="674fd074-f0dc-4c33-aefc-a592b8deec8f"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="96" width="28" height="15" uuid="b2e622a1-cd72-4f63-a284-abfcb11295be"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="81" width="28" height="15" uuid="1e6141b8-336d-4322-b696-ca23c9d7614a"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="66" width="28" height="15" uuid="e7bffd50-ae2a-4ee5-a195-9d6f93e41dbf"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="217" y="170" width="338" height="15" uuid="bb9e7dd9-0601-467e-b569-0ce26c5c5a86"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_sesn_description_en}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="217" y="213" width="111" height="15" uuid="b02ba319-68fd-401b-a963-7d30c71c771b"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[As enclosed]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="78" y="254" width="459" height="98" uuid="37071659-007b-4531-8d18-692c8ad2077e"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[i.	Admission offer letter
 ii.	Original transcripts and certificates
 iii.	Medical report (please use for attached)
@@ -726,36 +828,58 @@ vi.	Eleven (11) passport size photos (Yellow background)
 			</staticText>
 			<staticText>
 				<reportElement x="32" y="366" width="505" height="43" uuid="3fbc1642-11f7-4530-b313-4c92deb63d99"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[3.	You are required to register on the above mentioned date. Please contact us at 609-7717145 or via emel siswazah@umk.edu.my for further information.]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="217" y="155" width="338" height="15" uuid="55fa8a7c-cc1d-4b7a-a914-55422ce6d6ad"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_spvr_code_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="78" y="184" width="111" height="15" uuid="7f5a8b2f-ad7c-4d18-a1b6-fa3da2a5dc46"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Registration Date]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="184" width="28" height="15" uuid="c4d70b4c-c717-4a2c-95b2-8f297e3566f7"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="217" y="184" width="338" height="15" uuid="56e937da-4862-453d-98e8-e8c7ce4b0123"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_venu_code_registration_date}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="78" y="199" width="111" height="15" uuid="5c69c954-1fd9-4920-8c30-982076689d61"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Registration Vanue]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="189" y="198" width="28" height="15" uuid="478b60d2-fa6f-4574-a677-58fbe207acc0"/>
-				<textElement textAlignment="Center"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
 				<reportElement stretchType="RelativeToTallestObject" x="217" y="198" width="338" height="15" isPrintWhenDetailOverflows="true" uuid="4a020d60-7f19-4305-840e-dd656c58b1b7"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{in_venu_code_registration_location}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -773,6 +897,9 @@ vi.	Eleven (11) passport size photos (Yellow background)
 		<band height="246" splitType="Stretch">
 			<staticText>
 				<reportElement x="32" y="1" width="505" height="103" uuid="ebcd5d02-283a-410f-9f55-497049fb8ca1"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Thank you.
 Your sincerely,
 
@@ -785,18 +912,30 @@ Centre For Postgraduate Studies
 			</staticText>
 			<textField>
 				<reportElement x="44" y="139" width="489" height="16" uuid="0a5765ff-ae94-493b-9579-36acddfeb7a3"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA["- Dean, "+$F{in_fcty_code_description_en}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="44" y="155" width="489" height="17" uuid="16fa4939-6c84-4acf-abc1-9848c97259ab"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA["- "+$F{in_spvr_code_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="47" y="172" width="118" height="15" uuid="406ab32f-b0ed-40e2-b2d0-0ecae3ec1209"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[- Student’s file]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="32" y="124" width="111" height="15" uuid="a1e9bf02-fdc5-4d76-8a82-7d91de0a39cc"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[c.c - International Office]]></text>
 			</staticText>
 		</band>
