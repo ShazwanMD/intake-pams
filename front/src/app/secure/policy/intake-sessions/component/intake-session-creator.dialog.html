@@ -13,7 +13,7 @@
         </div>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput class="uppercase" placeholder="label" formControlName="label" flex/>
+            <input mdInput placeholder="label" formControlName="label" flex/>
           </md-input-container>
           <div class="error" class="tc-red-600"
           *ngIf="createForm.get('label').invalid && createForm.get('label').touched">Label is Required!
@@ -21,7 +21,7 @@
         </div>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput class="uppercase" placeholder="Description (MS)" formControlName="descriptionMs" flex/>
+            <input mdInput placeholder="Description (MS)" formControlName="descriptionMs" flex/>
           </md-input-container>
           <div class="error" class="tc-red-600"
           *ngIf="createForm.get('descriptionMs').invalid && createForm.get('descriptionMs').touched">Description Ms is Required!
@@ -29,7 +29,7 @@
         </div>
         <div layout="row">
           <md-input-container flex>
-            <input mdInput class="uppercase" placeholder="Description (EN)" formControlName="descriptionEn" flex/>
+            <input mdInput placeholder="Description (EN)" formControlName="descriptionEn" flex/>
           </md-input-container>
           <div class="error" class="tc-red-600"
           *ngIf="createForm.get('descriptionEn').invalid && createForm.get('descriptionEn').touched">Description En is Required!
