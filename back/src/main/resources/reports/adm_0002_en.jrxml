@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="790"/>
+	<property name="ireport.y" value="262"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -595,7 +595,7 @@ FROM
 			</staticText>
 			<textField>
 				<reportElement x="217" y="96" width="257" height="15" uuid="743afc42-becd-46fc-a996-384efa3fdce5"/>
-				<textFieldExpression><![CDATA[$F{in_stdy_mode_description_en}.substring(0, 1)+$F{in_stdy_mode_description_ms}.substring(1, $F{in_stdy_mode_description_ms}.length()).toLowerCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{in_stdy_mode_description_en}.substring(0, 1)+$F{in_stdy_mode_description_en}.substring(1, $F{in_stdy_mode_description_en}.length()).toLowerCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="217" y="110" width="338" height="15" uuid="b8b98397-4281-4903-b642-f1d4e889d5ff"/>
