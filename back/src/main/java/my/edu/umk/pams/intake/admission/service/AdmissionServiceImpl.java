@@ -21,6 +21,8 @@ import my.edu.umk.pams.intake.common.model.InNationalityCode;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.common.model.InSupervisorCode;
+import my.edu.umk.pams.intake.common.model.InSupervisorCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InGroup;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -283,7 +285,8 @@ public class AdmissionServiceImpl implements AdmissionService {
     public void registerCandidate(InCandidate candidate) {
         candidate.setStatus(InCandidateStatus.REGISTERED);
         candidateDao.update(candidate, securityService.getCurrentUser());
-
+        
+        LOG.debug("start candidate payload");
         // payload
         InProgramCode programCode = candidate.getProgramSelection().getProgramCode();
         InFacultyCode facultyCode = programCode.getFacultyCode();
@@ -295,6 +298,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         InUser user = identityService.findUserByEmail(candidate.getEmail());
         LOG.debug("user Email:{}",user.getEmail());
         
+      
         //User
         UserPayload userPayload = new UserPayload();
         userPayload.setUsername(user.getEmail());
@@ -304,6 +308,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         LOG.debug("Password:{}",user.getPassword());
         userPayload.setRealName(user.getRealName());
         LOG.debug("Realname:{}",user.getRealName());
+        payload.setUserPayload(userPayload);
         
         // if( application != null)
         InIntakeApplication application = candidate.getApplication();
@@ -325,6 +330,7 @@ public class AdmissionServiceImpl implements AdmissionService {
         primaryAddress.setAddress3(application.getOfficialAddress3());
         primaryAddress.setPostcode(application.getOfficialPostcode());
         primaryAddress.setStateCode(application.getOfficialStateCode().getCode());
+        primaryAddress.setCountryCode(application.getOfficialCountryCode().getCode());
         payload.setPrimaryAddress(primaryAddress);
         
         AddressPayload secondaryAddress =  new AddressPayload();
@@ -333,19 +339,20 @@ public class AdmissionServiceImpl implements AdmissionService {
         secondaryAddress.setAddress3(application.getMailingAddress3());
         secondaryAddress.setPostcode(application.getMailingPostcode());
         secondaryAddress.setStateCode(application.getMailingStateCode().getCode());
+        secondaryAddress.setCountryCode(application.getMailingCountryCode().getCode());
         payload.setSecondaryAddress(secondaryAddress);
                      
-//          // todo: supevisor, studymode, cohort, address etc, etc
+        // todo: supevisor, studymode, cohort, address etc, etc
         InStudyMode studyMode = candidate.getStudyMode();
         StudyModePayload studyModePayload = new StudyModePayload();
         studyModePayload.setCode(studyMode.getCode());
         studyModePayload.setDescription(studyMode.getDescriptionEn());
         payload.setStudyMode(studyModePayload);     
-                
-        InSupervisorOffering supervisorSelection = application.getSupervisorSelection();
-        if(candidate.getIntake().getGraduateCenter().getCode()=="CPS") {      
-        payload.setSupervisorCode(supervisorSelection.getSupervisorCode().getCode());
+        
+        if(candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {   
+        payload.setSupervisorCode(candidate.getSupervisorSelection().getSupervisorCode().getCode());
         }
+        
         InNationalityCode nationilityCode = application.getNationalityCode();
         NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
         nationalityCodePayload.setCode(nationilityCode.getCode());
@@ -354,6 +361,8 @@ public class AdmissionServiceImpl implements AdmissionService {
         
         CandidateAcceptedEvent event = new CandidateAcceptedEvent(payload);
         applicationContext.publishEvent(event);
+        
+        LOG.debug("finish candidate payload");
     }
 
     @Override

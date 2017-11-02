@@ -59,8 +59,10 @@ public class IntegrationController {
         programCode.setDescriptionEn(payload.getDescription());
         programCode.setDescriptionMs(payload.getDescription());
         programCode.setFacultyCode(commonService.findFacultyCodeByCode(payload.getFacultyCode().getCode()));
-        programCode.setGraduateCenter(commonService.findGraduateCenterByCode("MGSEB")); // todo
-        programCode.setProgramLevel(policyService.findProgramLevelByCode("MASTER")); // todo
+        if (payload.getFacultyCode().equals("A10")){
+        programCode.setGraduateCenter(commonService.findGraduateCenterByCode("MGSEB"));
+        }
+        programCode.setProgramLevel(policyService.findProgramLevelByCode(payload.getProgramLevel().getCode()));
         commonService.saveProgramCode(programCode);
 
         logoutAsSystem(ctx);
