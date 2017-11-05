@@ -62,6 +62,10 @@ public class IntegrationController {
         if (payload.getFacultyCode().equals("A10")){
         programCode.setGraduateCenter(commonService.findGraduateCenterByCode("MGSEB"));
         }
+        else
+        {
+        programCode.setGraduateCenter(commonService.findGraduateCenterByCode("CPS"));   
+        }
         programCode.setProgramLevel(policyService.findProgramLevelByCode(payload.getProgramLevel().getCode()));
         commonService.saveProgramCode(programCode);
 
