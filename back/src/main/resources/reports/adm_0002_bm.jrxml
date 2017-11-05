@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="933"/>
+	<property name="ireport.y" value="480"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -506,27 +506,27 @@ FROM
 	<title>
 		<band height="144" splitType="Stretch">
 			<textField>
-				<reportElement x="32" y="10" width="172" height="20" uuid="b0b2f758-b342-4b8e-9516-482ec00c2103"/>
+				<reportElement x="32" y="10" width="505" height="20" uuid="b0b2f758-b342-4b8e-9516-482ec00c2103"/>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_name}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="30" width="172" height="20" uuid="dd4890ff-b6c3-45c2-b9ff-69500a4b307f"/>
+				<reportElement x="32" y="30" width="505" height="20" uuid="dd4890ff-b6c3-45c2-b9ff-69500a4b307f"/>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_address1}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="50" width="172" height="20" uuid="4fc48987-816e-4ba8-a99a-4524eb5f63ec"/>
+				<reportElement x="32" y="50" width="505" height="20" uuid="4fc48987-816e-4ba8-a99a-4524eb5f63ec"/>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_address2}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="70" width="172" height="20" uuid="beb9fc50-389c-4228-9b23-83b3c14e6674"/>
+				<reportElement x="32" y="70" width="505" height="20" uuid="beb9fc50-389c-4228-9b23-83b3c14e6674"/>
 				<textFieldExpression><![CDATA[(($F{in_intk_apln_mailing_address3}==null)? "-": $F{in_intk_apln_mailing_address3}.toUpperCase())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="88" width="172" height="20" uuid="c4fcee2b-84a3-4f37-8a9a-8d4422aee813"/>
+				<reportElement x="32" y="88" width="505" height="20" uuid="c4fcee2b-84a3-4f37-8a9a-8d4422aee813"/>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_postcode}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="108" width="172" height="20" uuid="f2482a32-6866-4d4c-b274-9a896923adb7"/>
+				<reportElement x="32" y="108" width="505" height="20" uuid="f2482a32-6866-4d4c-b274-9a896923adb7"/>
 				<textFieldExpression><![CDATA[$F{in_stte_code_description_en}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -553,7 +553,7 @@ FROM
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="456" splitType="Stretch">
+		<band height="497" splitType="Stretch">
 			<staticText>
 				<reportElement x="32" y="12" width="505" height="20" uuid="9637b07c-80e5-4c4a-9384-763363d04206"/>
 				<text><![CDATA[2.	Tahniah, sukacita dimaklumkan bahawa permohonan tuan/puan untuk mengikuti Program ]]></text>
@@ -563,133 +563,133 @@ FROM
 				<text><![CDATA[Pengajian Pascasiswazah berikut telah BERJAYA:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="66" width="111" height="15" uuid="cb01c631-067b-412f-b9f0-a71aa3fbef92"/>
+				<reportElement x="59" y="68" width="111" height="15" uuid="cb01c631-067b-412f-b9f0-a71aa3fbef92"/>
 				<text><![CDATA[Program Pengajian ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="80" width="111" height="15" uuid="999fcc5a-6d24-494e-a7d3-27efaafbb9de"/>
+				<reportElement x="59" y="82" width="111" height="15" uuid="999fcc5a-6d24-494e-a7d3-27efaafbb9de"/>
 				<text><![CDATA[Struktur Program    ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="95" width="111" height="15" uuid="d0478cd2-bd48-4e72-a930-493a03240410"/>
+				<reportElement x="59" y="97" width="111" height="15" uuid="d0478cd2-bd48-4e72-a930-493a03240410"/>
 				<text><![CDATA[Taraf Kemasukkan ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="110" width="111" height="15" uuid="41b48bb4-9bf8-481a-8fd4-452b5540ca3e"/>
+				<reportElement x="59" y="112" width="111" height="15" uuid="41b48bb4-9bf8-481a-8fd4-452b5540ca3e"/>
 				<text><![CDATA[Bidang Pengajian  ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="125" width="111" height="15" uuid="bab91906-dacd-4343-9130-3a396727938f"/>
+				<reportElement x="59" y="143" width="111" height="15" uuid="bab91906-dacd-4343-9130-3a396727938f"/>
 				<text><![CDATA[Kod Program          ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="140" width="111" height="15" uuid="a39d9834-90c8-4c1d-9081-456e015d38b2"/>
+				<reportElement x="59" y="158" width="111" height="15" uuid="a39d9834-90c8-4c1d-9081-456e015d38b2"/>
 				<text><![CDATA[Fakulti/Pusat         ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="155" width="111" height="15" uuid="de3e4ff4-41b3-4f25-9d36-484380f5f845"/>
+				<reportElement x="59" y="173" width="111" height="15" uuid="de3e4ff4-41b3-4f25-9d36-484380f5f845"/>
 				<text><![CDATA[Semester Kemasukkan          ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="170" width="111" height="15" uuid="9fe00a09-2452-4952-b3d7-08d998b1c385"/>
+				<reportElement x="59" y="188" width="111" height="15" uuid="9fe00a09-2452-4952-b3d7-08d998b1c385"/>
 				<text><![CDATA[Tempoh Pengajian ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="213" width="111" height="15" uuid="9303f5a8-17d6-4bf8-b60d-08448c7ae9bc"/>
+				<reportElement x="59" y="231" width="111" height="15" uuid="9303f5a8-17d6-4bf8-b60d-08448c7ae9bc"/>
 				<text><![CDATA[Yuran Pengajian     ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="263" width="505" height="15" uuid="fd4792d4-3431-471c-be4e-b4fd03fe27c2"/>
+				<reportElement x="32" y="279" width="505" height="15" uuid="fd4792d4-3431-471c-be4e-b4fd03fe27c2"/>
 				<text><![CDATA[3.	Tawaran kemasukan ini adalah tertakluk kepada Akta dan Peraturan Universiti.  Sila Kemukakan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="278" width="505" height="18" uuid="055fb7f7-5595-4620-8fd0-04d259833275"/>
+				<reportElement x="32" y="294" width="505" height="18" uuid="055fb7f7-5595-4620-8fd0-04d259833275"/>
 				<text><![CDATA[perkara - perkara berikut semasa membuat pendaftaran di Universiti Malaysia Kelantan (UMK) :
 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="217" y="65" width="201" height="16" uuid="d00cb895-c2e1-4fa7-8f0e-0dcd4ed28c5f"/>
+				<reportElement x="179" y="67" width="376" height="16" uuid="d00cb895-c2e1-4fa7-8f0e-0dcd4ed28c5f"/>
 				<textFieldExpression><![CDATA[( $F{in_prgm_levl_description}.equals( "MASTER" ) ? "Sarjana" : "Doktor Falsafah" )]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="217" y="81" width="201" height="15" uuid="8b8efc2b-71ea-4306-8f3d-0a3558d4d55d"/>
+				<reportElement x="179" y="83" width="201" height="15" uuid="8b8efc2b-71ea-4306-8f3d-0a3558d4d55d"/>
 				<text><![CDATA[Mod Penyelidikan]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="217" y="96" width="257" height="15" uuid="743afc42-becd-46fc-a996-384efa3fdce5"/>
+				<reportElement x="179" y="98" width="376" height="15" uuid="743afc42-becd-46fc-a996-384efa3fdce5"/>
 				<textFieldExpression><![CDATA[$F{in_stdy_mode_description_ms}.substring(0, 1)+$F{in_stdy_mode_description_ms}.substring(1, $F{in_stdy_mode_description_ms}.length()).toLowerCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="217" y="110" width="338" height="15" uuid="b8b98397-4281-4903-b642-f1d4e889d5ff"/>
+				<reportElement x="179" y="112" width="376" height="31" uuid="b8b98397-4281-4903-b642-f1d4e889d5ff"/>
 				<textFieldExpression><![CDATA[$F{in_prgm_code_description_ms}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="217" y="125" width="338" height="15" uuid="b63f05a6-1a56-4980-8d66-51f89f8937f1"/>
+				<reportElement x="179" y="143" width="376" height="15" uuid="b63f05a6-1a56-4980-8d66-51f89f8937f1"/>
 				<textFieldExpression><![CDATA[$F{in_prgm_code_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="217" y="140" width="338" height="15" uuid="3730faf6-1812-421c-a77c-4071c6131854"/>
+				<reportElement x="179" y="158" width="376" height="15" uuid="3730faf6-1812-421c-a77c-4071c6131854"/>
 				<textFieldExpression><![CDATA[$F{in_fcty_code_description_ms}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="189" y="213" width="28" height="15" uuid="181a59fb-e71f-4561-8bed-c5bb873dfdd0"/>
+				<reportElement x="160" y="231" width="28" height="15" uuid="181a59fb-e71f-4561-8bed-c5bb873dfdd0"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="170" width="28" height="15" uuid="aa92b6cd-453e-4c9e-bc3b-e28b576b6f03"/>
+				<reportElement x="160" y="188" width="28" height="15" uuid="aa92b6cd-453e-4c9e-bc3b-e28b576b6f03"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="155" width="28" height="15" uuid="dcbe13f0-8d3e-4205-9e24-046fa963c3a4"/>
+				<reportElement x="160" y="173" width="28" height="15" uuid="dcbe13f0-8d3e-4205-9e24-046fa963c3a4"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="140" width="28" height="15" uuid="351d1d11-2fdd-483d-91a2-1b918f7ed3fb"/>
+				<reportElement x="160" y="158" width="28" height="15" uuid="351d1d11-2fdd-483d-91a2-1b918f7ed3fb"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="125" width="28" height="15" uuid="45c80432-6d2f-4671-bfee-27823932d43e"/>
+				<reportElement x="160" y="143" width="28" height="15" uuid="45c80432-6d2f-4671-bfee-27823932d43e"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="110" width="28" height="15" uuid="674fd074-f0dc-4c33-aefc-a592b8deec8f"/>
+				<reportElement x="160" y="112" width="28" height="15" uuid="674fd074-f0dc-4c33-aefc-a592b8deec8f"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="96" width="28" height="15" uuid="b2e622a1-cd72-4f63-a284-abfcb11295be"/>
+				<reportElement x="160" y="98" width="28" height="15" uuid="b2e622a1-cd72-4f63-a284-abfcb11295be"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="81" width="28" height="15" uuid="1e6141b8-336d-4322-b696-ca23c9d7614a"/>
+				<reportElement x="160" y="83" width="28" height="15" uuid="1e6141b8-336d-4322-b696-ca23c9d7614a"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="66" width="28" height="15" uuid="e7bffd50-ae2a-4ee5-a195-9d6f93e41dbf"/>
+				<reportElement x="160" y="68" width="28" height="15" uuid="e7bffd50-ae2a-4ee5-a195-9d6f93e41dbf"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="217" y="155" width="338" height="15" uuid="bb9e7dd9-0601-467e-b569-0ce26c5c5a86"/>
+				<reportElement x="179" y="173" width="376" height="15" uuid="bb9e7dd9-0601-467e-b569-0ce26c5c5a86"/>
 				<textFieldExpression><![CDATA[$F{in_intk_sesn_description_ms}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="217" y="170" width="338" height="15" uuid="238f8814-46e4-471e-8929-ae3cfc5c2292"/>
+				<reportElement x="179" y="188" width="376" height="15" uuid="238f8814-46e4-471e-8929-ae3cfc5c2292"/>
 				<text><![CDATA[Minimum 2 Semester, Maksimum 6 Semester]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="217" y="213" width="111" height="15" uuid="b02ba319-68fd-401b-a963-7d30c71c771b"/>
+				<reportElement x="179" y="231" width="111" height="15" uuid="b02ba319-68fd-401b-a963-7d30c71c771b"/>
 				<text><![CDATA[Sila Rujuk Lampiran 1     ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="59" y="296" width="478" height="70" uuid="37071659-007b-4531-8d18-692c8ad2077e"/>
+				<reportElement x="59" y="312" width="478" height="70" uuid="37071659-007b-4531-8d18-692c8ad2077e"/>
 				<text><![CDATA[•	Surat Tawaran
 •	Sijil-Sijil Asal Akademik
 •	Surat Tawaran Biasiswa (Jika ada)
@@ -697,37 +697,37 @@ FROM
 •	Salinan Resit Pembayaran Yuran Pengajian]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="366" width="505" height="43" uuid="3fbc1642-11f7-4530-b313-4c92deb63d99"/>
+				<reportElement x="32" y="382" width="505" height="43" uuid="3fbc1642-11f7-4530-b313-4c92deb63d99"/>
 				<text><![CDATA[4.	Semua pembayaran yuran pengajian perlu dibuat dengan mendepositkan jumlah yuran yang dikenakan  ke dalam akaun Bank Islam Malaysia Berhad atas nama Universiti Malaysia Kelantan. Nombor akaun bank ialah 03036010016919.  Kaedah pembayaran yuran adalah seperti di Lampiran 2.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="409" width="505" height="44" uuid="f6e8a8f1-0429-4304-a81d-b40e0c699400"/>
+				<reportElement x="32" y="425" width="505" height="44" uuid="f6e8a8f1-0429-4304-a81d-b40e0c699400"/>
 				<text><![CDATA[5.	Tuan/Puan dikehendaki mendaftarkan diri pada tarikh sebagaimana yang dinyatakan di atas. Sebarang pertanyaan lanjut mengenai tawaran ini, sila hubungi  En. Murhazlan Bin Mohamed atau Puan Raja Badriah Binti Raja Hassan di talian 09-7717031/ 09-7717145.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="78" y="185" width="111" height="15" uuid="ba548616-1c48-4d1d-bda4-2b2935fea2bd"/>
+				<reportElement x="59" y="203" width="111" height="15" uuid="ba548616-1c48-4d1d-bda4-2b2935fea2bd"/>
 				<text><![CDATA[Tarikh Mendaftar / Masa]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="185" width="28" height="15" uuid="bfddbe78-1a7d-4b7f-85d4-48a25179d1fd"/>
+				<reportElement x="160" y="203" width="28" height="15" uuid="bfddbe78-1a7d-4b7f-85d4-48a25179d1fd"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="217" y="185" width="338" height="15" isPrintWhenDetailOverflows="true" uuid="bbb48bd2-e5a3-463e-97ab-d3ee17fc7ed1"/>
+				<reportElement stretchType="RelativeToTallestObject" x="179" y="203" width="376" height="15" isPrintWhenDetailOverflows="true" uuid="bbb48bd2-e5a3-463e-97ab-d3ee17fc7ed1"/>
 				<textFieldExpression><![CDATA[$F{in_venu_code_registration_date}+" "+$F{in_venu_code_start_time_ms}+" - "+$F{in_venu_code_end_time_ms}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="78" y="200" width="111" height="15" uuid="42006688-c69b-488f-b509-e4316fd1299c"/>
+				<reportElement x="59" y="218" width="111" height="15" uuid="42006688-c69b-488f-b509-e4316fd1299c"/>
 				<text><![CDATA[Tempat Mendaftar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="198" width="28" height="15" uuid="d749400d-d5ff-4213-8f69-0a8159325cc9"/>
+				<reportElement x="160" y="216" width="28" height="15" uuid="d749400d-d5ff-4213-8f69-0a8159325cc9"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="217" y="200" width="338" height="13" isPrintWhenDetailOverflows="true" uuid="5c233ebf-242d-4135-9904-5ff7d8e56fbb"/>
+				<reportElement stretchType="RelativeToTallestObject" x="179" y="218" width="376" height="13" isPrintWhenDetailOverflows="true" uuid="5c233ebf-242d-4135-9904-5ff7d8e56fbb"/>
 				<textFieldExpression><![CDATA[$F{in_venu_code_registration_location}]]></textFieldExpression>
 			</textField>
 		</band>
