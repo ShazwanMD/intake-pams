@@ -694,7 +694,7 @@ FROM
 				<text><![CDATA[2.	The following documents are required during registration:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="217" y="65" width="338" height="16" uuid="d00cb895-c2e1-4fa7-8f0e-0dcd4ed28c5f"/>
+				<reportElement x="217" y="67" width="338" height="16" uuid="d00cb895-c2e1-4fa7-8f0e-0dcd4ed28c5f"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -712,7 +712,7 @@ FROM
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{in_stdy_mode_description_en}.substring(0, 1)+$F{in_stdy_mode_description_ms}.substring(1, $F{in_stdy_mode_description_ms}.length()).toLowerCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{in_stdy_mode_description_en}.substring(0, 1)+$F{in_stdy_mode_description_en}.substring(1, $F{in_stdy_mode_description_en}.length()).toLowerCase()]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="217" y="110" width="338" height="30" uuid="b8b98397-4281-4903-b642-f1d4e889d5ff"/>

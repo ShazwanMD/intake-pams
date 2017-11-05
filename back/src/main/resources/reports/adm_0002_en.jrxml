@@ -586,7 +586,7 @@ FROM
 				<text><![CDATA[2.	The following documents are required during registration:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="159" y="65" width="396" height="16" uuid="d00cb895-c2e1-4fa7-8f0e-0dcd4ed28c5f"/>
+				<reportElement x="159" y="67" width="396" height="16" uuid="d00cb895-c2e1-4fa7-8f0e-0dcd4ed28c5f"/>
 				<textFieldExpression><![CDATA[( $F{in_prgm_levl_description}.equals( "MASTER" ) ? "Master" : "Doctor of Philosophy" )]]></textFieldExpression>
 			</textField>
 			<staticText>
