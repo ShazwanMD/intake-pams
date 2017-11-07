@@ -1,3 +1,4 @@
+import { StudyCenterCode } from './../../../../shared/model/common/study-center-code.interface';
 import { Attachment } from './../../../../shared/model/application/attachment.interface';
 import { Result } from '../../../../shared/model/application/result.interface';
 import { RaceCode } from '../../../../shared/model/common/race-code.interface';
@@ -127,6 +128,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       mailingCountryCode: [<CountryCode>{}],
       officialStateCode: [<StateCode>{}],
       officialCountryCode: [<CountryCode>{}],
+      studyCenterCode: [<StudyCenterCode>{}],
       verified: [true],
       sponsored: [true],
       selfSponsored: [true],

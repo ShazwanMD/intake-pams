@@ -15,6 +15,11 @@
         <td-expansion-panel label="Program Choices">
           <pams-study-center-choice [intakeApplication]="_intakeApplication">
           </pams-study-center-choice>
+
+          <pams-study-center-code-select [placeholder]="'StudyCenter'" [innerFormControl]="applicationForm.controls.studyCenterCode"
+          fxFlex="calc(50%-25px)" class="pad-bottom">
+        </pams-study-center-code-select>
+
         </td-expansion-panel>
 
         <template md-tab-label>Applicant Personal Information</template>

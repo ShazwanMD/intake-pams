@@ -35,7 +35,7 @@ export class StudyCenterChoiceComponent implements OnInit {
   ngOnInit(): void {
 
     this.applicationForm = this.formBuilder.group(<IntakeApplication>{
-      studyCenterCode: <StudyCenterCode>{},
+   //   studyCenterCode: <StudyCenterCode>{},
 
     });
   }
