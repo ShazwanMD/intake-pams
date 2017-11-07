@@ -19,6 +19,7 @@ import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InFacultyCodeImpl;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -59,12 +60,12 @@ public class IntegrationController {
         programCode.setDescriptionEn(payload.getDescription());
         programCode.setDescriptionMs(payload.getDescription());
         programCode.setFacultyCode(commonService.findFacultyCodeByCode(payload.getFacultyCode().getCode()));
-        if (payload.getFacultyCode().equals("A10")){
-        programCode.setGraduateCenter(commonService.findGraduateCenterByCode("MGSEB"));
-        }
-        else
-        {
-        programCode.setGraduateCenter(commonService.findGraduateCenterByCode("CPS"));   
+        if (payload.getFacultyCode().getCode().equals("A10")){
+        	InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode("MGSEB");
+        programCode.setGraduateCenter(graduateCenter);
+        }else{
+        	InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode("CPS");
+        programCode.setGraduateCenter(graduateCenter);   
         }
         programCode.setProgramLevel(policyService.findProgramLevelByCode(payload.getProgramLevel().getCode()));
         commonService.saveProgramCode(programCode);
