@@ -1,3 +1,4 @@
+
 import { StudyCenterCode } from './../../../../shared/model/common/study-center-code.interface';
 import { Attachment } from './../../../../shared/model/application/attachment.interface';
 import { Result } from '../../../../shared/model/application/result.interface';
@@ -9,7 +10,7 @@ import { EthnicityCode } from '../../../../shared/model/common/ethnicity-code.in
 import { DisabilityCode } from '../../../../shared/model/common/disability-code.interface';
 import { Referee } from '../../../../shared/model/application/referee.interface';
 import { Employment } from '../../../../shared/model/application/employment.interface';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, Input,OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -32,6 +33,8 @@ import { PromoCodeDialog } from "../dialog/promo-code.dialog";
 export class MgsebIntakeApplicationPanel implements OnInit {
 
   private editorDialogRef: MdDialogRef<PromoCodeDialog>; 
+
+  @Input() languages: Language[];
 
   private TAB_INDEX: string[] = 'applicationModuleState.tabIndex'.split('.');
   private EMPLOYMENTS: string[] = 'applicationModuleState.employments'.split('.');
@@ -74,6 +77,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
   set intakeApplication(value: IntakeApplication) {
     this._intakeApplication = value;
   }
+
 
   ngOnInit(): void {
     this.applicationForm = this.formBuilder.group({
@@ -128,7 +132,6 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       mailingCountryCode: [<CountryCode>{}],
       officialStateCode: [<StateCode>{}],
       officialCountryCode: [<CountryCode>{}],
-      studyCenterCode: [<StudyCenterCode>{}],
       verified: [true],
       sponsored: [true],
       selfSponsored: [true],
@@ -142,8 +145,13 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
       copyAddressed: [true],
+      studyModeSelection:[true,Validators.required],
+      programSelection:[true, Validators.required],
+      studyCenterCode: [<StudyCenterCode>{},Validators.required],
+      //language: [true, Validators.required],
     });
     this.applicationForm.patchValue(this._intakeApplication);
+    
   }
 
   onTabChange(event: MdTabChangeEvent): void {

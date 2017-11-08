@@ -247,22 +247,22 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     // note: can draft without choosing
     @ManyToOne(targetEntity = InProgramOfferingImpl.class)
-    @JoinColumn(name = "PROGRAM_SELECTION_ID", nullable = true)
+    @JoinColumn(name = "PROGRAM_SELECTION_ID", nullable = false)
     private InProgramOffering programSelection;
 
     // note: can draft without choosing
     @ManyToOne(targetEntity = InSupervisorOfferingImpl.class)
-    @JoinColumn(name = "SUPERVISOR_SELECTION_ID", nullable = true)
+    @JoinColumn(name = "SUPERVISOR_SELECTION_ID", nullable = false)
     private InSupervisorOffering supervisorSelection;
 
     // note: can draft without choosing
     @ManyToOne(targetEntity = InStudyModeOfferingImpl.class)
-    @JoinColumn(name = "STUDY_MODE_SELECTION_ID", nullable = true)
+    @JoinColumn(name = "STUDY_MODE_SELECTION_ID", nullable = false)
     private InStudyModeOffering studyModeSelection;
     
     // note: can draft without choosing
     @ManyToOne(targetEntity = InStudyCenterCodeImpl.class)
-    @JoinColumn(name = "STUDY_CENTER_CODE_ID", nullable = true)
+    @JoinColumn(name = "STUDY_CENTER_CODE_ID", nullable = false)
     private InStudyCenterCode studyCenterCode;
 
     @ManyToOne(targetEntity = InIntakeImpl.class)
