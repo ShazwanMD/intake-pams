@@ -120,7 +120,6 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       refereeFormAttached: [true],
       researchProposalAttached: [true],
       sponsorLetterAttached: [true],
-
       genderCode: [<GenderCode>{}],
       maritalCode: [<MaritalCode>{}],
       raceCode: [<RaceCode>{}],
@@ -148,10 +147,8 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       studyModeSelection:[true,Validators.required],
       programSelection:[true, Validators.required],
       studyCenterCode: [<StudyCenterCode>{},Validators.required],
-      //language: [true, Validators.required],
     });
-    this.applicationForm.patchValue(this._intakeApplication);
-    
+    this.applicationForm.patchValue(this._intakeApplication);    
   }
 
   onTabChange(event: MdTabChangeEvent): void {
