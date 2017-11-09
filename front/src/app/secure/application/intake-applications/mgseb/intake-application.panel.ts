@@ -144,8 +144,8 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       refereeForm: [true],
       declared: [true, Validators.requiredTrue],
       copyAddressed: [true],
-      studyModeSelection:[true,Validators.required],
-      programSelection:[true, Validators.required],
+      studyModeSelection:['',Validators.required],
+      programSelection:['', Validators.required],
       studyCenterCode: [<StudyCenterCode>{},Validators.required],
     });
     this.applicationForm.patchValue(this._intakeApplication);    
