@@ -98,7 +98,7 @@
               fxFlex="calc(50%-25px)" class="pad-bottom">
             </pams-ethnicity-code-select>
 
-            <pams-gender-code-select [placeholder]="'Gender'" [innerFormControl]="applicationForm.controls.genderCode" fxFlex="calc(50%-25px)"
+            <pams-gender-code-select [placeholder]="'Gender'"   [innerFormControl]="applicationForm.controls.genderCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-gender-code-select>
 
@@ -116,7 +116,10 @@
             <div flex class="pad inset" align="center" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">  
               <b>*Please fill in Official and Mailing Address.</b></div>
             <br>
-          Official Address
+            <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+           Official Address
+            </div>
+
           <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
             <md-input-container fxFlex="calc(100%-25px)">
               <input mdInput placeholder="Address 1 *" formControlName="officialAddress1" flex/>
@@ -155,8 +158,9 @@
             </pams-country-code-select>
           </div>
 
+          <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
           Mailing Address
-
+          </div>
           <!-- <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
          <md-checkbox formControlName="copyAddressed" (click)="copyAddress(intakeApplication)">
         Check if mailing address and official address is same</md-checkbox>
