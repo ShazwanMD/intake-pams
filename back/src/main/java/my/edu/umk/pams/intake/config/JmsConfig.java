@@ -47,7 +47,7 @@ public class JmsConfig {
             queueMap = new HashMap<>();
             queueMap.put(ProgramCodePayload.class.getName(), new ActiveMQQueue("programCodeQueue"));
             queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQQueue("facultyCodeQueue"));
-            queueMap.put(CandidatePayload.class.getName(), new ActiveMQTopic("candidateQueueLocalhost"));
+            queueMap.put(CandidatePayload.class.getName(), new ActiveMQTopic("candidateTopic5"));
         }
 
         @Override
