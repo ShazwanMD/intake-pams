@@ -300,6 +300,10 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setEmail(candidate.getEmail());
 		payload.setProgramCodeDescriptionMs(programCode.getDescriptionMs());
 		payload.setFacultyCodeDescriptionMs(facultyCode.getDescriptionMs());
+		payload.setProgramLevel(programCode.getProgramLevel().getCode());
+		payload.setGender(candidate.getApplication().getGenderCode().getCode());
+		payload.setReligion(candidate.getApplication().getReligionCode().getCode());
+		payload.setMartialStatus(candidate.getApplication().getMaritalCode().getCode());
 			
 		InUser user = identityService.findUserByEmail(candidate.getEmail());
 		LOG.debug("user Email:{}", user.getEmail());
@@ -313,6 +317,8 @@ public class AdmissionServiceImpl implements AdmissionService {
 		LOG.debug("Password:{}", user.getPassword());
 		userPayload.setRealName(user.getRealName());
 		LOG.debug("Realname:{}", user.getRealName());
+		userPayload.setNric(candidate.getIdentityNo());
+		LOG.debug("Identity Number:{}", candidate.getIdentityNo());
 		payload.setUserPayload(userPayload);
 
 		// if( application != null)
