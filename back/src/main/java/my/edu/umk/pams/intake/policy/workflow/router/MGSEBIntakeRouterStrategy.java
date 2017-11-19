@@ -74,27 +74,27 @@ public class MGSEBIntakeRouterStrategy extends RouterStrategySupport {
 
     @Override
     public List<String> findSelectorCandidates() {
-        return Arrays.asList("GRP_KRN_FCTY_A01", "GRP_ADM");   //fakulti-kerani-A01 , root
+        return Arrays.asList("GRP_KRN_FCTY_A01", "GRP_KRN_ADM_MGSEB", "GRP_PGW_ADM_MGSEB", "GRP_ADM");   //fakulti-kerani-A01 , root
     } 
     
     @Override
     public List<String> findPreapproverCandidates() {
-        return Arrays.asList("GRP_PGW_FCTY_A01", "GRP_ADM");   //fakulti-pegawai-A01 , root
+        return Arrays.asList("GRP_PGW_FCTY_A01", "GRP_KRN_ADM_MGSEB", "GRP_PGW_ADM_MGSEB", "GRP_ADM");   //fakulti-pegawai-A01 , root
     }
     
     @Override
     public List<String> findUpperCandidates() {
-        return Arrays.asList("GRP_PGW_FCTY_A01", "GRP_ADM");   //fakulti-pegawai-A01 , root
+        return Arrays.asList("GRP_PGW_FCTY_A01", "GRP_KRN_ADM_MGSEB", "GRP_PGW_ADM_MGSEB", "GRP_ADM");   //fakulti-pegawai-A01 , root
     }
     
     @Override
     public List<String> findOfferCandidates() {
-        return Arrays.asList("GRP_PGW_FCTY_A01", "GRP_ADM");   //fakulti-pegawai-A01 , root
+        return Arrays.asList("GRP_PGW_FCTY_A01", "GRP_KRN_ADM_MGSEB", "GRP_PGW_ADM_MGSEB", "GRP_ADM");   //fakulti-pegawai-A01 , root
     }
     
     @Override
     public List<String> findRegisterCandidates() {
-        return Arrays.asList("GRP_PGW_FCTY_A01", "GRP_ADM");   //fakulti-pegawai-A01 , root
+        return Arrays.asList("GRP_PGW_FCTY_A01", "GRP_KRN_ADM_MGSEB", "GRP_PGW_ADM_MGSEB", "GRP_ADM");   //fakulti-pegawai-A01 , root
     }    
 
 }
