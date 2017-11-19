@@ -4,6 +4,7 @@ import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
 import my.edu.umk.pams.connector.payload.NationalityCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 import my.edu.umk.pams.connector.payload.StudyCenterPayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.connector.payload.UserPayload;
@@ -297,7 +298,9 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setName(candidate.getName());
 		payload.setMatricNo(candidate.getMatricNo());
 		payload.setEmail(candidate.getEmail());
-
+		payload.setProgramCodeDescriptionMs(programCode.getDescriptionMs());
+		payload.setFacultyCodeDescriptionMs(facultyCode.getDescriptionMs());
+			
 		InUser user = identityService.findUserByEmail(candidate.getEmail());
 		LOG.debug("user Email:{}", user.getEmail());
 
