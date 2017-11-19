@@ -57,8 +57,8 @@ public class IntegrationController {
 
         InProgramCode programCode = new InProgramCodeImpl();
         programCode.setCode(payload.getCode());
-        programCode.setDescriptionEn(payload.getDescription());
-        programCode.setDescriptionMs(payload.getDescription());
+        programCode.setDescriptionEn(payload.getDescriptionEn());
+        programCode.setDescriptionMs(payload.getDescriptionMs());
         programCode.setFacultyCode(commonService.findFacultyCodeByCode(payload.getFacultyCode().getCode()));
         if (payload.getFacultyCode().getCode().equals("A10")){
         	InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode("MGSEB");
