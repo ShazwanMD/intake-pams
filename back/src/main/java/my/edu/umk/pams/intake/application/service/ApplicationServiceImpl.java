@@ -690,13 +690,13 @@ public class ApplicationServiceImpl implements ApplicationService {
 			application.setToeflResultAttached(true);
 		} else if (attachment.getAttachmentType() == InAttachmentType.LANGUAGE_RESULT) {
 			application.setLanguageResultAttached(true);
-		}
-
-		else if (attachment.getAttachmentType() == InAttachmentType.STAM) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.IC_COPY) {
+			application.setIcCopyAttached(true);
+		} else if (attachment.getAttachmentType() == InAttachmentType.PASSPORT_COPY) {
+			application.setPassportCopyAttached(true);
+		}else if (attachment.getAttachmentType() == InAttachmentType.STAM) {
 			application.setStamResultAttached(true);
-		}
-
-		else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
+		}else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
 			application.setMuetResultAttached(true);
 		}
 

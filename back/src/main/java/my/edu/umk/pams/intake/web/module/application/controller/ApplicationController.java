@@ -226,7 +226,9 @@ public class ApplicationController {
 		application.setRefereeFormAttached(vo.getRefereeFormAttached());
 		application.setResearchProposalAttached(vo.getResearchProposalAttached());
 		application.setSponsorLetterAttached(vo.getSponsorLetterAttached());
-
+        application.setIcCopyAttached(vo.getIcCopyAttached());
+        application.setPassportCopyAttached(vo.getPassportCopyAttached());
+        
 		// mailing address
 		application.setMailingAddress1(vo.getMailingAddress1());
 		application.setMailingAddress2(vo.getMailingAddress2());

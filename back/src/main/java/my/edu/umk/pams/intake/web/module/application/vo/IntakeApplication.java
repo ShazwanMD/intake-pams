@@ -60,7 +60,8 @@ public class IntakeApplication extends MetaObject {
     private Boolean bankStatementAttached;
     private Boolean refereeFormAttached;
     private Boolean sponsorLetterAttached;
-
+    private Boolean icCopyAttached;
+    private Boolean passportCopyAttached;
     // address
     private String mailingAddress1;
     private String mailingAddress2;
@@ -257,6 +258,22 @@ public class IntakeApplication extends MetaObject {
         this.selfSponsored = selfSponsored;
     }
 
+    public Boolean getIcCopyAttached() {
+        return icCopyAttached;
+    }
+
+    public void setIcCopyAttached(Boolean icCopyAttached) {
+        this.icCopyAttached = icCopyAttached;
+    }
+    
+    public Boolean getPassportCopyAttached() {
+        return passportCopyAttached;
+    }
+
+    public void setPassportCopyAttached(Boolean passportCopyAttached) {
+        this.passportCopyAttached = passportCopyAttached;
+    }
+    
     public Boolean getSpmResultAttached() {
         return spmResultAttached;
     }        

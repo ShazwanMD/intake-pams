@@ -19,8 +19,9 @@ public enum InAttachmentType {
     REFEREE_FORM("RefereeForm"),  //12
     RESEARCH_PROPOSAL("ResearchProposal"),   //13
 	LANGUAGE_RESULT("Language"),  //14
-	IELTS("IELTS");  //15
-
+	IELTS("IELTS"), //15
+    IC_COPY("IC"), //16
+    PASSPORT_COPY ("PASSPORT");//17
     private String code;
 
 	InAttachmentType(String code) {

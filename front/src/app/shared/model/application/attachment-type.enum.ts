@@ -15,4 +15,6 @@ export enum AttachmentType {
   RESEARCH_PROPOSAL,
   LANGUAGE_RESULT,
   IELTS,
+  IC_COPY,
+  PASSPORT_COPY,
 }

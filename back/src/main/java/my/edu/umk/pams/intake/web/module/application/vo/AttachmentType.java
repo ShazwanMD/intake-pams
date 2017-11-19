@@ -19,7 +19,9 @@ public enum AttachmentType {
     REFEREE_FORM,
     RESEARCH_PROPOSAL,
     LANGUAGE_RESULT,
-    IELTS;
+    IELTS,
+	IC_COPY,
+	PASSPORT_COPY;
 
     public static AttachmentType get(int index) {
         return values()[index];

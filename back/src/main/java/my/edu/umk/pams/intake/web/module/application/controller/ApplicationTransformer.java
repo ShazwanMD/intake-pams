@@ -66,6 +66,8 @@ public class ApplicationTransformer {
 		vo.setRefereeFormAttached(e.isRefereeFormAttached());
 		vo.setProcessingFeeAttached(e.isProcessingFeeAttached());
 		vo.setBankStatementAttached(e.isBankStatementAttached());
+		vo.setIcCopyAttached(e.isIcCopyAttached());
+		vo.setPassportCopyAttached(e.isPassportCopyAttached());
 
 		// address
 		vo.setMailingAddress1(e.getMailingAddress1());

@@ -132,6 +132,14 @@ public interface InIntakeApplication extends InMetaObject {
 
     void setResearchProposalAttached(Boolean researchProposalAttached);
 
+    Boolean isIcCopyAttached();
+
+	void setIcCopyAttached(Boolean icCopyAttached);
+
+	Boolean isPassportCopyAttached();
+
+	void setPassportCopyAttached(Boolean passportCopyAttached);
+
     Boolean isSponsorLetterAttached();
 
     void setSponsorLetterAttached(Boolean sponsorLetterAttached);
@@ -329,5 +337,7 @@ public interface InIntakeApplication extends InMetaObject {
 	void setMuetResultAttached(Boolean muetResultAttached);
 
 	void setPromoCode(InPromoCode promoCode);
+
+
 }
 

@@ -149,6 +149,13 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
 
     @Column(name = "BANK_STATEMENT_ATTACHED")
     private Boolean bankStatementAttached = false;
+    
+    @Column(name = "IC_COPY_ATTACHED")
+    private Boolean icCopyAttached = false;
+    
+    @Column(name = "PASSPORT_COPY_ATTACHED")
+    private Boolean passportCopyAttached = false;
+
 
     @Column(name = "VERIFIED", nullable = false)
     private Boolean verified = false;
@@ -591,6 +598,26 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setBachelorResultAttached(Boolean bachelorResultAttached) {
         this.bachelorResultAttached = bachelorResultAttached;
+    }
+    
+    @Override
+    public Boolean isIcCopyAttached() {
+        return icCopyAttached;
+    }
+    
+    @Override
+    public void setIcCopyAttached(Boolean icCopyAttached) {
+        this.icCopyAttached = icCopyAttached;
+    }
+
+    @Override
+    public Boolean isPassportCopyAttached() {
+        return passportCopyAttached;
+    }
+    
+    @Override
+    public void setPassportCopyAttached(Boolean passportCopyAttached) {
+        this.passportCopyAttached = passportCopyAttached;
     }
 
     @Override

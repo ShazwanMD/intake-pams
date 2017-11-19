@@ -133,6 +133,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
       refereeFormAttached: [true],
       researchProposalAttached: [true],
       sponsorLetterAttached: [true],
+      icCopyAttached:[true],
 
       processingReceipt: [true],
       foreignResult: [true],
