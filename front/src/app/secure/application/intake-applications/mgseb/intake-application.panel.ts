@@ -120,6 +120,9 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       refereeFormAttached: [true],
       researchProposalAttached: [true],
       sponsorLetterAttached: [true],
+      icCopyAttached: [true],
+      passportCopyAttached: [true],
+      
       genderCode: [<GenderCode>{}, Validators.required],
       maritalCode: [<MaritalCode>{}, Validators.required],
       raceCode: [<RaceCode>{}, Validators.required],
