@@ -76,7 +76,8 @@ public class IntakePublishTask extends BpmnActivityBehavior
            ProgramCodePayload programCodePayload = new ProgramCodePayload();
            
            programCodePayload.setCode(programCode.getCode());
-           programCodePayload.setDescription(programCode.getDescriptionEn());
+           programCodePayload.setDescriptionEn(programCode.getDescriptionEn());
+           programCodePayload.setDescriptionMs(programCode.getDescriptionMs());
            
            FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
            facultyCodePayload.setCode(programCode.getFacultyCode().getCode());
