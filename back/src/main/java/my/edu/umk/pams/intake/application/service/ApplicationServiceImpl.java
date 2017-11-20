@@ -80,6 +80,19 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 			for (InEmployment employment : employments) {
 				LOG.debug("employment: {}", employment.getEmployer());
+								
+				if (employment.getId() == null) {					
+					List<InResult> results = application.getResults();
+					for (InResult result : results) {						
+						if ((result.getResultType() == InResultType.BACHELOR)
+								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {							
+							merit = result.getResultNumeric();
+						}
+						LOG.debug("merit bachelor: {}", merit);											
+					}
+				}				
+				else {
+				
 				if (!employment.isCurrent() == true) { // if current, we don't
 														// have end date
 					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
@@ -120,19 +133,10 @@ public class ApplicationServiceImpl implements ApplicationService {
 						LOG.debug("merit: {}", merit);
 					}
 				}				
-				else if (employment.equals(null)) {					
-					List<InResult> results = application.getResults();
-					for (InResult result : results) {						
-						if ((result.getResultType() == InResultType.BACHELOR)
-								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {							
-							merit = result.getResultNumeric();
-						}
-						LOG.debug("merit bachelor: {}", merit);											
-					}
-				}
 			}
 			application.setMerit(merit);
 			updateIntakeApplication(application);
+		 }
 		}
 	}
 	
