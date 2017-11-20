@@ -33,6 +33,7 @@ import java.util.UUID;
 
 import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_REFERENCE_NO;
 import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
+import static my.edu.umk.pams.intake.core.InFlowState.VERIFIED;
 
 @Transactional
 @Service("policyService")
@@ -255,7 +256,8 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public void cancelIntake(InIntake intake) {
         Validate.notNull(intake, "Intake cannot be null");
-  //    Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be cancelled in DRAFTED state");
+        Validate.isTrue(VERIFIED.equals(intake.getFlowdata().getState()) 
+        		|| DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in VERIFIED or DRAFTED state");
         intakeDao.update(intake, securityService.getCurrentUser());
 
         List<InProgramOffering> offerings = findProgramOfferings(intake);
@@ -268,7 +270,8 @@ public class PolicyServiceImpl implements PolicyService {
     public void addSupervisorOffering(InIntake intake, InSupervisorOffering supervisorOffering) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(supervisorOffering, "Offering cannot be null");
-  //    Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        Validate.isTrue(VERIFIED.equals(intake.getFlowdata().getState()) 
+        		|| DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in VERIFIED or DRAFTED state");
         intakeDao.addSupervisorOffering(intake, supervisorOffering, securityService.getCurrentUser());
     }
 
@@ -276,7 +279,8 @@ public class PolicyServiceImpl implements PolicyService {
     public void deleteSupervisorOffering(InIntake intake, InSupervisorOffering supervisorOffering) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(supervisorOffering, "Offering cannot be null");
-  //    Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        Validate.isTrue(VERIFIED.equals(intake.getFlowdata().getState()) 
+        		|| DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in VERIFIED or DRAFTED state");
         intakeDao.deleteSupervisorOffering(intake, supervisorOffering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
@@ -285,7 +289,8 @@ public class PolicyServiceImpl implements PolicyService {
     public void addProgramOffering(InIntake intake, InProgramOffering programOffering) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(programOffering, "Offering cannot be null");
-  //    Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        Validate.isTrue(VERIFIED.equals(intake.getFlowdata().getState()) 
+        		|| DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in VERIFIED or DRAFTED state");
         programOffering.setGeneralCriteria(programOffering.getGeneralCriteria());
         programOffering.setSpecificCriteria(programOffering.getSpecificCriteria());
         intakeDao.addProgramOffering(intake, programOffering, securityService.getCurrentUser());
@@ -296,7 +301,8 @@ public class PolicyServiceImpl implements PolicyService {
     public void updateProgramOfferings(InIntake intake, InProgramOffering programOffering) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(programOffering, "Offering cannot be null");
-  //    Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        Validate.isTrue(VERIFIED.equals(intake.getFlowdata().getState()) 
+        		|| DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in VERIFIED or DRAFTED state");
         intakeDao.updateProgramOfferings(intake, programOffering, securityService.getCurrentUser());
     }
 
@@ -304,7 +310,8 @@ public class PolicyServiceImpl implements PolicyService {
     public void deleteProgramOffering(InIntake intake, InProgramOffering programOffering) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(programOffering, "Offering cannot be null");
- //     Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        Validate.isTrue(VERIFIED.equals(intake.getFlowdata().getState()) 
+        		|| DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in VERIFIED or DRAFTED state");
         intakeDao.deleteProgramOffering(intake, programOffering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
@@ -313,7 +320,8 @@ public class PolicyServiceImpl implements PolicyService {
     public void addStudyModeOffering(InIntake intake, InStudyModeOffering modeOffering) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(modeOffering, "Offering cannot be null");
- //     Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        Validate.isTrue(VERIFIED.equals(intake.getFlowdata().getState()) 
+        		|| DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in VERIFIED or DRAFTED state");
         intakeDao.addModeOffering(intake, modeOffering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
@@ -322,7 +330,8 @@ public class PolicyServiceImpl implements PolicyService {
     public void deleteStudyModeOffering(InIntake intake, InStudyModeOffering modeOffering) {
         Validate.notNull(intake, "Intake cannot be null");
         Validate.notNull(modeOffering, "Offering cannot be null");
- //     Validate.isTrue(DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in DRAFTED state");
+        Validate.isTrue(VERIFIED.equals(intake.getFlowdata().getState()) 
+        		|| DRAFTED.equals(intake.getFlowdata().getState()), "Intake can only be configured in VERIFIED or DRAFTED state");
         intakeDao.deleteModeOffering(intake, modeOffering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
