@@ -196,6 +196,8 @@ public interface ApplicationService {
 
 	boolean isPromoCodeEntered(InPromoCode promoCode);
 
+	void unCheckAttachment(InIntakeApplication application, InAttachment attachment);
+
 //	void changeAddress(InIntakeApplication application);
 	
 	 

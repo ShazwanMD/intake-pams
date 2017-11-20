@@ -346,6 +346,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 	@Override
 	public void deleteAttachment(InIntakeApplication application, InAttachment attachment) {
+		this.unCheckAttachment(application, attachment);
 		intakeApplicationDao.deleteAttachment(application, attachment, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
@@ -424,14 +425,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public InIntakeApplication findIntakeApplicationByNricNoOrPassportNo(String identityNo) {
 		return intakeApplicationDao.findByNricNoOrPassportNo(identityNo);
 	}
-
-	// find intake application by address????
-	// macam tak betul API ni
-	// @Override
-	// public InIntakeApplication findInIntakeApplicationByAddress(String
-	// address) {
-	// return intakeApplicationDao.findByAddress(address);
-	// }
 
 	@Override
 	public InIntakeApplication findIntakeApplicationByIntakeAndApplicant(InIntake intake, InApplicant applicant) {
@@ -703,5 +696,58 @@ public class ApplicationServiceImpl implements ApplicationService {
 		this.updateIntakeApplication(application);
 
 	}
+	
+	@Override
+	public void unCheckAttachment(InIntakeApplication application, InAttachment attachment) {
+
+		if (attachment.getAttachmentType() == InAttachmentType.SPM) {
+			application.setSpmResultAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.STPM) {
+			application.setStpmResultAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA) {
+			application.setDiplomaResultAttached(false);
+		}
+
+		else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA_EQUIVALENT) {
+			application.setDiplomaResultAttached(false);
+		}
+
+		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR) {
+			application.setBachelorResultAttached(false);
+		}
+
+		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR_EQUIVALENT) {
+			application.setBachelorResultAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
+			application.setSponsorLetterAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.REFEREE_FORM) {
+			application.setRefereeFormAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.BANK_STATEMENT) {
+			application.setBankStatementAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.PROCESSING_FEE) {
+			application.setProcessingFeeAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.RESEARCH_PROPOSAL) {
+			application.setResearchProposalAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.IELTS) {
+			application.setIeltsResultAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.TOEFL) {
+			application.setToeflResultAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.LANGUAGE_RESULT) {
+			application.setLanguageResultAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.IC_COPY) {
+			application.setIcCopyAttached(false);
+		} else if (attachment.getAttachmentType() == InAttachmentType.PASSPORT_COPY) {
+			application.setPassportCopyAttached(false);
+		}else if (attachment.getAttachmentType() == InAttachmentType.STAM) {
+			application.setStamResultAttached(false);
+		}else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
+			application.setMuetResultAttached(false);
+		}
+
+		this.updateIntakeApplication(application);
+
+	}
+	
+	
 
 }
