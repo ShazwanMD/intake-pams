@@ -6,7 +6,6 @@ import org.joda.time.Period;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,10 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-
 import my.edu.umk.pams.intake.IntakeConstants;
-import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.InAttachment;
 import my.edu.umk.pams.intake.application.model.InAttachmentType;
@@ -39,22 +35,13 @@ import my.edu.umk.pams.intake.application.model.InLanguage;
 import my.edu.umk.pams.intake.application.model.InReferee;
 import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.application.model.InResultType;
-import my.edu.umk.pams.intake.common.model.InCountryCode;
 import my.edu.umk.pams.intake.common.model.InPromoCode;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
-import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.policy.model.InIntake;
-import my.edu.umk.pams.intake.policy.model.InIntakeImpl;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
-import my.edu.umk.pams.intake.policy.model.InProgramOfferingImpl;
-import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
-import my.edu.umk.pams.intake.policy.model.InStudyModeOfferingImpl;
-import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
-import my.edu.umk.pams.intake.policy.model.InSupervisorOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.system.service.SystemService;
-import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 /**
  * @author PAMS
@@ -70,9 +57,6 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 	@Autowired
 	private PolicyService policyService;
-
-	@Autowired
-	private WorkflowService workflowService;
 
 	@Autowired
 	private SecurityService securityService;
@@ -93,11 +77,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 			BigDecimal resultBac = BigDecimal.ZERO;
 
 			List<InEmployment> employments = application.getEmployments();
+
 			for (InEmployment employment : employments) {
 				LOG.debug("employment: {}", employment.getEmployer());
 				if (!employment.isCurrent() == true) { // if current, we don't
 														// have end date
-
 					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
 					LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
 					Period period = new Period(start, end);
@@ -113,9 +97,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 							resultBac = result.getResultNumeric();
 							merit = merit.add(resultBac);
 						}
-
 					}
-				} else {
+				}
+				else if (!employment.isCurrent() == false) {
 
 					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
 					LocalDate end = LocalDate.fromDateFields(new Date());
@@ -126,28 +110,32 @@ public class ApplicationServiceImpl implements ApplicationService {
 					// find result bachelor equa only
 
 					List<InResult> results = application.getResults();
-
 					for (InResult result : results) {
-
 						if ((result.getResultType() == InResultType.BACHELOR)
 								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {
 							resultBac = result.getResultNumeric();
 							merit = merit.add(resultBac);
 						}
+						LOG.debug("result: {}", resultBac);
+						LOG.debug("merit: {}", merit);
 					}
-
-					LOG.debug("result: {}", resultBac);
-					LOG.debug("merit: {}", merit);
+				}				
+				else if (employment.equals(null)) {					
+					List<InResult> results = application.getResults();
+					for (InResult result : results) {						
+						if ((result.getResultType() == InResultType.BACHELOR)
+								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {							
+							merit = result.getResultNumeric();
+						}
+						LOG.debug("merit bachelor: {}", merit);											
+					}
 				}
 			}
 			application.setMerit(merit);
-
 			updateIntakeApplication(application);
-
 		}
-
 	}
-
+	
 	@Override
 	public String applyIntake(InIntake intake, InIntakeApplication application) throws Exception {
 		if (hasApplied(intake, application.getApplicant()))
