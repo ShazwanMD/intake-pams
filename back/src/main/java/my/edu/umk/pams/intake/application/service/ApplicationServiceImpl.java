@@ -77,69 +77,69 @@ public class ApplicationServiceImpl implements ApplicationService {
 			BigDecimal resultBac = BigDecimal.ZERO;
 
 			List<InEmployment> employments = application.getEmployments();
+			if (application.getEmployments().isEmpty()) {
 
-			for (InEmployment employment : employments) {
-				LOG.debug("employment: {}", employment.getEmployer());
-								
-				if (employment.getId() == null) {					
-					List<InResult> results = application.getResults();
-					for (InResult result : results) {						
-						if ((result.getResultType() == InResultType.BACHELOR)
-								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {							
-							merit = result.getResultNumeric();
-						}
-						LOG.debug("merit bachelor: {}", merit);											
+				List<InResult> results = application.getResults();
+				LOG.debug("results {}", results);
+
+				for (InResult result : results) {
+					if ((result.getResultType() == InResultType.BACHELOR)
+							|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {
+						resultBac = result.getResultNumeric();
+						merit = resultBac;
 					}
-				}				
-				else {
-				
-				if (!employment.isCurrent() == true) { // if current, we don't
-														// have end date
-					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
-					LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
-					Period period = new Period(start, end);
-					merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
-					merit = merit1.multiply(MERIT_FACTOR);
+					LOG.debug("result2: {}", resultBac);
+					LOG.debug("merit2: {}", merit);
+				}
+			} else {
+				for (InEmployment employment : employments) {
+					LOG.debug("employment: {}", employment.getEmployer());
+					
+					// if current, we don't have end date
+					if (!employment.isCurrent() == true) {
 
-					List<InResult> results = application.getResults();
+						LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
+						LocalDate end = LocalDate.fromDateFields(employment.getEndDate());
+						Period period = new Period(start, end);
+						merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
+						merit = merit1.multiply(MERIT_FACTOR);
 
-					for (InResult result : results) {
+						List<InResult> results = application.getResults();
+						for (InResult result : results) {
+							if ((result.getResultType() == InResultType.BACHELOR)
+									|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {
+								resultBac = result.getResultNumeric();
+								merit = merit.add(resultBac);
+							}
+						}
+					}
+					// if current, we have end date
+					else if (!employment.isCurrent() == false) {
+						LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
+						LocalDate end = LocalDate.fromDateFields(new Date());
+						Period period = new Period(start, end);
+						merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
+						merit = merit1.multiply(MERIT_FACTOR);
 
-						if ((result.getResultType() == InResultType.BACHELOR)
-								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {
-							resultBac = result.getResultNumeric();
-							merit = merit.add(resultBac);
+						List<InResult> results = application.getResults();
+						for (InResult result : results) {
+							if ((result.getResultType() == InResultType.BACHELOR)
+									|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {
+								resultBac = result.getResultNumeric();
+								merit = merit.add(resultBac);
+							}
+							LOG.debug("result: {}", resultBac);
+							LOG.debug("merit: {}", merit);
 						}
 					}
 				}
-				else if (!employment.isCurrent() == false) {
-
-					LocalDate start = LocalDate.fromDateFields(employment.getStartDate());
-					LocalDate end = LocalDate.fromDateFields(new Date());
-					Period period = new Period(start, end);
-					merit1 = merit1.add(BigDecimal.valueOf(period.getYears()));
-					merit = merit1.multiply(MERIT_FACTOR);
-
-					// find result bachelor equa only
-
-					List<InResult> results = application.getResults();
-					for (InResult result : results) {
-						if ((result.getResultType() == InResultType.BACHELOR)
-								|| (result.getResultType() == InResultType.BACHELOR_EQUIVALENT)) {
-							resultBac = result.getResultNumeric();
-							merit = merit.add(resultBac);
-						}
-						LOG.debug("result: {}", resultBac);
-						LOG.debug("merit: {}", merit);
-					}
-				}				
 			}
 			application.setMerit(merit);
 			updateIntakeApplication(application);
-		 }
 		}
+
 	}
-	
+
 	@Override
 	public String applyIntake(InIntake intake, InIntakeApplication application) throws Exception {
 		if (hasApplied(intake, application.getApplicant()))
@@ -679,16 +679,16 @@ public class ApplicationServiceImpl implements ApplicationService {
 			application.setIcCopyAttached(true);
 		} else if (attachment.getAttachmentType() == InAttachmentType.PASSPORT_COPY) {
 			application.setPassportCopyAttached(true);
-		}else if (attachment.getAttachmentType() == InAttachmentType.STAM) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.STAM) {
 			application.setStamResultAttached(true);
-		}else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
 			application.setMuetResultAttached(true);
 		}
 
 		this.updateIntakeApplication(application);
 
 	}
-	
+
 	@Override
 	public void unCheckAttachment(InIntakeApplication application, InAttachment attachment) {
 
@@ -730,16 +730,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 			application.setIcCopyAttached(false);
 		} else if (attachment.getAttachmentType() == InAttachmentType.PASSPORT_COPY) {
 			application.setPassportCopyAttached(false);
-		}else if (attachment.getAttachmentType() == InAttachmentType.STAM) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.STAM) {
 			application.setStamResultAttached(false);
-		}else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
+		} else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
 			application.setMuetResultAttached(false);
 		}
 
 		this.updateIntakeApplication(application);
 
 	}
-	
-	
 
 }
