@@ -24,4 +24,14 @@ export class NotificationService {
       });
     return Observable.empty();
   }
+
+  showCustomError(customError: string){
+    let snackBarRef = this.snackBar.open(customError, 'Ok', {
+        duration: 5000,
+      });
+      snackBarRef.afterDismissed().subscribe(() => {
+          window.location.reload();
+      });
+    return Observable.empty();
+  }
 }
