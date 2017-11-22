@@ -8,6 +8,8 @@ import {PolicyModuleState} from '../index';
 import {Store} from '@ngrx/store';
 import {ApplicationService} from '../../../../services/application.service';
 import {IntakeTask} from '../../../shared/model/policy/intake-task.interface';
+import { NotificationService } from '../../../../services/notification.service';
+// import {NotificationService} from "../../services/notification.service";
 
 @Injectable()
 export class IntakeEffects {
@@ -20,6 +22,7 @@ export class IntakeEffects {
               private policyService: PolicyService,
               private router: Router,
               private applicationService: ApplicationService,
+              private notificationService: NotificationService,
               private store$: Store<PolicyModuleState>) {
   }
 
@@ -215,7 +218,8 @@ export class IntakeEffects {
     .map((message) => this.intakeActions.addProgramOfferingSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map((state) => state[1])
-    .map((intake) => this.intakeActions.findProgramOfferings(intake));
+    .map((intake) => this.intakeActions.findProgramOfferings(intake))
+    .catch((error) => this.notificationService.showCustomError('Intake can only be configured in VERIFIED or DRAFTED state'));
 
   @Effect() updateProgramOffering$ = this.actions$
     .ofType(IntakeActions.UPDATE_PROGRAM_OFFERING)
@@ -224,7 +228,8 @@ export class IntakeEffects {
     .map((message) => this.intakeActions.updateProgramOfferingSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map((state) => state[1])
-    .map((intake) => this.intakeActions.findProgramOfferings(intake));
+    .map((intake) => this.intakeActions.findProgramOfferings(intake))
+    .catch((error) => this.notificationService.showCustomError('Intake can only be configured in VERIFIED or DRAFTED state'));
 
   @Effect() deleteProgramOfferin$ = this.actions$
     .ofType(IntakeActions.DELETE_PROGRAM_OFFERING)
@@ -233,7 +238,8 @@ export class IntakeEffects {
     .map((message) => this.intakeActions.deleteProgramOfferingSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map((state) => state[1])
-    .map((intake) => this.intakeActions.findProgramOfferings(intake));
+    .map((intake) => this.intakeActions.findProgramOfferings(intake))
+    .catch((error) => this.notificationService.showCustomError('Intake can only be configured in VERIFIED or DRAFTED state'));
 
   @Effect() addStudyModeOffering$ = this.actions$
     .ofType(IntakeActions.ADD_STUDY_MODE_OFFERING)
@@ -242,7 +248,8 @@ export class IntakeEffects {
     .map((message) => this.intakeActions.addStudyModeOfferingSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map((state) => state[1])
-    .map((intake) => this.intakeActions.findStudyModeOfferings(intake));
+    .map((intake) => this.intakeActions.findStudyModeOfferings(intake))
+    .catch((error) => this.notificationService.showCustomError('Intake can only be configured in VERIFIED or DRAFTED state'));
 
   @Effect() deleteStudyModeOffering$ = this.actions$
     .ofType(IntakeActions.DELETE_STUDY_MODE_OFFERING)
@@ -251,7 +258,8 @@ export class IntakeEffects {
     .map((message) => this.intakeActions.deleteStudyModeOfferingSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map((state) => state[1])
-    .map((intake) => this.intakeActions.findStudyModeOfferings(intake));
+    .map((intake) => this.intakeActions.findStudyModeOfferings(intake))
+    .catch((error) => this.notificationService.showCustomError('Intake can only be configured in VERIFIED or DRAFTED state'));
 
   @Effect() addSupervisorOffering$ = this.actions$
     .ofType(IntakeActions.ADD_SUPERVISOR_OFFERING)
@@ -260,7 +268,9 @@ export class IntakeEffects {
     .map((message) => this.intakeActions.addSupervisorOfferingSuccess(message))
     .withLatestFrom(this.store$.select(...this.INTAKE))
     .map((state) => state[1])
-    .map((intake) => this.intakeActions.findSupervisorOfferings(intake));
+    .map((intake) => this.intakeActions.findSupervisorOfferings(intake))
+    .catch((error) => this.notificationService.showCustomError('Intake can only be configured in VERIFIED or DRAFTED state'));
+    
 
   @Effect() deleteSupervisorOffering$ = this.actions$
     .ofType(IntakeActions.DELETE_SUPERVISOR_OFFERING)
