@@ -2,10 +2,10 @@ package my.edu.umk.pams.intake.web.module.admission.vo;
 
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
-import my.edu.umk.pams.intake.web.module.common.vo.StudyMode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
+import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
 
 /**
  * @author PAMS
@@ -18,7 +18,7 @@ public class Candidate extends MetaObject {
     private String email;
     private String reason;
     private InCandidateStatus status;
-    private StudyMode studyMode;
+    private StudyModeOffering studyMode;
     private Intake intake;
     private IntakeApplication application;
     private boolean acception;
@@ -72,11 +72,11 @@ public class Candidate extends MetaObject {
 		this.status = status;
 	}
 
-	public StudyMode getStudyMode() {
+	public StudyModeOffering getStudyModeOffering() {
         return studyMode;
     }
 
-    public void setStudyMode(StudyMode studyMode) {
+    public void setStudyModeOffering(StudyModeOffering studyMode) {
         this.studyMode = studyMode;
     }
 

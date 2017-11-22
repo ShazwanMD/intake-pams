@@ -34,6 +34,7 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
+import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InPermission;
@@ -122,7 +123,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidate.setName(application.getName());
 		candidate.setIdentityNo(application.getCredentialNo());
 		candidate.setEmail(application.getEmail());
-		candidate.setStudyMode(application.getStudyModeSelection().getStudyMode());
+		candidate.setStudyModeSelection(application.getStudyModeSelection());
 		candidate.setStatus(InCandidateStatus.SELECTED);
 		candidate.setProgramSelection(application.getProgramSelection());
 		candidate.setSupervisorSelection(application.getSupervisorSelection());
@@ -247,14 +248,18 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 	@Override
 	public void preapproveCandidate(InCandidate candidate) {
-		candidate.setStudyMode(commonService.findStudyModeByCode("F")); // FULL
+		InStudyMode studyMode = commonService.findStudyModeByCode("F");
+		InStudyModeOffering studyModeOffering = policyService.findStudyModeOfferingByIntakeAndStudyMode(candidate.getIntake(),studyMode);
+		candidate.setStudyModeSelection(studyModeOffering); // FULL
 		candidate.setStatus(InCandidateStatus.PREAPPROVED);
 		candidateDao.save(candidate, securityService.getCurrentUser());
 	}
 
 	@Override
 	public void approveCandidate(InCandidate candidate) {
-		candidate.setStudyMode(commonService.findStudyModeByCode("F")); // FULL
+		InStudyMode studyMode = commonService.findStudyModeByCode("F");
+		InStudyModeOffering studyModeOffering = policyService.findStudyModeOfferingByIntakeAndStudyMode(candidate.getIntake(),studyMode);
+		candidate.setStudyModeSelection(studyModeOffering); // FULL
 		candidate.setStatus(InCandidateStatus.APPROVED);
 		candidateDao.save(candidate, securityService.getCurrentUser());
 	}
@@ -351,7 +356,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setSecondaryAddress(secondaryAddress);
 
 		// todo: supevisor, studymode, cohort, address etc, etc
-		InStudyMode studyMode = candidate.getStudyMode();
+		InStudyMode studyMode = candidate.getStudyModeSelection().getStudyMode();
 		StudyModePayload studyModePayload = new StudyModePayload();
 		studyModePayload.setCode(studyMode.getCode());
 		studyModePayload.setDescription(studyMode.getDescriptionEn());
@@ -410,7 +415,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidate.setName(application.getName());
 		candidate.setIdentityNo(application.getCredentialNo());
 		candidate.setEmail(application.getEmail());
-		candidate.setStudyMode(application.getStudyModeSelection().getStudyMode());
+		candidate.setStudyModeSelection(application.getStudyModeSelection());
 		candidate.setStatus(InCandidateStatus.SELECTED);
 		candidate.setProgramSelection(application.getProgramSelection());
 		candidate.setSupervisorSelection(application.getSupervisorSelection());
@@ -431,7 +436,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		InFacultyCode facultyCode = candidate.getProgramSelection().getProgramCode().getFacultyCode();
 		InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
 		InProgramLevel programLevel = candidate.getProgramSelection().getProgramCode().getProgramLevel();
-		InStudyMode studyMode = candidate.getStudyMode();
+		InStudyMode studyMode =  candidate.getStudyModeSelection().getStudyMode();
 		map.put("facultyCode", facultyCode);
 		map.put("studyMode", studyMode);
 		map.put("programLevel", programLevel);

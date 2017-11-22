@@ -6,6 +6,7 @@ import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
+import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 
 /**
@@ -36,9 +37,13 @@ public interface InCandidate extends InMetaObject {
     void setRegistration(boolean registration);
 
     // todo: study mode selection
-    InStudyMode getStudyMode();
-
-    void setStudyMode(InStudyMode studyMode);
+//    InStudyMode getStudyMode();
+//
+//    void setStudyMode(InStudyMode studyMode);
+    
+    InStudyModeOffering getStudyModeSelection();
+    
+    void setStudyModeSelection (InStudyModeOffering offering);
 
     InCandidateStatus getStatus();
 

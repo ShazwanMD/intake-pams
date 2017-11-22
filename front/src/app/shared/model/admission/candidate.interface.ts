@@ -1,3 +1,4 @@
+import { StudyModeOffering } from './../policy/study-mode-offering.interface';
 import { Applicant } from '../../../secure/identity/applicant.interface';
 import { BidStatus } from '../application/bid-status.enum';
 import {StudyMode} from '../common/study-mode.interface';
@@ -13,7 +14,7 @@ export interface Candidate extends MetaObject{
   email: string;
   status: BidStatus;
   acception : boolean;
-  studyMode: StudyMode;
+  studyMode: StudyModeOffering;
   intake: Intake;
   applicant: Applicant;
   programSelection?: ProgramOffering;
