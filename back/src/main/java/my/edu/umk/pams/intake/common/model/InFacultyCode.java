@@ -20,4 +20,8 @@ public interface InFacultyCode extends InMetaObject {
 
     void setDescriptionEn(String descriptionEn);
 
+	InCampusCode getCampusCode();
+
+	void setCampusCode(InCampusCode campusCode);
+
 }

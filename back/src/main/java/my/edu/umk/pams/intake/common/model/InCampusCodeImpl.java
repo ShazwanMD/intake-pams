@@ -20,8 +20,12 @@ public class InCampusCodeImpl implements InCampusCode {
     private String code;
 
     @NotNull
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
+    @Column(name = "DESCRIPTION_MS")
+    private String descriptionMs;
+    
+    @NotNull
+    @Column(name = "DESCRIPTION_EN")
+    private String descriptionEn;
 
     @Embedded
     private InMetadata metadata;
@@ -46,19 +50,31 @@ public class InCampusCodeImpl implements InCampusCode {
     }
 
     @Override
-    public String getDescription() {
-        return description;
-    }
+    public String getDescriptionMs() {
+		return descriptionMs;
+	}
 
     @Override
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
 
-    public InMetadata getMetadata() {
+    @Override
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+    @Override
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+
+    @Override
+	public InMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }

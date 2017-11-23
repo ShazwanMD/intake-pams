@@ -1,5 +1,7 @@
 package my.edu.umk.pams.intake.common.model;
 
+import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.core.InMetadata;
 
 import javax.persistence.*;
@@ -30,6 +32,10 @@ public class InFacultyCodeImpl implements InFacultyCode {
     @NotNull
     @Column(name = "DESCRIPTION_EN")
     private String descriptionEn;
+    
+    @ManyToOne(targetEntity = InIntakeApplicationImpl.class)
+    @JoinColumn(name = "CAMPUS_CODE_ID")
+    private InCampusCode campusCode;
     
     @Embedded
     private InMetadata metadata;
@@ -82,6 +88,16 @@ public class InFacultyCodeImpl implements InFacultyCode {
     @Override
 	public void setDescriptionEn(String descriptionEn) {
 		this.descriptionEn = descriptionEn;
+	}
+    
+    @Override
+	public InCampusCode getCampusCode() {
+		return campusCode;
+	}
+
+    @Override
+	public void setCampusCode(InCampusCode campusCode) {
+		this.campusCode = campusCode;
 	}
 
 	@Override
