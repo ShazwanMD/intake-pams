@@ -50,7 +50,7 @@ where in_rslt.result_type = 7
 and
 in_cndt.acception_status = true
 and
-in_grdt_cntr.code = 'MGSEB']]>
+in_grdt_cntr.code = 'CPS']]>
 	</queryString>
 	<field name="result.application_id" class="java.lang.Long"/>
 	<field name="cgpa" class="java.math.BigDecimal"/>
