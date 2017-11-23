@@ -102,10 +102,16 @@
               <p md-line>Remove this intake</p>
             </md-list-item>
 
-            <!-- <md-list-item>
+            <!-- <md-list-item *ngIf="application.intake?.graduateCenter?.code === 'MGSEB'">
                 <md-icon md-list-avatar>print</md-icon>
                 <h4 md-line>Print</h4>
                 <p md-line>Print Accepted Candidates</p>
+            </md-list-item> -->
+
+              <!-- <md-list-item *ngIf="aApplication.intake?.graduateCenter?.code === 'CPS'">
+                    <md-icon md-list-avatar>print</md-icon>
+                    <h4 md-line>Print</h4>
+                    <p md-line>Print Accepted Candidates</p>
               </md-list-item> -->
           </md-nav-list>
         </md-card>
