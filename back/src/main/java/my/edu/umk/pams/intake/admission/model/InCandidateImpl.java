@@ -44,12 +44,16 @@ public class InCandidateImpl implements InCandidate {
     @Column(name = "ACCEPTION_STATUS", nullable = false)
     private boolean acception = false;
 
-    @Column(name = "STUDY_MODE_ID", nullable = false)
-    private InStudyMode studyMode ;
+//    @Column(name = "STUDY_MODE_ID", nullable = false)
+//    private InStudyMode studyMode ;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS", nullable = false)
     private InCandidateStatus status = InCandidateStatus.SELECTED;
+    
+    @OneToOne(targetEntity = InStudyModeOfferingImpl.class)
+    @JoinColumn(name = "STUDY_MODE_SELECTION_ID", nullable = true)
+    private InStudyModeOffering studyModeSelection;
 
     @OneToOne(targetEntity = InProgramOfferingImpl.class)
     @JoinColumn(name = "PROGRAM_SELECTION_ID", nullable = true)
@@ -129,15 +133,15 @@ public class InCandidateImpl implements InCandidate {
 		this.reason = reason;
 	}
 
-	@Override
-    public InStudyMode getStudyMode() {
-        return studyMode;
-    }
-
-    @Override
-    public void setStudyMode(InStudyMode studyMode) {
-        this.studyMode = studyMode;
-    }
+//	@Override
+//    public InStudyMode getStudyMode() {
+//        return studyMode;
+//    }
+//
+//    @Override
+//    public void setStudyMode(InStudyMode studyMode) {
+//        this.studyMode = studyMode;
+//    }
 
     @Override
     public InCandidateStatus getStatus() {
@@ -149,6 +153,17 @@ public class InCandidateImpl implements InCandidate {
         this.status = status;
     }
 
+    @Override
+    public InStudyModeOffering getStudyModeSelection() {
+        return studyModeSelection;
+    }
+
+    @Override
+    public void setStudyModeSelection(InStudyModeOffering studyModeSelection) {
+        this.studyModeSelection = studyModeSelection;
+    }
+
+    
     @Override
     public InProgramOffering getProgramSelection() {
         return programSelection;

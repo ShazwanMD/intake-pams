@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.web.module.policy.controller;
 
 import org.activiti.engine.task.Task;
+import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,9 @@ import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 import static java.lang.Boolean.TRUE;
+import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
+import static my.edu.umk.pams.intake.core.InFlowState.VERIFIED;
+import static my.edu.umk.pams.intake.core.InFlowState.PUBLISHED;
 import static my.edu.umk.pams.intake.workflow.service.WorkflowConstants.REMOVE_DECISION;
 
 @RestController
@@ -268,13 +272,14 @@ public class PolicyController {
     public ResponseEntity<ProgramOffering> findProgramOfferingsById(@PathVariable Long id) {
         return new ResponseEntity<ProgramOffering>(policyTransformer.toProgramOfferingVo(policyService.findProgramOfferingById(id)), HttpStatus.OK);
     }
-
+ 
     @RequestMapping(value = "/intakes/{referenceNo}/programOfferings", method = RequestMethod.POST)
     public ResponseEntity<Boolean> addProgramOfferings(@PathVariable String referenceNo,
                                                        @RequestBody ProgramOffering vo) {
-        try {
+//        try {
             LOG.debug("addProgramOfferings");
             InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+            
             InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
             InProgramOffering offering = new InProgramOfferingImpl();
             offering.setProjection(vo.getProjection());
@@ -284,9 +289,13 @@ public class PolicyController {
             offering.setProgramCode(programCode);
             // todo: offering.setStudyCenterCode();
             policyService.addProgramOffering(intake, offering);
-        } catch (Exception e) {
-            LOG.debug(e.getMessage());
-        }
+            
+            if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
+         		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+        }     
+//        } catch (Exception e) {
+//            LOG.debug(e.getMessage());
+//        }
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
@@ -305,6 +314,11 @@ public class PolicyController {
         offering.setProgramCode(programCode);
 
         policyService.updateProgramOfferings(intake, offering);
+        
+        if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
+     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+    }     
+        
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
@@ -314,6 +328,11 @@ public class PolicyController {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InProgramOffering offering = policyService.findProgramOfferingById(id);
         policyService.deleteProgramOffering(intake, offering);
+        
+        if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
+     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+    }     
+        
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
@@ -332,6 +351,11 @@ public class PolicyController {
         InStudyModeOffering offering = new InStudyModeOfferingImpl();
         offering.setStudyMode(studyMode);
         policyService.addStudyModeOffering(intake, offering);
+        
+        if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
+     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+    }     
+        
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
@@ -341,6 +365,11 @@ public class PolicyController {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InStudyModeOffering offering = policyService.findStudyModeOfferingById(id);
         policyService.deleteStudyModeOffering(intake, offering);
+        
+        if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
+     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+    }     
+        
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
@@ -407,7 +436,12 @@ public class PolicyController {
         InSupervisorOffering offering = new InSupervisorOfferingImpl();
         offering.setSupervisorCode(supervisorCode);
         policyService.addSupervisorOffering(intake, offering);
-        return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+        
+        if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
+         		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+        }
+        
+        return new ResponseEntity<Boolean>(true, HttpStatus.OK){};
     }
 
     @RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings/{id}", method = RequestMethod.DELETE)
@@ -416,6 +450,10 @@ public class PolicyController {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InSupervisorOffering offering = policyService.findSupervisorOfferingById(id);
         policyService.deleteSupervisorOffering(intake, offering);
+        
+        if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
+     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+    } 
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
 
