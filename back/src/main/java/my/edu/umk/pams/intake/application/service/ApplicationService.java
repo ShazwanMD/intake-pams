@@ -136,7 +136,7 @@ public interface ApplicationService {
 
     List<InIntakeApplication> findIntakeApplications(String filter, InBidType bidType, InIntake intake, Integer offset, Integer limit);
 
-    List<InIntakeApplication> findIntakeApplicationsOrderedByMerit(InIntake intake);
+    List<InIntakeApplication> findIntakeApplicationsOrderedByMerit(InIntake intake,InBidStatus status);
 
     List<InIntakeApplication> findIntakeApplicationsOrderedByRank(InIntake intake);
 

@@ -497,8 +497,8 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
-	public List<InIntakeApplication> findIntakeApplicationsOrderedByMerit(InIntake intake) {
-		return intakeApplicationDao.findByOrderedMerit(intake);
+	public List<InIntakeApplication> findIntakeApplicationsOrderedByMerit(InIntake intake,InBidStatus status) {
+		return intakeApplicationDao.findByOrderedMerit(intake,status);
 	}
 
 	@Override

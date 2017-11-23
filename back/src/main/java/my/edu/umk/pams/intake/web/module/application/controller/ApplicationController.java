@@ -139,7 +139,8 @@ public class ApplicationController {
 			@PathVariable String referenceNo, @PathVariable String bidStatus) {
 		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
 		InBidStatus status = InBidStatus.valueOf(bidStatus);
-		List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, status);
+		List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByMerit(intake,status);
+	//	List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, status);
 		return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
 				HttpStatus.OK);
 	}

@@ -293,12 +293,14 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
 
     @Override
-    public List<InIntakeApplication> findByOrderedMerit(InIntake intake) {
+    public List<InIntakeApplication> findByOrderedMerit(InIntake intake, InBidStatus bidStatus) {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("select p from InIntakeApplication p where " +
                 "p.intake = :intake " +
+                "and p.bidStatus = :bidStatus " +
                 "order by p.merit desc");
         query.setEntity("intake", intake);
+        query.setInteger("bidStatus", bidStatus.ordinal());
         return (List<InIntakeApplication>) query.list();
     }
 
