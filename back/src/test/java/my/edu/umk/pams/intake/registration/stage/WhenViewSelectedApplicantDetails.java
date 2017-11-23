@@ -40,8 +40,8 @@ public class WhenViewSelectedApplicantDetails extends Stage<WhenViewSelectedAppl
 			LOG.debug("Candidates Name : {}", candidate.getName());
 			LOG.debug("Candidates Name : {}", candidate.getEmail());
 			LOG.debug("Candidates Name : {}", candidate.getIdentityNo());
-			LOG.debug("Candidates Name : {}", candidate.getStudyMode().getDescriptionEn());
-			LOG.debug("Candidates Name : {}", candidate.getStudyMode().getDescriptionMs());
+			LOG.debug("Candidates Name : {}", candidate.getStudyModeSelection().getStudyMode().getDescriptionEn());
+			LOG.debug("Candidates Name : {}", candidate.getStudyModeSelection().getStudyMode().getDescriptionMs());
 			LOG.debug("");
 		}
 		
