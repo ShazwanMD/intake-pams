@@ -1,5 +1,7 @@
 package my.edu.umk.pams.intake.identity.service;
 
+import my.edu.umk.pams.connector.payload.StaffPayload;
+import my.edu.umk.pams.connector.payload.StudyCenterPayload;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.intake.identity.model.*;
@@ -205,6 +207,8 @@ public interface IdentityService {
 	void changeAddress(InIntakeApplication application, String newAddress);
 
 	void updateMyIntakeApplication(InIntakeApplication application);
+
+	void saveStaffIMSNonAcademicActive(InStaff staff);
 
 //	void changeAddress(InIntakeApplication intakeApplication, String newAddress);
 }

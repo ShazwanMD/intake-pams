@@ -1,5 +1,7 @@
 package my.edu.umk.pams.intake.web.module.integration.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
+import my.edu.umk.pams.connector.payload.StaffPayload;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InFacultyCodeImpl;
 import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.identity.dao.RecursiveGroupException;
+import my.edu.umk.pams.intake.identity.model.InActorType;
+import my.edu.umk.pams.intake.identity.model.InStaff;
+import my.edu.umk.pams.intake.identity.model.InStaffImpl;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
@@ -88,7 +95,81 @@ public class IntegrationController {
         logoutAsSystem(ctx);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
+    
+ // ====================================================================================================
+ // STAFF
+ // ====================================================================================================
+ 	@RequestMapping(value = "/staff/nonAcademicActive", method = RequestMethod.POST)
+ 	public ResponseEntity<String> saveStaff(@RequestBody List<StaffPayload> staffPayload)
+ 			throws RecursiveGroupException {
+ 		SecurityContext ctx = loginAsSystem();
 
+ 		LOG.info("Start Receive Staff From IMS");
+ 		for (StaffPayload payload : staffPayload) {
+
+ 			boolean staffReceive = identityService.isStaffNoExists(payload.getStaffId());
+ 			
+ 			if (staffReceive ) {
+ 				
+ 				LOG.info("Staff already exists");
+ 				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+ 				LOG.debug("Staff Name:{}", payload.getStaffName());
+ 				
+ 				String facultyCode = payload.getStaffDepartmentCode();
+ 				InFacultyCode faculty = commonService.findFacultyCodeByCode(facultyCode);
+ 				
+ 				InStaff staff = identityService.findStaffByStaffNo(payload.getStaffId());
+ 				staff.setIdentityNo(payload.getStaffId());
+ 				staff.setName(payload.getStaffName());
+ 				staff.setActorType(InActorType.STAFF);
+ 				staff.setPhone(payload.getStaffPhoneNo());
+ 				staff.setFacultyCode(faculty);
+ 				staff.setStaffCategory(payload.getStaffCategory());
+ 				staff.setEmail(payload.getStaffEmail());
+ 				identityService.updateStaff(staff);
+
+ 			}else{
+ 				
+ 				
+ 				LOG.info("Staff not exists");
+ 				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+ 				LOG.debug("Staff Name:{}", payload.getStaffName());
+ 				LOG.debug("Staff Department_Code:{}", payload.getStaffDepartmentCode());
+ 				LOG.debug("Staff Category:{}", payload.getStaffCategory());
+ 				
+ 				String facultyCode = payload.getStaffDepartmentCode();
+ 				InFacultyCode faculty = commonService.findFacultyCodeByCode(facultyCode);
+ 				
+ 				InStaff staff = new InStaffImpl();
+ 				staff.setIdentityNo(payload.getStaffId());
+ 				staff.setName(payload.getStaffName());
+ 				staff.setActorType(InActorType.STAFF);
+ 				staff.setPhone(payload.getStaffPhoneNo());
+ 				staff.setFacultyCode(faculty);
+ 				staff.setStaffCategory(payload.getStaffCategory());
+ 				staff.setEmail(payload.getStaffEmail());
+ 				if (commonService.isFacultyCodeExists(payload.getStaffDepartmentCode()))
+ 				{	
+ 					LOG.info("if faculty exists");
+ 					identityService.saveStaffIMSNonAcademicActive(staff);
+ 				
+ 				}
+ 				else
+ 				{
+ 					LOG.info("if faculty not exists");
+ 					identityService.saveStaff(staff);
+ 				
+ 				}
+ 			}
+ 		}
+ 		LOG.info("Finish Receive Staff From IMS");
+
+ 		logoutAsSystem(ctx);
+ 		return new ResponseEntity<String>("success", HttpStatus.OK);
+ 	}
+    
+    
+   
     private SecurityContext loginAsSystem() {
         SecurityContext savedCtx = SecurityContextHolder.getContext();
         InAutoLoginToken authenticationToken = new InAutoLoginToken("system");

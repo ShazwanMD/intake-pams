@@ -89,8 +89,9 @@ public class InStaffDaoImpl extends GenericDaoSupport<Long, InStaff> implements 
                 "and s.metadata.state = :state ");
         query.setString("staffNo", staffNo);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
-        return ((Integer) query.uniqueResult() > 0);
+        return 0 < ((Long) query.uniqueResult()).intValue();
     }
+    
 
     @Override
     public boolean isEmailExists(String email) {

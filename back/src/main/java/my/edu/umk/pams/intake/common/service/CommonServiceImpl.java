@@ -1189,6 +1189,11 @@ public class CommonServiceImpl implements CommonService {
     public InFacultyCode findFacultyCodeByCode(String code) {
         return facultyCodeDao.findByCode(code);
     }
+    
+    @Override
+    public boolean isFacultyCodeExists(String code) {
+        return facultyCodeDao.isExists(code);
+    }
 
     @Override
     public List<InFacultyCode> findFacultyCodes() {

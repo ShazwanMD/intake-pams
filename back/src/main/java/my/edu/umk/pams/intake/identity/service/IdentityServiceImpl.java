@@ -19,6 +19,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import my.edu.umk.pams.connector.payload.StaffPayload;
+import my.edu.umk.pams.connector.payload.StudyCenterPayload;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
@@ -38,13 +40,18 @@ import my.edu.umk.pams.intake.identity.model.InActorType;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InGroup;
 import my.edu.umk.pams.intake.identity.model.InGroupImpl;
+import my.edu.umk.pams.intake.identity.model.InGroupMember;
+import my.edu.umk.pams.intake.identity.model.InGroupMemberImpl;
 import my.edu.umk.pams.intake.identity.model.InPrincipal;
 import my.edu.umk.pams.intake.identity.model.InPrincipalImpl;
 import my.edu.umk.pams.intake.identity.model.InPrincipalRole;
 import my.edu.umk.pams.intake.identity.model.InPrincipalRoleImpl;
+import my.edu.umk.pams.intake.identity.model.InPrincipalType;
 import my.edu.umk.pams.intake.identity.model.InRoleType;
 import my.edu.umk.pams.intake.identity.model.InStaff;
+import my.edu.umk.pams.intake.identity.model.InStaffImpl;
 import my.edu.umk.pams.intake.identity.model.InUser;
+import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.registration.dao.InUserVerificationDao;
 import my.edu.umk.pams.intake.registration.model.InUserVerification;
 import my.edu.umk.pams.intake.registration.model.InUserVerificationImpl;
@@ -642,6 +649,159 @@ public class IdentityServiceImpl implements IdentityService {
         sessionFactory.getCurrentSession().flush();
         logoutAsSystem(sc);
     }
+    
+    @Override
+    public void saveStaffIMSNonAcademicActive(InStaff staff) {
+		staffDao.save(staff, securityService.getCurrentUser());
+		LOG.info("Save Staff IMS Service");
+		
+		LOG.debug("Staff Email In Service:{}",staff.getEmail());
+		// User
+		InUser user = new InUserImpl();
+		user.setActor(staff);
+		user.setEmail(staff.getEmail());
+		user.setUsername(staff.getEmail());
+		user.setPassword(staff.getStaffNo());
+		user.setRealName(staff.getName());
+		user.setName(staff.getIdentityNo());
+		user.setEnabled(true);
+		user.setLocked(true);
+		user.setPrincipalType(InPrincipalType.USER);
+		saveUser(user);
+				
+		// Principal
+		InPrincipal principal = findPrincipalByName(staff.getIdentityNo());
+		if(staff.getFacultyCode().getCode().equals("A10") && staff.getStaffCategory().equals("A")){
+		LOG.info("If Faculty A10 MGSEB && Category A");
+		
+		// Principal Role
+		InPrincipalRole role = new InPrincipalRoleImpl();
+		role.setPrincipal(principal);
+		role.setRole(InRoleType.ROLE_ADMINISTRATOR);
+		addPrincipalRole(principal, role);
+
+		try{
+		// Group
+		InGroup group = findGroupByName("GRP_PGW_ADM_A10");
+		// GroupMember
+		InGroupMember member = new InGroupMemberImpl();
+		member.setGroup(group);
+		member.setPrincipal(principal);
+		addGroupMember(group, principal);
+		} catch (RecursiveGroupException e) {
+			
+			e.printStackTrace();
+		}
+		}else if(staff.getFacultyCode().getCode().equals("A10")){
+			LOG.info("If Faculty A10 MGSEB Only");
+			
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_ADMINISTRATOR);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_KRN_ADM_A10");
+			// GroupMember
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}else if(staff.getFacultyCode().getCode().equals("A09") && staff.getStaffCategory().equals("A")){
+			LOG.info("If Faculty A09 CPS && Category A");
+	
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_ADMINISTRATOR);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_PGW_ADM_A10");
+			// GroupMember
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}else if(staff.getFacultyCode().getCode().equals("A09")){
+			LOG.info("If Faculty A09 CPS Only");
+			
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_ADMINISTRATOR);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_KRN_ADM_A10");
+			// GroupMember
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}else if(staff.getStaffCategory().equals("A")){
+			LOG.info("If All Faculty and Category A Only");
+			
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_FCTY);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_PGW_FCTY_"+ staff.getFacultyCode().getCode());
+			// GroupMember
+			
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}else{
+			LOG.info("If All Faculty Only");
+			
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_FCTY);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_KRN_FCTY_"+ staff.getFacultyCode().getCode());
+			// GroupMember
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}      
+        sessionFactory.getCurrentSession().flush();
+    }
+    
     
     @Override
     public void changeEmail(InApplicant applicant, String newEmail) {

@@ -40,22 +40,22 @@ public class WhenISelectTopApplicants extends Stage<WhenISelectTopApplicants> {
     @Autowired
     private ApplicationService applicationService;
 
-    public WhenISelectTopApplicants I_select_top_applicants() {
-    	
-    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplicationsOrderedByMerit(intake);
-		for (InIntakeApplication intakeApplication : applications) {
-			intakeApplication.getName();
-			LOG.debug(intakeApplication.getName());
-			intakeApplication.getEmail();
-			LOG.debug(intakeApplication.getEmail());
-			
-			LOG.debug("intake status {} :", intakeApplication.getBidStatus());
-			
-		}
-		
-        return self();
-
-    }
+//    public WhenISelectTopApplicants I_select_top_applicants() {
+//    	
+//    	List<InIntakeApplication> applications  =  applicationService.findIntakeApplicationsOrderedByMerit(intake, status);
+//		for (InIntakeApplication intakeApplication : applications) {
+//			intakeApplication.getName();
+//			LOG.debug(intakeApplication.getName());
+//			intakeApplication.getEmail();
+//			LOG.debug(intakeApplication.getEmail());
+//			
+//			LOG.debug("intake status {} :", intakeApplication.getBidStatus());
+//			
+//		}
+//		
+//        return self();
+//
+//    }
 }
 
 

@@ -34,13 +34,15 @@ public class InStaffImpl extends InActorImpl implements InStaff {
 	
 	@Column(name = "STAFF_TYPE")
 	private InStaffType staffType;
-	
+
+	@Column(name = "STAFF_CATEGORY")
+	private String staffCategory;
 
     @Override
     public String getStaffNo() {
         return getIdentityNo();
     }
-
+       
     @Override
     public void setStaffNo(String staffNo) {
         setIdentityNo(staffNo);
@@ -79,6 +81,16 @@ public class InStaffImpl extends InActorImpl implements InStaff {
     @Override
 	public void setStaffType(InStaffType staffType) {
 		this.staffType = staffType;
+	}
+
+    @Override
+	public String getStaffCategory() {
+		return staffCategory;
+	}
+
+    @Override
+	public void setStaffCategory(String staffCategory) {
+		this.staffCategory = staffCategory;
 	}
     
     
