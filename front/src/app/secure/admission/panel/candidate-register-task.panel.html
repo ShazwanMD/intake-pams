@@ -102,17 +102,36 @@
               <p md-line>Remove this intake</p>
             </md-list-item>
 
-            <!-- <md-list-item *ngIf="application.intake?.graduateCenter?.code === 'MGSEB'">
+            <div *ngIf="intakeTask?.intake?.graduateCenter?.code === 'MGSEB'">
+                <a md-list-item (click)="downloadReport('adm_0003.jrxml&report.pdf', intakeTask)" [target]="'_blank'">
                 <md-icon md-list-avatar>print</md-icon>
                 <h4 md-line>Print</h4>
                 <p md-line>Print Accepted Candidates</p>
-            </md-list-item> -->
+                </a></div>
+           <!-- <md-list-item *ngIf="intakeTask?.intake?.graduateCenter?.code === 'MGSEB'">
+              <a md-list-item (click)="downloadReport('adm_0003.jrxml&report.pdf', intakeTask)" [target]="'_blank'">
+              <md-icon md-list-avatar>print</md-icon>
+              <h4 md-line>Print</h4>
+              <p md-line>Print Accepted Candidates</p>
+            </a>
+         </md-list-item> -->
 
-              <!-- <md-list-item *ngIf="aApplication.intake?.graduateCenter?.code === 'CPS'">
-                    <md-icon md-list-avatar>print</md-icon>
-                    <h4 md-line>Print</h4>
-                    <p md-line>Print Accepted Candidates</p>
-              </md-list-item> -->
+          <div *ngIf="intakeTask?.intake?.graduateCenter?.code === 'CPS'">
+          <a md-list-item (click)="downloadReport('adm_0004.jrxml&report.pdf', intakeTask)" [target]="'_blank'">        
+            <md-icon md-list-avatar>print</md-icon>
+            <h4 md-line>Print</h4>
+            <p md-line>Print Accepted Candidates</p>
+          </a>
+        </div>
+
+<!-- 
+        <md-list-item *ngIf="intakeTask?.intake?.graduateCenter?.code === 'CPS'">
+            <a md-list-item (click)="downloadReport('adm_0004.jrxml&report.pdf', intakeTask)" [target]="'_blank'">        
+          <md-icon md-list-avatar>print</md-icon>
+          <h4 md-line>Print</h4>
+          <p md-line>Print Accepted Candidates</p>
+        </a>
+      </md-list-item>  -->
           </md-nav-list>
         </md-card>
       </div>

@@ -1,3 +1,5 @@
+import { Intake } from './../../../shared/model/policy/intake.interface';
+import { GraduateCenter } from './../../../shared/model/common/graduate-center.interface';
 import { AdmissionModuleState } from '..';
 import { Candidate } from '../../../shared/model/admission/candidate.interface';
 import { IntakeTask } from '../../../shared/model/policy/intake-task.interface';
@@ -10,6 +12,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import { IntakeActions } from "../../policy/intakes/intake.action";
+import { ReportActions } from '../../../shared/report/report.action';
 
 @Component({
   selector: 'pams-candidate-register-task',
@@ -18,6 +21,7 @@ import { IntakeActions } from "../../policy/intakes/intake.action";
 export class CandidateRegisterTaskPanel implements OnInit {
   
   @Input() intakeTask: IntakeTask;
+  @Input() intake: Intake;
 
   //private INTAKE_TASK: string[] = 'admissionModuleState.intakeTask'.split('.');
   private CANDIDATES: string[] = 'admissionModuleState.candidates'.split('.');
@@ -43,6 +47,7 @@ export class CandidateRegisterTaskPanel implements OnInit {
               private store: Store<AdmissionModuleState>,
               private snackBar: MdSnackBar,
               private intakeActions: IntakeActions,
+              private reportActions: ReportActions,
               private actions: AdmissionActions) {
     //this.intakeTask$ = this.store.select(...this.INTAKE_TASK);
     this.candidates$ = this.store.select(...this.CANDIDATES);
@@ -74,4 +79,9 @@ export class CandidateRegisterTaskPanel implements OnInit {
     this.router.navigate(['/secure/admission']);
     window.location.reload();
   }
-}
+
+  downloadReport(reportId, parameterReport1: IntakeTask): void { 
+  let repParam = reportId + '&intake_reference_no=' + parameterReport1.referenceNo;
+  this.store.dispatch(this.reportActions.downloadReport(repParam));
+   }
+} 

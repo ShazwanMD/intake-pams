@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="adm_000" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1f72c9b-08ed-49ba-b1c3-3863e5d18d22">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="adm_000" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1f72c9b-08ed-49ba-b1c3-3863e5d18d22">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="144"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="intake_reference_no" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[select
 
@@ -27,7 +28,8 @@ in_stdy_mode.description_ms as "stdy_mode.description_ms",
 in_intk_apln.study_center_code_id as "stdy_cntr_code_id",
 in_stdy_cntr_code.description_ms as "stdy_cntr_code.description_ms",
 in_grdt_cntr.code as "in_grdt_cntr.code",
-in_intk_sesn.description_ms as "intk_sessn.description_ms"
+in_intk_sesn.description_ms as "intk_sessn.description_ms",
+in_intk.reference_no as "intk_reference_no"
 
 
 from
@@ -73,6 +75,8 @@ in_grdt_cntr.code = 'CPS']]>
 	<field name="stdy_cntr_code.description_ms" class="java.lang.String"/>
 	<field name="in_grdt_cntr.code" class="java.lang.String"/>
 	<field name="intk_sessn.description_ms" class="java.lang.String"/>
+	<field name="intk_reference_no" class="java.lang.String"/>
+	<filterExpression><![CDATA[$F{intk_reference_no}.equals( $P{intake_reference_no} )]]></filterExpression>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
