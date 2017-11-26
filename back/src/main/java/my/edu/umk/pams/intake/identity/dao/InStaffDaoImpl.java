@@ -1,6 +1,5 @@
 package my.edu.umk.pams.intake.identity.dao;
 
-import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.identity.model.InStaff;
