@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="adm_0005" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b53ee4b8-64a5-4970-9338-1af2c018154b">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="90"/>
+	<parameter name="intake_reference_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select
+
+
+in_rslt.application_id as "result.application_id",
+in_rslt.result_numeric as "cgpa",
+in_rslt.result_type as "result_type",
+in_rslt.graduation_year as "graduation_year",
+in_rslt.field as "result_field",
+in_rslt.name as "result_name",
+in_cndt.acception_status as "acception_status",
+in_cndt.name as "cndt_name",
+in_cndt.identity_no as "cndt_identity_no",
+in_cndt.acception_status as "cndt_acception_status",
+in_intk_apln.nationality_code_id as "intk_apln.nationality_code_id",
+in_ntly_code.description_ms as "ntly_code.description_ms",
+in_intk_apln.program_selection_id as "prgm_select_id",
+in_prgm_ofrg.program_code_id as "in_prgm_code_id",
+in_prgm_code.description_ms as "prgm_desc_ms",
+in_stdy_mode_ofrg.id as "in_stdy_mode_ofrg.id",
+in_stdy_mode.description_ms as "stdy_mode.description_ms",
+in_intk_apln.study_center_code_id as "stdy_cntr_code_id",
+in_stdy_cntr_code.description_ms as "stdy_cntr_code.description_ms",
+in_grdt_cntr.code as "in_grdt_cntr.code",
+in_intk_sesn.description_ms as "intk_sessn.description_ms",
+in_intk.reference_no as "intk_reference_no"
+
+
+from
+
+in_rslt
+
+inner join in_intk_apln on in_rslt.application_id = in_intk_apln.id
+inner join in_cndt on in_intk_apln.id =in_cndt.application_id
+inner join in_prgm_ofrg on in_intk_apln.program_selection_id = in_prgm_ofrg.id
+inner join in_prgm_code on in_prgm_ofrg.program_code_id = in_prgm_code.id
+inner join in_stdy_mode_ofrg on in_intk_apln.study_mode_selection_id = in_stdy_mode_ofrg.id
+inner join in_stdy_mode on in_stdy_mode_ofrg.study_mode_id = in_stdy_mode.id
+left outer join in_stdy_cntr_code on in_intk_apln.study_center_code_id = in_stdy_cntr_code.id
+inner join in_intk on in_intk_apln.intake_id = in_intk.id
+inner join in_grdt_cntr on in_intk.graduate_center_id = in_grdt_cntr.id
+inner join in_intk_sesn on in_intk.session_id = in_intk_sesn.id
+inner join in_ntly_code on in_intk_apln.nationality_code_id = in_ntly_code.id
+
+where
+
+in_cndt.status = 0
+and
+in_rslt.result_type = 7
+and
+in_cndt.acception_status = false
+and
+in_grdt_cntr.code = 'MGSEB']]>
+	</queryString>
+	<field name="result.application_id" class="java.lang.Long"/>
+	<field name="cgpa" class="java.math.BigDecimal"/>
+	<field name="result_type" class="java.lang.Integer"/>
+	<field name="graduation_year" class="java.lang.Integer"/>
+	<field name="result_field" class="java.lang.String"/>
+	<field name="result_name" class="java.lang.String"/>
+	<field name="acception_status" class="java.lang.Boolean"/>
+	<field name="cndt_name" class="java.lang.String"/>
+	<field name="cndt_identity_no" class="java.lang.String"/>
+	<field name="cndt_acception_status" class="java.lang.Boolean"/>
+	<field name="intk_apln.nationality_code_id" class="java.lang.Long"/>
+	<field name="ntly_code.description_ms" class="java.lang.String"/>
+	<field name="prgm_select_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_id" class="java.lang.Long"/>
+	<field name="prgm_desc_ms" class="java.lang.String"/>
+	<field name="in_stdy_mode_ofrg.id" class="java.lang.Long"/>
+	<field name="stdy_mode.description_ms" class="java.lang.String"/>
+	<field name="stdy_cntr_code_id" class="java.lang.Long"/>
+	<field name="stdy_cntr_code.description_ms" class="java.lang.String"/>
+	<field name="in_grdt_cntr.code" class="java.lang.String"/>
+	<field name="intk_sessn.description_ms" class="java.lang.String"/>
+	<field name="intk_reference_no" class="java.lang.String"/>
+	<filterExpression><![CDATA[$F{intk_reference_no}.equals( $P{intake_reference_no} )]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="28" width="300" height="17" uuid="033fe771-2ec8-4b70-aa8a-bc052e52d847"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ SENARAI PERMOHONAN PASCASISWAZAH (KERJA KHUSUS) SEMESTER]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="312" y="28" width="380" height="17" uuid="150f742d-e7e2-405c-8bb3-6cd97c6ad2cd"/>
+				<textFieldExpression><![CDATA[$F{intk_sessn.description_ms}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="702" y="0" width="100" height="15" uuid="b981b4a1-93ed-4b11-87e3-2d84fd37dfc5"/>
+				<text><![CDATA[LAMPIRAN 1]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="16" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="47" splitType="Stretch">
+			<rectangle>
+				<reportElement x="723" y="1" width="79" height="46" backcolor="#CCCCCC" uuid="2c12a959-3fc7-40fa-9a40-3bdc15e9382a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="641" y="1" width="82" height="46" backcolor="#CCCCCC" uuid="d3f06f36-a606-48cc-977f-e769f4e82fe6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="564" y="1" width="77" height="46" backcolor="#CCCCCC" uuid="2e098d88-d20d-43bc-ab50-0bafab4500aa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="398" y="1" width="166" height="46" backcolor="#CCCCCC" uuid="e916488d-96ca-4ad9-ac28-9f72edc7997e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="304" y="1" width="94" height="46" backcolor="#CCCCCC" uuid="a68c91a4-1a18-4695-8069-e94a89336217"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="159" y="1" width="145" height="46" backcolor="#CCCCCC" uuid="d6e99dfd-1079-4bbc-a878-9f882bb5e860"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="31" y="1" width="128" height="46" backcolor="#CCCCCC" uuid="f5aaf71e-7f69-4aef-9803-383ed13ebfff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="1" width="31" height="46" backcolor="#CCCCCC" uuid="3ad39da3-4e80-4cb8-81b7-42861348c67f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="33" y="2" width="100" height="14" uuid="c5735b67-2de6-4095-ad97-1fab54536553"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA PEMOHON /]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="16" width="100" height="15" uuid="1695932a-09ea-43c1-8f9f-922c8f252cb1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WARGANEGARA /]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="31" width="100" height="15" uuid="6bf024a7-e779-4191-8b55-292ac046f1dd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO.IC/PASSPORT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="4" width="16" height="20" uuid="5d6dea49-ecda-445e-9ec7-bb1d5cfa9ad8"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="4" width="124" height="12" uuid="38f6a4c1-0178-4a43-80df-a31165ecdae5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERINGKAT PENGAJIAN /]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="15" width="100" height="12" uuid="627fa400-ac13-4bd3-9893-c58a17623186"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BIDANG PENGAJIAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="4" width="37" height="14" uuid="b12d4dca-ca96-409a-b9fe-430ae82ff804"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TARAF ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="4" width="62" height="14" uuid="0e284f94-1a78-435a-9ab7-e5d1bde8fe45"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KELAYAKAN ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="16" width="130" height="15" uuid="1564bee6-603b-494b-b92c-5e42aab15871"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IJAZAH PERTAMA / UNIVERSITI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="27" width="100" height="15" uuid="a8c3e4c0-e714-4628-bbf8-24080d34533f"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[/ CGPA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="572" y="4" width="38" height="14" uuid="64d37200-1d7a-45e5-955d-4909a70285ab"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TAHUN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="572" y="16" width="38" height="12" uuid="eed5b2d9-c7c9-43a0-a528-4524ad6e4ccd"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LULUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="315" y="14" width="76" height="13" uuid="cf78d1b5-770b-4f47-b28c-c993afe50880"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KEMASUKAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="4" width="51" height="15" uuid="05e25b4e-1834-454e-ba50-f2a67b055bdf"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KAMPUS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="737" y="3" width="47" height="13" uuid="4d07d5ce-4f1f-419e-a6cb-46f1bc94b5c5"/>
+				<textElement>
+					<font fontName="Arial Narrow" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CATATAN]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="200" splitType="Stretch">
+			<rectangle>
+				<reportElement x="641" y="0" width="82" height="135" uuid="abd203e0-1b59-4508-bc71-4bfdd575eb42"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="564" y="0" width="77" height="135" uuid="d62b114b-9de7-4169-9149-4c395e84b737"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="398" y="0" width="166" height="135" uuid="f96ff8a5-fe12-4dbb-800c-035543ba3149"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="303" y="0" width="95" height="135" uuid="b8679188-8441-4b65-88c7-d35442c7fe24"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="159" y="0" width="145" height="135" uuid="76e41a02-4d68-4098-8a22-eb6520f69635"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="31" y="0" width="128" height="135" uuid="868bb7c1-2909-4f07-9d90-499d846b9e77"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="31" height="135" uuid="17a5fa2d-18f4-4193-8ce8-b3f67cbfa80d"/>
+			</rectangle>
+			<textField>
+				<reportElement x="7" y="10" width="15" height="20" uuid="fa1e2bfb-601c-41dd-b66a-13236408fa22"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="10" width="117" height="65" uuid="eea08aa6-1fc5-458e-ad18-d4e3d3d4d2c9"/>
+				<textFieldExpression><![CDATA[$F{cndt_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="10" width="124" height="85" uuid="06869ca4-e3ab-47df-8c52-74920ae1a904"/>
+				<textFieldExpression><![CDATA[$F{prgm_desc_ms}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="312" y="7" width="79" height="55" uuid="cdcc93df-4145-4a11-9a58-e4c8df98c0f9"/>
+				<textFieldExpression><![CDATA[$F{stdy_mode.description_ms}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="7" width="120" height="55" uuid="2d7db21f-6f62-4c00-aa63-aa308e7008bf"/>
+				<textFieldExpression><![CDATA[$F{result_field}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="570" y="7" width="60" height="73" uuid="7b26ee60-cd1c-40c3-b774-e0ca712b4382"/>
+				<textFieldExpression><![CDATA[$F{graduation_year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="75" width="117" height="32" uuid="8c21cc17-9bca-4600-8ab3-6f10a056b3aa"/>
+				<textFieldExpression><![CDATA[$F{ntly_code.description_ms}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="106" width="117" height="20" uuid="38357331-bfca-48ed-8314-7180c0030708"/>
+				<textFieldExpression><![CDATA[$F{cndt_identity_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="107" width="100" height="20" uuid="387ef726-9782-49bc-bb16-8dfd61107bf0"/>
+				<textFieldExpression><![CDATA[$F{cgpa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="62" width="119" height="45" uuid="b048a9d7-9359-419d-a37d-f0d15e5fd994"/>
+				<textFieldExpression><![CDATA[$F{result_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="650" y="10" width="63" height="65" uuid="a7add843-b49f-483d-a255-99ee1eece50d"/>
+				<textFieldExpression><![CDATA[$F{stdy_cntr_code.description_ms}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="723" y="0" width="79" height="135" uuid="ffbe5c1e-7b63-4743-8e1b-13c85be70482"/>
+			</rectangle>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
