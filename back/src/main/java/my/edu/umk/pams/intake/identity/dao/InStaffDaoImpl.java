@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.identity.dao;
 
+import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.identity.model.InStaff;
@@ -89,8 +90,9 @@ public class InStaffDaoImpl extends GenericDaoSupport<Long, InStaff> implements 
                 "and s.metadata.state = :state ");
         query.setString("staffNo", staffNo);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
-        return ((Integer) query.uniqueResult() > 0);
+        return 0 < ((Long) query.uniqueResult()).intValue();
     }
+    
 
     @Override
     public boolean isEmailExists(String email) {
