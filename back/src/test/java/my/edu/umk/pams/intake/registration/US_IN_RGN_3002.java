@@ -41,8 +41,8 @@ public class US_IN_RGN_3002 extends SpringScenarioTest<GivenIAmCPSAdministrator,
         given().I_am_a_CPS_administrator_in_current_intake_session()
         .and().I_pick_an_intake_$(intakeReferenceNo);
         when().I_prepare_3_applications().and().I_submit_3_applications();
-        addStage(WhenISelectTopApplicants.class).and().I_select_top_applicants();
-        then().I_can_proceed_to_process_their_application();
+   //     addStage(WhenISelectTopApplicants.class).and().I_select_top_applicants();
+   //     then().I_can_proceed_to_process_their_application();
     }
 }
 

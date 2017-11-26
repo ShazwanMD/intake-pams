@@ -12,6 +12,8 @@ public enum InRoleType {
 	ROLE_PTJ,			// 3
 	ROLE_APCN,			// 4
 	ROLE_MGT,			// 5
-	ROLE_FCTY;			// 6
+	ROLE_FCTY,			// 6
+	ROLE_MGSEB,			// 7
+	ROLE_CPS;			// 8
 	
 }

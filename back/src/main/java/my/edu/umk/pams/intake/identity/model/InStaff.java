@@ -21,4 +21,8 @@ public interface InStaff extends InActor {
 
 	void setProgramCode(InProgramCode programCode);
 
+	String getStaffCategory();
+
+	void setStaffCategory(String staffCategory);
+
 }

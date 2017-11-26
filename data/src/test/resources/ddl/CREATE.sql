@@ -1158,6 +1158,7 @@
         STAFF_TYPE int4,
         FACULTY_CODE_ID int8,
         PROGRAM_CODE_ID int8,
+        STAFF_CATEGORY VARCHAR(255),
         PRIMARY KEY (ID)
     );
 
