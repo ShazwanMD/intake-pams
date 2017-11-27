@@ -2,9 +2,7 @@ package my.edu.umk.pams.intake.admission.service;
 
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
-import my.edu.umk.pams.connector.payload.CohortCodePayload;
 import my.edu.umk.pams.connector.payload.NationalityCodePayload;
-import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 import my.edu.umk.pams.connector.payload.StudyCenterPayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.connector.payload.UserPayload;
@@ -21,21 +19,15 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InNationalityCode;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
-import my.edu.umk.pams.intake.common.model.InResidencyCode;
-import my.edu.umk.pams.intake.common.model.InStudyCenterCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
-import my.edu.umk.pams.intake.common.model.InSupervisorCode;
-import my.edu.umk.pams.intake.common.model.InSupervisorCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InGroup;
 import my.edu.umk.pams.intake.identity.model.InUser;
-import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InIntakeSession;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
-import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InPermission;
 import my.edu.umk.pams.intake.security.service.AccessService;
@@ -44,7 +36,6 @@ import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
 import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 import my.edu.umk.pams.intake.system.service.SystemService;
-import my.edu.umk.pams.intake.util.Util;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -303,12 +294,19 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setName(candidate.getName());
 		payload.setMatricNo(candidate.getMatricNo());
 		payload.setEmail(candidate.getEmail());
-		payload.setProgramCodeDescriptionMs(programCode.getDescriptionMs());
-		payload.setFacultyCodeDescriptionMs(facultyCode.getDescriptionMs());
+		payload.setProgramCode(programCode.getCode());
+		payload.setFacultyCode(facultyCode.getCode());
 		payload.setProgramLevel(programCode.getProgramLevel().getCode());
 		payload.setGender(candidate.getApplication().getGenderCode().getCode());
 		payload.setReligion(candidate.getApplication().getReligionCode().getCode());
 		payload.setMartialStatus(candidate.getApplication().getMaritalCode().getCode());
+		payload.setRace(candidate.getApplication().getRaceCode().getCode());
+		
+		if (candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {
+			payload.setResearchTitle(candidate.getApplication().getResearchTitle());
+		}else{
+			payload.setResearchTitle(null);
+		}
 			
 		InUser user = identityService.findUserByEmail(candidate.getEmail());
 		LOG.debug("user Email:{}", user.getEmail());
