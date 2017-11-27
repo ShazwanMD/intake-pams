@@ -85,53 +85,50 @@
           <md-card-subtitle>Actions available on current intake</md-card-subtitle>
           <md-divider></md-divider>
           <md-nav-list dense>
-          <div *ngIf="(selectedCandidates$ | async)?.length <= 0 && (preSelectedCandidates$ | async)?.length <= 0">
+          <div *ngIf="(offeredCandidates$ | async)?.length <= 0 && (acceptedCandidates$ | async)?.length <= 0">
+              <md-list-item (click)="startAcademic()">
+                  <md-icon md-list-avatar>done</md-icon>
+                  <h4 md-line>Start Academic</h4>
+                  <p md-line>Start Academic for this intake</p>
+                </md-list-item>
+          </div>
+          <div *ngIf="(offeredCandidates$ | async)?.length > 0 && (acceptedCandidates$ | async)?.length <= 0">
             <md-list-item (click)="startAcademic()">
               <md-icon md-list-avatar>done</md-icon>
               <h4 md-line>Start Academic</h4>
               <p md-line>Start Academic for this intake</p>
-            </md-list-item></div>
-            <!-- <md-list-item (click)="broadcast()">
+            </md-list-item>
+          </div>
+
+          <!-- <md-list-item (click)="broadcast()">
               <md-icon md-list-avatar>announcement</md-icon>
               <h4 md-line>Broadcast</h4>
               <p md-line>Broadcast result to candidates</p>
             </md-list-item> -->
+
             <md-list-item>
               <md-icon md-list-avatar>remove_circle</md-icon>
               <h4 md-line>Remove</h4>
               <p md-line>Remove this intake</p>
             </md-list-item>
 
+            <div *ngIf="(acceptedCandidates$ | async)?.length > 0">
             <div *ngIf="intakeTask?.intake?.graduateCenter?.code === 'MGSEB'">
                 <a md-list-item (click)="downloadReport('adm_0003.jrxml&report.pdf', intakeTask)" [target]="'_blank'">
                 <md-icon md-list-avatar>print</md-icon>
                 <h4 md-line>Print</h4>
                 <p md-line>Print Accepted Candidates</p>
-                </a></div>
-           <!-- <md-list-item *ngIf="intakeTask?.intake?.graduateCenter?.code === 'MGSEB'">
-              <a md-list-item (click)="downloadReport('adm_0003.jrxml&report.pdf', intakeTask)" [target]="'_blank'">
-              <md-icon md-list-avatar>print</md-icon>
-              <h4 md-line>Print</h4>
-              <p md-line>Print Accepted Candidates</p>
-            </a>
-         </md-list-item> -->
-
+            </a></div>
+         
           <div *ngIf="intakeTask?.intake?.graduateCenter?.code === 'CPS'">
           <a md-list-item (click)="downloadReport('adm_0004.jrxml&report.pdf', intakeTask)" [target]="'_blank'">        
             <md-icon md-list-avatar>print</md-icon>
             <h4 md-line>Print</h4>
             <p md-line>Print Accepted Candidates</p>
           </a>
-        </div>
+          </div>
 
-<!-- 
-        <md-list-item *ngIf="intakeTask?.intake?.graduateCenter?.code === 'CPS'">
-            <a md-list-item (click)="downloadReport('adm_0004.jrxml&report.pdf', intakeTask)" [target]="'_blank'">        
-          <md-icon md-list-avatar>print</md-icon>
-          <h4 md-line>Print</h4>
-          <p md-line>Print Accepted Candidates</p>
-        </a>
-      </md-list-item>  -->
+         </div>
           </md-nav-list>
         </md-card>
       </div>
