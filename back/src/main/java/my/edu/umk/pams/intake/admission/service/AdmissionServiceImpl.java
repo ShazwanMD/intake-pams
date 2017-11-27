@@ -19,6 +19,7 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InNationalityCode;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InStudyCenterCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.model.InGroup;
@@ -304,8 +305,6 @@ public class AdmissionServiceImpl implements AdmissionService {
 		
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {
 			payload.setResearchTitle(candidate.getApplication().getResearchTitle());
-		}else{
-			payload.setResearchTitle(null);
 		}
 			
 		InUser user = identityService.findUserByEmail(candidate.getEmail());
@@ -357,7 +356,6 @@ public class AdmissionServiceImpl implements AdmissionService {
 		InStudyMode studyMode = candidate.getStudyModeSelection().getStudyMode();
 		StudyModePayload studyModePayload = new StudyModePayload();
 		studyModePayload.setCode(studyMode.getCode());
-		studyModePayload.setDescription(studyMode.getDescriptionEn());
 		payload.setStudyMode(studyModePayload);
 
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {
@@ -370,16 +368,19 @@ public class AdmissionServiceImpl implements AdmissionService {
 		InNationalityCode nationilityCode = application.getNationalityCode();
 		NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
 		nationalityCodePayload.setCode(nationilityCode.getCode());
-		nationalityCodePayload.setDescriptionEn(nationalityCodePayload.getDescriptionEn());
+		nationalityCodePayload.setDescriptionEn(nationilityCode.getDescriptionEn());
+		nationalityCodePayload.setDescriptionMs(nationilityCode.getDescriptionMs());
 		payload.setNationalityCode(nationalityCodePayload);
 
 		// StudyCenterCodePayload
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("MGSEB")) {
 			
-			String studyCenter = candidate.getApplication().getStudyCenterCode().getCode();
+			InStudyCenterCode studyCenter = candidate.getApplication().getStudyCenterCode();
 			LOG.debug("studyCenter:{}", studyCenter);
 			StudyCenterPayload studyCenterCodePayload = new StudyCenterPayload();
-			studyCenterCodePayload.setCode(studyCenter);
+			studyCenterCodePayload.setCode(studyCenter.getCode());
+			studyCenterCodePayload.setDescriptionEn(studyCenter.getDescriptionEn());
+			studyCenterCodePayload.setDescriptionMs(studyCenter.getDescriptionMs());
 			payload.setStudyCenter(studyCenterCodePayload);
 
 		}else{
