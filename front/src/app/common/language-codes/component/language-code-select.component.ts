@@ -9,6 +9,7 @@ import {LanguageCode} from '../../../shared/model/common/language-code.interface
 @Component({
   selector: 'pams-language-code-select',
   templateUrl: './language-code-select.component.html',
+  styleUrls: ['./language-code-select.scss'],
 })
 export class LanguageCodeSelectComponent implements OnInit {
 

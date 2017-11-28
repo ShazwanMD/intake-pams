@@ -4,8 +4,11 @@ import {EmploymentType} from '../../../../shared/model/application/employment-ty
 
 @Component({
   selector: 'pams-employment-type-select',
-  templateUrl: './employment-type-select.component.html',
+  templateUrl:'./employment-type-select.component.html',
+  styleUrls: ['./employment-type-select.scss'],
 })
+
+
 export class EmploymentTypeSelectComponent implements OnInit {
 
   private employmentTypes: EmploymentType[] = <EmploymentType[]>[];

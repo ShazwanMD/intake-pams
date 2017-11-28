@@ -14,7 +14,7 @@ import { AttachmentHelper } from './attachment-helper.interface';
 @Component({
   selector: 'pams-attachment-creator',
   templateUrl: './attachment-creator.dialog.html',
-})
+  })
 
 export class AttachmentCreatorDialog implements OnInit {
 

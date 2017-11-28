@@ -2,16 +2,18 @@
 <md-card-subtitle> Select level according to your Proficiency</md-card-subtitle>
 <md-dialog-content>
   <form [formGroup]="editForm">
-    <div layout="column" class="pad-right" flex>
-      <div layout="row" class="pad-top">
-        <pams-language-code-select
+    
+    <div layout="column"  >
+    
+      <div layout="row" class="pad-top" fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+        <pams-language-code-select  
           [placeholder]="'Choose Language'"
-          [innerFormControl]="editForm.controls.languageCode">
+          [innerFormControl]="editForm.controls.languageCode" fxFlex="calc(100%-25px)">
         </pams-language-code-select>
       </div>
 
       <div layout="row" class="pad-top">
-        <md-select placeholder="Oral Proficiency Level" formControlName="oral">
+        <md-select placeholder="Oral Proficiency Level" formControlName="oral"  fxFlex="calc(100%-25px)">
           <md-option [value]="1">1 : Beginner</md-option>
           <md-option [value]="2">2 : Elementary</md-option>
           <md-option [value]="3">3 : Intermediate</md-option>
@@ -20,8 +22,9 @@
           <md-option [value]="6">6 : Proficient</md-option>
         </md-select>
       </div>
+
       <div layout="row" class="pad-top">
-        <md-select placeholder="Written Proficiency Level" formControlName="written">
+        <md-select placeholder="Written Proficiency Level" formControlName="written"  fxFlex="calc(100%-25px)">
           <md-option [value]="1">1 : Beginner</md-option>
           <md-option [value]="2">2 : Elementary</md-option>
           <md-option [value]="3">3 : Intermediate</md-option>
@@ -30,9 +33,12 @@
           <md-option [value]="6">6 : Proficient</md-option>
         </md-select>
       </div>
+
     </div>
+  
   </form>
 </md-dialog-content>
+
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(editForm.value, editForm.valid)">
     {{edit ? 'Update' : 'Save'}}

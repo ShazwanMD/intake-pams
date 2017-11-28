@@ -12,9 +12,10 @@
               [placeholder]="'Attachment Type'" 
               [innerFormControl]="createForm.controls.attachmentType" fxFlex="calc(100%-25px)">
           </pams-attachment-type-select>
-      </div>
+    </div>
+
 <md-card-subtitle></md-card-subtitle>
-      <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+      <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="100px">
         <td-file-upload #fileUpload (upload)="upload(createForm.value, $event)" defaultColor="accent" activeColor="warn" cancelColor="primary">
         <md-icon>file_upload</md-icon><span>{{ fileUpload.files?.name }}</span><template td-file-input-label>
         <md-icon>attach_file</md-icon><span>Choose a file...</span>
