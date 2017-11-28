@@ -5,6 +5,7 @@ import {AttachmentType} from '../../../../shared/model/application/attachment-ty
 @Component({
   selector: 'pams-attachment-type-select',
   templateUrl: './attachment-type-select.component.html',
+  styleUrls: ['./attachment-type-select.scss'],
 })
 export class AttachmentTypeSelectComponent implements OnInit {
 
