@@ -178,7 +178,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
       this.store.dispatch(this.actions.submitIntakeApplication(application));
-      let snackBarRef = this.snackBar.open('Successfully Submitted','', {duration: 3000,});
+      let snackBarRef = this.snackBar.open('Your application has been successfully submitted','', {duration: 3000,});
       snackBarRef.afterDismissed().subscribe(() => {
         this.goBack();
       });
