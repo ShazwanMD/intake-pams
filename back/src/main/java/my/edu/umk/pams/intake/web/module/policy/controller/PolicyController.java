@@ -291,7 +291,7 @@ public class PolicyController {
             policyService.addProgramOffering(intake, offering);
             
             if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
-         		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+         		throw new IllegalArgumentException( "Intake can only be edited in VERIFIED or DRAFTED state");
         }     
 //        } catch (Exception e) {
 //            LOG.debug(e.getMessage());
@@ -316,7 +316,7 @@ public class PolicyController {
         policyService.updateProgramOfferings(intake, offering);
         
         if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
-     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+     		throw new IllegalArgumentException( "Intake can only be edited in VERIFIED or DRAFTED state");
     }     
         
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -330,7 +330,7 @@ public class PolicyController {
         policyService.deleteProgramOffering(intake, offering);
         
         if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
-     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+     		throw new IllegalArgumentException( "Intake can only be edited in VERIFIED or DRAFTED state");
     }     
         
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
@@ -353,7 +353,7 @@ public class PolicyController {
         policyService.addStudyModeOffering(intake, offering);
         
         if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
-     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+     		throw new IllegalArgumentException( "Intake can only be edited in VERIFIED or DRAFTED state");
     }     
         
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
@@ -367,7 +367,7 @@ public class PolicyController {
         policyService.deleteStudyModeOffering(intake, offering);
         
         if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
-     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+     		throw new IllegalArgumentException( "Intake can only be edited in VERIFIED or DRAFTED state");
     }     
         
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
@@ -438,7 +438,7 @@ public class PolicyController {
         policyService.addSupervisorOffering(intake, offering);
         
         if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
-         		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+         		throw new IllegalArgumentException( "Intake can only be edited in VERIFIED or DRAFTED state");
         }
         
         return new ResponseEntity<Boolean>(true, HttpStatus.OK){};
@@ -452,7 +452,7 @@ public class PolicyController {
         policyService.deleteSupervisorOffering(intake, offering);
         
         if((intake.getFlowdata().getState()).equals(PUBLISHED)) {
-     		throw new IllegalArgumentException( "Intake can only be configured in VERIFIED or DRAFTED state");
+     		throw new IllegalArgumentException( "Intake can only be edited in VERIFIED or DRAFTED state");
     } 
         return new ResponseEntity<Boolean>(true, HttpStatus.OK);
     }
