@@ -10,6 +10,7 @@ import { MdSnackBar } from '@angular/material';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
+import { ReportActions } from '../../../shared/report/report.action';
 
 @Component({
   selector: 'pams-candidate-preapprove-task',
@@ -36,6 +37,7 @@ export class CandidatePreApproveTaskPanel implements OnInit {
               private route: ActivatedRoute,
               private store: Store<AdmissionModuleState>,
               private snackBar: MdSnackBar,
+              private reportActions: ReportActions,
               private intakeActions: IntakeActions,
               private actions: AdmissionActions) {
     //this.intakeTask$ = this.store.select(...this.INTAKE_TASK);
@@ -65,4 +67,10 @@ export class CandidatePreApproveTaskPanel implements OnInit {
     this.router.navigate(['/secure/admission']);
     window.location.reload();
   }
+
+  downloadReport(reportId, parameterReport1: IntakeTask): void { 
+    let repParam = reportId + '&intake_reference_no=' + parameterReport1.referenceNo;
+    this.store.dispatch(this.reportActions.downloadReport(repParam));
+     }
+
 }

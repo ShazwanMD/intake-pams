@@ -95,11 +95,22 @@
               <p md-line>Remove this intake</p>
             </md-list-item>
 
-            <!-- <md-list-item>
-                <md-icon md-list-avatar>print</md-icon>
-                <h4 md-line>Print</h4>
-                <p md-line>Print Applicant List</p>
-              </md-list-item> -->
+            <div *ngIf="(preSelectedCandidates$ | async)?.length <= 0">
+            <div *ngIf="intakeTask?.intake?.graduateCenter?.code === 'MGSEB'">
+            <a md-list-item (click)="downloadReport('adm_0005.jrxml&report.pdf', intakeTask)" [target]="'_blank'">
+                    <md-icon md-list-avatar>print</md-icon>
+                    <h4 md-line>Print</h4>
+                    <p md-line>Print Preselect Candidates</p>
+            </a></div>
+
+            <div *ngIf="intakeTask?.intake?.graduateCenter?.code === 'CPS'">
+                <a md-list-item (click)="downloadReport('adm_0006.jrxml&report.pdf', intakeTask)" [target]="'_blank'">        
+                  <md-icon md-list-avatar>print</md-icon>
+                  <h4 md-line>Print</h4>
+                  <p md-line>Print Preselect Candidates</p>
+                </a>
+              </div>
+            </div>
   
           </md-nav-list>
         </md-card>
