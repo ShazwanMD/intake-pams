@@ -52,6 +52,17 @@ public class InGroupDaoImpl extends GenericDaoSupport<Long, InGroup> implements 
         return (InGroup) query.uniqueResult();
     }
 
+    @Override
+    public InGroup findGroupByUser(InUser user) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from InGroup p where " +
+                "p in (select gm.group from InGroupMember gm where gm.principal = :user)" +
+                "and p.metadata.state = :state " +
+                "order by p.name asc");
+        query.setInteger("state", ACTIVE.ordinal());
+        query.setEntity("user", user);
+        return (InGroup) query.uniqueResult();
+    }
 
     @Override
     public List<InGroup> findImmediate(InPrincipal principal) {

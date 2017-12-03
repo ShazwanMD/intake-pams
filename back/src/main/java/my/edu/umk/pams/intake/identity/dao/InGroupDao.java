@@ -65,4 +65,6 @@ public interface InGroupDao extends GenericDao<Long, InGroup> {
 
     void deleteMember(InGroup group, InPrincipal member);
 
+	InGroup findGroupByUser(InUser user);
+
 }

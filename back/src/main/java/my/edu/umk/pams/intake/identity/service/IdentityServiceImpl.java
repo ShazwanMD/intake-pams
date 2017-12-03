@@ -301,6 +301,11 @@ public class IdentityServiceImpl implements IdentityService {
     public InGroup findGroupByName(String name) {
         return groupDao.findByName(name);
     }
+    
+    @Override
+    public InGroup findGroupByUser(InUser user) {
+        return groupDao.findGroupByUser(user);
+    }
 
     @Override
     public InGroup findOrCreateGroupByName(String name) {
