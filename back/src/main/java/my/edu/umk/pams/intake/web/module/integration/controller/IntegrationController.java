@@ -352,7 +352,7 @@ public class IntegrationController {
 					staffUpdate.setIdentityNo(payload.getStaffId());
 					staffUpdate.setName(payload.getStaffName());
 					staffUpdate.setActorType(InActorType.STAFF);
-					staff.setStaffType(InStaffType.NON_ACADEMIC);
+					staffUpdate.setStaffType(InStaffType.NON_ACADEMIC);
 					staffUpdate.setPhone(payload.getStaffPhoneNo());
 					staffUpdate.setStaffCategory(payload.getStaffCategory());
 					staffUpdate.setEmail(payload.getStaffEmail());
