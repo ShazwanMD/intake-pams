@@ -668,14 +668,14 @@ public class IdentityServiceImpl implements IdentityService {
 		user.setUsername(staff.getEmail());
 		user.setPassword(staff.getStaffNo());
 		user.setRealName(staff.getName());
-		user.setName(staff.getIdentityNo());
+		user.setName(staff.getEmail());
 		user.setEnabled(true);
 		user.setLocked(true);
 		user.setPrincipalType(InPrincipalType.USER);
 		saveUser(user);
 				
 		// Principal
-		InPrincipal principal = findPrincipalByName(staff.getIdentityNo());
+		InPrincipal principal = findPrincipalByName(staff.getEmail());
 		if(staff.getFacultyCode().getCode().equals("A10") && staff.getStaffCategory().equals("A")){
 		LOG.info("If Faculty A10 MGSEB && Category A");
 		

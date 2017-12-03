@@ -131,12 +131,15 @@ public class IntegrationController {
 				// Find Department Code
 				if (commonService.isFacultyCodeExists(payload.getStaffDepartmentCode())) {
 
-					LOG.debug("Has Faculty");
+					LOG.debug("Has Faculty 1");
 					InFacultyCode departmentCode = commonService.findFacultyCodeByCode(staff.getFacultyCode().getCode());
+					LOG.debug("Has Faculty 2");
 					// Find User
-					InUser user = identityService.findUserByUsername(staff.getIdentityNo());
+					InUser user = identityService.findUserByUsername(staff.getEmail());
+					LOG.debug("Has Faculty 3");
 					// Find Group
 					InGroup group = identityService.findGroupByUser(user);
+					LOG.debug("Has Faculty 4");
 
 					if (departmentCode.equals(payload.getStaffDepartmentCode())
 							&& identityService.isGroupExists(group.getName())) {
@@ -159,6 +162,7 @@ public class IntegrationController {
 						InFacultyCode faculty = commonService.findFacultyCodeByCode(payload.getStaffDepartmentCode());
 
 						InStaff staffUpdate = identityService.findStaffByStaffNo(payload.getStaffId());
+						LOG.debug("staffUpdate:{}",staffUpdate.getIdentityNo());
 						staffUpdate.setIdentityNo(payload.getStaffId());
 						staffUpdate.setName(payload.getStaffName());
 						staffUpdate.setActorType(InActorType.STAFF);
@@ -168,7 +172,9 @@ public class IntegrationController {
 						staffUpdate.setStaffCategory(payload.getStaffCategory());
 						staffUpdate.setEmail(payload.getStaffEmail());
 						
+						LOG.debug("payloadEmail:{}",payload.getStaffEmail());
 						InUser updateUser = identityService.findUserByUsername(payload.getStaffEmail());
+						LOG.debug("updateUser:{}",updateUser);
 						updateUser.setActor(staffUpdate);
 						updateUser.setEmail(payload.getStaffEmail());
 						updateUser.setUsername(payload.getStaffEmail());
