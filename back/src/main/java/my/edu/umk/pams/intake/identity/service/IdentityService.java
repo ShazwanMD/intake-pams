@@ -212,6 +212,8 @@ public interface IdentityService {
 
 	InGroup findGroupByUser(InUser user);
 
+	void saveStaffIMSNonAcademicInActive(InStaff staff);
+
 //	void changeAddress(InIntakeApplication intakeApplication, String newAddress);
 }
 

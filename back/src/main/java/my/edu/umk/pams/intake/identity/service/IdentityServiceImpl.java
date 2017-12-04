@@ -656,6 +656,158 @@ public class IdentityServiceImpl implements IdentityService {
     }
     
     @Override
+	public void saveStaffIMSNonAcademicInActive(InStaff staff) {
+		staffDao.save(staff, securityService.getCurrentUser());
+		LOG.info("Save Staff IMS Service");
+		
+		LOG.debug("Staff Email In Service:{}",staff.getEmail());
+		// User
+		InUser user = new InUserImpl();
+		user.setActor(staff);
+		user.setEmail(staff.getEmail());
+		user.setUsername(staff.getEmail());
+		user.setPassword(staff.getStaffNo());
+		user.setRealName(staff.getName());
+		user.setName(staff.getEmail());
+		user.setEnabled(false);
+		user.setLocked(true);
+		user.setPrincipalType(InPrincipalType.USER);
+		saveUser(user);
+				
+		// Principal
+		InPrincipal principal = findPrincipalByName(staff.getEmail());
+		if(staff.getFacultyCode().getCode().equals("A10") && staff.getStaffCategory().equals("A")){
+		LOG.info("If Faculty A10 MGSEB && Category A");
+		
+		// Principal Role
+		InPrincipalRole role = new InPrincipalRoleImpl();
+		role.setPrincipal(principal);
+		role.setRole(InRoleType.ROLE_ADMINISTRATOR);
+		addPrincipalRole(principal, role);
+
+		try{
+		// Group
+		InGroup group = findGroupByName("GRP_PGW_ADM_A10");
+		// GroupMember
+		InGroupMember member = new InGroupMemberImpl();
+		member.setGroup(group);
+		member.setPrincipal(principal);
+		addGroupMember(group, principal);
+		} catch (RecursiveGroupException e) {
+			
+			e.printStackTrace();
+		}
+		}else if(staff.getFacultyCode().getCode().equals("A10")){
+			LOG.info("If Faculty A10 MGSEB Only");
+			
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_ADMINISTRATOR);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_KRN_ADM_A10");
+			// GroupMember
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}else if(staff.getFacultyCode().getCode().equals("A09") && staff.getStaffCategory().equals("A")){
+			LOG.info("If Faculty A09 CPS && Category A");
+	
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_ADMINISTRATOR);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_PGW_ADM_A10");
+			// GroupMember
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}else if(staff.getFacultyCode().getCode().equals("A09")){
+			LOG.info("If Faculty A09 CPS Only");
+			
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_ADMINISTRATOR);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_KRN_ADM_A10");
+			// GroupMember
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}else if(staff.getStaffCategory().equals("A")){
+			LOG.info("If All Faculty and Category A Only");
+			
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_FCTY);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_PGW_FCTY_"+ staff.getFacultyCode().getCode());
+			// GroupMember
+			
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}else{
+			LOG.info("If All Faculty Only");
+			
+			// Principal Role
+			InPrincipalRole role = new InPrincipalRoleImpl();
+			role.setPrincipal(principal);
+			role.setRole(InRoleType.ROLE_FCTY);
+			addPrincipalRole(principal, role);
+
+			try{
+			// Group
+			InGroup group = findGroupByName("GRP_KRN_FCTY_"+ staff.getFacultyCode().getCode());
+			// GroupMember
+			InGroupMember member = new InGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
+			} catch (RecursiveGroupException e) {
+				
+				e.printStackTrace();
+			}
+		}      
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    @Override
     public void saveStaffIMSNonAcademicActive(InStaff staff) {
 		staffDao.save(staff, securityService.getCurrentUser());
 		LOG.info("Save Staff IMS Service");
@@ -805,8 +957,7 @@ public class IdentityServiceImpl implements IdentityService {
 			}
 		}      
         sessionFactory.getCurrentSession().flush();
-    }
-    
+    }    
     
     @Override
     public void changeEmail(InApplicant applicant, String newEmail) {

@@ -302,13 +302,13 @@ public class AdmissionServiceImpl implements AdmissionService {
 		programCodePayload.setCode(programCode.getCode());
 		programCodePayload.setDescriptionEn(programCode.getDescriptionEn());
 		programCodePayload.setDescriptionMs(programCode.getDescriptionMs());
-		payload.setProgramCode(programCodePayload.getCode());
+		payload.setProgramCode(programCodePayload);
 		
 		InFacultyCode facultyCode = programCode.getFacultyCode();
 		FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
 		facultyCodePayload.setCode(facultyCode.getCode());
 		facultyCodePayload.setDescription(facultyCode.getDescriptionMs());
-		payload.setFacultyCode(facultyCodePayload.getCode());
+		payload.setFacultyCode(facultyCodePayload);
 		payload.setProgramLevel(programCode.getProgramLevel().getCode());
 		payload.setGender(candidate.getApplication().getGenderCode().getCode());
 		payload.setReligion(candidate.getApplication().getReligionCode().getCode());
@@ -339,8 +339,8 @@ public class AdmissionServiceImpl implements AdmissionService {
 		InIntakeApplication application = candidate.getApplication();
 		payload.setMobile(application.getMobile());
 		payload.setFax(application.getFax());
-		payload.setFacultyCode(facultyCodePayload.getCode());
-		payload.setProgramCode(programCodePayload.getCode());
+		payload.setFacultyCode(facultyCodePayload);
+		payload.setProgramCode(programCodePayload);
 		// <program_code>-CHRT-<academic_session_code>
 		String cohortCode = facultyCode.getCode() + "-" + programCode.getProgramLevel().getCode() + "-"
 				+ programCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
