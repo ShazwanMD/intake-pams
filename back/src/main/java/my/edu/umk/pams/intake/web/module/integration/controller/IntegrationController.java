@@ -51,62 +51,80 @@ import my.edu.umk.pams.intake.security.integration.NonSerializableSecurityContex
 @RequestMapping("/api/integration")
 public class IntegrationController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(IntegrationController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(IntegrationController.class);
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private CommonService commonService;
+	@Autowired
+	private CommonService commonService;
 
-    @Autowired
-    private IdentityService identityService;
+	@Autowired
+	private IdentityService identityService;
 
-    @Autowired
-    private PolicyService policyService;
+	@Autowired
+	private PolicyService policyService;
 
-    // ====================================================================================================
-    // CODES
-    // ====================================================================================================
+	// ====================================================================================================
+	// CODES
+	// ====================================================================================================
 
-    @RequestMapping(value = "/programCodes", method = RequestMethod.POST)
-    public ResponseEntity<String> saveProgramCode(@RequestBody ProgramCodePayload payload) {
-        SecurityContext ctx = loginAsSystem();
+	@RequestMapping(value = "/programCodes", method = RequestMethod.POST)
+	public ResponseEntity<String> saveProgramCode(@RequestBody ProgramCodePayload payload) {
+		SecurityContext ctx = loginAsSystem();
 
-        InProgramCode programCode = new InProgramCodeImpl();
-        programCode.setCode(payload.getCode());
-        programCode.setDescriptionEn(payload.getDescriptionEn());
-        programCode.setDescriptionMs(payload.getDescriptionMs());
-        programCode.setFacultyCode(commonService.findFacultyCodeByCode(payload.getFacultyCode().getCode()));
-        if (payload.getFacultyCode().getCode().equals("A10")){
-        	InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode("MGSEB");
-        programCode.setGraduateCenter(graduateCenter);
-        }else{
-        	InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode("CPS");
-        programCode.setGraduateCenter(graduateCenter);   
-        }
-        programCode.setProgramLevel(policyService.findProgramLevelByCode(payload.getProgramLevel().getCode()));
-        commonService.saveProgramCode(programCode);
+		InProgramCode programCode = new InProgramCodeImpl();
+		programCode.setCode(payload.getCode());
+		programCode.setDescriptionEn(payload.getDescriptionEn());
+		programCode.setDescriptionMs(payload.getDescriptionMs());
+		programCode.setFacultyCode(commonService.findFacultyCodeByCode(payload.getFacultyCode().getCode()));
+		if (payload.getFacultyCode().getCode().equals("A10")) {
+			InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode("MGSEB");
+			programCode.setGraduateCenter(graduateCenter);
+		} else {
+			InGraduateCenter graduateCenter = commonService.findGraduateCenterByCode("CPS");
+			programCode.setGraduateCenter(graduateCenter);
+		}
+		programCode.setProgramLevel(policyService.findProgramLevelByCode(payload.getProgramLevel().getCode()));
+		commonService.saveProgramCode(programCode);
 
-        logoutAsSystem(ctx);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/facultyCodes", method = RequestMethod.POST)
-    public ResponseEntity<String> saveFacultyCode(@RequestBody FacultyCodePayload payload) {
-        SecurityContext ctx = loginAsSystem();
+	@RequestMapping(value = "/facultyCodes", method = RequestMethod.POST)
+	public ResponseEntity<String> saveFacultyCode(@RequestBody List<FacultyCodePayload> facultyCodePayload) {
+		SecurityContext ctx = loginAsSystem();
 
-        InFacultyCode facultyCode = new InFacultyCodeImpl();
-        facultyCode.setCode(payload.getCode());
-        facultyCode.setPrefix(payload.getCode()); // prefix
-        facultyCode.setDescriptionEn(payload.getDescription());
-        facultyCode.setDescriptionMs(payload.getDescription());
-        commonService.saveFacultyCode(facultyCode);
+		LOG.info("Start Receive Faculty");
+		for (FacultyCodePayload payload : facultyCodePayload) {
 
-        logoutAsSystem(ctx);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-    
+			// check faculty existence
+			if (commonService.isFacultyCodeExists(payload.getCode())) {
+
+				LOG.info("DepartmentCode Already Exists");
+				InFacultyCode faculty = commonService.findFacultyCodeByCode(payload.getCode());
+				faculty.setCode(payload.getCode());
+				faculty.setPrefix(payload.getPrefix()); // prefix
+				faculty.setDescriptionMs(payload.getDescription());
+				faculty.setDescriptionEn(payload.getDescription());
+				commonService.updateFacultyCode(faculty);
+
+			} else {
+				LOG.info("DepartmentCode Not Exists");
+				InFacultyCode faculty = new InFacultyCodeImpl();
+				faculty.setCode(payload.getCode());
+				faculty.setPrefix(payload.getCode()); // prefix
+				faculty.setDescriptionMs(payload.getDescription());
+				faculty.setDescriptionEn(payload.getDescription());
+				commonService.saveFacultyCode(faculty);
+			}
+		}
+		 LOG.info("Finish Receive Faculty");
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+
 	// ====================================================================================================
 	// STAFF
 	// ====================================================================================================
@@ -132,7 +150,8 @@ public class IntegrationController {
 				if (commonService.isFacultyCodeExists(payload.getStaffDepartmentCode())) {
 
 					LOG.debug("Has Faculty 1");
-					InFacultyCode departmentCode = commonService.findFacultyCodeByCode(staff.getFacultyCode().getCode());
+					InFacultyCode departmentCode = commonService
+							.findFacultyCodeByCode(staff.getFacultyCode().getCode());
 					LOG.debug("Has Faculty 2");
 					// Find User
 					InUser user = identityService.findUserByUsername(staff.getEmail());
@@ -158,11 +177,11 @@ public class IntegrationController {
 						identityService.updateStaff(staffUpdate);
 
 					} else if ((!departmentCode.equals(payload.getStaffDepartmentCode()))) {
-						
+
 						InFacultyCode faculty = commonService.findFacultyCodeByCode(payload.getStaffDepartmentCode());
 
 						InStaff staffUpdate = identityService.findStaffByStaffNo(payload.getStaffId());
-						LOG.debug("staffUpdate:{}",staffUpdate.getIdentityNo());
+						LOG.debug("staffUpdate:{}", staffUpdate.getIdentityNo());
 						staffUpdate.setIdentityNo(payload.getStaffId());
 						staffUpdate.setName(payload.getStaffName());
 						staffUpdate.setActorType(InActorType.STAFF);
@@ -171,10 +190,10 @@ public class IntegrationController {
 						staffUpdate.setFacultyCode(faculty);
 						staffUpdate.setStaffCategory(payload.getStaffCategory());
 						staffUpdate.setEmail(payload.getStaffEmail());
-						
-						LOG.debug("payloadEmail:{}",payload.getStaffEmail());
+
+						LOG.debug("payloadEmail:{}", payload.getStaffEmail());
 						InUser updateUser = identityService.findUserByUsername(payload.getStaffEmail());
-						LOG.debug("updateUser:{}",updateUser);
+						LOG.debug("updateUser:{}", updateUser);
 						updateUser.setActor(staffUpdate);
 						updateUser.setEmail(payload.getStaffEmail());
 						updateUser.setUsername(payload.getStaffEmail());
@@ -185,12 +204,12 @@ public class IntegrationController {
 						updateUser.setLocked(true);
 						updateUser.setPrincipalType(InPrincipalType.USER);
 						identityService.saveUser(updateUser);
-					
+
 						InPrincipal principal = identityService.findPrincipalByName(payload.getStaffEmail());
-						
-						//Check Group Existence
+
+						// Check Group Existence
 						if (identityService.isGroupExists(group.getName())) {
-							
+
 							// setting roles of MGSEB
 							if (payload.getStaffDepartmentCode().equals("A10")) {
 
@@ -210,7 +229,7 @@ public class IntegrationController {
 
 											identityService.addGroupMember(groupPegawaiA10, principal);
 										}
-										
+
 									} catch (RecursiveGroupException e) {
 
 										e.printStackTrace();
@@ -232,7 +251,7 @@ public class IntegrationController {
 
 											identityService.addGroupMember(groupKRNA10, principal);
 										}
-										
+
 									} catch (RecursiveGroupException e) {
 
 										e.printStackTrace();
@@ -280,7 +299,7 @@ public class IntegrationController {
 
 											identityService.addGroupMember(groupKRNA09, principal);
 										}
-										
+
 									} catch (RecursiveGroupException e) {
 
 										e.printStackTrace();
@@ -288,7 +307,7 @@ public class IntegrationController {
 
 								}
 							}
-							//Setting roles of Others Faculty
+							// Setting roles of Others Faculty
 							else {
 								if (payload.getStaffCategory().equals("A")) {
 									LOG.info("If All Faculty and Category A Only");
@@ -332,12 +351,12 @@ public class IntegrationController {
 
 											identityService.addGroupMember(groupAllFaculty, principal);
 										}
-										
+
 									} catch (RecursiveGroupException e) {
 
 										e.printStackTrace();
 									}
-								}      
+								}
 							}
 						}
 
@@ -395,20 +414,18 @@ public class IntegrationController {
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
-    
-    
-   
-    private SecurityContext loginAsSystem() {
-        SecurityContext savedCtx = SecurityContextHolder.getContext();
-        InAutoLoginToken authenticationToken = new InAutoLoginToken("system");
-        Authentication authed = authenticationManager.authenticate(authenticationToken);
-        SecurityContext system = new NonSerializableSecurityContext();
-        system.setAuthentication(authed);
-        SecurityContextHolder.setContext(system);
-        return savedCtx;
-    }
 
-    private void logoutAsSystem(SecurityContext context) {
-        SecurityContextHolder.setContext(context);
-    }
+	private SecurityContext loginAsSystem() {
+		SecurityContext savedCtx = SecurityContextHolder.getContext();
+		InAutoLoginToken authenticationToken = new InAutoLoginToken("system");
+		Authentication authed = authenticationManager.authenticate(authenticationToken);
+		SecurityContext system = new NonSerializableSecurityContext();
+		system.setAuthentication(authed);
+		SecurityContextHolder.setContext(system);
+		return savedCtx;
+	}
+
+	private void logoutAsSystem(SecurityContext context) {
+		SecurityContextHolder.setContext(context);
+	}
 }
