@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.web.module.integration.controller;
 
 import java.util.List;
 
+import org.jfree.util.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -721,16 +722,36 @@ public class IntegrationController {
 		for (StaffPayload payload : staffPayload) {
 
 		//todo farah, checking supervisor code by name (update if exists, save if not)		
+			boolean supervisorExist = commonService.isSupervisorCodeExists(payload.getStaffName());
 			
-			
-		//Adding staff info into supervisor code	
-		InSupervisorCode supervisor = new InSupervisorCodeImpl();
-		supervisor.setCode(payload.getStaffId());
-		supervisor.setDescriptionEn(payload.getStaffName());
-		supervisor.setDescriptionMs(payload.getStaffName());
-		supervisor.setName(payload.getStaffName());
-		commonService.saveSupervisorCode(supervisor);
-		LOG.debug("supervisor :{}", supervisor);
+			if (supervisorExist) {
+				
+				LOG.info("Supervisor aready exists");
+				LOG.debug("Supervisor Name:{}", payload.getStaffName());
+				
+				// Find Supervisor By Name
+				InSupervisorCode supervisorUpdate = commonService.findSupervisorCodeByName(payload.getStaffName());
+				
+				supervisorUpdate.setName(payload.getStaffName());
+				supervisorUpdate.setCode(payload.getStaffId());
+				supervisorUpdate.setDescriptionEn(payload.getStaffName());
+				supervisorUpdate.setDescriptionMs(payload.getStaffName());
+				commonService.updateSupervisorCode(supervisorUpdate);
+				
+			} else {
+				LOG.info("Supervisor not exists");
+				LOG.debug("Supervisor Name:{}", payload.getStaffName());
+				
+				//Adding staff info into supervisor code	
+				InSupervisorCode supervisor = new InSupervisorCodeImpl();
+				supervisor.setCode(payload.getStaffId());
+				supervisor.setDescriptionEn(payload.getStaffName());
+				supervisor.setDescriptionMs(payload.getStaffName());
+				supervisor.setName(payload.getStaffName());
+				commonService.saveSupervisorCode(supervisor);
+				LOG.debug("supervisor :{}", supervisor);			
+			}
+		
 
 		boolean staffReceive = identityService.isStaffNoExists(payload.getStaffId());
 		

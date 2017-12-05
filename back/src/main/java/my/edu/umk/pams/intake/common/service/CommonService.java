@@ -783,6 +783,8 @@ public interface CommonService {
 	InSupervisorCode findSupervisorCodeById(Long id);
 
 	InSupervisorCode findSupervisorCodeByCode(String code);
+	
+	InSupervisorCode findSupervisorCodeByName(String name);
 
 	List<InSupervisorCode> findSupervisorCodes();
 
@@ -831,4 +833,6 @@ public interface CommonService {
 	boolean isPromoCodeExists(String code);
 
 	boolean isFacultyCodeExists(String code);
+
+	boolean isSupervisorCodeExists(String name);
 }

@@ -22,6 +22,17 @@ public class InSupervisorCodeDaoImpl extends GenericDaoSupport<Long, InSuperviso
     }
 
     @Override
+    public InSupervisorCode findByName(String name) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from InSupervisorCode s where s.name = :name and  " +
+                " s.metadata.state = :state");
+        query.setString("name", name);
+        query.setCacheable(true);
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        return (InSupervisorCode) query.uniqueResult();
+    }
+    
+    @Override
     public InSupervisorCode findByCode(String code) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from InSupervisorCode s where s.code = :code and  " +

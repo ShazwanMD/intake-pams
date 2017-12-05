@@ -2065,6 +2065,12 @@ public class CommonServiceImpl implements CommonService {
     public InSupervisorCode findSupervisorCodeByCode(String code) {
         return supervisorCodeDao.findByCode(code);
     }
+    
+    @Override
+    public InSupervisorCode findSupervisorCodeByName(String name) {
+        return supervisorCodeDao.findByName(name);
+    }
+
 
     @Override
     public List<InSupervisorCode> findSupervisorCodes() {
@@ -2096,6 +2102,10 @@ public class CommonServiceImpl implements CommonService {
         return supervisorCodeDao.count(filter);
     }
 
+    @Override
+    public boolean isSupervisorCodeExists(String name) {
+        return supervisorCodeDao.isExists(name);
+    }
 
     @Override
     public void saveSupervisorCode(InSupervisorCode supervisorCode) {

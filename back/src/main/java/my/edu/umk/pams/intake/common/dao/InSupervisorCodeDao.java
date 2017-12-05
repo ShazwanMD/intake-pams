@@ -9,6 +9,8 @@ public interface InSupervisorCodeDao extends GenericDao<Long, InSupervisorCode> 
 
     InSupervisorCode findByCode(String code);
 
+    InSupervisorCode findByName (String name);
+    
     List<InSupervisorCode> find(String filter, Integer offset, Integer limit);
 
     Integer count(String filter);
