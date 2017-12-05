@@ -720,7 +720,9 @@ public class IntegrationController {
 		LOG.info("Start Receiving active Academic Staff From IMS");
 		for (StaffPayload payload : staffPayload) {
 
-						
+		//todo farah, checking supervisor code by name (update if exists, save if not)		
+			
+			
 		//Adding staff info into supervisor code	
 		InSupervisorCode supervisor = new InSupervisorCodeImpl();
 		supervisor.setCode(payload.getStaffId());
