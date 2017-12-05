@@ -313,7 +313,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setGender(candidate.getApplication().getGenderCode().getCode());
 		payload.setReligion(candidate.getApplication().getReligionCode().getCode());
 		payload.setMartialStatus(candidate.getApplication().getMaritalCode().getCode());
-		payload.setRace(candidate.getApplication().getRaceCode().getCode());
+		payload.setRace(candidate.getApplication().getRaceCode().getCode());		
 		
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {
 			payload.setResearchTitle(candidate.getApplication().getResearchTitle());

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 import my.edu.umk.pams.connector.payload.StaffPayload;
@@ -25,6 +26,8 @@ import my.edu.umk.pams.intake.common.model.InFacultyCodeImpl;
 import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
+import my.edu.umk.pams.intake.common.model.InSupervisorCode;
+import my.edu.umk.pams.intake.common.model.InSupervisorCodeImpl;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.intake.identity.model.InActorType;
@@ -705,6 +708,77 @@ public class IntegrationController {
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
+	// ====================================================================================================
+	// ACADEMIK STAFF FROM IMS
+	// ====================================================================================================
+
+	@RequestMapping(value = "/staff/academicActive", method = RequestMethod.POST)
+	public ResponseEntity<String> saveStaffAcademic(@RequestBody List<StaffPayload> staffPayload) {
+		SecurityContext ctx = loginAsSystem();
+		
+
+		LOG.info("Start Receiving active Academic Staff From IMS");
+		for (StaffPayload payload : staffPayload) {
+
+						
+		//Adding staff info into supervisor code	
+		InSupervisorCode supervisor = new InSupervisorCodeImpl();
+		supervisor.setCode(payload.getStaffId());
+		supervisor.setDescriptionEn(payload.getStaffName());
+		supervisor.setDescriptionMs(payload.getStaffName());
+		supervisor.setName(payload.getStaffName());
+		commonService.saveSupervisorCode(supervisor);
+		LOG.debug("supervisor :{}", supervisor);
+
+		boolean staffReceive = identityService.isStaffNoExists(payload.getStaffId());
+		
+		if (staffReceive) {
+
+			LOG.info("Staff already exists");
+			LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+			LOG.debug("Staff Name:{}", payload.getStaffName());
+			
+	    // Find Staff By Identity No
+		InStaff staffUpdate = identityService.findStaffByStaffNo(payload.getStaffId());	
+		
+		staffUpdate.setIdentityNo(payload.getStaffId());
+		staffUpdate.setName(payload.getStaffName());
+		staffUpdate.setActorType(InActorType.STAFF);
+		staffUpdate.setStaffType(InStaffType.ACADEMIC);
+		staffUpdate.setPhone(payload.getStaffPhoneNo());
+		//does academic staff need faculty?	
+	    //staffUpdate.setFaculty(faculty);
+		staffUpdate.setEmail(payload.getStaffEmail());
+		identityService.updateStaff(staffUpdate);
+		
+		} else {
+		
+			LOG.info("Staff not exists");
+			LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+			LOG.debug("Staff Name:{}", payload.getStaffName());
+			LOG.debug("Staff Department_Code:{}", payload.getStaffDepartmentCode());
+			
+		InStaff staff = new InStaffImpl();
+		staff.setIdentityNo(payload.getStaffId());
+		staff.setStaffType(InStaffType.ACADEMIC);
+		staff.setName(payload.getStaffName());
+		staff.setActorType(InActorType.STAFF);
+		staff.setPhone(payload.getStaffPhoneNo());
+		//does academic staff need faculty?	
+	    //staff.setFaculty(faculty);
+		staff.setEmail(payload.getStaffEmail());
+		identityService.saveStaff(staff);
+		
+			}	
+	}
+	
+	LOG.info("Finish Receive Staff From IMS");
+
+	logoutAsSystem(ctx);
+	return new ResponseEntity<String>("success", HttpStatus.OK);
+}
+	
+	
 
 	private SecurityContext loginAsSystem() {
 		SecurityContext savedCtx = SecurityContextHolder.getContext();
