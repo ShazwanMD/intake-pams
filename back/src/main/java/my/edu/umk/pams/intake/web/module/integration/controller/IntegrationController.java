@@ -721,8 +721,7 @@ public class IntegrationController {
 		LOG.info("Start Receiving active Academic Staff From IMS");
 		for (StaffPayload payload : staffPayload) {
 
-		//todo farah, checking supervisor code by name (update if exists, save if not)		
-			boolean supervisorExist = commonService.isSupervisorCodeExists(payload.getStaffName());
+			boolean supervisorExist = commonService.isSupervisorCodeExists(payload.getStaffId());
 			
 			if (supervisorExist) {
 				
@@ -730,7 +729,7 @@ public class IntegrationController {
 				LOG.debug("Supervisor Name:{}", payload.getStaffName());
 				
 				// Find Supervisor By Name
-				InSupervisorCode supervisorUpdate = commonService.findSupervisorCodeByName(payload.getStaffName());
+				InSupervisorCode supervisorUpdate = commonService.findSupervisorCodeByCode(payload.getStaffId());
 				
 				supervisorUpdate.setName(payload.getStaffName());
 				supervisorUpdate.setCode(payload.getStaffId());

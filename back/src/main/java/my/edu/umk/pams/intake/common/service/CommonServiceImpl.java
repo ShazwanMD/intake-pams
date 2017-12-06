@@ -2103,8 +2103,8 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public boolean isSupervisorCodeExists(String name) {
-        return supervisorCodeDao.isExists(name);
+    public boolean isSupervisorCodeExists(String code) {
+        return supervisorCodeDao.isExists(code);
     }
 
     @Override
