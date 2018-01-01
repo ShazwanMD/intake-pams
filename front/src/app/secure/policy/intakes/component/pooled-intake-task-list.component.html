@@ -29,7 +29,7 @@
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
       <a md-button color="accent" class="text-upper" *ngIf="row.flowState != 'SELECTED' && row.flowState != 'APPROVED' && row.flowState != 'UPPER_APPROVED' && row.flowState != 'OFFERED' && row.flowState != 'REGISTERED'" (click)="claimTask(row)">
-        <span>Claim</span>
+        <span>Take Action</span>
       </a>
     </div>
   </template>
