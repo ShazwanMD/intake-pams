@@ -402,7 +402,8 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public ResidencyCode toResidencyCodeVo(InResidencyCode e) {
-        ResidencyCode vo = new ResidencyCode();
+    	if(null == e) return null;
+    	ResidencyCode vo = new ResidencyCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
         vo.setDescriptionMs(e.getDescriptionMs());
@@ -414,7 +415,6 @@ public class CommonTransformer {
         List<ResidencyCode> vos = e.stream().map((e1) -> toResidencyCodeVo(e1)).collect(Collectors.toList());
         return vos;
     }
-
     // ====================================================================================================
     // STUDY CENTER CODE
     // ====================================================================================================

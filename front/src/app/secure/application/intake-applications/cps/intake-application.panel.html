@@ -95,6 +95,11 @@
               Please add your nationality!
         </div> -->
 
+        <pams-residency-code-select [placeholder]="'Residency *'" 
+                                     [innerFormControl]="applicationForm.controls.residencyCode"
+                                     fxFlex="calc(50%-25px)" class="pad-bottom">
+        </pams-residency-code-select>
+
         <pams-race-code-select [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode"
                                    fxFlex="calc(50%-25px)" class="pad-bottom">
         </pams-race-code-select>

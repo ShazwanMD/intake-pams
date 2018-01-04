@@ -1,3 +1,4 @@
+import { ResidencyCode } from './../../../../shared/model/common/residency-code.interface';
 import { Attachment } from './../../../../shared/model/application/attachment.interface';
 import { Result } from '../../../../shared/model/application/result.interface';
 import { ReligionCode } from '../../../../shared/model/common/religion-code.interface';
@@ -110,6 +111,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
       raceCode: [<RaceCode>{}, Validators.required],
       religionCode: [<ReligionCode>{}, Validators.required],
       nationalityCode: [<NationalityCode>{}, Validators.required],
+      residencyCode: [<ResidencyCode>{}, Validators.required],
       mailingStateCode: [<StateCode>{}, Validators.required],
       mailingCountryCode: [<CountryCode>{}, Validators.required],
       officialStateCode: [<StateCode>{}, Validators.required],

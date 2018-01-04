@@ -24,6 +24,7 @@ import { MaritalCode } from '../../../../shared/model/common/marital-code.interf
 import { ReligionCode } from '../../../../shared/model/common/religion-code.interface';
 import { MdSnackBar, MdTabChangeEvent, MdDialogConfig, MdDialog, MdDialogRef } from '@angular/material';
 import { PromoCodeDialog } from "../dialog/promo-code.dialog";
+import { ResidencyCode } from '../../../../shared/model/common/residency-code.interface';
 
 @Component({
   selector: 'pams-mgseb-intake-application',
@@ -130,6 +131,7 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       disabilityCode: [<DisabilityCode>{}, Validators.required],
       religionCode: [<ReligionCode>{}, Validators.required],
       nationalityCode: [<NationalityCode>{}, Validators.required],
+      residencyCode: [<ResidencyCode>{}, Validators.required],
       mailingStateCode: [<StateCode>{}, Validators.required],
       mailingCountryCode: [<CountryCode>{}, Validators.required ],
       officialStateCode: [<StateCode>{}, Validators.required],

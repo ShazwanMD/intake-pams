@@ -211,7 +211,7 @@ public class ApplicationController {
 		application.setSponsored(vo.getSponsored());
 		application.setPaid(vo.getProcessingFeeAttached());
 		application.setDeclared(vo.getDeclared());
-
+        
 		// check list
 		application.setSpmResultAttached(vo.getSpmResultAttached());
 		application.setStpmResultAttached(vo.getStpmResultAttached());
@@ -265,7 +265,8 @@ public class ApplicationController {
 			application.setNationalityCode(commonService.findNationalityCodeById(vo.getNationalityCode().getId()));
 		if (null != vo.getStudyCenterCode())
 			application.setStudyCenterCode(commonService.findStudyCenterCodeById(vo.getStudyCenterCode().getId()));
-
+		if (null != vo.getResidencyCode())
+			application.setResidencyCode(commonService.findResidencyCodeById(vo.getId()));
 		applicationService.updateIntakeApplication(application);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}

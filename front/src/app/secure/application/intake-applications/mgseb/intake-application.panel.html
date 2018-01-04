@@ -61,10 +61,15 @@
             <pams-nationality-code-select [placeholder]="'Nationality'" [innerFormControl]="applicationForm.controls.nationalityCode"
               fxFlex="calc(50%-25px)" class="pad-bottom">
             </pams-nationality-code-select>
-            <div class="error" class="tc-red-600" *ngIf="applicationForm.get('birthDate').invalid && applicationForm.get('birthDate').touched">
+            <div class="error" class="tc-red-600" *ngIf="applicationForm.get('nationalityCode').invalid && applicationForm.get('nationalityCode').touched">
               Please add your nationality!
             </div>
 
+            <pams-residency-code-select [placeholder]="'Residency *'" 
+            [innerFormControl]="applicationForm.controls.residencyCode"
+            fxFlex="calc(50%-25px)" class="pad-bottom">
+</pams-residency-code-select>
+             
             <pams-race-code-select [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-race-code-select>

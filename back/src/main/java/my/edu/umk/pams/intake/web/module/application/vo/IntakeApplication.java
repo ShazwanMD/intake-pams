@@ -84,6 +84,7 @@ public class IntakeApplication extends MetaObject {
 
     private GenderCode genderCode;
     private NationalityCode nationalityCode;
+    private ResidencyCode residencyCode;
     private RaceCode raceCode;
     private EthnicityCode ethnicityCode;
     private MaritalCode maritalCode;
@@ -564,6 +565,14 @@ public class IntakeApplication extends MetaObject {
         this.nationalityCode = nationalityCode;
     }
 
+    public ResidencyCode getResidencyCode() {
+        return residencyCode;
+    }
+
+    public void setResidencyCode(ResidencyCode residencyCode) {
+        this.residencyCode = residencyCode;
+    }
+    
     public RaceCode getRaceCode() {
         return raceCode;
     }
