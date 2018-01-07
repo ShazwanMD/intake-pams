@@ -791,18 +791,28 @@ public class IdentityServiceImpl implements IdentityService {
 			role.setRole(InRoleType.ROLE_FCTY);
 			addPrincipalRole(principal, role);
 
-			try{
-			// Group
-			InGroup group = findGroupByName("GRP_KRN_FCTY_"+ staff.getFacultyCode().getCode());
-			// GroupMember
-			InGroupMember member = new InGroupMemberImpl();
-			member.setGroup(group);
-			member.setPrincipal(principal);
-			addGroupMember(group, principal);
-			} catch (RecursiveGroupException e) {
-				
-				e.printStackTrace();
+			InGroup group = null;
+			if ((group = findGroupByName("GRP_KRN_FCTY_" + staff.getFacultyCode().getCode())) != null) {
+				LOG.info("If All Faculty Only");
+
+				try {
+					// Group
+					group = findGroupByName("GRP_KRN_FCTY_" + staff.getFacultyCode().getCode());
+					// GroupMember
+					InGroupMember member = new InGroupMemberImpl();
+					member.setGroup(group);
+					member.setPrincipal(principal);
+					addGroupMember(group, principal);
+				} catch (RecursiveGroupException e) {
+
+					e.printStackTrace();
+				}
+			} else {
+
+				LOG.debug("No Group");
+
 			}
+			
 		}      
         sessionFactory.getCurrentSession().flush();
     }
@@ -921,19 +931,28 @@ public class IdentityServiceImpl implements IdentityService {
 			role.setRole(InRoleType.ROLE_FCTY);
 			addPrincipalRole(principal, role);
 
-			try{
-			// Group
-			InGroup group = findGroupByName("GRP_PGW_FCTY_"+ staff.getFacultyCode().getCode());
-			// GroupMember
-			
-			InGroupMember member = new InGroupMemberImpl();
-			member.setGroup(group);
-			member.setPrincipal(principal);
-			addGroupMember(group, principal);
+			try {
+				// Group
+				InGroup group = null;
+				if (isGroupExists("GRP_PGW_FCTY_"+ staff.getFacultyCode().getCode()))
+				{
+
+					group = findGroupByName("GRP_PGW_FCTY_" + staff.getFacultyCode().getCode());
+
+					// GroupMember
+					InGroupMember member = new InGroupMemberImpl();
+					member.setGroup(group);
+					member.setPrincipal(principal);
+					addGroupMember(group, principal);
+				} else {
+					LOG.debug("Not Exist");
+				}
+
 			} catch (RecursiveGroupException e) {
-				
+
 				e.printStackTrace();
 			}
+			
 		}else{
 			LOG.info("If All Faculty Only");
 			
@@ -942,19 +961,29 @@ public class IdentityServiceImpl implements IdentityService {
 			role.setPrincipal(principal);
 			role.setRole(InRoleType.ROLE_FCTY);
 			addPrincipalRole(principal, role);
+			
+			try {
+				// Group
+				InGroup group = null;
+				if (isGroupExists("GRP_KRN_FCTY_"+ staff.getFacultyCode().getCode()))
+				{
 
-			try{
-			// Group
-			InGroup group = findGroupByName("GRP_KRN_FCTY_"+ staff.getFacultyCode().getCode());
-			// GroupMember
-			InGroupMember member = new InGroupMemberImpl();
-			member.setGroup(group);
-			member.setPrincipal(principal);
-			addGroupMember(group, principal);
+					group = findGroupByName("GRP_KRN_FCTY_" + staff.getFacultyCode().getCode());
+
+					// GroupMember
+					InGroupMember member = new InGroupMemberImpl();
+					member.setGroup(group);
+					member.setPrincipal(principal);
+					addGroupMember(group, principal);
+				} else {
+					LOG.debug("Not Exist");
+				}
+
 			} catch (RecursiveGroupException e) {
-				
+
 				e.printStackTrace();
 			}
+
 		}      
         sessionFactory.getCurrentSession().flush();
     }    
