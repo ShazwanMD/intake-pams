@@ -60,6 +60,7 @@ public class PolicyTransformer {
     }
 
     public IntakeSession toIntakeSessionVo(InIntakeSession e) {
+    	if(null == e) return null;
         IntakeSession vo = new IntakeSession();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -90,6 +91,7 @@ public class PolicyTransformer {
     }
 
     public Intake toIntakeVo(InIntake e) {
+    	if(null == e) return null;
         Intake vo = new Intake();
         vo.setId(e.getId());
         vo.setReferenceNo(e.getReferenceNo());
