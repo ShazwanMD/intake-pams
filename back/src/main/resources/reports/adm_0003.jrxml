@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="adm_000" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1f72c9b-08ed-49ba-b1c3-3863e5d18d22">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<parameter name="intake_reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -31,7 +31,8 @@ in_intk_apln.study_center_code_id as "stdy_cntr_code_id",
 in_stdy_cntr_code.description_ms as "stdy_cntr_code.description_ms",
 in_grdt_cntr.code as "in_grdt_cntr.code",
 in_intk_sesn.description_ms as "intk_sessn.description_ms",
-in_intk.reference_no as "intk_reference_no"
+in_intk.reference_no as "intk_reference_no",
+in_ntly_code.description_en as "nationality_des"
 
 from
 
@@ -77,6 +78,7 @@ in_grdt_cntr.code = 'MGSEB']]>
 	<field name="in_grdt_cntr.code" class="java.lang.String"/>
 	<field name="intk_sessn.description_ms" class="java.lang.String"/>
 	<field name="intk_reference_no" class="java.lang.String"/>
+	<field name="nationality_des" class="java.lang.String"/>
 	<filterExpression><![CDATA[$F{intk_reference_no}.equals( $P{intake_reference_no} )]]></filterExpression>
 	<background>
 		<band splitType="Stretch"/>
@@ -84,14 +86,14 @@ in_grdt_cntr.code = 'MGSEB']]>
 	<title>
 		<band height="54" splitType="Stretch">
 			<staticText>
-				<reportElement x="7" y="30" width="300" height="17" uuid="08c28a72-d8f9-47ff-918f-8c5c5a350bca"/>
+				<reportElement x="7" y="30" width="365" height="17" uuid="08c28a72-d8f9-47ff-918f-8c5c5a350bca"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ SENARAI PERMOHONAN PASCASISWAZAH (KERJA KHUSUS) SEMESTER]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="307" y="30" width="360" height="16" uuid="bf1eb38d-425f-4e1e-951f-0fbe813f0bb4"/>
+				<reportElement x="372" y="30" width="278" height="16" uuid="bf1eb38d-425f-4e1e-951f-0fbe813f0bb4"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
@@ -136,7 +138,7 @@ in_grdt_cntr.code = 'MGSEB']]>
 				<reportElement x="0" y="8" width="30" height="46" backcolor="#CCCCCC" uuid="9f5238b6-3df5-4164-9d3b-2f79fcf4d31c"/>
 			</rectangle>
 			<staticText>
-				<reportElement mode="Transparent" x="46" y="13" width="100" height="12" uuid="9327cfe9-d972-45dc-b4cb-377d4d03019c"/>
+				<reportElement mode="Transparent" x="45" y="13" width="110" height="13" uuid="9327cfe9-d972-45dc-b4cb-377d4d03019c"/>
 				<textElement>
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
@@ -164,7 +166,7 @@ in_grdt_cntr.code = 'MGSEB']]>
 				<text><![CDATA[BIL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="174" y="13" width="111" height="12" uuid="75f7d99e-9a26-41b0-bc37-2c2fc6482f38"/>
+				<reportElement mode="Transparent" x="174" y="13" width="144" height="13" uuid="75f7d99e-9a26-41b0-bc37-2c2fc6482f38"/>
 				<textElement>
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
@@ -234,7 +236,7 @@ in_grdt_cntr.code = 'MGSEB']]>
 				<text><![CDATA[KAMPUS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="736" y="12" width="47" height="20" uuid="5b76036d-9154-421b-bebc-1f7d2e3a9194"/>
+				<reportElement mode="Transparent" x="736" y="12" width="66" height="20" uuid="5b76036d-9154-421b-bebc-1f7d2e3a9194"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
@@ -260,21 +262,14 @@ in_grdt_cntr.code = 'MGSEB']]>
 				<reportElement x="0" y="-1" width="30" height="131" uuid="20622e98-0472-4281-a254-ab2e9d67bc8d"/>
 			</rectangle>
 			<textField>
-				<reportElement x="35" y="6" width="116" height="68" uuid="5dc641d9-e9bf-4499-834a-8693225e032a"/>
+				<reportElement x="35" y="6" width="116" height="72" uuid="5dc641d9-e9bf-4499-834a-8693225e032a"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cndt_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="37" y="75" width="116" height="20" uuid="85ce1560-372b-497b-96db-7c15b07ed637"/>
-				<textElement>
-					<font fontName="SansSerif"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ntly_code.description_ms}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="36" y="98" width="116" height="20" uuid="313f2f64-898d-4546-8f51-3ff203c7779b"/>
+				<reportElement x="36" y="102" width="116" height="20" uuid="313f2f64-898d-4546-8f51-3ff203c7779b"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -344,6 +339,10 @@ in_grdt_cntr.code = 'MGSEB']]>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="78" width="115" height="24" uuid="445d582b-5519-4b1f-8c52-8c34bc1f73e8"/>
+				<textFieldExpression><![CDATA[$F{nationality_des}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

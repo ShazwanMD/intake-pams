@@ -1,5 +1,17 @@
 package my.edu.umk.pams.intake.admission.service;
 
+import java.util.HashMap;
+
+
+import java.util.List;
+import java.util.Map;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
@@ -41,17 +53,6 @@ import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
 import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 import my.edu.umk.pams.intake.system.service.SystemService;
-import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author PAMS
@@ -344,6 +345,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setFacultyCode(facultyCodePayload);
 		payload.setProgramCode(programCodePayload);
 		// <program_code>-CHRT-<academic_session_code>
+		
 		String cohortCode = facultyCode.getCode() + "-" + programCode.getProgramLevel().getCode() + "-"
 				+ programCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
 		payload.setCohortCode(cohortCode);
@@ -379,13 +381,14 @@ public class AdmissionServiceImpl implements AdmissionService {
 		}
 
 		// NationalityCodePayload
-		InNationalityCode nationilityCode = application.getNationalityCode();
+		InNationalityCode nationalityCode = application.getNationalityCode();
 		NationalityCodePayload nationalityCodePayload = new NationalityCodePayload();
-		nationalityCodePayload.setCode(nationilityCode.getCode());
-		nationalityCodePayload.setDescriptionEn(nationilityCode.getDescriptionEn());
-		nationalityCodePayload.setDescriptionMs(nationilityCode.getDescriptionMs());
+		nationalityCodePayload.setCode(nationalityCode.getCode());
+		nationalityCodePayload.setDescriptionEn(nationalityCode.getDescriptionEn());
+		nationalityCodePayload.setDescriptionMs(nationalityCode.getDescriptionMs());
 		payload.setNationalityCode(nationalityCodePayload);
 
+		//ResidencyCodePayload
 		InResidencyCode residencyCode = application.getResidencyCode();
 		ResidencyCodePayload residencyCodePayload = new ResidencyCodePayload();
 		residencyCodePayload.setCode(residencyCode.getCode());
@@ -404,7 +407,8 @@ public class AdmissionServiceImpl implements AdmissionService {
 			studyCenterCodePayload.setDescriptionMs(studyCenter.getDescriptionMs());
 			payload.setStudyCenter(studyCenterCodePayload);
 
-		}else{
+		}
+		else {
 			payload.setStudyCenter(null);
 		}
 

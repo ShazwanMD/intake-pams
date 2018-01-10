@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="adm_0005" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b53ee4b8-64a5-4970-9338-1af2c018154b">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="115"/>
-	<property name="ireport.y" value="4"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="100"/>
 	<parameter name="intake_reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -31,7 +31,8 @@ in_intk_apln.study_center_code_id as "stdy_cntr_code_id",
 in_stdy_cntr_code.description_ms as "stdy_cntr_code.description_ms",
 in_grdt_cntr.code as "in_grdt_cntr.code",
 in_intk_sesn.description_ms as "intk_sessn.description_ms",
-in_intk.reference_no as "intk_reference_no"
+in_intk.reference_no as "intk_reference_no",
+in_ntly_code.description_en as "nationality_description"
 
 
 from
@@ -82,6 +83,7 @@ in_grdt_cntr.code = 'CPS']]>
 	<field name="in_grdt_cntr.code" class="java.lang.String"/>
 	<field name="intk_sessn.description_ms" class="java.lang.String"/>
 	<field name="intk_reference_no" class="java.lang.String"/>
+	<field name="nationality_description" class="java.lang.String"/>
 	<filterExpression><![CDATA[$F{intk_reference_no}.equals( $P{intake_reference_no} )]]></filterExpression>
 	<background>
 		<band splitType="Stretch"/>
@@ -89,14 +91,14 @@ in_grdt_cntr.code = 'CPS']]>
 	<title>
 		<band height="51" splitType="Stretch">
 			<staticText>
-				<reportElement x="12" y="28" width="300" height="17" uuid="033fe771-2ec8-4b70-aa8a-bc052e52d847"/>
+				<reportElement x="12" y="28" width="362" height="17" uuid="033fe771-2ec8-4b70-aa8a-bc052e52d847"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ SENARAI PERMOHONAN PASCASISWAZAH (KERJA KHUSUS) SEMESTER]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="312" y="28" width="380" height="17" uuid="150f742d-e7e2-405c-8bb3-6cd97c6ad2cd"/>
+				<reportElement x="378" y="28" width="318" height="17" uuid="150f742d-e7e2-405c-8bb3-6cd97c6ad2cd"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -278,14 +280,14 @@ in_grdt_cntr.code = 'CPS']]>
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="36" y="10" width="117" height="65" uuid="eea08aa6-1fc5-458e-ad18-d4e3d3d4d2c9"/>
+				<reportElement x="36" y="10" width="117" height="66" uuid="eea08aa6-1fc5-458e-ad18-d4e3d3d4d2c9"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cndt_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="169" y="10" width="124" height="85" uuid="06869ca4-e3ab-47df-8c52-74920ae1a904"/>
+				<reportElement x="169" y="10" width="124" height="116" uuid="06869ca4-e3ab-47df-8c52-74920ae1a904"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -313,14 +315,7 @@ in_grdt_cntr.code = 'CPS']]>
 				<textFieldExpression><![CDATA[$F{graduation_year}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="36" y="75" width="117" height="32" uuid="8c21cc17-9bca-4600-8ab3-6f10a056b3aa"/>
-				<textElement>
-					<font fontName="SansSerif"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ntly_code.description_ms}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="36" y="106" width="117" height="20" uuid="38357331-bfca-48ed-8314-7180c0030708"/>
+				<reportElement x="36" y="107" width="117" height="20" uuid="38357331-bfca-48ed-8314-7180c0030708"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -350,6 +345,10 @@ in_grdt_cntr.code = 'CPS']]>
 			<rectangle>
 				<reportElement x="723" y="0" width="79" height="135" uuid="ffbe5c1e-7b63-4743-8e1b-13c85be70482"/>
 			</rectangle>
+			<textField>
+				<reportElement x="36" y="76" width="117" height="31" uuid="81c4108b-6c05-4ae7-b6be-665a040ce37c"/>
+				<textFieldExpression><![CDATA[$F{nationality_description}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
