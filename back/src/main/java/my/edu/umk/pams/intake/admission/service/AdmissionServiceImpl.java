@@ -5,6 +5,7 @@ import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.NationalityCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
+import my.edu.umk.pams.connector.payload.ResidencyCodePayload;
 import my.edu.umk.pams.connector.payload.StudyCenterPayload;
 import my.edu.umk.pams.connector.payload.StudyModePayload;
 import my.edu.umk.pams.connector.payload.UserPayload;
@@ -21,6 +22,7 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InNationalityCode;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InStudyCenterCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -384,6 +386,13 @@ public class AdmissionServiceImpl implements AdmissionService {
 		nationalityCodePayload.setDescriptionMs(nationilityCode.getDescriptionMs());
 		payload.setNationalityCode(nationalityCodePayload);
 
+		InResidencyCode residencyCode = application.getResidencyCode();
+		ResidencyCodePayload residencyCodePayload = new ResidencyCodePayload();
+		residencyCodePayload.setCode(residencyCode.getCode());
+		residencyCodePayload.setDescriptionEn(residencyCode.getDescriptionEn());
+		residencyCodePayload.setDescriptionMs(residencyCode.getDescriptionMs());
+		payload.setResidencyCode(residencyCodePayload);
+		
 		// StudyCenterCodePayload
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("MGSEB")) {
 			
