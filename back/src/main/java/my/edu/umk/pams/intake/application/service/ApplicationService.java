@@ -97,6 +97,8 @@ public interface ApplicationService {
     InIntakeApplication findIntakeApplicationByNricNoOrPassportNo(String identityNo);
 
     InIntakeApplication findIntakeApplicationByIntakeAndApplicant(InIntake intake, InApplicant applicant);
+    
+    InIntakeApplication findIntakeApplicationByApplicant(InApplicant applicant);
 
     InResult findResultById(Long id);
 

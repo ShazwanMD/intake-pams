@@ -21,6 +21,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
 
     InIntakeApplication findByIntakeAndApplicant(InIntake intake, InApplicant applicant);
     
+    InIntakeApplication findByApplicant(InApplicant applicant);
+    
     InIntakeApplication findByAddress(String officialAddress1);
 
     InResult findResultById(Long id);

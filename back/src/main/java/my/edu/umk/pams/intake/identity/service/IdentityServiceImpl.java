@@ -21,7 +21,9 @@ import java.util.Set;
 
 import my.edu.umk.pams.connector.payload.StaffPayload;
 import my.edu.umk.pams.connector.payload.StudyCenterPayload;
+import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.dao.InIntakeApplicationDao;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
@@ -106,12 +108,18 @@ public class IdentityServiceImpl implements IdentityService {
     
     @Autowired
     private InIntakeApplicationDao intakeApplicationDao;
+    
+    @Autowired
+    private InCandidateDao candidateDao;
 
     @Autowired
     private SecurityService securityService;
     
     @Autowired
     private IdentityService identityService;
+    
+    @Autowired
+    private AdmissionService admissionService;
     
     @Autowired
     private ApplicationService applicationService;
@@ -996,6 +1004,18 @@ public class IdentityServiceImpl implements IdentityService {
         applicantDao.update(applicant, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         
+        InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByApplicant(applicant);
+        intakeApplication.setEmail(newEmail);
+        intakeApplicationDao.update(intakeApplication, securityService.getCurrentUser());
+        
+        
+        
+        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+        candidate.setEmail(newEmail);
+        candidateDao.update(candidate, securityService.getCurrentUser());
+        LOG.debug("Candidate in change email :{}",candidate.getEmail());
+        
+
         //must find actor
         InActor actor = this.findApplicantById(applicant.getId());
         actor.setEmail(newEmail);

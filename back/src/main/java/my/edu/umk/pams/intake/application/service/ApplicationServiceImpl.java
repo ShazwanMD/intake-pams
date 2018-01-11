@@ -422,6 +422,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 	public InIntakeApplication findIntakeApplicationByIntakeAndApplicant(InIntake intake, InApplicant applicant) {
 		return intakeApplicationDao.findByIntakeAndApplicant(intake, applicant);
 	}
+	
+	@Override
+	public InIntakeApplication findIntakeApplicationByApplicant(InApplicant applicant) {
+		return intakeApplicationDao.findByApplicant(applicant);
+	}
 
 	@Override
 	public boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant) {

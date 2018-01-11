@@ -68,6 +68,15 @@ public class InIntakeApplicationDaoImpl extends GenericDaoSupport<Long, InIntake
     }
     
     @Override
+    public InIntakeApplication findByApplicant(InApplicant applicant) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from InIntakeApplication p " +
+                "where p.applicant = :applicant ");
+        query.setEntity("applicant", applicant);
+        return (InIntakeApplication) query.uniqueResult();
+    }
+    
+    @Override
     public boolean isIntakeApplicationExists(InIntake intake, InApplicant applicant) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(*) from InIntakeApplication s where " +
