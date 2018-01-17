@@ -318,7 +318,7 @@ public class ApplicationController {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InIntake intake = application.getIntake();
 		application.setBidStatus(InBidStatus.SELECTED);
-		if (vo.getNationalityCode().getDescriptionEn().equals("CITIZEN"))
+		if (vo.getResidencyCode().getCode().equals("B")  || vo.getResidencyCode().getCode().equals("C") ) 
 			application.setVerified(true);
 		applicationService.selectIntakeApplication(intake, application);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
