@@ -266,7 +266,7 @@ public class ApplicationController {
 		if (null != vo.getStudyCenterCode())
 			application.setStudyCenterCode(commonService.findStudyCenterCodeById(vo.getStudyCenterCode().getId()));
 		if (null != vo.getResidencyCode())
-			application.setResidencyCode(commonService.findResidencyCodeById(vo.getId()));
+			application.setResidencyCode(commonService.findResidencyCodeById(vo.getResidencyCode().getId()));
 		applicationService.updateIntakeApplication(application);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
