@@ -544,6 +544,9 @@ public class ApplicationController {
 		LOG.debug("content type: {}", file.getContentType());
 		LOG.debug("size: {}", file.getSize());
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		
+		String mimeType = file.getContentType();
+		if(mimeType.contentEquals("application/pdf")){
 		try {
 			if (!file.isEmpty()) {
 				InAttachment attachment = new InAttachmentImpl();
@@ -555,8 +558,13 @@ public class ApplicationController {
 				applicationService.addAttachment(application, attachment);
 	//			applicationService.checkAttachment(application, attachment);
 			}
-		} catch (IOException e) {
+		}
+		
+		catch (IOException e) {
 			return new ResponseEntity<String>("Failed", HttpStatus.OK);
+		}
+		}else{
+			LOG.debug("Error");
 		}
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}	
