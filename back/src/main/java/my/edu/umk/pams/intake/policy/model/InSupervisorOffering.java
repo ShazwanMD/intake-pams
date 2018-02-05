@@ -10,9 +10,9 @@ public interface InSupervisorOffering extends InMetaObject {
     InSupervisorCode getSupervisorCode();
 
     void setSupervisorCode(InSupervisorCode supervisorCode);
+    
+	InProgramLevel getProgramLevel();
 
-    InIntake getIntake();
-
-    void setIntake(InIntake intake);
+	void setProgramLevel(InProgramLevel programLevel);
 
 }

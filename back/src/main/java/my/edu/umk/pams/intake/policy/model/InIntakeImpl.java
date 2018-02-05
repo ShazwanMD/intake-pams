@@ -74,10 +74,7 @@ public class InIntakeImpl implements InIntake {
     
     @OneToMany(targetEntity = InProgramOfferingImpl.class, mappedBy = "intake")
     private List<InProgramOffering> programOfferings;
-    
-    @OneToMany(targetEntity = InSupervisorOfferingImpl.class, mappedBy = "intake")
-    private List<InSupervisorOffering> supervisorOfferings;
-    
+   
     @OneToMany(targetEntity = InIntakeApplicationImpl.class, mappedBy = "intake")
     private List<InIntakeApplication> applications;
 
@@ -230,16 +227,6 @@ public class InIntakeImpl implements InIntake {
     @Override
     public void setProgramOfferings(List<InProgramOffering> programOfferings) {
         this.programOfferings = programOfferings;
-    }
-
-    @Override
-    public List<InSupervisorOffering> getSupervisorOfferings() {
-        return supervisorOfferings;
-    }
-
-    @Override
-    public void setSupervisorOfferings(List<InSupervisorOffering> supervisorOfferings) {
-        this.supervisorOfferings = supervisorOfferings;
     }
 
     @Override
