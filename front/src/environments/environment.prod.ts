@@ -1,6 +1,6 @@
 export const environment: {production: boolean, endpoint: string,imports: any[]} = {
-  production: false,
-  endpoint: 'http://localhost:8080',
+  production: true,
+  endpoint: '/intake',
   imports: [
     // no op
   ],
