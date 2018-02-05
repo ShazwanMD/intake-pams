@@ -54,12 +54,28 @@
           <md-input-container flex>
             <input mdInput
                    type="password"
-                   placeholder="Password"
+                   placeholder="Create Password"
                    formControlName="password"
                    flex/>
             <div class="error" class="tc-red-600"
                        *ngIf="registrationForm.get('password').invalid && registrationForm.get('password').touched">Required!
                   </div>
+          </md-input-container>
+        </div>
+
+        <div layout="row" class="pad-bottom" flex>
+          <md-input-container flex>
+            <input mdInput
+                   type="password"
+                   placeholder="Verify Password"
+                   formControlName="confirmPassword" flex/>
+            <!-- <div class="error" class="tc-red-600"  
+              *ngIf="registrationForm.get('confirmPassword').invalid && createForm.get('confirmPassword').touched">>Passwords don't match!
+            </div> -->
+            <div class="error" class="tc-red-600"  
+            *ngIf="registrationForm.get(['passwords','password']) != registrationForm.get(['passwords','confirmPassword']) && registrationForm.get(['passwords','confirmPassword']) != null">
+          error </div>
+
           </md-input-container>
         </div>
       </form>
