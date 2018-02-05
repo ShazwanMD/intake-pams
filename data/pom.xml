@@ -320,6 +320,7 @@
                            
                                 <srcFile>src/test/resources/data/IN_DBLY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_SPVR_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_SPVR_OFRG.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
