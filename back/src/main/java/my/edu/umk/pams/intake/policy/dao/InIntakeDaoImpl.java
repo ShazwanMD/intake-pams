@@ -367,7 +367,7 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         Validate.notNull(user, "User cannot be null");
 
         Session session = sessionFactory.getCurrentSession();
-        //offering.setIntake(intake);
+        offering.setIntake(intake);
 
         InMetadata metadata = new InMetadata();
         metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
