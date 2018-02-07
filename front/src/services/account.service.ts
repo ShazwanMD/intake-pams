@@ -20,6 +20,12 @@ export class AccountService {
 
   constructor(private _http: HttpInterceptorService) {
   }
+  findIntakes(): Observable<Intake[]> {
+    console.log('FindIntakes');
+    return this._http.get(this.ACCOUNT_API + '/intakes')
+      .map((res: Response) => <Intake[]>res.json())
+      .catch((error) => this.handleError(error));
+  }
 
   findPublishedIntakes(): Observable<Intake[]> {
     console.log('findPublishedIntakes');

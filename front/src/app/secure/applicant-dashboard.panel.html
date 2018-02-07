@@ -90,11 +90,11 @@
 
       <md-tab label="Open Intakes">
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-          <div *ngIf="(publishedIntakes$ | async)?.length === 0"><span>There is no open intake at the moment. Please check again later</span>
+          <div *ngIf="(intakes$ | async)?.length === 0"><span>There is no open intake at the moment. Please check again later</span>
           </div>
-          <template let-intake let-last="last" ngFor [ngForOf]="publishedIntakes$ | async ">
+          <template let-intake let-last="last" ngFor [ngForOf]="intakes$ | async ">
             <div flex-md="60" flex-gt-md="40" layout="column">
-              <md-card href class="md-card-colored" flex>
+              <md-card  href class="md-card-colored" flex>
                 <md-card-title>{{intake.startDate | date:'MMM' | uppercase}} {{intake.startDate | date:'y'}} INTAKE </md-card-title>
                 <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
                   <md-card-subtitle> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle>
@@ -104,11 +104,11 @@
                   <div fxLayout="row" fxLayoutAlign="space-around center">
                     <span flex></span>
                     <div>
-                      <small class="bb"> From: {{intake.startDate | date:'EEEE d MMMM'}} To: {{intake.endDate | date:'EEEE d MMMM'}} </small>
+                      <small class="bb"> From: {{intake.startDate | date:'EEEE d MMMM'}} To: {{intake.endDate | date:'EEEE d MMMM'}}</small>
                     </div>
                              
                     <div>
-                      <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]"
+                      <button [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]"
                         md-button color="primary">Apply Now!
                       </button>
                     </div>

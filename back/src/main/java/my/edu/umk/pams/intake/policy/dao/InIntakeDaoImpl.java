@@ -16,6 +16,7 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 // todo: metadata
@@ -95,6 +96,18 @@ public class InIntakeDaoImpl extends GenericDaoSupport<Long, InIntake> implement
         query.setEntity("intake", intake);
         query.setEntity("studyMode", studyMode);
         return (InStudyModeOffering) query.uniqueResult();
+    }
+    
+    @Override
+    public List<InIntake> findByEndDate() {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InIntake p where " +
+                "endDate >= :endDate and startDate <= :startDate");
+        Date endDate = new Timestamp(System.currentTimeMillis());
+		query.setDate("endDate",endDate);
+		Date startDate = new Timestamp(System.currentTimeMillis());
+		query.setDate("startDate",startDate);
+        return (List<InIntake>) query.list();
     }
 
     @Override

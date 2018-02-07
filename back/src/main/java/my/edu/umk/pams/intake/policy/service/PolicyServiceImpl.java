@@ -363,6 +363,11 @@ public class PolicyServiceImpl implements PolicyService {
     public List<InIntake> findIntakes() {
         return intakeDao.find();
     }
+    
+    @Override
+    public List<InIntake> findIntakesByEndDate() {
+        return intakeDao.findByEndDate();
+    }
 
     @Override
     public List<InIntake> findIntakesByFlowState(InFlowState flowState) {
