@@ -16,13 +16,13 @@ public class InSupervisorOfferingImpl implements InSupervisorOffering {
     @SequenceGenerator(name = "SQ_IN_SPVR_OFRG", sequenceName = "SQ_IN_SPVR_OFRG", allocationSize = 1)
     private Long id;
 
-    @ManyToOne(targetEntity = InIntakeImpl.class)
-    @JoinColumn(name = "INTAKE_ID")
-    private InIntake intake;
-
     @ManyToOne(targetEntity = InSupervisorCodeImpl.class)
     @JoinColumn(name = "SUPERVISOR_CODE_ID")
     private InSupervisorCode supervisorCode;
+    
+    @ManyToOne(targetEntity = InProgramLevelImpl.class)
+    @JoinColumn(name = "PRGM_LEVEL_CODE_ID")
+    private InProgramLevel programLevel;
 
     @Embedded
     private InMetadata metadata;
@@ -37,16 +37,6 @@ public class InSupervisorOfferingImpl implements InSupervisorOffering {
     }
 
     @Override
-    public InIntake getIntake() {
-        return intake;
-    }
-
-    @Override
-    public void setIntake(InIntake intake) {
-        this.intake = intake;
-    }
-
-    @Override
     public InSupervisorCode getSupervisorCode() {
         return supervisorCode;
     }
@@ -57,6 +47,16 @@ public class InSupervisorOfferingImpl implements InSupervisorOffering {
     }
 
     @Override
+    public InProgramLevel getProgramLevel() {
+		return programLevel;
+	}
+
+    @Override
+	public void setProgramLevel(InProgramLevel programLevel) {
+		this.programLevel = programLevel;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }
@@ -65,9 +65,10 @@ public class InSupervisorOfferingImpl implements InSupervisorOffering {
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }
-
+    
     @Override
     public Class<?> getInterfaceClass() {
         return InSupervisorOffering.class;
     }
+
 }
