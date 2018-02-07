@@ -3,6 +3,24 @@ import {Action} from '@ngrx/store';
 
 @Injectable()
 export class AccountActions {
+  static FIND_INTAKES = '[Intake] Find Intakes';
+
+  findIntakes(): Action {
+    console.log("findIntakes");
+    return {
+      type: AccountActions.FIND_INTAKES,
+    };
+  }
+
+  static FIND_INTAKES_SUCCESS = '[Intake] Find Intakes Success';
+
+  findIntakesSuccess(intakes): Action {
+    console.log("findIntakesSuccess");
+    return {
+      type: AccountActions.FIND_INTAKES_SUCCESS,
+      payload: intakes
+    };
+  }
 
   static FIND_PUBLISHED_INTAKES = '[Account] Find Published Intakes';
 

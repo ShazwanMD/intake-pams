@@ -14,7 +14,8 @@ import { ApplicationModuleState } from './application/index';
 import { AccountActions } from './account/account.action';
 import { ResultCandidateDialog } from "./account/dialog/result-candidate.dialog";
 import { Candidate } from "../shared/model/admission/candidate.interface";
-
+import {DatePipe} from "@angular/common";
+import { forEach } from '@angular/router/src/utils/collection';
 @Component({
   selector: 'pams-applicant-dashboard-panel',
   templateUrl: './applicant-dashboard.panel.html',
@@ -26,6 +27,7 @@ export class ApplicantDashboardPanel implements OnInit {
   @Input() myIntakeApplications: MyIntakeApplication;
   @Input() intakeApplications: IntakeApplication;
 
+  today: number = Date.now();
 
   [x: string]: any;
   private editorDialogRef: MdDialogRef<AddressChangerDialog>;
@@ -37,11 +39,14 @@ export class ApplicantDashboardPanel implements OnInit {
   private MY_INTAKE_APPLICATIONS: string[] = 'accountModuleState.myIntakeApplications'.split('.');
   private APPLICANT: string[] = 'accountModuleState.applicant'.split('.');
   private USER: string[] = 'accountModuleState.user'.split('.');
+  private INTAKES: string[] = 'accountModuleState.intakes'.split('.');
+
   private intakeApplications$: Observable<IntakeApplication[]>;
   private myIntakeApplications$: Observable<MyIntakeApplication[]>;
   private publishedIntakes$: Observable<Intake[]>;
   private applicant$: Observable<Applicant>;
   private user$: Observable<User>;
+  private intakes$: Observable<Intake[]>;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -54,6 +59,7 @@ export class ApplicantDashboardPanel implements OnInit {
     this.publishedIntakes$ = this.store.select(...this.PUBLISHED_INTAKES);
     this.applicant$ = this.store.select(...this.APPLICANT);
     this.user$ = this.store.select(...this.USER);
+    this.intakes$ = this.store.select(...this.INTAKES);
   }
 
   ngOnInit(): void {
@@ -62,6 +68,7 @@ export class ApplicantDashboardPanel implements OnInit {
     this.store.dispatch(this.actions.findIntakeApplications());
     this.store.dispatch(this.actions.findPublishedIntakes());
     this.store.dispatch(this.actions.findMyIntakeApplications());
+    this.store.dispatch(this.actions.findIntakes());
   }
 
   resultDialog(myIntakeApplications: MyIntakeApplication): void {

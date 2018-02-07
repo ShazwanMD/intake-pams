@@ -1,3 +1,4 @@
+import { IntakeListsState, intakeListReducer } from './intake-lists.reducer';
 import { ResultCandidateReasonDialog } from './dialog/result-candidate-reason.dialog';
 import { MyIntakeApplication } from './../../shared/model/application/my-intake-application.interface';
 import { Candidate } from './../../shared/model/admission/candidate.interface';
@@ -49,6 +50,7 @@ export interface AccountModuleState {
   intakeApplications: IntakeApplicationListState;
   myIntakeApplications: MyIntakeApplicationListState;
   candidates: CandidateListState;
+  intakes: IntakeListsState;
 }
 
 export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
@@ -58,6 +60,7 @@ export const INITIAL_ACCOUNT_STATE: AccountModuleState = <AccountModuleState>{
   intakeApplications: <IntakeApplication[]>[],
   myIntakeApplications: <MyIntakeApplication[]>[],
   candidates: <Candidate[]>[],
+  intakes: <Intake[]>[],
 
 };
 
@@ -68,6 +71,7 @@ export const accountModuleReducers = {
   intakeApplications: intakeApplicationListReducer,
   myIntakeApplications: myIntakeApplicationListReducer,
   candidates: candidateListReducer,
+  intakes: intakeListReducer,
 };
 
 @NgModule({
