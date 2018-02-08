@@ -29,6 +29,7 @@ import {LanguageCode} from '../app/shared/model/common/language-code.interface';
 import {SubjectCode} from '../app/shared/model/common/subject-code.interface';
 import {GradeCode} from '../app/shared/model/common/grade-code.interface';
 import {ProgramLevel} from '../app/shared/model/policy/program-level.interface';
+import { SupervisorOffering } from '../app/shared/model/common/supervisor-offering.interface';
 
 @Injectable()
 export class CommonService {
@@ -508,6 +509,44 @@ export class CommonService {
     return this._http.put(this.COMMON_API + '/supervisorCodes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+// ====================================================================================================
+// SUPERVISOR OFFERINGS
+// ====================================================================================================
+
+findSupervisorOfferings(): Observable<SupervisorOffering[]> {
+  console.log('findSupervisorOfferings()');
+  return this._http.get(this.COMMON_API + '/supervisorOfferings')
+    .map((res: Response) => <SupervisorOffering[]>res.json());
+}
+
+findSupervisorOfferingsByFilter(filter: string): Observable<SupervisorOffering[]> {
+  console.log('findSupervisorOfferingsByFilter');
+  return this._http.get(this.COMMON_API + '/supervisorOfferings/byFilter/' + filter)
+    .map((res: Response) => <SupervisorOffering[]>res.json());
+}
+
+findSupervisorOfferingByOffering(offering: string): Observable<SupervisorOffering> {
+  console.log('findSupervisorOfferingByOffering');
+  return this._http.get(this.COMMON_API + '/supervisorOfferings/' + offering)
+    .map((res: Response) => <SupervisorOffering>res.json());
+}
+
+saveSupervisorOfferings(offering: SupervisorOffering): Observable<String> {
+  console.log('offering'+offering.supervisorCode.name);
+  return this._http.post(this.COMMON_API + '/supervisorOfferings', JSON.stringify(offering))
+    .flatMap((res: Response) => Observable.of(res.text()));
+}
+
+removeSupervisorOfferings(offering: SupervisorOffering): Observable<String> {
+  return this._http.delete(this.COMMON_API + '/supervisorOfferings/' + offering.id)
+    .flatMap((res: Response) => Observable.of(res.text()));
+}
+
+updateSupervisorOfferings(offering: SupervisorOffering): Observable<String> {
+  return this._http.put(this.COMMON_API + '/supervisorOfferings/' + offering.id, JSON.stringify(offering))
+    .flatMap((res: Response) => Observable.of(res.text()));
+}
 
 // ====================================================================================================
 // STATE CODES

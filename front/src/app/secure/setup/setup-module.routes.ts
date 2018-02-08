@@ -26,6 +26,7 @@ import {LanguageCodeListPage} from './language-codes/language-code-list-page';
 import {SubjectCodeListPage} from './subject-codes/subject-code-list-page';
 import {GradeCodeListPage} from './grade-codes/grade-code-list-page';
 import {AuthenticationGuard} from '../identity/guard/authentication.guard';
+import { SupervisorOfferingListPage } from './supervisor-offerings/supervisor-offering-list.page';
 
 
 export const setupModuleRoutes: Routes = [
@@ -42,6 +43,7 @@ export const setupModuleRoutes: Routes = [
       {path: 'state-codes', component: StateCodeListPage},
       {path: 'program-codes', component: ProgramCodeListPage},
       {path: 'supervisor-codes', component: SupervisorCodeListPage},
+      {path: 'supervisor-offerings', component: SupervisorOfferingListPage},
       {path: 'race-codes', component: RaceCodeListPage},
       {path: 'gender-codes', component: GenderCodeListPage},
       {path: 'ethnicity-codes', component: EthnicityCodeListPage},

@@ -6,6 +6,7 @@ import { ParliamentCodesComponent } from './parliament-codes/component/parliamen
 import { StudyModesComponent } from './study-modes/component/study-mode';
 import { SubjectCodesComponent } from './subject-codes/component/subject-code';
 import { SupervisorCodesComponent } from './supervisor-codes/component/supervisor-code';
+import { SupervisorOfferingsComponent } from './supervisor-offerings/component/supervisor-offering';
 import { VenueCodesComponent } from './venue-codes/component/venue-code';
 import { StudyCenterCodesComponent } from './study-center-codes/component/study-center-code';
 import { StateCodesComponent } from './state-codes/component/state-code';
@@ -135,6 +136,10 @@ import {ReligionCodeListPage} from './religion-codes/religion-code-list.page';
 import {CommonModule} from '../../common/index';
 import {IntakeSessionSubModule} from '../policy/intake-sessions/index';
 import {venueCodeListReducer, VenueCodeListState} from './venue-codes/venue-code-list.reducer';
+import { SupervisorOfferingListState, supervisorOfferingListReducer } from './supervisor-offerings/supervisor-offering-list.reducer';
+import { SupervisorOffering } from '../../shared/model/common/supervisor-offering.interface';
+import { SupervisorOfferingListPage } from './supervisor-offerings/supervisor-offering-list.page';
+import { SupervisorOfferingEditorDialog } from './supervisor-offerings/dialog/supervisor-offering-editor.dialog';
 
 
 export interface SetupModuleState {
@@ -148,6 +153,7 @@ export interface SetupModuleState {
   stateCodes: StateCodeListState;
   programCodes: ProgramCodeListState;
   supervisorCodes: SupervisorCodeListState;
+  supervisorOfferings: SupervisorOfferingListState;
   raceCodes: RaceCodeListState;
   genderCodes: GenderCodeListState;
   ethnicityCodes: EthnicityCodeListState;
@@ -175,6 +181,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     graduateCenters: <GraduateCenter[]>[],
     religionCodes: <ReligionCode[]>[],
     supervisorCodes: <SupervisorCode[]>[],
+    supervisorOfferings: <SupervisorOffering[]>[],
     programCodes: <ProgramCode[]>[],
     stateCodes: <StateCode[]>[],
     countryCodes: <CountryCode[]>[],
@@ -208,6 +215,7 @@ export const setupModuleReducers = {
   stateCodes: stateCodeListReducer,
   programCodes: programCodeListReducer,
   supervisorCodes: supervisorCodeListReducer,
+  supervisorOfferings: supervisorOfferingListReducer,
   raceCodes: raceCodeListReducer,
   venueCodes: venueCodeListReducer,
   genderCodes: genderCodeListReducer,
@@ -252,6 +260,7 @@ export const setupModuleReducers = {
     StateCodeListPage,
     ProgramCodeListPage,
     SupervisorCodeListPage,
+    SupervisorOfferingListPage,
     RaceCodeListPage,
     GenderCodeListPage,
     EthnicityCodeListPage,
@@ -279,6 +288,7 @@ export const setupModuleReducers = {
     ProgramCodeEditorDialog,
     ReligionCodeEditorDialog,
     SupervisorCodeEditorDialog,
+    SupervisorOfferingEditorDialog,
     RaceCodeEditorDialog,
     GenderCodeEditorDialog,
     EthnicityCodeEditorDialog,
@@ -318,6 +328,7 @@ export const setupModuleReducers = {
     StudyModesComponent,
     SubjectCodesComponent,
     SupervisorCodesComponent,
+    SupervisorOfferingsComponent,
     VenueCodesComponent,
     
 
@@ -336,6 +347,7 @@ export const setupModuleReducers = {
     StateCodeEditorDialog,
     ProgramCodeEditorDialog,
     SupervisorCodeEditorDialog,
+    SupervisorOfferingEditorDialog,
     GenderCodeEditorDialog,
     EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
