@@ -1,6 +1,8 @@
 package my.edu.umk.pams.intake.web.module.account.controller;
 
 import org.jfree.util.Log;
+import org.joda.time.LocalDate;
+import org.joda.time.Period;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import java.util.Date;
 import java.util.List;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
@@ -29,6 +33,7 @@ import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
+import my.edu.umk.pams.intake.system.service.SystemService;
 import my.edu.umk.pams.intake.web.module.account.vo.AddressChange;
 import my.edu.umk.pams.intake.web.module.account.vo.EmailChange;
 import my.edu.umk.pams.intake.web.module.account.vo.MyIntakeApplication;
@@ -88,6 +93,9 @@ public class ApplicantAccountController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+    
+    @Autowired
+    private SystemService systemService;
 
     // ====================================================================================================
     // DASHBOARD
@@ -96,6 +104,12 @@ public class ApplicantAccountController {
     @RequestMapping(value = "/intakes/flowState/{flowState}", method = RequestMethod.GET)
     public ResponseEntity<List<Intake>> findIntakesByFlowState(@PathVariable String flowState) {
         List<InIntake> intakes = policyService.findIntakesByFlowState(InFlowState.valueOf(flowState));
+        return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/intakes", method = RequestMethod.GET)
+    public ResponseEntity<List<Intake>> findIntakes() {
+    	List<InIntake> intakes = policyService.findIntakesByEndDate(); // todo(uda): pagination
         return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
     }
 

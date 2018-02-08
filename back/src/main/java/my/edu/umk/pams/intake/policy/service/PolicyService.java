@@ -110,6 +110,8 @@ public interface PolicyService {
     InIntake findIntakeBySessionAndCategory(InIntakeSession session, InProgramLevel category);
 
     List<InIntake> findIntakes();
+    
+    List<InIntake> findIntakesByEndDate();
 
     List<InIntake> findIntakesByFlowState(InFlowState flowState);
 

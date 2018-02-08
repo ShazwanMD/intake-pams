@@ -23,6 +23,10 @@ public class InSupervisorOfferingImpl implements InSupervisorOffering {
     @ManyToOne(targetEntity = InProgramLevelImpl.class)
     @JoinColumn(name = "PRGM_LEVEL_CODE_ID")
     private InProgramLevel programLevel;
+    
+    @ManyToOne(targetEntity = InIntakeImpl.class)
+    @JoinColumn(name = "INTAKE_ID")
+    private InIntake intake;
 
     @Embedded
     private InMetadata metadata;
@@ -65,9 +69,20 @@ public class InSupervisorOfferingImpl implements InSupervisorOffering {
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }
-
+    
     @Override
     public Class<?> getInterfaceClass() {
         return InSupervisorOffering.class;
     }
+
+	@Override
+	public InIntake getIntake() {
+		return intake;
+	}
+
+	@Override
+	public void setIntake(InIntake intake) {
+		this.intake = intake;
+	}
+
 }

@@ -15,4 +15,12 @@ public interface InSupervisorOffering extends InMetaObject {
 
 	void setProgramLevel(InProgramLevel programLevel);
 
+	InIntake getIntake();
+	
+	void setIntake(InIntake intake);
+	
+	
+	
+
+
 }

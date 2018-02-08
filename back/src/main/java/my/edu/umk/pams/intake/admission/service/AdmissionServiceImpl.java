@@ -198,6 +198,11 @@ public class AdmissionServiceImpl implements AdmissionService {
 	// CANDIDATE
 	// ====================================================================================================
 
+    @Override
+    public InCandidate findCandidateById(Long id) {
+        return candidateDao.findById(id);
+    }
+	
 	@Override
 	public InCandidate findCandidateByIdentityNo(String identityNo) {
 		return candidateDao.findByIdentityNo(identityNo);
@@ -445,6 +450,12 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidate.setSupervisorSelection(application.getSupervisorSelection());
 		candidate.setRegistration(false);
 		candidate.setApplication(application);
+		candidate.setAuditNo(application.getIntake().getAuditNo());
+		candidate.setReferenceNo(application.getIntake().getReferenceNo());
+		candidate.setCancelComment(application.getIntake().getCancelComment());
+		candidate.setSourceNo(application.getIntake().getSourceNo());
+		candidate.setDescriptionEn(application.getIntake().getDescriptionEn());
+		candidate.setDescriptionMs(application.getIntake().getDescriptionMs());
 		candidateDao.save(candidate, securityService.getCurrentUser());
 
 	}

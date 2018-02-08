@@ -33,6 +33,8 @@ public interface InIntakeDao extends GenericDao<Long, InIntake> {
     InStudyModeOffering findModeOfferingById(Long id);
 
     InStudyModeOffering findModeOfferingByIntakeAndMode(InIntake intake, InStudyMode studyMode);
+    
+    List<InIntake> findByEndDate();
 
     List<InIntake> findByFlowState(InFlowState flowState);
 

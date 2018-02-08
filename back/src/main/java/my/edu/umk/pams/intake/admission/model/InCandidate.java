@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.admission.model;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.core.InMetaObject;
+import my.edu.umk.pams.intake.core.model.InDocument;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
@@ -12,7 +13,7 @@ import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 /**
  * @author PAMS
  */
-public interface InCandidate extends InMetaObject {
+public interface InCandidate extends InMetaObject, InDocument {
 
 	String getName();
 

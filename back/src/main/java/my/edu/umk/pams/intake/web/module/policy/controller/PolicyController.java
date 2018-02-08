@@ -155,7 +155,7 @@ public class PolicyController {
 
     @RequestMapping(value = "/intakes/", method = RequestMethod.GET)
     public ResponseEntity<List<Intake>> findIntakes() {
-        List<InIntake> intakes = policyService.findIntakes(); // todo(uda): pagination
+        List<InIntake> intakes = policyService.findIntakesByEndDate(); // todo(uda): pagination
         return new ResponseEntity<List<Intake>>(policyTransformer.toIntakeVos(intakes), HttpStatus.OK);
     }
 

@@ -20,6 +20,12 @@ export class AccountEffects {
               private ctxActions: ApplicationContextActions) {
   }
 
+  @Effect() findIntakes$ = this.actions$
+  .ofType(AccountActions.FIND_INTAKES)
+  .map((action) => action.payload)
+  .switchMap(() => this.accountService.findIntakes())
+  .map((intakes) => this.accountActions.findIntakesSuccess(intakes));
+
   @Effect() findPublishedIntakes$ = this.actions$
     .ofType(AccountActions.FIND_PUBLISHED_INTAKES)
     .switchMap(() => this.accountService.findPublishedIntakes())

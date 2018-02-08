@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.admission.model;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
+import my.edu.umk.pams.intake.core.InFlowdata;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InApplicant;
 import my.edu.umk.pams.intake.identity.model.InApplicantImpl;
@@ -70,9 +71,33 @@ public class InCandidateImpl implements InCandidate {
     @OneToOne(targetEntity = InIntakeImpl.class)
     @JoinColumn(name = "INTAKE_ID")
     private InIntake intake;
+    
+    @Column(name = "REFERENCE_NO", unique = true, nullable = false)
+    private String referenceNo; // programLevel + session  DIPLOMA/201420151
+    
+    @Column(name = "SOURCE_NO", nullable = false)
+    private String sourceNo;
+
+    @Column(name = "AUDIT_NO", unique = true, nullable = false)
+    private String auditNo;
+    
+    @Column(name = "DESCRIPTION_EN", nullable = false)
+    private String descriptionEn;
+    
+    @Column(name = "DESCRIPTION_MS", nullable = false)
+    private String descriptionMs;
+    
+    @Column(name = "CANCEL_COMMENT", unique = true)
+    private String cancelComment;
+
+    @Column(name = "REMOVE_COMMENT", unique = true)
+    private String removeComment;
 
     @Embedded
     private InMetadata metadata;
+    
+    @Embedded
+    private InFlowdata flowdata;
 
     @Override
     public Long getId() {
@@ -233,9 +258,87 @@ public class InCandidateImpl implements InCandidate {
     public void setMetadata(InMetadata metadata) {
         this.metadata = metadata;
     }
+    
+     
 
     @Override
     public Class<?> getInterfaceClass() {
         return InCandidate.class;
+    }
+
+    @Override
+    public String getReferenceNo() {
+        return referenceNo;
+    }
+
+    @Override
+    public void setReferenceNo(String referenceNo) {
+        this.referenceNo = referenceNo;
+    }
+
+    @Override
+    public String getSourceNo() {
+        return sourceNo;
+    }
+
+    @Override
+    public void setSourceNo(String sourceNo) {
+        this.sourceNo = sourceNo;
+    }
+
+    @Override
+    public String getAuditNo() {
+        return auditNo;
+    }
+
+    @Override
+    public void setAuditNo(String auditNo) {
+        this.auditNo = auditNo;
+    }
+
+    public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+
+	public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+    @Override
+    public String getCancelComment() {
+        return cancelComment;
+    }
+
+    @Override
+    public void setCancelComment(String cancelComment) {
+        this.cancelComment = cancelComment;
+    }
+
+    @Override
+    public String getRemoveComment() {
+        return removeComment;
+    }
+
+    @Override
+    public void setRemoveComment(String removeComment) {
+        this.removeComment = removeComment;
+    }
+
+    @Override
+    public InFlowdata getFlowdata() {
+        return flowdata;
+    }
+
+    @Override
+    public void setFlowdata(InFlowdata flowdata) {
+        this.flowdata = flowdata;
     }
 }
