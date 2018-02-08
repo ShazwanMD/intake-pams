@@ -76,4 +76,8 @@ public interface AdmissionService {
 	
 	boolean isMatricNoExists(String matricNo);
 
+	InCandidate findCandidateById(Long id);
+
+
+
 }
