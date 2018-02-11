@@ -91,10 +91,12 @@
       <md-tab label="Open Intakes">
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
           <div *ngIf="(intakes$ | async)?.length === 0"><span>There is no open intake at the moment. Please check again later</span>
-          </div>         
+          </div>
+  
           <template let-intake let-last="last" ngFor [ngForOf]="intakes$ | async ">
+            
             <div flex-md="60" flex-gt-md="40" layout="column">
-                <div *ngIf="intake.flowState === 'PUBLISHED'  || intake.flowState === 'EVALUATED'">
+                <div *ngIf="intake.flowState === 'PUBLISHED' || intake.flowState === 'EVALUATED' ">    
               <md-card  href class="md-card-colored" flex>
                 <md-card-title>{{intake.startDate | date:'MMM' | uppercase}} {{intake.startDate | date:'y'}} INTAKE </md-card-title>
                 <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
@@ -117,7 +119,7 @@
                 </md-card-content>
               </md-card>
             </div>
-          </div>
+              </div>
           </template>
         </div>
 

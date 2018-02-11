@@ -120,6 +120,14 @@ public class IntegrationController {
 				faculty.setPrefix(payload.getCode()); // prefix
 				faculty.setDescriptionMs(payload.getDescription());
 				faculty.setDescriptionEn(payload.getDescription());
+				
+				if (payload.getCode().equals("A10")) {
+					faculty.setGraduateCenter(commonService.findGraduateCenterByCode("MGSEB"));
+				} else if (payload.getCode().substring(0, 1).equals("A")) {
+					faculty.setGraduateCenter(commonService.findGraduateCenterByCode("CPS"));
+				} else {
+					faculty.setGraduateCenter(null);
+				}
 				commonService.saveFacultyCode(faculty);
 			}
 		}

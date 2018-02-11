@@ -33,7 +33,7 @@ export class DashboardPage implements OnInit, OnDestroy {
     } else if (this.authzService.hasRole('ROLE_PTJ') && this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(PtjDashboardPanel);
      
-    } else if (this.authzService.hasRole('ROLE_FCTY') && this.authzService.hasRole('ROLE_USER')) {
+    } else if (this.authzService.hasRole('ROLE_FCTY') &&  this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(FacultyDashboardPanel);
 
     } else if (this.authzService.hasRole('ROLE_MGT') && this.authzService.hasRole('ROLE_USER')) {

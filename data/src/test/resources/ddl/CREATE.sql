@@ -430,6 +430,7 @@ create table IN_ACTR (
         M_ST int4,
         PREFIX varchar(255),
         CAMPUS_CODE_ID int8,
+        GRADUATE_CENTER_ID int8,
         primary key (ID)
     ); 
     create table IN_FILD_CODE (
@@ -1524,6 +1525,10 @@ create table IN_ACTR (
         add constraint FK6B49ECA52E5025E 
         foreign key (GRADUATE_CENTER_ID) 
         references IN_GRDT_CNTR; 
+    alter table IN_FCTY_CODE 
+        add constraint FK6B49ECA52E502FFDDSS5E 
+        foreign key (GRADUATE_CENTER_ID) 
+        references IN_GRDT_CNTR;      
     alter table IN_PRGM_CODE 
         add constraint FK6B49ECAACAEA1D7 
         foreign key (PROGRAM_LEVEL_ID) 
