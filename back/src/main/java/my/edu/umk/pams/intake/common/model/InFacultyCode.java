@@ -23,5 +23,9 @@ public interface InFacultyCode extends InMetaObject {
 	InCampusCode getCampusCode();
 
 	void setCampusCode(InCampusCode campusCode);
+	
+	InGraduateCenter getGraduateCenter();
+	
+	void setGraduateCenter(InGraduateCenter graduateCenter);
 
 }

@@ -37,6 +37,10 @@ public class InFacultyCodeImpl implements InFacultyCode {
     @JoinColumn(name = "CAMPUS_CODE_ID")
     private InCampusCode campusCode;
     
+    @OneToOne(targetEntity = InGraduateCenterImpl.class)
+    @JoinColumn(name = "GRADUATE_CENTER_ID")
+    private InGraduateCenter graduateCenter;
+    
     @Embedded
     private InMetadata metadata;
 
@@ -114,4 +118,14 @@ public class InFacultyCodeImpl implements InFacultyCode {
     public Class<?> getInterfaceClass() {
         return InFacultyCode.class;
     }
+
+	@Override
+	public InGraduateCenter getGraduateCenter() {
+		return graduateCenter;
+	}
+
+	@Override
+	public void setGraduateCenter(InGraduateCenter graduateCenter) {
+		this.graduateCenter = graduateCenter;
+	}
 }

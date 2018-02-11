@@ -54,12 +54,12 @@ public class CPSIntakeRouterStrategy extends RouterStrategySupport {
 
     @Override
     public List<String> findVerifierCandidates() {
-        return Arrays.asList("GRP_KRN_ADM_A09", "GRP_ADM");   //cps-kerani , root
+        return Arrays.asList("GRP_KRN_FCTY_A01","GRP_PGW_FCTY_A01","GRP_KRN_ADM_A09", "GRP_ADM");   //cps-kerani , root
     }
 
     @Override
     public List<String> findPublisherCandidates() {
-        return Arrays.asList("GRP_PGW_ADM_A09", "GRP_ADM");   //cps-pegawai , root
+        return Arrays.asList("GRP_KRN_FCTY_A01","GRP_PGW_FCTY_A01","GRP_PGW_ADM_A09", "GRP_ADM");   //cps-pegawai , root
     }
     
 //    @Override
@@ -69,7 +69,7 @@ public class CPSIntakeRouterStrategy extends RouterStrategySupport {
 
     @Override
     public List<String> findEvaluatorCandidates() {
-        return Arrays.asList("GRP_PGW_ADM_A09", "GRP_PGW_PTJ_IO", "GRP_ADM");   //cps-pegawai , io-pegawai, root
+        return Arrays.asList("GRP_KRN_FCTY_A01","GRP_FCTY","GRP_PGW_ADM_A09", "GRP_PGW_PTJ_IO", "GRP_ADM");   //cps-pegawai , io-pegawai, root
     }
 
     @Override
