@@ -20,6 +20,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import groovy.util.logging.Log;
+
 import java.util.List;
 
 @RestController
@@ -518,9 +520,9 @@ public class CommonController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/supervisorOfferings/{offering}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> removeSupervisorOfferings(@PathVariable String offering) {
-        InSupervisorOffering supervisorOffering = commonService.findSupervisorOfferingByCode(offering);
+    @RequestMapping(value = "/supervisorOfferings/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeSupervisorOfferings(@PathVariable long id) {
+        InSupervisorOffering supervisorOffering = commonService.findSupervisorOfferingById(id);
         commonService.removeSupervisorOfferings(supervisorOffering);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
