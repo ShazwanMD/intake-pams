@@ -3,9 +3,15 @@ package my.edu.umk.pams.intake.web.module.common.controller;
 import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.common.service.CommonService;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
+import my.edu.umk.pams.intake.policy.model.InProgramLevelImpl;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.web.module.common.vo.*;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramLevel;
+import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -469,7 +475,55 @@ public class CommonController {
         commonService.removeSupervisorCode(supervisorCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    //====================================================================================================
+    // SUPERVISOR OFFERINGS
+    //====================================================================================================
 
+    @RequestMapping(value = "/supervisorOfferings", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings() {
+        return new ResponseEntity<List<SupervisorOffering>>(commonTransformer.toSupervisorOfferingVos(commonService.findSupervisorOfferings()), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/supervisorOfferings/byFilter/{filter}", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String filter) {
+        List<InSupervisorOffering> supervisorOfferings = commonService.findSupervisorOfferings(filter, 0, Integer.MAX_VALUE);
+        return new ResponseEntity<List<SupervisorOffering>>(
+                commonTransformer.toSupervisorOfferingVos(supervisorOfferings), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/supervisorOfferings/{offering}", method = RequestMethod.GET)
+    public ResponseEntity<SupervisorOffering> findSupervisorOffering(@PathVariable String offering) {
+        return new ResponseEntity<SupervisorOffering>(commonTransformer.toSupervisorOfferingVo(commonService.findSupervisorOfferingByCode(offering)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/supervisorOfferings", method = RequestMethod.POST)
+    public ResponseEntity<String> saveSupervisorOfferings(@RequestBody SupervisorOffering vo) {
+
+        InSupervisorOffering supervisorOffering = new InSupervisorOfferingImpl();
+        supervisorOffering.setSupervisorCode(commonService.findSupervisorCodeById(vo.getSupervisorCode().getId()));
+        supervisorOffering.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
+        commonService.saveSupervisorOffering(supervisorOffering);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/supervisorOfferings/{offering}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateSupervisorOfferings(@PathVariable String offering, @RequestBody SupervisorOffering vo) {
+        dummyLogin();
+
+        InSupervisorOffering supervisorOffering = commonService.findSupervisorOfferingById(vo.getId());
+        supervisorOffering.setSupervisorCode(commonService.findSupervisorCodeById(vo.getSupervisorCode().getId()));
+        supervisorOffering.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
+        commonService.updateSupervisorOfferings(supervisorOffering);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/supervisorOfferings/{offering}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeSupervisorOfferings(@PathVariable String offering) {
+        InSupervisorOffering supervisorOffering = commonService.findSupervisorOfferingByCode(offering);
+        commonService.removeSupervisorOfferings(supervisorOffering);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
     //====================================================================================================
     // STUDY MODES
     //====================================================================================================

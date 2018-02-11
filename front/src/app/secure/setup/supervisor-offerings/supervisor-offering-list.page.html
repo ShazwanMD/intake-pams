@@ -1,0 +1,7 @@
+<md-card class="">
+  <pams-supervisor-offering-list [supervisorOfferings]="supervisorOfferings$ | async" (editDialog)="editDialog($event)" (delete)="delete($event)">
+  </pams-supervisor-offering-list>
+</md-card>
+<a md-fab color="accent" class="mat-fab-top-right" (click)="createDialog()">
+  <md-icon>add</md-icon>
+</a>

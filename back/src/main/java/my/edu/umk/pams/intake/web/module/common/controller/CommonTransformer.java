@@ -2,10 +2,15 @@ package my.edu.umk.pams.intake.web.module.common.controller;
 
 import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.core.InMetaObject;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
+import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.web.module.common.vo.*;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
+import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
+import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,6 +22,10 @@ import java.util.stream.Collectors;
 @Component("commonTransformer")
 public class CommonTransformer {
 
+	
+	 @Autowired
+	 private PolicyTransformer policyTransformer;
+	   
     // ====================================================================================================
     // GRADUATE CENTER
     // ====================================================================================================
@@ -170,6 +179,23 @@ public class CommonTransformer {
 
     public List<SupervisorCode> toSupervisorCodeVos(List<InSupervisorCode> e) {
         List<SupervisorCode> vos = e.stream().map((e1) -> toSupervisorCodeVo(e1)).collect(Collectors.toList());
+        return vos;
+    }
+    
+    // ====================================================================================================
+    // SUPERVISOR OFFERING
+    // ====================================================================================================
+
+    public SupervisorOffering toSupervisorOfferingVo(InSupervisorOffering e) {
+        SupervisorOffering vo = new SupervisorOffering();
+        vo.setId(e.getId());
+        vo.setSupervisorCode(this.toSupervisorCodeVo(e.getSupervisorCode()));
+        vo.setProgramLevel(policyTransformer.toProgramLevelVo(e.getProgramLevel()));
+        return vo;
+    }
+
+    public List<SupervisorOffering> toSupervisorOfferingVos(List<InSupervisorOffering> e) {
+        List<SupervisorOffering> vos = e.stream().map((e1) -> toSupervisorOfferingVo(e1)).collect(Collectors.toList());
         return vos;
     }
 

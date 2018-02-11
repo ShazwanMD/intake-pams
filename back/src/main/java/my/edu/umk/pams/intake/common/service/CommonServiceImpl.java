@@ -3,6 +3,7 @@ package my.edu.umk.pams.intake.common.service;
 import my.edu.umk.pams.intake.common.dao.*;
 import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -125,6 +126,9 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private InSupervisorCodeDao supervisorCodeDao;
+    
+    @Autowired
+    private InSupervisorOfferingDao supervisorOfferingDao;
 
     @Autowired
     private SecurityService securityService;
@@ -2122,6 +2126,79 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public void removeSupervisorCode(InSupervisorCode supervisorCode) {
         supervisorCodeDao.remove(supervisorCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    //====================================================================================================
+    // SUPERVISOR OFFERING
+    //====================================================================================================
+
+    @Override
+    public InSupervisorOffering findSupervisorOfferingById(Long id) {
+        return supervisorOfferingDao.findById(id);
+    }
+
+    @Override
+    public InSupervisorOffering findSupervisorOfferingByCode(String offering) {
+        return supervisorOfferingDao.findByCode(offering);
+    }
+    
+//    @Override
+//    public InSupervisorOffering findSupervisorOfferingByName(String name) {
+//        return supervisorOfferingDao.findByName(name);
+//    }
+//
+
+    @Override
+    public List<InSupervisorOffering> findSupervisorOfferings() {
+        return supervisorOfferingDao.find();
+    }
+
+    @Override
+    public List<InSupervisorOffering> findSupervisorOfferings(InFacultyCode facultyCode) {
+        throw new UnsupportedOperationException(); // todo:
+    }
+
+    @Override
+    public List<InSupervisorOffering> findSupervisorOfferings(String filter, Integer offset, Integer limit) {
+        return supervisorOfferingDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countSupervisorOffering() {
+        return supervisorOfferingDao.count();
+    }
+
+//    @Override
+//    public Integer countSupervisorOffering(InFacultyOffering facultyOffering) {
+//        throw new UnsupportedOperationException(); // todo:
+//    }
+
+    @Override
+    public Integer countSupervisorOffering(String filter) {
+        return supervisorOfferingDao.count(filter);
+    }
+
+//    @Override
+//    public boolean isSupervisorOfferingExists(String offering) {
+//        return supervisorOfferingDao.isExists(offering);
+//    }
+
+    @Override
+    public void saveSupervisorOffering(InSupervisorOffering supervisorOffering) {
+        supervisorOfferingDao.save(supervisorOffering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateSupervisorOfferings(InSupervisorOffering supervisorOffering) {
+        supervisorOfferingDao.update(supervisorOffering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeSupervisorOfferings(InSupervisorOffering supervisorOffering) {
+        supervisorOfferingDao.delete(supervisorOffering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 }

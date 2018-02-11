@@ -283,6 +283,42 @@ export class SetupEffects {
     .map((message) => this.setupActions.removeSupervisorCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findSupervisorCodes()]));
 
+// ====================================================================================================
+  // SUPERVISOR OFFERING
+  // ====================================================================================================
+
+  @Effect() findSupervisorOfferings$ = this.actions$
+  .ofType(SetupActions.FIND_SUPERVISOR_OFFERINGS)
+  .map((action) => action.payload)
+  .switchMap(() => this.commonService.findSupervisorOfferings())
+  .map((offerings) => this.setupActions.findSupervisorOfferingsSuccess(offerings));
+
+@Effect() findSupervisorOfferingsByFilter$ = this.actions$
+  .ofType(SetupActions.FIND_SUPERVISOR_OFFERINGS_BY_FILTER)
+  .map((action) => action.payload)
+  .switchMap((filter) => this.commonService.findSupervisorOfferingsByFilter(filter))
+  .map((offerings) => this.setupActions.findSupervisorOfferingsByFilterSuccess(offerings));
+
+@Effect() saveSupervisorOfferings$ = this.actions$
+  .ofType(SetupActions.SAVE_SUPERVISOR_OFFERING)
+  .map((action) => action.payload)
+  .switchMap((payload) => this.commonService.saveSupervisorOfferings(payload))
+  .map((message) => this.setupActions.saveSupervisorOfferingsSuccess(message))
+  .mergeMap((action) => from([action, this.setupActions.findSupervisorOfferings()]));
+
+@Effect() updateSupervisorOfferings$ = this.actions$
+  .ofType(SetupActions.UPDATE_SUPERVISOR_OFFERING)
+  .map((action) => action.payload)
+  .switchMap((payload) => this.commonService.updateSupervisorOfferings(payload))
+  .map((message) => this.setupActions.updateSupervisorOfferingsSuccess(message))
+  .mergeMap((action) => from([action, this.setupActions.findSupervisorOfferings()]));
+
+@Effect() removeSupervisorOfferings$ = this.actions$
+  .ofType(SetupActions.REMOVE_SUPERVISOR_OFFERING)
+  .map((action) => action.payload)
+  .switchMap((payload) => this.commonService.removeSupervisorOfferings(payload))
+  .map((message) => this.setupActions.removeSupervisorOfferingsSuccess(message))
+  .mergeMap((action) => from([action, this.setupActions.findSupervisorOfferings()]));
   // ====================================================================================================
   // RACE CODE
   // ====================================================================================================

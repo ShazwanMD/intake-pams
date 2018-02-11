@@ -756,7 +756,109 @@ export class SetupActions {
       payload: message,
     };
   }
+//=================================================================================//
+//  SUPERVISOR OFFERINGS                                                                    //
+//=================================================================================//
 
+static SAVE_SUPERVISOR_OFFERING = '[Setup] Save Supervisor Offering';
+
+  saveSupervisorOfferings(offering): Action {
+    console.log('saveSupervisorOfferings');
+    return {
+      type: SetupActions.SAVE_SUPERVISOR_OFFERING,
+      payload: offering,
+    };
+  }
+
+  static SAVE_SUPERVISOR_OFFERING_SUCCESS = '[Setup] Save Supervisor Offering Success';
+
+  saveSupervisorOfferingsSuccess(message): Action {
+    console.log('saveSupervisorOfferingsSuccess');
+    return {
+      type: SetupActions.SAVE_SUPERVISOR_OFFERING_SUCCESS,
+      payload: message,
+    };
+  }
+
+  static FIND_SUPERVISOR_OFFERINGS = '[Common] Find SupervisorOfferings';
+
+  findSupervisorOfferings(): Action {
+    console.log('findSupervisorOfferings');
+    return {
+      type: SetupActions.FIND_SUPERVISOR_OFFERINGS,
+    };
+  }
+
+  static FIND_SUPERVISOR_OFFERINGS_SUCCESS = '[Common] Find SupervisorOfferings Success';
+
+  findSupervisorOfferingsSuccess(offerings): Action {
+    console.log('findSupervisorOfferingsSuccess');
+    return {
+      type: SetupActions.FIND_SUPERVISOR_OFFERINGS_SUCCESS,
+      payload: offerings,
+    };
+  }
+
+  static FIND_SUPERVISOR_OFFERINGS_BY_FILTER = '[Common] Find SupervisorOfferings By Filter';
+
+  findSupervisorOfferingsByFilter(filter): Action {
+    console.log('findSupervisorOfferingsByFilter');
+    return {
+      type: SetupActions.FIND_SUPERVISOR_OFFERINGS_BY_FILTER,
+      payload: filter,
+    };
+  }
+
+  static FIND_SUPERVISOR_OFFERINGS_BY_FILTER_SUCCESS = '[Common] Find SupervisorOfferings By Filter Success';
+
+  findSupervisorOfferingsByFilterSuccess(offerings): Action {
+    console.log('findSupervisorOfferingsByFilterSuccess');
+    return {
+      type: SetupActions.FIND_SUPERVISOR_OFFERINGS_BY_FILTER_SUCCESS,
+      payload: offerings,
+    };
+  }
+
+  static REMOVE_SUPERVISOR_OFFERING = '[Setup] Remove Supervisor Offerings';
+
+  removeSupervisorOfferings(offering): Action {
+    console.log('removeSupervisorOfferings');
+    return {
+      type: SetupActions.REMOVE_SUPERVISOR_OFFERING,
+      payload: offering,
+    };
+  }
+
+  static REMOVE_SUPERVISOR_OFFERING_SUCCESS = '[Setup] Remove Supervisor Offering Success';
+
+  removeSupervisorOfferingsSuccess(message): Action {
+    console.log('removeSupervisorOfferingsSuccess');
+    return {
+      type: SetupActions.REMOVE_SUPERVISOR_OFFERING_SUCCESS,
+      payload: message,
+    };
+  }
+
+  static UPDATE_SUPERVISOR_OFFERING = '[Setup] Update Supervisor Offering';
+
+  updateSupervisorOfferings(offering): Action {
+    console.log('updateSupervisorOfferings');
+    return {
+      type: SetupActions.UPDATE_SUPERVISOR_OFFERING,
+      payload: offering,
+    };
+  }
+
+  static UPDATE_SUPERVISOR_OFFERING_SUCCESS = '[Setup] Update Supervisor Offering Success';
+
+  updateSupervisorOfferingsSuccess(message): Action {
+    console.log('updateSupervisorOfferingsSuccess');
+    return {
+      type: SetupActions.UPDATE_SUPERVISOR_OFFERING_SUCCESS,
+      payload: message,
+    };
+  }
+  
 //=================================================================================//
 //  RACE_CODES                                                                     //
 //=================================================================================//

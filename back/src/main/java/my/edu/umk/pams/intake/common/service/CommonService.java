@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.common.service;
 
 import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
+import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 
 import java.util.List;
 
@@ -36,7 +37,7 @@ public interface CommonService {
 	InCountryCode findCountryCodeByCode(String code);
 
 	List<InCountryCode> findCountryCodes();
-	
+
 	List<InCountryCode> findCountryCodes(String filter, Integer offset, Integer limit);
 
 	Integer countCountryCode(String filter);
@@ -88,9 +89,9 @@ public interface CommonService {
 	InDistrictCode findDistrictCodeByCode(String code);
 
 	List<InDistrictCode> findDistrictCodes(InStateCode stateCod, Integer offset, Integer limit);
-	
+
 	List<InDistrictCode> findDistrictCodes();
-	
+
 	List<InDistrictCode> findDistrictCodes(String filter, Integer offset, Integer limit);
 
 	List<InDistrictCode> findDistrictCodes(String filter, InStateCode stateCode, Integer offset, Integer limit);
@@ -234,7 +235,7 @@ public interface CommonService {
 	List<InProgramCode> findProgramCodes(InGraduateCenter graduateCenter, InProgramLevel programLevel);
 
 	List<InProgramCode> findProgramCodes(String filter, Integer offset, Integer limit);
-	
+
 	List<InProgramCode> findProgramCodesByProgramLevel(InProgramLevel inProgramLevel, String filter, Integer offset,
 			Integer limit);
 
@@ -783,7 +784,7 @@ public interface CommonService {
 	InSupervisorCode findSupervisorCodeById(Long id);
 
 	InSupervisorCode findSupervisorCodeByCode(String code);
-	
+
 	InSupervisorCode findSupervisorCodeByName(String name);
 
 	List<InSupervisorCode> findSupervisorCodes();
@@ -805,6 +806,35 @@ public interface CommonService {
 	void updateSupervisorCode(InSupervisorCode supervisorCode);
 
 	void removeSupervisorCode(InSupervisorCode supervisorCode);
+
+	// ====================================================================================================
+	// SUPERVISOR OFFERING
+	// ====================================================================================================
+
+	InSupervisorOffering findSupervisorOfferingById(Long id);
+
+	InSupervisorOffering findSupervisorOfferingByCode(String offering);
+
+	List<InSupervisorOffering> findSupervisorOfferings();
+
+	// todo: find supervisoroffering by faculty
+	List<InSupervisorOffering> findSupervisorOfferings(InFacultyCode facultyCode);
+	
+	 List<InSupervisorOffering> findSupervisorOfferings(String filter, Integer
+	 offset, Integer limit);
+
+	Integer countSupervisorOffering();
+
+	// todo: count supervisoroffering by faculty
+	// Integer countSupervisorOffering(InFacultyOffering facultyOffering);
+
+	Integer countSupervisorOffering(String filter);
+
+	void saveSupervisorOffering(InSupervisorOffering supervisorOffering);
+
+	void updateSupervisorOfferings(InSupervisorOffering supervisorOffering);
+
+	void removeSupervisorOfferings(InSupervisorOffering supervisorOffering);
 
 	// ====================================================================================================
 	// STUDY MODE

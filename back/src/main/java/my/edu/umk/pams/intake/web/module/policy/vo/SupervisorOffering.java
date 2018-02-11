@@ -13,6 +13,8 @@ import java.io.IOException;
 public class SupervisorOffering extends MetaObject{
 
     private SupervisorCode supervisorCode;
+    
+    private ProgramLevel programLevel;
 
     public SupervisorCode getSupervisorCode() {
         return supervisorCode;
@@ -20,6 +22,14 @@ public class SupervisorOffering extends MetaObject{
 
     public void setSupervisorCode(SupervisorCode supervisorCode) {
         this.supervisorCode = supervisorCode;
+    }
+    
+    public ProgramLevel getProgramLevel() {
+        return programLevel;
+    }
+
+    public void setProgramLevel(ProgramLevel programLevel) {
+        this.programLevel = programLevel;
     }
 
     @JsonCreator

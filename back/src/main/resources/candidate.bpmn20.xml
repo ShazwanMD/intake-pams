@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions id="definitions"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="Admission">
+
+
+    <!--
+    ====================================================================================================
+    == DRAFTED > VERIFIED > PUBLISHED > COMPLETED
+    == VARIABLE:
+    == candidateId: candidate id
+    ======================================================================================================
+    -->
+
+    <process id="candidate_workflow" name="Candidate Workflow">
+
+        <startEvent id="start"/>
+
+        <sequenceFlow id="flow1.1" sourceRef="start" targetRef="candidate_draft_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : DRAFTED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+         <serviceTask id="candidate_draft_ST"
+                     activiti:expression="#{candidate_draft_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow2.1" sourceRef="candidate_draft_ST"
+                      targetRef="candidate_draft_UT"/>
+
+        <userTask id="candidate_draft_UT" name="my.edu.umk.pams.candidate.admission.model.InCandidate:DRAFTED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                Draft Candidate
+                - Setting Dasar                
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow2.2" sourceRef="candidate_draft_UT" targetRef="candidate_verify_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow2.3" sourceRef="candidate_draft_UT" targetRef="candidate_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+
+        <!--
+        ====================================================================================================
+        == STATE : VERIFIED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="candidate_verify_ST"
+                     activiti:expression="#{candidate_verify_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow7.1" sourceRef="candidate_verify_ST" targetRef="candidate_verify_UT"/>
+
+        <userTask id="candidate_verify_UT" name="my.edu.umk.pams.candidate.admission.model.InCandidate:VERIFIED"
+                  activiti:candidateGroups="${candidateRouterService.findVerifierCandidates(candidateId)}">
+            <documentation>
+                Verify
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow7.2" sourceRef="candidate_verify_UT" targetRef="candidate_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow7.3" sourceRef="candidate_verify_UT" targetRef="candidate_publish_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+
+        <!--
+        ====================================================================================================
+        == STATE : PUBLISHED
+        == SERVICE TASK :
+        == USER TASK :
+        ====================================================================================================
+        -->
+
+        <serviceTask id="candidate_publish_ST"
+                     activiti:expression="#{candidate_publish_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow8.1" sourceRef="candidate_publish_ST" targetRef="candidate_publish_UT"/>
+
+        <userTask id="candidate_publish_UT" name="my.edu.umk.pams.candidate.admission.model.Incandidate:PUBLISHED"
+                  activiti:candidateGroups="${candidateRouterService.findPublisherCandidates(candidateId)}">
+            <documentation>
+                Publish
+            </documentation>
+        </userTask>
+
+        
+
+                <sequenceFlow id="flow8.2" sourceRef="candidate_publish_UT"
+                      targetRef="candidate_complete_ST"/>
+        <!--
+        ====================================================================================================
+        == STATE : REMOVED
+        == SERVICE TASK : removed a candidate
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="candidate_remove_ST"
+                     activiti:expression="#{candidate_remove_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow12.1" sourceRef="candidate_remove_ST" targetRef="end"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : COMPLETED
+        == SERVICE TASK : complete a candidate
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="candidate_complete_ST"
+                     activiti:expression="#{candidate_complete_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow13.1" sourceRef="candidate_complete_ST" targetRef="end"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : END
+        ====================================================================================================
+        -->
+
+        <endEvent id="end"/>
+    </process>
+</definitions>
