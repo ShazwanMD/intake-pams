@@ -23,6 +23,7 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InProgramFieldCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -280,13 +281,13 @@ public class PolicyController {
             LOG.debug("addProgramOfferings");
             InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
             
-            InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
+            InProgramFieldCode programFieldCode = commonService.findProgramFieldCodeById(vo.getProgramFieldCode().getId());
             InProgramOffering offering = new InProgramOfferingImpl();
             offering.setProjection(vo.getProjection());
             offering.setInterview(vo.getInterview());
             offering.setGeneralCriteria("TODO");
             offering.setSpecificCriteria("TODO");
-            offering.setProgramCode(programCode);
+            offering.setProgramFieldCode(programFieldCode);
             // todo: offering.setStudyCenterCode();
             policyService.addProgramOffering(intake, offering);
             
@@ -303,7 +304,7 @@ public class PolicyController {
     public ResponseEntity<String> updateProgramOfferings(@PathVariable String referenceNo, @RequestBody ProgramOffering vo) {
         InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
         InProgramOffering offering = policyService.findProgramOfferingById(vo.getId());
-        InProgramCode programCode = commonService.findProgramCodeById(vo.getProgramCode().getId());
+        InProgramFieldCode programFieldCode = commonService.findProgramFieldCodeById(vo.getProgramFieldCode().getId());
         System.out.println("vo.getInterview() :" + vo.getInterview());
         System.out.println("vo.getGeneralCriteria() :" + vo.getGeneralCriteria());
         System.out.println("vo.getSpecificCriteria() :" + vo.getSpecificCriteria());
@@ -311,7 +312,7 @@ public class PolicyController {
         offering.setInterview(vo.getInterview());
         offering.setGeneralCriteria(vo.getGeneralCriteria());
         offering.setSpecificCriteria(vo.getSpecificCriteria());
-        offering.setProgramCode(programCode);
+        offering.setProgramFieldCode(programFieldCode);
 
         policyService.updateProgramOfferings(intake, offering);
         

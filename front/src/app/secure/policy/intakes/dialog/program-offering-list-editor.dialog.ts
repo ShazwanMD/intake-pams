@@ -10,6 +10,7 @@ import {IntakeActions} from '../intake.action';
 import {ProgramCode} from '../../../../shared/model/common/program-code.interface';
 import {ProgramOffering} from '../../../../shared/model/policy/program-offering.interface';
 import {Intake} from '../../../../shared/model/policy/intake.interface';
+import { ProgramFieldCode } from "../../../../shared/model/common/program-field-code.interface";
 
 @Component({
   selector: 'pams-program-offering-list-editor',
@@ -36,7 +37,7 @@ export class ProgramOfferingListEditorDialog {
   }
 
   set programOffering(programOffering: ProgramOffering) {
-    console.log('programOffering.id :' + programOffering.programCode.id);
+    console.log('programOffering.id :' + programOffering.programFieldCode.programCode.id);
     this._programOffering = programOffering;
     this.edit = true;
   }
@@ -54,9 +55,9 @@ export class ProgramOfferingListEditorDialog {
       interview: true,
       generalCriteria: '',
       specificCriteria: '',
-      programCode: <ProgramCode>{},
+      programFieldCode: <ProgramFieldCode>{},
     });
-    console.log('this._programOffering :' + this._programOffering.programCode);
+    console.log('this._programOffering :' + this._programOffering.programFieldCode.programCode);
     console.log('this._intake :' + this._intake.id);
     if (this.edit) this.editorForm.patchValue(this._programOffering);
   }

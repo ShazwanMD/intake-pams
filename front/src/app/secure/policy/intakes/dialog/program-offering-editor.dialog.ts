@@ -8,6 +8,7 @@ import {PolicyModuleState} from '../../index';
 import {ProgramCode} from '../../../../shared/model/common/program-code.interface';
 import {Intake} from '../../../../shared/model/policy/intake.interface';
 import {ProgramOffering} from '../../../../shared/model/policy/program-offering.interface';
+import { ProgramFieldCode } from "../../../../shared/model/common/program-field-code.interface";
 
 @Component({
   selector: 'pams-program-offering-editor',
@@ -33,7 +34,7 @@ export class ProgramOfferingEditorDialog implements OnInit {
       interview: true,
       generalCriteria: '',
       specificCriteria: '',
-      programCode: <ProgramCode>{},
+      programFieldCode: <ProgramFieldCode>{},
     });
   }
 

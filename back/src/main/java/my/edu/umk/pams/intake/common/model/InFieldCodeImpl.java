@@ -2,6 +2,8 @@ package my.edu.umk.pams.intake.common.model;
 
 import my.edu.umk.pams.intake.core.InMetadata;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -20,8 +22,16 @@ public class InFieldCodeImpl implements InFieldCode {
     private String code;
 
     @NotNull
-    @Column(name = "DESCRIPTION", nullable = false)
-    private String description;
+    @Column(name = "DESCRIPTION_MS", nullable = false)
+    private String descriptionMs;
+    
+    @NotNull
+    @Column(name = "DESCRIPTION_EN", nullable = false)
+    private String descriptionEn;
+
+    @ManyToOne(targetEntity = InFacultyCodeImpl.class)
+    @JoinColumn(name = "FACULTY_CODE_ID", nullable = false)
+    private InFacultyCode facultyCode;
 
     @Embedded
     private InMetadata metadata;
@@ -45,15 +55,36 @@ public class InFieldCodeImpl implements InFieldCode {
     }
 
     @Override
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getDescriptionMs() {
+		return descriptionMs;
+	}
 
     @Override
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+    @Override
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+    @Override
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+
+    @Override
+	public InFacultyCode getFacultyCode() {
+		return facultyCode;
+	}
+
+    @Override
+	public void setFacultyCode(InFacultyCode facultyCode) {
+		this.facultyCode = facultyCode;
+	}
+
+	@Override
     public InMetadata getMetadata() {
         return metadata;
     }

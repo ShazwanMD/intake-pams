@@ -17,6 +17,7 @@ import { ProgramCodesComponent } from './program-codes/component/program-code';
 import { NationalityCodesComponent } from './nationality-codes/component/nationality-code';
 import { LanguageCodesComponent } from './language-codes/component/language-code';
 import { FacultyCodesComponent } from './faculty-codes/component/faculty-code';
+import { FieldCodesComponent } from './field-codes/component/field-code';
 import { RaceCodesComponent } from './race-codes/component/race-code';
 import { EthnicityCodesComponent } from './ethnicity-codes/component/ethnicity-code';
 import { DunCodesComponent } from './dun-codes/component/dun-code';
@@ -53,6 +54,8 @@ import {StudyModeListPage} from './study-modes/study-mode-list.page';
 import {StudyModeEditorDialog} from './study-modes/dialog/study-mode-editor.dialog';
 import {FacultyCodeEditorDialog} from './faculty-codes/dialog/faculty-code-editor.dialog';
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
+import {FieldCodeEditorDialog} from './field-codes/dialog/field-code-editor.dialog';
+import {FieldCodeListPage} from './field-codes/field-code-list.page';
 import {NationalityCodeEditorDialog} from './nationality-codes/dialog/nationality-code-editor.dialog';
 import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
 import {EthnicityCodeEditorDialog} from './ethnicity-codes/dialog/ethnicity-code-editor.dialog';
@@ -140,6 +143,8 @@ import { SupervisorOfferingListState, supervisorOfferingListReducer } from './su
 import { SupervisorOffering } from '../../shared/model/common/supervisor-offering.interface';
 import { SupervisorOfferingListPage } from './supervisor-offerings/supervisor-offering-list.page';
 import { SupervisorOfferingEditorDialog } from './supervisor-offerings/dialog/supervisor-offering-editor.dialog';
+import { FieldCodeListState, fieldCodeListReducer } from "../../common/field-codes/field-code-list.reducer";
+import { FieldCode } from "../../shared/model/common/field-code.interface";
 
 
 export interface SetupModuleState {
@@ -159,6 +164,7 @@ export interface SetupModuleState {
   ethnicityCodes: EthnicityCodeListState;
   nationalityCodes: NationalityCodeListState;
   facultyCodes: FacultyCodeListState;
+  fieldCodes: FieldCodeListState;
   studyModes: StudyModeListState;
   disabilityCodes: DisabilityCodeListState;
   schoolCodes: SchoolCodeListState;
@@ -191,6 +197,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     ethnicityCodes: <EthnicityCode[]>[],
     nationalityCodes: <NationalityCode[]>[],
     facultyCodes: <FacultyCode[]>[],
+    fieldCodes: <FieldCode[]>[],
     studyModes: <StudyMode[]>[],
     disabilityCodes: <DisabilityCode[]>[],
     schoolCodes: <SchoolCode[]>[],
@@ -222,6 +229,7 @@ export const setupModuleReducers = {
   ethnicityCodes: ethnicityCodeListReducer,
   nationalityCodes: nationalityCodeListReducer,
   facultyCodes: facultyCodeListReducer,
+  fieldCodes: fieldCodeListReducer,
   studyModes: studyModeListReducer,
   disabilityCodes: disabilityCodeListReducer,
   schoolCodes: schoolCodeListReducer,
@@ -266,6 +274,7 @@ export const setupModuleReducers = {
     EthnicityCodeListPage,
     NationalityCodeListPage,
     FacultyCodeListPage,
+    FieldCodeListPage,
     StudyModeListPage,
     DisabilityCodeListPage,
     SchoolCodeListPage,
@@ -294,6 +303,7 @@ export const setupModuleReducers = {
     EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
     FacultyCodeEditorDialog,
+    FieldCodeEditorDialog,
     StudyModeEditorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,
@@ -312,6 +322,7 @@ export const setupModuleReducers = {
     DunCodesComponent,
     EthnicityCodesComponent,
     FacultyCodesComponent,
+    FieldCodesComponent,
     GenderCodesComponent,
     GradeCodesComponent,
     LanguageCodesComponent,
@@ -352,6 +363,7 @@ export const setupModuleReducers = {
     EthnicityCodeEditorDialog,
     NationalityCodeEditorDialog,
     FacultyCodeEditorDialog,
+    FieldCodeEditorDialog,
     StudyModeEditorDialog,
     DisabilityCodeEditorDialog,
     SchoolCodeEditorDialog,

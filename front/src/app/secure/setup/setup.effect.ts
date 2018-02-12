@@ -473,6 +473,39 @@ export class SetupEffects {
     .switchMap((payload) => this.commonService.removeFacultyCode(payload))
     .map((message) => this.setupActions.removeFacultyCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findFacultyCodes()]));
+  
+  
+  // ====================================================================================================
+  // FIELD CODE
+  // ====================================================================================================
+
+  @Effect() findFieldCodes$ = this.actions$
+    .ofType(SetupActions.FIND_FIELD_CODES)
+    .map((action) => action.payload)
+    .switchMap(() => this.commonService.findFieldCodes())
+    .map((codes) => this.setupActions.findFieldCodesSuccess(codes));
+
+  @Effect() saveFieldCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.saveFieldCode(payload))
+    .map((message) => this.setupActions.saveFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findFieldCodes()]));
+
+    @Effect() updateFieldCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.updateFieldCode(payload))
+    .map((message) => this.setupActions.updateFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findFieldCodes()]));
+
+  @Effect() removeFieldCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.removeFieldCode(payload))
+    .map((message) => this.setupActions.removeFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findFieldCodes()]));
+
 
   // ====================================================================================================
   // STUDY MODE

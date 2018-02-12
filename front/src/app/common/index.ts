@@ -13,14 +13,18 @@ import {EffectsModule} from '@ngrx/effects';
 import {CommonEffects} from './common.effect';
 import {CommonActions} from './common.action';
 import {ProgramCodeListState, programCodeListReducer} from './program-codes/program-code-list.reducer';
+import {ProgramFieldCodeListState, programFieldCodeListReducer} from './program-field-codes/program-field-code-list.reducer';
 import {StudyModeListState, studyModeListReducer} from './study-modes/study-mode-list.reducer';
 import {FacultyCodeListState, facultyCodeListReducer} from './faculty-codes/faculty-code-list.reducer';
+import {FieldCodeListState, fieldCodeListReducer} from './field-codes/field-code-list.reducer';
 import {SupervisorCodeListState, supervisorCodeListReducer} from './supervisor-codes/supervisor-code-list.reducer';
 import {GraduateCenterListState, graduateCenterListReducer} from './graduate-centers/graduate-center-list.reducer';
 import {GraduateCenterSelectComponent} from './graduate-centers/component/graduate-center-select.component';
 import {ProgramCodeSelectComponent} from './program-codes/component/program-code-select.component';
+import {ProgramFieldCodeSelectComponent} from './program-field-codes/component/program-field-code-select.component';
 import {StudyModeSelectComponent} from './study-modes/component/study-mode-select.component';
 import {FacultyCodeSelectComponent} from './faculty-codes/component/faculty-code-select.component';
+import {FieldCodeSelectComponent} from './field-codes/component/field-code-select.component';
 import {GenderCodeSelectComponent} from './gender-codes/component/gender-code-select.component';
 import {GenderCodeListState, genderCodeListReducer} from './gender-codes/gender-code-list.reducer';
 import {maritalCodeListReducer, MaritalCodeListState} from './marital-codes/marital-code-list.reducer';
@@ -55,10 +59,12 @@ import {DunCodeSelectComponent} from './dun-codes/component/dun-code-select.comp
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
+  programFieldCodes: ProgramFieldCodeListState;
   studyModes: StudyModeListState;
   supervisorCodes: SupervisorCodeListState;
   graduateCenters: GraduateCenterListState;
   facultyCodes: FacultyCodeListState;
+  fieldCodes: FieldCodeListState;
   genderCodes: GenderCodeListState;
   maritalCodes: MaritalCodeListState;
   languageCodes: LanguageCodeListState;
@@ -82,10 +88,12 @@ export interface CommonModuleState {
 export const INITIAL_COMMON_STATE: CommonModuleState = <CommonModuleState>{};
 export const commonModuleReducers = {
   programCodes: programCodeListReducer,
+  programFieldCodes: programFieldCodeListReducer,
   studyModes: studyModeListReducer,
   supervisorCodes: supervisorCodeListReducer,
   graduateCenters: graduateCenterListReducer,
   facultyCodes: facultyCodeListReducer,
+  fieldCodes: fieldCodeListReducer,
   genderCodes: genderCodeListReducer,
   maritalCodes: maritalCodeListReducer,
   languageCodes: languageCodeListReducer,
@@ -116,8 +124,10 @@ export const commonModuleReducers = {
   declarations: [
     GraduateCenterSelectComponent,
     ProgramCodeSelectComponent,
+    ProgramFieldCodeSelectComponent,
     StudyModeSelectComponent,
     FacultyCodeSelectComponent,
+    FieldCodeSelectComponent,
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
     LanguageCodeSelectComponent,
@@ -141,8 +151,10 @@ export const commonModuleReducers = {
   exports: [
     GraduateCenterSelectComponent,
     ProgramCodeSelectComponent,
+    ProgramFieldCodeSelectComponent,
     StudyModeSelectComponent,
     FacultyCodeSelectComponent,
+    FieldCodeSelectComponent,
     GenderCodeSelectComponent,
     MaritalCodeSelectComponent,
     LanguageCodeSelectComponent,

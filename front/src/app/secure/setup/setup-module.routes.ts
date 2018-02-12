@@ -6,6 +6,7 @@ import {SchoolCodeListPage} from './school-codes/school-code-list-page';
 import {DisabilityCodeListPage} from './disability-codes/disability-code-list-page';
 import {StudyModeListPage} from './study-modes/study-mode-list.page';
 import {FacultyCodeListPage} from './faculty-codes/faculty-code-list.page';
+import {FieldCodeListPage} from './field-codes/field-code-list.page';
 import {NationalityCodeListPage} from './nationality-codes/nationality-code-list.page';
 import {EthnicityCodeListPage} from './ethnicity-codes/ethnicity-code-list.page';
 import {GenderCodeListPage} from './gender-codes/gender-code-list.page';
@@ -60,6 +61,7 @@ export const setupModuleRoutes: Routes = [
       {path: 'residency-codes', component: ResidencyCodeListPage},
       {path: 'subject-codes', component: SubjectCodeListPage},
       {path: 'grade-codes', component: GradeCodeListPage},
+      {path: 'field-codes', component: FieldCodeListPage},
 
     ],
   },

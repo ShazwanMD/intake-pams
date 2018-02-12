@@ -297,6 +297,8 @@
                                 <srcFile>src/test/resources/data/IN_STDY_MODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_LEVL.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_FILD_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_PRGM_FILD_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_STDY_CNTR_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_DUN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PLMT_CODE.sql</srcFile>

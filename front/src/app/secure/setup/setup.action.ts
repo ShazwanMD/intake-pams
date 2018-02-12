@@ -1189,10 +1189,92 @@ static SAVE_SUPERVISOR_OFFERING = '[Setup] Save Supervisor Offering';
       payload: message,
     };
   }
+  //==========================================================================================
+  //      FIELD CODE
+  //==========================================================================================
+  //1-------------------------------------------------------------
+  static FIND_FIELD_CODES = '[Setup] Find Field Codes';
 
-//==========================================================================================
-//      FACULTY CODE
-//==========================================================================================
+  findFieldCodes(): Action {
+    console.log('findFieldCodes');
+    return {
+      type: SetupActions.FIND_FIELD_CODES,
+    };
+  }
+//2-------------------------------------------------------------------------------------
+  static FIND_FIELD_CODES_SUCCESS = '[Setup] Find Field Codes Success';
+
+  findFieldCodesSuccess(codes): Action {
+    console.log('findFieldCodesSuccess');
+    return {
+      type: SetupActions.FIND_FIELD_CODES_SUCCESS,
+      payload: codes,
+    };
+  }
+//3----------------------------------------------------------------
+  static SAVE_FIELD_CODE = '[Setup] Save Field Code';
+
+  saveFieldCode(code): Action {
+    console.log('saveFieldCode');
+    return {
+      type: SetupActions.SAVE_FIELD_CODE,
+      payload: code,
+    };
+  }
+//4------------------------------------------------------------------------------
+  static SAVE_FIELD_CODE_SUCCESS = '[Setup] Save Field Code Success';
+
+  saveFieldCodeSuccess(message): Action {
+    console.log('saveFieldCodeSuccess');
+    return {
+      type: SetupActions.SAVE_FIELD_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+//5------------------------------------------------------------------
+  static UPDATE_FIELD_CODE = '[Setup] Update Field Code';
+
+  updateFieldCode(code): Action {
+    console.log('updateFieldCode');
+    return {
+      type: SetupActions.UPDATE_FIELD_CODE,
+      payload: code,
+    };
+  }
+//6----------------------------------------------------------------------------------
+  static UPDATE_FIELD_CODE_SUCCESS = '[Setup] Update Field Code  Success';
+
+  updateFieldCodeSuccess(message): Action {
+    console.log('updateFieldCodeSuccess');
+    return {
+      type: SetupActions.UPDATE_FIELD_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+//7------------------------------------------------------------------
+  static REMOVE_FIELD_CODE = '[Setup] Remove Field Code';
+
+  removeFieldCode(code): Action {
+    console.log('removeFieldCode');
+    return {
+      type: SetupActions.REMOVE_FIELD_CODE,
+      payload: code,
+    };
+  }
+//8------------------------------------------------------------------------------------
+  static REMOVE_FIELD_CODE_SUCCESS = '[Setup] Remove Field Code  Success';
+
+  removeFieldCodeSuccess(message): Action {
+    console.log('removeFieldCodeSuccess');
+    return {
+      type: SetupActions.REMOVE_FIELD_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+
+  //==========================================================================================
+  //      FACULTY CODE
+  //==========================================================================================
   //1-------------------------------------------------------------
   static FIND_FACULTY_CODES = '[Setup] Find Faculty Codes';
 

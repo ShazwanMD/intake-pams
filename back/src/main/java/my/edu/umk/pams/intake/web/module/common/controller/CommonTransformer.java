@@ -4,6 +4,7 @@ import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
+import my.edu.umk.pams.intake.web.module.application.vo.FieldCode;
 import my.edu.umk.pams.intake.web.module.common.vo.*;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
@@ -134,13 +135,49 @@ public class CommonTransformer {
         vo.setCode(e.getCode());
         vo.setDescriptionMs(e.getDescriptionMs());
         vo.setDescriptionEn(e.getDescriptionEn());
-        vo.setFacultyCode(toFacultyCodeVo(e.getFacultyCode()));
         vo.setGraduateCenter(toGraduateCenterVo(e.getGraduateCenter()));
+        vo.setProgramLevel(policyTransformer.toProgramLevelVo(e.getProgramLevel()));
         return vo;
     }
 
     public List<ProgramCode> toProgramCodeVos(List<InProgramCode> e) {
         List<ProgramCode> vos = e.stream().map((e1) -> toProgramCodeVo(e1)).collect(Collectors.toList());
+        return vos;
+    }
+    
+    // ====================================================================================================
+    // FIELD CODE
+    // ====================================================================================================
+    public FieldCode toFieldCodeVo(InFieldCode e) {
+    	FieldCode vo = new FieldCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        vo.setFacultyCode(toFacultyCodeVo(e.getFacultyCode()));
+        /*vo.setGraduateCenter(toGraduateCenterVo(e.getGraduateCenter()));*/
+        return vo;
+    }
+
+    public List<FieldCode> toFieldCodeVos(List<InFieldCode> e) {
+        List<FieldCode> vos = e.stream().map((e1) -> toFieldCodeVo(e1)).collect(Collectors.toList());
+        return vos;
+    }
+    // ====================================================================================================
+    // PROGRAM FIELD CODE
+    // ====================================================================================================
+
+    public ProgramFieldCode toProgramFieldCodeVo(InProgramFieldCode e) {
+    	ProgramFieldCode vo = new ProgramFieldCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setProgramCode(toProgramCodeVo(e.getProgramCode()));
+        vo.setFieldCode(toFieldCodeVo(e.getFieldCode()));
+        return vo;
+    }
+
+     public List<ProgramFieldCode> toProgramFieldCodeVos(List<InProgramFieldCode> e) {
+        List<ProgramFieldCode> vos = e.stream().map((e1) -> toProgramFieldCodeVo(e1)).collect(Collectors.toList());
         return vos;
     }
 

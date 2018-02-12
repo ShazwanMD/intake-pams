@@ -14,7 +14,6 @@ public class ProgramCode extends MetaObject {
     private String code;
     private String descriptionEn;
     private String descriptionMs;
-    private FacultyCode facultyCode;
     private GraduateCenter graduateCenter;
     private ProgramLevel programLevel;
 
@@ -40,14 +39,6 @@ public class ProgramCode extends MetaObject {
 
     public void setDescriptionMs(String descriptionMs) {
         this.descriptionMs = descriptionMs;
-    }
-    
-    public FacultyCode getFacultyCode() {
-        return facultyCode;
-    }
-
-    public void setFacultyCode(FacultyCode facultyCode) {
-        this.facultyCode = facultyCode;
     }
     
     public GraduateCenter getGraduateCenter() {

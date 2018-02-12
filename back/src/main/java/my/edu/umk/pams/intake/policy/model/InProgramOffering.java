@@ -1,6 +1,7 @@
 package my.edu.umk.pams.intake.policy.model;
 
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InProgramFieldCode;
 import my.edu.umk.pams.intake.common.model.InStudyCenterCode;
 import my.edu.umk.pams.intake.core.InMetaObject;
 
@@ -24,10 +25,6 @@ public interface InProgramOffering extends InMetaObject {
 
     void setSpecificCriteria(String specificCriteria);
 
-    InProgramCode getProgramCode();
-
-    void setProgramCode(InProgramCode programCode);
-
     InStudyCenterCode getStudyCenterCode();
 
     void setStudyCenterCode(InStudyCenterCode studyCenterCode);
@@ -35,5 +32,9 @@ public interface InProgramOffering extends InMetaObject {
     InIntake getIntake();
 
     void setIntake(InIntake intake);
+
+	InProgramFieldCode getProgramFieldCode();
+
+	void setProgramFieldCode(InProgramFieldCode programFieldCode);
 
 }
