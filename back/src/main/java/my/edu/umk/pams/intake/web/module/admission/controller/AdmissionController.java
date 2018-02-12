@@ -22,6 +22,7 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
+import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
 
@@ -31,147 +32,173 @@ import static java.util.stream.Collectors.toCollection;
 @RequestMapping("/api/admission")
 public class AdmissionController {
 
-    @Autowired
-    private AdmissionService admissionService;
+	@Autowired
+	private AdmissionService admissionService;
 
-    @Autowired
-    private PolicyService policyService;
+	@Autowired
+	private PolicyService policyService;
 
-    @Autowired
-    private ApplicationService applicationService;
-    
-    @Autowired
-    private AdmissionTransformer admissionTransformer;
+	@Autowired
+	private ApplicationService applicationService;
 
-    @Autowired
-    private PolicyTransformer policyTransformer;
+	@Autowired
+	private AdmissionTransformer admissionTransformer;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	@Autowired
+	private PolicyTransformer policyTransformer;
 
-    // ====================================================================================================
-    // INTAKES
-    // ====================================================================================================
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-    @RequestMapping(value = "/intakes/assignedTasks", method = RequestMethod.GET)
-    public ResponseEntity<List<IntakeTask>> findAssignedIntakes() {
-        List<Task> tasks = policyService.findAssignedIntakeTasks(0, 100);
-        return new ResponseEntity<List<IntakeTask>>(
-                decorateIntakeTasks(policyTransformer.toIntakeTaskVos(tasks)), HttpStatus.OK);
-    }
+	// ====================================================================================================
+	// INTAKES
+	// ====================================================================================================
 
+	@RequestMapping(value = "/intakes/assignedTasks", method = RequestMethod.GET)
+	public ResponseEntity<List<IntakeTask>> findAssignedIntakes() {
+		List<Task> tasks = policyService.findAssignedIntakeTasks(0, 100);
+		return new ResponseEntity<List<IntakeTask>>(decorateIntakeTasks(policyTransformer.toIntakeTaskVos(tasks)),
+				HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/intakes/pooledTasks", method = RequestMethod.GET)
-    public ResponseEntity<List<IntakeTask>> findPooledIntakes() {
-        List<Task> tasks = policyService.findPooledIntakeTasks(0, 100);
-        return new ResponseEntity<List<IntakeTask>>(
-                decorateIntakeTasks(policyTransformer.toIntakeTaskVos(tasks)), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/intakes/pooledTasks", method = RequestMethod.GET)
+	public ResponseEntity<List<IntakeTask>> findPooledIntakes() {
+		List<Task> tasks = policyService.findPooledIntakeTasks(0, 100);
+		return new ResponseEntity<List<IntakeTask>>(decorateIntakeTasks(policyTransformer.toIntakeTaskVos(tasks)),
+				HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/intakes/viewTask/{taskId}", method = RequestMethod.GET)
-    public ResponseEntity<IntakeTask> findIntakeTaskByTaskId(@PathVariable String taskId) {
-        return new ResponseEntity<IntakeTask>(
-                decorateIntakeTask(policyTransformer.toIntakeTaskVo(policyService.findIntakeTaskByTaskId(taskId))), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/intakes/viewTask/{taskId}", method = RequestMethod.GET)
+	public ResponseEntity<IntakeTask> findIntakeTaskByTaskId(@PathVariable String taskId) {
+		return new ResponseEntity<IntakeTask>(
+				decorateIntakeTask(policyTransformer.toIntakeTaskVo(policyService.findIntakeTaskByTaskId(taskId))),
+				HttpStatus.OK);
+	}
 
-    // ====================================================================================================
-    // CANDIDATES
-    // ====================================================================================================
+	// ====================================================================================================
+	// CANDIDATES WORKFLOWS
+	// ====================================================================================================
 
-    @RequestMapping(value = "/intakes/{referenceNo}/candidates", method = RequestMethod.GET)
-    public ResponseEntity<List<Candidate>> findCandidates(@PathVariable String referenceNo) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        System.out.println("intake "+intake.getReferenceNo());
-        return new ResponseEntity<List<Candidate>>(
-                admissionTransformer.toCandidateVos(admissionService.findCandidates(intake)), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/intakes/assignedCandidateTasks", method = RequestMethod.GET)
+	public ResponseEntity<List<CandidateTask>> findAssignedCandidates() {
 
-    @RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}", method = RequestMethod.GET)
-    public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo, @PathVariable String candidateStatus) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        return new ResponseEntity<List<Candidate>>(
-                admissionTransformer.toCandidateVos(
-                        admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}/accepted", method = RequestMethod.GET)
-    public ResponseEntity<List<Candidate>> findOfferAcceptCandidates(@PathVariable String referenceNo, @PathVariable String candidateStatus) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        return new ResponseEntity<List<Candidate>>(
-                admissionTransformer.toCandidateVos(
-                        admissionService.findCandidatesAcceptOffered(intake, InCandidateStatus.valueOf(candidateStatus))), HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/intakes/{referenceNo}/candidates/offer", method = RequestMethod.PUT)
-    public ResponseEntity<String> offerCandidates(@PathVariable String referenceNo) {
-        InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-        List<InCandidate> candidates = admissionService.findCandidatesByStatus(intake, InCandidateStatus.APPROVED);
-        for (InCandidate candidate : candidates) {
-        	admissionService.offerCandidate(candidate);
+		List<Task> tasks = admissionService.findAssignedCandidateTasks(0, Integer.MAX_VALUE);
+
+		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakes/pooledCandidateTasks", method = RequestMethod.GET)
+	public ResponseEntity<List<CandidateTask>> findPooledCandidates() {
+
+		List<Task> tasks = admissionService.findPooledCandidateTasks(0, Integer.MAX_VALUE);
+
+		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
+	}
+
+	// @RequestMapping(value = "/intakes/viewTask/{taskId}", method =
+	// RequestMethod.GET)
+	// public ResponseEntity<IntakeTask> findCandidateTaskByTaskId(@PathVariable
+	// String taskId) {
+	// return new ResponseEntity<IntakeTask>(
+	// decorateIntakeTask(policyTransformer.toIntakeTaskVo(policyService.findIntakeTaskByTaskId(taskId))),
+	// HttpStatus.OK);
+	// }
+
+	// ====================================================================================================
+	// CANDIDATES
+	// ====================================================================================================
+
+	@RequestMapping(value = "/intakes/{referenceNo}/candidates", method = RequestMethod.GET)
+	public ResponseEntity<List<Candidate>> findCandidates(@PathVariable String referenceNo) {
+		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+		System.out.println("intake " + intake.getReferenceNo());
+		return new ResponseEntity<List<Candidate>>(
+				admissionTransformer.toCandidateVos(admissionService.findCandidates(intake)), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}", method = RequestMethod.GET)
+	public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo,
+			@PathVariable String candidateStatus) {
+		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+		return new ResponseEntity<List<Candidate>>(
+				admissionTransformer.toCandidateVos(
+						admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}/accepted", method = RequestMethod.GET)
+	public ResponseEntity<List<Candidate>> findOfferAcceptCandidates(@PathVariable String referenceNo,
+			@PathVariable String candidateStatus) {
+		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+		return new ResponseEntity<List<Candidate>>(admissionTransformer.toCandidateVos(
+				admissionService.findCandidatesAcceptOffered(intake, InCandidateStatus.valueOf(candidateStatus))),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/intakes/{referenceNo}/candidates/offer", method = RequestMethod.PUT)
+	public ResponseEntity<String> offerCandidates(@PathVariable String referenceNo) {
+		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
+		List<InCandidate> candidates = admissionService.findCandidatesByStatus(intake, InCandidateStatus.APPROVED);
+		for (InCandidate candidate : candidates) {
+			admissionService.offerCandidate(candidate);
 		}
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/preSelect", method = RequestMethod.PUT)
-    public ResponseEntity<String> preSelectCandidate(@PathVariable String referenceNo,
-                                                          @RequestBody Candidate vo) {
-    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
-        admissionService.preSelectCandidate(candidate);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/select", method = RequestMethod.PUT)
-    public ResponseEntity<String> selectCandidate(@PathVariable String referenceNo,
-                                                          @RequestBody Candidate vo) {
-    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
-        admissionService.selectCandidate(candidate);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/offer", method = RequestMethod.PUT)
-    public ResponseEntity<String> offerCandidate(@PathVariable String referenceNo,
-                                                          @RequestBody Candidate vo) {
-    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
-        admissionService.selectCandidate(candidate);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/register", method = RequestMethod.PUT)
-    public ResponseEntity<String> registerCandidate(@PathVariable String referenceNo,
-                                                          @RequestBody Candidate vo) {
-    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
-        admissionService.registerCandidate(candidate);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/reject", method = RequestMethod.PUT)
-    public ResponseEntity<String> rejectCandidate(@PathVariable String referenceNo,
-                                                          @RequestBody Candidate vo) {
-    	InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-        InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
-        System.out.println("reason : "+vo.getReason());
-        candidate.setReason(vo.getReason());
-        admissionService.rejectCandidate(candidate);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 
-    // ====================================================================================================
-    // PRIVATE METHODS
-    // ====================================================================================================
+	@RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/preSelect", method = RequestMethod.PUT)
+	public ResponseEntity<String> preSelectCandidate(@PathVariable String referenceNo, @RequestBody Candidate vo) {
+		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+		admissionService.preSelectCandidate(candidate);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 
-    private IntakeTask decorateIntakeTask(IntakeTask intakeTask) {
-        InIntake intake = policyService.findIntakeById(intakeTask.getIntake().getId());
-        intakeTask.setCandidateCount(admissionService.countCandidate(intake));
-        return intakeTask;
-    }
+	@RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/select", method = RequestMethod.PUT)
+	public ResponseEntity<String> selectCandidate(@PathVariable String referenceNo, @RequestBody Candidate vo) {
+		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+		admissionService.selectCandidate(candidate);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 
-    public List<IntakeTask> decorateIntakeTasks(List<IntakeTask> tasks) {
-        return tasks.stream()
-                .map((task) -> decorateIntakeTask(task))
-                .collect(toCollection(() -> new ArrayList<IntakeTask>()));
-    }
+	@RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/offer", method = RequestMethod.PUT)
+	public ResponseEntity<String> offerCandidate(@PathVariable String referenceNo, @RequestBody Candidate vo) {
+		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+		admissionService.selectCandidate(candidate);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/register", method = RequestMethod.PUT)
+	public ResponseEntity<String> registerCandidate(@PathVariable String referenceNo, @RequestBody Candidate vo) {
+		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+		admissionService.registerCandidate(candidate);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/reject", method = RequestMethod.PUT)
+	public ResponseEntity<String> rejectCandidate(@PathVariable String referenceNo, @RequestBody Candidate vo) {
+		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+		System.out.println("reason : " + vo.getReason());
+		candidate.setReason(vo.getReason());
+		admissionService.rejectCandidate(candidate);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+
+	// ====================================================================================================
+	// PRIVATE METHODS
+	// ====================================================================================================
+
+	private IntakeTask decorateIntakeTask(IntakeTask intakeTask) {
+		InIntake intake = policyService.findIntakeById(intakeTask.getIntake().getId());
+		intakeTask.setCandidateCount(admissionService.countCandidate(intake));
+		return intakeTask;
+	}
+
+	public List<IntakeTask> decorateIntakeTasks(List<IntakeTask> tasks) {
+		return tasks.stream().map((task) -> decorateIntakeTask(task))
+				.collect(toCollection(() -> new ArrayList<IntakeTask>()));
+	}
 }

@@ -1,6 +1,10 @@
 package my.edu.umk.pams.intake.web.module.application.controller;
 
+import my.edu.umk.pams.intake.admission.dao.InCandidateDao;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.*;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InPromoCode;
@@ -41,6 +45,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.faces.application.Application;
 
@@ -73,6 +78,12 @@ public class ApplicationController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private AdmissionService admissionService;
+
+	@Autowired
+	private InCandidateDao candidateDao;
 
 	// ====================================================================================================
 	// INTAKE
@@ -139,8 +150,10 @@ public class ApplicationController {
 			@PathVariable String referenceNo, @PathVariable String bidStatus) {
 		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
 		InBidStatus status = InBidStatus.valueOf(bidStatus);
-		List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByMerit(intake,status);
-	//	List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake, status);
+		List<InIntakeApplication> applications = applicationService.findIntakeApplicationsOrderedByMerit(intake,
+				status);
+		// List<InIntakeApplication> applications =
+		// applicationService.findIntakeApplications(intake, status);
 		return new ResponseEntity<List<IntakeApplication>>(applicationTransformer.toIntakeApplicationVos(applications),
 				HttpStatus.OK);
 	}
@@ -211,7 +224,7 @@ public class ApplicationController {
 		application.setSponsored(vo.getSponsored());
 		application.setPaid(vo.getProcessingFeeAttached());
 		application.setDeclared(vo.getDeclared());
-        
+
 		// check list
 		application.setSpmResultAttached(vo.getSpmResultAttached());
 		application.setStpmResultAttached(vo.getStpmResultAttached());
@@ -227,9 +240,9 @@ public class ApplicationController {
 		application.setRefereeFormAttached(vo.getRefereeFormAttached());
 		application.setResearchProposalAttached(vo.getResearchProposalAttached());
 		application.setSponsorLetterAttached(vo.getSponsorLetterAttached());
-        application.setIcCopyAttached(vo.getIcCopyAttached());
-        application.setPassportCopyAttached(vo.getPassportCopyAttached());
-        
+		application.setIcCopyAttached(vo.getIcCopyAttached());
+		application.setPassportCopyAttached(vo.getPassportCopyAttached());
+
 		// mailing address
 		application.setMailingAddress1(vo.getMailingAddress1());
 		application.setMailingAddress2(vo.getMailingAddress2());
@@ -288,7 +301,7 @@ public class ApplicationController {
 		applicationService.submitIntakeApplication(intake, application);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/promoCode/{promoCode}", method = RequestMethod.PUT)
 	public ResponseEntity<String> promoCodeIntakeApplication(@PathVariable String referenceNo,
 			@PathVariable String promoCode, @RequestBody IntakeApplication vo) {
@@ -296,9 +309,9 @@ public class ApplicationController {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InPromoCode getPromoCode = commonService.findPromoCodeByCode(promoCode);
 
-		if (getPromoCode==null) {
+		if (getPromoCode == null) {
 			throw new IllegalArgumentException("Your Promo Code Does Not Exists");
-			
+
 		} else {
 			if (applicationService.isPromoCodeEntered(getPromoCode)) {
 				throw new IllegalArgumentException("Your Promo Code Is Invalid");
@@ -318,9 +331,45 @@ public class ApplicationController {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		InIntake intake = application.getIntake();
 		application.setBidStatus(InBidStatus.SELECTED);
-		if (vo.getResidencyCode().getCode().equals("B")  || vo.getResidencyCode().getCode().equals("C") ) 
+		if (vo.getResidencyCode().getCode().equals("B") || vo.getResidencyCode().getCode().equals("C")) {
 			application.setVerified(true);
-		applicationService.selectIntakeApplication(intake, application);
+		}
+
+		if (intake.getGraduateCenter().getCode().equals("MGSEB")) {
+			applicationService.selectIntakeApplication(intake, application);
+		} else {
+			LOG.debug("CPS");
+
+			List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
+			for (InIntakeApplication applicationCPS : applications) {
+
+				LOG.debug("{}", applicationCPS.getName());
+				InCandidate candidate = new InCandidateImpl();
+				candidate.setSourceNo(UUID.randomUUID().toString());
+				candidate.setAuditNo(UUID.randomUUID().toString());
+				candidate.setIntake(applicationCPS.getIntake());
+				candidate.setName(applicationCPS.getName());
+				candidate.setIdentityNo(applicationCPS.getCredentialNo());
+				candidate.setEmail(applicationCPS.getEmail());
+				candidate.setStudyModeSelection(applicationCPS.getStudyModeSelection());
+				candidate.setStatus(InCandidateStatus.SELECTED);
+				candidate.setProgramSelection(applicationCPS.getProgramSelection());
+				candidate.setSupervisorSelection(applicationCPS.getSupervisorSelection());
+				candidate.setRegistration(false);
+				candidate.setApplication(applicationCPS);
+				candidate.setAuditNo(applicationCPS.getIntake().getAuditNo());
+				candidate.setReferenceNo(applicationCPS.getIntake().getReferenceNo());
+				candidate.setCancelComment(applicationCPS.getIntake().getCancelComment());
+				candidate.setSourceNo(applicationCPS.getIntake().getSourceNo());
+				candidate.setDescriptionEn(applicationCPS.getIntake().getDescriptionEn());
+				candidate.setDescriptionMs(applicationCPS.getIntake().getDescriptionMs());
+				candidateDao.save(candidate, securityService.getCurrentUser());
+				LOG.debug("After Save Candidate");
+				admissionService.startCandidateTask(candidate);
+				applicationService.selectIntakeApplication(intake, application);
+				LOG.debug("After Start Candidate Task");
+			}
+		}
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 
@@ -534,7 +583,6 @@ public class ApplicationController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
-	
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/addAndCheckAttachments", method = RequestMethod.POST)
 	public ResponseEntity<String> addAndCheckAttachment(@PathVariable String referenceNo,
 			@RequestParam("file") MultipartFile file, @RequestParam("attachmentType") String attachmentType) {
@@ -544,31 +592,32 @@ public class ApplicationController {
 		LOG.debug("content type: {}", file.getContentType());
 		LOG.debug("size: {}", file.getSize());
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		
+
 		String mimeType = file.getContentType();
-		if(mimeType.contentEquals("application/pdf")){
-		try {
-			if (!file.isEmpty()) {
-				InAttachment attachment = new InAttachmentImpl();
-				attachment.setMimeType("application/pdf"); // todo(switch)
-				attachment.setName(file.getOriginalFilename());
-				attachment.setSize(file.getSize());
-				attachment.setBytes(file.getBytes());
-			 	attachment.setAttachmentType(InAttachmentType.valueOf(attachmentType));
-				applicationService.addAttachment(application, attachment);
-	//			applicationService.checkAttachment(application, attachment);
+		if (mimeType.contentEquals("application/pdf")) {
+			try {
+				if (!file.isEmpty()) {
+					InAttachment attachment = new InAttachmentImpl();
+					attachment.setMimeType("application/pdf"); // todo(switch)
+					attachment.setName(file.getOriginalFilename());
+					attachment.setSize(file.getSize());
+					attachment.setBytes(file.getBytes());
+					attachment.setAttachmentType(InAttachmentType.valueOf(attachmentType));
+					applicationService.addAttachment(application, attachment);
+					// applicationService.checkAttachment(application,
+					// attachment);
+				}
 			}
-		}
-		
-		catch (IOException e) {
-			return new ResponseEntity<String>("Failed", HttpStatus.OK);
-		}
-		}else{
+
+			catch (IOException e) {
+				return new ResponseEntity<String>("Failed", HttpStatus.OK);
+			}
+		} else {
 			LOG.debug("Error");
 		}
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}	
-	
+	}
+
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachments/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Boolean> deleteAttachment(@PathVariable String referenceNo, @PathVariable Long id) {
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
@@ -589,7 +638,7 @@ public class ApplicationController {
 
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachment/{id}", method = RequestMethod.POST)
 	public ResponseEntity<String> checkAttachment(@PathVariable String referenceNo,
-	@RequestParam("file") MultipartFile file, @RequestParam("attachmentType") String attachmentType) {
+			@RequestParam("file") MultipartFile file, @RequestParam("attachmentType") String attachmentType) {
 
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 		List<InAttachment> attachments = applicationService.findAttachments(application);

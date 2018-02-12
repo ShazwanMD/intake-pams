@@ -1,20 +1,28 @@
 package my.edu.umk.pams.intake.web.module.admission.controller;
 
+import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
+import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
+import my.edu.umk.pams.intake.web.module.core.vo.FlowState;
+import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
+import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
+import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 import static java.util.stream.Collectors.toCollection;
-
 /**
  * @author PAMS
  */
@@ -29,6 +37,13 @@ public class AdmissionTransformer {
     
     @Autowired
     private ApplicationTransformer applicationTransformer;
+    
+    @Autowired
+    private WorkflowService workflowService;
+    
+    @Autowired
+    private AdmissionService admissionService;
+    
 
     public Candidate toCandidateVo(InCandidate e) {
         if(null == e) return null;
@@ -52,6 +67,35 @@ public class AdmissionTransformer {
         return candidates.stream()
                 .map((task) -> toCandidateVo(task))
                 .collect(toCollection(() -> new ArrayList<Candidate>()));
+    }
+    
+    
+    public CandidateTask toCandidateTaskVo(Task t){
+    	Map<String, Object> vars = workflowService.getVariables(t.getExecutionId());
+    	InCandidate candidate = admissionService.findCandidateById((Long) vars.get(IntakeConstants.CANDIDATE_ID));
+    	
+    	CandidateTask task = new CandidateTask();
+        task.setId(candidate.getId());
+        task.setTaskId(t.getId());
+        task.setReferenceNo(candidate.getReferenceNo());
+        task.setSourceNo(candidate.getSourceNo());
+        task.setTaskName(t.getName());
+        task.setAssignee(task.getAssignee());
+        task.setCandidate(task.getCandidate());
+        task.setCandidateIntake(toCandidateVo(candidate));
+        task.setFlowState(FlowState.get(candidate.getFlowdata().getState().ordinal()));
+        task.setMetaState(MetaState.get(candidate.getMetadata().getState().ordinal()));
+        
+        return task;
+    	
+    }
+    
+    
+    public List<CandidateTask> toCandidateTaskVos(List<Task>tasks){
+    	return tasks.stream()
+    			.map((task) -> toCandidateTaskVo(task))
+    			.collect(toCollection(() -> new ArrayList<CandidateTask>()));
+    	
     }
 }
 

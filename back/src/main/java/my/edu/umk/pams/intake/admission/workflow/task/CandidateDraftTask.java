@@ -43,12 +43,14 @@ public class CandidateDraftTask extends BpmnActivityBehavior
 
         // retrieve intake from variable
         Long candidateId = (Long) execution.getVariable(CANDIDATE_ID);
+        LOG.debug("Candidate Draft Task:{}", CANDIDATE_ID);
         InCandidate candidate = admissionService.findCandidateById(candidateId);
-
+        LOG.debug("Candidate Draft Task:{}", candidate.getName());
         // update flow state
         candidate.getFlowdata().setState(DRAFTED);
         candidate.getFlowdata().setRegisteredDate(new Timestamp(currentTimeMillis()));
         candidate.getFlowdata().setRegistererId(securityService.getCurrentUser().getId());
         admissionService.updateSelectedCandidate(candidate);
+        LOG.debug("After Service Draft Task:{}", candidate.getName());
     }
 }

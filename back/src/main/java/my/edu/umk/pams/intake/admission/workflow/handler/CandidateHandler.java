@@ -45,12 +45,15 @@ public class CandidateHandler implements DocumentHandler<InCandidate> {
 
     @Override
     public String process(InCandidate candidate, Map<String, Object> variables) {
-        ProcessInstance instance = runtimeService.startProcessInstanceByKey(
+       LOG.debug("Candidate Handler Start");
+    	ProcessInstance instance = runtimeService.startProcessInstanceByKey(
                 CANDIDATE_PROCESS_KEY,
                 candidate.getReferenceNo(),
                 variables);
+        LOG.debug("Candidate Handler Start");
         LOG.info("Process started for {} with process instance #{} ", CANDIDATE_PROCESS_KEY, instance.getId());
         return instance.getProcessInstanceId();
+
     }
 
     @PostConstruct

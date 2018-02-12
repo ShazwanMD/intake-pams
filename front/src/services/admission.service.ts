@@ -1,3 +1,4 @@
+import { CandidateTask } from './../app/shared/model/admission/candidate-task.interface';
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -36,6 +37,28 @@ export class AdmissionService {
     return this._http.get(this.ADMISSION_API + '/intakes/viewTask/' + taskId)
       .map((res: Response) => <IntakeTask>res.json());
   }
+
+  // ====================================================================================================
+  // CANDIDATE WORKFLOW
+  // ====================================================================================================
+
+  findAssignedCandidateTasks(): Observable<CandidateTask[]> {
+    console.log('findAssignedCandidateTasks');
+    return this._http.get(this.ADMISSION_API + '/intakes/assignedCandidateTasks')
+      .map((res: Response) => <CandidateTask[]>res.json());
+  }
+
+  findPooledCandidateTasks(): Observable<CandidateTask[]> {
+    console.log('findPooledCandidateTasks');
+    return this._http.get(this.ADMISSION_API + '/intakes/pooledCandidateTasks')
+      .map((res: Response) => <CandidateTask[]>res.json());
+  }
+
+  // findIntakeTaskByTaskId(taskId: string): Observable<IntakeTask> {
+  //   console.log('findIntakeTaskByTaskId');
+  //   return this._http.get(this.ADMISSION_API + '/intakes/viewTask/' + taskId)
+  //     .map((res: Response) => <IntakeTask>res.json());
+  // }
 
   // ====================================================================================================
   // INTAKE

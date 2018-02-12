@@ -13,7 +13,7 @@ import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 /**
  * @author PAMS
  */
-public interface InCandidate extends InMetaObject, InDocument {
+public interface InCandidate extends InDocument,InMetaObject{
 
 	String getName();
 

@@ -7,6 +7,7 @@ import {AdmissionModuleState} from './index';
 import {Observable} from 'rxjs/Observable';
 import {AdmissionActions} from './admission.action';
 import {IntakeTask} from '../../shared/model/policy/intake-task.interface';
+import { CandidateTask } from '../../shared/model/admission/candidate-task.interface';
 
 @Component({
   selector: 'pams-admission-center-page',
@@ -19,6 +20,10 @@ export class AdmissionCenterPage implements OnInit {
   private ASSIGNED_CANDIDATE_TASKS: string[] = 'admissionModuleState.assignedCandidateTasks'.split('.');
   private POOLED_CANDIDATE_TASKS: string[] = 'admissionModuleState.pooledCandidateTasks'.split('.');
   private ARCHIVED_INTAKES: string[] = 'policyModuleState.archivedIntakes'.split('.');
+  private CANDIDATE_TASKS: string[] = 'admissionModuleState.assignedTaskCandidates'.split('.');
+
+ 
+  private assignedTaskCandidates$: Observable<CandidateTask[]>;
   private assignedCandidateTasks$: Observable<IntakeTask[]>;
   private pooledCandidateTasks$: Observable<IntakeTask[]>;
   private archivedIntakes$: Observable<Intake[]>;
@@ -33,6 +38,7 @@ export class AdmissionCenterPage implements OnInit {
     this.assignedCandidateTasks$ = this.store.select(...this.ASSIGNED_CANDIDATE_TASKS);
     this.pooledCandidateTasks$ = this.store.select(...this.POOLED_CANDIDATE_TASKS);
     this.archivedIntakes$ = this.store.select(...this.ARCHIVED_INTAKES);
+    this.assignedTaskCandidates$ = this.store.select(...this.CANDIDATE_TASKS);
   }
 
   ngOnInit(): void {
@@ -40,6 +46,7 @@ export class AdmissionCenterPage implements OnInit {
       this.store.dispatch(this.actions.findAssignedIntakeTasks());
       this.store.dispatch(this.actions.findPooledIntakeTasks());
       this.store.dispatch(this.action.findArchivedIntakes());
+      this.store.dispatch(this.actions.findAssignedCandidateTasks());
     });
   }
 
