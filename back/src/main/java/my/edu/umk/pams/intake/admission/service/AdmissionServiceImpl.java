@@ -1,10 +1,14 @@
 package my.edu.umk.pams.intake.admission.service;
 
+import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_REFERENCE_NO;
+import static my.edu.umk.pams.intake.IntakeConstants.INTAKE_APPLICATION_REFERENCE_NO;
 import java.util.HashMap;
-
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import org.activiti.engine.task.Task;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,6 +58,8 @@ import my.edu.umk.pams.intake.system.model.InEmailQueue;
 import my.edu.umk.pams.intake.system.model.InEmailQueueImpl;
 import my.edu.umk.pams.intake.system.model.InEmailQueueStatus;
 import my.edu.umk.pams.intake.system.service.SystemService;
+import my.edu.umk.pams.intake.workflow.service.WorkflowConstants;
+import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 /**
  * @author PAMS
@@ -95,6 +101,9 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 	@Autowired
 	private ApplicationContext applicationContext;
+
+	@Autowired
+	private WorkflowService workflowService;
 
 	// ====================================================================================================
 	// INTAKE, INTAKE APPLICATION
@@ -199,11 +208,11 @@ public class AdmissionServiceImpl implements AdmissionService {
 	// CANDIDATE
 	// ====================================================================================================
 
-    @Override
-    public InCandidate findCandidateById(Long id) {
-        return candidateDao.findById(id);
-    }
-	
+	@Override
+	public InCandidate findCandidateById(Long id) {
+		return candidateDao.findById(id);
+	}
+
 	@Override
 	public InCandidate findCandidateByIdentityNo(String identityNo) {
 		return candidateDao.findByIdentityNo(identityNo);
@@ -252,7 +261,8 @@ public class AdmissionServiceImpl implements AdmissionService {
 	@Override
 	public void preapproveCandidate(InCandidate candidate) {
 		InStudyMode studyMode = commonService.findStudyModeByCode("F");
-		InStudyModeOffering studyModeOffering = policyService.findStudyModeOfferingByIntakeAndStudyMode(candidate.getIntake(),studyMode);
+		InStudyModeOffering studyModeOffering = policyService
+				.findStudyModeOfferingByIntakeAndStudyMode(candidate.getIntake(), studyMode);
 		candidate.setStudyModeSelection(studyModeOffering); // FULL
 		candidate.setStatus(InCandidateStatus.PREAPPROVED);
 		candidateDao.save(candidate, securityService.getCurrentUser());
@@ -261,7 +271,8 @@ public class AdmissionServiceImpl implements AdmissionService {
 	@Override
 	public void approveCandidate(InCandidate candidate) {
 		InStudyMode studyMode = commonService.findStudyModeByCode("F");
-		InStudyModeOffering studyModeOffering = policyService.findStudyModeOfferingByIntakeAndStudyMode(candidate.getIntake(),studyMode);
+		InStudyModeOffering studyModeOffering = policyService
+				.findStudyModeOfferingByIntakeAndStudyMode(candidate.getIntake(), studyMode);
 		candidate.setStudyModeSelection(studyModeOffering); // FULL
 		candidate.setStatus(InCandidateStatus.APPROVED);
 		candidateDao.save(candidate, securityService.getCurrentUser());
@@ -300,20 +311,23 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 		LOG.debug("start candidate payload");
 		// payload
+
 		InProgramFieldCode programFieldCode = candidate.getProgramSelection().getProgramFieldCode();
 		
 		CandidatePayload payload = new CandidatePayload();
 		payload.setName(candidate.getName());
 		payload.setMatricNo(candidate.getMatricNo());
 		payload.setEmail(candidate.getEmail());
-		
+
 		ProgramCodePayload programCodePayload = new ProgramCodePayload();
 		programCodePayload.setCode(programFieldCode.getCode());
 		programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn()+"("+programFieldCode.getFieldCode().getDescriptionEn()+")");
 		programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
 		payload.setProgramCode(programCodePayload);
+
 		
 		InFacultyCode facultyCode = programFieldCode.getFieldCode().getFacultyCode();
+
 		FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
 		facultyCodePayload.setCode(facultyCode.getCode());
 		facultyCodePayload.setDescription(facultyCode.getDescriptionMs());
@@ -322,12 +336,12 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setGender(candidate.getApplication().getGenderCode().getCode());
 		payload.setReligion(candidate.getApplication().getReligionCode().getCode());
 		payload.setMartialStatus(candidate.getApplication().getMaritalCode().getCode());
-		payload.setRace(candidate.getApplication().getRaceCode().getCode());		
-		
+		payload.setRace(candidate.getApplication().getRaceCode().getCode());
+
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {
 			payload.setResearchTitle(candidate.getApplication().getResearchTitle());
 		}
-			
+
 		InUser user = identityService.findUserByEmail(candidate.getEmail());
 		LOG.debug("user Email:{}", user.getEmail());
 
@@ -351,9 +365,11 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setFacultyCode(facultyCodePayload);
 		payload.setProgramCode(programCodePayload);
 		// <program_code>-CHRT-<academic_session_code>
+
 		
 		String cohortCode = facultyCode.getCode() + "-" + programFieldCode.getProgramCode().getProgramLevel().getCode() + "-"
 				+ programFieldCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
+
 		payload.setCohortCode(cohortCode);
 
 		AddressPayload primaryAddress = new AddressPayload();
@@ -382,7 +398,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {
 			payload.setSupervisorCode(candidate.getSupervisorSelection().getSupervisorCode().getCode());
-		}else{
+		} else {
 			payload.setSupervisorCode(null);
 		}
 
@@ -394,17 +410,17 @@ public class AdmissionServiceImpl implements AdmissionService {
 		nationalityCodePayload.setDescriptionMs(nationalityCode.getDescriptionMs());
 		payload.setNationalityCode(nationalityCodePayload);
 
-		//ResidencyCodePayload
+		// ResidencyCodePayload
 		InResidencyCode residencyCode = application.getResidencyCode();
 		ResidencyCodePayload residencyCodePayload = new ResidencyCodePayload();
 		residencyCodePayload.setCode(residencyCode.getCode());
 		residencyCodePayload.setDescriptionEn(residencyCode.getDescriptionEn());
 		residencyCodePayload.setDescriptionMs(residencyCode.getDescriptionMs());
 		payload.setResidencyCode(residencyCodePayload);
-		
+
 		// StudyCenterCodePayload
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("MGSEB")) {
-			
+
 			InStudyCenterCode studyCenter = candidate.getApplication().getStudyCenterCode();
 			LOG.debug("studyCenter:{}", studyCenter);
 			StudyCenterPayload studyCenterCodePayload = new StudyCenterPayload();
@@ -413,8 +429,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 			studyCenterCodePayload.setDescriptionMs(studyCenter.getDescriptionMs());
 			payload.setStudyCenter(studyCenterCodePayload);
 
-		}
-		else {
+		} else {
 			payload.setStudyCenter(null);
 		}
 
@@ -458,6 +473,16 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidate.setDescriptionEn(application.getIntake().getDescriptionEn());
 		candidate.setDescriptionMs(application.getIntake().getDescriptionMs());
 		candidateDao.save(candidate, securityService.getCurrentUser());
+		
+//		//Checking By GraduateCenter
+//		if(application.getIntake().getGraduateCenter().getCode().equals("CPS")){
+//			LOG.debug("GraduateCenter CPS");
+//			
+//			candidate.setSourceNo(UUID.randomUUID().toString());
+//			candidate.setAuditNo(UUID.randomUUID().toString());
+//			
+//			startCandidateTask(candidate);
+//		}
 
 	}
 
@@ -471,8 +496,10 @@ public class AdmissionServiceImpl implements AdmissionService {
 		Map<String, Object> map = new HashMap<String, Object>();
 		InFacultyCode facultyCode = candidate.getProgramSelection().getProgramFieldCode().getFieldCode().getFacultyCode();
 		InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
+
 		InProgramLevel programLevel = candidate.getProgramSelection().getProgramFieldCode().getProgramCode().getProgramLevel();
 		InStudyMode studyMode =  candidate.getStudyModeSelection().getStudyMode();
+
 		map.put("facultyCode", facultyCode);
 		map.put("studyMode", studyMode);
 		map.put("programLevel", programLevel);
@@ -481,5 +508,65 @@ public class AdmissionServiceImpl implements AdmissionService {
 		String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
 
 		return generatedMatricNo;
+	}
+
+	// ====================================================================================================
+	// CANDIDATE
+	// ====================================================================================================
+
+	@Override
+	public String startCandidateTask(InCandidate candidate) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("intakeSession", candidate.getIntake().getSession());
+		LOG.debug("Session:{}",candidate.getIntake().getSession());
+		
+		map.put("programLevel", candidate.getIntake().getProgramLevel());
+		LOG.debug("programLevel:{}",candidate.getIntake().getProgramLevel());
+		
+		String refNo = systemService.generateFormattedReferenceNo(INTAKE_APPLICATION_REFERENCE_NO, map);
+		// save and process
+		candidate.setReferenceNo(refNo);
+		candidateDao.saveOrUpdate(candidate, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+		sessionFactory.getCurrentSession().refresh(candidate);
+		LOG.debug("Ref_No:{}",refNo);
+		
+		// trigger workflow
+		workflowService.processWorkflow(candidate, prepareVariable(candidate));
+		LOG.debug("After trigger workflow:{}");
+		LOG.debug("Processing Candidate with refNo {}", new Object[] { refNo });
+		return refNo;
+	}
+	
+	
+	
+	//Find Assigned Candidate Tasks
+    @Override
+    public List<Task> findAssignedCandidateTasks(Integer offset, Integer limit) {
+        return workflowService.findAssignedTasks(InCandidate.class.getName(), offset, limit);
+    }
+
+  //Find Pooled Candidate Tasks
+    @Override
+    public List<Task> findPooledCandidateTasks(Integer offset, Integer limit) {
+        return workflowService.findPooledTasks(InCandidate.class.getName(), offset, limit);
+    }
+	
+	
+	
+	
+	
+	
+
+	private Map<String, Object> prepareVariable(InCandidate candidate) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put(IntakeConstants.CANDIDATE_ID, candidate.getId());
+		map.put(WorkflowConstants.USER_CREATOR, securityService.getCurrentUser().getName());
+		map.put(WorkflowConstants.REFERENCE_NO, candidate.getReferenceNo());
+        map.put(WorkflowConstants.REMOVE_DECISION, false);
+        map.put(WorkflowConstants.CANCEL_DECISION, false);
+        LOG.debug("Candidate_id:{}",candidate.getId());
+		return map;
 	}
 }

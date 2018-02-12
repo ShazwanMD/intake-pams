@@ -604,6 +604,7 @@ saveSupervisorOfferings(offering: SupervisorOffering): Observable<String> {
 }
 
 removeSupervisorOfferings(offering: SupervisorOffering): Observable<String> {
+  console.log("SV_Code_Service:{}",offering.id);
   return this._http.delete(this.COMMON_API + '/supervisorOfferings/' + offering.id)
     .flatMap((res: Response) => Observable.of(res.text()));
 }

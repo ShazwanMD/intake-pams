@@ -7,6 +7,8 @@ import my.edu.umk.pams.intake.policy.model.InIntake;
 
 import java.util.List;
 
+import org.activiti.engine.task.Task;
+
 /**
  * @author PAMS
  */
@@ -77,6 +79,17 @@ public interface AdmissionService {
 	boolean isMatricNoExists(String matricNo);
 
 	InCandidate findCandidateById(Long id);
+	
+    //====================================================================================================
+    // WORKFLOW CANDIDATE
+    //====================================================================================================
+	
+    String startCandidateTask(InCandidate candidate);
+    
+    List<Task> findAssignedCandidateTasks(Integer offset, Integer limit);
+
+    List<Task> findPooledCandidateTasks(Integer offset, Integer limit);
+    
 
 
 

@@ -12,6 +12,7 @@ import {SecurePage} from './secure/secure.page';
 import {AuthenticationGuard} from './secure/identity/guard/authentication.guard';
 import {DashboardPage} from './secure/dashboard.page';
 import {setupModuleRoutes} from './secure/setup/setup-module.routes';
+import { admissionCandidateModuleRoutes } from "./secure/cps-candidate/admission-module.routes";
 
 const routes: Routes = [
    // {path: '', component: HomePage},
@@ -30,6 +31,7 @@ const routes: Routes = [
         ...policyModuleRoutes,
         ...applicationModuleRoutes,
         ...setupModuleRoutes,
+        ...admissionCandidateModuleRoutes,
       ],
     },
   ]

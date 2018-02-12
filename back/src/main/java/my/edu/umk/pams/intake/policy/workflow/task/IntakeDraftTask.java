@@ -45,5 +45,6 @@ public class IntakeDraftTask extends BpmnActivityBehavior
         intake.getFlowdata().setRegisteredDate(new Timestamp(currentTimeMillis()));
         intake.getFlowdata().setRegistererId(securityService.getCurrentUser().getId());
         policyService.updateIntake(intake);
+        LOG.debug("INTAKE_ID:{}",INTAKE_ID);
     }
 }
