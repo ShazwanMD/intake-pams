@@ -30,6 +30,8 @@ import {SubjectCode} from '../app/shared/model/common/subject-code.interface';
 import {GradeCode} from '../app/shared/model/common/grade-code.interface';
 import {ProgramLevel} from '../app/shared/model/policy/program-level.interface';
 import { SupervisorOffering } from '../app/shared/model/common/supervisor-offering.interface';
+import { ProgramFieldCode } from "../app/shared/model/common/program-field-code.interface";
+import { FieldCode } from "../app/shared/model/common/field-code.interface";
 
 @Injectable()
 export class CommonService {
@@ -348,7 +350,70 @@ export class CommonService {
     return this._http.delete(this.COMMON_API + '/facultyCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  //====================================================================================================
+  // FIELD CODES
+  // ====================================================================================================
 
+  findFieldCodes(): Observable<FieldCode[]> {
+    console.log('findFieldCodes');
+    return this._http.get(this.COMMON_API + '/fieldCodes')
+      .map((res: Response) => <FieldCode[]>res.json());
+  }
+
+  findFieldCodeByCode(code: string): Observable<FieldCode> {
+    console.log('findFieldCodeByCode');
+    return this._http.get(this.COMMON_API + '/fieldCodes/' + code)
+      .map((res: Response) => <FieldCode>res.json());
+  }
+
+  saveFieldCode(code: FieldCode): Observable<String> {
+    return this._http.post(this.COMMON_API + '/saveFieldCode', JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateFieldCode(code: FieldCode): Observable<String> {
+    return this._http.put(this.COMMON_API + '/fieldCodes/' + code.code, JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeFieldCode(code: FieldCode): Observable<String> {
+    return this._http.delete(this.COMMON_API + '/fieldCodes/' + code.code)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  // ====================================================================================================
+  // PROGRAM FIELD CODES
+  // ====================================================================================================
+
+  findProgramFieldCodes(): Observable<ProgramFieldCode[]> {
+    console.log('findProgramFieldCodes');
+    return this._http.get(this.COMMON_API + '/programFieldCodes')
+      .map((res: Response) => <ProgramFieldCode[]>res.json());
+  }
+
+  findProgramFieldCodeByCode(code: string): Observable<ProgramFieldCode> {
+    console.log('findProgramFieldCodeByCode');
+    return this._http.get(this.COMMON_API + '/programFieldCodes/' + code)
+      .map((res: Response) => <ProgramFieldCode>res.json());
+  }
+
+  findProgramFieldCodesByProgramLevel(programLevel: ProgramLevel): Observable<ProgramFieldCode> {
+    console.log('findProgramFieldCodeByProgramLevel :' + programLevel.code);
+    return this._http.get(this.COMMON_API + '/programFieldCodes/programLevel/' + programLevel.code)
+      .map((res: Response) => <ProgramFieldCode>res.json());
+  }
+
+  saveProgramFieldCode(code: ProgramFieldCode): Observable<String> {
+    return this._http.post(this.COMMON_API + '/programFieldCodes', JSON.stringify(code))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeProgramFieldCode(code: ProgramFieldCode): Observable<String> {
+    return this._http.delete(this.COMMON_API + '/programFieldCodes/' + code.code)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+  
   // ====================================================================================================
   // PROGRAM CODES
   // ====================================================================================================
