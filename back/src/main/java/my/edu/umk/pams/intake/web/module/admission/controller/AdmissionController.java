@@ -82,9 +82,10 @@ public class AdmissionController {
 	@RequestMapping(value = "/intakes/assignedCandidateTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<CandidateTask>> findAssignedCandidates() {
 
+		System.out.println("Find AssignedCandidates BOH");
 		List<Task> tasks = admissionService.findAssignedCandidateTasks(0, Integer.MAX_VALUE);
 
-		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
+		return new ResponseEntity<List<CandidateTask>>(decorateCandidateTasks(admissionTransformer.toCandidateTaskVos(tasks)), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/intakes/pooledCandidateTasks", method = RequestMethod.GET)
@@ -92,7 +93,7 @@ public class AdmissionController {
 
 		List<Task> tasks = admissionService.findPooledCandidateTasks(0, Integer.MAX_VALUE);
 
-		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
+		return new ResponseEntity<List<CandidateTask>>(decorateCandidateTasks(admissionTransformer.toCandidateTaskVos(tasks)), HttpStatus.OK);
 	}
 
 	// @RequestMapping(value = "/intakes/viewTask/{taskId}", method =
@@ -200,5 +201,15 @@ public class AdmissionController {
 	public List<IntakeTask> decorateIntakeTasks(List<IntakeTask> tasks) {
 		return tasks.stream().map((task) -> decorateIntakeTask(task))
 				.collect(toCollection(() -> new ArrayList<IntakeTask>()));
+	}
+	
+	private CandidateTask decorateCandidateTask(CandidateTask candidateTask) {
+		InCandidate candidate = admissionService.findCandidateById(candidateTask.getId());
+		return candidateTask;
+	}
+
+	public List<CandidateTask> decorateCandidateTasks(List<CandidateTask> tasks) {
+		return tasks.stream().map((task) -> decorateCandidateTask(task))
+				.collect(toCollection(() -> new ArrayList<CandidateTask>()));
 	}
 }
