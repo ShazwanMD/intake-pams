@@ -39,6 +39,10 @@ import {
   AdmissionModule,
 } from './secure/admission/index';
 import {
+    AdmissionCandidateModuleState, INITIAL_ADMISSION_CANDIDATE_STATE, admissionCandidateModuleReducers,
+    AdmissionCandidateModule,
+  } from './secure/cps-candidate/index';
+import {
   RegistrationModule, registrationModuleReducers, RegistrationModuleState,
   INITIAL_REGISTRATION_STATE,
 } from './registration/index';
@@ -84,6 +88,7 @@ export interface ApplicationState {
   policyModuleState: PolicyModuleState;
   applicationModuleState: ApplicationModuleState;
   admissionModuleState: AdmissionModuleState;
+  admissionCandidateModuleState: AdmissionCandidateModuleState;
   registrationModuleState: RegistrationModuleState;
   centerModuleState: CenterModuleState;
   accountModuleState: AccountModuleState;
@@ -102,6 +107,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     centerModuleState: INITIAL_CENTER_STATE,
     accountModuleState: INITIAL_ACCOUNT_STATE,
     setupModuleState: INITIAL_SETUP_STATE,
+    admissionCandidateModuleState: INITIAL_ADMISSION_CANDIDATE_STATE,
   };
 
 // combine reducer
@@ -115,6 +121,7 @@ export const applicationReducers = {
   centerModuleState: combineReducers({...centerModuleReducers}),
   accountModuleState: combineReducers({...accountModuleReducers}),
   setupModuleState: combineReducers({...setupModuleReducers}),
+  admissionCandidateModuleState: combineReducers({...admissionCandidateModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
@@ -171,6 +178,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     PolicyModule.forRoot(),
     ApplicationModule.forRoot(),
     AdmissionModule.forRoot(),
+    AdmissionCandidateModule.forRoot(),
     RegistrationModule.forRoot(),
     SetupModule.forRoot(),
     AccountModule.forRoot(),
