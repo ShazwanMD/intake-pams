@@ -1,43 +1,31 @@
-<h2 md-dialog-title>Program Code</h2>
+<h2 md-dialog-title>Program Field Code</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <div layout="row" class="inset" flex>
+    <!-- <div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput
                placeholder="Code"
                formControlName="code"
                flex/>
       </md-input-container>
-    </div>
-
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput
-               placeholder="DescriptionEn"
-               formControlName="descriptionEn"
-               flex/>
-      </md-input-container>
-    </div>
-
-        <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput
-               placeholder="DescriptionMs"
-               formControlName="descriptionMs"
-               flex/>
-      </md-input-container>
-    </div>
-      <div layout="row" class="pad-top">
-      <pams-program-level-select
+    </div> -->
+    <div layout="row" class="pad-top">
+      <pams-program-code-select
         [placeholder]="'Program Level'"
-        [innerFormControl]="editorForm.controls.programLevel">
-      </pams-program-level-select>
+        [innerFormControl]="editorForm.controls.programCode">
+      </pams-program-code-select>
     </div>
     <div layout="row" class="pad-top">
-      <pams-graduate-center-select
-        [placeholder]="'Graduate Center'"
-        [innerFormControl]="editorForm.controls.graduateCenter">
-      </pams-graduate-center-select>
+      <pams-field-code-select
+        [placeholder]="'Field Code'"
+        [innerFormControl]="editorForm.controls.fieldCode">
+      </pams-field-code-select>
+    </div>
+    <div layout="row" class="pad-top">
+      <pams-faculty-code-select
+        [placeholder]="'Faculty Code'"
+        [innerFormControl]="editorForm.controls.facultyCode">
+      </pams-faculty-code-select>
     </div>
   </form>
 </md-dialog-content>

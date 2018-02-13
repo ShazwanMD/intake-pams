@@ -94,8 +94,10 @@ public class InProgramFieldCodeDaoImpl extends GenericDaoSupport<Long, InProgram
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from InProgramFieldCode s where " +
                 "(upper(s.code) like upper(:filter) " +
-                "or upper(s.descriptionEn) like upper(:filter) " +
-                "or upper(s.descriptionMs) like upper(:filter)) " +
+                "or upper(s.programCode.descriptionEn) like upper(:filter) " +
+                "or upper(s.programCode.descriptionMs) like upper(:filter) " +
+                "or upper(s.fieldCode.descriptionEn) like upper(:filter) " +
+                "or upper(s.fieldCode.descriptionMs) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", InMetaState.ACTIVE.ordinal());
