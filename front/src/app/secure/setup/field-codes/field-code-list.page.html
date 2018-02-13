@@ -1,6 +1,7 @@
 <md-card class="">
   <pams-field-code-list [fieldCodes]="fieldCodes$ | async" (editDialog)="editDialog($event)" (delete)="delete($event)">
   </pams-field-code-list>
+ Length ({{(fieldCodes$ | async)?.length}})
 </md-card>
 
 <a md-fab color="accent" class="mat-fab-top-right" (click)="createDialog()">

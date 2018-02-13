@@ -321,6 +321,8 @@ public class CommonController {
 
     @RequestMapping(value = "/fieldCodes", method = RequestMethod.GET)
     public ResponseEntity<List<FieldCode>> findFieldCodes() {
+    	
+    	System.out.println("size field code cntrlr :"+commonService.findFieldCodes("%", 0, Integer.MAX_VALUE).size());
         return new ResponseEntity<List<FieldCode>>(commonTransformer.toFieldCodeVos(
                 commonService.findFieldCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
