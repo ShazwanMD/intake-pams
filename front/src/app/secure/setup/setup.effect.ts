@@ -245,6 +245,37 @@ export class SetupEffects {
     .switchMap((payload) => this.commonService.updateProgramCode(payload))
     .map((message) => this.setupActions.updateProgramCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findProgramCodes()]));
+  
+  //====================================================================================================
+  // PROGRAM FIELD CODE
+  // ====================================================================================================
+
+  @Effect() findProgramFieldCodes$ = this.actions$
+    .ofType(SetupActions.FIND_PROGRAM_FIELD_CODES)
+    .map((action) => action.payload)
+    .switchMap(() => this.commonService.findProgramFieldCodes())
+    .map((codes) => this.setupActions.findProgramFieldCodesSuccess(codes));
+
+  @Effect() saveProgramFieldCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_PROGRAM_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.saveProgramCode(payload))
+    .map((message) => this.setupActions.saveProgramCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
+
+  @Effect() removeProgramFieldCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_PROGRAM_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.removeProgramFieldCode(payload))
+    .map((message) => this.setupActions.removeProgramFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
+
+  @Effect() updateProgramFieldCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_PROGRAM_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.updateProgramCode(payload))
+    .map((message) => this.setupActions.updateProgramCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
 
   // ====================================================================================================
   // SUPERVISOR CODE

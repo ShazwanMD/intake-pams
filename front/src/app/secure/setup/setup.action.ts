@@ -657,6 +657,85 @@ export class SetupActions {
       payload: message,
     };
   }
+  
+  static FIND_PROGRAM_FIELD_CODES = '[Common] Find Program Field Codes';
+
+  findProgramFieldCodes(): Action {
+    console.log('findProgramFieldCodes');
+    return {
+      type: SetupActions.FIND_PROGRAM_FIELD_CODES,
+    };
+  }
+
+  static FIND_PROGRAM_FIELD_CODES_SUCCESS = '[Common] Find Program Field Codes Success';
+
+  findProgramFieldCodesSuccess(codes): Action {
+    console.log('findProgramFieldCodesSuccess');
+    return {
+      type: SetupActions.FIND_PROGRAM_FIELD_CODES_SUCCESS,
+      payload: codes,
+    };
+  }
+
+  static SAVE_PROGRAM_FIELD_CODE = '[Setup] Save Program Field Code';
+
+  saveProgramFieldCode(code): Action {
+    console.log('saveProgramCode');
+    return {
+      type: SetupActions.SAVE_PROGRAM_FIELD_CODE,
+      payload: code,
+    };
+  }
+
+  static SAVE_PROGRAM_FIELD_CODE_SUCCESS = '[Setup] Save Program Field Code Success';
+
+  saveProgramFieldCodeSuccess(message): Action {
+    console.log('saveProgramFieldCodeSuccess');
+    return {
+      type: SetupActions.SAVE_PROGRAM_FIELD_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+
+  static REMOVE_PROGRAM_FIELD_CODE = '[Setup] Remove Program Field Code';
+
+  removeProgramFieldCode(code): Action {
+    console.log('removeProgramFieldCode');
+    return {
+      type: SetupActions.REMOVE_PROGRAM_FIELD_CODE,
+      payload: code,
+    };
+  }
+
+  static REMOVE_PROGRAM_FIELD_CODE_SUCCESS = '[Setup] Remove Program Field Code Success';
+
+  removeProgramFieldCodeSuccess(message): Action {
+    console.log('removeProgramFieldCodeSuccess');
+    return {
+      type: SetupActions.REMOVE_PROGRAM_FIELD_CODE_SUCCESS,
+      payload: message,
+    };
+  }
+
+  static UPDATE_PROGRAM_FIELD_CODE = '[Setup] Update Program Field Code';
+
+  updateProgramFieldCode(code): Action {
+    console.log('updateProgramFieldCode');
+    return {
+      type: SetupActions.UPDATE_PROGRAM_FIELD_CODE,
+      payload: code,
+    };
+  }
+
+  static UPDATE_PROGRAM_FIELD_CODE_SUCCESS = '[Setup] Update Program Field Code  Success';
+
+  updateProgramFieldCodeSuccess(message): Action {
+    console.log('updateProgramFieldCodeSuccess');
+    return {
+      type: SetupActions.UPDATE_PROGRAM_FIELD_CODE_SUCCESS,
+      payload: message,
+    };
+  }
 
   static SAVE_SUPERVISOR_CODE = '[Setup] Save Supervisor Code';
 

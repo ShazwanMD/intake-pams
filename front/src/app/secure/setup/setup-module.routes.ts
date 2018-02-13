@@ -28,6 +28,7 @@ import {SubjectCodeListPage} from './subject-codes/subject-code-list-page';
 import {GradeCodeListPage} from './grade-codes/grade-code-list-page';
 import {AuthenticationGuard} from '../identity/guard/authentication.guard';
 import { SupervisorOfferingListPage } from './supervisor-offerings/supervisor-offering-list.page';
+import { ProgramFieldCodeListPage } from "./program-field-codes/program-field-code-list.page";
 
 
 export const setupModuleRoutes: Routes = [
@@ -62,6 +63,7 @@ export const setupModuleRoutes: Routes = [
       {path: 'subject-codes', component: SubjectCodeListPage},
       {path: 'grade-codes', component: GradeCodeListPage},
       {path: 'field-codes', component: FieldCodeListPage},
+      {path: 'program-field-codes', component: ProgramFieldCodeListPage},
 
     ],
   },
