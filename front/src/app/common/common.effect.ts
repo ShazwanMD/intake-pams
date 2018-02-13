@@ -57,6 +57,13 @@ export class CommonEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findFacultyCodes())
     .map(codes => this.commonActions.findFacultyCodesSuccess(codes));
+  
+  
+  @Effect() findFieldCodes$ = this.actions$
+  .ofType(CommonActions.FIND_FIELD_CODES)
+  .map(action => action.payload)
+  .switchMap(() => this.commonService.findFieldCodes())
+  .map(codes => this.commonActions.findFieldCodesSuccess(codes));
 
   @Effect() findGraduateCenters$ = this.actions$
     .ofType(CommonActions.FIND_GRADUATE_CENTERS)

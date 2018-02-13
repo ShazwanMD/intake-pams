@@ -1,5 +1,4 @@
-import {MetaObject} from "../../../core/meta-object.interface";
-import {FacultyCode} from './faculty-code.interface';
+import {MetaObject} from "../../../core/meta-object.interface"
 export interface FieldCode extends MetaObject{
   code:string;
   descriptionEn:string;

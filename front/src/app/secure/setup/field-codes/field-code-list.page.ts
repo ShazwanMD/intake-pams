@@ -32,6 +32,12 @@ export class FieldCodeListPage implements OnInit {
   private FIELD_CODES = "setupModuleState.fieldCodes".split(".");
   private fieldCodes$: Observable<FieldCode[]>;
   private creatorDialogRef: MdDialogRef<FieldCodeEditorDialog>;
+  private columns: any[] = [
+    {name: 'code', label: 'Code'},
+    {name: 'descriptionMs', label: 'DescriptionMs'},
+    {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'action', label: ''},
+  ];
 
   //private fieldCodes: FieldCode[];
   // filteredData: any[];
