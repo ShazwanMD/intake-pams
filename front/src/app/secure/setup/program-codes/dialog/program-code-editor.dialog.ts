@@ -45,7 +45,6 @@ export class ProgramCodeEditorDialog implements OnInit {
       descriptionMs: '',
       descriptionEn: '',
       programLevel: <ProgramLevel>{},
-      facultyCode: <FacultyCode>{},
       graduateCenter: <GraduateCenter>{},
 
     });
