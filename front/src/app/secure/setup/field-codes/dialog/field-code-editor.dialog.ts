@@ -42,7 +42,6 @@ export class FieldCodeEditorDialog implements OnInit {
       code: '',
       descriptionMs: '',
       descriptionEn: '',
-      facultyCode: <FacultyCode>{},
     });
 
     if (this.edit) this.creatorForm.patchValue(this._fieldCode);

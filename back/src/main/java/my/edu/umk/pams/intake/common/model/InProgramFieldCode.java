@@ -18,4 +18,8 @@ public interface InProgramFieldCode extends InMetaObject{
 
 	void setFieldCode(InFieldCode fieldCode);
 
+	InFacultyCode getFacultyCode();
+
+	void setFacultyCode(InFacultyCode facultyCode);
+
 }

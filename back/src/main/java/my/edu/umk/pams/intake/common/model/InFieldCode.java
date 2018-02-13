@@ -13,10 +13,6 @@ public interface InFieldCode extends InMetaObject {
 
     void setCode(String code);
 
-	void setFacultyCode(InFacultyCode facultyCode);
-
-	InFacultyCode getFacultyCode();
-
 	void setDescriptionEn(String descriptionEn);
 
 	String getDescriptionEn();

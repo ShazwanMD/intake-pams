@@ -1,4 +1,4 @@
-create table IN_ACTR (
+ create table IN_ACTR (
         ID int8 not null,
         ACTOR_TYPE int4,
         EMAIL varchar(255),
@@ -481,7 +481,6 @@ create table IN_ACTR (
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        FACULTY_CODE_ID int8 not null,
         primary key (ID)
     ); 
     create table IN_GNDR_CODE (
@@ -923,8 +922,9 @@ create table IN_ACTR (
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        FACULTY_CODE_ID int8 not null,
         FILD_ID int8,
-        PRGM_ID int8,
+        PRGM_ID int8 not null,
         primary key (ID)
     ); 
     create table IN_PRGM_LEVL (
@@ -1260,7 +1260,7 @@ create table IN_ACTR (
         USER_ID int8 not null,
         primary key (ID)
     ); 
-  
+    
     alter table IN_ACTR 
         add constraint uc_IN_ACTR_1 unique (IDENTITY_NO); 
     alter table IN_APCN 
@@ -1393,10 +1393,6 @@ create table IN_ACTR (
         references IN_GRDT_CNTR; 
     alter table IN_FILD_CODE 
         add constraint uc_IN_FILD_CODE_1 unique (CODE); 
-    alter table IN_FILD_CODE 
-        add constraint FK8E413F972DDFADD6 
-        foreign key (FACULTY_CODE_ID) 
-        references IN_FCTY_CODE; 
     alter table IN_GNDR_CODE 
         add constraint uc_IN_GNDR_CODE_1 unique (CODE); 
     alter table IN_GRDE_CODE 
@@ -1595,6 +1591,10 @@ create table IN_ACTR (
         references IN_PRGM_LEVL; 
     alter table IN_PRGM_FILD_CODE 
         add constraint uc_IN_PRGM_FILD_CODE_1 unique (CODE); 
+    alter table IN_PRGM_FILD_CODE 
+        add constraint FKF88EAF742DDFADD6 
+        foreign key (FACULTY_CODE_ID) 
+        references IN_FCTY_CODE; 
     alter table IN_PRGM_FILD_CODE 
         add constraint FKF88EAF742216DFB9 
         foreign key (FILD_ID) 

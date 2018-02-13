@@ -29,10 +29,6 @@ public class InFieldCodeImpl implements InFieldCode {
     @Column(name = "DESCRIPTION_EN", nullable = false)
     private String descriptionEn;
 
-    @ManyToOne(targetEntity = InFacultyCodeImpl.class)
-    @JoinColumn(name = "FACULTY_CODE_ID", nullable = false)
-    private InFacultyCode facultyCode;
-
     @Embedded
     private InMetadata metadata;
 
@@ -72,16 +68,6 @@ public class InFieldCodeImpl implements InFieldCode {
     @Override
 	public void setDescriptionEn(String descriptionEn) {
 		this.descriptionEn = descriptionEn;
-	}
-
-    @Override
-	public InFacultyCode getFacultyCode() {
-		return facultyCode;
-	}
-
-    @Override
-	public void setFacultyCode(InFacultyCode facultyCode) {
-		this.facultyCode = facultyCode;
 	}
 
 	@Override

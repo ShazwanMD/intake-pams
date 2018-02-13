@@ -16,7 +16,6 @@ public class FieldCode extends MetaObject {
     private String code;
     private String descriptionEn;
     private String descriptionMs;
-    private FacultyCode facultyCode;
 
     public String getCode() {
         return code;
@@ -48,14 +47,6 @@ public class FieldCode extends MetaObject {
 
 	public void setDescriptionMs(String descriptionMs) {
 		this.descriptionMs = descriptionMs;
-	}
-
-	public FacultyCode getFacultyCode() {
-		return facultyCode;
-	}
-
-	public void setFacultyCode(FacultyCode facultyCode) {
-		this.facultyCode = facultyCode;
 	}
 
 	@JsonCreator

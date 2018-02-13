@@ -4,5 +4,4 @@ export interface FieldCode extends MetaObject{
   code:string;
   descriptionEn:string;
   descriptionMs:string;
-  facultyCode:FacultyCode;
 }

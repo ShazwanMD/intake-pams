@@ -154,7 +154,6 @@ public class CommonTransformer {
         vo.setCode(e.getCode());
         vo.setDescriptionMs(e.getDescriptionMs());
         vo.setDescriptionEn(e.getDescriptionEn());
-        vo.setFacultyCode(toFacultyCodeVo(e.getFacultyCode()));
         /*vo.setGraduateCenter(toGraduateCenterVo(e.getGraduateCenter()));*/
         return vo;
     }
@@ -173,6 +172,7 @@ public class CommonTransformer {
         vo.setCode(e.getCode());
         vo.setProgramCode(toProgramCodeVo(e.getProgramCode()));
         vo.setFieldCode(toFieldCodeVo(e.getFieldCode()));
+        vo.setFacultyCode(toFacultyCodeVo(e.getFacultyCode()));
         return vo;
     }
 

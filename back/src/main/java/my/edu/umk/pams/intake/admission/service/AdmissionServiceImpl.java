@@ -142,7 +142,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		// give permission to faculty group
 		// example: GRP_FCTY_A01
 		InProgramFieldCode programFieldCode = candidate.getProgramSelection().getProgramFieldCode();
-		InFacultyCode facultyCode = programFieldCode.getFieldCode().getFacultyCode();
+		InFacultyCode facultyCode = programFieldCode.getFacultyCode();
 		InGroup facultyGroup = identityService.findGroupByName("GRP_FCTY_" + facultyCode.getCode());
 		accessService.grantPermission(candidate, facultyGroup, InPermission.VIEW);
 	}
@@ -326,7 +326,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setProgramCode(programCodePayload);
 
 		
-		InFacultyCode facultyCode = programFieldCode.getFieldCode().getFacultyCode();
+		InFacultyCode facultyCode = programFieldCode.getFacultyCode();
 
 		FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
 		facultyCodePayload.setCode(facultyCode.getCode());
@@ -494,7 +494,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 	private String generateMatricNumber(InCandidate candidate) {
 		// generate matric no
 		Map<String, Object> map = new HashMap<String, Object>();
-		InFacultyCode facultyCode = candidate.getProgramSelection().getProgramFieldCode().getFieldCode().getFacultyCode();
+		InFacultyCode facultyCode = candidate.getProgramSelection().getProgramFieldCode().getFacultyCode();
 		InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
 
 		InProgramLevel programLevel = candidate.getProgramSelection().getProgramFieldCode().getProgramCode().getProgramLevel();

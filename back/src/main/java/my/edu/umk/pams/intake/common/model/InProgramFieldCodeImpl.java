@@ -27,13 +27,19 @@ public class InProgramFieldCodeImpl implements InProgramFieldCode{
     @Column(name = "CODE", unique = true, nullable = false)
     private String code;
 	
+	@NotNull
 	@ManyToOne(targetEntity = InProgramCodeImpl.class)
-    @JoinColumn(name = "PRGM_ID")
+    @JoinColumn(name = "PRGM_ID", nullable = false)
     private InProgramCode programCode;
 	
 	@ManyToOne(targetEntity = InFieldCodeImpl.class)
     @JoinColumn(name = "FILD_ID")
     private InFieldCode fieldCode;
+	
+	@NotNull
+	@ManyToOne(targetEntity = InFacultyCodeImpl.class)
+    @JoinColumn(name = "FACULTY_CODE_ID", nullable = false)
+    private InFacultyCode facultyCode;
 	
 	@Embedded
     private InMetadata metadata;
@@ -76,6 +82,16 @@ public class InProgramFieldCodeImpl implements InProgramFieldCode{
 	@Override
 	public void setFieldCode(InFieldCode fieldCode) {
 		this.fieldCode = fieldCode;
+	}
+
+	@Override
+	public InFacultyCode getFacultyCode() {
+		return facultyCode;
+	}
+
+	@Override
+	public void setFacultyCode(InFacultyCode facultyCode) {
+		this.facultyCode = facultyCode;
 	}
 
 	@Override

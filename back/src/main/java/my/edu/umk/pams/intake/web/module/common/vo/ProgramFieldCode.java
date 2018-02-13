@@ -15,6 +15,7 @@ public class ProgramFieldCode extends MetaObject{
 
 	private ProgramCode programCode;
 	private FieldCode fieldCode;
+	private FacultyCode facultyCode;
 
 	public String getCode() {
 		return code;
@@ -38,6 +39,14 @@ public class ProgramFieldCode extends MetaObject{
 
 	public void setFieldCode(FieldCode fieldCode) {
 		this.fieldCode = fieldCode;
+	}
+
+	public FacultyCode getFacultyCode() {
+		return facultyCode;
+	}
+
+	public void setFacultyCode(FacultyCode facultyCode) {
+		this.facultyCode = facultyCode;
 	}
 
 	@JsonCreator

@@ -67,7 +67,7 @@ public class IntakePublishTask extends BpmnActivityBehavior
         for (InProgramOffering inProgramOffering : prgrmOffering) {
     	   
     	   InProgramFieldCode programFieldCode = inProgramOffering.getProgramFieldCode();
-    	   String cohortCode = programFieldCode.getFieldCode().getFacultyCode().getCode()
+    	   String cohortCode = programFieldCode.getFacultyCode().getCode()
                    + "-" + programFieldCode.getProgramCode().getProgramLevel().getCode()
                    + "-" + programFieldCode.getCode()
                    + "-CHRT-"
@@ -81,8 +81,8 @@ public class IntakePublishTask extends BpmnActivityBehavior
            programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
            
            FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
-           facultyCodePayload.setCode(programFieldCode.getFieldCode().getFacultyCode().getCode());
-           facultyCodePayload.setDescription(programFieldCode.getFieldCode().getFacultyCode().getDescriptionEn());
+           facultyCodePayload.setCode(programFieldCode.getFacultyCode().getCode());
+           facultyCodePayload.setDescription(programFieldCode.getFacultyCode().getDescriptionEn());
            programCodePayload.setFacultyCode(facultyCodePayload);
            
            ProgramLevelPayload prgrmLvlPayload = new ProgramLevelPayload();

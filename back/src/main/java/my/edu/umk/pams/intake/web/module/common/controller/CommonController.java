@@ -354,7 +354,7 @@ public class CommonController {
         fieldCode.setCode(vo.getCode());
         fieldCode.setDescriptionMs(vo.getDescriptionMs());
         fieldCode.setDescriptionEn(vo.getDescriptionEn());
-        fieldCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
+        
         commonService.saveFieldCode(fieldCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -367,7 +367,6 @@ public class CommonController {
         fieldCode.setCode(vo.getCode());
         fieldCode.setDescriptionMs(vo.getDescriptionMs());
         fieldCode.setDescriptionEn(vo.getDescriptionEn());
-        fieldCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
         commonService.updateFieldCode(fieldCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -465,11 +464,9 @@ public class CommonController {
 
         InProgramFieldCode programFieldCode = new InProgramFieldCodeImpl();
         programFieldCode.setCode(vo.getCode());
-        /*programCode.setDescriptionEn(vo.getDescriptionEn());
-        programCode.setDescriptionMs(vo.getDescriptionMs());*/
-        /*programCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
-        programCode.setGraduateCenter(commonService.findGraduateCenterById(vo.getGraduateCenter().getId()));*/
-        /*programFieldCode.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));*/
+        programFieldCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
+        programFieldCode.setProgramCode(commonService.findProgramCodeById(vo.getProgramCode().getId()));
+        programFieldCode.setFieldCode(commonService.findFieldCodeById(vo.getFieldCode().getId()));
         commonService.saveProgramFieldCode(programFieldCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
