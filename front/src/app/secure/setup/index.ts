@@ -143,8 +143,9 @@ import { SupervisorOfferingListState, supervisorOfferingListReducer } from './su
 import { SupervisorOffering } from '../../shared/model/common/supervisor-offering.interface';
 import { SupervisorOfferingListPage } from './supervisor-offerings/supervisor-offering-list.page';
 import { SupervisorOfferingEditorDialog } from './supervisor-offerings/dialog/supervisor-offering-editor.dialog';
-import { FieldCodeListState, fieldCodeListReducer } from "../../common/field-codes/field-code-list.reducer";
+//import { FieldCodeListState, fieldCodeListReducer } from "../../common/field-codes/field-code-list.reducer";
 import { FieldCode } from "../../shared/model/common/field-code.interface";
+import { FieldCodeListState, fieldCodeListReducer } from './field-codes/field-code-list.reducer';
 
 
 export interface SetupModuleState {
