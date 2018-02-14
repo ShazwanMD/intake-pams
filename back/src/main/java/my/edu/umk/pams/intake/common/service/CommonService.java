@@ -868,4 +868,40 @@ public interface CommonService {
 	boolean isFacultyCodeExists(String code);
 
 	boolean isSupervisorCodeExists(String name);
+
+	InProgramFieldCode findProgramFieldCodeById(Long id);
+
+	InProgramFieldCode findProgramFieldCodeByCode(String code);
+
+	List<InProgramFieldCode> findProgramFieldCodes();
+
+	List<InProgramFieldCode> findProgramFieldCodes(InGraduateCenter graduateCenter);
+
+	List<InProgramFieldCode> findProgramFieldCodes(InFacultyCode facultyCode, InProgramLevel programLevel);
+
+	List<InProgramFieldCode> findProgramFieldCodes(InGraduateCenter graduateCenter, InProgramLevel programLevel);
+
+	List<InProgramFieldCode> findProgramFieldCodes(InFacultyCode facultyCode);
+
+	List<InProgramFieldCode> findProgramFieldCodes(String filter, Integer offset, Integer limit);
+
+	List<InProgramFieldCode> findProgramFieldCodesByProgramLevel(InProgramLevel inProgramLevel);
+
+	Integer countProgramFieldCode();
+
+	Integer countProgramFieldCode(String filter);
+
+	Integer countProgramFieldCode(InFacultyCode facultyCode);
+
+	Integer countProgramFieldCode(InGraduateCenter graduateCenter);
+
+	Integer countProgramFieldCode(InFacultyCode facultyCode, InProgramLevel programLevel);
+
+	Integer countProgramFieldCode(InGraduateCenter graduateCenter, InProgramLevel programLevel);
+
+	void saveProgramFieldCode(InProgramFieldCode programCode);
+
+	void updateProgramFieldCode(InProgramFieldCode programCode);
+
+	void removeProgramFieldCode(InProgramFieldCode programCode);
 }

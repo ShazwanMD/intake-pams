@@ -38,6 +38,7 @@ import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InFacultyCode;
 import my.edu.umk.pams.intake.common.model.InNationalityCode;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InProgramFieldCode;
 import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InStudyCenterCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
@@ -140,8 +141,8 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 		// give permission to faculty group
 		// example: GRP_FCTY_A01
-		InProgramCode programCode = candidate.getProgramSelection().getProgramCode();
-		InFacultyCode facultyCode = programCode.getFacultyCode();
+		InProgramFieldCode programFieldCode = candidate.getProgramSelection().getProgramFieldCode();
+		InFacultyCode facultyCode = programFieldCode.getFacultyCode();
 		InGroup facultyGroup = identityService.findGroupByName("GRP_FCTY_" + facultyCode.getCode());
 		accessService.grantPermission(candidate, facultyGroup, InPermission.VIEW);
 	}
@@ -310,25 +311,28 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 		LOG.debug("start candidate payload");
 		// payload
-		InProgramCode programCode = candidate.getProgramSelection().getProgramCode();
 
+		InProgramFieldCode programFieldCode = candidate.getProgramSelection().getProgramFieldCode();
+		
 		CandidatePayload payload = new CandidatePayload();
 		payload.setName(candidate.getName());
 		payload.setMatricNo(candidate.getMatricNo());
 		payload.setEmail(candidate.getEmail());
 
 		ProgramCodePayload programCodePayload = new ProgramCodePayload();
-		programCodePayload.setCode(programCode.getCode());
-		programCodePayload.setDescriptionEn(programCode.getDescriptionEn());
-		programCodePayload.setDescriptionMs(programCode.getDescriptionMs());
+		programCodePayload.setCode(programFieldCode.getCode());
+		programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn()+"("+programFieldCode.getFieldCode().getDescriptionEn()+")");
+		programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
 		payload.setProgramCode(programCodePayload);
 
-		InFacultyCode facultyCode = programCode.getFacultyCode();
+		
+		InFacultyCode facultyCode = programFieldCode.getFacultyCode();
+
 		FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
 		facultyCodePayload.setCode(facultyCode.getCode());
 		facultyCodePayload.setDescription(facultyCode.getDescriptionMs());
 		payload.setFacultyCode(facultyCodePayload);
-		payload.setProgramLevel(programCode.getProgramLevel().getCode());
+		payload.setProgramLevel(programFieldCode.getProgramCode().getProgramLevel().getCode());
 		payload.setGender(candidate.getApplication().getGenderCode().getCode());
 		payload.setReligion(candidate.getApplication().getReligionCode().getCode());
 		payload.setMartialStatus(candidate.getApplication().getMaritalCode().getCode());
@@ -362,8 +366,10 @@ public class AdmissionServiceImpl implements AdmissionService {
 		payload.setProgramCode(programCodePayload);
 		// <program_code>-CHRT-<academic_session_code>
 
-		String cohortCode = facultyCode.getCode() + "-" + programCode.getProgramLevel().getCode() + "-"
-				+ programCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
+		
+		String cohortCode = facultyCode.getCode() + "-" + programFieldCode.getProgramCode().getProgramLevel().getCode() + "-"
+				+ programFieldCode.getCode() + "-CHRT-" + candidate.getIntake().getSession().getCode();
+
 		payload.setCohortCode(cohortCode);
 
 		AddressPayload primaryAddress = new AddressPayload();
@@ -488,10 +494,12 @@ public class AdmissionServiceImpl implements AdmissionService {
 	private String generateMatricNumber(InCandidate candidate) {
 		// generate matric no
 		Map<String, Object> map = new HashMap<String, Object>();
-		InFacultyCode facultyCode = candidate.getProgramSelection().getProgramCode().getFacultyCode();
+		InFacultyCode facultyCode = candidate.getProgramSelection().getProgramFieldCode().getFacultyCode();
 		InIntakeSession session = candidate.getProgramSelection().getIntake().getSession();
-		InProgramLevel programLevel = candidate.getProgramSelection().getProgramCode().getProgramLevel();
-		InStudyMode studyMode = candidate.getStudyModeSelection().getStudyMode();
+
+		InProgramLevel programLevel = candidate.getProgramSelection().getProgramFieldCode().getProgramCode().getProgramLevel();
+		InStudyMode studyMode =  candidate.getStudyModeSelection().getStudyMode();
+
 		map.put("facultyCode", facultyCode);
 		map.put("studyMode", studyMode);
 		map.put("programLevel", programLevel);

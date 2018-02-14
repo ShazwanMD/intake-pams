@@ -116,7 +116,7 @@ public class PolicyTransformer {
         vo.setInterview(e.isInterview());
         vo.setGeneralCriteria(e.getGeneralCriteria());
         vo.setSpecificCriteria(e.getSpecificCriteria());
-        vo.setProgramCode(commonTransformer.toProgramCodeVo(e.getProgramCode()));
+        vo.setProgramFieldCode(commonTransformer.toProgramFieldCodeVo(e.getProgramFieldCode()));
         return vo;
     }
     public SupervisorOffering toSupervisorOfferingVo(InSupervisorOffering e) {

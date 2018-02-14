@@ -245,6 +245,37 @@ export class SetupEffects {
     .switchMap((payload) => this.commonService.updateProgramCode(payload))
     .map((message) => this.setupActions.updateProgramCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findProgramCodes()]));
+  
+  //====================================================================================================
+  // PROGRAM FIELD CODE
+  // ====================================================================================================
+
+  @Effect() findProgramFieldCodes$ = this.actions$
+    .ofType(SetupActions.FIND_PROGRAM_FIELD_CODES)
+    .map((action) => action.payload)
+    .switchMap(() => this.commonService.findProgramFieldCodes())
+    .map((codes) => this.setupActions.findProgramFieldCodesSuccess(codes));
+
+  @Effect() saveProgramFieldCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_PROGRAM_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.saveProgramFieldCode(payload.programCode,payload.fieldCode,payload.facultyCode, payload.programFieldCode))
+    .map((message) => this.setupActions.saveProgramFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
+
+  @Effect() removeProgramFieldCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_PROGRAM_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.removeProgramFieldCode(payload))
+    .map((message) => this.setupActions.removeProgramFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
+
+  @Effect() updateProgramFieldCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_PROGRAM_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.updateProgramCode(payload))
+    .map((message) => this.setupActions.updateProgramCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
 
   // ====================================================================================================
   // SUPERVISOR CODE
@@ -473,6 +504,39 @@ export class SetupEffects {
     .switchMap((payload) => this.commonService.removeFacultyCode(payload))
     .map((message) => this.setupActions.removeFacultyCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findFacultyCodes()]));
+  
+  
+  // ====================================================================================================
+  // FIELD CODE
+  // ====================================================================================================
+
+  @Effect() findFieldCodes$ = this.actions$
+    .ofType(SetupActions.FIND_FIELD_CODES)
+    .map((action) => action.payload)
+    .switchMap(() => this.commonService.findFieldCodes())
+    .map((codes) => this.setupActions.findFieldCodesSuccess(codes));
+
+  @Effect() saveFieldCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.saveFieldCode(payload))
+    .map((message) => this.setupActions.saveFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findFieldCodes()]));
+
+    @Effect() updateFieldCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.updateFieldCode(payload))
+    .map((message) => this.setupActions.updateFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findFieldCodes()]));
+
+  @Effect() removeFieldCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_FIELD_CODE)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.commonService.removeFieldCode(payload))
+    .map((message) => this.setupActions.removeFieldCodeSuccess(message))
+    .mergeMap((action) => from([action, this.setupActions.findFieldCodes()]));
+
 
   // ====================================================================================================
   // STUDY MODE

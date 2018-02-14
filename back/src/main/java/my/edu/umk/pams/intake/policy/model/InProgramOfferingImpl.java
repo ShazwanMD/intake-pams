@@ -2,6 +2,8 @@ package my.edu.umk.pams.intake.policy.model;
 
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InProgramCodeImpl;
+import my.edu.umk.pams.intake.common.model.InProgramFieldCode;
+import my.edu.umk.pams.intake.common.model.InProgramFieldCodeImpl;
 import my.edu.umk.pams.intake.common.model.InStudyCenterCode;
 import my.edu.umk.pams.intake.common.model.InStudyCenterCodeImpl;
 import my.edu.umk.pams.intake.core.InMetadata;
@@ -38,9 +40,9 @@ public class InProgramOfferingImpl implements InProgramOffering {
     @JoinColumn(name = "INTAKE_ID")
     private InIntake intake;
 
-    @ManyToOne(targetEntity = InProgramCodeImpl.class)
-    @JoinColumn(name = "PROGRAM_CODE_ID", nullable = false)
-    private InProgramCode programCode;
+    @ManyToOne(targetEntity = InProgramFieldCodeImpl.class)
+    @JoinColumn(name = "PRGM_FILD_CODE_ID", nullable = false)
+    private InProgramFieldCode programFieldCode;
 
     @ManyToOne(targetEntity = InStudyCenterCodeImpl.class)
     @JoinColumn(name = "STUDY_CENTER_CODE_ID") // nullable?
@@ -109,16 +111,16 @@ public class InProgramOfferingImpl implements InProgramOffering {
     }
 
     @Override
-    public InProgramCode getProgramCode() {
-        return programCode;
-    }
+    public InProgramFieldCode getProgramFieldCode() {
+		return programFieldCode;
+	}
 
     @Override
-    public void setProgramCode(InProgramCode programCode) {
-        this.programCode = programCode;
-    }
+	public void setProgramFieldCode(InProgramFieldCode programFieldCode) {
+		this.programFieldCode = programFieldCode;
+	}
 
-    @Override
+	@Override
     public InStudyCenterCode getStudyCenterCode() {
         return studyCenterCode;
     }

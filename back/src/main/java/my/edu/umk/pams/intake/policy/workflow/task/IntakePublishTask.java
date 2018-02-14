@@ -8,6 +8,7 @@ import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramLevelPayload;
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InProgramFieldCode;
 import my.edu.umk.pams.intake.policy.event.PolicyIntakeEvent;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
@@ -65,23 +66,23 @@ public class IntakePublishTask extends BpmnActivityBehavior
         List<InProgramOffering> prgrmOffering =  intake.getProgramOfferings();
         for (InProgramOffering inProgramOffering : prgrmOffering) {
     	   
-    	   InProgramCode programCode = inProgramOffering.getProgramCode();
-    	   String cohortCode = programCode.getFacultyCode().getCode()
-                   + "-" + programCode.getProgramLevel().getCode()
-                   + "-" + programCode.getCode()
+    	   InProgramFieldCode programFieldCode = inProgramOffering.getProgramFieldCode();
+    	   String cohortCode = programFieldCode.getFacultyCode().getCode()
+                   + "-" + programFieldCode.getProgramCode().getProgramLevel().getCode()
+                   + "-" + programFieldCode.getCode()
                    + "-CHRT-"
                    + intake.getSession().getCode();
            CohortCodePayload chrtPayload = new CohortCodePayload();
            
            ProgramCodePayload programCodePayload = new ProgramCodePayload();
            
-           programCodePayload.setCode(programCode.getCode());
-           programCodePayload.setDescriptionEn(programCode.getDescriptionEn());
-           programCodePayload.setDescriptionMs(programCode.getDescriptionMs());
+           programCodePayload.setCode(programFieldCode.getCode());
+           programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn()+"("+programFieldCode.getFieldCode().getDescriptionEn()+")");
+           programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
            
            FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
-           facultyCodePayload.setCode(programCode.getFacultyCode().getCode());
-           facultyCodePayload.setDescription(programCode.getFacultyCode().getDescriptionEn());
+           facultyCodePayload.setCode(programFieldCode.getFacultyCode().getCode());
+           facultyCodePayload.setDescription(programFieldCode.getFacultyCode().getDescriptionEn());
            programCodePayload.setFacultyCode(facultyCodePayload);
            
            ProgramLevelPayload prgrmLvlPayload = new ProgramLevelPayload();

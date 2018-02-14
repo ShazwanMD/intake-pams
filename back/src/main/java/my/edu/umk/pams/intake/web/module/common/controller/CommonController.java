@@ -8,6 +8,7 @@ import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOfferingImpl;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
+import my.edu.umk.pams.intake.web.module.application.vo.FieldCode;
 import my.edu.umk.pams.intake.web.module.common.vo.*;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramLevel;
 import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
@@ -20,7 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import groovy.util.logging.Log;
+
 
 import java.util.List;
 
@@ -313,6 +314,73 @@ public class CommonController {
         commonService.removeFacultyCode(facultyCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    //====================================================================================================
+    // FIELD CODES
+    //====================================================================================================
+
+    @RequestMapping(value = "/fieldCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<FieldCode>> findFieldCodes() {
+    	
+    	System.out.println("size field code cntrlr :"+commonService.findFieldCodes("%", 0, Integer.MAX_VALUE).size());
+        return new ResponseEntity<List<FieldCode>>(commonTransformer.toFieldCodeVos(
+                commonService.findFieldCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/fieldCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<FieldCode> findFieldCode(@PathVariable String code) {
+        return new ResponseEntity<FieldCode>(commonTransformer.toFieldCodeVo(
+                commonService.findFieldCodeByCode(code)), HttpStatus.OK);
+    }
+
+    /*@RequestMapping(value = "/fieldCodes/{code}/programCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramCode>> findProgramCodesByFieldCode(@PathVariable String code) {
+        InFieldCode fieldCode = commonService.findFieldCodeByCode(code);
+        return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(
+                commonService.findProgramCodes(fieldCode)), HttpStatus.OK);
+    }*/
+
+    @RequestMapping(value = "/fieldCodes/{code}/programCodes/{levelCode}", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramCode>> findFieldCodesByFacultyCode(@PathVariable String code, @PathVariable String levelCode) {
+        InFacultyCode facultyCode = commonService.findFacultyCodeByCode(code);
+        InProgramLevel programLevel = policyService.findProgramLevelByCode(levelCode);
+        return new ResponseEntity<List<ProgramCode>>(commonTransformer.toProgramCodeVos(
+                commonService.findProgramCodes(facultyCode, programLevel)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/saveFieldCode", method = RequestMethod.POST)
+    public ResponseEntity<String> saveFieldCode(@RequestBody FieldCode vo) {
+        dummyLogin();
+
+        InFieldCode fieldCode = new InFieldCodeImpl();
+        fieldCode.setCode(vo.getCode());
+        fieldCode.setDescriptionMs(vo.getDescriptionMs());
+        fieldCode.setDescriptionEn(vo.getDescriptionEn());
+        
+        commonService.saveFieldCode(fieldCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/fieldCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateFieldCode(@PathVariable String code, @RequestBody FieldCode vo) {
+        dummyLogin();
+
+        InFieldCode fieldCode = commonService.findFieldCodeById(vo.getId());
+        fieldCode.setCode(vo.getCode());
+        fieldCode.setDescriptionMs(vo.getDescriptionMs());
+        fieldCode.setDescriptionEn(vo.getDescriptionEn());
+        commonService.updateFieldCode(fieldCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/fieldCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeFieldCode(@PathVariable String code) {
+        //dummyLogin();
+
+        InFieldCode fieldCode = commonService.findFieldCodeByCode(code);
+        commonService.removeFieldCode(fieldCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     //====================================================================================================
     // PROGRAM CODES
@@ -343,8 +411,8 @@ public class CommonController {
         programCode.setCode(vo.getCode());
         programCode.setDescriptionEn(vo.getDescriptionEn());
         programCode.setDescriptionMs(vo.getDescriptionMs());
-        programCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
-        programCode.setGraduateCenter(commonService.findGraduateCenterById(vo.getGraduateCenter().getId()));
+        /*programCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
+        programCode.setGraduateCenter(commonService.findGraduateCenterById(vo.getGraduateCenter().getId()));*/
         programCode.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
         commonService.saveProgramCode(programCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -368,6 +436,59 @@ public class CommonController {
 
         InProgramCode programCode = commonService.findProgramCodeByCode(code);
         commonService.removeProgramCode(programCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
+    //====================================================================================================
+    // PROGRAM FIELD CODES
+    //====================================================================================================
+
+    @RequestMapping(value = "/programFieldCodes", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramFieldCode>> findProgramFieldCodes() {
+        return new ResponseEntity<List<ProgramFieldCode>>(commonTransformer.toProgramFieldCodeVos(commonService.findProgramFieldCodes("%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/programFieldCodes/programLevel/{levelCode}", method = RequestMethod.GET)
+    public ResponseEntity<List<ProgramFieldCode>> findProgramFieldCodesByProgramLevel(@PathVariable String levelCode) {
+        InProgramLevel inProgramLevel = policyService.findProgramLevelByCode(levelCode);
+        return new ResponseEntity<List<ProgramFieldCode>>(commonTransformer.toProgramFieldCodeVos(commonService.findProgramFieldCodesByProgramLevel(inProgramLevel)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/programFieldCodes/{code}", method = RequestMethod.GET)
+    public ResponseEntity<ProgramFieldCode> findProgramFieldCode(@PathVariable String code) {
+        return new ResponseEntity<ProgramFieldCode>(commonTransformer.toProgramFieldCodeVo(commonService.findProgramFieldCodeByCode(code)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/programFieldCodes/programCode/{code}", method = RequestMethod.POST)
+    public ResponseEntity<String> saveProgramFieldCode(@RequestBody ProgramFieldCode vo) {
+        dummyLogin();
+
+
+        InProgramFieldCode programFieldCode = new InProgramFieldCodeImpl();
+        programFieldCode.setCode(vo.getCode());
+        programFieldCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
+        programFieldCode.setProgramCode(commonService.findProgramCodeById(vo.getProgramCode().getId()));
+        programFieldCode.setFieldCode(commonService.findFieldCodeById(vo.getFieldCode().getId()));
+        commonService.saveProgramFieldCode(programFieldCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/programFieldCodes/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateProgramFieldCode(@PathVariable String code, @RequestBody ProgramFieldCode vo) {
+        dummyLogin();
+
+        InProgramFieldCode programFieldCode = commonService.findProgramFieldCodeById(vo.getId());
+        programFieldCode.setCode(vo.getCode());
+        commonService.updateProgramFieldCode(programFieldCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/programFieldCodes/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeProgramFieldCode(@PathVariable String code) {
+        dummyLogin();
+
+        InProgramFieldCode programFieldCode = commonService.findProgramFieldCodeByCode(code);
+        commonService.removeProgramFieldCode(programFieldCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     

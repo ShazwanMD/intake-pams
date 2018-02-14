@@ -4,6 +4,7 @@ package my.edu.umk.pams.intake.web.module.policy.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.intake.web.module.common.vo.ProgramCode;
+import my.edu.umk.pams.intake.web.module.common.vo.ProgramFieldCode;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class ProgramOffering extends MetaObject {
 
     private Boolean interview;
     private Integer projection;
-    private ProgramCode programCode;
+    private ProgramFieldCode programFieldCode;
     private String generalCriteria;
     private String specificCriteria;
 
@@ -35,15 +36,15 @@ public class ProgramOffering extends MetaObject {
         this.projection = projection;
     }
 
-    public ProgramCode getProgramCode() {
-        return programCode;
-    }
+    public ProgramFieldCode getProgramFieldCode() {
+		return programFieldCode;
+	}
 
-    public void setProgramCode(ProgramCode programCode) {
-        this.programCode = programCode;
-    }
-    
-    public void setGeneralCriteria (String generalCriteria){
+	public void setProgramFieldCode(ProgramFieldCode programFieldCode) {
+		this.programFieldCode = programFieldCode;
+	}
+
+	public void setGeneralCriteria (String generalCriteria){
     	this.generalCriteria = generalCriteria;
     }
     

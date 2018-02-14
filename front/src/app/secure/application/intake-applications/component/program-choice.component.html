@@ -1,8 +1,8 @@
 <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
   <div class="push-top-sm"></div>
   <p class="md-title tc-grey-600">Choose your program:
-    {{intakeApplication?.programSelection?.programCode.descriptionEn}}
-    ({{intakeApplication?.programSelection?.programCode.code}}) </p>
+    {{intakeApplication?.programSelection?.programFieldCode.programCode.descriptionEn}}({{intakeApplication?.programSelection?.programFieldCode.fieldCode.descriptionEn}})
+    ({{intakeApplication?.programSelection?.programFieldCode.code}}) </p>
   <button md-raised-button color="accent" class="push-bottom" (click)="showProgramSelectionDialog()">Choose</button>
   <div class="push-top-sm"></div>
   <p class="md-title tc-grey-600">Choose your study mode:

@@ -2,19 +2,28 @@ import { CandidateTask } from './../../shared/model/admission/candidate-task.int
 import { Action } from '@ngrx/store';
 import { AdmissionActions } from './admission.action';
 
-
-
 export type CandidateTaskState = CandidateTask;
 
 const initialState: CandidateTaskState = <CandidateTaskState>{};
 
-// export function candidateTaskReducer(state =initialState, action: Action):CandidateTaskState {
-//     switch (action.type){
-//         case AdmissionActions.FIND_CANDIDATE_TASK_BY_TASK_ID_SUCCESS:{
-//             return action.payload;
-//         }
-//         default:{
-//             return state;
-//         }
-//     }
-// }
+ export function assignedCandidateTaskReducer(state =initialState, action: Action):CandidateTaskState {
+     switch (action.type){
+         case AdmissionActions.FIND_ASSIGNED_INTAKE_TASKS_SUCCESS:{
+             return action.payload;
+         }
+         default:{
+             return state;
+         }
+     }
+ }
+ 
+ export function pooledCandidateListReducer(state = initialState, action: Action): CandidateTaskState{
+     switch (action.type){
+         case AdmissionActions.FIND_POOLED_INTAKE_TASKS_SUCCESS:{
+             return action.payload;
+         }
+         default:{
+             return state;
+         }
+     }
+ }

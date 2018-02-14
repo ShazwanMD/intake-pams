@@ -1,8 +1,9 @@
 package my.edu.umk.pams.intake.common.model;
-
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InProgramLevelImpl;
+
+import java.util.List;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,7 +21,11 @@ public class InProgramCodeImpl implements InProgramCode {
     @NotNull
     @Column(name = "CODE", unique = true, nullable = false)
     private String code;
-
+    
+    @OneToOne(targetEntity = InProgramLevelImpl.class)
+    @JoinColumn(name = "PROGRAM_LEVEL_ID", nullable = false)
+    private InProgramLevel programLevel;
+    
     @NotNull
     @Column(name = "DESCRIPTION_MS", nullable = false)
     private String descriptionMs;
@@ -28,18 +33,13 @@ public class InProgramCodeImpl implements InProgramCode {
     @NotNull
     @Column(name = "DESCRIPTION_EN", nullable = false)
     private String descriptionEn;
-
-    @OneToOne(targetEntity = InFacultyCodeImpl.class)
-    @JoinColumn(name = "FACULTY_CODE_ID", nullable = false)
-    private InFacultyCode facultyCode;
     
     @OneToOne(targetEntity = InGraduateCenterImpl.class)
     @JoinColumn(name = "GRADUATE_CENTER_ID", nullable = false)
     private InGraduateCenter graduateCenter;
     
-    @OneToOne(targetEntity = InProgramLevelImpl.class)
-    @JoinColumn(name = "PROGRAM_LEVEL_ID", nullable = false)
-    private InProgramLevel programLevel;
+    @OneToMany(targetEntity = InProgramFieldCodeImpl.class, mappedBy = "programCode")
+    private List<InProgramFieldCode> programFieldCodes;
 
     @Embedded
     private InMetadata metadata;
@@ -59,58 +59,58 @@ public class InProgramCodeImpl implements InProgramCode {
     }
 
     @Override
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    @Override
-    public String getDescriptionMs() {
-        return descriptionMs;
-    }
-
-    @Override
-    public void setDescriptionMs(String descriptionMs) {
-        this.descriptionMs = descriptionMs;
-    }
-
-    @Override
-    public String getDescriptionEn() {
-        return descriptionEn;
-    }
-
-    @Override
-    public void setDescriptionEn(String descriptionEn) {
-        this.descriptionEn = descriptionEn;
-    }
-
-    @Override
-    public InGraduateCenter getGraduateCenter() {
-        return graduateCenter;
-    }
-
-    @Override
-    public void setGraduateCenter(InGraduateCenter graduateCenter) {
-        this.graduateCenter = graduateCenter;
-    }
-
-    @Override
-    public InFacultyCode getFacultyCode() {
-        return facultyCode;
-    }
-
-    @Override
-    public void setFacultyCode(InFacultyCode facultyCode) {
-        this.facultyCode = facultyCode;
-    }
-    
-    @Override
-	public InProgramLevel getProgramLevel() {
+    public InProgramLevel getProgramLevel() {
 		return programLevel;
 	}
 
     @Override
 	public void setProgramLevel(InProgramLevel programLevel) {
 		this.programLevel = programLevel;
+	}
+
+	@Override
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+	@Override
+	public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	@Override
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+	@Override
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+	@Override
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+
+	@Override
+	public InGraduateCenter getGraduateCenter() {
+		return graduateCenter;
+	}
+
+	@Override
+	public void setGraduateCenter(InGraduateCenter graduateCenter) {
+		this.graduateCenter = graduateCenter;
+	}
+
+	@Override
+	public List<InProgramFieldCode> getProgramFieldCodes() {
+		return programFieldCodes;
+	}
+
+	@Override
+	public void setProgramFieldCodes(List<InProgramFieldCode> programFieldCodes) {
+		this.programFieldCodes = programFieldCodes;
 	}
 
 	@Override

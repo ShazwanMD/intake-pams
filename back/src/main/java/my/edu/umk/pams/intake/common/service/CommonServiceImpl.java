@@ -126,6 +126,9 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private InSupervisorCodeDao supervisorCodeDao;
+   
+    @Autowired
+    private InProgramFieldCodeDao programFieldCodeDao;
     
     @Autowired
     private InSupervisorOfferingDao supervisorOfferingDao;
@@ -375,7 +378,7 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
-  //====================================================================================================
+    //====================================================================================================
     // PROMO CODE
     //====================================================================================================
 
@@ -680,6 +683,7 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public List<InFieldCode> findFieldCodes(String filter, Integer offset, Integer limit) {
+    	System.out.println("size :"+fieldCodeDao.find(filter, offset, limit).size());
         return fieldCodeDao.find(filter, offset, limit);
     }
 
@@ -1206,6 +1210,7 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public List<InFacultyCode> findFacultyCodes(String filter, Integer offset, Integer limit) {
+    	System.out.println("size "+facultyCodeDao.find(filter, offset, limit).size());
         return facultyCodeDao.find(filter, offset, limit);
     }
 
@@ -2206,4 +2211,102 @@ public class CommonServiceImpl implements CommonService {
         supervisorOfferingDao.delete(supervisorOffering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    //====================================================================================================
+    // PROGRAM FIELD CODE
+    //====================================================================================================
+
+    @Override
+    public InProgramFieldCode findProgramFieldCodeById(Long id) {
+        return programFieldCodeDao.findById(id);
+    }
+    
+    @Override
+    public InProgramFieldCode findProgramFieldCodeByCode(String code) {
+        return programFieldCodeDao.findByCode(code);
+    }
+
+    @Override
+    public List<InProgramFieldCode> findProgramFieldCodes() {
+        return programFieldCodeDao.find();
+    }
+
+    @Override
+    public List<InProgramFieldCode> findProgramFieldCodes(InGraduateCenter graduateCenter) {
+        return programFieldCodeDao.find(graduateCenter);
+    }
+
+    @Override
+    public List<InProgramFieldCode> findProgramFieldCodes(InFacultyCode facultyCode, InProgramLevel programLevel) {
+        return null;
+    }
+
+    @Override
+    public List<InProgramFieldCode> findProgramFieldCodes(InGraduateCenter graduateCenter, InProgramLevel programLevel) {
+        return null;
+    }
+
+    @Override
+    public List<InProgramFieldCode> findProgramFieldCodes(InFacultyCode facultyCode) {
+        return programFieldCodeDao.find(facultyCode);
+    }
+
+    @Override
+    public List<InProgramFieldCode> findProgramFieldCodes(String filter, Integer offset, Integer limit) {
+        return programFieldCodeDao.find(filter, offset, limit);
+    }
+    
+    @Override
+    public List<InProgramFieldCode> findProgramFieldCodesByProgramLevel(InProgramLevel inProgramLevel) {
+        return programFieldCodeDao.find(inProgramLevel);
+    }
+
+    @Override
+    public Integer countProgramFieldCode() {
+        return programFieldCodeDao.count();
+    }
+
+    @Override
+    public Integer countProgramFieldCode(String filter) {
+        return programFieldCodeDao.count(filter);
+    }
+
+    @Override
+    public Integer countProgramFieldCode(InFacultyCode facultyCode) {
+        return programFieldCodeDao.count(facultyCode);
+    }
+
+    @Override
+    public Integer countProgramFieldCode(InGraduateCenter graduateCenter) {
+        return programFieldCodeDao.count(graduateCenter);
+    }
+
+    @Override
+    public Integer countProgramFieldCode(InFacultyCode facultyCode, InProgramLevel programLevel) {
+        return null;
+    }
+
+    @Override
+    public Integer countProgramFieldCode(InGraduateCenter graduateCenter, InProgramLevel programLevel) {
+        return null;
+    }
+
+    @Override
+    public void saveProgramFieldCode(InProgramFieldCode programCode) {
+        programFieldCodeDao.save(programCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateProgramFieldCode(InProgramFieldCode programCode) {
+        programFieldCodeDao.update(programCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeProgramFieldCode(InProgramFieldCode programCode) {
+        programFieldCodeDao.remove(programCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
 }

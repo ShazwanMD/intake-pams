@@ -1,5 +1,7 @@
 package my.edu.umk.pams.intake.common.model;
 
+import java.util.List;
+
 import my.edu.umk.pams.intake.core.InMetaObject;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 
@@ -9,23 +11,23 @@ public interface  InProgramCode extends InMetaObject {
 
     void setCode(String code);
 
-    String getDescriptionMs();
+	InProgramLevel getProgramLevel();
 
-    void setDescriptionMs(String descriptionMs);
+	void setProgramLevel(InProgramLevel programLevel);
+
+	String getDescriptionMs();
+
+	void setDescriptionMs(String descriptionMs);
 
 	String getDescriptionEn();
 
 	void setDescriptionEn(String descriptionEn);
 
-	InFacultyCode getFacultyCode();
-
-	void setFacultyCode(InFacultyCode facultyCode);
-
 	InGraduateCenter getGraduateCenter();
 
 	void setGraduateCenter(InGraduateCenter graduateCenter);
 
-	InProgramLevel getProgramLevel();
+	List<InProgramFieldCode> getProgramFieldCodes();
 
-	void setProgramLevel(InProgramLevel programLevel);
+	void setProgramFieldCodes(List<InProgramFieldCode> programFieldCodes);
 }

@@ -194,6 +194,25 @@ export class CommonActions {
       payload: codes
     };
   }
+  
+  static FIND_FIELD_CODES = '[Common] Find Field Codes';
+
+  findFieldCodes(): Action {
+    console.log("findFieldCodes");
+    return {
+      type: CommonActions.FIND_FIELD_CODES,
+    };
+  }
+
+  static FIND_FIELD_CODES_SUCCESS = '[Common] Find Field Codes Success';
+
+  findFieldCodesSuccess(codes): Action {
+    console.log("findFieldCodesSuccess");
+    return {
+      type: CommonActions.FIND_FIELD_CODES_SUCCESS,
+      payload: codes
+    };
+  }
 
   static FIND_GRADUATE_CENTERS = '[Common] Find Graduate Centers';
 
@@ -229,6 +248,45 @@ export class CommonActions {
     console.log("findProgramCodesSuccess");
     return {
       type: CommonActions.FIND_PROGRAM_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+  
+  static FIND_PROGRAM_FIELD_CODES = '[Common] Find Program Field Codes';
+
+  findProgramFieldCodes(): Action {
+    console.log("findProgramFieldCodes");
+    return {
+      type: CommonActions.FIND_PROGRAM_FIELD_CODES,
+    };
+  }
+
+  static FIND_PROGRAM_FIELD_CODES_SUCCESS = '[Common] Find Program Field Codes Success';
+
+  findProgramFieldCodesSuccess(codes): Action {
+    console.log("findProgramFieldCodesSuccess");
+    return {
+      type: CommonActions.FIND_PROGRAM_FIELD_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+  
+  static FIND_PROGRAM_FIELD_CODES_BY_PROGRAM_LEVEL = '[Common] Find Program Field Codes By Program Level';
+
+  findProgramFieldCodesByProgramLevel(programLevel): Action {
+    console.log("findProgramFieldCodesByProgramLevel"+programLevel);
+    return {
+      type: CommonActions.FIND_PROGRAM_FIELD_CODES_BY_PROGRAM_LEVEL,
+      payload: programLevel
+    };
+  }
+
+  static FIND_PROGRAM_FIELD_CODES_BY_PROGRAM_LEVEL_SUCCESS = '[Common] Find Program Field Codes By Program Level Success';
+
+  findProgramFieldCodesByProgramLevelSuccess(codes): Action {
+    console.log("findProgramFieldCodesByProgramLevelSuccess");
+    return {
+      type: CommonActions.FIND_PROGRAM_FIELD_CODES_BY_PROGRAM_LEVEL_SUCCESS,
       payload: codes
     };
   }

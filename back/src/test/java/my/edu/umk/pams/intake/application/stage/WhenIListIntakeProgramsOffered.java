@@ -42,7 +42,7 @@ public class WhenIListIntakeProgramsOffered extends Stage<WhenIListIntakeProgram
         Assert.notEmpty(programOfferings, "programOfferings cannot be empty");
 
         for (InProgramOffering program : programOfferings) {
-            LOG.debug(program.getProgramCode().getDescriptionEn());
+            LOG.debug(program.getProgramFieldCode().getCode());
         }
 
         return self();
@@ -54,7 +54,6 @@ public class WhenIListIntakeProgramsOffered extends Stage<WhenIListIntakeProgram
         Assert.notNull(programCode, programCode.getCode() + " ProgramCode cannot be null");
 
         InProgramOffering offering = new InProgramOfferingImpl();
-        offering.setProgramCode(programCode);
         policyService.addProgramOffering(intake, offering);
     }
 }

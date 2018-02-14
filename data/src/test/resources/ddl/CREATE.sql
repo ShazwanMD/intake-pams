@@ -1,4 +1,4 @@
-create table IN_ACTR (
+ create table IN_ACTR (
         ID int8 not null,
         ACTOR_TYPE int4,
         EMAIL varchar(255),
@@ -139,7 +139,40 @@ create table IN_ACTR (
     create table IN_CNDT (
         ID int8 not null,
         ACCEPTION_STATUS boolean not null,
+        AUDIT_NO varchar(255) not null,
+        CANCEL_COMMENT varchar(255),
+        DESCRIPTION_EN varchar(255) not null,
+        DESCRIPTION_MS varchar(255) not null,
         EMAIL varchar(255) not null,
+        AV_TS timestamp,
+        AV_ID int8,
+        CL_ID int8,
+        CL_TS timestamp,
+        CK_TS timestamp,
+        CK_ID int8,
+        DT_TS timestamp,
+        DT_ID int8,
+        EV_TS timestamp,
+        EV_ID int8,
+        PR_TS timestamp,
+        PR_ID int8,
+        PS_TS timestamp,
+        PS_ID int8,
+        RG_TS timestamp,
+        RG_ID int8,
+        RM_TS timestamp,
+        RM_ID int8,
+        RQ_TS timestamp,
+        RQ_ID int8,
+        SL_TS timestamp,
+        SL_ID int8,
+        FD_ST int4,
+        UP_TS timestamp,
+        UP_ID int8,
+        UV_TS timestamp,
+        UV_ID int8,
+        VF_TS timestamp,
+        VF_ID int8,
         IDENTITY_NO varchar(255) not null,
         MATRIC_NO varchar(255),
         C_TS timestamp,
@@ -151,7 +184,10 @@ create table IN_ACTR (
         M_ST int4,
         NAME varchar(255) not null,
         REASON varchar(255),
+        REFERENCE_NO varchar(255) not null,
         REGISTRATION_STATUS boolean not null,
+        REMOVE_COMMENT varchar(255),
+        SOURCE_NO varchar(255) not null,
         STATUS int4 not null,
         APPLICATION_ID int8,
         INTAKE_ID int8,
@@ -436,7 +472,8 @@ create table IN_ACTR (
     create table IN_FILD_CODE (
         ID int8 not null,
         CODE varchar(255) not null,
-        DESCRIPTION varchar(255) not null,
+        DESCRIPTION_EN varchar(255) not null,
+        DESCRIPTION_MS varchar(255) not null,
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -871,9 +908,23 @@ create table IN_ACTR (
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        FACULTY_CODE_ID int8 not null,
         GRADUATE_CENTER_ID int8 not null,
         PROGRAM_LEVEL_ID int8 not null,
+        primary key (ID)
+    ); 
+    create table IN_PRGM_FILD_CODE (
+        ID int8 not null,
+        CODE varchar(255) not null,
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        FACULTY_CODE_ID int8 not null,
+        FILD_ID int8,
+        PRGM_ID int8 not null,
         primary key (ID)
     ); 
     create table IN_PRGM_LEVL (
@@ -904,7 +955,7 @@ create table IN_ACTR (
         PROJECTION int4,
         SPECIFIC_CRITERIA varchar(255),
         INTAKE_ID int8,
-        PROGRAM_CODE_ID int8 not null,
+        PRGM_FILD_CODE_ID int8 not null,
         STUDY_CENTER_CODE_ID int8,
         primary key (ID)
     ); 
@@ -1085,6 +1136,7 @@ create table IN_ACTR (
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        INTAKE_ID int8,
         PRGM_LEVEL_CODE_ID int8,
         SUPERVISOR_CODE_ID int8,
         primary key (ID)
@@ -1244,6 +1296,14 @@ create table IN_ACTR (
     alter table IN_CMPS_CODE 
         add constraint uc_IN_CMPS_CODE_1 unique (CODE); 
     alter table IN_CNDT 
+        add constraint uc_IN_CNDT_1 unique (AUDIT_NO); 
+    alter table IN_CNDT 
+        add constraint uc_IN_CNDT_2 unique (CANCEL_COMMENT); 
+    alter table IN_CNDT 
+        add constraint uc_IN_CNDT_3 unique (REFERENCE_NO); 
+    alter table IN_CNDT 
+        add constraint uc_IN_CNDT_4 unique (REMOVE_COMMENT); 
+    alter table IN_CNDT 
         add constraint FKA01B411537A6AAA6 
         foreign key (APPLICATION_ID) 
         references IN_INTK_APLN; 
@@ -1327,6 +1387,10 @@ create table IN_ACTR (
         add constraint FKEA01D170AC7CA589 
         foreign key (CAMPUS_CODE_ID) 
         references IN_INTK_APLN; 
+    alter table IN_FCTY_CODE 
+        add constraint FKEA01D17052E5025E 
+        foreign key (GRADUATE_CENTER_ID) 
+        references IN_GRDT_CNTR; 
     alter table IN_FILD_CODE 
         add constraint uc_IN_FILD_CODE_1 unique (CODE); 
     alter table IN_GNDR_CODE 
@@ -1518,21 +1582,27 @@ create table IN_ACTR (
     alter table IN_PRGM_CODE 
         add constraint uc_IN_PRGM_CODE_1 unique (CODE); 
     alter table IN_PRGM_CODE 
-        add constraint FK6B49ECA2DDFADD6 
-        foreign key (FACULTY_CODE_ID) 
-        references IN_FCTY_CODE; 
-    alter table IN_PRGM_CODE 
         add constraint FK6B49ECA52E5025E 
         foreign key (GRADUATE_CENTER_ID) 
         references IN_GRDT_CNTR; 
-    alter table IN_FCTY_CODE 
-        add constraint FK6B49ECA52E502FFDDSS5E 
-        foreign key (GRADUATE_CENTER_ID) 
-        references IN_GRDT_CNTR;      
     alter table IN_PRGM_CODE 
         add constraint FK6B49ECAACAEA1D7 
         foreign key (PROGRAM_LEVEL_ID) 
         references IN_PRGM_LEVL; 
+    alter table IN_PRGM_FILD_CODE 
+        add constraint uc_IN_PRGM_FILD_CODE_1 unique (CODE); 
+    alter table IN_PRGM_FILD_CODE 
+        add constraint FKF88EAF742DDFADD6 
+        foreign key (FACULTY_CODE_ID) 
+        references IN_FCTY_CODE; 
+    alter table IN_PRGM_FILD_CODE 
+        add constraint FKF88EAF742216DFB9 
+        foreign key (FILD_ID) 
+        references IN_FILD_CODE; 
+    alter table IN_PRGM_FILD_CODE 
+        add constraint FKF88EAF744A4DEA76 
+        foreign key (PRGM_ID) 
+        references IN_PRGM_CODE; 
     alter table IN_PRGM_LEVL 
         add constraint uc_IN_PRGM_LEVL_1 unique (CODE); 
     alter table IN_PRGM_OFRG 
@@ -1540,9 +1610,9 @@ create table IN_ACTR (
         foreign key (INTAKE_ID) 
         references IN_INTK; 
     alter table IN_PRGM_OFRG 
-        add constraint FK6B9F32988BA7616 
-        foreign key (PROGRAM_CODE_ID) 
-        references IN_PRGM_CODE; 
+        add constraint FK6B9F329E49A9710 
+        foreign key (PRGM_FILD_CODE_ID) 
+        references IN_PRGM_FILD_CODE; 
     alter table IN_PRGM_OFRG 
         add constraint FK6B9F3295C8D6997 
         foreign key (STUDY_CENTER_CODE_ID) 
@@ -1575,6 +1645,10 @@ create table IN_ACTR (
         references IN_MODL; 
     alter table IN_SPVR_CODE 
         add constraint uc_IN_SPVR_CODE_1 unique (CODE); 
+    alter table IN_SPVR_OFRG 
+        add constraint FK15CA9A583AD22420 
+        foreign key (INTAKE_ID) 
+        references IN_INTK; 
     alter table IN_SPVR_OFRG 
         add constraint FK15CA9A586F1B8021 
         foreign key (PRGM_LEVEL_CODE_ID) 
@@ -1684,6 +1758,7 @@ create table IN_ACTR (
     create sequence SQ_IN_PCPL_ROLE; 
     create sequence SQ_IN_PLMT_CODE; 
     create sequence SQ_IN_PRGM_CODE; 
+    create sequence SQ_IN_PRGM_FILD_CODE; 
     create sequence SQ_IN_PRGM_LEVL; 
     create sequence SQ_IN_PRGM_OFRG; 
     create sequence SQ_IN_PRMO_CODE; 

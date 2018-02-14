@@ -1,5 +1,7 @@
 package my.edu.umk.pams.intake.common.model;
 
+import java.util.List;
+
 import my.edu.umk.pams.intake.core.InMetaObject;
 
 /**
@@ -11,7 +13,11 @@ public interface InFieldCode extends InMetaObject {
 
     void setCode(String code);
 
-    String getDescription();
+	void setDescriptionEn(String descriptionEn);
 
-    void setDescription(String description);
+	String getDescriptionEn();
+
+	void setDescriptionMs(String descriptionMs);
+
+	String getDescriptionMs();
 }

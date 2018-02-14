@@ -26,7 +26,7 @@ export class ProgramCodeSelectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.findProgramCodesByProgramLevel(this.programLevel));
+    this.store.dispatch(this.actions.findProgramCodes());
   }
 
   selectChangeEvent(event: ProgramCode) {
