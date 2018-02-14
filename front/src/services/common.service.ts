@@ -404,8 +404,8 @@ export class CommonService {
       .map((res: Response) => <ProgramFieldCode>res.json());
   }
 
-  saveProgramFieldCode(code: ProgramFieldCode): Observable<String> {
-    return this._http.post(this.COMMON_API + '/programFieldCodes', JSON.stringify(code))
+  saveProgramFieldCode(programCode:ProgramCode, fieldCode:FieldCode, facultyCode:FacultyCode, programFieldCode: ProgramFieldCode): Observable<String> {
+    return this._http.post(this.COMMON_API + '/programFieldCodes/programCode/' + programCode.code,  JSON.stringify(programFieldCode))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

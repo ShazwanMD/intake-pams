@@ -459,7 +459,7 @@ public class CommonController {
         return new ResponseEntity<ProgramFieldCode>(commonTransformer.toProgramFieldCodeVo(commonService.findProgramFieldCodeByCode(code)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/programFieldCodes", method = RequestMethod.POST)
+    @RequestMapping(value = "/programFieldCodes/programCode/{code}", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgramFieldCode(@RequestBody ProgramFieldCode vo) {
         dummyLogin();
 

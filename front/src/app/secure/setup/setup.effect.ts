@@ -259,8 +259,8 @@ export class SetupEffects {
   @Effect() saveProgramFieldCodes$ = this.actions$
     .ofType(SetupActions.SAVE_PROGRAM_FIELD_CODE)
     .map((action) => action.payload)
-    .switchMap((payload) => this.commonService.saveProgramCode(payload))
-    .map((message) => this.setupActions.saveProgramCodeSuccess(message))
+    .switchMap((payload) => this.commonService.saveProgramFieldCode(payload.programCode,payload.fieldCode,payload.facultyCode, payload.programFieldCode))
+    .map((message) => this.setupActions.saveProgramFieldCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
 
   @Effect() removeProgramFieldCode$ = this.actions$

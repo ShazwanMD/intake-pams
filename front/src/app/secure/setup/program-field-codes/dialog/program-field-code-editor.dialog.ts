@@ -23,6 +23,9 @@ export class ProgramFieldCodeEditorDialog implements OnInit {
   private editorForm: FormGroup;
   private edit: boolean = false;
   private _programFieldCode: ProgramFieldCode;
+  private _programCode:ProgramCode;
+  private _fieldCode:FieldCode;
+  private _facultyCode:FacultyCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -52,10 +55,14 @@ export class ProgramFieldCodeEditorDialog implements OnInit {
     if (this.edit) this.editorForm.patchValue(this._programFieldCode);
   }
 
-  submit(code: ProgramFieldCode, isValid: boolean) {
+  submit(programFieldCode: ProgramFieldCode, isValid: boolean) {
+    this._facultyCode = programFieldCode.facultyCode;
+    this._programCode = programFieldCode.programCode;
+    this._fieldCode = programFieldCode.fieldCode;
+
     if (confirm('Confirm to update program field code?')) {
-    if (!code.id) this.store.dispatch(this.actions.saveProgramFieldCode(code));
-    else  this.store.dispatch(this.actions.updateProgramFieldCode(code));
+    if (!programFieldCode.id) this.store.dispatch(this.actions.saveProgramFieldCode(this._programCode, this._fieldCode,this._facultyCode,programFieldCode));
+    else  this.store.dispatch(this.actions.updateProgramFieldCode(programFieldCode));
     this.dialog.close();
     };
   }
