@@ -59,7 +59,7 @@ export class ApplicationService {
 
   findSupervisorOfferingsByProgramLevel(programLevel: ProgramLevel): Observable<SupervisorOffering> {
     console.log('findSupervisorOfferingsByProgramLevel :' + programLevel.code);
-    return this._http.get(this.APPLICATION_API + '/supervisorOfferings/programLevel/' + programLevel.code)
+    return this._http.get(this.APPLICATION_API + '/programLevel/' + programLevel.code + '/supervisorOfferings')
       .map((res: Response) => <SupervisorOffering>res.json());
   }
 

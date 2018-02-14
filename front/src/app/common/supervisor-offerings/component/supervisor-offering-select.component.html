@@ -3,6 +3,6 @@
   (change)="selectChangeEvent($event.value)" flex>
 
   <md-option *ngFor="let supervisorOffering of supervisorOfferings$ | async" [value]="supervisorOffering">
-      {{supervisorOffering.programLevel.code}}: {{supervisorOffering.supervisorCode.name}}
+      {{supervisorOffering?.programLevel?.code}}: {{supervisorOffering?.supervisorCode?.name}}
   </md-option>
 </md-select>

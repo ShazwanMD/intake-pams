@@ -1,11 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormBuilder} from '@angular/forms';
 import {CommonActions} from '../../common.action';
 import {CommonModuleState} from '../../index';
 import {ProgramLevel} from '../../../shared/model/policy/program-level.interface';
 import { SupervisorOffering } from '../../../shared/model/policy/supervisor-offering.interface';
+import { IntakeApplication } from '../../../shared/model/application/intake-application.interface';
+import { Router, ActivatedRoute } from '@angular/router';
+import { IntakeApplicationActions } from '../../../secure/application/intake-applications/intake-application.action';
+import { ApplicationModuleState } from '../../../secure/application/index';
+import { MdDialogRef } from '@angular/material';
+import { SupervisorOfferingSelectorDialog } from '../../../secure/application/intake-applications/dialog/supervisor-offering-selector.dialog';
 
 @Component({
   selector: 'pams-supervisor-offering-select',
@@ -17,22 +23,30 @@ export class SupervisorOfferingSelectComponent implements OnInit {
   private SUPERVISOR_OFFERINGS: string[] = 'commonModuleState.supervisorOfferings'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  @Input() supervisorOffering: SupervisorOffering;
-   @Input() programLevel: ProgramLevel;
-  supervisorOfferings$: Observable<SupervisorOffering[]>;
 
-  constructor(private store: Store<CommonModuleState>,
-              private actions: CommonActions) {
+  private supervisorOfferings$: Observable<SupervisorOffering[]>;
+
+  private _intakeApplication: IntakeApplication;
+  private _programLevel: ProgramLevel;
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private viewContainerRef: ViewContainerRef,
+    private actions: IntakeApplicationActions,
+    private store: Store<ApplicationModuleState>,
+    private dialog: MdDialogRef<SupervisorOfferingSelectorDialog>) {
     this.supervisorOfferings$ = this.store.select(...this.SUPERVISOR_OFFERINGS);
-  }
-
+}
+set programLevel(value: ProgramLevel) {
+  this._programLevel = value;
+}
+set intakeApplication(value: IntakeApplication) {
+  this._intakeApplication = value;
+}
   ngOnInit() {
-    this.store.dispatch(this.actions.findSupervisorOfferingsByProgramLevel(this.programLevel.code));
+    this.store.dispatch(this.actions.findSupervisorOfferingsByProgramLevel(this._programLevel));
   }
 
-  // ngOnInit() {
-  //   this.store.dispatch(this.actions.findSupervisorOfferingsByProgramLevel(this.supervisorOffering.programLevel));
-  // }
 
   selectChangeEvent(event: SupervisorOffering) {
     this.innerFormControl.setValue(event, {emitEvent: false});

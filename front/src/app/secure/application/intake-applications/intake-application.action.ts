@@ -119,15 +119,15 @@ export class IntakeApplicationActions {
 
   static FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL = '[Intake] Find Supervisor Offerings By Program Level';
 
-  findSupervisorOfferingsByProgramLevel(intake): Action {
+  findSupervisorOfferingsByProgramLevel(programLevel): Action {
     console.log('findSupervisorOfferingsByProgramLevel');
     return {
       type: IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL,
-      payload: intake,
+      payload: programLevel,
     };
   }
 
-  static FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL_SUCCESS = '[Intake] Find Supervisor Offerings By Program Level Sucsess';
+  static FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL_SUCCESS = '[Intake] Find Supervisor Offerings By Program Level Success';
 
   findSupervisorOfferingsByProgramLevelSuccess(offerings): Action {
     console.log('findSupervisorOfferingsByProgramLevelSuccess');

@@ -57,7 +57,8 @@ import {GradeCodeSelectComponent} from './grade-codes/component/grade-code-selec
 import {dunCodeListReducer, DunCodeListState} from './dun-codes/dun-code-list.reducer';
 import {DunCodeSelectComponent} from './dun-codes/component/dun-code-select.component';
 import { SupervisorOfferingSelectComponent } from './supervisor-offerings/component/supervisor-offering-select.component';
-import { SupervisorOfferingListState, supervisorOfferingListReducer } from '../secure/setup/supervisor-offerings/supervisor-offering-list.reducer';
+import { SupervisorOfferingListState, supervisorOfferingListReducer } from '../common/supervisor-offerings/supervisor-offering-list.reducer';
+import { SupervisorOffering } from '../shared/model/common/supervisor-offering.interface';
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
@@ -88,7 +89,10 @@ export interface CommonModuleState {
 }
 ;
 
-export const INITIAL_COMMON_STATE: CommonModuleState = <CommonModuleState>{};
+export const INITIAL_COMMON_STATE: CommonModuleState = <CommonModuleState>{
+  supervisorOfferings:<SupervisorOffering[]>[],
+};
+
 export const commonModuleReducers = {
   programCodes: programCodeListReducer,
   programFieldCodes: programFieldCodeListReducer,

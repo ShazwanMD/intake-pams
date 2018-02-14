@@ -56,6 +56,7 @@ import {
 } from './intake-applications/attachment-list.reducer';
 import {Attachment} from '../../shared/model/application/attachment.interface';
 import { TabIndexState, tabIndexReducer } from './intake-applications/tab-index.reducer';
+import { supervisorOfferingListReducer, SupervisorOfferingListState } from '../../common/supervisor-offerings/supervisor-offering-list.reducer';
 
 export interface ApplicationModuleState {
   tabIndex: TabIndexState;
@@ -66,7 +67,7 @@ export interface ApplicationModuleState {
   referees: RefereeListState;
   attachments: AttachmentListState;
   programOfferings: IntakeProgramOfferingListState;
-  supervisorOfferings: IntakeSupervisorOfferingListState;
+  supervisorOfferings: SupervisorOfferingListState;
   studyModeOfferings: IntakeStudyModeOfferingListState;
   intakeApplications: IntakeApplicationListState;
   intakeApplication: IntakeApplicationState;
@@ -101,7 +102,7 @@ export const applicationModuleReducers = {
   attachments: attachmentListReducer,
   results: resultListReducer,
   programOfferings: intakeProgramOfferingListReducer,
-  supervisorOfferings: intakeSupervisorOfferingListReducer,
+  supervisorOfferings: supervisorOfferingListReducer,
   studyModeOfferings: intakeStudyModeOfferingListReducer,
   intakeApplications: intakeApplicationListReducer,
   intakeApplication: intakeApplicationReducer,

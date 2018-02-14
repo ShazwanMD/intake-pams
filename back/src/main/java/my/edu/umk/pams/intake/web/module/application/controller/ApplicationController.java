@@ -90,11 +90,6 @@ public class ApplicationController {
 	@Autowired
 	private CommonTransformer commonTransformer;
 	
-    @RequestMapping(value = "/supervisorOfferings/programLevel/{levelCode}", method = RequestMethod.GET)
-    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferingsByProgramLevel(@PathVariable String levelCode) {
-        InProgramLevel inProgramLevel = policyService.findProgramLevelByCode(levelCode);
-        return new ResponseEntity<List<SupervisorOffering>>(commonTransformer.toSupervisorOfferingVos(commonService.findSupervisorOfferingsByProgramLevel(inProgramLevel,"%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
-    }
 
 	// ====================================================================================================
 	// INTAKE
@@ -415,6 +410,12 @@ public class ApplicationController {
 		applicationService.updateIntakeApplication(application);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
+	
+    @RequestMapping(value = "/programLevel/{levelCode}/supervisorOfferings", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferingsByProgramLevel(@PathVariable String levelCode) {
+        InProgramLevel inProgramLevel = policyService.findProgramLevelByCode(levelCode);
+        return new ResponseEntity<List<SupervisorOffering>>(commonTransformer.toSupervisorOfferingVos(commonService.findSupervisorOfferingsByProgramLevel(inProgramLevel,"%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
 
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/studyModeOfferingSelection", method = RequestMethod.POST)
 	public ResponseEntity<String> submitIntakeApplication(@PathVariable String referenceNo,
