@@ -404,8 +404,16 @@ export class CommonService {
       .map((res: Response) => <ProgramFieldCode>res.json());
   }
 
-  saveProgramFieldCode(programCode:ProgramCode, fieldCode:FieldCode, facultyCode:FacultyCode, programFieldCode: ProgramFieldCode): Observable<String> {
-    return this._http.post(this.COMMON_API + '/programFieldCodes/programCode/' + programCode.code,  JSON.stringify(programFieldCode))
+  saveProgramFieldCode(programFieldCode: ProgramFieldCode): Observable<String> {
+    console.log("programFieldCode : "+programFieldCode.facultyCode.code);
+    return this._http.post(this.COMMON_API + '/saveProgramFieldCode',  JSON.stringify(programFieldCode))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  
+  updateProgramFieldCode(programFieldCode: ProgramFieldCode): Observable<String> {
+    console.log("hok ni ko : " + programFieldCode.code);
+    return this._http.put(this.COMMON_API + '/updateProgramFieldCode/' + programFieldCode.code, JSON.stringify(programFieldCode))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

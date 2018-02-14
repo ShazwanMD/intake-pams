@@ -679,12 +679,12 @@ export class SetupActions {
 
   static SAVE_PROGRAM_FIELD_CODE = '[Setup] Save Program Field Code';
 
-  saveProgramFieldCode(programCode, fieldCode, facultyCode, programFieldCode): Action {
-    console.log('saveProgramCode');
+  saveProgramFieldCode(code): Action {
+    console.log('saveProgramFieldCode');
     return {
       type: SetupActions.SAVE_PROGRAM_FIELD_CODE,
-      
-      payload: {programCode: programCode,fieldCode: fieldCode, facultyCode:facultyCode, programFieldCode:programFieldCode}
+
+      payload:code,
     };
   }
 

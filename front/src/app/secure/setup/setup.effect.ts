@@ -256,10 +256,10 @@ export class SetupEffects {
     .switchMap(() => this.commonService.findProgramFieldCodes())
     .map((codes) => this.setupActions.findProgramFieldCodesSuccess(codes));
 
-  @Effect() saveProgramFieldCodes$ = this.actions$
+  @Effect() saveProgramFieldCode$ = this.actions$
     .ofType(SetupActions.SAVE_PROGRAM_FIELD_CODE)
     .map((action) => action.payload)
-    .switchMap((payload) => this.commonService.saveProgramFieldCode(payload.programCode,payload.fieldCode,payload.facultyCode, payload.programFieldCode))
+    .switchMap((payload) => this.commonService.saveProgramFieldCode(payload))
     .map((message) => this.setupActions.saveProgramFieldCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
 
@@ -273,8 +273,8 @@ export class SetupEffects {
   @Effect() updateProgramFieldCodes$ = this.actions$
     .ofType(SetupActions.UPDATE_PROGRAM_FIELD_CODE)
     .map((action) => action.payload)
-    .switchMap((payload) => this.commonService.updateProgramCode(payload))
-    .map((message) => this.setupActions.updateProgramCodeSuccess(message))
+    .switchMap((payload) => this.commonService.updateProgramFieldCode(payload))
+    .map((message) => this.setupActions.updateProgramFieldCodeSuccess(message))
     .mergeMap((action) => from([action, this.setupActions.findProgramFieldCodes()]));
 
   // ====================================================================================================

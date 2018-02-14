@@ -55,14 +55,27 @@ export class ProgramFieldCodeEditorDialog implements OnInit {
     if (this.edit) this.editorForm.patchValue(this._programFieldCode);
   }
 
-  submit(programFieldCode: ProgramFieldCode, isValid: boolean) {
-    this._facultyCode = programFieldCode.facultyCode;
-    this._programCode = programFieldCode.programCode;
-    this._fieldCode = programFieldCode.fieldCode;
+  // submit(programFieldCode: ProgramFieldCode, isValid: boolean) {
+  //   this._facultyCode = programFieldCode.facultyCode;
+  //   this._programCode = programFieldCode.programCode;
+  //   this._fieldCode = programFieldCode.fieldCode;
+  //   programFieldCode.code = this._programCode.code + '-' + this._fieldCode.code;
 
-    if (confirm('Confirm to update program field code?')) {
-    if (!programFieldCode.id) this.store.dispatch(this.actions.saveProgramFieldCode(this._programCode, this._fieldCode,this._facultyCode,programFieldCode));
-    else  this.store.dispatch(this.actions.updateProgramFieldCode(programFieldCode));
+  //   console.log( this._programCode.code );
+  //   console.log( this._fieldCode.code );
+  //   console.log( programFieldCode.code );
+  //   console.log( "save click" );
+
+  //   if (confirm('Confirm to update program field code?')) {
+  //   if (!programFieldCode.id) this.store.dispatch(this.actions.saveProgramFieldCode(this.programFieldCode));
+  //   else  this.store.dispatch(this.actions.updateProgramFieldCode(programFieldCode));
+  //   this.dialog.close();
+  //   };
+  // }
+  submit(code: ProgramFieldCode, isValid: boolean) {
+    if (confirm('Confirm to update program code?')) {
+    if (!code.id) this.store.dispatch(this.actions.saveProgramFieldCode(code));
+    else  this.store.dispatch(this.actions.updateProgramFieldCode(code));
     this.dialog.close();
     };
   }

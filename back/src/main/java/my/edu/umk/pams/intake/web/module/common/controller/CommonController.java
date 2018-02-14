@@ -459,13 +459,15 @@ public class CommonController {
         return new ResponseEntity<ProgramFieldCode>(commonTransformer.toProgramFieldCodeVo(commonService.findProgramFieldCodeByCode(code)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/programFieldCodes/programCode/{code}", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveProgramFieldCode", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgramFieldCode(@RequestBody ProgramFieldCode vo) {
         dummyLogin();
-
+        System.out.println("vo :"+commonService.findProgramCodeById(vo.getProgramCode().getId()).getCode());
 
         InProgramFieldCode programFieldCode = new InProgramFieldCodeImpl();
-        programFieldCode.setCode(vo.getCode());
+        String progFieldCode = commonService.findProgramCodeById(vo.getProgramCode().getId()).getCode() +"-"+commonService.findFieldCodeById(vo.getFieldCode().getId()).getCode();
+        
+        programFieldCode.setCode(progFieldCode);
         programFieldCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
         programFieldCode.setProgramCode(commonService.findProgramCodeById(vo.getProgramCode().getId()));
         programFieldCode.setFieldCode(commonService.findFieldCodeById(vo.getFieldCode().getId()));
@@ -473,12 +475,14 @@ public class CommonController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/programFieldCodes/{code}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/updateProgramFieldCode/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateProgramFieldCode(@PathVariable String code, @RequestBody ProgramFieldCode vo) {
         dummyLogin();
 
         InProgramFieldCode programFieldCode = commonService.findProgramFieldCodeById(vo.getId());
-        programFieldCode.setCode(vo.getCode());
+        programFieldCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
+        programFieldCode.setProgramCode(commonService.findProgramCodeById(vo.getProgramCode().getId()));
+        programFieldCode.setFieldCode(commonService.findFieldCodeById(vo.getFieldCode().getId()));
         commonService.updateProgramFieldCode(programFieldCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
