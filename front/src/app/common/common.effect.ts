@@ -88,6 +88,12 @@ export class CommonEffects {
     .switchMap(() => this.commonService.findSupervisorCodes())
     .map(codes => this.commonActions.findSupervisorCodesSuccess(codes));
 
+  @Effect() findSupervisorOfferingsByProgramLevel$ = this.actions$
+  .ofType(CommonActions.FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL)
+  .map(action => action.payload)
+  .switchMap((code) => this.commonService.findSupervisorOfferingsByProgramLevel(code))
+  .map(codes => this.commonActions.findSupervisorOfferingsByProgramLevelSuccess(codes));
+
   @Effect() findRaceCodes$ = this.actions$
     .ofType(CommonActions.FIND_RACE_CODES)
     .map(action => action.payload)

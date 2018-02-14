@@ -487,6 +487,12 @@ public class CommonController {
         return new ResponseEntity<List<SupervisorOffering>>(commonTransformer.toSupervisorOfferingVos(commonService.findSupervisorOfferings()), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/supervisorOfferings/programLevel/{levelCode}", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferingsByProgramLevel(@PathVariable String levelCode) {
+        InProgramLevel inProgramLevel = policyService.findProgramLevelByCode(levelCode);
+        return new ResponseEntity<List<SupervisorOffering>>(commonTransformer.toSupervisorOfferingVos(commonService.findSupervisorOfferingsByProgramLevel(inProgramLevel,"%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/supervisorOfferings/byFilter/{filter}", method = RequestMethod.GET)
     public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String filter) {
         List<InSupervisorOffering> supervisorOfferings = commonService.findSupervisorOfferings(filter, 0, Integer.MAX_VALUE);

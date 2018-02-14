@@ -15,6 +15,7 @@ import {StudyModeOffering} from '../app/shared/model/policy/study-mode-offering.
 import {Language} from '../app/shared/model/application/language.interface';
 import {SupervisorOffering} from '../app/shared/model/policy/supervisor-offering.interface';
 import {AttachmentType} from '../app/shared/model/application/attachment-type.enum';
+import { ProgramLevel } from '../app/shared/model/policy/program-level.interface';
 
 @Injectable()
 export class ApplicationService {
@@ -54,6 +55,12 @@ export class ApplicationService {
   findSupervisorOfferingsByIntake(intake: Intake): Observable<SupervisorOffering[]> {
     return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/supervisorOfferings')
       .map((res: Response) => <SupervisorOffering[]>res.json());
+  }
+
+  findSupervisorOfferingsByProgramLevel(programLevel: ProgramLevel): Observable<SupervisorOffering> {
+    console.log('findSupervisorOfferingsByProgramLevel :' + programLevel.code);
+    return this._http.get(this.APPLICATION_API + '/supervisorOfferings/programLevel/' + programLevel.code)
+      .map((res: Response) => <SupervisorOffering>res.json());
   }
 
   findStudyModeOfferingsByIntake(intake: Intake): Observable<StudyModeOffering[]> {

@@ -76,8 +76,8 @@ export class ProgramChoiceComponent implements OnInit {
     config.height = '100%';
     config.position = {top: '0px'};
     this.supervisorSelectorDialogRef = this.dialog.open(SupervisorOfferingSelectorDialog, config);
-    this.supervisorSelectorDialogRef.componentInstance.intake = this.intakeApplication.intake;
-    this.supervisorSelectorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    // this.supervisorSelectorDialogRef.componentInstance.intake = this.intakeApplication.intake;
+    // this.supervisorSelectorDialogRef.componentInstance.intakeApplication = this.intakeApplication;
     this.supervisorSelectorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
       // load something here

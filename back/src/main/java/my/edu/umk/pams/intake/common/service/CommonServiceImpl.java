@@ -2165,6 +2165,11 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
+    public List<InSupervisorOffering> findSupervisorOfferingsByProgramLevel(InProgramLevel inProgramLevel,String filter, Integer offset, Integer limit) {
+        return supervisorOfferingDao.find(inProgramLevel,filter, offset, limit);
+    }
+
+    @Override
     public Integer countSupervisorOffering() {
         return supervisorOfferingDao.count();
     }

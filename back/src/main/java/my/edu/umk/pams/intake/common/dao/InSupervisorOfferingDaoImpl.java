@@ -1,6 +1,8 @@
 package my.edu.umk.pams.intake.common.dao;
+import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
 import my.edu.umk.pams.intake.core.InMetaState;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOfferingImpl;
 import org.hibernate.Query;
@@ -41,6 +43,23 @@ public class InSupervisorOfferingDaoImpl extends GenericDaoSupport<Long, InSuper
         query.setCacheable(true);
         return (List<InSupervisorOffering>) query.list();
     }
+    
+    @Override
+    public List<InSupervisorOffering> find(InProgramLevel inProgramLevel,String filter, Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from InSupervisorOffering s where " +
+                "s.programLevel = :inProgramLevel " +
+                "and (upper(s.supervisorCode.code) like upper(:filter)) " +
+                "and s.metadata.state = :state ");
+        query.setEntity("inProgramLevel", inProgramLevel);
+        query.setString("filter", WILDCARD + filter + WILDCARD);
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        query.setCacheable(true);
+        return (List<InSupervisorOffering>) query.list();
+    }
+
 
     @Override
     public Integer count(String filter) {

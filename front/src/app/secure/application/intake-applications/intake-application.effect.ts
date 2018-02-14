@@ -12,6 +12,7 @@ import {Intake} from '../../../shared/model/policy/intake.interface';
 import {IntakeApplication} from '../../../shared/model/application/intake-application.interface';
 import {IntakeActions} from '../../policy/intakes/intake.action';
 import {ApplicationContextActions} from '../../../application-context.action';
+import { CommonService } from '../../../../services/common.service';
 
 @Injectable()
 export class IntakeApplicationEffects {
@@ -25,6 +26,7 @@ export class IntakeApplicationEffects {
               private intakeActions: IntakeActions,
               private applicationService: ApplicationService,
               private notificationService: NotificationService,
+              private commonService: CommonService,
               private router: Router,
               private store$: Store<ApplicationModuleState>,
               private ctxActions: ApplicationContextActions) {
@@ -84,6 +86,12 @@ export class IntakeApplicationEffects {
     .switchMap((intake) => this.applicationService.findSupervisorOfferingsByIntake(intake))
     .map((offerings) => this.intakeApplicationActions.findSupervisorOfferingsByIntakeSuccess(offerings));
 
+  @Effect() findSupervisorOfferingsByProgramLevel$ = this.actions$
+    .ofType(IntakeApplicationActions.FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL)
+    .map(action => action.payload)
+    .switchMap((code) => this.applicationService.findSupervisorOfferingsByProgramLevel(code))
+    .map(codes => this.intakeApplicationActions.findSupervisorOfferingsByProgramLevelSuccess(codes));
+  
   // ====================================================================================================
   // STUDY_MODE_OFFERING
   // ====================================================================================================

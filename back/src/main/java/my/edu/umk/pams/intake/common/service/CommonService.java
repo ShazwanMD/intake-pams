@@ -823,6 +823,9 @@ public interface CommonService {
 	 List<InSupervisorOffering> findSupervisorOfferings(String filter, Integer
 	 offset, Integer limit);
 
+	List<InSupervisorOffering> findSupervisorOfferingsByProgramLevel(InProgramLevel inProgramLevel, String filter, Integer offset,
+			Integer limit);
+
 	Integer countSupervisorOffering();
 
 	// todo: count supervisoroffering by faculty

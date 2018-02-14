@@ -532,6 +532,12 @@ findSupervisorOfferingByOffering(offering: string): Observable<SupervisorOfferin
     .map((res: Response) => <SupervisorOffering>res.json());
 }
 
+findSupervisorOfferingsByProgramLevel(levelCode: ProgramLevel): Observable<SupervisorOffering> {
+  console.log('findSupervisorOfferingsByProgramLevel :' + levelCode.code);
+  return this._http.get(this.COMMON_API + '/supervisorOfferings/programLevel/' + levelCode.code)
+    .map((res: Response) => <SupervisorOffering>res.json());
+}
+
 saveSupervisorOfferings(offering: SupervisorOffering): Observable<String> {
   console.log('offering'+offering.supervisorCode.name);
   return this._http.post(this.COMMON_API + '/supervisorOfferings', JSON.stringify(offering))

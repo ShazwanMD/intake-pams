@@ -52,11 +52,14 @@ import {gradeCodeListReducer, GradeCodeListState} from './grade-codes/grade-code
 import {GradeCodeSelectComponent} from './grade-codes/component/grade-code-select.component';
 import {dunCodeListReducer, DunCodeListState} from './dun-codes/dun-code-list.reducer';
 import {DunCodeSelectComponent} from './dun-codes/component/dun-code-select.component';
+import { SupervisorOfferingSelectComponent } from './supervisor-offerings/component/supervisor-offering-select.component';
+import { SupervisorOfferingListState, supervisorOfferingListReducer } from '../secure/setup/supervisor-offerings/supervisor-offering-list.reducer';
 
 export interface CommonModuleState {
   programCodes: ProgramCodeListState;
   studyModes: StudyModeListState;
   supervisorCodes: SupervisorCodeListState;
+  supervisorOfferings: SupervisorOfferingListState;
   graduateCenters: GraduateCenterListState;
   facultyCodes: FacultyCodeListState;
   genderCodes: GenderCodeListState;
@@ -84,6 +87,7 @@ export const commonModuleReducers = {
   programCodes: programCodeListReducer,
   studyModes: studyModeListReducer,
   supervisorCodes: supervisorCodeListReducer,
+  supervisorOfferings: supervisorOfferingListReducer,
   graduateCenters: graduateCenterListReducer,
   facultyCodes: facultyCodeListReducer,
   genderCodes: genderCodeListReducer,
@@ -123,6 +127,7 @@ export const commonModuleReducers = {
     LanguageCodeSelectComponent,
     BankCodeSelectComponent,
     SupervisorCodeSelectComponent,
+    SupervisorOfferingSelectComponent,
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,
@@ -148,6 +153,7 @@ export const commonModuleReducers = {
     LanguageCodeSelectComponent,
     BankCodeSelectComponent,
     SupervisorCodeSelectComponent,
+    SupervisorOfferingSelectComponent,
     RaceCodeSelectComponent,
     StateCodeSelectComponent,
     CountryCodeSelectComponent,

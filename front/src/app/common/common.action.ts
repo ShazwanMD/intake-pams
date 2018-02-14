@@ -253,6 +253,45 @@ export class CommonActions {
     };
   }
 
+  static FIND_SUPERVISOR_OFFERINGS = '[Common] Find Supervisor Offerings';
+
+  findSupervisorOfferings(): Action {
+    console.log("findSupervisorOfferings");
+    return {
+      type: CommonActions.FIND_SUPERVISOR_OFFERINGS,
+    };
+  }
+
+  static FIND_SUPERVISOR_OFFERINGS_SUCCESS = '[Common] Find Supervisor Offerings Success';
+
+  findSupervisorOfferingsSuccess(codes): Action {
+    console.log("findSupervisorOfferingsSuccess");
+    return {
+      type: CommonActions.FIND_SUPERVISOR_OFFERINGS_SUCCESS,
+      payload: codes
+    };
+  }
+
+  static FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL = '[Common] Find Supervisor Offerings By Program Level';
+
+  findSupervisorOfferingsByProgramLevel(levelCode): Action {
+    console.log("findSupervisorOfferingsByProgramLevel");
+    return {
+      type: CommonActions.FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL,
+      payload: levelCode
+    };
+  }
+
+  static FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL_SUCCESS = '[Common] Find Supervisor Offerings By Program Level Success';
+
+  findSupervisorOfferingsByProgramLevelSuccess(codes): Action {
+    console.log("findSupervisorOfferingsByProgramLevelSuccess");
+    return {
+      type: CommonActions.FIND_SUPERVISOR_OFFERINGS_BY_PROGRAM_LEVEL_SUCCESS,
+      payload: codes
+    };
+  }
+
   static FIND_SUPERVISOR_CODES = '[Common] Find Supervisor Codes';
 
   findSupervisorCodes(): Action {

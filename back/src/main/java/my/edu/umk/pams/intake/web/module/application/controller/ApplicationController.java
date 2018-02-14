@@ -17,6 +17,7 @@ import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.model.InUserImpl;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
+import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.policy.model.InStudyModeOffering;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
@@ -24,6 +25,7 @@ import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.integration.InAutoLoginToken;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import my.edu.umk.pams.intake.web.module.application.vo.*;
+import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
@@ -84,6 +86,15 @@ public class ApplicationController {
 
 	@Autowired
 	private InCandidateDao candidateDao;
+	
+	@Autowired
+	private CommonTransformer commonTransformer;
+	
+    @RequestMapping(value = "/supervisorOfferings/programLevel/{levelCode}", method = RequestMethod.GET)
+    public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferingsByProgramLevel(@PathVariable String levelCode) {
+        InProgramLevel inProgramLevel = policyService.findProgramLevelByCode(levelCode);
+        return new ResponseEntity<List<SupervisorOffering>>(commonTransformer.toSupervisorOfferingVos(commonService.findSupervisorOfferingsByProgramLevel(inProgramLevel,"%", 0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }
 
 	// ====================================================================================================
 	// INTAKE
