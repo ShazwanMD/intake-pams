@@ -23,23 +23,24 @@
           <!--<pams-intake-application [intakeApplication]="intakeApplication$ | async">
           </pams-intake-application> -->
 
-         
-          <div *ngIf="(intakeApplications$ | async)?.length === 0"><span>You have not filled and submitted an address in your intake application</span>
+
+          <div *ngIf="(intakeApplications$ | async)?.length === 0">
+            <span>You have not filled and submitted an address in your intake application</span>
           </div>
           <template let-application let-last="last" ngFor [ngForOf]="intakeApplications$ | async ">
-            
-                <div class="md-padding" *ngIf="application.bidStatus === 'SUBMITTED'">
-                  <a md-list-item (click)="editDialog(application)">
-                    <md-icon md-list-avatar>home</md-icon>
-                      <h3 md-line>Mailing Address : </h3>
-                      <h3 md-line>{{application.mailingAddress1}},</h3>
-                      <h3 md-line>{{application.mailingAddress2}},</h3>
-                      <h3 md-line>{{application?.mailingAddress3}},</h3>
-                      <h3 md-line>{{application.mailingPostcode}},</h3>
-                      <h3 md-line>{{application?.mailingStateCode?.descriptionEn}},</h3>
-                      <h3 md-line>{{application?.mailingCountryCode?.descriptionEn}}</h3>
-                  </a>
-                </div>               
+
+            <div class="md-padding" *ngIf="application.bidStatus === 'SUBMITTED'">
+              <a md-list-item (click)="editDialog(application)">
+                <md-icon md-list-avatar>home</md-icon>
+                <h3 md-line>Mailing Address : </h3>
+                <h3 md-line>{{application.mailingAddress1}},</h3>
+                <h3 md-line>{{application.mailingAddress2}},</h3>
+                <h3 md-line>{{application?.mailingAddress3}},</h3>
+                <h3 md-line>{{application.mailingPostcode}},</h3>
+                <h3 md-line>{{application?.mailingStateCode?.descriptionEn}},</h3>
+                <h3 md-line>{{application?.mailingCountryCode?.descriptionEn}}</h3>
+              </a>
+            </div>
           </template>
         </md-nav-list>
       </md-tab>
@@ -47,13 +48,15 @@
 
       <md-tab label="My Applications">
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-          <div *ngIf="(myIntakeApplications$ | async)?.length === 0"><span>You have not applied yet. Please take a look at open intakes</span>
+          <div *ngIf="(myIntakeApplications$ | async)?.length === 0">
+            <span>You have not applied yet. Please take a look at open intakes</span>
           </div>
           <template let-myIntakeApplication let-last="last" ngFor [ngForOf]="myIntakeApplications$ | async ">
             <div flex-md="60" flex-gt-md="40" layout="column">
 
               <md-card href class="md-card-colored" flex>
-                <md-card-title>{{myIntakeApplication.intake.startDate | date:'MMM' | uppercase}} {{myIntakeApplication.intake.startDate | date:'y'}} INTAKE </md-card-title>
+                <md-card-title>{{myIntakeApplication.intake.startDate | date:'MMM' | uppercase}} {{myIntakeApplication.intake.startDate
+                  | date:'y'}} INTAKE </md-card-title>
                 <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
                   <md-card-subtitle> {{myIntakeApplication.intake.graduateCenter.code}} {{myIntakeApplication.intake.programLevel.code}}
                   </md-card-subtitle>
@@ -87,43 +90,103 @@
           </template>
         </div>
       </md-tab>
-
-      <md-tab label="Open Intakes">
+      <md-tab label="CPS Open Intakes">
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-          <div *ngIf="(intakes$ | async)?.length === 0"><span>There is no open intake at the moment. Please check again later</span>
+          <div *ngIf="(intakes$ | async)?.length === 0">
+            <span>There is no open intake at the moment. Please check again later</span>
           </div>
-  
+
           <template let-intake let-last="last" ngFor [ngForOf]="intakes$ | async ">
-            
+
             <div flex-md="60" flex-gt-md="40" layout="column">
-                <div *ngIf="intake.flowState === 'PUBLISHED' || intake.flowState === 'EVALUATED' ">    
-              <md-card  href class="md-card-colored" flex>
-                <md-card-title>{{intake.startDate | date:'MMM' | uppercase}} {{intake.startDate | date:'y'}} INTAKE </md-card-title>
-                <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
-                  <md-card-subtitle> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle>
-                  <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
-                </md-toolbar>
-                <md-card-content>
-                  <div fxLayout="row" fxLayoutAlign="space-around center">
-                    <span flex></span>
-                    <div>
-                      <small class="bb"> From: {{intake.startDate | date:'EEEE d MMMM'}} To: {{intake.endDate | date:'EEEE d MMMM'}}</small>
-                    </div>
-                             
-                    <div>
-                      <button [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]"
-                        md-button color="primary">Apply Now!
-                      </button>
-                    </div>
+              <div *ngIf="intake.graduateCenter.code === 'CPS' ">
+                <div *ngIf="intake.flowState === 'PUBLISHED' || intake.flowState === 'EVALUATED' ">
+                  <md-card href class="md-card-colored" flex>
+                    <md-card-title>{{intake.startDate | date:'MMM' | uppercase}} {{intake.startDate | date:'y'}} INTAKE </md-card-title>
+                    <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
+                      <md-card-subtitle> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle>
+                      <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
+                    </md-toolbar>
+                    <md-card-content>
+                      <div fxLayout="row" fxLayoutAlign="space-around center">
+                        <span flex></span>
+                        <div>
+                          <small class="bb"> From: {{intake.startDate | date:'EEEE d MMMM'}} To: {{intake.endDate | date:'EEEE d MMMM'}}</small>
+                        </div>
+
+                        <div>
+                          <button [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]" md-button color="primary">Apply Now!
+                          </button>
+                        </div>
+                      </div>
+                    </md-card-content>
+                  </md-card>
+                </div>
+                <div *ngIf="intake.graduateCenter.code === 'MGSEB' ">
+                    <md-card href class="md-card-colored" flex>
+                      <md-card-title>{{intake.startDate | date:'MMM' | uppercase}} {{intake.startDate | date:'y'}} INTAKE </md-card-title>
+                      <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
+                        <md-card-subtitle> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle>
+                        <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
+                      </md-toolbar>
+                      <md-card-content>
+                        <div fxLayout="row" fxLayoutAlign="space-around center">
+                          <span flex></span>
+                          <div>
+                            <small class="bb"> From: {{intake.startDate | date:'EEEE d MMMM'}} To: {{intake.endDate | date:'EEEE d MMMM'}} </small>
+                          </div>
+    
+                          <div>
+                            <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]"
+                              md-button color="primary">Apply Now!
+                            </button>
+                          </div>
+                        </div>
+                      </md-card-content>
+                    </md-card>
                   </div>
-                </md-card-content>
-              </md-card>
-            </div>
               </div>
+            </div>
           </template>
         </div>
-
       </md-tab>
+
+
+      <md-tab label="MGSEB Open Intakes">
+        <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+          <div *ngIf="(publishedIntakes$ | async)?.length === 0">
+            <span>There is no open intake at the moment. Please check again later</span>
+          </div>
+          <template let-intake let-last="last" ngFor [ngForOf]="publishedIntakes$ | async ">
+            <div flex-md="60" flex-gt-md="40" layout="column">
+              <div *ngIf="intake.graduateCenter.code === 'MGSEB' ">
+                <md-card href class="md-card-colored" flex>
+                  <md-card-title>{{intake.startDate | date:'MMM' | uppercase}} {{intake.startDate | date:'y'}} INTAKE </md-card-title>
+                  <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
+                    <md-card-subtitle> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle>
+                    <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
+                  </md-toolbar>
+                  <md-card-content>
+                    <div fxLayout="row" fxLayoutAlign="space-around center">
+                      <span flex></span>
+                      <div>
+                        <small class="bb"> From: {{intake.startDate | date:'EEEE d MMMM'}} To: {{intake.endDate | date:'EEEE d MMMM'}} </small>
+                      </div>
+
+                      <div>
+                        <button *ngIf="intake.flowState === 'PUBLISHED'" [routerLink]="['/secure/applicant/application/intake-detail/', intake.referenceNo]"
+                          md-button color="primary">Apply Now!
+                        </button>
+                      </div>
+                    </div>
+                  </md-card-content>
+                </md-card>
+              </div>
+            </div>
+          </template>
+        </div>
+      </md-tab>
+
     </md-tab-group>
 
     <md-divider></md-divider>
@@ -140,7 +203,7 @@
   </md-nav-list>
   <md-divider></md-divider>
   <md-card-actions>
-    <a href= "assets\attachment\APPLICANT.pdf" target="_blank">User Manual</a>
+    <a href="assets\attachment\APPLICANT.pdf" target="_blank">User Manual</a>
     <!--a href="http://www.umk.edu.my" target="_blank" md-button color="primary">Contact CCI-UMK</a>
 <p>
   Contact Info :
