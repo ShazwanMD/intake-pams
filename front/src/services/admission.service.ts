@@ -44,21 +44,15 @@ export class AdmissionService {
 
   findAssignedCandidateTasks(): Observable<CandidateTask[]> {
     console.log('findAssignedCandidateTasks');
-    return this._http.get(this.ADMISSION_API + '/intakes/assignedCandidateTasks')
+    return this._http.get(this.ADMISSION_API + '/candidates/assignedCandidateTasks')
       .map((res: Response) => <CandidateTask[]>res.json());
   }
 
   findPooledCandidateTasks(): Observable<CandidateTask[]> {
     console.log('findPooledCandidateTasks');
-    return this._http.get(this.ADMISSION_API + '/intakes/pooledCandidateTasks')
+    return this._http.get(this.ADMISSION_API + '/candidates/pooledCandidateTasks')
       .map((res: Response) => <CandidateTask[]>res.json());
   }
-
-  // findIntakeTaskByTaskId(taskId: string): Observable<IntakeTask> {
-  //   console.log('findIntakeTaskByTaskId');
-  //   return this._http.get(this.ADMISSION_API + '/intakes/viewTask/' + taskId)
-  //     .map((res: Response) => <IntakeTask>res.json());
-  // }
 
   // ====================================================================================================
   // INTAKE

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import my.edu.umk.pams.connector.payload.AddressPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
@@ -538,7 +539,17 @@ public class AdmissionServiceImpl implements AdmissionService {
 		return refNo;
 	}
 	
-	
+	@Override
+    public InCandidate findCandidateByTaskId(String taskId) {
+		Task task = workflowService.findTask(taskId);
+		Map<String, Object> map = workflowService.getVariables(task.getExecutionId());
+		return candidateDao.findById((Long) map.get(IntakeConstants.CANDIDATE_ID));
+	}
+
+	@Override
+    public Task findCandidateTaskByTaskId(String taskId) {
+		return workflowService.findTask(taskId);
+	}
 	
 	//Find Assigned Candidate Tasks
     @Override

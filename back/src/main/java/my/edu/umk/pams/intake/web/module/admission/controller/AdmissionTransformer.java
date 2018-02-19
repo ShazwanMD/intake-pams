@@ -74,6 +74,8 @@ public class AdmissionTransformer {
     	Map<String, Object> vars = workflowService.getVariables(t.getExecutionId());
     	InCandidate candidate = admissionService.findCandidateById((Long) vars.get(IntakeConstants.CANDIDATE_ID));
     	
+    	if (null == t) return null;
+    	
     	CandidateTask task = new CandidateTask();
         task.setId(candidate.getId());
         task.setTaskId(t.getId());

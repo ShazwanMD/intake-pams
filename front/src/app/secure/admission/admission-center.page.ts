@@ -46,7 +46,6 @@ export class AdmissionCenterPage implements OnInit {
       this.store.dispatch(this.actions.findAssignedIntakeTasks());
       this.store.dispatch(this.actions.findPooledIntakeTasks());
       this.store.dispatch(this.action.findArchivedIntakes());
-      this.store.dispatch(this.actions.findAssignedCandidateTasks());
     });
   }
 

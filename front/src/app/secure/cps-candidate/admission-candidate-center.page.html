@@ -28,23 +28,23 @@
       <md-card-title>Intakes</md-card-title>
       <md-card-subtitle>List of intake tasks</md-card-subtitle>
 
-<!--     <md-tab-group [selectedIndex]="0">
+     <md-tab-group [selectedIndex]="0">
       <md-tab label="Assigned">
-        <pams-assigned-candidate-task-list
-          [intakeTasks]="assignedCandidateTasks$ | async"
-          (view)="viewTask($event)"></pams-assigned-candidate-task-list>
+        <pams-assigned-candidate-list
+          [candidateTasks]="assignedCandidateTasks$ | async"
+          (view)="viewTask($event)"></pams-assigned-candidate-list>
       </md-tab>
-      <md-tab label="Pooled">
-        <pams-pooled-candidate-task-list
-          [intakeTasks]="pooledCandidateTasks$ | async"
-          (claim)="claimTask($event)"></pams-pooled-candidate-task-list>
+       <md-tab label="Pooled">
+        <pams-pooled-candidate-list
+          [candidateTasks]="pooledCandidateTasks$ | async"
+          (claim)="claimTask($event)"></pams-pooled-candidate-list>
       </md-tab>
-      <md-tab label="Archived">
+<!--      <md-tab label="Archived">
         <pams-archived-intake-list
           [intakes]="archivedIntakes$ | async"
           (view)="viewIntake($event)"></pams-archived-intake-list>
-      </md-tab>
-    </md-tab-group> -->
+      </md-tab> -->
+    </md-tab-group> 
 
     <md-divider></md-divider>
     <!-- <md-card-actions>

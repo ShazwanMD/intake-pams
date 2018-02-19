@@ -21,18 +21,28 @@ import { IntakeListState } from '../application/intake-applications/intake-list.
 import { CandidateTask } from '../../shared/model/admission/candidate-task.interface';
 import {AdmissionCandidateActions} from './admission-candidate.action';
 import {AdmissionCandidateEffects} from './admission-candidate.effect';
+import { AssignedCandidateListComponent } from './component/assigned-candidate-list.component';
+import { PooledCandidateListComponent } from './component/pooled-candidate-list.component';
+import { CandidateTaskState, assignedCandidateListReducer, pooledCandidateListReducer 
+    } from './candidate-task.reducer';
 
 export interface AdmissionCandidateModuleState {
  // intakeTasks: IntakeTaskListState;
+    assignedCandidateTasks: CandidateTaskState;
+    pooledCandidateTasks: CandidateTaskState;
 }
 ;
 
 export const INITIAL_ADMISSION_CANDIDATE_STATE: AdmissionCandidateModuleState =
   <AdmissionCandidateModuleState>{
   //  intakeTasks: <IntakeTask[]>[],
+        assignedCandidateTasks: <CandidateTask[]>[],
+        pooledCandidateTasks: <CandidateTask[]>[],
   };
 export const admissionCandidateModuleReducers = {
  // intakeTasks: intakeTaskListReducer,
+        assignedCandidateTasks: assignedCandidateListReducer,
+        pooledCandidateTasks: pooledCandidateListReducer,
 };
 
 @NgModule({
@@ -50,10 +60,13 @@ export const admissionCandidateModuleReducers = {
   declarations: [
     // page
     AdmissionCandidateCenterPage,
-
+    AssignedCandidateListComponent,
+    PooledCandidateListComponent,
   ],
   exports: [
     AdmissionCandidateCenterPage,
+    AssignedCandidateListComponent,
+    PooledCandidateListComponent,
   ],
   entryComponents: [
     AdmissionCandidateCenterPage,

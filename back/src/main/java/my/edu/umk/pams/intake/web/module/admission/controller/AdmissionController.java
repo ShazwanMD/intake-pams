@@ -1,6 +1,13 @@
 package my.edu.umk.pams.intake.web.module.admission.controller;
 
+import static java.util.stream.Collectors.toCollection;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.activiti.engine.task.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,9 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
@@ -26,12 +30,12 @@ import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
 
-import static java.util.stream.Collectors.toCollection;
-
 @RestController
 @RequestMapping("/api/admission")
 public class AdmissionController {
 
+	private static final Logger LOG = LoggerFactory.getLogger(AdmissionController.class);
+	
 	@Autowired
 	private AdmissionService admissionService;
 
@@ -79,31 +83,27 @@ public class AdmissionController {
 	// CANDIDATES WORKFLOWS
 	// ====================================================================================================
 
-	@RequestMapping(value = "/intakes/assignedCandidateTasks", method = RequestMethod.GET)
+	@RequestMapping(value = "/candidates/assignedCandidateTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<CandidateTask>> findAssignedCandidates() {
-
-		System.out.println("Find AssignedCandidates BOH");
+		
 		List<Task> tasks = admissionService.findAssignedCandidateTasks(0, Integer.MAX_VALUE);
-
-		return new ResponseEntity<List<CandidateTask>>(decorateCandidateTasks(admissionTransformer.toCandidateTaskVos(tasks)), HttpStatus.OK);
+		LOG.debug("Task id {}", tasks);
+		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/intakes/pooledCandidateTasks", method = RequestMethod.GET)
+	@RequestMapping(value = "/candidates/pooledCandidateTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<CandidateTask>> findPooledCandidates() {
 
 		List<Task> tasks = admissionService.findPooledCandidateTasks(0, Integer.MAX_VALUE);
-
-		return new ResponseEntity<List<CandidateTask>>(decorateCandidateTasks(admissionTransformer.toCandidateTaskVos(tasks)), HttpStatus.OK);
+		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
 
-	// @RequestMapping(value = "/intakes/viewTask/{taskId}", method =
-	// RequestMethod.GET)
-	// public ResponseEntity<IntakeTask> findCandidateTaskByTaskId(@PathVariable
-	// String taskId) {
-	// return new ResponseEntity<IntakeTask>(
-	// decorateIntakeTask(policyTransformer.toIntakeTaskVo(policyService.findIntakeTaskByTaskId(taskId))),
-	// HttpStatus.OK);
-	// }
+    @RequestMapping(value = "/candidates/viewTask/{taskId}", method = RequestMethod.GET)
+    public ResponseEntity<CandidateTask> findCandidateTaskByTaskId(@PathVariable String taskId) {
+        return new ResponseEntity<CandidateTask>(admissionTransformer
+                .toCandidateTaskVo(
+                        admissionService.findCandidateTaskByTaskId(taskId)), HttpStatus.OK);
+    }
 
 	// ====================================================================================================
 	// CANDIDATES

@@ -1,14 +1,15 @@
 import { CandidateTask } from './../../shared/model/admission/candidate-task.interface';
 import { Action } from '@ngrx/store';
-import { AdmissionActions } from './admission.action';
+import { AdmissionCandidateActions } from './admission-candidate.action';
 
-export type CandidateTaskState = CandidateTask;
+export type CandidateTaskState = CandidateTask[];;
 
-const initialState: CandidateTaskState = <CandidateTaskState>{};
+const initialState: CandidateTaskState = <CandidateTask[]>[];
 
- export function assignedCandidateTaskReducer(state =initialState, action: Action):CandidateTaskState {
+ export function assignedCandidateListReducer(state = initialState, action: Action):CandidateTaskState {
      switch (action.type){
-         case AdmissionActions.FIND_ASSIGNED_INTAKE_TASKS_SUCCESS:{
+         case AdmissionCandidateActions.FIND_ASSIGNED_CANDIDATE_TASKS_SUCCESS:{
+             console.log("assigned");
              return action.payload;
          }
          default:{
@@ -19,7 +20,7 @@ const initialState: CandidateTaskState = <CandidateTaskState>{};
  
  export function pooledCandidateListReducer(state = initialState, action: Action): CandidateTaskState{
      switch (action.type){
-         case AdmissionActions.FIND_POOLED_INTAKE_TASKS_SUCCESS:{
+         case AdmissionCandidateActions.FIND_POOLED_CANDIDATE_TASKS_SUCCESS:{
              return action.payload;
          }
          default:{

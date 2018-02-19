@@ -1,5 +1,4 @@
 package my.edu.umk.pams.intake.admission.service;
-
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
@@ -86,11 +85,12 @@ public interface AdmissionService {
 	
     String startCandidateTask(InCandidate candidate);
     
+    InCandidate findCandidateByTaskId(String taskId);
+
+    Task findCandidateTaskByTaskId(String taskId);
+    
     List<Task> findAssignedCandidateTasks(Integer offset, Integer limit);
 
     List<Task> findPooledCandidateTasks(Integer offset, Integer limit);
     
-
-
-
 }

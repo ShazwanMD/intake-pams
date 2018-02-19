@@ -5,7 +5,7 @@ import {Intake} from '../../shared/model/policy/intake.interface';
 @Injectable()
 export class AdmissionActions {
 
-  static FIND_ASSIGNED_CANDIDATE_TASKS = '[Admission] Find Assigned Candidate Tasks';
+/*  static FIND_ASSIGNED_CANDIDATE_TASKS = '[Admission] Find Assigned Candidate Tasks';
 
   findAssignedCandidateTasks(): Action {
     return {
@@ -39,7 +39,7 @@ export class AdmissionActions {
       type: AdmissionActions.FIND_POOLED_CANDIDATE_TASKS_SUCCESS,
       payload: tasks,
     };
-  }
+  }*/
 
 
 

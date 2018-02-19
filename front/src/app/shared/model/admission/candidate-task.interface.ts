@@ -1,8 +1,8 @@
 import { Candidate } from './candidate.interface';
 import { FlowState } from '../../../core/flow-state.enum';
+import {Document} from '../../../core/document.interface';
 
-
-export interface CandidateTask{
+export interface CandidateTask extends Document {
     taskId:string;
     taskName:string;
     candidate:string;
@@ -18,8 +18,5 @@ export interface CandidateTask{
     candidateCount?:number;
     candidateIntake: Candidate;
     flowState:FlowState;
-
-
-
 
 }
