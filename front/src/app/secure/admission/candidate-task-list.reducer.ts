@@ -9,7 +9,7 @@ export type CandidateTaskListState = CandidateTask[];
 
 const initialState: CandidateTaskListState = <CandidateTask[]>[];
 
-export function assignedTaskCandidateListReducer(state = initialState, action: Action): CandidateTaskListState{
+/*export function assignedTaskCandidateListReducer(state = initialState, action: Action): CandidateTaskListState{
     switch(action.type){
 
         case AdmissionActions.FIND_ASSIGNED_CANDIDATE_TASKS_SUCCESS:{
@@ -31,4 +31,4 @@ export function pooledTaskCandidateListReducer(state = initialState, action: Act
             return state;
         }
     }
-}
+}*/

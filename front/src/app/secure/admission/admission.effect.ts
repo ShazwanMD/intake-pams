@@ -15,7 +15,7 @@ export class AdmissionEffects {
               private admissionService: AdmissionService) {
   }
 
-  @Effect() findAssignedCandidateTasks$ = this.actions$
+/*  @Effect() findAssignedCandidateTasks$ = this.actions$
   .ofType(AdmissionActions.FIND_ASSIGNED_CANDIDATE_TASKS)
   .switchMap(() => this.admissionService.findAssignedCandidateTasks())
   .map((admissions) => this.admissionActions.findAssignedCandidateTasksSuccess(admissions));
@@ -23,7 +23,7 @@ export class AdmissionEffects {
 @Effect() findPooledCandidateTasks$ = this.actions$
   .ofType(AdmissionActions.FIND_POOLED_CANDIDATE_TASKS)
   .switchMap(() => this.admissionService.findPooledCandidateTasks())
-  .map((admissions) => this.admissionActions.findPooledCandidateTasksSuccess(admissions));
+  .map((admissions) => this.admissionActions.findPooledCandidateTasksSuccess(admissions));*/
 
 
 
