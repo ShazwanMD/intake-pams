@@ -9,6 +9,7 @@ import {FacultyCode} from '../../../shared/model/common/faculty-code.interface';
 @Component({
   selector: 'pams-faculty-code-select',
   templateUrl: './faculty-code-select.component.html',
+  styleUrls: ['./faculty-code-select.scss'],
 })
 export class FacultyCodeSelectComponent implements OnInit {
 

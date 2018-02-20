@@ -9,6 +9,8 @@ import {FieldCode} from '../../../shared/model/common/field-code.interface';
 @Component({
   selector: 'pams-field-code-select',
   templateUrl: './field-code-select.component.html',
+  styleUrls: ['./field-code-select.scss'],
+  
 })
 export class FieldCodeSelectComponent implements OnInit {
 
