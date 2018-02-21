@@ -6,17 +6,18 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import my.edu.umk.pams.intake.web.module.core.vo.Task;
+import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
 
 public class CandidateTask extends Task  {
 	
-	private Candidate candidateIntake;
+	private Candidate candidate;
 
 	public Candidate getCandidateIntake() {
-		return candidateIntake;
+		return candidate;
 	}
 
-	public void setCandidateIntake(Candidate candidateIntake) {
-		this.candidateIntake = candidateIntake;
+	public void setCandidateIntake(Candidate candidate) {
+		this.candidate = candidate;
 	}
 	
     @JsonCreator
@@ -30,9 +31,5 @@ public class CandidateTask extends Task  {
         }
         return o;
     }
-	
-	
-	
-
 
 }

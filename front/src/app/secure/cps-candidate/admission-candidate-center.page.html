@@ -30,14 +30,14 @@
 
      <md-tab-group [selectedIndex]="0">
       <md-tab label="Assigned">
-        <pams-assigned-candidate-list
+         <pams-assigned-candidate-list
           [candidateTasks]="assignedCandidateTasks$ | async"
-          (view)="viewTask($event)"></pams-assigned-candidate-list>
+          (view)="viewTask($event)"></pams-assigned-candidate-list> 
       </md-tab>
        <md-tab label="Pooled">
-        <pams-pooled-candidate-list
+<!--         <pams-pooled-candidate-list
           [candidateTasks]="pooledCandidateTasks$ | async"
-          (claim)="claimTask($event)"></pams-pooled-candidate-list>
+          (claim)="claimTask($event)"></pams-pooled-candidate-list> -->
       </md-tab>
 <!--      <md-tab label="Archived">
         <pams-archived-intake-list

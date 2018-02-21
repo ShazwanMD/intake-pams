@@ -24,25 +24,31 @@ import {AdmissionCandidateEffects} from './admission-candidate.effect';
 import { AssignedCandidateListComponent } from './component/assigned-candidate-list.component';
 import { PooledCandidateListComponent } from './component/pooled-candidate-list.component';
 import { CandidateTaskState, assignedCandidateListReducer, pooledCandidateListReducer 
-    } from './candidate-task.reducer';
-
+    } from './admission-candidate-task-list.reducer';
+import { CandidateState, candidateTaskReducer 
+    } from './admission-candidate-task.reducer';
+import { CandidateListTaskWorkflowPanel } from './panel/candidate-list-task-workflow.panel';
+    
 export interface AdmissionCandidateModuleState {
  // intakeTasks: IntakeTaskListState;
-    assignedCandidateTasks: CandidateTaskState;
-    pooledCandidateTasks: CandidateTaskState;
+    assignedCandidate: CandidateTaskState;
+    pooledCandidate: CandidateTaskState;
+    candidateTask: CandidateState;
 }
 ;
 
 export const INITIAL_ADMISSION_CANDIDATE_STATE: AdmissionCandidateModuleState =
   <AdmissionCandidateModuleState>{
   //  intakeTasks: <IntakeTask[]>[],
-        assignedCandidateTasks: <CandidateTask[]>[],
-        pooledCandidateTasks: <CandidateTask[]>[],
+        assignedCandidate: <CandidateTask[]>[],
+        pooledCandidate: <CandidateTask[]>[],
+        candidateTask: <CandidateTask>{},
   };
 export const admissionCandidateModuleReducers = {
  // intakeTasks: intakeTaskListReducer,
-        assignedCandidateTasks: assignedCandidateListReducer,
-        pooledCandidateTasks: pooledCandidateListReducer,
+        assignedCandidate: assignedCandidateListReducer,
+        pooledCandidate: pooledCandidateListReducer,
+        candidateTask: candidateTaskReducer,
 };
 
 @NgModule({
@@ -62,14 +68,17 @@ export const admissionCandidateModuleReducers = {
     AdmissionCandidateCenterPage,
     AssignedCandidateListComponent,
     PooledCandidateListComponent,
+    CandidateListTaskWorkflowPanel,
   ],
   exports: [
     AdmissionCandidateCenterPage,
     AssignedCandidateListComponent,
     PooledCandidateListComponent,
+    CandidateListTaskWorkflowPanel,
   ],
   entryComponents: [
     AdmissionCandidateCenterPage,
+    CandidateListTaskWorkflowPanel,
   ],
 })
 export class AdmissionCandidateModule {

@@ -5,9 +5,9 @@ import { AdmissionActions } from './admission.action';
 import { Action } from '@ngrx/store';
 
 
-export type CandidateTaskListState = CandidateTask[];
+/*export type CandidateTaskListState = CandidateTask[];
 
-const initialState: CandidateTaskListState = <CandidateTask[]>[];
+const initialState: CandidateTaskListState = <CandidateTask[]>[];*/
 
 /*export function assignedTaskCandidateListReducer(state = initialState, action: Action): CandidateTaskListState{
     switch(action.type){

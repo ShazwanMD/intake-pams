@@ -16,35 +16,38 @@ import { AdmissionCandidateActions } from "./admission-candidate.action";
 
 export class AdmissionCandidateCenterPage implements OnInit {
     
-    private ASSIGNED_CANDIDATE: string[] = 'admissionCandidateModuleState.assignedCandidateTasks'.split('.');
-    private POOLED_CANDIDATE: string[] = 'admissionCandidateModuleState.pooledCandidateTasks'.split('.');
+    private CANDIDATE_TASK: string[] = 'admissionCandidateModuleState.candidateTask'.split('.');
+    private ASSIGNED_CANDIDATE: string[] = 'admissionCandidateModuleState.assignedCandidate'.split('.');
+    private POOLED_CANDIDATE: string[] = 'admissionCandidateModuleState.pooledCandidate'.split('.');
 
-    private assignedCandidateTasks$: Observable<CandidateTask[]>;
-    private pooledCandidateTasks$: Observable<CandidateTask[]>;
+    private assignedCandidate$: Observable<CandidateTask[]>;
+    private pooledCandidate$: Observable<CandidateTask[]>;
+    private candidateTask$: Observable<CandidateTask[]>;
 
     constructor(private router: Router,
             private route: ActivatedRoute,
             private store: Store<AdmissionCandidateModuleState>,
             private actions: AdmissionCandidateActions) {
-        this.assignedCandidateTasks$ = this.store.select(...this.ASSIGNED_CANDIDATE);
-        this.pooledCandidateTasks$ = this.store.select(...this.POOLED_CANDIDATE);
+        this.assignedCandidate$ = this.store.select(...this.ASSIGNED_CANDIDATE);
+        this.pooledCandidate$ = this.store.select(...this.POOLED_CANDIDATE);
+        this.candidateTask$ = this.store.select(...this.CANDIDATE_TASK);
     }
     
     ngOnInit(): void {
         this.route.params.subscribe(() => {
           this.store.dispatch(this.actions.findAssignedCandidateTasks());
-          this.store.dispatch(this.actions.findPooledCandidateTasks());
+          //this.store.dispatch(this.actions.findPooledCandidateTasks());
         });
       }
     
     viewTask(task: CandidateTask) {
-        console.log('intake: ' + task.taskId);
-        this.router.navigate(['/secure/admission/view-task/', task.taskId]);
+        //console.log('intake: ' + task.taskId);
+        //this.router.navigate(['/secure/admission/view-task/', task.taskId]);
 
       }
     
     claimTask(task: CandidateTask) {
-        console.log('intake: ' + task.taskId);
+        //console.log('intake: ' + task.taskId);
        //this.store.dispatch(this.actions.claimIntakeTask(task));
       }
 }

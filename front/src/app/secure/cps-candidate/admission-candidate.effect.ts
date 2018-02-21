@@ -9,6 +9,8 @@ export class AdmissionCandidateEffects {
 
 /*  private INTAKE_TASKS: string[] = 'admissionModuleState.intakeTasks'.split('.');
   private CANDIDATES: string[] = 'admissionModuleState.candidates'.split('.');*/
+    
+  private CANDIDATE_TASK: string[] = 'admissionCandidateModuleState.candidateTask'.split('.');
 
   constructor(private actions$: Actions,
               private admissionCandidateActions: AdmissionCandidateActions,

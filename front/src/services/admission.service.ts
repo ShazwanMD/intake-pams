@@ -43,7 +43,7 @@ export class AdmissionService {
   // ====================================================================================================
 
   findAssignedCandidateTasks(): Observable<CandidateTask[]> {
-    console.log('findAssignedCandidateTasks');
+    console.log('findAssignedCandidateTasks di front service');
     return this._http.get(this.ADMISSION_API + '/candidates/assignedCandidateTasks')
       .map((res: Response) => <CandidateTask[]>res.json());
   }
@@ -53,6 +53,12 @@ export class AdmissionService {
     return this._http.get(this.ADMISSION_API + '/candidates/pooledCandidateTasks')
       .map((res: Response) => <CandidateTask[]>res.json());
   }
+  
+  findCandidateTaskByTaskId(taskId: string): Observable<CandidateTask> {
+      console.log('findCandidateTaskkByTaskId');
+      return this._http.get(this.ADMISSION_API + '/candidates/viewTask/' + taskId)
+        .map((res: Response) => <CandidateTask>res.json());
+    }
 
   // ====================================================================================================
   // INTAKE

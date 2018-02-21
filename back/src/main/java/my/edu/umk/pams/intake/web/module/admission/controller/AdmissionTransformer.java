@@ -7,11 +7,13 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
@@ -20,6 +22,7 @@ import my.edu.umk.pams.intake.web.module.core.vo.FlowState;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 import static java.util.stream.Collectors.toCollection;
@@ -83,17 +86,18 @@ public class AdmissionTransformer {
         task.setSourceNo(candidate.getSourceNo());
         task.setTaskName(t.getName());
         task.setAssignee(task.getAssignee());
+        task.setDescriptionEn(candidate.getDescriptionEn());
+        task.setDescriptionMs(candidate.getDescriptionMs());
         task.setCandidate(task.getCandidate());
         task.setCandidateIntake(toCandidateVo(candidate));
         task.setFlowState(FlowState.get(candidate.getFlowdata().getState().ordinal()));
         task.setMetaState(MetaState.get(candidate.getMetadata().getState().ordinal()));
         
         return task;
-    	
     }
     
     
-    public List<CandidateTask> toCandidateTaskVos(List<Task>tasks){
+    public List<CandidateTask> toCandidateTaskVos(List<Task> tasks){
     	return tasks.stream()
     			.map((task) -> toCandidateTaskVo(task))
     			.collect(toCollection(() -> new ArrayList<CandidateTask>()));

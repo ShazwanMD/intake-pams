@@ -1,4 +1,3 @@
-import { CandidateTaskListState } from './candidate-task-list.reducer';
 import { Intake } from './../../shared/model/policy/intake.interface';
 import { AssignedCandidateTaskListComponent } from './component/assigned-candidate-task-list.component';
 import { PooledCandidateTaskListComponent } from './component/pooled-candidate-task-list.component';
@@ -70,7 +69,7 @@ export interface AdmissionModuleState {
   offeredCandidates: CandidateListState;
   acceptedCandidates: CandidateListState;
   registeredCandidates: CandidateListState;
-  assignedTaskCandidates: CandidateTaskListState;
+  //assignedTaskCandidates: CandidateTaskListState;
 
 }
 ;
@@ -90,7 +89,7 @@ export const INITIAL_ADMISSION_STATE: AdmissionModuleState =
     offeredCandidates: <Candidate[]>[],
     acceptedCandidates: <Candidate[]>[],
     registeredCandidates: <Candidate[]>[],
-    assignedTaskCandidates: <CandidateTask[]>[],
+    //assignedTaskCandidates: <CandidateTask[]>[],
   };
 export const admissionModuleReducers = {
  // intakeTasks: intakeTaskListReducer,
@@ -106,7 +105,7 @@ export const admissionModuleReducers = {
   offeredCandidates: offeredCandidateListReducer,
   acceptedCandidates: acceptedCandidateListReducer,
   registeredCandidates: registeredCandidateListReducer,
-  assignedTaskCandidates: assignedCandidateTaskListReducer,
+  //assignedTaskCandidates: assignedCandidateTaskListReducer,
 };
 
 @NgModule({

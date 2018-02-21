@@ -84,25 +84,24 @@ public class AdmissionController {
 	// ====================================================================================================
 
 	@RequestMapping(value = "/candidates/assignedCandidateTasks", method = RequestMethod.GET)
-	public ResponseEntity<List<CandidateTask>> findAssignedCandidates() {
+	public ResponseEntity<List<CandidateTask>> findAssignedCandidateTasks() {
 		
-		List<Task> tasks = admissionService.findAssignedCandidateTasks(0, Integer.MAX_VALUE);
-		LOG.debug("Task id {}", tasks);
+		List<Task> tasks = admissionService.findAssignedCandidateTasks(0, 100);
+		LOG.debug("Task id baca", tasks);
 		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/candidates/pooledCandidateTasks", method = RequestMethod.GET)
-	public ResponseEntity<List<CandidateTask>> findPooledCandidates() {
+	public ResponseEntity<List<CandidateTask>> findPooledCandidateTasks() {
 
-		List<Task> tasks = admissionService.findPooledCandidateTasks(0, Integer.MAX_VALUE);
+		List<Task> tasks = admissionService.findPooledCandidateTasks(0, 100);
 		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
 
     @RequestMapping(value = "/candidates/viewTask/{taskId}", method = RequestMethod.GET)
     public ResponseEntity<CandidateTask> findCandidateTaskByTaskId(@PathVariable String taskId) {
         return new ResponseEntity<CandidateTask>(admissionTransformer
-                .toCandidateTaskVo(
-                        admissionService.findCandidateTaskByTaskId(taskId)), HttpStatus.OK);
+                .toCandidateTaskVo(admissionService.findCandidateTaskByTaskId(taskId)), HttpStatus.OK);
     }
 
 	// ====================================================================================================

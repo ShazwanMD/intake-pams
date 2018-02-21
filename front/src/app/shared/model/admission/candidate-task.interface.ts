@@ -1,8 +1,7 @@
 import { Candidate } from './candidate.interface';
 import { FlowState } from '../../../core/flow-state.enum';
-import {Document} from '../../../core/document.interface';
 
-export interface CandidateTask extends Document {
+export interface CandidateTask {
     taskId:string;
     taskName:string;
     candidate:string;

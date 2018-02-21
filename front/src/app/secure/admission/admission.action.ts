@@ -5,48 +5,7 @@ import {Intake} from '../../shared/model/policy/intake.interface';
 @Injectable()
 export class AdmissionActions {
 
-/*  static FIND_ASSIGNED_CANDIDATE_TASKS = '[Admission] Find Assigned Candidate Tasks';
-
-  findAssignedCandidateTasks(): Action {
-    return {
-      type: AdmissionActions.FIND_ASSIGNED_CANDIDATE_TASKS,
-    };
-  }
-
-  static FIND_ASSIGNED_CANDIDATE_TASKS_SUCCESS = '[Admission] Find Assigned Candidate Tasks Success';
-
-  findAssignedCandidateTasksSuccess(tasks): Action {
-    console.log('findAssignedCandidateTasksSuccess');
-    return {
-      type: AdmissionActions.FIND_ASSIGNED_CANDIDATE_TASKS_SUCCESS,
-      payload: tasks,
-    };
-  }
-
-  static FIND_POOLED_CANDIDATE_TASKS = '[Admission] Find Pooled Candidate Tasks';
-
-  findPooledCandidateTasks(): Action {
-    return {
-      type: AdmissionActions.FIND_POOLED_CANDIDATE_TASKS,
-    };
-  }
-
-  static FIND_POOLED_CANDIDATE_TASKS_SUCCESS = '[Admission] Find Pooled Candidate Tasks Success';
-
-  findPooledCandidateTasksSuccess(tasks): Action {
-    console.log('findAssignedCandidateTasksSuccess');
-    return {
-      type: AdmissionActions.FIND_POOLED_CANDIDATE_TASKS_SUCCESS,
-      payload: tasks,
-    };
-  }*/
-
-
-
-
-
-
-  static FIND_ASSIGNED_INTAKE_TASKS = '[Admission] Find Assigned Admission Tasks';
+    static FIND_ASSIGNED_INTAKE_TASKS = '[Admission] Find Assigned Admission Tasks';
 
   findAssignedIntakeTasks(): Action {
     return {
