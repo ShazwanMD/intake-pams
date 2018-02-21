@@ -38,11 +38,11 @@ public class ThenIntakeHasProgramAvailable extends Stage<ThenIntakeHasProgramAva
 
     public ThenIntakeHasProgramAvailable intake_has_program_as_available(String programCode) {
 
-        InProgramCode myProgramCode = commonService.findProgramCodeByCode(programCode);
-        Assert.notNull(myProgramCode, "programCode cannot be null");
+        //InProgramCode myProgramCode = commonService.findProgramFieldCodeByCode(programCode);
+        //Assert.notNull(myProgramCode, "programCode cannot be null");
 
-        InProgramOffering programOffering = policyService.findProgramOfferingByIntakeAndProgramCode(intake, myProgramCode);
-        Assert.notNull(programOffering, "programOffering cannot be null");
+        //InProgramOffering programOffering = policyService.findProgramOfferingByIntakeAndProgramCode(intake, myProgramCode);
+        //Assert.notNull(programOffering, "programOffering cannot be null");
 
         return self();
     }

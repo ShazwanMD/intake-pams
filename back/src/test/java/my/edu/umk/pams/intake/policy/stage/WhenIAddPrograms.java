@@ -57,7 +57,7 @@ public class WhenIAddPrograms extends Stage<WhenIAddPrograms> {
             code.setCode(data.name());
             code.setDescriptionEn(data.descriptionEn);
             code.setDescriptionMs(data.descriptionMs);
-            code.setFacultyCode(commonService.findFacultyCodeByCode("A09"));
+           // code.setFacultyCode(commonService.findFacultyCodeByCode("A09"));
             code.setProgramLevel(policyService.findProgramLevelByCode("MASTER"));
             code.setGraduateCenter(commonService.findGraduateCenterByCode("CPS"));
             commonService.saveProgramCode(code);
@@ -74,11 +74,11 @@ public class WhenIAddPrograms extends Stage<WhenIAddPrograms> {
 
         programOfferings = new ArrayList<>();
         for (Data code : codesData) {
-            InProgramCode programCode = commonService.findProgramCodeByCode(code.name());
-            Assert.notNull(programCode, code + " ProgramCode cannot be null");
+            //InProgramCode programCode = commonService.findProgramFieldCodeByCode(code.name());
+            //Assert.notNull(programCode, code + " ProgramCode cannot be null");
 
             InProgramOffering offering = new InProgramOfferingImpl();
-            offering.setProgramCode(programCode);
+            offering.setProgramFieldCode(null);
             policyService.addProgramOffering(intake, offering);
             programOfferings.add(offering);
         }

@@ -1,5 +1,9 @@
 package my.edu.umk.pams.intake.workflow;
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateImpl;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
@@ -44,6 +48,10 @@ public class IntakeDraftWorkflowTest {
 
     @Autowired
     private PolicyService policyService;
+    
+    @Autowired
+    private AdmissionService admissionService;
+
 
     @Autowired
     private CommonService commonService;
@@ -68,43 +76,64 @@ public class IntakeDraftWorkflowTest {
         InIntakeSession session = policyService.findIntakeSessionByCode("20171");
         InGraduateCenter center = commonService.findGraduateCenterByCode("MGSEB");
 
+        
+        InCandidate e = new InCandidateImpl();
+        e.setAuditNo(UUID.randomUUID().toString());
+        e.setSourceNo("MASTER/201720182" + System.currentTimeMillis());
+        e.setDescriptionEn("Intake for Program Master 201720181 "  + System.currentTimeMillis());
+        e.setDescriptionMs("Intake for Program Mastsser 201720181 "  + System.currentTimeMillis());
+//        e.setProgramSelection(offering);
+        e.setName("test");
+        e.setMatricNo("testing");
+        e.setEmail("aaa");
+        e.setRegistration(true);
+        e.setAcception(false);
+        e.setStatus(InCandidateStatus.SELECTED);
+        LOG.debug("sampai dok : {}");
+        String referenceNo = admissionService.startCandidateTask(e);
+        
         // start a new intake
-        InIntake intake = new InIntakeImpl();
-        intake.setAuditNo(UUID.randomUUID().toString());
-        intake.setSourceNo("MASTER/201720182" + System.currentTimeMillis());
-        intake.setDescriptionEn("Intake for Program Master 201720181 "  + System.currentTimeMillis());
-        intake.setProjection(100);
-        intake.setStartDate(new Date());
-        intake.setEndDate(new Date());
-        intake.setProgramLevel(level);
-        intake.setSession(session);
-        intake.setGraduateCenter(center);
-        String referenceNo = policyService.startIntakeTask(intake);
+
+        
+        
+//        InIntake intake = new InIntakeImpl();
+//        intake.setAuditNo(UUID.randomUUID().toString());
+//        intake.setSourceNo("MASTER/201720182" + System.currentTimeMillis());
+//        intake.setDescriptionEn("Intake for Program Master 201720181 "  + System.currentTimeMillis());
+//        intake.setProjection(100);
+//        intake.setStartDate(new Date());
+//        intake.setEndDate(new Date());
+//        intake.setProgramLevel(level);
+//        intake.setSession(session);
+//        intake.setGraduateCenter(center);
+//        String referenceNo = policyService.startIntakeTask(intake);
 
         // search again
-        intake = policyService.findIntakeByReferenceNo(referenceNo);
-
-        // preload program offering
-        InProgramCode mck = commonService.findProgramCodeByCode("MCK");
-        InProgramOffering mckOffering = new InProgramOfferingImpl();
-        mckOffering.setProgramCode(mck);
-        policyService.addProgramOffering(intake, mckOffering);
-
-        InProgramCode mcn = commonService.findProgramCodeByCode("MCN");
-        InProgramOffering mcnOffering = new InProgramOfferingImpl();
-        mcnOffering.setProgramCode(mcn);
-        policyService.addProgramOffering(intake, mcnOffering);
-
-        // preload studymode offering
-        InStudyMode fulltime = commonService.findStudyModeByCode("1");
-        InStudyModeOffering fulltimeOffering = new InStudyModeOfferingImpl();
-        fulltimeOffering.setStudyMode(fulltime);
-        policyService.addStudyModeOffering(intake, fulltimeOffering);
-
-        InStudyMode parttime = commonService.findStudyModeByCode("1");
-        InStudyModeOffering parttimeOffering = new InStudyModeOfferingImpl();
-        parttimeOffering.setStudyMode(parttime);
-        policyService.addStudyModeOffering(intake, parttimeOffering);
+        InCandidate candidate = admissionService.findCandidateByIdentityNo("201720181-MASTER-002");
+        LOG.debug("candidate : {}", candidate);
+        
+        
+//        // preload program offering
+//        //InProgramCode mck = commonService.findProgramFieldCodeByCode("MCK");
+//        InProgramOffering mckOffering = new InProgramOfferingImpl();
+//        mckOffering.setProgramFieldCode(null);
+//        policyService.addProgramOffering(intake, mckOffering);
+//
+//        //InProgramCode mcn = commonService.findProgramFieldCodeByCode("MCN");
+//        InProgramOffering mcnOffering = new InProgramOfferingImpl();
+//        mcnOffering.setProgramFieldCode(null);
+//        policyService.addProgramOffering(intake, mcnOffering);
+//
+//        // preload studymode offering
+//        InStudyMode fulltime = commonService.findStudyModeByCode("1");
+//        InStudyModeOffering fulltimeOffering = new InStudyModeOfferingImpl();
+//        fulltimeOffering.setStudyMode(fulltime);
+//        policyService.addStudyModeOffering(intake, fulltimeOffering);
+//
+//        InStudyMode parttime = commonService.findStudyModeByCode("1");
+//        InStudyModeOffering parttimeOffering = new InStudyModeOfferingImpl();
+//        parttimeOffering.setStudyMode(parttime);
+//        policyService.addStudyModeOffering(intake, parttimeOffering);
 
     }
 }

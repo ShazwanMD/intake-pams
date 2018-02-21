@@ -115,14 +115,14 @@ public class IntakeCreatorTestMGSEB {
 		intake = policyService.findIntakeByReferenceNo(referenceNo);
 
 		// preload program offering
-		InProgramCode mck = commonService.findProgramCodeByCode("MCK");
+		//InProgramCode mck = commonService.findProgramFieldCodeByCode("MCK");
 		InProgramOffering mckOffering = new InProgramOfferingImpl();
-		mckOffering.setProgramCode(mck);
+		mckOffering.setProgramFieldCode(null);
 		policyService.addProgramOffering(intake, mckOffering);
 
-		InProgramCode mcn = commonService.findProgramCodeByCode("MCN");
+		//InProgramCode mcn = commonService.findProgramFieldCodeByCode("MCN");
 		InProgramOffering mcnOffering = new InProgramOfferingImpl();
-		mcnOffering.setProgramCode(mcn);
+		mcnOffering.setProgramFieldCode(null);
 		policyService.addProgramOffering(intake, mcnOffering);
 
 		// preload studymode offering

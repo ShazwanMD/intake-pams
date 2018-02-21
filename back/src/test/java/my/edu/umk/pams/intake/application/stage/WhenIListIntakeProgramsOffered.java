@@ -50,8 +50,8 @@ public class WhenIListIntakeProgramsOffered extends Stage<WhenIListIntakeProgram
 
     private void preloadProgramOffering(String code) {
         Assert.notNull(intake, "intake cannot be null");
-        InProgramCode programCode = commonService.findProgramCodeByCode(code);
-        Assert.notNull(programCode, programCode.getCode() + " ProgramCode cannot be null");
+        //InProgramCode programCode = commonService.findProgramFieldCodeByCode(code);
+        //Assert.notNull(programCode, programCode.getCode() + " ProgramCode cannot be null");
 
         InProgramOffering offering = new InProgramOfferingImpl();
         policyService.addProgramOffering(intake, offering);

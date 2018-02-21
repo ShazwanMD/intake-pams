@@ -6,6 +6,7 @@ import my.edu.umk.pams.intake.application.model.InIntakeApplicationImpl;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.common.model.InProgramCode;
+import my.edu.umk.pams.intake.common.model.InProgramFieldCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.model.InSupervisorCode;
 import my.edu.umk.pams.intake.common.service.CommonService;
@@ -116,14 +117,14 @@ public class IntakeCreatorTestCPS {
 		intake = policyService.findIntakeByReferenceNo(referenceNo);
 
 		// preload program offering
-		InProgramCode mck = commonService.findProgramCodeByCode("MCK");
+		//InProgramCode mck = commonService.findProgramFieldCodeByCode("MCK");
 		InProgramOffering mckOffering = new InProgramOfferingImpl();
-		mckOffering.setProgramCode(mck);
+		mckOffering.setProgramFieldCode(null);;
 		policyService.addProgramOffering(intake, mckOffering);
 
-		InProgramCode mcn = commonService.findProgramCodeByCode("MCN");
+		//InProgramCode mcn = commonService.findProgramFieldCodeByCode("MCN");
 		InProgramOffering mcnOffering = new InProgramOfferingImpl();
-		mcnOffering.setProgramCode(mcn);
+		mcnOffering.setProgramFieldCode(null);
 		policyService.addProgramOffering(intake, mcnOffering);
 
 		// preload studymode offering

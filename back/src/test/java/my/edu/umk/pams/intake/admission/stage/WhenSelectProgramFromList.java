@@ -41,7 +41,7 @@ private InProgramCode programCode;
 		 
 		 intake = policyService.findIntakeByReferenceNo(INTAKE_REFERENCE_NO_MGSSEB);
 		 List<InProgramOffering> programOfferings = policyService.findProgramOfferings(intake);
-		 Assert.notNull(commonService.findProgramCodeByCode("MCA"),"program is not offered");
+		 Assert.notNull(commonService.findProgramFieldCodeByCode("MCA"),"program is not offered");
 		
 	 
 	 return self();

@@ -70,7 +70,7 @@ public class WhenIEnterApplicationResult extends Stage<WhenIEnterApplicationResu
         offering.setSpecificCriteria("3.50");
         offering.setInterview(true);
         offering.setStudyCenterCode(commonService.findStudyCenterCodeByCode("A"));
-        offering.setProgramCode(commonService.findProgramCodeByCode("MCK"));
+        offering.setProgramFieldCode(null);
         policyService.addProgramOffering(intake, offering);
 
 
