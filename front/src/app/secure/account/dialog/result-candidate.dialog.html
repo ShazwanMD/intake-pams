@@ -19,7 +19,7 @@
         <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status != null">
         <md-card-subtitle>Candidates Result Information For : {{myIntakeApplication.intake.intakeSession.descriptionEn}}</md-card-subtitle>
         <md-card-subtitle>Candidates Name : {{myIntakeApplication.candidate?.name}}</md-card-subtitle>
-        <md-card-subtitle>Candidates Program : {{myIntakeApplication.candidate?.programSelection?.programCode.descriptionEn}}</md-card-subtitle>
+        <md-card-subtitle>Candidates Program : {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.programCode.descriptionEn}}</md-card-subtitle>
         <md-card-subtitle>Candidates Identity Number : {{myIntakeApplication.candidate?.identityNo}} </md-card-subtitle>
         <md-card-subtitle>Candidates Application Reference Number : {{myIntakeApplication.candidate?.application?.referenceNo}}</md-card-subtitle>
         </md-card-subtitle>
