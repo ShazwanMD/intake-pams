@@ -18,9 +18,11 @@ export class AssignedCandidateListComponent {
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
-    {name: 'projection', label: 'Projection'},
-    {name: 'startDate', label: 'Start Date'},
-    {name: 'endDate', label: 'End Date'},
+    {name: 'candidateIntake.identityNo', label: 'Identity No'},
+    {name: 'candidateIntake.name', label: 'Name'},
+    {name: 'studyMode.studyMode.descriptionEn', label: 'Study Mode'},
+    {name: 'programSelection.programFieldCode.fieldCode.descriptionEn', label: 'Field Code'},
+    {name: 'intakeSession.descriptionEn', label: 'Intake'},
     {name: 'flowState', label: 'Status'},
     {name: 'action', label: ''},
   ];
