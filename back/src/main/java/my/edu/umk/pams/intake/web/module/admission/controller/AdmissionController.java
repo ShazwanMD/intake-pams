@@ -29,6 +29,7 @@ import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
+import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 
 @RestController
 @RequestMapping("/api/admission")
@@ -90,12 +91,6 @@ public class AdmissionController {
 		LOG.debug("Task id baca : {}", tasks);
 		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
-	
-//    @RequestMapping(value = "/intakes/assignedTasks", method = RequestMethod.GET)
-//    public ResponseEntity<List<IntakeTask>> findAssignedIntakes() {
-//        List<Task> tasks = policyService.findAssignedIntakeTasks(0, 100);
-//        return new ResponseEntity<List<IntakeTask>>(policyTransformer.toIntakeTaskVos(tasks), HttpStatus.OK);
-//    }
 
 	@RequestMapping(value = "/candidates/pooledCandidateTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<CandidateTask>> findPooledCandidateTasks() {
@@ -108,6 +103,13 @@ public class AdmissionController {
     public ResponseEntity<CandidateTask> findCandidateTaskByTaskId(@PathVariable String taskId) {
         return new ResponseEntity<CandidateTask>(admissionTransformer
                 .toCandidateTaskVo(admissionService.findCandidateTaskByTaskId(taskId)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/candidates/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Candidate> findCandidateById(@PathVariable Long id) {
+    	InCandidate candidate = admissionService.findCandidateById(id);
+    	LOG.debug("Candidate id baca : {}", candidate.getName());
+        return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
     }
 
 	// ====================================================================================================

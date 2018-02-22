@@ -59,6 +59,12 @@ export class AdmissionService {
       return this._http.get(this.ADMISSION_API + '/candidates/viewTask/' + taskId)
         .map((res: Response) => <CandidateTask>res.json());
     }
+  
+  findCandidateById(candidate: Candidate): Observable<Candidate> {
+      console.log('findCandidates candidate.id: ' + candidate.id);
+      return this._http.get(this.ADMISSION_API + '/candidates/' + candidate.id)
+      .map((res: Response) => <Candidate>res.json());
+  }
 
   // ====================================================================================================
   // INTAKE

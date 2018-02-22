@@ -5,6 +5,7 @@ import {
   ComponentFactoryResolver, ComponentRef, Input,
 } from '@angular/core';
 import {Observable} from 'rxjs';
+import { CandidateDraftTaskPanel } from "./candidate-draft-task.panel";
 
 @Component({
   selector: 'pams-candidate-list-task-workflow',
@@ -32,7 +33,7 @@ export class CandidateListTaskWorkflowPanel implements OnInit {
         }
         switch (FlowState[task.flowState.toString()]) {
           case FlowState.DRAFTED:
-            //componentFactory = this.cfr.resolveComponentFactory(CandidatePreApproveTaskPanel);
+            componentFactory = this.cfr.resolveComponentFactory(CandidateDraftTaskPanel);
             break;
           case FlowState.APPROVED:
             //componentFactory = this.cfr.resolveComponentFactory(CandidateApproveTaskPanel);
@@ -48,7 +49,7 @@ export class CandidateListTaskWorkflowPanel implements OnInit {
             break;
         }
         this.componentRef = this.taskPanel.createComponent(componentFactory);
-        this.componentRef.instance.intakeTask = task;
+        this.componentRef.instance.candidateTask = task;
       }
     });
   }

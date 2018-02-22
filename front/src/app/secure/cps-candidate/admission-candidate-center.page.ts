@@ -41,8 +41,8 @@ export class AdmissionCandidateCenterPage implements OnInit {
       }
     
     viewTask(task: CandidateTask) {
-        //console.log('intake: ' + task.taskId);
-        //this.router.navigate(['/secure/admission/view-task/', task.taskId]);
+        console.log('CandidateTask view: ' + task.taskId);
+        this.router.navigate(['/secure/cps-candidate/view-task/', task.taskId]);
 
       }
     

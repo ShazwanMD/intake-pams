@@ -1,34 +1,13 @@
 <!-- Basic Card -->
 <md-card>
-  <md-card-title>Candidate Personal Info</md-card-title>
-  <md-card-subtitle>Pre Select Application Form</md-card-subtitle>
-  <md-divider></md-divider>
-  <md-card-content>
-    <!--Tab Section Here-->
-    <md-tab-group>
-
-      <!--MULA TAB STUDENT INFORMATION-->
-      <md-tab label="Candidate Information">
-
-        <br/>
-
-        <!--APPLICANT INFORMATION-->
-        <md-card>
-          <div md-content flex md-scroll-y>
-            <div layout="column" layout-gt-md="row" class="insert">
-              <div flex-gt-md="50">
-                <md-card-title>Candidate Information</md-card-title>
-              </div>
-            </div>
-          </div>
-          <md-divider></md-divider>
+       
           <md-card-content>
 
             <div layout="column" layout-gt-md="row" class="insert">
 
               <div flex-gt-md="40">
-                <b>Name</b> : {{candidate.name}}<br/><br/>
-                <b>NRIC/Passport</b> : {{candidate.identityNo}}<br/><br/>
+                <!-- <b>Name</b> : {{candidate.name}}<br/><br/>
+                <b>NRIC/Passport</b> : {{candidate.identityNo}}<br/><br/> -->
                 <b>Passport Expired Date</b> : {{candidate.application?.passExpDate}}<br/><br/>
                 <b>Nationality</b> : {{candidate.application?.nationalityCode?.descriptionEn}}<br/><br/>
                 <b>Residency</b> : {{candidate.application?.residencyCode?.descriptionEn}}<br/><br/>
@@ -55,7 +34,7 @@
 
             </div>
 
-            <br/><br/><br/>
+<!--             <br/><br/><br/> -->
 
             <!--TAB OTHERS INFORMATION-->
             <md-tab-group>
@@ -205,12 +184,5 @@
               </md-tab>
             </md-tab-group>
           </md-card-content>
-        </md-card>
-        	<button md-raised-button color="accent" (click)="preSelect(candidate)">Select</button>
-        	<template [ngIf]="candidate.status !== 'REJECTED'"><button md-raised-button color="accent" (click)="reject(candidate)">Reject</button></template>
-      </md-tab>
-    </md-tab-group>
-
-  </md-card-content>
   <md-divider></md-divider>
 </md-card>

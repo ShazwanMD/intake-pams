@@ -60,4 +60,26 @@ export class AdmissionCandidateActions {
         payload: task,
       };
     }
+    
+    static FIND_CANDIDATE_BY_ID = '[Admission] Find Candidates By Id';
+
+    findCandidateById(candidate): Action {
+      console.log('findCandidateById');
+      return {
+        type: AdmissionCandidateActions.FIND_CANDIDATE_BY_ID,
+        payload: candidate,
+      };
+    }
+
+    static FIND_CANDIDATE_BY_ID_SUCCESS = '[Admission] Find Candidates By Id Success';
+
+    findCandidateByIdSuccess(candidates): Action {
+      console.log('findCandidateByIdSuccess');
+      return {
+        type: AdmissionCandidateActions.FIND_CANDIDATE_BY_ID_SUCCESS,
+        payload: candidates,
+      };
+    }
+    
+    
 }
