@@ -29,6 +29,8 @@ export class ProgramCodesComponent implements OnChanges {
     {name: 'code', label: 'Code'},
     {name: 'descriptionMs', label: 'DescriptionMs'},
     {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'programLevel.code', label: 'Program Level'},
+    {name: 'graduateCenter.code', label: 'Graduate Center'},
     {name: 'action', label: ''}
   ];
 
