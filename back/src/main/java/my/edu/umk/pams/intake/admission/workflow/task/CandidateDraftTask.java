@@ -23,7 +23,7 @@ import static my.edu.umk.pams.intake.core.InFlowState.DRAFTED;
 public class CandidateDraftTask extends BpmnActivityBehavior
         implements ActivityBehavior {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CandidateApproveTask.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CandidateDraftTask.class);
 
     @Autowired
     private SecurityService securityService;

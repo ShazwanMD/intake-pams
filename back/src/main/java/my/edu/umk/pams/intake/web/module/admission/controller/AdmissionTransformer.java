@@ -18,12 +18,15 @@ import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
 import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
+import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.intake.web.module.core.vo.FlowState;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaState;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
+import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
+import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 import static java.util.stream.Collectors.toCollection;
@@ -93,7 +96,9 @@ public class AdmissionTransformer {
         task.setCandidateIntake(toCandidateVo(candidate));
         task.setFlowState(FlowState.get(candidate.getFlowdata().getState().ordinal()));
         task.setMetaState(MetaState.get(candidate.getMetadata().getState().ordinal()));
-        
+        task.setStudyMode(policyTransformer.toStudyModeOfferingVo(candidate.getStudyModeSelection()));
+        task.setProgramSelection(policyTransformer.toProgramOfferingVo(candidate.getProgramSelection()));
+        task.setIntakeSession(policyTransformer.toIntakeSessionVo(candidate.getIntake().getSession()));
         return task;
     }
     

@@ -579,5 +579,6 @@ public class AdmissionServiceImpl implements AdmissionService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         LOG.debug("Candidate_id:{}",candidate.getId());
 		return map;
+
 	}
 }
