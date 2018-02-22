@@ -33,7 +33,7 @@ export interface AdmissionCandidateModuleState {
  // intakeTasks: IntakeTaskListState;
     assignedCandidate: CandidateTaskState;
     pooledCandidate: CandidateTaskState;
-    candidateTask: CandidateState;
+    candidateTasks: CandidateState;
 }
 ;
 
@@ -42,13 +42,13 @@ export const INITIAL_ADMISSION_CANDIDATE_STATE: AdmissionCandidateModuleState =
   //  intakeTasks: <IntakeTask[]>[],
         assignedCandidate: <CandidateTask[]>[],
         pooledCandidate: <CandidateTask[]>[],
-        candidateTask: <CandidateTask>{},
+        candidateTasks: <CandidateTask>{},
   };
 export const admissionCandidateModuleReducers = {
  // intakeTasks: intakeTaskListReducer,
         assignedCandidate: assignedCandidateListReducer,
         pooledCandidate: pooledCandidateListReducer,
-        candidateTask: candidateTaskReducer,
+        candidateTasks: candidateTaskReducer,
 };
 
 @NgModule({

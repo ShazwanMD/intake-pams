@@ -13,6 +13,7 @@ import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
+import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.model.InProgramOffering;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
@@ -77,7 +78,7 @@ public class AdmissionTransformer {
     	Map<String, Object> vars = workflowService.getVariables(t.getExecutionId());
     	InCandidate candidate = admissionService.findCandidateById((Long) vars.get(IntakeConstants.CANDIDATE_ID));
     	
-    	if (null == t) return null;
+  //  	if (null == t) return null;
     	
     	CandidateTask task = new CandidateTask();
         task.setId(candidate.getId());
@@ -96,6 +97,8 @@ public class AdmissionTransformer {
         return task;
     }
     
+
+    
     
     public List<CandidateTask> toCandidateTaskVos(List<Task> tasks){
     	return tasks.stream()
@@ -103,5 +106,7 @@ public class AdmissionTransformer {
     			.collect(toCollection(() -> new ArrayList<CandidateTask>()));
     	
     }
+    
+
 }
 

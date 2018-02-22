@@ -33,7 +33,7 @@
         <sequenceFlow id="flow2.1" sourceRef="candidate_draft_ST"
                       targetRef="candidate_draft_UT"/>
 
-        <userTask id="candidate_draft_UT" name="my.edu.umk.pams.candidate.admission.model.InCandidate:DRAFTED"
+        <userTask id="candidate_draft_UT" name="my.edu.umk.pams.intake.admission.model.InCandidate:DRAFTED"
                   activiti:assignee="${userCreator}">
             <documentation>
                 Draft Candidate
@@ -63,7 +63,7 @@
 
         <sequenceFlow id="flow7.1" sourceRef="candidate_verify_ST" targetRef="candidate_verify_UT"/>
 
-        <userTask id="candidate_verify_UT" name="my.edu.umk.pams.candidate.admission.model.InCandidate:VERIFIED"
+        <userTask id="candidate_verify_UT" name="my.edu.umk.pams.intake.admission.model.InCandidate:VERIFIED"
                   activiti:candidateGroups="${candidateRouterService.findVerifierCandidates(candidateId)}">
             <documentation>
                 Verify
@@ -92,7 +92,7 @@
 
         <sequenceFlow id="flow8.1" sourceRef="candidate_publish_ST" targetRef="candidate_publish_UT"/>
 
-        <userTask id="candidate_publish_UT" name="my.edu.umk.pams.candidate.admission.model.Incandidate:PUBLISHED"
+        <userTask id="candidate_publish_UT" name="my.edu.umk.pams.intake.admission.model.Incandidate:PUBLISHED"
                   activiti:candidateGroups="${candidateRouterService.findPublisherCandidates(candidateId)}">
             <documentation>
                 Publish

@@ -16,13 +16,13 @@ import { AdmissionCandidateActions } from "./admission-candidate.action";
 
 export class AdmissionCandidateCenterPage implements OnInit {
     
-    private CANDIDATE_TASK: string[] = 'admissionCandidateModuleState.candidateTask'.split('.');
+    private CANDIDATE_TASKS: string[] = 'admissionCandidateModuleState.candidateTasks'.split('.');
     private ASSIGNED_CANDIDATE: string[] = 'admissionCandidateModuleState.assignedCandidate'.split('.');
     private POOLED_CANDIDATE: string[] = 'admissionCandidateModuleState.pooledCandidate'.split('.');
 
     private assignedCandidate$: Observable<CandidateTask[]>;
     private pooledCandidate$: Observable<CandidateTask[]>;
-    private candidateTask$: Observable<CandidateTask[]>;
+    private candidateTasks$: Observable<CandidateTask[]>;
 
     constructor(private router: Router,
             private route: ActivatedRoute,
@@ -30,13 +30,13 @@ export class AdmissionCandidateCenterPage implements OnInit {
             private actions: AdmissionCandidateActions) {
         this.assignedCandidate$ = this.store.select(...this.ASSIGNED_CANDIDATE);
         this.pooledCandidate$ = this.store.select(...this.POOLED_CANDIDATE);
-        this.candidateTask$ = this.store.select(...this.CANDIDATE_TASK);
+        this.candidateTasks$ = this.store.select(...this.CANDIDATE_TASKS);
     }
     
     ngOnInit(): void {
         this.route.params.subscribe(() => {
           this.store.dispatch(this.actions.findAssignedCandidateTasks());
-          //this.store.dispatch(this.actions.findPooledCandidateTasks());
+          this.store.dispatch(this.actions.findPooledCandidateTasks());
         });
       }
     

@@ -87,9 +87,15 @@ public class AdmissionController {
 	public ResponseEntity<List<CandidateTask>> findAssignedCandidateTasks() {
 		
 		List<Task> tasks = admissionService.findAssignedCandidateTasks(0, 100);
-		LOG.debug("Task id baca", tasks);
+		LOG.debug("Task id baca : {}", tasks);
 		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
+	
+//    @RequestMapping(value = "/intakes/assignedTasks", method = RequestMethod.GET)
+//    public ResponseEntity<List<IntakeTask>> findAssignedIntakes() {
+//        List<Task> tasks = policyService.findAssignedIntakeTasks(0, 100);
+//        return new ResponseEntity<List<IntakeTask>>(policyTransformer.toIntakeTaskVos(tasks), HttpStatus.OK);
+//    }
 
 	@RequestMapping(value = "/candidates/pooledCandidateTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<CandidateTask>> findPooledCandidateTasks() {
