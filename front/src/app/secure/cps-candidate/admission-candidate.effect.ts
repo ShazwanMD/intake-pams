@@ -49,7 +49,16 @@ export class AdmissionCandidateEffects {
     .map(action => action.payload)
     .switchMap(candidate => this.admissionService.findCandidateById(candidate))
     .map(candidates => this.admissionCandidateActions.findCandidateByIdSuccess(candidates));
-/*    .mergeMap((action) => from ([action,
-        this.intakeApplicationActions.findIntakeApplicationByReferenceNo(action.payload),
-                                 ]));*/
+
+    @Effect() completeCandidateTask = this.actions$
+    .ofType(AdmissionCandidateActions.COMPLETE_CANDIDATE_TASK)
+    .map(action => action.payload)
+    .switchMap(candidateTask => this.admissionService.completeCandidateTask(candidateTask))
+    .map(message => this.admissionCandidateActions.completeCandidateTaskSuccess(message));
+    
+    @Effect() claimCandidateTask = this.actions$
+    .ofType(AdmissionCandidateActions.CLAIM_CANDIDATE_TASK)
+    .map(action => action.payload)
+    .switchMap(candidateTask => this.admissionService.claimCandidateTask(candidateTask))
+    .map(message => this.admissionCandidateActions.claimCandidateTaskSuccess(message));
 }

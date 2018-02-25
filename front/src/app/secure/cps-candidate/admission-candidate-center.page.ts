@@ -47,7 +47,6 @@ export class AdmissionCandidateCenterPage implements OnInit {
       }
     
     claimTask(task: CandidateTask) {
-        //console.log('intake: ' + task.taskId);
-       //this.store.dispatch(this.actions.claimIntakeTask(task));
+       this.store.dispatch(this.actions.claimCandidateTask(task));
       }
 }

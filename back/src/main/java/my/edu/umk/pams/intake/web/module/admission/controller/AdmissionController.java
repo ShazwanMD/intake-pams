@@ -30,6 +30,7 @@ import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
+import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 
 @RestController
 @RequestMapping("/api/admission")
@@ -45,6 +46,9 @@ public class AdmissionController {
 
 	@Autowired
 	private ApplicationService applicationService;
+	
+	@Autowired
+    private WorkflowService workflowService;
 
 	@Autowired
 	private AdmissionTransformer admissionTransformer;
@@ -98,6 +102,20 @@ public class AdmissionController {
 		List<Task> tasks = admissionService.findPooledCandidateTasks(0, 100);
 		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
+	
+    @RequestMapping(value = "/candidates/completeTask", method = RequestMethod.POST)
+    public void completeCandidateTask(@RequestBody CandidateTask vo) {
+        Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
+        workflowService.completeTask(task);
+    }
+    
+    @RequestMapping(value = "/candidates/claimTask", method = RequestMethod.POST)
+    public ResponseEntity<String> claimCandidateTask(@RequestBody CandidateTask vo) {
+    	
+        Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
+        workflowService.claimTask(task);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/candidates/viewTask/{taskId}", method = RequestMethod.GET)
     public ResponseEntity<CandidateTask> findCandidateTaskByTaskId(@PathVariable String taskId) {

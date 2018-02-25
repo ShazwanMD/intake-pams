@@ -66,6 +66,16 @@ export class AdmissionService {
       .map((res: Response) => <Candidate>res.json());
   }
 
+  completeCandidateTask(candidateTask: CandidateTask): Observable<String> {
+      return this._http.post(this.ADMISSION_API + '/candidates/completeTask', JSON.stringify(candidateTask))
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
+  
+  claimCandidateTask(candidateTask: CandidateTask): Observable<String> {
+      return this._http.post(this.ADMISSION_API + '/candidates/claimTask', JSON.stringify(candidateTask))
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
+
   // ====================================================================================================
   // INTAKE
   // ====================================================================================================

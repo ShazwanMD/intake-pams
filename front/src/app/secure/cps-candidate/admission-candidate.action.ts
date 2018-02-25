@@ -81,5 +81,39 @@ export class AdmissionCandidateActions {
       };
     }
     
+    static COMPLETE_CANDIDATE_TASK = '[Admission] Complete Candidate Task';
+
+    completeCandidateTask(candidate): Action {
+      return {
+        type: AdmissionCandidateActions.COMPLETE_CANDIDATE_TASK,
+        payload: candidate,
+      };
+    }
+
+    static COMPLETE_CANDIDATE_TASK_SUCCESS = '[Admission] Complete Candidate Task Success';
+
+    completeCandidateTaskSuccess(message): Action {
+      return {
+        type: AdmissionCandidateActions.COMPLETE_CANDIDATE_TASK_SUCCESS,
+        payload: message,
+      };
+    }
     
+    static CLAIM_CANDIDATE_TASK = '[Admission] Claim Candidate Task';
+
+    claimCandidateTask(candidate): Action {
+      return {
+        type: AdmissionCandidateActions.CLAIM_CANDIDATE_TASK,
+        payload: candidate,
+      };
+    }
+
+    static CLAIM_CANDIDATE_TASK_SUCCESS = '[Admission] Claim Candidate Task Success';
+
+    claimCandidateTaskSuccess(message): Action {
+      return {
+        type: AdmissionCandidateActions.CLAIM_CANDIDATE_TASK_SUCCESS,
+        payload: message,
+      };
+    }
 }

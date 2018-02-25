@@ -60,20 +60,13 @@ export class CandidateDraftTaskPanel implements OnInit {
       this.store.dispatch(this.actions.findCandidateById(this.candidateTask.candidateIntake));
   }
 
-  broadcast(): void {
-    // this.store.dispatch(this.actions.broadcastIntakeResult(null));
-  }
-
-  preApprove(): void {
-    if(confirm('Recommend this candidates?')){
-      //this.store.dispatch(this.intakeActions.completeIntakeTask(this.intakeTask));
+  select(){
+      this.store.dispatch(this.actions.completeCandidateTask(this.candidateTask));
       this.goBack();
-    }else {
-    }
   }
 
   goBack(): void {
-    this.router.navigate(['/secure/admission']);
+    this.router.navigate(['/secure/cps-candidate']);
     window.location.reload();
   }
 
