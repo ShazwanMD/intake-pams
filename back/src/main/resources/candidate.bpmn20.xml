@@ -92,7 +92,7 @@
 
         <sequenceFlow id="flow8.1" sourceRef="candidate_publish_ST" targetRef="candidate_publish_UT"/>
 
-        <userTask id="candidate_publish_UT" name="my.edu.umk.pams.intake.admission.model.Incandidate:PUBLISHED"
+        <userTask id="candidate_publish_UT" name="my.edu.umk.pams.intake.admission.model.InCandidate:PUBLISHED"
                   activiti:candidateGroups="${candidateRouterService.findPublisherCandidates(candidateId)}">
             <documentation>
                 Publish
@@ -103,6 +103,9 @@
 
                 <sequenceFlow id="flow8.2" sourceRef="candidate_publish_UT"
                       targetRef="candidate_complete_ST"/>
+                      
+                      
+                      
         <!--
         ====================================================================================================
         == STATE : REMOVED

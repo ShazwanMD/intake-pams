@@ -10,6 +10,7 @@ import my.edu.umk.pams.intake.web.module.application.vo.IntakeApplication;
 import my.edu.umk.pams.intake.web.module.core.vo.Document;
 import my.edu.umk.pams.intake.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
+import my.edu.umk.pams.intake.web.module.policy.vo.IntakeSession;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
 
@@ -29,6 +30,7 @@ public class Candidate extends Document {
     private IntakeApplication application;
     private boolean acception;
     private ProgramOffering programSelection;
+    private IntakeSession intakeSession;
 
     public String getName() {
         return name;
@@ -118,7 +120,15 @@ public class Candidate extends Document {
 		this.programSelection = programSelection;
 	}
 	
-    @JsonCreator
+    public IntakeSession getIntakeSession() {
+		return intakeSession;
+	}
+
+	public void setIntakeSession(IntakeSession intakeSession) {
+		this.intakeSession = intakeSession;
+	}
+
+	@JsonCreator
     public static Candidate create(String jsonString) {
     	Candidate o = null;
         try {

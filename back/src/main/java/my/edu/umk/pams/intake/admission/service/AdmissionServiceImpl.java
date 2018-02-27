@@ -44,6 +44,7 @@ import my.edu.umk.pams.intake.common.model.InResidencyCode;
 import my.edu.umk.pams.intake.common.model.InStudyCenterCode;
 import my.edu.umk.pams.intake.common.model.InStudyMode;
 import my.edu.umk.pams.intake.common.service.CommonService;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.identity.model.InGroup;
 import my.edu.umk.pams.intake.identity.model.InUser;
 import my.edu.umk.pams.intake.identity.service.IdentityService;
@@ -228,6 +229,11 @@ public class AdmissionServiceImpl implements AdmissionService {
 	public InCandidate findCandidateByIntakeApplication(InIntakeApplication intakeApplication) {
 		return candidateDao.findCandidateByIntakeApplication(intakeApplication);
 	}
+	
+	@Override
+	public InCandidate findCandidateByReferenceNo(String referenceNo) {
+		return candidateDao.findByReferenceNo(referenceNo);
+	}
 
 	@Override
 	public List<InCandidate> findCandidates(InIntake intake) {
@@ -242,6 +248,11 @@ public class AdmissionServiceImpl implements AdmissionService {
 	@Override
 	public List<InCandidate> findCandidatesByStatus(InIntake intake, InCandidateStatus status) {
 		return candidateDao.find(intake, status);
+	}
+	
+	@Override
+	public List<InCandidate> findCandidatesByFlowStates(InFlowState... flowStates) {
+		return candidateDao.findByFlowStates(flowStates);
 	}
 
 	@Override

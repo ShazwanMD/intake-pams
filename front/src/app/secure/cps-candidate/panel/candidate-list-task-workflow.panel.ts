@@ -6,6 +6,8 @@ import {
 } from '@angular/core';
 import {Observable} from 'rxjs';
 import { CandidateDraftTaskPanel } from "./candidate-draft-task.panel";
+import { CandidateVerifyTaskPanel } from "./candidate-verify-task.panel";
+import { CandidatePublishTaskPanel } from "./candidate-publish-task.panel.";
 
 @Component({
   selector: 'pams-candidate-list-task-workflow',
@@ -35,11 +37,11 @@ export class CandidateListTaskWorkflowPanel implements OnInit {
           case FlowState.DRAFTED:
             componentFactory = this.cfr.resolveComponentFactory(CandidateDraftTaskPanel);
             break;
-          case FlowState.APPROVED:
-            //componentFactory = this.cfr.resolveComponentFactory(CandidateApproveTaskPanel);
+          case FlowState.VERIFIED:
+            componentFactory = this.cfr.resolveComponentFactory(CandidateVerifyTaskPanel);
             break;
-          case FlowState.UPPER_APPROVED:
-            //componentFactory = this.cfr.resolveComponentFactory(CandidateOfferTaskPanel);
+          case FlowState.PUBLISHED:
+            componentFactory = this.cfr.resolveComponentFactory(CandidatePublishTaskPanel);
             break;  
           case FlowState.OFFERED:
            // componentFactory = this.cfr.resolveComponentFactory(CandidateRegisterTaskPanel);

@@ -7,6 +7,7 @@ import my.edu.umk.pams.intake.application.model.InBidStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.model.InResult;
 import my.edu.umk.pams.intake.core.GenericDaoSupport;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.core.InMetaState;
 import my.edu.umk.pams.intake.core.InMetadata;
 import my.edu.umk.pams.intake.identity.model.InUser;
@@ -44,6 +45,14 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select c from InCandidate c where c.matricNo = :matricNo");
         query.setString("matricNo", matricNo);
+        return (InCandidate) query.uniqueResult();
+    }
+    
+    @Override
+    public InCandidate findByReferenceNo(String referenceNo) {
+    	Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select c from InCandidate c where c.referenceNo = :referenceNo");
+        query.setString("referenceNo", referenceNo);
         return (InCandidate) query.uniqueResult();
     }
     
@@ -92,6 +101,17 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
                 "and p.status = :status ");
         query.setEntity("intake", intake);
         query.setInteger("status", status.ordinal());
+        return (List<InCandidate>) query.list();
+    }
+    
+    @Override
+    public List<InCandidate> findByFlowStates(InFlowState... flowStates) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select p from InCandidate p where " +
+                "p.metadata.state = :state " +
+                "and p.flowdata.state in (:flowStates) ");
+        query.setInteger("state", InMetaState.ACTIVE.ordinal());
+        query.setParameterList("flowStates", flowStates);
         return (List<InCandidate>) query.list();
     }
     

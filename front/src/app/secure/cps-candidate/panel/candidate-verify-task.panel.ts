@@ -15,10 +15,10 @@ import { IntakeApplication } from "../../../shared/model/application/intake-appl
 import { ApplicationModuleState } from "../../application/index";
 
 @Component({
-  selector: 'pams-candidate-draft-task',
-  templateUrl: './candidate-draft-task.panel.html',
+  selector: 'pams-candidate-verify-task',
+  templateUrl: './candidate-verify-task.panel.html',
 })
-export class CandidateDraftTaskPanel implements OnInit {
+export class CandidateVerifyTaskPanel implements OnInit {
   
   @Input() candidateTask: CandidateTask;
 
@@ -41,7 +41,6 @@ export class CandidateDraftTaskPanel implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<AdmissionCandidateModuleState>,
-              //private stores: Store<ApplicationModuleState>,
               private snackBar: MdSnackBar,
               private reportActions: ReportActions,
               private intakeActions: IntakeActions,
@@ -67,7 +66,7 @@ export class CandidateDraftTaskPanel implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/secure/cps-candidate']);
-    window.location.reload();
+    //window.location.reload();
   }
 
 }

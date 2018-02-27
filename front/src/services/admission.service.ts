@@ -54,15 +54,27 @@ export class AdmissionService {
       .map((res: Response) => <CandidateTask[]>res.json());
   }
   
+  findArchivedCandidates(): Observable<Candidate[]> {
+      console.log('findArchivedCandidates');
+      return this._http.get(this.ADMISSION_API + '/candidates/archived')
+        .map((res: Response) => <Candidate[]>res.json());
+    }
+  
   findCandidateTaskByTaskId(taskId: string): Observable<CandidateTask> {
       console.log('findCandidateTaskkByTaskId');
       return this._http.get(this.ADMISSION_API + '/candidates/viewTask/' + taskId)
         .map((res: Response) => <CandidateTask>res.json());
     }
   
-  findCandidateById(candidate: Candidate): Observable<Candidate> {
-      console.log('findCandidates candidate.id: ' + candidate.id);
-      return this._http.get(this.ADMISSION_API + '/candidates/' + candidate.id)
+  findCandidateById(id: string): Observable<Candidate> {
+      console.log('findCandidates candidate.id: ' + id);
+      return this._http.get(this.ADMISSION_API + '/candidates/' + id)
+      .map((res: Response) => <Candidate>res.json());
+  }
+  
+  findCandidateByReferenceNo(referenceNo: string): Observable<Candidate> {
+      console.log('findCandidates candidate.id: ' + referenceNo);
+      return this._http.get(this.ADMISSION_API + '/candidates/application/' + referenceNo)
       .map((res: Response) => <Candidate>res.json());
   }
 

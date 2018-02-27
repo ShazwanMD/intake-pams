@@ -41,7 +41,25 @@ export class AdmissionCandidateActions {
       };
     }
     
-    static FIND_CANDIDATE_TASK_BY_TASK_ID = '[Admission] Find Candidate Task By Task Id';
+    static FIND_ARCHIVED_CANDIDATE_TASKS = '[Candidate] Find Archived Candidate Tasks';
+
+    findArchivedCandidates(): Action {
+      return {
+        type: AdmissionCandidateActions.FIND_ARCHIVED_CANDIDATE_TASKS,
+      };
+    }
+
+    static FIND_ARCHIVED_CANDIDATE_TASKS_SUCCESS = '[Candidate] Find Archived Candidate Tasks Success';
+
+    findArchivedCandidatesSuccess(message): Action {
+      console.log('findPooledCandidateTasksSuccess');
+      return {
+        type: AdmissionCandidateActions.FIND_ARCHIVED_CANDIDATE_TASKS_SUCCESS,
+        payload: message,
+      };
+    }
+
+    static FIND_CANDIDATE_TASK_BY_TASK_ID = '[Candidate] Find Candidate Task By Task Id';
 
     findCandidateTaskByTaskId(taskId): Action {
       console.log('findIntakeTaskByTaskId');
@@ -51,7 +69,7 @@ export class AdmissionCandidateActions {
       };
     }
 
-    static FIND_CANDIDATE_TASK_BY_TASK_ID_SUCCESS = '[Admission] Find Candidate Task By Task Id Success';
+    static FIND_CANDIDATE_TASK_BY_TASK_ID_SUCCESS = '[Candidate] Find Candidate Task By Task Id Success';
 
     findCandidateTaskByTaskIdSuccess(task): Action {
       console.log('findIntakeTaskByTaskIdSuccess');
@@ -61,7 +79,7 @@ export class AdmissionCandidateActions {
       };
     }
     
-    static FIND_CANDIDATE_BY_ID = '[Admission] Find Candidates By Id';
+    static FIND_CANDIDATE_BY_ID = '[Candidate] Find Candidates By Id';
 
     findCandidateById(candidate): Action {
       console.log('findCandidateById');
@@ -71,7 +89,7 @@ export class AdmissionCandidateActions {
       };
     }
 
-    static FIND_CANDIDATE_BY_ID_SUCCESS = '[Admission] Find Candidates By Id Success';
+    static FIND_CANDIDATE_BY_ID_SUCCESS = '[Candidate] Find Candidates By Id Success';
 
     findCandidateByIdSuccess(candidates): Action {
       console.log('findCandidateByIdSuccess');
@@ -81,7 +99,27 @@ export class AdmissionCandidateActions {
       };
     }
     
-    static COMPLETE_CANDIDATE_TASK = '[Admission] Complete Candidate Task';
+    static FIND_CANDIDATE_BY_REFERENCE_NO = '[Candidate] Find Candidates By Reference No';
+    
+    findCandidateByReferenceNo(referenceNo): Action {
+        console.log('findCandidateByReferenceNo');
+        return {
+          type: AdmissionCandidateActions.FIND_CANDIDATE_BY_REFERENCE_NO,
+          payload: referenceNo,
+        };
+      }
+    
+    static FIND_CANDIDATE_BY_REFERENCE_NO_SUCCESS = '[Candidate] Find Candidates By Reference No Success';
+    
+    findCandidateByReferenceNoSuccess(candidates): Action {
+        console.log('findCandidateByReferenceNo');
+        return {
+          type: AdmissionCandidateActions.FIND_CANDIDATE_BY_REFERENCE_NO_SUCCESS,
+          payload: candidates,
+        };
+      }
+    
+    static COMPLETE_CANDIDATE_TASK = '[Candidate] Complete Candidate Task';
 
     completeCandidateTask(candidate): Action {
       return {
@@ -90,7 +128,7 @@ export class AdmissionCandidateActions {
       };
     }
 
-    static COMPLETE_CANDIDATE_TASK_SUCCESS = '[Admission] Complete Candidate Task Success';
+    static COMPLETE_CANDIDATE_TASK_SUCCESS = '[Candidate] Complete Candidate Task Success';
 
     completeCandidateTaskSuccess(message): Action {
       return {
@@ -99,7 +137,7 @@ export class AdmissionCandidateActions {
       };
     }
     
-    static CLAIM_CANDIDATE_TASK = '[Admission] Claim Candidate Task';
+    static CLAIM_CANDIDATE_TASK = '[Candidate] Claim Candidate Task';
 
     claimCandidateTask(candidate): Action {
       return {
@@ -108,7 +146,7 @@ export class AdmissionCandidateActions {
       };
     }
 
-    static CLAIM_CANDIDATE_TASK_SUCCESS = '[Admission] Claim Candidate Task Success';
+    static CLAIM_CANDIDATE_TASK_SUCCESS = '[Candidate] Claim Candidate Task Success';
 
     claimCandidateTaskSuccess(message): Action {
       return {

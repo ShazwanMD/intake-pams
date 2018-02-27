@@ -23,11 +23,14 @@ import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.web.module.admission.vo.Candidate;
 import my.edu.umk.pams.intake.web.module.admission.vo.CandidateTask;
+import my.edu.umk.pams.intake.web.module.application.controller.ApplicationTransformer;
 import my.edu.umk.pams.intake.web.module.policy.controller.PolicyTransformer;
+import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeTask;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 import my.edu.umk.pams.intake.workflow.service.WorkflowService;
@@ -55,6 +58,9 @@ public class AdmissionController {
 
 	@Autowired
 	private PolicyTransformer policyTransformer;
+	
+	@Autowired
+	private ApplicationTransformer applicationTransformer;
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -103,6 +109,12 @@ public class AdmissionController {
 		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
 	
+    @RequestMapping(value = "/candidates/archived", method = RequestMethod.GET)
+    public ResponseEntity<List<Candidate>> findArchivedCandidates() {
+        List<InCandidate> tasks = admissionService.findCandidatesByFlowStates(InFlowState.CANCELLED, InFlowState.REMOVED, InFlowState.COMPLETED);
+        return new ResponseEntity<List<Candidate>>(admissionTransformer.toCandidateVos(tasks), HttpStatus.OK);
+    }
+	
     @RequestMapping(value = "/candidates/completeTask", method = RequestMethod.POST)
     public void completeCandidateTask(@RequestBody CandidateTask vo) {
         Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
@@ -129,7 +141,14 @@ public class AdmissionController {
     	LOG.debug("Candidate id baca : {}", candidate.getName());
         return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
     }
-
+    
+    @RequestMapping(value = "/candidates/application/{referenceNo}", method = RequestMethod.GET)
+    public ResponseEntity<Candidate> findCandidateByReferenceNo(@PathVariable String referenceNo) {
+    	InCandidate candidate = admissionService.findCandidateByReferenceNo(referenceNo);
+    	LOG.debug("Candidate id baca : {}", candidate.getName());
+        return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
+    }
+	
 	// ====================================================================================================
 	// CANDIDATES
 	// ====================================================================================================

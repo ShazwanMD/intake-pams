@@ -4,6 +4,7 @@ import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.core.GenericDao;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 
 import java.util.List;
@@ -17,6 +18,8 @@ public interface InCandidateDao extends GenericDao<Long, InCandidate> {
 
     InCandidate findCandidateByMatricNo(String matricNo);
     
+    InCandidate findByReferenceNo(String referenceNo);
+    
     InCandidate findCandidateByIntakeApplication(InIntakeApplication intakeApplication);
 
     List<InCandidate> findCandidateByStatus(InIntake intake, InCandidateStatus status);
@@ -26,6 +29,8 @@ public interface InCandidateDao extends GenericDao<Long, InCandidate> {
     List<InCandidate> find(InIntake intake, Integer offset, Integer limit);
 
     List<InCandidate> find(InIntake intake, InCandidateStatus status);
+    
+    List<InCandidate> findByFlowStates(InFlowState... flowState);
 
     Integer count(InIntake intake);
 

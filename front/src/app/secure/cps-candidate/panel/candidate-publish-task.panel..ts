@@ -15,10 +15,10 @@ import { IntakeApplication } from "../../../shared/model/application/intake-appl
 import { ApplicationModuleState } from "../../application/index";
 
 @Component({
-  selector: 'pams-candidate-draft-task',
-  templateUrl: './candidate-draft-task.panel.html',
+  selector: 'pams-candidate-publish-task',
+  templateUrl: './candidate-publish-task.panel.html',
 })
-export class CandidateDraftTaskPanel implements OnInit {
+export class CandidatePublishTaskPanel implements OnInit {
   
   @Input() candidateTask: CandidateTask;
 
@@ -67,7 +67,7 @@ export class CandidateDraftTaskPanel implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/secure/cps-candidate']);
-    window.location.reload();
+    //window.location.reload();
   }
 
 }

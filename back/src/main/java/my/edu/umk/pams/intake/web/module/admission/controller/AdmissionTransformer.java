@@ -59,6 +59,7 @@ public class AdmissionTransformer {
         vo.setName(e.getName());
         vo.setEmail(e.getEmail());
         vo.setReason(e.getReason());
+        vo.setReferenceNo(e.getReferenceNo());
         vo.setStatus(InCandidateStatus.get(e.getStatus().ordinal()));
         vo.setIdentityNo(e.getIdentityNo());
         vo.setMatricNo(e.getMatricNo());
@@ -66,6 +67,9 @@ public class AdmissionTransformer {
         vo.setApplication(applicationTransformer.toIntakeApplicationVo(e.getApplication()));
         vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
         vo.setAcception(e.getAcception());
+        vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
+        vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
+        vo.setIntakeSession(policyTransformer.toIntakeSessionVo(e.getIntake().getSession()));
         
         return vo;
     }

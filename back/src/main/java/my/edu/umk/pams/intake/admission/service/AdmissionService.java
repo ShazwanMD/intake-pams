@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.admission.service;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 
 import java.util.List;
@@ -39,12 +40,16 @@ public interface AdmissionService {
     InCandidate findCandidateByMatricNo(String matricNo);
     
     InCandidate findCandidateByIntakeApplication(InIntakeApplication intakeApplication);
+    
+    InCandidate findCandidateByReferenceNo(String referenceNo);
 
     List<InCandidate> findCandidates(InIntake intake);
 
     List<InCandidate> findCandidates(InIntake intake, Integer offset, Integer limit);
 
     List<InCandidate> findCandidatesByStatus(InIntake intake, InCandidateStatus status);
+    
+    List<InCandidate> findCandidatesByFlowStates(InFlowState... flowStates);
 
     Integer countCandidate(InIntake intake);
 

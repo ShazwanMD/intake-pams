@@ -39,11 +39,11 @@
           [candidateTasks]="pooledCandidate$ | async"
           (claim)="claimTask($event)"></pams-pooled-candidate-list>
       </md-tab>
-<!--      <md-tab label="Archived">
-        <pams-archived-intake-list
-          [intakes]="archivedIntakes$ | async"
-          (view)="viewIntake($event)"></pams-archived-intake-list>
-      </md-tab> -->
+      <md-tab label="Archived">
+        <pams-archived-candidate-list
+          [candidate]="archivedCandidate$ | async"
+          (view)="viewDetail($event)"></pams-archived-candidate-list>
+      </md-tab> 
     </md-tab-group> 
 
     <md-divider></md-divider>

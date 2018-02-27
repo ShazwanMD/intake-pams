@@ -23,6 +23,7 @@ import {AdmissionCandidateActions} from './admission-candidate.action';
 import {AdmissionCandidateEffects} from './admission-candidate.effect';
 import { AssignedCandidateListComponent } from './component/assigned-candidate-list.component';
 import { PooledCandidateListComponent } from './component/pooled-candidate-list.component';
+import { ArchivedCandidateListComponent } from './component/archived-candidate-list.component';
 import { CandidateTaskState, assignedCandidateListReducer, pooledCandidateListReducer 
     } from './admission-candidate-task-list.reducer';
 import { CandidateAdmissionTaskState, candidateTaskReducer 
@@ -34,11 +35,17 @@ import { CandidateDraftTaskPanel } from "./panel/candidate-draft-task.panel";
 import { AdmissionTaskDetailPage } from "./admission-task-detail.page";
 import { CandidateProfileComponent } from "./component/candidate-detail.component";
 import { CandidateTaskStatusComponent } from "./component/candidate-task-status.component";
+import { CandidateVerifyTaskPanel } from "./panel/candidate-verify-task.panel";
+import { CandidatePublishTaskPanel } from "./panel/candidate-publish-task.panel.";
+import { CandidateListState, candidateListReducer 
+} from './candidate-list.reducer';
+import { CandidateDetailPage } from "./candidate-view-detail.page";
     
 export interface AdmissionCandidateModuleState {
  // intakeTasks: IntakeTaskListState;
     assignedCandidate: CandidateTaskState;
     pooledCandidate: CandidateTaskState;
+    archivedCandidate: CandidateListState;
     candidateTasks: CandidateAdmissionTaskState;
     candidate: CandidatesState;
 }
@@ -49,6 +56,7 @@ export const INITIAL_ADMISSION_CANDIDATE_STATE: AdmissionCandidateModuleState =
   //  intakeTasks: <IntakeTask[]>[],
         assignedCandidate: <CandidateTask[]>[],
         pooledCandidate: <CandidateTask[]>[],
+        archivedCandidate: <Candidate[]>[],
         candidateTasks: <CandidateTask>{},
         candidate: <Candidate>{},
   };
@@ -56,6 +64,7 @@ export const admissionCandidateModuleReducers = {
  // intakeTasks: intakeTaskListReducer,
         assignedCandidate: assignedCandidateListReducer,
         pooledCandidate: pooledCandidateListReducer,
+        archivedCandidate: candidateListReducer,
         candidateTasks: candidateTaskReducer,
         candidate: candidateReducer,
 };
@@ -79,9 +88,13 @@ export const admissionCandidateModuleReducers = {
     PooledCandidateListComponent,
     CandidateListTaskWorkflowPanel,
     CandidateDraftTaskPanel,
+    CandidateVerifyTaskPanel,
+    CandidatePublishTaskPanel,
     AdmissionTaskDetailPage,
+    CandidateDetailPage,
     CandidateProfileComponent,
     CandidateTaskStatusComponent,
+    ArchivedCandidateListComponent,
   ],
   exports: [
     AdmissionCandidateCenterPage,
@@ -89,17 +102,25 @@ export const admissionCandidateModuleReducers = {
     PooledCandidateListComponent,
     CandidateListTaskWorkflowPanel,
     CandidateDraftTaskPanel,
+    CandidateVerifyTaskPanel,
+    CandidatePublishTaskPanel,
     AdmissionTaskDetailPage,
+    CandidateDetailPage,
     CandidateProfileComponent,
     CandidateTaskStatusComponent,
+    ArchivedCandidateListComponent,
   ],
   entryComponents: [
     AdmissionCandidateCenterPage,
     CandidateListTaskWorkflowPanel,
     AdmissionTaskDetailPage,
+    CandidateDetailPage,
     CandidateDraftTaskPanel,
+    CandidateVerifyTaskPanel,
+    CandidatePublishTaskPanel,
     CandidateProfileComponent,
     CandidateTaskStatusComponent,
+    ArchivedCandidateListComponent,
   ],
 })
 export class AdmissionCandidateModule {

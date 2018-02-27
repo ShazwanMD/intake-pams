@@ -1,5 +1,8 @@
 package my.edu.umk.pams.intake.admission.workflow.task;
 
+import my.edu.umk.pams.intake.IntakeConstants;
+import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -24,6 +27,9 @@ public class CandidateCompleteTask extends BpmnActivityBehavior
 
     @Autowired
     private PolicyService policyService;
+    
+    @Autowired
+    private AdmissionService admissionService;
 
     /**
      * @param execution
@@ -33,11 +39,11 @@ public class CandidateCompleteTask extends BpmnActivityBehavior
         LOG.debug("completing intake");
 
         // retrieve intake from variable
-        Long intakeId = (Long) execution.getVariable(INTAKE_ID);
-        InIntake intake = policyService.findIntakeById(intakeId);
+        Long candidateId = (Long) execution.getVariable(IntakeConstants.CANDIDATE_ID);
+        InCandidate candidate = admissionService.findCandidateById(candidateId);
 
         // update flow state
-        intake.getFlowdata().setState(InFlowState.COMPLETED);
-        policyService.updateIntake(intake);
+        candidate.getFlowdata().setState(InFlowState.COMPLETED);
+        admissionService.updateSelectedCandidate(candidate);
     }
 }
