@@ -56,7 +56,7 @@ export class CandidateVerifyTaskPanel implements OnInit {
 
   ngOnInit(): void {
       console.log("candidateTask.candidate" + this.candidateTask.candidateIntake.id);
-      this.store.dispatch(this.actions.findCandidateById(this.candidateTask.candidateIntake));
+      this.store.dispatch(this.actions.findCandidateById(this.candidateTask.candidateIntake.id));
   }
 
   select(){

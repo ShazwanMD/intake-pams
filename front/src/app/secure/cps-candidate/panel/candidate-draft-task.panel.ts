@@ -56,8 +56,11 @@ export class CandidateDraftTaskPanel implements OnInit {
   }
 
   ngOnInit(): void {
-      console.log("candidateTask.candidate" + this.candidateTask.candidateIntake.id);
-      this.store.dispatch(this.actions.findCandidateById(this.candidateTask.candidateIntake));
+      console.log("candidateTask.candidate:" + this.candidateTask.candidateIntake.id);
+      this.store.dispatch(
+        this.actions.findCandidateById(this.candidateTask.candidateIntake.id
+        //this.actions.findCandidateByReferenceNo(this.candidateTask.candidateIntake
+        ));
   }
 
   select(){
