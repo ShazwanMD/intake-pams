@@ -65,6 +65,26 @@ export class IntakeApplicationActions {
     };
   }
 
+  static FIND_INTAKE_APPLICATION_BY_CANDIDATE = '[Intake] Find Intake Application By Candidate';
+
+  findIntakeApplicationByCandidate(candidate): Action {
+    console.log('findIntakeByReferenceNo');
+    return {
+      type: IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_CANDIDATE,
+      payload: candidate,
+    };
+  }
+
+  static FIND_INTAKE_APPLICATION_BY_CANDIDATE_SUCCESS = '[Intake] Find Intake Application By Candidate Success';
+
+  findIntakeApplicationByCandidateSuccess(intake): Action {
+    console.log('findIntakeByReferenceNoSuccess');
+    return {
+      type: IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_CANDIDATE_SUCCESS,
+      payload: intake,
+    };
+  }
+
   // ====================================================================================================
   // PROGRAM_OFFERING
   // ====================================================================================================

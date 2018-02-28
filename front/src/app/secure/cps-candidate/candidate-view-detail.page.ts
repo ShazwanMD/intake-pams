@@ -11,6 +11,7 @@ import { AdmissionCandidateActions } from "./admission-candidate.action";
 import { IntakeApplication } from "../../shared/model/application/intake-application.interface";
 import { ApplicationModuleState } from "../application/index";
 import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
+import { CandidateTask } from "../../shared/model/admission/candidate-task.interface";
 
 @Component({
   selector: 'pams-candidate-view-detail',
@@ -21,7 +22,7 @@ export class CandidateDetailPage implements OnInit {
   private CANDIDATE: string[] = 'admissionCandidateModuleState.candidate'.split('.');
   private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
   
-  private candidate$: Observable<Candidate>;
+  private candidate$: Observable<Candidate[]>;
   private intakeApplication$: Observable<IntakeApplication>;
 
   constructor(private router: Router,
@@ -40,6 +41,8 @@ export class CandidateDetailPage implements OnInit {
       this.route.params.subscribe((params: { referenceNo: string }) => {
         let referenceNo: string = params.referenceNo;
         this.store.dispatch(this.actions.findCandidateByReferenceNo(referenceNo));
+        //this.stores.dispatch(this.action.findIntakeApplicationByCandidate(referenceNo));
+        console.log('ref No', referenceNo);
       });
       
       

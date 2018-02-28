@@ -63,7 +63,7 @@ public class AdmissionTransformer {
         vo.setStatus(InCandidateStatus.get(e.getStatus().ordinal()));
         vo.setIdentityNo(e.getIdentityNo());
         vo.setMatricNo(e.getMatricNo());
-        vo.setStudyModeOffering(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));
+        vo.setStudyMode(policyTransformer.toStudyModeOfferingVo(e.getStudyModeSelection()));
         vo.setApplication(applicationTransformer.toIntakeApplicationVo(e.getApplication()));
         vo.setProgramSelection(policyTransformer.toProgramOfferingVo(e.getProgramSelection()));
         vo.setAcception(e.getAcception());

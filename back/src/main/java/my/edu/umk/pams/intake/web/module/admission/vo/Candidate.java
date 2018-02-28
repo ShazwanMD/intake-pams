@@ -32,7 +32,15 @@ public class Candidate extends Document {
     private ProgramOffering programSelection;
     private IntakeSession intakeSession;
 
-    public String getName() {
+    public StudyModeOffering getStudyMode() {
+		return studyMode;
+	}
+
+	public void setStudyMode(StudyModeOffering studyMode) {
+		this.studyMode = studyMode;
+	}
+
+	public String getName() {
         return name;
     }
 
@@ -79,14 +87,6 @@ public class Candidate extends Document {
 	public void setStatus(InCandidateStatus status) {
 		this.status = status;
 	}
-
-	public StudyModeOffering getStudyModeOffering() {
-        return studyMode;
-    }
-
-    public void setStudyModeOffering(StudyModeOffering studyMode) {
-        this.studyMode = studyMode;
-    }
 
     public Intake getIntake() {
         return intake;

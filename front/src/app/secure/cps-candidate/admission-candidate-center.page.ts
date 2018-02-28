@@ -57,7 +57,7 @@ export class AdmissionCandidateCenterPage implements OnInit {
     
     viewDetail(task: Candidate) {
         console.log('Candidate view: ' + task.referenceNo);
-        this.router.navigate(['/secure/cps-candidate/candidate-view-detail', task.referenceNo]);
+        this.router.navigate(['/secure/cps-candidate/candidate-view-detail/', task.referenceNo]);
 
       }
 }

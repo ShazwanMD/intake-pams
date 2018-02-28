@@ -112,7 +112,7 @@ export class AdmissionCandidateActions {
     static FIND_CANDIDATE_BY_REFERENCE_NO_SUCCESS = '[Candidate] Find Candidates By Reference No Success';
     
     findCandidateByReferenceNoSuccess(candidates): Action {
-        console.log('findCandidateByReferenceNo');
+        console.log('findCandidateByReferenceNoSuccess');
         return {
           type: AdmissionCandidateActions.FIND_CANDIDATE_BY_REFERENCE_NO_SUCCESS,
           payload: candidates,

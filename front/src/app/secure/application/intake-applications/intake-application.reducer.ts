@@ -11,6 +11,9 @@ export function intakeApplicationReducer(state = initialState, action: Action): 
     case IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_REFERENCE_NO_SUCCESS: {
       return action.payload;
     }
+    case IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_CANDIDATE_SUCCESS: {
+        return action.payload;
+      }
     default: {
       return state;
     }

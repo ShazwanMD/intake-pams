@@ -16,6 +16,7 @@ import {Language} from '../app/shared/model/application/language.interface';
 import {SupervisorOffering} from '../app/shared/model/policy/supervisor-offering.interface';
 import {AttachmentType} from '../app/shared/model/application/attachment-type.enum';
 import { ProgramLevel } from '../app/shared/model/policy/program-level.interface';
+import { Candidate } from "../app/shared/model/admission/candidate.interface";
 
 @Injectable()
 export class ApplicationService {
@@ -46,6 +47,11 @@ export class ApplicationService {
     return this._http.get(this.APPLICATION_API + '/intakes/' + referenceNo)
       .map((res: Response) => <Intake>res.json());
   }
+  
+  findIntakeApplicationByCandidate(candidate: Candidate): Observable<IntakeApplication> {
+      return this._http.get(this.APPLICATION_API + '/intakeApplication/candidate/' + candidate.referenceNo)
+        .map((res: Response) => <IntakeApplication>res.json());
+    }
 
   findProgramOfferingsByIntake(intake: Intake): Observable<ProgramOffering[]> {
     return this._http.get(this.APPLICATION_API + '/intakes/' + intake.referenceNo + '/programOfferings')

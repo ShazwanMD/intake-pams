@@ -57,6 +57,18 @@ export class IntakeApplicationEffects {
       this.intakeApplicationActions.findStudyModeOfferingsByIntake(action.payload),
       this.intakeApplicationActions.findSupervisorOfferingsByIntake(action.payload),
     ]));
+  
+  @Effect() findIntakeApplicationByCandidate$ = this.actions$
+  .ofType(IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_CANDIDATE)
+  .map((action) => action.payload)
+  .switchMap((candidate) => this.applicationService.findIntakeApplicationByCandidate(candidate))
+  .map((intake) => this.intakeApplicationActions.findIntakeApplicationByCandidateSuccess(intake))
+  .mergeMap((action) => from([action,
+                              /*    this.intakeApplicationActions.findIntakeApplicationByReferenceNo(action.payload),
+    this.intakeApplicationActions.findProgramOfferingsByIntake(action.payload),
+    this.intakeApplicationActions.findStudyModeOfferingsByIntake(action.payload),
+    this.intakeApplicationActions.findSupervisorOfferingsByIntake(action.payload),*/
+  ]));
 
   @Effect() applyIntake$ = this.actions$
     .ofType(IntakeApplicationActions.APPLY_INTAKE)
