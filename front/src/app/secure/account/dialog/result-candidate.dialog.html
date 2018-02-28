@@ -2,6 +2,7 @@
 
 <div>
     <template let-myIntakeApplication let-last="last" ngFor [ngForOf]="myIntakeApplications$ | async ">
+        <div *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'MGSEB'">
       <md-card-subtitle *ngIf="myIntakeApplication.bidStatus === 'SELECTED'">
       <p></p>
         <br>
@@ -113,6 +114,133 @@
                      </div>
     </md-card-subtitle>
   </md-card-subtitle>
+        </div>
 
+<!-- 
+=========================================================================================================
+ -->
+
+ <div *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+
+
+    <md-card-subtitle *ngIf="myIntakeApplication.bidStatus === 'SELECTED'">
+        <p></p>
+          <br>
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === null">
+           <md-card-subtitle>Application Result Information For : {{myIntakeApplication.intake.intakeSession.descriptionEn}}</md-card-subtitle>
+          <p></p>
+          <br>             
+          <md-card-subtitle>Application Status : {{myIntakeApplication.bidStatus}} </md-card-subtitle>
+                        <div layout="row" layout-margin>
+                          <div flex></div>
+                        </div>
+                        Processing. (SELECTED at intake evaluation process)
+          </md-card-subtitle>
+  
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status != null">
+          <md-card-subtitle>Candidates Result Information For : {{myIntakeApplication.intake.intakeSession.descriptionEn}}</md-card-subtitle>
+          <md-card-subtitle>Candidates Name : {{myIntakeApplication.candidate?.name}}</md-card-subtitle>
+          <md-card-subtitle>Candidates Program : {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.programCode.descriptionEn}}</md-card-subtitle>
+          <md-card-subtitle>Candidates Identity Number : {{myIntakeApplication.candidate?.identityNo}} </md-card-subtitle>
+          <md-card-subtitle>Candidates Application Reference Number : {{myIntakeApplication.candidate?.application?.referenceNo}}</md-card-subtitle>
+          </md-card-subtitle>
+          <p></p>
+          <br>
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'OFFERED'">
+                        <md-card-subtitle>Candidates Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
+                        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === true">
+                        <div layout="row" layout-margin>
+                          <div flex></div>
+                        </div>
+                        You have Accepted the offer.
+                      </md-card-subtitle>
+  
+                      </md-card-subtitle>
+  
+                       <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'REJECTED'">
+                        <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
+                        <div layout="row" layout-margin>
+                          <div flex></div>   
+                        </div>
+                        <br><br><br>Sorry.You have been REJECTED from this offer at Faculty Approval.
+                        <p></p>
+                        <br>
+                        <md-card-subtitle>Reason : {{myIntakeApplication.candidate?.reason}}</md-card-subtitle>
+                      </md-card-subtitle>
+  
+                      
+                      <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'SELECTED'">
+                        <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
+                        <div layout="row" layout-margin>
+                          <div flex></div>   
+                        </div>
+                        Processing for First Level of Faculty Approval. (You have been SELECTED at intake evaluation level)
+                      </md-card-subtitle>
+  
+                      <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'PREAPPROVED'">
+                        <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
+                        <div layout="row" layout-margin>
+                          <div flex></div>   
+                        </div>
+                        Processing for Upper-Level of Faculty Approval. (You have been SELECTED at First Level of Faculy Approval)
+                      </md-card-subtitle>
+  
+                      <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'APPROVED'">
+                        <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
+                        <div layout="row" layout-margin>
+                          <div flex></div>   
+                        </div>
+                        Processing for Offer-Letter. (You have been SELECTED at Upper-Level of Faculy Approval)
+                      </md-card-subtitle>
+     
+      <p></p>
+          <br>
+      <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'OFFERED'">
+                        <div layout="row" layout-margin>
+                          <div flex>
+                          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'MGSEB'">
+                          <div layout="row" layout-margin>
+                          <div flex></div> 
+                          </div>
+                         
+                        <button md-button class="md-icon-button" (click)="downloadReport('adm_0002_bm.jrxml&report.pdf',myIntakeApplication)">
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                        Print Offer Letter(BM)
+                        </button>
+                        <button md-button class="md-icon-button" (click)="downloadReport('adm_0002_en.jrxml&report.pdf',myIntakeApplication)">
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                        Print Offer Letter(EN)
+                        </button>
+                         </md-card-subtitle>
+  
+                         <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+                            <div layout="row" layout-margin>
+                            <div flex></div>   
+                          </div>
+                          <button md-button class="md-icon-button" (click)="downloadReport('adm_0001_bm.jrxml&report.pdf',myIntakeApplication)">
+                          <md-icon class="md-24 tc-grey-300">print</md-icon>
+                          Print Offer Letter(BM)
+                          </button>
+                          <button md-button class="md-icon-button" (click)="downloadReport('adm_0001_en.jrxml&report.pdf',myIntakeApplication)">
+                          <md-icon class="md-24 tc-grey-300">print</md-icon>
+                          Print Offer Letter(EN)
+                          </button>
+                          </md-card-subtitle>
+  
+      <button md-raised-button color="accent" (click)="accept(myIntakeApplication)">Accept</button>
+      <button md-raised-button color="accent" (click)="decline(myIntakeApplication)">Decline</button>
+  
+                        </div>
+                       </div>
+      </md-card-subtitle>
+    </md-card-subtitle>
+
+
+
+
+
+  
+</div>
+        
      </template>     
 </div>
