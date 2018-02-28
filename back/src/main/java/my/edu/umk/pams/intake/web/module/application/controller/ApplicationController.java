@@ -207,6 +207,17 @@ public class ApplicationController {
 	@RequestMapping(value = "/intakeApplication/{referenceNo}", method = RequestMethod.GET)
 	public ResponseEntity<IntakeApplication> findIntakeApplicationByReferenceNo(@PathVariable String referenceNo) {
 		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		LOG.debug("candidate intake ref {} ref NO ", intakeApplication.getReferenceNo());
+		return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(intakeApplication),
+				HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/intakeApplication/candidate/{referenceNo}", method = RequestMethod.GET)
+	public ResponseEntity<IntakeApplication> findIntakeApplicationByCandidate(@PathVariable String referenceNo) {
+		InCandidate candidate = admissionService.findCandidateByReferenceNo(referenceNo);
+		LOG.debug("candidate {} ref NO ", referenceNo);
+		LOG.debug("candidate {} ref NO ", candidate.getApplication().getReferenceNo());
+		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(candidate.getApplication().getReferenceNo());
 		return new ResponseEntity<IntakeApplication>(applicationTransformer.toIntakeApplicationVo(intakeApplication),
 				HttpStatus.OK);
 	}
