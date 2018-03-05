@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.admission.workflow.task;
 
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
@@ -48,6 +49,7 @@ public class CandidateVerifyTask extends BpmnActivityBehavior
         candidate.getFlowdata().setState(VERIFIED);
         candidate.getFlowdata().setVerifiedDate(new Timestamp(currentTimeMillis()));
         candidate.getFlowdata().setVerifierId(securityService.getCurrentUser().getId());
+        candidate.setStatus(InCandidateStatus.APPROVED);
         admissionService.updateSelectedCandidate(candidate);
     }
 }

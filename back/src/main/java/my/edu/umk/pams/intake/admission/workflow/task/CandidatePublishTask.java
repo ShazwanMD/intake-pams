@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import my.edu.umk.pams.intake.IntakeConstants;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
+import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.admission.service.AdmissionService;
 import my.edu.umk.pams.intake.policy.service.PolicyService;
 import my.edu.umk.pams.intake.security.service.SecurityService;
@@ -52,6 +53,7 @@ public class CandidatePublishTask extends BpmnActivityBehavior
         candidate.getFlowdata().setState(PUBLISHED);
         candidate.getFlowdata().setPublishedDate(new Timestamp(currentTimeMillis()));
         candidate.getFlowdata().setPublisherId(securityService.getCurrentUser().getId());
+        candidate.setStatus(InCandidateStatus.OFFERED);
         admissionService.updateSelectedCandidate(candidate);
                 
     }
