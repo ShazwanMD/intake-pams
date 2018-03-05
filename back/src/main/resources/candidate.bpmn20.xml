@@ -34,7 +34,7 @@
                       targetRef="candidate_draft_UT"/>
 
         <userTask id="candidate_draft_UT" name="my.edu.umk.pams.intake.admission.model.InCandidate:DRAFTED"
-                  activiti:assignee="${userCreator}">
+                  activiti:candidateGroups="${candidateRouterService.findCreatorCandidates(candidateId)}">
             <documentation>
                 Draft Candidate
                 - Setting Dasar                

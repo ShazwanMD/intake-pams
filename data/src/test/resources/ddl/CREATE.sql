@@ -1296,8 +1296,6 @@
     alter table IN_CMPS_CODE 
         add constraint uc_IN_CMPS_CODE_1 unique (CODE); 
     alter table IN_CNDT 
-        add constraint uc_IN_CNDT_1 unique (AUDIT_NO); 
-    alter table IN_CNDT 
         add constraint uc_IN_CNDT_2 unique (CANCEL_COMMENT); 
     alter table IN_CNDT 
         add constraint uc_IN_CNDT_3 unique (REFERENCE_NO); 
