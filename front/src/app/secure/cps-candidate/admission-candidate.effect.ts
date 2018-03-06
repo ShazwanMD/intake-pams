@@ -67,11 +67,23 @@ export class AdmissionCandidateEffects {
     .ofType(AdmissionCandidateActions.COMPLETE_CANDIDATE_TASK)
     .map(action => action.payload)
     .switchMap(candidateTask => this.admissionService.completeCandidateTask(candidateTask))
-    .map(message => this.admissionCandidateActions.completeCandidateTaskSuccess(message));
-    
+    .map(message => this.admissionCandidateActions.completeCandidateTaskSuccess(message))
+    .mergeMap((action) => from([action,
+        this.admissionCandidateActions.findAssignedCandidateTasks(),
+        this.admissionCandidateActions.findPooledCandidateTasks(),
+        this.admissionCandidateActions.findArchivedCandidates(),
+      ],
+    ));
+   
     @Effect() claimCandidateTask = this.actions$
     .ofType(AdmissionCandidateActions.CLAIM_CANDIDATE_TASK)
     .map(action => action.payload)
     .switchMap(candidateTask => this.admissionService.claimCandidateTask(candidateTask))
-    .map(message => this.admissionCandidateActions.claimCandidateTaskSuccess(message));
+    .map(message => this.admissionCandidateActions.claimCandidateTaskSuccess(message))
+    .mergeMap((action) => from([action,
+        this.admissionCandidateActions.findAssignedCandidateTasks(),
+        this.admissionCandidateActions.findPooledCandidateTasks(),
+        this.admissionCandidateActions.findArchivedCandidates(),
+      ],
+    ));
 }

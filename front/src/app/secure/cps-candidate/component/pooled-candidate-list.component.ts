@@ -40,7 +40,7 @@ claimTask(task: CandidateTask): void {
   console.log('Emitting task');
   if (confirm('Claim candidate task?')) {
     this.claim.emit(task);
-    window.location.reload();
+  //  window.location.reload();
   }
    else {
   }
