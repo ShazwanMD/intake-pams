@@ -55,6 +55,8 @@ public class CandidatePublishTask extends BpmnActivityBehavior
         candidate.getFlowdata().setPublisherId(securityService.getCurrentUser().getId());
         candidate.setStatus(InCandidateStatus.OFFERED);
         admissionService.updateSelectedCandidate(candidate);
+        
+        
                 
     }
 }
