@@ -357,35 +357,62 @@ public class ApplicationController {
 		} else {
 			LOG.debug("CPS");
 
-			List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
-			for (InIntakeApplication applicationCPS : applications) {
-
-				LOG.debug("{}", applicationCPS.getName());
-				InCandidate candidate = new InCandidateImpl();
-				candidate.setSourceNo(UUID.randomUUID().toString());
-				candidate.setAuditNo(UUID.randomUUID().toString());
-				candidate.setIntake(applicationCPS.getIntake());
-				candidate.setName(applicationCPS.getName());
-				candidate.setIdentityNo(applicationCPS.getCredentialNo());
-				candidate.setEmail(applicationCPS.getEmail());
-				candidate.setStudyModeSelection(applicationCPS.getStudyModeSelection());
-				candidate.setStatus(InCandidateStatus.SELECTED);
-				candidate.setProgramSelection(applicationCPS.getProgramSelection());
-				candidate.setSupervisorSelection(applicationCPS.getSupervisorSelection());
-				candidate.setRegistration(false);
-				candidate.setApplication(applicationCPS);
-				candidate.setAuditNo(applicationCPS.getIntake().getAuditNo());
-				candidate.setReferenceNo(applicationCPS.getIntake().getReferenceNo());
-				candidate.setCancelComment(applicationCPS.getIntake().getCancelComment());
-				candidate.setSourceNo(applicationCPS.getIntake().getSourceNo());
-				candidate.setDescriptionEn(applicationCPS.getIntake().getDescriptionEn());
-				candidate.setDescriptionMs(applicationCPS.getIntake().getDescriptionMs());
-				candidateDao.save(candidate, securityService.getCurrentUser());
-				LOG.debug("After Save Candidate");
-				admissionService.startCandidateTask(candidate);
-				applicationService.selectIntakeApplication(intake, application);
-				LOG.debug("After Start Candidate Task");
-			}
+			InCandidate candidate = new InCandidateImpl();
+			candidate.setSourceNo(UUID.randomUUID().toString());
+			candidate.setAuditNo(UUID.randomUUID().toString());
+			candidate.setIntake(application.getIntake());
+			candidate.setName(application.getName());
+			candidate.setIdentityNo(application.getCredentialNo());
+			candidate.setEmail(application.getEmail());
+			candidate.setStudyModeSelection(application.getStudyModeSelection());
+			candidate.setStatus(InCandidateStatus.SELECTED);
+			candidate.setProgramSelection(application.getProgramSelection());
+			candidate.setSupervisorSelection(application.getSupervisorSelection());
+			candidate.setRegistration(false);
+			candidate.setApplication(application);
+			candidate.setAuditNo(application.getIntake().getAuditNo() + application.getApplicant().getIdentityNo());
+			candidate.setReferenceNo(application.getIntake().getReferenceNo());
+			candidate.setCancelComment(application.getIntake().getCancelComment());
+			candidate.setSourceNo(application.getIntake().getSourceNo());
+			candidate.setDescriptionEn(application.getIntake().getDescriptionEn());
+			candidate.setDescriptionMs(application.getIntake().getDescriptionMs());
+			candidateDao.save(candidate, securityService.getCurrentUser());
+			
+			admissionService.startCandidateTask(candidate);
+			
+			applicationService.selectIntakeApplication(intake, application);
+			
+//			List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
+//			for (InIntakeApplication applicationCPS : applications) {
+//
+//				LOG.debug("{}", applicationCPS.getName());
+//				candidate = new InCandidateImpl();
+//				candidate.setSourceNo(UUID.randomUUID().toString());
+//				candidate.setAuditNo(UUID.randomUUID().toString());
+//				candidate.setIntake(applicationCPS.getIntake());
+//				candidate.setName(applicationCPS.getName());
+//				candidate.setIdentityNo(applicationCPS.getCredentialNo());
+//				candidate.setEmail(applicationCPS.getEmail());
+//				candidate.setStudyModeSelection(applicationCPS.getStudyModeSelection());
+//				candidate.setStatus(InCandidateStatus.SELECTED);
+//				candidate.setProgramSelection(applicationCPS.getProgramSelection());
+//				candidate.setSupervisorSelection(applicationCPS.getSupervisorSelection());
+//				candidate.setRegistration(false);
+//				candidate.setApplication(applicationCPS);
+//				candidate.setAuditNo(applicationCPS.getIntake().getAuditNo() + applicationCPS.getApplicant().getIdentityNo());
+//				candidate.setReferenceNo(applicationCPS.getIntake().getReferenceNo());
+//				candidate.setCancelComment(applicationCPS.getIntake().getCancelComment());
+//				candidate.setSourceNo(applicationCPS.getIntake().getSourceNo());
+//				candidate.setDescriptionEn(applicationCPS.getIntake().getDescriptionEn());
+//				candidate.setDescriptionMs(applicationCPS.getIntake().getDescriptionMs());
+//				candidateDao.save(candidate, securityService.getCurrentUser());
+//				LOG.debug("After Save Candidate");
+//				
+//				LOG.debug("After Start Candidate Task");
+//			}
+			
+//			admissionService.startCandidateTask(candidate);
+//			applicationService.selectIntakeApplication(intake, application);
 		}
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
