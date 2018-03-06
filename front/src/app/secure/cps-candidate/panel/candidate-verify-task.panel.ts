@@ -66,7 +66,7 @@ export class CandidateVerifyTaskPanel implements OnInit {
 
   goBack(): void {
     this.router.navigate(['/secure/cps-candidate']);
-    //window.location.reload();
+    window.location.reload();
   }
 
 }
