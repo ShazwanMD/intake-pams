@@ -68,7 +68,7 @@ public class InCandidateDaoImpl extends GenericDaoSupport<Long, InCandidate> imp
     public InCandidate findCandidateByIntakeApplicationReferenceNo(String applicationReferenceNo) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select c from InCandidate c where c.application.referenceNo = :applicationReferenceNo");
-        query.setEntity("applicationReferenceNo", applicationReferenceNo);
+        query.setString("applicationReferenceNo", applicationReferenceNo);
         return (InCandidate) query.uniqueResult();
     }
 

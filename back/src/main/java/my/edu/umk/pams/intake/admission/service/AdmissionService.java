@@ -34,6 +34,7 @@ public interface AdmissionService {
     //====================================================================================================
     // CANDIDATE
     //====================================================================================================
+    InCandidate findCandidateByIntakeApplicationReferenceNo(String referenceNo);
 
     InCandidate findCandidateByIdentityNo(String identityNo);
     

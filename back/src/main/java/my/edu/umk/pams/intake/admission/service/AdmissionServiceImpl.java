@@ -209,6 +209,10 @@ public class AdmissionServiceImpl implements AdmissionService {
 	// ====================================================================================================
 	// CANDIDATE
 	// ====================================================================================================
+	@Override
+	public InCandidate findCandidateByIntakeApplicationReferenceNo(String referenceNo) {
+		return candidateDao.findCandidateByIntakeApplicationReferenceNo(referenceNo);
+	}
 
 	@Override
 	public InCandidate findCandidateById(Long id) {
