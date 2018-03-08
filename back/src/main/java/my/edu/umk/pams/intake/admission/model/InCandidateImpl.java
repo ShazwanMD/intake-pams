@@ -78,7 +78,7 @@ public class InCandidateImpl implements InCandidate {
     @Column(name = "SOURCE_NO", nullable = false)
     private String sourceNo;
 
-    @Column(name = "AUDIT_NO", unique = true, nullable = false)
+    @Column(name = "AUDIT_NO", nullable = false)
     private String auditNo;
     
     @Column(name = "DESCRIPTION_EN", nullable = false)

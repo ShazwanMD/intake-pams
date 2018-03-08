@@ -45,5 +45,8 @@ public class CandidateCompleteTask extends BpmnActivityBehavior
         // update flow state
         candidate.getFlowdata().setState(InFlowState.COMPLETED);
         admissionService.updateSelectedCandidate(candidate);
+        
+        //Integration
+        admissionService.registerCandidate(candidate);
     }
 }
