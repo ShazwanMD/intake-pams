@@ -77,11 +77,31 @@ export class IntakeApplicationActions {
 
   static FIND_INTAKE_APPLICATION_BY_CANDIDATE_SUCCESS = '[Intake] Find Intake Application By Candidate Success';
 
-  findIntakeApplicationByCandidateSuccess(intake): Action {
+  findIntakeApplicationByCandidateSuccess(candidate): Action {
     console.log('findIntakeByReferenceNoSuccess');
     return {
       type: IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_CANDIDATE_SUCCESS,
-      payload: intake,
+      payload: candidate,
+    };
+  }
+  
+  static FIND_INTAKE_BY_CANDIDATE_REF_NO = '[Intake] Find Intake Application By Candidate reference No';
+
+  findIntakeByCandidateReferenceNo(referenceNo): Action {
+    console.log('findIntakeByCandidateReferenceNo');
+    return {
+      type: IntakeApplicationActions.FIND_INTAKE_BY_CANDIDATE_REF_NO,
+      payload: referenceNo,
+    };
+  }
+
+  static FIND_INTAKE_BY_CANDIDATE_REF_NO_SUCCESS = '[Intake] Find Intake Application By Candidate reference No Success';
+
+  findIntakeByCandidateReferenceNoSuccess(message): Action {
+    console.log('findIntakeByCandidateReferenceNoSuccess');
+    return {
+      type: IntakeApplicationActions.FIND_INTAKE_BY_CANDIDATE_REF_NO_SUCCESS,
+      payload: message,
     };
   }
 

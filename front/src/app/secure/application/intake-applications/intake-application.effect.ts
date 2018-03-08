@@ -64,11 +64,17 @@ export class IntakeApplicationEffects {
   .switchMap((candidate) => this.applicationService.findIntakeApplicationByCandidate(candidate))
   .map((intake) => this.intakeApplicationActions.findIntakeApplicationByCandidateSuccess(intake))
   .mergeMap((action) => from([action,
-                              /*    this.intakeApplicationActions.findIntakeApplicationByReferenceNo(action.payload),
-    this.intakeApplicationActions.findProgramOfferingsByIntake(action.payload),
-    this.intakeApplicationActions.findStudyModeOfferingsByIntake(action.payload),
-    this.intakeApplicationActions.findSupervisorOfferingsByIntake(action.payload),*/
+    //this.intakeApplicationActions.findIntakeApplicationByReferenceNo(action.payload),
   ]));
+  
+  @Effect() findIntakeByCandidateReferenceNo$ = this.actions$
+  .ofType(IntakeApplicationActions.FIND_INTAKE_BY_CANDIDATE_REF_NO)
+  .map((action) => action.payload)
+  .switchMap((referenceNo) => this.applicationService.findIntakeByCandidateReferenceNo(referenceNo))
+  .map((message) => this.intakeApplicationActions.findIntakeByCandidateReferenceNoSuccess(message));
+ // .mergeMap((action) => from([action,
+    //this.intakeApplicationActions.findIntakeApplicationByReferenceNo(action.payload),
+  //]));
 
   @Effect() applyIntake$ = this.actions$
     .ofType(IntakeApplicationActions.APPLY_INTAKE)

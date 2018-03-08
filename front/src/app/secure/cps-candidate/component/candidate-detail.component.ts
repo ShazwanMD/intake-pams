@@ -62,11 +62,20 @@ export class CandidateProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      console.log('candidate' + this.candidate.name);
-    //  console.log('intakeApplication' + this.intakeApplication.referenceNo);
-    //let referenceNo: string = this.candidate.application.referenceNo;
-    //this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+    let referenceNo: string = this.candidate.application.referenceNo;
+    this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
 
   }
+  
+/*  ngOnChanges() {
+      if(this.candidate) {
+          console.log('candidate' + this.candidate.name);
+          console.log('candidate' + this.candidate.application.referenceNo);
+      }
+      
+      if(this.intakeApplication) {
+          console.log('intakeApplication' + this.intakeApplication.referenceNo);
+      }
+    }*/
 
 }

@@ -48,6 +48,12 @@ export class ApplicationService {
       .map((res: Response) => <Intake>res.json());
   }
   
+  findIntakeByCandidateReferenceNo(referenceNo: string): Observable<Intake> {
+      console.log('findIntakeByCandidateReferenceNo : ' + referenceNo);
+      return this._http.get(this.APPLICATION_API + '/intakes/candidates/' + referenceNo)
+        .map((res: Response) => <Intake>res.json());
+    }
+  
   findIntakeApplicationByCandidate(candidate: Candidate): Observable<IntakeApplication> {
       return this._http.get(this.APPLICATION_API + '/intakeApplication/candidate/' + candidate.referenceNo)
         .map((res: Response) => <IntakeApplication>res.json());

@@ -43,11 +43,7 @@ export class CandidateListTaskWorkflowPanel implements OnInit {
           case FlowState.PUBLISHED:
             componentFactory = this.cfr.resolveComponentFactory(CandidatePublishTaskPanel);
             break;  
-          case FlowState.OFFERED:
-           // componentFactory = this.cfr.resolveComponentFactory(CandidateRegisterTaskPanel);
-            break;
           default:
-            //componentFactory = this.cfr.resolveComponentFactory(CandidatePreApproveTaskPanel);
             break;
         }
         this.componentRef = this.taskPanel.createComponent(componentFactory);

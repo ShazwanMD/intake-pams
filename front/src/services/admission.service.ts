@@ -73,7 +73,7 @@ export class AdmissionService {
   }
   
   findCandidateByReferenceNo(referenceNo: string): Observable<Candidate> {
-      console.log('findCandidates candidate.id: ' + referenceNo);
+      console.log('findCandidates candidate.refNo: ' + referenceNo);
       return this._http.get(this.ADMISSION_API + '/candidates/application/' + referenceNo)
       .map((res: Response) => <Candidate>res.json());
   }

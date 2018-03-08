@@ -6,7 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../../services';
-import {IdentityService} from '../../../services';
+import {IdentityService, ApplicationService} from '../../../services';
 import {AdmissionService} from '../../../services/admission.service';
 import { PipeModule } from '../../app.pipe.module';
 import { CommonModule } from '../../common';
@@ -28,7 +28,7 @@ import { CandidateTaskState, assignedCandidateListReducer, pooledCandidateListRe
     } from './admission-candidate-task-list.reducer';
 import { CandidateAdmissionTaskState, candidateTaskReducer 
     } from './admission-candidate-task.reducer';
-import { CandidatesState, candidateReducer 
+import { CandidatesState, candidateAdmissionReducer 
     } from './candidate.reducer';
 import { CandidateListTaskWorkflowPanel } from './panel/candidate-list-task-workflow.panel';
 import { CandidateDraftTaskPanel } from "./panel/candidate-draft-task.panel";
@@ -39,7 +39,8 @@ import { CandidateVerifyTaskPanel } from "./panel/candidate-verify-task.panel";
 import { CandidatePublishTaskPanel } from "./panel/candidate-publish-task.panel.";
 import { CandidateListState, candidateListReducer 
 } from './candidate-list.reducer';
-import { CandidateDetailPage } from "./candidate-view-detail.page";
+import { AdmissionCandidateDetailPage } from "./admission-candidate-detail.page";
+import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
     
 export interface AdmissionCandidateModuleState {
  // intakeTasks: IntakeTaskListState;
@@ -66,7 +67,7 @@ export const admissionCandidateModuleReducers = {
         pooledCandidate: pooledCandidateListReducer,
         archivedCandidate: candidateListReducer,
         candidateTasks: candidateTaskReducer,
-        candidate: candidateReducer,
+        candidate: candidateAdmissionReducer,
 };
 
 @NgModule({
@@ -84,6 +85,7 @@ export const admissionCandidateModuleReducers = {
   declarations: [
     // page
     AdmissionCandidateCenterPage,
+    AdmissionCandidateDetailPage,
     AssignedCandidateListComponent,
     PooledCandidateListComponent,
     CandidateListTaskWorkflowPanel,
@@ -91,13 +93,13 @@ export const admissionCandidateModuleReducers = {
     CandidateVerifyTaskPanel,
     CandidatePublishTaskPanel,
     AdmissionTaskDetailPage,
-    CandidateDetailPage,
     CandidateProfileComponent,
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
   ],
   exports: [
     AdmissionCandidateCenterPage,
+    AdmissionCandidateDetailPage,
     AssignedCandidateListComponent,
     PooledCandidateListComponent,
     CandidateListTaskWorkflowPanel,
@@ -105,16 +107,15 @@ export const admissionCandidateModuleReducers = {
     CandidateVerifyTaskPanel,
     CandidatePublishTaskPanel,
     AdmissionTaskDetailPage,
-    CandidateDetailPage,
     CandidateProfileComponent,
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
   ],
   entryComponents: [
     AdmissionCandidateCenterPage,
+    AdmissionCandidateDetailPage,
     CandidateListTaskWorkflowPanel,
     AdmissionTaskDetailPage,
-    CandidateDetailPage,
     CandidateDraftTaskPanel,
     CandidateVerifyTaskPanel,
     CandidatePublishTaskPanel,
@@ -132,7 +133,9 @@ export class AdmissionCandidateModule {
         IdentityService,
         CommonService,
         AdmissionService,
+        ApplicationService,
         AdmissionCandidateActions,
+        IntakeApplicationActions,
       ],
     };
   }

@@ -61,6 +61,7 @@ export class AdmissionCandidateEffects {
     .map((action) => action.payload)
     .switchMap((referenceNo) => this.admissionService.findCandidateByReferenceNo(referenceNo))
     .map((candidate) => this.admissionCandidateActions.findCandidateByReferenceNoSuccess(candidate));
+    //.mergeMap((action) => from([action, this.intakeApplicationActions.findIntakeApplicationByCandidate(action.payload)]));
 
     @Effect() completeCandidateTask = this.actions$
     .ofType(AdmissionCandidateActions.COMPLETE_CANDIDATE_TASK)

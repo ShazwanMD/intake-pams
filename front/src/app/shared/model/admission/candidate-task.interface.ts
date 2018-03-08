@@ -5,7 +5,7 @@ import { IntakeApplication } from "../application/intake-application.interface";
 import { ProgramOffering } from "../policy/program-offering.interface";
 import { IntakeSession } from "../policy/intake-session.interface";
 
-export interface CandidateTask {
+export interface CandidateTask extends Document{
     taskId:string;
     taskName:string;
     candidate:string;

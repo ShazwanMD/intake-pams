@@ -7,6 +7,7 @@ import {IntakeApplication} from '../application/intake-application.interface';
 import {SupervisorOffering} from '../policy/supervisor-offering.interface';
 import {ProgramOffering} from '../policy/program-offering.interface';
 import {MetaObject} from '../../../core/meta-object.interface';
+
 export interface Candidate extends MetaObject{
   name: string;
   identityNo: string;

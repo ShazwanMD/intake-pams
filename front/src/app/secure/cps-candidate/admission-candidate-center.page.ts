@@ -54,10 +54,9 @@ export class AdmissionCandidateCenterPage implements OnInit {
     claimTask(task: CandidateTask) {
        this.store.dispatch(this.actions.claimCandidateTask(task));
       }
-    
-    viewDetail(candidate: Candidate) {
-        console.log('Candidate view: ' + candidate.referenceNo);
-        this.router.navigate(['/secure/cps-candidate/candidate-view-detail/', candidate.referenceNo]);
 
+    viewDetail(task: Candidate) {
+        console.log('Candidate view: ' + task.referenceNo);
+        this.router.navigate(['/secure/cps-candidate/candidate-view-detail/', task.application.referenceNo]);
       }
 }

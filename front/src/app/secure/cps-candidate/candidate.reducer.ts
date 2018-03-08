@@ -6,7 +6,7 @@ export type CandidatesState = Candidate;
 
 const initialState: CandidatesState = <CandidatesState>{};
 
-export function candidateReducer(state = initialState, action: Action): CandidatesState {
+export function candidateAdmissionReducer(state = initialState, action: Action): CandidatesState {
   switch (action.type) {
     case AdmissionCandidateActions.FIND_CANDIDATE_BY_ID_SUCCESS: {
         console.log("find candidate reducer" + action.payload)
