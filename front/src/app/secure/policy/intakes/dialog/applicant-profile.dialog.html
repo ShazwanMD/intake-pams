@@ -46,12 +46,16 @@
 
               <div flex-gt-md="40">
                 <b>Study Mode</b> : {{intakeApplication.studyModeSelection?.studyMode.descriptionEn}}<br/><br/>
+                <div *ngIf="intakeApplication?.intake?.graduateCenter?.code === 'MGSEB'">
                 <b>Study Center</b> : {{intakeApplication.studyCenterCode?.descriptionEn}}<br/><br/>
-                <b>Supervisor</b> : {{intakeApplication.supervisorSelection?.supervisorCode.name}}<br/><br/>
+                </div>        
+                <div *ngIf="intakeApplication?.intake?.graduateCenter?.code === 'CPS'">
+                  <b>Supervisor</b> : {{intakeApplication.supervisorSelection?.supervisorCode.name}}<br/><br/>
+                </div>
                 <b>Program</b> : {{intakeApplication.programSelection?.programFieldCode?.programCode?.descriptionEn | uppercase}}
                 ({{intakeApplication.programSelection?.programFieldCode?.fieldCode?.descriptionEn | uppercase}})<br/><br/>
                 <b>Research Title</b> : {{intakeApplication.researchTitle}}<br/><br/>
-                <b>Faculty</b> : {{intakeApplication.programSelection?.programCode?.facultyCode?.descriptionEn | uppercase}}<br/><br/>
+                <b>Faculty</b> : {{intakeApplication.programSelection?.programFieldCode?.facultyCode?.descriptionEn | uppercase}}<br/><br/>
               </div>
 
             </div>
