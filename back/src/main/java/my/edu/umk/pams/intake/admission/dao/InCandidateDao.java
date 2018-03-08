@@ -39,4 +39,6 @@ public interface InCandidateDao extends GenericDao<Long, InCandidate> {
 	List<InCandidate> findAcceptCandidate(InIntake intake, InCandidateStatus status);
 	
 	boolean isExists(String matricNo);
+
+	InCandidate findCandidateByIntakeApplicationReferenceNo(String applicationReferenceNo);
 }
