@@ -112,6 +112,14 @@ public class ApplicationController {
 		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
 		return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/intakes/candidates/{referenceNo}", method = RequestMethod.GET)
+	public ResponseEntity<Intake> findIntakeByCandidateReferenceNo(@PathVariable String referenceNo) {
+		InCandidate candidate = admissionService.findCandidateByReferenceNo(referenceNo);
+		
+		InIntake intake = policyService.findIntakeByReferenceNo(candidate.getIntake().getReferenceNo());
+		return new ResponseEntity<Intake>(policyTransformer.toIntakeVo(intake), HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/intakes/{referenceNo}/apply", method = RequestMethod.POST)
 	public ResponseEntity<String> applyIntake(@PathVariable String referenceNo) {

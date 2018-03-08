@@ -43,11 +43,11 @@ export class AdmissionCandidateEffects {
         .switchMap(( taskId ) => this.admissionService.findCandidateTaskByTaskId(taskId) )
         .map(( task ) => this.admissionCandidateActions.findCandidateTaskByTaskIdSuccess(task) );
     
-    @Effect() findIntakeApplicationByReferenceNo$ = this.actions$
+/*    @Effect() findIntakeApplicationByReferenceNo$ = this.actions$
     .ofType(IntakeApplicationActions.FIND_INTAKE_APPLICATION_BY_REFERENCE_NO)
     .map((action) => action.payload)
     .switchMap((referenceNo) => this.applicationService.findIntakeApplicationByReferenceNo(referenceNo))
-    .map((application) => this.intakeApplicationActions.findIntakeApplicationByReferenceNoSuccess(application))
+    .map((application) => this.intakeApplicationActions.findIntakeApplicationByReferenceNoSuccess(application))*/
     
     @Effect() findCandidateById = this.actions$
     .ofType(AdmissionCandidateActions.FIND_CANDIDATE_BY_ID)
@@ -58,10 +58,9 @@ export class AdmissionCandidateEffects {
 
     @Effect() findCandidateByReferenceNo = this.actions$
     .ofType(AdmissionCandidateActions.FIND_CANDIDATE_BY_REFERENCE_NO)
-    .map(action => action.payload)
-    .switchMap(referenceNo => this.admissionService.findCandidateByReferenceNo(referenceNo))
-    .map(candidates => this.admissionCandidateActions.findCandidateByReferenceNoSuccess(candidates))
-    //.mergeMap((action) => from([action, this.intakeApplicationActions.findIntakeApplicationByCandidate(action.payload)]));
+    .map((action) => action.payload)
+    .switchMap((referenceNo) => this.admissionService.findCandidateByReferenceNo(referenceNo))
+    .map((candidate) => this.admissionCandidateActions.findCandidateByReferenceNoSuccess(candidate));
 
     @Effect() completeCandidateTask = this.actions$
     .ofType(AdmissionCandidateActions.COMPLETE_CANDIDATE_TASK)
