@@ -88,6 +88,12 @@ export class AdmissionService {
         .flatMap((res: Response) => Observable.of(res.text()));
     }
 
+  findCandidateByIntakeApplicationReferenceNo(referenceNo: string): Observable<Candidate> {
+      console.log('findCandidates candidate.refNo: ' + referenceNo);
+      return this._http.get(this.ADMISSION_API + '/candidates/intakeApplication/' + referenceNo)
+      .map((res: Response) => <Candidate>res.json());
+  }
+
   // ====================================================================================================
   // INTAKE
   // ====================================================================================================

@@ -44,15 +44,15 @@
           <md-card-title>Candidates Information</md-card-title>
           <md-card-subtitle>Candidates for this program</md-card-subtitle>
           <md-divider></md-divider>
-          <pams-candidate-detail
+          <pams-candidate-archived-detail
           	[candidate]="candidate$|async" 
           	[intakeApplication]="(candidate$|async).application">
-          </pams-candidate-detail>
+          </pams-candidate-archived-detail>
         </md-card>
       </div>
       <div flex-gt-md="30">
-      <!-- <pams-candidate-task-status [candidateTask]="candidateTask"></pams-candidate-task-status>  -->
-        <md-card>
+       <pams-candidate-task-status [candidate]="candidate$|async"></pams-candidate-task-status>  
+<!--         <md-card>
           <md-card-title>Action</md-card-title>
           <md-card-subtitle>Actions available on current intake</md-card-subtitle>
           <md-divider></md-divider>
@@ -68,7 +68,7 @@
               <p md-line>Reject this candidate</p>
             </md-list-item>
           </md-nav-list>
-        </md-card>
+        </md-card> -->
       </div>
     </div>
   </div>

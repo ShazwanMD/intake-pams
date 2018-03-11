@@ -148,6 +148,13 @@ public class AdmissionController {
     	LOG.debug("Candidate id baca : {}", candidate.getName());
         return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/candidates/intakeApplication/{referenceNo}", method = RequestMethod.GET)
+    public ResponseEntity<Candidate> findCandidateByIntakeApplicationReferenceNo(@PathVariable String referenceNo) {
+    	InCandidate candidate = admissionService.findCandidateByIntakeApplicationReferenceNo(referenceNo);
+    	LOG.debug("Candidate id baca : {}", candidate.getName());
+        return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
+    }
 	
 	// ====================================================================================================
 	// CANDIDATES

@@ -17,11 +17,11 @@ import {MdSnackBar, MdDialogRef, MdDialogConfig, MdDialog} from '@angular/materi
 import { AdmissionActions } from "../../admission/admission.action";
 
 @Component({
-  selector: 'pams-candidate-detail',
-  templateUrl: './candidate-detail.component.html',
+  selector: 'pams-candidate-archived-detail',
+  templateUrl: './candidate-archived-detail.component.html',
 })
 
-export class CandidateProfileComponent implements OnInit {
+export class CandidateArchivedDetailComponent implements OnInit {
 
 
   private INTAKE_APPLICATION: string[] = 'applicationModuleState.intakeApplication'.split('.');
@@ -62,9 +62,12 @@ export class CandidateProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let referenceNo: string = this.candidate.application.referenceNo;
-    this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
-
+//    let referenceNo: string = this.candidate.application.referenceNo;
+//    this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+      this.route.params.subscribe((params: { referenceNo: string }) => {
+          let referenceNo: string = params.referenceNo;
+          this.store.dispatch(this.actions.findIntakeApplicationByReferenceNo(referenceNo));
+        });
   }
 
 }

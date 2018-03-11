@@ -1,5 +1,5 @@
-import { CandidateTask } from '../../../shared/model/admission/candidate-task.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import { Candidate } from "../../../shared/model/admission/candidate.interface";
 
 @Component({
   selector: 'pams-candidate-task-status',
@@ -8,5 +8,5 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@
 
 })
 export class CandidateTaskStatusComponent {
-  @Input() candidateTask: CandidateTask;
+  @Input() candidate: Candidate;
 }

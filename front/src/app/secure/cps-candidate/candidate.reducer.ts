@@ -16,6 +16,10 @@ export function candidateAdmissionReducer(state = initialState, action: Action):
         console.log("find candidate" + action.payload)
       return action.payload;
     }
+    case AdmissionCandidateActions.FIND_CANDIDATE_BY_INTAKE_REFERENCE_NO_SUCCESS: {
+        console.log("find candidate" + action.payload)
+      return action.payload;
+    }
     default: {
       return state;
     }

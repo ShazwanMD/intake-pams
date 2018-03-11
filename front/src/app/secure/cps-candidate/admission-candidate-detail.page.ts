@@ -36,7 +36,7 @@ export class AdmissionCandidateDetailPage implements OnInit {
   ngOnInit(): void {
       this.route.params.subscribe((params: { referenceNo: string }) => {
           let referenceNo: string = params.referenceNo;
-          this.store.dispatch(this.actions.findCandidateByReferenceNo(referenceNo));
+          this.store.dispatch(this.actions.findCandidateByIntakeApplicationReferenceNo(referenceNo));
         });
   }
 

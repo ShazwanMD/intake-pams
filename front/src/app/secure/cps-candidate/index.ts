@@ -41,6 +41,7 @@ import { CandidateListState, candidateListReducer
 } from './candidate-list.reducer';
 import { AdmissionCandidateDetailPage } from "./admission-candidate-detail.page";
 import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
+import { CandidateArchivedDetailComponent } from "./component/candidate-archived-detail.component";
     
 export interface AdmissionCandidateModuleState {
  // intakeTasks: IntakeTaskListState;
@@ -96,6 +97,7 @@ export const admissionCandidateModuleReducers = {
     CandidateProfileComponent,
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
+    CandidateArchivedDetailComponent,
   ],
   exports: [
     AdmissionCandidateCenterPage,
@@ -110,6 +112,7 @@ export const admissionCandidateModuleReducers = {
     CandidateProfileComponent,
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
+    CandidateArchivedDetailComponent,
   ],
   entryComponents: [
     AdmissionCandidateCenterPage,
@@ -122,6 +125,7 @@ export const admissionCandidateModuleReducers = {
     CandidateProfileComponent,
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
+    CandidateArchivedDetailComponent,
   ],
 })
 export class AdmissionCandidateModule {

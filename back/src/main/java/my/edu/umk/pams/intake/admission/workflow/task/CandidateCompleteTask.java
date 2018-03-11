@@ -47,6 +47,6 @@ public class CandidateCompleteTask extends BpmnActivityBehavior
         admissionService.updateSelectedCandidate(candidate);
         
         //Integration
-        admissionService.registerCandidate(candidate);
+       // admissionService.registerCandidate(candidate);
     }
 }

@@ -119,6 +119,26 @@ export class AdmissionCandidateActions {
         };
       }
     
+    static FIND_CANDIDATE_BY_INTAKE_REFERENCE_NO = '[Candidate] Find Candidates By Intake Applications Reference No';
+    
+    findCandidateByIntakeApplicationReferenceNo(referenceNo): Action {
+        console.log('findCandidateByReferenceNo');
+        return {
+          type: AdmissionCandidateActions.FIND_CANDIDATE_BY_INTAKE_REFERENCE_NO,
+          payload: referenceNo,
+        };
+      }
+    
+    static FIND_CANDIDATE_BY_INTAKE_REFERENCE_NO_SUCCESS = '[Candidate] Find Candidates By Intake Applications Reference No Success';
+    
+    findCandidateByIntakeApplicationReferenceNoSuccess(candidate): Action {
+        console.log('findCandidateByReferenceNoSuccess');
+        return {
+          type: AdmissionCandidateActions.FIND_CANDIDATE_BY_INTAKE_REFERENCE_NO_SUCCESS,
+          payload: candidate,
+        };
+      }
+    
     static COMPLETE_CANDIDATE_TASK = '[Candidate] Complete Candidate Task';
 
     completeCandidateTask(candidate): Action {
