@@ -1,9 +1,13 @@
 package my.edu.umk.pams.intake.web.module.admission.controller;
 
+import static java.lang.Boolean.TRUE;
 import static java.util.stream.Collectors.toCollection;
+import static my.edu.umk.pams.intake.workflow.service.WorkflowConstants.REMOVE_DECISION;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.activiti.engine.task.Task;
 import org.slf4j.Logger;
@@ -119,6 +123,16 @@ public class AdmissionController {
     public void completeCandidateTask(@RequestBody CandidateTask vo) {
         Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
         workflowService.completeTask(task);
+    }
+    
+    @RequestMapping(value = "/candidates/removeTask", method = RequestMethod.POST)
+ 	public void removeCandidateTask(@RequestBody CandidateTask vo) {
+
+    	Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
+       LOG.debug("Task id {}", task.getId());
+       Map<String, Object> variables = new HashMap<String, Object>();
+       variables.put(REMOVE_DECISION, TRUE);
+       workflowService.completeTask(task, variables);
     }
     
     @RequestMapping(value = "/candidates/claimTask", method = RequestMethod.POST)

@@ -80,6 +80,18 @@ export class AdmissionCandidateEffects {
         this.admissionCandidateActions.findArchivedCandidates(),
       ],
     ));
+    
+    @Effect() removeCandidateTask = this.actions$
+    .ofType(AdmissionCandidateActions.REMOVE_CANDIDATE_TASK)
+    .map(action => action.payload)
+    .switchMap(candidateTask => this.admissionService.removeCandidateTask(candidateTask))
+    .map(message => this.admissionCandidateActions.removeCandidateTaskSuccess(message))
+    .mergeMap((action) => from([action,
+        this.admissionCandidateActions.findAssignedCandidateTasks(),
+        this.admissionCandidateActions.findPooledCandidateTasks(),
+        this.admissionCandidateActions.findArchivedCandidates(),
+      ],
+    ));
    
     @Effect() claimCandidateTask = this.actions$
     .ofType(AdmissionCandidateActions.CLAIM_CANDIDATE_TASK)

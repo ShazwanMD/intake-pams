@@ -157,6 +157,24 @@ export class AdmissionCandidateActions {
       };
     }
     
+    static REMOVE_CANDIDATE_TASK = '[Candidate] Remove Candidate Task';
+    
+    removeCandidateTask(candidate): Action {
+        return {
+            type: AdmissionCandidateActions.REMOVE_CANDIDATE_TASK,
+            payload: candidate,
+          };
+        }
+    
+    static REMOVE_CANDIDATE_TASK_SUCCESS = '[Candidate] Remove Candidate Task Success';
+
+    removeCandidateTaskSuccess(message): Action {
+      return {
+        type: AdmissionCandidateActions.REMOVE_CANDIDATE_TASK_SUCCESS,
+        payload: message,
+      };
+    }
+    
     static CLAIM_CANDIDATE_TASK = '[Candidate] Claim Candidate Task';
 
     claimCandidateTask(candidate): Action {

@@ -83,6 +83,11 @@ export class AdmissionService {
         .flatMap((res: Response) => Observable.of(res.text()));
     }
   
+  removeCandidateTask(candidateTask: CandidateTask): Observable<String> {
+      return this._http.post(this.ADMISSION_API + '/candidates/removeTask', JSON.stringify(candidateTask))
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
+  
   claimCandidateTask(candidateTask: CandidateTask): Observable<String> {
       return this._http.post(this.ADMISSION_API + '/candidates/claimTask', JSON.stringify(candidateTask))
         .flatMap((res: Response) => Observable.of(res.text()));
