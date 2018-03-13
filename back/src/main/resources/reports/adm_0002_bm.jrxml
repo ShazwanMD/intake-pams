@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1075"/>
+	<property name="ireport.y" value="144"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -120,7 +120,7 @@
      in_prgm_ofrg."projection" AS in_prgm_ofrg_projection,
      in_prgm_ofrg."specific_criteria" AS in_prgm_ofrg_specific_criteria,
      in_prgm_ofrg."intake_id" AS in_prgm_ofrg_intake_id,
-     in_prgm_ofrg."program_code_id" AS in_prgm_ofrg_program_code_id,
+     in_prgm_ofrg."prgm_fild_code_id" AS in_prgm_fild_code_id,
      in_prgm_ofrg."study_center_code_id" AS in_prgm_ofrg_study_center_code_id,
      in_prgm_code."id" AS in_prgm_code_id,
      in_prgm_code."code" AS in_prgm_code_code,
@@ -133,7 +133,7 @@
      in_prgm_code."m_ts" AS in_prgm_code_m_ts,
      in_prgm_code."m_id" AS in_prgm_code_m_id,
      in_prgm_code."m_st" AS in_prgm_code_m_st,
-     in_prgm_code."faculty_code_id" AS in_prgm_code_faculty_code_id,
+     in_prgm_fild_code."faculty_code_id" AS in_prgm_code_faculty_code_id,
      in_prgm_code."graduate_center_id" AS in_prgm_code_graduate_center_id,
      in_prgm_code."program_level_id" AS in_prgm_code_program_level_id,
      in_prgm_levl."id" AS in_prgm_levl_id,
@@ -256,9 +256,10 @@ FROM
      INNER JOIN "public"."in_stdy_mode" in_stdy_mode ON in_stdy_mode_ofrg."study_mode_id" = in_stdy_mode."id"
      AND in_intk_apln."program_selection_id" = in_prgm_ofrg."id"
      INNER JOIN "public"."in_stte_code" in_stte_code ON in_intk_apln."mailing_state_code_id" = in_stte_code."id"
-     INNER JOIN "public"."in_prgm_code" in_prgm_code ON in_prgm_ofrg."program_code_id" = in_prgm_code."id"
+     INNER JOIN "public"."in_prgm_fild_code" in_prgm_fild_code ON in_prgm_ofrg."prgm_fild_code_id" = in_prgm_fild_code."id"
+     INNER JOIN "public"."in_prgm_code" ON in_prgm_code."id" = in_prgm_fild_code."prgm_id"
      AND in_prgm_code."program_level_id" = in_prgm_levl."id"
-     INNER JOIN "public"."in_fcty_code" in_fcty_code ON in_prgm_code."faculty_code_id" = in_fcty_code."id",
+     INNER JOIN "public"."in_fcty_code" in_fcty_code ON in_prgm_fild_code."faculty_code_id" = in_fcty_code."id",
      "public"."in_venu_code" in_venu_code]]>
 	</queryString>
 	<field name="in_intk_apln_id" class="java.lang.Long"/>
@@ -373,7 +374,7 @@ FROM
 	<field name="in_prgm_ofrg_projection" class="java.lang.Integer"/>
 	<field name="in_prgm_ofrg_specific_criteria" class="java.lang.String"/>
 	<field name="in_prgm_ofrg_intake_id" class="java.lang.Long"/>
-	<field name="in_prgm_ofrg_program_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_fild_code_id" class="java.lang.Long"/>
 	<field name="in_prgm_ofrg_study_center_code_id" class="java.lang.Long"/>
 	<field name="in_prgm_code_id" class="java.lang.Long"/>
 	<field name="in_prgm_code_code" class="java.lang.String"/>
