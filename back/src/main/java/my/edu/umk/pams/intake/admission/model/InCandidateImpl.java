@@ -72,7 +72,7 @@ public class InCandidateImpl implements InCandidate {
     @JoinColumn(name = "INTAKE_ID")
     private InIntake intake;
     
-    @Column(name = "REFERENCE_NO", unique = true, nullable = false)
+    @Column(name = "REFERENCE_NO", unique = false, nullable = false)
     private String referenceNo; // programLevel + session  DIPLOMA/201420151
     
     @Column(name = "SOURCE_NO", nullable = false)

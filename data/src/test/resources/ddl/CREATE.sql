@@ -1298,8 +1298,6 @@
     alter table IN_CNDT 
         add constraint uc_IN_CNDT_2 unique (CANCEL_COMMENT); 
     alter table IN_CNDT 
-        add constraint uc_IN_CNDT_3 unique (REFERENCE_NO); 
-    alter table IN_CNDT 
         add constraint uc_IN_CNDT_4 unique (REMOVE_COMMENT); 
     alter table IN_CNDT 
         add constraint FKA01B411537A6AAA6 
