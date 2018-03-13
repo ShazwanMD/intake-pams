@@ -27,6 +27,8 @@ export class ProgramFieldCodesComponent implements OnChanges {
 
   private columns: any[] = [
     {name: 'code', label: 'Code'},
+    {name: 'facultyCode.descriptionMs', label: 'Faculty CodeMs'},
+    {name: 'facultyCode.descriptionEn', label: 'Faculty CodeEn'},
     {name: 'programCode.descriptionMs', label: 'Program DescriptionMs'},
     {name: 'programCode.descriptionEn', label: 'Program DescriptionEn'},
     {name: 'fieldCode.descriptionMs', label: 'Field DescriptionMs'},
