@@ -24,7 +24,7 @@
     <div layout="row">{{row['endDate'] | date :'longDate'}}</div>
   </template>
     <template tdDataTableTemplate="flowState" let-value="value" let-row="row" let-column="column">
-    <div layout="row">{{row['flowState'] | flowStatePipe }}</div>
+    <div layout="row">{{row['flowState'] | candidateFlowStatePipe }}</div>
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">

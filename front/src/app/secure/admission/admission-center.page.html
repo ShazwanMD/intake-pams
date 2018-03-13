@@ -6,11 +6,13 @@
 
   <td-layout-manage-list #list title="Manage" logo="path/to/toolbar-logo.svg">
     <md-nav-list list-items dense>
+      <!-- <div *ngIf="intakeTasks?.intake?.graduateCenter === MGSEB">  -->
       <h3 md-subheader>Admission</h3>
       <a md-list-item [routerLink]="['/secure/admission']">
         <md-icon>label</md-icon>
         Admission
       </a>
+      <!-- </div> -->
     </md-nav-list>
     <md-nav-list list-items dense>
      <a md-list-item [routerLink]="['/secure/cps-candidate']">
