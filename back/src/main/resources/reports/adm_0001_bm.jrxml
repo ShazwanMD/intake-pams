@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1102"/>
+	<property name="ireport.y" value="240"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -267,12 +267,12 @@
      in_venu_code."start_time_en" AS in_venu_code_start_time_en,
      in_venu_code."start_time_ms" AS in_venu_code_start_time_ms,
      in_venu_code."end_time_en" AS in_venu_code_end_time_en,
-     in_venu_code."end_time_ms" AS in_venu_code_end_time_ms
+     in_venu_code."end_time_ms" AS in_venu_code_end_time_ms,
+     in_prgm_fild_code."prgm_id" AS in_prgm_fild_code_prgm_id
 FROM
      "public"."in_spvr_ofrg" in_spvr_ofrg INNER JOIN "public"."in_intk_apln" in_intk_apln ON in_spvr_ofrg."id" = in_intk_apln."supervisor_selection_id"
      INNER JOIN "public"."in_spvr_code" in_spvr_code ON in_spvr_ofrg."supervisor_code_id" = in_spvr_code."id"
-     INNER JOIN "public"."in_intk" in_intk ON in_spvr_ofrg."intake_id" = in_intk."id"
-     AND in_intk."id" = in_intk_apln."intake_id"
+     INNER JOIN "public"."in_intk" in_intk ON in_intk."id" = in_intk_apln."intake_id"
      INNER JOIN "public"."in_intk_sesn" in_intk_sesn ON in_intk."session_id" = in_intk_sesn."id"
      INNER JOIN "public"."in_prgm_levl" in_prgm_levl ON in_intk."program_level_id" = in_prgm_levl."id"
      INNER JOIN "public"."in_prgm_ofrg" in_prgm_ofrg ON in_intk."id" = in_prgm_ofrg."intake_id"
@@ -282,9 +282,9 @@ FROM
      AND in_intk_apln."program_selection_id" = in_prgm_ofrg."id"
      INNER JOIN "public"."in_stte_code" in_stte_code ON in_intk_apln."mailing_state_code_id" = in_stte_code."id"
      INNER JOIN "public"."in_prgm_fild_code" in_prgm_fild_code ON in_prgm_ofrg."prgm_fild_code_id" = in_prgm_fild_code."id"
-     INNER JOIN "public"."in_prgm_code" ON in_prgm_code."id" = in_prgm_fild_code."prgm_id"
-     AND in_prgm_code."program_level_id" = in_prgm_levl."id"
-     INNER JOIN "public"."in_fcty_code" in_fcty_code ON in_prgm_fild_code."faculty_code_id" = in_fcty_code."id",
+     INNER JOIN "in_prgm_code" in_prgm_code ON in_prgm_fild_code."prgm_id" = in_prgm_code."id"
+     INNER JOIN "public"."in_fcty_code" in_fcty_code ON in_prgm_fild_code."faculty_code_id" = in_fcty_code."id"
+     AND in_prgm_code."program_level_id" = in_prgm_levl."id",
      "public"."in_venu_code" in_venu_code]]>
 	</queryString>
 	<field name="in_intk_apln_id" class="java.lang.Long"/>
@@ -547,6 +547,7 @@ FROM
 	<field name="in_venu_code_start_time_ms" class="java.lang.String"/>
 	<field name="in_venu_code_end_time_en" class="java.lang.String"/>
 	<field name="in_venu_code_end_time_ms" class="java.lang.String"/>
+	<field name="in_prgm_fild_code_prgm_id" class="java.lang.Long"/>
 	<filterExpression><![CDATA[$F{in_intk_apln_reference_no}.equals( $P{reference_no} )]]></filterExpression>
 	<background>
 		<band splitType="Stretch"/>
