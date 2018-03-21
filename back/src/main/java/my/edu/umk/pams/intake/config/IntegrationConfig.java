@@ -16,6 +16,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
 import my.edu.umk.pams.intake.admission.event.CandidateEvent;
+import my.edu.umk.pams.intake.common.event.ProgramFieldCodeEvent;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.integration.json.ObjectToJsonTransformer.ResultType.STRING;
@@ -42,7 +43,9 @@ public class IntegrationConfig {
         ApplicationEventListeningMessageProducer producer = new ApplicationEventListeningMessageProducer();
         producer.setApplicationContext(applicationContext);
         producer.setEventTypes(
-                CandidateEvent.class);
+                CandidateEvent.class,
+                ProgramFieldCodeEvent.class);
+        		
         producer.setPayloadExpressionString("payload");
         return producer;
     }

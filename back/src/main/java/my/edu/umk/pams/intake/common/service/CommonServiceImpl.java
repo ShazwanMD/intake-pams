@@ -1,12 +1,20 @@
 package my.edu.umk.pams.intake.common.service;
 
+import my.edu.umk.pams.connector.payload.FacultyCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramLevelPayload;
 import my.edu.umk.pams.intake.common.dao.*;
+import my.edu.umk.pams.intake.common.event.ProgramFieldCodeAddedEvent;
 import my.edu.umk.pams.intake.common.model.*;
 import my.edu.umk.pams.intake.policy.model.InProgramLevel;
 import my.edu.umk.pams.intake.policy.model.InSupervisorOffering;
 import my.edu.umk.pams.intake.security.service.SecurityService;
 import org.hibernate.SessionFactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +23,8 @@ import java.util.List;
 @Transactional
 @Service("commonService")
 public class CommonServiceImpl implements CommonService {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(CommonServiceImpl.class);
 
     @Autowired
     private InGraduateCenterDao graduateCenterDao;
@@ -138,6 +148,9 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private SessionFactory sessionFactory;
+    
+	@Autowired
+	private ApplicationContext applicationContext;
 
     //====================================================================================================
     // GRADUATE CENTER
@@ -2295,6 +2308,36 @@ public class CommonServiceImpl implements CommonService {
     public void saveProgramFieldCode(InProgramFieldCode programCode) {
         programFieldCodeDao.save(programCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+        
+        InFacultyCode faculty = facultyCodeDao.findByCode(programCode.getFacultyCode().getCode());
+
+		LOG.debug("Start Broadcast Program Field Code");
+		
+		// Prepare Faculty Payload
+		LOG.debug("prepare facultyCode payload");
+		FacultyCodePayload f = new FacultyCodePayload();
+		f.setCode(faculty.getCode());
+		f.setDescription(faculty.getDescriptionEn());
+		f.setPrefix(faculty.getPrefix());
+		
+		// Prepare Program Level Payload
+		ProgramLevelPayload l = new ProgramLevelPayload();
+		l.setCode(programCode.getProgramCode().getProgramLevel().getCode());
+		l.setDescription(programCode.getProgramCode().getProgramLevel().getDescription());
+		
+		
+		// Prepare Program Field Code Payload
+	
+		ProgramCodePayload p = new ProgramCodePayload();
+		p.setCode(programCode.getCode());
+		p.setDescriptionMs(programCode.getProgramCode().getDescriptionMs());
+		p.setDescriptionEn(programCode.getProgramCode().getDescriptionEn());
+		p.setFacultyCode(f);
+		p.setProgramLevel(l);
+
+		ProgramFieldCodeAddedEvent event = new ProgramFieldCodeAddedEvent(p);
+		applicationContext.publishEvent(event);
+		LOG.debug("Finsh Broadcast Program Field Code");
     }
 
     @Override
@@ -2305,7 +2348,7 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void removeProgramFieldCode(InProgramFieldCode programCode) {
-        programFieldCodeDao.remove(programCode, securityService.getCurrentUser());
+        programFieldCodeDao.delete(programCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
