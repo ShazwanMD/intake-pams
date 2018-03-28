@@ -209,8 +209,11 @@
             </md-tab-group>
           </md-card-content>
         </md-card>
+        <md-card *ngIf="intakeApplication.bidStatus != 'SELECTED'">
+          
         <button md-raised-button color="accent" (click)="select(intakeApplication)">Select</button>
         <button md-raised-button color="accent" (click)="reject(intakeApplication)">Reject</button>
+        </md-card>
       </md-tab>
     </md-tab-group>
 
