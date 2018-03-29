@@ -43,9 +43,14 @@ export class CandidateVerifyTaskPanel implements OnInit {
   }
 
   select(){
+    if (confirm('Confirm to Offer This Candidate?')) {
       this.store.dispatch(this.actions.completeCandidateTask(this.candidateTask));
       this.goBack();
+    } else {
+      // return false;
+    }
   }
+  
   
   reject(){
       this.store.dispatch(this.actions.removeCandidateTask(this.candidateTask));

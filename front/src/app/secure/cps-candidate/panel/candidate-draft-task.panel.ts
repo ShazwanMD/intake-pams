@@ -45,8 +45,12 @@ export class CandidateDraftTaskPanel implements OnInit {
   }
 
   select(){
+    if (confirm('Confirm to Approve This Candidate?')) {
       this.store.dispatch(this.actions.completeCandidateTask(this.candidateTask));
       this.goBack();
+    } else {
+      // return false;
+    }
   }
   
   reject(){

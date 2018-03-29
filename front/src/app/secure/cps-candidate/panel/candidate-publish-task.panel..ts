@@ -43,8 +43,12 @@ export class CandidatePublishTaskPanel implements OnInit {
   }
 
   select(){
+    if (confirm('Confirm to Register This Candidate?')) {
       this.store.dispatch(this.actions.completeCandidateTask(this.candidateTask));
       this.goBack();
+    } else {
+      // return false;
+    }
   }
   
   reject(){
