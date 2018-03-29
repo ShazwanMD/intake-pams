@@ -23,8 +23,10 @@ in_cndt.acception_status as "cndt_acception_status",
 in_intk_apln.nationality_code_id as "intk_apln.nationality_code_id",
 in_ntly_code.description_ms as "ntly_code.description_ms",
 in_intk_apln.program_selection_id as "prgm_select_id",
-in_prgm_ofrg.program_code_id as "in_prgm_code_id",
-in_prgm_code.description_ms as "prgm_desc_ms",
+in_prgm_ofrg.prgm_fild_code_id as "in_prgm_fild_code_id",
+in_prgm_fild_code.code as "in_prgm_fild_code_code",
+in_prgm_code.description_ms as "in_prgm_code_desc_ms",
+in_fild_code.description_ms as "in_fild_code_desc_ms",
 in_stdy_mode_ofrg.id as "in_stdy_mode_ofrg.id",
 in_stdy_mode.description_ms as "stdy_mode.description_ms",
 in_intk_apln.study_center_code_id as "stdy_cntr_code_id",
@@ -42,7 +44,9 @@ in_rslt
 inner join in_intk_apln on in_rslt.application_id = in_intk_apln.id
 inner join in_cndt on in_intk_apln.id =in_cndt.application_id
 inner join in_prgm_ofrg on in_intk_apln.program_selection_id = in_prgm_ofrg.id
-inner join in_prgm_code on in_prgm_ofrg.program_code_id = in_prgm_code.id
+inner join in_prgm_fild_code on in_prgm_ofrg.prgm_fild_code_id = in_prgm_fild_code.id
+inner join in_prgm_code on in_prgm_fild_code.prgm_id = in_prgm_code.id
+inner join in_fild_code on in_prgm_fild_code.fild_id = in_fild_code.id
 inner join in_stdy_mode_ofrg on in_intk_apln.study_mode_selection_id = in_stdy_mode_ofrg.id
 inner join in_stdy_mode on in_stdy_mode_ofrg.study_mode_id = in_stdy_mode.id
 left outer join in_stdy_cntr_code on in_intk_apln.study_center_code_id = in_stdy_cntr_code.id
@@ -74,8 +78,10 @@ in_grdt_cntr.code = 'MGSEB']]>
 	<field name="intk_apln.nationality_code_id" class="java.lang.Long"/>
 	<field name="ntly_code.description_ms" class="java.lang.String"/>
 	<field name="prgm_select_id" class="java.lang.Long"/>
-	<field name="in_prgm_code_id" class="java.lang.Long"/>
-	<field name="prgm_desc_ms" class="java.lang.String"/>
+	<field name="in_prgm_fild_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_fild_code_code" class="java.lang.String"/>
+	<field name="in_prgm_code_desc_ms" class="java.lang.String"/>
+	<field name="in_fild_code_desc_ms" class="java.lang.String"/>
 	<field name="in_stdy_mode_ofrg.id" class="java.lang.Long"/>
 	<field name="stdy_mode.description_ms" class="java.lang.String"/>
 	<field name="stdy_cntr_code_id" class="java.lang.Long"/>
@@ -114,7 +120,7 @@ in_grdt_cntr.code = 'MGSEB']]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="16" splitType="Stretch"/>
+		<band height="18" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="47" splitType="Stretch">
@@ -171,14 +177,14 @@ in_grdt_cntr.code = 'MGSEB']]>
 				<text><![CDATA[BIL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="169" y="4" width="124" height="12" uuid="38f6a4c1-0178-4a43-80df-a31165ecdae5"/>
+				<reportElement x="169" y="4" width="124" height="20" uuid="38f6a4c1-0178-4a43-80df-a31165ecdae5"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PERINGKAT PENGAJIAN /]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="169" y="15" width="100" height="12" uuid="627fa400-ac13-4bd3-9893-c58a17623186"/>
+				<reportElement x="167" y="15" width="50" height="16" uuid="627fa400-ac13-4bd3-9893-c58a17623186"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
@@ -287,13 +293,6 @@ in_grdt_cntr.code = 'MGSEB']]>
 				<textFieldExpression><![CDATA[$F{cndt_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="169" y="10" width="124" height="97" uuid="06869ca4-e3ab-47df-8c52-74920ae1a904"/>
-				<textElement>
-					<font fontName="SansSerif"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{prgm_desc_ms}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="312" y="7" width="79" height="55" uuid="cdcc93df-4145-4a11-9a58-e4c8df98c0f9"/>
 				<textElement>
 					<font fontName="SansSerif"/>
@@ -348,6 +347,14 @@ in_grdt_cntr.code = 'MGSEB']]>
 			<textField>
 				<reportElement x="36" y="77" width="117" height="31" uuid="b81161d0-3065-48e3-b944-1a40be92bbde"/>
 				<textFieldExpression><![CDATA[$F{nationality_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="10" width="125" height="26" uuid="e795c8f3-68be-4643-b01f-d7d8ff9bf3bb"/>
+				<textFieldExpression><![CDATA[$F{in_prgm_code_desc_ms}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="36" width="125" height="26" uuid="757b26cd-4ba4-4911-8c8c-2f8e4152cc89"/>
+				<textFieldExpression><![CDATA[$F{in_fild_code_desc_ms}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
