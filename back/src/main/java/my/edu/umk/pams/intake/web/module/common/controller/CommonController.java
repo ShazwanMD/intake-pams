@@ -463,12 +463,15 @@ public class CommonController {
     @RequestMapping(value = "/saveProgramFieldCode", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgramFieldCode(@RequestBody ProgramFieldCode vo) {
         dummyLogin();
+        
+        String programCode = commonService.findProgramCodeById(vo.getProgramCode().getId()).getCode().substring(0,1);
+        String fieldCode =commonService.findFieldCodeById(vo.getFieldCode().getId()).getCode();
+        
         System.out.println("vo :"+commonService.findProgramCodeById(vo.getProgramCode().getId()).getCode());
 
         InProgramFieldCode programFieldCode = new InProgramFieldCodeImpl();
-        String progFieldCode = commonService.findProgramCodeById(vo.getProgramCode().getId()).getCode() +"-"+commonService.findFieldCodeById(vo.getFieldCode().getId()).getCode();
-        
-        programFieldCode.setCode(progFieldCode);
+
+        programFieldCode.setCode(programCode + fieldCode);
         programFieldCode.setFacultyCode(commonService.findFacultyCodeById(vo.getFacultyCode().getId()));
         programFieldCode.setProgramCode(commonService.findProgramCodeById(vo.getProgramCode().getId()));
         programFieldCode.setFieldCode(commonService.findFieldCodeById(vo.getFieldCode().getId()));
