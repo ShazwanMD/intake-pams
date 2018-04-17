@@ -1,4 +1,4 @@
- create table IN_ACTR (
+create table IN_ACTR (
         ID int8 not null,
         ACTOR_TYPE int4,
         EMAIL varchar(255),
@@ -1260,7 +1260,7 @@
         USER_ID int8 not null,
         primary key (ID)
     ); 
-    
+   
     alter table IN_ACTR 
         add constraint uc_IN_ACTR_1 unique (IDENTITY_NO); 
     alter table IN_APCN 
@@ -1296,9 +1296,9 @@
     alter table IN_CMPS_CODE 
         add constraint uc_IN_CMPS_CODE_1 unique (CODE); 
     alter table IN_CNDT 
-        add constraint uc_IN_CNDT_2 unique (CANCEL_COMMENT); 
+        add constraint uc_IN_CNDT_1 unique (CANCEL_COMMENT); 
     alter table IN_CNDT 
-        add constraint uc_IN_CNDT_4 unique (REMOVE_COMMENT); 
+        add constraint uc_IN_CNDT_2 unique (REMOVE_COMMENT); 
     alter table IN_CNDT 
         add constraint FKA01B411537A6AAA6 
         foreign key (APPLICATION_ID) 

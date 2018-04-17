@@ -1,385 +1,306 @@
-
-ALTER TABLE IN_ADDR
-  DROP CONSTRAINT FKA01A32CB37A6AAA6;
-
-ALTER TABLE IN_ADDR
-  DROP CONSTRAINT FKA01A32CB62D8843A;
-
-ALTER TABLE IN_ADDR
-  DROP CONSTRAINT FKA01A32CBAA50E0F0;
-
-ALTER TABLE IN_APCN
-  DROP CONSTRAINT FKA01A5FB4AB3274F6;
-
-ALTER TABLE IN_ATMT
-  DROP CONSTRAINT FKA01A6FF437A6AAA6;
-
-ALTER TABLE IN_CITY_CODE
-  DROP CONSTRAINT FK9C7B91A7AA50E0F0;
-
-ALTER TABLE IN_CLGE_CODE
-  DROP CONSTRAINT FK24D298B3354D5F4;
-
-ALTER TABLE IN_CNTC
-  DROP CONSTRAINT FKA01B42F437A6AAA6;
-
-ALTER TABLE IN_EMPT
-  DROP CONSTRAINT FKA01C278637A6AAA6;
-
-ALTER TABLE IN_EMPT
-  DROP CONSTRAINT FKA01C27869429776;
-
-ALTER TABLE IN_EMPT
-  DROP CONSTRAINT FKA01C2786A87C388A;
-
-ALTER TABLE IN_EMPT
-  DROP CONSTRAINT FKA01C2786665804A0;
-
-ALTER TABLE IN_GRDN
-  DROP CONSTRAINT FKA01D218F37A6AAA6;
-
-ALTER TABLE IN_GROP
-  DROP CONSTRAINT FKA01D22E65E0DF3AF;
-
-ALTER TABLE IN_GROP_MMBR
-  DROP CONSTRAINT FK7CA19FA95ACED640;
-
-ALTER TABLE IN_GROP_MMBR
-  DROP CONSTRAINT FK7CA19FA9944FD160;
-
-ALTER TABLE IN_GRTR
-  DROP CONSTRAINT FKA01D238337A6AAA6;
-
-ALTER TABLE IN_INTK
-  DROP CONSTRAINT FKA01DFD368FDB7C8;
-
-ALTER TABLE IN_INTK
-  DROP CONSTRAINT FKA01DFD36BD0FD208;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5ABDADE6E0;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5AA35FEC0;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5AE944DD1E;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5A1A001E40;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5A8BB6434C;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5A481F1E8A;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5A3AD22420;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5A4F03DAF6;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5AACBE2306;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5AEE5BDEA;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5AD47AB42A;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5A60E65A82;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5A4CB929F0;
-
-ALTER TABLE IN_INTK_APLN
-  DROP CONSTRAINT FK5974F5A8B4C0DB2;
-
-ALTER TABLE IN_INVT
-  DROP CONSTRAINT FKA01DFD7D37A6AAA6;
-
-ALTER TABLE IN_INVT
-  DROP CONSTRAINT FKA01DFD7D703951F5;
-
-ALTER TABLE IN_INVT
-  DROP CONSTRAINT FKA01DFD7D82AA379D;
-
-ALTER TABLE IN_INVT
-  DROP CONSTRAINT FKA01DFD7DACA22BBD;
-
-ALTER TABLE IN_INVT_LEVL_CODE
-  DROP CONSTRAINT FK8FD6A1FBACA22BBD;
-
-ALTER TABLE IN_PCPL_ROLE
-  DROP CONSTRAINT FKCAED0CEC944FD160;
-
-ALTER TABLE IN_PRGM_OFRG
-  DROP CONSTRAINT FK6B9F3293AD22420;
-
-ALTER TABLE IN_PRGM_OFRG
-  DROP CONSTRAINT FK6B9F32988BA7616;
-
-ALTER TABLE IN_PRGM_OFRG
-  DROP CONSTRAINT FK6B9F3295C8D6997;
-
-ALTER TABLE IN_SMDL
-  DROP CONSTRAINT FKA022833C43EFCC03;
-
-ALTER TABLE IN_STAF
-  DROP CONSTRAINT FKA0229D20AB3274F6;
-
-ALTER TABLE IN_STTE_CODE
-  DROP CONSTRAINT FK354E82E062D8843A;
-
-ALTER TABLE IN_USER
-  DROP CONSTRAINT FKA02382A548D0EF80;
-
-ALTER TABLE IN_USER
-  DROP CONSTRAINT FKA02382A55E0DF3AF;
-
-DROP TABLE IF EXISTS ACL_CLASS CASCADE;
-
-DROP TABLE IF EXISTS ACL_ENTRY CASCADE;
-
-DROP TABLE IF EXISTS ACL_OBJECT_IDENTITY CASCADE;
-
-DROP TABLE IF EXISTS ACL_SID CASCADE;
-
-DROP TABLE IF EXISTS IN_ACTR CASCADE;
-
-DROP TABLE IF EXISTS IN_ADDR CASCADE;
-
-DROP TABLE IF EXISTS IN_APCN CASCADE;
-
-DROP TABLE IF EXISTS IN_ATMT CASCADE;
-
-DROP TABLE IF EXISTS IN_AUDT CASCADE;
-
-DROP TABLE IF EXISTS IN_BANK_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_GRDE_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_CITY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_CLGE_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_CMCY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_CMPS_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_CNFG CASCADE;
-
-DROP TABLE IF EXISTS IN_CNTC CASCADE;
-
-DROP TABLE IF EXISTS IN_CNTY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_DBLY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_DPCY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_DSCT_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_EMAL_QUEU CASCADE;
-
-DROP TABLE IF EXISTS IN_EMIL_TMPT CASCADE;
-
-DROP TABLE IF EXISTS IN_EMPT CASCADE;
-
-DROP TABLE IF EXISTS IN_EMPT_FILD_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_EMPT_LEVL_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_EMPT_SCTR_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_ETNY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_FCTY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_FILD_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_GNDR_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_GRDE_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_GRDN CASCADE;
-
-DROP TABLE IF EXISTS IN_GROP CASCADE;
-
-DROP TABLE IF EXISTS IN_GROP_MMBR CASCADE;
-
-DROP TABLE IF EXISTS IN_GRTR CASCADE;
-
-DROP TABLE IF EXISTS IN_INTK CASCADE;
-
-DROP TABLE IF EXISTS IN_INTK_APLN CASCADE;
-
-DROP TABLE IF EXISTS IN_INTK_LEVL CASCADE;
-
-DROP TABLE IF EXISTS IN_INTK_SESN CASCADE;
-
-DROP TABLE IF EXISTS IN_INVT CASCADE;
-
-DROP TABLE IF EXISTS IN_INVT_LEVL_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_INVT_TTLE_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_INVT_TYPE_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_LCTN_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_MODL CASCADE;
-
-DROP TABLE IF EXISTS IN_MRTL_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_NTLY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_PCPL CASCADE;
-
-DROP TABLE IF EXISTS IN_PCPL_ROLE CASCADE;
-
-DROP TABLE IF EXISTS IN_PRGM_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_PRGM_OFRG CASCADE;
-
-DROP TABLE IF EXISTS IN_RACE_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_RFRN_NO CASCADE;
-
-DROP TABLE IF EXISTS IN_RLGN_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_RSCY_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_SBJT_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_SCHL_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_SMDL CASCADE;
-
-DROP TABLE IF EXISTS IN_STAF CASCADE;
-
-DROP TABLE IF EXISTS IN_STDY_CNTR_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_STTE_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_USER CASCADE;
-
-DROP TABLE IF EXISTS IN_VENU_CODE CASCADE;
-
-DROP TABLE IF EXISTS IN_WTCH CASCADE;
-
-DROP SEQUENCE SQ_IN_ACTR;
-
-DROP SEQUENCE SQ_IN_ADDR;
-
-DROP SEQUENCE SQ_IN_ATMT;
-
-DROP SEQUENCE SQ_IN_AUDT;
-
-DROP SEQUENCE SQ_IN_BANK_CODE;
-
-DROP SEQUENCE SQ_IN_GRDE_CODE;
-
-DROP SEQUENCE SQ_IN_CITY_CODE;
-
-DROP SEQUENCE SQ_IN_CLGE_CODE;
-
-DROP SEQUENCE SQ_IN_CMCY_CODE;
-
-DROP SEQUENCE SQ_IN_CMPS_CODE;
-
-DROP SEQUENCE SQ_IN_CNFG;
-
-DROP SEQUENCE SQ_IN_CNTC;
-
-DROP SEQUENCE SQ_IN_CNTY_CODE;
-
-DROP SEQUENCE SQ_IN_DBLY_CODE;
-
-DROP SEQUENCE SQ_IN_DPCY_CODE;
-
-DROP SEQUENCE SQ_IN_DSCT_CODE;
-
-DROP SEQUENCE SQ_IN_EMAL_QUEU;
-
-DROP SEQUENCE SQ_IN_EMIL_TMPT;
-
-DROP SEQUENCE SQ_IN_EMPT;
-
-DROP SEQUENCE SQ_IN_EMPT_FILD_CODE;
-
-DROP SEQUENCE SQ_IN_EMPT_LEVL_CODE;
-
-DROP SEQUENCE SQ_IN_EMPT_SCTR_CODE;
-
-DROP SEQUENCE SQ_IN_ETNY_CODE;
-
-DROP SEQUENCE SQ_IN_FCTY_CODE;
-
-DROP SEQUENCE SQ_IN_FILD_CODE;
-
-DROP SEQUENCE SQ_IN_GNDR_CODE;
-
-DROP SEQUENCE SQ_IN_GRDE_CODE;
-
-DROP SEQUENCE SQ_IN_GRDN;
-
-DROP SEQUENCE SQ_IN_GROP_MMBR;
-
-DROP SEQUENCE SQ_IN_GRTR;
-
-DROP SEQUENCE SQ_IN_INTK;
-
-DROP SEQUENCE SQ_IN_INTK_APLN;
-
-DROP SEQUENCE SQ_IN_INTK_LEVL;
-
-DROP SEQUENCE SQ_IN_INTK_SESN;
-
-DROP SEQUENCE SQ_IN_INVT;
-
-DROP SEQUENCE SQ_IN_INVT_LEVL_CODE;
-
-DROP SEQUENCE SQ_IN_INVT_TTLE_CODE;
-
-DROP SEQUENCE SQ_IN_INVT_TYPE_CODE;
-
-DROP SEQUENCE SQ_IN_LCTN_CODE;
-
-DROP SEQUENCE SQ_IN_MODL;
-
-DROP SEQUENCE SQ_IN_MRTL_CODE;
-
-DROP SEQUENCE SQ_IN_NTLY_CODE;
-
-DROP SEQUENCE SQ_IN_PCPL;
-
-DROP SEQUENCE SQ_IN_PCPL_ROLE;
-
-DROP SEQUENCE SQ_IN_PRGM_CODE;
-
-DROP SEQUENCE SQ_IN_PRGM_OFRG;
-
-DROP SEQUENCE SQ_IN_RACE_CODE;
-
-DROP SEQUENCE SQ_IN_RFRN_NO;
-
-DROP SEQUENCE SQ_IN_RLGN_CODE;
-
-DROP SEQUENCE SQ_IN_RSCY_CODE;
-
-DROP SEQUENCE SQ_IN_SBJT_CODE;
-
-DROP SEQUENCE SQ_IN_SCHL_CODE;
-
-DROP SEQUENCE SQ_IN_SMDL;
-
-DROP SEQUENCE SQ_IN_STDY_CNTR_CODE;
-
-DROP SEQUENCE SQ_IN_STTE_CODE;
-
-DROP SEQUENCE SQ_IN_VENU_CODE;
-
-DROP SEQUENCE SQ_IN_WTCH;
+alter table IN_APCN 
+        drop constraint FKA01A5FB4AB3274F6; 
+    alter table IN_ATMT 
+        drop constraint FKA01A6FF437A6AAA6; 
+    alter table IN_CITY_CODE 
+        drop constraint FK9C7B91A7AA50E0F0; 
+    alter table IN_CLGE_CODE 
+        drop constraint FK24D298B3354D5F4; 
+    alter table IN_CNDT 
+        drop constraint FKA01B411537A6AAA6; 
+    alter table IN_CNDT 
+        drop constraint FKA01B41153AD22420; 
+    alter table IN_CNDT 
+        drop constraint FKA01B411554B90F8D; 
+    alter table IN_CNDT 
+        drop constraint FKA01B411555B7DBE0; 
+    alter table IN_CNDT 
+        drop constraint FKA01B4115BAF48B99; 
+    alter table IN_CNTC 
+        drop constraint FKA01B42F437A6AAA6; 
+    alter table IN_EDCN 
+        drop constraint FKA01C042437A6AAA6; 
+    alter table IN_EDCN 
+        drop constraint FKA01C0424A6DAE648; 
+    alter table IN_EDCN 
+        drop constraint FKA01C042433CF0EA2; 
+    alter table IN_EMPT 
+        drop constraint FKA01C278637A6AAA6; 
+    alter table IN_EMPT 
+        drop constraint FKA01C27869429776; 
+    alter table IN_EMPT 
+        drop constraint FKA01C2786A87C388A; 
+    alter table IN_EMPT 
+        drop constraint FKA01C2786665804A0; 
+    alter table IN_FCTY_CODE 
+        drop constraint FKEA01D170AC7CA589; 
+    alter table IN_FCTY_CODE 
+        drop constraint FKEA01D17052E5025E; 
+    alter table IN_GRDN 
+        drop constraint FKA01D218F37A6AAA6; 
+    alter table IN_GROP 
+        drop constraint FKA01D22E65E0DF3AF; 
+    alter table IN_GROP_MMBR 
+        drop constraint FK7CA19FA95ACED640; 
+    alter table IN_GROP_MMBR 
+        drop constraint FK7CA19FA9944FD160; 
+    alter table IN_GRTR 
+        drop constraint FKA01D238337A6AAA6; 
+    alter table IN_INTK 
+        drop constraint FKA01DFD3652E5025E; 
+    alter table IN_INTK 
+        drop constraint FKA01DFD36ACAEA1D7; 
+    alter table IN_INTK 
+        drop constraint FKA01DFD36BD0FD208; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5ABDADE6E0; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5AA35FEC0; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A1A001E40; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A8BB6434C; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A481F1E8A; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A3AD22420; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5AD0B086C6; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5AF20167C; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A4F03DAF6; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5AACBE2306; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A21D73EE6; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5AF4D6569C; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A54B90F8D; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A76D02DEC; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5AEE5BDEA; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5AD47AB42A; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A60E65A82; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A5C8D6997; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5A55B7DBE0; 
+    alter table IN_INTK_APLN 
+        drop constraint FK5974F5ABAF48B99; 
+    alter table IN_INVT 
+        drop constraint FKA01DFD7D37A6AAA6; 
+    alter table IN_INVT 
+        drop constraint FKA01DFD7D703951F5; 
+    alter table IN_INVT 
+        drop constraint FKA01DFD7D82AA379D; 
+    alter table IN_INVT 
+        drop constraint FKA01DFD7DACA22BBD; 
+    alter table IN_INVT_LEVL_CODE 
+        drop constraint FK8FD6A1FBACA22BBD; 
+    alter table IN_LNGE 
+        drop constraint FKA01F58BA37A6AAA6; 
+    alter table IN_LNGE 
+        drop constraint FKA01F58BA17F01278; 
+    alter table IN_PCPL_ROLE 
+        drop constraint FKCAED0CEC944FD160; 
+    alter table IN_PRGM_CODE 
+        drop constraint FK6B49ECA52E5025E; 
+    alter table IN_PRGM_CODE 
+        drop constraint FK6B49ECAACAEA1D7; 
+    alter table IN_PRGM_FILD_CODE 
+        drop constraint FKF88EAF742DDFADD6; 
+    alter table IN_PRGM_FILD_CODE 
+        drop constraint FKF88EAF742216DFB9; 
+    alter table IN_PRGM_FILD_CODE 
+        drop constraint FKF88EAF744A4DEA76; 
+    alter table IN_PRGM_OFRG 
+        drop constraint FK6B9F3293AD22420; 
+    alter table IN_PRGM_OFRG 
+        drop constraint FK6B9F329E49A9710; 
+    alter table IN_PRGM_OFRG 
+        drop constraint FK6B9F3295C8D6997; 
+    alter table IN_RFRE 
+        drop constraint FKA021F64137A6AAA6; 
+    alter table IN_RSLT 
+        drop constraint FKA022266337A6AAA6; 
+    alter table IN_SMDL 
+        drop constraint FKA022833C43EFCC03; 
+    alter table IN_SPVR_OFRG 
+        drop constraint FK15CA9A583AD22420; 
+    alter table IN_SPVR_OFRG 
+        drop constraint FK15CA9A586F1B8021; 
+    alter table IN_SPVR_OFRG 
+        drop constraint FK15CA9A587A950358; 
+    alter table IN_STAF 
+        drop constraint FKA0229D204B24BCDA; 
+    alter table IN_STAF 
+        drop constraint FKA0229D205F1EA8DA; 
+    alter table IN_STAF 
+        drop constraint FKA0229D20AB3274F6; 
+    alter table IN_STDY_MODE_OFRG 
+        drop constraint FK367FF3793AD22420; 
+    alter table IN_STDY_MODE_OFRG 
+        drop constraint FK367FF379AF5A14A0; 
+    alter table IN_STTE_CODE 
+        drop constraint FK354E82E062D8843A; 
+    alter table IN_USER 
+        drop constraint FKA02382A548D0EF80; 
+    alter table IN_USER 
+        drop constraint FKA02382A55E0DF3AF; 
+    alter table IN_USER_VRFN 
+        drop constraint FKF2B069DE25F10BB4; 
+    drop table if exists IN_ACTR cascade; 
+    drop table if exists IN_APCN cascade; 
+    drop table if exists IN_ATMT cascade; 
+    drop table if exists IN_AUDT cascade; 
+    drop table if exists IN_BANK_CODE cascade; 
+    drop table if exists IN_BUMI_CODE cascade; 
+    drop table if exists IN_CITY_CODE cascade; 
+    drop table if exists IN_CLGE_CODE cascade; 
+    drop table if exists IN_CMCY_CODE cascade; 
+    drop table if exists IN_CMPS_CODE cascade; 
+    drop table if exists IN_CNDT cascade; 
+    drop table if exists IN_CNFG cascade; 
+    drop table if exists IN_CNTC cascade; 
+    drop table if exists IN_CNTY_CODE cascade; 
+    drop table if exists IN_DBLY_CODE cascade; 
+    drop table if exists IN_DPCY_CODE cascade; 
+    drop table if exists IN_DSCT_CODE cascade; 
+    drop table if exists IN_DUN_CODE cascade; 
+    drop table if exists IN_EDCN cascade; 
+    drop table if exists IN_EDCN_LEVL_CODE cascade; 
+    drop table if exists IN_EDCN_SCTR_CODE cascade; 
+    drop table if exists IN_EMAL_QUEU cascade; 
+    drop table if exists IN_EMIL_TMPT cascade; 
+    drop table if exists IN_EMPT cascade; 
+    drop table if exists IN_EMPT_FILD_CODE cascade; 
+    drop table if exists IN_EMPT_LEVL_CODE cascade; 
+    drop table if exists IN_EMPT_SCTR_CODE cascade; 
+    drop table if exists IN_ETNY_CODE cascade; 
+    drop table if exists IN_FCTY_CODE cascade; 
+    drop table if exists IN_FILD_CODE cascade; 
+    drop table if exists IN_GNDR_CODE cascade; 
+    drop table if exists IN_GRDE_CODE cascade; 
+    drop table if exists IN_GRDN cascade; 
+    drop table if exists IN_GRDT_CNTR cascade; 
+    drop table if exists IN_GROP cascade; 
+    drop table if exists IN_GROP_MMBR cascade; 
+    drop table if exists IN_GRTR cascade; 
+    drop table if exists IN_INTK cascade; 
+    drop table if exists IN_INTK_APLN cascade; 
+    drop table if exists IN_INTK_SESN cascade; 
+    drop table if exists IN_INVT cascade; 
+    drop table if exists IN_INVT_LEVL_CODE cascade; 
+    drop table if exists IN_INVT_TTLE_CODE cascade; 
+    drop table if exists IN_INVT_TYPE_CODE cascade; 
+    drop table if exists IN_LNGE cascade; 
+    drop table if exists IN_LNGE_CODE cascade; 
+    drop table if exists IN_MODL cascade; 
+    drop table if exists IN_MRTL_CODE cascade; 
+    drop table if exists IN_NTLY_CODE cascade; 
+    drop table if exists IN_PCPL cascade; 
+    drop table if exists IN_PCPL_ROLE cascade; 
+    drop table if exists IN_PLMT_CODE cascade; 
+    drop table if exists IN_PRGM_CODE cascade; 
+    drop table if exists IN_PRGM_FILD_CODE cascade; 
+    drop table if exists IN_PRGM_LEVL cascade; 
+    drop table if exists IN_PRGM_OFRG cascade; 
+    drop table if exists IN_PROMO_CODE cascade; 
+    drop table if exists IN_RACE_CODE cascade; 
+    drop table if exists IN_RFRE cascade; 
+    drop table if exists IN_RFRN_NO cascade; 
+    drop table if exists IN_RLGN_CODE cascade; 
+    drop table if exists IN_RSCY_CODE cascade; 
+    drop table if exists IN_RSLT cascade; 
+    drop table if exists IN_SBJT_CODE cascade; 
+    drop table if exists IN_SCHL_CODE cascade; 
+    drop table if exists IN_SMDL cascade; 
+    drop table if exists IN_SPVR_CODE cascade; 
+    drop table if exists IN_SPVR_OFRG cascade; 
+    drop table if exists IN_STAF cascade; 
+    drop table if exists IN_STDY_CNTR_CODE cascade; 
+    drop table if exists IN_STDY_MODE cascade; 
+    drop table if exists IN_STDY_MODE_OFRG cascade; 
+    drop table if exists IN_STTE_CODE cascade; 
+    drop table if exists IN_USER cascade; 
+    drop table if exists IN_USER_VRFN cascade; 
+    drop table if exists IN_VENU_CODE cascade; 
+    drop table if exists IN_WTCH cascade; 
+    drop sequence SQ_IN_ACTR; 
+    drop sequence SQ_IN_ATMT; 
+    drop sequence SQ_IN_AUDT; 
+    drop sequence SQ_IN_BANK_CODE; 
+    drop sequence SQ_IN_BUMI_CODE; 
+    drop sequence SQ_IN_CITY_CODE; 
+    drop sequence SQ_IN_CLGE_CODE; 
+    drop sequence SQ_IN_CMCY_CODE; 
+    drop sequence SQ_IN_CMPS_CODE; 
+    drop sequence SQ_IN_CNDT; 
+    drop sequence SQ_IN_CNFG; 
+    drop sequence SQ_IN_CNTC; 
+    drop sequence SQ_IN_CNTY_CODE; 
+    drop sequence SQ_IN_DBLY_CODE; 
+    drop sequence SQ_IN_DPCY_CODE; 
+    drop sequence SQ_IN_DSCT_CODE; 
+    drop sequence SQ_IN_DUN_CODE; 
+    drop sequence SQ_IN_EDCN; 
+    drop sequence SQ_IN_EDCN_LEVL_CODE; 
+    drop sequence SQ_IN_EDCN_SCTR_CODE; 
+    drop sequence SQ_IN_EMAL_QUEU; 
+    drop sequence SQ_IN_EMIL_TMPT; 
+    drop sequence SQ_IN_EMPT; 
+    drop sequence SQ_IN_EMPT_FILD_CODE; 
+    drop sequence SQ_IN_EMPT_LEVL_CODE; 
+    drop sequence SQ_IN_EMPT_SCTR_CODE; 
+    drop sequence SQ_IN_ETNY_CODE; 
+    drop sequence SQ_IN_FCTY_CODE; 
+    drop sequence SQ_IN_FILD_CODE; 
+    drop sequence SQ_IN_GNDR_CODE; 
+    drop sequence SQ_IN_GRDE_CODE; 
+    drop sequence SQ_IN_GRDN; 
+    drop sequence SQ_IN_GRDT_CNTR; 
+    drop sequence SQ_IN_GROP_MMBR; 
+    drop sequence SQ_IN_GRTR; 
+    drop sequence SQ_IN_INTK; 
+    drop sequence SQ_IN_INTK_APLN; 
+    drop sequence SQ_IN_INTK_SESN; 
+    drop sequence SQ_IN_INVT; 
+    drop sequence SQ_IN_INVT_LEVL_CODE; 
+    drop sequence SQ_IN_INVT_TTLE_CODE; 
+    drop sequence SQ_IN_INVT_TYPE_CODE; 
+    drop sequence SQ_IN_LNGE; 
+    drop sequence SQ_IN_LNGE_CODE; 
+    drop sequence SQ_IN_MODL; 
+    drop sequence SQ_IN_MRTL_CODE; 
+    drop sequence SQ_IN_NTLY_CODE; 
+    drop sequence SQ_IN_PCPL; 
+    drop sequence SQ_IN_PCPL_ROLE; 
+    drop sequence SQ_IN_PLMT_CODE; 
+    drop sequence SQ_IN_PRGM_CODE; 
+    drop sequence SQ_IN_PRGM_FILD_CODE; 
+    drop sequence SQ_IN_PRGM_LEVL; 
+    drop sequence SQ_IN_PRGM_OFRG; 
+    drop sequence SQ_IN_PRMO_CODE; 
+    drop sequence SQ_IN_RACE_CODE; 
+    drop sequence SQ_IN_RFRE; 
+    drop sequence SQ_IN_RFRN_NO; 
+    drop sequence SQ_IN_RLGN_CODE; 
+    drop sequence SQ_IN_RSCY_CODE; 
+    drop sequence SQ_IN_RSLT; 
+    drop sequence SQ_IN_SBJT_CODE; 
+    drop sequence SQ_IN_SCHL_CODE; 
+    drop sequence SQ_IN_SMDL; 
+    drop sequence SQ_IN_SPVR_CODE; 
+    drop sequence SQ_IN_SPVR_OFRG; 
+    drop sequence SQ_IN_STDY_CNTR_CODE; 
+    drop sequence SQ_IN_STDY_MODE; 
+    drop sequence SQ_IN_STDY_MODE_OFRG; 
+    drop sequence SQ_IN_STTE_CODE; 
+    drop sequence SQ_IN_USER_VRFN; 
+    drop sequence SQ_IN_VENU_CODE; 
+    drop sequence SQ_IN_WTCH;
