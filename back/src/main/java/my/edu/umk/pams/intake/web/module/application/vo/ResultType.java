@@ -12,7 +12,11 @@ public enum ResultType {
     DIPLOMA,
     DIPLOMA_EQUIVALENT,
     BACHELOR,
-    BACHELOR_EQUIVALENT;
+    BACHELOR_EQUIVALENT,
+    MASTER,
+    MASTER_EQUIVALENT,
+    PHD_EQUIVALENT,
+    PHD-EQUIVALENT;
 	
 
     public static ResultType get(int index) {

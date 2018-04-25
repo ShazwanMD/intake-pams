@@ -49,4 +49,18 @@
     [result]="result" *ngIf="result.resultType === 'DIPLOMA'">
   </pams-diploma-result>
 
+  <!-- Master Result -->
+
+  <pams-diploma-result
+  [intakeApplication]="intakeApplication"
+  [result]="result" *ngIf="result.resultType === 'MASTER'">
+  </pams-diploma-result>
+
+  <!-- Phd Result -->
+
+  <pams-diploma-result
+  [intakeApplication]="intakeApplication"
+  [result]="result" *ngIf="result.resultType === 'PHD'">
+  </pams-diploma-result>
+
 </template>

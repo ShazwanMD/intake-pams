@@ -12,7 +12,11 @@ public enum InResultType {
     DIPLOMA("Diploma"), //5
     DIPLOMA_EQUIVALENT("DiplomaEquivalent"),  //6
     BACHELOR("Bachelor"),  //7
-    BACHELOR_EQUIVALENT("BachelorEquivalent");   //8
+    BACHELOR_EQUIVALENT("BachelorEquivalent")  //8
+    MASTER("Master"),  //9
+    MASTER_EQUIVALENT("MasterEquivalent"),  //10
+    PHD("Phd"),  //11
+    PHD_EQUIVALENT("PhdEquivalent");  //12
 
     private String code;
 
