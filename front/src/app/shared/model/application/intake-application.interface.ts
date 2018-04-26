@@ -68,6 +68,8 @@ export interface IntakeApplication extends MetaObject {
   stpmResultAttached: boolean;
   diplomaResultAttached: boolean;
   bachelorResultAttached: boolean;
+  masterResultAttached: boolean;
+  phdResultAttached: boolean;
   toeflResultAttached: boolean;
   ieltsResultAttached: boolean;
   languageResultAttached: boolean;

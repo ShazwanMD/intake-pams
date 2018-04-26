@@ -127,6 +127,14 @@ public interface InIntakeApplication extends InMetaObject {
     Boolean isBachelorResultAttached();
 
     void setBachelorResultAttached(Boolean bachelorResultAttached);
+    
+    Boolean isMasterResultAttached();
+
+    void setMasterResultAttached(Boolean masterResultAttached);
+    
+    Boolean isPhdResultAttached();
+
+    void setPhdResultAttached(Boolean phdResultAttached);
 
     Boolean isResearchProposalAttached();
 

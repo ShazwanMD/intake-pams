@@ -249,12 +249,15 @@ public class ApplicationController {
 		application.setSponsored(vo.getSponsored());
 		application.setPaid(vo.getProcessingFeeAttached());
 		application.setDeclared(vo.getDeclared());
+		
 
 		// check list
 		application.setSpmResultAttached(vo.getSpmResultAttached());
 		application.setStpmResultAttached(vo.getStpmResultAttached());
 		application.setDiplomaResultAttached(vo.getDiplomaResultAttached());
 		application.setBachelorResultAttached(vo.getBachelorResultAttached());
+		application.setMasterResultAttached(vo.getMasterResultAttached());
+		application.setPhdResultAttached(vo.getPhdResultAttached());
 		application.setToeflResultAttached(vo.getToeflResultAttached());
 		application.setIeltsResultAttached(vo.getIeltsResultAttached());
 		application.setMuetResultAttached(vo.getMuetResultAttached());

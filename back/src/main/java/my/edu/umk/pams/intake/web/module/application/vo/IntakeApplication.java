@@ -62,6 +62,8 @@ public class IntakeApplication extends MetaObject {
     private Boolean sponsorLetterAttached;
     private Boolean icCopyAttached;
     private Boolean passportCopyAttached;
+    private Boolean masterResultAttached;
+    private Boolean phdResultAttached;
     // address
     private String mailingAddress1;
     private String mailingAddress2;
@@ -323,6 +325,23 @@ public class IntakeApplication extends MetaObject {
         this.bachelorResultAttached = bachelorResultAttached;
     }
 
+    public Boolean getMasterResultAttached() {
+        return masterResultAttached;
+    }
+
+    public void setMasterResultAttached(Boolean masterResultAttached) {
+        this.masterResultAttached = masterResultAttached;
+    }
+    
+    public Boolean getPhdResultAttached() {
+        return phdResultAttached;
+    }
+
+    public void setPhdResultAttached(Boolean phdResultAttached) {
+        this.phdResultAttached = phdResultAttached;
+    }
+    
+    
     public Boolean getToeflResultAttached() {
         return toeflResultAttached;
     }

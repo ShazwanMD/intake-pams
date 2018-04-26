@@ -21,7 +21,12 @@ public enum InAttachmentType {
 	LANGUAGE_RESULT("Language"),  //14
 	IELTS("IELTS"), //15
     IC_COPY("IC"), //16
-    PASSPORT_COPY ("PASSPORT");//17
+    PASSPORT_COPY ("PASSPORT"), //17
+	MASTER("Master"), //18
+	MASTER_EQUIVALENT("MasterEquivalent"), //19
+	PHD("PHD"),  //20
+	PHD_EQUIVALENT("PhdEquivalent");  //21
+	
     private String code;
 
 	InAttachmentType(String code) {

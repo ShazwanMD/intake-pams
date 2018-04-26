@@ -113,6 +113,8 @@ export class MgsebIntakeApplicationPanel implements OnInit {
       muetResultAttached: [true],
       diplomaResultAttached: [true],
       bachelorResultAttached: [true],
+      masterResultAttached: [true],
+      phdResultAttached: [true],
       toeflResultAttached: [true],
       ieltsResultAttached: [true],
       languageResultAttached: [true],

@@ -653,18 +653,16 @@ public class ApplicationServiceImpl implements ApplicationService {
 		} else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA) {
 			application.setDiplomaResultAttached(true);
 		}
-
 		else if (attachment.getAttachmentType() == InAttachmentType.DIPLOMA_EQUIVALENT) {
 			application.setDiplomaResultAttached(true);
 		}
-
 		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR) {
 			application.setBachelorResultAttached(true);
 		}
-
 		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR_EQUIVALENT) {
 			application.setBachelorResultAttached(true);
-		} else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
+		} 		
+		else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
 			application.setSponsorLetterAttached(true);
 		} else if (attachment.getAttachmentType() == InAttachmentType.REFEREE_FORM) {
 			application.setRefereeFormAttached(true);
@@ -688,7 +686,20 @@ public class ApplicationServiceImpl implements ApplicationService {
 			application.setStamResultAttached(true);
 		} else if (attachment.getAttachmentType() == InAttachmentType.MUET) {
 			application.setMuetResultAttached(true);
+		} 
+		else if (attachment.getAttachmentType() == InAttachmentType.MASTER) {
+			application.setMasterResultAttached(true);
+		} 
+		else if (attachment.getAttachmentType() == InAttachmentType.MASTER_EQUIVALENT) {
+			application.setMasterResultAttached(true);
+		} 
+		else if (attachment.getAttachmentType() == InAttachmentType.PHD) {
+			application.setPhdResultAttached(true);
+		} 
+		else if (attachment.getAttachmentType() == InAttachmentType.PHD_EQUIVALENT) {
+			application.setPhdResultAttached(true);
 		}
+
 
 		this.updateIntakeApplication(application);
 
@@ -715,7 +726,20 @@ public class ApplicationServiceImpl implements ApplicationService {
 
 		else if (attachment.getAttachmentType() == InAttachmentType.BACHELOR_EQUIVALENT) {
 			application.setBachelorResultAttached(false);
-		} else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.MASTER) {
+			application.setMasterResultAttached(false);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.MASTER_EQUIVALENT) {
+			application.setMasterResultAttached(false);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.PHD) {
+			application.setPhdResultAttached(false);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.PHD_EQUIVALENT) {
+			application.setPhdResultAttached(false);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
 			application.setSponsorLetterAttached(false);
 		} else if (attachment.getAttachmentType() == InAttachmentType.REFEREE_FORM) {
 			application.setRefereeFormAttached(false);

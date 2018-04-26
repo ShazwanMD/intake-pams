@@ -21,7 +21,11 @@ public enum AttachmentType {
     LANGUAGE_RESULT,
     IELTS,
 	IC_COPY,
-	PASSPORT_COPY;
+	PASSPORT_COPY,
+    MASTER,
+    MASTER_EQUIVALENT,
+    PHD,
+    PHD_EQUIVALENT;
 
     public static AttachmentType get(int index) {
         return values()[index];

@@ -135,6 +135,12 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Column(name = "BACHELOR_RESULT_ATTACHED")
     private Boolean bachelorResultAttached = false;
     
+    @Column(name = "MASTER_RESULT_ATTACHED")
+    private Boolean masterResultAttached = false;
+    
+    @Column(name = "PHD_RESULT_ATTACHED")
+    private Boolean phdResultAttached = false;
+    
     @Column(name = "MUET_RESULT_ATTACHED")
     private Boolean muetResultAttached = false;
 
@@ -598,6 +604,26 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     @Override
     public void setBachelorResultAttached(Boolean bachelorResultAttached) {
         this.bachelorResultAttached = bachelorResultAttached;
+    }
+    
+    @Override
+    public Boolean isPhdResultAttached() {
+        return masterResultAttached;
+    }
+
+    @Override
+    public void setPhdResultAttached(Boolean phdResultAttached) {
+        this.phdResultAttached = phdResultAttached;
+    }
+    
+    @Override
+    public Boolean isMasterResultAttached() {
+        return masterResultAttached;
+    }
+
+    @Override
+    public void setMasterResultAttached(Boolean masterResultAttached) {
+        this.masterResultAttached = masterResultAttached;
     }
     
     @Override
