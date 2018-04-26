@@ -1,3 +1,4 @@
+import { MasterResultEditorDialog } from './../dialog/master-result-editor.dialog';
 import { StpmResultEditorDialog } from '../dialog/stpm-result-editor.dialog';
 import { DiplomaResultEditorDialog } from '../dialog/diploma-result-editor.dialog';
 import { SpmResultEditorDialog } from '../dialog/spm-result-editor.dialog';
@@ -9,6 +10,8 @@ import { Store } from '@ngrx/store';
 import { ApplicationModuleState } from '../../index';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 import { IntakeApplication } from '../../../../shared/model/application/intake-application.interface';
+import { PhdResultEditorDialog } from '../dialog/phd-result-editor.dialog';
+
 
 @Component({
   selector: 'pams-result-list',
@@ -22,6 +25,8 @@ export class ResultListComponent implements OnInit {
   private creatorDiplomaDialogRef: MdDialogRef<DiplomaResultEditorDialog>;
   private creatorStpmDialogRef: MdDialogRef<StpmResultEditorDialog>;
   private creatorSpmDialogRef: MdDialogRef<SpmResultEditorDialog>;
+  private creatorMasterDialogRef : MdDialogRef<MasterResultEditorDialog>;
+  private creatorPhdDialogRef : MdDialogRef<PhdResultEditorDialog>;
   private columns: any[] = [
     { name: 'resultType', label: 'Result Type' },
     { name: 'name', label: 'Name' },
@@ -59,6 +64,14 @@ export class ResultListComponent implements OnInit {
 
   createStpm(): void {
     this.showDialog4(null);
+  }
+
+  createMaster(): void {
+    this.showDialog5(null);
+  }
+
+  createPhd(): void {
+    this.showDialog6(null);
   }
 
   filter(): void {
@@ -115,5 +128,33 @@ export class ResultListComponent implements OnInit {
     this.creatorStpmDialogRef.afterClosed().subscribe((res) => {
     });
   }
+
+  showDialog5(masterResult: Result): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = { top: '65px' };
+    this.creatorMasterDialogRef = this.dialog.open(MasterResultEditorDialog, config);
+    this.creatorMasterDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.creatorMasterDialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+
+  showDialog6(phdResult: Result): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = { top: '65px' };
+    this.creatorPhdDialogRef = this.dialog.open(PhdResultEditorDialog, config);
+    this.creatorPhdDialogRef.componentInstance.intakeApplication = this.intakeApplication;
+    this.creatorPhdDialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+
+
 
 }

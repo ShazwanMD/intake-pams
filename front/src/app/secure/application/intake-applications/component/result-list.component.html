@@ -10,10 +10,14 @@
     <md-icon>add</md-icon>
   </button>
   <md-menu x-position="before" #menu="mdMenu">
+
     <button md-menu-item (click)="createBachelor()">Add Bachelor/Bachelor Equivalent Result</button>
     <button md-menu-item (click)="createDiploma()">Add Diploma/Diploma Equivalent Result</button>
     <button md-menu-item (click)="createStpm()">Add STPM/STPM Equivalent Result</button>
     <button md-menu-item (click)="createSpm()">Add SPM/SPM Equivalent Result</button>
+    <button md-menu-item (click)="createMaster()">Add Master/Master Equivalent Result</button>
+    <button md-menu-item (click)="createPhd()">Add Phd/Phd Equivalent Result</button>
+
   </md-menu>
 
 </div>
@@ -51,16 +55,16 @@
 
   <!-- Master Result -->
 
-  <pams-diploma-result
+  <pams-master-result
   [intakeApplication]="intakeApplication"
   [result]="result" *ngIf="result.resultType === 'MASTER'">
-  </pams-diploma-result>
+  </pams-master-result>
 
   <!-- Phd Result -->
 
-  <pams-diploma-result
+  <pams-phd-result
   [intakeApplication]="intakeApplication"
   [result]="result" *ngIf="result.resultType === 'PHD'">
-  </pams-diploma-result>
+  </pams-phd-result>
 
 </template>

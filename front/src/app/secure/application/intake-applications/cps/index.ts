@@ -1,3 +1,7 @@
+import { PhdResultEditorDialog } from './../dialog/phd-result-editor.dialog';
+import { PhdResultComponent } from './../component/phd-result.component';
+import { MasterResultComponent } from './../component/master-result.component';
+import { MasterResultEditorDialog } from './../dialog/master-result-editor.dialog';
 import { PromoCodeDialog } from './../dialog/promo-code.dialog';
 import {DiplomaResultComponent} from '../component/diploma-result.component';
 import {StpmResultComponent} from '../component/stpm-result.component';
@@ -62,6 +66,8 @@ import {SpmResultComponent} from '../component/spm-result.component';
     SpmResultComponent,
     StpmResultComponent,
     DiplomaResultComponent,
+    MasterResultComponent,
+    PhdResultComponent,
     BachelorResultComponent,
     ResultTypeSelectComponent,
 
@@ -71,7 +77,9 @@ import {SpmResultComponent} from '../component/spm-result.component';
     SpmResultEditorDialog,
     StpmResultEditorDialog,
     BachelorResultEditorDialog,
+    MasterResultEditorDialog,
     DiplomaResultEditorDialog,
+    PhdResultEditorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,
     PromoCodeDialog,
@@ -91,8 +99,10 @@ import {SpmResultComponent} from '../component/spm-result.component';
     ResultTypeSelectComponent,
     SpmResultComponent,
     BachelorResultComponent,
+    PhdResultComponent,
     StpmResultComponent,
     DiplomaResultComponent,
+    MasterResultComponent,
     CpsIntakeApplicationPanel,
   ],
 
@@ -102,6 +112,8 @@ import {SpmResultComponent} from '../component/spm-result.component';
     SpmResultEditorDialog,
     StpmResultEditorDialog,
     BachelorResultEditorDialog,
+    MasterResultEditorDialog,
+    PhdResultEditorDialog,
     DiplomaResultEditorDialog,
     LanguageEditorDialog,
     AttachmentCreatorDialog,
