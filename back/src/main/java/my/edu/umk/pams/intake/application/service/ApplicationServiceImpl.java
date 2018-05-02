@@ -672,7 +672,14 @@ public class ApplicationServiceImpl implements ApplicationService {
 			application.setProcessingFeeAttached(true);
 		} else if (attachment.getAttachmentType() == InAttachmentType.RESEARCH_PROPOSAL) {
 			application.setResearchProposalAttached(true);
-		} else if (attachment.getAttachmentType() == InAttachmentType.IELTS) {
+		} 
+		else if (attachment.getAttachmentType() == InAttachmentType.PHD) {
+			application.setPhdResultAttached(true);
+		} 
+		else if (attachment.getAttachmentType() == InAttachmentType.PHD_EQUIVALENT) {
+			application.setPhdResultAttached(true);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.IELTS) {
 			application.setIeltsResultAttached(true);
 		} else if (attachment.getAttachmentType() == InAttachmentType.TOEFL) {
 			application.setToeflResultAttached(true);
@@ -693,14 +700,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 		else if (attachment.getAttachmentType() == InAttachmentType.MASTER_EQUIVALENT) {
 			application.setMasterResultAttached(true);
 		} 
-		else if (attachment.getAttachmentType() == InAttachmentType.PHD) {
-			application.setPhdResultAttached(true);
-		} 
-		else if (attachment.getAttachmentType() == InAttachmentType.PHD_EQUIVALENT) {
-			application.setPhdResultAttached(true);
-		}
-
-
+		
 		this.updateIntakeApplication(application);
 
 	}
@@ -733,17 +733,20 @@ public class ApplicationServiceImpl implements ApplicationService {
 		else if (attachment.getAttachmentType() == InAttachmentType.MASTER_EQUIVALENT) {
 			application.setMasterResultAttached(false);
 		}
-		else if (attachment.getAttachmentType() == InAttachmentType.PHD) {
-			application.setPhdResultAttached(false);
-		}
-		else if (attachment.getAttachmentType() == InAttachmentType.PHD_EQUIVALENT) {
-			application.setPhdResultAttached(false);
-		}
+		
 		else if (attachment.getAttachmentType() == InAttachmentType.SPONSOR) {
 			application.setSponsorLetterAttached(false);
 		} else if (attachment.getAttachmentType() == InAttachmentType.REFEREE_FORM) {
 			application.setRefereeFormAttached(false);
-		} else if (attachment.getAttachmentType() == InAttachmentType.BANK_STATEMENT) {
+		} 
+		
+		else if (attachment.getAttachmentType() == InAttachmentType.PHD) {
+			application.setPhdResultAttached(false);
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.PHD_EQUIVALENT) {
+			application.setPhdResultAttached(false);		
+		}
+		else if (attachment.getAttachmentType() == InAttachmentType.BANK_STATEMENT) {
 			application.setBankStatementAttached(false);
 		} else if (attachment.getAttachmentType() == InAttachmentType.PROCESSING_FEE) {
 			application.setProcessingFeeAttached(false);

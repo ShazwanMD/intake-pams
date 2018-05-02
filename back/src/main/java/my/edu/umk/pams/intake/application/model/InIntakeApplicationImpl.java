@@ -608,7 +608,7 @@ public class InIntakeApplicationImpl implements InIntakeApplication {
     
     @Override
     public Boolean isPhdResultAttached() {
-        return masterResultAttached;
+        return phdResultAttached;
     }
 
     @Override
