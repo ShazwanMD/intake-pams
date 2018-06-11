@@ -91,6 +91,10 @@
         </div>
       </md-tab>
       <md-tab label="CPS Open Intakes">
+          <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+              <span>Application for Postgraduate Student by Research Mode</span>
+          </div>
+
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
           <div *ngIf="(intakes$ | async)?.length === 0">
             <span>There is no open intake at the moment. Please check again later</span>
@@ -154,6 +158,10 @@
 
 
       <md-tab label="MGSEB Open Intakes">
+          <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+              <span>Application for Postgraduate Student by Coursework</span>
+          </div>
+          
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
           <div *ngIf="(publishedIntakes$ | async)?.length === 0">
             <span>There is no open intake at the moment. Please check again later</span>
