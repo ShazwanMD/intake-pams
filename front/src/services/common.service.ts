@@ -299,6 +299,11 @@ export class CommonService {
     return this._http.get(this.COMMON_API + '/graduateCenters/' + graduateCenter.code + '/programCodes')
       .map((res: Response) => <ProgramCode[]>res.json());
   }
+  findProgramFieldCodesByGraduateCenter(graduateCenter: GraduateCenter): Observable<ProgramFieldCode[]> {
+    console.log('findProgramFieldCodesByGraduateCenter');
+    return this._http.get(this.COMMON_API + '/graduateCenters/' + graduateCenter.code + '/programFieldCodes')
+      .map((res: Response) => <ProgramFieldCode[]>res.json());
+  }
 
   saveGraduateCenter(code: GraduateCenter): Observable<String> {
     return this._http.post(this.COMMON_API + '/graduateCenters', JSON.stringify(code))

@@ -40,7 +40,7 @@ export class SupervisorOfferingEditorDialog implements OnInit {
     this.editorForm = this.formBuilder.group({
       id: null,
       supervisorCode: [<SupervisorCode>{}],
-      programLevel: [<ProgramLevel>{}],
+      // programLevel: [<ProgramLevel>{}],
     });
 
     if (this.edit) this.editorForm.patchValue(this._supervisorOffering);

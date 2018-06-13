@@ -81,4 +81,23 @@ export class CenterActions {
       payload: programCodes
     };
   }
+
+  static FIND_PROGRAM_FIELD_CODES = '[Center] Find Program Field Codes';
+  findProgramFieldCodes(graduateCenter): Action {
+    console.log("findProgramFieldCodes");
+    return {
+      type: CenterActions.FIND_PROGRAM_FIELD_CODES,
+      payload: graduateCenter
+    };
+  }
+
+  static FIND_PROGRAM_FIELD_CODES_SUCCESS = '[Center] Find Program Field Codes Success';
+
+  findProgramFieldCodesSuccess(programFieldCodes): Action {
+    console.log("findProgramFieldCodesSuccess");
+    return {
+      type: CenterActions.FIND_PROGRAM_FIELD_CODES_SUCCESS,
+      payload: programFieldCodes
+    };
+  }
 }

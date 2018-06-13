@@ -3,13 +3,13 @@ import {CenterActions} from './center.action';
 import {ProgramCode} from '../shared/model/common/program-code.interface';
 import { ProgramFieldCode } from '../shared/model/common/program-field-code.interface';
 
-export type ProgramCodeListState = ProgramCode[];
+export type ProgramFieldCodeListState = ProgramFieldCode[];
 
-const initialState: ProgramCodeListState = <ProgramCode[]>[];
+const initialState: ProgramFieldCodeListState = <ProgramFieldCode[]>[];
 
-export function programCodeListReducer(state = initialState, action: Action): ProgramCodeListState {
+export function programFieldCodeListReducer(state = initialState, action: Action): ProgramFieldCodeListState {
   switch (action.type) {
-    case CenterActions.FIND_PROGRAM_CODES_SUCCESS: {
+    case CenterActions.FIND_PROGRAM_FIELD_CODES_SUCCESS: {
       return action.payload;
     }
     default: {

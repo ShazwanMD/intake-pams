@@ -20,6 +20,7 @@ export class RegistrationService {
   }
 
   verifyUser(token: String): Observable<Boolean> {
+    console.log("Registration Token :" + token);
     return this._http.get(this.REGISTRATION_API + '/verifyUser/' + token)
       .map((res: Response) => <Boolean>res.json());
   }

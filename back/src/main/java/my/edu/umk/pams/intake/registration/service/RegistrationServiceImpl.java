@@ -125,8 +125,10 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public void verifyUser(String token) {
         SecurityContext sc = loginAsSystem();
+        LOG.debug("Token:{}", token);
         InUserVerification verification = userVerificationDao.findByToken(token);
         InUser user = verification.getUser();
+        LOG.debug("user:{}", user.getName());
         user.setEnabled(true);
         identityService.updateUser(user);
         logoutAsSystem(sc);

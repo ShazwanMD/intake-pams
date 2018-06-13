@@ -21,4 +21,10 @@ export class CenterEffects {
     .map(action => action.payload)
     .switchMap(graduateCenter => this.commonService.findProgramCodesByGraduateCenter(graduateCenter))
     .map(programCodes => this.centerActions.findProgramCodesSuccess(programCodes));
+
+    @Effect() findProgramFieldCodes$ = this.actions$
+    .ofType(CenterActions.FIND_PROGRAM_FIELD_CODES)
+    .map(action => action.payload)
+    .switchMap(graduateCenter => this.commonService.findProgramFieldCodesByGraduateCenter(graduateCenter))
+    .map(programFieldCodes => this.centerActions.findProgramFieldCodesSuccess(programFieldCodes));
 }

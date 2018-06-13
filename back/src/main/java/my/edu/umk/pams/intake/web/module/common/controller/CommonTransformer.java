@@ -130,6 +130,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public ProgramCode toProgramCodeVo(InProgramCode e) {
+    	if(null == e) return null;
         ProgramCode vo = new ProgramCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -149,6 +150,7 @@ public class CommonTransformer {
     // FIELD CODE
     // ====================================================================================================
     public FieldCode toFieldCodeVo(InFieldCode e) {
+    	if(null == e) return null;
     	FieldCode vo = new FieldCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -167,6 +169,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public ProgramFieldCode toProgramFieldCodeVo(InProgramFieldCode e) {
+    	if(null == e) return null;
     	ProgramFieldCode vo = new ProgramFieldCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -204,6 +207,7 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public SupervisorCode toSupervisorCodeVo(InSupervisorCode e) {
+    	if(null == e) return null;
         SupervisorCode vo = new SupervisorCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -224,10 +228,11 @@ public class CommonTransformer {
     // ====================================================================================================
 
     public SupervisorOffering toSupervisorOfferingVo(InSupervisorOffering e) {
+    	if(null == e) return null;
         SupervisorOffering vo = new SupervisorOffering();
         vo.setId(e.getId());
         vo.setSupervisorCode(this.toSupervisorCodeVo(e.getSupervisorCode()));
-        vo.setProgramLevel(policyTransformer.toProgramLevelVo(e.getProgramLevel()));
+        //vo.setProgramLevel(policyTransformer.toProgramLevelVo(e.getProgramLevel()));
         return vo;
     }
 

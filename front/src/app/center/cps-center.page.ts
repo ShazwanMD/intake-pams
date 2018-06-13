@@ -6,6 +6,7 @@ import {CenterActions} from './center.action';
 import {CenterModuleState} from './index';
 import {ProgramCode} from '../shared/model/common/program-code.interface';
 import {GraduateCenter} from '../shared/model/common/graduate-center.interface';
+import { ProgramFieldCode } from '../shared/model/common/program-field-code.interface';
 
 @Component({
   selector: 'pams-cps-center-page',
@@ -15,9 +16,9 @@ import {GraduateCenter} from '../shared/model/common/graduate-center.interface';
 export class CpsCenterPage implements OnInit {
 
   private GRADUATE_CENTER: string[] = 'centerModuleState.graduateCenter'.split('.');
-  private PROGRAM_CODES: string[] = 'centerModuleState.programCodes'.split('.');
+  private PROGRAM_FIELD_CODES: string[] = 'centerModuleState.programFieldCodes'.split('.');
 
-  private programCodes$: Observable<ProgramCode[]>;
+  private programFieldCodes$: Observable<ProgramFieldCode[]>;
   private graduateCenter$: Observable<GraduateCenter>;
 
   constructor(private router: Router,
@@ -25,22 +26,22 @@ export class CpsCenterPage implements OnInit {
               private centerActions: CenterActions,
               private store: Store<CenterModuleState>) {
     this.graduateCenter$ = this.store.select(...this.GRADUATE_CENTER);
-    this.programCodes$ = this.store.select(...this.PROGRAM_CODES);
+    this.programFieldCodes$ = this.store.select(...this.PROGRAM_FIELD_CODES);
   }
 
   ngOnInit(): void {
     this.store.dispatch(this.centerActions.findGraduateCenterByCode('CPS'));
     this.graduateCenter$.subscribe((graduateCenter) => {
         if (null != graduateCenter.code) {
-          this.store.dispatch(this.centerActions.findProgramCodes(graduateCenter));
+          this.store.dispatch(this.centerActions.findProgramFieldCodes(graduateCenter));
         }
       },
     );
   }
 
-  viewProgramCode(programCode: ProgramCode) {
-    console.log('programCode: ' + programCode.id);
-    this.router.navigate(['/common/program-codes', programCode.id]);
+  viewProgramFieldCode(programFieldCode: ProgramFieldCode) {
+    console.log('programFieldCode: ' + programFieldCode.code);
+    this.router.navigate(['/common/program-codes', programFieldCode.code]);
   }
 
 }

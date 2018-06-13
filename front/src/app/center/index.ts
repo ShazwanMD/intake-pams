@@ -1,3 +1,7 @@
+import { ProgramFieldCodeListComponent } from './component/program-field-code-list.component';
+import { ProgramFieldCodeListState } from './../secure/setup/program-field-codes/program-field-code-list.reducer';
+import { ProgramFieldCode } from './../shared/model/common/program-field-code.interface';
+import { ProgramFieldCodeListPage } from './../secure/setup/program-field-codes/program-field-code-list.page';
 
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -20,21 +24,27 @@ import {CenterPage} from './center.page';
 import {CenterEffects} from './center.effect';
 import {CenterActions} from './center.action';
 import {GraduateCenter} from '../shared/model/common/graduate-center.interface';
+import { programFieldCodeListReducer } from '../common/program-field-codes/program-field-code-list.reducer';
 
 export interface CenterModuleState {
   graduateCenter: GraduateCenterState;
   programCodes: ProgramCodeListState;
+  programFieldCodes: ProgramFieldCodeListState;
 };
 
 export const INITIAL_CENTER_STATE: CenterModuleState =
   <CenterModuleState>{
     graduateCenter: <GraduateCenter>{},
+    programFieldCodes:[],
     programCodes: [],
+
   };
 
 export const centerModuleReducers = {
   graduateCenter: graduateCenterReducer,
   programCodes: programCodeListReducer,
+  programFieldCodes: programFieldCodeListReducer,
+
  };
 
 @NgModule({
@@ -54,6 +64,7 @@ export const centerModuleReducers = {
 
     // component
     ProgramCodeListComponent,
+    ProgramFieldCodeListComponent,
   ],
   exports: [],
 })

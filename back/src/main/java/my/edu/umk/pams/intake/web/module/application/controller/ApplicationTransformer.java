@@ -29,6 +29,7 @@ public class ApplicationTransformer {
 	
 	public IntakeApplication toIntakeApplicationVo(InIntakeApplication e)
 	{
+		if(null == e) return null;
 		IntakeApplication vo = new IntakeApplication();	
 		vo.setId(e.getId());
 		vo.setReferenceNo(e.getReferenceNo());

@@ -62,6 +62,7 @@ public class IntakePublishTask extends BpmnActivityBehavior
         policyService.updateIntake(intake);
         
         // <program_code>-CHRT-<academic_session_code>
+        LOG.debug("Start Sending Payload");
         List<ProgramCodePayload> programCodePayloadList = new ArrayList<ProgramCodePayload>();
         List<InProgramOffering> prgrmOffering =  intake.getProgramOfferings();
         for (InProgramOffering inProgramOffering : prgrmOffering) {
@@ -76,9 +77,19 @@ public class IntakePublishTask extends BpmnActivityBehavior
            
            ProgramCodePayload programCodePayload = new ProgramCodePayload();
            
-           programCodePayload.setCode(programFieldCode.getCode());
-           programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn()+"("+programFieldCode.getFieldCode().getDescriptionEn()+")");
-           programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
+           switch(inProgramOffering.getProgramFieldCode().getProgramCode().getGraduateCenter().getCode()){
+           case "CPS":
+        	   programCodePayload.setCode(programFieldCode.getCode());
+               programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn()+"("+programFieldCode.getFieldCode().getDescriptionEn()+")");
+               programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
+               break;
+           case "MGSEB":
+               programCodePayload.setCode(programFieldCode.getCode());
+               programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn());
+               programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs());
+               break;
+
+           }
            
            FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
            facultyCodePayload.setCode(programFieldCode.getFacultyCode().getCode());
@@ -92,11 +103,9 @@ public class IntakePublishTask extends BpmnActivityBehavior
            
            chrtPayload.setCode(cohortCode);
            chrtPayload.setDescription(intake.getDescriptionEn());
-//         chrtPayload.setDescriptionMs(intake.getDescriptionMs());
            chrtPayload.setProgramCode(programCodePayload);
            
            IntakePayload intakePayload = new IntakePayload();
-        //   intakePayload.setCohort(cohortCode);
            
            IntakeSessionCodePayload intakeSessionPayload = new IntakeSessionCodePayload();
            intakeSessionPayload.setCode(intake.getSession().getCode());
@@ -108,6 +117,7 @@ public class IntakePublishTask extends BpmnActivityBehavior
            intakePayload.setOfferedProgramCodes(programCodePayloadList);
            PolicyIntakeEvent event = new PolicyIntakeEvent(intakePayload);
            applicationContext.publishEvent(event);
+           LOG.debug("Finish Sending Payload");
 	   }
         
     }

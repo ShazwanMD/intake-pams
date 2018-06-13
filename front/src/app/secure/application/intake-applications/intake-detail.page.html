@@ -67,7 +67,7 @@
         <template let-programOffering let-last="last" ngFor [ngForOf]="programOfferings$ | async">
           <div class="text-center" flex-xs="33" flex-gt-xs="33">
             <md-icon class="tc-grey-50 md-display-2">system_update_alt</md-icon>
-            <div class="pad-bottom-md">{{programOffering?.programCode?.descriptionEn}}</div>
+            <div class="pad-bottom-md">{{programOffering?.programFieldCode?.code}}:{{programOffering?.programFieldCode?.programCode?.descriptionEn}}</div>
           </div>
         </template>
       </div>

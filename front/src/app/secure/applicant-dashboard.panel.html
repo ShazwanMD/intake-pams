@@ -58,7 +58,7 @@
                 <md-card-title>{{myIntakeApplication.intake.startDate | date:'MMM' | uppercase}} {{myIntakeApplication.intake.startDate
                   | date:'y'}} INTAKE </md-card-title>
                 <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
-                  <md-card-subtitle> {{myIntakeApplication.intake.graduateCenter.code}} {{myIntakeApplication.intake.programLevel.code}}
+                  <md-card-subtitle class="bgc-red-700 "> {{myIntakeApplication.intake.graduateCenter.code}} {{myIntakeApplication.intake.programLevel.code}}
                   </md-card-subtitle>
                   <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
                 </md-toolbar>
@@ -109,7 +109,7 @@
                     <!-- <md-card-title>{{intake.startDate | date:'MMM' | uppercase}} {{intake.startDate | date:'y'}} INTAKE </md-card-title> -->
                   <md-card-title>{{intake.descriptionEn}}</md-card-title>
                     <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
-                      <md-card-subtitle> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle>
+                     <b><md-card-subtitle class="md-headline"> {{intake.graduateCenter.code}} {{intake.programLevel.code}}</md-card-subtitle></b>
                       <md-icon class="md-icon-font-xl tc-white">assignment</md-icon>
                     </md-toolbar>
                     <md-card-content>

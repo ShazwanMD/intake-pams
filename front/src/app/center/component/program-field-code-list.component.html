@@ -1,0 +1,12 @@
+<md-nav-list>
+        <template let-programFieldCode let-last="last" ngFor [ngForOf]="programFieldCodes">
+          <a md-list-item [routerLink]="['/']"><md-icon>label</md-icon>{{programFieldCode.code}}</a>
+        </template>
+      </md-nav-list>
+      
+      <!--<ul>-->
+        <!--<li *ngFor="let programCode of programCodes" (click)="view($event)">-->
+          <!--{{ programCode.code }} {{ programCode.descriptionMs }}-->
+        <!--</li>-->
+      <!--</ul>-->
+      
