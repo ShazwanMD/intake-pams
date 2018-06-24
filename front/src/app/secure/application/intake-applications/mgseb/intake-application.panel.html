@@ -14,12 +14,16 @@
       <md-tab label="detailCandidate">
         <template md-tab-label>Detail Of Candidate</template>
         <td-expansion-panel label="Program Choices">
+
           <pams-study-center-choice [intakeApplication]="_intakeApplication">
           </pams-study-center-choice>
 
+          <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
           <pams-study-center-code-select [placeholder]="'StudyCenter'" [innerFormControl]="applicationForm.controls.studyCenterCode"
           fxFlex="calc(50%-25px)" class="pad-bottom">
-        </pams-study-center-code-select>
+          </pams-study-center-code-select>
+          </div>
+
         </td-expansion-panel>
 
         <template md-tab-label>Applicant Personal Information</template>
