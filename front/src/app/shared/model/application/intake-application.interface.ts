@@ -1,3 +1,4 @@
+import { Attachment } from './attachment.interface';
 import { CountryCode } from '../common/country-code.interface';
 import { StateCode } from '../common/state-code.interface';
 import {EthnicityCode} from '../common/ethnicity-code.interface';
@@ -99,4 +100,6 @@ export interface IntakeApplication extends MetaObject {
   programSelection?: ProgramOffering;
   supervisorSelection?: SupervisorOffering;
   studyModeSelection?: StudyModeOffering;
+
+  attachment?: Attachment;
 }

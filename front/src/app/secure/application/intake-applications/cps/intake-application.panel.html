@@ -28,7 +28,38 @@
            </div>
         </div>
 
+        <!-- <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+          <div layout="row" layout-align="start center">
+          <button md-raised-button color="primary" (click)="researchProposalDialog(_intakeApplication)">
+              Upload Research Proposal 
+          </button>
+          </div>
+        </div>
+   -->
+        <!-- <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
+          <div layout="row" class="pad-top">
+          <pams-attachment-type-select
+              [placeholder]="'Attachment Type'" 
+              [innerFormControl]="applicationForm.controls.attachmentType" fxFlex="calc(100%-25px)">
+          </pams-attachment-type-select>
+        </div> -->
+      <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <!-- <md-card-title>Upload Research Proposal : </md-card-title> -->
+      <td class="md-title tc-grey-600">Upload Research Proposal :</td> <br>
+      <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="100px">
 
+            <button md-raised-button color="accent" (click)="uploadResearchProposal(applicationForm.value, applicationForm.valid)">
+            {{intakeApplication?.name}}
+            </button>
+        <!-- <td-file-upload #fileUpload (upload)="uploadResearchProposal(applicationForm.value, $event)" defaultColor="accent" activeColor="warn" cancelColor="primary">
+        <md-icon>file_upload</md-icon><span>{{ fileUpload.files?.name }}</span><template td-file-input-label>
+        <md-icon>attach_file</md-icon><span>Choose a file...</span>
+        </template>
+        </td-file-upload> -->
+      </div>
+      </div>
+
+    
         
 
           </md-input-container>
@@ -43,13 +74,13 @@
         </div>
         <md-divider></md-divider>
 
-        <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+        <!-- <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
         <div layout="row" layout-align="start center">
         <button md-raised-button color="primary" (click)="promoCodeDialog(_intakeApplication)">
             Enter Promo Code (if applicable)
         </button>
         </div>
-        </div>
+        </div> -->
 
         <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
             <!-- first column -->

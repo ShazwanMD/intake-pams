@@ -652,6 +652,7 @@ public class ApplicationController {
 		LOG.debug("original file name: {}", file.getOriginalFilename());
 		LOG.debug("content type: {}", file.getContentType());
 		LOG.debug("size: {}", file.getSize());
+		LOG.debug("AttachmentType:{}",attachmentType);
 		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
 
 		String mimeType = file.getContentType();

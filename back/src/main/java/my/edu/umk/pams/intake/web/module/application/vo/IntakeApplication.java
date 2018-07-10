@@ -91,6 +91,8 @@ public class IntakeApplication extends MetaObject {
     private EthnicityCode ethnicityCode;
     private MaritalCode maritalCode;
     private ReligionCode religionCode;
+    
+    private Attachment attachment;
 
     private BidType bidType;
     private InCandidateStatus bidStatus;
@@ -624,6 +626,14 @@ public class IntakeApplication extends MetaObject {
         this.religionCode = religionCode;
     }
 
+    public Attachment getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(Attachment attachment) {
+        this.attachment = attachment;
+    }
+    
     public StudyCenterCode getStudyCenterCode() {
 		return studyCenterCode;
 	}

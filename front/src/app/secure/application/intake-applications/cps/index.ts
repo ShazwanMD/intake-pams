@@ -1,3 +1,4 @@
+import { ResearchProposalUploaderDialog } from './../dialog/research-proposal-uploader.dialog';
 import { PhdResultEditorDialog } from './../dialog/phd-result-editor.dialog';
 import { PhdResultComponent } from './../component/phd-result.component';
 import { MasterResultComponent } from './../component/master-result.component';
@@ -83,6 +84,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     LanguageEditorDialog,
     AttachmentCreatorDialog,
     PromoCodeDialog,
+    ResearchProposalUploaderDialog,
 
   ],
   exports: [
@@ -118,6 +120,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     LanguageEditorDialog,
     AttachmentCreatorDialog,
     PromoCodeDialog,
+    ResearchProposalUploaderDialog,
     CpsIntakeApplicationPanel,
   ],
 })

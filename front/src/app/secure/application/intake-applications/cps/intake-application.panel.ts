@@ -1,3 +1,5 @@
+import { AttachmentHelper } from './../dialog/attachment-helper.interface';
+import { ResearchProposalUploaderDialog } from './../dialog/research-proposal-uploader.dialog';
 import { ResidencyCode } from './../../../../shared/model/common/residency-code.interface';
 import { Attachment } from './../../../../shared/model/application/attachment.interface';
 import { Result } from '../../../../shared/model/application/result.interface';
@@ -7,13 +9,13 @@ import { RaceCode } from '../../../../shared/model/common/race-code.interface';
 import { GenderCode } from '../../../../shared/model/common/gender-code.interface';
 import { Referee } from '../../../../shared/model/application/referee.interface';
 import { Employment } from '../../../../shared/model/application/employment.interface';
-import { Component, OnInit, Input ,ViewContainerRef } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ApplicationModuleState } from '../../index';
 import { IntakeApplicationActions } from '../intake-application.action';
-import { Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { IntakeApplication } from '../../../../shared/model/application/intake-application.interface';
 import { Language } from '../../../../shared/model/application/language.interface';
 import { NationalityCode } from '../../../../shared/model/common/nationality-code.interface';
@@ -23,6 +25,7 @@ import { CountryCode } from '../../../../shared/model/common/country-code.interf
 import { StateCode } from '../../../../shared/model/common/state-code.interface';
 import { MdSnackBar, MdSnackBarRef, MdTabChangeEvent, SimpleSnackBar, MdDialogConfig, MdDialogRef, MdDialog } from '@angular/material';
 import { PromoCodeDialog } from "../dialog/promo-code.dialog";
+import { AttachmentType } from '../../../../shared/model/application/attachment-type.enum';
 
 @Component({
   selector: 'pams-cps-intake-application',
@@ -31,8 +34,8 @@ import { PromoCodeDialog } from "../dialog/promo-code.dialog";
 
 export class CpsIntakeApplicationPanel implements OnInit {
 
-  private editorDialogRef: MdDialogRef<PromoCodeDialog>; 
-
+  private editorDialogRef: MdDialogRef<PromoCodeDialog>;
+  private editorDialogRef2: MdDialogRef<ResearchProposalUploaderDialog>;
   [x: string]: any;
 
   @Input() intakeApplications: IntakeApplication;
@@ -91,7 +94,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
       birthDate: [undefined, Validators.required],
       mobile: ['', Validators.required],
       okuNo: [''],
-      email:['', Validators.required],
+      email: ['', Validators.required],
       phone: [''],
       fax: [''],
       age: [0],
@@ -162,30 +165,68 @@ export class CpsIntakeApplicationPanel implements OnInit {
   submit(application: IntakeApplication, isValid: boolean) {
     if (confirm('Confirm to Submit this application?')) {
       this.store.dispatch(this.actions.submitIntakeApplication(application));
-      let snackBarRef = this.snackBar.open('Your application has been successfully submitted!','', {duration: 3000,});
+      let snackBarRef = this.snackBar.open('Your application has been successfully submitted!', '', { duration: 3000, });
       snackBarRef.afterDismissed().subscribe(() => {
         this.goBack();
       });
-      
+
     } else {
       return false;
     }
   }
 
-   promoCodeDialog(intakeApplication : IntakeApplication): void {
-     console.log('promoCodeDialog');
+  promoCodeDialog(intakeApplication: IntakeApplication): void {
+    console.log('promoCodeDialog');
     let config: MdDialogConfig = new MdDialogConfig();
-     config.viewContainerRef = this.vcf;
-     config.role = 'dialog';
-     config.width = '70%';
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
     config.height = '65%';
-     config.position = {top: '0px'};
+    config.position = { top: '0px' };
     this.editorDialogRef = this.dialog.open(PromoCodeDialog, config);
     this.editorDialogRef.componentInstance.intakeApplications = intakeApplication;
-     this.editorDialogRef.afterClosed().subscribe((res) => {
-       console.log('close dialog');
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
-   }
+  }
+
+  uploadResearchProposal(intakeApplication: IntakeApplication): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '65%';
+    config.position = { top: '0px' };
+    this.editorDialogRef2 = this.dialog.open(ResearchProposalUploaderDialog, config);
+    this.editorDialogRef2.componentInstance.intakeApplications = intakeApplication;
+    this.editorDialogRef2.afterClosed().subscribe((res) => {
+      console.log('close dialog');
+    });
+  }
+
+  // uploadResearchProposal(attachmentHelper: AttachmentHelper, file: File) {
+  //   if(confirm('Please make sure that your file is not exceed 1 mb'))
+  //   {
+  //     console.log("Sini");
+  //     if(file.type == 'application/pdf'){
+  //     this.store.dispatch(this.actions.addAndCheckAttachment(this._intakeApplication, file, attachmentHelper.attachmentType));
+  //    // this.dialog.close();
+  //     // window.location.reload();
+
+  //   }else{
+  //     console.log("not pdf");
+
+  //     let snackBarRef = this.snackBar.open('File Upload Must In PDF Format','OK');
+  //     snackBarRef.afterDismissed().subscribe(() => {
+  //        //window.location.reload();
+  //    });
+  //   }
+
+  //   }
+  //  else {
+
+  //  }
+  // }
 
   // copyAddress(application: IntakeApplication): void {
   //   this.store.dispatch(this.actions.updateIntakeApplication(this.applicationForm.value));
