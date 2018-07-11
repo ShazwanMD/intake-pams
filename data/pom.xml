@@ -283,7 +283,11 @@
 
                                 <!--IDENTITY-->
                                 <srcFile>src/test/resources/data/IN_PCPL.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile>
+                          
+                                <srcFile>src/test/resources/data/cps/IN_ACTR.sql</srcFile>
+                                <srcFile>src/test/resources/data/cps/IN_APCN.sql</srcFile>
+                                
+                               <!--  <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile> -->
 
                                 <!--SYSTEM-->
                                 <srcFile>src/test/resources/data/IN_RFRN_NO.sql</srcFile>
@@ -292,14 +296,36 @@
                                 <srcFile>src/test/resources/data/ACL.sql</srcFile>
 
                                 <!--COMMON-->
-                                <srcFile>src/test/resources/data/IN_GRDT_CNTR.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_FCTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_STDY_MODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/cps/IN_STDY_MODE_OFRG.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_FCTY_CODE.sql</srcFile> 
+                                <srcFile>src/test/resources/data/IN_GRDT_CNTR.sql</srcFile>
+                                
+                                <srcFile>src/test/resources/data/cps/IN_PRGM_LEVL.sql</srcFile>
+                                
+                                <srcFile>src/test/resources/data/cps/IN_PRGM_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/IN_MGSEB_PRGM_CODE.sql</srcFile>
+                                
+                                <srcFile>src/test/resources/data/cps/IN_FILD_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/cps/IN_PRGM_FILD_CODE.sql</srcFile>   
+
+                                <srcFile>src/test/resources/data/cps/IN_VENU_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/IN_MGSEB_VENU_CODE.sql</srcFile>
+
+                                <srcFile>src/test/resources/data/cps/IN_STDY_CNTR_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/IN_MGSEB_STDY_CNTR_CODE.sql</srcFile>
+                                
+                                <srcFile>src/test/resources/data/cps/IN_PRGM_OFRG.sql</srcFile>
+                                <srcFile>src/test/resources/data/mgseb/IN_MGSEB_PRGM_OFRG.sql</srcFile>
+                                
+                                
+<!--                           
                                 <srcFile>src/test/resources/data/IN_PRGM_LEVL.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_FILD_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PRGM_FILD_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_STDY_CNTR_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/IN_STDY_CNTR_CODE.sql</srcFile> -->
+                                
                                 <srcFile>src/test/resources/data/IN_DUN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_PLMT_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_LNGE_CODE.sql</srcFile>
@@ -311,18 +337,32 @@
                                 <srcFile>src/test/resources/data/IN_MRTL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_NTLY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_GNDR_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_GRDE_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_PROMO_CODE.sql</srcFile>
+                               <!--  <srcFile>src/test/resources/data/IN_GRDE_CODE.sql</srcFile> -->
+                                <!-- <srcFile>src/test/resources/data/IN_PROMO_CODE.sql</srcFile> -->
                                  <srcFile>src/test/resources/data/IN_RSCY_CODE.sql</srcFile>
                                  <srcFile>src/test/resources/data/IN_SCHL_CODE.sql</srcFile>
                                  <srcFile>src/test/resources/data/IN_SBJT_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_EDCN_LEVL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/IN_CNTY_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_INTK_SESN.sql</srcFile>
-                           
+                                <!-- <srcFile>src/test/resources/data/IN_INTK_SESN.sql</srcFile> -->
+                                
+                            
+                            	<srcFile>src/test/resources/data/cps/IN_INTK_SESN.sql</srcFile>
+                            	
+                            	<srcFile>src/test/resources/data/cps/IN_INTK.sql</srcFile>
+                            	<srcFile>src/test/resources/data/mgseb/IN_MGSEB_INTK.sql</srcFile>
+                            	
+                            	<srcFile>src/test/resources/data/cps/IMS_IN_SPVR_CODE.sql</srcFile>
+                            	<srcFile>src/test/resources/data/cps/IMS_IN_SPVR_OFRG.sql</srcFile>
+                            	<srcFile>src/test/resources/data/cps/IN_INTK_APPLICATION.sql</srcFile>
+                            
                                 <srcFile>src/test/resources/data/IN_DBLY_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_SPVR_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/IN_SPVR_OFRG.sql</srcFile>
+                     <!--            <srcFile>src/test/resources/data/IN_SPVR_CODE.sql</srcFile> -->
+                            <!--     <srcFile>src/test/resources/data/IN_SPVR_OFRG.sql</srcFile> -->
+                               <!--  <srcFile>src/test/resources/data/cps/IN_INTK_APLN.sql</srcFile>-->
+                                <srcFile>src/test/resources/data/cps/in_candidate.sql</srcFile> 
+                                 
+                                
                             </srcFiles>
                         </configuration>
                     </execution>

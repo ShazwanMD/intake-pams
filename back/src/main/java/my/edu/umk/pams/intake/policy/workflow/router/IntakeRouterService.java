@@ -1,5 +1,6 @@
 package my.edu.umk.pams.intake.policy.workflow.router;
 
+import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
 import my.edu.umk.pams.intake.application.service.ApplicationService;
 import my.edu.umk.pams.intake.common.model.InGraduateCenter;
@@ -36,6 +37,25 @@ public class IntakeRouterService extends RouterServiceSupport {
 
     @Autowired
     private PolicyService policyService;
+    
+    public List<String> findCreatorCandidates(Long intakeId) {
+        Validate.notNull(intakeId, "Id must not be null");
+        String candidate1 = null;
+        String candidate2 = null;
+        String candidate3 = null;
+        String candidate4 = null;
+        String candidate5 = null;
+        
+        InIntake intake = policyService.findIntakeById(intakeId);
+        InGraduateCenter center = intake.getGraduateCenter();
+        
+        candidate1 = "GRP_ADM";
+        candidate2 = "GRP_KRN_FCTY_A01";
+        candidate3 = "GRP_PGW_FCTY_A01";
+        candidate4 = "GRP_KRN_ADM_A09";
+        candidate5 = "GRP_PGW_ADM_A09";
+        return Arrays.asList(candidate1,candidate2, candidate3,candidate4, candidate5);
+    }
 
     public List<String> findVerifierCandidates(Long intakeId) {
         Validate.notNull(intakeId, "Id must not be null");

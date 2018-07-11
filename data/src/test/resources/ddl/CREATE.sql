@@ -676,7 +676,7 @@ create table IN_ACTR (
         REFEREE_FORM_ATTACHED boolean,
         REFERENCE_NO varchar(255) not null,
         RESEARCH_PROPOSAL_ATTACHED boolean,
-        RESEARCH_TITLE varchar(255) not null,
+        RESEARCH_TITLE varchar(1000) not null,
         SELF_SPONSORED boolean,
         SPM_RESULT_ATTACHED boolean,
         SPONSOR_LETTER_ATTACHED boolean,
