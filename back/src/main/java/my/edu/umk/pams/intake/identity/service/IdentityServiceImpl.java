@@ -899,7 +899,7 @@ public class IdentityServiceImpl implements IdentityService {
 
 			try{
 			// Group
-			InGroup group = findGroupByName("GRP_PGW_ADM_A10");
+			InGroup group = findGroupByName("GRP_PGW_ADM_A09");
 			// GroupMember
 			InGroupMember member = new InGroupMemberImpl();
 			member.setGroup(group);
@@ -920,7 +920,7 @@ public class IdentityServiceImpl implements IdentityService {
 
 			try{
 			// Group
-			InGroup group = findGroupByName("GRP_KRN_ADM_A10");
+			InGroup group = findGroupByName("GRP_KRN_ADM_A09");
 			// GroupMember
 			InGroupMember member = new InGroupMemberImpl();
 			member.setGroup(group);

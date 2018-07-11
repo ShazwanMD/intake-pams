@@ -463,9 +463,8 @@ public class CommonController {
 	// ====================================================================================================
 
 	@RequestMapping(value = "/programFieldCodes", method = RequestMethod.GET)
-	public ResponseEntity<List<ProgramFieldCode>> findProgramFieldCodes() {
-		return new ResponseEntity<List<ProgramFieldCode>>(
-				commonTransformer.toProgramFieldCodeVos(commonService.findProgramFieldCodes("%", 0, Integer.MAX_VALUE)),
+	public ResponseEntity<List<ProgramFieldCode>> findProgramFieldCodes() {	
+		return new ResponseEntity<List<ProgramFieldCode>>(commonTransformer.toProgramFieldCodeVos(commonService.findProgramFieldCodes()),
 				HttpStatus.OK);
 	}
 

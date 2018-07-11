@@ -1,0 +1,172 @@
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AM',
+   'Management',
+   'Pengurusan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AF',
+   'Finance',
+   'Kewangan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AA',
+   'Accounting',
+   'Perakauanan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AR',
+   'Retail',
+   'Peruncitan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AK',
+   'Commerce',
+   'Perdagangan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AU',
+   'Entrepreneurhip',
+   'Keusahawanan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CW',
+   'Heritage Studies',
+   'Pengajian Warisan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CT',
+   'Textile and Fashion',
+   'Tekstil dan Fesyen',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CP',
+   'Product Design',
+   'Rekabentuk Produk',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CM',
+   'Multimedia',
+   'Multimedia',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CV',
+   'Visual Communication',
+   'Komunikasi Visual',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BS',
+   'Agro Technopreneurship',
+   'Keusahawanan Teknologi Pertanian',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BB',
+   'Agriculture Technology',
+   'Bioteknologi Pertanian',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BP',
+   'Product Development Technology',
+   'Teknologi Pembangunan Produk',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BH',
+   'Animal Husbandary',
+   'Sains Peternakan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BA',
+   'Aquaculture',
+   'Akuakultur',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BJ',
+   'Food Security',
+   'Jaminan Makanan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AS',
+   'Mathematical Sciences',
+   'Sains Matematik',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BG',
+   'Geoscience',
+   'Geosains',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BN',
+   'Natural Resources Management',
+   'Pengurusan Sumber Asli',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BK',
+   'Sustainable Science',
+   'Sains Kelestarian',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'DP',
+   'Patalogy',
+   'Patalogi',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'DN',
+   'Nutrition',
+   'Nutrisi',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'DA',
+   'Anatomy',
+   'Anatomi',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'DM',
+   'Microbiology',
+   'Mikrobiologi',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'DR',
+   'Parasitology',
+   'Parasitologi',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'DF',
+   'Physiology',
+   'Fisiologi',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'BT',
+   'Bio-Industrial Technology',
+   'Teknologi Bioindustri',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'FB',
+   'Material Technology',
+   'Teknologi Bahan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'FS',
+   'Forest Resources Technology',
+   'Teknologi Sumber Hutan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'FT',
+   'Energy Technology',
+   'Teknologi Tenaga',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CI',
+   'Information Technology',
+   'Teknologi Maklumat',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CH',
+   'Architectural History and Theory',
+   'Teori dan Sejarah Senibina',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CS',
+   'Studies of History and Civilisation',
+   'Pengajian Sejarah dan Peradaban',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CN',
+   'Development and Educational Values',
+   'Pembangunan dan Pendidikan Nilai',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CO',
+   'Industrial Psychological Organization',
+   'Psikologi Industri Organisasi',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CA',
+   'Religion and Contemporary',
+   'Agama dan Kontemporari',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CK',
+   'Social Work',
+   'Kerja Sosial',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CB',
+   'Language Studies',
+   'Pengajian Bahasa',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'CC',
+   'Communication',
+   'Komunikasi',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AW',
+   'Health Entrepreneurship',
+   'Keusahawanan Kesihatan',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AH',
+   'Hospitality',
+   'Hospitaliti',
+CURRENT_TIMESTAMP, 0, 1);
+INSERT INTO IN_FILD_CODE (ID,CODE,DESCRIPTION_EN, DESCRIPTION_MS, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_IN_FILD_CODE'),   'AP',
+   'Tourism',
+   'Pelancongan',
+CURRENT_TIMESTAMP, 0, 1);

@@ -330,30 +330,43 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 		InProgramFieldCode programFieldCode = candidate.getProgramSelection().getProgramFieldCode();
 		
+		//Candidate
 		CandidatePayload payload = new CandidatePayload();
 		payload.setName(candidate.getName());
 		payload.setMatricNo(candidate.getMatricNo());
 		payload.setEmail(candidate.getEmail());
 
+		//ProgramCode
 		ProgramCodePayload programCodePayload = new ProgramCodePayload();
 		programCodePayload.setCode(programFieldCode.getCode());
 		programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn()+"("+programFieldCode.getFieldCode().getDescriptionEn()+")");
 		programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
 		payload.setProgramCode(programCodePayload);
 
-		
+		//FacultyCode
 		InFacultyCode facultyCode = programFieldCode.getFacultyCode();
 
 		FacultyCodePayload facultyCodePayload = new FacultyCodePayload();
 		facultyCodePayload.setCode(facultyCode.getCode());
 		facultyCodePayload.setDescription(facultyCode.getDescriptionMs());
 		payload.setFacultyCode(facultyCodePayload);
+		
+		//ProgramLevel
 		payload.setProgramLevel(programFieldCode.getProgramCode().getProgramLevel().getCode());
+		
+		//Gender
 		payload.setGender(candidate.getApplication().getGenderCode().getCode());
+		
+		//Religion
 		payload.setReligion(candidate.getApplication().getReligionCode().getCode());
+		
+		//MaritalStatus
 		payload.setMartialStatus(candidate.getApplication().getMaritalCode().getCode());
+		
+		//Race
 		payload.setRace(candidate.getApplication().getRaceCode().getCode());
 
+		//ResearchTitle
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {
 			payload.setResearchTitle(candidate.getApplication().getResearchTitle());
 		}
@@ -365,11 +378,15 @@ public class AdmissionServiceImpl implements AdmissionService {
 		UserPayload userPayload = new UserPayload();
 		userPayload.setUsername(user.getEmail());
 		LOG.debug("Username:{}", user.getEmail());
+	
 		userPayload.setEmail(user.getEmail());
+		
 		userPayload.setPassword(user.getPassword());
 		LOG.debug("Password:{}", user.getPassword());
+		
 		userPayload.setRealName(user.getRealName());
 		LOG.debug("Realname:{}", user.getRealName());
+		
 		userPayload.setNric(candidate.getIdentityNo());
 		LOG.debug("Identity Number:{}", candidate.getIdentityNo());
 		payload.setUserPayload(userPayload);
@@ -412,6 +429,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		studyModePayload.setCode(studyMode.getCode());
 		payload.setStudyMode(studyModePayload);
 
+		//SupervisorCode
 		if (candidate.getIntake().getGraduateCenter().getCode().equals("CPS")) {
 			payload.setSupervisorCode(candidate.getSupervisorSelection().getSupervisorCode().getCode());
 		} else {

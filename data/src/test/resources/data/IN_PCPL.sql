@@ -50,25 +50,25 @@ INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 1', 'applicant1@gmail.com', 'abc123');
 
-INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant2', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
-INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 2', 'applicant2@gmail.com', 'abc123');
-
-INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant3', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
-INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 3', 'applicant3@gmail.com', 'abc123');
-
-INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant4', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
-INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 4', 'applicant4@gmail.com', 'abc123');
-
-INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant5', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
-INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 5', 'applicant5@gmail.com', 'abc123');
-
-INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'candidate1', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
-INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
-VALUES (currval('SQ_IN_PCPL'), 'PAMS Candidate1', 'candidate1@gmail.com', 'abc123');
+--INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant2', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+--INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+--VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 2', 'applicant2@gmail.com', 'abc123');
+--
+--INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant3', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+--INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+--VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 3', 'applicant3@gmail.com', 'abc123');
+--
+--INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant4', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+--INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+--VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 4', 'applicant4@gmail.com', 'abc123');
+--
+--INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'applicant5', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+--INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+--VALUES (currval('SQ_IN_PCPL'), 'PAMS Applicant 5', 'applicant5@gmail.com', 'abc123');
+--
+--INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'candidate1', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+--INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+--VALUES (currval('SQ_IN_PCPL'), 'PAMS Candidate1', 'candidate1@gmail.com', 'abc123');
 
 INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'registrar', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
@@ -85,6 +85,70 @@ VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI', 'fakulti-kerani-A01@gmail.
 INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A01', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI', 'fakulti-pegawai-A01@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-kerani-A02', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI A02', 'fakulti-kerani-A02@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A02', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI A02', 'fakulti-pegawai-A02@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-kerani-A04', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI A04', 'fakulti-kerani-A04@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A04', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI A04', 'fakulti-pegawai-A04@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-kerani-A06', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI A06', 'fakulti-kerani-A06@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A06', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI A06', 'fakulti-pegawai-A06@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-kerani-A07', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI A07', 'fakulti-kerani-A07@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A07', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI A07', 'fakulti-pegawai-A07@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-kerani-A08', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI A08', 'fakulti-kerani-A08@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A08', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI A08', 'fakulti-pegawai-A08@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-kerani-A11', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI A11', 'fakulti-kerani-A11@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A11', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI A11', 'fakulti-pegawai-A11@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-kerani-A13', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI A13', 'fakulti-kerani-A13@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A13', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI A13', 'fakulti-pegawai-A13@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-kerani-A14', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI KERANI A14', 'fakulti-kerani-A14@gmail.com', 'abc123');
+
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'fakulti-pegawai-A14', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_IN_PCPL'), 'PAMS FAKULTI PEGAWAI A14', 'fakulti-pegawai-A14@gmail.com', 'abc123');
 
 INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'io-pegawai', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO IN_USER (ID, REAL_NAME, EMAIL, PASSWORD)
@@ -248,6 +312,13 @@ INSERT INTO IN_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES 
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A13'), 1, 1, CURRENT_TIMESTAMP);
+-- FACULTY (A14)
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_FCTY_A14', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL_ROLE'), (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY'), 6, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A14'), 1, 1, CURRENT_TIMESTAMP);																				 
 																				 
 -- KERANI PTJ IO
 INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_KRN_PTJ_IO', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
@@ -699,6 +770,37 @@ INSERT INTO IN_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES 
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_B010205'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_TDKN_FCTY_B010205'), 1, 1, CURRENT_TIMESTAMP);	                                                                                 
+-- KERANI FCTY A14
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_KRN_FCTY_A14', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL_ROLE'), (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A13'), 6, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A14'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A14'), 1, 1, CURRENT_TIMESTAMP);
+
+-- PEGAWAI FCTY A14
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_PGW_FCTY_A14', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL_ROLE'), (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A13'), 6, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A14'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A14'), 1, 1, CURRENT_TIMESTAMP);
+																				 
+-- DEKAN FCTY A14
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_DKN_FCTY_A14', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL_ROLE'), (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_DKN_FCTY_A13'), 6, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A14'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_DKN_FCTY_A14'), 1, 1, CURRENT_TIMESTAMP);
+
+-- TIMB DEKAN FCTY A14
+INSERT INTO IN_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL'), 'GRP_TDKN_FCTY_A14', TRUE, TRUE, 1, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP (ID) VALUES (currval('SQ_IN_PCPL'));
+INSERT INTO IN_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_PCPL_ROLE'), (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_TDKN_FCTY_A13'), 6, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_FCTY_A14'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_TDKN_FCTY_A14'), 1, 1, CURRENT_TIMESTAMP);																																								 
                                                                                  
 --PEGAWAI 
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
@@ -708,11 +810,51 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_ADM_A10'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'mgseb-pegawai'), 1, 1, CURRENT_TIMESTAMP);
-
+-- Pegawai FAKULTI A01
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A01'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A01'), 1, 1, CURRENT_TIMESTAMP);
 
+-- Pegawai FAKULTI A02
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A02'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A02'), 1, 1, CURRENT_TIMESTAMP);
+																				 
+-- Pegawai FAKULTI A04
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A04'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A04'), 1, 1, CURRENT_TIMESTAMP);
+																				 
+-- Pegawai FAKULTI A06
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A06'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A06'), 1, 1, CURRENT_TIMESTAMP);
+																				 
+-- Pegawai FAKULTI A07
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A07'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A07'), 1, 1, CURRENT_TIMESTAMP);																				 
+
+-- Pegawai FAKULTI A08
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A08'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A08'), 1, 1, CURRENT_TIMESTAMP);	
+																				 
+-- Pegawai FAKULTI A13
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A13'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A13'), 1, 1, CURRENT_TIMESTAMP);																					 
+
+-- Pegawai FAKULTI A11
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A11'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A11'), 1, 1, CURRENT_TIMESTAMP);	
+																				 
+-- Pegawai FAKULTI A14
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_FCTY_A14'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-pegawai-A14'), 1, 1, CURRENT_TIMESTAMP);	
+																				 
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_PGW_PTJ_IO'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'io-pegawai'), 1, 1, CURRENT_TIMESTAMP);																						 
@@ -729,7 +871,45 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A01'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A01'), 1, 1, CURRENT_TIMESTAMP);		
+-- Kerani Fakulti A02
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A02'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A02'), 1, 1, CURRENT_TIMESTAMP);
+-- Kerani Fakulti A04
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A04'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A04'), 1, 1, CURRENT_TIMESTAMP);
+																				 
+-- Kerani Fakulti A06
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A06'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A06'), 1, 1, CURRENT_TIMESTAMP);
+																				 
+-- Kerani Fakulti A07
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A07'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A07'), 1, 1, CURRENT_TIMESTAMP);
 
+-- Kerani Fakulti A08
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A08'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A08'), 1, 1, CURRENT_TIMESTAMP);
+
+-- Kerani Fakulti A11
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A11'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A11'), 1, 1, CURRENT_TIMESTAMP);
+
+-- Kerani Fakulti A13
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A13'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A13'), 1, 1, CURRENT_TIMESTAMP);
+																				 
+-- Kerani Fakulti A14
+INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_FCTY_A14'),
+                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'fakulti-kerani-A14'), 1, 1, CURRENT_TIMESTAMP);
+																				 
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_KRN_PTJ_IO'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'io-kerani'), 1, 1, CURRENT_TIMESTAMP);
@@ -772,22 +952,22 @@ INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant1'), 1, 1, CURRENT_TIMESTAMP);	
 
-INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
-                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
-                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant2'), 1, 1, CURRENT_TIMESTAMP);
-
-INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
-                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
-                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant3'), 1, 1, CURRENT_TIMESTAMP);
-
-INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
-                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
-                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant4'), 1, 1, CURRENT_TIMESTAMP);	
-																				 
-INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
-                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
-                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant5'), 1, 1, CURRENT_TIMESTAMP);
-                                                                                 
+--INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+--                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+--                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant2'), 1, 1, CURRENT_TIMESTAMP);
+--
+--INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+--                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+--                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant3'), 1, 1, CURRENT_TIMESTAMP);
+--
+--INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+--                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+--                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant4'), 1, 1, CURRENT_TIMESTAMP);	
+--																				 
+--INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
+--                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_APCN'),
+--                                                                                 (SELECT ID FROM IN_PCPL WHERE NAME = 'applicant5'), 1, 1, CURRENT_TIMESTAMP);
+--                                                                                 
 
 INSERT INTO IN_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_IN_GROP_MMBR'),
                                                                                  (SELECT ID FROM IN_PCPL WHERE NAME = 'GRP_ADM'),
