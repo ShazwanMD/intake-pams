@@ -287,7 +287,7 @@
                                 <srcFile>src/test/resources/data/cps/IN_ACTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/cps/IN_APCN.sql</srcFile>
                                 
-                               <!--  <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile> -->
+                               <srcFile>src/test/resources/data/IN_ACTR.sql</srcFile> 
 
                                 <!--SYSTEM-->
                                 <srcFile>src/test/resources/data/IN_RFRN_NO.sql</srcFile>

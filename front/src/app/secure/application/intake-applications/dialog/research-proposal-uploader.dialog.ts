@@ -30,8 +30,9 @@ export class ResearchProposalUploaderDialog implements OnInit {
   private rschProposalForm: FormGroup;
   private _attachment: Attachment;
   private edit: boolean = false;
+  private ATTACHMENTBYTYPES: string[] = 'applicationModuleState.attachmentByTypes'.split('.');
 
-
+  private attachmentByTypes$: Observable<Attachment>;
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -40,6 +41,8 @@ export class ResearchProposalUploaderDialog implements OnInit {
               private actions: IntakeApplicationActions,
               private snackBar: MdSnackBar,
               private dialog: MdDialogRef<ResearchProposalUploaderDialog>) {
+    this.attachmentByTypes$ = this.store.select(...this.ATTACHMENTBYTYPES);
+
                 
   }
 
@@ -62,6 +65,7 @@ export class ResearchProposalUploaderDialog implements OnInit {
     this.rschProposalForm = this.formBuilder.group(<AttachmentHelper>{
       attachmentType: AttachmentType.RESEARCH_PROPOSAL,
     });
+    this.store.dispatch(this.actions.findAttachmentsByType(this._intakeApplication));
   }
 
   upload(attachmentHelper: AttachmentHelper, file: File) {

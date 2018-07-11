@@ -28,6 +28,7 @@ export class AttachmentByTypeComponent implements OnChanges {
 
   private columns: any[] = [
     {name: 'name', label: 'Name'},
+    {name: 'size', label: 'Size'},
     {name: 'action', label: ''}
   ];
 

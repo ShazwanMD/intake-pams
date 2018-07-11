@@ -1,29 +1,28 @@
-<h2 md-dialog-title>Attachment</h2>
+<h2 md-dialog-title>Please Upload Research Proposal</h2>
 <md-dialog-content>
   <form [formGroup]="rschProposalForm">
     <md-card>
    
     <md-card-subtitle>Your File size must not exceed 1 mb.</md-card-subtitle>
+    <md-card-subtitle>File should be in pdf only.</md-card-subtitle>
 
-    
     <div flex class="pad inset" tdMediaToggle="gt-xs" [mediaClasses]="['pad-sm']">
-          <div layout="row" class="pad-top">
-          <pams-attachment-type-select
-              [placeholder]="'Attachment Type'" 
-              [innerFormControl]="rschProposalForm.controls.attachmentType" fxFlex="calc(100%-25px)">
-          </pams-attachment-type-select>
-    </div>
 
-<md-card-subtitle></md-card-subtitle>
+      <pams-attachment-by-type [attachmentByTypes]="attachmentByTypes$ | async">
+      </pams-attachment-by-type>
+
+      <div layout="row" class="pad-top">
+        <pams-attachment-type-select [placeholder]="'Attachment Type'" [innerFormControl]="rschProposalForm.controls.attachmentType" fxFlex="calc(100%-25px)">
+      </pams-attachment-type-select>
+      </div>
+
+      <md-card-subtitle></md-card-subtitle>
       <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="100px">
         <td-file-upload #fileUpload (upload)="upload(rschProposalForm.value, $event)" defaultColor="accent" activeColor="warn" cancelColor="primary">
         <md-icon>file_upload</md-icon><span>{{ fileUpload.files?.name }}</span><template td-file-input-label>
         <md-icon>attach_file</md-icon><span>Choose a file...</span>
         </template>
         </td-file-upload>
-      </div>
-      <div>
-        {{fileUpload.files?.name}}
       </div>
 
     </div>
