@@ -101,5 +101,5 @@ export interface IntakeApplication extends MetaObject {
   supervisorSelection?: SupervisorOffering;
   studyModeSelection?: StudyModeOffering;
 
-  attachment?: Attachment;
+  attachment: Attachment;
 }

@@ -1,3 +1,4 @@
+import { AttachmentState, attachmentReducer } from './intake-applications/attachment.reducer';
 import {Result} from '../../shared/model/application/result.interface';
 import {SupervisorOffering} from '../../shared/model/policy/supervisor-offering.interface';
 import {Referee} from '../../shared/model/application/referee.interface';
@@ -66,6 +67,7 @@ export interface ApplicationModuleState {
   languages: LanguageListState;
   referees: RefereeListState;
   attachments: AttachmentListState;
+  attachmentByTypes: AttachmentState;
   programOfferings: IntakeProgramOfferingListState;
   supervisorOfferings: SupervisorOfferingListState;
   studyModeOfferings: IntakeStudyModeOfferingListState;
@@ -83,6 +85,7 @@ export const INITIAL_APPLICATION_STATE: ApplicationModuleState = <ApplicationMod
   languages: <Language[]>[],
   referees: <Referee[]>[],
   attachments: <Attachment[]>[],
+  attachmentByTypes: <Attachment[]>[],
   results: <Result[]>[],
   programOfferings: <ProgramOffering[]>[],
   supervisorOfferings: <SupervisorOffering[]>[],
@@ -100,6 +103,7 @@ export const applicationModuleReducers = {
   languages: languageListReducer,
   referees: refereeListReducer,
   attachments: attachmentListReducer,
+  attachmentByTypes: attachmentReducer,
   results: resultListReducer,
   programOfferings: intakeProgramOfferingListReducer,
   supervisorOfferings: supervisorOfferingListReducer,

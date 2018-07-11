@@ -20,14 +20,17 @@ import { Attachment } from '../../../../shared/model/application/attachment.inte
 })
 
 export class ResearchProposalUploaderDialog implements OnInit {
-  private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
+
   
+  private INTAKE_APPLICATIONS: string[] = 'accountModuleState.intakeApplications'.split('.');
+ 
  // private intakeApplications$: Observable<IntakeApplication[]>;
     
   private _intakeApplication: IntakeApplication;
   private rschProposalForm: FormGroup;
   private _attachment: Attachment;
   private edit: boolean = false;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -37,6 +40,7 @@ export class ResearchProposalUploaderDialog implements OnInit {
               private actions: IntakeApplicationActions,
               private snackBar: MdSnackBar,
               private dialog: MdDialogRef<ResearchProposalUploaderDialog>) {
+                
   }
 
 
@@ -57,8 +61,7 @@ export class ResearchProposalUploaderDialog implements OnInit {
   ngOnInit(): void {
     this.rschProposalForm = this.formBuilder.group(<AttachmentHelper>{
       attachmentType: AttachmentType.RESEARCH_PROPOSAL,
-    })
-      ;
+    });
   }
 
   upload(attachmentHelper: AttachmentHelper, file: File) {

@@ -617,6 +617,12 @@ public class ApplicationController {
 		return new ResponseEntity<List<Attachment>>(applicationTransformer.toAttachmentVos(attachments), HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachmentByType", method = RequestMethod.GET)
+	public ResponseEntity<List<Attachment>> findAttachmentsByType(@PathVariable String referenceNo) {
+		InIntakeApplication application = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+		List<InAttachment> attachments = applicationService.findAttachmentByType(InAttachmentType.RESEARCH_PROPOSAL, application);
+		return new ResponseEntity<List<Attachment>>(applicationTransformer.toAttachmentVos(attachments), HttpStatus.OK);
+	}
 	// note:
 	// http://www.codejava.net/coding/upload-files-to-database-with-spring-mvc-and-hibernate
 	@RequestMapping(value = "/intakeApplications/{referenceNo}/attachments", method = RequestMethod.POST)

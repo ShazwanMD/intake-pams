@@ -42,6 +42,8 @@ public interface InIntakeApplicationDao extends GenericDao<Long, InIntakeApplica
     InLanguage findLanguageById(Long id);
 
     InAttachment findAttachmentById(Long id);
+    
+    List<InAttachment> findAttachmentByType(InAttachmentType attachmentType, InIntakeApplication application);
 
     InGuarantor findGuarantorByType(InGuarantorType type, InIntakeApplication application);
 

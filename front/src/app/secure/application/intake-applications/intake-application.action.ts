@@ -735,6 +735,26 @@ export class IntakeApplicationActions {
     };
   }
 
+  static FIND_ATTACHMENTS_BY_TYPE = '[Intake Application] Find Attachment By Type';
+
+  findAttachmentsByType(application): Action {
+    console.log('findAttachmentsByType');
+    return {
+      type: IntakeApplicationActions.FIND_ATTACHMENTS_BY_TYPE,
+      payload: application,
+    };
+  }
+
+  static FIND_ATTACHMENTS_BY_TYPE_SUCCESS = '[Intake Application] Find Attachment By Type Success';
+
+  findAttachmentsByTypeSuccess(attachments): Action {
+    console.log('findAttachmentsByTypeSuccess');
+    return {
+      type: IntakeApplicationActions.FIND_ATTACHMENTS_BY_TYPE_SUCCESS,
+      payload: attachments,
+    };
+  }
+
   static ADD_ATTACHMENT = '[Intake Application] Add Attachment';
 
   addAttachment(application, file, attachmentType): Action {

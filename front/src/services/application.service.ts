@@ -265,6 +265,12 @@ export class ApplicationService {
       .map((res: Response) => <Attachment[]>res.json());
   }
 
+  findAttachmentsByType(application: IntakeApplication): Observable<Attachment[]> {
+    console.log('findAttachmentByType');
+    return this._http.get(this.APPLICATION_API + '/intakeApplications/' + application.referenceNo + '/attachmentByType')
+      .map((res: Response) => <Attachment[]>res.json());
+  }
+
   downloadAttachment(attachment: Attachment): Observable<File> {
     console.log('downloadAttachment');
     let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});

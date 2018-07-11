@@ -49,8 +49,14 @@
       <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="100px">
 
             <button md-raised-button color="accent" (click)="uploadResearchProposal(applicationForm.value, applicationForm.valid)">
-            {{intakeApplication?.name}}
+           upload here 
             </button>
+            <div>
+                <pams-attachment-by-type [attachmentByTypes]="attachmentByTypes$ | async">
+                  </pams-attachment-by-type>
+
+            </div>
+ 
         <!-- <td-file-upload #fileUpload (upload)="uploadResearchProposal(applicationForm.value, $event)" defaultColor="accent" activeColor="warn" cancelColor="primary">
         <md-icon>file_upload</md-icon><span>{{ fileUpload.files?.name }}</span><template td-file-input-label>
         <md-icon>attach_file</md-icon><span>Choose a file...</span>

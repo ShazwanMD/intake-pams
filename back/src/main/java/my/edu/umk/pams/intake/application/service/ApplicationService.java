@@ -118,6 +118,8 @@ public interface ApplicationService {
 
     InContact findContactById(Long id);
 
+    List<InAttachment> findAttachmentByType(InAttachmentType attachmentType, InIntakeApplication application);
+
     InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application);
 
     InGuarantor findGuarantorByType(InGuarantorType guarantorType, InIntakeApplication application);

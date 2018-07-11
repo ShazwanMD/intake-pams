@@ -394,6 +394,11 @@ public class ApplicationServiceImpl implements ApplicationService {
 	}
 
 	@Override
+	public List<InAttachment> findAttachmentByType(InAttachmentType attachmentType, InIntakeApplication application) {
+		return intakeApplicationDao.findAttachmentByType(attachmentType, application);
+	}
+
+	@Override
 	public InGuardian findGuardianByType(InGuardianType guardianType, InIntakeApplication application) {
 		return intakeApplicationDao.findGuardianByType(guardianType, application);
 	}

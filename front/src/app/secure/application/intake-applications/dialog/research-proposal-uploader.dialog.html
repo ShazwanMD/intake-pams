@@ -1,27 +1,3 @@
-<!-- <h2 md-dialog-title>Promo Code</h2>
-<md-dialog-content>
-  <form [formGroup]="rschProposalForm">
-    <md-card>
-      <div layout="row" class="inset" layout-wrap hide-xs hide-sm class="push-sm">
-
-        <div layout="column" class="pad-right" flex>
-          <div layout="row">
-            <md-input-container flex>
-              <input mdInput placeholder="Promo Code Number" formControlName="promoCode" value="{{_intakeApplication.promoCode?.code}}" flex/>
-            </md-input-container>
-          </div>
-        </div>
-      </div>
-    </md-card>
-  </form>
-</md-dialog-content>
-<md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(rschProposalForm.value, rschProposalForm.valid)">
-    {{edit ? 'Update' : 'Submit'}}
-  </button>
-
-</md-dialog-actions> -->
-
 <h2 md-dialog-title>Attachment</h2>
 <md-dialog-content>
   <form [formGroup]="rschProposalForm">
@@ -45,6 +21,9 @@
         <md-icon>attach_file</md-icon><span>Choose a file...</span>
         </template>
         </td-file-upload>
+      </div>
+      <div>
+        {{fileUpload.files?.name}}
       </div>
 
     </div>

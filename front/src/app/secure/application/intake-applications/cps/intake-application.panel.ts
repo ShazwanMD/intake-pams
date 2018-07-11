@@ -46,12 +46,14 @@ export class CpsIntakeApplicationPanel implements OnInit {
   private REFEREES: string[] = 'applicationModuleState.referees'.split('.');
   private RESULTS: string[] = 'applicationModuleState.results'.split('.');
   private ATTACHMENTS: string[] = 'applicationModuleState.attachments'.split('.');
+  private ATTACHMENTBYTYPES: string[] = 'applicationModuleState.attachmentByTypes'.split('.');
 
   private employments$: Observable<Employment>;
   private languages$: Observable<Language>;
   private referees$: Observable<Referee>;
   private results$: Observable<Result>;
   private attachments$: Observable<Attachment>;
+  private attachmentByTypes$: Observable<Attachment>;
   private applicationForm: FormGroup;
   private tabIndex$: Observable<number>;
   private _intakeApplication: IntakeApplication;
@@ -71,6 +73,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
     this.referees$ = this.store.select(...this.REFEREES);
     this.results$ = this.store.select(...this.RESULTS);
     this.tabIndex$ = this.store.select(...this.TAB_INDEX);
+    this.attachmentByTypes$ = this.store.select(...this.ATTACHMENTBYTYPES);
   }
 
   get intakeApplication(): IntakeApplication {
@@ -154,6 +157,7 @@ export class CpsIntakeApplicationPanel implements OnInit {
       copyAddress: [false],
     });
     this.applicationForm.patchValue(this._intakeApplication);
+    this.store.dispatch(this.actions.findAttachmentsByType(this._intakeApplication));
   }
 
   onTabChange(event: MdTabChangeEvent): void {
