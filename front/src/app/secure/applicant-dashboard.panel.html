@@ -55,8 +55,9 @@
             <div flex-md="60" flex-gt-md="40" layout="column">
 
               <md-card href class="md-card-colored" flex>
-                <md-card-title>{{myIntakeApplication.intake.startDate | date:'MMM' | uppercase}} {{myIntakeApplication.intake.startDate
-                  | date:'y'}} INTAKE </md-card-title>
+                <!-- <md-card-title>{{myIntakeApplication.intake.startDate | date:'MMM' | uppercase}} {{myIntakeApplication.intake.startDate
+                  | date:'y'}} INTAKE </md-card-title> -->
+                <md-card-title>{{myIntakeApplication.intake.descriptionEn}}</md-card-title>
                 <md-toolbar class="bgc-red-700 " layout="column" layout-align="center center" layout-padding>
                   <md-card-subtitle class="bgc-red-700 "> {{myIntakeApplication.intake.graduateCenter.code}} {{myIntakeApplication.intake.programLevel.code}}
                   </md-card-subtitle>
