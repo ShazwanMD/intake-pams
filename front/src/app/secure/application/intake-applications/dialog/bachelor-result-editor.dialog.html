@@ -29,13 +29,11 @@
             </md-input-container>
           </div>
 
-
-         <!-- <div layout="row" class="pad-top">
-            <pams-result-type-select
-              [placeholder]="'ResultType'"
-              [innerFormControl]="createForm.controls.resultType">
-            </pams-result-type-select>
-          </div> -->
+          <div layout="row">
+            <md-input-container flex>
+              <input mdInput title= "eg PASS / FAIL" placeholder="Result Without Cgpa : " formControlName="resultAlphanumeric" flex/>
+            </md-input-container>
+          </div>
 
         </div>
       </div>

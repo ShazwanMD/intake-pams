@@ -9,6 +9,7 @@ import {MdDialogRef} from '@angular/material';
 import {IntakeApplicationActions} from '../intake-application.action';
 import {IntakeApplication} from '../../../../shared/model/application/intake-application.interface';
 import {ResultType} from '../../../../shared/model/application/result-type.enum';
+import { ResultAlphaNumericType } from '../../../../shared/model/application/result-alpha-numeric-type.enum';
 
 @Component({
   selector: 'pams-stpm-result-editor',
@@ -45,7 +46,7 @@ export class StpmResultEditorDialog implements OnInit {
       id: null,
       name: '',
       graduationYear: 0,
-      resultAlphanumeric: '',
+      resultNumeric: 0,
       resultType: ResultType.STPM,
 
     });

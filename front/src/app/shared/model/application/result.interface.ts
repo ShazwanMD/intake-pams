@@ -1,5 +1,7 @@
+
 import {MetaObject} from '../../../core/meta-object.interface';
 import {ResultType} from './result-type.enum';
+import { ResultAlphaNumericType } from './result-alpha-numeric-type.enum';
 export interface Result extends MetaObject {
   id: number;
   name: string;
@@ -10,6 +12,5 @@ export interface Result extends MetaObject {
   malayResult: string;
   englishResult: string;
   resultType: ResultType;
-
   selected?: boolean;
 }

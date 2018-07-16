@@ -47,6 +47,7 @@ export class BachelorResultEditorDialog implements OnInit {
       field: '',
       graduationYear: 0,
       resultNumeric: 0,
+      resultAlphanumeric: '',
       resultType: ResultType.BACHELOR,
 
     });

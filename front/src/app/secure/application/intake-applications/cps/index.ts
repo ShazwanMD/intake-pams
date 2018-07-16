@@ -1,3 +1,5 @@
+import { ResultAlphanumericTypeSelectComponent } from '../component/result-alphanumeric-type-select.component';
+
 import { AttachmentByTypeComponent } from './../component/attachment-by-type.component';
 import { ResearchProposalUploaderDialog } from './../dialog/research-proposal-uploader.dialog';
 import { PhdResultEditorDialog } from './../dialog/phd-result-editor.dialog';
@@ -73,6 +75,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     BachelorResultComponent,
     ResultTypeSelectComponent,
     AttachmentByTypeComponent,
+    ResultAlphanumericTypeSelectComponent,
 
     // dialogs
     EmploymentEditorDialog,
@@ -101,6 +104,7 @@ import {SpmResultComponent} from '../component/spm-result.component';
     ResultListComponent,
     AttachmentTypeSelectComponent,
     ResultTypeSelectComponent,
+    ResultAlphanumericTypeSelectComponent,
     SpmResultComponent,
     BachelorResultComponent,
     PhdResultComponent,

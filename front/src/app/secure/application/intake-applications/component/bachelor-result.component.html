@@ -12,20 +12,24 @@
 
   <div layout="column" class="inset">
     <div layout="row" class="pad-bottom">
-      <span flex="20">University : </span>
+      <span flex="30">University : </span>
       <span>{{result.name}}</span>
     </div>
     <div layout="row" class="pad-bottom">
-      <span flex="20">Graduation Year : </span>
+      <span flex="30">Graduation Year : </span>
       <span>{{result.graduationYear}}</span>
     </div>
     <div layout="row" class="pad-bottom">
-      <span flex="20">Field : </span>
+      <span flex="30">Field : </span>
       <span>{{result.field}}</span>
     </div>
     <div layout="row" class="pad-bottom">
-      <span flex="20">CGPA : </span>
+      <span flex="30">CGPA : </span>
       <span>{{result.resultNumeric}}</span>
+    </div>
+    <div layout="row" class="pad-bottom">
+      <span flex="30">Result Without CGPA : </span>
+      <span>{{result.resultAlphanumeric}}</span>
     </div>
   </div>
 </td-expansion-panel>

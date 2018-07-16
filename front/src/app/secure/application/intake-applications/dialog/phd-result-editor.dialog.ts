@@ -46,7 +46,7 @@ export class PhdResultEditorDialog implements OnInit {
       name: '',
       field: '',
       graduationYear: 0,
-      resultNumeric: 0,
+      resultAlphaNumeric: '',
       resultType: ResultType.PHD,
 
     });
