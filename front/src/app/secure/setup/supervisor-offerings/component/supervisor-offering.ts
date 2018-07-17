@@ -27,6 +27,7 @@ export class SupervisorOfferingsComponent implements OnChanges {
 private columns: any[] = [
   {name: 'supervisorCode.code', label: 'StaffNo'},
   {name: 'supervisorCode.name', label: 'Name'},
+  {name: 'programLevel.code', label: 'Program Level Supervisor'},
   {name: 'action', label: ''}
 ];
 

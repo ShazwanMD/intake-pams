@@ -683,7 +683,7 @@ public class CommonController {
 
 		InSupervisorOffering supervisorOffering = new InSupervisorOfferingImpl();
 		supervisorOffering.setSupervisorCode(commonService.findSupervisorCodeById(vo.getSupervisorCode().getId()));
-		// supervisorOffering.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
+		supervisorOffering.setProgramLevel(policyService.findProgramLevelById(vo.getProgramLevel().getId()));
 		commonService.saveSupervisorOffering(supervisorOffering);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

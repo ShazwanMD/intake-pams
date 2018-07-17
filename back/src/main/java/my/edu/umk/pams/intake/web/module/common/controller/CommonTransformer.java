@@ -232,7 +232,7 @@ public class CommonTransformer {
         SupervisorOffering vo = new SupervisorOffering();
         vo.setId(e.getId());
         vo.setSupervisorCode(this.toSupervisorCodeVo(e.getSupervisorCode()));
-        //vo.setProgramLevel(policyTransformer.toProgramLevelVo(e.getProgramLevel()));
+        vo.setProgramLevel(policyTransformer.toProgramLevelVo(e.getProgramLevel()));
         return vo;
     }
 
