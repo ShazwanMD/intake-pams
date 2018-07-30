@@ -9,14 +9,20 @@
      layout-align="start center"
      layout-wrap>
   <md-nav-list dense flex>
+    
+    <template let-programOfferings let-last="last" ngFor [ngForOf]="programOfferings">
 
-    <template ngFor let-programOfferings [ngForOf]="programOfferings">
       <a md-list-item>
+
         <md-icon md-list-avatar>label</md-icon>
         <div *ngIf="programOfferings.programFieldCode.programCode.graduateCenter.code==='CPS'">
-          <h3 md-line> {{programOfferings.programFieldCode?.programCode?.descriptionEn}}({{programOfferings.programFieldCode?.fieldCode.descriptionEn}}) </h3>
-          <p md-line> {{programOfferings.programFieldCode?.code}} </p>
-       </div>
+<!--             
+                    <h3 md-line> {{programOfferings.programFieldCode?.programCode?.descriptionEn}}</h3>
+                    <p md-line>{{programOfferings.programFieldCode?.fieldCode.descriptionEn}}</p>        -->
+                <h3 md-line> {{programOfferings.programFieldCode?.programCode?.descriptionEn}} 
+                      ({{programOfferings.programFieldCode?.fieldCode.descriptionEn}}) </h3>
+         </div>
+      
 
        <div *ngIf="programOfferings.programFieldCode.programCode.graduateCenter.code==='MGSEB'">
           <h3 md-line> {{programOfferings.programFieldCode?.programCode?.descriptionEn}}</h3>
