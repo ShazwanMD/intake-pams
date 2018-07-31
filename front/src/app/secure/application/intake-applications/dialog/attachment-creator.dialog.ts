@@ -50,7 +50,7 @@ export class AttachmentCreatorDialog implements OnInit {
   }
 
   upload(attachmentHelper: AttachmentHelper, file: File) {
-    if(confirm('Please make sure that your file is not exceed 1 mb'))
+    if(confirm('Please make sure that your file must in PDF Format'))
     {
       if(file.type == 'application/pdf'){
       this.store.dispatch(this.actions.addAndCheckAttachment(this._intakeApplication, file, attachmentHelper.attachmentType));
