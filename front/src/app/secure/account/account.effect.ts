@@ -9,16 +9,27 @@ import {ApplicationContextActions} from '../../application-context.action';
 import {Observable} from 'rxjs/Observable';
 import {ApplicationError} from '../../shared/model/application-error.interface';
 import {ApplicationContextState} from '../../application-context.reducer';
+import { MyIntakeApplication } from '../../shared/model/application/my-intake-application.interface';
+import { AccountModuleState } from '.';
 
 @Injectable()
 export class AccountEffects {
+
+
+  private MY_INTAKE_APPLICATIONS: string[] = 'accountModuleState.myIntakeApplications'.split('.');
+  private myIntakeApplications$: Observable<MyIntakeApplication>;
+
   constructor(private actions$: Actions,
               private router: Router,
+              private store: Store<AccountModuleState>,
               private accountActions: AccountActions,
               private accountService: AccountService,
               private reportService: ReportService,
               private ctxActions: ApplicationContextActions) {
+              this.myIntakeApplications$ = this.store.select(...this.MY_INTAKE_APPLICATIONS);
   }
+
+
 
   @Effect() findIntakes$ = this.actions$
   .ofType(AccountActions.FIND_INTAKES)
@@ -114,7 +125,18 @@ export class AccountEffects {
     .ofType(AccountActions.ACCEPT_CANDIDATE)
     .map((action) => action.payload)
     .switchMap((payload) => this.accountService.acceptCandidate(payload))
-    .map((message) => this.accountActions.acceptCandidateSuccess(message));
+    .map((message) => this.accountActions.acceptCandidateSuccess(message))
+    .withLatestFrom(this.store.select(...this.MY_INTAKE_APPLICATIONS))
+    .map((state) => state[1])
+    .map((myApplications) => this.accountActions.findMyIntakeApplications());
+
+    // @Effect() findMyIntakeApplications = this.actions$
+    // .ofType(AccountActions.FIND_MY_INTAKE_APPLICATIONS)
+    // .map((action) => action.payload)
+    // .switchMap(() => this.accountService.findMyIntakeApplications())
+    // .map((myIntakeApplications) => this.accountActions.findMyIntakeApplicationsSuccess(myIntakeApplications))
+    // .catch((error) => Observable.of(this.ctxActions.setErrorMessage(error.error)));    
+
 
     @Effect() declinedCandidate = this.actions$
     .ofType(AccountActions.DECLINED_CANDIDATE)

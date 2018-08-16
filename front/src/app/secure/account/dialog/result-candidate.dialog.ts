@@ -58,9 +58,9 @@ export class ResultCandidateDialog implements OnInit {
      let snackBarRef = this.snackBar.open('Confirm to Accept this Offer?', 'Ok');
     snackBarRef.afterDismissed().subscribe((res) => {
       this.store.dispatch(this.actions.acceptCandidate(accept)); 
-      this.editorDialog.close();
+    //  this.editorDialog.close();
     });
-    let snackBarRef2 = this.snackBar.open('You have Accepted the offer', '',{duration: 3000,});   
+    let snackBarRef2 = this.snackBar.open('You have Accepted the offer and an offer letter has been created', '',{duration: 3000,});   
     snackBarRef2.afterDismissed().subscribe((res) => {  
     });
     snackBarRef2.onAction().subscribe(() => {   
