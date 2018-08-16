@@ -18,7 +18,7 @@ export class PooledCandidateListComponent {
 
   private columns: any[] = [
                             {name: 'referenceNo', label: 'ReferenceNo'},
-                            {name: 'candidateIntake.identityNo', label: 'Identity No'},
+                            {name: 'programSelection.programFieldCode.facultyCode.descriptionEn', label: 'Faculty'},
                             {name: 'candidateIntake.name', label: 'Name'},
                             {name: 'studyMode.studyMode.descriptionEn', label: 'Study Mode'},
                             {name: 'programSelection.programFieldCode.fieldCode.descriptionEn', label: 'Field Code'},

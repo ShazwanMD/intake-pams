@@ -26,6 +26,9 @@
     <template tdDataTableTemplate="flowState" let-value="value" let-row="row" let-column="column">
     <div layout="row">{{row['flowState'] | candidateFlowStatePipe }}</div>
   </template>
+  <template tdDataTableTemplate="candidateIntake.status" let-value="value" let-row="row" let-column="column" *ngIf="flowState === 'PUBLISHED'">
+    <div layout="row">{{value}}</div>
+  </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
       <a md-button color="accent" class="text-upper" (click)="viewTask(row)">
