@@ -144,4 +144,10 @@ public class CPSIntakeRouterStrategy extends RouterStrategySupport {
 																						// root
 	}
 
+	@Override
+	public List<String> findCreatorCandidates() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
