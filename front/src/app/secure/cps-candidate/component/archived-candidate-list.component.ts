@@ -19,7 +19,7 @@ export class ArchivedCandidateListComponent {
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
-    {name: 'identityNo', label: 'Identity No'},
+    {name: 'programSelection.programFieldCode.facultyCode.descriptionEn', label: 'Faculty'},
     {name: 'name', label: 'Name'},
     {name: 'studyMode.studyMode.descriptionEn', label: 'Study Mode'},
     {name: 'programSelection.programFieldCode.fieldCode.descriptionEn', label: 'Field Code'},
