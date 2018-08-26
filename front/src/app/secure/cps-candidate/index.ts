@@ -42,6 +42,8 @@ import { CandidateListState, candidateListReducer
 import { AdmissionCandidateDetailPage } from "./admission-candidate-detail.page";
 import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
 import { CandidateArchivedDetailComponent } from "./component/candidate-archived-detail.component";
+import { EditSupervisorDialog } from "./dialog/edit-supervisor.dialog";
+import { SupervisorOfferingAdmissionSelectComponent } from "./component/supervisor-offer-select.component";
     
 export interface AdmissionCandidateModuleState {
  // intakeTasks: IntakeTaskListState;
@@ -98,6 +100,8 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+    EditSupervisorDialog,
+    SupervisorOfferingAdmissionSelectComponent,
   ],
   exports: [
     AdmissionCandidateCenterPage,
@@ -113,6 +117,8 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+    EditSupervisorDialog,
+    SupervisorOfferingAdmissionSelectComponent,
   ],
   entryComponents: [
     AdmissionCandidateCenterPage,
@@ -126,6 +132,8 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+    EditSupervisorDialog,
+    SupervisorOfferingAdmissionSelectComponent,
   ],
 })
 export class AdmissionCandidateModule {

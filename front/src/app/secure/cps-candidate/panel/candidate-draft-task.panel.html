@@ -67,6 +67,11 @@
               <h4 md-line>Reject</h4>
               <p md-line>Reject this candidate</p>
             </md-list-item>
+            <md-list-item (click)="editSupervisor(candidateTask.candidateIntake)">
+              <md-icon md-list-avatar>edit</md-icon>
+              <h4 md-line>Edit Supervisor</h4>
+              <p md-line>Edit this candidate supervisor</p>
+            </md-list-item>
           </md-nav-list>
         </md-card>
       </div>
