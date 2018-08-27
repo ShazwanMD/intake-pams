@@ -245,16 +245,25 @@ public class AdmissionController {
 		admissionService.registerCandidate(candidate);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
-
-	@RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/reject", method = RequestMethod.PUT)
-	public ResponseEntity<String> rejectCandidate(@PathVariable String referenceNo, @RequestBody Candidate vo) {
-		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-		InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+	
+	@RequestMapping(value = "/application/{id}/reject", method = RequestMethod.PUT)
+	public ResponseEntity<String> rejectCandidate(@PathVariable Long id, @RequestBody Candidate vo) {
+		InCandidate candidate = admissionService.findCandidateById(vo.getId());
 		System.out.println("reason : " + vo.getReason());
 		candidate.setReason(vo.getReason());
 		admissionService.rejectCandidate(candidate);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
+
+//	@RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/reject", method = RequestMethod.PUT)
+//	public ResponseEntity<String> rejectCandidate(@PathVariable String referenceNo, @RequestBody Candidate vo) {
+//		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+//		InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
+//		System.out.println("reason : " + vo.getReason());
+//		candidate.setReason(vo.getReason());
+//		admissionService.rejectCandidate(candidate);
+//		return new ResponseEntity<String>("success", HttpStatus.OK);
+//	}
 	
 	@RequestMapping(value = "/application/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateCandidate(@PathVariable Long id, @RequestBody Candidate vo) {

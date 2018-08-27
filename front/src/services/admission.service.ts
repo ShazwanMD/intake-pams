@@ -191,9 +191,9 @@ export class AdmissionService {
   
   rejectCandidate(candidate: Candidate): Observable<String> {
     console.log("candidate reason :"+candidate.reason);
-    console.log("candidate application :"+candidate.application.referenceNo);
+    // console.log("candidate application :"+candidate.application.referenceNo);
     return this._http.put(this.ADMISSION_API + '/application/'
-      + candidate.application.referenceNo + '/candidates/candidateStatus/reject', JSON.stringify(candidate))
+      + candidate.id + '/reject', JSON.stringify(candidate))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 }

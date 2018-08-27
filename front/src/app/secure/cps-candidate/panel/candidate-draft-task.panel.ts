@@ -16,14 +16,13 @@ import { ApplicationModuleState } from "../../application/index";
 import { CandidateProfileRejectDialog } from '../../admission/dialog/candidate-profile-reject.dialog';
 import { AdmissionActions } from '../../admission/admission.action';
 import { EditSupervisorDialog } from "../dialog/edit-supervisor.dialog";
+import { AdmissionCandidateRejectDialog } from '../dialog/admission-candidate-reject.dialog';
 
 @Component({
   selector: 'pams-candidate-draft-task',
   templateUrl: './candidate-draft-task.panel.html',
 })
 export class CandidateDraftTaskPanel implements OnInit {
-  
-  //private editorDialogRef: MdDialogRef<CandidateProfileRejectDialog>;
 
   @Input() candidateTask: CandidateTask;
 
@@ -32,6 +31,8 @@ export class CandidateDraftTaskPanel implements OnInit {
   
   private candidate$: Observable<Candidate>;
   private editorDialogRef: MdDialogRef<EditSupervisorDialog>;
+
+ private editorDialogRef1: MdDialogRef<AdmissionCandidateRejectDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -67,43 +68,24 @@ export class CandidateDraftTaskPanel implements OnInit {
   //     this.goBack();
   // }
 
-// reject(): void {
-//   console.log('rejectDialog');
-//   let config = new MdDialogConfig();
-//   config.viewContainerRef = this.vcf;
-//   config.role = 'dialog';
-//   config.width = '70%';
-//   config.height = '65%';
-//   config.position = {top: '0px'};
-//   this.editorDialogRef = this.dialog.open(CandidateProfileRejectDialog, config);
-
-//   // this.editorDialogRef.componentInstance.candidate = this.candidateTask;
-//   this.editorDialogRef.afterClosed().subscribe((res) => {
-//     console.log('close dialog');
-//     // load something here
-//   });
-// }
-
-// reject(): void {
-//   console.log('edit');
-//   let config = new MdDialogConfig();
-//   config.viewContainerRef = this.vcf;
-//   config.role = 'dialog';
-//   config.width = '50%';
-//   config.height = '60%';
-//   config.position = {top: '0px'};
-//   this.editorDialogRef = this.dialog.open(CandidateProfileRejectDialog, config);
-//   //this.editorDialogRef.componentInstance.candidate = this.candidateTask.candidate;
-//   //this.editorDialogRef.componentInstance.intake = this.intakeTask.intake;
-//   this.editorDialogRef.afterClosed().subscribe((res) => {
-//     console.log('close dialog');
-//   });
-// }
-
-
   goBack(): void {
     this.router.navigate(['/secure/cps-candidate']);
     window.location.reload();
+  }
+
+  rejectCandidate(candidate): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '40%';
+    config.position = {top: '0px'};
+    this.editorDialogRef1 = this.dialog.open(AdmissionCandidateRejectDialog, config);
+    this.editorDialogRef1.componentInstance.candidate = candidate;
+    this.editorDialogRef1.afterClosed().subscribe(res => {
+      this.store.dispatch(this.actions.removeCandidateTask(this.candidateTask));
+      this.goBack();
+    });
   }
 
   editSupervisor(candidate): void {
@@ -115,6 +97,7 @@ export class CandidateDraftTaskPanel implements OnInit {
       config.position = {top: '0px'};
       this.editorDialogRef = this.dialog.open(EditSupervisorDialog, config);
       this.editorDialogRef.componentInstance.candidate = candidate;
+
       
 /*      this.editorDialogRef.afterClosed().subscribe((res) => {
        this.route.params.subscribe((params: { taskId: string }) => {
