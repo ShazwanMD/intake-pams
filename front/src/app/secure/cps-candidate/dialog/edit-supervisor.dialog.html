@@ -1,0 +1,16 @@
+<h2 md-dialog-title>Edit Supervisor</h2>
+<md-dialog-content>
+  <form [formGroup]="rejectForm">
+    <div>
+      <pams-supervisor-offer-select
+        [placeholder]="'Supervisor'"
+        [innerFormControl]="rejectForm.controls['supervisorOffering']"
+        [programlevel]="_candidate.programSelection.programFieldCode.programCode.programLevel"
+        fxFlex="calc(100%-25px)" class="pad-bottom">
+      </pams-supervisor-offer-select>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+   <button md-raised-button color="accent" (click)="submit(rejectForm.value)">Submit</button>
+</md-dialog-actions>

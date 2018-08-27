@@ -192,4 +192,23 @@ export class AdmissionCandidateActions {
         payload: message,
       };
     }
+    
+    static UPDATE_CANDIDATE = '[Candidate] Update Candidate';
+
+    updateCandidate(candidate): Action {
+      return {
+        type: AdmissionCandidateActions.UPDATE_CANDIDATE,
+        payload: candidate,
+      };
+    }
+
+    static UPDATE_CANDIDATE_SUCCESS = '[Candidate] Update Candidate Success';
+
+    updateCandidateSuccess(message): Action {
+      return {
+        type: AdmissionCandidateActions.UPDATE_CANDIDATE_SUCCESS,
+        payload: message,
+      };
+    }
+
 }

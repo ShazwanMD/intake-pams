@@ -2,6 +2,7 @@ package my.edu.umk.pams.intake.admission.service;
 import my.edu.umk.pams.intake.admission.model.InCandidate;
 import my.edu.umk.pams.intake.admission.model.InCandidateStatus;
 import my.edu.umk.pams.intake.application.model.InIntakeApplication;
+import my.edu.umk.pams.intake.common.model.InGraduateCenter;
 import my.edu.umk.pams.intake.core.InFlowState;
 import my.edu.umk.pams.intake.policy.model.InIntake;
 
@@ -84,6 +85,8 @@ public interface AdmissionService {
 	boolean isMatricNoExists(String matricNo);
 
 	InCandidate findCandidateById(Long id);
+	
+	void updateCandidate(InCandidate candidate);
 	
     //====================================================================================================
     // WORKFLOW CANDIDATE

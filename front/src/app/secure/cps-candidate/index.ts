@@ -37,11 +37,16 @@ import { CandidateProfileComponent } from "./component/candidate-detail.componen
 import { CandidateTaskStatusComponent } from "./component/candidate-task-status.component";
 import { CandidateVerifyTaskPanel } from "./panel/candidate-verify-task.panel";
 import { CandidatePublishTaskPanel } from "./panel/candidate-publish-task.panel.";
-import { CandidateListState, candidateListReducer 
-} from './candidate-list.reducer';
+import { CandidateListState, candidateListReducer } from './candidate-list.reducer';
+// import { AdmissionCandidateDetailPage } from "./admission-candidate-detail.page";
+// import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
+// import { CandidateArchivedDetailComponent } from "./component/candidate-archived-detail.component";
+// } from './candidate-list.reducer';
 import { AdmissionCandidateDetailPage } from "./admission-candidate-detail.page";
 import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
 import { CandidateArchivedDetailComponent } from "./component/candidate-archived-detail.component";
+import { EditSupervisorDialog } from "./dialog/edit-supervisor.dialog";
+import { SupervisorOfferingAdmissionSelectComponent } from "./component/supervisor-offer-select.component";
     
 export interface AdmissionCandidateModuleState {
  // intakeTasks: IntakeTaskListState;
@@ -99,6 +104,8 @@ export const admissionCandidateModuleReducers = {
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
  
+    EditSupervisorDialog,
+    SupervisorOfferingAdmissionSelectComponent,
   ],
   exports: [
     AdmissionCandidateCenterPage,
@@ -115,6 +122,8 @@ export const admissionCandidateModuleReducers = {
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
   
+    EditSupervisorDialog,
+    SupervisorOfferingAdmissionSelectComponent,
   ],
   entryComponents: [
     AdmissionCandidateCenterPage,
@@ -129,6 +138,8 @@ export const admissionCandidateModuleReducers = {
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
 
+    EditSupervisorDialog,
+    SupervisorOfferingAdmissionSelectComponent,
   ],
 })
 export class AdmissionCandidateModule {

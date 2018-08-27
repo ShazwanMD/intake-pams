@@ -98,6 +98,13 @@ export class AdmissionService {
       return this._http.get(this.ADMISSION_API + '/candidates/intakeApplication/' + referenceNo)
       .map((res: Response) => <Candidate>res.json());
   }
+  
+  updateCandidate(candidate: Candidate): Observable<String> {
+      console.log('front servis update ' + candidate.id)
+      return this._http.put(this.ADMISSION_API + '/application/' + candidate.id, JSON.stringify(candidate))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
   // ====================================================================================================
   // INTAKE

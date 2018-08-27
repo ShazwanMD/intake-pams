@@ -15,6 +15,7 @@ import { IntakeApplication } from "../../../shared/model/application/intake-appl
 import { ApplicationModuleState } from "../../application/index";
 import { CandidateProfileRejectDialog } from '../../admission/dialog/candidate-profile-reject.dialog';
 import { AdmissionActions } from '../../admission/admission.action';
+import { EditSupervisorDialog } from "../dialog/edit-supervisor.dialog";
 
 @Component({
   selector: 'pams-candidate-draft-task',
@@ -22,7 +23,7 @@ import { AdmissionActions } from '../../admission/admission.action';
 })
 export class CandidateDraftTaskPanel implements OnInit {
   
-  private editorDialogRef: MdDialogRef<CandidateProfileRejectDialog>;
+  //private editorDialogRef: MdDialogRef<CandidateProfileRejectDialog>;
 
   @Input() candidateTask: CandidateTask;
 
@@ -30,16 +31,17 @@ export class CandidateDraftTaskPanel implements OnInit {
   private CANDIDATE_BY_ID: string[] = 'admissionCandidateModuleState.candidate'.split('.');
   
   private candidate$: Observable<Candidate>;
+  private editorDialogRef: MdDialogRef<EditSupervisorDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<AdmissionCandidateModuleState>,
               private snackBar: MdSnackBar,
-              private vcf: ViewContainerRef,
-              private dialog: MdDialog,
               private reportActions: ReportActions,
               private intakeActions: IntakeActions,
               private admissionActions: AdmissionActions,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog,
               private actions: AdmissionCandidateActions) {
      
       this.candidate$ = this.store.select(...this.CANDIDATE_BY_ID);
@@ -82,26 +84,45 @@ export class CandidateDraftTaskPanel implements OnInit {
 //   });
 // }
 
-reject(): void {
-  console.log('edit');
-  let config = new MdDialogConfig();
-  config.viewContainerRef = this.vcf;
-  config.role = 'dialog';
-  config.width = '50%';
-  config.height = '60%';
-  config.position = {top: '0px'};
-  this.editorDialogRef = this.dialog.open(CandidateProfileRejectDialog, config);
-  //this.editorDialogRef.componentInstance.candidate = this.candidateTask.candidate;
-  //this.editorDialogRef.componentInstance.intake = this.intakeTask.intake;
-  this.editorDialogRef.afterClosed().subscribe((res) => {
-    console.log('close dialog');
-  });
-}
+// reject(): void {
+//   console.log('edit');
+//   let config = new MdDialogConfig();
+//   config.viewContainerRef = this.vcf;
+//   config.role = 'dialog';
+//   config.width = '50%';
+//   config.height = '60%';
+//   config.position = {top: '0px'};
+//   this.editorDialogRef = this.dialog.open(CandidateProfileRejectDialog, config);
+//   //this.editorDialogRef.componentInstance.candidate = this.candidateTask.candidate;
+//   //this.editorDialogRef.componentInstance.intake = this.intakeTask.intake;
+//   this.editorDialogRef.afterClosed().subscribe((res) => {
+//     console.log('close dialog');
+//   });
+// }
 
 
   goBack(): void {
     this.router.navigate(['/secure/cps-candidate']);
     window.location.reload();
   }
+
+  editSupervisor(candidate): void {
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '50%';
+      config.height = '40%';
+      config.position = {top: '0px'};
+      this.editorDialogRef = this.dialog.open(EditSupervisorDialog, config);
+      this.editorDialogRef.componentInstance.candidate = candidate;
+      
+/*      this.editorDialogRef.afterClosed().subscribe((res) => {
+       this.route.params.subscribe((params: { taskId: string }) => {
+        let taskId: string = params.taskId;
+        console.log('intake: ' + taskId);
+        this.store.dispatch(this.actions.findCandidateById(taskId));
+      });
+      });*/
+    }
 
 }

@@ -6,6 +6,10 @@ import { from } from 'rxjs/observable/from';
 import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
 import { AdmissionActions } from "../admission/admission.action";
 import { ApplicationService } from "../../../services/application.service";
+import { Store } from "@ngrx/store";
+import { AdmissionCandidateModuleState } from "./index";
+import { Candidate } from "../../shared/model/admission/candidate.interface";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AdmissionCandidateEffects {
@@ -14,11 +18,14 @@ export class AdmissionCandidateEffects {
       private CANDIDATES: string[] = 'admissionModuleState.candidates'.split('.');*/
 
     private CANDIDATE_TASK: string[] = 'admissionCandidateModuleState.candidateTask'.split( '.' );
+    private CANDIDATE_BY_ID: string[] = 'admissionCandidateModuleState.candidate'.split('.');
 
     constructor( private actions$: Actions,
         private admissionCandidateActions: AdmissionCandidateActions,
         private intakeApplicationActions: IntakeApplicationActions,
+        private store$: Store<AdmissionCandidateModuleState>,
         private applicationService: ApplicationService,
+        private router: Router,
         private admissionService: AdmissionService ) {
     }
 
@@ -104,4 +111,12 @@ export class AdmissionCandidateEffects {
         this.admissionCandidateActions.findArchivedCandidates(),
       ],
     ));
+    
+    
+    @Effect() updateCandidate = this.actions$
+    .ofType(AdmissionCandidateActions.UPDATE_CANDIDATE)
+    .map(action => action.payload)
+    .switchMap(candidate => this.admissionService.updateCandidate(candidate))
+    .map(message => this.admissionCandidateActions.updateCandidateSuccess(message));
+    //.do(action => this.router.navigate(['secure/cps-candidate/view-task/', action.payload])).ignoreElements();
 }

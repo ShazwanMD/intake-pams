@@ -544,6 +544,12 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 		return generatedMatricNo;
 	}
+	
+	@Override
+	public void updateCandidate(InCandidate candidate) {
+		candidateDao.update(candidate, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
 	// ====================================================================================================
 	// CANDIDATE
