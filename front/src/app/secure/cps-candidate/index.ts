@@ -98,6 +98,7 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+ 
   ],
   exports: [
     AdmissionCandidateCenterPage,
@@ -113,6 +114,7 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+  
   ],
   entryComponents: [
     AdmissionCandidateCenterPage,
@@ -126,6 +128,7 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+
   ],
 })
 export class AdmissionCandidateModule {

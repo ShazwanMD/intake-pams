@@ -8,6 +8,8 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdSnackBar, MdDialogRef, MdDialogConfig} from '@angular/material';
+import { AdmissionCandidateActions } from '../../cps-candidate/admission-candidate.action';
+import { Observable } from '../../../../../node_modules/rxjs';
 
 @Component({
   selector: 'pams-candidate-profile-reject',
@@ -16,9 +18,14 @@ import {MdSnackBar, MdDialogRef, MdDialogConfig} from '@angular/material';
 
 export class CandidateProfileRejectDialog implements OnInit {
 
+  private CANDIDATE_BY_ID: string[] = 'admissionCandidateModuleState.candidate'.split('.');
+  
   private rejectForm: FormGroup;
   private _candidate: Candidate;
+  //private _candidateTask: CandidateTask;
 
+  private candidate$: Observable<Candidate>;
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -26,7 +33,9 @@ export class CandidateProfileRejectDialog implements OnInit {
               private actions: AdmissionActions,
               private dialog: MdDialogRef<CandidateProfileRejectDialog>,
               private snackBar: MdSnackBar,
+              private action: AdmissionCandidateActions,
               private store: Store<ApplicationModuleState>) {
+                this.candidate$ = this.store.select(...this.CANDIDATE_BY_ID);
   }
 
   set candidate(candidate: Candidate) {
@@ -34,13 +43,21 @@ export class CandidateProfileRejectDialog implements OnInit {
     this._candidate = candidate;
   }
 
+  // set candidateTask(candidateTask: CandidateTask) {
+  //   //console.log('candidate.id :'+candidate.id);
+  //   this._candidateTask = candidateTask;
+  // }
+
+
   ngOnInit(): void {
-    this.rejectForm = this.formBuilder.group(<Candidate>{
+
+    this.rejectForm = this.formBuilder.group({
       id: null,
       reason: '',
       application: <IntakeApplication>{},
     });
 
+    console.log("tgk nie"+this._candidate);
     this.rejectForm.patchValue(this._candidate);
   }
 

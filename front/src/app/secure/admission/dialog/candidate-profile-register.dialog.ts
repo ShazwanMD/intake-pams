@@ -96,7 +96,7 @@ export class CandidateProfileRegisterDialog implements OnInit {
     config.height = '40%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(CandidateProfileRejectDialog, config);
-    this.editorDialogRef.componentInstance.candidate = candidate;
+    this.editorDialogRef.componentInstance.candidate= candidate;
     this.editorDialog.afterClosed().subscribe((res) => {
      this.route.params.subscribe((params: { taskId: string }) => {
       let taskId: string = params.taskId;
