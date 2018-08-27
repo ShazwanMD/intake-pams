@@ -37,8 +37,11 @@ import { CandidateProfileComponent } from "./component/candidate-detail.componen
 import { CandidateTaskStatusComponent } from "./component/candidate-task-status.component";
 import { CandidateVerifyTaskPanel } from "./panel/candidate-verify-task.panel";
 import { CandidatePublishTaskPanel } from "./panel/candidate-publish-task.panel.";
-import { CandidateListState, candidateListReducer 
-} from './candidate-list.reducer';
+import { CandidateListState, candidateListReducer } from './candidate-list.reducer';
+// import { AdmissionCandidateDetailPage } from "./admission-candidate-detail.page";
+// import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
+// import { CandidateArchivedDetailComponent } from "./component/candidate-archived-detail.component";
+// } from './candidate-list.reducer';
 import { AdmissionCandidateDetailPage } from "./admission-candidate-detail.page";
 import { IntakeApplicationActions } from "../application/intake-applications/intake-application.action";
 import { CandidateArchivedDetailComponent } from "./component/candidate-archived-detail.component";
@@ -100,6 +103,7 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+ 
     EditSupervisorDialog,
     SupervisorOfferingAdmissionSelectComponent,
   ],
@@ -117,6 +121,7 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+  
     EditSupervisorDialog,
     SupervisorOfferingAdmissionSelectComponent,
   ],
@@ -132,6 +137,7 @@ export const admissionCandidateModuleReducers = {
     CandidateTaskStatusComponent,
     ArchivedCandidateListComponent,
     CandidateArchivedDetailComponent,
+
     EditSupervisorDialog,
     SupervisorOfferingAdmissionSelectComponent,
   ],
