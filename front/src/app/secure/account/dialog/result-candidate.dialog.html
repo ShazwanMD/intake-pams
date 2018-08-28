@@ -1,11 +1,13 @@
 
-
 <div>
     <template let-myIntakeApplication let-last="last" ngFor [ngForOf]="myIntakeApplications$ | async ">
-        <div *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'MGSEB'">
+      
+      <div *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'MGSEB'">
+
       <md-card-subtitle *ngIf="myIntakeApplication.bidStatus === 'SELECTED'">
       <p></p>
         <br>
+
         <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === null">
          <md-card-subtitle>Application Result Information For : {{myIntakeApplication.intake.intakeSession.descriptionEn}}</md-card-subtitle>
         <p></p>
@@ -18,82 +20,91 @@
         </md-card-subtitle>
 
         <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status != null">
-        <md-card-subtitle>Candidates Result Information For : {{myIntakeApplication.intake.intakeSession.descriptionEn}}</md-card-subtitle>
-        <md-card-subtitle>Candidates Name : {{myIntakeApplication.candidate?.name}}</md-card-subtitle>
-        <md-card-subtitle>Candidates Program : {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.programCode.descriptionEn}}</md-card-subtitle>
-        <md-card-subtitle>Candidates Identity Number : {{myIntakeApplication.candidate?.identityNo}} </md-card-subtitle>
-        <md-card-subtitle>Candidates Application Reference Number : {{myIntakeApplication.candidate?.application?.referenceNo}}</md-card-subtitle>
+            <h2 md-dialog-title layout-align="center">CANDIDATES RESULT INFORMATION FOR : {{myIntakeApplication.intake.intakeSession.descriptionEn}}</h2>
+            <p></p>
+            <br>
+        <md-card-subtitle><b>Candidates Name : {{myIntakeApplication.candidate?.name}}</b></md-card-subtitle>
+        <md-card-subtitle><b>Candidates Program : {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.programCode.descriptionEn}}</b></md-card-subtitle>
+        <md-card-subtitle><b>Candidates Identity Number : {{myIntakeApplication.candidate?.identityNo}}</b></md-card-subtitle>
+        <md-card-subtitle><b>Candidates Application Reference Number : {{myIntakeApplication.candidate?.application?.referenceNo}}</b></md-card-subtitle>
         </md-card-subtitle>
+        
+      </md-card-subtitle>
         <p></p>
         <br>
-        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'OFFERED'">
-                      <md-card-subtitle>Candidates Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
-                      <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === true">
-                      <div layout="row" layout-margin>
-                        <div flex></div>
-                      </div>
-                      You have Accepted the offer.
-                    </md-card-subtitle>
 
-                    </md-card-subtitle>
+       <!-- level rejected -->
+        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'REJECTED'">
+              <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
+                  <div layout="row" layout-margin>
+                    <div flex></div>   
+                  </div>
+                  <br><br><br>Sorry.You have been REJECTED from this offer at Faculty Approval.
+                    <p></p>
+                    <br>
+              <md-card-subtitle>Reason : {{myIntakeApplication.candidate?.reason}}</md-card-subtitle>
+        </md-card-subtitle>
 
-                     <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'REJECTED'">
-                      <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
-                      <div layout="row" layout-margin>
-                        <div flex></div>   
-                      </div>
-                      <br><br><br>Sorry.You have been REJECTED from this offer at Faculty Approval.
-                      <p></p>
-                      <br>
-                      <md-card-subtitle>Reason : {{myIntakeApplication.candidate?.reason}}</md-card-subtitle>
-                    </md-card-subtitle>
-
-                    
-                    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'SELECTED'">
+          <!-- level selected   -->
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'SELECTED'">
                       <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
                       <div layout="row" layout-margin>
                         <div flex></div>   
                       </div>
                       Processing for First Level of Faculty Approval. (You have been SELECTED at intake evaluation level)
-                    </md-card-subtitle>
+          </md-card-subtitle>
 
-                    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'PREAPPROVED'">
+          <!-- level pre-approved -->
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'PREAPPROVED'">
                       <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
                       <div layout="row" layout-margin>
                         <div flex></div>   
                       </div>
                       Processing for Upper-Level of Faculty Approval. (You have been SELECTED at First Level of Faculy Approval)
-                    </md-card-subtitle>
+          </md-card-subtitle>
 
-                    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'APPROVED'">
+          <!-- level approved -->
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'APPROVED'">
                       <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
                       <div layout="row" layout-margin>
                         <div flex></div>   
                       </div>
                       Processing for Offer-Letter. (You have been SELECTED at Upper-Level of Faculy Approval)
-                    </md-card-subtitle>
+          </md-card-subtitle>
    
     <p></p>
-        <br>
+    <br>
+
+    <!-- level offered -->
     <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'OFFERED'">
-                      <div layout="row" layout-margin>
-                        <div flex>
-                        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'MGSEB'">
-                        <div layout="row" layout-margin>
-                        <div flex></div> 
-                        </div>
-                       
-                      <button md-button class="md-icon-button" (click)="downloadReport('adm_0002_bm.jrxml&report.pdf',myIntakeApplication)">
+        <md-card-subtitle>Candidates Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
+        <button md-raised-button color="accent" (click)="accept(myIntakeApplication)">Accept</button>
+        <button md-raised-button color="accent" (click)="decline(myIntakeApplication)">Decline</button>
+    </md-card-subtitle>
+
+    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === true">
+              <div layout="row" layout-margin>
+                  <div flex></div>
+                </div><b> You have Accepted the offer. Please download and print the offer letter. </b>
+
+               <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'MGSEB'">
+                  <div layout="row" layout-margin>
+                      <div flex></div>   
+                  </div>
+
+                      <button md-button class="md-icon-button" color= "accent" (click)="downloadReport('adm_0002_bm.jrxml&report.pdf',myIntakeApplication)">
                       <md-icon class="md-24 tc-grey-300">print</md-icon>
                       Print Offer Letter(BM)
                       </button>
-                      <button md-button class="md-icon-button" (click)="downloadReport('adm_0002_en.jrxml&report.pdf',myIntakeApplication)">
+                      <button md-button class="md-icon-button" color = "accent" (click)="downloadReport('adm_0002_en.jrxml&report.pdf',myIntakeApplication)">
                       <md-icon class="md-24 tc-grey-300">print</md-icon>
                       Print Offer Letter(EN)
                       </button>
-                       </md-card-subtitle>
 
-                       <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+              </md-card-subtitle>
+    </md-card-subtitle>
+
+              <!-- <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                           <div layout="row" layout-margin>
                           <div flex></div>   
                         </div>
@@ -105,21 +116,13 @@
   							        <md-icon class="md-24 tc-grey-300">print</md-icon>
   							        Print Offer Letter(EN)
 						            </button>
-                        </md-card-subtitle>
+              </md-card-subtitle> -->
 
-    <button md-raised-button color="accent" (click)="accept(myIntakeApplication)">Accept</button>
-    <button md-raised-button color="accent" (click)="decline(myIntakeApplication)">Decline</button>
-
-                      </div>
-                     </div>
-    </md-card-subtitle>
-  </md-card-subtitle>
-        </div>
-
+      </div>
+  <!-- </md-card-subtitle> -->
 <!--====================================================================================================================================-->
 
  <div *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
-
 
     <md-card-subtitle *ngIf="myIntakeApplication.bidStatus === 'SELECTED'">
         <p></p>
@@ -155,7 +158,7 @@
                         <button md-raised-button color="accent" (click)="decline(myIntakeApplication)">Decline</button>
           </md-card-subtitle>
 
-                        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === true">
+              <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === true">
 
                         <div layout="row" layout-margin>
                           <div flex></div>
@@ -175,7 +178,7 @@
                         </b> </button>
                           </md-card-subtitle>
 
-                      </md-card-subtitle>
+                </md-card-subtitle>
 
           <md-card-subtitle *ngIf="myIntakeApplication.candidate?.status === 'REJECTED'">
                         <md-card-subtitle>Candidates Selection Status : {{myIntakeApplication.candidate?.status}}</md-card-subtitle>
@@ -254,15 +257,7 @@
                         </div>
                        </div>
       </md-card-subtitle> -->
-
-
   </md-card-subtitle>
-
-
-
-
-
-  
 </div>
         
      </template>     

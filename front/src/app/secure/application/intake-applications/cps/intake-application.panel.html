@@ -116,7 +116,7 @@
         <div>
           <b>Race : </b><b *ngIf="_intakeApplication.raceCode !== null">{{_intakeApplication.raceCode.descriptionEn}}</b><br/>
           <div>
-          <pams-race-code-select [placeholder]="'Race'" 
+          <pams-race-code-select [placeholder]="'Race *'" 
           [innerFormControl]="applicationForm.controls.raceCode"
           fxFlex="calc(25%-25px)" class="pad-bottom">
           </pams-race-code-select>
@@ -126,7 +126,7 @@
         <div>
           <b>Gender : </b><b *ngIf="_intakeApplication.genderCode !== null">{{_intakeApplication.genderCode.descriptionEn}}</b><br/>
           <div>
-          <pams-gender-code-select [placeholder]="'Gender'"
+          <pams-gender-code-select [placeholder]="'Gender *'"
           [innerFormControl]="applicationForm.controls.genderCode"
           fxFlex="calc(50%-25px)" class="pad-bottom">
           </pams-gender-code-select>
@@ -136,7 +136,7 @@
         <div>
             <b>Religion : </b><b *ngIf="_intakeApplication.religionCode !== null">{{_intakeApplication.religionCode.descriptionEn}}</b><br/>  
             <div>
-            <pams-religion-code-select [placeholder]="'Religion'"
+            <pams-religion-code-select [placeholder]="'Religion *'"
             [innerFormControl]="applicationForm.controls.religionCode"
             fxFlex="calc(50%-25px)" class="pad-bottom">
             </pams-religion-code-select>
@@ -157,7 +157,7 @@
         <div>
             <b>Marital : </b><b *ngIf="_intakeApplication.maritalCode !== null">{{_intakeApplication.maritalCode.descriptionEn}}</b><br/>      
           <div>
-            <pams-marital-code-select [placeholder]="'Marital'"
+            <pams-marital-code-select [placeholder]="'Marital *'"
           [innerFormControl]="applicationForm.controls.maritalCode"
           fxFlex="calc(25%-25px)" class="pad-bottom">
           </pams-marital-code-select>
@@ -167,7 +167,7 @@
         <div>
             <b>Ethnicity : </b><b *ngIf="_intakeApplication.ethnicityCode !== null">{{_intakeApplication.ethnicityCode.descriptionEn}}</b><br/>  
           <div>
-            <pams-ethnicity-code-select [placeholder]="'Ethnicity'" required md-maxlength="10"
+            <pams-ethnicity-code-select [placeholder]="'Ethnicity *'" required md-maxlength="10"
           [innerFormControl]="applicationForm.controls.ethnicityCode"
           fxFlex="calc(50%-25px)" class="pad-bottom">
           </pams-ethnicity-code-select>
