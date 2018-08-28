@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="528"/>
+	<property name="ireport.y" value="1046"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -783,7 +783,7 @@ FROM
 				<textFieldExpression><![CDATA[$F{in_prgm_code_description_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="205" y="122" width="338" height="15" uuid="3730faf6-1812-421c-a77c-4071c6131854"/>
+				<reportElement x="234" y="123" width="309" height="15" uuid="3730faf6-1812-421c-a77c-4071c6131854"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -915,6 +915,10 @@ FROM
 			<textField>
 				<reportElement x="205" y="108" width="263" height="15" uuid="98b1f0b4-277b-44df-9296-ed58838247ff"/>
 				<textFieldExpression><![CDATA[$F{in_prgm_fild_code_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="123" width="32" height="16" uuid="1fdb8d3b-be87-4cba-9dd2-fb59f067442a"/>
+				<textFieldExpression><![CDATA[$F{in_fcty_code_code}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
