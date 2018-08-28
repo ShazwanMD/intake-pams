@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
+	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1339"/>
+	<parameter name="reference_no" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     in_intk_apln."id" AS in_intk_apln_id,
+     in_intk_apln."age" AS in_intk_apln_age,
+     in_intk_apln."bachelor_result_attached" AS in_intk_apln_bachelor_result_attached,
+     in_intk_apln."bank_statement_attached" AS in_intk_apln_bank_statement_attached,
+     in_intk_apln."bid_response" AS in_intk_apln_bid_response,
+     in_intk_apln."bid_status" AS in_intk_apln_bid_status,
+     in_intk_apln."bid_type" AS in_intk_apln_bid_type,
+     in_intk_apln."birth_date" AS in_intk_apln_birth_date,
+     in_intk_apln."credential_no" AS in_intk_apln_credential_no,
+     in_intk_apln."declared" AS in_intk_apln_declared,
+     in_intk_apln."diploma_result_attached" AS in_intk_apln_diploma_result_attached,
+     in_intk_apln."email" AS in_intk_apln_email,
+     in_intk_apln."fax" AS in_intk_apln_fax,
+     in_intk_apln."ielts_result_attached" AS in_intk_apln_ielts_result_attached,
+     in_intk_apln."language_result_attached" AS in_intk_apln_language_result_attached,
+     in_intk_apln."mailing_address1" AS in_intk_apln_mailing_address1,
+     in_intk_apln."mailing_address2" AS in_intk_apln_mailing_address2,
+     in_intk_apln."mailing_address3" AS in_intk_apln_mailing_address3,
+     in_intk_apln."mailing_postcode" AS in_intk_apln_mailing_postcode,
+     in_intk_apln."merit" AS in_intk_apln_merit,
+     in_intk_apln."c_ts" AS in_intk_apln_c_ts,
+     in_intk_apln."c_id" AS in_intk_apln_c_id,
+     in_intk_apln."d_ts" AS in_intk_apln_d_ts,
+     in_intk_apln."d_id" AS in_intk_apln_d_id,
+     in_intk_apln."m_ts" AS in_intk_apln_m_ts,
+     in_intk_apln."m_id" AS in_intk_apln_m_id,
+     in_intk_apln."m_st" AS in_intk_apln_m_st,
+     in_intk_apln."mobile" AS in_intk_apln_mobile,
+     in_intk_apln."name" AS in_intk_apln_name,
+     in_intk_apln."official_address1" AS in_intk_apln_official_address1,
+     in_intk_apln."official_address2" AS in_intk_apln_official_address2,
+     in_intk_apln."official_address3" AS in_intk_apln_official_address3,
+     in_intk_apln."official_postcode" AS in_intk_apln_official_postcode,
+     in_intk_apln."oku_no" AS in_intk_apln_oku_no,
+     in_intk_apln."paid" AS in_intk_apln_paid,
+     in_intk_apln."passport_expdate" AS in_intk_apln_passport_expdate,
+     in_intk_apln."passport_no" AS in_intk_apln_passport_no,
+     in_intk_apln."payment_source_no" AS in_intk_apln_payment_source_no,
+     in_intk_apln."phone" AS in_intk_apln_phone,
+     in_intk_apln."processing_fee_attached" AS in_intk_apln_processing_fee_attached,
+     in_intk_apln."rank" AS in_intk_apln_rank,
+     in_intk_apln."reason" AS in_intk_apln_reason,
+     in_intk_apln."referee_form_attached" AS in_intk_apln_referee_form_attached,
+     in_intk_apln."reference_no" AS in_intk_apln_reference_no,
+     in_intk_apln."research_proposal_attached" AS in_intk_apln_research_proposal_attached,
+     in_intk_apln."research_title" AS in_intk_apln_research_title,
+     in_intk_apln."self_sponsored" AS in_intk_apln_self_sponsored,
+     in_intk_apln."spm_result_attached" AS in_intk_apln_spm_result_attached,
+     in_intk_apln."sponsor_letter_attached" AS in_intk_apln_sponsor_letter_attached,
+     in_intk_apln."sponsored" AS in_intk_apln_sponsored,
+     in_intk_apln."stpm_result_attached" AS in_intk_apln_stpm_result_attached,
+     in_intk_apln."toefl_result_attached" AS in_intk_apln_toefl_result_attached,
+     in_intk_apln."verified" AS in_intk_apln_verified,
+     in_intk_apln."visa_type" AS in_intk_apln_visa_type,
+     in_intk_apln."applicant_id" AS in_intk_apln_applicant_id,
+     in_intk_apln."bank_code_id" AS in_intk_apln_bank_code_id,
+     in_intk_apln."disability_code_id" AS in_intk_apln_disability_code_id,
+     in_intk_apln."ethnicity_code_id" AS in_intk_apln_ethnicity_code_id,
+     in_intk_apln."gender_code_id" AS in_intk_apln_gender_code_id,
+     in_intk_apln."intake_id" AS in_intk_apln_intake_id,
+     in_intk_apln."mailing_country_code_id" AS in_intk_apln_mailing_country_code_id,
+     in_intk_apln."mailing_state_code_id" AS in_intk_apln_mailing_state_code_id,
+     in_intk_apln."marital_code_id" AS in_intk_apln_marital_code_id,
+     in_intk_apln."nationality_code_id" AS in_intk_apln_nationality_code_id,
+     in_intk_apln."official_country_code_id" AS in_intk_apln_official_country_code_id,
+     in_intk_apln."official_state_code_id" AS in_intk_apln_official_state_code_id,
+     in_intk_apln."program_selection_id" AS in_intk_apln_program_selection_id,
+     in_intk_apln."race_code_id" AS in_intk_apln_race_code_id,
+     in_intk_apln."religion_code_id" AS in_intk_apln_religion_code_id,
+     in_intk_apln."residency_code_id" AS in_intk_apln_residency_code_id,
+     in_intk_apln."study_center_code_id" AS in_intk_apln_study_center_code_id,
+     in_intk_apln."study_mode_selection_id" AS in_intk_apln_study_mode_selection_id,
+     in_intk_apln."supervisor_selection_id" AS in_intk_apln_supervisor_selection_id,
+     in_intk_sesn."id" AS in_intk_sesn_id,
+     in_intk_sesn."code" AS in_intk_sesn_code,
+     in_intk_sesn."current_" AS in_intk_sesn_current_,
+     in_intk_sesn."description_en" AS in_intk_sesn_description_en,
+     in_intk_sesn."description_ms" AS in_intk_sesn_description_ms,
+     in_intk_sesn."label" AS in_intk_sesn_label,
+     in_intk_sesn."c_ts" AS in_intk_sesn_c_ts,
+     in_intk_sesn."c_id" AS in_intk_sesn_c_id,
+     in_intk_sesn."d_ts" AS in_intk_sesn_d_ts,
+     in_intk_sesn."d_id" AS in_intk_sesn_d_id,
+     in_intk_sesn."m_ts" AS in_intk_sesn_m_ts,
+     in_intk_sesn."m_id" AS in_intk_sesn_m_id,
+     in_intk_sesn."m_st" AS in_intk_sesn_m_st,
+     in_intk_sesn."year" AS in_intk_sesn_year,
+     in_stte_code."id" AS in_stte_code_id,
+     in_stte_code."code" AS in_stte_code_code,
+     in_stte_code."description_en" AS in_stte_code_description_en,
+     in_stte_code."description_ms" AS in_stte_code_description_ms,
+     in_stte_code."c_ts" AS in_stte_code_c_ts,
+     in_stte_code."c_id" AS in_stte_code_c_id,
+     in_stte_code."d_ts" AS in_stte_code_d_ts,
+     in_stte_code."d_id" AS in_stte_code_d_id,
+     in_stte_code."m_ts" AS in_stte_code_m_ts,
+     in_stte_code."m_id" AS in_stte_code_m_id,
+     in_stte_code."m_st" AS in_stte_code_m_st,
+     in_stte_code."country_code_id" AS in_stte_code_country_code_id,
+     in_prgm_ofrg."id" AS in_prgm_ofrg_id,
+     in_prgm_ofrg."general_criteria" AS in_prgm_ofrg_general_criteria,
+     in_prgm_ofrg."interview" AS in_prgm_ofrg_interview,
+     in_prgm_ofrg."c_ts" AS in_prgm_ofrg_c_ts,
+     in_prgm_ofrg."c_id" AS in_prgm_ofrg_c_id,
+     in_prgm_ofrg."d_ts" AS in_prgm_ofrg_d_ts,
+     in_prgm_ofrg."d_id" AS in_prgm_ofrg_d_id,
+     in_prgm_ofrg."m_ts" AS in_prgm_ofrg_m_ts,
+     in_prgm_ofrg."m_id" AS in_prgm_ofrg_m_id,
+     in_prgm_ofrg."m_st" AS in_prgm_ofrg_m_st,
+     in_prgm_ofrg."projection" AS in_prgm_ofrg_projection,
+     in_prgm_ofrg."specific_criteria" AS in_prgm_ofrg_specific_criteria,
+     in_prgm_ofrg."intake_id" AS in_prgm_ofrg_intake_id,
+     in_prgm_ofrg."prgm_fild_code_id" AS in_prgm_ofrg_prgm_fild_code_id,
+     in_prgm_ofrg."study_center_code_id" AS in_prgm_ofrg_study_center_code_id,
+     in_prgm_code."id" AS in_prgm_code_id,
+     in_prgm_code."code" AS in_prgm_code_code,
+     in_prgm_code."description_en" AS in_prgm_code_description_en,
+     in_prgm_code."description_ms" AS in_prgm_code_description_ms,
+     in_prgm_code."c_ts" AS in_prgm_code_c_ts,
+     in_prgm_code."c_id" AS in_prgm_code_c_id,
+     in_prgm_code."d_ts" AS in_prgm_code_d_ts,
+     in_prgm_code."d_id" AS in_prgm_code_d_id,
+     in_prgm_code."m_ts" AS in_prgm_code_m_ts,
+     in_prgm_code."m_id" AS in_prgm_code_m_id,
+     in_prgm_code."m_st" AS in_prgm_code_m_st,
+     in_prgm_fild_code."faculty_code_id" AS in_prgm_code_faculty_code_id,
+     in_prgm_code."graduate_center_id" AS in_prgm_code_graduate_center_id,
+     in_prgm_code."program_level_id" AS in_prgm_code_program_level_id,
+     in_prgm_levl."id" AS in_prgm_levl_id,
+     in_prgm_levl."code" AS in_prgm_levl_code,
+     in_prgm_levl."description" AS in_prgm_levl_description,
+     in_prgm_levl."c_ts" AS in_prgm_levl_c_ts,
+     in_prgm_levl."c_id" AS in_prgm_levl_c_id,
+     in_prgm_levl."d_ts" AS in_prgm_levl_d_ts,
+     in_prgm_levl."d_id" AS in_prgm_levl_d_id,
+     in_prgm_levl."m_ts" AS in_prgm_levl_m_ts,
+     in_prgm_levl."m_id" AS in_prgm_levl_m_id,
+     in_prgm_levl."m_st" AS in_prgm_levl_m_st,
+     in_prgm_levl."prefix" AS in_prgm_levl_prefix,
+     in_stdy_mode_ofrg."id" AS in_stdy_mode_ofrg_id,
+     in_stdy_mode_ofrg."c_ts" AS in_stdy_mode_ofrg_c_ts,
+     in_stdy_mode_ofrg."c_id" AS in_stdy_mode_ofrg_c_id,
+     in_stdy_mode_ofrg."d_ts" AS in_stdy_mode_ofrg_d_ts,
+     in_stdy_mode_ofrg."d_id" AS in_stdy_mode_ofrg_d_id,
+     in_stdy_mode_ofrg."m_ts" AS in_stdy_mode_ofrg_m_ts,
+     in_stdy_mode_ofrg."m_id" AS in_stdy_mode_ofrg_m_id,
+     in_stdy_mode_ofrg."m_st" AS in_stdy_mode_ofrg_m_st,
+     in_stdy_mode_ofrg."intake_id" AS in_stdy_mode_ofrg_intake_id,
+     in_stdy_mode_ofrg."study_mode_id" AS in_stdy_mode_ofrg_study_mode_id,
+     in_stdy_mode."id" AS in_stdy_mode_id,
+     in_stdy_mode."code" AS in_stdy_mode_code,
+     in_stdy_mode."description_en" AS in_stdy_mode_description_en,
+     in_stdy_mode."description_ms" AS in_stdy_mode_description_ms,
+     in_stdy_mode."c_ts" AS in_stdy_mode_c_ts,
+     in_stdy_mode."c_id" AS in_stdy_mode_c_id,
+     in_stdy_mode."d_ts" AS in_stdy_mode_d_ts,
+     in_stdy_mode."d_id" AS in_stdy_mode_d_id,
+     in_stdy_mode."m_ts" AS in_stdy_mode_m_ts,
+     in_stdy_mode."m_id" AS in_stdy_mode_m_id,
+     in_stdy_mode."m_st" AS in_stdy_mode_m_st,
+     in_stdy_mode."prefix" AS in_stdy_mode_prefix,
+     in_fcty_code."id" AS in_fcty_code_id,
+     in_fcty_code."code" AS in_fcty_code_code,
+     in_fcty_code."description_en" AS in_fcty_code_description_en,
+     in_fcty_code."description_ms" AS in_fcty_code_description_ms,
+     in_fcty_code."c_ts" AS in_fcty_code_c_ts,
+     in_fcty_code."c_id" AS in_fcty_code_c_id,
+     in_fcty_code."d_ts" AS in_fcty_code_d_ts,
+     in_fcty_code."d_id" AS in_fcty_code_d_id,
+     in_fcty_code."m_ts" AS in_fcty_code_m_ts,
+     in_fcty_code."m_id" AS in_fcty_code_m_id,
+     in_fcty_code."m_st" AS in_fcty_code_m_st,
+     in_fcty_code."prefix" AS in_fcty_code_prefix,
+     in_spvr_ofrg."id" AS in_spvr_ofrg_id,
+     in_spvr_ofrg."c_ts" AS in_spvr_ofrg_c_ts,
+     in_spvr_ofrg."c_id" AS in_spvr_ofrg_c_id,
+     in_spvr_ofrg."d_ts" AS in_spvr_ofrg_d_ts,
+     in_spvr_ofrg."d_id" AS in_spvr_ofrg_d_id,
+     in_spvr_ofrg."m_ts" AS in_spvr_ofrg_m_ts,
+     in_spvr_ofrg."m_id" AS in_spvr_ofrg_m_id,
+     in_spvr_ofrg."m_st" AS in_spvr_ofrg_m_st,
+     in_spvr_ofrg."intake_id" AS in_spvr_ofrg_intake_id,
+     in_spvr_ofrg."supervisor_code_id" AS in_spvr_ofrg_supervisor_code_id,
+     in_spvr_code."id" AS in_spvr_code_id,
+     in_spvr_code."code" AS in_spvr_code_code,
+     in_spvr_code."description_en" AS in_spvr_code_description_en,
+     in_spvr_code."description_ms" AS in_spvr_code_description_ms,
+     in_spvr_code."c_ts" AS in_spvr_code_c_ts,
+     in_spvr_code."c_id" AS in_spvr_code_c_id,
+     in_spvr_code."d_ts" AS in_spvr_code_d_ts,
+     in_spvr_code."d_id" AS in_spvr_code_d_id,
+     in_spvr_code."m_ts" AS in_spvr_code_m_ts,
+     in_spvr_code."m_id" AS in_spvr_code_m_id,
+     in_spvr_code."m_st" AS in_spvr_code_m_st,
+     in_spvr_code."name" AS in_spvr_code_name,
+     in_intk."id" AS in_intk_id,
+     in_intk."audit_no" AS in_intk_audit_no,
+     in_intk."cancel_comment" AS in_intk_cancel_comment,
+     in_intk."description_en" AS in_intk_description_en,
+     in_intk."description_ms" AS in_intk_description_ms,
+     in_intk."end_date" AS in_intk_end_date,
+     in_intk."av_ts" AS in_intk_av_ts,
+     in_intk."av_id" AS in_intk_av_id,
+     in_intk."cl_id" AS in_intk_cl_id,
+     in_intk."cl_ts" AS in_intk_cl_ts,
+     in_intk."ck_ts" AS in_intk_ck_ts,
+     in_intk."ck_id" AS in_intk_ck_id,
+     in_intk."dt_ts" AS in_intk_dt_ts,
+     in_intk."dt_id" AS in_intk_dt_id,
+     in_intk."ev_ts" AS in_intk_ev_ts,
+     in_intk."ev_id" AS in_intk_ev_id,
+     in_intk."pr_ts" AS in_intk_pr_ts,
+     in_intk."pr_id" AS in_intk_pr_id,
+     in_intk."ps_ts" AS in_intk_ps_ts,
+     in_intk."ps_id" AS in_intk_ps_id,
+     in_intk."rg_ts" AS in_intk_rg_ts,
+     in_intk."rg_id" AS in_intk_rg_id,
+     in_intk."rm_ts" AS in_intk_rm_ts,
+     in_intk."rm_id" AS in_intk_rm_id,
+     in_intk."rq_ts" AS in_intk_rq_ts,
+     in_intk."rq_id" AS in_intk_rq_id,
+     in_intk."sl_ts" AS in_intk_sl_ts,
+     in_intk."sl_id" AS in_intk_sl_id,
+     in_intk."fd_st" AS in_intk_fd_st,
+     in_intk."up_ts" AS in_intk_up_ts,
+     in_intk."up_id" AS in_intk_up_id,
+     in_intk."uv_ts" AS in_intk_uv_ts,
+     in_intk."uv_id" AS in_intk_uv_id,
+     in_intk."vf_ts" AS in_intk_vf_ts,
+     in_intk."vf_id" AS in_intk_vf_id,
+     in_intk."c_ts" AS in_intk_c_ts,
+     in_intk."c_id" AS in_intk_c_id,
+     in_intk."d_ts" AS in_intk_d_ts,
+     in_intk."d_id" AS in_intk_d_id,
+     in_intk."m_ts" AS in_intk_m_ts,
+     in_intk."m_id" AS in_intk_m_id,
+     in_intk."m_st" AS in_intk_m_st,
+     in_intk."projection" AS in_intk_projection,
+     in_intk."reference_no" AS in_intk_reference_no,
+     in_intk."remove_comment" AS in_intk_remove_comment,
+     in_intk."source_no" AS in_intk_source_no,
+     in_intk."start_date" AS in_intk_start_date,
+     in_intk."graduate_center_id" AS in_intk_graduate_center_id,
+     in_intk."program_level_id" AS in_intk_program_level_id,
+     in_intk."session_id" AS in_intk_session_id,
+     in_venu_code."id" AS in_venu_code_id,
+     in_venu_code."code" AS in_venu_code_code,
+     in_venu_code."registration_date" AS in_venu_code_registration_date,
+     in_venu_code."registration_location" AS in_venu_code_registration_location,
+     in_venu_code."c_ts" AS in_venu_code_c_ts,
+     in_venu_code."c_id" AS in_venu_code_c_id,
+     in_venu_code."d_ts" AS in_venu_code_d_ts,
+     in_venu_code."d_id" AS in_venu_code_d_id,
+     in_venu_code."m_ts" AS in_venu_code_m_ts,
+     in_venu_code."m_id" AS in_venu_code_m_id,
+     in_venu_code."m_st" AS in_venu_code_m_st,
+     in_venu_code."start_time_en" AS in_venu_code_start_time_en,
+     in_venu_code."start_time_ms" AS in_venu_code_start_time_ms,
+     in_venu_code."end_time_en" AS in_venu_code_end_time_en,
+     in_venu_code."end_time_ms" AS in_venu_code_end_time_ms,
+     in_prgm_fild_code."prgm_id" AS in_prgm_fild_code_prgm_id,
+     in_cndt."id" AS in_cndt_id,
+     in_cndt."application_id" AS in_cndt_application_id,
+     in_cndt."matric_no" AS in_cndt_matric_no,
+     in_fild_code."id" AS in_fild_code_id,
+     in_fild_code."code" AS in_fild_code_code,
+     in_fild_code."description_en" AS in_fild_code_description_en,
+     in_fild_code."description_ms" AS in_fild_code_description_ms,
+     in_prgm_fild_code."code" AS in_prgm_fild_code_code
+FROM
+     "public"."in_spvr_ofrg" in_spvr_ofrg INNER JOIN "public"."in_intk_apln" in_intk_apln ON in_spvr_ofrg."id" = in_intk_apln."supervisor_selection_id"
+     INNER JOIN "public"."in_spvr_code" in_spvr_code ON in_spvr_ofrg."supervisor_code_id" = in_spvr_code."id"
+     INNER JOIN "public"."in_intk" in_intk ON in_intk_apln."intake_id" = in_intk."id"
+     INNER JOIN "public"."in_stdy_mode_ofrg" in_stdy_mode_ofrg ON in_intk_apln."study_mode_selection_id" = in_stdy_mode_ofrg."id"
+     INNER JOIN "public"."in_prgm_ofrg" in_prgm_ofrg ON in_intk_apln."program_selection_id" = in_prgm_ofrg."id"
+     INNER JOIN "public"."in_stte_code" in_stte_code ON in_intk_apln."mailing_state_code_id" = in_stte_code."id"
+     INNER JOIN "public"."in_cndt" in_cndt ON in_intk_apln."id" = in_cndt."application_id"
+     AND in_intk."id" = in_prgm_ofrg."intake_id"
+     INNER JOIN "public"."in_prgm_fild_code" in_prgm_fild_code ON in_prgm_ofrg."prgm_fild_code_id" = in_prgm_fild_code."id"
+     INNER JOIN "in_prgm_code" in_prgm_code ON in_prgm_fild_code."prgm_id" = in_prgm_code."id"
+     INNER JOIN "public"."in_fcty_code" in_fcty_code ON in_prgm_fild_code."faculty_code_id" = in_fcty_code."id"
+     INNER JOIN "public"."in_fild_code" in_fild_code ON in_prgm_fild_code."fild_id" = in_fild_code."id"
+     INNER JOIN "public"."in_prgm_levl" in_prgm_levl ON in_prgm_code."program_level_id" = in_prgm_levl."id"
+     AND in_intk."program_level_id" = in_prgm_levl."id"
+     AND in_intk."id" = in_stdy_mode_ofrg."intake_id"
+     INNER JOIN "public"."in_intk_sesn" in_intk_sesn ON in_intk."session_id" = in_intk_sesn."id"
+     INNER JOIN "public"."in_stdy_mode" in_stdy_mode ON in_stdy_mode_ofrg."study_mode_id" = in_stdy_mode."id",
+     "public"."in_venu_code" in_venu_code]]>
+	</queryString>
+	<field name="in_intk_apln_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_age" class="java.lang.Integer"/>
+	<field name="in_intk_apln_bachelor_result_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_bank_statement_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_bid_response" class="java.lang.Integer"/>
+	<field name="in_intk_apln_bid_status" class="java.lang.Integer"/>
+	<field name="in_intk_apln_bid_type" class="java.lang.Integer"/>
+	<field name="in_intk_apln_birth_date" class="java.sql.Timestamp"/>
+	<field name="in_intk_apln_credential_no" class="java.lang.String"/>
+	<field name="in_intk_apln_declared" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_diploma_result_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_email" class="java.lang.String"/>
+	<field name="in_intk_apln_fax" class="java.lang.String"/>
+	<field name="in_intk_apln_ielts_result_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_language_result_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_mailing_address1" class="java.lang.String"/>
+	<field name="in_intk_apln_mailing_address2" class="java.lang.String"/>
+	<field name="in_intk_apln_mailing_address3" class="java.lang.String"/>
+	<field name="in_intk_apln_mailing_postcode" class="java.lang.String"/>
+	<field name="in_intk_apln_merit" class="java.math.BigDecimal"/>
+	<field name="in_intk_apln_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_apln_c_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_apln_d_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_apln_m_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_m_st" class="java.lang.Integer"/>
+	<field name="in_intk_apln_mobile" class="java.lang.String"/>
+	<field name="in_intk_apln_name" class="java.lang.String"/>
+	<field name="in_intk_apln_official_address1" class="java.lang.String"/>
+	<field name="in_intk_apln_official_address2" class="java.lang.String"/>
+	<field name="in_intk_apln_official_address3" class="java.lang.String"/>
+	<field name="in_intk_apln_official_postcode" class="java.lang.String"/>
+	<field name="in_intk_apln_oku_no" class="java.lang.String"/>
+	<field name="in_intk_apln_paid" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_passport_expdate" class="java.sql.Timestamp"/>
+	<field name="in_intk_apln_passport_no" class="java.lang.String"/>
+	<field name="in_intk_apln_payment_source_no" class="java.lang.String"/>
+	<field name="in_intk_apln_phone" class="java.lang.String"/>
+	<field name="in_intk_apln_processing_fee_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_rank" class="java.lang.Integer"/>
+	<field name="in_intk_apln_reason" class="java.lang.String"/>
+	<field name="in_intk_apln_referee_form_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_reference_no" class="java.lang.String"/>
+	<field name="in_intk_apln_research_proposal_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_research_title" class="java.lang.String"/>
+	<field name="in_intk_apln_self_sponsored" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_spm_result_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_sponsor_letter_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_sponsored" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_stpm_result_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_toefl_result_attached" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_verified" class="java.lang.Boolean"/>
+	<field name="in_intk_apln_visa_type" class="java.lang.Integer"/>
+	<field name="in_intk_apln_applicant_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_bank_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_disability_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_ethnicity_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_gender_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_intake_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_mailing_country_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_mailing_state_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_marital_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_nationality_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_official_country_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_official_state_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_program_selection_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_race_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_religion_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_residency_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_study_center_code_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_study_mode_selection_id" class="java.lang.Long"/>
+	<field name="in_intk_apln_supervisor_selection_id" class="java.lang.Long"/>
+	<field name="in_intk_sesn_id" class="java.lang.Long"/>
+	<field name="in_intk_sesn_code" class="java.lang.String"/>
+	<field name="in_intk_sesn_current_" class="java.lang.Boolean"/>
+	<field name="in_intk_sesn_description_en" class="java.lang.String"/>
+	<field name="in_intk_sesn_description_ms" class="java.lang.String"/>
+	<field name="in_intk_sesn_label" class="java.lang.String"/>
+	<field name="in_intk_sesn_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_sesn_c_id" class="java.lang.Long"/>
+	<field name="in_intk_sesn_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_sesn_d_id" class="java.lang.Long"/>
+	<field name="in_intk_sesn_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_sesn_m_id" class="java.lang.Long"/>
+	<field name="in_intk_sesn_m_st" class="java.lang.Integer"/>
+	<field name="in_intk_sesn_year" class="java.lang.Integer"/>
+	<field name="in_stte_code_id" class="java.lang.Long"/>
+	<field name="in_stte_code_code" class="java.lang.String"/>
+	<field name="in_stte_code_description_en" class="java.lang.String"/>
+	<field name="in_stte_code_description_ms" class="java.lang.String"/>
+	<field name="in_stte_code_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_stte_code_c_id" class="java.lang.Long"/>
+	<field name="in_stte_code_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_stte_code_d_id" class="java.lang.Long"/>
+	<field name="in_stte_code_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_stte_code_m_id" class="java.lang.Long"/>
+	<field name="in_stte_code_m_st" class="java.lang.Integer"/>
+	<field name="in_stte_code_country_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_ofrg_id" class="java.lang.Long"/>
+	<field name="in_prgm_ofrg_general_criteria" class="java.lang.String"/>
+	<field name="in_prgm_ofrg_interview" class="java.lang.Boolean"/>
+	<field name="in_prgm_ofrg_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_ofrg_c_id" class="java.lang.Long"/>
+	<field name="in_prgm_ofrg_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_ofrg_d_id" class="java.lang.Long"/>
+	<field name="in_prgm_ofrg_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_ofrg_m_id" class="java.lang.Long"/>
+	<field name="in_prgm_ofrg_m_st" class="java.lang.Integer"/>
+	<field name="in_prgm_ofrg_projection" class="java.lang.Integer"/>
+	<field name="in_prgm_ofrg_specific_criteria" class="java.lang.String"/>
+	<field name="in_prgm_ofrg_intake_id" class="java.lang.Long"/>
+	<field name="in_prgm_ofrg_prgm_fild_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_ofrg_study_center_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_code" class="java.lang.String"/>
+	<field name="in_prgm_code_description_en" class="java.lang.String"/>
+	<field name="in_prgm_code_description_ms" class="java.lang.String"/>
+	<field name="in_prgm_code_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_code_c_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_code_d_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_code_m_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_m_st" class="java.lang.Integer"/>
+	<field name="in_prgm_code_faculty_code_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_graduate_center_id" class="java.lang.Long"/>
+	<field name="in_prgm_code_program_level_id" class="java.lang.Long"/>
+	<field name="in_prgm_levl_id" class="java.lang.Long"/>
+	<field name="in_prgm_levl_code" class="java.lang.String"/>
+	<field name="in_prgm_levl_description" class="java.lang.String"/>
+	<field name="in_prgm_levl_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_levl_c_id" class="java.lang.Long"/>
+	<field name="in_prgm_levl_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_levl_d_id" class="java.lang.Long"/>
+	<field name="in_prgm_levl_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_prgm_levl_m_id" class="java.lang.Long"/>
+	<field name="in_prgm_levl_m_st" class="java.lang.Integer"/>
+	<field name="in_prgm_levl_prefix" class="java.lang.String"/>
+	<field name="in_stdy_mode_ofrg_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_ofrg_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_stdy_mode_ofrg_c_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_ofrg_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_stdy_mode_ofrg_d_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_ofrg_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_stdy_mode_ofrg_m_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_ofrg_m_st" class="java.lang.Integer"/>
+	<field name="in_stdy_mode_ofrg_intake_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_ofrg_study_mode_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_code" class="java.lang.String"/>
+	<field name="in_stdy_mode_description_en" class="java.lang.String"/>
+	<field name="in_stdy_mode_description_ms" class="java.lang.String"/>
+	<field name="in_stdy_mode_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_stdy_mode_c_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_stdy_mode_d_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_stdy_mode_m_id" class="java.lang.Long"/>
+	<field name="in_stdy_mode_m_st" class="java.lang.Integer"/>
+	<field name="in_stdy_mode_prefix" class="java.lang.String"/>
+	<field name="in_fcty_code_id" class="java.lang.Long"/>
+	<field name="in_fcty_code_code" class="java.lang.String"/>
+	<field name="in_fcty_code_description_en" class="java.lang.String"/>
+	<field name="in_fcty_code_description_ms" class="java.lang.String"/>
+	<field name="in_fcty_code_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_fcty_code_c_id" class="java.lang.Long"/>
+	<field name="in_fcty_code_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_fcty_code_d_id" class="java.lang.Long"/>
+	<field name="in_fcty_code_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_fcty_code_m_id" class="java.lang.Long"/>
+	<field name="in_fcty_code_m_st" class="java.lang.Integer"/>
+	<field name="in_fcty_code_prefix" class="java.lang.String"/>
+	<field name="in_spvr_ofrg_id" class="java.lang.Long"/>
+	<field name="in_spvr_ofrg_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_spvr_ofrg_c_id" class="java.lang.Long"/>
+	<field name="in_spvr_ofrg_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_spvr_ofrg_d_id" class="java.lang.Long"/>
+	<field name="in_spvr_ofrg_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_spvr_ofrg_m_id" class="java.lang.Long"/>
+	<field name="in_spvr_ofrg_m_st" class="java.lang.Integer"/>
+	<field name="in_spvr_ofrg_intake_id" class="java.lang.Long"/>
+	<field name="in_spvr_ofrg_supervisor_code_id" class="java.lang.Long"/>
+	<field name="in_spvr_code_id" class="java.lang.Long"/>
+	<field name="in_spvr_code_code" class="java.lang.String"/>
+	<field name="in_spvr_code_description_en" class="java.lang.String"/>
+	<field name="in_spvr_code_description_ms" class="java.lang.String"/>
+	<field name="in_spvr_code_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_spvr_code_c_id" class="java.lang.Long"/>
+	<field name="in_spvr_code_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_spvr_code_d_id" class="java.lang.Long"/>
+	<field name="in_spvr_code_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_spvr_code_m_id" class="java.lang.Long"/>
+	<field name="in_spvr_code_m_st" class="java.lang.Integer"/>
+	<field name="in_spvr_code_name" class="java.lang.String"/>
+	<field name="in_intk_id" class="java.lang.Long"/>
+	<field name="in_intk_audit_no" class="java.lang.String"/>
+	<field name="in_intk_cancel_comment" class="java.lang.String"/>
+	<field name="in_intk_description_en" class="java.lang.String"/>
+	<field name="in_intk_description_ms" class="java.lang.String"/>
+	<field name="in_intk_end_date" class="java.sql.Timestamp"/>
+	<field name="in_intk_av_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_av_id" class="java.lang.Long"/>
+	<field name="in_intk_cl_id" class="java.lang.Long"/>
+	<field name="in_intk_cl_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_ck_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_ck_id" class="java.lang.Long"/>
+	<field name="in_intk_dt_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_dt_id" class="java.lang.Long"/>
+	<field name="in_intk_ev_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_ev_id" class="java.lang.Long"/>
+	<field name="in_intk_pr_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_pr_id" class="java.lang.Long"/>
+	<field name="in_intk_ps_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_ps_id" class="java.lang.Long"/>
+	<field name="in_intk_rg_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_rg_id" class="java.lang.Long"/>
+	<field name="in_intk_rm_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_rm_id" class="java.lang.Long"/>
+	<field name="in_intk_rq_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_rq_id" class="java.lang.Long"/>
+	<field name="in_intk_sl_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_sl_id" class="java.lang.Long"/>
+	<field name="in_intk_fd_st" class="java.lang.Integer"/>
+	<field name="in_intk_up_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_up_id" class="java.lang.Long"/>
+	<field name="in_intk_uv_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_uv_id" class="java.lang.Long"/>
+	<field name="in_intk_vf_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_vf_id" class="java.lang.Long"/>
+	<field name="in_intk_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_c_id" class="java.lang.Long"/>
+	<field name="in_intk_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_d_id" class="java.lang.Long"/>
+	<field name="in_intk_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_intk_m_id" class="java.lang.Long"/>
+	<field name="in_intk_m_st" class="java.lang.Integer"/>
+	<field name="in_intk_projection" class="java.lang.Integer"/>
+	<field name="in_intk_reference_no" class="java.lang.String"/>
+	<field name="in_intk_remove_comment" class="java.lang.String"/>
+	<field name="in_intk_source_no" class="java.lang.String"/>
+	<field name="in_intk_start_date" class="java.sql.Timestamp"/>
+	<field name="in_intk_graduate_center_id" class="java.lang.Long"/>
+	<field name="in_intk_program_level_id" class="java.lang.Long"/>
+	<field name="in_intk_session_id" class="java.lang.Long"/>
+	<field name="in_venu_code_id" class="java.lang.Long"/>
+	<field name="in_venu_code_code" class="java.lang.String"/>
+	<field name="in_venu_code_registration_date" class="java.sql.Timestamp"/>
+	<field name="in_venu_code_registration_location" class="java.lang.String"/>
+	<field name="in_venu_code_c_ts" class="java.sql.Timestamp"/>
+	<field name="in_venu_code_c_id" class="java.lang.Long"/>
+	<field name="in_venu_code_d_ts" class="java.sql.Timestamp"/>
+	<field name="in_venu_code_d_id" class="java.lang.Long"/>
+	<field name="in_venu_code_m_ts" class="java.sql.Timestamp"/>
+	<field name="in_venu_code_m_id" class="java.lang.Long"/>
+	<field name="in_venu_code_m_st" class="java.lang.Integer"/>
+	<field name="in_venu_code_start_time_en" class="java.lang.String"/>
+	<field name="in_venu_code_start_time_ms" class="java.lang.String"/>
+	<field name="in_venu_code_end_time_en" class="java.lang.String"/>
+	<field name="in_venu_code_end_time_ms" class="java.lang.String"/>
+	<field name="in_prgm_fild_code_prgm_id" class="java.lang.Long"/>
+	<field name="in_cndt_id" class="java.lang.Long"/>
+	<field name="in_cndt_application_id" class="java.lang.Long"/>
+	<field name="in_cndt_matric_no" class="java.lang.String"/>
+	<field name="in_fild_code_id" class="java.lang.Long"/>
+	<field name="in_fild_code_code" class="java.lang.String"/>
+	<field name="in_fild_code_description_en" class="java.lang.String"/>
+	<field name="in_fild_code_description_ms" class="java.lang.String"/>
+	<field name="in_prgm_fild_code_code" class="java.lang.String"/>
+	<filterExpression><![CDATA[$F{in_intk_apln_reference_no}.equals( $P{reference_no} )]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="199" splitType="Stretch">
+			<textField>
+				<reportElement x="33" y="93" width="505" height="20" uuid="b0b2f758-b342-4b8e-9516-482ec00c2103"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_intk_apln_name}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="109" width="505" height="20" uuid="dd4890ff-b6c3-45c2-b9ff-69500a4b307f"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_address1}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="125" width="505" height="20" uuid="4fc48987-816e-4ba8-a99a-4524eb5f63ec"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_address2}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="142" width="505" height="20" uuid="beb9fc50-389c-4228-9b23-83b3c14e6674"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(($F{in_intk_apln_mailing_address3}==null)? "-": $F{in_intk_apln_mailing_address3}.toUpperCase())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="159" width="505" height="20" uuid="c4fcee2b-84a3-4f37-8a9a-8d4422aee813"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_postcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="175" width="505" height="20" uuid="f2482a32-6866-4d4c-b274-9a896923adb7"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_stte_code_description_en}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="36" y="31" width="519" height="1" forecolor="#CC3300" uuid="2622415e-53a8-4436-bf27-f9195abcc47f"/>
+			</line>
+			<staticText>
+				<reportElement x="354" y="17" width="200" height="20" uuid="0d8a93e6-8499-4d67-97d0-8910fefce229"/>
+				<textElement textAlignment="Right">
+					<font size="10" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Centre for Postgraduate Studies]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="304" y="0" width="251" height="20" forecolor="#003366" uuid="be101422-6535-433c-9f63-1fc21ce876e4"/>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Pusat Pengajian Siswazah]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="8" width="36" height="41" uuid="54597328-95e2-4b85-afbd-c4921fd8719a"/>
+				<imageExpression><![CDATA["C:\\Users\\Nurain\\git\\intake\\front\\src\\assets\\ico\\umk.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="2" y="49" width="35" height="11" uuid="7d1961d2-1942-4a14-acf6-9c3921a49082"/>
+				<textElement textAlignment="Center">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITI]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="57" width="31" height="1" forecolor="#CC3300" uuid="69c908ca-ca91-4ecc-98d4-3fc4ec0ec156"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="58" width="35" height="11" uuid="85b36ac7-0cc0-43a8-95c9-8cf68dd0b63d"/>
+				<textElement textAlignment="Center">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MALAYSIA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="66" width="31" height="1" forecolor="#CC3300" uuid="43809269-da49-41a5-958f-1bf5bb88ea05"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="67" width="35" height="11" uuid="3d9b412d-3edd-4845-9ba9-ea24364b0a95"/>
+				<textElement textAlignment="Center">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KELANTAN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="32" y="0" width="172" height="20" uuid="fa2291f2-5c88-40de-b1cd-a67ee8f972ef"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Dear Sir/Miss/Madame,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="20" width="505" height="21" uuid="fccf6744-a5f0-4faa-b880-410e1627381a"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[OFFER OF ADMISSION TO POSTGRADUATE STUDIES, UNIVERSITI MALAYSIA KELANTAN (UMK)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="35" width="505" height="20" uuid="e8af7ae2-c67f-4a54-9e1d-08925a25a80d"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SESSION "+$F{in_intk_sesn_description_en}.toUpperCase()+" "+$F{in_intk_sesn_label}.toUpperCase()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="386" splitType="Stretch">
+			<staticText>
+				<reportElement x="32" y="0" width="505" height="32" uuid="9637b07c-80e5-4c4a-9384-763363d04206"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[2.	Congratulation! I am pleased to inform that you have been offered to a postgraduate programme at Universiti Malaysia Kelantan.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="37" width="111" height="15" uuid="cb01c631-067b-412f-b9f0-a71aa3fbef92"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Programme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="63" width="111" height="15" uuid="999fcc5a-6d24-494e-a7d3-27efaafbb9de"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Programme Structure	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="78" width="111" height="15" uuid="d0478cd2-bd48-4e72-a930-493a03240410"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="93" width="111" height="15" uuid="41b48bb4-9bf8-481a-8fd4-452b5540ca3e"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Field of Study  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="107" width="111" height="15" uuid="bab91906-dacd-4343-9130-3a396727938f"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Programme Code          ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="122" width="111" height="15" uuid="a39d9834-90c8-4c1d-9081-456e015d38b2"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Faculty         ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="137" width="111" height="15" uuid="66844062-d21d-4d1a-8770-203bfe7dd84f"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Main Supervisor	      ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="66" y="152" width="111" height="15" uuid="de3e4ff4-41b3-4f25-9d36-484380f5f845"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Semester of Admission]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="209" width="505" height="15" uuid="fd4792d4-3431-471c-be4e-b4fd03fe27c2"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[3.	The following documents are required during registration:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="64" width="201" height="15" uuid="8b8efc2b-71ea-4306-8f3d-0a3558d4d55d"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Research Mode]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="204" y="79" width="338" height="15" uuid="743afc42-becd-46fc-a996-384efa3fdce5"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_stdy_mode_description_en}.substring(0, 1)+$F{in_stdy_mode_description_en}.substring(1, $F{in_stdy_mode_description_en}.length()).toLowerCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="37" width="338" height="14" uuid="b8b98397-4281-4903-b642-f1d4e889d5ff"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_prgm_code_description_en}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="123" width="309" height="15" uuid="3730faf6-1812-421c-a77c-4071c6131854"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_fcty_code_description_en}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="177" y="152" width="28" height="15" uuid="dcbe13f0-8d3e-4205-9e24-046fa963c3a4"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="137" width="28" height="15" uuid="7aa270ff-28d8-46b7-a39a-840da875cbeb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="122" width="28" height="15" uuid="351d1d11-2fdd-483d-91a2-1b918f7ed3fb"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="107" width="28" height="15" uuid="45c80432-6d2f-4671-bfee-27823932d43e"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="93" width="28" height="15" uuid="674fd074-f0dc-4c33-aefc-a592b8deec8f"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="79" width="28" height="15" uuid="b2e622a1-cd72-4f63-a284-abfcb11295be"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="64" width="28" height="15" uuid="1e6141b8-336d-4322-b696-ca23c9d7614a"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="37" width="28" height="15" uuid="e7bffd50-ae2a-4ee5-a195-9d6f93e41dbf"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="152" width="338" height="15" uuid="bb9e7dd9-0601-467e-b569-0ce26c5c5a86"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_intk_sesn_description_en}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="74" y="216" width="311" height="76" uuid="37071659-007b-4531-8d18-692c8ad2077e"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[
+•	Admission offer letter
+•	Original transcripts and certificates
+•	Original copy of Scholarship offer letter (if any)
+•	Four (4) passport size photos (Yellow background)
+•	Copy of Payment Receipt for Study Fee]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="137" width="338" height="15" uuid="55fa8a7c-cc1d-4b7a-a914-55422ce6d6ad"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_spvr_code_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="66" y="51" width="111" height="13" uuid="b41093d4-6263-4a90-b3ad-d9e6e3936862"/>
+				<text><![CDATA[Matrix No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="51" width="28" height="13" uuid="e60f7801-1525-4c2c-85c8-457849fcc0ef"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="51" width="201" height="13" uuid="66df7895-5160-4b54-aef9-d9981cdec27d"/>
+				<textFieldExpression><![CDATA[$F{in_cndt_matric_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="93" width="337" height="15" uuid="a1cc75ec-f80d-4b3a-b405-a25b7b7cf0dd"/>
+				<textFieldExpression><![CDATA[$F{in_fild_code_description_en}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="66" y="166" width="111" height="15" uuid="a9b12214-8e42-443e-b926-bd6817b50e17"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Period of Study  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="166" width="28" height="15" uuid="9b535a99-e92e-428f-96e6-444bda592c1f"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="166" width="337" height="15" uuid="3be1880e-e051-4717-a910-b9519d2f1916"/>
+				<text><![CDATA[Minimum 2 semesters, maximum 6 semesters]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="317" width="501" height="44" uuid="34db2a92-6813-403b-b197-ed2e14eda07a"/>
+				<text><![CDATA[4. 	All payment of tuition fees must be made by depositing the amount of fees charged into the Bank Islam Malaysia Berhad's account in the name of Universiti Malaysia Kelantan. Bank account number is 03036010016919. The method of payment is provided in the Appendix.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="108" width="263" height="15" uuid="98b1f0b4-277b-44df-9296-ed58838247ff"/>
+				<textFieldExpression><![CDATA[$F{in_prgm_fild_code_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="123" width="32" height="16" uuid="1fdb8d3b-be87-4cba-9dd2-fb59f067442a"/>
+				<textFieldExpression><![CDATA[$F{in_fcty_code_code}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<summary>
+		<band height="802" splitType="Stretch">
+			<textField>
+				<reportElement x="29" y="363" width="489" height="16" uuid="0a5765ff-ae94-493b-9579-36acddfeb7a3"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA["- Dean, "+$F{in_fcty_code_description_en}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="29" y="393" width="489" height="17" uuid="16fa4939-6c84-4acf-abc1-9848c97259ab"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA["- Main Supervisor,  "+$F{in_spvr_code_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="30" y="409" width="118" height="15" uuid="406ab32f-b0ed-40e2-b2d0-0ecae3ec1209"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[- Student’s file]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="348" width="111" height="15" uuid="a1e9bf02-fdc5-4d76-8a82-7d91de0a39cc"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[c.c - International Office]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="116" width="505" height="43" uuid="3fbc1642-11f7-4530-b313-4c92deb63d99"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[For further inquiries regarding this offer, please contact En. Murhazlan Bin Mohamed or Madam King Badriah Binti Raja Hassan at 09-7717031 / 09-7717145.]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="165" y="61" width="334" height="79" isPrintWhenDetailOverflows="true" uuid="52157259-a970-4983-b78b-5d133b6e7633"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_venu_code_registration_location}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="147" y="59" width="25" height="15" uuid="89ae0c33-a177-454f-82ce-41e3b5a0b830"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="32" width="25" height="15" uuid="190f88f7-63e1-4eee-a87b-69f93de26b0b"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="46" width="25" height="15" uuid="1140f3eb-d960-4a76-aa32-65073e072608"/>
+				<textElement textAlignment="Center">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="61" width="136" height="15" uuid="4044b0ee-50ce-4d9c-8e01-7d271f8174e7"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Registration Vanue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="32" width="136" height="15" uuid="038bf4cd-f266-498f-a0d8-32de0486986f"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Registration Date]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="165" y="32" width="36" height="15" isPrintWhenDetailOverflows="true" uuid="adca1157-c56f-483b-810e-3d637ef0377d"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{in_venu_code_registration_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="36" y="46" width="136" height="15" uuid="8f838f82-2ce8-4e03-b656-862264e18e12"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Time]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="165" y="46" width="334" height="15" uuid="c0deb243-713b-42b4-8cd5-d10cca5a4e7a"/>
+				<textFieldExpression><![CDATA[$F{in_venu_code_start_time_en}+" - "+$F{in_venu_code_end_time_en}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="0" width="428" height="20" uuid="19e691bc-5aa3-4d69-8fb0-ed9facc30099"/>
+				<text><![CDATA[5. 	You are required to enroll as follows:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="17" y="159" width="505" height="189" uuid="1c54e480-8b4f-454c-8678-52b26f84dfb1"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Thank You.
+
+“ISLAM DIJULANG, RAJA DIJUNJUNG, RAKYAT DISANJUNG”
+”BERKHIDMAT UNTUK NEGARA”
+
+
+Your sincerely,
+
+
+
+PROF. DR. RAZLI BIN CHE RAZAK
+Dean
+Centre For Postgraduate Studies
+Universiti Malaysia Kelantan
+
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="764" width="147" height="38" forecolor="#003366" uuid="7c18df08-e63e-4915-9a49-7447eab49f3c"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Karung Berkunci (Locked Bag) 36, Pengkalan Chepa, 16100 Kota Bharu,KELANTAN,MALAYSIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="437" y="782" width="117" height="20" forecolor="#003366" uuid="e0cb0e02-1df8-4d0f-ae84-7c98e1c5c501"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email: siswazah@umk.edu.my]]></text>
+			</staticText>
+			<line>
+				<reportElement x="274" y="769" width="1" height="31" forecolor="#003366" uuid="1ec7b507-4da4-43b3-afb8-f4ba76e60fff"/>
+			</line>
+			<staticText>
+				<reportElement x="281" y="752" width="72" height="20" forecolor="#003366" uuid="189331d7-c007-4a77-b498-25e916ddee6a"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[City Campus]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="437" y="762" width="81" height="30" forecolor="#003366" uuid="34ea1fb3-26a3-48c6-b5d9-163290a78af6"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel    : 609 771 7145   Fax   : 609 771 7162     ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="431" y="769" width="1" height="31" forecolor="#003366" uuid="571076ca-441d-4ed6-8ab0-dd94231e4e4d"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="780" width="274" height="20" forecolor="#003366" uuid="44e41f44-cde2-4e43-aef8-ec8ccf6cbc1b"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="378" width="489" height="13" uuid="d438755a-b3fd-45df-abf8-d51ff8ea93c8"/>
+				<text><![CDATA[- Deputy of Dean, PROF. MADYA DR. NOOR AZLINA BINTI IBRAHIM]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
