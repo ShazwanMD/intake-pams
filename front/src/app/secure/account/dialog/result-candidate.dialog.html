@@ -158,264 +158,263 @@
                         <button md-raised-button color="accent" (click)="decline(myIntakeApplication)">Decline</button>
           </md-card-subtitle>
 
-              <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === true">
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.acception === true">
 
+                    <div layout="row" layout-margin>
+                    <div flex></div>
+                      </div><b> You have Accepted the offer. Please download and print the offer letter. </b>
+
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+                      
+                      <div layout="row" layout-margin>
+                      <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A01'">
+                      <div flex></div> 
+
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1001_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                         Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                      </b></button>
+    
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1001_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                         Print Offer Letter(EN)
+                        </b></button>
+                      </div>
+                   </div>
+
+           </md-card-subtitle>
+
+            <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+                      
+                      <div layout="row" layout-margin>
+                      <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A02'">
+                      <div flex></div> 
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1002_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                      <md-icon class="md-24 tc-grey-300">print</md-icon>
+                      Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                       </b></button>
+      
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1002_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                      <md-icon class="md-24 tc-grey-300">print</md-icon>
+                      Print Offer Letter(EN)
+                      </b></button>
+                      </div>
+                      </div>
+
+              </md-card-subtitle>
+
+              <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+                      
                         <div layout="row" layout-margin>
-                          <div flex></div>
-                        </div><b> You have Accepted the offer. Please download and print the offer letter. </b>
-
-                        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
-                      
-                            <div layout="row" layout-margin>
-                              <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A01'">
-                                  <div flex></div> 
-                             <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1001_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                              <md-icon class="md-24 tc-grey-300">print</md-icon>
-                              Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                              </b></button>
-    
-                              <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1001_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                              <md-icon class="md-24 tc-grey-300">print</md-icon>
-                              Print Offer Letter(EN)
-                              </b></button>
-                            </div>
-                            </div>
-
-                          </md-card-subtitle>
-
-                          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
-                      
-                              <div layout="row" layout-margin>
-                                <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A02'">
-                                    <div flex></div> 
-                               <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1002_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                </b></button>
-      
-                                <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1002_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                Print Offer Letter(EN)
-                                </b></button>
-                              </div>
-                              </div>
-
-                            </md-card-subtitle>
-
-                            <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
-                      
-                                <div layout="row" layout-margin>
-                                  <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A03'">
-                                      <div flex></div> 
-                                 <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1003_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                  <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                  Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                  </b></button>
+                        <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A03'">
+                        <div flex></div> 
+                        <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1003_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                        Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                        </b></button>
         
-                                  <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1003_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                  <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                  Print Offer Letter(EN)
-                                  </b></button>
-                                </div>
-                                </div>
-  
-                              </md-card-subtitle>
+                        <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1003_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                         Print Offer Letter(EN)
+                        </b></button>
+                       </div>
+                   </div>
 
-                              <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+              </md-card-subtitle>
+
+            <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                       
-                                  <div layout="row" layout-margin>
-                                    <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A04'">
-                                        <div flex></div> 
-                                   <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1004_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                    <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                    Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                    </b></button>
+                        <div layout="row" layout-margin>
+                        <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A04'">
+                        <div flex></div> 
+                        <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1004_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                        Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                        </b></button>
           
-                                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1004_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                    <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                    Print Offer Letter(EN)
-                                    </b></button>
-                                  </div>
-                                  </div>
+                        <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1004_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                        Print Offer Letter(EN)
+                        </b></button>
+                      </div>
+                    </div>
     
-                                </md-card-subtitle>
+              </md-card-subtitle>
 
-                                <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+             <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                     
-                                    <div layout="row" layout-margin>
-                                      <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A05'">
-                                          <div flex></div> 
-                                     <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1005_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                      <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                      Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                      </b></button>
+                      <div layout="row" layout-margin>
+                      <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A05'">
+                      <div flex></div> 
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1005_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                      <md-icon class="md-24 tc-grey-300">print</md-icon>
+                      Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                       </b></button>
             
-                                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1005_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                      <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                      Print Offer Letter(EN)
-                                      </b></button>
-                                    </div>
-                                    </div>
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1005_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                      <md-icon class="md-24 tc-grey-300">print</md-icon>
+                      Print Offer Letter(EN)
+                      </b></button>
+                      </div>
+                  </div>
       
-                                  </md-card-subtitle>
+              </md-card-subtitle>
 
 
-                                  <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+            <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                       
-                                      <div layout="row" layout-margin>
-                                        <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A06'">
-                                            <div flex></div> 
-                                       <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1006_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                        <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                        Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                        </b></button>
+                      <div layout="row" layout-margin>
+                      <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A06'">
+                      <div flex></div> 
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1006_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                      <md-icon class="md-24 tc-grey-300">print</md-icon>
+                      Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                      </b></button>
               
-                                        <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1006_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                        <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                        Print Offer Letter(EN)
-                                        </b></button>
-                                      </div>
-                                      </div>
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1006_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                      <md-icon class="md-24 tc-grey-300">print</md-icon>
+                       Print Offer Letter(EN)
+                      </b></button>
+                    </div>
+                  </div>
         
-                                    </md-card-subtitle>
+            </md-card-subtitle>
 
 
-                                    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+           <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                     
-                                        <div layout="row" layout-margin>
-                                          <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A07'">
-                                              <div flex></div> 
-                                         <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1007_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                          <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                          Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                          </b></button>
+                    <div layout="row" layout-margin>
+                    <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A07'">
+                    <div flex></div> 
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1007_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                    Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                    </b></button>
                 
-                                          <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1007_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                          <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                          Print Offer Letter(EN)
-                                          </b></button>
-                                        </div>
-                                        </div>
-          
-                                      </md-card-subtitle>
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1007_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                     Print Offer Letter(EN)
+                    </b></button>
+                    </div>
+                  </div>
 
+          </md-card-subtitle>
 
-                                      <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                     
-                                          <div layout="row" layout-margin>
-                                            <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A08'">
-                                                <div flex></div> 
-                                           <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1008_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                            <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                            Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                            </b></button>
+                    <div layout="row" layout-margin>
+                    <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A08'">
+                    <div flex></div> 
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1008_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                    Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                    </b></button>
                   
-                                            <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1008_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                            <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                            Print Offer Letter(EN)
-                                            </b></button>
-                                          </div>
-                                          </div>
-            
-                                        </md-card-subtitle>
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1008_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                    Print Offer Letter(EN)
+                    </b></button>
+                    </div>
+                  </div>
 
+          </md-card-subtitle>
 
-                                        <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+                    <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                     
-                                            <div layout="row" layout-margin>
-                                              <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A09'">
-                                                  <div flex></div> 
-                                             <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1009_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                              <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                              Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                              </b></button>
+                    <div layout="row" layout-margin>
+                    <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A09'">
+                    <div flex></div> 
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1009_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                    Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                    </b></button>
                     
-                                              <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1009_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                              <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                              Print Offer Letter(EN)
-                                              </b></button>
-                                            </div>
-                                            </div>
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1009_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                    Print Offer Letter(EN)
+                    </b></button>
+                    </div>
+                  </div>
               
-                                          </md-card-subtitle>
+             </md-card-subtitle>
 
-                                          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                     
-                                              <div layout="row" layout-margin>
-                                                <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A10'">
-                                                    <div flex></div> 
-                                               <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1010_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                                <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                                Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                                </b></button>
+                    <div layout="row" layout-margin>
+                    <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A10'">
+                    <div flex></div> 
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1010_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                    Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                     </b></button>
                       
-                                                <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1010_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                                <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                                Print Offer Letter(EN)
-                                                </b></button>
-                                              </div>
-                                              </div>
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1010_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                    Print Offer Letter(EN)
+                    </b></button>
+                  </div>
+                </div>
                 
-                                            </md-card-subtitle>
+          </md-card-subtitle>
 
                                             
-                                          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                     
-                                              <div layout="row" layout-margin>
-                                                <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A11'">
-                                                    <div flex></div> 
-                                               <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1011_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                                <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                                Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                                </b></button>
+                    <div layout="row" layout-margin>
+                    <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A11'">
+                    <div flex></div> 
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1011_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                    Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                    </b></button>
                       
-                                                <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1011_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                                <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                                Print Offer Letter(EN)
-                                                </b></button>
-                                              </div>
-                                              </div>
+                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1011_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                    <md-icon class="md-24 tc-grey-300">print</md-icon>
+                     Print Offer Letter(EN)
+                    </b></button>
+                    </div>
+                  </div>
                 
-                                            </md-card-subtitle>
+          </md-card-subtitle>
 
 
-                                            <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+          <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                     
-                                                <div layout="row" layout-margin>
-                                                  <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A12'">
-                                                      <div flex></div> 
-                                                 <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1012_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                                  <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                                  Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                                  </b></button>
+                      <div layout="row" layout-margin>
+                      <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A12'">
+                      <div flex></div> 
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1012_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                      <md-icon class="md-24 tc-grey-300">print</md-icon>
+                      Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                      </b></button>
                         
-                                                  <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1012_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                                  <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                                  Print Offer Letter(EN)
-                                                  </b></button>
-                                                </div>
-                                                </div>
+                      <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1012_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                      <md-icon class="md-24 tc-grey-300">print</md-icon>
+                      Print Offer Letter(EN)
+                      </b></button>
+                    </div>
+                  </div>
                   
-                                              </md-card-subtitle>
+          </md-card-subtitle>
 
-                                              <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
+           <md-card-subtitle *ngIf="myIntakeApplication.candidate?.application?.intake?.graduateCenter?.code === 'CPS'">
                     
-                                                  <div layout="row" layout-margin>
-                                                    <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A13'">
-                                                        <div flex></div> 
-                                                   <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1013_bm.jrxml&report.pdf',myIntakeApplication)"><b>
-                                                    <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                                    Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
-                                                    </b></button>
+                        <div layout="row" layout-margin>
+                        <div *ngIf="myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code === 'A13'">
+                        <div flex></div> 
+                        <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1013_bm.jrxml&report.pdf',myIntakeApplication)"><b>
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                        Print Offer Letter(BM) {{myIntakeApplication.candidate?.programSelection?.programFieldCode?.facultyCode?.code}}
+                        </b></button>
                           
-                                                    <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1013_en.jrxml&report.pdf',myIntakeApplication)"><b>
-                                                    <md-icon class="md-24 tc-grey-300">print</md-icon>
-                                                    Print Offer Letter(EN)
-                                                    </b></button>
-                                                  </div>
-                                                  </div>
+                        <button md-button class="md-icon-button" color="accent" (click)="downloadReport('adm_1013_en.jrxml&report.pdf',myIntakeApplication)"><b>
+                        <md-icon class="md-24 tc-grey-300">print</md-icon>
+                         Print Offer Letter(EN)
+                        </b></button>
+                      </div>
+                  </div>
                     
-                                                </md-card-subtitle>
+            </md-card-subtitle>
 
                 </md-card-subtitle>
 
