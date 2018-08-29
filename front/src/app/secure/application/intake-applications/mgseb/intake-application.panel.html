@@ -19,9 +19,14 @@
           </pams-study-center-choice>
 
           <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+          <div flex-gt-md="50">
+            <b>Study Center : </b><b *ngIf="_intakeApplication.studyCenterCode !== null">{{_intakeApplication.studyCenterCode.descriptionEn}}</b><br/>
+          <div>
           <pams-study-center-code-select [placeholder]="'StudyCenter'" [innerFormControl]="applicationForm.controls.studyCenterCode"
           fxFlex="calc(50%-25px)" class="pad-bottom">
           </pams-study-center-code-select>
+          </div>
+          </div>
           </div>
 
         </td-expansion-panel>
@@ -29,13 +34,13 @@
         <template md-tab-label>Applicant Personal Information</template>
         <td-expansion-panel label="Personal Details">
 
-          <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+          <!-- <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
               <div layout="row" layout-align="start center">
                   <button md-raised-button color="primary" (click)="promoCodeDialog(_intakeApplication)">
                       Enter Promo Code (if applicable)
                   </button>
                   </div>
-              </div>
+              </div> -->
 
           <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
             <!-- first column -->
@@ -54,7 +59,7 @@
             <div class="error" class="tc-red-600" *ngIf="applicationForm.get('credentialNo').invalid && applicationForm.get('credentialNo').touched">
               Your Ic or Passport Number is required!
             </div>
-
+            
             <md-input-container fxFlex="calc(50%-25px)">
               <input mdInput type="date" placeholder="Date of Birth *" formControlName="birthDate" />
             </md-input-container>
@@ -62,58 +67,94 @@
               Your Birth Date is required!
             </div>
 
-            <pams-nationality-code-select [placeholder]="'Nationality'" [innerFormControl]="applicationForm.controls.nationalityCode"
+            <md-input-container fxFlex="calc(50%-25px)">
+                <input mdInput placeholder="Mobile Number *" formControlName="mobile" />
+              </md-input-container>
+              <div class="error" class="tc-red-600" *ngIf="applicationForm.get('mobile').invalid && applicationForm.get('mobile').touched">
+                Please add your mobile Number number!
+              </div>
+
+              <md-input-container fxFlex="calc(50%-25px)">
+                  <input mdInput placeholder="Phone Number" formControlName="phone" flex/>
+              </md-input-container>
+    
+              <md-input-container fxFlex="calc(50%-25px)">
+                  <input mdInput placeholder="Fax No" formControlName="fax" flex/>
+              </md-input-container>
+
+              <md-input-container fxFlex="calc(50%-25px)">
+                  <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>
+              </md-input-container>
+
+              <div flex-gt-md="50">
+            <b>Nationality : </b><b *ngIf="_intakeApplication.nationalityCode !== null">{{_intakeApplication.nationalityCode.descriptionEn}}</b><br/>
+            <div>
+            <pams-nationality-code-select [placeholder]="'Nationality *'" [innerFormControl]="applicationForm.controls.nationalityCode"
               fxFlex="calc(50%-25px)" class="pad-bottom">
             </pams-nationality-code-select>
             <div class="error" class="tc-red-600" *ngIf="applicationForm.get('nationalityCode').invalid && applicationForm.get('nationalityCode').touched">
               Please add your nationality!
             </div>
+            </div>
+            </div>
 
+            <div flex-gt-md="50">
+            <div>
+              <b>Residency : </b><b *ngIf="_intakeApplication.residencyCode !== null">{{_intakeApplication.residencyCode.descriptionEn}}</b><br/>    
+            <div>
             <pams-residency-code-select [placeholder]="'Residency *'" 
             [innerFormControl]="applicationForm.controls.residencyCode"
             fxFlex="calc(50%-25px)" class="pad-bottom">
-</pams-residency-code-select>
+            </pams-residency-code-select>
+            </div>
+            </div>
              
-            <pams-race-code-select [placeholder]="'Race'" [innerFormControl]="applicationForm.controls.raceCode" fxFlex="calc(50%-25px)"
+            <div>
+              <b>Race : </b><b *ngIf="_intakeApplication.raceCode !== null">{{_intakeApplication.raceCode.descriptionEn}}</b><br/>
+            <div>
+            <pams-race-code-select [placeholder]="'Race *'" [innerFormControl]="applicationForm.controls.raceCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-race-code-select>
-
-
-            <pams-marital-code-select [placeholder]="'Marital'" [innerFormControl]="applicationForm.controls.maritalCode" fxFlex="calc(50%-25px)"
-              class="pad-bottom">
-            </pams-marital-code-select>
-
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput type="date" placeholder="Passport Expired Date" formControlName="passExpDate" flex/>
-            </md-input-container>
-
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="Mobile Number *" formControlName="mobile" />
-            </md-input-container>
-            <div class="error" class="tc-red-600" *ngIf="applicationForm.get('mobile').invalid && applicationForm.get('mobile').touched">
-              Please add your mobile Number number!
+            </div>
             </div>
 
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="Phone Number" formControlName="phone" flex/>
-            </md-input-container>
+            <div>
+                <b>Marital : </b><b *ngIf="_intakeApplication.maritalCode !== null">{{_intakeApplication.maritalCode.descriptionEn}}</b><br/>      
+            <div>
+            <pams-marital-code-select [placeholder]="'Marital *'" [innerFormControl]="applicationForm.controls.maritalCode" fxFlex="calc(50%-25px)"
+              class="pad-bottom">
+            </pams-marital-code-select>
+            </div>
+            </div>
 
-
-            <md-input-container fxFlex="calc(50%-25px)">
-              <input mdInput placeholder="Fax No" formControlName="fax" flex/>
-            </md-input-container>
-
-            <pams-ethnicity-code-select [placeholder]="'Ethnicity'" required md-maxlength="10" [innerFormControl]="applicationForm.controls.ethnicityCode"
+            <div>
+              <b>Ethnicity : </b><b *ngIf="_intakeApplication.ethnicityCode !== null">{{_intakeApplication.ethnicityCode.descriptionEn}}</b><br/>  
+            <div>
+            <pams-ethnicity-code-select [placeholder]="'Ethnicity *'" required md-maxlength="10" [innerFormControl]="applicationForm.controls.ethnicityCode"
               fxFlex="calc(50%-25px)" class="pad-bottom">
             </pams-ethnicity-code-select>
+            </div>
+            </div>
 
-            <pams-gender-code-select [placeholder]="'Gender'"   [innerFormControl]="applicationForm.controls.genderCode" fxFlex="calc(50%-25px)"
+            <div>
+              <b>Gender : </b><b *ngIf="_intakeApplication.genderCode !== null">{{_intakeApplication.genderCode.descriptionEn}}</b><br/>
+            <div>
+            <pams-gender-code-select [placeholder]="'Gender *'"   [innerFormControl]="applicationForm.controls.genderCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-gender-code-select>
+            </div>
+            </div>
 
-            <pams-religion-code-select [placeholder]="'Religion'" [innerFormControl]="applicationForm.controls.religionCode" fxFlex="calc(50%-25px)"
+            <div>
+              <b>Religion : </b><b *ngIf="_intakeApplication.religionCode !== null">{{_intakeApplication.religionCode.descriptionEn}}</b><br/>  
+            <div>
+            <pams-religion-code-select [placeholder]="'Religion *'" [innerFormControl]="applicationForm.controls.religionCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-religion-code-select>
+            </div>
+            </div>
+
+            </div>
           </div>
      </td-expansion-panel>
       </md-tab>
@@ -158,13 +199,26 @@
             official Postcode is required!
            </div>
 
+           <div flex-gt-md="50">
+            <div>
+              <b>State : </b><b *ngIf="_intakeApplication.officialStateCode !== null">{{_intakeApplication.officialStateCode.descriptionEn}}</b><br/>    
+            <div>
             <pams-state-code-select [placeholder]="'State'" [innerFormControl]="applicationForm.controls.officialStateCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-state-code-select>
+            </div>
+            </div>
 
+            <div>
+              <b>Country : </b><b *ngIf="_intakeApplication.officialCountryCode !== null">{{_intakeApplication.officialCountryCode.descriptionEn}}</b><br/>    
+            <div>
             <pams-country-code-select [placeholder]="'Country'" [innerFormControl]="applicationForm.controls.officialCountryCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-country-code-select>
+          </div>
+          </div>
+          </div>
+
           </div>
 
           <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
@@ -204,14 +258,26 @@
             mailing Postcode is required!
            </div>
             
-
+           <div flex-gt-md="50">
+            <div>
+              <b>State : </b><b *ngIf="_intakeApplication.mailingStateCode !== null">{{_intakeApplication.mailingStateCode.descriptionEn}}</b><br/>    
+            <div>
             <pams-state-code-select [placeholder]="'State'" [innerFormControl]="applicationForm.controls.mailingStateCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-state-code-select>
+            </div>
+            </div>
 
+            <div>
+              <b>Country : </b><b *ngIf="_intakeApplication.mailingCountryCode !== null">{{_intakeApplication.mailingCountryCode.descriptionEn}}</b><br/>    
+            <div>
             <pams-country-code-select [placeholder]="'Country'" [innerFormControl]="applicationForm.controls.mailingCountryCode" fxFlex="calc(50%-25px)"
               class="pad-bottom">
             </pams-country-code-select>
+            </div>
+            </div>
+
+            </div>
 
           </div>
         </td-expansion-panel>
@@ -361,18 +427,17 @@
                 </md-checkbox>
               </div>
 
-              <div layout="row" class="pad-bottom" flex>
+              <!-- <div layout="row" class="pad-bottom" flex>
                 <md-checkbox formControlName="refereeFormAttached">
                   <div layout="column" flex> Referee Form</div>
                 </md-checkbox>
-              </div>
-
-            
-              <div layout="row" class="pad-bottom" flex>
+              </div> -->
+           
+              <!-- <div layout="row" class="pad-bottom" flex>
                 <md-checkbox formControlName="researchProposalAttached">
                   <div layout="column" flex> Research Proposal</div>
                 </md-checkbox>
-              </div>
+              </div> -->
             
             </div>
             </td-expansion-panel>

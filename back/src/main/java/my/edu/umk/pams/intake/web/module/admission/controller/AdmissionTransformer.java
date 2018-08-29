@@ -70,7 +70,7 @@ public class AdmissionTransformer {
         vo.setIntake(policyTransformer.toIntakeVo(e.getIntake()));
         vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
         vo.setIntakeSession(policyTransformer.toIntakeSessionVo(e.getIntake().getSession()));
-        
+        vo.setSupervisorOffering(policyTransformer.toSupervisorOfferingVo(e.getSupervisorSelection()));
         return vo;
     }
 

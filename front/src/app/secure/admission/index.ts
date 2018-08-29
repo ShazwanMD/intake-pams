@@ -54,6 +54,7 @@ import { assignedIntakeTaskListReducer, pooledIntakeTaskListReducer } from '../p
 import { archivedIntakeListReducer } from '../account/intake-list.reducer';
 import { IntakeListState } from '../application/intake-applications/intake-list.reducer';
 import { CandidateTask } from '../../shared/model/admission/candidate-task.interface';
+import { AdmissionCandidateModule } from '../cps-candidate';
 
 export interface AdmissionModuleState {
  // intakeTasks: IntakeTaskListState;
@@ -119,6 +120,7 @@ export const admissionModuleReducers = {
     IntakeSubModule.forRoot(),
     CpsIntakeApplicationSubModule,
     PipeModule.forRoot(),
+   // AdmissionCandidateModule.forRoot(),
   ],
   declarations: [
     // page

@@ -194,8 +194,11 @@ public class ApplicationController {
 
 	@RequestMapping(value = "/intakes/{referenceNo}/supervisorOfferings", method = RequestMethod.GET)
 	public ResponseEntity<List<SupervisorOffering>> findSupervisorOfferings(@PathVariable String referenceNo) {
+		LOG.debug("controller spvr {}", referenceNo );
 		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
 		List<InSupervisorOffering> supervisorOfferings = policyService.findSupervisorOfferings(intake);
+		
+		LOG.debug("supervisorOfferings {}", supervisorOfferings );
 		return new ResponseEntity<List<SupervisorOffering>>(
 				policyTransformer.toSupervisorOfferingVos(supervisorOfferings), HttpStatus.OK);
 	}

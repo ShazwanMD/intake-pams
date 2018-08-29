@@ -8,6 +8,10 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdSnackBar, MdDialogRef, MdDialogConfig} from '@angular/material';
+import { AdmissionCandidateActions } from '../../cps-candidate/admission-candidate.action';
+import { Observable } from '../../../../../node_modules/rxjs';
+import { AdmissionCandidateModuleState } from '../../cps-candidate';
+import { AdmissionModuleState } from '..';
 
 @Component({
   selector: 'pams-candidate-profile-reject',
@@ -19,6 +23,7 @@ export class CandidateProfileRejectDialog implements OnInit {
   private rejectForm: FormGroup;
   private _candidate: Candidate;
 
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -26,7 +31,9 @@ export class CandidateProfileRejectDialog implements OnInit {
               private actions: AdmissionActions,
               private dialog: MdDialogRef<CandidateProfileRejectDialog>,
               private snackBar: MdSnackBar,
-              private store: Store<ApplicationModuleState>) {
+              private action: AdmissionCandidateActions,
+              private store: Store<AdmissionCandidateModuleState>) {
+               
   }
 
   set candidate(candidate: Candidate) {
@@ -40,7 +47,6 @@ export class CandidateProfileRejectDialog implements OnInit {
       reason: '',
       application: <IntakeApplication>{},
     });
-
     this.rejectForm.patchValue(this._candidate);
   }
 

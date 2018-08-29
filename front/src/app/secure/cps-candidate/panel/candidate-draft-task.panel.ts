@@ -3,9 +3,9 @@ import { Candidate } from '../../../shared/model/admission/candidate.interface';
 import { CandidateTask } from '../../../shared/model/admission/candidate-task.interface';
 import { IntakeActions } from '../../policy/intakes/intake.action';
 import {
-  Component, OnInit, Input,
+  Component, OnInit, Input, ViewContainerRef,
 } from '@angular/core';
-import { MdSnackBar } from '@angular/material';
+import { MdSnackBar, MdDialogConfig, MdDialogRef, MdDialog } from '@angular/material';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
@@ -13,18 +13,26 @@ import { ReportActions } from '../../../shared/report/report.action';
 import { AdmissionCandidateActions } from "../admission-candidate.action";
 import { IntakeApplication } from "../../../shared/model/application/intake-application.interface";
 import { ApplicationModuleState } from "../../application/index";
+import { CandidateProfileRejectDialog } from '../../admission/dialog/candidate-profile-reject.dialog';
+import { AdmissionActions } from '../../admission/admission.action';
+import { EditSupervisorDialog } from "../dialog/edit-supervisor.dialog";
+import { AdmissionCandidateRejectDialog } from '../dialog/admission-candidate-reject.dialog';
 
 @Component({
   selector: 'pams-candidate-draft-task',
   templateUrl: './candidate-draft-task.panel.html',
 })
 export class CandidateDraftTaskPanel implements OnInit {
-  
+
   @Input() candidateTask: CandidateTask;
+
   
   private CANDIDATE_BY_ID: string[] = 'admissionCandidateModuleState.candidate'.split('.');
   
   private candidate$: Observable<Candidate>;
+  private editorDialogRef: MdDialogRef<EditSupervisorDialog>;
+
+ private editorDialogRef1: MdDialogRef<AdmissionCandidateRejectDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -32,6 +40,9 @@ export class CandidateDraftTaskPanel implements OnInit {
               private snackBar: MdSnackBar,
               private reportActions: ReportActions,
               private intakeActions: IntakeActions,
+              private admissionActions: AdmissionActions,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog,
               private actions: AdmissionCandidateActions) {
      
       this.candidate$ = this.store.select(...this.CANDIDATE_BY_ID);
@@ -52,15 +63,49 @@ export class CandidateDraftTaskPanel implements OnInit {
       // return false;
     }
   }
-  
-  reject(){
-      this.store.dispatch(this.actions.removeCandidateTask(this.candidateTask));
-      this.goBack();
-  }
+  // reject(){
+  //     this.store.dispatch(this.actions.removeCandidateTask(this.candidateTask));
+  //     this.goBack();
+  // }
 
   goBack(): void {
     this.router.navigate(['/secure/cps-candidate']);
     window.location.reload();
   }
+
+  rejectCandidate(candidate): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '40%';
+    config.position = {top: '0px'};
+    this.editorDialogRef1 = this.dialog.open(AdmissionCandidateRejectDialog, config);
+    this.editorDialogRef1.componentInstance.candidate = candidate;
+    this.editorDialogRef1.afterClosed().subscribe(res => {
+      this.store.dispatch(this.actions.removeCandidateTask(this.candidateTask));
+      this.goBack();
+    });
+  }
+
+  editSupervisor(candidate): void {
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '50%';
+      config.height = '40%';
+      config.position = {top: '0px'};
+      this.editorDialogRef = this.dialog.open(EditSupervisorDialog, config);
+      this.editorDialogRef.componentInstance.candidate = candidate;
+
+      
+/*      this.editorDialogRef.afterClosed().subscribe((res) => {
+       this.route.params.subscribe((params: { taskId: string }) => {
+        let taskId: string = params.taskId;
+        console.log('intake: ' + taskId);
+        this.store.dispatch(this.actions.findCandidateById(taskId));
+      });
+      });*/
+    }
 
 }

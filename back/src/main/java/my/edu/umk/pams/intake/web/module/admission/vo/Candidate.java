@@ -13,6 +13,7 @@ import my.edu.umk.pams.intake.web.module.policy.vo.Intake;
 import my.edu.umk.pams.intake.web.module.policy.vo.IntakeSession;
 import my.edu.umk.pams.intake.web.module.policy.vo.ProgramOffering;
 import my.edu.umk.pams.intake.web.module.policy.vo.StudyModeOffering;
+import my.edu.umk.pams.intake.web.module.policy.vo.SupervisorOffering;
 
 /**
  * @author PAMS
@@ -31,6 +32,7 @@ public class Candidate extends Document {
     private boolean acception;
     private ProgramOffering programSelection;
     private IntakeSession intakeSession;
+    private SupervisorOffering supervisorOffering;
 
     public StudyModeOffering getStudyMode() {
 		return studyMode;
@@ -126,6 +128,14 @@ public class Candidate extends Document {
 
 	public void setIntakeSession(IntakeSession intakeSession) {
 		this.intakeSession = intakeSession;
+	}
+
+	public SupervisorOffering getSupervisorOffering() {
+		return supervisorOffering;
+	}
+
+	public void setSupervisorOffering(SupervisorOffering supervisorOffering) {
+		this.supervisorOffering = supervisorOffering;
 	}
 
 	@JsonCreator
