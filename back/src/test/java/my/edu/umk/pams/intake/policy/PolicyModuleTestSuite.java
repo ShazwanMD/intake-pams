@@ -12,7 +12,7 @@ import org.junit.runners.Suite;
         US_IN_PLC_1001.class, 
         US_IN_PLC_1002.class,
         US_IN_PLC_2000.class,
-        US_IN_PLC_2001.class,
+        //US_IN_PLC_2001.class,
         US_IN_PLC_2002.class,
         US_IN_PLC_2003.class,
         US_IN_PLC_2004.class,
