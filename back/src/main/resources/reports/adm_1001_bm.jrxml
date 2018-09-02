@@ -648,10 +648,6 @@ FROM
 			<line>
 				<reportElement x="15" y="58" width="31" height="1" forecolor="#CC3300" uuid="37195374-9831-47f5-a5d4-86045ae8fde8"/>
 			</line>
-			<image>
-				<reportElement x="13" y="9" width="36" height="41" uuid="b46d8eb8-f9d9-497c-928b-fa64a6eb7fcc"/>
-				<imageExpression><![CDATA["assets\\ico\\umk.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="13" y="68" width="35" height="11" uuid="20f09de4-eebb-496e-8b24-9743a6212415"/>
 				<textElement textAlignment="Center">
@@ -662,6 +658,10 @@ FROM
 			<line>
 				<reportElement x="14" y="67" width="31" height="1" forecolor="#CC3300" uuid="39d35bc9-acc5-480f-acfa-bd625016db19"/>
 			</line>
+			<image>
+				<reportElement x="16" y="17" width="34" height="33" uuid="d78c986a-2c0d-4561-bc90-9bc296454afb"/>
+				<imageExpression><![CDATA["C:\\Users\\Nurain\\git\\intake\\back\\src\\main\\resources\\reports\\img\\umk.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
