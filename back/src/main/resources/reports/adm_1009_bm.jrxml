@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1456"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -622,7 +622,7 @@ FROM
 				<text><![CDATA[Pusat Pengajian Siswazah]]></text>
 			</staticText>
 			<line>
-				<reportElement x="49" y="30" width="506" height="1" forecolor="#CC3300" uuid="9a77a6a8-ab2e-4f5d-be98-ad183acefcd5"/>
+				<reportElement x="0" y="30" width="555" height="1" forecolor="#CC3300" uuid="9a77a6a8-ab2e-4f5d-be98-ad183acefcd5"/>
 			</line>
 			<staticText>
 				<reportElement x="354" y="17" width="200" height="20" uuid="7769f174-577b-4de6-95ce-6fca3fb241da"/>
@@ -631,37 +631,6 @@ FROM
 				</textElement>
 				<text><![CDATA[Centre for Postgraduate Studies]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="13" y="59" width="35" height="11" uuid="dc313079-259a-4d33-92a6-842096cfd4e0"/>
-				<textElement textAlignment="Center">
-					<font size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[MALAYSIA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="13" y="50" width="35" height="11" uuid="23d85738-7b99-40e6-a5cc-45fd5be187e5"/>
-				<textElement textAlignment="Center">
-					<font size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[UNIVERSITI]]></text>
-			</staticText>
-			<line>
-				<reportElement x="15" y="58" width="31" height="1" forecolor="#CC3300" uuid="37195374-9831-47f5-a5d4-86045ae8fde8"/>
-			</line>
-			<image>
-				<reportElement x="13" y="9" width="36" height="41" uuid="b46d8eb8-f9d9-497c-928b-fa64a6eb7fcc"/>
-				<imageExpression><![CDATA["C:\\Users\\Nurain\\git\\intake\\front\\src\\assets\\ico\\umk.png"]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement x="13" y="68" width="35" height="11" uuid="20f09de4-eebb-496e-8b24-9743a6212415"/>
-				<textElement textAlignment="Center">
-					<font size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[KELANTAN]]></text>
-			</staticText>
-			<line>
-				<reportElement x="14" y="67" width="31" height="1" forecolor="#CC3300" uuid="39d35bc9-acc5-480f-acfa-bd625016db19"/>
-			</line>
 		</band>
 	</title>
 	<pageHeader>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="1442"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -615,7 +615,7 @@ FROM
 				<textFieldExpression><![CDATA[$F{in_stte_code_description_en}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="36" y="31" width="519" height="1" forecolor="#CC3300" uuid="2622415e-53a8-4436-bf27-f9195abcc47f"/>
+				<reportElement x="0" y="31" width="555" height="1" forecolor="#CC3300" uuid="2622415e-53a8-4436-bf27-f9195abcc47f"/>
 			</line>
 			<staticText>
 				<reportElement x="354" y="17" width="200" height="20" uuid="0d8a93e6-8499-4d67-97d0-8910fefce229"/>
@@ -630,37 +630,6 @@ FROM
 					<font size="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[Pusat Pengajian Siswazah]]></text>
-			</staticText>
-			<image>
-				<reportElement x="2" y="8" width="36" height="41" uuid="54597328-95e2-4b85-afbd-c4921fd8719a"/>
-				<imageExpression><![CDATA["C:\\Users\\Nurain\\git\\intake\\front\\src\\assets\\ico\\umk.png"]]></imageExpression>
-			</image>
-			<staticText>
-				<reportElement x="2" y="49" width="35" height="11" uuid="7d1961d2-1942-4a14-acf6-9c3921a49082"/>
-				<textElement textAlignment="Center">
-					<font size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[UNIVERSITI]]></text>
-			</staticText>
-			<line>
-				<reportElement x="4" y="57" width="31" height="1" forecolor="#CC3300" uuid="69c908ca-ca91-4ecc-98d4-3fc4ec0ec156"/>
-			</line>
-			<staticText>
-				<reportElement x="2" y="58" width="35" height="11" uuid="85b36ac7-0cc0-43a8-95c9-8cf68dd0b63d"/>
-				<textElement textAlignment="Center">
-					<font size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[MALAYSIA]]></text>
-			</staticText>
-			<line>
-				<reportElement x="4" y="66" width="31" height="1" forecolor="#CC3300" uuid="43809269-da49-41a5-958f-1bf5bb88ea05"/>
-			</line>
-			<staticText>
-				<reportElement x="2" y="67" width="35" height="11" uuid="3d9b412d-3edd-4845-9ba9-ea24364b0a95"/>
-				<textElement textAlignment="Center">
-					<font size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[KELANTAN]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -1085,8 +1054,8 @@ Universiti Malaysia Kelantan
 			</line>
 			<staticText>
 				<reportElement x="0" y="780" width="274" height="20" forecolor="#003366" uuid="44e41f44-cde2-4e43-aef8-ec8ccf6cbc1b"/>
-				<textElement verticalAlignment="Bottom">
-					<font size="9" isBold="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
 			</staticText>
