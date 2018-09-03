@@ -660,7 +660,7 @@ FROM
 			</line>
 			<image>
 				<reportElement x="16" y="17" width="34" height="33" uuid="d78c986a-2c0d-4561-bc90-9bc296454afb"/>
-				<imageExpression><![CDATA["C:\\Users\\Nurain\\git\\intake\\back\\src\\main\\resources\\reports\\img\\umk.png"]]></imageExpression>
+				<imageExpression><![CDATA["\\img\\umk.png"]]></imageExpression>
 			</image>
 		</band>
 	</title>
