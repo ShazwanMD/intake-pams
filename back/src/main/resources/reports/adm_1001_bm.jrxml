@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="192"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -571,44 +571,44 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="219" splitType="Stretch">
+		<band height="162" splitType="Stretch">
 			<textField>
-				<reportElement x="32" y="96" width="505" height="20" uuid="b0b2f758-b342-4b8e-9516-482ec00c2103"/>
+				<reportElement x="32" y="50" width="505" height="20" uuid="b0b2f758-b342-4b8e-9516-482ec00c2103"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_name}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="114" width="505" height="20" uuid="dd4890ff-b6c3-45c2-b9ff-69500a4b307f"/>
+				<reportElement x="32" y="68" width="505" height="20" uuid="dd4890ff-b6c3-45c2-b9ff-69500a4b307f"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_address1}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="131" width="505" height="20" uuid="4fc48987-816e-4ba8-a99a-4524eb5f63ec"/>
+				<reportElement x="32" y="85" width="505" height="20" uuid="4fc48987-816e-4ba8-a99a-4524eb5f63ec"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_address2}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="148" width="505" height="20" uuid="beb9fc50-389c-4228-9b23-83b3c14e6674"/>
+				<reportElement x="32" y="102" width="505" height="20" uuid="beb9fc50-389c-4228-9b23-83b3c14e6674"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[(($F{in_intk_apln_mailing_address3}==null)? "-": $F{in_intk_apln_mailing_address3}.toUpperCase())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="166" width="505" height="20" uuid="c4fcee2b-84a3-4f37-8a9a-8d4422aee813"/>
+				<reportElement x="32" y="120" width="505" height="20" uuid="c4fcee2b-84a3-4f37-8a9a-8d4422aee813"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{in_intk_apln_mailing_postcode}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="32" y="182" width="505" height="20" uuid="f2482a32-6866-4d4c-b274-9a896923adb7"/>
+				<reportElement x="32" y="136" width="505" height="20" uuid="f2482a32-6866-4d4c-b274-9a896923adb7"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -631,10 +631,14 @@ FROM
 				</textElement>
 				<text><![CDATA[Centre for Postgraduate Studies]]></text>
 			</staticText>
+			<image>
+				<reportElement x="392" y="42" width="84" height="94" uuid="8cfd888d-b8a7-4f7f-ac09-756fbbe62a9b"/>
+				<imageExpression><![CDATA["C:\\Users\\Nurain\\git\\intake\\back\\src\\main\\resources\\reports\\img\\umk.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="89" splitType="Stretch">
+		<band height="91" splitType="Stretch">
 			<staticText>
 				<reportElement x="32" y="0" width="100" height="20" uuid="fa2291f2-5c88-40de-b1cd-a67ee8f972ef"/>
 				<textElement>
@@ -643,27 +647,24 @@ FROM
 				<text><![CDATA[Tuan/Puan,]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="20" width="505" height="21" uuid="fccf6744-a5f0-4faa-b880-410e1627381a"/>
+				<reportElement x="32" y="26" width="505" height="21" uuid="fccf6744-a5f0-4faa-b880-410e1627381a"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[TAWARAN KEMASUKAN KE PROGRAM PENGAJIAN PASCASISWAZAH UNIVERSITI MALAYSIA KELANTAN]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="32" y="37" width="505" height="20" uuid="57938e41-ea0f-4f9e-8ab4-1378e09b3bab"/>
-				<textElement>
-					<font fontName="SansSerif"/>
-				</textElement>
-				<textFieldExpression><![CDATA["BAGI "+$F{in_intk_sesn_description_en}.toUpperCase()+" "+$F{in_intk_sesn_label}.toUpperCase()]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="32" y="66" width="315" height="20" uuid="4a8aeb73-e347-4a91-9df5-8f5d32cb55d1"/>
+				<reportElement x="32" y="69" width="315" height="20" uuid="4a8aeb73-e347-4a91-9df5-8f5d32cb55d1"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[Dengan segala hormatnya, saya diarah merujuk perkara di atas.
 ]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="33" y="42" width="504" height="20" uuid="705314c5-8d4e-47c6-afed-50d4454802e2"/>
+				<textFieldExpression><![CDATA["BAGI "+$F{in_intk_sesn_description_ms}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
@@ -733,7 +734,7 @@ FROM
 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="219" y="158" width="316" height="15" uuid="3730faf6-1812-421c-a77c-4071c6131854"/>
+				<reportElement x="197" y="158" width="357" height="15" uuid="3730faf6-1812-421c-a77c-4071c6131854"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -914,16 +915,12 @@ FROM
 				<reportElement x="197" y="143" width="263" height="15" uuid="2730291f-5256-49b3-97f0-ecf5abea9d9a"/>
 				<textFieldExpression><![CDATA[$F{in_prgm_fild_code_code}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="196" y="158" width="24" height="15" uuid="4c563dd3-78b5-4aac-a472-c2f44399cdb3"/>
-				<textFieldExpression><![CDATA[$F{in_fcty_code_code}]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<summary>
 		<band height="802" splitType="Stretch">
 			<staticText>
-				<reportElement x="32" y="169" width="505" height="187" uuid="ebcd5d02-283a-410f-9f55-497049fb8ca1"/>
+				<reportElement x="32" y="164" width="505" height="187" uuid="ebcd5d02-283a-410f-9f55-497049fb8ca1"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
@@ -1001,12 +998,12 @@ Universiti Malaysia Kelantan
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField>
-				<reportElement stretchType="RelativeToTallestObject" x="203" y="34" width="36" height="15" isPrintWhenDetailOverflows="true" uuid="bbb48bd2-e5a3-463e-97ab-d3ee17fc7ed1"/>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement stretchType="RelativeToTallestObject" x="204" y="34" width="57" height="15" isPrintWhenDetailOverflows="true" uuid="bbb48bd2-e5a3-463e-97ab-d3ee17fc7ed1"/>
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{in_venu_code_registration_date}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{in_venu_code_registration_date}+" "]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="74" y="63" width="136" height="15" uuid="42006688-c69b-488f-b509-e4316fd1299c"/>
@@ -1038,7 +1035,7 @@ Universiti Malaysia Kelantan
 				<text><![CDATA[Sebarang pertanyaan lanjut mengenai tawaran ini, sila hubungi  En. Murhazlan Bin Mohamed atau Puan Raja Badriah Binti Raja Hassan di talian 09-7717031/ 09-7717145.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="782" width="274" height="20" forecolor="#003366" uuid="7d4a4417-b6df-402e-9a74-bd562e358781"/>
+				<reportElement x="0" y="782" width="269" height="20" forecolor="#003366" uuid="7d4a4417-b6df-402e-9a74-bd562e358781"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="10" isBold="true"/>
 				</textElement>
@@ -1078,6 +1075,13 @@ Universiti Malaysia Kelantan
 			<line>
 				<reportElement x="431" y="769" width="1" height="31" forecolor="#003366" uuid="40a0b616-5def-4be2-9ce6-48857eb317d7"/>
 			</line>
+			<staticText>
+				<reportElement x="43" y="535" width="475" height="20" uuid="dfe8cfa4-2ca2-482a-8cea-5059751b302b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[INI ADALAH BORANG CETAKAN KOMPUTER, TANDATANGAN TIDAK DIPERLUKAN ]]></text>
+			</staticText>
 		</band>
 	</summary>
 </jasperReport>
