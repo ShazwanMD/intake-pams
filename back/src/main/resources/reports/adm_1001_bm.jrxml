@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="offer letter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc959bd2-627c-4620-bf05-51189df59de5">
 	<property name="ireport.zoom" value="1.7715610000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="1008"/>
 	<parameter name="reference_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -631,10 +631,6 @@ FROM
 				</textElement>
 				<text><![CDATA[Centre for Postgraduate Studies]]></text>
 			</staticText>
-			<image>
-				<reportElement x="392" y="42" width="84" height="94" uuid="8cfd888d-b8a7-4f7f-ac09-756fbbe62a9b"/>
-				<imageExpression><![CDATA["C:\\Users\\Nurain\\git\\intake\\back\\src\\main\\resources\\reports\\img\\umk.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -668,7 +664,7 @@ FROM
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="431" splitType="Stretch">
+		<band height="427" splitType="Stretch">
 			<staticText>
 				<reportElement x="32" y="12" width="505" height="20" uuid="9637b07c-80e5-4c4a-9384-763363d04206"/>
 				<textElement>
@@ -998,13 +994,6 @@ Universiti Malaysia Kelantan
 				</textElement>
 				<text><![CDATA[:]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yyyy HH.mm.ss">
-				<reportElement stretchType="RelativeToTallestObject" x="204" y="34" width="57" height="15" isPrintWhenDetailOverflows="true" uuid="bbb48bd2-e5a3-463e-97ab-d3ee17fc7ed1"/>
-				<textElement>
-					<font fontName="SansSerif"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{in_venu_code_registration_date}+" "]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="74" y="63" width="136" height="15" uuid="42006688-c69b-488f-b509-e4316fd1299c"/>
 				<textElement>
@@ -1082,6 +1071,10 @@ Universiti Malaysia Kelantan
 				</textElement>
 				<text><![CDATA[INI ADALAH BORANG CETAKAN KOMPUTER, TANDATANGAN TIDAK DIPERLUKAN ]]></text>
 			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="203" y="34" width="100" height="15" uuid="75ec9c8e-04c5-44a4-8183-8461ea19e687"/>
+				<textFieldExpression><![CDATA[$F{in_venu_code_registration_date}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>
