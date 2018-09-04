@@ -390,7 +390,7 @@ public class ApplicationController {
 			candidate.setSourceNo(application.getIntake().getSourceNo());
 			candidate.setDescriptionEn(application.getIntake().getDescriptionEn());
 			candidate.setDescriptionMs(application.getIntake().getDescriptionMs());
-			candidateDao.save(candidate, securityService.getCurrentUser());
+			admissionService.saveCandidate(candidate);
 			
 			admissionService.startCandidateTask(candidate);
 			

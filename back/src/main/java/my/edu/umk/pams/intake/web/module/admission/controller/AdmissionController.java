@@ -47,7 +47,7 @@ import my.edu.umk.pams.intake.workflow.service.WorkflowService;
 public class AdmissionController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AdmissionController.class);
-	
+
 	@Autowired
 	private AdmissionService admissionService;
 
@@ -56,16 +56,16 @@ public class AdmissionController {
 
 	@Autowired
 	private ApplicationService applicationService;
-	
+
 	@Autowired
-    private WorkflowService workflowService;
+	private WorkflowService workflowService;
 
 	@Autowired
 	private AdmissionTransformer admissionTransformer;
 
 	@Autowired
 	private PolicyTransformer policyTransformer;
-	
+
 	@Autowired
 	private ApplicationTransformer applicationTransformer;
 
@@ -103,7 +103,7 @@ public class AdmissionController {
 
 	@RequestMapping(value = "/candidates/assignedCandidateTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<CandidateTask>> findAssignedCandidateTasks() {
-		
+
 		List<Task> tasks = admissionService.findAssignedCandidateTasks(0, 100);
 		LOG.debug("Task id baca : {}", tasks);
 		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
@@ -115,64 +115,66 @@ public class AdmissionController {
 		List<Task> tasks = admissionService.findPooledCandidateTasks(0, 100);
 		return new ResponseEntity<List<CandidateTask>>(admissionTransformer.toCandidateTaskVos(tasks), HttpStatus.OK);
 	}
-	
-    @RequestMapping(value = "/candidates/archived", method = RequestMethod.GET)
-    public ResponseEntity<List<Candidate>> findArchivedCandidates() {
-        List<InCandidate> tasks = admissionService.findCandidatesByFlowStates(InFlowState.CANCELLED, InFlowState.REMOVED, InFlowState.COMPLETED);
-        return new ResponseEntity<List<Candidate>>(admissionTransformer.toCandidateVos(tasks), HttpStatus.OK);
-    }
-	
-    @RequestMapping(value = "/candidates/completeTask", method = RequestMethod.POST)
-    public void completeCandidateTask(@RequestBody CandidateTask vo) {
-        Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
-        workflowService.completeTask(task);
-    }
-    
-    @RequestMapping(value = "/candidates/removeTask", method = RequestMethod.POST)
- 	public void removeCandidateTask(@RequestBody CandidateTask vo) {
 
-    	Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
-       LOG.debug("Task id {}", task.getId());
-       Map<String, Object> variables = new HashMap<String, Object>();
-       variables.put(REMOVE_DECISION, TRUE);
-       workflowService.completeTask(task, variables);
-    }
-    
-    @RequestMapping(value = "/candidates/claimTask", method = RequestMethod.POST)
-    public ResponseEntity<String> claimCandidateTask(@RequestBody CandidateTask vo) {
-    	
-        Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
-        workflowService.claimTask(task);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
+	@RequestMapping(value = "/candidates/archived", method = RequestMethod.GET)
+	public ResponseEntity<List<Candidate>> findArchivedCandidates() {
+		List<InCandidate> tasks = admissionService.findCandidatesByFlowStates(InFlowState.CANCELLED,
+				InFlowState.REMOVED, InFlowState.COMPLETED);
+		return new ResponseEntity<List<Candidate>>(admissionTransformer.toCandidateVos(tasks), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/candidates/viewTask/{taskId}", method = RequestMethod.GET)
-    public ResponseEntity<CandidateTask> findCandidateTaskByTaskId(@PathVariable String taskId) {
-        return new ResponseEntity<CandidateTask>(admissionTransformer
-                .toCandidateTaskVo(admissionService.findCandidateTaskByTaskId(taskId)), HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/candidates/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Candidate> findCandidateById(@PathVariable Long id) {
-    	InCandidate candidate = admissionService.findCandidateById(id);
-    	LOG.debug("Candidate id baca : {}", candidate.getName());
-        return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/candidates/application/{referenceNo}", method = RequestMethod.GET)
-    public ResponseEntity<Candidate> findCandidateByReferenceNo(@PathVariable String referenceNo) {
-    	InCandidate candidate = admissionService.findCandidateByReferenceNo(referenceNo);
-    	LOG.debug("Candidate id baca : {}", candidate.getName());
-        return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/candidates/intakeApplication/{referenceNo}", method = RequestMethod.GET)
-    public ResponseEntity<Candidate> findCandidateByIntakeApplicationReferenceNo(@PathVariable String referenceNo) {
-    	InCandidate candidate = admissionService.findCandidateByIntakeApplicationReferenceNo(referenceNo);
-    	LOG.debug("Candidate id baca : {}", candidate.getName());
-        return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
-    }
-	
+	@RequestMapping(value = "/candidates/completeTask", method = RequestMethod.POST)
+	public void completeCandidateTask(@RequestBody CandidateTask vo) {
+		Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
+		workflowService.completeTask(task);
+	}
+
+	@RequestMapping(value = "/candidates/removeTask", method = RequestMethod.POST)
+	public void removeCandidateTask(@RequestBody CandidateTask vo) {
+
+		Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
+		LOG.debug("Task id {}", task.getId());
+		Map<String, Object> variables = new HashMap<String, Object>();
+		variables.put(REMOVE_DECISION, TRUE);
+		workflowService.completeTask(task, variables);
+	}
+
+	@RequestMapping(value = "/candidates/claimTask", method = RequestMethod.POST)
+	public ResponseEntity<String> claimCandidateTask(@RequestBody CandidateTask vo) {
+
+		Task task = admissionService.findCandidateTaskByTaskId(vo.getTaskId());
+		workflowService.claimTask(task);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/candidates/viewTask/{taskId}", method = RequestMethod.GET)
+	public ResponseEntity<CandidateTask> findCandidateTaskByTaskId(@PathVariable String taskId) {
+		return new ResponseEntity<CandidateTask>(
+				admissionTransformer.toCandidateTaskVo(admissionService.findCandidateTaskByTaskId(taskId)),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/candidates/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Candidate> findCandidateById(@PathVariable Long id) {
+		InCandidate candidate = admissionService.findCandidateById(id);
+		LOG.debug("Candidate id baca : {}", candidate.getName());
+		return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/candidates/application/{referenceNo}", method = RequestMethod.GET)
+	public ResponseEntity<Candidate> findCandidateByReferenceNo(@PathVariable String referenceNo) {
+		InCandidate candidate = admissionService.findCandidateByReferenceNo(referenceNo);
+		LOG.debug("Candidate id baca : {}", candidate.getName());
+		return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/candidates/intakeApplication/{referenceNo}", method = RequestMethod.GET)
+	public ResponseEntity<Candidate> findCandidateByIntakeApplicationReferenceNo(@PathVariable String referenceNo) {
+		InCandidate candidate = admissionService.findCandidateByIntakeApplicationReferenceNo(referenceNo);
+		LOG.debug("Candidate id baca : {}", candidate.getName());
+		return new ResponseEntity<Candidate>(admissionTransformer.toCandidateVo(candidate), HttpStatus.OK);
+	}
+
 	// ====================================================================================================
 	// CANDIDATES
 	// ====================================================================================================
@@ -188,20 +190,77 @@ public class AdmissionController {
 	@RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}", method = RequestMethod.GET)
 	public ResponseEntity<List<Candidate>> findSelecedCandidates(@PathVariable String referenceNo,
 			@PathVariable String candidateStatus) {
+
+		LOG.debug("Lalu controller ini");
+
+		LOG.debug("candidateStatus:{}", candidateStatus);
+
 		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-		return new ResponseEntity<List<Candidate>>(
-				admissionTransformer.toCandidateVos(
-						admissionService.findCandidatesByStatus(intake, InCandidateStatus.valueOf(candidateStatus))),
-				HttpStatus.OK);
+		LOG.debug("intake:{}", intake.getReferenceNo());
+
+		List<InCandidate> candidates = null;
+				
+		switch (candidateStatus) {
+		case "SELECTED":
+			candidates = admissionService.findCandidatesByStatus(intake,
+					InCandidateStatus.SELECTED);
+			break;	
+		case "APPROVED":
+			candidates = admissionService.findCandidatesByStatus(intake,
+					InCandidateStatus.APPROVED);
+			break;	
+		case "PREAPPROVED":
+			candidates = admissionService.findCandidatesByStatus(intake,
+					InCandidateStatus.PREAPPROVED);
+			break;	
+		case "REJECTED":
+			candidates = admissionService.findCandidatesByStatus(intake,
+					InCandidateStatus.REJECTED);
+			break;	
+		case "OFFERED":
+			candidates = admissionService.findCandidatesByStatus(intake,
+					InCandidateStatus.OFFERED);
+			break;	
+	
+		case "ACCEPTED":
+			candidates = admissionService.findCandidatesByStatus(intake,
+					InCandidateStatus.ACCEPTED);
+			break;	
+		case "REGISTERED":
+			candidates = admissionService.findCandidatesByStatus(intake,
+					InCandidateStatus.REGISTERED);
+			break;
+
+		}
+
+
+		return new ResponseEntity<List<Candidate>>(admissionTransformer.toCandidateVos(candidates), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/intakes/{referenceNo}/candidates/candidateStatus/{candidateStatus}/accepted", method = RequestMethod.GET)
 	public ResponseEntity<List<Candidate>> findOfferAcceptCandidates(@PathVariable String referenceNo,
 			@PathVariable String candidateStatus) {
+
+		LOG.debug("Accept Lalu controller ini");
+		LOG.debug("candidateStatus:{}", candidateStatus);
+
 		InIntake intake = policyService.findIntakeByReferenceNo(referenceNo);
-		return new ResponseEntity<List<Candidate>>(admissionTransformer.toCandidateVos(
-				admissionService.findCandidatesAcceptOffered(intake, InCandidateStatus.valueOf(candidateStatus))),
-				HttpStatus.OK);
+		LOG.debug("intake:{}", intake.getReferenceNo());
+
+
+		List<InCandidate> candidates = null;
+		
+		switch (candidateStatus) {
+		case "OFFERED":
+			candidates = admissionService.findCandidatesAcceptOffered(intake,
+					InCandidateStatus.OFFERED);
+			break;	
+
+		}
+		for (InCandidate inCandidate : candidates) {
+			LOG.debug("list:{}", inCandidate.getName());
+		}
+		return new ResponseEntity<List<Candidate>>(admissionTransformer.toCandidateVos(candidates), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/intakes/{referenceNo}/candidates/offer", method = RequestMethod.PUT)
@@ -245,7 +304,7 @@ public class AdmissionController {
 		admissionService.registerCandidate(candidate);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/application/{id}/reject", method = RequestMethod.PUT)
 	public ResponseEntity<String> rejectCandidate(@PathVariable Long id, @RequestBody Candidate vo) {
 		InCandidate candidate = admissionService.findCandidateById(vo.getId());
@@ -255,16 +314,21 @@ public class AdmissionController {
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 
-//	@RequestMapping(value = "/application/{referenceNo}/candidates/candidateStatus/reject", method = RequestMethod.PUT)
-//	public ResponseEntity<String> rejectCandidate(@PathVariable String referenceNo, @RequestBody Candidate vo) {
-//		InIntakeApplication intakeApplication = applicationService.findIntakeApplicationByReferenceNo(referenceNo);
-//		InCandidate candidate = admissionService.findCandidateByIntakeApplication(intakeApplication);
-//		System.out.println("reason : " + vo.getReason());
-//		candidate.setReason(vo.getReason());
-//		admissionService.rejectCandidate(candidate);
-//		return new ResponseEntity<String>("success", HttpStatus.OK);
-//	}
-	
+	// @RequestMapping(value =
+	// "/application/{referenceNo}/candidates/candidateStatus/reject", method =
+	// RequestMethod.PUT)
+	// public ResponseEntity<String> rejectCandidate(@PathVariable String
+	// referenceNo, @RequestBody Candidate vo) {
+	// InIntakeApplication intakeApplication =
+	// applicationService.findIntakeApplicationByReferenceNo(referenceNo);
+	// InCandidate candidate =
+	// admissionService.findCandidateByIntakeApplication(intakeApplication);
+	// System.out.println("reason : " + vo.getReason());
+	// candidate.setReason(vo.getReason());
+	// admissionService.rejectCandidate(candidate);
+	// return new ResponseEntity<String>("success", HttpStatus.OK);
+	// }
+
 	@RequestMapping(value = "/application/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateCandidate(@PathVariable Long id, @RequestBody Candidate vo) {
 
@@ -273,7 +337,7 @@ public class AdmissionController {
 		InIntakeApplication app = applicationService.findIntakeApplicationById(candidate.getApplication().getId());
 		candidate.setSupervisorSelection(policyService.findSupervisorOfferingById(vo.getSupervisorOffering().getId()));
 		admissionService.updateCandidate(candidate);
-		
+
 		app.setSupervisorSelection(policyService.findSupervisorOfferingById(vo.getSupervisorOffering().getId()));
 		applicationService.updateIntakeApplication(app);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -293,7 +357,7 @@ public class AdmissionController {
 		return tasks.stream().map((task) -> decorateIntakeTask(task))
 				.collect(toCollection(() -> new ArrayList<IntakeTask>()));
 	}
-	
+
 	private CandidateTask decorateCandidateTask(CandidateTask candidateTask) {
 		InCandidate candidate = admissionService.findCandidateById(candidateTask.getId());
 		return candidateTask;

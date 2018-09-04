@@ -63,7 +63,7 @@ export function offeredCandidateListReducer(state = initialState, action: Action
 
 export function acceptedCandidateListReducer(state = initialState, action: Action): CandidateListState {
     switch (action.type) {
-      case AdmissionActions.FIND_ACCEPT_OFFERED_CANDIDATES_SUCCESS: {
+      case AdmissionActions.FIND_ACCEPTED_CANDIDATES_SUCCESS: {
         return action.payload;
       }
       default: {

@@ -65,39 +65,7 @@ public class IntakeSelectTask extends BpmnActivityBehavior implements ActivityBe
 		if (intake.getGraduateCenter().getCode().equals("MGSEB")) {
 			policyService.updateIntake(intake);
 			admissionService.processIntakeSelection(intake);
-		} else {
-//			LOG.debug("CPS");
-//
-//			List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake);
-//			for (InIntakeApplication application : applications) {
-//
-//				LOG.debug("{}",application.getName());
-//				InCandidate candidate = new InCandidateImpl();
-//				candidate.setSourceNo(UUID.randomUUID().toString());
-//				candidate.setAuditNo(UUID.randomUUID().toString());
-//				candidate.setIntake(application.getIntake());
-//				candidate.setName(application.getName());
-//				candidate.setIdentityNo(application.getCredentialNo());
-//				candidate.setEmail(application.getEmail());
-//				candidate.setStudyModeSelection(application.getStudyModeSelection());
-//				candidate.setStatus(InCandidateStatus.SELECTED);
-//				candidate.setProgramSelection(application.getProgramSelection());
-//				candidate.setSupervisorSelection(application.getSupervisorSelection());
-//				candidate.setRegistration(false);
-//				candidate.setApplication(application);
-//				candidate.setAuditNo(application.getIntake().getAuditNo());
-//				candidate.setReferenceNo(application.getIntake().getReferenceNo());
-//				candidate.setCancelComment(application.getIntake().getCancelComment());
-//				candidate.setSourceNo(application.getIntake().getSourceNo());
-//				candidate.setDescriptionEn(application.getIntake().getDescriptionEn());
-//				candidate.setDescriptionMs(application.getIntake().getDescriptionMs());
-//				candidateDao.save(candidate, securityService.getCurrentUser());
-//				LOG.debug("After Save Candidate");
-//				admissionService.startCandidateTask(candidate);
-//				LOG.debug("After Start Candidate Task");
-//			}
 		}
-		// application -> candidate
 
 	}
 }

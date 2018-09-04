@@ -207,7 +207,7 @@
             </md-tab-group>
           </md-card-content>
         </md-card>
-        	<template [ngIf]="candidate.status === 'OFFERED'"><button md-raised-button color="accent" (click)="register(candidate)">Register</button></template>
+        	<template [ngIf]="candidate.status === 'ACCEPTED'"><button md-raised-button color="accent" (click)="register(candidate)">Register</button></template>
         	<button md-raised-button color="accent" (click)="reject(candidate)">Reject</button>
       </md-tab>
     </md-tab-group>

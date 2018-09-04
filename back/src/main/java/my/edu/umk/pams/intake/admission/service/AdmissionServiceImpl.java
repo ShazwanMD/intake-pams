@@ -339,10 +339,23 @@ public class AdmissionServiceImpl implements AdmissionService {
 
 		//ProgramCode
 		ProgramCodePayload programCodePayload = new ProgramCodePayload();
-		programCodePayload.setCode(programFieldCode.getCode());
-		programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn()+"("+programFieldCode.getFieldCode().getDescriptionEn()+")");
-		programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
-		payload.setProgramCode(programCodePayload);
+		
+		switch(candidate.getProgramSelection().getProgramFieldCode().getProgramCode().getGraduateCenter().getCode()) {
+		case "CPS":
+			
+			programCodePayload.setCode(programFieldCode.getCode());
+			programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn()+"("+programFieldCode.getFieldCode().getDescriptionEn()+")");
+			programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs()+"("+programFieldCode.getFieldCode().getDescriptionMs()+")");
+			payload.setProgramCode(programCodePayload);
+			break;
+		case "MGSEB":
+			programCodePayload.setCode(programFieldCode.getCode());
+			programCodePayload.setDescriptionEn(programFieldCode.getProgramCode().getDescriptionEn());
+			programCodePayload.setDescriptionMs(programFieldCode.getProgramCode().getDescriptionMs());
+			payload.setProgramCode(programCodePayload);
+			break;
+			
+		}
 
 		//FacultyCode
 		InFacultyCode facultyCode = programFieldCode.getFacultyCode();
@@ -507,6 +520,7 @@ public class AdmissionServiceImpl implements AdmissionService {
 		candidate.setSourceNo(application.getIntake().getSourceNo());
 		candidate.setDescriptionEn(application.getIntake().getDescriptionEn());
 		candidate.setDescriptionMs(application.getIntake().getDescriptionMs());
+		//candidate.getFlowdata().setState(InFlowState.SELECTED);
 		candidateDao.save(candidate, securityService.getCurrentUser());
 		
 //		//Checking By GraduateCenter
@@ -543,6 +557,12 @@ public class AdmissionServiceImpl implements AdmissionService {
 		String generatedMatricNo = systemService.generateFormattedReferenceNo(IntakeConstants.CANDIDATE_MATRIC_NO, map);
 
 		return generatedMatricNo;
+	}
+	
+	@Override
+	public void saveCandidate(InCandidate candidate) {
+		candidateDao.save(candidate, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
 	}
 	
 	@Override

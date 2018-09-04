@@ -36,7 +36,8 @@ export class AdmissionEffects {
       this.admissionActions.findApprovedCandidates(action.payload),
       this.admissionActions.findRejectedCandidates(action.payload),
       this.admissionActions.findOfferedCandidates(action.payload),
-      this.admissionActions.findAcceptOfferedCandidates(action.payload),
+      // this.admissionActions.findAcceptOfferedCandidates(action.payload),
+      this.admissionActions.findAcceptedCandidates(action.payload),
       this.admissionActions.findRegisteredCandidates(action.payload),
     ]));
 
@@ -65,10 +66,10 @@ export class AdmissionEffects {
     .map(candidates => this.admissionActions.findOfferedCandidatesSuccess(candidates));
   
   @Effect() findAcceptOfferedCandidates = this.actions$
-    .ofType(AdmissionActions.FIND_ACCEPT_OFFERED_CANDIDATES)
+    .ofType(AdmissionActions.FIND_ACCEPTED_CANDIDATES)
     .map(action => action.payload)
-    .switchMap(intake => this.admissionService.findAcceptOfferCandidates(intake))
-    .map(candidates => this.admissionActions.findAcceptOfferedCandidatesSuccess(candidates));
+    .switchMap(intake => this.admissionService.findAcceptedCandidates(intake))
+    .map(candidates => this.admissionActions.findAcceptedCandidatesSuccess(candidates));
   
    @Effect() findPreSelectedCandidates = this.actions$
     .ofType(AdmissionActions.FIND_PRE_SELECTED_CANDIDATES)

@@ -86,6 +86,8 @@ public interface AdmissionService {
 
 	InCandidate findCandidateById(Long id);
 	
+	void saveCandidate(InCandidate candidate);
+	
 	void updateCandidate(InCandidate candidate);
 	
     //====================================================================================================
